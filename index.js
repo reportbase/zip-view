@@ -619,7 +619,7 @@ panel.galleryscroll = function ()
 				]),
 	                    0,
 	                ]),
-		}
+		]),
                 0,
             ]);
 
