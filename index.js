@@ -3742,7 +3742,8 @@ var buttonlst =
                         thumbimg.count = 1;
                     }
 
-             		var hh = Math.min(window.innerHeight,Math.floor(rect.height));
+             		//var hh = Math.min(window.innerHeight,Math.floor(rect.height));
+			var hh = Math.floor(rect.height);
 		    var ww = Math.floor(rect.width);
                            var y = Math.nub(obj.value(), obj.length(),
                         hh, thumbfitted.height);
