@@ -5508,7 +5508,7 @@ galleryobj.init = function (obj)
             },
             enabled: function() { return 0; }
         },
-	/*    
+	
         {title:"Debug", func: function()
             {
                 galleryobj.debug = galleryobj.debug ? 0 : 1;
@@ -5522,7 +5522,7 @@ galleryobj.init = function (obj)
               },
             enabled: function() { return galleryobj.debug; }
         },
-	  */ 
+	 
 	{title:"Full Screen\nCtrl+Shift+F", func: function()
             {
                 screenfull.toggle()
