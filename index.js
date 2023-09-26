@@ -3045,7 +3045,6 @@ var taplst =
 		
 	    if (galleryobj.showboss || canvas.shiftKey)
 	    {
-		menuobj.hide();
 		    var n = visibles[k].n;
 			galleryobj.set(n);
 	                 headcnv.height = BEXTENT;
