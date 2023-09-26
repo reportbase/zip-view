@@ -3882,7 +3882,7 @@ menuobj.draw = function()
     if (canvas.lastcurrent != current)
     {
         canvas.lastcurrent = current;
-        var size = Math.ceil(rect.height/canvas.buttonheight)+4;
+        var size = Math.min(galleryobj.length(),Math.ceil(rect.height/canvas.buttonheight)+4);
         canvas.normal = util.rotated_list(canvas.rotated,slices.length,current,size);
     }
 
