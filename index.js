@@ -3644,32 +3644,7 @@ var buttonlst =
     name: "SETUP",
     draw: function (context, rect, user, time)
     {
-        context.save()
-        var clr = FILLBAR;
-        if (user.tap)
-        {
-            clr = MENUTAP;
-        }
-        else if (user.enabled)
-        {
-            if (user.enabled())
-              clr = MENUSELECT;
-        }
-
-        var a = new panel.col([BUTTONMARGIN,0,BUTTONMARGIN],
-        [
-            0,
-            new Layer(
-            [
-                new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8), 10, 10),
-                new panel.shrink(new panel.text("white", "center", "middle",0, 0), 20, 0),
-            ]),
-            0,
-        ]);
-
- 	var k = typeof (user.title) == "function" ? user.title() : user.title; 
-        a.draw(context, rect, k, time);
-        context.restore();
+       
     }
 },
 {
@@ -3761,7 +3736,7 @@ var buttonlst =
                         thumbimg.count = 1;
                     }
 
-             		var hh = Math.floor(rect.height);
+             		var hh = Math.min(window.innerHeight,Math.floor(rect.height));
 		    var ww = Math.floor(rect.width);
                            var y = Math.nub(obj.value(), obj.length(),
                         hh, thumbfitted.height);
