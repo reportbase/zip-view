@@ -5458,7 +5458,7 @@ galleryobj.init = function (obj)
         },
 	    
         {
-            title: "ipfs-view\nImage Viewer\nhttps://ipfs-view.com\nimages@ipfs-view.com",
+            title: "ipfs-view\nImage and Document Browser\nhttps://ipfs-view.com\nimages@ipfs-view.com",
             func: function() {}
         },
         {
@@ -5466,7 +5466,7 @@ galleryobj.init = function (obj)
             func: function() {}
         },
         {
-            title: "Image viewer\nwebp, jpg, avif, gif, png\nzip, cbz, ipfs\nNewspapers, magazines, graphic novels and image galleries.",
+            title: "Image Browser\nwebp, jpg, avif, gif, and png\nzip, cbz, and ipfs\nNewspapers, magazines and image galleries",
             func: function() {}
         },
 
