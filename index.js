@@ -2546,7 +2546,7 @@ var keylst =
     		var e = canvas.speedobj.value()/2;
 	    if (key == "pageup" || key == "enter")
 		e = canvas.speedobj.value();
-	    else if (key == "backspace" || key == " " || (key == "arrowdown" && canvas.ctrlKey))
+	    else if (key == "backspace" || key == " " || (key == "arrowup" && canvas.ctrlKey))
 		e = canvas.speedobj.value()*2;
             menuobj.updown(context, -e);
             if (!global.swipetimeout)
@@ -5695,10 +5695,10 @@ fetch(path3)
 	})
 	.catch((error) => { });
 }
-else if (url.searchParams.has("json"))
+else if (url.searchParams.has("data"))
 {
-	url.path = url.searchParams.get("json");
-	fetch(url.path)
+	url.path = url.searchParams.get("data");
+	fetch(`data/${url.path}/index.json`);
 	.then(response => jsonhandler(response))
 	.then((obj) => galleryobj.init(obj))
 	.catch((error) => { });
