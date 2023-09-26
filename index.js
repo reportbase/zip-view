@@ -45,6 +45,7 @@ const TRANSPARENT = "rgba(0,0,0,0)";
 const FILLBAR = "rgba(0,0,0,0.3)";
 const NUBAR = "rgba(255,255,255,0.8)";
 const FILLMENU = "rgba(0,0,0,0.6)";
+const GALLERYSCROLL = "rgba(0,0,0,0.3)";
 const ARROWFILL = "white";
 const SCROLLBARWIDTH = 7;
 const SMALLFONT = "16px archivo black";
@@ -608,7 +609,7 @@ panel.galleryscroll = function ()
                 0,
 		new Layer(
 		[
-			new panel.fill("rgba(0,0,0,0.2)"),
+			new panel.fill(GALLERYSCROLL),
 	                new panel.row([5,0,5],
 	                [
 	                    0,
@@ -630,7 +631,7 @@ panel.galleryscroll = function ()
                 0,
                 new Layer(
 		[
-			new panel.fill("rgba(0,0,0,0.2)"),
+			new panel.fill(GALLERYSCROLL),
 	                new panel.col([5,0,5],
 	                [
 	                    0,
@@ -3926,11 +3927,10 @@ menuobj.draw = function()
         var thumbfitted = thumbfittedlst[index];
         if (context == _8cnvctx && !canvas.pinching && thumbimg.view != view)
         {
-            thumbimg.view = view;
-        		
             try
             {
-                thumbimg.src = imagepath(slice);
+            	thumbimg.view = view;
+            	thumbimg.src = imagepath(slice);
                 thumbimg.onload = function()
                 {
             		this.count = 0;
@@ -3941,12 +3941,13 @@ menuobj.draw = function()
                 thumbimg.onerror =
                     thumbimg.onabort = function(error)
                 {
-		thumbimg.view = 0;
-                    console.log(error);
+			thumbimg.view = 0;
+			console.log(error);
                 }
             }
             catch (error)
             {
+		    thumbimg.view = 0;
                 console.log(error);
             }
         }
@@ -3986,6 +3987,11 @@ menuobj.draw = function()
         infobj.reset(context.canvas.centered);
         context.canvas.bar.draw(context, rect, 0, 0);
         context.canvas.scroll.draw(context, rect, 0, 0);
+    }
+
+    if (galleryobj.debug)
+    {
+	    infobj.data.push(`${isvisiblecount} of ${canvas.normal.length}`);
     }
 }
 
