@@ -145,7 +145,13 @@ util.rotated_list = function (lst, size, start, width)
     var k = lst.slice(start,start+width*2.0);
     var j = k.findIndex(function(a){return a == v;});
     var e = k.slice(j).concat(k.slice(0,j));
-    return e;
+	
+	var unique = e.filter(function (value, index, array) 
+	{
+	  return array.indexOf(value) === index;
+	});
+
+    return unique;
 }
 
 let circular_array = function (title, data)
@@ -3882,7 +3888,7 @@ menuobj.draw = function()
     if (canvas.lastcurrent != current)
     {
         canvas.lastcurrent = current;
-        var size = Math.min(galleryobj.length(),Math.ceil(rect.height/canvas.buttonheight)+4);
+        var size = Math.ceil(rect.height/canvas.buttonheight)+4;
         canvas.normal = util.rotated_list(canvas.rotated,slices.length,current,size);
     }
 
