@@ -3958,7 +3958,7 @@ menuobj.draw = function()
             var j = Math.berp(-1, 1, bos);
             var y = j * context.canvas.virtualheight;
             var e = (canvas.virtualheight-rect.height)/2;
-	    //y -= e;
+	    y -= e;
 	    if (y > 0 && y < lasty)
 	   	y = lasty;
 	    lasty = y;
@@ -3974,9 +3974,9 @@ menuobj.draw = function()
                 isvisiblecount += j.slice.isvisible?1:0;
                 if (slice.isvisible)
                     context.canvas.visibles.push(j);
-                //ctx.translate(0, j.y);
+                ctx.translate(0, j.y);
                 context.canvas.draw(ctx, r, j.slice, j.n);
-               // ctx.translate(0, -j.y);
+               ctx.translate(0, -j.y);
              }
         }
     }
