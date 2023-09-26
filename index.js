@@ -3707,7 +3707,8 @@ var buttonlst =
             {
                 thumbfitted.view = view;
             }
-            else
+		
+            //else
             {
                 if (b > b2)
                 {
