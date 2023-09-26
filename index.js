@@ -3460,7 +3460,6 @@ bossobj.draw = function(skip=1)
 
 bossobj.updown = function(delta)
 {
-return;
     var context = _4cnvctx;
     var canvas = _4cnv;
     context.canvas.startupdown = 0.05;
