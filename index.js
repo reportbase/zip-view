@@ -5465,8 +5465,8 @@ galleryobj.init = function (obj)
             title: "Tom Brinkman\nAll Rights Reserved",
             func: function() {}
         },
-        {z
-            title: "Zip, cbz, ipfs, Webp, jpg, avif, gif, and png viewer.",
+        {
+            title: "Image viewer - zip, cbz, ipfs, webp, jpg, avif, gif, and png.",
             func: function() {}
         },
 
