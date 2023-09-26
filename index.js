@@ -3904,7 +3904,7 @@ menuobj.draw = function()
     var isvisiblecount = 0;
     context.canvas.centered = 0;
     var r = new rectangle(0,0,rect.width,canvas.buttonheight);
-	var lasty = -1;
+	var lasty = -10000000;
     for (var m = 0; m < canvas.normal.length; ++m)
     {
         var n = canvas.normal[m];
@@ -3947,7 +3947,7 @@ menuobj.draw = function()
             var y = j * context.canvas.virtualheight;
             var e = (canvas.virtualheight-rect.height)/2;
 	    y -= e;
-	    if (lasty >= 0 && y < lasty)
+	    if (y < lasty)
 	   	y = lasty;
 	    lasty = y;
 		    
