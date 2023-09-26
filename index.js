@@ -3700,8 +3700,8 @@ var buttonlst =
             var obj = context.canvas.scrollobj.value();
             var b = thumbimg.width/thumbimg.height;
             var b2 = rect.width/rect.height;
-             		//var hh = Math.min(window.innerHeight,Math.floor(rect.height));
-	            var hh = Math.floor(rect.height);
+             	var hh = Math.min(window.innerHeight,Math.floor(rect.height));
+	            //var hh = Math.floor(rect.height);
 		    var ww = Math.floor(rect.width);
             if (thumbfitted.view != view)
             {
