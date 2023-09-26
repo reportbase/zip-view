@@ -3700,16 +3700,11 @@ var buttonlst =
             var obj = context.canvas.scrollobj.value();
             var b = thumbimg.width/thumbimg.height;
             var b2 = rect.width/rect.height;
-             	var hh = Math.min(window.innerHeight,Math.floor(rect.height));
-	            //var hh = Math.floor(rect.height);
+             	    var hh = Math.floor(rect.height);
 		    var ww = Math.floor(rect.width);
             if (thumbfitted.view != view)
-            {
                 thumbfitted.view = view;
-            }
-		
-            //else
-            {
+            	
                 if (b > b2)
                 {
                     if (thumbfitted.height != hh ||
@@ -3727,8 +3722,8 @@ var buttonlst =
                     var x = Math.nub(obj.value(), obj.length(),
                         ww, thumbfitted.width);
                     context.drawImage(thumbfitted,
-                        Math.floor(x), 0, ww, hh,
-                        0, 0, ww, hh);
+                        Math.floor(x), 0, ww, Math.min(window.innerHeight,hh),
+                        0, 0, ww, Math.min(window.innerHeight,hh));
                 }
                 else
                 {
@@ -3747,10 +3742,10 @@ var buttonlst =
                            var y = Math.nub(obj.value(), obj.length(),
                         hh, thumbfitted.height);
                     context.drawImage(thumbfitted,
-                        0, Math.floor(y), ww, hh,
-                        0, 0, ww, hh);
+                        0, Math.floor(y), ww, Math.min(window.innerHeight,hh),
+                        0, 0, ww, Math.min(window.innerHeight,hh));
                 }
-            }
+            
         }
     }
 },
