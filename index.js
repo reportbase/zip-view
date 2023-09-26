@@ -606,7 +606,7 @@ panel.galleryscroll = function ()
         var a = new panel.col([0,SCROLLBARWIDTH,2],
             [
                 0,
-		new panel.layer(
+		new Layer(
 		[
 			new panel.fill("rgba(0,0,0,0.2)"),
 	                new panel.row([5,0,5],
@@ -628,7 +628,7 @@ panel.galleryscroll = function ()
         var a = new panel.row([0,SCROLLBARWIDTH,2],
             [
                 0,
-                new panel.layer(
+                new Layer(
 		[
 			new panel.fill("rgba(0,0,0,0.2)"),
 	                new panel.col([5,0,5],
