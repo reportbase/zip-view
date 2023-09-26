@@ -3721,9 +3721,10 @@ var buttonlst =
 
                     var x = Math.nub(obj.value(), obj.length(),
                         ww, thumbfitted.width);
+			var hhh = Math.min(window.innerHeight,hh);
                     context.drawImage(thumbfitted,
-                        Math.floor(x), 0, ww, hh,
-                        0, 0, ww, hh);
+                        Math.floor(x), 0, ww, hhh,
+                        0, 0, ww, hhh);
                 }
                 else
                 {
