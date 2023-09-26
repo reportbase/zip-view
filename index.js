@@ -3985,13 +3985,10 @@ menuobj.draw = function()
     if (headcnv.height)
     {
         infobj.reset(context.canvas.centered);
+	    if (galleryobj.debug)
+		    infobj.data.push(`${isvisiblecount} of ${canvas.normal.length}`);
         context.canvas.bar.draw(context, rect, 0, 0);
         context.canvas.scroll.draw(context, rect, 0, 0);
-    }
-
-    if (galleryobj.debug)
-    {
-	    infobj.data.push(`${isvisiblecount} of ${canvas.normal.length}`);
     }
 }
 
