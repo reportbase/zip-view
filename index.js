@@ -3700,6 +3700,9 @@ var buttonlst =
             var obj = context.canvas.scrollobj.value();
             var b = thumbimg.width/thumbimg.height;
             var b2 = rect.width/rect.height;
+             		//var hh = Math.min(window.innerHeight,Math.floor(rect.height));
+	            var hh = Math.floor(rect.height);
+		    var ww = Math.floor(rect.width);
             if (thumbfitted.view != view)
             {
                 thumbfitted.view = view;
@@ -3708,20 +3711,18 @@ var buttonlst =
             {
                 if (b > b2)
                 {
-                    if (thumbfitted.height != Math.floor(rect.height) ||
+                    if (thumbfitted.height != hh ||
                         thumbimg.count < 1)
                     {
                         var thumbfittedctx = thumbfitted.getContext("2d");
-                        thumbfitted.height = Math.floor(rect.height);
-                        thumbfitted.width = Math.floor(rect.height*b);
+                        thumbfitted.height = hh;
+                        thumbfitted.width = Math.floor(hh*b);
                         thumbfittedctx.drawImage(
                             thumbimg,0,0,thumbimg.width,thumbimg.height,
                             0,0,thumbfitted.width,thumbfitted.height);
                         thumbimg.count = 1;
                     }
 
-	            var hh = Math.floor(rect.height);
-		    var ww = Math.floor(rect.width);
                     var x = Math.nub(obj.value(), obj.length(),
                         ww, thumbfitted.width);
                     context.drawImage(thumbfitted,
@@ -3730,21 +3731,18 @@ var buttonlst =
                 }
                 else
                 {
-                    if (thumbfitted.width != Math.floor(rect.width) ||
+                    if (thumbfitted.width != ww ||
                         thumbimg.count < 1)
                     {
                         var thumbfittedctx = thumbfitted.getContext("2d");
-                        thumbfitted.width = Math.floor(rect.width);
-                        thumbfitted.height = Math.floor(rect.width/b);
+                        thumbfitted.width = ww
+                        thumbfitted.height = Math.floor(ww/b);
                         thumbfittedctx.drawImage(
                             thumbimg,0,0,thumbimg.width,thumbimg.height,
                             0,0,thumbfitted.width,thumbfitted.height);
                         thumbimg.count = 1;
                     }
 
-             		//var hh = Math.min(window.innerHeight,Math.floor(rect.height));
-			var hh = Math.floor(rect.height);
-		    var ww = Math.floor(rect.width);
                            var y = Math.nub(obj.value(), obj.length(),
                         hh, thumbfitted.height);
                     context.drawImage(thumbfitted,
