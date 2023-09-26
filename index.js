@@ -5466,7 +5466,7 @@ galleryobj.init = function (obj)
             func: function() {}
         },
         {
-            title: "Image viewer - zip, cbz, ipfs, webp, jpg, avif, gif, and png.",
+            title: "Image viewer\nwebp, jpg, avif, gif, png\nzip, cbz, ipfs\nNewspapers, magazines, graphic novels and image galleries.",
             func: function() {}
         },
 
