@@ -606,16 +606,20 @@ panel.galleryscroll = function ()
         var a = new panel.col([0,SCROLLBARWIDTH,2],
             [
                 0,
-                new panel.row([5,0,5],
-                [
-                    0,
-			new Layer(
-			[
-        	    		new panel.expand(new panel.rectangle(canvas.vscrollrect),10,0),
-				new panel.currentV(new panel.shadow(new panel.fill("white")), 90, 1),
-			]),
-                    0,
-                ]),
+		new panel.layer(
+		[
+			new panel.fill("rgba(0,0,0,0.2)"),
+	                new panel.row([5,0,5],
+	                [
+	                    0,
+				new Layer(
+				[
+	        	    		new panel.expand(new panel.rectangle(canvas.vscrollrect),10,0),
+					new panel.currentV(new panel.shadow(new panel.fill("white")), 90, 1),
+				]),
+	                    0,
+	                ]),
+		}
                 0,
             ]);
 
@@ -624,16 +628,20 @@ panel.galleryscroll = function ()
         var a = new panel.row([0,SCROLLBARWIDTH,2],
             [
                 0,
-                new panel.col([5,0,5],
-                [
-                    0,
-		    new Layer(
-		    [
-        	    	new panel.expand(new panel.rectangle(canvas.hscrollrect),0,10),
-			    new panel.currentH(new panel.shadow(new panel.fill("white")), 90, 1),
-		    ]),
-                    0,
-                ]),
+                new panel.layer(
+		[
+			new panel.fill("rgba(0,0,0,0.2)"),
+	                new panel.col([5,0,5],
+	                [
+	                    0,
+			    new Layer(
+			    [
+	        	    	new panel.expand(new panel.rectangle(canvas.hscrollrect),0,10),
+				    new panel.currentH(new panel.shadow(new panel.fill("white")), 90, 1),
+			    ]),
+	                    0,
+	                ]),
+		]),
                 0,
             ]);
 
@@ -2358,6 +2366,10 @@ var presslst =
         }
         else
         {
+		var h = headcnv.height?0:BEXTENT;
+            headcnvctx.show(0,0,window.innerWidth,h);
+            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            context.refresh()
         }
     },
     press: function (context, rect, x, y)
@@ -5667,9 +5679,9 @@ function initime()
 
 url.path = "home";
 
-if (url.searchParams.has("ipfs"))
+if (url.searchParams.has("qid"))
 {
-    url.path = url.searchParams.get("ipfs");
+    url.path = url.searchParams.get("qid");
 var path2 = `https://dweb.link/ipfs/${url.path}`;
 var path1 = `https://ipfs.filebase.io/ipfs/${url.path}`;
 var path3 = `https://dweb.link/api/v0/ls?arg=${url.path}`
