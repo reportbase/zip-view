@@ -5698,7 +5698,7 @@ fetch(path3)
 else if (url.searchParams.has("data"))
 {
 	url.path = url.searchParams.get("data");
-	fetch(`data/${url.path}/index.json`);
+	fetch(`data/${url.path}/index.json`)
 	.then(response => jsonhandler(response))
 	.then((obj) => galleryobj.init(obj))
 	.catch((error) => { });
