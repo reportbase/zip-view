@@ -3675,14 +3675,14 @@ var buttonlst =
 		var yyy = 0;//todo
 		if (user.rect.y < 0)
 		{
-			//yyy = -user.rect.y;
+			
+		}
+		else
+		{
+			yyy = user.rect.y;
+			hhh = window.innerHeight-yyy;
 		}
 		
-		if (user.rect.y+user.rect.height > window.innerHeight)
-		{
-			hhh = window.innerHeight-user.rect.y;
-		}
-		   
             if (thumbfitted.view != view)
                 thumbfitted.view = view;
             	
