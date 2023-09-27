@@ -595,7 +595,7 @@ panel.galleryscroll = function() {
 		a.draw(context, rect, 
 		       [
 			       0,
-			       zoomobj.value(),
+			       buttonobj,
 			       0,
 			       context.canvas.timeobj,
 			       0,
