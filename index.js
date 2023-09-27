@@ -3672,6 +3672,11 @@ var buttonlst =
 		    var ww = Math.floor(rect.width);
 		 var hhh = hh;
 		var yyy = 0;
+		if (user.rect.y < 0)
+		{
+			yyy = -user.rect.y;
+		}
+		
 		if (user.rect.y+user.rect.height > window.innerHeight)
 		{
 			hhh = window.innerHeight-user.rect.y;
