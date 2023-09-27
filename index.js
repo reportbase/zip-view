@@ -3671,13 +3671,13 @@ var buttonlst =
              	    var hh = Math.floor(rect.height);
 		    var ww = Math.floor(rect.width);
 		 var hhh = hh;
-		var yyy = 0;
-		if (0)//user.rect.y < 0)
+		var yyy = 0;//todo
+		if (user.rect.y < 0)
 		{
-			yyy = -user.rect.y;
+			//yyy = -user.rect.y;
 		}
 		
-		if (0)//user.rect.y+user.rect.height > window.innerHeight)
+		if (user.rect.y+user.rect.height > window.innerHeight)
 		{
 			hhh = window.innerHeight-user.rect.y;
 		}
@@ -3914,7 +3914,7 @@ menuobj.draw = function()
             var j = Math.berp(-1, 1, bos);
             var y = j * context.canvas.virtualheight;
             var e = (canvas.virtualheight-rect.height)/2;
-	    y -= e;
+	    //y -= e;
 	    if (y > 0 && y < lasty)
 	   	y = lasty;
 	    lasty = y;
@@ -3930,9 +3930,9 @@ menuobj.draw = function()
                 isvisiblecount += j.slice.isvisible?1:0;
                 if (slice.isvisible)
                     context.canvas.visibles.push(j);
-                //ctx.translate(0, j.y);
+                ctx.translate(0, j.y);
 		context.canvas.draw(ctx, r, j.slice, j.n);
-               //ctx.translate(0, -j.y);
+               ctx.translate(0, -j.y);
              }
         }
     }
