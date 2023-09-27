@@ -561,6 +561,8 @@ panel.galleryscroll = function() {
 		canvas.vscrollrect = new rectangle();
 		canvas.hscrollrect = new rectangle();
 		canvas.buttonrect = new rectangle();
+		if (headcnv.height == 0)
+			return;
 		var obj = context.canvas.scrollobj.value();
 		var a = new panel.colA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
 			[
