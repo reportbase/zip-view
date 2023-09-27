@@ -2927,7 +2927,7 @@ var taplst =
 	    var obj = zoomobj.value()
             var k = (y-context.zoomrect.y)/context.zoomrect.height;
             obj.setperc(k);
-            contextobj.reset().
+            contextobj.reset();
         }
 	else if (context.stretchrect  && context.stretchrect.hitest(x,y))
         {
