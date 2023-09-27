@@ -560,9 +560,22 @@ panel.galleryscroll = function() {
 		context.save();
 		canvas.vscrollrect = new rectangle();
 		canvas.hscrollrect = new rectangle();
+		canvas.zoomrect = new rectangle();
 		var obj = context.canvas.scrollobj.value();
-		var a = new panel.col([0, SCROLLBARWIDTH, 4],
+		var a = new panel.colA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
 			[
+				0,
+				new panel.row([60, 0, 60],
+					[
+						0,
+						new Layer(
+							[
+								new panel.fill(GALLERYSCROLL),
+								new panel.expand(new panel.rectangle(canvas.zoomrect), 10, 0),
+								new panel.shrink(new panel.currentV(new panel.fill("white"),60, 1), 3, 3),
+							]),
+						0,
+					]),		
 				0,
 				new panel.row([60, 0, 60],
 					[
@@ -575,10 +588,18 @@ panel.galleryscroll = function() {
 							]),
 						0,
 					]),
+				0
 			]);
 				
 
-		a.draw(context, rect, context.canvas.timeobj, 0);
+		a.draw(context, rect, 
+		       [
+			       0,
+			       zoomobj.value(),
+			       0,
+			       context.canvas.timeobj,
+			       0,
+		      ], 0);
 
 		var a = new panel.row([0, SCROLLBARWIDTH, 4],
 			[
