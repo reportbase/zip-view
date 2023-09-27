@@ -472,8 +472,7 @@ panel.gallerybar = function() {
 		context.save();
 		var a = new panel.layerA(
 			[
-				new panel.colA([SCROLLMARGIN, SCROLLBARWIDTH, 0, SCROLLBARWIDTH,
-						SCROLLMARGIN, SCROLLBARWIDTH, SCROLLMARGIN
+				new panel.colA([30, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 30]
 					],
 					[
 						0,
@@ -500,8 +499,6 @@ panel.gallerybar = function() {
 									]) : 0,
 								0,
 							]),
-						0,
-						0,
 						0,
 					]),
 				new panel.rowA([80, 0, rows * rh, 8, SCROLLBARWIDTH, 4],
@@ -565,10 +562,10 @@ panel.galleryscroll = function() {
 		canvas.vscrollrect = new rectangle();
 		canvas.hscrollrect = new rectangle();
 		var obj = context.canvas.scrollobj.value();
-		var a = new panel.col([0, SCROLLBARWIDTH, 5],
+		var a = new panel.col([0, SCROLLBARWIDTH, 4],
 			[
 				0,
-				new panel.row([15, 0, 15],
+				new panel.row([20, 0, 20],
 					[
 						0,
 						new Layer(
@@ -584,10 +581,10 @@ panel.galleryscroll = function() {
 
 		a.draw(context, rect, context.canvas.timeobj, 0);
 
-		var a = new panel.row([0, SCROLLBARWIDTH,5],
+		var a = new panel.row([0, SCROLLBARWIDTH,4],
 			[
 				0,
-				new panel.col([15, 0, 15],
+				new panel.col([20, 0, 20],
 					[
 						0,
 						new Layer(
