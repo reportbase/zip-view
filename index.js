@@ -3673,9 +3673,6 @@ var buttonlst =
 		    var ww = Math.floor(rect.width);
 		 var hhh = hh;
 		var yyy = 0;
-		var region = new Path2D();
-            region.rect(0,0,window.innerWidth,window.innerHeight);
-            context.clip(region);	
 		
             if (thumbfitted.view != view)
                 thumbfitted.view = view;
