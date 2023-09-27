@@ -2398,7 +2398,7 @@ var presslst =
     name: "BOSS",
     pressup: function (context, rect, x, y)
     {
-	    context.hidethumb = context.hidethumb?0:1;
+	    //context.hidethumb = context.hidethumb?0:1;
 	    context.refresh();
     },
     press: function (context, rect, x, y)
@@ -2911,13 +2911,13 @@ var taplst =
             if (context.canvas.selectrect &&
                 context.canvas.selectrect.hitest(x,y)>=0)
             {
-                galleryobj.transparent = galleryobj.transparent?0:1;
+                galleryobj.notransparent = galleryobj.notransparent?0:1;
                 context.refresh();
             }
             else
             {
                 context.hithumb(x,y);
-                galleryobj.transparent = 1;
+                galleryobj.notransparent = 0;
                 contextobj.reset()
             }
         }
@@ -3045,7 +3045,7 @@ var taplst =
         {
 	    clearInterval(global.swipetimeout);
             global.swipetimeout = 0;
-	    _4cnvctx.hidethumb = 0;
+	    //_4cnvctx.hidethumb = 0;
 	    _4cnvctx.refresh();
 		
             var visibles = canvas.visibles;
@@ -3147,8 +3147,8 @@ var bosslst =
             context.heightrect = new rectangle();
 		if (menuobj.value())
 			return;
-	if (context.hidethumb)
-		return;	
+	//if (context.hidethumb)
+	//	return;	
             if (headcnv.height == 0)
                 return;
             if (
@@ -3264,7 +3264,7 @@ var bosslst =
             context.save();
             context.shadowOffsetX = 0;
             context.shadowOffsetY = 0;
-            if (galleryobj.transparent)
+            if (!galleryobj.notransparent)
             {
                 var blackfill = new panel.fill(THUMBFILP);
 		    blackfill.draw(context, canvas.thumbrect, 0, 0);
