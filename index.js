@@ -5987,6 +5987,7 @@ function selectid(id)
 
 menuobj.leftright = function (context, delta)
 {
+	
     //clearInterval(global.swipetimeout);
     //global.swipetimeout = 0;
 	if (!delta)
@@ -6028,14 +6029,7 @@ menuobj.leftright = function (context, delta)
 
 bossobj.leftright = function(delta)
 {
-    var context = _4cnvctx;
-    var canvas = _4cnv;
-    canvas.lastdelta = delta;
-    canvas.autodirect = delta<0?-1:1;
-    var slidestop = Math.abs(delta)/10;
-    var slidereduce = Math.lerp(1,240,canvas.reduceobj.berp());
-    canvas.slidestop = (window.innerWidth/context.canvas.virtualwidth)*slidestop;
-    canvas.slidereduce = canvas.slidestop/slidereduce;
+
 }
 
 buttonobj.reset = function()
