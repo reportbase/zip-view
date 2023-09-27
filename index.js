@@ -45,7 +45,7 @@ const NUBAR = "rgba(255,255,255,0.8)";
 const FILLMENU = "rgba(0,0,0,0.6)";
 const GALLERYSCROLL = "rgba(0,0,0,0.3)";
 const ARROWFILL = "white";
-const SCROLLBARWIDTH = 7;
+const SCROLLBARWIDTH = 9;
 const SMALLFONT = "16px archivo black";
 const DEFAULTFONT = "18px archivo black";
 const LARGEFONT = "20px archivo black";
@@ -565,48 +565,41 @@ panel.galleryscroll = function() {
 		canvas.vscrollrect = new rectangle();
 		canvas.hscrollrect = new rectangle();
 		var obj = context.canvas.scrollobj.value();
-		var a = new panel.col([0, SCROLLBARWIDTH, 2],
+		var a = new panel.col([0, SCROLLBARWIDTH],
 			[
 				0,
-				new Layer(
+				new panel.row([5, 0, 5],
 					[
-						new panel.fill(GALLERYSCROLL),
-						new panel.row([5, 0, 5],
+						0,
+						new Layer(
 							[
-								0,
-								new Layer(
-									[
-										new panel.expand(new panel.rectangle(canvas.vscrollrect), 10, 0),
-										new panel.currentV(new panel.shadow(new panel.fill("white")), 90, 1),
-									]),
-								0,
+								new panel.fill(GALLERYSCROLL),
+								new panel.expand(new panel.rectangle(canvas.vscrollrect), 10, 0),
+								new panel.shrink(new panel.currentV(new panel.fill("white"),60, 1), 3, 3),
 							]),
+						0,
 					]),
-				0,
 			]);
+				
 
 		a.draw(context, rect, context.canvas.timeobj, 0);
 
-		var a = new panel.row([0, SCROLLBARWIDTH, 2],
+		var a = new panel.row([0, SCROLLBARWIDTH],
 			[
 				0,
-				new Layer(
+				new panel.col([5, 0, 5],
 					[
-						new panel.fill(GALLERYSCROLL),
-						new panel.col([5, 0, 5],
+						0,
+						new Layer(
 							[
-								0,
-								new Layer(
-									[
-										new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 10),
-										new panel.currentH(new panel.shadow(new panel.fill("white")), 90, 1),
-									]),
-								0,
+								new panel.fill(GALLERYSCROLL),
+								new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 10),
+								new panel.shrink(new panel.currentH(new panel.fill("white"), 90, 1), 3, 3),
 							]),
-					]),
-				0,
-			]);
-
+						0,
+					])
+			])
+			
 		a.draw(context, rect, obj, 0);
 		context.restore();
 	}
@@ -2342,55 +2335,6 @@ var keylst = [{
 				key == "l") {
 				evt.preventDefault();
 				menuobj.leftright(context, canvas.speedobj.value() / 2)
-			} else if (key == "2") {
-				var text2imageobj = {
-					"key": "rlQ8Oid4VByAEC7pRh6Ilx1lnnv9VCL6eReAQyWNWDnMQB8V9mainfTRFmCs",
-					"model_id": "sdxl",
-					"prompt": "dystopian style city . bleak, post-apocalyptic, somber, dramatic, highly detailed",
-					"negative_prompt": "ugly, deformed, noisy, blurry, low contrast, cheerful, optimistic, vibrant, colorful",
-					"width": 1024,
-					"height": 1024,
-					"samples": 1,
-					"steps": 50,
-					"safety_checker": "no",
-					"enhance_prompt": "yes",
-					"seed": 100,
-					"guidance_scale": 8,
-					"multi_lingual": "no",
-					"panorama": "no",
-					"self_attention": "yes",
-					"upscale": "no",
-					"embeddings_model": null,
-					"lora_model": null,
-					"tomesd": "yes",
-					"use_karras_sigmas": "yes",
-					"vae": null,
-					"lora_strength": 0,
-					"scheduler": "UniPCMultistepScheduler",
-					"webhook": null,
-					"track_id": 0
-				};
-
-				var myHeaders = new Headers();
-				myHeaders.append("Content-Type", "application/json");
-
-				for (var n = 1000; n < 1005; ++n) {
-					pause(100);
-					text2imageobj.seed = n;
-					var requestOptions = {
-						method: 'POST',
-						headers: myHeaders,
-						body: JSON.stringify(text2imageobj),
-						redirect: 'follow'
-					};
-
-					fetch("https://stablediffusionapi.com/api/v4/dreambooth", requestOptions)
-						.then(response => response.json())
-						.then(function(json) {
-							console.log(json);
-						})
-						.catch(error => console.log('error', error));
-				}
 			} else if (key == "d" && canvas.ctrlKey && canvas.shiftKey) {
 				evt.preventDefault();
 				download();
