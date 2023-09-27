@@ -3677,12 +3677,12 @@ var buttonlst =
 		{
 			if (user.rect.y < 0)
 			{
-				yyy = Math.abs(user.rect.y);
-				hhh = window.innerHeight-user.rect.y;
+				yyy = -user.rect.y;
+				hhh = window.innerHeight;//-user.rect.y;
 			}
 			else
 			{
-				hhh = window.innerHeight-user.rect.y;
+				hhh = window.innerHeight;
 			}
 		}
 		   
