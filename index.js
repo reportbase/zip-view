@@ -3679,7 +3679,7 @@ var buttonlst =
 		}
 		else
 		{
-			hhh = window.innerHeight-user.rect.y;
+			hhh = Math.min(window.innerHeight,user.rect.height)-user.rect.y;
 		}
 		
             if (thumbfitted.view != view)
