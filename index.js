@@ -3679,7 +3679,7 @@ var buttonlst =
 		}
 		else
 		{
-			hhh = hh-user.rect.y;
+			
 		}
 		
             if (thumbfitted.view != view)
