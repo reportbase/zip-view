@@ -22,7 +22,7 @@ function iOS()
     (navigator.userAgent.includes("Mac") && "ontouchend" in document)
 }
 
-const JJJ = 1;
+const NUBACK = "rgba(0,0,0,0.4)";
 const SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 const VIRTCONST = 0.8;
@@ -526,7 +526,7 @@ panel.gallerybar = function ()
                     0,
                     galleryobj.advanced?new Layer(
                     [
-                        new panel.expand(new panel.fill(THUMBFILL),3,3),
+                        new panel.expand(new panel.fill(NUBACK),3,3),
                         new panel.expand(new panel.rectangle(canvas.speedrect),10,0),
                         new panel.currentV(new panel.fill(NUBAR), bh/6, 0),
                     ]):0,
@@ -538,7 +538,7 @@ panel.gallerybar = function ()
                     0,
                     galleryobj.advanced?new Layer(
                     [
-                        new panel.expand(new panel.fill(THUMBFILL),3,3),
+                        new panel.expand(new panel.fill(NUBACK),3,3),
                         new panel.expand(new panel.rectangle(canvas.reducerect),10,0),
                         new panel.currentV(new panel.fill(NUBAR), bh/6, 0),
                     ]):0,
@@ -2922,6 +2922,20 @@ var taplst =
                 contextobj.reset()
             }
         }
+        else if (context.zoomrect  && context.zoomrect.hitest(x,y))
+        {
+	    var obj = zoomobj.value()
+            var k = (y-context.zoomrect.y)/context.zoomrect.height;
+            obj.setperc(k);
+            contextobj.reset().
+        }
+	else if (context.stretchrect  && context.stretchrect.hitest(x,y))
+        {
+	    var obj = stretchobj.value()
+            var k = (y-context.stretchrect.y)/context.stretchrect.height;
+            obj.setperc(k);
+            context.refresh();
+        }		
         else if (context.slicewidthrect &&
             context.slicewidthrect.hitest(x,y))
         {
@@ -3179,7 +3193,7 @@ var bosslst =
                     0,
                     new Layer(
                     [
-                        new panel.expand(new panel.fill("rgba(0,0,0,0.4)"),3,3),
+                        new panel.expand(new panel.fill(NUBACK),3,3),
                         new panel.expand(new panel.rectangle(context.slicewidthrect),10,1),
                         new panel.currentV(new panel.fill(NUBAR), bh/6, 0),
                     ]),
@@ -3191,7 +3205,7 @@ var bosslst =
                     0,
                     new Layer(
                     [
-                        new panel.expand(new panel.fill("rgba(0,0,0,0.4)"),3,3),
+                        new panel.expand(new panel.fill(NUBACK),3,3),
                         new panel.expand(new panel.rectangle(context.stretchrect),10,0),
                         new panel.currentV(new panel.fill(NUBAR), bh/6, 0),
                     ]),
