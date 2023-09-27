@@ -472,8 +472,7 @@ panel.gallerybar = function() {
 		context.save();
 		var a = new panel.layerA(
 			[
-				new panel.colA([30, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 30]
-					],
+				new panel.colA([30, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 30],
 					[
 						0,
 						new panel.row([0, bh, 0],
