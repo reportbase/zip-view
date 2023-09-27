@@ -22,6 +22,7 @@ function iOS()
     (navigator.userAgent.includes("Mac") && "ontouchend" in document)
 }
 
+const JJJ = 1;
 const SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 const VIRTCONST = 0.8;
