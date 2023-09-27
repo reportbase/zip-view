@@ -3670,6 +3670,8 @@ var buttonlst =
             var b2 = rect.width/rect.height;
              	    var hh = Math.floor(rect.height);
 		    var ww = Math.floor(rect.width);
+		 var hhh = Math.min(hh,window.innerHeight-j.y);
+                   
             if (thumbfitted.view != view)
                 thumbfitted.view = view;
             	
@@ -3687,11 +3689,11 @@ var buttonlst =
                         thumbimg.count = 1;
                     }
 
-                    var x = Math.nub(obj.value(), obj.length(),
+		    var x = Math.nub(obj.value(), obj.length(),
                         ww, thumbfitted.width);
 			context.drawImage(thumbfitted,
-                        Math.floor(x), 0, ww, hh,
-                        0, 0, ww, hh);
+                        Math.floor(x), 0, ww, hhh,
+                        0, 0, ww, hhh);
                 }
                 else
                 {
@@ -3710,8 +3712,8 @@ var buttonlst =
                            var y = Math.nub(obj.value(), obj.length(),
                         hh, thumbfitted.height);
                     context.drawImage(thumbfitted,
-                        0, Math.floor(y), ww, hh,
-                        0, 0, ww, hh);
+                        0, Math.floor(y), ww, hhh,
+                        0, 0, ww, hhh);
                 }
             
         }
@@ -3918,10 +3920,9 @@ menuobj.draw = function()
                 isvisiblecount += j.slice.isvisible?1:0;
                 if (slice.isvisible)
                     context.canvas.visibles.push(j);
-                //ctx.translate(0, j.y);
-		    j.y += j.y
-                context.canvas.draw(ctx, r, j.slice, j.n);
-               //ctx.translate(0, -j.y);
+                ctx.translate(0, j.y);
+		context.canvas.draw(ctx, r, j.slice, j.n);
+               ctx.translate(0, -j.y);
              }
         }
     }
