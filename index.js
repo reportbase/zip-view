@@ -3909,7 +3909,7 @@ menuobj.draw = function()
                 thumbimg.onload = function()
                 {
             		this.count = 0;
-                    //if (!canvas.panning && !canvas.slideshow)
+                    if (!canvas.panning && !canvas.slideshow)
                         menuobj.draw();
                 }
 
@@ -3940,9 +3940,9 @@ menuobj.draw = function()
 		    
             var x = rect.width/2;
             var j = {slice, x, y, n};
-            slice.rect = new rectangle(0,y,rect.width,canvas.buttonheight);
-            slice.isvisible = y > -canvas.buttonheight && y < window.innerHeight;
-            if (slice.isvisible || (!canvas.pinching && !canvas.panning && !canvas.slideshow))
+            slice.rect = new rectangle(0,j.y,rect.width,canvas.buttonheight);
+            slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
+            if (slice.isvisible)
             {
                 if (j.slice.rect.hitest(window.innerWidth/2,window.innerHeight/2))
                     context.canvas.centered = j.n;
