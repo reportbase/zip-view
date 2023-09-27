@@ -3675,11 +3675,11 @@ var buttonlst =
 		var yyy = 0;
 		if (user.rect.y < 0)
 		{
-			hhh = Math.min(window.innerHeight,user.rect.height)-user.rect.y;
+			hhh = window.innerHeight-user.rect.y;
 		}
 		else
 		{
-			hhh = Math.min(window.innerHeight,user.rect.height)-user.rect.y;
+			hhh = window.innerHeight-user.rect.y;
 		}
 		
             if (thumbfitted.view != view)
