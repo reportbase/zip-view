@@ -3673,7 +3673,7 @@ var buttonlst =
 		 var hhh = hh;
 		if (user.rect.height+user.rect.y > 
 				    window.innerHeight)
-			hhh = window.innerHeight+user.rect.y;
+			hhh = window.innerHeight-user.rect.y;
 		//if (window.innerHeight-rect.y < hhh)
 			//hhh = window.innerHeighty; 
                    
