@@ -3147,7 +3147,7 @@ var bosslst =
             context.heightrect = new rectangle();
 		if (menuobj.value())
 			return;
-	if (!context.hidethumb)
+	if (context.hidethumb)
 		return;	
             if (headcnv.height == 0)
                 return;
@@ -3451,30 +3451,7 @@ bossobj.draw = function(skip=1)
 
 bossobj.updown = function(delta)
 {
-    var context = _4cnvctx;
-    var canvas = _4cnv;
-    context.canvas.startupdown = 0.05;
-    var j = delta<0?-1:1;
-    if (context.canvas.updowntype == j)
-        return;
-    context.canvas.updowntype = j;
-    clearInterval(context.canvas.updown);
-    context.canvas.updown = setInterval(function()
-    {
-        rowobj.addperc(
-            j == -1?
-            context.canvas.startupdown:
-            -context.canvas.startupdown);
-        context.canvas.startupdown -= 0.000025;
-        if (context.canvas.startupdown < 0)
-        {
-            clearInterval(context.canvas.updown);
-            context.canvas.startupdown = 0;
-            delete context.canvas.updowntype;
-        }
-
-        contextobj.reset();
-    }, TIMESECOND);
+    
 }
 
 bossobj.reset = function()
