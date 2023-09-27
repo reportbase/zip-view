@@ -3918,9 +3918,10 @@ menuobj.draw = function()
                 isvisiblecount += j.slice.isvisible?1:0;
                 if (slice.isvisible)
                     context.canvas.visibles.push(j);
-                ctx.translate(0, j.y);
+                //ctx.translate(0, j.y);
+		    j.y += j.y
                 context.canvas.draw(ctx, r, j.slice, j.n);
-               ctx.translate(0, -j.y);
+               //ctx.translate(0, -j.y);
              }
         }
     }
