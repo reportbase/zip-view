@@ -580,7 +580,7 @@ panel.galleryscroll = function() {
 
 		a.draw(context, rect, context.canvas.timeobj, 0);
 
-		var a = new panel.row([0, 12, 4],
+		var a = new panel.row([0, SCROLLBARWIDTH, 4],
 			[
 				0,
 				new panel.col([60, 0, 60],
@@ -2751,7 +2751,7 @@ var bosslst = [
 								]),
 							0,
 						]),
-					new panel.rowA([0, rows * rh, 8, SCROLLBARWIDTH, SCROLLMARGIN],
+					new panel.rowA([0, rows * rh, 8, SCROLLBARWIDTH, 4],
 						[
 							0,
 							new panel.col([0, w, 0],
