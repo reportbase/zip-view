@@ -3675,7 +3675,7 @@ var buttonlst =
 		var yyy = 0;
 		if (user.rect.y < 0)
 		{
-			//yyy = -user.rect.y;
+			yyy = -user.rect.y;
 			hhh = user.rect.height+user.rect.y
 		}
 		else 
@@ -3706,7 +3706,7 @@ var buttonlst =
                         ww, thumbfitted.width);
 			context.drawImage(thumbfitted,
                         Math.floor(x), yyy, ww, hhh,
-                        0, 0, ww, hhh);
+                        0, yyy, ww, hhh);
                 }
                 else
                 {
@@ -3726,7 +3726,7 @@ var buttonlst =
                         hh, thumbfitted.height);
                     context.drawImage(thumbfitted,
                         0, Math.floor(y)+yyy, ww, hhh,
-                        0, 0, ww, hhh);
+                        0, yyy, ww, hhh);
                 }
             
         }
