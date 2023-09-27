@@ -3675,7 +3675,7 @@ var buttonlst =
 		var yyy = 0;
 		if (user.rect.y < 0)
 		{
-			hhh = user.rect.height-user.rect.y;
+			hhh = Math.min(window.innerHeight,user.rect.height)-user.rect.y;
 		}
 		else
 		{
