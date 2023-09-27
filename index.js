@@ -3147,7 +3147,8 @@ var bosslst =
             context.heightrect = new rectangle();
 		if (menuobj.value())
 			return;
-	
+	if (!context.hidethumb)
+		return;	
             if (headcnv.height == 0)
                 return;
             if (
@@ -3177,9 +3178,9 @@ var bosslst =
                     0,
                     new Layer(
                     [
-                        context.hidethumb?0:new panel.expand(new panel.fill(THUMBFILL),3,3),
+                        new panel.expand(new panel.fill(THUMBFILL),3,3),
                         new panel.expand(new panel.rectangle(context.slicewidthrect),10,1),
-                        context.hidethumb?0:new panel.currentV(new panel.fill(NUBAR), bh/6, 0),
+                        new panel.currentV(new panel.fill(NUBAR), bh/6, 0),
                     ]),
                     0,
                 ]),
@@ -3189,9 +3190,9 @@ var bosslst =
                     0,
                     new Layer(
                     [
-                        context.hidethumb?0:new panel.expand(new panel.fill(THUMBFILL),3,3),
+                        new panel.expand(new panel.fill(THUMBFILL),3,3),
                         new panel.expand(new panel.rectangle(context.stretchrect),10,0),
-                        context.hidethumb?0:new panel.currentV(new panel.fill(NUBAR), bh/6, 0),
+                        new panel.currentV(new panel.fill(NUBAR), bh/6, 0),
                     ]),
                     0,
                 ]),
@@ -3206,7 +3207,7 @@ var bosslst =
                   new Layer(
                   [
                     new panel.rectangle(context.chapterect),
-                    context.hidethumb?0:new panel.gridA(1, rows, 1,
+                    new panel.gridA(1, rows, 1,
                         new panel.shadow(new panel.text(
                             NUBAR, "center", "middle",0, 0))),
                   ]),
@@ -3219,7 +3220,7 @@ var bosslst =
                     1?0:new Layer(
                     [
                         new panel.expand(new panel.rectangle(context.heightrect),0,10),
-                        context.hidethumb?0:new panel.currentH(new panel.fill(NUBAR), bh/5, 1),
+                        new panel.currentH(new panel.fill(NUBAR), bh/5, 1),
                     ]),
                     0,
                 ]),
@@ -3266,8 +3267,7 @@ var bosslst =
             if (galleryobj.transparent)
             {
                 var blackfill = new panel.fill(THUMBFILP);
-		    if (!context.hidethumb)
-                blackfill.draw(context, canvas.thumbrect, 0, 0);
+		    blackfill.draw(context, canvas.thumbrect, 0, 0);
             }
             else
             {
@@ -3277,17 +3277,15 @@ var bosslst =
                     canvas.thumbcanvas.width = w;
                     canvas.thumbcanvas.height = h;
                     var thumbcontext = canvas.thumbcanvas.getContext('2d');
-                    if (!context.hidethumb)
+                    
 			    thumbcontext.drawImage(photo.image,0,0,w,h);
                 }
-		    
-		if (!context.hidethumb)
+	
                 	context.drawImage(canvas.thumbcanvas, x, y, w, h);
             }
 
             var whitestroke = new panel.stroke(THUMBSTROKE,THUMBORDER);
-	if (!context.hidethumb)	
-            whitestroke.draw(context, r, 0, 0);
+	    whitestroke.draw(context, r, 0, 0);
             var region = new Path2D();
             region.rect(x,y,w,h);
             context.clip(region);
@@ -3313,27 +3311,20 @@ var bosslst =
             canvas.selectrect = []
             canvas.selectrect.push(r);
             var blackfill = new panel.fill(THUMBFILL);
-           if (!context.hidethumb)
-		   blackfill.draw(context, r, 0, 0);
-            if (!context.hidethumb)
-		    whitestroke.draw(context, r, 0, 0);
+          	   blackfill.draw(context, r, 0, 0);
             if (xx > x)//leftside
             {
                 var r = new rectangle(xx-w,yy,ww,hh);
                 canvas.selectrect.push(r);
-                if (!context.hidethumb)
-			blackfill.draw(context, r, 0, 0);
-                if (!context.hidethumb)
-			whitestroke.draw(context, r, 0, 0);
+                	blackfill.draw(context, r, 0, 0);
+                	whitestroke.draw(context, r, 0, 0);
             }
             else if (xx < x)//right side
             {
                 var r = new rectangle(w+xx,yy,ww,hh);
                 canvas.selectrect.push(r);
-                if (!context.hidethumb)
-			blackfill.draw(context, r, 0, 0);
-                if (!context.hidethumb)
-			whitestroke.draw(context, r, 0, 0);
+                	blackfill.draw(context, r, 0, 0);
+                	whitestroke.draw(context, r, 0, 0);
             }
 
             context.restore();
