@@ -1919,6 +1919,10 @@ var panlst = [{
 							context.refresh()
 						}, TIMEMAIN);
 					}
+				} else if (canvas.isbuttonrect) {
+					var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
+					canvas.buttonobj.setperc(k);
+					contextobj.reset();
 				} else {
 					var e = canvas.starty - y;
 					var jvalue = TIMEOBJ / canvas.virtualheight
@@ -1940,6 +1944,7 @@ var panlst = [{
 			canvas.startx = x;
 			canvas.starty = y;
 			canvas.timeobj.setanchor(canvas.timeobj.current());
+			canvas.isbuttonrect = canvas.buttonrect && canvas.buttonrect.hitest(x, y);
 			canvas.isspeedrect = canvas.speedrect && canvas.speedrect.hitest(x, y);
 			canvas.isreducerect = canvas.reducerect && canvas.reducerect.hitest(x, y);
 		},
@@ -2615,6 +2620,10 @@ var taplst = [{
 				context.canvas.lastime = -0.0000000000101010101;
 				menuobj.updown(context, canvas.speedobj.value());
 				context.refresh()
+			} else if (canvas.buttonrect && canvas.buttonrect.hitest(x, y)) {
+				var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
+				canvas.buttonobj.setperc(k);
+				contextobj.reset();			
 			} else if (canvas.reducerect && canvas.reducerect.hitest(x, y)) {
 				var k = (y - canvas.reducerect.y) / canvas.reducerect.height;
 				canvas.reduceobj.setperc(k);
