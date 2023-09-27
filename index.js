@@ -45,7 +45,7 @@ const NUBAR = "rgba(255,255,255,0.8)";
 const FILLMENU = "rgba(0,0,0,0.6)";
 const GALLERYSCROLL = "rgba(0,0,0,0.3)";
 const ARROWFILL = "white";
-const SCROLLBARWIDTH = 9;
+const SCROLLBARWIDTH = 14;
 const SMALLFONT = "16px archivo black";
 const DEFAULTFONT = "18px archivo black";
 const LARGEFONT = "20px archivo black";
@@ -568,7 +568,7 @@ panel.galleryscroll = function() {
 		var a = new panel.col([0, SCROLLBARWIDTH],
 			[
 				0,
-				new panel.row([5, 0, 5],
+				new panel.row([10, 0, 10],
 					[
 						0,
 						new Layer(
@@ -587,7 +587,7 @@ panel.galleryscroll = function() {
 		var a = new panel.row([0, SCROLLBARWIDTH],
 			[
 				0,
-				new panel.col([5, 0, 5],
+				new panel.col([10, 0, 10],
 					[
 						0,
 						new Layer(
