@@ -5434,7 +5434,7 @@ galleryobj.init = function (obj)
         },
 	    
         {
-            title: "ipfs-view\nImage and Document Browser\nhttps://ipfs-view.com\nimages@ipfs-view.com",
+            title: `${url.host}\nImage and Document Browser\nsupport@ipfs-view.com`,
             func: function() {}
         },
         {
