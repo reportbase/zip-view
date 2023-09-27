@@ -3706,7 +3706,7 @@ var buttonlst =
 		    var x = Math.nub(obj.value(), obj.length(),
                         ww, thumbfitted.width);
 			context.drawImage(thumbfitted,
-                        Math.floor(x), 0, ww, hhh,
+                        Math.floor(x), yyy, ww, hhh,
                         0, 0, ww, hhh);
                 }
                 else
@@ -3726,7 +3726,7 @@ var buttonlst =
                            var y = Math.nub(obj.value(), obj.length(),
                         hh, thumbfitted.height);
                     context.drawImage(thumbfitted,
-                        0, Math.floor(y), ww, hhh,
+                        0, Math.floor(y)+yyy, ww, hhh,
                         0, 0, ww, hhh);
                 }
             
