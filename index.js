@@ -3156,14 +3156,13 @@ var bosslst =
         {
             var canvas = context.canvas;
             context.extentrect = new rectangle();
-            context.stretchrect = new rectangle();
+            context.zoomrect = new rectangle();
+	    context.stretchrect = new rectangle();
             context.slicewidthrect = new rectangle();
             context.chapterect = new rectangle();
             context.heightrect = new rectangle();
 		if (menuobj.value())
 			return;
-	//if (context.hidethumb)
-	//	return;	
             if (headcnv.height == 0)
                 return;
             if (
@@ -3194,7 +3193,8 @@ var bosslst =
                     new Layer(
                     [
                         new panel.expand(new panel.fill(NUBACK),3,3),
-                        new panel.expand(new panel.rectangle(context.slicewidthrect),10,1),
+                        new panel.expand(new panel.rectangle(galleryobj.debug?
+						context.slicewidthrect:context.zoomrect),10,1),
                         new panel.currentV(new panel.fill(NUBAR), bh/6, 0),
                     ]),
                     0,
