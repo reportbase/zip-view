@@ -152,7 +152,7 @@ util.rotated_list = function (lst, size, start, width)
 	  return array.indexOf(value) === index;
 	});
 
-    return unique;
+    return unique.sort();
 }
 
 let circular_array = function (title, data)
