@@ -560,7 +560,7 @@ panel.galleryscroll = function() {
 		context.save();
 		canvas.vscrollrect = new rectangle();
 		canvas.hscrollrect = new rectangle();
-		canvas.zoomrect = new rectangle();
+		canvas.buttonrect = new rectangle();
 		var obj = context.canvas.scrollobj.value();
 		var a = new panel.colA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
 			[
@@ -571,8 +571,8 @@ panel.galleryscroll = function() {
 						new Layer(
 							[
 								new panel.fill(GALLERYSCROLL),
-								new panel.expand(new panel.rectangle(canvas.zoomrect), 10, 0),
-								new panel.shrink(new panel.currentV(new panel.fill("white"),60, 1), 3, 3),
+								new panel.expand(new panel.rectangle(canvas.buttonrect), 10, 0),
+								new panel.shrink(new panel.currentV(new panel.fill("white"),60, 0), 3, 3),
 							]),
 						0,
 					]),		
