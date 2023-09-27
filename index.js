@@ -3178,7 +3178,7 @@ var bosslst =
                     0,
                     new Layer(
                     [
-                        new panel.expand(new panel.fill(THUMBFILL),3,3),
+                        new panel.expand(new panel.fill("rgba(0,0,0,0.4)"),3,3),
                         new panel.expand(new panel.rectangle(context.slicewidthrect),10,1),
                         new panel.currentV(new panel.fill(NUBAR), bh/6, 0),
                     ]),
@@ -3190,7 +3190,7 @@ var bosslst =
                     0,
                     new Layer(
                     [
-                        new panel.expand(new panel.fill(THUMBFILL),3,3),
+                        new panel.expand(new panel.fill("rgba(0,0,0,0.4)"),3,3),
                         new panel.expand(new panel.rectangle(context.stretchrect),10,0),
                         new panel.currentV(new panel.fill(NUBAR), bh/6, 0),
                     ]),
