@@ -3677,6 +3677,8 @@ var buttonlst =
 		{
 			yyy = -user.rect.y;
 			hhh = user.rect.height+user.rect.y
+			if (hhh > window.innerHeight)
+				hhh = window.innerHeight;
 		}
 		else 
 		{
@@ -5428,7 +5430,7 @@ galleryobj.init = function (obj)
             func: function() {}
         },
         {
-            title: "Image and Document Browser\nwebp, jpg, avif, gif, and png\nzip, cbz, and ipfs\nnewspapers, magazines and galleries",
+            title: "Image and Document Browser\nwebp, jpg, avif, gif, and png\nzip, cbz, and ipfs\nnewspapers, magazines and graphic novels",
             func: function() {}
         },
 
