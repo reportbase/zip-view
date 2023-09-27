@@ -3675,14 +3675,10 @@ var buttonlst =
 		if (user.rect.height-user.rect.y > 
 				    window.innerHeight)
 		{
+			hhh = window.innerHeight-user.rect.y;
 			if (user.rect.y < 0)
 			{
 				yyy = -user.rect.y;
-				hhh = window.innerHeight;//-user.rect.y;
-			}
-			else
-			{
-				hhh = window.innerHeight;
 			}
 		}
 		   
