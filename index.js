@@ -2243,19 +2243,16 @@ var panlst =
             if (context.islicewidthrect)
             {
                 var k = (y-context.slicewidthrect.y)/context.slicewidthrect.height;
-                if (galleryobj.debug)
-                {
-                    slicewidthobj.setperc(k);
-                    contextobj.reset()
-                }
-                else
-                {
-	                var k = (y-context.slicewidthrect.y)/context.slicewidthrect.height;
-		    	var zoom = zoomobj.value();
-		    	zoom.setperc(k);
-		    	contextobj.reset()
-                }
-            }
+		    slicewidthobj.setperc(k);
+		    contextobj.reset()
+        }
+	    else if (context.iszoomrect)
+            {
+                var k = (y-context.zoomrect.y)/context.zoomrect.height;
+		var zoom = zoomobj.value();
+		zoom.setperc(k);
+		contextobj.reset()
+        }
             else if (context.isstretchrect)
             {
                 var k = (y-context.stretchrect.y)/context.stretchrect.height;
@@ -2277,6 +2274,7 @@ var panlst =
         movingx = new MovingAverage();
         movingy = new MovingAverage();
         headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+	context.isstretchrect = context.zoomrect && context.zoomrect.hitest(x,y);	
         context.isstretchrect = context.stretchrect && context.stretchrect.hitest(x,y);
         context.islicewidthrect = context.slicewidthrect && context.slicewidthrect.hitest(x,y);
         contextobj.reset();
