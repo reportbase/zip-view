@@ -1921,7 +1921,7 @@ var panlst = [{
 					}
 				} else if (canvas.isbuttonrect) {
 					var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
-					canvas.buttonobj.setperc(k);
+					buttonobj.setperc(k);
 					contextobj.reset();
 				} else {
 					var e = canvas.starty - y;
@@ -2622,7 +2622,7 @@ var taplst = [{
 				context.refresh()
 			} else if (canvas.buttonrect && canvas.buttonrect.hitest(x, y)) {
 				var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
-				canvas.buttonobj.setperc(k);
+				buttonobj.setperc(k);
 				contextobj.reset();			
 			} else if (canvas.reducerect && canvas.reducerect.hitest(x, y)) {
 				var k = (y - canvas.reducerect.y) / canvas.reducerect.height;
