@@ -3672,7 +3672,7 @@ var buttonlst =
 		    var ww = Math.floor(rect.width);
 		 var hhh = hh;
 		//if (window.innerHeight-rect.y < hhh)
-			hhh = rect.height-window.innerHeighty; 
+			hhh = window.innerHeighty; 
                    
             if (thumbfitted.view != view)
                 thumbfitted.view = view;
