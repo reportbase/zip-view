@@ -3673,9 +3673,12 @@ var buttonlst =
 		    var ww = Math.floor(rect.width);
 		 var hhh = hh;
 		var yyy = 0;
-		var j = user.rect.y+user.rect.height;
-		if (j > window.innerHeight)
-			hhh = window.innerHeight-user.rect.y;
+		if (user.rect.y > 0)
+		{
+			var j = user.rect.height-user.rect.y;
+			if (j > window.innerHeight)
+				hhh = window.innerHeight-user.rect.y;
+		}
 		
             if (thumbfitted.view != view)
                 thumbfitted.view = view;
