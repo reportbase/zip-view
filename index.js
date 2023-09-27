@@ -38,7 +38,7 @@ const SCROLLNAB = "rgba(0,0,0,0.3)";
 const MENUCOLOR = "rgba(0,0,0,0.5)";
 const OPTIONFILL = "white";
 const THUMBFILP = "rgba(0,0,0,0.4)";
-const THUMBFILL = "rgba(0,0,0,0.4)";
+const THUMBFILL = "rgba(255,155,0,0.4)";
 const THUMBSTROKE = "rgba(255,255,255,0.4)";
 const SEARCHFRAME = "rgba(255,255,255,0.5)";
 const TRANSPARENT = "rgba(0,0,0,0)";
@@ -3318,14 +3318,14 @@ var bosslst =
                 var r = new rectangle(xx-w,yy,ww,hh);
                 canvas.selectrect.push(r);
                 	blackfill.draw(context, r, 0, 0);
-                	whitestroke.draw(context, r, 0, 0);
+                	//whitestroke.draw(context, r, 0, 0);
             }
             else if (xx < x)//right side
             {
                 var r = new rectangle(w+xx,yy,ww,hh);
                 canvas.selectrect.push(r);
                 	blackfill.draw(context, r, 0, 0);
-                	whitestroke.draw(context, r, 0, 0);
+                	//whitestroke.draw(context, r, 0, 0);
             }
 
             context.restore();
