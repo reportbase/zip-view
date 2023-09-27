@@ -3312,6 +3312,7 @@ var bosslst =
             canvas.selectrect.push(r);
             var blackfill = new panel.fill(THUMBFILL);
           	   blackfill.draw(context, r, 0, 0);
+		//todo thumb border
             if (xx > x)//leftside
             {
                 var r = new rectangle(xx-w,yy,ww,hh);
