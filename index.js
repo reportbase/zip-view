@@ -2274,7 +2274,7 @@ var panlst =
         movingx = new MovingAverage();
         movingy = new MovingAverage();
         headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-	context.isstretchrect = context.zoomrect && context.zoomrect.hitest(x,y);	
+	context.iszoomrect = context.zoomrect && context.zoomrect.hitest(x,y);	
         context.isstretchrect = context.stretchrect && context.stretchrect.hitest(x,y);
         context.islicewidthrect = context.slicewidthrect && context.slicewidthrect.hitest(x,y);
         contextobj.reset();
