@@ -3921,24 +3921,22 @@ contextobj.reset = function() {
 				bossobj.leftright(-1 * context.canvas.speedobj.value());
 
 			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-			_4cnvctx.refresh();
+			menuobj.set(_8cnvctx);
+			bossobj.draw();
 
 			var rotated = util.rotated_list(
 				_8cnv.rotated, galleryobj.length(),
 				galleryobj.current() + 1, 9);
 
-			if (1) //!menuobj.value())
-			{
-				for (var m = 0; m < rotated.length; ++m) {
-					var n = rotated[m];
-					if (galleryobj.data[n].loaded)
-						continue;
-					var img = new Image();
-					img.src = galleryobj.getpath(n);
-					img.index = n;
-					img.onload = function() {
-						galleryobj.data[this.index].loaded = 1;
-					}
+			for (var m = 0; m < rotated.length; ++m) {
+				var n = rotated[m];
+				if (galleryobj.data[n].loaded)
+					continue;
+				var img = new Image();
+				img.src = galleryobj.getpath(n);
+				img.index = n;
+				img.onload = function() {
+					galleryobj.data[this.index].loaded = 1;
 				}
 			}
 		}
