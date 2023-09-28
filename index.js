@@ -5363,7 +5363,7 @@ function downloadtext(name, text) {
 function gotodialog() {
 	function go(image) {
 		if (menuobj.value() == _8cnvctx) {
-			gotoimage(image - 1);
+			gotoimage(image);
 			dialog.close();
 		} else {
 			galleryobj.set(image - 1);
@@ -5400,9 +5400,9 @@ function gotodialog() {
 	if (menuobj.value() == _8cnvctx) {
 		var current = Math.floor(
 			Math.lerp(1, galleryobj.length(), 1 - _8cnv.timeobj.berp()));
-		input.value = current + 1;
+		input.value = current;
 	} else {
-		input.value = galleryobj.current() + 1
+		input.value = galleryobj.current() 
 	}
 
 	dialog.showModal();
