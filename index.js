@@ -602,7 +602,7 @@ panel.galleryscroll = function() {
 							[
 								new panel.fill(NUBACK),
 								new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 10),
-								new panel.shrink(new panel.currentH(new panel.fill("white"), ALIEXTENT, 0), 3, 3)
+								new panel.shrink(new panel.currentH(new panel.fill("white"), ALIEXTENT, 1), 3, 3)
 							]),
 						0,
 					])
