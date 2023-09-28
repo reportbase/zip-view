@@ -45,7 +45,7 @@ const NUBAR = "rgba(255,255,255,0.8)";
 const FILLMENU = "rgba(0,0,0,0.6)";
 const GALLERYSCROLL = "rgba(0,0,0,0.3)";
 const ARROWFILL = "white";
-const SCROLLBARWIDTH = 14;
+const SCROLLBARWIDTH = 16;
 const SMALLFONT = "16px archivo black";
 const DEFAULTFONT = "18px archivo black";
 const LARGEFONT = "20px archivo black";
@@ -553,7 +553,7 @@ panel.galleryscroll = function() {
 		var obj = context.canvas.scrollobj.value();
 		var bh = rect.height/2;
 		var bw = rect.width/2;
-		var a = new panel.colA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
+		var a = new panel.colA([6, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 6],
 			[
 				0,
 				new panel.row([0, bh, 0],
@@ -563,7 +563,7 @@ panel.galleryscroll = function() {
 							[
 								new panel.fill(NUBACK),
 								new panel.expand(new panel.rectangle(canvas.buttonrect), 10, 0),
-								new panel.currentV(new panel.fill("white"),60, 0), 
+								new panel.shrink(new panel.currentV(new panel.fill("white"),60, 0), 3, 3),
 							]),
 						0,
 					]),		
@@ -575,7 +575,7 @@ panel.galleryscroll = function() {
 							[
 								new panel.fill(NUBACK),
 								new panel.expand(new panel.rectangle(canvas.vscrollrect), 10, 0),
-								new panel.currentV(new panel.fill("white"),60, 1), 
+								new panel.shrink(new panel.currentV(new panel.fill("white"),60, 1), 3, 3),
 							]),
 						0,
 					]),
@@ -602,7 +602,7 @@ panel.galleryscroll = function() {
 							[
 								new panel.fill(NUBACK),
 								new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 10),
-								new panel.currentH(new panel.fill("white"), 90, 1), 
+								new panel.shrink(new panel.currentH(new panel.fill("white"), 90, 1), 3, 3)
 							]),
 						0,
 					])
@@ -1072,8 +1072,7 @@ panel.zoom = function() {
 			}
 		};
 
-		var s = menuobj.value() == _3cnvctx ||
-			menuobj.value() == _7cnvctx;
+		var s = menuobj.value() == _8cnvctx;
 		var a = new Layer(
 			[
 				new panel.rectangle(context.zoomrect),
@@ -2542,7 +2541,8 @@ var taplst = [{
 					context.canvas.speedobj.setperc(k);
 					bossobj.leftright(-1 * context.canvas.speedobj.value());
 				}
-			} else if (context.stretchrect &&
+			}
+			else if (context.stretchrect &&
 				context.stretchrect.hitest(x, y)) {
 				var k = (y - context.stretchrect.y) / context.stretchrect.height;
 				if (galleryobj.debug) {
@@ -2555,12 +2555,6 @@ var taplst = [{
 				}
 			} else if (galleryobj.repos && context.extentrect && context.extentrect.hitest(x, y)) {
 				window.open(galleryobj.photographer_url, galleryobj.repos);
-			} else if (galleryobj.length() > 1) {
-				menuobj.setindex(_8cnvctx);
-				menuobj.show();
-				headobj.set(GALLERY);
-				headham.panel = headobj.value();
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 			}
 
 			_4cnvctx.refresh();
@@ -2627,38 +2621,7 @@ var taplst = [{
 			} else if (menuobj.value() && menuobj.value() != _8cnvctx) {
 				menuobj.hide();
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-			} else {
-				clearInterval(global.swipetimeout);
-				global.swipetimeout = 0;
-				//_4cnvctx.hidethumb = 0;
-				_4cnvctx.refresh();
-
-				var visibles = canvas.visibles;
-				var k;
-				for (k = 0; k < visibles.length; k++) {
-					var j = visibles[k];
-					if (!j.slice || !j.slice.rect)
-						continue;
-					if (j.slice.rect.hitest(x, y))
-						break;
-				}
-
-				if (k == visibles.length)
-					return;
-
-				if (galleryobj.showboss || canvas.shiftKey) {
-					var n = visibles[k].n;
-					galleryobj.set(n);
-					headcnv.height = BEXTENT;
-					headobj.set(BOSS);
-					headham.panel = headobj.value();
-					headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-					delete _4cnv.thumbcanvas;
-					delete photo.image;
-					menuobj.toggle(_8cnvctx);
-					contextobj.reset();
-				}
-			}
+			} 
 		},
 	},
 	{
@@ -2756,7 +2719,7 @@ var bosslst = [
 											new panel.fill(NUBACK), 
 											new panel.expand(new panel.rectangle(galleryobj.debug ?
 												context.slicewidthrect : context.zoomrect), 10, 1),
-											new panel.currentV(new panel.fill(NUBAR), bh / 6, 0),
+											new panel.currentV(new panel.fill("white"), 90, 0),
 										]),
 									0,
 								]),
@@ -2768,7 +2731,7 @@ var bosslst = [
 										[
 											new panel.fill(NUBACK), 
 											new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
-											new panel.currentV(new panel.fill(NUBAR), bh / 6, 0),
+											new panel.currentV(new panel.fill("white"), 90, 0),
 										]),
 									0,
 								]),
@@ -4496,7 +4459,18 @@ var headlst = [
 				_4cnvctx.movepage(-1);
 			} else if (context.movenext && context.movenext.hitest(x, y)) {
 				_4cnvctx.movepage(1);
-			} else {
+			}
+			else if (
+				context.zoomrect &&
+				context.zoomrect.hitest(x, y)) 
+			{
+				menuobj.setindex(_8cnvctx);
+				menuobj.show();
+				headobj.set(GALLERY);
+				headham.panel = headobj.value();
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);			//todo			
+			}							
+			else {
 				var k = menuobj.value() ? MENU : BOSS;
 				var j = menuobj.value() ? menuobj.value() : _4cnvctx;
 				tapobj.data[k].tap(j, rect, x, y)
@@ -4614,12 +4588,42 @@ var headlst = [
 				buttonobj.set(buttonobj.current() == 0 ?
 					Math.floor(buttonobj.length() / 2) : buttonobj.current())
 				menuobj.draw();
-			} else if (
+			} 
+			else if (
 				context.zoomrect &&
-				context.zoomrect.hitest(x, y)) {
-				buttonobj.reset();
-				menuobj.draw();
-			} else if (
+				context.zoomrect.hitest(x, y)) 
+			{
+				clearInterval(global.swipetimeout);
+				global.swipetimeout = 0;
+				_4cnvctx.refresh();
+
+				var visibles = _8cnv.visibles;
+				var k;
+				for (k = 0; k < visibles.length; k++) 
+				{
+					var j = visibles[k];
+					if (!j.slice || !j.slice.rect)
+						continue;
+					if (j.slice.rect.hitest(x, y))
+						break;
+				}
+
+				if (k == visibles.length)
+					return;
+
+				var n = visibles[k].n;
+				galleryobj.set(n);
+				headcnv.height = BEXTENT;
+				headobj.set(BOSS);
+				headham.panel = headobj.value();
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+				delete _4cnv.thumbcanvas;
+				delete photo.image;
+				menuobj.toggle(_8cnvctx);
+				contextobj.reset();
+			} 
+			else if 
+				(
 				context.fullrect &&
 				context.fullrect.hitest(x, y)) {
 				screenfull.toggle()
