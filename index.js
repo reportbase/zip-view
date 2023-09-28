@@ -3921,7 +3921,7 @@ contextobj.reset = function() {
 				bossobj.leftright(-1 * context.canvas.speedobj.value());
 
 			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-			menuobj.set(_8cnvctx);
+			//todo: hide thumb on load
 			bossobj.draw();
 
 			var rotated = util.rotated_list(
