@@ -2609,7 +2609,9 @@ var taplst = [{
 					return;
 				var j = visibles[k].slice;
 				window.open(j.photographer_url, galleryobj.repos);
-			} else if (
+			} 
+			else if 
+			(
 				context.chapterect &&
 				context.chapterect.hitest(x, y)) {
 				gotodialog();
@@ -2647,7 +2649,7 @@ var taplst = [{
 			else
 			{
 				headcnv.height = headcnv.height?0:BEXTENT;
-				headobj.set(BOSS);
+				headobj.set(GALLERY);
 				headham.panel = headobj.value();
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 				menuobj.draw();
