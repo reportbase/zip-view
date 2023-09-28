@@ -2515,11 +2515,11 @@ var taplst = [{
 
 				if (context.canvas.selectrect &&
 					context.canvas.selectrect.hitest(x, y) >= 0) {
-					galleryobj.notransparent = galleryobj.notransparent ? 0 : 1;
+					galleryobj.transparent = galleryobj.ransparent ? 0 : 1;
 					context.refresh();
 				} else {
 					context.hithumb(x, y);
-					galleryobj.notransparent = 0;
+					galleryobj.transparent = 1;
 					contextobj.reset()
 				}
 			} else if (context.zoomrect && context.zoomrect.hitest(x, y)) {
@@ -2741,11 +2741,11 @@ var bosslst = [
 
 			var rows = lst.length;
 			var rh = 26;
-			var bh = rect.height / 4;
+			var bh = rect.height / 2;
 			var cw = rect.width - 30;
 			var a = new panel.layerA(
 				[
-					new panel.colA([SCROLLMARGIN, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, SCROLLMARGIN],
+					new panel.colA([30, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 30],
 						[
 							0,
 							new panel.row([0, bh, 0],
@@ -2840,7 +2840,7 @@ var bosslst = [
 			context.save();
 			context.shadowOffsetX = 0;
 			context.shadowOffsetY = 0;
-			if (!galleryobj.notransparent) {
+			if (galleryobj.transparent) {
 				var blackfill = new panel.fill(THUMBFILP);
 				blackfill.draw(context, canvas.thumbrect, 0, 0);
 			} else {
