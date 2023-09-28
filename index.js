@@ -1893,10 +1893,23 @@ var panlst = [{
 			if (canvas.pinching)
 				return;
 			var obj = canvas.scrollobj.value();
-			if (type == "panleft" || type == "panright") {
-				var k = type == "panleft" ? 1 : -1;
-				menuobj.leftright(context, k * context.canvas.speedobj.value() / 5);
-			} else if (type == "panup" || type == "pandown") {
+			if (type == "panleft" || type == "panright") 
+			{
+				if (canvas.ishscrollrect)
+				{
+					var k = (y - canvas.hscrollrect.y) / canvas.hscrollrect.height;
+					var obj = context.canvas.scrollobj.value();
+					obj.setperc(k);
+					context.refresh();		
+				}
+				else
+				{
+					var k = type == "panleft" ? 1 : -1;
+					menuobj.leftright(context, k * context.canvas.speedobj.value() / 5);
+				}
+			} 
+			else if (type == "panup" || type == "pandown") 
+			{
 				if (canvas.isspeedrect) {
 					var k = (y - canvas.speedrect.y) / canvas.speedrect.height;
 					canvas.speedobj.setperc(k);
@@ -1942,6 +1955,7 @@ var panlst = [{
 			canvas.startx = x;
 			canvas.starty = y;
 			canvas.timeobj.setanchor(canvas.timeobj.current());
+			canvas.ishscrollrect = canvas.hscrollrect && canvas.hscrollrect.hitest(x, y);
 			canvas.isbuttonrect = canvas.buttonrect && canvas.buttonrect.hitest(x, y);
 			canvas.isspeedrect = canvas.speedrect && canvas.speedrect.hitest(x, y);
 			canvas.isreducerect = canvas.reducerect && canvas.reducerect.hitest(x, y);
