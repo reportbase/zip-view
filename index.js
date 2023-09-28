@@ -460,8 +460,6 @@ panel.gallerybar = function() {
 		canvas.vscrollrect = new rectangle();
 		context.chapterect = new rectangle();
 		canvas.galleryrect = new rectangle();
-		if (headcnv.height == 0)
-			return;
 		var w = Math.min(360, rect.width - 100);
 		var j = window.innerWidth - rect.width >= 180;
 		var rows = infobj.data.length;
@@ -561,8 +559,6 @@ panel.galleryscroll = function() {
 		canvas.vscrollrect = new rectangle();
 		canvas.hscrollrect = new rectangle();
 		canvas.buttonrect = new rectangle();
-		if (headcnv.height == 0)
-			return;
 		var obj = context.canvas.scrollobj.value();
 		var a = new panel.colA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
 			[
@@ -2740,8 +2736,7 @@ var bosslst = [
 			context.heightrect = new rectangle();
 			if (menuobj.value())
 				return;
-			if (headcnv.height == 0)
-				return;
+	
 			if (
 				!photo.image ||
 				!photo.image.complete ||
