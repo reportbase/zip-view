@@ -560,10 +560,12 @@ panel.galleryscroll = function() {
 		canvas.hscrollrect = new rectangle();
 		canvas.buttonrect = new rectangle();
 		var obj = context.canvas.scrollobj.value();
+		var bh = rect.height/2;
+		var bw = rect.width/2;
 		var a = new panel.colA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
 			[
 				0,
-				new panel.row([60, 0, 60],
+				new panel.row([0, bh, 0],
 					[
 						0,
 						new Layer(
@@ -575,7 +577,7 @@ panel.galleryscroll = function() {
 						0,
 					]),		
 				0,
-				new panel.row([60, 0, 60],
+				new panel.row([0, bh, 0],
 					[
 						0,
 						new Layer(
@@ -602,7 +604,7 @@ panel.galleryscroll = function() {
 		var a = new panel.row([0, SCROLLBARWIDTH, 4],
 			[
 				0,
-				new panel.col([60, 0, 60],
+				new panel.col([0, bw, 0],
 					[
 						0,
 						new Layer(
@@ -2146,12 +2148,7 @@ var presslst = [{
 	{
 		name: "GALLERY",
 		pressup: function(context, rect, x, y) {
-			if (context.canvas.speedrect && context.canvas.speedrect.hitest(x, y)) {} else if (context.canvas.reducerect && context.canvas.reducerect.hitest(x, y)) {} else {
-				var h = headcnv.height ? 0 : BEXTENT;
-				headcnvctx.show(0, 0, window.innerWidth, h);
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-				context.refresh()
-			}
+			
 		},
 		press: function(context, rect, x, y) {
 			//    	menuobj.setindex(_8cnvctx);
