@@ -563,7 +563,7 @@ panel.galleryscroll = function() {
 							[
 								new panel.fill(NUBACK),
 								new panel.expand(new panel.rectangle(canvas.buttonrect), 10, 0),
-								new panel.shrink(new panel.currentV(new panel.fill("white"),ALIEXTENT, 0), 3, 3),
+								new panel.shrink(new panel.currentV(new panel.fill("white"),ALIEXTENT, 1), 3, 3),
 							]),
 						0,
 					]),		
@@ -1897,7 +1897,7 @@ var panlst = [{
 			{
 				if (canvas.ishscrollrect)
 				{
-					var k = (y - canvas.hscrollrect.y) / canvas.hscrollrect.height;
+					var k = (x - canvas.hscrollrect.x) / canvas.hscrollrect.width;
 					var obj = context.canvas.scrollobj.value();
 					obj.setperc(k);
 					context.refresh();		
