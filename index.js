@@ -5396,12 +5396,15 @@ function gotodialog() {
 		}
 	});
 
-	if (menuobj.value() == _8cnvctx) {
+	if (menuobj.value() == _8cnvctx) 
+	{
 		var current = Math.floor(
 			Math.lerp(1, galleryobj.length(), 1 - _8cnv.timeobj.berp()));
 		input.value = current;
-	} else {
-		input.value = galleryobj.current() 
+	} 
+	else 
+	{
+		input.value = galleryobj.current()+1 
 	}
 
 	dialog.showModal();
