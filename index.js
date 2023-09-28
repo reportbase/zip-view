@@ -478,7 +478,7 @@ panel.gallerybar = function() {
 								0,
 								galleryobj.advanced ? new Layer(
 									[
-										new panel.expand(new panel.fill(NUBACK), 3, 3),
+										new panel.fill(NUBACK), 
 										new panel.expand(new panel.rectangle(canvas.speedrect), 10, 0),
 										new panel.shrink(new panel.currentV(new panel.fill("white"), ALIEXTENT, 0), 3, 3),
 									]) : 0,
@@ -490,7 +490,7 @@ panel.gallerybar = function() {
 								0,
 								galleryobj.advanced ? new Layer(
 									[
-										new panel.expand(new panel.fill(NUBACK), 3, 3),
+										new panel.fill(NUBACK), 
 										new panel.expand(new panel.rectangle(canvas.reducerect), 10, 0),
 										new panel.shrink(new panel.currentV(new panel.fill(NUBAR), ALIEXTENT, 0), 3, 3)
 									]) : 0,
@@ -602,7 +602,7 @@ panel.galleryscroll = function() {
 							[
 								new panel.fill(NUBACK),
 								new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 10),
-								new panel.shrink(new panel.currentH(new panel.fill("white"), ALIEXTENT, 0), 3, 3)
+								new panel.shrink(new panel.currentH(new panel.fill("white"), ALIEXTENT, 1), 3, 3)
 							]),
 						0,
 					])
