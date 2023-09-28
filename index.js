@@ -1632,7 +1632,7 @@ var searchobj = new circular_array("SEARCH", searchlst);
 var extentobj = new circular_array("EXTENT", []);
 var infobj = new circular_array("INFO", []);
 infobj.reset = function() {
-		var index = galleryobj.current()+1;
+		var index = galleryobj.current();
 		if (menuobj.value() == _8cnvctx)
 			index = _8cnv.sliceobj.lerp(
 				1 - _8cnv.timeobj.berp());
