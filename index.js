@@ -2719,7 +2719,7 @@ var bosslst = [
 											new panel.fill(NUBACK), 
 											new panel.expand(new panel.rectangle(galleryobj.debug ?
 												context.slicewidthrect : context.zoomrect), 10, 1),
-											new panel.shrink(ew panel.currentV(new panel.fill("white"), 90, 0), 3, 3),
+											new panel.shrink(new panel.currentV(new panel.fill("white"), 90, 0), 3, 3),
 										]),
 									0,
 								]),
@@ -2731,7 +2731,7 @@ var bosslst = [
 										[
 											new panel.fill(NUBACK), 
 											new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
-											new panel.search(new panel.currentV(new panel.fill("white"), 90, 0), 3, 3)
+											new panel.shrink(new panel.currentV(new panel.fill("white"), 90, 0), 3, 3)
 										]),
 									0,
 								]),
