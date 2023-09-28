@@ -4454,15 +4454,19 @@ var headlst = [
 
 		this.tap = function(context, rect, x, y) {
 
-			if (context.moveprev && context.moveprev.hitest(x, y)) {
+			if (context.moveprev && context.moveprev.hitest(x, y)) 
+			{
 				_4cnvctx.movepage(-1);
-			} else if (context.movenext && context.movenext.hitest(x, y)) {
+			} 
+			else if (context.movenext && context.movenext.hitest(x, y))
+			{
 				_4cnvctx.movepage(1);
 			}
 			else if (
 				context.zoomrect &&
 				context.zoomrect.hitest(x, y)) 
 			{
+				_4cnvctx.movepage(-1);
 				menuobj.setindex(_8cnvctx);
 				menuobj.show();
 				headobj.set(GALLERY);
