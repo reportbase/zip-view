@@ -2994,7 +2994,7 @@ bossobj.draw = function() {
 	delete context.slicewidthrect;
 	delete context.stretchrect;
 
-	if (headcnv.height)
+	if (headcnv.height && !menuobj.value())
 	{
 		var a = bossobj.value()
 		a.draw(context, rect, 0, 0);
