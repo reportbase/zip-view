@@ -2569,6 +2569,13 @@ var taplst = [{
 			{
 				window.open(galleryobj.photographer_url, galleryobj.repos);
 			}
+			else
+			{
+				headcnv.height = headcnv.height?0:BEXTENT;
+				headobj.set(BOSS);
+				headham.panel = headobj.value();
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+			}
 
 			_4cnvctx.refresh();
 		}
@@ -2631,10 +2638,20 @@ var taplst = [{
 				context.canvas.lastime = -0.0000000000101010101;
 				menuobj.updown(context, canvas.speedobj.value());
 				context.refresh()
-			} else if (menuobj.value() && menuobj.value() != _8cnvctx) {
+			} 
+			else if (menuobj.value() && menuobj.value() != _8cnvctx) 
+			{
 				menuobj.hide();
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-			} 
+			}
+			else
+			{
+				headcnv.height = headcnv.height?0:BEXTENT;
+				headobj.set(BOSS);
+				headham.panel = headobj.value();
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+				menuobj.draw();
+			}
 		},
 	},
 	{
@@ -2881,7 +2898,7 @@ var bosslst = [
 ];
 
 var bossobj = new circular_array("", bosslst);
-bossobj.draw = function(skip = 1) {
+bossobj.draw = function() {
 	if (!photo.image)
 		return;
 	if (!photo.image.complete)
@@ -2975,10 +2992,8 @@ bossobj.draw = function(skip = 1) {
 	delete context.slicewidthrect;
 	delete context.stretchrect;
 
-	if (menuobj.value()) {
-		var a = new panel.fill("rgba(0,0,0,0.6)");
-		a.draw(context, new rectangle(0, 0, window.innerWidth, window.innerHeight), 0, 0);
-	} else {
+	if (headcnv.height)
+	{
 		var a = bossobj.value()
 		a.draw(context, rect, 0, 0);
 	}
