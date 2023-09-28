@@ -479,8 +479,8 @@ panel.gallerybar = function() {
 								galleryobj.advanced ? new Layer(
 									[
 										new panel.expand(new panel.fill(NUBACK), 3, 3),
-										//new panel.expand(new panel.rectangle(canvas.speedrect), 10, 0),
-										//new panel.currentV(new panel.fill(NUBAR), bh / 6, 0),
+										new panel.expand(new panel.rectangle(canvas.speedrect), 10, 0),
+										new panel.currentV(new panel.fill(NUBAR), bh / 6, 0),
 									]) : 0,
 								0,
 							]),
@@ -491,8 +491,8 @@ panel.gallerybar = function() {
 								galleryobj.advanced ? new Layer(
 									[
 										new panel.expand(new panel.fill(NUBACK), 3, 3),
-										//new panel.expand(new panel.rectangle(canvas.reducerect), 10, 0),
-										//new panel.currentV(new panel.fill(NUBAR), bh / 6, 0),
+										new panel.expand(new panel.rectangle(canvas.reducerect), 10, 0),
+										new panel.currentV(new panel.fill(NUBAR), bh / 6, 0),
 									]) : 0,
 								0,
 							]),
@@ -1633,6 +1633,11 @@ var searchobj = new circular_array("SEARCH", searchlst);
 var extentobj = new circular_array("EXTENT", []);
 var infobj = new circular_array("INFO", []);
 infobj.reset = function() {
+		var index = galleryobj.current()+1;
+		if (menuobj.value() == _8cnvctx)
+			index = _8cnv.sliceobj.lerp(
+				1 - _8cnv.timeobj.berp());
+
 	if (!galleryobj.infohide) {
 		var value = galleryobj.data[index];
 		if (value && value.folder)
@@ -1661,10 +1666,6 @@ infobj.reset = function() {
 
 	if (galleryobj.length() > 0)
 	{
-		var index = galleryobj.current()+1;
-		if (menuobj.value() == _8cnvctx)
-			index = _8cnv.sliceobj.lerp(
-				1 - _8cnv.timeobj.berp());
 			
 		infobj.data.push(`${index} of ${galleryobj.length()}`);
 	}
