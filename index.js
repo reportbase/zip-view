@@ -1674,8 +1674,8 @@ infobj.reset = function() {
 	{
 		var index = galleryobj.current()+1;
 		if (menuobj.value() == _8cnvctx)
-			index = context.canvas.sliceobj.lerp(
-				1 - context.canvas.timeobj.berp());
+			index = _8cnv.sliceobj.lerp(
+				1 - _8cnv.timeobj.berp());
 			
 		infobj.data.push(`${index} of ${galleryobj.length()}`);
 	}
