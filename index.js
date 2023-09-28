@@ -4463,6 +4463,7 @@ var headlst = [
 				context.zoomrect &&
 				context.zoomrect.hitest(x, y)) 
 			{
+				gotoimage(galleryobj.current()+1);
 				menuobj.setindex(_8cnvctx);
 				menuobj.show();
 				headobj.set(GALLERY);
