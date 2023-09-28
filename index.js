@@ -4469,7 +4469,6 @@ var headlst = [
 				headham.panel = headobj.value();
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);	
 				menuobj.draw();
-				gotoimage(galleryobj.current()+1);
 			}							
 			else {
 				var k = menuobj.value() ? MENU : BOSS;
