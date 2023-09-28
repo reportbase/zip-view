@@ -2753,7 +2753,7 @@ var bosslst = [
 									0,
 									new Layer(
 										[
-											new panel.expand(new panel.fill(NUBACK), 3, 3),
+											new panel.fill(NUBACK), 
 											new panel.expand(new panel.rectangle(galleryobj.debug ?
 												context.slicewidthrect : context.zoomrect), 10, 1),
 											new panel.currentV(new panel.fill(NUBAR), bh / 6, 0),
@@ -2766,7 +2766,7 @@ var bosslst = [
 									0,
 									new Layer(
 										[
-											new panel.expand(new panel.fill(NUBACK), 3, 3),
+											new panel.fill(NUBACK), 
 											new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
 											new panel.currentV(new panel.fill(NUBAR), bh / 6, 0),
 										]),
@@ -2884,19 +2884,18 @@ var bosslst = [
 			canvas.selectrect.push(r);
 			var blackfill = new panel.fill(THUMBFILL);
 			blackfill.draw(context, r, 0, 0);
-			//todo thumb border
 			if (xx > x) //leftside
 			{
 				var r = new rectangle(xx - w, yy, ww, hh);
 				canvas.selectrect.push(r);
 				blackfill.draw(context, r, 0, 0);
-				//whitestroke.draw(context, r, 0, 0);
+				whitestroke.draw(context, r, 0, 0);
 			} else if (xx < x) //right side
 			{
 				var r = new rectangle(w + xx, yy, ww, hh);
 				canvas.selectrect.push(r);
 				blackfill.draw(context, r, 0, 0);
-				//whitestroke.draw(context, r, 0, 0);
+				whitestroke.draw(context, r, 0, 0);
 			}
 
 			context.restore();
