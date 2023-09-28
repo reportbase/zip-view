@@ -563,7 +563,7 @@ panel.galleryscroll = function() {
 							[
 								new panel.fill(NUBACK),
 								new panel.expand(new panel.rectangle(canvas.buttonrect), 10, 0),
-								new panel.shrink(new panel.currentV(new panel.fill("white"),60, 0), 3, 3),
+								new panel.currentV(new panel.fill("white"),60, 0), 
 							]),
 						0,
 					]),		
@@ -575,7 +575,7 @@ panel.galleryscroll = function() {
 							[
 								new panel.fill(NUBACK),
 								new panel.expand(new panel.rectangle(canvas.vscrollrect), 10, 0),
-								new panel.shrink(new panel.currentV(new panel.fill("white"),60, 1), 3, 3),
+								new panel.currentV(new panel.fill("white"),60, 1), 
 							]),
 						0,
 					]),
@@ -602,7 +602,7 @@ panel.galleryscroll = function() {
 							[
 								new panel.fill(NUBACK),
 								new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 10),
-								new panel.shrink(new panel.currentH(new panel.fill("white"), 90, 1), 3, 3),
+								new panel.currentH(new panel.fill("white"), 90, 1), 
 							]),
 						0,
 					])
@@ -2884,6 +2884,7 @@ var bosslst = [
 			canvas.selectrect.push(r);
 			var blackfill = new panel.fill(THUMBFILL);
 			blackfill.draw(context, r, 0, 0);
+			whitestroke.draw(context, r, 0, 0);
 			if (xx > x) //leftside
 			{
 				var r = new rectangle(xx - w, yy, ww, hh);
