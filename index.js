@@ -1643,7 +1643,7 @@ var searchlst = [
 var searchobj = new circular_array("SEARCH", searchlst);
 var extentobj = new circular_array("EXTENT", []);
 var infobj = new circular_array("INFO", []);
-infobj.reset = function(index) {
+infobj.reset = function() {
 	if (!galleryobj.infohide) {
 		var value = galleryobj.data[index];
 		if (value && value.folder)
@@ -1670,8 +1670,15 @@ infobj.reset = function(index) {
 			infobj.data.push(url.searchParams.get(galleryobj.repos));
 	}
 
-	if (galleryobj.length() > 1)
-		infobj.data.push(`${index+1} of ${galleryobj.length()}`);
+	if (galleryobj.length() > 0)
+	{
+		var index = galleryobj.current()+1;
+		if (menuobj.value() == _8cnvctx)
+			index = context.canvas.sliceobj.lerp(
+				1 - context.canvas.timeobj.berp());
+			
+		infobj.data.push(`${index} of ${galleryobj.length()}`);
+	}
 }
 
 var slicewidthobj = new circular_array("SLICEWIDTH", SLICEWIDTHSIZE);
@@ -2745,7 +2752,7 @@ var bosslst = [
 			var j = window.innerWidth - r.width >= 180;
 
 			infobj.data = [];
-			infobj.reset(galleryobj.current());
+			infobj.reset();
 			var lst = infobj.data;
 
 			var rows = lst.length;
@@ -3464,7 +3471,7 @@ menuobj.draw = function() {
 
 	infobj.data = [];
 	if (headcnv.height) {
-		infobj.reset(context.canvas.centered);
+		infobj.reset();
 		if (galleryobj.debug)
 			infobj.data.push(`${isvisiblecount} of ${canvas.normal.length}`);
 		context.canvas.bar.draw(context, rect, 0, 0);
