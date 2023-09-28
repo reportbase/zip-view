@@ -4464,11 +4464,12 @@ var headlst = [
 				context.zoomrect &&
 				context.zoomrect.hitest(x, y)) 
 			{
+				gotoimage(galleryobj.current())
 				menuobj.setindex(_8cnvctx);
 				menuobj.show();
 				headobj.set(GALLERY);
 				headham.panel = headobj.value();
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);			//todo			
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);			
 			}							
 			else {
 				var k = menuobj.value() ? MENU : BOSS;
@@ -4619,7 +4620,7 @@ var headlst = [
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 				delete _4cnv.thumbcanvas;
 				delete photo.image;
-				menuobj.toggle(_8cnvctx);
+				menuobj.hide();
 				contextobj.reset();
 			} 
 			else if 
