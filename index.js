@@ -4466,13 +4466,15 @@ var headlst = [
 				context.zoomrect &&
 				context.zoomrect.hitest(x, y)) 
 			{
-				_4cnvctx.movepage(-1);
 				menuobj.setindex(_8cnvctx);
 				menuobj.show();
 				headobj.set(GALLERY);
 				headham.panel = headobj.value();
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);	
-				menuobj.draw();
+				setTimeout(function()
+				{
+					gotoimage(galleryobj.current());
+				}, 40);
 			}							
 			else {
 				var k = menuobj.value() ? MENU : BOSS;
