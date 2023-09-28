@@ -4516,17 +4516,14 @@ var headlst = [
 			context.save();
 			var a = new panel.row([BEXTENT, 0],
 				[
-					new panel.col([30, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT, 0, ALIEXTENT, 30],
+					new panel.col([0, ALIEXTENT, ALIEXTENT, ALIEXTENT, 0],
 						[
 							0,
-							0,
-							0,
-
+							
 							new panel.previous(),
+							new panel.zoom(),
 							new panel.next(),
 
-							0,
-							0,
 							0,
 						]),
 					0,
@@ -4657,13 +4654,14 @@ var headlst = [
 			var rh = 26;
 			var e = _5cnv.sliceobj.length() <= 1;
 			var a = new panel.col(
-				[30, ALIEXTENT, 0, -1, -1, 0, ALIEXTENT, 30],
+				[25, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT, ALIEXTENT, 0, ALIEXTENT, 25],
 				[
 					0,
 					new panel.help(),
 					0,
 					new panel.fullscreen(),
-					iOS() ? 0 : new panel.thumb(),
+					new panel.zoom(),
+					new panel.thumb(),
 					0,
 					e ? 0 : new panel.folders(),
 					0,
