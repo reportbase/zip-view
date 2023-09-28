@@ -465,7 +465,7 @@ panel.gallerybar = function() {
 		var rows = infobj.data.length;
 		var s = canvas.scrollobj.current() == 1;
 		var rh = 26;
-		var bh = 180;
+		var bh = rect.height/2;
 		var cw = rect.width - 30;
 		context.save();
 		var a = new panel.layerA(
@@ -516,17 +516,8 @@ panel.gallerybar = function() {
 								0,
 							]),
 						0,
-						new panel.col([0, cw, 0],
-							[
-								0,
-								1 ? 0 : new Layer(
-									[
-										new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 10),
-										new panel.currentH(new panel.fill(NUBAR), bh / 5, 1),
-									]),
-								0,
-							]),
-						0
+						0,
+						
 					]),
 			]);
 
