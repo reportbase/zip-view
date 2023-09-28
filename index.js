@@ -2496,7 +2496,6 @@ CanvasRenderingContext2D.prototype.hithumb = function(x, y) {
 	var b = (x - rect.x) / rect.width;
 	var e = (1 - b) * TIMEOBJ;
 	this.canvas.timeobj.set(e);
-
 	var b = (y - rect.y) / rect.height;
 	var e = b * rowobj.length();
 	rowobj.set(e);
@@ -2504,10 +2503,12 @@ CanvasRenderingContext2D.prototype.hithumb = function(x, y) {
 
 var taplst = [{
 		name: "BOSS",
-		tap: function(context, rect, x, y, shift, ctrl) {
+		tap: function(context, rect, x, y, shift, ctrl) 
+		{
 			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 
-			if (context.canvas.thumbrect && context.canvas.thumbrect.hitest(x, y)) {
+			if (context.canvas.thumbrect && context.canvas.thumbrect.hitest(x, y)) 
+			{
 				headobj.set(BOSS);
 				headham.panel = headobj.value();
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
@@ -2516,12 +2517,15 @@ var taplst = [{
 					context.canvas.selectrect.hitest(x, y) >= 0) {
 					galleryobj.transparent = galleryobj.ransparent ? 0 : 1;
 					context.refresh();
-				} else {
+				} 
+				else 
+				{
 					context.hithumb(x, y);
 					galleryobj.transparent = 1;
 					contextobj.reset()
 				}
-			} else if (context.zoomrect && context.zoomrect.hitest(x, y)) {
+			} 
+			else if (context.zoomrect && context.zoomrect.hitest(x, y)) {
 				var obj = zoomobj.value()
 				var k = (y - context.zoomrect.y) / context.zoomrect.height;
 				obj.setperc(k);
@@ -2542,18 +2546,13 @@ var taplst = [{
 					bossobj.leftright(-1 * context.canvas.speedobj.value());
 				}
 			}
-			else if (context.stretchrect &&
-				context.stretchrect.hitest(x, y)) {
-				var k = (y - context.stretchrect.y) / context.stretchrect.height;
-				if (galleryobj.debug) {
-					var stretch = stretchobj.value();
-					stretch.setperc(k);
-					contextobj.reset()
-				} else {
-					context.canvas.reduceobj.setperc(k);
-					bossobj.leftright(-1 * context.canvas.speedobj.value());
-				}
-			} else if (galleryobj.repos && context.extentrect && context.extentrect.hitest(x, y)) {
+			else if (context.chapterect &&
+				context.chapterect.hitest(x, y)) 
+			{
+				gotodialog();
+			} 
+			else if (galleryobj.repos && context.extentrect && context.extentrect.hitest(x, y)) 
+			{
 				window.open(galleryobj.photographer_url, galleryobj.repos);
 			}
 
