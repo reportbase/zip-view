@@ -561,7 +561,7 @@ panel.galleryscroll = function() {
 						0,
 						new Layer(
 							[
-								new panel.fill(GALLERYSCROLL),
+								new panel.fill(NUBACK),
 								new panel.expand(new panel.rectangle(canvas.buttonrect), 10, 0),
 								new panel.shrink(new panel.currentV(new panel.fill("white"),60, 0), 3, 3),
 							]),
@@ -573,7 +573,7 @@ panel.galleryscroll = function() {
 						0,
 						new Layer(
 							[
-								new panel.fill(GALLERYSCROLL),
+								new panel.fill(NUBACK),
 								new panel.expand(new panel.rectangle(canvas.vscrollrect), 10, 0),
 								new panel.shrink(new panel.currentV(new panel.fill("white"),60, 1), 3, 3),
 							]),
@@ -600,7 +600,7 @@ panel.galleryscroll = function() {
 						0,
 						new Layer(
 							[
-								new panel.fill(GALLERYSCROLL),
+								new panel.fill(NUBACK),
 								new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 10),
 								new panel.shrink(new panel.currentH(new panel.fill("white"), 90, 1), 3, 3),
 							]),
@@ -2745,7 +2745,7 @@ var bosslst = [
 			var cw = rect.width - 30;
 			var a = new panel.layerA(
 				[
-					new panel.colA([30, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 30],
+					new panel.colA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
 						[
 							0,
 							new panel.row([0, bh, 0],
