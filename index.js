@@ -968,14 +968,13 @@ panel.meta = function() {
 
 panel.thumb = function() {
 	this.draw = function(context, rect, user, time) {
-		var s = buttonobj.current() == 0;
 		context.save();
 		context.thumbpanel = new rectangle()
 		var a = new Layer(
 			[
 				new panel.rectangle(context.thumbpanel),
-				s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-				new panel.shrink(new panel.circle(s ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+				_8cnv.fitflash ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+				new panel.shrink(new panel.circle(_8cnv.fitflash ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
 				new panel.shrink(new panel.rounded(TRANSPARENT, 3, "white", 4, 4), 16, 30),
 			]);
 
@@ -4632,6 +4631,13 @@ var headlst = [
 				galleryobj.height = thumbfittedlst[index].height;				
 				buttonobj.reset()
 				galleryobj.init(galleryobj)	
+				_8cnv.fitflash = 1;
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+				setTimeout(function()
+				   {
+				_8cnv.fitflash = 0;
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);		
+				   }, 400);
 			} 
 			else if (
 				context.zoomrect &&
