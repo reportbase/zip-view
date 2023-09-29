@@ -2109,6 +2109,7 @@ var panlst = [{
 			clearTimeout(context.timepan)
 			canvas.slidestop = 0;
 			canvas.isthumb = 0;
+			delete canvas.timeobj.offset;
 			delete stretchobj.value().offset;
 			delete zoomobj.value().offset;
 			delete canvas.startx;
@@ -2211,12 +2212,12 @@ var presslst = [{
 			if (context.canvas.thumbrect &&
 				context.canvas.thumbrect.hitest(x, y)) 
 			{
-				menuobj.hide();
-				var positx = positxobj.value();
-				var posity = posityobj.value();
-				positx.set((x / rect.width) * 100);
-				posity.set((y / rect.height) * 100);
-				context.refresh();
+				//menuobj.hide();
+				//var positx = positxobj.value();
+				//var posity = posityobj.value();
+				//positx.set((x / rect.width) * 100);
+				//posity.set((y / rect.height) * 100);
+				//context.refresh();
 			}
 		}
 	},
