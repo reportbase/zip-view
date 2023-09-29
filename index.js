@@ -2038,7 +2038,8 @@ var panlst = [{
 		name: "BOSS",
 		updown: function(context, rect, x, y, type) {},
 		leftright: function(context, rect, x, y, type) {},
-		pan: function(context, rect, x, y, type) {
+		pan: function(context, rect, x, y, type) 
+		{
 			if (context.canvas.pinching)
 				return;
 			x = movingx.update(x);
@@ -2489,27 +2490,21 @@ var keylst = [{
 			context.refresh();
 			var key = evt.key.toLowerCase();
 
-			if (!canvas.shiftKey && canvas.block) {
-				evt.preventDefault();
-				return;
-			}
-
 			if (key == "f" && canvas.ctrlKey && canvas.shiftKey) {
 				screenfull.toggle()
-
 				context.refresh();
 				evt.preventDefault();
 			} else if (
 				(canvas.shiftKey && key == "tab") ||
 				key == "arrowleft" ||
 				key == "h") {
-				bossobj.leftright(context.canvas.speedobj.value());
+				context.canvas.timeobj.addperc(-0.05);
 				context.refresh();
 			} else if (
 				key == "tab" ||
 				key == "arrowright" ||
 				key == "l") {
-				bossobj.leftright(-context.canvas.speedobj.value());
+				context.canvas.timeobj.addperc(-0.05);
 				context.refresh();
 			} else if (key == "/" || key == "\\") {
 				var h = headcnv.height ? 0 : BEXTENT;
@@ -2518,12 +2513,13 @@ var keylst = [{
 				context.refresh()
 			} else if (
 				key == "arrowup" ||
-				key == "w" ||
 				key == "k") {
-				bossobj.updown(-context.canvas.speedobj.value());
+				rowobj.addperc(-0.05);
+				contextobj.reset()
 			} else if (key == "arrowdown" ||
 				key == "j") {
-				bossobj.updown(context.canvas.speedobj.value());
+				rowobj.adperc(-0.05);
+				contextobj.reset()
 			} else if (key == "0" && canvas.ctrlKey) {
 				evt.preventDefault();
 				gotoimage(0);
@@ -2549,7 +2545,8 @@ var keylst = [{
 
 ];
 
-CanvasRenderingContext2D.prototype.hithumb = function(x, y) {
+CanvasRenderingContext2D.prototype.hithumb = function(x, y) 
+{
 	var rect = this.canvas.thumbrect;
 	var select = this.canvas.selectrect[0];
 	var b = (x - rect.x) / rect.width;
