@@ -2045,7 +2045,8 @@ var panlst = [{
 				return;
 			x = movingx.update(x);
 			y = movingy.update(y);
-			if (context.canvas.isthumb) {
+			if (context.canvas.isthumb) 
+			{
 				context.hithumb(x, y);
 				if (y != context.canvas.lasty)
 					contextobj.reset()
@@ -2064,13 +2065,8 @@ var panlst = [{
 				else
 				{
 					var obj = context.canvas.timeobj;
-					var k = panhorz(obj, 2*(rect.width - x));
-					if (k == -1)
-						return;
-					if (k == obj.anchor())
-						return;
-					obj.set(k);
-					context.refresh()
+					obj.addperc(type == "panleft"?0.01:-0.01);
+					contextobj.reset();
 				}
 			} 
 			else if (type == "panup" || type == "pandown") 
