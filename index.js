@@ -2584,7 +2584,7 @@ var taplst = [{
 					contextobj.reset()
 				}
 			} 
-			else if (context.timerect && context.timerect.hitest(x, y)) {
+			else if (context.timerect && context.timerect.hitest(x, y)) 
 			{
 				var k = (x - context.timerect.x) / context.timerect.width;
 				context.canvas.timeobj.setperc(k);
