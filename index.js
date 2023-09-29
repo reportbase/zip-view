@@ -2065,7 +2065,8 @@ var panlst = [{
 				else
 				{
 					var obj = context.canvas.timeobj;
-					obj.addperc(0.01);//type == "panleft"?0.01:-0.01);
+					var j = type == "panleft" ? 1 : -1;
+					obj.addperc(j*0.01);
 					contextobj.reset();
 				}
 			} 
