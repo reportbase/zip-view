@@ -1553,14 +1553,18 @@ var wheelst = [{
 					zoomobj.value().addperc(type == "wheelup" ? 0.02 : -0.02);
 					contextobj.reset()
 				}
-			} else {
-				bossobj.updown(delta);
+			} 
+			else 
+			{
+				var j = type == "wheelup" ? -1 : 1;
+				rowobj.addperc(j*0.005);
+				contextobj.reset();				
 			}
 		},
 		leftright: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
 			var j = type == "wheeleft" ? 1 : -1;
-			context.canvas.timeobj.addperc(j*0.001);
+			context.canvas.timeobj.addperc(j*0.005);
 			context.refresh();				
 			bossobj.leftright(delta);
 			context.refresh();
@@ -1597,7 +1601,8 @@ var pinchlst = [{
 	},
 	{
 		name: "BOSS",
-		pinch: function(context, x, y, scale) {
+		pinch: function(context, x, y, scale) 
+		{
 			var obj = context.obj;
 			obj.add(scale < context.canvas.scale ? -1 : 1);
 			contextobj.reset();
@@ -2613,18 +2618,22 @@ var taplst = [{
 			}
 			else if (y < rect.height/3)
 			{
+				rowobj.addperc(-0.05);
+				contextobj.reset();				
 			}
 			else if (y > (2/3)*rect.height)
 			{
+				rowobj.addperc(0.05);
+				contextobj.reset();
 			}
 			else if (x < rect.width/2)
 			{
-				context.canvas.timeobj.addperc(0.01);
+				context.canvas.timeobj.addperc(0.05);
 				context.refresh();				
 			}
 			else if (x > rect.width/2)
 			{
-				context.canvas.timeobj.addperc(-0.01);
+				context.canvas.timeobj.addperc(-0.05);
 				context.refresh();				
 			}
 
