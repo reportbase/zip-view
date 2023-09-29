@@ -1890,7 +1890,8 @@ var panlst = [{
 		updown: function(context, rect, x, y, type) {},
 		leftright: function(context, rect, x, y, type) {},
 
-		pan: function(context, rect, x, y, type) {
+		pan: function(context, rect, x, y, type) 
+		{
 			var canvas = context.canvas;
 			if (canvas.pinching)
 				return;
@@ -2044,10 +2045,15 @@ var panlst = [{
 				else
 					context.refresh();
 				context.canvas.lasty = y;
-			} else if (type == "panleft" || type == "panright") {
-				var k = type == "panleft" ? -1 : 1;
-				bossobj.leftright(k * context.canvas.speedobj.value());
-			} else if (type == "panup" || type == "pandown") {
+			} 
+			else if (type == "panleft" || type == "panright") 
+			{
+				var k = (x - context.timerect.x) / context.timerect.width;
+				canvas.timeobj.setperc(k);
+				context.refresh();						
+			} 
+			else if (type == "panup" || type == "pandown") 
+			{
 				var zoom = zoomobj.value()
 				context.refresh()
 				if (context.islicewidthrect) {
