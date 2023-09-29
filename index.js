@@ -2048,9 +2048,23 @@ var panlst = [{
 			} 
 			else if (type == "panleft" || type == "panright") 
 			{
-				var k = (x - context.timerect.x) / context.timerect.width;
-				canvas.timeobj.setperc(k);
-				context.refresh();						
+				if (context.istimerect)
+				{
+					var k = (x - context.timerect.x) / context.timerect.width;
+					context.canvas.timeobj.setperc(k);
+					context.refresh();
+				}
+				else
+				{
+					var obj = context.canvas.timeobj;
+					var k = panhorz(obj, rect.width - x);
+					if (k == -1)
+						return;
+					if (k == obj.anchor())
+						return;
+					obj.set(k);
+					context.refresh()
+				}
 			} 
 			else if (type == "panup" || type == "pandown") 
 			{
@@ -2084,6 +2098,7 @@ var panlst = [{
 			movingx = new MovingAverage();
 			movingy = new MovingAverage();
 			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+			context.istimerect = context.timerect && context.timerect.hitest(x, y);
 			context.iszoomrect = context.zoomrect && context.zoomrect.hitest(x, y);
 			context.isstretchrect = context.stretchrect && context.stretchrect.hitest(x, y);
 			context.islicewidthrect = context.slicewidthrect && context.slicewidthrect.hitest(x, y);
