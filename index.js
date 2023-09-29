@@ -2514,7 +2514,7 @@ var keylst = [{
 			} else if (
 				key == "arrowup" ||
 				key == "k") {
-				rowobj.addperc(0.05);
+				rowobj.addperc(-0.05);
 				contextobj.reset()
 			} else if (key == "arrowdown" ||
 				key == "j") {
