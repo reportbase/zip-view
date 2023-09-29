@@ -619,7 +619,7 @@ panel.scrollbar = function() {
 		context.save();
 		canvas.vscrollrect = new rectangle();
 
-		var a = new panel.col([0, SCROLLBARWIDTH, 5],
+		var a = new panel.col([0, 9, 5],
 			[
 				0,
 				new panel.row([5, 0, 5],
@@ -2585,7 +2585,6 @@ var taplst = [{
 			{
 				window.open(galleryobj.photographer_url, galleryobj.repos);
 			}
-			
 
 			_4cnvctx.refresh();
 		}
@@ -4742,9 +4741,9 @@ var headlst = [
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 			} else {
 				if (menuobj.value() == _8cnvctx)
-					tapobj.data[GALLERY].tap(menuobj.value(), rect, x, y)
+					tapobj.data[GALLERY].tap(menuobj.value(), _8cnvctx.rect(), x, y)
 				else
-					tapobj.data[MENU].tap(menuobj.value(), rect, x, y)
+					tapobj.data[MENU].tap(menuobj.value(), menuobj.value().rect(), x, y)
 			}
 		};
 
@@ -5483,7 +5482,7 @@ function gotodialog() {
 	});
 
 	dialog.classList.add('dialog');
-	//dialog.style.width = window.innerWidth*0.85;
+	dialog.style.width = window.innerWidth*0.85;
 	dialog.addEventListener("click", function(event) {
 		var rect = new rectangle(dialog.getBoundingClientRect());
 		if (event.target.id == "goto-ok") {
@@ -5491,7 +5490,7 @@ function gotodialog() {
 			go(Number(page));
 			dialog.close();
 		} else if (!rect.hitest(event.x, event.y)) {
-			//dialog.close();
+			dialog.close();
 		}
 	});
 
@@ -5524,6 +5523,9 @@ function negativepromptdialog() {
 			dialog.close();
 			menuobj.draw();
 		}
+		else if (!rect.hitest(event.x, event.y)) {
+			dialog.close();
+		}
 
 	});
 
@@ -5546,7 +5548,9 @@ function promptdialog() {
 			dialog.close();
 			menuobj.draw();
 		}
-
+		else if (!rect.hitest(event.x, event.y)) {
+			dialog.close();
+		}
 	});
 
 	input.value = text2imageobj.prompt;
