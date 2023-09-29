@@ -1562,10 +1562,8 @@ var wheelst = [{
 		},
 		leftright: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
-			context.canvas.timeobj.addperc(0.001*delta);
+			context.canvas.timeobj.addperc(-0.001*delta);
 			context.refresh();				
-			bossobj.leftright(delta);
-			context.refresh();
 		},
 	},
 ];
@@ -2065,8 +2063,8 @@ var panlst = [{
 				else
 				{
 					var obj = context.canvas.timeobj;
-					var j = type == "panleft" ? -1 : 1;
-					obj.addperc(-j*0.01);
+					var j = type == "panleft" ? 1 : -1;
+					obj.addperc(j*0.01);
 					contextobj.reset();
 				}
 			} 
