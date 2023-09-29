@@ -2341,7 +2341,7 @@ var keylst = [{
 				key == "arrowup" ||
 				key == "pageup" ||
 				key == "backspace" ||
-				(canvas.shiftKey && key == "enter") ||
+				(canvas.shiftKey && key == "enter") ||//todo  switch modes
 				(canvas.shiftKey && key == " ") ||
 				key == "k") {
 				var e = canvas.speedobj.value() / 2;
@@ -2495,17 +2495,26 @@ var keylst = [{
 				context.refresh();
 				evt.preventDefault();
 			} else if (
-				(canvas.shiftKey && key == "tab") ||
 				key == "arrowleft" ||
 				key == "h") {
 				context.canvas.timeobj.addperc(0.05);
 				context.refresh();
-			} else if (
-				key == "tab" ||
+				evt.preventDefault();
+			} 
+			else if (key == "tab")
+			{
+				if (canvas.shiftKey)
+				{
+				}	
+				evt.preventDefault();
+			}
+			else if 
+			(
 				key == "arrowright" ||
 				key == "l") {
 				context.canvas.timeobj.addperc(-0.05);
 				context.refresh();
+				evt.preventDefault();
 			} else if (key == "/" || key == "\\") {
 				var h = headcnv.height ? 0 : BEXTENT;
 				headcnvctx.show(0, 0, window.innerWidth, h);
@@ -2516,10 +2525,12 @@ var keylst = [{
 				key == "k") {
 				rowobj.addperc(-0.05);
 				contextobj.reset()
+				evt.preventDefault();
 			} else if (key == "arrowdown" ||
 				key == "j") {
 				rowobj.addperc(0.05);
 				contextobj.reset()
+				evt.preventDefault();
 			} else if (key == "g" && canvas.ctrlKey && canvas.shiftKey) {
 				gotodialog();
 			} else if (key == "-" || key == "{") {
