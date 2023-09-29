@@ -4626,7 +4626,7 @@ var headlst = [
 				context.thumbpanel.hitest(x, y)) 
 			{
 				localobj.time = _8cnv.timeobj.current();
-				var j = context.canvas.centered;
+				var j = _8cnv.centered;
 				var index = j % IMAGELSTSIZE;
 				galleryobj.width = thumbfittedlst[index].width;
 				galleryobj.height = thumbfittedlst[index].height;				
