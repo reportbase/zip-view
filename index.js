@@ -3234,12 +3234,6 @@ var buttonlst = [{
 							0, 0, thumbfitted.width, thumbfitted.height);
 						thumbimg.count = 1;
 					}
-
-					if (context.canvas.centered)
-					{
-						context.canvas.centeredwidth = thumbimg.width;
-						context.canvas.centeredheight = thumbimg.height;
-					}
 					
 					var x = Math.nub(obj.value(), obj.length(),
 						ww, thumbfitted.width);
@@ -3258,12 +3252,6 @@ var buttonlst = [{
 						thumbimg.count = 1;
 					}
 			
-					if (context.canvas.centered)
-					{
-						context.canvas.centeredwidth = thumbimg.width;
-						context.canvas.centeredheight = thumbimg.height;
-					}
-					
 					var y = Math.nub(obj.value(), obj.length(),
 						hh, thumbfitted.height);
 					context.drawImage(thumbfitted,
@@ -4637,8 +4625,11 @@ var headlst = [
 				context.thumbpanel &&
 				context.thumbpanel.hitest(x, y)) 
 			{
-				galleryobj.width = _8cnv.centeredheight;
-				galleryobj.height = _8cnv.centeredheight;				
+				localobj.time = _8cnv.timeobj.current();
+				var j = context.canvas.centered;
+				var index = j % IMAGELSTSIZE;
+				galleryobj.width = thumbfittedlst[index].width;
+				galleryobj.height = thumbfittedlst[index].height;				
 				buttonobj.reset()
 				galleryobj.init(galleryobj)	
 			} 
