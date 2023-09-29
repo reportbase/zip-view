@@ -1559,8 +1559,8 @@ var wheelst = [{
 		},
 		leftright: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
-			var j = type == "wheeleft" ? -1 : 1;
-			context.canvas.timeobj.addperc(j*0.01);
+			var j = type == "wheeleft" ? 1 : -1;
+			context.canvas.timeobj.addperc(j*0.001);
 			context.refresh();				
 			bossobj.leftright(delta);
 			context.refresh();
@@ -2619,12 +2619,12 @@ var taplst = [{
 			}
 			else if (x < rect.width/2)
 			{
-				context.canvas.timeobj.addperc(-0.01);
+				context.canvas.timeobj.addperc(0.01);
 				context.refresh();				
 			}
 			else if (x > rect.width/2)
 			{
-				context.canvas.timeobj.addperc(0.01);
+				context.canvas.timeobj.addperc(-0.01);
 				context.refresh();				
 			}
 
