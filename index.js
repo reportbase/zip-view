@@ -2155,11 +2155,16 @@ var presslst = [{
 	{
 		name: "GALLERY",
 		pressup: function(context, rect, x, y) {
-			
+
+				headcnv.height = headcnv.height?0:BEXTENT;
+				headobj.set(GALLERY);
+				headham.panel = headobj.value();
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+				menuobj.draw();
+						
 		},
 		press: function(context, rect, x, y) {
-			//    	menuobj.setindex(_8cnvctx);
-			//	menuobj.show();    
+			   
 		}
 	},
 	{
@@ -2169,15 +2174,22 @@ var presslst = [{
 	},
 	{
 		name: "BOSS",
-		pressup: function(context, rect, x, y) {
-			//context.hidethumb = context.hidethumb?0:1;
+		pressup: function(context, rect, x, y) 
+		{
+			if (context.canvas.thumbrect &&
+				context.canvas.thumbrect.hitest(x, y))
+				return;
+			headcnv.height = headcnv.height?0:BEXTENT;
+			headobj.set(BOSS);
+			headham.panel = headobj.value();
+			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 			context.refresh();
 		},
-		press: function(context, rect, x, y) {
+		press: function(context, rect, x, y) 
+		{
 			if (context.canvas.thumbrect &&
-				context.canvas.thumbrect.hitest(x, y)) {} else if (context.canvas.slicewidthrect &&
-				context.canvas.slicewidthrect.hitest(x, y)) {} else if (context.canvas.thumbrect &&
-				context.canvas.thumbrect.hitest(x, y)) {
+				context.canvas.thumbrect.hitest(x, y)) 
+			{
 				menuobj.hide();
 				var positx = positxobj.value();
 				var posity = posityobj.value();
@@ -2380,11 +2392,13 @@ var keylst = [{
 	},
 	{
 		name: "MENU",
-		keyup: function(evt) {
+		keyup: function(evt) 
+		{
 			var context = menuobj.value()
 			var canvas = context.canvas;
 		},
-		keydown: function(evt) {
+		keydown: function(evt) 
+		{
 			var context = menuobj.value()
 			var canvas = context.canvas;
 
@@ -2571,13 +2585,7 @@ var taplst = [{
 			{
 				window.open(galleryobj.photographer_url, galleryobj.repos);
 			}
-			else
-			{
-				headcnv.height = headcnv.height?0:BEXTENT;
-				headobj.set(BOSS);
-				headham.panel = headobj.value();
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-			}
+			
 
 			_4cnvctx.refresh();
 		}
@@ -2648,13 +2656,33 @@ var taplst = [{
 				menuobj.hide();
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 			}
-			else
+			else if (y < rect.height/3)
 			{
-				headcnv.height = headcnv.height?0:BEXTENT;
-				headobj.set(GALLERY);
-				headham.panel = headobj.value();
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-				menuobj.draw();
+				menuobj.updown(context, -canvas.speedobj.value());
+				if (!global.swipetimeout) {
+					global.swipetimeout = setInterval(function() {
+						context.canvas.lastime = -0.0000000000101010101;
+						menuobj.draw();
+					}, TIMEMAIN);
+				}				
+			}
+			else if (y > (2/3)*rect.height)
+			{
+				menuobj.updown(context, canvas.speedobj.value());
+				if (!global.swipetimeout) {
+					global.swipetimeout = setInterval(function() {
+						context.canvas.lastime = -0.0000000000101010101;
+						menuobj.draw();
+					}, TIMEMAIN);
+				}				
+			}
+			else if (x < rect.width/2)
+			{
+				menuobj.leftright(context, -canvas.speedobj.value() / 2)
+			}
+			else if (x > rect.width/2)
+			{
+				menuobj.leftright(context, canvas.speedobj.value() / 2)
 			}
 		},
 	},
@@ -2717,6 +2745,7 @@ var bosslst = [
 			context.extentrect = new rectangle();
 			context.zoomrect = new rectangle();
 			context.stretchrect = new rectangle();
+			context.timerect = new rectangle();
 			context.slicewidthrect = new rectangle();
 			context.chapterect = new rectangle();
 			context.heightrect = new rectangle();
@@ -2820,6 +2849,26 @@ var bosslst = [
 						0,
 					]
 				]);
+
+			var bw = rect.width/2;
+			var a = new panel.row([0, SCROLLBARWIDTH, 4],
+				[
+					0,
+					new panel.col([0, bw, 0],
+						[
+							0,
+							new Layer(
+								[
+									new panel.fill(NUBACK),
+									new panel.expand(new panel.rectangle(context.timerect), 0, 10),
+									new panel.shrink(new panel.currentH(new panel.fill("white"), ALIEXTENT, 1), 3, 3)
+								]),
+							0,
+						])
+				])
+						
+			a.draw(context, rect, context.canvas.timeobj, 0);
+			
 			var he = heightobj.value();
 			var b = Math.berp(0, he.length() - 1, he.current());
 			var height = Math.lerp(90, rect.height - 180, b);
