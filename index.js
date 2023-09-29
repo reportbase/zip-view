@@ -1541,13 +1541,16 @@ var wheelst = [{
 			if (ctrl) {
 				var isthumb = context.canvas.thumbrect &&
 					context.canvas.thumbrect.hitest(x, y);
-				if (isthumb) {
+				if (isthumb) 
+				{
 					pinchobj.set(0);
 					var obj = heightobj.value();
 					delete context.canvas.thumbcanvas;
 					obj.addperc(type == "wheelup" ? 0.02 : -0.02);
 					context.refresh();
-				} else {
+				} 
+				else 
+				{
 					zoomobj.value().addperc(type == "wheelup" ? 0.02 : -0.02);
 					contextobj.reset()
 				}
@@ -4617,12 +4620,16 @@ var headlst = [
 				}
 
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-			} else if (
+			} 
+			else if (
 				context.thumbpanel &&
-				context.thumbpanel.hitest(x, y)) {
-				buttonobj.set(buttonobj.current() == 0 ?
-					Math.floor(buttonobj.length() / 2) : buttonobj.current())
-				menuobj.draw();
+				context.thumbpanel.hitest(x, y)) 
+			{
+				var index = _8cnv.centered % IMAGELSTSIZE;
+				galleryobj.width = thumbfittedlst[index].width;
+				galleryobj.height = thumbfittedlst[index].height;				
+				buttonobj.reset()
+				galleryobj.init(galleryobj)	
 			} 
 			else if (
 				context.zoomrect &&
@@ -4631,7 +4638,6 @@ var headlst = [
 				clearInterval(global.swipetimeout);
 				global.swipetimeout = 0;
 				_4cnvctx.refresh();
-
 				var visibles = _8cnv.visibles;
 				var k;
 				for (k = 0; k < visibles.length; k++) 
