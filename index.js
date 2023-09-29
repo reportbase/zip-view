@@ -2064,7 +2064,7 @@ var panlst = [{
 				else
 				{
 					var obj = context.canvas.timeobj;
-					var k = panhorz(obj, rect.width - x);
+					var k = panhorz(obj, 2*(rect.width - x));
 					if (k == -1)
 						return;
 					if (k == obj.anchor())
@@ -2091,6 +2091,11 @@ var panlst = [{
 					var stretch = stretchobj.value();
 					stretch.setperc(k);
 					contextobj.reset()
+				}
+				else
+				{
+					rowobj.addperc(type == "panup"?-0.05:0.05);
+					contextobj.reset();
 				}
 			}
 		},
