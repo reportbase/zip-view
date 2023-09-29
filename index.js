@@ -2498,7 +2498,7 @@ var keylst = [{
 				(canvas.shiftKey && key == "tab") ||
 				key == "arrowleft" ||
 				key == "h") {
-				context.canvas.timeobj.addperc(-0.05);
+				context.canvas.timeobj.addperc(0.05);
 				context.refresh();
 			} else if (
 				key == "tab" ||
@@ -2514,11 +2514,11 @@ var keylst = [{
 			} else if (
 				key == "arrowup" ||
 				key == "k") {
-				rowobj.addperc(-0.05);
+				rowobj.addperc(00.05);
 				contextobj.reset()
 			} else if (key == "arrowdown" ||
 				key == "j") {
-				rowobj.adperc(-0.05);
+				rowobj.adperc(0.05);
 				contextobj.reset()
 			} else if (key == "0" && canvas.ctrlKey) {
 				evt.preventDefault();
