@@ -1557,7 +1557,11 @@ var wheelst = [{
 				bossobj.updown(delta);
 			}
 		},
-		leftright: function(context, x, y, delta, ctrl, shift, alt, type) {
+		leftright: function(context, x, y, delta, ctrl, shift, alt, type) 
+		{
+			var j = type == "wheeleft" ? -1 : 1;
+			context.canvas.timeobj.addperc(j*0.01);
+			context.refresh();				
 			bossobj.leftright(delta);
 			context.refresh();
 		},
@@ -2606,6 +2610,22 @@ var taplst = [{
 			else if (galleryobj.repos && context.extentrect && context.extentrect.hitest(x, y)) 
 			{
 				window.open(galleryobj.photographer_url, galleryobj.repos);
+			}
+			else if (y < rect.height/3)
+			{
+			}
+			else if (y > (2/3)*rect.height)
+			{
+			}
+			else if (x < rect.width/2)
+			{
+				context.canvas.timeobj.addperc(-0.01);
+				context.refresh();				
+			}
+			else if (x > rect.width/2)
+			{
+				context.canvas.timeobj.addperc(0.01);
+				context.refresh();				
 			}
 
 			_4cnvctx.refresh();
