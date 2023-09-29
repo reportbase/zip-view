@@ -2518,7 +2518,7 @@ var keylst = [{
 				contextobj.reset()
 			} else if (key == "arrowdown" ||
 				key == "j") {
-				rowobj.adperc(0.05);
+				rowobj.addperc(0.05);
 				contextobj.reset()
 			} else if (key == "g" && canvas.ctrlKey && canvas.shiftKey) {
 				gotodialog();
