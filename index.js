@@ -1557,14 +1557,14 @@ var wheelst = [{
 			else 
 			{
 				var j = type == "wheelup" ? -1 : 1;
-				rowobj.addperc(j*0.005);
+				rowobj.addperc(j*0.005*delta);
 				contextobj.reset();				
 			}
 		},
 		leftright: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
 			var j = type == "wheeleft" ? 1 : -1;
-			context.canvas.timeobj.addperc(j*0.005);
+			context.canvas.timeobj.addperc(j*0.005*delta);
 			context.refresh();				
 			bossobj.leftright(delta);
 			context.refresh();
