@@ -2094,7 +2094,7 @@ var panlst = [{
 				}
 				else
 				{
-					rowobj.addperc(type == "panup"?-0.05:0.05);
+					rowobj.addperc(type == "panup"?0.01:-0.01);
 					contextobj.reset();
 				}
 			}
