@@ -2514,17 +2514,12 @@ var keylst = [{
 			} else if (
 				key == "arrowup" ||
 				key == "k") {
-				rowobj.addperc(00.05);
+				rowobj.addperc(0.05);
 				contextobj.reset()
 			} else if (key == "arrowdown" ||
 				key == "j") {
 				rowobj.adperc(0.05);
 				contextobj.reset()
-			} else if (key == "0" && canvas.ctrlKey) {
-				evt.preventDefault();
-				gotoimage(0);
-			} else if (key == "h" && canvas.ctrlKey && canvas.shiftKey) {
-				gotoimage(0);
 			} else if (key == "g" && canvas.ctrlKey && canvas.shiftKey) {
 				gotodialog();
 			} else if (key == "-" || key == "{") {
