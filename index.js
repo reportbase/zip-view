@@ -1556,13 +1556,13 @@ var wheelst = [{
 			} 
 			else 
 			{
-				rowobj.addperc(0.005*delta);
+				rowobj.addperc(0.001*delta);
 				contextobj.reset();				
 			}
 		},
 		leftright: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
-			context.canvas.timeobj.addperc(0.005*delta);
+			context.canvas.timeobj.addperc(0.001*delta);
 			context.refresh();				
 			bossobj.leftright(delta);
 			context.refresh();
@@ -2584,6 +2584,12 @@ var taplst = [{
 					contextobj.reset()
 				}
 			} 
+			else if (context.timerect && context.timerect.hitest(x, y)) {
+			{
+				var k = (x - context.timerect.x) / context.timerect.width;
+				context.canvas.timeobj.setperc(k);
+				context.refresh();
+			}				
 			else if (context.zoomrect && context.zoomrect.hitest(x, y)) {
 				var obj = zoomobj.value()
 				var k = (y - context.zoomrect.y) / context.zoomrect.height;
