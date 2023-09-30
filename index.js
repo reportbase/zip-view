@@ -1516,16 +1516,16 @@ var wheelst = [{
 				menuobj.draw();
 				context.canvas.pinching = 0;
 			} 
-			else if (context.canvas.buttonrect &&
-					context.buttonrect.hitest(x, y) >= 0)
+			else if (canvas.buttonrect &&
+					canvas.buttonrect.hitest(x, y) >= 0)
 			{
 				buttonobj.addperc(delta * 0.01);
 				menuobj.draw();				
 			}
-			else if (context.canvas.hscrollrect &&
-					context.hscrollrect.hitest(x, y) >= 0)
+			else if (canvas.hscrollrect &&
+					canvas.hscrollrect.hitest(x, y) >= 0)
 			{
-				context.canvas.scrollobj.value().addperc(delta * 0.01);
+				canvas.scrollobj.value().addperc(delta * 0.01);
 				menuobj.draw();				
 			}
 			else 
