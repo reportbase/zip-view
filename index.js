@@ -545,8 +545,10 @@ panel.gallerybar = function() {
 	}
 };
 
-panel.galleryscroll = function() {
-	this.draw = function(context, rect, user, time) {
+panel.galleryscroll = function() 
+{
+	this.draw = function(context, rect, user, time) 
+	{
 		var canvas = context.canvas;
 		context.save();
 		canvas.vscrollrect = new rectangle();
@@ -1505,7 +1507,8 @@ var wheelst = [{
 		updown: function(context, x, y, delta, ctrl, shift, alt, type) {
 			var canvas = context.canvas;
 			context.canvas.slideshow = 0;
-			if (ctrl) {
+			if (ctrl) 
+			{
 				context.canvas.pinching = 1;
 				var k = delta < 0 ? 1 : -1;
 				buttonobj.addperc(k * 0.02);
@@ -1513,6 +1516,18 @@ var wheelst = [{
 				menuobj.draw();
 				context.canvas.pinching = 0;
 			} 
+			else if (context.canvas.buttonrect &&
+					context.buttonrect.hitest(x, y) >= 0)
+			{
+				buttonobj.addperc(delta * 0.01);
+				menuobj.draw();				
+			}
+			else if (context.canvas.hscrollrect &&
+					context.hscrollrect.hitest(x, y) >= 0)
+			{
+				context.canvas.scrollobj.value().addperc(delta * 0.01);
+				menuobj.draw();				
+			}
 			else 
 			{
 				clearInterval(context.canvas.leftright)
