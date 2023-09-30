@@ -1521,13 +1521,13 @@ var wheelst = [{
 				context.canvas.pinching = 0;
 			} 
 			else if (canvas.buttonrect &&
-					canvas.buttonrect.hitest(x, y) >= 0)
+					canvas.buttonrect.hitest(x, y))
 			{
 				buttonobj.addperc(delta * 0.001);
 				menuobj.draw();				
 			}
 			else if (canvas.hscrollrect &&
-					canvas.hscrollrect.hitest(x, y) >= 0)
+					canvas.hscrollrect.hitest(x, y))
 			{
 				canvas.scrollobj.value().addperc(delta * 0.001);
 				menuobj.draw();				
