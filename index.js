@@ -1510,7 +1510,9 @@ var wheelst = [{
 				context.canvas.lastime = -0.0000000000101010101;
 				menuobj.draw();
 				context.canvas.pinching = 0;
-			} else {
+			} 
+			else 
+			{
 				clearInterval(context.canvas.leftright)
 				menuobj.updown(context, delta)
 				if (global.swipetimeout)
@@ -1521,7 +1523,8 @@ var wheelst = [{
 				}, TIMEMAIN);
 			}
 		},
-		leftright: function(context, x, y, delta, ctrl, shift, alt, type) {
+		leftright: function(context, x, y, delta, ctrl, shift, alt, type) 
+		{
 			menuobj.leftright(context, delta);
 		},
 	},
@@ -1562,7 +1565,7 @@ var wheelst = [{
 		},
 		leftright: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
-			context.canvas.timeobj.addperc(-0.001*delta);
+			context.canvas.timeobj.rotate(-0.001*delta);
 			context.refresh();				
 		},
 	},
