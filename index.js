@@ -2645,11 +2645,13 @@ var taplst = [{
 			}
 			else if (x < rect.width/2)
 			{
-				context.canvas.timeobj.addperc(0.05);
+				var k = context.canvas.timeobj.length()/rect.width/12; 
+				context.canvas.timeobj.rotate(k);
 				context.refresh();				
 			}
 			else if (x > rect.width/2)
 			{
+				var k = context.canvas.timeobj.length()/rect.width/12; 
 				context.canvas.timeobj.addperc(-0.05);
 				context.refresh();				
 			}
