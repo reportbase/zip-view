@@ -2075,7 +2075,8 @@ var panlst = [{
 				else
 				{
 					var j = type == "panright" ? 1 : -1;
-					context.canvas.timeobj.rotate(j*0.01);
+					var k = context.canvas.timeobj.length()*j*0.01;
+					context.canvas.timeobj.rotate(k);
 					contextobj.reset();
 				}
 			} 
