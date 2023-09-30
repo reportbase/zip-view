@@ -5558,7 +5558,8 @@ function downloadtext(name, text) {
 	document.body.removeChild(element);
 }
 
-function gotodialog() 
+//todo
+function gotodialog(title, func) 
 {
 	function go(image) 
 	{
