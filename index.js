@@ -2507,23 +2507,21 @@ var keylst = [{
 			} else if (
 				key == "arrowleft" ||
 				key == "h") {
-				var k = context.canvas.timeobj.length()/rect.width)*20
+				var k = (context.canvas.timeobj.length()/rect.width)*20
 				context.canvas.timeobj.rotate(k);
 				context.refresh();
 				evt.preventDefault();
 			} 
 			else if (key == "tab")
 			{
-				if (canvas.shiftKey)
-				{
-				}	
+				
 				evt.preventDefault();
 			}
 			else if 
 			(
 				key == "arrowright" ||
 				key == "l") {
-				var k = context.canvas.timeobj.length()/rect.width)*20
+				var k = (context.canvas.timeobj.length()/rect.width)*20
 				context.canvas.timeobj.rotate(-k);
 				context.refresh();
 				evt.preventDefault();
