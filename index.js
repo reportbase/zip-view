@@ -1583,8 +1583,8 @@ var wheelst = [{
 					context.stretchrect.hitest(x, y))
 			{
 				var stretch = stretchobj.value();
-				stretchobj.addperc(delta*0.001);
-				contextobj.reset()
+				stretch.addperc(delta*0.001);
+				context.refresh()
 			}
 			else 
 			{
