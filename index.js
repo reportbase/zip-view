@@ -1572,15 +1572,15 @@ var wheelst = [{
 					contextobj.reset()
 				}
 			} 
-			else if (canvas.zoomrect &&
-					canvas.zoomrect.hitest(x, y))
+			else if (context.zoomrect &&
+					context.zoomrect.hitest(x, y))
 			{
 				var zoom = zoomobj.value();
 				zoom.addperc(delta*0.001);
 				contextobj.reset()
 			}
-			else if (canvas.stretchrect &&
-					canvas.stretchrect.hitest(x, y))
+			else if (context.stretchrect &&
+					context.stretchrect.hitest(x, y))
 			{
 				var stretch = stretchobj.value();
 				stretchobj.addperc(delta*0.001);
