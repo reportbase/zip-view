@@ -1576,22 +1576,25 @@ var pinchlst = [{
 	},
 	{
 		name: "GALLERY",
-		pinch: function(context, x, y, scale) {
-			var j = Math.lerp(0.005, 0.02, buttonobj.berp());
-			var k = scale < context.canvas.scale ? -1 : 1;
-			buttonobj.addperc(k * j);
-			context.canvas.scale = scale;
-			context.refresh();
+		pinch: function(context, x, y, scale) 
+		{
+			//var j = Math.lerp(0.005, 0.02, buttonobj.berp());
+			//var k = scale < context.canvas.scale ? -1 : 1;
+			//buttonobj.addperc(k * j);
+			//context.canvas.scale = scale;
+			//context.refresh();
 		},
-		pinchstart: function(context, rect, x, y) {
-			context.canvas.start = buttonobj.current();
-			context.canvas.slideshow = 0;
-			context.canvas.pinching = 1;
+		pinchstart: function(context, rect, x, y) 
+		{
+			//context.canvas.start = buttonobj.current();
+			//context.canvas.slideshow = 0;
+			//context.canvas.pinching = 1;
 		},
-		pinchend: function(context) {
+		pinchend: function(context) 
+		{
 			setTimeout(function() {
-				context.canvas.pinching = 0;
-				menuobj.draw();
+				//context.canvas.pinching = 0;
+				//menuobj.draw();
 			}, 100);
 		},
 	},
@@ -1599,26 +1602,28 @@ var pinchlst = [{
 		name: "BOSS",
 		pinch: function(context, x, y, scale) 
 		{
-			var obj = context.obj;
-			obj.add(scale < context.canvas.scale ? -1 : 1);
-			contextobj.reset();
-			context.canvas.scale = scale;
+			//var obj = context.obj;
+			//obj.add(scale < context.canvas.scale ? -1 : 1);
+			//contextobj.reset();
+			//context.canvas.scale = scale;
 		},
-		pinchstart: function(context, rect, x, y) {
-			context.canvas.pinching = 1;
-			menuobj.hide();
-			context.canvas.isthumb = context.canvas.thumbrect && context.canvas.thumbrect.expand &&
-				context.canvas.thumbrect.expand(40, 40).hitest(x, y);
-			pinchobj.set(context.canvas.isthumb ? 0 : 1)
-			context.obj = pinchobj.value().value();
+		pinchstart: function(context, rect, x, y) 
+		{
+			//context.canvas.pinching = 1;
+			//menuobj.hide();
+			//context.canvas.isthumb = context.canvas.thumbrect && context.canvas.thumbrect.expand &&
+			//	context.canvas.thumbrect.expand(40, 40).hitest(x, y);
+			//pinchobj.set(context.canvas.isthumb ? 0 : 1)
+			//context.obj = pinchobj.value().value();
 		},
-		pinchend: function(context) {
-			clearTimeout(global.pinchtime);
-			global.pinchtime = setTimeout(function() {
-				context.canvas.pinching = 0;
-				context.canvas.isthumb = 0;
-				context.refresh();
-			}, 40);
+		pinchend: function(context) 
+		{
+			//clearTimeout(global.pinchtime);
+			//global.pinchtime = setTimeout(function() {
+			//	context.canvas.pinching = 0;
+			//	context.canvas.isthumb = 0;
+			//	context.refresh();
+			//}, 40);
 		},
 	},
 ];
@@ -2379,7 +2384,8 @@ var keylst = [{
 				}
 
 				evt.preventDefault();
-			} else if (key == "g" && canvas.ctrlKey && canvas.shiftKey) {
+			} else if (key == "g" && canvas.ctrlKey && canvas.shiftKey) 
+			{
 				evt.preventDefault();
 				gotodialog();
 			} else if (key == "\\" || key == "/") {
@@ -5515,12 +5521,17 @@ function downloadtext(name, text) {
 	document.body.removeChild(element);
 }
 
-function gotodialog() {
-	function go(image) {
-		if (menuobj.value() == _8cnvctx) {
+function gotodialog() 
+{
+	function go(image) 
+	{
+		if (menuobj.value() == _8cnvctx) 
+		{
 			gotoimage(image);
 			dialog.close();
-		} else {
+		} 
+		else 
+		{
 			galleryobj.set(image - 1);
 			delete _4cnv.thumbcanvas;
 			delete photo.image;
@@ -5530,24 +5541,30 @@ function gotodialog() {
 
 	var input = document.getElementById("goto-input");
 	dialog = document.getElementById("goto-dialog");
-	input.addEventListener("keyup", function(event) {
+	input.addEventListener("keyup", function(event) 
+	{
 		event.preventDefault();
-		if (event.keyCode === 13) {
+		if (event.keyCode === 13) 
+		{
 			var page = input.value.clean();
 			go(Number(page));
 			dialog.close();
 		}
 	});
 
-	dialog.classList.add('dialog');
-	dialog.style.width = window.innerWidth*0.85;
-	dialog.addEventListener("click", function(event) {
+	//dialog.classList.add('dialog');
+	//dialog.style.width = window.innerWidth*0.85;
+	dialog.addEventListener("click", function(event) 
+	{
 		var rect = new rectangle(dialog.getBoundingClientRect());
-		if (event.target.id == "goto-ok") {
+		if (event.target.id == "goto-ok") 
+		{
 			var page = input.value.clean();
 			go(Number(page));
 			dialog.close();
-		} else if (!rect.hitest(event.x, event.y)) {
+		} 
+		else if (!rect.hitest(event.x, event.y)) 
+		{
 			dialog.close();
 		}
 	});
