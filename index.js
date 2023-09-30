@@ -1565,7 +1565,8 @@ var wheelst = [{
 		},
 		leftright: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
-			context.canvas.timeobj.rotate(-0.001*delta);
+			var k = -0.001*delta*context.canvas.timeobj.length();
+			context.canvas.timeobj.rotate(k);
 			context.refresh();				
 		},
 	},
