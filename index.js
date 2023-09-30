@@ -1526,12 +1526,6 @@ var wheelst = [{
 				buttonobj.addperc(delta * 0.001);
 				menuobj.draw();				
 			}
-			else if (canvas.hscrollrect &&
-					canvas.hscrollrect.hitest(x, y))
-			{
-				canvas.scrollobj.value().addperc(delta * 0.001);
-				menuobj.draw();				
-			}
 			else 
 			{
 				clearInterval(context.canvas.leftright)
@@ -1578,6 +1572,20 @@ var wheelst = [{
 					contextobj.reset()
 				}
 			} 
+			else if (canvas.zoomrect &&
+					canvas.zoomrect.hitest(x, y))
+			{
+				var zoom = zoomobj.value();
+				zoom.addperc(delta*0.001);
+				contextobj.reset()
+			}
+			else if (canvas.stretchrect &&
+					canvas.stretchrect.hitest(x, y))
+			{
+				var stretch = stretchobj.value();
+				stretchobj.addperc(delta*0.001);
+				contextobj.reset()
+			}
 			else 
 			{
 				rowobj.addperc(0.001*delta);
