@@ -4818,15 +4818,16 @@ var headlst = [
 			var rows = infobj.data.length;
 			var rh = 26;
 			var e = _5cnv.sliceobj.length() <= 1;
+			var g = menuobj.value() == _8cnvctx;
 			var a = new panel.col(
 				[25, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT, ALIEXTENT, 0, ALIEXTENT, 25],
 				[
 					0,
 					new panel.help(),
 					0,
-					new panel.fullscreen(),
-					new panel.zoom(),
-					new panel.thumb(),
+					g?new panel.fullscreen():0,
+					g?new panel.zoom():0,
+					g?new panel.thumb():0,
 					0,
 					e ? 0 : new panel.folders(),
 					0,
@@ -5572,12 +5573,12 @@ function gotodialog()
 	if (menuobj.value() == _8cnvctx) 
 	{
 		var current = Math.floor(
-			Math.lerp(1, galleryobj.length(), 1 - _8cnv.timeobj.berp()));
+			Math.lerp(0, galleryobj.length()-1, 1 - _8cnv.timeobj.berp()));
 		input.value = current;
 	} 
 	else 
 	{
-		input.value = galleryobj.current()+1 
+		input.value = galleryobj.current()
 	}
 
 	dialog.showModal();
