@@ -1635,28 +1635,28 @@ var pinchlst = [{
 		name: "BOSS",
 		pinch: function(context, x, y, scale) 
 		{
-			//var obj = context.obj;
-			//obj.add(scale < context.canvas.scale ? -1 : 1);
-			//contextobj.reset();
-			//context.canvas.scale = scale;
+			//todo
+			var obj = context.obj;
+			obj.add(scale < context.canvas.scale ? -1 : 1);
+			context.refresh();
+			context.canvas.scale = scale;
 		},
 		pinchstart: function(context, rect, x, y) 
 		{
-			//context.canvas.pinching = 1;
-			//menuobj.hide();
-			//context.canvas.isthumb = context.canvas.thumbrect && context.canvas.thumbrect.expand &&
-			//	context.canvas.thumbrect.expand(40, 40).hitest(x, y);
-			//pinchobj.set(context.canvas.isthumb ? 0 : 1)
-			//context.obj = pinchobj.value().value();
+			context.canvas.pinching = 1;
+			context.canvas.isthumb = context.canvas.thumbrect && context.canvas.thumbrect.expand &&
+				context.canvas.thumbrect.expand(40, 40).hitest(x, y);
+			pinchobj.set(0);//context.canvas.isthumb ? 0 : 1)
+			context.obj = pinchobj.value().value();
 		},
 		pinchend: function(context) 
 		{
-			//clearTimeout(global.pinchtime);
-			//global.pinchtime = setTimeout(function() {
-			//	context.canvas.pinching = 0;
-			//	context.canvas.isthumb = 0;
-			//	context.refresh();
-			//}, 40);
+			clearTimeout(global.pinchtime);
+			global.pinchtime = setTimeout(function() {
+				context.canvas.pinching = 0;
+				context.canvas.isthumb = 0;
+				context.refresh();
+			}, 40);
 		},
 	},
 ];
@@ -2529,7 +2529,8 @@ var keylst = [{
 			context.refresh();
 			var key = evt.key.toLowerCase();
 
-			if (key == "f" && canvas.ctrlKey && canvas.shiftKey) {
+			if (key == "f" && canvas.ctrlKey && canvas.shiftKey) 
+			{
 				screenfull.toggle()
 				context.refresh();
 				evt.preventDefault();
@@ -5601,7 +5602,8 @@ function gotodialog()
 		} 
 		else if (!rect.hitest(event.x, event.y)) 
 		{
-			dialog.close();
+			if (!dialog.clickblocked)
+				dialog.close();
 		}
 	});
 
@@ -5615,7 +5617,12 @@ function gotodialog()
 	{
 		input.value = galleryobj.current()
 	}
-
+	
+	dialog.clickblocked = 1;
+	setTimeout(function()
+		   {
+			dialog.clickblocked = 0; 
+		   }, 40);
 	dialog.showModal();
 }
 
