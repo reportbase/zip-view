@@ -72,7 +72,8 @@ photo.image = 0;
 
 let url = new URL(window.location.href);
 
-util.random_color = function() {
+util.random_color = function() 
+{
 	const letters = '0123456789ABCDEF';
 	let color = '#';
 	for (let i = 0; i < 6; i++)
@@ -80,7 +81,8 @@ util.random_color = function() {
 	return color;
 }
 
-util.numbersonly = function(str) {
+util.numbersonly = function(str) 
+{
 	return str.split('').filter(char => !isNaN(char)).join('');
 }
 
@@ -2072,9 +2074,8 @@ var panlst = [{
 				}
 				else
 				{
-					var obj = context.canvas.timeobj;
 					var j = type == "panright" ? 1 : -1;
-					obj.addperc(j*0.01);
+					context.canvas.timeobj.rotate(j*0.01);
 					contextobj.reset();
 				}
 			} 
@@ -2581,13 +2582,10 @@ var taplst = [{
 
 			if (context.canvas.thumbrect && context.canvas.thumbrect.hitest(x, y)) 
 			{
-				headobj.set(BOSS);
-				headham.panel = headobj.value();
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-
 				if (context.canvas.selectrect &&
-					context.canvas.selectrect.hitest(x, y) >= 0) {
-					galleryobj.transparent = galleryobj.ransparent ? 0 : 1;
+					context.canvas.selectrect.hitest(x, y) >= 0) 
+				{
+					galleryobj.transparent = galleryobj.transparent ? 0 : 1;
 					context.refresh();
 				} 
 				else 
@@ -2603,12 +2601,15 @@ var taplst = [{
 				context.canvas.timeobj.setperc(k);
 				context.refresh();
 			}				
-			else if (context.zoomrect && context.zoomrect.hitest(x, y)) {
+			else if (context.zoomrect && context.zoomrect.hitest(x, y)) 
+			{
 				var obj = zoomobj.value()
 				var k = (y - context.zoomrect.y) / context.zoomrect.height;
 				obj.setperc(k);
 				contextobj.reset();
-			} else if (context.stretchrect && context.stretchrect.hitest(x, y)) {
+			} 
+			else if (context.stretchrect && context.stretchrect.hitest(x, y)) 
+			{
 				var obj = stretchobj.value()
 				var k = (y - context.stretchrect.y) / context.stretchrect.height;
 				obj.setperc(k);
