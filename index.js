@@ -2507,7 +2507,8 @@ var keylst = [{
 			} else if (
 				key == "arrowleft" ||
 				key == "h") {
-				context.canvas.timeobj.addperc(0.05);
+				var k = context.canvas.timeobj.length()/rect.width)*20
+				context.canvas.timeobj.rotate(k);
 				context.refresh();
 				evt.preventDefault();
 			} 
@@ -2522,7 +2523,8 @@ var keylst = [{
 			(
 				key == "arrowright" ||
 				key == "l") {
-				context.canvas.timeobj.addperc(-0.05);
+				var k = context.canvas.timeobj.length()/rect.width)*20
+				context.canvas.timeobj.rotate(-k);
 				context.refresh();
 				evt.preventDefault();
 			} else if (key == "/" || key == "\\") {
