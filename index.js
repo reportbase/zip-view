@@ -1148,7 +1148,7 @@ function rectangle(x, y, w, h, user) {
 rectangle.prototype.hitest = function(x, y) 
 {
 	var xx = x >= this.x;
-	var yy y >= this.y;
+	var yy = y >= this.y;
 	var w = x < (this.x + this.width);
 	var h = y < (this.y + this.height);
 	return xx && yy && w && h;
