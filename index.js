@@ -2085,7 +2085,7 @@ var panlst =
 		leftright: function(context, rect, x, y, type) {},
 		pan: function(context, rect, x, y, type) 
 		{
-			var canvas = context.canvas.
+			var canvas = context.canvas;
 			if (canvas.pinching)
 				return;
 			x = movingx.update(x);
@@ -2109,7 +2109,7 @@ var panlst =
 				}
 				else
 				{
-					canvas.timeobj.setrotate(x-canvas.startx,
+					canvas.timeobj.setrotate(canvas.startx-x,
 						canvas.virtualwidth);
 					context.refresh();
 				}
