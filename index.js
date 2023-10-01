@@ -2415,7 +2415,8 @@ var keylst = [{
 				}
 
 				evt.preventDefault();
-			} else if (key == "g" && canvas.ctrlKey && canvas.shiftKey) 
+			} 
+			else if (key == "g" && canvas.ctrlKey && canvas.shiftKey) 
 			{
 				evt.preventDefault();
 				var value = galleryobj.current();
@@ -2423,7 +2424,16 @@ var keylst = [{
 					value = Math.floor(Math.lerp(0, galleryobj.length()-1, 
 						1 - _8cnv.timeobj.berp()));
 				gotodialog(value, "Goto", goimage);
-			} else if (key == "\\" || key == "/") {
+			} 
+			else if (key == "q" && canvas.ctrlKey && canvas.shiftKey) 
+			{
+				//todo
+				evt.preventDefault();
+				var value = "";
+				gotodialog(value, "QID", goimage);
+			} 
+			else if (key == "\\" || key == "/") 
+			{
 				var h = headcnv.height ? 0 : BEXTENT;
 				headcnvctx.show(0, 0, window.innerWidth, h);
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
