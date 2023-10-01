@@ -2315,7 +2315,6 @@ var swipelst = [{
 			var k = evt.type == "swipeup" ? 1 : -1;
 			menuobj.updown(context, k * context.canvas.speedobj.value());
 			if (!global.swipetimeout) {
-				context.canvas.keydown = 0;
 				global.swipetimeout = setInterval(function() {
 					context.canvas.lastime = -0.0000000000101010101;
 					menuobj.draw();
@@ -2358,7 +2357,7 @@ var keylst = [{
 			canvas.shiftKey = evt.shiftKey;
 			canvas.ctrlKey = evt.ctrlKey;
 			canvas.slideshow = 0;
-			canvas.keydown = canvas.keydown + 1;
+			canvas.keydown = 1;
 			
 			clearInterval(context.canvas.leftright);
 			if (
@@ -3519,7 +3518,7 @@ menuobj.draw = function()
 	if (context.canvas.slideshow > 0) {
 		var k = canvas.autodirect;
 		context.canvas.timeobj.rotate(k * context.canvas.slideshow);
-		if (!context.canvas.keydown)
+		//if (!context.canvas.keydown)
 			context.canvas.slideshow -= context.canvas.slidereduce
 	} else if (global.swipetimeout) {
 		clearInterval(global.swipetimeout)
