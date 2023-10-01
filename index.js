@@ -2100,10 +2100,10 @@ var panlst =
 				{
 					var xx = (context.canvas.startx - x);
 					var l = context.canvas.timeobj.length();
-					var w = context.canvas.virtualwidth
+					var w = window.innerWidth;
 					var b = (xx*l)/w;
-					var c = b/context.canvas.timeobj.length();
-					context.canvas.timeobj.addperc(1-c);
+					//var c = b/context.canvas.timeobj.length();
+					context.canvas.timeobj.add(b);
 					context.refresh();
 				}
 			} 
