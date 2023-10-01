@@ -2085,30 +2085,32 @@ var panlst =
 		leftright: function(context, rect, x, y, type) {},
 		pan: function(context, rect, x, y, type) 
 		{
-			if (context.canvas.pinching)
+			var canvas = context.canvas.
+			if (canvas.pinching)
 				return;
 			x = movingx.update(x);
 			y = movingy.update(y);
 			if (context.canvas.isthumb) 
 			{
 				context.hithumb(x, y);
-				if (y != context.canvas.lasty)
+				if (y != canvas.lasty)
 					contextobj.reset()
 				else
 					context.refresh();
-				context.canvas.lasty = y;
+				canvas.lasty = y;
 			} 
 			else if (type == "panleft" || type == "panright") 
 			{
 				if (context.istimerect)
 				{
 					var k = (x - context.timerect.x) / context.timerect.width;
-					context.canvas.timeobj.setperc(k);
+					canvas.timeobj.setperc(k);
 					context.refresh();
 				}
 				else
 				{
-					context.canvas.timeobj.setrotate(x-canvas.startx,context.canvas.virtualwidth);
+					canvas.timeobj.setrotate(x-canvas.startx,
+						canvas.virtualwidth);
 					context.refresh();
 				}
 			} 
