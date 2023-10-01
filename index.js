@@ -279,10 +279,10 @@ let circular_array = function(title, data)
 	{
 		var k = this.length() * g;
 		this.add(k);
-		if (this.CURRENT >= this.length())
-			this.CURRENT = this.CURRENT - this.length();
-		else if (this.CURRENT <= 0)
-			this.CURRENT = this.length() + this.CURRENT;
+//		if (this.CURRENT >= this.length())
+//			this.CURRENT = this.CURRENT - this.length();
+//		else if (this.CURRENT <= 0)
+//			this.CURRENT = this.length() + this.CURRENT;
 	};
 
 	this.setperc = function(p) {
