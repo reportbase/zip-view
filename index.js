@@ -281,7 +281,7 @@ let circular_array = function(title, data)
 		this.add(k);
 		if (this.CURRENT >= this.length())
 			this.CURRENT = this.CURRENT - this.length();
-		else if (this.CURRENT < 0)
+		else if (this.CURRENT <= 0)
 			this.CURRENT = this.length() + this.CURRENT;
 	};
 
