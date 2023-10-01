@@ -2367,11 +2367,7 @@ var keylst = [{
 			canvas.ctrlKey = evt.ctrlKey;
 			canvas.slideshow = 0;
 			canvas.keydown = (typeof canvas.keydown == "undefined") ? 1 : canvas.keydown + 1;
-			clearTimeout(canvas.keydowntime);
-			canvas.keydowntime = setTimeout(function() {
-				canvas.keydown = 0;
-			}, 40);
-
+			
 			clearInterval(context.canvas.leftright);
 			if (
 				key == "arrowup" ||
@@ -2416,7 +2412,7 @@ var keylst = [{
 
 				evt.preventDefault();
 			} 
-			else if (key == "g" && canvas.ctrlKey && canvas.shiftKey) 
+			else if (key == "g") 
 			{
 				evt.preventDefault();
 				var value = galleryobj.current();
@@ -2425,7 +2421,7 @@ var keylst = [{
 						1 - _8cnv.timeobj.berp()));
 				gotodialog(value, "Goto", goimage);
 			} 
-			else if (key == "q" && canvas.ctrlKey && canvas.shiftKey) 
+			else if (key == "q") 
 			{
 				//todo
 				evt.preventDefault();
@@ -2459,13 +2455,13 @@ var keylst = [{
 				key == "l") {
 				evt.preventDefault();
 				menuobj.leftright(context, canvas.speedobj.value() / 2)
-			} else if (key == "d" && canvas.ctrlKey && canvas.shiftKey) {
+			} else if (key == "d") {
 				evt.preventDefault();
 				download();
-			} else if (key == "x" && canvas.ctrlKey && canvas.shiftKey) {
+			} else if (key == "x") {
 				evt.preventDefault();
 				importdialog();
-			} else if (key == "f" && canvas.ctrlKey && canvas.shiftKey) {
+			} else if (key == "f") {
 				evt.preventDefault();
 				screenfull.toggle();
 			}
