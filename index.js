@@ -2100,7 +2100,7 @@ var panlst =
 				{
 					var e = (context.canvas.startx - x) /
 						context.canvas.virtualwidth;
-					context.canvas.timeobj.rotate(e*context.canvas.timeobj.length());
+					context.canvas.timeobj.set(e*context.canvas.timeobj.length());
 					context.refresh();
 				}
 			} 
