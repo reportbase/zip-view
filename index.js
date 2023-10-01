@@ -2098,9 +2098,11 @@ var panlst =
 				}
 				else
 				{
-					var e = (context.canvas.startx - x) /
+					var e = (context.canvas.startx - x);
+					var g = (e*context.canvas.timeobj.length())/
 						context.canvas.virtualwidth;
-					context.canvas.timeobj.set(e*context.canvas.timeobj.length());
+					var b = (e*g)/context.canvas.timeobj.length();
+					context.canvas.timeobj.rotate(b);
 					context.refresh();
 				}
 			} 
