@@ -2096,7 +2096,7 @@ var panlst =
 				}
 				else
 				{
-					var e = canvas.startx - x;
+					var e = context.canvas.startx - x;
 					context.canvas.timeobj.add(e);
 					contex.refresh();
 				}
@@ -2125,7 +2125,7 @@ var panlst =
 				}
 				else
 				{
-					var e = (canvas.starty - y)/rowobj.length();
+					var e = (context.canvas.starty - y)/rowobj.length();
 					rowobj.addperc(e);
 					contextobj.reset();
 				}
