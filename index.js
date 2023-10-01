@@ -3079,7 +3079,8 @@ bossobj.draw = function() {
 	else
 		canvas.lastime = canvas.timeobj.current();
 
-	if (global.swipetimeout) {
+	if (0)//global.swipetimeout) 
+	{
 		if (!context.canvas.keydown)// && !context.canvas.panning)
 			canvas.slidestop -= canvas.slidereduce;
 		if (canvas.slidestop > 0) {
@@ -3516,7 +3517,7 @@ menuobj.draw = function()
 	if (context.canvas.slideshow > 0) {
 		var k = canvas.autodirect;
 		context.canvas.timeobj.rotate(k * context.canvas.slideshow);
-		if (!context.canvas.keydown)
+		//todo if (!context.canvas.keydown)
 			context.canvas.slideshow -= context.canvas.slidereduce
 	} else if (global.swipetimeout) {
 		clearInterval(global.swipetimeout)
