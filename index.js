@@ -2096,8 +2096,9 @@ var panlst =
 				}
 				else
 				{
-					var e = context.canvas.startx - x;
-					context.canvas.timeobj.add(e);
+					var e = (context.canvas.startx - x) /
+						context.canvas.virtualwidth;
+					context.canvas.timeobj.rotate(e);
 					contex.refresh();
 				}
 			} 
@@ -2125,8 +2126,8 @@ var panlst =
 				}
 				else
 				{
-					var e = (context.canvas.starty - y)/rowobj.length();
-					rowobj.addperc(e);
+					var e = context.canvas.starty - y;
+					rowobj.add(e);
 					contextobj.reset();
 				}
 			}
