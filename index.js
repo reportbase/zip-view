@@ -1672,12 +1672,6 @@ var pretchobj = new circular_array("PORTSTRETCH", 100);
 var letchobj = new circular_array("LANDSTRETCH", 100);
 var stretchobj = new circular_array("STRETCH", [pretchobj, letchobj]);
 
-var searchlst = [
-	"pexels",
-	"pixabay",
-];
-
-var searchobj = new circular_array("SEARCH", searchlst);
 var extentobj = new circular_array("EXTENT", []);
 var infobj = new circular_array("INFO", []);
 infobj.reset = function() {
@@ -2575,7 +2569,13 @@ var keylst = [{
 				contextobj.reset()
 				evt.preventDefault();
 			} else if (key == "g" && canvas.ctrlKey && canvas.shiftKey) {
-				gotodialog("", "Goto", goimage);
+
+				var value = galleryobj.current();
+				if (menuobj.value() == _8cnvctx) 
+					value = Math.floor(Math.lerp(0, galleryobj.length()-1, 
+						1 - _8cnv.timeobj.berp()));
+				gotodialog(value, "Goto", goimage);
+
 			} else if (key == "-" || key == "{") {
 				zoomobj.value().add(-1);
 				contextobj.reset()
@@ -2660,7 +2660,13 @@ var taplst = [{
 			else if (context.chapterect &&
 				context.chapterect.hitest(x, y)) 
 			{
-				gotodialog("", "Goto", goimage);
+
+				var value = galleryobj.current();
+				if (menuobj.value() == _8cnvctx) 
+					value = Math.floor(Math.lerp(0, galleryobj.length()-1, 
+						1 - _8cnv.timeobj.berp()));
+				gotodialog(value, "Goto", goimage);
+				
 			} 
 			else if (galleryobj.repos && context.extentrect && context.extentrect.hitest(x, y)) 
 			{
@@ -2725,9 +2731,15 @@ var taplst = [{
 			else if 
 			(
 				context.chapterect &&
-				context.chapterect.hitest(x, y)) {
-				gotodialog("", "Goto", goimage);
-			} else if (canvas.vscrollrect && canvas.vscrollrect.hitest(x, y)) {
+				context.chapterect.hitest(x, y)) 
+			{
+				var value = galleryobj.current();
+				if (menuobj.value() == _8cnvctx) 
+					value = Math.floor(Math.lerp(0, galleryobj.length()-1, 
+						1 - _8cnv.timeobj.berp()));
+				gotodialog(value, "Goto", goimage);
+			} 
+			else if (canvas.vscrollrect && canvas.vscrollrect.hitest(x, y)) {
 				var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
 				canvas.timeobj.setperc(1 - k);
 				context.refresh()
@@ -5173,6 +5185,21 @@ galleryobj.init = function(obj) {
 		},
 
 		{
+			title: "search pexels",
+			func: function() {
+
+				var search = "cow"
+				fetch(`https://pexels.reportbase5836.workers.dev/?search=${search}&page=1`)
+					.then(response => jsonhandler(response))
+					.then((obj) => galleryobj.init(obj))
+					.catch((error) => {});
+
+				
+			},
+			enabled: function() {return false}
+		},
+	
+		{
 			title: "dalle json",
 			func: function() {
 				fetch(`https://bucket.reportbase5836.workers.dev/dalle.json`)
@@ -5272,8 +5299,13 @@ galleryobj.init = function(obj) {
 
 	_7cnv.sliceobj.data = [{
 			title: "Goto\nCtrl+Shift+G",
-			func: function() {
-				gotodialog("", "Goto", goimage);
+			func: function() 
+			{
+				var value = galleryobj.current();
+				if (menuobj.value() == _8cnvctx) 
+					value = Math.floor(Math.lerp(0, galleryobj.length()-1, 
+						1 - _8cnv.timeobj.berp()));
+				gotodialog(value, "Goto", goimage);
 			}
 		},
 
@@ -5526,14 +5558,6 @@ if (url.searchParams.has("qid")) {
 	url.path = url.searchParams.get("r2");
 	fetch(`https://bucket.reportbase5836.workers.dev/${url.path}.json`)
 		.then((response) => jsonhandler(response))
-		.then((obj) => galleryobj.init(obj))
-		.catch((error) => {});
-} else if (url.searchParams.has("search")) {
-	galleryobj.width = 2160;
-	galleryobj.height = 2160;
-	var k = url.searchParams.get("search")
-	fetch(`https://pexels.reportbase5836.workers.dev/?search=${k}&page=1`)
-		.then(response => jsonhandler(response))
 		.then((obj) => galleryobj.init(obj))
 		.catch((error) => {});
 } else {
