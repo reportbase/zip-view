@@ -5668,6 +5668,8 @@ function goimage(image)
 function gotodialog(value, title, func) 
 {
 	var input = document.getElementById("goto-input");
+	var button = document.getElementById("goto-ok");
+	button.value = value;
 	dialog = document.getElementById("goto-dialog");
 	input.addEventListener("keyup", function(event) 
 	{
