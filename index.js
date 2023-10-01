@@ -2466,7 +2466,7 @@ var keylst = [{
 			else if (key == "q") 
 			{
 				evt.preventDefault();
-				gotodialog("", "QID", qid);
+				gotodialog("asdfadadsfasdfadfadfa", "QID", qid);
 			} 
 			else if (key == "\\" || key == "/") 
 			{
@@ -5677,7 +5677,7 @@ function gotodialog(value, title, func)
 {
 	var input = document.getElementById("goto-input");
 	var button = document.getElementById("goto-ok");
-	button.value = value;
+	button.value = title;
 	dialog = document.getElementById("goto-dialog");
 	input.addEventListener("keyup", function(event) 
 	{
