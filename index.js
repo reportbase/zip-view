@@ -148,13 +148,15 @@ util.rotated_list = function(lst, size, start, width) {
 	return unique.sort();
 }
 
-let circular_array = function(title, data) {
+let circular_array = function(title, data) 
+{
 	this.title = title;
 	this.ANCHOR = 0;
 	this.CURRENT = 0;
 	this.data = data;
 
-	this.length = function() {
+	this.length = function() 
+	{
 		return Array.isArray(this.data) ?
 			this.data.length : Number(this.data);
 	};
@@ -203,7 +205,8 @@ let circular_array = function(title, data) {
 		return Math.floor(Math.lerp(0, this.length(), berp));
 	};
 
-	this.rotateanchored = function(index) {
+	this.rotateanchored = function(index) 
+	{
 		this.CURRENT = this.ANCHOR - index;
 		if (this.CURRENT >= this.length())
 			this.CURRENT = this.CURRENT - this.length();
@@ -2109,7 +2112,8 @@ var panlst =
 				}
 				else
 				{
-					canvas.timeobj.setrotate(canvas.startx-x,canvas.virtualwidth);
+					canvas.timeobj.setrotate(canvas.startx-x,
+						canvas.virtualwidth);
 					context.refresh();
 				}
 			} 
@@ -2137,17 +2141,19 @@ var panlst =
 				}
 				else
 				{
-					//todo
-					rowobj.set(y);
+					rowobj.setrotate(canvas.starty-y,
+						rowobj.length());
 					contextobj.reset();
 				}
 			}
 		},
-		panstart: function(context, rect, x, y) {
+		panstart: function(context, rect, x, y) 
+		{
 			var canvas = context.canvas;
 			canvas.slidestop = 0;
 			canvas.startx = x;
 			canvas.starty = y;
+			rowobj.setanchor(rowobj.current());
 			canvas.timeobj.setanchor(canvas.timeobj.current());
 			canvas.isthumb = canvas.thumbrect &&
 				canvas.thumbrect.hitest(x, y);
