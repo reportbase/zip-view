@@ -161,20 +161,25 @@ let circular_array = function(title, data)
 			this.data.length : Number(this.data);
 	};
 
-	this.value = function() {
+	this.value = function() 
+	{
 		if (this.CURRENT < this.length() && Array.isArray(this.data))
 			return this.data[this.CURRENT];
 		return this.CURRENT;
 	};
 
-	this.anchor = function() {
+	this.anchor = function() 
+	{
 		return this.ANCHOR;
 	};
-	this.current = function() {
+	
+	this.current = function() 
+	{
 		return this.CURRENT;
 	};
 
-	this.split = function(k, j, size) {
+	this.split = function(k, j, size) 
+	{
 		k = Math.floor(k);
 		let s = j.split("-");
 		let begin = Number(s[0]);
@@ -193,14 +198,16 @@ let circular_array = function(title, data)
 		this.end = end;
 	}
 
-	this.berp = function() {
+	this.berp = function() 
+	{
 		if (Array.isArray(this.data))
 			return Math.berp(0, this.length() - 1, this.current());
 		else
 			return Math.berp(0, this.length(), this.current());
 	};
 
-	this.lerp = function(berp) {
+	this.lerp = function(berp) 
+	{
 		console.assert(Array.isArray(this.data));
 		return Math.floor(Math.lerp(0, this.length(), berp));
 	};
@@ -208,23 +215,16 @@ let circular_array = function(title, data)
 	this.rotateanchored = function(index) 
 	{
 		this.CURRENT = this.ANCHOR - index;
-		if (this.CURRENT >= this.length())
-			this.CURRENT = this.CURRENT - this.length();
-		else if (this.CURRENT < 0)
-			this.CURRENT = this.length() + this.CURRENT;
 	};
 
 	this.setrotate = function(x, w) 
 	{
 		var p = (x*this.length())/w;
 		this.CURRENT = this.ANCHOR+p;
-		if (this.CURRENT >= this.length())
-			this.CURRENT = this.CURRENT - this.length();
-		else if (this.CURRENT < 0)
-			this.CURRENT = this.length() + this.CURRENT;
 	};
 
-	this.rotate = function(index) {
+	this.rotate = function(index) 
+	{
 		this.CURRENT += index;
 		if (this.CURRENT >= this.length())
 			this.CURRENT = this.CURRENT - this.length();
@@ -1648,12 +1648,13 @@ var pinchlst =
 		name: "GALLERY",
 		pinch: function(context, x, y, scale) 
 		{
-			//todo
-			buttonobj.addperc(scale*0.001);
-			context.refresh();
+			var k = buttonobj.anchor() + buttonobj.length()*scale;
+			buttonobj.setcurrent(k);
+			menuobj.draw();
 		},
 		pinchstart: function(context, rect, x, y) 
 		{
+			buttonobj.setanchor(buttonobj.current())
 			context.canvas.slideshow = 0;
 			context.canvas.pinching = 1;
 		},
@@ -1666,16 +1667,19 @@ var pinchlst =
 		name: "BOSS",
 		pinch: function(context, x, y, scale) 
 		{
-			context.obj.addperc(scale*0.001);
+			var k = context.obj.anchor() + context.obj.length()*scale;
+			context.obj.setcurrent(k);
 			contextobj.reset();
 		},
 		pinchstart: function(context, rect, x, y) 
 		{
 			context.canvas.pinching = 1;
-			context.canvas.isthumb = context.canvas.thumbrect && context.canvas.thumbrect.expand &&
+			context.canvas.isthumb = context.canvas.thumbrect && 
+				context.canvas.thumbrect.expand &&
 				context.canvas.thumbrect.expand(40, 40).hitest(x, y);
-			pinchobj.set(0);//context.canvas.isthumb ? 0 : 1)
+			pinchobj.set(context.canvas.isthumb ? 0 : 1)
 			context.obj = pinchobj.value().value();
+			context.obj.setanchor(context.obj.current());
 		},
 		pinchend: function(context) 
 		{
