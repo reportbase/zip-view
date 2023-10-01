@@ -3080,7 +3080,7 @@ bossobj.draw = function() {
 		canvas.lastime = canvas.timeobj.current();
 
 	if (global.swipetimeout) {
-		if (!context.canvas.keydown && !context.canvas.panning)
+		if (!context.canvas.keydown)// && !context.canvas.panning)
 			canvas.slidestop -= canvas.slidereduce;
 		if (canvas.slidestop > 0) {
 			var j = canvas.autodirect * (TIMEOBJ / 1000)
