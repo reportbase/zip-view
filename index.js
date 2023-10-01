@@ -2465,10 +2465,8 @@ var keylst = [{
 			} 
 			else if (key == "q") 
 			{
-				//todo
 				evt.preventDefault();
-				var value = "";
-				gotodialog(value, "QID", goimage);
+				gotodialog("", "QID", qid);
 			} 
 			else if (key == "\\" || key == "/") 
 			{
@@ -2611,20 +2609,27 @@ var keylst = [{
 				rowobj.addperc(-0.05);
 				contextobj.reset()
 				evt.preventDefault();
-			} else if (key == "arrowdown" ||
-				key == "j") {
+			} 
+			else if (key == "arrowdown" || key == "j") 
+			{
 				rowobj.addperc(0.05);
 				contextobj.reset()
 				evt.preventDefault();
-			} else if (key == "g" && canvas.ctrlKey && canvas.shiftKey) {
-
+			}
+			else if (key == "q") 
+			{
+				gotodialog("", "QID", qid);
+			}				
+			else if (key == "g") 
+			{
 				var value = galleryobj.current();
 				if (menuobj.value() == _8cnvctx) 
 					value = Math.floor(Math.lerp(0, galleryobj.length()-1, 
 						1 - _8cnv.timeobj.berp()));
 				gotodialog(value, "Goto", goimage);
 
-			} else if (key == "-" || key == "{") {
+			} 
+			else if (key == "-" || key == "{") {
 				zoomobj.value().add(-1);
 				contextobj.reset()
 			} else if (key == "+" || key == "}" || key == "=") {
@@ -5352,11 +5357,7 @@ galleryobj.init = function(obj) {
 			title: "QID\nkey+q",
 			func: function() 
 			{
-				var value = galleryobj.current();
-				if (menuobj.value() == _8cnvctx) 
-					value = Math.floor(Math.lerp(0, galleryobj.length()-1, 
-						1 - _8cnv.timeobj.berp()));
-				gotodialog(value, "QID", goimage);
+				gotodialog("", "QID", goimage);
 			}
 		},
 
@@ -5584,18 +5585,18 @@ function initime() {
 
 url.path = "home";
 
-if (url.searchParams.has("qid")) {
-	url.path = url.searchParams.get("qid");
-	var path2 = `https://dweb.link/ipfs/${url.path}`;
-	var path1 = `https://ipfs.filebase.io/ipfs/${url.path}`;
-	var path3 = `https://dweb.link/api/v0/ls?arg=${url.path}`
-	var path4 = `https://gateway.ipfs.io/api/v0/ls?arg=${url.path}`;
+function qid(path)
+{
+	var path2 = `https://dweb.link/ipfs/${path}`;
+	var path1 = `https://ipfs.filebase.io/ipfs/${path}`;
+	var path3 = `https://dweb.link/api/v0/ls?arg=${path}`
+	var path4 = `https://gateway.ipfs.io/api/v0/ls?arg=${path}`;
 	fetch(path3)
 		.then(response => jsonhandler(response))
 		.then(function(json) {
 			var k = json.Objects[0];
 			if (k.Links.length == 0) {
-				fetch(`https://cloudflare-ipfs.com/ipfs/${url.path}`)
+				fetch(`https://cloudflare-ipfs.com/ipfs/${path}`)
 					.then((response) => blobhandler(response))
 					.then(function(blob) {
 						loadblob(blob);
@@ -5604,11 +5605,18 @@ if (url.searchParams.has("qid")) {
 			} else {
 				galleryobj.data = [];
 				var k = json.Objects[0];
-				loadipfs(k.Links, url.path);
+				loadipfs(k.Links, path);
 			}
 		})
 		.catch((error) => {});
-} else if (url.searchParams.has("data")) {
+}
+
+if (url.searchParams.has("qid")) 
+{
+	url.path = url.searchParams.get("qid");
+	qid(url.path);
+} 
+else if (url.searchParams.has("data")) {
 	url.path = url.searchParams.get("data");
 	fetch(`data/${url.path}/index.json`)
 		.then(response => jsonhandler(response))
