@@ -1266,7 +1266,7 @@ var makehammer = function(context, v, t) {
 		threshold: 20
 	}); //10
 	ham.get('press').set({
-		time: 250
+		time: 400
 	}); //251
 
 	ham.on("pinch", function(evt) {
@@ -1615,35 +1615,26 @@ var pinchlst = [{
 		name: "GALLERY",
 		pinch: function(context, x, y, scale) 
 		{
-			//var j = Math.lerp(0.005, 0.02, buttonobj.berp());
-			//var k = scale < context.canvas.scale ? -1 : 1;
-			//buttonobj.addperc(k * j);
-			//context.canvas.scale = scale;
-			//context.refresh();
+			//todo
+			buttonobj.addperc(scale*0.001);
+			context.refresh();
 		},
 		pinchstart: function(context, rect, x, y) 
 		{
-			//context.canvas.start = buttonobj.current();
-			//context.canvas.slideshow = 0;
-			//context.canvas.pinching = 1;
+			context.canvas.slideshow = 0;
+			context.canvas.pinching = 1;
 		},
 		pinchend: function(context) 
 		{
-			setTimeout(function() {
-				//context.canvas.pinching = 0;
-				//menuobj.draw();
-			}, 100);
+			context.canvas.pinching = 0;
 		},
 	},
 	{
 		name: "BOSS",
 		pinch: function(context, x, y, scale) 
 		{
-			//todo
-			var obj = context.obj;
-			obj.add(scale < context.canvas.scale ? -1 : 1);
-			context.refresh();
-			context.canvas.scale = scale;
+			context.obj.addperc(scale*0.001);
+			contextobj.reset();
 		},
 		pinchstart: function(context, rect, x, y) 
 		{
@@ -5303,8 +5294,21 @@ galleryobj.init = function(obj) {
 	var a = Array(_6cnv.sliceobj.length()).fill().map((_, index) => index);
 	_6cnv.rotated = [...a, ...a, ...a];
 
-	_7cnv.sliceobj.data = [{
-			title: "Goto\nCtrl+Shift+G",
+	_7cnv.sliceobj.data = [
+		{
+			title: "QID\nkey+q",
+			func: function() 
+			{
+				var value = galleryobj.current();
+				if (menuobj.value() == _8cnvctx) 
+					value = Math.floor(Math.lerp(0, galleryobj.length()-1, 
+						1 - _8cnv.timeobj.berp()));
+				gotodialog(value, "QID", goimage);
+			}
+		},
+
+		{
+			title: "Goto\nkey+g",
 			func: function() 
 			{
 				var value = galleryobj.current();
@@ -5316,7 +5320,7 @@ galleryobj.init = function(obj) {
 		},
 
 		{
-			title: "File Explorer\nCtrl+Shift+X",
+			title: "File Explorer\nkey+x",
 			func: function() {
 				importdialog();
 			}
@@ -5347,7 +5351,7 @@ galleryobj.init = function(obj) {
 		},
 
 		{
-			title: "Download\nCtrl+Shift+D",
+			title: "Download\nkey+d",
 			func: function() {
 				if (galleryobj.value().blob) {
 					const anchor = document.createElement('a');
@@ -5389,7 +5393,7 @@ galleryobj.init = function(obj) {
 		},
 
 		{
-			title: "Full Screen\nCtrl+Shift+F",
+			title: "Full Screen\nkey+f",
 			func: function() {
 				screenfull.toggle()
 			},
