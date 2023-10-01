@@ -2112,7 +2112,7 @@ var panlst =
 				}
 				else
 				{
-					canvas.timeobj.setrotate(canvas.startx-x,
+					canvas.timeobj.setrotate(x-canvas.startx,
 						canvas.virtualwidth);
 					context.refresh();
 				}
