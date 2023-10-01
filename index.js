@@ -1953,7 +1953,8 @@ var panlst =
 					canvas.speedobj.setperc(k);
 					context.canvas.lastime = -0.0000000000101010101;
 					menuobj.updown(context, canvas.speedobj.value());
-					if (!global.swipetimeout) {
+					if (!global.swipetimeout) 
+					{
 						global.swipetimeout = setInterval(function() {
 							context.refresh()
 						}, TIMEMAIN);
@@ -2099,7 +2100,7 @@ var panlst =
 					var e = (context.canvas.startx - x) /
 						context.canvas.virtualwidth;
 					context.canvas.timeobj.rotate(e);
-					contex.refresh();
+					context.refresh();
 				}
 			} 
 			else if (type == "panup" || type == "pandown") 
