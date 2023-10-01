@@ -269,9 +269,20 @@ let circular_array = function(title, data)
 		this.set(k);
 	};
 
-	this.addperc = function(g) {
+	this.addperc = function(g) 
+	{
 		var k = this.length() * g;
 		this.add(k);
+	};
+
+	this.addpercrotate = function(g) 
+	{
+		var k = this.length() * g;
+		this.add(k);
+		if (this.CURRENT >= this.length())
+			this.CURRENT = this.CURRENT - this.length();
+		else if (this.CURRENT < 0)
+			this.CURRENT = this.length() + this.CURRENT;
 	};
 
 	this.setperc = function(p) {
@@ -1519,14 +1530,17 @@ _8ham.get('pinch').set({
 	enable: true
 });
 
-var wheelst = [{
+var wheelst = 
+[
+	{
 		name: "DEFAULT",
 		updown: function(context, x, y, delta, ctrl, shift, alt, type) {},
 		leftright: function(context, x, y, delta, ctrl, shift, alt, type) {},
 	},
 	{
 		name: "GALLERY",
-		updown: function(context, x, y, delta, ctrl, shift, alt, type) {
+		updown: function(context, x, y, delta, ctrl, shift, alt, type) 
+		{
 			var canvas = context.canvas;
 			context.canvas.slideshow = 0;
 			if (ctrl) 
@@ -1563,7 +1577,8 @@ var wheelst = [{
 	},
 	{
 		name: "MENU",
-		updown: function(context, x, y, delta, ctrl, shift, alt, type) {
+		updown: function(context, x, y, delta, ctrl, shift, alt, type) 
+		{
 			menuobj.updown(context, delta);
 			context.refresh();
 		},
@@ -1571,9 +1586,11 @@ var wheelst = [{
 	},
 	{
 		name: "BOSS",
-		updown: function(context, x, y, delta, ctrl, shift, alt, type) {
+		updown: function(context, x, y, delta, ctrl, shift, alt, type) 
+		{
 			var canvas = context.canvas;
-			if (ctrl) {
+			if (ctrl) 
+			{
 				var isthumb = context.canvas.thumbrect &&
 					context.canvas.thumbrect.hitest(x, y);
 				if (isthumb) 
@@ -1606,7 +1623,7 @@ var wheelst = [{
 			}
 			else 
 			{
-				rowobj.addperc(0.001*delta);
+				rowobj.addpercrotate(0.001*delta);
 				contextobj.reset();				
 			}
 		},
@@ -1619,7 +1636,9 @@ var wheelst = [{
 	},
 ];
 
-var pinchlst = [{
+var pinchlst = 
+[
+	{
 		name: "DEFAULT",
 		pinch: function(context, x, y, scale) {},
 		pinchend: function(context) {},
