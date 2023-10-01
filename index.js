@@ -211,6 +211,16 @@ let circular_array = function(title, data) {
 			this.CURRENT = this.length() + this.CURRENT;
 	};
 
+	this.setrotate = function(x, w) 
+	{
+		var p = (x*this.length())/w;
+		this.CURRENT = this.ANCHOR+p;
+		if (this.CURRENT >= this.length())
+			this.CURRENT = this.CURRENT - this.length();
+		else if (this.CURRENT < 0)
+			this.CURRENT = this.length() + this.CURRENT;
+	};
+
 	this.rotate = function(index) {
 		this.CURRENT += index;
 		if (this.CURRENT >= this.length())
@@ -2098,11 +2108,7 @@ var panlst =
 				}
 				else
 				{
-					var xx = (context.canvas.startx - x);
-					var l = context.canvas.timeobj.length();
-					var w = context.canvas.virtualwidth;
-					var b = (xx*l)/w;
-					context.canvas.timeobj.rotate(b);
+					context.canvas.timeobj.setrotate(x,context.canvas.virtualwidth);
 					context.refresh();
 				}
 			} 
@@ -2140,9 +2146,9 @@ var panlst =
 			canvas.slidestop = 0;
 			canvas.startx = x;
 			canvas.starty = y;
+			canvas.timeobj.setanchor(canvas.timeobj.current());
 			canvas.isthumb = canvas.thumbrect &&
 				canvas.thumbrect.hitest(x, y);
-			canvas.timeobj.setanchor(canvas.timeobj.current());
 			movingx = new MovingAverage();
 			movingy = new MovingAverage();
 			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
