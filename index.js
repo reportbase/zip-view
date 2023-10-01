@@ -462,7 +462,7 @@ panel.gallerybar = function() {
 		canvas.vscrollrect = new rectangle();
 		context.chapterect = new rectangle();
 		canvas.galleryrect = new rectangle();
-		if (headcnv.height) 
+		if (!headcnv.height) 
 			return;
 		var w = Math.min(360, rect.width - 100);
 		var j = window.innerWidth - rect.width >= 180;
@@ -556,7 +556,7 @@ panel.galleryscroll = function()
 		canvas.vscrollrect = new rectangle();
 		canvas.hscrollrect = new rectangle();
 		canvas.buttonrect = new rectangle();
-		if (headcnv.height) 
+		if (!headcnv.height) 
 			return;
 		var obj = context.canvas.scrollobj.value();
 		var bh = rect.height/2;
