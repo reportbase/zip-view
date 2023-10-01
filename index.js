@@ -462,6 +462,8 @@ panel.gallerybar = function() {
 		canvas.vscrollrect = new rectangle();
 		context.chapterect = new rectangle();
 		canvas.galleryrect = new rectangle();
+		if (headcnv.height) 
+			return;
 		var w = Math.min(360, rect.width - 100);
 		var j = window.innerWidth - rect.width >= 180;
 		var rows = infobj.data.length;
@@ -554,6 +556,8 @@ panel.galleryscroll = function()
 		canvas.vscrollrect = new rectangle();
 		canvas.hscrollrect = new rectangle();
 		canvas.buttonrect = new rectangle();
+		if (headcnv.height) 
+			return;
 		var obj = context.canvas.scrollobj.value();
 		var bh = rect.height/2;
 		var bw = rect.width/2;
@@ -2379,7 +2383,7 @@ var keylst = [{
 				key == "arrowup" ||
 				key == "pageup" ||
 				key == "backspace" ||
-				(canvas.shiftKey && key == "enter") ||//todo  switch modes
+				(canvas.shiftKey && key == "enter") ||
 				(canvas.shiftKey && key == " ") ||
 				key == "k") {
 				var e = canvas.speedobj.value() / 2;
@@ -3489,7 +3493,8 @@ menuobj.show = function() {
 	}, 1000);
 }
 
-menuobj.draw = function() {
+menuobj.draw = function() 
+{
 	var context = this.value();
 	if (!context)
 		return;
@@ -3597,13 +3602,15 @@ menuobj.draw = function() {
 	}
 
 	infobj.data = [];
-	if (headcnv.height) {
+	if (headcnv.height) 
+	{
 		infobj.reset();
 		if (galleryobj.debug)
 			infobj.data.push(`${isvisiblecount} of ${canvas.normal.length}`);
-		context.canvas.bar.draw(context, rect, 0, 0);
-		context.canvas.scroll.draw(context, rect, 0, 0);
 	}
+	
+	context.canvas.bar.draw(context, rect, 0, 0);
+	context.canvas.scroll.draw(context, rect, 0, 0);
 }
 
 var eventlst = [{
@@ -4071,7 +4078,6 @@ contextobj.reset = function() {
 				bossobj.leftright(-1 * context.canvas.speedobj.value());
 
 			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-			//todo: hide thumb on load
 			bossobj.draw();
 
 			var rotated = util.rotated_list(
@@ -5558,25 +5564,23 @@ function downloadtext(name, text) {
 	document.body.removeChild(element);
 }
 
-//todo
-function gotodialog(title, func) 
+function goimage(image) 
 {
-	function go(image) 
+	if (menuobj.value() == _8cnvctx) 
 	{
-		if (menuobj.value() == _8cnvctx) 
-		{
-			gotoimage(image);
-			dialog.close();
-		} 
-		else 
-		{
-			galleryobj.set(image - 1);
-			delete _4cnv.thumbcanvas;
-			delete photo.image;
-			contextobj.reset();
-		}
+		gotoimage(image);
+	} 
+	else 
+	{
+		galleryobj.set(image - 1);
+		delete _4cnv.thumbcanvas;
+		delete photo.image;
+		contextobj.reset();
 	}
+}
 
+function gotodialog(title = "Goto Page", func = goimage) 
+{
 	var input = document.getElementById("goto-input");
 	dialog = document.getElementById("goto-dialog");
 	input.addEventListener("keyup", function(event) 
@@ -5585,20 +5589,18 @@ function gotodialog(title, func)
 		if (event.keyCode === 13) 
 		{
 			var page = input.value.clean();
-			go(Number(page));
+			func(Number(page));
 			dialog.close();
 		}
 	});
 
-	//dialog.classList.add('dialog');
-	//dialog.style.width = window.innerWidth*0.85;
 	dialog.addEventListener("click", function(event) 
 	{
 		var rect = new rectangle(dialog.getBoundingClientRect());
 		if (event.target.id == "goto-ok") 
 		{
 			var page = input.value.clean();
-			go(Number(page));
+			func(Number(page));
 			dialog.close();
 		} 
 		else if (!rect.hitest(event.x, event.y)) 
@@ -5620,10 +5622,7 @@ function gotodialog(title, func)
 	}
 	
 	dialog.clickblocked = 1;
-	setTimeout(function()
-		   {
-			dialog.clickblocked = 0; 
-		   }, 40);
+	setTimeout(function(){dialog.clickblocked = 0;}, 40);
 	dialog.showModal();
 }
 
