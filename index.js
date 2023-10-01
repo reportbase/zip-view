@@ -2103,7 +2103,7 @@ var panlst =
 					var w = context.canvas.virtualwidth
 					var b = (xx*l)/w;
 					var c = b/context.canvas.timeobj.length();
-					context.canvas.timeobj.setperc(1-c);
+					context.canvas.timeobj.addperc(1-c);
 					context.refresh();
 				}
 			} 
