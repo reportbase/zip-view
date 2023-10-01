@@ -2424,7 +2424,11 @@ var keylst = [{
 			} else if (key == "g" && canvas.ctrlKey && canvas.shiftKey) 
 			{
 				evt.preventDefault();
-				gotodialog();
+				var value = galleryobj.current();
+				if (menuobj.value() == _8cnvctx) 
+					value = Math.floor(Math.lerp(0, galleryobj.length()-1, 
+						1 - _8cnv.timeobj.berp()));
+				gotodialog(value, "Goto", goimage);
 			} else if (key == "\\" || key == "/") {
 				var h = headcnv.height ? 0 : BEXTENT;
 				headcnvctx.show(0, 0, window.innerWidth, h);
@@ -2546,11 +2550,6 @@ var keylst = [{
 				context.refresh();
 				evt.preventDefault();
 			} 
-			else if (key == "tab")
-			{
-				
-				evt.preventDefault();
-			}
 			else if 
 			(
 				key == "arrowright" ||
@@ -2576,7 +2575,7 @@ var keylst = [{
 				contextobj.reset()
 				evt.preventDefault();
 			} else if (key == "g" && canvas.ctrlKey && canvas.shiftKey) {
-				gotodialog();
+				gotodialog("", "Goto", goimage);
 			} else if (key == "-" || key == "{") {
 				zoomobj.value().add(-1);
 				contextobj.reset()
@@ -2661,7 +2660,7 @@ var taplst = [{
 			else if (context.chapterect &&
 				context.chapterect.hitest(x, y)) 
 			{
-				gotodialog();
+				gotodialog("", "Goto", goimage);
 			} 
 			else if (galleryobj.repos && context.extentrect && context.extentrect.hitest(x, y)) 
 			{
@@ -2727,7 +2726,7 @@ var taplst = [{
 			(
 				context.chapterect &&
 				context.chapterect.hitest(x, y)) {
-				gotodialog();
+				gotodialog("", "Goto", goimage);
 			} else if (canvas.vscrollrect && canvas.vscrollrect.hitest(x, y)) {
 				var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
 				canvas.timeobj.setperc(1 - k);
@@ -5274,7 +5273,7 @@ galleryobj.init = function(obj) {
 	_7cnv.sliceobj.data = [{
 			title: "Goto\nCtrl+Shift+G",
 			func: function() {
-				gotodialog();
+				gotodialog("", "Goto", goimage);
 			}
 		},
 
@@ -5579,7 +5578,7 @@ function goimage(image)
 	}
 }
 
-function gotodialog(title = "Goto Page", func = goimage) 
+function gotodialog(value, title, func) 
 {
 	var input = document.getElementById("goto-input");
 	dialog = document.getElementById("goto-dialog");
@@ -5610,17 +5609,7 @@ function gotodialog(title = "Goto Page", func = goimage)
 		}
 	});
 
-	if (menuobj.value() == _8cnvctx) 
-	{
-		var current = Math.floor(
-			Math.lerp(0, galleryobj.length()-1, 1 - _8cnv.timeobj.berp()));
-		input.value = current;
-	} 
-	else 
-	{
-		input.value = galleryobj.current()
-	}
-	
+	input.value = value;
 	dialog.clickblocked = 1;
 	setTimeout(function(){dialog.clickblocked = 0;}, 40);
 	dialog.showModal();
