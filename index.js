@@ -1648,8 +1648,9 @@ var pinchlst =
 		name: "GALLERY",
 		pinch: function(context, x, y, scale) 
 		{
+			global.scale = scale; 
 			var k = buttonobj.anchor() + buttonobj.length()*scale;
-			buttonobj.setcurrent(k);
+			//buttonobj.setcurrent(k);
 			menuobj.draw();
 		},
 		pinchstart: function(context, rect, x, y) 
@@ -1667,8 +1668,9 @@ var pinchlst =
 		name: "BOSS",
 		pinch: function(context, x, y, scale) 
 		{
+			global.scale = scale;
 			var k = context.obj.anchor() + context.obj.length()*scale;
-			context.obj.setcurrent(k);
+			//context.obj.setcurrent(k);
 			contextobj.reset();
 		},
 		pinchstart: function(context, rect, x, y) 
@@ -1732,6 +1734,7 @@ infobj.reset = function() {
 
 		if (url.searchParams.has(galleryobj.repos))
 			infobj.data.push(url.searchParams.get(galleryobj.repos));
+		infobj.data.push(global.scale.toFixed(2));
 	}
 
 	if (galleryobj.length() > 0)
