@@ -1909,7 +1909,9 @@ var droplst = [{
 	},
 }, ];
 
-var panlst = [{
+var panlst = 
+[
+	{
 		name: "DEFAULT",
 		updown: function(context, rect, x, y, type) {},
 		leftright: function(context, rect, x, y, type) {},
@@ -1945,7 +1947,8 @@ var panlst = [{
 			} 
 			else if (type == "panup" || type == "pandown") 
 			{
-				if (canvas.isspeedrect) {
+				if (canvas.isspeedrect) 
+				{
 					var k = (y - canvas.speedrect.y) / canvas.speedrect.height;
 					canvas.speedobj.setperc(k);
 					context.canvas.lastime = -0.0000000000101010101;
@@ -1955,7 +1958,8 @@ var panlst = [{
 							context.refresh()
 						}, TIMEMAIN);
 					}
-				} else if (canvas.isreducerect) {
+				} 
+				else if (canvas.isreducerect) {
 					var k = (y - canvas.reducerect.y) / canvas.reducerect.height;
 					canvas.reduceobj.setperc(k);
 					context.canvas.lastime = -0.0000000000101010101;
@@ -1969,7 +1973,9 @@ var panlst = [{
 					var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
 					buttonobj.setperc(k);
 					contextobj.reset();
-				} else {
+				} 
+				else 
+				{
 					var e = canvas.starty - y;
 					var jvalue = TIMEOBJ / canvas.virtualheight
 					jvalue *= e;
@@ -2090,21 +2096,23 @@ var panlst = [{
 				}
 				else
 				{
-					var j = type == "panright" ? 1 : -1;
-					var k = context.canvas.timeobj.length()*j*0.01;
-					context.canvas.timeobj.rotate(k);
-					contextobj.reset();
+					var e = canvas.startx - x;
+					context.canvas.timeobj.add(e);
+					contex.refresh();
 				}
 			} 
 			else if (type == "panup" || type == "pandown") 
 			{
 				var zoom = zoomobj.value()
 				context.refresh()
-				if (context.islicewidthrect) {
+				if (context.islicewidthrect) 
+				{
 					var k = (y - context.slicewidthrect.y) / context.slicewidthrect.height;
 					slicewidthobj.setperc(k);
 					contextobj.reset()
-				} else if (context.iszoomrect) {
+				} 
+				else if (context.iszoomrect) 
+				{
 					var k = (y - context.zoomrect.y) / context.zoomrect.height;
 					var zoom = zoomobj.value();
 					zoom.setperc(k);
@@ -2117,7 +2125,8 @@ var panlst = [{
 				}
 				else
 				{
-					rowobj.addperc(type == "panup"?0.01:-0.01);
+					var e = canvas.starty - y;
+					rowobj.add(e);
 					contextobj.reset();
 				}
 			}
