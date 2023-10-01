@@ -2108,7 +2108,7 @@ var panlst =
 				}
 				else
 				{
-					context.canvas.timeobj.setrotate(x,context.canvas.virtualwidth);
+					context.canvas.timeobj.setrotate(x-canvas.startx,context.canvas.virtualwidth);
 					context.refresh();
 				}
 			} 
