@@ -2102,8 +2102,7 @@ var panlst =
 					var l = context.canvas.timeobj.length();
 					var w = window.innerWidth;
 					var b = (xx*l)/w;
-					//var c = b/context.canvas.timeobj.length();
-					context.canvas.timeobj.add(b);
+					context.canvas.timeobj.rotate(b);
 					context.refresh();
 				}
 			} 
