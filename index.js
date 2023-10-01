@@ -2098,10 +2098,10 @@ var panlst =
 				}
 				else
 				{
-					var e = (context.canvas.startx - x);
-					var g = (e*context.canvas.timeobj.length())/
-						context.canvas.virtualwidth;
-					var b = (e*g)/context.canvas.timeobj.length();
+					var xx = (context.canvas.startx - x);
+					var l = context.canvas.timeobj.length();
+					var w = context.canvas.virtualwidth
+					var b = (xx*l)/w;
 					context.canvas.timeobj.rotate(b);
 					context.refresh();
 				}
@@ -4107,7 +4107,8 @@ contextobj.reset = function() {
 				_8cnv.rotated, galleryobj.length(),
 				galleryobj.current() + 1, 9);
 
-			for (var m = 0; m < rotated.length; ++m) {
+			for (var m = 0; m < rotated.length; ++m) 
+			{
 				var n = rotated[m];
 				if (galleryobj.data[n].loaded)
 					continue;
