@@ -7,7 +7,8 @@ https://zip-view.com
 https://ipfs-view.com
 */
 
-function iOS() {
+function iOS() 
+{
 	return [
 		'iPad Simulator',
 		'iPhone Simulator',
@@ -2099,7 +2100,7 @@ var panlst =
 				{
 					var e = (context.canvas.startx - x) /
 						context.canvas.virtualwidth;
-					context.canvas.timeobj.rotate(e);
+					context.canvas.timeobj.rotate(e*context.canvas.timeobj.length());
 					context.refresh();
 				}
 			} 
@@ -2127,8 +2128,7 @@ var panlst =
 				}
 				else
 				{
-					var e = context.canvas.starty - y;
-					rowobj.add(e);
+					rowobj.set(y);
 					contextobj.reset();
 				}
 			}
