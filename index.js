@@ -2125,8 +2125,8 @@ var panlst =
 				}
 				else
 				{
-					var e = canvas.starty - y;
-					rowobj.add(e);
+					var e = (canvas.starty - y)/rowobj.length();
+					rowobj.addperc(e);
 					contextobj.reset();
 				}
 			}
