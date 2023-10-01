@@ -4923,7 +4923,7 @@ var headlst = [
 			var e = _5cnv.sliceobj.length() <= 1;
 			var g = menuobj.value() == _8cnvctx;
 			var a = new panel.col(
-				[25, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT, ALIEXTENT, 0, ALIEXTENT, 25],
+				[15, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT, ALIEXTENT, 0, ALIEXTENT, 15],
 				[
 					0,
 					new panel.help(),
