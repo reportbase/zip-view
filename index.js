@@ -1738,7 +1738,10 @@ infobj.reset = function() {
 		if (url.searchParams.has(galleryobj.repos))
 			infobj.data.push(url.searchParams.get(galleryobj.repos));
 		if (global.scale)
+		{
+			infobj.data.push(`${buttonobj.current()}, ${buttonobj.anchor()}`);
 			infobj.data.push(`${global.scale}/${global.scaleanchor}`);
+		}
 	}
 
 	if (galleryobj.length() > 0)
