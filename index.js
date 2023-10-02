@@ -1649,9 +1649,9 @@ var pinchlst =
 		pinch: function(context, x, y, scale) 
 		{
 			if (scale < context.scale)
-				buttonobj.addperc(-2);
+				buttonobj.addperc(-0.02);
 			else
-				buttonobj.addperc(2);
+				buttonobj.addperc(0.02);
 			menuobj.draw();
 			context.scale = scale;
 		},
@@ -1671,9 +1671,9 @@ var pinchlst =
 		pinch: function(context, x, y, scale) 
 		{
 			if (scale < context.scale)
-				context.obj.addperc(-2);
+				context.obj.addperc(-0.02);
 			else
-				context.obj.addperc(2);
+				context.obj.addperc(0.02);
 			menuobj.draw();
 		},
 		pinchstart: function(context, rect, x, y) 
