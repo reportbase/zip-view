@@ -1647,14 +1647,13 @@ var pinchlst =
 		name: "GALLERY",
 		pinch: function(context, x, y, scale) 
 		{
-			//todo
-			if (!global.buttonheight)
-				global.buttonheight = buttonobj.value();
-			if (!global.scaleanchor)
-				global.scaleanchor = scale;
-			global.scale = scale;
-			var k = global.scale/global.scaleanchor;
-			var j = global.buttonheight * k;
+			if (!context.buttonheight)
+				context.buttonheight = buttonobj.value();
+			if (!context.scaleanchor)
+				context.scaleanchor = scale;
+			context.scale = scale;
+			var k = context.scale/context.scaleanchor;
+			var j = context.buttonheight * k;
 			var n = 1;
 			for (; n < buttonobj.length(); ++n)
 			{
@@ -1669,15 +1668,15 @@ var pinchlst =
 		},
 		pinchstart: function(context, rect, x, y) 
 		{
-			delete global.scaleanchor;
-			delete global.buttonheight;
+			delete context.scaleanchor;
+			delete context.buttonheight;
 			context.canvas.slideshow = 0;
 			context.canvas.pinching = 1;
 		},
 		pinchend: function(context) 
 		{
-			delete global.scaleanchor;
-			delete global.buttonheight;
+			delete context.scaleanchor;
+			delete context.buttonheight;
 			context.canvas.pinching = 0;
 		},
 	},
@@ -1685,13 +1684,30 @@ var pinchlst =
 		name: "BOSS",
 		pinch: function(context, x, y, scale) 
 		{
-			scale = util.clamp(0.5,4.0,scale);
-			var k = Math.berp(0.5,4.0,scale);
-			context.obj.setperc(k);
-			contextobj.reset();
+			var obj = context.obj;
+			if (!context.buttonheight)
+				context.buttonheight = obj.value();
+			if (!context.scaleanchor)
+				context.scaleanchor = scale;
+			context.scale = scale;
+			var k = context.scale/context.scaleanchor;
+			var j = context.buttonheight * k;
+			var n = 1;
+			for (; n < obj.length(); ++n)
+			{
+				var b = obj.data[n-1];
+				var b2 = obj.data[n];
+				if (j < b || j > b2)
+					continue;
+				obj.setcurrent(n);
+				contextobj.reset();
+				break;
+			}
 		},
 		pinchstart: function(context, rect, x, y) 
 		{
+			delete context.scaleanchor;
+			delete context.buttonheight;
 			context.canvas.pinching = 1;
 			context.canvas.isthumb = context.canvas.thumbrect && 
 				context.canvas.thumbrect.expand &&
@@ -1702,8 +1718,10 @@ var pinchlst =
 		},
 		pinchend: function(context) 
 		{
-			clearTimeout(global.pinchtime);
-			global.pinchtime = setTimeout(function() {
+			delete context.scaleanchor;
+			delete context.buttonheight;
+			clearTimeout(context.pinchtime);
+			context.pinchtime = setTimeout(function() {
 				context.canvas.pinching = 0;
 				context.canvas.isthumb = 0;
 				context.refresh();
@@ -1738,19 +1756,16 @@ infobj.reset = function()
 		if (galleryobj.advanced) 
 		{
 			infobj.data.push(value.name ? value.name : value.id);
-			if (menuobj.value()) {
+			if (menuobj.value()) 
+			{
 				var k = index % IMAGELSTSIZE;
 				var img = thumbimglst[k];
 				infobj.data.push(`${img.width}x${img.height}`);
-			} else if (photo.image) {
+			} 
+			else if (photo.image) 
+			{
 				infobj.data.push(photo.image.extent);
 			}
-		}
-		
-		if (global.scale)
-		{
-			infobj.data.push(`${global.buttonheight.toFixed(2)}}`);
-			infobj.data.push(`${global.scale.toFixed(2)}, ${global.scaleanchor.toFixed(2)}`);
 		}
 
 	if (galleryobj.length() > 0)
