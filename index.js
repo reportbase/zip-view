@@ -1734,7 +1734,8 @@ infobj.reset = function() {
 
 		if (url.searchParams.has(galleryobj.repos))
 			infobj.data.push(url.searchParams.get(galleryobj.repos));
-		infobj.data.push(global.scale.toFixed(2));
+		if (global.scale)
+			infobj.data.push(global.scale.toFixed(2));
 	}
 
 	if (galleryobj.length() > 0)
