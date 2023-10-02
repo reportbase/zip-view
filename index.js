@@ -1648,7 +1648,7 @@ var pinchlst =
 		name: "GALLERY",
 		pinch: function(context, x, y, scale) 
 		{
-			var k = buttonobj.anchor();
+			var k = buttonobj.current();
 			if (scale < 1)
 				k -= scale;
 			else
@@ -1672,7 +1672,7 @@ var pinchlst =
 		name: "BOSS",
 		pinch: function(context, x, y, scale) 
 		{
-			var k = context.obj.anchor();
+			var k = context.obj.current();
 			if (scale < 1)
 				k -= scale;
 			else
