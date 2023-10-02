@@ -1647,21 +1647,22 @@ var pinchlst =
 		name: "GALLERY",
 		pinch: function(context, x, y, scale) 
 		{
-			if (!context.buttonheight)
-				context.buttonheight = buttonobj.value();
+			var obj = buttonobj;
+			if (!context.buttonanchor)
+				context.buttonanchor = obj.value();
 			if (!context.scaleanchor)
 				context.scaleanchor = scale;
 			context.scale = scale;
 			var k = context.scale/context.scaleanchor;
-			var j = context.buttonheight * k;
+			var j = context.buttonanchor * k;
 			var n = 1;
-			for (; n < buttonobj.length(); ++n)
+			for (; n < obj.length(); ++n)
 			{
-				var b = buttonobj.data[n-1];
-				var b2 = buttonobj.data[n];
+				var b = obj.data[n-1];
+				var b2 = obj.data[n];
 				if (j < b || j > b2)
 					continue;
-				buttonobj.setcurrent(n);
+				obj.setcurrent(n);
 				menuobj.draw();
 				break;
 			}
@@ -1669,7 +1670,7 @@ var pinchlst =
 		pinchstart: function(context, rect, x, y) 
 		{
 			delete context.scaleanchor;
-			delete context.buttonheight;
+			delete context.buttonanchor;
 			context.canvas.slideshow = 0;
 			context.canvas.pinching = 1;
 		},
@@ -1685,13 +1686,13 @@ var pinchlst =
 		pinch: function(context, x, y, scale) 
 		{
 			var obj = context.obj;
-			if (!context.buttonheight)
-				context.buttonheight = obj.value();
+			if (!context.buttonachor)
+				context.buttonachor = obj.value();
 			if (!context.scaleanchor)
 				context.scaleanchor = scale;
 			context.scale = scale;
 			var k = context.scale/context.scaleanchor;
-			var j = context.buttonheight * k;
+			var j = context.buttonachor * k;
 			var n = 1;
 			for (; n < obj.length(); ++n)
 			{
@@ -1706,8 +1707,6 @@ var pinchlst =
 		},
 		pinchstart: function(context, rect, x, y) 
 		{
-			delete context.scaleanchor;
-			delete context.buttonheight;
 			context.canvas.pinching = 1;
 			context.canvas.isthumb = context.canvas.thumbrect && 
 				context.canvas.thumbrect.expand &&
@@ -1719,7 +1718,7 @@ var pinchlst =
 		pinchend: function(context) 
 		{
 			delete context.scaleanchor;
-			delete context.buttonheight;
+			delete context.buttonachor;
 			clearTimeout(context.pinchtime);
 			context.pinchtime = setTimeout(function() {
 				context.canvas.pinching = 0;
@@ -5930,8 +5929,10 @@ function selectid(id) {
 	}
 }
 
-menuobj.leftright = function(context, delta) {
-
+menuobj.leftright = function(context, delta) 
+{
+	if (context.pinching)
+		return;
 	//clearInterval(global.swipetimeout);
 	//global.swipetimeout = 0;
 	if (!delta)
