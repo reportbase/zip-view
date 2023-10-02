@@ -1648,11 +1648,7 @@ var pinchlst =
 		name: "GALLERY",
 		pinch: function(context, x, y, scale) 
 		{
-			var k = buttonobj.anchor();
-			if (scale < 1)
-				k -= scale*10;
-			else
-				k += scale*10;
+			var k = buttonobj.anchor()*scale;
 			buttonobj.setcurrent(k);
 			menuobj.draw();
 		},
@@ -1672,11 +1668,7 @@ var pinchlst =
 		name: "BOSS",
 		pinch: function(context, x, y, scale) 
 		{
-			var k = context.obj.anchor();
-			if (scale < 1)
-				k -= scale*10;
-			else
-				k += scale*10;
+			var k = context.obj.anchor()*scale;
 			context.obj.setcurrent(k);
 			menuobj.draw();
 		},
