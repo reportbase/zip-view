@@ -1648,19 +1648,21 @@ var pinchlst =
 		name: "GALLERY",
 		pinch: function(context, x, y, scale) 
 		{
-			var k = buttonobj.anchor()*scale;
-			buttonobj.setcurrent(k);
+			if (scale < context.scale)
+				buttonobj.add(-1);
+			else
+				buttonobj.add(1);
 			menuobj.draw();
+			context.scale = scale;
 		},
 		pinchstart: function(context, rect, x, y) 
 		{
-			buttonobj.setanchor(buttonobj.current())
+			context.scale = 0;
 			context.canvas.slideshow = 0;
 			context.canvas.pinching = 1;
 		},
 		pinchend: function(context) 
 		{
-			buttonobj.setanchor(buttonobj.current())
 			context.canvas.pinching = 0;
 		},
 	},
@@ -1668,8 +1670,10 @@ var pinchlst =
 		name: "BOSS",
 		pinch: function(context, x, y, scale) 
 		{
-			var k = context.obj.anchor()*scale;
-			context.obj.setcurrent(k);
+			if (scale < context.scale)
+				context.obj.add(-1);
+			else
+				context.obj.add(1);
 			menuobj.draw();
 		},
 		pinchstart: function(context, rect, x, y) 
@@ -1680,11 +1684,10 @@ var pinchlst =
 				context.canvas.thumbrect.expand(40, 40).hitest(x, y);
 			pinchobj.set(context.canvas.isthumb ? 0 : 1)
 			context.obj = pinchobj.value().value();
-			context.obj.setanchor(context.obj.current());
+			context.scale = 0;
 		},
 		pinchend: function(context) 
 		{
-			context.obj.setanchor(context.obj.current());
 			clearTimeout(global.pinchtime);
 			global.pinchtime = setTimeout(function() {
 				context.canvas.pinching = 0;
