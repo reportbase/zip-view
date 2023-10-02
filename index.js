@@ -1646,9 +1646,10 @@ var pinchlst =
 		name: "GALLERY",
 		pinch: function(context, x, y, scale) 
 		{
-			if (!context.scale)
-				context.scale = scale;
-			var k = scale/context.scale;
+			if (!global.scaleanchor)
+				global.scaleanchor = scale;
+			global.scale = scale;
+			var k = global.scale/global.scaleanchor;
 			var j = buttonobj.anchor() * k;
 			buttonobj.setcurrent(j);
 			menuobj.draw();
@@ -1656,13 +1657,13 @@ var pinchlst =
 		pinchstart: function(context, rect, x, y) 
 		{
 			buttonobj.setanchor(buttonobj.current());
-			delete context.scale;
+			delete global.scaleanchor;
 			context.canvas.slideshow = 0;
 			context.canvas.pinching = 1;
 		},
 		pinchend: function(context) 
 		{
-			delete context.scale;
+			delete global.scaleanchor;
 			context.canvas.pinching = 0;
 		},
 	},
@@ -1737,7 +1738,7 @@ infobj.reset = function() {
 		if (url.searchParams.has(galleryobj.repos))
 			infobj.data.push(url.searchParams.get(galleryobj.repos));
 		if (global.scale)
-			infobj.data.push(global.scale.toFixed(2));
+			infobj.data.push(`${global.scale}/${global.scaleanchor}`);
 	}
 
 	if (galleryobj.length() > 0)
