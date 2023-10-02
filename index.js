@@ -1648,9 +1648,12 @@ var pinchlst =
 		name: "GALLERY",
 		pinch: function(context, x, y, scale) 
 		{
-			global.scale = scale; 
-			var k = buttonobj.anchor() + buttonobj.length()*scale;
-			//buttonobj.setcurrent(k);
+			var k = buttonobj.anchor();
+			if (scale < 1)
+				k -= buttonobj.length()*scale;
+			else
+				k += buttonobj.length()*scale
+			buttonobj.setcurrent(k);
 			menuobj.draw();
 		},
 		pinchstart: function(context, rect, x, y) 
@@ -1668,10 +1671,13 @@ var pinchlst =
 		name: "BOSS",
 		pinch: function(context, x, y, scale) 
 		{
-			global.scale = scale;
-			var k = context.obj.anchor() + context.obj.length()*scale;
-			//context.obj.setcurrent(k);
-			contextobj.reset();
+			var k = context.obj.anchor();
+			if (scale < 1)
+				k -= context.obj.length()*scale;
+			else
+				k += context.obj.length()*scale
+			context.obj.setcurrent(k);
+			menuobj.draw();
 		},
 		pinchstart: function(context, rect, x, y) 
 		{
