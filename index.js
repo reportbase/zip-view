@@ -1646,24 +1646,36 @@ var pinchlst =
 		name: "GALLERY",
 		pinch: function(context, x, y, scale) 
 		{
+			if (!global.buttonheight)
+				global.buttonheight = buttonobj.value();
 			if (!global.scaleanchor)
 				global.scaleanchor = scale;
 			global.scale = scale;
 			var k = global.scale/global.scaleanchor;
-			var j = buttonobj.anchor() * k;
-			buttonobj.setcurrent(j);
-			menuobj.draw();
+			var j = global.buttonheight * k;
+			var n = 1;
+			for (; n < buttonobj.length(); ++n)
+			{
+				var b = buttonobj.data[n-1];
+				var b2 = buttonobj.data[n];
+				if (j < b || j > b2)
+					continue;
+				buttonobj.setcurrent(n);
+				menuobj.draw();
+				break;
+			}
 		},
 		pinchstart: function(context, rect, x, y) 
 		{
-			buttonobj.setanchor(buttonobj.current());
 			delete global.scaleanchor;
+			delete global.buttonheight;
 			context.canvas.slideshow = 0;
 			context.canvas.pinching = 1;
 		},
 		pinchend: function(context) 
 		{
 			delete global.scaleanchor;
+			delete global.buttonheight;
 			context.canvas.pinching = 0;
 		},
 	},
@@ -1707,18 +1719,22 @@ var stretchobj = new circular_array("STRETCH", [pretchobj, letchobj]);
 
 var extentobj = new circular_array("EXTENT", []);
 var infobj = new circular_array("INFO", []);
-infobj.reset = function() {
+infobj.reset = function() 
+{
 		var index = galleryobj.current();
 		if (menuobj.value() == _8cnvctx)
+		{
 			index = _8cnv.sliceobj.lerp(
 				1 - _8cnv.timeobj.berp());
+			index = util.clamp(0, galleryobj.length()-1, index);
+		}
 
-	if (!galleryobj.infohide) {
 		var value = galleryobj.data[index];
 		if (value && value.folder)
 			infobj.data = value.folder.split("/");
 
-		if (galleryobj.advanced) {
+		if (galleryobj.advanced) 
+		{
 			infobj.data.push(value.name ? value.name : value.id);
 			if (menuobj.value()) {
 				var k = index % IMAGELSTSIZE;
@@ -1728,21 +1744,12 @@ infobj.reset = function() {
 				infobj.data.push(photo.image.extent);
 			}
 		}
-
-		var k = galleryobj.data[index];
-		if (k && k.photographer) {
-			infobj.data.push(k.photographer);
-			infobj.data.push(galleryobj.repos);
-		}
-
-		if (url.searchParams.has(galleryobj.repos))
-			infobj.data.push(url.searchParams.get(galleryobj.repos));
+		
 		if (global.scale)
 		{
-			infobj.data.push(`${buttonobj.current()}, ${buttonobj.anchor()}`);
-			infobj.data.push(`${global.scale}/${global.scaleanchor}`);
+			infobj.data.push(`${global.buttonheight.toFixed(2)}}`);
+			infobj.data.push(`${global.scale.toFixed(2)}, ${global.scaleanchor.toFixed(2)}`);
 		}
-	}
 
 	if (galleryobj.length() > 0)
 	{
