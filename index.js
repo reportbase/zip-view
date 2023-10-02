@@ -1676,9 +1676,12 @@ var pinchlst =
 		},
 		pinchend: function(context) 
 		{
-			delete context.scaleanchor;
-			delete context.buttonheight;
-			context.canvas.pinching = 0;
+			setTimeout(function()
+			{
+				delete context.scaleanchor;
+				delete context.buttonheight;
+				context.canvas.pinching = 0;
+			}, 40);
 		},
 	},
 	{
@@ -1717,13 +1720,13 @@ var pinchlst =
 		},
 		pinchend: function(context) 
 		{
-			delete context.scaleanchor;
-			delete context.buttonachor;
-			clearTimeout(context.pinchtime);
-			context.pinchtime = setTimeout(function() {
+			setTimeout(function()
+			{
+				delete context.scaleanchor;
+				delete context.buttonachor;
+				clearTimeout(context.pinchtime);
 				context.canvas.pinching = 0;
 				context.canvas.isthumb = 0;
-				context.refresh();
 			}, 40);
 		},
 	},
