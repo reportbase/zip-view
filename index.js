@@ -1646,6 +1646,7 @@ var pinchlst =
 		name: "GALLERY",
 		pinch: function(context, x, y, scale) 
 		{
+			//todo
 			if (!global.buttonheight)
 				global.buttonheight = buttonobj.value();
 			if (!global.scaleanchor)
@@ -2181,6 +2182,7 @@ var panlst =
 				}
 				else
 				{
+					//todo
 					rowobj.setrotate(canvas.starty-y,
 						rowobj.length());
 					contextobj.reset();
