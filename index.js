@@ -1650,9 +1650,9 @@ var pinchlst =
 		{
 			var k = buttonobj.anchor();
 			if (scale < 1)
-				k -= buttonobj.length()*scale;
+				k -= buttonobj.length()*(scale/100);
 			else
-				k += buttonobj.length()*scale
+				k += buttonobj.length()*(scale/100);
 			buttonobj.setcurrent(k);
 			menuobj.draw();
 		},
@@ -1664,6 +1664,7 @@ var pinchlst =
 		},
 		pinchend: function(context) 
 		{
+			buttonobj.setanchor(buttonobj.current())
 			context.canvas.pinching = 0;
 		},
 	},
@@ -1673,9 +1674,9 @@ var pinchlst =
 		{
 			var k = context.obj.anchor();
 			if (scale < 1)
-				k -= context.obj.length()*scale;
+				k -= context.obj.length()*(scale/100);
 			else
-				k += context.obj.length()*scale
+				k += context.obj.length()*(scale/100);
 			context.obj.setcurrent(k);
 			menuobj.draw();
 		},
@@ -1691,6 +1692,7 @@ var pinchlst =
 		},
 		pinchend: function(context) 
 		{
+			context.obj.setanchor(context.obj.current());
 			clearTimeout(global.pinchtime);
 			global.pinchtime = setTimeout(function() {
 				context.canvas.pinching = 0;
