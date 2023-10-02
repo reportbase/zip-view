@@ -497,7 +497,7 @@ panel.gallerybar = function() {
 		context.save();
 		var a = new panel.layerA(
 			[
-				new panel.colA([30, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 30],
+				new panel.colA([10, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 10],
 					[
 						0,
 						new panel.row([0, bh, 0],
@@ -613,7 +613,7 @@ panel.galleryscroll = function()
 				0
 			]);
 				
-
+/*
 		a.draw(context, rect, 
 		       [
 			       0,
@@ -622,7 +622,8 @@ panel.galleryscroll = function()
 			       context.canvas.timeobj,
 			       0,
 		      ], 0);
-
+*/
+		
 		var a = new panel.row([0, SCROLLBARWIDTH, 4],
 			[
 				0,
