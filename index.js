@@ -274,25 +274,23 @@ let circular_array = function(title, data)
 		var k = this.length() * g;
 		this.add(k);
 	};
-
+	
 	this.addpercrotate = function(g) 
 	{
 		var k = this.length() * g;
 		this.add(k);
-//		if (this.CURRENT >= this.length())
-//			this.CURRENT = this.CURRENT - this.length();
-//		else if (this.CURRENT <= 0)
-//			this.CURRENT = this.length() + this.CURRENT;
 	};
 
-	this.setperc = function(p) {
+	this.setperc = function(p) 
+	{
 		p = util.clamp(0, 1, p);
 		var len = this.length();
 		var k = Math.lerp(0, len - 1, p);
 		this.set(k);
 	};
 
-	this.findindex = function(k) {
+	this.findindex = function(k) 
+	{
 		return this.data.findIndex(function(a) {
 			return a == k;
 		})
@@ -1648,18 +1646,23 @@ var pinchlst =
 		name: "GALLERY",
 		pinch: function(context, x, y, scale) 
 		{
-			scale = util.clamp(0.5,4.0,scale);
-			var k = Math.berp(0.5,4.0,scale);
-			buttonobj.setperc(k);
+			if (!context.scale)
+				context.scale = scale;
+			var k = scale/context.scale;
+			var j = buttonobj.anchor() * k;
+			buttonobj.setcurrent(j);
 			menuobj.draw();
 		},
 		pinchstart: function(context, rect, x, y) 
 		{
+			buttonobj.setanchor(buttonobj.current());
+			delete context.scale;
 			context.canvas.slideshow = 0;
 			context.canvas.pinching = 1;
 		},
 		pinchend: function(context) 
 		{
+			delete context.scale;
 			context.canvas.pinching = 0;
 		},
 	},
