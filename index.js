@@ -1650,9 +1650,9 @@ var pinchlst =
 		{
 			var k = buttonobj.anchor();
 			if (scale < 1)
-				k -= buttonobj.length()*(scale/100);
+				k -= scale;
 			else
-				k += buttonobj.length()*(scale/100);
+				k += scale;
 			buttonobj.setcurrent(k);
 			menuobj.draw();
 		},
@@ -1674,9 +1674,9 @@ var pinchlst =
 		{
 			var k = context.obj.anchor();
 			if (scale < 1)
-				k -= context.obj.length()*(scale/100);
+				k -= scale;
 			else
-				k += context.obj.length()*(scale/100);
+				k += scale;
 			context.obj.setcurrent(k);
 			menuobj.draw();
 		},
