@@ -2041,7 +2041,8 @@ var panlst =
 				}
 			}
 		},
-		panstart: function(context, rect, x, y) {
+		panstart: function(context, rect, x, y) 
+		{
 			var canvas = context.canvas;
 			canvas.panning = 1;
 			movingx = new MovingAverage();
@@ -2154,6 +2155,7 @@ var panlst =
 				}
 				else
 				{
+					canvas.startx = y;
 					canvas.timeobj.setrotate(x-canvas.startx,
 						canvas.virtualwidth);
 					context.refresh();
@@ -2175,7 +2177,9 @@ var panlst =
 					var zoom = zoomobj.value();
 					zoom.setperc(k);
 					contextobj.reset()
-				} else if (context.isstretchrect) {
+				} 
+				else if (context.isstretchrect) 
+				{
 					var k = (y - context.stretchrect.y) / context.stretchrect.height;
 					var stretch = stretchobj.value();
 					stretch.setperc(k);
@@ -2183,7 +2187,7 @@ var panlst =
 				}
 				else
 				{
-					//todo
+					canvas.startx = x;
 					rowobj.setrotate(canvas.starty-y,
 						rowobj.length());
 					contextobj.reset();
