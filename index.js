@@ -2205,7 +2205,7 @@ var panlst =
 				else
 				{
 					var k = canvas.starty-y;
-					rowobj.CURRENT = rowobj.ANCHOR+k;
+					rowobj.CURRENT += k;
 					contextobj.reset();
 				}
 			}
