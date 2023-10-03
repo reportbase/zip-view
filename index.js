@@ -223,6 +223,15 @@ let circular_array = function(title, data)
 		var p = (x*this.length())/w;
 		this.CURRENT = this.ANCHOR+p;
 	};
+	
+	this.wrap = function() 
+	{
+		if (this.CURRENT >= this.length())
+			this.CURRENT = this.CURRENT - this.length();
+		else if (this.CURRENT < 0)
+			this.CURRENT = this.length() + this.CURRENT;
+		this.ANCHOR = this.CURRENT;
+	};
 
 	this.rotate = function(index) 
 	{
@@ -2176,6 +2185,7 @@ var panlst =
 					var k = x-canvas.startx;
 					var j = (canvas.timeobj.length()/canvas.virtualwidth)*k;
 					canvas.timeobj.CURRENT = canvas.timeobj.ANCHOR+j;
+					canvas.timeobj.wrap();
 					context.refresh();
 				}
 			} 
