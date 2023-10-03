@@ -3684,7 +3684,22 @@ menuobj.draw = function()
 	context.canvas.centered = 0;
 	var r = new rectangle(0, 0, rect.width, canvas.buttonheight);
 	var lasty = -10000000;
-	for (var m = 0; m < canvas.normal.length; ++m) {
+
+	var kkk = [];
+	for (var m = 0; m < canvas.normal.length; ++m) 
+	{
+		var n = canvas.normal[m];
+		var t = time + (n*delayinterval);
+		var bos = Math.tan(t * VIRTCONST);
+		var j = Math.berp(-1, 1, bos);
+		var y = j * context.canvas.virtualheight;
+		var e = (canvas.virtualheight - rect.height) / 2;
+		y -= e;
+		k.push(y);
+	}
+	
+	for (var m = 0; m < canvas.normal.length; ++m) 
+	{
 		var n = canvas.normal[m];
 		var slice = slices[n];
 		var index = n % IMAGELSTSIZE;
