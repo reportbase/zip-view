@@ -2174,7 +2174,7 @@ var panlst =
 				{
 					var k = canvas.startx-x;
 					var j = (canvas.timeobj.length()/canvas.virtualwidth)*k;
-					canvas.timeobj.CURRENT += j;
+					canvas.timeobj.CURRENT = canvas.timeobj.ANCHOR+j;
 					context.refresh();
 				}
 			} 
@@ -2205,7 +2205,7 @@ var panlst =
 				else
 				{
 					var k = canvas.starty-y;
-					rowobj.CURRENT += k;
+					rowobj.CURRENT = rowobj.ANCHOR+k;
 					contextobj.reset();
 				}
 			}
