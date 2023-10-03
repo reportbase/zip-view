@@ -2699,12 +2699,13 @@ CanvasRenderingContext2D.prototype.hithumb = function(x, y)
         var j = DELAYCENTER/e;
         var time = j*m;
         var k = time % DELAYCENTER;
-        var e = this.timeobj.length()*(k/DELAYCENTER);
-        this.timeobj.set(e);
+        var e = this.canvas.timeobj.length()*(k/DELAYCENTER);
+        this.canvas.timeobj.set(e);
     }
 
     if (typeof y !== "undefined")
     {
+	var rect = this.canvas.thumbrect;    
         var b = (y-rect.y)/rect.height;
         var e = b*rowobj.length();
         rowobj.set(e);
