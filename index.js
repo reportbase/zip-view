@@ -5597,13 +5597,13 @@ galleryobj.init = function(obj) {
 
 function initime() 
 {
-		menuobj.set(_8cnvctx);
-		menuobj.toggle(_8cnvctx);
+	//	menuobj.set(_8cnvctx);
+	//	menuobj.toggle(_8cnvctx);
 	
 	contextobj.reset();
 	_4cnvctx.refresh();
 
-	headobj.set(GALLERY);
+	headobj.set(BOSS);
 	headham.panel = headobj.value();
 	headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 	var j = Number(localobj.time);
