@@ -2691,6 +2691,8 @@ CanvasRenderingContext2D.prototype.hithumb = function(x, y)
 {
 	var rect = this.canvas.thumbrect;
 	var select = this.canvas.selectrect[0];
+	x = x % rect.width;
+	y = y % rect.height;
 	var b = (x - rect.x) / rect.width;
 	var e = (1 - b) * TIMEOBJ;
 	this.canvas.timeobj.set(e);
