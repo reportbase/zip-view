@@ -3634,6 +3634,7 @@ menuobj.show = function() {
 	}, 1000);
 }
 
+//menuobj draw
 menuobj.draw = function() 
 {
 	var context = this.value();
@@ -3690,7 +3691,7 @@ menuobj.draw = function()
 		var view = Math.floor(n / IMAGELSTSIZE);
 		var thumbimg = thumbimglst[index];
 		var thumbfitted = thumbfittedlst[index];
-		if (context == _8cnvctx && !canvas.pinching && thumbimg.view != view) {
+		if (context == _8cnvctx && thumbimg.view != view) {
 			try {
 				thumbimg.view = view;
 				thumbimg.src = imagepath(slice);
@@ -3709,7 +3710,9 @@ menuobj.draw = function()
 				thumbimg.view = 0;
 				console.log(error);
 			}
-		} else {
+		} 
+		else 
+		{
 			var t = time + n * delayinterval;
 			var bos = Math.tan(t * VIRTCONST);
 			var j = Math.berp(-1, 1, bos);
@@ -3729,7 +3732,8 @@ menuobj.draw = function()
 			};
 			slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight);
 			slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
-			if (slice.isvisible) {
+			if (0)//slice.isvisible) 
+			{
 				if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
 					context.canvas.centered = j.n;
 				isvisiblecount += j.slice.isvisible ? 1 : 0;
