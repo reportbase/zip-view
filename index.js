@@ -5248,14 +5248,20 @@ async function loadjson(blob) {
 }
 
 //galleryobj init
-galleryobj.init = function(obj) {
+galleryobj.init = function(obj) 
+{
 	if (obj)
 		Object.assign(galleryobj, obj);
-
+	if (url.searchParams.has("length"))
+		this.data.length = url.searchParams.get("length")
+	else if (galleryobj.length)
+		this.data.length = galleryobj.length;
+	
 	delete _4cnv.thumbcanvas;
 	delete photo.image;
 
-	for (var n = 0; n < IMAGELSTSIZE; ++n) {
+	for (var n = 0; n < IMAGELSTSIZE; ++n) 
+	{
 		thumbfittedlst[n] = document.createElement("canvas");
 		thumbimglst[n] = new Image();
 	}
