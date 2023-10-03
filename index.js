@@ -30,7 +30,7 @@ const BUTTONMARGIN = 30;
 const IFRAME = window.self !== window.top;
 const ALIEXTENT = 60;
 const BEXTENT = 80;
-const HEADHEIGHT = IFRAME ? 0 : 80;
+const HEADHEIGHT = 80;//  IFRAME ? 0 : 80;
 const TIMEOBJ = 3927;
 const DELAYCENTER = TIMEOBJ/1000;
 const SCROLLMARGIN = 8;
@@ -5597,16 +5597,13 @@ galleryobj.init = function(obj) {
 
 function initime() 
 {
-	if (galleryobj.length > 30)
-	{
 		menuobj.set(_8cnvctx);
 		menuobj.toggle(_8cnvctx);
-	}
 	
 	contextobj.reset();
 	_4cnvctx.refresh();
 
-	headobj.set(galleryobj.length()>30?GALLERY:BOSS);
+	headobj.set(GALLERY);
 	headham.panel = headobj.value();
 	headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 	var j = Number(localobj.time);
