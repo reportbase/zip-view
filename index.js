@@ -1979,6 +1979,7 @@ var droplst = [{
 	name: "DEFAULT",
 	drop: function(context, evt) {
 		var files = evt.dataTransfer.files;
+		delete galleryobj.datalength;
 		if (files.length == 1 && files[0].name) {
 			if (files[0].name.isimage()) {
 				loadimages(files);
@@ -5919,6 +5920,7 @@ function importdialog() {
 
 		input.onchange = function() {
 			var files = Array.from(input.files);
+			delete galleryobj.datalength;
 			if (files.length == 1 && files[0].name) {
 				var name = files[0].name;
 				if (name.isimage()) {
