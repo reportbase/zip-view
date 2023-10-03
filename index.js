@@ -3695,7 +3695,7 @@ menuobj.draw = function()
 		var y = j * context.canvas.virtualheight;
 		var e = (canvas.virtualheight - rect.height) / 2;
 		y -= e;
-		kkk.push(y);
+		kkk.push({n:n, y:y.toFixed(4)});
 	}
 	
 	for (var m = 0; m < canvas.normal.length; ++m) 
