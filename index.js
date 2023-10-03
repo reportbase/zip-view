@@ -3685,10 +3685,12 @@ menuobj.draw = function()
 	var r = new rectangle(0, 0, rect.width, canvas.buttonheight);
 	var lasty = -10000000;
 
+	var size = Math.ceil(rect.height / canvas.buttonheight);
+	var eee = util.rotated_list(canvas.rotated, slices.length, 0, size)
 	var kkk = [];
-	for (var m = 0; m < canvas.normal.length; ++m) 
+	for (var m = 0; m < eee.length; ++m) 
 	{
-		var n = canvas.normal[m];
+		var n = eee[m];
 		var t = time + (n*delayinterval);
 		var bos = Math.tan(t * VIRTCONST);
 		var j = Math.berp(-1, 1, bos);
