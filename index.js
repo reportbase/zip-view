@@ -2172,8 +2172,9 @@ var panlst =
 				}
 				else
 				{
-					canvas.timeobj.setrotate(x-canvas.startx,
-						canvas.virtualwidth);
+					var k = canvas.startx-x;
+					var j = (canvas.timeobj.length()/canvas.virtualwidth)*k;
+					canvas.timeobj.CURRENT = canvas.timeobj.ANCHOR+j;
 					context.refresh();
 				}
 			} 
@@ -2203,7 +2204,7 @@ var panlst =
 				}
 				else
 				{
-					var k = y-canvas.starty;
+					var k = canvas.starty-y;
 					rowobj.CURRENT = rowobj.ANCHOR+k;
 					contextobj.reset();
 				}
