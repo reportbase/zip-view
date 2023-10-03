@@ -5252,10 +5252,12 @@ galleryobj.init = function(obj)
 {
 	if (obj)
 		Object.assign(galleryobj, obj);
+	/*
 	if (url.searchParams.has("length"))
 		this.data.length = url.searchParams.get("length")
 	else if (galleryobj.length)
 		this.data.length = galleryobj.length;
+	*/
 	
 	delete _4cnv.thumbcanvas;
 	delete photo.image;
