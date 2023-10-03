@@ -5716,6 +5716,12 @@ else if (url.searchParams.has("data")) {
 		.then((response) => jsonhandler(response))
 		.then((obj) => galleryobj.init(obj))
 		.catch((error) => {});
+} else if (url.searchParams.has("res")) {
+	url.path = url.searchParams.get("res");
+	fetch(`res/${url.path}.json`)
+		.then(response => jsonhandler(response))
+		.then((obj) => galleryobj.init(obj))
+		.catch((error) => {});
 } else {
 	url.path = url.searchParams.get("res/reci.json");
 	fetch("res/reci.json")
