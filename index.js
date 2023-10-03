@@ -2693,7 +2693,7 @@ CanvasRenderingContext2D.prototype.hithumb = function(x,y)
 {
     if (typeof x !== "undefined")
     {
-        var rect = this.thumbrect;
+        var rect = this.canvas.thumbrect;
         var c = (x-rect.x) % rect.width;
         var b = c/rect.width;
         var e = this.sliceobj.length();
