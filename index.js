@@ -489,7 +489,8 @@ panel.empty = function() {
 	this.draw = function(context, rect, user, time) {}
 };
 
-panel.gallerybar = function() {
+panel.gallerybar = function() 
+{
 	this.draw = function(context, rect, user, time) {
 		var canvas = context.canvas;
 		canvas.speedrect = new rectangle();
@@ -597,7 +598,7 @@ panel.galleryscroll = function()
 		var a = new panel.colA([6, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 6],
 			[
 				0,
-				new panel.row([0, bh, 0],
+				1?0:new panel.row([0, bh, 0],
 					[
 						0,
 						new Layer(
@@ -623,7 +624,6 @@ panel.galleryscroll = function()
 				0
 			]);
 				
-/*
 		a.draw(context, rect, 
 		       [
 			       0,
@@ -632,7 +632,6 @@ panel.galleryscroll = function()
 			       context.canvas.timeobj,
 			       0,
 		      ], 0);
-*/
 		
 		var a = new panel.row([0, SCROLLBARWIDTH, 4],
 			[
