@@ -3696,7 +3696,7 @@ menuobj.draw = function()
 		var j = Math.berp(-1, 1, bos);
 		var y = j * context.canvas.virtualheight;
 		var e = (canvas.virtualheight - rect.height) / 2;
-		var isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
+		var isvisible = y > -canvas.buttonheight && y < window.innerHeight;
 		y -= e;
 		kkk.push({n,y,isvisible});
 	}
