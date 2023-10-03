@@ -2314,7 +2314,7 @@ var presslst = [{
 		name: "GALLERY",
 		pressup: function(context, rect, x, y) {
 
-				headcnv.height = headcnv.height?0:HEADHEIGHT;
+				headcnv.height = headcnv.height?0:BEXTENT;
 				headobj.set(GALLERY);
 				headham.panel = headobj.value();
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
@@ -2337,7 +2337,7 @@ var presslst = [{
 			if (context.canvas.thumbrect &&
 				context.canvas.thumbrect.hitest(x, y))
 				return;
-			headcnv.height = headcnv.height?0:HEADHEIGHT;
+			headcnv.height = headcnv.height?0:BEXTENT;
 			headobj.set(BOSS);
 			headham.panel = headobj.value();
 			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
@@ -4142,8 +4142,8 @@ contextlst.forEach(function(context, n) {
 		return a.name == obj.press
 	});
 	k = presslst[k];
-	canvas.pressup_ = k.pressup;
-	canvas.press_ = k.press;
+	canvas.pressup_ = IFRAME?function():k.pressup;
+	canvas.press_ = IFRAME?function():k.press;
 
 	var k = swipelst.findIndex(function(a) {
 		return a.name == obj.swipe
