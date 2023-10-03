@@ -30,6 +30,7 @@ const BUTTONMARGIN = 30;
 const ALIEXTENT = 60;
 const BEXTENT = 80;
 const TIMEOBJ = 3927;
+const DELAYCENTER = DELAYCENTER/1000;
 const SCROLLMARGIN = 8;
 const MENUSELECT = "rgba(255,175,0,0.4)";
 const MENUTAP = "rgba(255,125,0,0.7)";
@@ -2689,6 +2690,16 @@ var keylst = [{
 
 CanvasRenderingContext2D.prototype.hithumb = function(x, y) 
 {
+	/*
+	var rect = this.canvas.thumbrect;
+	var select = this.canvas.selectrect[0];
+	var b = (x - rect.x) / rect.width;
+	var e = (1 - b) * TIMEOBJ;
+	this.canvas.timeobj.set(e);
+	var b = (y - rect.y) / rect.height;
+	var e = b * rowobj.length();
+	rowobj.set(e);
+	*/
     if (typeof x !== "undefined")
     {
         var rect = this.canvas.thumbrect;
@@ -2696,16 +2707,15 @@ CanvasRenderingContext2D.prototype.hithumb = function(x, y)
         var b = c/rect.width;
         var e = this.canvas.sliceobj.length();
         var m = (1-b)*e;
-        var j = TIMEOBJ/2/e;
+        var j = DELAYCENTER/e;
         var time = j*m;
-        var k = time % TIMEOBJ/2;
-        var e = this.canvas.timeobj.length()*(k/TIMEOBJ/2);
+        var k = time % DELAYCENTER;
+        var e = this.canvas.timeobj.length()*(k/DELAYCENTER);
         this.canvas.timeobj.set(e);
     }
 
     if (typeof y !== "undefined")
     {
-	var rect = this.canvas.thumbrect;    
         var b = (y-rect.y)/rect.height;
         var e = b*rowobj.length();
         rowobj.set(e);
