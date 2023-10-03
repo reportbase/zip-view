@@ -2689,6 +2689,30 @@ var keylst = [{
 
 CanvasRenderingContext2D.prototype.hithumb = function(x, y) 
 {
+CanvasRenderingContext2D.prototype.hithumb = function(x,y)
+{
+    if (typeof x !== "undefined")
+    {
+        var rect = this.thumbrect;
+        var c = (x-rect.x) % rect.width;
+        var b = c/rect.width;
+        var e = this.sliceobj.length();
+        var m = (1-b)*e;
+        var j = DELAYCENTER/e;
+        var time = j*m;
+        var k = time % DELAYCENTER;
+        var e = this.timeobj.length()*(k/DELAYCENTER);
+        this.timeobj.set(e);
+    }
+
+    if (typeof y !== "undefined")
+    {
+        var b = (y-rect.y)/rect.height;
+        var e = b*rowobj.length();
+        rowobj.set(e);
+    }
+}
+	/*
 	var rect = this.canvas.thumbrect;
 	var select = this.canvas.selectrect[0];
 	var b = (x - rect.x) / rect.width;
@@ -2697,6 +2721,7 @@ CanvasRenderingContext2D.prototype.hithumb = function(x, y)
 	var b = (y - rect.y) / rect.height;
 	var e = b * rowobj.length();
 	rowobj.set(e);
+ */
 }
 
 var taplst = [{
