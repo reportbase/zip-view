@@ -5251,7 +5251,13 @@ async function loadjson(blob) {
 galleryobj.init = function(obj) {
 	if (obj)
 		Object.assign(galleryobj, obj);
-
+	
+	if (url.searchParams.has("length")) 
+	{
+		var length = url.searchParams.get("length");
+		galleryobj.data.length = length;
+	}
+	
 	delete _4cnv.thumbcanvas;
 	delete photo.image;
 
