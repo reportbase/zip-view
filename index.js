@@ -27,8 +27,10 @@ const VIRTCONST = 0.8;
 const MAXVIRTUAL = 5760 * (iOS() ? 3 : 10);
 const THUMBORDER = 5;
 const BUTTONMARGIN = 30;
+const IFRAME = window.self !== window.top;
 const ALIEXTENT = 60;
 const BEXTENT = 80;
+const HEADHEIGHT = IFRAME ? 0 : 80;
 const TIMEOBJ = 3927;
 const DELAYCENTER = TIMEOBJ/1000;
 const SCROLLMARGIN = 8;
@@ -88,7 +90,8 @@ util.numbersonly = function(str)
 	return str.split('').filter(char => !isNaN(char)).join('');
 }
 
-util.initialize_array_range = function(start, end) {
+util.initialize_array_range = function(start, end) 
+{
 	const length = end - start + 1;
 	return Array.from({
 		length
@@ -2314,7 +2317,7 @@ var presslst = [{
 		name: "GALLERY",
 		pressup: function(context, rect, x, y) {
 
-				headcnv.height = headcnv.height?0:BEXTENT;
+				headcnv.height = headcnv.height?0:HEADHEIGHT;
 				headobj.set(GALLERY);
 				headham.panel = headobj.value();
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
@@ -2337,7 +2340,7 @@ var presslst = [{
 			if (context.canvas.thumbrect &&
 				context.canvas.thumbrect.hitest(x, y))
 				return;
-			headcnv.height = headcnv.height?0:BEXTENT;
+			headcnv.height = headcnv.height?0:HEADHEIGHT;
 			headobj.set(BOSS);
 			headham.panel = headobj.value();
 			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
@@ -2521,7 +2524,7 @@ var keylst = [{
 			} 
 			else if (key == "\\" || key == "/") 
 			{
-				var h = headcnv.height ? 0 : BEXTENT;
+				var h = headcnv.height ? 0 : HEADHEIGHT;
 				headcnvctx.show(0, 0, window.innerWidth, h);
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 				context.refresh()
@@ -2650,7 +2653,7 @@ var keylst = [{
 				context.refresh();
 				evt.preventDefault();
 			} else if (key == "/" || key == "\\") {
-				var h = headcnv.height ? 0 : BEXTENT;
+				var h = headcnv.height ? 0 : HEADHEIGHT;
 				headcnvctx.show(0, 0, window.innerWidth, h);
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 				context.refresh()
@@ -4955,7 +4958,7 @@ var headlst = [
 
 				var n = visibles[k].n;
 				galleryobj.set(n);
-				headcnv.height = BEXTENT;
+				headcnv.height = HEADHEIGHT;
 				headobj.set(BOSS);
 				headham.panel = headobj.value();
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
@@ -5237,6 +5240,7 @@ async function loadjson(blob) {
 	} catch (_) {}
 }
 
+//galleryobj init
 galleryobj.init = function(obj) {
 	if (obj)
 		Object.assign(galleryobj, obj);
@@ -5508,7 +5512,7 @@ galleryobj.init = function(obj) {
 				galleryobj.debug = galleryobj.debug ? 0 : 1;
 				overlayobj.set(overlayobj.current() == 0 ? 1 : 0);
 				menuobj.hide();
-				headcnv.height = BEXTENT;
+				headcnv.height = HEADHEIGHT;
 				headobj.set(BOSS);
 				headham.panel = headobj.value();
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
@@ -5537,7 +5541,9 @@ galleryobj.init = function(obj) {
 	var a = Array(galleryobj.length()).fill().map((_, index) => index);
 	_8cnv.rotated = [...a, ...a, ...a];
 
-	_9cnv.sliceobj.data = [{
+	_9cnv.sliceobj.data = 
+	[
+		{
 			title: "login",
 			path: "login",
 			func: function() {
@@ -5563,7 +5569,8 @@ galleryobj.init = function(obj) {
 	var a = Array(_9cnv.sliceobj.length()).fill().map((_, index) => index);
 	_9cnv.rotated = [...a, ...a, ...a];
 
-	_11cnv.sliceobj.data = [{
+	_11cnv.sliceobj.data = 
+	[{
 		title: "",
 		path: "",
 		func: function() {}
@@ -5588,13 +5595,18 @@ galleryobj.init = function(obj) {
 	}
 }
 
-function initime() {
-	menuobj.set(_8cnvctx);
+function initime() 
+{
+	if (galleryobj.length > 30)
+	{
+		menuobj.set(_8cnvctx);
+		menuobj.toggle(_8cnvctx);
+	}
+	
 	contextobj.reset();
-	menuobj.toggle(_8cnvctx);
 	_4cnvctx.refresh();
 
-	headobj.set(GALLERY);
+	headobj.set(galleryobj.length()>30?GALLERY:BOSS);
 	headham.panel = headobj.value();
 	headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 	var j = Number(localobj.time);
