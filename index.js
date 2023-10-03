@@ -3716,8 +3716,7 @@ menuobj.draw = function()
 		} 
 		else 
 		{
-			var t = time + delay;
-			delay += delayinterval;
+			var t = time + (n*delayinterval);
 			var bos = Math.tan(t * VIRTCONST);
 			var j = Math.berp(-1, 1, bos);
 			var y = j * context.canvas.virtualheight;
