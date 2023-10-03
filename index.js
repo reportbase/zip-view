@@ -230,7 +230,7 @@ let circular_array = function(title, data)
 			this.CURRENT = this.CURRENT - this.length();
 		else if (this.CURRENT < 0)
 			this.CURRENT = this.length() + this.CURRENT;
-		this.ANCHOR = this.CURRENT;
+		//this.ANCHOR = this.CURRENT;
 	};
 
 	this.rotate = function(index) 
