@@ -5254,8 +5254,8 @@ galleryobj.init = function(obj) {
 	
 	if (url.searchParams.has("length")) 
 		galleryobj.data.length = Number(url.searchParams.get("length"));
-	else if (galleryobj.length)
-		galleryobj.data.length = Number(galleryobj.length);
+	//else if (galleryobj.length)
+	//	galleryobj.data.length = Number(galleryobj.length);
 	
 	delete _4cnv.thumbcanvas;
 	delete photo.image;
