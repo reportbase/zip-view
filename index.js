@@ -2172,13 +2172,9 @@ var panlst =
 				}
 				else
 				{
-					var k = x-canvas.startx;
+					var k = canvas.startx-x;
 					var j = (canvas.timeobj.length()/canvas.virtualwidth)*k;
-					canvas.timeobj.CURRENT = canvas.timeobj.ANCHOR+j;
-					if (canvas.timeobj.CURRENT >= canvas.timeobj.length())
-						canvas.timeobj.CURRENT = canvas.timeobj.CURRENT - canvas.timeobj.length();
-					else if (canvas.timeobj.CURRENT < 0)
-						canvas.timeobj.CURRENT = canvas.timeobj.length() + canvas.timeobj.CURRENT;
+					canvas.timeobj.CURRENT += j;
 					context.refresh();
 				}
 			} 
