@@ -4823,15 +4823,15 @@ var headlst = [
 			context.save();
 			var a = new panel.row([BEXTENT, 0],
 				[
-					new panel.col([0, ALIEXTENT, ALIEXTENT, ALIEXTENT, 0],
+					new panel.col([5, 0, ALIEXTENT, ALIEXTENT, ALIEXTENT, 0, 5],
 						[
-							0,
+							0,0,
 							
 							new panel.previous(),
 							new panel.zoom(),
 							new panel.next(),
 
-							0,
+							0,0,
 						]),
 					0,
 				]);
@@ -5004,7 +5004,7 @@ var headlst = [
 			var e = _5cnv.sliceobj.length() <= 1;
 			var g = menuobj.value() == _8cnvctx;
 			var a = new panel.col(
-				[15, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT, ALIEXTENT, 0, ALIEXTENT, 15],
+				[5, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT, ALIEXTENT, 0, ALIEXTENT, 5],
 				[
 					0,
 					new panel.help(),
