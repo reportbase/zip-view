@@ -5252,12 +5252,10 @@ galleryobj.init = function(obj)
 {
 	if (obj)
 		Object.assign(galleryobj, obj);
-	/*
-	if (url.searchParams.has("length"))
-		this.data.length = url.searchParams.get("length")
-	else if (galleryobj.length)
-		this.data.length = galleryobj.length;
-	*/
+	if (url.searchParams.has("datalength"))
+		this.data.length = url.searchParams.get("datalength")
+	else if (galleryobj.datalength)
+		this.data.length = galleryobj.datalength;
 	
 	delete _4cnv.thumbcanvas;
 	delete photo.image;
@@ -5738,8 +5736,8 @@ else if (url.searchParams.has("data")) {
 		.then((obj) => galleryobj.init(obj))
 		.catch((error) => {});
 } else {
-	url.path = url.searchParams.get("res/reci.json");
-	fetch("res/reci.json")
+	url.path = url.searchParams.get("res/home.json");
+	fetch("res/home.json")
 		.then(response => jsonhandler(response))
 		.then((obj) => galleryobj.init(obj))
 		.catch((error) => {});
