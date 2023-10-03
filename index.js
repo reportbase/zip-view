@@ -5251,17 +5251,11 @@ async function loadjson(blob) {
 galleryobj.init = function(obj) {
 	if (obj)
 		Object.assign(galleryobj, obj);
-	
-	if (url.searchParams.has("length")) 
-		galleryobj.data.length = Number(url.searchParams.get("length"));
-	else if (galleryobj.length)
-		galleryobj.data.length = Number(galleryobj.length);
-	
+
 	delete _4cnv.thumbcanvas;
 	delete photo.image;
 
-	for (var n = 0; n < IMAGELSTSIZE; ++n) 
-	{
+	for (var n = 0; n < IMAGELSTSIZE; ++n) {
 		thumbfittedlst[n] = document.createElement("canvas");
 		thumbimglst[n] = new Image();
 	}
