@@ -3695,9 +3695,9 @@ menuobj.draw = function()
 		var y = j * context.canvas.virtualheight;
 		var e = (canvas.virtualheight - rect.height) / 2;
 		y -= e;
-		kkk.push({n:n, y:y.toFixed(4)});
 	}
-	
+
+	var jjj = []
 	for (var m = 0; m < canvas.normal.length; ++m) 
 	{
 		var n = canvas.normal[m];
@@ -3758,6 +3758,7 @@ menuobj.draw = function()
 			ctx.translate(0, j.y);
 			context.canvas.draw(ctx, r, j.slice, j.n);
 			ctx.translate(0, -j.y);
+			jjj.push({n:n, y:j.y});
 		}
 	}
 
