@@ -3674,7 +3674,7 @@ menuobj.draw = function()
 		1 - context.canvas.timeobj.berp());
 	if (canvas.lastcurrent != current) {
 		canvas.lastcurrent = current;
-		var size = Math.ceil(rect.height / canvas.buttonheight);// + 4;
+		var size = Math.ceil(rect.height / canvas.buttonheight) + 4;
 		canvas.normal = util.rotated_list(canvas.rotated, slices.length, current, size);
 	}
 
@@ -3684,7 +3684,8 @@ menuobj.draw = function()
 	context.canvas.centered = 0;
 	var r = new rectangle(0, 0, rect.width, canvas.buttonheight);
 	var lasty = -10000000;
-
+	var delay = 0;
+	
 	for (var m = 0; m < canvas.normal.length; ++m) 
 	{
 		var n = canvas.normal[m];
@@ -3715,7 +3716,8 @@ menuobj.draw = function()
 		} 
 		else 
 		{
-			var t = time + n * delayinterval;
+			var t = time + delay;
+			delay += delayinterval;
 			var bos = Math.tan(t * VIRTCONST);
 			var j = Math.berp(-1, 1, bos);
 			var y = j * context.canvas.virtualheight;
