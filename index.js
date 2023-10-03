@@ -5736,8 +5736,8 @@ else if (url.searchParams.has("data")) {
 		.then((obj) => galleryobj.init(obj))
 		.catch((error) => {});
 } else {
-	url.path = url.searchParams.get("res/home.json");
-	fetch("res/home.json")
+	url.path = url.searchParams.get("res/reci.json");
+	fetch("res/reci.json")
 		.then(response => jsonhandler(response))
 		.then((obj) => galleryobj.init(obj))
 		.catch((error) => {});
