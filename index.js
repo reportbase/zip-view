@@ -3685,23 +3685,6 @@ menuobj.draw = function()
 	var r = new rectangle(0, 0, rect.width, canvas.buttonheight);
 	var lasty = -10000000;
 
-	var size = Math.ceil(rect.height / canvas.buttonheight);
-	var eee = util.rotated_list(canvas.rotated, slices.length, 0, size)
-	var kkk = [];
-	for (var m = 0; m < eee.length; ++m) 
-	{
-		var n = eee[m];
-		var t = time + (n*delayinterval);
-		var bos = Math.tan(t * VIRTCONST);
-		var j = Math.berp(-1, 1, bos);
-		var y = j * context.canvas.virtualheight;
-		var e = (canvas.virtualheight - rect.height) / 2;
-		y -= e;
-		var isvisible = y > -canvas.buttonheight && y < window.innerHeight;
-		kkk.push({n,y,isvisible});
-	}
-
-	var jjj = []
 	for (var m = 0; m < canvas.normal.length; ++m) 
 	{
 		var n = canvas.normal[m];
@@ -3762,7 +3745,6 @@ menuobj.draw = function()
 			ctx.translate(0, j.y);
 			context.canvas.draw(ctx, r, j.slice, j.n);
 			ctx.translate(0, -j.y);
-			jjj.push({n:n, y:j.y});
 		}
 	}
 
