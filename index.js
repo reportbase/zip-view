@@ -2203,8 +2203,8 @@ var panlst =
 				}
 				else
 				{
-					var p = (y/canvas.starty)*window.innerHeigh;
-					rowobj.CURRENT = p;
+					var k = y-canvas.starty;
+					rowobj.CURRENT = rowobj.ANCHOR+k;
 					contextobj.reset();
 				}
 			}
