@@ -149,7 +149,7 @@ util.rotated_list = function(lst, size, start, width) {
 		return array.indexOf(value) === index;
 	});
 
-	return unique.sort();
+	return unique.sort(function(a, b) {return a - b;});
 }
 
 let circular_array = function(title, data) 
