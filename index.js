@@ -5260,7 +5260,8 @@ galleryobj.init = function(obj) {
 	delete _4cnv.thumbcanvas;
 	delete photo.image;
 
-	for (var n = 0; n < IMAGELSTSIZE; ++n) {
+	for (var n = 0; n < IMAGELSTSIZE; ++n) 
+	{
 		thumbfittedlst[n] = document.createElement("canvas");
 		thumbimglst[n] = new Image();
 	}
@@ -5736,7 +5737,7 @@ else if (url.searchParams.has("data")) {
 		.catch((error) => {});
 } else {
 	url.path = url.searchParams.get("res/home.json");
-	fetch("res/reci.json")
+	fetch("res/home.json")
 		.then(response => jsonhandler(response))
 		.then((obj) => galleryobj.init(obj))
 		.catch((error) => {});
