@@ -1769,7 +1769,7 @@ infobj.reset = function()
 			var j = _8cnv.scrollobj.value().berp()
 			infobj.data.push(`${j.toFixed(5)}`);
 			var e = buttonobj.value();
-			infobj.data.push(`${e.toFixed(5)}`);
+			infobj.data.push(`${e.toFixed(0)}`);
 		}
 		else
 		{
@@ -1780,6 +1780,8 @@ infobj.reset = function()
 			infobj.data.push(`${index+1} of ${galleryobj.length()}`);
 			var e = 1-_4cnv.timeobj.berp();
 			infobj.data.push(`${e.toFixed(5)}`);
+			var j = rowobj.berp();
+			infobj.data.push(`${j.toFixed(5)}`);
 		}
 
 }
