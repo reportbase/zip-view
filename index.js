@@ -5779,9 +5779,10 @@ function goimage(image)
 	}
 }
 
-IFRAME ? function gotodialog() {} : 
-	function gotodialog(value, title, func) 
+function gotodialog(value, title, func) 
 {
+	if (IFRAME)
+		return;	
 	var input = document.getElementById("goto-input");
 	var button = document.getElementById("goto-ok");
 	button.innerHTML = title;
