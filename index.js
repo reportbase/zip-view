@@ -2960,7 +2960,7 @@ var taplst = [
 			    canvas.vscrollrect.hitest(x, y)) 
 			{
 				var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
-				canvas.scrollobj.setperc(1-k);
+				canvas.scrollobj.setperc(k);
 				context.refresh()
 			}
 			else if (canvas.hscrollrect && 
