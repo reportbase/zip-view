@@ -3772,7 +3772,7 @@ var eventlst = [{
 		key: "MENU",
 		press: "DEFAULT",
 		pinch: "DEFAULT",
-		bar: new 4(),
+		bar: new panel.empty(),
 		scroll: new panel.scrollbar(),
 		buttonheight: 0,
 		width: 640
