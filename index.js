@@ -683,7 +683,7 @@ panel.scrollbar = function() {
 
 		a.draw(context, rect, context.canvas.timeobj, 0);
 
-		vvar = new panel.col([0, 9, 5],
+		vvar = new panel.row([0, 9, 5],
 			[
 				0,
 				new panel.col([5, 0, 5],
