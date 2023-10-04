@@ -676,7 +676,7 @@ panel.scrollbar = function()
 							new Layer(
 								[
 									new panel.expand(new panel.rectangle(canvas.hscrollrect), 10, 0),
-									new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1),
+									new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 0),
 								]),
 							0,
 						]),
