@@ -658,6 +658,7 @@ panel.galleryscroll = function()
 	}
 };
 
+//panel scrollbar
 panel.scrollbar = function() 
 {
 	this.draw = function(context, rect, user, time) 
@@ -2952,36 +2953,56 @@ var taplst = [
 	},
 	{
 		name: "MENU",
-		tap: function(context, rect, x, y) {
+		tap: function(context, rect, x, y) 
+		{
 			var canvas = context.canvas;
-			var visibles = canvas.visibles;
-			var k;
-			for (k = 0; k < visibles.length; k++) {
-				var j = visibles[k];
-				if (!j.slice || !j.slice.rect)
-					continue;
-				if (j.slice.rect.hitest(x, y))
-					break;
+			if (canvas.vscrollrect && 
+			    canvas.vscrollrect.hitest(x, y)) 
+			{
+				var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
+				canvas.scrollobj.setperc(1-k);
+				context.refresh()
 			}
-
-			if (k == visibles.length)
-				return;
-
-			var n = visibles[k].n;
-			var slice = canvas.sliceobj.data[n];
-			if (!slice)
-				return;
-
-			slice.tap = 1;
-			context.refresh();
-			setTimeout(function() {
-				menuobj.hide();
-				delete slice.tap;
-				slice.func(x / rect.width)
+			else if (canvas.hscrollrect && 
+			    canvas.hscrollrect.hitest(x, y)) 
+			{
+				var k = (y - canvas.hscrollrect.y) / canvas.hscrollrect.height;
+				context.canvas.timeobj.setperc(1-k);
+				context.refresh()
+			}
+			else
+			{
+				var canvas = context.canvas;
+				var visibles = canvas.visibles;
+				var k;
+				for (k = 0; k < visibles.length; k++) {
+					var j = visibles[k];
+					if (!j.slice || !j.slice.rect)
+						continue;
+					if (j.slice.rect.hitest(x, y))
+						break;
+				}
+	
+				if (k == visibles.length)
+					return;
+	
+				var n = visibles[k].n;
+				var slice = canvas.sliceobj.data[n];
+				if (!slice)
+					return;
+	
+				slice.tap = 1;
 				context.refresh();
-				_4cnvctx.refresh();
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-			}, 200);
+				setTimeout(function() {
+					menuobj.hide();
+					delete slice.tap;
+					if (slice.func)
+						slice.func(x / rect.width)
+					context.refresh();
+					_4cnvctx.refresh();
+					headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+				}, 200);
+			}
 		},
 	},
 ];
@@ -4932,7 +4953,6 @@ var headlst = [
 			clearInterval(global.timeauto);
 
 			global.timeauto = 0;
-			var obj = canvas.scrollobj.value();
 			context.refresh();
 
 			if (canvas.helprect && canvas.helprect.hitest(x, y)) {
