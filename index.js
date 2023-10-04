@@ -2786,7 +2786,6 @@ var taplst = [{
 			else if (context.chapterect &&
 				context.chapterect.hitest(x, y)) 
 			{
-
 				var value = galleryobj.current();
 				if (menuobj.value() == _8cnvctx) 
 					value = Math.floor(Math.lerp(0, galleryobj.length()-1, 
@@ -5780,7 +5779,8 @@ function goimage(image)
 	}
 }
 
-function gotodialog(value, title, func) 
+IFRAME ? function gotodialog() {} : 
+	function gotodialog(value, title, func) 
 {
 	var input = document.getElementById("goto-input");
 	var button = document.getElementById("goto-ok");
