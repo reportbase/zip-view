@@ -6070,7 +6070,8 @@ function selectid(id) {
 
 menuobj.leftright = function(context, delta) 
 {
-	context.canvas.scrollobj.setperc(delta/10);
+	var k = delta < 0 ? -1 : 1;
+	context.canvas.scrollobj.setperc(k*0.01);
 	context.refresh()
 }
 		
