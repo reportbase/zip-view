@@ -522,9 +522,9 @@ panel.gallerybar = function()
 								0,
 								0 ? new Layer(
 									[
-										new panel.fill(NUBACK), 
+										new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8), 
 										new panel.expand(new panel.rectangle(canvas.speedrect), 10, 0),
-										new panel.shrink(new panel.currentV(new panel.fill("white"), ALIEXTENT, 0), 3, 3),
+										new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 6, 6), ALIEXTENT, 0), 3, 3),
 									]) : 0,
 								0,
 							]),
@@ -534,9 +534,9 @@ panel.gallerybar = function()
 								0,
 								0 ? new Layer(
 									[
-										new panel.fill(NUBACK), 
+										new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8), 
 										new panel.expand(new panel.rectangle(canvas.reducerect), 10, 0),
-										new panel.shrink(new panel.currentV(new panel.fill(NUBAR), ALIEXTENT, 0), 3, 3)
+										new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 6, 6), ALIEXTENT, 0), 3, 3)
 									]) : 0,
 								0,
 							]),
@@ -3019,10 +3019,10 @@ var bosslst = [
 									0,
 									new Layer(
 										[
-											new panel.fill(NUBACK), 
+											new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8) 
 											new panel.expand(new panel.rectangle(galleryobj.debug ?
 												context.slicewidthrect : context.zoomrect), 10, 1),
-											new panel.shrink(new panel.currentV(new panel.fill("white"), ALIEXTENT, 0), 3, 3),
+											new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 6, 6), ALIEXTENT, 0), 3, 3),
 										]),
 									0,
 								]),
@@ -3032,9 +3032,9 @@ var bosslst = [
 									0,
 									new Layer(
 										[
-											new panel.fill(NUBACK), 
+											new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8), 
 											new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
-											new panel.shrink(new panel.currentV(new panel.fill("white"), ALIEXTENT, 0), 3, 3)
+											new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 6, 6), ALIEXTENT, 0), 3, 3)
 										]),
 									0,
 								]),
