@@ -607,9 +607,9 @@ panel.galleryscroll = function()
 						0,
 						new Layer(
 							[
-								new panel.rounded(NUBACK, 0, TRANSPARENT, 4, 4),
+								new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
 								new panel.expand(new panel.rectangle(canvas.buttonrect), 10, 0),
-								new panel.shrink(new panel.currentV(new panel.fill("white"),ALIEXTENT, 0), 3, 3),
+								new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 8, 8),ALIEXTENT, 0), 3, 3),
 							]),
 						0,
 					]),		
@@ -621,7 +621,7 @@ panel.galleryscroll = function()
 							[
 								new panel.rounded(NUBACK, 0, TRANSPARENT, 4, 4),
 								new panel.expand(new panel.rectangle(canvas.vscrollrect), 10, 0),
-								new panel.shrink(new panel.currentV(new panel.fill("white"),ALIEXTENT, 1), 3, 3),
+								new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 8, 8),ALIEXTENT, 1), 3, 3),
 							]),
 						0,
 					]),
@@ -647,7 +647,7 @@ panel.galleryscroll = function()
 							[
 								new panel.rounded(NUBACK, 0, TRANSPARENT, 4, 4),
 								new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 10),
-								new panel.shrink(new panel.currentH(new panel.fill("white"), ALIEXTENT, 1), 3, 3)
+								new panel.shrink(new panel.currentH(new panel.rounded("white", 0, TRANSPARENT, 8, 8), ALIEXTENT, 1), 3, 3)
 							]),
 						0,
 					])
