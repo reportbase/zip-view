@@ -3701,22 +3701,17 @@ menuobj.draw = function()
 			};
 			slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight);
 			slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
-			if (slice.isvisible) 
-			{
-				if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
-					context.canvas.centered = j.n;
-				isvisiblecount += j.slice.isvisible ? 1 : 0;
-				if (slice.isvisible)
-					context.canvas.visibles.push(j);
-				ctx.translate(0, j.y);
-				context.canvas.draw(ctx, r, j.slice, j.n);
-				ctx.translate(0, -j.y);
-			}
-			else if (slice.color)
-			{
-				var a = new panel.fill(slice.color);
-				a.draw(context, rect, 0, 0);
-			}
+			if (!slice.isvisible) 
+				continue;
+			
+			if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
+				context.canvas.centered = j.n;
+			isvisiblecount += j.slice.isvisible ? 1 : 0;
+			if (slice.isvisible)
+				context.canvas.visibles.push(j);
+			ctx.translate(0, j.y);
+			context.canvas.draw(ctx, r, j.slice, j.n);
+			ctx.translate(0, -j.y);
 		}
 	}
 
