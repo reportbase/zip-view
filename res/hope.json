@@ -510,8 +510,18 @@
       "quote": "Only a Mediocre Person is Always at His Best"
     },
     {
-      "id": "NATU.0050",
+      "color": "red",
+      "quote": "We've Been Gone Five Years and the Best they Could Come up With was Boy Bands?"
+    },
+    {
+      "color": "blue",
       "quote": "We've Been Gone Five Years and the Best they Could Come up With was Boy Bands?"
     }
+    {
+      "color": "green",
+      "quote": "We've Been Gone Five Years and the Best they Could Come up With was Boy Bands?"
+    }
+  
+  
   ]
 }
