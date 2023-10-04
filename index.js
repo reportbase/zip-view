@@ -2514,11 +2514,6 @@ var keylst = [{
 						1 - _8cnv.timeobj.berp()));
 				gotodialog(value, "Goto", goimage);
 			} 
-			else if (key == "q") 
-			{
-				evt.preventDefault();
-				gotodialog("asdfadadsfasdfadfadfa", "QID", qid);
-			} 
 			else if (key == "\\" || key == "/") 
 			{
 				var h = headcnv.height ? 0 : HEADHEIGHT;
@@ -2667,10 +2662,6 @@ var keylst = [{
 				contextobj.reset()
 				evt.preventDefault();
 			}
-			else if (key == "q") 
-			{
-				gotodialog("", "QID", qid);
-			}				
 			else if (key == "g") 
 			{
 				var value = galleryobj.current();
@@ -5254,10 +5245,6 @@ galleryobj.init = function(obj)
 {
 	if (obj)
 		Object.assign(galleryobj, obj);
-	if (url.searchParams.has("datalength"))
-		this.data.length = url.searchParams.get("datalength")
-	else if (galleryobj.datalength)
-		this.data.length = galleryobj.datalength;
 	
 	delete _4cnv.thumbcanvas;
 	delete photo.image;
@@ -5445,13 +5432,6 @@ galleryobj.init = function(obj)
 	_6cnv.rotated = [...a, ...a, ...a];
 
 	_7cnv.sliceobj.data = [
-		{
-			title: "QID\nkey+q",
-			func: function() 
-			{
-				gotodialog("", "QID", goimage);
-			}
-		},
 
 		{
 			title: "Goto\nkey+g",
@@ -5711,12 +5691,7 @@ function qid(path)
 		.catch((error) => {});
 }
 
-if (url.searchParams.has("qid")) 
-{
-	url.path = url.searchParams.get("qid");
-	qid(url.path);
-} 
-else if (url.searchParams.has("data")) {
+if (url.searchParams.has("data")) {
 	url.path = url.searchParams.get("data");
 	fetch(`data/${url.path}/index.json`)
 		.then(response => jsonhandler(response))
@@ -5731,13 +5706,25 @@ else if (url.searchParams.has("data")) {
 		.then((response) => jsonhandler(response))
 		.then((obj) => galleryobj.init(obj))
 		.catch((error) => {});
-} else if (url.searchParams.has("res")) {
+} 
+else if (url.searchParams.has("res")) 
+{
 	url.path = url.searchParams.get("res");
 	fetch(`res/${url.path}.json`)
 		.then(response => jsonhandler(response))
 		.then((obj) => galleryobj.init(obj))
 		.catch((error) => {});
-} else {
+} 
+else if (url.searchParams.has("path")) 
+{
+	url.path = url.searchParams.get("path");
+	fetch(url.path)
+		.then(response => jsonhandler(response))
+		.then((obj) => galleryobj.init(obj))
+		.catch((error) => {});
+} 
+else 
+{
 	url.path = url.searchParams.get("res/home.json");
 	fetch("res/home.json")
 		.then(response => jsonhandler(response))
