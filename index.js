@@ -2154,12 +2154,22 @@ var panlst =
 				context.refresh()
 			} else if (type == "panup" || type == "pandown") {
 				var canvas = context.canvas;
-				if (canvas.isvbarect) {
+				if (canvas.ishscrollrect) 
+				{
 					var obj = canvas.timeobj;
-					var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
+					var k = (y - canvas.hscrollrect.y) / canvas.hscrollrect.height;
 					obj.setperc(1 - k);
 					context.refresh()
-				} else {
+				} 
+				else if (canvas.ivhscrollrect) 
+				{
+					var obj = canvas.scrollobj;
+					var k = (y - canvas.hscrollrect.y) / canvas.hscrollrect.height;
+					obj.setperc(1 - k);
+					context.refresh()
+				} 				
+				else 
+				{
 					var e = canvas.starty - y;
 					var jvalue = TIMEOBJ / canvas.virtualheight
 					jvalue *= e;
@@ -2176,7 +2186,8 @@ var panlst =
 			global.timeauto = 0;
 			canvas.starty = y;
 			canvas.timeobj.setanchor(canvas.timeobj.current());
-			canvas.isvbarect = canvas.vscrollrect && canvas.vscrollrect.hitest(x, y);
+			canvas.ishscrollrect = canvas.hscrollrect && canvas.hscrollrect.hitest(x, y);
+			canvas.isvscrollrect = canvas.vscrollrect && canvas.vscrollrect.hitest(x, y);
 		},
 		panend: function(context, rect, x, y) 
 		{
