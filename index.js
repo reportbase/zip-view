@@ -2516,7 +2516,7 @@ var keylst = [{
 			else if (key == "g") 
 			{
 				evt.preventDefault();
-				var value = galleryobj.current();
+				var value = galleryobj.current()+1;
 				if (menuobj.value() == _8cnvctx) 
 					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(5);
 				gotodialog(value, "Goto", goimage);
@@ -2671,7 +2671,7 @@ var keylst = [{
 			}
 			else if (key == "g") 
 			{
-				var value = galleryobj.current();
+				var value = galleryobj.current()+1;
 				if (menuobj.value() == _8cnvctx) 
 					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(5)
 				gotodialog(value, "Goto", goimage);
@@ -2784,7 +2784,7 @@ var taplst = [
 			else if (context.chapterect &&
 				context.chapterect.hitest(x, y)) 
 			{
-				var value = galleryobj.current();
+				var value = galleryobj.current()+1;
 				if (menuobj.value() == _8cnvctx) 
 					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(5)
 				gotodialog(value, "Goto", goimage);
@@ -2855,7 +2855,7 @@ var taplst = [
 				context.chapterect &&
 				context.chapterect.hitest(x, y)) 
 			{
-				var value = galleryobj.current();
+				var value = galleryobj.current()+1;
 				if (menuobj.value() == _8cnvctx) 
 					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(5)
 				gotodialog(value, "Goto", goimage);
@@ -5462,7 +5462,7 @@ galleryobj.init = function(obj)
 			title: "Goto\nkey+g",
 			func: function() 
 			{
-				var value = galleryobj.current();
+				var value = galleryobj.current()+1;
 				if (menuobj.value() == _8cnvctx) 
 					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(5)
 				gotodialog(value, "Goto", goimage);
