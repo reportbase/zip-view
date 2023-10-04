@@ -5,7 +5,6 @@
 Copyright 2017 Tom Brinkman
 https://zip-view.com
 https://ipfs-view.com
-
 */
 
 function iOS() 
@@ -1767,6 +1766,8 @@ infobj.reset = function()
 			if (value && value.folder)
 				infobj.data = value.folder.split("/");
 			infobj.data.push(`${index.toFixed(5)} of ${galleryobj.length()}`);
+			var j = 1-_8cnv.scrollobj.value().berp()
+			infobj.data.push(`${j.toFixed(5)}`);
 		}
 		else
 		{
