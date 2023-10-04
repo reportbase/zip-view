@@ -2670,7 +2670,7 @@ var keylst = [{
 			{
 				var value = galleryobj.current();
 				if (menuobj.value() == _8cnvctx) 
-					(galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(3)
+					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(3)
 				gotodialog(value, "Goto", goimage);
 
 			} 
@@ -2783,7 +2783,7 @@ var taplst = [
 			{
 				var value = galleryobj.current();
 				if (menuobj.value() == _8cnvctx) 
-					(galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(3)
+					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(3)
 				gotodialog(value, "Goto", goimage);
 				
 			} 
@@ -2854,7 +2854,7 @@ var taplst = [
 			{
 				var value = galleryobj.current();
 				if (menuobj.value() == _8cnvctx) 
-					(galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(3)
+					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(3)
 				gotodialog(value, "Goto", goimage);
 			} 
 			else if (canvas.vscrollrect && canvas.vscrollrect.hitest(x, y)) {
@@ -5461,7 +5461,7 @@ galleryobj.init = function(obj)
 			{
 				var value = galleryobj.current();
 				if (menuobj.value() == _8cnvctx) 
-					(galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(3)
+					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(3)
 				gotodialog(value, "Goto", goimage);
 			}
 		},
