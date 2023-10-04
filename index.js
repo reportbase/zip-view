@@ -2647,12 +2647,12 @@ var keylst = [{
 			}
 			else if (key == "arrowleft") 
 			{
-				menuobj.leftright(context, -20);
+				menuobj.leftright(context, -40);
 				context.refresh();
 			}
 			else if (key == "arrowright") 
 			{
-				menuobj.leftright(context, 20);
+				menuobj.leftright(context, 40);
 				context.refresh();
 			}
 		}
