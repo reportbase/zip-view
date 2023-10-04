@@ -2154,7 +2154,9 @@ var panlst =
 					return;
 				obj.set(k);
 				context.refresh()
-			} else if (type == "panup" || type == "pandown") {
+			} 
+			else if (type == "panup" || type == "pandown") 
+			{
 				var canvas = context.canvas;
 				if (canvas.ishscrollrect) 
 				{
@@ -2167,7 +2169,7 @@ var panlst =
 				{
 					var obj = canvas.scrollobj;
 					var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
-					obj.setperc(1 - k);
+					obj.setperc(k);
 					context.refresh()
 				} 				
 				else 
