@@ -670,21 +670,16 @@ panel.scrollbar = function()
 		var a = new panel.colA([5, 9, 0, 9, 5],
 			[
 				0,
-				new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1),
-				0,
-				new panel.fill("blue"),
-				0,
-				
 				new panel.row([5, 0, 5],
-					[
-						0,
-						new Layer(
-							[
-								new panel.expand(new panel.rectangle(canvas.hscrollrect), 10, 0),
-								new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1),
-							]),
-						0,
-					]),
+						[
+							0,
+							new Layer(
+								[
+									new panel.expand(new panel.rectangle(canvas.hscrollrect), 10, 0),
+									new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1),
+								]),
+							0,
+						]),
 				0,
 				new panel.row([5, 0, 5],
 					[
@@ -702,7 +697,7 @@ panel.scrollbar = function()
 		a.draw(context, rect, 
 		       [
 			       0,
-			       context.canvas.scrollobj.value(),
+			       canvas.scrollobj.value(),
 			       0,
 			       context.canvas.timeobj, 
 			       0,
