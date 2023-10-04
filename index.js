@@ -693,11 +693,12 @@ panel.scrollbar = function()
 					]),
 				0,
 			]);
-
+		
+		var obj = canvas.scrollobj.value()
 		a.draw(context, rect, 
 		       [
 			       0,
-			       canvas.scrollobj.value(),
+			       obj,
 			       0,
 			       context.canvas.timeobj, 
 			       0,
