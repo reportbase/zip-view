@@ -516,7 +516,7 @@ panel.gallerybar = function()
 						new panel.row([0, bh, 0],
 							[
 								0,
-								galleryobj.advanced ? new Layer(
+								0 ? new Layer(
 									[
 										new panel.fill(NUBACK), 
 										new panel.expand(new panel.rectangle(canvas.speedrect), 10, 0),
@@ -528,7 +528,7 @@ panel.gallerybar = function()
 						new panel.row([0, bh, 0],
 							[
 								0,
-								galleryobj.advanced ? new Layer(
+								0 ? new Layer(
 									[
 										new panel.fill(NUBACK), 
 										new panel.expand(new panel.rectangle(canvas.reducerect), 10, 0),
@@ -1763,27 +1763,8 @@ infobj.reset = function()
 		var value = galleryobj.data[index];
 		if (value && value.folder)
 			infobj.data = value.folder.split("/");
-
-		if (galleryobj.advanced) 
-		{
-			infobj.data.push(value.name ? value.name : value.id);
-			if (menuobj.value()) 
-			{
-				var k = index % IMAGELSTSIZE;
-				var img = thumbimglst[k];
-				infobj.data.push(`${img.width}x${img.height}`);
-			} 
-			else if (photo.image) 
-			{
-				infobj.data.push(photo.image.extent);
-			}
-		}
-
-	if (galleryobj.length() > 0)
-	{
-			
+	if (galleryobj.length() > 0)			
 		infobj.data.push(`${index} of ${galleryobj.length()}`);
-	}
 }
 
 var slicewidthobj = new circular_array("SLICEWIDTH", SLICEWIDTHSIZE);
@@ -5451,29 +5432,13 @@ galleryobj.init = function(obj)
 				importdialog();
 			}
 		},
-
-		{
-			title: `${url.host}\nImage and Document Browser\nsupport@ipfs-view.com`,
-			func: function() {}
-		},
 		{
 			title: "Tom Brinkman\nAll Rights Reserved",
 			func: function() {}
 		},
 		{
-			title: "Image and Document Browser\nwebp, jpg, avif, gif, and png\nzip, cbz, and ipfs\nnewspapers, magazines and graphic novels",
+			title: "Image and Document Viewer\nWebp, Jpg, Avif, Gif, and Png\nZip, Cbz, and Ipfs\nNewspapers, Magazines and Graphic Novels",
 			func: function() {}
-		},
-
-		{
-			title: "More Options",
-			func: function() {
-				galleryobj.advanced = galleryobj.advanced ? 0 : 1;
-				contextobj.reset();
-			},
-			enabled: function() {
-				return galleryobj.advanced;
-			}
 		},
 
 		{
