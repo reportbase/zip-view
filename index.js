@@ -3712,11 +3712,6 @@ menuobj.draw = function()
 				context.canvas.draw(ctx, r, j.slice, j.n);
 				ctx.translate(0, -j.y);
 			}
-			else if (slice.color)
-			{
-				var a = new panel.fill(slice.color);
-				a.draw(context, rect, 0, 0);
-			}
 		}
 	}
 
@@ -5231,6 +5226,9 @@ galleryobj.init = function(obj)
 {
 	if (obj)
 		Object.assign(galleryobj, obj);
+	if (url.searchParams.has("dl")) 
+		this.data.length = url.searchParams.get("dl");
+		
 	
 	delete _4cnv.thumbcanvas;
 	delete photo.image;
