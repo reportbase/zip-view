@@ -670,10 +670,11 @@ panel.scrollbar = function()
 		var a = new panel.colA([5, 9, 0, 9, 5],
 			[
 				0,
-				new panel.fill("red"),
+				new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1),
 				0,
 				new panel.fill("blue"),
 				0,
+				
 				new panel.row([5, 0, 5],
 					[
 						0,
@@ -2926,7 +2927,7 @@ var taplst = [
 			}
 			else if (y < rect.height/3)
 			{
-				menuobj.updown(context, -canvas.speedobj.value());
+				menuobj.updown(context, -canvas.speedobj.value()/4);
 				if (!global.swipetimeout) {
 					global.swipetimeout = setInterval(function() {
 						context.canvas.lastime = -0.0000000000101010101;
@@ -2936,7 +2937,7 @@ var taplst = [
 			}
 			else if (y > (2/3)*rect.height)
 			{
-				menuobj.updown(context, canvas.speedobj.value());
+				menuobj.updown(context, canvas.speedobj.value()/4);
 				if (!global.swipetimeout) {
 					global.swipetimeout = setInterval(function() {
 						context.canvas.lastime = -0.0000000000101010101;
@@ -2946,11 +2947,11 @@ var taplst = [
 			}
 			else if (x < rect.width/2)
 			{
-				menuobj.leftright(context, -canvas.speedobj.value() / 2)
+				menuobj.leftright(context, -canvas.speedobj.value()/4)
 			}
 			else if (x > rect.width/2)
 			{
-				menuobj.leftright(context, canvas.speedobj.value() / 2)
+				menuobj.leftright(context, canvas.speedobj.value()/4)
 			}
 		},
 	},
