@@ -1758,20 +1758,23 @@ var extentobj = new circular_array("EXTENT", []);
 var infobj = new circular_array("INFO", []);
 infobj.reset = function() 
 {
-		var value = galleryobj.data[index];
-		if (value && value.folder)
-			infobj.data = value.folder.split("/");
-
 		if (menuobj.value() == _8cnvctx)
 		{
 			index = 1 - _8cnv.timeobj.berp();
 			index *= galleryobj.length();
+			var k = Math.floor(index);
+			var value = galleryobj.data[k];
+			if (value && value.folder)
+				infobj.data = value.folder.split("/");
 			infobj.data.push(`${index.toFixed(5)} of ${galleryobj.length()}`);
 		}
 		else
 		{
 			var index = galleryobj.current();
-			infobj.data.push(`${index.toFixed} of ${galleryobj.length()}`);
+			var value = galleryobj.data[index];
+			if (value && value.folder)
+				infobj.data = value.folder.split("/");
+			infobj.data.push(`${index+1} of ${galleryobj.length()}`);
 		}
 
 }
