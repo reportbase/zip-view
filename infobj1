@@ -99,17 +99,20 @@ util.initialize_array_range = function(start, end)
 	}, (_, index) => start + index);
 }
 
-util.generate_uid = function() {
+util.generate_uid = function() 
+{
 	let timestamp = Date.now().toString(36);
 	let randomPart = Math.random().toString(36).substr(2, 5);
 	return timestamp + randomPart;
 }
 
-util.random_value = function(min, max) {
+util.random_value = function(min, max) 
+{
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-util.clamp = function(min, max, val) {
+util.clamp = function(min, max, val) 
+{
 	if (typeof val === "undefined" || Number.isNaN(val) || val == null)
 		val = max;
 	if (max < min)
@@ -118,7 +121,8 @@ util.clamp = function(min, max, val) {
 };
 
 //sleep(2000).then(() => console.log('world!'))
-function pause(ms) {
+function pause(ms) 
+{
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 
