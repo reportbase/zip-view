@@ -2633,7 +2633,9 @@ var keylst = [{
 				evt.key == "j") {
 				menuobj.updown(context, -canvas.speedobj.value());
 				context.refresh();
-			} else if (
+			} 
+			else if 
+			(
 				key == "pagedown" ||
 				key == "arrowdown" ||
 				evt.key == "enter" ||
@@ -2643,7 +2645,16 @@ var keylst = [{
 				menuobj.updown(context, canvas.speedobj.value());
 				context.refresh();
 			}
-
+			else if (key == "arrowleft") 
+			{
+				menuobj.leftright(context, -20);
+				context.refresh();
+			}
+			else if (key == "arrowright") 
+			{
+				menuobj.leftright(context, 20);
+				context.refresh();
+			}
 		}
 	},
 	{
