@@ -3019,7 +3019,7 @@ var bosslst = [
 									0,
 									new Layer(
 										[
-											new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8) 
+											new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8), 
 											new panel.expand(new panel.rectangle(galleryobj.debug ?
 												context.slicewidthrect : context.zoomrect), 10, 1),
 											new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 6, 6), ALIEXTENT, 0), 3, 3),
