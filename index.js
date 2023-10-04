@@ -2366,8 +2366,8 @@ var presslst = [{
 var pressobj = new circular_array("PRESS", presslst);
 pressobj.set(3);
 
-function gotoimage(n) {
-	var b = n == 0 ? galleryobj.length() - 1 : n - 1;
+function gotoimage(n) 
+{
 	var k = TIMEOBJ - TIMEOBJ / galleryobj.length() / 2;
 	k -= n * (TIMEOBJ / galleryobj.length());
 	_8cnv.timeobj.set(k);
@@ -2514,8 +2514,7 @@ var keylst = [{
 				evt.preventDefault();
 				var value = galleryobj.current();
 				if (menuobj.value() == _8cnvctx) 
-					value = Math.floor(Math.lerp(0, galleryobj.length()-1, 
-						1 - _8cnv.timeobj.berp()));
+					value = galleryobj.length()*(1-_8cnv.timeobj.berp());
 				gotodialog(value, "Goto", goimage);
 			} 
 			else if (key == "\\" || key == "/") 
@@ -2670,8 +2669,7 @@ var keylst = [{
 			{
 				var value = galleryobj.current();
 				if (menuobj.value() == _8cnvctx) 
-					value = Math.floor(Math.lerp(0, galleryobj.length()-1, 
-						1 - _8cnv.timeobj.berp()));
+					value = galleryobj.length()*(1-_8cnv.timeobj.berp());
 				gotodialog(value, "Goto", goimage);
 
 			} 
@@ -2784,8 +2782,7 @@ var taplst = [
 			{
 				var value = galleryobj.current();
 				if (menuobj.value() == _8cnvctx) 
-					value = Math.floor(Math.lerp(0, galleryobj.length()-1, 
-						1 - _8cnv.timeobj.berp()));
+					value = galleryobj.length()*(1-_8cnv.timeobj.berp());
 				gotodialog(value, "Goto", goimage);
 				
 			} 
@@ -2856,8 +2853,7 @@ var taplst = [
 			{
 				var value = galleryobj.current();
 				if (menuobj.value() == _8cnvctx) 
-					value = Math.floor(Math.lerp(0, galleryobj.length()-1, 
-						1 - _8cnv.timeobj.berp()));
+					value = galleryobj.length()*(1-_8cnv.timeobj.berp());
 				gotodialog(value, "Goto", goimage);
 			} 
 			else if (canvas.vscrollrect && canvas.vscrollrect.hitest(x, y)) {
@@ -5464,8 +5460,7 @@ galleryobj.init = function(obj)
 			{
 				var value = galleryobj.current();
 				if (menuobj.value() == _8cnvctx) 
-					value = Math.floor(Math.lerp(0, galleryobj.length()-1, 
-						1 - _8cnv.timeobj.berp()));
+					value = galleryobj.length()*(1-_8cnv.timeobj.berp());
 				gotodialog(value, "Goto", goimage);
 			}
 		},
