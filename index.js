@@ -700,7 +700,7 @@ panel.scrollbar = function()
 			       0,
 			       canvas.scrollobj,
 			       0,
-			       context.canvas.timeobj, 
+			       canvas.timeobj, 
 			       0,
 			]);
 
@@ -2142,9 +2142,11 @@ var panlst =
 		updown: function(context, rect, x, y, type) {},
 		leftright: function(context, rect, x, y, type) {},
 
-		pan: function(context, rect, x, y, type) {
+		pan: function(context, rect, x, y, type) 
+		{
 			var obj = context.canvas.scrollobj;
-			if (obj && (type == "panleft" || type == "panright")) {
+			if (obj && (type == "panleft" || type == "panright")) 
+			{
 				var k = panhorz(obj, rect.width - x);
 				if (k == -1)
 					return;
@@ -2161,10 +2163,10 @@ var panlst =
 					obj.setperc(1 - k);
 					context.refresh()
 				} 
-				else if (canvas.ivhscrollrect) 
+				else if (canvas.isvscrollrect) 
 				{
 					var obj = canvas.scrollobj;
-					var k = (y - canvas.hscrollrect.y) / canvas.hscrollrect.height;
+					var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
 					obj.setperc(1 - k);
 					context.refresh()
 				} 				
