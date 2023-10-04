@@ -1607,7 +1607,7 @@ var wheelst =
 		},
 		leftright: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
-			menuobj.leftright(context, delta);
+			galleryobj.leftright(context, delta);
 		},
 	},
 	{
@@ -1617,7 +1617,11 @@ var wheelst =
 			menuobj.updown(context, delta);
 			context.refresh();
 		},
-		leftright: function(context, x, y, delta, ctrl, shift, alt) {},
+		leftright: function(context, x, y, delta, ctrl, shift, alt) 
+		{
+			menuobj.leftright(context, delta);
+			context.refresh();
+		},
 	},
 	{
 		name: "BOSS",
@@ -2049,7 +2053,7 @@ var panlst =
 				else
 				{
 					var k = type == "panleft" ? 1 : -1;
-					menuobj.leftright(context, k * context.canvas.speedobj.value() / 5);
+					galleryobj.leftright(context, k * context.canvas.speedobj.value() / 5);
 				}
 			} 
 			else if (type == "panup" || type == "pandown") 
@@ -2463,7 +2467,7 @@ var swipelst = [{
 		name: "GALLERY",
 		swipeleftright: function(context, rect, x, y, evt) {
 			var k = evt.type == "swipeleft" ? 1 : -1;
-			menuobj.leftright(context, k * context.canvas.speedobj.value());
+			galleryobj.leftright(context, k * context.canvas.speedobj.value());
 		},
 		swipeupdown: function(context, rect, x, y, evt) {
 			var k = evt.type == "swipeup" ? 1 : -1;
@@ -2586,13 +2590,13 @@ var keylst = [{
 				key == "arrowleft" ||
 				key == "h") {
 				evt.preventDefault();
-				menuobj.leftright(context, -canvas.speedobj.value() / 2)
+				galleryobj.leftright(context, -canvas.speedobj.value() / 2)
 			} else if (
 				(!canvas.shiftKey && key == "tab") ||
 				key == "arrowright" ||
 				key == "l") {
 				evt.preventDefault();
-				menuobj.leftright(context, canvas.speedobj.value() / 2)
+				galleryobj.leftright(context, canvas.speedobj.value() / 2)
 			} else if (key == "d") {
 				evt.preventDefault();
 				download();
@@ -2958,11 +2962,11 @@ var taplst = [
 			}
 			else if (x < rect.width/2)
 			{
-				menuobj.leftright(context, -canvas.speedobj.value()/4)
+				galleryobj.leftright(context, -canvas.speedobj.value()/4)
 			}
 			else if (x > rect.width/2)
 			{
-				menuobj.leftright(context, canvas.speedobj.value()/4)
+				galleryobj.leftright(context, canvas.speedobj.value()/4)
 			}
 		},
 	},
@@ -6066,10 +6070,14 @@ function selectid(id) {
 
 menuobj.leftright = function(context, delta) 
 {
+	canvas.scrollobj.setperc(delta);
+	context.refresh()
+}
+		
+galleryobj.leftright = function(context, delta) 
+{
 	if (context.pinching)
 		return;
-	//clearInterval(global.swipetimeout);
-	//global.swipetimeout = 0;
 	if (!delta)
 		return;
 
