@@ -2628,9 +2628,9 @@ var keylst = [{
 			var key = evt.key.toLowerCase();
 			if (key == "pageup" ||
 				key == "arrowup" ||
-				(canvas.shiftKey && evt.key == "enter") ||
-				(canvas.shiftKey && evt.key == " ") ||
-				evt.key == "j") {
+				(canvas.shiftKey && key == "enter") ||
+				(canvas.shiftKey && key == " ") ||
+				key == "j") {
 				menuobj.updown(context, -canvas.speedobj.value());
 				context.refresh();
 			} 
@@ -2638,10 +2638,10 @@ var keylst = [{
 			(
 				key == "pagedown" ||
 				key == "arrowdown" ||
-				evt.key == "enter" ||
-				evt.key == " " ||
-				evt.key == "s" ||
-				evt.key == "k") {
+				key == "enter" ||
+				key == " " ||
+				key == "s" ||
+				key == "k") {
 				menuobj.updown(context, canvas.speedobj.value());
 				context.refresh();
 			}
