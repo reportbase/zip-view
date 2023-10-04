@@ -1758,20 +1758,22 @@ var extentobj = new circular_array("EXTENT", []);
 var infobj = new circular_array("INFO", []);
 infobj.reset = function() 
 {
-		var index = galleryobj.current();
-		if (menuobj.value() == _8cnvctx)
-		{
-			index = 1 - _8cnv.timeobj.berp();
-			//index = _8cnv.sliceobj.lerp(
-			//	1 - _8cnv.timeobj.berp());
-			//index = util.clamp(0, galleryobj.length()-1, index);
-		}
-
 		var value = galleryobj.data[index];
 		if (value && value.folder)
 			infobj.data = value.folder.split("/");
-	if (galleryobj.length() > 0)			
-		infobj.data.push(`${index.toFixed(3)} of ${galleryobj.length()}`);
+
+		if (menuobj.value() == _8cnvctx)
+		{
+			index = 1 - _8cnv.timeobj.berp();
+			index *= galleryobj.length();
+			infobj.data.push(`${index.toFixed(3)} of ${galleryobj.length()}`);
+		}
+		else
+		{
+			var index = galleryobj.current();
+			infobj.data.push(`${index.toFixed} of ${galleryobj.length()}`);
+		}
+
 }
 
 var slicewidthobj = new circular_array("SLICEWIDTH", SLICEWIDTHSIZE);
