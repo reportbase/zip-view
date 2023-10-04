@@ -1753,6 +1753,7 @@ var letchobj = new circular_array("LANDSTRETCH", 100);
 var stretchobj = new circular_array("STRETCH", [pretchobj, letchobj]);
 
 var extentobj = new circular_array("EXTENT", []);
+
 var infobj = new circular_array("INFO", []);
 infobj.reset = function() 
 {
