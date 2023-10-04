@@ -1766,8 +1766,10 @@ infobj.reset = function()
 			if (value && value.folder)
 				infobj.data = value.folder.split("/");
 			infobj.data.push(`${index.toFixed(5)} of ${galleryobj.length()}`);
-			var j = 1-_8cnv.scrollobj.value().berp()
+			var j = _8cnv.scrollobj.value().berp()
 			infobj.data.push(`${j.toFixed(5)}`);
+			var e = buttonobj.berp();
+			infobj.data.push(`${e.toFixed(5)}`);
 		}
 		else
 		{
