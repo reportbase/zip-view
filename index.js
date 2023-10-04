@@ -4142,8 +4142,8 @@ contextlst.forEach(function(context, n) {
 		return a.name == obj.press
 	});
 	k = presslst[k];
-	canvas.pressup_ = IFRAME?new panel.empty():k.pressup;
-	canvas.press_ = IFRAME?new panel.empty():k.press;
+	canvas.pressup_ = k.pressup;
+	canvas.press_ = k.press;
 
 	var k = swipelst.findIndex(function(a) {
 		return a.name == obj.swipe
