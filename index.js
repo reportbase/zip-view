@@ -658,7 +658,8 @@ panel.galleryscroll = function()
 	}
 };
 
-panel.scrollbar = function() {
+panel.scrollbar = function() 
+{
 	this.draw = function(context, rect, user, time) {
 		var canvas = context.canvas;
 		context.save();
@@ -692,7 +693,7 @@ panel.scrollbar = function() {
 						new Layer(
 							[
 								new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 10),
-								new panel.currentH(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1),
+								new panel.currentH(new panel.rounded("red", 0, TRANSPARENT, 5, 5), 90, 1),
 							]),
 						0,
 					]),
