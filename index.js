@@ -1771,7 +1771,7 @@ infobj.reset = function()
 		if (value && value.folder)
 			infobj.data = value.folder.split("/");
 	if (galleryobj.length() > 0)			
-		infobj.data.push(`${index.toFixed3)} of ${galleryobj.length()}`);
+		infobj.data.push(`${index.toFixed(3)} of ${galleryobj.length()}`);
 }
 
 var slicewidthobj = new circular_array("SLICEWIDTH", SLICEWIDTHSIZE);
