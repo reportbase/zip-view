@@ -3772,7 +3772,7 @@ var eventlst = [{
 		key: "MENU",
 		press: "DEFAULT",
 		pinch: "DEFAULT",
-		bar: new panel.empty(),
+		bar: new 4(),
 		scroll: new panel.scrollbar(),
 		buttonheight: 0,
 		width: 640
@@ -4142,8 +4142,8 @@ contextlst.forEach(function(context, n) {
 		return a.name == obj.press
 	});
 	k = presslst[k];
-	canvas.pressup_ = IFRAME?function():k.pressup;
-	canvas.press_ = IFRAME?function():k.press;
+	canvas.pressup_ = IFRAME?new panel.empty():k.pressup;
+	canvas.press_ = IFRAME?new panel.empty():k.press;
 
 	var k = swipelst.findIndex(function(a) {
 		return a.name == obj.swipe
