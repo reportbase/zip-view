@@ -660,7 +660,8 @@ panel.galleryscroll = function()
 
 panel.scrollbar = function() 
 {
-	this.draw = function(context, rect, user, time) {
+	this.draw = function(context, rect, user, time) 
+	{
 		var canvas = context.canvas;
 		context.save();
 		canvas.vscrollrect = new rectangle();
@@ -668,6 +669,10 @@ panel.scrollbar = function()
 		
 		var a = new panel.colA([5, 9, 0, 9, 5],
 			[
+				0,
+				new panel.fill("red"),
+				0,
+				new panel.fill("blue"),
 				0,
 				new panel.row([5, 0, 5],
 					[
