@@ -5227,7 +5227,7 @@ galleryobj.init = function(obj)
 	if (obj)
 		Object.assign(galleryobj, obj);
 	if (url.searchParams.has("dl")) 
-		this.data.length = url.searchParams.get("dl");
+		this.data.length = Number(url.searchParams.get("dl"));
 		
 	
 	delete _4cnv.thumbcanvas;
