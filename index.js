@@ -696,8 +696,8 @@ panel.scrollbar = function()
 		
 		a.draw(context, rect, 
 		       [
+			       0,
 			       canvas.scrollobj,
-			       obj,
 			       0,
 			       context.canvas.timeobj, 
 			       0,
