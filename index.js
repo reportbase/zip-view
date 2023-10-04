@@ -1768,7 +1768,7 @@ infobj.reset = function()
 			infobj.data.push(`${index.toFixed(5)} of ${galleryobj.length()}`);
 			var j = _8cnv.scrollobj.value().berp()
 			infobj.data.push(`${j.toFixed(5)}`);
-			var e = buttonobj.berp();
+			var e = buttonobj.value();
 			infobj.data.push(`${e.toFixed(5)}`);
 		}
 		else
@@ -1778,6 +1778,8 @@ infobj.reset = function()
 			if (value && value.folder)
 				infobj.data = value.folder.split("/");
 			infobj.data.push(`${index+1} of ${galleryobj.length()}`);
+			var e = 1-_4cnv.timeobj.berp();
+			infobj.data.push(`${e.toFixed(5)}`);
 		}
 
 }
