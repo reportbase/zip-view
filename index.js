@@ -666,8 +666,19 @@ panel.scrollbar = function()
 		canvas.vscrollrect = new rectangle();
 		canvas.hscrollrect = new rectangle();
 		
-		var a = new panel.col([0, 9, 5],
+		var a = new panel.colA([5, 9, 0, 9, 5],
 			[
+				0,
+				new panel.row([5, 0, 5],
+					[
+						0,
+						new Layer(
+							[
+								new panel.expand(new panel.rectangle(canvas.hscrollrect), 10, 0),
+								new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1),
+							]),
+						0,
+					]),
 				0,
 				new panel.row([5, 0, 5],
 					[
@@ -682,25 +693,15 @@ panel.scrollbar = function()
 				0,
 			]);
 
-		a.draw(context, rect, context.canvas.timeobj, 0);
-
-		var a = new panel.row([0, 9, 5],
-			[
-				0,
-				new panel.col([5, 0, 5],
-					[
-						0,
-						new Layer(
-							[
-								new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 10),
-								new panel.currentH(new panel.rounded("red", 0, TRANSPARENT, 5, 5), 90, 1),
-							]),
-						0,
-					]),
-				0,
+		a.draw(context, rect, 
+		       [
+			       0,
+			       context.canvas.scrollobj.value(),
+			       0,
+			       context.canvas.timeobj, 0);
+			       0,
 			]);
 
-		a.draw(context, rect, context.canvas.scrollobj.value(), 0);	
 		context.restore();
 	}
 };
