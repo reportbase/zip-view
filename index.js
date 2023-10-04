@@ -1766,7 +1766,7 @@ infobj.reset = function()
 		{
 			index = 1 - _8cnv.timeobj.berp();
 			index *= galleryobj.length();
-			infobj.data.push(`${index.toFixed(3)} of ${galleryobj.length()}`);
+			infobj.data.push(`${index.toFixed(5)} of ${galleryobj.length()}`);
 		}
 		else
 		{
@@ -2515,7 +2515,7 @@ var keylst = [{
 				evt.preventDefault();
 				var value = galleryobj.current();
 				if (menuobj.value() == _8cnvctx) 
-					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(3);
+					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(5);
 				gotodialog(value, "Goto", goimage);
 			} 
 			else if (key == "\\" || key == "/") 
@@ -2670,7 +2670,7 @@ var keylst = [{
 			{
 				var value = galleryobj.current();
 				if (menuobj.value() == _8cnvctx) 
-					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(3)
+					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(5)
 				gotodialog(value, "Goto", goimage);
 
 			} 
@@ -2783,7 +2783,7 @@ var taplst = [
 			{
 				var value = galleryobj.current();
 				if (menuobj.value() == _8cnvctx) 
-					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(3)
+					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(5)
 				gotodialog(value, "Goto", goimage);
 				
 			} 
@@ -2854,7 +2854,7 @@ var taplst = [
 			{
 				var value = galleryobj.current();
 				if (menuobj.value() == _8cnvctx) 
-					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(3)
+					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(5)
 				gotodialog(value, "Goto", goimage);
 			} 
 			else if (canvas.vscrollrect && canvas.vscrollrect.hitest(x, y)) {
@@ -5461,7 +5461,7 @@ galleryobj.init = function(obj)
 			{
 				var value = galleryobj.current();
 				if (menuobj.value() == _8cnvctx) 
-					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(3)
+					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(5)
 				gotodialog(value, "Goto", goimage);
 			}
 		},
