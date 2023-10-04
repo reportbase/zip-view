@@ -698,7 +698,7 @@ panel.scrollbar = function()
 			       0,
 			       context.canvas.scrollobj.value(),
 			       0,
-			       context.canvas.timeobj, 0);
+			       context.canvas.timeobj, 
 			       0,
 			]);
 
