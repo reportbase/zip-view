@@ -5744,7 +5744,7 @@ function goimage(image)
 	if (menuobj.value() == _8cnvctx) 
 	{
 		image = util.clamp(0, galleryobj.length()-1, image);
-		image = Math.berp(0, galleryobj.length()-1, image);
+		image = 1-Math.berp(0, galleryobj.length()-1, image);
 		image *= TIMEOBJ;
 		_8cnv.timeobj.set(image);
 		_8cnvctx.refresh();
