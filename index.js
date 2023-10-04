@@ -5743,7 +5743,7 @@ function goimage(image)
 {
 	if (menuobj.value() == _8cnvctx) 
 	{
-		gotoimage(image);
+		_8cnv.timeobj.set(image);
 	} 
 	else 
 	{
