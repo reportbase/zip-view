@@ -1619,6 +1619,7 @@ var wheelst =
 				context.canvas.pinching = 1;
 				var k = -1*(context.canvas.buttonheight*(delta/200));
 				context.canvas.buttonheight += k;  
+				context.canvas.buttonheight = Math.floor(context.canvas.buttonheight);
 				context.canvas.lastime = -0.0000000000101010101;
 				menuobj.draw();
 				context.canvas.pinching = 0;
@@ -1793,6 +1794,8 @@ var pinchlst =
 			context.scale = scale;
 			var k = context.scale/context.scaleanchor;
 			context.canvas.buttonheight = context.buttonachor * k;
+			context.canvas.buttonheight = Math.floor(context.canvas.buttonheight);
+			context.refresh();
 		},
 		pinchstart: function(context, rect, x, y) 
 		{
@@ -3832,6 +3835,7 @@ menuobj.draw = function()
 			var y = j * context.canvas.virtualheight;
 			var e = (canvas.virtualheight - rect.height) / 2;
 			y -= e;
+			y = Math.floor(y);//todo
 			if (y > 0 && y < lasty)
 				y = lasty;
 			lasty = y;
