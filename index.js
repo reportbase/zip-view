@@ -6129,10 +6129,10 @@ galleryobj.leftright = function(context, delta)
 	var w = thumbfittedlst[index].width;
 	var h = thumbfittedlst[index].height;
 	if (w != window.innerWidth)
-		context.canvas.startleftright = (window.innerWidth / w) * Math.abs(delta / 200);
+		context.canvas.startleftright = (window.innerWidth / w) * Math.abs(delta / 2);
 	else
-		context.canvas.startleftright = (window.innerHeight / h) * Math.abs(delta / 200);
-	var e = context.canvas.startleftright;
+		context.canvas.startleftright = (window.innerHeight / h) * Math.abs(delta / 2);
+	var e = context.canvas.startleftright/40;
 	var obj = context.canvas.scrollobj.value();
 	clearInterval(context.canvas.leftrightime);
 	context.canvas.leftrightime = setInterval(function() {
