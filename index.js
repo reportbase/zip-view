@@ -2098,7 +2098,7 @@ var panlst =
 					//var k = type == "panleft" ? 1 : -1;
 					//galleryobj.leftright(context, k * context.canvas.speedobj.value() / 5);
 
-					var obj = context.canvas.scrollobj;
+					var obj = context.canvas.scrollobj.value();
 					var e = canvas.startx - x;
 					var k = panhorz(obj, e);
 					if (k == -1)
