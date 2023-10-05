@@ -1614,8 +1614,20 @@ var wheelst =
 		name: "MENU",
 		updown: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
-			menuobj.updown(context, delta);
-			context.refresh();
+			if (ctrl) 
+			{
+				context.canvas.pinching = 1;
+				var k = delta < 0 ? 1 : -1;
+				buttonheight *= (k*0.01);
+				context.canvas.lastime = -0.0000000000101010101;
+				menuobj.draw();
+				context.canvas.pinching = 0;
+			}
+			else
+			{
+				menuobj.updown(context, delta);
+				context.refresh();
+			}
 		},
 		leftright: function(context, x, y, delta, ctrl, shift, alt) 
 		{
