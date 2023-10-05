@@ -1618,7 +1618,7 @@ var wheelst =
 			{
 				context.canvas.pinching = 1;
 				var k = delta < 0 ? 1 : -1;
-				context.canvas.buttonheight *= (k*0.01);  
+				context.canvas.buttonheight *= (k*1.01);  
 				context.canvas.lastime = -0.0000000000101010101;
 				menuobj.draw();
 				context.canvas.pinching = 0;
