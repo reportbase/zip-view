@@ -1617,7 +1617,7 @@ var wheelst =
 			if (ctrl) 
 			{
 				context.canvas.pinching = 1;
-				var k = -1*(context.canvas.buttonheight*(delta/200));
+				var k = -1*(context.canvas.buttonheight*(delta/100));
 				context.canvas.buttonheight += k;  
 				context.canvas.buttonheight = Math.floor(context.canvas.buttonheight);
 				context.canvas.lastime = -0.0000000000101010101;
