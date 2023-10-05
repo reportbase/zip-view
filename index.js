@@ -2095,8 +2095,18 @@ var panlst =
 				}
 				else
 				{
-					var k = type == "panleft" ? 1 : -1;
-					galleryobj.leftright(context, k * context.canvas.speedobj.value() / 5);
+					//var k = type == "panleft" ? 1 : -1;
+					//galleryobj.leftright(context, k * context.canvas.speedobj.value() / 5);
+
+					var obj = context.canvas.scrollobj;
+					var e = canvas.startx - x;
+					var k = panhorz(obj, e);
+					if (k == -1)
+						return;
+					if (k == obj.anchor())
+						return;
+					obj.set(k);
+					context.refresh()
 				}
 			} 
 			else if (type == "panup" || type == "pandown") 
