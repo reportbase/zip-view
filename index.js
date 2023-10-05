@@ -5575,7 +5575,7 @@ galleryobj.init = function(obj)
 	var a = Array(_6cnv.sliceobj.length()).fill().map((_, index) => index);
 	_6cnv.rotated = [...a, ...a, ...a];
 
-	_7cnv.sliceobj.data = galleryobj.basemenu ? galleryobj.basemenu :
+	_7cnv.sliceobj.data = galleryobj.base ? galleryobj.base :
 		[
 		{
 			title: "Goto\nkey+g",
