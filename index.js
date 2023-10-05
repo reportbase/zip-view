@@ -1782,6 +1782,30 @@ var pinchlst =
 			}, 40);
 		},
 	},
+	{
+		name: "MENU",
+		pinch: function(context, x, y, scale) 
+		{
+			if (!context.scaleanchor)
+				context.scaleanchor = scale;
+			context.scale = scale;
+			var k = context.scale/context.scaleanchor;
+			context.canvas.buttonheight = context.buttonachor * k;
+		},
+		pinchstart: function(context, rect, x, y) 
+		{
+			context.canvas.pinching = 1;
+			context.scale = 0;
+		},
+		pinchend: function(context) 
+		{
+			setTimeout(function()
+			{
+				delete context.scaleanchor;
+				context.canvas.pinching = 0;
+			}, 40);
+		},
+	},
 ];
 
 var rowobj = new circular_array("ROW", window.innerHeight);
@@ -3858,7 +3882,7 @@ var eventlst = [{
 		drop: "DEFAULT",
 		key: "MENU",
 		press: "DEFAULT",
-		pinch: "DEFAULT",
+		pinch: "MENU",
 		bar: new panel.empty(),
 		scroll: new panel.scrollbar(),
 		buttonheight: 0,
@@ -3879,7 +3903,7 @@ var eventlst = [{
 		drop: "DEFAULT",
 		key: "MENU",
 		press: "MENU",
-		pinch: "DEFAULT",
+		pinch: "MENU",
 		bar: new panel.empty(),
 		scroll: new panel.scrollbar(),
 		buttonheight: 90,
@@ -3900,7 +3924,7 @@ var eventlst = [{
 		drop: "DEFAULT",
 		key: "MENU",
 		press: "MENU",
-		pinch: "DEFAULT",
+		pinch: "MENU",
 		bar: new panel.empty(),
 		scroll: new panel.scrollbar(),
 		buttonheight: 90,
@@ -3942,7 +3966,7 @@ var eventlst = [{
 		drop: "DEFAULT",
 		key: "MENU",
 		press: "MENU",
-		pinch: "DEFAULT",
+		pinch: "MENU",
 		bar: new panel.empty(),
 		scroll: new panel.scrollbar(),
 		buttonheight: 150,
@@ -3963,7 +3987,7 @@ var eventlst = [{
 		drop: "DEFAULT",
 		key: "MENU",
 		press: "MENU",
-		pinch: "DEFAULT",
+		pinch: "MENU",
 		bar: new panel.empty(),
 		scroll: new panel.scrollbar(),
 		buttonheight: 90,
@@ -3984,7 +4008,7 @@ var eventlst = [{
 		drop: "DEFAULT",
 		key: "MENU",
 		press: "MENU",
-		pinch: "DEFAULT",
+		pinch: "MENU",
 		bar: new panel.empty(),
 		scroll: new panel.scrollbar(),
 		buttonheight: 120,
@@ -4026,7 +4050,7 @@ var eventlst = [{
 		drop: "DEFAULT",
 		key: "MENU",
 		press: "MENU",
-		pinch: "DEFAULT",
+		pinch: "MENU",
 		bar: new panel.empty("Image Browser"),
 		scroll: new panel.scrollbar(),
 		buttonheight: 50,
@@ -4047,7 +4071,7 @@ var eventlst = [{
 		drop: "DEFAULT",
 		key: "MENU",
 		press: "MENU",
-		pinch: "DEFAULT",
+		pinch: "MENU",
 		bar: new panel.empty("Image Browser"),
 		scroll: new panel.scrollbar(),
 		buttonheight: 50,
@@ -4068,7 +4092,7 @@ var eventlst = [{
 		drop: "DEFAULT",
 		key: "MENU",
 		press: "MENU",
-		pinch: "DEFAULT",
+		pinch: "MENU",
 		bar: new panel.empty("Image Browser"),
 		scroll: new panel.scrollbar(),
 		buttonheight: 90,
@@ -4089,7 +4113,7 @@ var eventlst = [{
 		drop: "DEFAULT",
 		key: "MENU",
 		press: "MENU",
-		pinch: "DEFAULT",
+		pinch: "MENU",
 		bar: new panel.empty("Image Browser"),
 		scroll: new panel.scrollbar(),
 		buttonheight: 50,
@@ -4110,7 +4134,7 @@ var eventlst = [{
 		drop: "DEFAULT",
 		key: "MENU",
 		press: "MENU",
-		pinch: "DEFAULT",
+		pinch: "MENU",
 		bar: new panel.empty("Image Browser"),
 		scroll: new panel.scrollbar(),
 		buttonheight: 50,
@@ -4131,7 +4155,7 @@ var eventlst = [{
 		drop: "DEFAULT",
 		key: "MENU",
 		press: "MENU",
-		pinch: "DEFAULT",
+		pinch: "MENU",
 		bar: new panel.empty("Image Browser"),
 		scroll: new panel.scrollbar(),
 		buttonheight: 50,
@@ -4152,7 +4176,7 @@ var eventlst = [{
 		drop: "DEFAULT",
 		key: "MENU",
 		press: "MENU",
-		pinch: "DEFAULT",
+		pinch: "MENU",
 		bar: new panel.empty("Image Browser"),
 		scroll: new panel.scrollbar(),
 		buttonheight: 50,
