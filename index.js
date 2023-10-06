@@ -5459,20 +5459,7 @@ galleryobj.init = function(obj)
 			}
 		},
 
-		{
-			title: "search pexels",
-			func: function() {
-
-				var search = "cow"
-				fetch(`https://pexels.reportbase5836.workers.dev/?search=${search}&page=1`)
-					.then(response => jsonhandler(response))
-					.then((obj) => galleryobj.init(obj))
-					.catch((error) => {});
-
-				
-			},
-			enabled: function() {return false}
-		},
+		
 
 		{
 			title: "Debug",
@@ -5825,8 +5812,8 @@ if (url.searchParams.has("data")) {
 	loadzip(url.path)
 
 } else if (url.searchParams.has("pexels")) {
-	url.path = "pexels";
-	fetch(`https://pexels.reportbase5836.workers.dev/?search=kiss`)
+	url.path = url.searchParams.get("pexels");
+	fetch(`https://pexels.reportbase5836.workers.dev/?search=${url.path}`)
 		.then((response) => jsonhandler(response))
 		.then((obj) => galleryobj.init(obj))
 		.catch((error) => {});
