@@ -5823,7 +5823,14 @@ if (url.searchParams.has("data")) {
 } else if (url.searchParams.has("zip")) {
 	url.path = url.searchParams.get("zip");
 	loadzip(url.path)
-} else if (url.searchParams.has("r2")) {
+
+} else if (url.searchParams.has("sidney")) {
+	url.path = "sidney";
+	fetch(`https://sidney.reportbase5836.workers.dev`)
+		.then((response) => jsonhandler(response))
+		.then((obj) => galleryobj.init(obj))
+		.catch((error) => {});
+}  else if (url.searchParams.has("r2")) {
 	url.path = url.searchParams.get("r2");
 	fetch(`https://bucket.reportbase5836.workers.dev/${url.path}.json`)
 		.then((response) => jsonhandler(response))
