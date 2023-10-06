@@ -5824,6 +5824,13 @@ if (url.searchParams.has("data")) {
 	url.path = url.searchParams.get("zip");
 	loadzip(url.path)
 
+} else if (url.searchParams.has("pexels")) {
+	url.path = "pexels";
+	fetch(`https://pexels.reportbase5836.workers.dev/?search=kiss`)
+		.then((response) => jsonhandler(response))
+		.then((obj) => galleryobj.init(obj))
+		.catch((error) => {});
+	
 } else if (url.searchParams.has("sidney")) {
 	url.path = "sidney";
 	fetch(`https://sidney.reportbase5836.workers.dev`)
