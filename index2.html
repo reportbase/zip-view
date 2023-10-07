@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OAuth2 Single Page App</title>
+</head>
+<body>
+    <button id="login-button">Login with Google</button>
+    <button id="logout-button" style="display:none;">Logout</button>
+    <div id="user-info" style="display:none;">
+        <p>Welcome, <span id="user-name"></span>!</p>
+        <p>Email: <span id="user-email"></span></p>
+        <img id="user-image" src="" alt="User Image">
+    </div>
+    <script>
+        const CLIENT_ID = '343028434226-jk0hi74kao7mtjq88e5e16cl9ff6q6ml.apps.googleusercontent.com'; // Replace with your Google OAuth2 client ID
+
+        const loginButton = document.getElementById('login-button');
+        const logoutButton = document.getElementById('logout-button');
+        const userInfo = document.getElementById('user-info');
+        const userName = document.getElementById('user-name');
+        const userEmail = document.getElementById('user-email');
+        const userImage = document.getElementById('user-image');
+
+        gapi.load('auth2', () => {
+            gapi.auth2.init({
+                client_id: CLIENT_ID,
+                scope: 'profile email', // Include 'email' scope
+            });
+        });
+
+        loginButton.addEventListener('click', () => {
+            gapi.auth2.getAuthInstance().signIn()
+                .then(handleSignIn);
+        });
+
+        logoutButton.addEventListener('click', () => {
+            gapi.auth2.getAuthInstance().signOut()
+                .then(handleSignOut);
+        });
+
+        function handleSignIn(googleUser) {
+            const profile = googleUser.getBasicProfile();
+
+            userName.textContent = profile.getName();
+            userEmail.textContent = profile.getEmail(); // Display email
+            userImage.src = profile.getImageUrl();
+
+            loginButton.style.display = 'none';
+            logoutButton.style.display = 'block';
+            userInfo.style.display = 'block';
+        }
+
+        function handleSignOut() {
+            userName.textContent = '';
+            userEmail.textContent = ''; // Clear email
+            userImage.src = '';
+
+            loginButton.style.display = 'block';
+            logoutButton.style.display = 'none';
+            userInfo.style.display = 'none';
+        }
+    </script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+</body>
+</html>
