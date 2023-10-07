@@ -6,51 +6,32 @@
 </head>
 <body>
   <h1>Google Auth2 Web Authentication Example</h1>
-  <button id="google-sign-in-button">Sign in with Google</button>
-  <div id="user-info"></div>
 
   <script>
-    function myFunction() {
-  // Initialize the GoogleAuth object.
-   gapi.load('auth2', function() 
-  {
-   const googleAuth = gapi.auth2.init({
-    client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-  });
-
-  // Sign the user in.
-  googleAuth.signIn().then(authResult => {
-    // Get the user's profile information.
-    const profile = googleAuth.currentUser.get().profile;
-
-    // Display the user's name and email address.
-    const userInfoDiv = document.getElementById('user-info');
-    userInfoDiv.innerHTML = `
-      <h2>User Information</h2>
-      <p>Name: ${profile.name}</p>
-      <p>Email: ${profile.email}</p>
-    `;
-  });
-}     
-  
-
-    
-    const googleSignInButton = document.getElementById('google-sign-in-button');
-    googleSignInButton.addEventListener('click', async () => 
+    function myFunction() 
     {
-      const googleAuth = gapi.auth2.init({
-        client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
+      gapi.load('auth2', function() 
+      {
+         const googleAuth = gapi.auth2.init
+         (
+           {
+            client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
+           }
+         );
+    
+      googleAuth.signIn().then(authResult => 
+      {
+        const profile = googleAuth.currentUser.get().profile;
+        const userInfoDiv = document.getElementById('user-info');
+        userInfoDiv.innerHTML = `
+          <h2>User Information</h2>
+          <p>Name: ${profile.name}</p>
+          <p>Email: ${profile.email}</p>
+        `;
       });
-
-      const authResult = await googleAuth.signIn();
-      const profile = await googleAuth.currentUser.get().profile;
-      const userInfoDiv = document.getElementById('user-info');
-      userInfoDiv.innerHTML = `
-        <h2>User Information</h2>
-        <p>Name: ${profile.name}</p>
-        <p>Email: ${profile.email}</p>
-      `;
-    });
+      }
+    }
+             
   </script>
   <script src="https://apis.google.com/js/api.js" onload="myFunction()"></script>
 </body>
