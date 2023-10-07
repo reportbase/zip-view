@@ -19,17 +19,17 @@
            }
          );
     
-      googleAuth.signIn().then(authResult => 
-      {
-        const profile = googleAuth.currentUser.get().profile;
-        const userInfoDiv = document.getElementById('user-info');
-        userInfoDiv.innerHTML = `
-          <h2>User Information</h2>
-          <p>Name: ${profile.name}</p>
-          <p>Email: ${profile.email}</p>
-        `;
-      });
-      }
+          googleAuth.signIn().then(authResult => 
+          {
+            const profile = googleAuth.currentUser.get().profile;
+            const userInfoDiv = document.getElementById('user-info');
+            userInfoDiv.innerHTML = `
+              <h2>User Information</h2>
+              <p>Name: ${profile.name}</p>
+              <p>Email: ${profile.email}</p>
+            `;
+          });
+      })
     }
              
   </script>
