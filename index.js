@@ -20,7 +20,7 @@ function oauthSignIn()
 
   // Parameters to pass to OAuth 2.0 endpoint.
   var params = {'client_id': '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-                'redirect_uri': 'https://zip-view.com',
+                'redirect_uri': 'https://zip-view.pages.dev',
                 'response_type': 'token',
                 'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
                 'include_granted_scopes': 'true',
