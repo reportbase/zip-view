@@ -7,7 +7,6 @@ https://zip-view.com
 https://ipfs-view.com
 */
 
-<script>
 function start() {
   // 2. Initialize the JavaScript client library.
   gapi.client.init({
