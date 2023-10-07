@@ -7,6 +7,30 @@ https://zip-view.com
 https://ipfs-view.com
 */
 
+<script>
+function start() {
+  // 2. Initialize the JavaScript client library.
+  gapi.client.init({
+    'apiKey': 'AIzaSyDWhcfgQIcaysh4pFNDZLiFqJ8zJr3T42Q',
+    // clientId and scope are optional if auth is not required.
+    'clientId': '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
+    'scope': 'profile',
+  }).then(function() {
+    // 3. Initialize and make the API request.
+    return gapi.client.request({
+      'path': 'https://people.googleapis.com/v1/people/me?requestMask.includeField=person.names',
+    })
+  }).then(function(response) {
+    console.log(response.result);
+  }, function(reason) {
+    console.log('Error: ' + reason.result.error.message);
+  });
+};
+// 1. Load the JavaScript client library.
+gapi.load('client', start);
+
+
+
 function iOS() 
 {
 	return [
