@@ -24,27 +24,44 @@
 
         // Initialize the Google API Client library
         function initGoogleAPI() {
-            gapi.load('auth2', () => {
-                gapi.auth2.init({
-                    client_id: CLIENT_ID,
-                    scope: 'profile email', // Include 'email' scope
-                }).then(() => {
-                    // Attach event listeners after initialization
-                    loginButton.addEventListener('click', () => {
-                        gapi.auth2.getAuthInstance().signIn()
-                            .then(handleSignIn);
-                    });
-
-                    logoutButton.addEventListener('click', () => {
-                        gapi.auth2.getAuthInstance().signOut()
-                            .then(handleSignOut);
-                    });
-                });
+            gapi.load('auth2', {
+                callback: handleGoogleAPILoaded,
+                onerror: handleGoogleAPIError
             });
         }
 
         // Load the Google API Client library asynchronously
         window.addEventListener('load', initGoogleAPI);
+
+        function handleGoogleAPILoaded() {
+            gapi.auth2.init({
+                client_id: CLIENT_ID,
+                scope: 'profile email', // Include 'email' scope
+            })
+            .then(() => {
+                // Attach event listeners after initialization
+                loginButton.addEventListener('click', () => {
+                    gapi.auth2.getAuthInstance().signIn()
+                        .then(handleSignIn);
+                });
+
+                logoutButton.addEventListener('click', () => {
+                    gapi.auth2.getAuthInstance().signOut()
+                        .then(handleSignOut);
+                });
+            })
+            .catch(handleGoogleAuthError);
+        }
+
+        function handleGoogleAPIError(error) {
+            console.error('Google API Load Error:', error);
+            // Handle the error as needed
+        }
+
+        function handleGoogleAuthError(error) {
+            console.error('Google Auth Error:', error);
+            // Handle the authentication error as needed
+        }
 
         function handleSignIn(googleUser) {
             const profile = googleUser.getBasicProfile();
