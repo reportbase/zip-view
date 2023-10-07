@@ -5551,7 +5551,11 @@ galleryobj.init = function(obj)
 			title: "Logout",
 			func: function() 
 			{
-				var auth2 = gapi.auth2.getAuthInstance();
+				var auth2 = gapi.auth.init({
+				      clientId: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
+				      scopes: ['profile', 'email'],
+				    });
+				
 				if (auth2.isSignedIn.get()) 
 				{
 				    auth2.signOut().then(function () 
