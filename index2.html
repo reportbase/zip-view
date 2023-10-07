@@ -12,7 +12,19 @@
   <div id="user-info"></div>
   
   <script>
+    googleAuth = 0;
     
+       gapi.load('auth2', function() 
+        {
+           googleAuth = gapi.auth2.init
+           (
+             {
+              client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
+             }
+           );
+        })
+      
+     
     const login = document.getElementById('login');
     login.addEventListener('click', async () => 
     {
@@ -39,21 +51,15 @@
   const logout = document.getElementById('logout');
     logout.addEventListener('click', async () => 
     {
-        
+         googleAuth.signOut().then(authResult => 
+            {
+              console.log(authResult);
+            });        
     })
     
    const signin = document.getElementById('signin');
     signin.addEventListener('click', async () => 
     {
-        gapi.load('auth2', function() 
-        {
-           const googleAuth = gapi.auth2.init
-           (
-             {
-              client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-             }
-           );
-      
             googleAuth.signIn().then(authResult => 
             {
               const profile = googleAuth.currentUser.get().profile;
@@ -64,7 +70,6 @@
                 <p>Email: ${profile.email}</p>
               `;
             });
-        })
     
     });
     
