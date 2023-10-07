@@ -7,18 +7,12 @@ https://zip-view.com
 https://ipfs-view.com
 */
 
-function oauthSignIn()  
-	
+function oauthSignIn()  	
 {
-  // Google's OAuth 2.0 endpoint for requesting an access token
-  var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
-
-  // Create <form> element to submit parameters to OAuth 2.0 endpoint.
   var form = document.createElement('form');
-  form.setAttribute('method', 'GET'); // Send as a GET request.
-  form.setAttribute('action', oauth2Endpoint);
+  form.setAttribute('method', 'GET'); 
+  form.setAttribute('action', 'https://accounts.google.com/o/oauth2/v2/auth');
 
-  // Parameters to pass to OAuth 2.0 endpoint.
   var params = {'client_id': '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
                 'redirect_uri': 'https://zip-view.pages.dev',
                 'response_type': 'token',
@@ -26,8 +20,8 @@ function oauthSignIn()
                 'include_granted_scopes': 'true',
                 'state': 'pass-through value'};
 
-  // Add form parameters as hidden input values.
-  for (var p in params) {
+  for (var p in params) 
+  {
     var input = document.createElement('input');
     input.setAttribute('type', 'hidden');
     input.setAttribute('name', p);
@@ -35,7 +29,6 @@ function oauthSignIn()
     form.appendChild(input);
   }
 
-  // Add form to page and submit it to open the OAuth 2.0 endpoint.
   document.body.appendChild(form);
   form.submit();
 }
