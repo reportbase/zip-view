@@ -5729,6 +5729,11 @@ if (url.searchParams.has("data")) {
 	url.path = url.searchParams.get("zip");
 	loadzip(url.path)
 
+} else if (url.searchParams.has("storj")) 
+{
+	url.path = url.searchParams.get("storj");
+	var path = `https://demo.storj-ipfs.com/ipfs/${qid}`;
+	loadzip(path)
 } else if (url.searchParams.has("pexels")) {
 	url.path = url.searchParams.get("pexels");
 	fetch(`https://pexels.reportbase5836.workers.dev/?search=${url.path}`)
