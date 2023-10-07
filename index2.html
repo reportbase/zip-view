@@ -7,6 +7,7 @@
 <body>
   <h1>Google Auth2 Web Authentication Example</h1>
   <button id="login">Login</button>
+  <button id="logout">Logout</button>
    <button id="signin">Sign in</button>
   <div id="user-info"></div>
   
@@ -34,7 +35,13 @@
           form.appendChild(input);
         }
     })
-      
+
+  const logout = document.getElementById('logout');
+    logout.addEventListener('click', async () => 
+    {
+        
+    })
+    
    const signin = document.getElementById('signin');
     signin.addEventListener('click', async () => 
     {
