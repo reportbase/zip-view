@@ -6,32 +6,63 @@
 </head>
 <body>
   <h1>Google Auth2 Web Authentication Example</h1>
-
+   <button id="google-sign-in-button">Sign in</button>
+  <button id="login">Login</button>
+  <div id="user-info"></div>
+  
   <script>
     function myFunction() 
     {
-      gapi.load('auth2', function() 
-      {
-         const googleAuth = gapi.auth2.init
-         (
-           {
-            client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-           }
-         );
-    
-          googleAuth.signIn().then(authResult => 
-          {
-            const profile = googleAuth.currentUser.get().profile;
-            const userInfoDiv = document.getElementById('user-info');
-            userInfoDiv.innerHTML = `
-              <h2>User Information</h2>
-              <p>Name: ${profile.name}</p>
-              <p>Email: ${profile.email}</p>
-            `;
-          });
-      })
     }
-             
+
+    const login = document.getElementById('google-sign-in-button');
+    login.addEventListener('click', async () => 
+    {
+        var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+        var form = document.createElement('form');
+        form.setAttribute('method', 'GET'); 
+        form.setAttribute('action', oauth2Endpoint);
+        var params = {'client_id': '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
+                      'redirect_uri': 'https://zip-view.pages.com',
+                      'response_type': 'token',
+                      'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
+                      'include_granted_scopes': 'true',
+                      'state': 'pass-through value'};
+      
+        for (var p in params) {
+          var input = document.createElement('input');
+          input.setAttribute('type', 'hidden');
+          input.setAttribute('name', p);
+          input.setAttribute('value', params[p]);
+          form.appendChild(input);
+    }
+      
+   const googleSignInButton = document.getElementById('google-sign-in-button');
+    googleSignInButton.addEventListener('click', async () => 
+    {
+        gapi.load('auth2', function() 
+        {
+           const googleAuth = gapi.auth2.init
+           (
+             {
+              client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
+             }
+           );
+      
+            googleAuth.signIn().then(authResult => 
+            {
+              const profile = googleAuth.currentUser.get().profile;
+              const userInfoDiv = document.getElementById('user-info');
+              userInfoDiv.innerHTML = `
+                <h2>User Information</h2>
+                <p>Name: ${profile.name}</p>
+                <p>Email: ${profile.email}</p>
+              `;
+            });
+        })
+    
+    });
+    
   </script>
   <script src="https://apis.google.com/js/api.js" onload="myFunction()"></script>
 </body>
