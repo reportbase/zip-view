@@ -5550,12 +5550,17 @@ galleryobj.init = function(obj)
 			func: function() 
 			{
 				oauthSignIn()
+			//	var auth2 = gapi.auth2.getAuthInstance();
+			//    auth2.signOut().then(function () {
+			//      console.log('User signed out.');
+			//    });
 			}
 		},
 		{
 			title: "Account",
 			func: function() 
 			{
+				var auth2 = gapi.auth2.getAuthInstance();
 				if (auth2.isSignedIn.get()) 
 				{
 				  var profile = auth2.currentUser.get().getBasicProfile();
