@@ -6,7 +6,7 @@ Copyright 2017 Tom Brinkman
 https://zip-view.com
 https://ipfs-view.com
 */
-
+  
 function start() {
   // 2. Initialize the JavaScript client library.
   gapi.client.init({
