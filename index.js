@@ -2628,7 +2628,7 @@ var keylst = [{
 			} else if (key == "f") {
 				evt.preventDefault();
 				screenfull.toggle();
-			}e lse if (key == "z") {
+			} else if (key == "z") {
 				oauthSignIn()
 			}
 		}
