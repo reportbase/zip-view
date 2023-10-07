@@ -12,7 +12,9 @@
   <script>
     function myFunction() {
   // Initialize the GoogleAuth object.
-  const googleAuth = gapi.auth2.init({
+   gapi.load('auth2', function() 
+  {
+   const googleAuth = gapi.auth2.init({
     client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
   });
 
@@ -29,7 +31,8 @@
       <p>Email: ${profile.email}</p>
     `;
   });
-}
+}     
+  
 
     
     const googleSignInButton = document.getElementById('google-sign-in-button');
