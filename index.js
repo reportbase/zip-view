@@ -1868,24 +1868,19 @@ var pinchobj = new circular_array("PINCH", [heightobj, zoomobj]);
 
 var userobj = {}
 
-userobj.save = function() {
-	if (url.protocol == "https:") {
-		authClient = PropelAuth.createClient({
-			authUrl: "https://auth.ipfs-view.com",
-			enableBackgroundTokenRefresh: true
+if (url.protocol == "https:") 
+{
+	authClient = PropelAuth.createClient({
+		authUrl: "https://auth.zip-view.com",
+		enableBackgroundTokenRefresh: true
+	})
+	authClient.getAuthenticationInfoOrNull(false)
+		.then(function(client) 
+		{
+			console.log(client);
 		})
-		authClient.getAuthenticationInfoOrNull(false)
-			.then(function(client) {
-				fetch(`https://bucket.reportbase5836.workers.dev/${client.user.userId}.json`, {
-						method: 'POST',
-						body: JSON.stringify(userobj)
-					})
-					.then(response => jsonhandler(response))
-					.then(json => console.log(json))
-					.catch(error => console.log(error));
-			})
-	}
 }
+
 
 async function loadipfs(json, folder) {
 	for (var n = 0; n < json.length; ++n) {
@@ -5419,25 +5414,8 @@ galleryobj.init = function(obj)
 	var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
 	_2cnv.rotated = [...a, ...a, ...a];
 
-	_3cnv.sliceobj.data = [{
-			title: "propelauth",
-			func: function() {
-				authclient = propelauth.createclient({
-					authurl: "https://auth.ipfs-view.pages.dev",
-					enablebackgroundtokenrefresh: true
-				})
-				authclient.getauthenticationinfoornull(false)
-					.then(function(client) {
-						fetch(`https://bucket.reportbase5836.workers.dev/${client.user.userid}.json`)
-							.then((response) => jsonhandler(response))
-							.then(function(json) {})
-							.catch((error) => {});
-					})
-			},
-			enabled: function() {
-				return false
-			}
-		},
+	_3cnv.sliceobj.data = 
+		[
 		{
 			title: "delete image",
 			func: function() {
@@ -5457,9 +5435,7 @@ galleryobj.init = function(obj)
 			enabled: function() {
 				return false
 			}
-		},
-
-		
+		},		
 
 		{
 			title: "Debug",
@@ -5602,6 +5578,20 @@ galleryobj.init = function(obj)
 			title: "Image and Document Viewer\nWebp, Jpg, Avif, Gif, and Png\nZip, Cbz, and Ipfs\nNewspapers, Magazines and Graphic Novels",
 			func: function() {}
 		},
+		{
+			title: "Login",
+			func: function() 
+			{
+				//authclient.logout(true)
+				authclient.redirecttologinpage();
+			}
+		},
+		{
+			title: "Account",
+			func: function() {
+				authclient.redirecttoaccountpage()
+			}
+		},
 
 		{
 			title: "Download\nkey+d",
@@ -5648,27 +5638,6 @@ galleryobj.init = function(obj)
 
 	_9cnv.sliceobj.data = 
 	[
-		{
-			title: "login",
-			path: "login",
-			func: function() {
-				authclient.redirecttologinpage();
-			}
-		},
-		{
-			title: "logout",
-			path: "logout",
-			func: function() {
-				authclient.logout(true)
-			}
-		},
-		{
-			title: "account",
-			path: "account",
-			func: function() {
-				authclient.redirecttoaccountpage()
-			}
-		},
 	];
 
 	var a = Array(_9cnv.sliceobj.length()).fill().map((_, index) => index);
