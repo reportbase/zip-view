@@ -7,6 +7,32 @@ https://zip-view.com
 https://ipfs-view.com
 */
 
+function oauthSignIn()  	
+{
+  var form = document.createElement('form');
+  form.setAttribute('method', 'GET'); 
+  form.setAttribute('action', 'https://accounts.google.com/o/oauth2/v2/auth');
+
+  var params = {'client_id': '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
+                'redirect_uri': 'https://zip-view.pages.dev',
+                'response_type': 'token',
+                'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
+                'include_granted_scopes': 'true',
+                'state': 'pass-through value'};
+
+  for (var p in params) 
+  {
+    var input = document.createElement('input');
+    input.setAttribute('type', 'hidden');
+    input.setAttribute('name', p);
+    input.setAttribute('value', params[p]);
+    form.appendChild(input);
+  }
+
+  document.body.appendChild(form);
+  form.submit();
+}
+
 function iOS() 
 {
 	return [
@@ -5523,46 +5549,11 @@ galleryobj.init = function(obj)
 			title: "Login",
 			func: function() 
 			{
-				  var form = document.createElement('form');
-				  form.setAttribute('method', 'GET'); 
-				  form.setAttribute('action', 'https://accounts.google.com/o/oauth2/v2/auth');
-				
-				  var params = {'client_id': '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-				                'redirect_uri': 'https://zip-view.pages.dev',
-				                'response_type': 'token',
-				                'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
-				                'include_granted_scopes': 'true',
-				                'state': 'pass-through value'};
-				
-				  for (var p in params) 
-				  {
-				    var input = document.createElement('input');
-				    input.setAttribute('type', 'hidden');
-				    input.setAttribute('name', p);
-				    input.setAttribute('value', params[p]);
-				    form.appendChild(input);
-				  }
-				
-				  document.body.appendChild(form);
-				  form.submit();
-			}
-		},
-		{
-			title: "Logout",
-			func: function() 
-			{
-				var auth2 = gapi.auth.init({
-				      clientId: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-				      scopes: ['profile', 'email'],
-				    });
-				
-				if (auth2.isSignedIn.get()) 
-				{
-				    auth2.signOut().then(function () 
-					{
-				      		console.log('User signed out.');
-			        	});
-				}
+				oauthSignIn()
+			//	var auth2 = gapi.auth2.getAuthInstance();
+			//    auth2.signOut().then(function () {
+			//      console.log('User signed out.');
+			//    });
 			}
 		},
 		{
@@ -5582,28 +5573,6 @@ galleryobj.init = function(obj)
 				}
 			}
 		},
-		{
-			title: "Google Authenticate",
-			func: function() 
-			{
-				gapi.client.init({
-				    'apiKey': 'YOUR_API_KEY',
-				    // clientId and scope are optional if auth is not required.
-				    'clientId': 'YOUR_WEB_CLIENT_ID.apps.googleusercontent.com',
-				    'scope': 'profile',
-				  }).then(function() {
-				    // 3. Initialize and make the API request.
-				    return gapi.client.request({
-				      'path': 'https://people.googleapis.com/v1/people/me?requestMask.includeField=person.names',
-				    })
-				  }).then(function(response) {
-				    console.log(response.result);
-				  }, function(reason) {
-				    console.log('Error: ' + reason.result.error.message);
-				  });
-			}
-		},
-			
 		{
 			title: "Download\nkey+d",
 			func: function() {
