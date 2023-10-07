@@ -6,27 +6,19 @@
 </head>
 <body>
   <h1>Google Auth2 Web Authentication Example</h1>
-
   <button id="google-sign-in-button">Sign in with Google</button>
-
   <div id="user-info"></div>
 
   <script>
-    // Initialize the GoogleAuth object.
-    const googleAuth = gapi.auth2.init({
-      client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-    });
-
-    // Add a Google Sign-In button.
     const googleSignInButton = document.getElementById('google-sign-in-button');
-    googleSignInButton.addEventListener('click', async () => {
-      // Sign the user in.
+    googleSignInButton.addEventListener('click', async () => 
+    {
+      const googleAuth = gapi.auth2.init({
+        client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
+      });
+
       const authResult = await googleAuth.signIn();
-
-      // Get the user's profile information.
       const profile = await googleAuth.currentUser.get().profile;
-
-      // Display the user's name and email address.
       const userInfoDiv = document.getElementById('user-info');
       userInfoDiv.innerHTML = `
         <h2>User Information</h2>
