@@ -1,44 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Auth2 Single Web Page Application with Google Authentication</title>
+  <title>Google Auth2 Web Authentication Example</title>
+  <link href="https://apis.google.com/js/api.js" rel="script">
 </head>
 <body>
-  <h1>Auth2 Single Web Page Application with Google Authentication</h1>
-  <button id="google-sign-in-button">Sign In with Google</button>
-  <script async defer src="https://apis.google.com/js/api.js"  </script>
+  <h1>Google Auth2 Web Authentication Example</h1>
+
+  <button id="google-sign-in-button">Sign in with Google</button>
+
+  <div id="user-info"></div>
+
   <script>
-    // Initialize the Google Sign-In library.
-    var googleAuth = gapi.auth.init({
-      clientId: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-      scopes: ['profile', 'email'],
+    // Initialize the GoogleAuth object.
+    const googleAuth = gapi.auth2.init({
+      client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
     });
 
-    // Add a listener for the 'signIn' event.
-    googleAuth.on('signIn', function (googleUser) {
-      // Get the user's information.
-      var profile = googleUser.getBasicProfile();
-      console.log(profile);
+    // Add a Google Sign-In button.
+    const googleSignInButton = document.getElementById('google-sign-in-button');
+    googleSignInButton.addEventListener('click', async () => {
+      // Sign the user in.
+      const authResult = await googleAuth.signIn();
 
-      // Show the user's name.
-      document.getElementById('user-name').textContent = profile.getName();
+      // Get the user's profile information.
+      const profile = await googleAuth.currentUser.get().profile;
+
+      // Display the user's name and email address.
+      const userInfoDiv = document.getElementById('user-info');
+      userInfoDiv.innerHTML = `
+        <h2>User Information</h2>
+        <p>Name: ${profile.name}</p>
+        <p>Email: ${profile.email}</p>
+      `;
     });
-
-    // Add a listener for the 'signOut' event.
-    googleAuth.on('signOut', function () {
-      // Hide the user's name.
-      document.getElementById('user-name').textContent = '';
-    });
-
-    // Render the Google Sign-In button.
-    googleAuth.signInButtonRender(
-      document.getElementById('google-sign-in-button'),
-      {
-        scope: 'profile email',
-        height: 43,
-        width: 250
-      }
-    );
   </script>
 </body>
-</html> 
+</html>
