@@ -1,88 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>OAuth2 Single Page App</title>
+  <title>Auth2 Single Web Page Application with Google Authentication</title>
 </head>
 <body>
-    <button id="login-button">Login with Google</button>
-    <button id="logout-button" style="display:none;">Logout</button>
-    <div id="user-info" style="display:none;">
-        <p>Welcome, <span id="user-name"></span>!</p>
-        <p>Email: <span id="user-email"></span></p>
-        <img id="user-image" src="" alt="User Image">
-    </div>
-    <script src="https://apis.google.com/js/api.js" async defer></script>
-    <script>
-        const CLIENT_ID = "866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com";
-        const loginButton = document.getElementById('login-button');
-        const logoutButton = document.getElementById('logout-button');
-        const userInfo = document.getElementById('user-info');
-        const userName = document.getElementById('user-name');
-        const userEmail = document.getElementById('user-email');
-        const userImage = document.getElementById('user-image');
+  <h1>Auth2 Single Web Page Application with Google Authentication</h1>
+  <button id="google-sign-in-button">Sign In with Google</button>
+  <script>
+    // Initialize the Google Sign-In library.
+    var googleAuth = gapi.auth.init({
+      clientId: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
+      scopes: ['profile', 'email'],
+    });
 
-        // Initialize the Google API Client library
-        function initGoogleAPI() {
-            gapi.load('auth2', {
-                callback: handleGoogleAPILoaded,
-                onerror: handleGoogleAPIError
-            });
-        }
+    // Add a listener for the 'signIn' event.
+    googleAuth.on('signIn', function (googleUser) {
+      // Get the user's information.
+      var profile = googleUser.getBasicProfile();
+      console.log(profile);
 
-        // Load the Google API Client library asynchronously
-        window.addEventListener('load', initGoogleAPI);
+      // Show the user's name.
+      document.getElementById('user-name').textContent = profile.getName();
+    });
 
-        function handleGoogleAPILoaded() {
-            gapi.auth2.init({
-                client_id: CLIENT_ID,
-                scope: 'profile email', // Include 'email' scope
-            })
-            .then(() => {
-                // Attach event listeners after initialization
-                loginButton.addEventListener('click', () => {
-                    gapi.auth2.getAuthInstance().signIn()
-                        .then(handleSignIn);
-                });
+    // Add a listener for the 'signOut' event.
+    googleAuth.on('signOut', function () {
+      // Hide the user's name.
+      document.getElementById('user-name').textContent = '';
+    });
 
-                logoutButton.addEventListener('click', () => {
-                    gapi.auth2.getAuthInstance().signOut()
-                        .then(handleSignOut);
-                });
-            })
-            .catch(handleGoogleAuthError);
-        }
-
-        function handleGoogleAPIError(error) {
-            console.error('Google API Load Error:', error);
-            // Handle the error as needed
-        }
-
-        function handleGoogleAuthError(error) {
-            console.error('Google Auth Error:', error);
-            // Handle the authentication error as needed
-        }
-
-        function handleSignIn(googleUser) {
-            const profile = googleUser.getBasicProfile();
-
-            userName.textContent = profile.getName();
-            userEmail.textContent = profile.getEmail(); // Display email
-            userImage.src = profile.getImageUrl();
-
-            loginButton.style.display = 'none';
-            logoutButton.style.display = 'block';
-            userInfo.style.display = 'block';
-        }
-
-        function handleSignOut() {
-            userName.textContent = '';
-            userEmail.textContent = ''; // Clear email
-            userImage.src = '';
-
-            loginButton.style.display = 'block';
-            logoutButton.style.display = 'none';
-            userInfo.style.display = 'none';
-        }
-    </script>
+    // Render the Google Sign-In button.
+    googleAuth.signInButtonRender(
+      document.getElementById('google-sign-in-button'),
+      {
+        scope: 'profile email',
+        height: 43,
+        width: 250
+      }
+    );
+  </script>
 </body>
-</html>
+</html> 
