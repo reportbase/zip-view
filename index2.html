@@ -11,8 +11,9 @@
         <p>Email: <span id="user-email"></span></p>
         <img id="user-image" src="" alt="User Image">
     </div>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script>
-        const CLIENT_ID = '343028434226-jk0hi74kao7mtjq88e5e16cl9ff6q6ml.apps.googleusercontent.com'; // Replace with your Google OAuth2 client ID
+        const CLIENT_ID = 'YOUR_CLIENT_ID'; // Replace with your Google OAuth2 client ID
 
         const loginButton = document.getElementById('login-button');
         const logoutButton = document.getElementById('logout-button');
@@ -21,21 +22,23 @@
         const userEmail = document.getElementById('user-email');
         const userImage = document.getElementById('user-image');
 
+        // Initialize the Google API Client library
         gapi.load('auth2', () => {
             gapi.auth2.init({
                 client_id: CLIENT_ID,
                 scope: 'profile email', // Include 'email' scope
+            }).then(() => {
+                // Attach event listeners after initialization
+                loginButton.addEventListener('click', () => {
+                    gapi.auth2.getAuthInstance().signIn()
+                        .then(handleSignIn);
+                });
+
+                logoutButton.addEventListener('click', () => {
+                    gapi.auth2.getAuthInstance().signOut()
+                        .then(handleSignOut);
+                });
             });
-        });
-
-        loginButton.addEventListener('click', () => {
-            gapi.auth2.getAuthInstance().signIn()
-                .then(handleSignIn);
-        });
-
-        logoutButton.addEventListener('click', () => {
-            gapi.auth2.getAuthInstance().signOut()
-                .then(handleSignOut);
         });
 
         function handleSignIn(googleUser) {
@@ -60,6 +63,5 @@
             userInfo.style.display = 'none';
         }
     </script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 </html>
