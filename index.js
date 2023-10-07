@@ -5731,7 +5731,7 @@ if (url.searchParams.has("data")) {
 
 } else if (url.searchParams.has("storj")) 
 {
-	url.path = url.searchParams.get("storj");
+	var qid = url.searchParams.get("storj");
 	var path = `https://demo.storj-ipfs.com/ipfs/${qid}`;
 	loadzip(path)
 } else if (url.searchParams.has("pexels")) {
