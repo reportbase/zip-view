@@ -6,8 +6,8 @@
 </head>
 <body>
   <h1>Google Auth2 Web Authentication Example</h1>
-   <button id="google-sign-in-button">Sign in</button>
   <button id="login">Login</button>
+   <button id="signin">Sign in</button>
   <div id="user-info"></div>
   
   <script>
@@ -15,7 +15,7 @@
     {
     }
 
-    const login = document.getElementById('google-sign-in-button');
+    const login = document.getElementById('login');
     login.addEventListener('click', async () => 
     {
         var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
@@ -37,7 +37,7 @@
           form.appendChild(input);
     }
       
-   const googleSignInButton = document.getElementById('google-sign-in-button');
+   const googleSignInButton = document.getElementById('signin');
     googleSignInButton.addEventListener('click', async () => 
     {
         gapi.load('auth2', function() 
