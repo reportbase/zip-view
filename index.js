@@ -7,32 +7,6 @@ https://zip-view.com
 https://ipfs-view.com
 */
 
-function oauthSignIn()  	
-{
-  var form = document.createElement('form');
-  form.setAttribute('method', 'GET'); 
-  form.setAttribute('action', 'https://accounts.google.com/o/oauth2/v2/auth');
-
-  var params = {'client_id': '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-                'redirect_uri': 'https://zip-view.pages.dev',
-                'response_type': 'token',
-                'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
-                'include_granted_scopes': 'true',
-                'state': 'pass-through value'};
-
-  for (var p in params) 
-  {
-    var input = document.createElement('input');
-    input.setAttribute('type', 'hidden');
-    input.setAttribute('name', p);
-    input.setAttribute('value', params[p]);
-    form.appendChild(input);
-  }
-
-  document.body.appendChild(form);
-  form.submit();
-}
-
 function iOS() 
 {
 	return [
@@ -2621,7 +2595,7 @@ var keylst = [{
 			} else if (key == "f") {
 				evt.preventDefault();
 				screenfull.toggle();
-			} 
+			}
 		}
 	},
 	{
@@ -5549,28 +5523,6 @@ galleryobj.init = function(obj)
 			title: "Login",
 			func: function() 
 			{
-				oauthSignIn()
-			//	var auth2 = gapi.auth2.getAuthInstance();
-			//    auth2.signOut().then(function () {
-			//      console.log('User signed out.');
-			//    });
-			}
-		},
-		{
-			title: "Account",
-			func: function() 
-			{
-				var auth2 = gapi.auth2.getAuthInstance();
-				if (auth2.isSignedIn.get()) 
-				{
-				  var profile = auth2.currentUser.get().getBasicProfile();
-				  console.log('ID: ' + profile.getId());
-				  console.log('Full Name: ' + profile.getName());
-				  console.log('Given Name: ' + profile.getGivenName());
-				  console.log('Family Name: ' + profile.getFamilyName());
-				  console.log('Image URL: ' + profile.getImageUrl());
-				  console.log('Email: ' + profile.getEmail());
-				}
 			}
 		},
 		{
@@ -5734,11 +5686,6 @@ if (url.searchParams.has("data")) {
 	url.path = url.searchParams.get("zip");
 	loadzip(url.path)
 
-} else if (url.searchParams.has("storj")) 
-{
-	var qid = url.searchParams.get("storj");
-	var path = `https://demo.storj-ipfs.com/ipfs/${qid}`;
-	loadzip(path)
 } else if (url.searchParams.has("pexels")) {
 	url.path = url.searchParams.get("pexels");
 	fetch(`https://pexels.reportbase5836.workers.dev/?search=${url.path}`)
