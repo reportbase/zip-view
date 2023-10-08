@@ -5576,6 +5576,7 @@ galleryobj.init = function(obj)
 			title: "Login",
 			func: function() 
 			{
+			const profile = auth2.currentUser.get().profile;	
 			    auth2.signIn().then(result => 
 		            {
 		              const profile = auth2.currentUser.get().profile;
