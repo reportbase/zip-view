@@ -5692,6 +5692,11 @@ else if (url.searchParams.has("filebase"))
 	url.path = url.searchParams.get("filebase");
 	loadzip(`https://ipfs.filebase.io/ipfs/${url.path}`)
 } 
+else if (url.searchParams.has("web3.storage")) 
+{
+	url.path = url.searchParams.get("web3.storage");
+	loadzip(`https://w3s.link/ipfs/${url.path}`)
+} 
 else if (url.searchParams.has("pexels")) {
 	url.path = url.searchParams.get("pexels");
 	fetch(`https://pexels.reportbase5836.workers.dev/?search=${url.path}`)
