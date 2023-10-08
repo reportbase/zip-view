@@ -5596,22 +5596,13 @@ galleryobj.init = function(obj)
 			title: "Login",
 			func: function() 
 			{
-
-			gapi.client.request(
-			{
-			      'path': 'https://people.googleapis.com/v1/people/me?requestMask.includeField=person.names',
-			})
-			.then(function(response) 
-			{
-			    console.log(response.result);
-			})			
-				
-			const profile = auth2.currentUser.get().profile;	
-			    auth2.signIn().then(result => 
-		            {
-		              const profile = auth2.currentUser.get().profile;
-		              console.log(profile);
-		            });
+				auth2.signIn().then(function(response) 
+				{
+				    const email = response.profile.getEmail();
+				    //const profile = auth2.currentUser.get().profile;	
+				    // Do something with the user's email address.
+				    console.log('User email:', email);
+				  }
 			}
 		},
 		{
