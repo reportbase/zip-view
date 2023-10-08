@@ -1576,12 +1576,12 @@ var wheelst =
 		name: "GALLERY",
 		updown: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
-			if (delta < -100 && !headcnv.height)
+			if (delta < -200 && !headcnv.height)
 			{
 				headcnv.height = BEXTENT;
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 			}
-			else if (delta > 100 && headcnv.height)
+			else if (delta > 200 && headcnv.height)
 			{
 				headcnv.height = 0;
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
