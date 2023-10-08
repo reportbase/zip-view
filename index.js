@@ -5318,9 +5318,10 @@ async function loadjson(blob) {
 galleryobj.init = function(obj) 
 {
 	//https://developers.google.com/identity/sign-in/web/reference?authuser=0
-       gapi.load('auth2', function() 
+       //gapi.load('auth2', function() 
+	gapi.load('client:auth2', function() 
         {
-           auth2 = gapi.auth2.init
+           auth2 = gapi.client.init
            (
              {
               client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
