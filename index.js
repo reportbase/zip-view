@@ -5602,7 +5602,7 @@ galleryobj.init = function(obj)
 				    //const profile = auth2.currentUser.get().profile;	
 				    // Do something with the user's email address.
 				    console.log('User email:', email);
-				  }
+				  })
 			}
 		},
 		{
