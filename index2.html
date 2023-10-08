@@ -26,6 +26,11 @@
       });
     });
 
+gapi.auth2.getAuthInstance().error.listen(function(error) {
+    // Handle the error.
+    console.log(error);
+  });
+    
     // Handle the sign-in button click.
     document.getElementById('google-sign-in-button').addEventListener('click', function() {
       gapi.auth2.getAuthInstance().signIn();
