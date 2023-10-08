@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google Auth2 Sign-on Example</title>
+  <script src="https://apis.google.com/js/platform.js"></script>
+</head>
+<body>
+  <h1>Google Auth2 Sign-on Example</h1>
+  <button id="google-sign-in-button">Sign in with Google</button>
+
+  <script>
+    gapi.load('auth2', function() {
+      gapi.auth2.init({
+        client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
+        scope: 'openid email profile',
+        response_type: 'code'
+      });
+
+      // Handle the sign-in button click.
+      document.getElementById('google-sign-in-button').addEventListener('click', function() {
+        gapi.auth2.getAuthInstance().signIn();
+      });
+
+      // Listen for the code parameter in the URL.
+      window.addEventListener('hashchange', function() {
+        var code = window.location.hash.substring(1).split('&')[0].split('=')[1];
+
+        // Exchange the code for an access token.
+        gapi.auth2.getAuthInstance().getToken(code).then(function(authResult) {
+          // The user is signed in.
+          console.log(authResult);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
