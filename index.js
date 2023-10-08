@@ -5670,47 +5670,58 @@ function initime()
 
 url.path = "home";
 
-if (url.searchParams.has("data")) {
+//todo: upload zip to r2
+
+if (url.searchParams.has("data")) 
+{
 	url.path = url.searchParams.get("data");
 	fetch(`data/${url.path}/index.json`)
 		.then(response => jsonhandler(response))
 		.then((obj) => galleryobj.init(obj))
 		.catch((error) => {});
 } 
-else if (url.searchParams.has("zip")) 
+else if (url.searchParams.has("zip"))///todo: same as path
 {
 	url.path = url.searchParams.get("zip");
 	loadzip(url.path)
 } 
 else if (url.searchParams.has("storj")) 
 {
+	//todo
 	url.path = url.searchParams.get("storj");
 	loadzip(`https://demo.storj-ipfs.com/ipfs/${url.path}`)
 } 
 else if (url.searchParams.has("filebase")) 
 {
+	//todo
 	url.path = url.searchParams.get("filebase");
 	loadzip(`https://ipfs.filebase.io/ipfs/${url.path}`)
 } 
 else if (url.searchParams.has("web3.storage")) 
 {
+	//todo
 	url.path = url.searchParams.get("web3.storage");
 	loadzip(`https://w3s.link/ipfs/${url.path}`)
 } 
-else if (url.searchParams.has("pexels")) {
+else if (url.searchParams.has("pexels")) 
+{
 	url.path = url.searchParams.get("pexels");
 	fetch(`https://pexels.reportbase5836.workers.dev/?search=${url.path}`)
 		.then((response) => jsonhandler(response))
 		.then((obj) => galleryobj.init(obj))
-		.catch((error) => {});
-	
-} else if (url.searchParams.has("sidney")) {
+		.catch((error) => {});	
+} 
+else if (url.searchParams.has("sidney")) 
+{
 	url.path = "sidney";
 	fetch(`https://sidney.reportbase5836.workers.dev`)
 		.then((response) => jsonhandler(response))
 		.then((obj) => galleryobj.init(obj))
 		.catch((error) => {});
-}  else if (url.searchParams.has("r2")) {
+}  
+else if (url.searchParams.has("r2")) 
+{
+	//todo
 	url.path = url.searchParams.get("r2");
 	fetch(`https://bucket.reportbase5836.workers.dev/${url.path}.json`)
 		.then((response) => jsonhandler(response))
@@ -5719,6 +5730,7 @@ else if (url.searchParams.has("pexels")) {
 } 
 else if (url.searchParams.has("res")) 
 {
+	//todo
 	url.path = url.searchParams.get("res");
 	fetch(`res/${url.path}.json`)
 		.then(response => jsonhandler(response))
