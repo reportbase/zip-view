@@ -5538,7 +5538,7 @@ galleryobj.init = function(obj)
 			        form.setAttribute('method', 'GET'); 
 			        form.setAttribute('action', oauth2Endpoint);
 			        var params = {'client_id': '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-			                      'redirect_uri': 'https://zip-view.pages.com',
+			                      'redirect_uri': 'https://zip-view.pages.dev',
 			                      'response_type': 'token',
 			                      'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
 			                      'include_granted_scopes': 'true',
