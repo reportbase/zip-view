@@ -5691,33 +5691,12 @@ else if (url.searchParams.has("image"))
 else if (url.searchParams.has("storj")) 
 {
 	url.path = url.searchParams.get("storj");
-	if (url.path.isimage()) 
-	{
-		loadimages(url.path);
-	} 
-	else if (url.path.iszip()) 
-	{
-		loadzip(`https://demo.storj-ipfs.com/ipfs/${url.path}`)
-	} else if (url.path.isjson()) 
-	{
-		loadimages(url.path);
-	}
+	loadzip(`https://demo.storj-ipfs.com/ipfs/${url.path}`)
 } 
 else if (url.searchParams.has("filebase")) 
 {
 	url.path = url.searchParams.get("filebase");
-	if (url.path.isimage()) 
-	{
-		loadimages(url.path);
-	} 
-	else if (name.iszip()) 
-	{
-		loadzip(`https://ipfs.filebase.io/ipfs/${url.path}`)
-	} 
-	else if (name.isjson()) 
-	{
-		loadimages(url.path);
-	}
+	loadzip(`https://ipfs.filebase.io/ipfs/${url.path}`)
 }	 
 else if (url.searchParams.has("web3.storage")) 
 {
