@@ -5324,7 +5324,8 @@ galleryobj.init = function(obj)
            (
              {
               client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-             	scope: 'profile email'
+             	scope: 'profile email',
+		ux_mode: 'redirect'
 	     }
            );
       })
