@@ -5317,13 +5317,14 @@ async function loadjson(blob) {
 //galleryobj init
 galleryobj.init = function(obj) 
 {
+	//https://developers.google.com/identity/sign-in/web/reference?authuser=0
        gapi.load('auth2', function() 
         {
            auth2 = gapi.auth2.init
            (
              {
               client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-             	scope: 'profile'
+             	scope: 'profile email'
 	     }
            );
       })
@@ -5531,13 +5532,31 @@ galleryobj.init = function(obj)
 			func: function() {}
 		},
 		{
+			title: "email",
+			func: function()
+			{
+				var _auth2 = gapi.auth2.getAuthInstance();
+				
+				// Check if the user is signed in.
+				if (_auth2.isSignedIn.get()) 
+				{
+				  // Get the user's profile.
+				  var profile = _auth2.currentUser.get().getBasicProfile();
+				
+				  // Get the user's email address.
+				  var email = profile.getEmail();
+					console.log(email);
+				  // Do something with the user's email address.
+				} 
+			}
+		},
+		{
 			title: "Authenticate",
 			func: function() 
 			{
-			      var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
-			        var form = document.createElement('form');
+				var form = document.createElement('form');
 			        form.setAttribute('method', 'GET'); 
-			        form.setAttribute('action', oauth2Endpoint);
+			        form.setAttribute('action', 'https://accounts.google.com/o/oauth2/v2/auth');
 			        var params = {'client_id': '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
 			                      'redirect_uri': 'https://zip-view.pages.dev',
 			                      'response_type': 'token',
