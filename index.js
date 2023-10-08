@@ -3781,7 +3781,7 @@ menuobj.draw = function()
 			var y = j * context.canvas.virtualheight;
 			var e = (canvas.virtualheight - rect.height) / 2;
 			y -= e;
-			y = Math.floor(y);//todo
+			y = Math.floor(y);
 			if (y > 0 && y < lasty)
 				y = lasty;
 			lasty = y;
@@ -5493,7 +5493,7 @@ galleryobj.init = function(obj)
 	var a = Array(_6cnv.sliceobj.length()).fill().map((_, index) => index);
 	_6cnv.rotated = [...a, ...a, ...a];
 
-	_7cnv.sliceobj.data = //todo galleryobj.base ? galleryobj.base :
+	_7cnv.sliceobj.data = //galleryobj.base ? galleryobj.base :
 		[
 		{
 			title: "Goto\nkey+g",
@@ -5670,8 +5670,6 @@ function initime()
 
 url.path = "home";
 
-//todo: upload zip to r2
-
 if (url.searchParams.has("data")) 
 {
 	url.path = url.searchParams.get("data");
@@ -5680,23 +5678,47 @@ if (url.searchParams.has("data"))
 		.then((obj) => galleryobj.init(obj))
 		.catch((error) => {});
 } 
-else if (url.searchParams.has("zip"))///todo: same as path
+else if (url.searchParams.has("zip"))
 {
 	url.path = url.searchParams.get("zip");
 	loadzip(url.path)
 } 
+else if (url.searchParams.has("image"))
+{
+	url.path = url.searchParams.get("image");
+	loadimages(url.path)
+} 	
 else if (url.searchParams.has("storj")) 
 {
-	//todo
 	url.path = url.searchParams.get("storj");
-	loadzip(`https://demo.storj-ipfs.com/ipfs/${url.path}`)
+	if (url.path.isimage()) 
+	{
+		loadimages(url.path);
+	} 
+	else if (name.iszip()) 
+	{
+		loadzip(`https://demo.storj-ipfs.com/ipfs/${url.path}`)
+	} else if (name.isjson()) 
+	{
+		loadimages(url.path);
+	}
 } 
 else if (url.searchParams.has("filebase")) 
 {
-	//todo
 	url.path = url.searchParams.get("filebase");
-	loadzip(`https://ipfs.filebase.io/ipfs/${url.path}`)
-} 
+	if (url.path.isimage()) 
+	{
+		loadimages(url.path);
+	} 
+	else if (name.iszip()) 
+	{
+		loadzip(`https://ipfs.filebase.io/ipfs/${url.path}`)
+	} 
+	else if (name.isjson()) 
+	{
+		loadimages(url.path);
+	}
+}	 
 else if (url.searchParams.has("web3.storage")) 
 {
 	//todo
