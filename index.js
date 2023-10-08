@@ -5702,7 +5702,7 @@ else if (url.searchParams.has("storj"))
 } 
 else if (url.searchParams.has("filebase")) 
 {
-	url.path = url.searchParams.get("storj");
+	url.path = url.searchParams.get("filebase");
 	if (url.path.isimage())
 		loadimages(url.path);
 	else if (url.path.isjson())
