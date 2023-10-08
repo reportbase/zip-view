@@ -14,7 +14,7 @@
           gapi.auth2.init(
           {
             client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com'
-          }
+          })
   
           gapi.auth2.getAuthInstance().error.listen(function(error) 
           {
@@ -33,8 +33,7 @@
             }
           });
         });
-      );
-
+      
       document.getElementById('google-sign-in-button').addEventListener('click', function() 
       {
         gapi.auth2.getAuthInstance().signIn();
