@@ -1578,7 +1578,7 @@ var wheelst =
 		{
 			if (delta > 10)
 			{
-				headcnv.height = type=="wheelup"?0:BEXTENT;
+				headcnv.height = type=="wheeldown"?0:BEXTENT;
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 			}
 			
