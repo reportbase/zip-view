@@ -5676,11 +5676,23 @@ if (url.searchParams.has("data")) {
 		.then(response => jsonhandler(response))
 		.then((obj) => galleryobj.init(obj))
 		.catch((error) => {});
-} else if (url.searchParams.has("zip")) {
+} 
+else if (url.searchParams.has("zip")) 
+{
 	url.path = url.searchParams.get("zip");
 	loadzip(url.path)
-
-} else if (url.searchParams.has("pexels")) {
+} 
+else if (url.searchParams.has("storj")) 
+{
+	url.path = url.searchParams.get("storj");
+	loadzip(`https://demo.storj-ipfs.com/ipfs/${url.path}`)
+} 
+else if (url.searchParams.has("filebase")) 
+{
+	url.path = url.searchParams.get("filebase");
+	loadzip(`https://ipfs.filebase.io/ipfs/${url.path}`)
+} 
+else if (url.searchParams.has("pexels")) {
 	url.path = url.searchParams.get("pexels");
 	fetch(`https://pexels.reportbase5836.workers.dev/?search=${url.path}`)
 		.then((response) => jsonhandler(response))
