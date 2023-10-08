@@ -11,10 +11,10 @@
   <script>
     // Create a new window to sign in with Google.
     function openGoogleSignInWindow() {
-      var window = window.open('https://accounts.google.com/o/oauth2/v2/auth?client_id=866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com&scope=openid%20email%20profile&response_type=code', '_blank', 'width=600,height=400');
+      var w = window.open('https://accounts.google.com/o/oauth2/v2/auth?client_id=866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com&scope=openid%20email%20profile&response_type=code', '_blank', 'width=600,height=400');
 
       // Listen for the window to close.
-      window.addEventListener('close', function() {
+      w.addEventListener('close', function() {
         // Get the code from the URL of the closed window.
         var code = window.location.search.substring(1).split('&')[0].split('=')[1];
 
