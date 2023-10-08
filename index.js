@@ -5695,10 +5695,10 @@ else if (url.searchParams.has("storj"))
 	{
 		loadimages(url.path);
 	} 
-	else if (name.iszip()) 
+	else if (url.path.iszip()) 
 	{
 		loadzip(`https://demo.storj-ipfs.com/ipfs/${url.path}`)
-	} else if (name.isjson()) 
+	} else if (url.path.isjson()) 
 	{
 		loadimages(url.path);
 	}
