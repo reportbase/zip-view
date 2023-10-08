@@ -5317,6 +5317,16 @@ async function loadjson(blob) {
 //galleryobj init
 galleryobj.init = function(obj) 
 {
+       gapi.load('auth2', function() 
+        {
+           auth2 = gapi.auth2.init
+           (
+             {
+              client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
+             }
+           );
+      })
+ 	
 	if (obj)
 		Object.assign(galleryobj, obj);
 	if (url.searchParams.has("dl")) 
