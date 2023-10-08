@@ -2350,21 +2350,17 @@ var overlaylst = [{
 
 var overlayobj = new circular_array("OVERLAY", overlaylst);
 
-var presslst = [{
+var presslst = 
+[
+	{
 		name: "DEFAULT",
 		pressup: function(context, rect, x, y) {},
 		press: function(context, rect, x, y) {}
 	},
 	{
 		name: "GALLERY",
-		pressup: function(context, rect, x, y) {
-
-				headcnv.height = headcnv.height?0:BEXTENT;
-				headobj.set(GALLERY);
-				headham.panel = headobj.value();
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-				menuobj.draw();
-						
+		pressup: function(context, rect, x, y) 
+		{
 		},
 		press: function(context, rect, x, y) {
 			   
@@ -2458,7 +2454,11 @@ var swipelst = [{
 			var k = evt.type == "swipeleft" ? 1 : -1;
 			galleryobj.leftright(context, k * context.canvas.speedobj.value());
 		},
-		swipeupdown: function(context, rect, x, y, evt) {
+		swipeupdown: function(context, rect, x, y, evt) 
+		{
+			headcnv.height = evt.type == "swipeup"?0:BEXTENT;
+			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+			
 			var k = evt.type == "swipeup" ? 1 : -1;
 			menuobj.updown(context, k * context.canvas.speedobj.value());
 			if (!global.swipetimeout) {
