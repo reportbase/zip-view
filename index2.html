@@ -16,7 +16,7 @@
     {
        gapi.load('auth2', function() 
         {
-           googleAuth = gapi.auth2.init
+           auth2 = gapi.auth2.init
            (
              {
               client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
@@ -51,18 +51,23 @@
   const logout = document.getElementById('logout');
     logout.addEventListener('click', async () => 
     {
-         googleAuth.signOut().then(authResult => 
+         auth2.signOut()
+           .then(result => 
             {
-              console.log(authResult);
-            });        
+              console.log(result);
+            })
+           .catch(result) +>
+           {
+              console.log(result);
+           })
     })
     
    const signin = document.getElementById('signin');
     signin.addEventListener('click', async () => 
     {
-            googleAuth.signIn().then(authResult => 
+            auth2.signIn().then(result => 
             {
-              const profile = googleAuth.currentUser.get().profile;
+              const profile = auth2.currentUser.get().profile;
               const userInfoDiv = document.getElementById('user-info');
               userInfoDiv.innerHTML = `
                 <h2>User Information</h2>
