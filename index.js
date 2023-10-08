@@ -5603,6 +5603,10 @@ galleryobj.init = function(obj)
 				    // Do something with the user's email address.
 				    console.log('User email:', email);
 				  })
+				.catch(function(result)
+			           {
+			              console.log(result);
+			           })					
 			}
 		},
 		{
