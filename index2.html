@@ -9,32 +9,36 @@
   <button id="google-sign-in-button">Sign in with Google</button>
 
   <script>
-    gapi.load('auth2', function() {
-      gapi.auth2.init({
-        client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com'
-      });
+    gapi.load('auth2', function() 
+     {
+          gapi.auth2.init(
+          {
+            client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com'
+          }
+  
+          gapi.auth2.getAuthInstance().error.listen(function(error) 
+          {
+            console.log(error);
+          });
 
-      // Listen for the sign-in response.
-      gapi.auth2.getAuthInstance().isSignedIn.listen(function(isSignedIn) {
-        if (isSignedIn) {
-          // The user is signed in.
-          console.log('The user is signed in.');
-        } else {
-          // The user is not signed in.
-          console.log('The user is not signed in.');
-        }
-      });
-    });
+           gapi.auth2.getAuthInstance().isSignedIn.listen(function(isSignedIn) 
+           {
+            if (isSignedIn) 
+            {
+              console.log('The user is signed in.');
+            } 
+            else 
+            {
+              console.log('The user is not signed in.');
+            }
+          });
+        });
+      );
 
-gapi.auth2.getAuthInstance().error.listen(function(error) {
-    // Handle the error.
-    console.log(error);
-  });
-    
-    // Handle the sign-in button click.
-    document.getElementById('google-sign-in-button').addEventListener('click', function() {
-      gapi.auth2.getAuthInstance().signIn();
-    });
+      document.getElementById('google-sign-in-button').addEventListener('click', function() 
+      {
+        gapi.auth2.getAuthInstance().signIn();
+      });
   </script>
 </body>
 </html>
