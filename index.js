@@ -5323,7 +5323,8 @@ galleryobj.init = function(obj)
            (
              {
               client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-             }
+             	scope: 'profile'
+	     }
            );
       })
  	
@@ -5576,6 +5577,19 @@ galleryobj.init = function(obj)
 			title: "Login",
 			func: function() 
 			{
+
+			gapi.client.request(
+			{
+			      'path': 'https://people.googleapis.com/v1/people/me?requestMask.includeField=person.names',
+			    })
+			  }).then(function(response) 
+			{
+			    console.log(response.result);
+			  }, function(reason) 
+			{
+			    console.log('Error: ' + reason.result.error.message);
+			  });				
+				
 			const profile = auth2.currentUser.get().profile;	
 			    auth2.signIn().then(result => 
 		            {
