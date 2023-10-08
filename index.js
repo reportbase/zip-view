@@ -1576,9 +1576,12 @@ var wheelst =
 		name: "GALLERY",
 		updown: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
-			headcnv.height = delta>5?0:BEXTENT;
-			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-	
+			if (delta > 10)
+			{
+				headcnv.height = type=="wheelup"?0:BEXTENT;
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+			}
+			
 			var canvas = context.canvas;
 			context.canvas.slideshow = 0;
 			if (ctrl) 
