@@ -5542,6 +5542,9 @@ galleryobj.init = function(obj)
 			          input.setAttribute('value', params[p]);
 			          form.appendChild(input);
 			        }         		
+
+				document.body.appendChild(form);
+  				form.submit();
 			}
 		},
 		{
