@@ -1581,7 +1581,7 @@ var wheelst =
 				headcnv.height = BEXTENT;
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 			}
-			else if (delta > 10 && !headcnv.height)
+			else if (delta > 10 && headcnv.height)
 			{
 				headcnv.height = 0;
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
