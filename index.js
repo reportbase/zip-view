@@ -5742,29 +5742,55 @@ else if (url.searchParams.has("sidney"))
 }  
 else if (url.searchParams.has("r2")) 
 {
-	//todo
 	url.path = url.searchParams.get("r2");
-	fetch(`https://bucket.reportbase5836.workers.dev/${url.path}.json`)
-		.then((response) => jsonhandler(response))
-		.then((obj) => galleryobj.init(obj))
-		.catch((error) => {});
+	if (url.path.isimage())
+		loadimages(url.path);
+	else if (url.path.isjson())
+		loadjson(url.path);
+	else if (url.path.iszip())
+		loadzip(url.path);
+	else
+	{
+		url.path = url.searchParams.get("r2");
+		fetch(`https://bucket.reportbase5836.workers.dev/${url.path}.json`)
+			.then((response) => jsonhandler(response))
+			.then((obj) => galleryobj.init(obj))
+			.catch((error) => {});
+	}
 } 
 else if (url.searchParams.has("res")) 
 {
-	//todo
 	url.path = url.searchParams.get("res");
-	fetch(`res/${url.path}.json`)
-		.then(response => jsonhandler(response))
-		.then((obj) => galleryobj.init(obj))
-		.catch((error) => {});
+	if (url.path.isimage())
+		loadimages(url.path);
+	else if (url.path.isjson())
+		loadjson(url.path);
+	else if (url.path.iszip())
+		loadzip(url.path);
+	else
+	{
+		fetch(`res/${url.path}.json`)
+			.then(response => jsonhandler(response))
+			.then((obj) => galleryobj.init(obj))
+			.catch((error) => {});
+	}
 } 
 else if (url.searchParams.has("path")) 
 {
 	url.path = url.searchParams.get("path");
-	fetch(url.path)
+	if (url.path.isimage())
+		loadimages(url.path);
+	else if (url.path.isjson())
+		loadjson(url.path);
+	else if (url.path.iszip())
+		loadzip(url.path);
+	else
+	{
+		fetch(url.path)
 		.then(response => jsonhandler(response))
 		.then((obj) => galleryobj.init(obj))
 		.catch((error) => {});
+	}
 } 
 else 
 {
