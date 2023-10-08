@@ -5317,19 +5317,6 @@ async function loadjson(blob) {
 //galleryobj init
 galleryobj.init = function(obj) 
 {
-	//https://developers.google.com/identity/sign-in/web/reference?authuser=0
-       gapi.load('auth2', function() 
-	 {
-           auth2 = gapi.auth2.init
-           (
-             {
-              client_id: '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-             	scope: 'profile email',
-		
-	     }
-           );
-      })
- 	
 	if (obj)
 		Object.assign(galleryobj, obj);
 	if (url.searchParams.has("dl")) 
@@ -5531,84 +5518,6 @@ galleryobj.init = function(obj)
 		{
 			title: "Image and Document Viewer\nWebp, Jpg, Avif, Gif, and Png\nZip, Cbz, and Ipfs\nNewspapers, Magazines and Graphic Novels",
 			func: function() {}
-		},
-		{
-			title: "email",
-			func: function()
-			{
-				var _auth2 = gapi.auth2.getAuthInstance();
-				
-				// Check if the user is signed in.
-				if (_auth2.isSignedIn.get()) 
-				{
-				  // Get the user's profile.
-				  var profile = _auth2.currentUser.get().getBasicProfile();
-				
-				  // Get the user's email address.
-				  var email = profile.getEmail();
-					console.log(email);
-				  // Do something with the user's email address.
-				} 
-			}
-		},
-		{
-			title: "Authenticate",
-			func: function() 
-			{
-				var form = document.createElement('form');
-			        form.setAttribute('method', 'GET'); 
-			        form.setAttribute('action', 'https://accounts.google.com/o/oauth2/v2/auth');
-			        var params = {'client_id': '866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-			                      'redirect_uri': 'https://zip-view.pages.dev',
-			                      'response_type': 'token',
-			                      'scope': 'https://www.googleapis.com/auth/drive.metadata.readonly',
-			                      'include_granted_scopes': 'true',
-			                      'state': 'pass-through value'};
-			      
-			        for (var p in params) 
-				{
-			          var input = document.createElement('input');
-			          input.setAttribute('type', 'hidden');
-			          input.setAttribute('name', p);
-			          input.setAttribute('value', params[p]);
-			          form.appendChild(input);
-			        }         		
-
-				document.body.appendChild(form);
-  				form.submit();
-			}
-		},
-		{
-			title: "Logout",
-			func: function() 
-			{
-			         auth2.signOut()
-			           .then(function(result)
-			            {
-			              console.log(result);
-			            })
-			           .catch(function(result)
-			           {
-			              console.log(result);
-			           })			
-			}
-		},
-		{
-			title: "Login",
-			func: function() 
-			{
-				auth2.signIn().then(function(response) 
-				{
-				    const email = response.profile.getEmail();
-				    //const profile = auth2.currentUser.get().profile;	
-				    // Do something with the user's email address.
-				    console.log('User email:', email);
-				  })
-				.catch(function(result)
-			           {
-			              console.log(result);
-			           })					
-			}
 		},
 		{
 			title: "Download\nkey+d",
