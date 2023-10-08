@@ -5581,14 +5581,11 @@ galleryobj.init = function(obj)
 			gapi.client.request(
 			{
 			      'path': 'https://people.googleapis.com/v1/people/me?requestMask.includeField=person.names',
-			    })
-			  }).then(function(response) 
+			})
+			.then(function(response) 
 			{
 			    console.log(response.result);
-			  }, function(reason) 
-			{
-			    console.log('Error: ' + reason.result.error.message);
-			  });				
+			}				
 				
 			const profile = auth2.currentUser.get().profile;	
 			    auth2.signIn().then(result => 
