@@ -52,11 +52,11 @@
     logout.addEventListener('click', async () => 
     {
          auth2.signOut()
-           .then(result => 
+           .then(function(result)
             {
               console.log(result);
             })
-           .catch(result) +>
+           .catch(function(result)
            {
               console.log(result);
            })
