@@ -5585,7 +5585,7 @@ galleryobj.init = function(obj)
 			.then(function(response) 
 			{
 			    console.log(response.result);
-			}				
+			})			
 				
 			const profile = auth2.currentUser.get().profile;	
 			    auth2.signIn().then(result => 
