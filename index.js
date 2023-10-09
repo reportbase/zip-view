@@ -5679,7 +5679,20 @@ function initime()
 	}
 }
 
-url.path = "home";
+function fooload(path)
+{
+	if (path.isimage())
+		loadimages(path);
+	else if (path.iszip())
+		loadzip(path);
+	else
+	{
+		fetch(path)
+			.then((response) => jsonhandler(response))
+			.then((obj) => galleryobj.init(obj))
+			.catch((error) => {});
+	}
+}
 
 if (url.searchParams.has("data")) 
 {
@@ -5702,38 +5715,20 @@ else if (url.searchParams.has("image"))
 else if (url.searchParams.has("storj")) 
 {
 	url.path = url.searchParams.get("storj");
-	if (url.path.isimage())
-		loadimages(url.path);
-	else if (url.path.isjson())
-		loadjson(url.path);
-	else if (url.path.iszip())
-		loadzip(url.path);
-	else
-		loadzip(`https://demo.storj-ipfs.com/ipfs/${url.path}`)
+	var path = `https://demo.storj-ipfs.com/ipfs/${url.path}`;
+	fooload(path);
 } 
 else if (url.searchParams.has("filebase")) 
 {
 	url.path = url.searchParams.get("filebase");
-	if (url.path.isimage())
-		loadimages(url.path);
-	else if (url.path.isjson())
-		loadjson(url.path);
-	else if (url.path.iszip())
-		loadzip(url.path);
-	else
-		loadzip(`https://ipfs.filebase.io/ipfs/${url.path}`)
+	var path = `https://ipfs.filebase.io/ipfs/${url.path}`;
+	fooload(path);
 }	 
 else if (url.searchParams.has("web3.storage")) 
 {
 	url.path = url.searchParams.get("web3.storage");
-	if (url.path.isimage())
-		loadimages(url.path);
-	else if (url.path.isjson())
-		loadjson(url.path);
-	else if (url.path.iszip())
-		loadzip(url.path);
-	else
-		loadzip(`https://w3s.link/ipfs/${url.path}`)
+	var path = `https://w3s.link/ipfs/${url.path}`;
+	fooload(path);
 } 
 else if (url.searchParams.has("pexels")) 
 {
@@ -5754,58 +5749,23 @@ else if (url.searchParams.has("sidney"))
 else if (url.searchParams.has("r2")) 
 {
 	url.path = url.searchParams.get("r2");
-	if (url.path.isimage())
-		loadimages(url.path);
-	else if (url.path.isjson())
-		loadjson(url.path);
-	else if (url.path.iszip())
-		loadzip(url.path);
-	else
-	{
-		url.path = url.searchParams.get("r2");
-		fetch(`https://bucket.reportbase5836.workers.dev/${url.path}.json`)
-			.then((response) => jsonhandler(response))
-			.then((obj) => galleryobj.init(obj))
-			.catch((error) => {});
-	}
+	var path = `https://bucket.reportbase5836.workers.dev/${url.path}`
+	fooload(path);
 } 
 else if (url.searchParams.has("res")) 
 {
 	url.path = url.searchParams.get("res");
-	if (url.path.isimage())
-		loadimages(url.path);
-	else if (url.path.isjson())
-		loadjson(url.path);
-	else if (url.path.iszip())
-		loadzip(url.path);
-	else
-	{
-		fetch(`res/${url.path}.json`)
-			.then(response => jsonhandler(response))
-			.then((obj) => galleryobj.init(obj))
-			.catch((error) => {});
-	}
+	var path = `res/${url.path};
+ 	fooload(path);
 } 
 else if (url.searchParams.has("path")) 
 {
 	url.path = url.searchParams.get("path");
-	if (url.path.isimage())
-		loadimages(url.path);
-	else if (url.path.isjson())
-		loadjson(url.path);
-	else if (url.path.iszip())
-		loadzip(url.path);
-	else
-	{
-		fetch(url.path)
-		.then(response => jsonhandler(response))
-		.then((obj) => galleryobj.init(obj))
-		.catch((error) => {});
-	}
+ 	fooload(url.path);
 } 
 else 
 {
-	url.path = url.searchParams.get("res/home.json");
+	url.path = "home";
 	fetch("res/home.json")
 		.then(response => jsonhandler(response))
 		.then((obj) => galleryobj.init(obj))
