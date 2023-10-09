@@ -1,6 +1,3 @@
-//http://obfuscator.io
-//https://ipfsexplorer.online/
-
 /* 
 Copyright 2017 Tom Brinkman
 https://zip-view.com
@@ -5685,12 +5682,16 @@ function fooload(path)
 		loadimages(path);
 	else if (path.iszip())
 		loadzip(path);
-	else
+	else if (path.isjson())
 	{
 		fetch(path)
 			.then((response) => jsonhandler(response))
 			.then((obj) => galleryobj.init(obj))
 			.catch((error) => {});
+	}
+	else
+	{
+		loadzip(path);
 	}
 }
 
