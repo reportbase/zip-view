@@ -65,6 +65,7 @@ const TIMESECOND = 8;
 const GALLERYMIN = 1;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
+const GOTOFIXED = 9;
 
 var panel = {}
 var global = {};
@@ -1846,8 +1847,11 @@ infobj.reset = function()
 			infobj.data.push(`${index.toFixed(5)} of ${galleryobj.length()}`);
 			var j = _8cnv.scrollobj.value().berp()
 			infobj.data.push(`${j.toFixed(5)}`);
-			var e = buttonobj.value();
-			infobj.data.push(`${e.toFixed(0)}`);
+			if (0)//todo pinching
+			{
+				var e = buttonobj.value();
+				infobj.data.push(`${e.toFixed(0)}`);
+			}
 		}
 		else
 		{
@@ -2564,7 +2568,7 @@ var keylst = [{
 				evt.preventDefault();
 				var value = galleryobj.current()+1;
 				if (menuobj.value() == _8cnvctx) 
-					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(5);
+					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(GOTOFIXED);
 				gotodialog(value, "Goto", goimage);
 			} 
 			else if (key == "\\" || key == "/") 
@@ -2730,7 +2734,7 @@ var keylst = [{
 			{
 				var value = galleryobj.current()+1;
 				if (menuobj.value() == _8cnvctx) 
-					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(5)
+					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(GOTOFIXED)
 				gotodialog(value, "Goto", goimage);
 
 			} 
@@ -2843,7 +2847,7 @@ var taplst = [
 			{
 				var value = galleryobj.current()+1;
 				if (menuobj.value() == _8cnvctx) 
-					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(5)
+					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(GOTOFIXED)
 				gotodialog(value, "Goto", goimage);
 				
 			} 
@@ -2914,7 +2918,7 @@ var taplst = [
 			{
 				var value = galleryobj.current()+1;
 				if (menuobj.value() == _8cnvctx) 
-					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(5)
+					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(GOTOFIXED)
 				gotodialog(value, "Goto", goimage);
 			} 
 			else if (canvas.vscrollrect && canvas.vscrollrect.hitest(x, y)) {
@@ -5509,7 +5513,7 @@ galleryobj.init = function(obj)
 			{
 				var value = galleryobj.current()+1;
 				if (menuobj.value() == _8cnvctx) 
-					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(5)
+					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(GOTOFIXED)
 				gotodialog(value, "Goto", goimage);
 			}
 		},
@@ -5613,7 +5617,7 @@ function initime()
 	
 	contextobj.reset();
 	_4cnvctx.refresh();
-	headcnv.height = HEADHEIGHT;
+	headcnv.height = 0;
 	headobj.set(galleryobj.length() > BOSSMIN ? GALLERY : BOSS);
 	headham.panel = headobj.value();
 	headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
