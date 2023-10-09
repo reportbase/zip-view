@@ -5755,7 +5755,7 @@ else if (url.searchParams.has("r2"))
 else if (url.searchParams.has("res")) 
 {
 	url.path = url.searchParams.get("res");
-	var path = `res/${url.path};
+	var path = `res/${url.path}`;
  	fooload(path);
 } 
 else if (url.searchParams.has("path")) 
