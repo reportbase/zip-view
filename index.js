@@ -2507,13 +2507,13 @@ var keylst =
 			if (key == "pageup" || key == "backspace" ||
 			   (canvas.shiftKey && key == "enter"))
 			{
-				var k = context.timeobj.length()/galleryobj.length();
+				var k = canvas.timeobj.length()/galleryobj.length();
 				canvas.timeobj.add(-k);
 				menuobj.draw();
 			}
 			else if (key == "pagedown" || key == "enter")
 			{
-				var k = context.timeobj.length()/galleryobj.length();
+				var k = canvas.timeobj.length()/galleryobj.length();
 				canvas.timeobj.add(k);
 				menuobj.draw();
 			}
