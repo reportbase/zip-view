@@ -5767,6 +5767,7 @@ function downloadtext(name, text) {
 function goimage(image) 
 {
 	image = util.clamp(1, galleryobj.length(), image);
+	gotoimage(image-1);
 	galleryobj.set(image - 1);
 	delete _4cnv.thumbcanvas;
 	delete photo.image;
