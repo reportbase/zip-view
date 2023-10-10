@@ -5766,22 +5766,11 @@ function downloadtext(name, text) {
 
 function goimage(image) 
 {
-	if (menuobj.value() == _8cnvctx) 
-	{
-		image = util.clamp(0, galleryobj.length()-1, image);
-		image = 1-Math.berp(0, galleryobj.length()-1, image);
-		image *= TIMEOBJ;
-		_8cnv.timeobj.set(image);
-		_8cnvctx.refresh();
-	} 
-	else 
-	{
-		image = util.clamp(1, galleryobj.length(), image);
-		galleryobj.set(image - 1);
-		delete _4cnv.thumbcanvas;
-		delete photo.image;
-		contextobj.reset();
-	}
+	image = util.clamp(1, galleryobj.length(), image);
+	galleryobj.set(image - 1);
+	delete _4cnv.thumbcanvas;
+	delete photo.image;
+	contextobj.reset();
 }
 
 function gotodialog(value, title, func) 
