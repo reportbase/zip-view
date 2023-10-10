@@ -65,7 +65,7 @@ const TIMESECOND = 8;
 const GALLERYMIN = 1;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
-const GOTOFIXED = 9;
+const GOTOFIXED = 12;
 
 var panel = {}
 var global = {};
@@ -1833,14 +1833,9 @@ infobj.reset = function()
 			var value = galleryobj.data[k];
 			if (value && value.folder)
 				infobj.data = value.folder.split("/");
-			infobj.data.push(`${index.toFixed(5)} of ${galleryobj.length()}`);
+			infobj.data.push(`${index.toFixed(1)} of ${galleryobj.length()}`);
 			var j = _8cnv.scrollobj.value().berp()
 			infobj.data.push(`${j.toFixed(5)}`);
-			if (0)//todo pinching
-			{
-				var e = buttonobj.value();
-				infobj.data.push(`${e.toFixed(0)}`);
-			}
 		}
 		else
 		{
@@ -2480,21 +2475,25 @@ var swipelst = [{
 var swipeobj = new circular_array("SWIPE", swipelst);
 swipeobj.set(3);
 
-var keylst = [{
+var keylst = 
+[
+	{
 		name: "DEFAULT",
 		keyup: function(evt) {},
 		keydown: function(evt) {}
 	},
 	{
 		name: "GALLERY",
-		keyup: function(evt) {
+		keyup: function(evt) 
+		{
 			var context = menuobj.value()
 			var canvas = context.canvas;
 			canvas.shiftKey = 0;
 			canvas.ctrlKey = 0;
 			canvas.keydown = 0;
 		},
-		keydown: function(evt) {
+		keydown: function(evt) 
+		{
 			var context = menuobj.value()
 			var canvas = context.canvas;
 			var key = evt.key.toLowerCase();
@@ -2505,13 +2504,15 @@ var keylst = [{
 			canvas.keydown = 1;
 			
 			clearInterval(context.canvas.leftright);
-			if (key == "pageup" || key == "backspace")
+			if (key == "pageup" || key == "backspace" ||
+			   (canvas.shiftKey && key == "enter"))
 			{
+				gotoimage(galleryobj.current()-1);
 				//todo		
 			}
 			else if (key == "pagedow" || key == "enter")
 			{
-				//todo		
+				gotoimage(galleryobj.current()+1);
 			}
 			else if (
 				key == "arrowup" ||
