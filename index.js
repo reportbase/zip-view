@@ -65,7 +65,7 @@ const TIMESECOND = 8;
 const GALLERYMIN = 1;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
-const GOTOFIXED = 12;
+const GOTOFIXED = 0;
 
 var panel = {}
 var global = {};
@@ -2510,7 +2510,7 @@ var keylst =
 				gotoimage(galleryobj.current()-1);
 				//todo		
 			}
-			else if (key == "pagedow" || key == "enter")
+			else if (key == "pagedown" || key == "enter")
 			{
 				gotoimage(galleryobj.current()+1);
 			}
@@ -2534,7 +2534,7 @@ var keylst =
 
 				evt.preventDefault();
 			} else if (
-				key == "enter" ||
+				key == "arrowdown" ||
 				key == " " ||
 				key == "j") {
 				var e = canvas.speedobj.value() / 2;
