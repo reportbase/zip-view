@@ -2508,12 +2508,13 @@ var keylst =
 			   (canvas.shiftKey && key == "enter"))
 			{
 				var k = context.timeobj.length()/galleryobj.length();
-				context.timeobj.add(-k);
+				canvas.timeobj.add(-k);
+				menuobj.draw();
 			}
 			else if (key == "pagedown" || key == "enter")
 			{
 				var k = context.timeobj.length()/galleryobj.length();
-				context.timeobj.add(k);
+				canvas.timeobj.add(k);
 				menuobj.draw();
 			}
 			else if (
