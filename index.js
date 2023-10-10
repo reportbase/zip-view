@@ -2507,12 +2507,13 @@ var keylst =
 			if (key == "pageup" || key == "backspace" ||
 			   (canvas.shiftKey && key == "enter"))
 			{
-				gotoimage(galleryobj.current()-1);//todo
-				menuobj.draw();
+				var k = context.timeobj.length()/galleryobj.length();
+				context.timeobj.add(-k);
 			}
 			else if (key == "pagedown" || key == "enter")
 			{
-				gotoimage(galleryobj.current()+1);//todo
+				var k = context.timeobj.length()/galleryobj.length();
+				context.timeobj.add(k);
 				menuobj.draw();
 			}
 			else if (
@@ -2846,27 +2847,9 @@ var taplst = [
 			{
 				window.open(galleryobj.photographer_url, galleryobj.repos);
 			}
-			else if (y < rect.height/3)
+			else 
 			{
-				rowobj.addperc(-0.05);
-				contextobj.reset();				
-			}
-			else if (y > (2/3)*rect.height)
-			{
-				rowobj.addperc(0.05);
-				contextobj.reset();
-			}
-			else if (x < rect.width/2)
-			{
-				var k = (context.canvas.timeobj.length()/rect.width)*20; 
-				context.canvas.timeobj.rotate(k);
-				context.refresh();				
-			}
-			else if (x > rect.width/2)
-			{
-				var k = (context.canvas.timeobj.length()/rect.width)*20; 
-				context.canvas.timeobj.rotate(-k);
-				context.refresh();				
+				//todo hide thumb			
 			}
 
 			_4cnvctx.refresh();
