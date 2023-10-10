@@ -1574,17 +1574,6 @@ var wheelst =
 		name: "GALLERY",
 		updown: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
-			if (delta < -200 && !headcnv.height)
-			{
-				headcnv.height = BEXTENT;
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-			}
-			else if (delta > 200 && headcnv.height)
-			{
-				headcnv.height = 0;
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-			}
-			
 			var canvas = context.canvas;
 			context.canvas.slideshow = 0;
 			if (ctrl) 
@@ -2468,9 +2457,6 @@ var swipelst = [{
 		},
 		swipeupdown: function(context, rect, x, y, evt) 
 		{
-			headcnv.height = evt.type == "swipeup"?0:BEXTENT;
-			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-			
 			var k = evt.type == "swipeup" ? 1 : -1;
 			menuobj.updown(context, k * context.canvas.speedobj.value());
 			if (!global.swipetimeout) {
@@ -2519,11 +2505,16 @@ var keylst = [{
 			canvas.keydown = 1;
 			
 			clearInterval(context.canvas.leftright);
-			if (
+			if (key == "pageup" || key == "backspace")
+			{
+				//todo		
+			}
+			else if (key == "pagedow" || key == "enter")
+			{
+				//todo		
+			}
+			else if (
 				key == "arrowup" ||
-				key == "pageup" ||
-				key == "backspace" ||
-				(canvas.shiftKey && key == "enter") ||
 				(canvas.shiftKey && key == " ") ||
 				key == "k") {
 				var e = canvas.speedobj.value() / 2;
@@ -2542,8 +2533,6 @@ var keylst = [{
 
 				evt.preventDefault();
 			} else if (
-				key == "arrowdown" ||
-				key == "pagedown" ||
 				key == "enter" ||
 				key == " " ||
 				key == "j") {
@@ -2883,7 +2872,8 @@ var taplst = [
 	},
 	{
 		name: "GALLERY",
-		tap: function(context, rect, x, y) {
+		tap: function(context, rect, x, y) 
+		{
 			clearInterval(context.canvas.leftright)
 			var canvas = context.canvas;
 			canvas.slideshow = 0;
@@ -2952,33 +2942,10 @@ var taplst = [
 				menuobj.hide();
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 			}
-			else if (y < rect.height/3)
+			else 
 			{
-				menuobj.updown(context, -canvas.speedobj.value()/4);
-				if (!global.swipetimeout) {
-					global.swipetimeout = setInterval(function() {
-						context.canvas.lastime = -0.0000000000101010101;
-						menuobj.draw();
-					}, TIMEMAIN);
-				}				
-			}
-			else if (y > (2/3)*rect.height)
-			{
-				menuobj.updown(context, canvas.speedobj.value()/4);
-				if (!global.swipetimeout) {
-					global.swipetimeout = setInterval(function() {
-						context.canvas.lastime = -0.0000000000101010101;
-						menuobj.draw();
-					}, TIMEMAIN);
-				}				
-			}
-			else if (x < rect.width/2)
-			{
-				galleryobj.leftright(context, -canvas.speedobj.value()/4)
-			}
-			else if (x > rect.width/2)
-			{
-				galleryobj.leftright(context, canvas.speedobj.value()/4)
+				headcnv.height = headcnv.height?0:BEXTENT;
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 			}
 		},
 	},
