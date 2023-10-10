@@ -2399,12 +2399,14 @@ var presslst =
 var pressobj = new circular_array("PRESS", presslst);
 pressobj.set(3);
 
-function gotoimage(n) 
+function gotoimage(n,top=1) 
 {
 	var k = TIMEOBJ - TIMEOBJ / galleryobj.length() / 2;
 	k -= n * (TIMEOBJ / galleryobj.length());
 	_8cnv.timeobj.set(k);
 	menuobj.draw();
+	if (!top)
+		return;
 	if (galleryobj.aligntop)
 		return;
 	var e = buttonobj.value() / galleryobj.length();
@@ -5752,7 +5754,7 @@ function downloadtext(name, text) {
 function goimage(image) 
 {
 	image = util.clamp(1, galleryobj.length(), image);
-	gotoimage(image-1);
+	gotoimage(image-1,true);
 	galleryobj.set(image - 1);
 	delete _4cnv.thumbcanvas;
 	delete photo.image;
@@ -5761,7 +5763,7 @@ function goimage(image)
 
 function gotodialog(value, title, func) 
 {
-	if (IFRAME)
+	if (IFRAME)//todo
 		return;	
 	var input = document.getElementById("goto-input");
 	var button = document.getElementById("goto-ok");
