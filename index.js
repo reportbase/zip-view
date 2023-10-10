@@ -2507,12 +2507,12 @@ var keylst =
 			if (key == "pageup" || key == "backspace" ||
 			   (canvas.shiftKey && key == "enter"))
 			{
-				gotoimage(galleryobj.current()-1);
+				gotoimage(galleryobj.current()-1);//todo
 				menuobj.draw();
 			}
 			else if (key == "pagedown" || key == "enter")
 			{
-				gotoimage(galleryobj.current()+1);
+				gotoimage(galleryobj.current()+1);//todo
 				menuobj.draw();
 			}
 			else if (
