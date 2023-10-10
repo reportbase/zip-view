@@ -2508,11 +2508,12 @@ var keylst =
 			   (canvas.shiftKey && key == "enter"))
 			{
 				gotoimage(galleryobj.current()-1);
-				//todo		
+				menuobj.draw();
 			}
 			else if (key == "pagedown" || key == "enter")
 			{
 				gotoimage(galleryobj.current()+1);
+				menuobj.draw();
 			}
 			else if (
 				key == "arrowup" ||
