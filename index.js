@@ -5567,7 +5567,7 @@ function initime()
 	
 	contextobj.reset();
 	_4cnvctx.refresh();
-	headcnv.height = 0;
+	headcnv.height = BEXTENT;
 	headobj.set(galleryobj.length() > BOSSMIN ? GALLERY : BOSS);
 	headham.panel = headobj.value();
 	headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
