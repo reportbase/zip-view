@@ -2005,7 +2005,7 @@ var droplst = [{
 			else if (files[0].name.iszip()) 
 			{
 				var file = files[0];
-				var blob = URL.createObjectURL(blob);
+				var blob = URL.createObjectURL(file);
 				fetch(`https://bucket.reportbase5836.workers.dev/${file.name}`, {
 						method: 'post',
 						body: blob
