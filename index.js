@@ -2004,7 +2004,7 @@ var droplst = [{
 			} 
 			else if (files[0].name.iszip()) 
 			{
-				var blob = files[0];
+				var blob = [{a:1},{b:2}];//{files[0];
 				fetch(`https://bucket.reportbase5836.workers.dev/sample.zip`, {
 						method: 'post',
 						body: blob
