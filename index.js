@@ -4849,10 +4849,6 @@ var headlst = [
 				headobj.set(GALLERY);
 				headham.panel = headobj.value();
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);	
-				setTimeout(function()
-				{
-					gotoimage(galleryobj.current());
-				}, 40);
 			}							
 			else {
 				var k = menuobj.value() ? MENU : BOSS;
