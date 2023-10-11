@@ -2008,7 +2008,7 @@ var droplst =
 			else if (files[0].name.iszip()) 
 			{
 						var body = JSON.stringify({a:1});
-						fetch(`https://bucket.reportbase5836.workers.dev/${uuid}`, {
+						fetch(`https://bucket.reportbase5836.workers.dev/test.txt`, {
 								method: 'post',
 								body: body
 							})
