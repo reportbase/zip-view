@@ -4970,7 +4970,7 @@ var headlst = [
 				context.fitwidthrect &&
 				context.fitwidthrect.hitest(x, y)) 
 			{
-				fitwdith();
+				fitwidth();
 			} 
 			else if (
 				context.zoomrect &&
