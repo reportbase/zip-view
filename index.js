@@ -2007,17 +2007,17 @@ var droplst =
 			} 
 			else if (files[0].name.iszip()) 
 			{
-						var body = JSON.stringify({a:1});
-						fetch(`https://bucket.reportbase5836.workers.dev/test.txt`, {
-								method: 'post',
-								body: body
-							})
-							.then(response => jsonhandler(response))
-							.then(function(json)
-							      {
-								      console.log(json)
-							      })
-							.catch(error => console.log(error));
+				fetch(`https://upload-zip.reportbase5836.workers.dev/up.txt`,
+					{
+						method: 'post',
+						body: JSON.stringify({a:1})
+					})
+					.then(response => jsonhandler(response))
+					.then(function(json)
+					      {
+						      console.log(json)
+					      })
+					.catch(error => console.log(error));
 				/*
 				const form = new FormData();
 				form.append("file", new File([files[0]], 'my-zip-file.zip'));
@@ -5421,23 +5421,22 @@ galleryobj.init = function(obj)
 		},
 		{
 			title: "ulid",
-			func: function() {
-				fetch("https://uuid.rocks/ulid")
-					.then(response => texthandler(response))
-					.then(uuid => {
-						var body = json.stringify(lst);
-						fetch(`https://bucket.reportbase5836.workers.dev/${uuid}`, {
-								method: 'post',
-								body: body
-							})
-							.then(response => jsonhandler(response))
-							.then(json => console.log(json))
-							.catch(error => console.log(error));
-
+			func: function() 
+			{
+				fetch(`https://bucket.reportbase5836.workers.dev/test.txt`, 
+					{
+						method: 'post',
+						body: JSON.stringify({a:1})
 					})
-					.catch((error) => console.log(error));
+					.then(response => jsonhandler(response))
+					.then(function(json)
+					      {
+						      console.log(json)
+					      })
+					.catch(error => console.log(error));			
 			},
-			enabled: function() {
+			enabled: function() 
+			{
 				return false
 			}
 		},
