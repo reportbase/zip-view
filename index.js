@@ -1992,7 +1992,9 @@ async function loadimages(blobs) {
 	galleryobj.init(galleryobj)
 }
 
-var droplst = [{
+var droplst = 
+[
+{
 	name: "DEFAULT",
 	drop: function(context, evt) 
 	{
@@ -2004,14 +2006,27 @@ var droplst = [{
 			} 
 			else if (files[0].name.iszip()) 
 			{
-				var file = files[0];
-				var blob = URL.createObjectURL(file);
-				fetch(`https://bucket.reportbase5836.workers.dev/${file.name}`, {
+				const form = new FormData();
+				form.append("file", new File([files[0]], 'my-zip-file.zip');
+				fetch(`https://upload-zip.reportbase5836.workers.dev/${files[0].name}`, 
+				      	{
 						method: 'post',
-						body: blob
+						headers: 
+						{
+						    'Content-Type': 'multipart/form-data'
+						},
+						body: form
 					})
-					.then(response => jsonhandler(response))
-					.then(json => console.log(json))
+					.then(function(response) 
+					      {
+							if (response.ok)
+								return response.json()
+							throw Error(response.statusText);
+					      })
+					.then(function(json)
+					      {
+						      console.log(json)
+					      })
 					.catch(error => console.log(error));
 				
 				loadzip(blob);
