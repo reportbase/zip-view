@@ -2007,7 +2007,7 @@ var droplst =
 			else if (files[0].name.iszip()) 
 			{
 				const form = new FormData();
-				form.append("file", new File([files[0]], 'my-zip-file.zip');
+				form.append("file", new File([files[0]], 'my-zip-file.zip'));
 				fetch(`https://upload-zip.reportbase5836.workers.dev/${files[0].name}`, 
 				      	{
 						method: 'post',
