@@ -2371,27 +2371,9 @@ var presslst =
 		name: "BOSS",
 		pressup: function(context, rect, x, y) 
 		{
-			if (context.canvas.thumbrect &&
-				context.canvas.thumbrect.hitest(x, y))
-				return;
-			headcnv.height = headcnv.height?0:BEXTENT;
-			headobj.set(BOSS);
-			headham.panel = headobj.value();
-			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-			context.refresh();
 		},
 		press: function(context, rect, x, y) 
 		{
-			if (context.canvas.thumbrect &&
-				context.canvas.thumbrect.hitest(x, y)) 
-			{
-				//menuobj.hide();
-				//var positx = positxobj.value();
-				//var posity = posityobj.value();
-				//positx.set((x / rect.width) * 100);
-				//posity.set((y / rect.height) * 100);
-				//context.refresh();
-			}
 		}
 	},
 ];
@@ -2852,7 +2834,11 @@ var taplst = [
 			}
 			else 
 			{
-				//todo hide thumb			
+				headcnv.height = headcnv.height?0:BEXTENT;
+				headobj.set(BOSS);
+				headham.panel = headobj.value();
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+				context.refresh();
 			}
 
 			_4cnvctx.refresh();
