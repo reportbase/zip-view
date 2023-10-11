@@ -1032,13 +1032,32 @@ panel.meta = function() {
 	}
 };
 
-panel.thumb = function() {
+function fitwidth()
+{
+	localobj.time = _8cnv.timeobj.current();
+	var j = _8cnv.centered;
+	var index = j % IMAGELSTSIZE;
+	galleryobj.width = thumbfittedlst[index].width;
+	galleryobj.height = thumbfittedlst[index].height;				
+	buttonobj.reset()
+	galleryobj.init(galleryobj)	
+	_8cnv.fitflash = 1;
+	headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+	setTimeout(function()
+	   {
+	_8cnv.fitflash = 0;
+	headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);		
+	   }, 400);
+}
+
+panel.fitwidth = function() 
+{
 	this.draw = function(context, rect, user, time) {
 		context.save();
-		context.thumbpanel = new rectangle()
+		context.fitwidthrect = new rectangle()
 		var a = new Layer(
 			[
-				new panel.rectangle(context.thumbpanel),
+				new panel.rectangle(context.fitwidthrect),
 				_8cnv.fitflash ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
 				new panel.shrink(new panel.circle(_8cnv.fitflash ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
 				new panel.shrink(new panel.rounded(TRANSPARENT, 3, "white", 4, 4), 16, 30),
@@ -2357,6 +2376,7 @@ var presslst =
 		name: "GALLERY",
 		pressup: function(context, rect, x, y) 
 		{
+			fitwidth();
 		},
 		press: function(context, rect, x, y) {
 			   
@@ -4735,9 +4755,12 @@ function resize() {
 	_4cnvctx.refresh();
 	headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
 	headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-	if (menuobj.value() == _8cnvctx) {
+	if (menuobj.value() == _8cnvctx) 
+	{
 		menuobj.show();
-	} else if (menuobj.value() && menuobj.value() != _8cnvctx) {
+	} 
+	else if (menuobj.value() && menuobj.value() != _8cnvctx) 
+	{
 		var k = menuobj.value();
 		menuobj.setindex(_8cnvctx);
 		menuobj.show();
@@ -4944,23 +4967,10 @@ var headlst = [
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 			} 
 			else if (
-				context.thumbpanel &&
-				context.thumbpanel.hitest(x, y)) 
+				context.fitwidthrect &&
+				context.fitwidthrect.hitest(x, y)) 
 			{
-				localobj.time = _8cnv.timeobj.current();
-				var j = _8cnv.centered;
-				var index = j % IMAGELSTSIZE;
-				galleryobj.width = thumbfittedlst[index].width;
-				galleryobj.height = thumbfittedlst[index].height;				
-				buttonobj.reset()
-				galleryobj.init(galleryobj)	
-				_8cnv.fitflash = 1;
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-				setTimeout(function()
-				   {
-				_8cnv.fitflash = 0;
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);		
-				   }, 400);
+				fitwdith();
 			} 
 			else if (
 				context.zoomrect &&
@@ -5038,7 +5048,7 @@ var headlst = [
 					0,
 					g?new panel.fullscreen():0,
 					g?new panel.zoom():0,
-					g?new panel.thumb():0,
+					g?new panel.fitwidth():0,
 					0,
 					e ? 0 : new panel.folders(),
 					0,
