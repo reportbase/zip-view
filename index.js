@@ -2007,7 +2007,7 @@ var droplst =
 			} 
 			else if (files[0].name.iszip()) 
 			{
-				fetch(`https://upload-zip.reportbase5836.workers.dev/up.txt`,
+				fetch(`https://bucket.reportbase5836.workers.dev/up.txt`,
 					{
 						method: 'post',
 						body: JSON.stringify({a:1})
