@@ -1040,7 +1040,7 @@ function fitwidth()
 	galleryobj.width = thumbfittedlst[index].width;
 	galleryobj.height = thumbfittedlst[index].height;				
 	buttonobj.reset()
-	galleryobj.init(galleryobj)	
+	//galleryobj.init(galleryobj)	
 	_8cnv.fitflash = 1;
 	headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 	setTimeout(function()
