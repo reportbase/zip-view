@@ -1582,7 +1582,6 @@ _8ham.get('pinch').set({
 	enable: true
 });
 
-var tmplst = [];//todo
 var wheelst = 
 [
 	{
@@ -1594,7 +1593,6 @@ var wheelst =
 		name: "GALLERY",
 		updown: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
-			tmplst.push(delta);
 			var canvas = context.canvas;
 			context.canvas.slideshow = 0;
 			if (ctrl) 
@@ -1633,6 +1631,7 @@ var wheelst =
 		name: "MENU",
 		updown: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
+			delta = util.clamp(2,1000,delta);
 			if (ctrl) 
 			{
 				context.canvas.pinching = 1;
