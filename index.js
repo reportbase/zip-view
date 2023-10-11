@@ -2001,10 +2001,21 @@ var droplst = [{
 		if (files.length == 1 && files[0].name) {
 			if (files[0].name.isimage()) {
 				loadimages(files);
-			} else if (files[0].name.iszip()) {
+			} 
+			else if (files[0].name.iszip()) 
+			{
+				fetch(`https://bucket.reportbase5836.workers.dev/sample.zip`, {
+						method: 'post',
+						body: blob
+					})
+					.then(response => jsonhandler(response))
+					.then(json => console.log(json))
+					.catch(error => console.log(error));
+				
 				var blob = files[0];
 				loadzip(blob);
-			} else if (files[0].name.isjson()) {
+			} 
+			else if (files[0].name.isjson()) {
 				var blob = files[0];
 				loadjson(blob);
 			}
@@ -5909,14 +5920,6 @@ function importdialog() {
 				} 
 				else if (name.iszip()) 
 				{
-					fetch(`https://bucket.reportbase5836.workers.dev/${name}`, {
-							method: 'post',
-							body: blob
-						})
-						.then(response => jsonhandler(response))
-						.then(json => console.log(json))
-						.catch(error => console.log(error));
-				
 					var blob = files[0];
 					loadzip(blob);
 				} 
