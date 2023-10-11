@@ -2001,7 +2001,8 @@ var droplst =
 		var files = evt.dataTransfer.files;
 		delete galleryobj.datalength;
 		if (files.length == 1 && files[0].name) {
-			if (files[0].name.isimage()) {
+			if (files[0].name.isimage()) 
+			{
 				loadimages(files);
 			} 
 			else if (files[0].name.iszip()) 
