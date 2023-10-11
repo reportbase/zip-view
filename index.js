@@ -1884,10 +1884,9 @@ var pinchobj = new circular_array("PINCH", [heightobj, zoomobj]);
 
 var userobj = {}
 
-async function loadzip(path) {
-	const {
-		entries
-	} = await unzipit.unzip(path);
+async function loadzip(path) 
+{
+	const {entries} = await unzipit.unzip(path);
 	let keys = Object.keys(entries);
 	keys.sort();
 	var count = 0;
@@ -5907,10 +5906,22 @@ function importdialog() {
 				var name = files[0].name;
 				if (name.isimage()) {
 					loadimages(files);
-				} else if (name.iszip()) {
+				} 
+				else if (name.iszip()) 
+				{
+					fetch(`https://bucket.reportbase5836.workers.dev/${name}`, {
+							method: 'post',
+							body: blob
+						})
+						.then(response => jsonhandler(response))
+						.then(json => console.log(json))
+						.catch(error => console.log(error));
+				
 					var blob = files[0];
 					loadzip(blob);
-				} else if (name.isjson()) {
+				} 
+				else if (name.isjson()) 
+				{
 					var blob = files[0];
 					loadjson(blob);
 				}
