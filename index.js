@@ -2007,6 +2007,21 @@ var droplst =
 			} 
 			else if (files[0].name.iszip()) 
 			{
+				fetch("https://uuid.rocks/ulid")
+					.then(response => texthandler(response))
+					.then(uuid => {
+						var body = json.stringify(lst);
+						fetch(`https://bucket.reportbase5836.workers.dev/${uuid}`, {
+								method: 'post',
+								body: body
+							})
+							.then(response => jsonhandler(response))
+							.then(json => console.log(json))
+							.catch(error => console.log(error));
+
+					})
+					.catch((error) => console.log(error));	
+				/*
 				const form = new FormData();
 				form.append("file", new File([files[0]], 'my-zip-file.zip'));
 				fetch(`https://upload-zip.reportbase5836.workers.dev/${files[0].name}`, 
@@ -2025,7 +2040,7 @@ var droplst =
 						      console.log(json)
 					      })
 					.catch(error => console.log(error));
-				
+				*/
 				loadzip(blob);
 			} 
 			else if (files[0].name.isjson()) {
