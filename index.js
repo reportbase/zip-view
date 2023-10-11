@@ -5025,9 +5025,14 @@ var headlst = [
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 			} else {
 				if (menuobj.value() == _8cnvctx)
-					tapobj.data[GALLERY].tap(menuobj.value(), _8cnvctx.rect(), x, y)
+				{
+					headcnv.height = headcnv.height?0:BEXTENT;
+					headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+				}
 				else
+				{
 					tapobj.data[MENU].tap(menuobj.value(), menuobj.value().rect(), x, y)
+				}
 			}
 		};
 
