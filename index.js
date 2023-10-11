@@ -2012,10 +2012,6 @@ var droplst =
 				fetch(`https://upload-zip.reportbase5836.workers.dev/${files[0].name}`, 
 				      	{
 						method: 'post',
-						headers: 
-						{
-						    'Content-Type': 'multipart/form-data'
-						},
 						body: form
 					})
 					.then(function(response) 
