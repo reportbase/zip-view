@@ -2008,20 +2008,6 @@ var droplst =
 			} 
 			else if (files[0].name.iszip()) 
 			{
-				/*
-				fetch(`https://bucket.reportbase5836.workers.dev/bucket1/test.txt`, 
-					{
-						method: 'post',
-						body: JSON.stringify({a:1})
-					})
-					.then(response => jsonhandler(response))
-					.then(function(json)
-					      {
-						      console.log(json)
-					      })
-					.catch(error => console.log(error));
-     */
-				
 				const form = new FormData();
 				form.append("file", new File([files[0]], 'drop.zip'));
 				fetch(`https://bucket.reportbase5836.workers.dev/bucket1/drop.zip`,
@@ -2033,9 +2019,13 @@ var droplst =
 						},
 						
 						body: form						
-						//body: JSON.stringify({a:1})
 					})
-					.then(response => jsonhandler(response))
+					.then(function(response) 
+					      {
+						      if (response.ok)
+							return response.json()
+							throw Error(response.statusText);
+					      })
 					.then(function(json)
 					      {
 						      console.log(json)
@@ -5409,7 +5399,7 @@ galleryobj.init = function(obj)
 								method: 'post',
 								body: json.stringify(json)
 							})
-							.then((response) => jsonhandler(response))
+							.then((response) => (response))
 							.then((json) => {
 								galleryobj.data.splice(0, 0, ...json);
 								_8cnv.timeobj.set(0);
@@ -5433,7 +5423,7 @@ galleryobj.init = function(obj)
 						method: 'post',
 						body: JSON.stringify({a:1})
 					})
-					.then(response => jsonhandler(response))
+					.then(response => (response))
 					.then(function(json)
 					      {
 						      console.log(json)
