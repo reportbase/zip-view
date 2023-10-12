@@ -2017,7 +2017,8 @@ var droplst =
 						{
 						    'Content-Type': 'multipart/form-data'
 						},
-						body: form						//body: JSON.stringify({a:1})
+						//body: form						
+						body: JSON.stringify({a:1})
 					})
 					.then(response => jsonhandler(response))
 					.then(function(json)
