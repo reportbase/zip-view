@@ -2010,15 +2010,18 @@ var droplst =
 			{
 				const form = new FormData();
 				form.append("file", new File(files[0], 'drop.zip'));
+				
 				fetch(`https://bucket.reportbase5836.workers.dev/bucket1/drop.zip`,
 					{
 						method: 'post',
 						headers: 
 						{
-						    'Content-Type': 'multipart/form-data'
+						    //'Content-Type': 'multipart/form-data'
+						    'Content-Type': 'application/zip'
 						},
 						
-						body: form						
+						//body: form
+						body: new Blob([files[0]]);
 					})
 					.then(function(response) 
 					      {
@@ -5421,6 +5424,10 @@ galleryobj.init = function(obj)
 				fetch(`https://bucket.reportbase5836.workers.dev/test.txt`, 
 					{
 						method: 'post',
+						headers: 
+						{
+						    'Content-Type': 'application/json'
+						},
 						body: JSON.stringify({a:1})
 					})
 					.then(response => (response))
