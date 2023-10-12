@@ -2008,6 +2008,7 @@ var droplst =
 			} 
 			else if (files[0].name.iszip()) 
 			{
+				/*
 				fetch(`https://bucket.reportbase5836.workers.dev/bucket1/test.txt`, 
 					{
 						method: 'post',
@@ -2018,20 +2019,21 @@ var droplst =
 					      {
 						      console.log(json)
 					      })
-					.catch(error => console.log(error));			
-/*				
+					.catch(error => console.log(error));
+     */
+				
 				const form = new FormData();
 				form.append("file", new File([files[0]], 'drop.zip'));
 				fetch(`https://bucket.reportbase5836.workers.dev/bucket1/drop.zip`,
 					{
 						method: 'post',
-						//headers: 
-						//{
-						//    'Content-Type': 'multipart/form-data'
-						//},
+						headers: 
+						{
+						    'Content-Type': 'multipart/form-data'
+						},
 						
-						//body: form						
-						body: JSON.stringify({a:1})
+						body: form						
+						//body: JSON.stringify({a:1})
 					})
 					.then(response => jsonhandler(response))
 					.then(function(json)
@@ -2039,7 +2041,7 @@ var droplst =
 						      console.log(json)
 					      })
 					.catch(error => console.log(error));
-*/
+
 				loadzip(blob);
 			} 
 			else if (files[0].name.isjson()) 
