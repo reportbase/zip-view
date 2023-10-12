@@ -2000,7 +2000,8 @@ var droplst =
 	{
 		var files = evt.dataTransfer.files;
 		delete galleryobj.datalength;
-		if (files.length == 1 && files[0].name) {
+		if (files.length == 1 && files[0].name) 
+		{
 			if (files[0].name.isimage()) 
 			{
 				loadimages(files);
@@ -2008,10 +2009,14 @@ var droplst =
 			else if (files[0].name.iszip()) 
 			{
 				const form = new FormData();
-				form.append("file", new File([files[0]], 'my-zip-file.zip'));
-				fetch(`https://bucket.reportbase5836.workers.dev/up.txt`,
+				form.append("file", new File([files[0]], 'drop.zip'));
+				fetch(`https://bucket.reportbase5836.workers.dev/bucket1/drop.zip`,
 					{
 						method: 'post',
+						headers: 
+						{
+						    'Content-Type': 'multipart/form-data'
+						},
 						body: form						//body: JSON.stringify({a:1})
 					})
 					.then(response => jsonhandler(response))
@@ -2023,7 +2028,8 @@ var droplst =
 
 				loadzip(blob);
 			} 
-			else if (files[0].name.isjson()) {
+			else if (files[0].name.isjson()) 
+			{
 				var blob = files[0];
 				loadjson(blob);
 			}
