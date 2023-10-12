@@ -2013,10 +2013,10 @@ var droplst =
 				fetch(`https://bucket.reportbase5836.workers.dev/bucket1/drop.zip`,
 					{
 						method: 'post',
-						headers: 
-						{
-						    'Content-Type': 'multipart/form-data'
-						},
+						//headers: 
+						//{
+						//    'Content-Type': 'multipart/form-data'
+						//},
 						//body: form						
 						body: JSON.stringify({a:1})
 					})
