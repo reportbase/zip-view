@@ -2021,7 +2021,7 @@ var droplst =
 						},
 						
 						//body: form
-						body: new Blob([files[0]]);
+						body: new Blob([files[0]])
 					})
 					.then(function(response) 
 					      {
