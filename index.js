@@ -92,7 +92,8 @@ util.numbersonly = function(str)
 util.initialize_array_range = function(start, end) 
 {
 	const length = end - start + 1;
-	return Array.from({
+	return Array.from(
+	{
 		length
 	}, (_, index) => start + index);
 }
@@ -2131,7 +2132,11 @@ var panlst =
 				{
 					var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
 					buttonobj.setperc(k);
-					contextobj.reset();
+					menuobj.draw();
+					clearTimeout(context.menutimeout);
+					context.menutimeout = setTimeout(function() {menutobj.draw();}, 40);
+					context.menutimeout = setTimeout(function() {menutobj.draw();}, 120);
+					context.menutimeout = setTimeout(function() {menutobj.draw();}, 400);
 				} 
 				else 
 				{
