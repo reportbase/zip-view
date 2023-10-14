@@ -2127,10 +2127,12 @@ var panlst =
 					var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
 					canvas.timeobj.setperc(1 - k);
 					context.refresh()
-					clearTimeout(context.menutimeout);
-					context.menutimeout = setTimeout(function() {context.refresh();}, 40);
-					context.menutimeout = setTimeout(function() {context.refresh();}, 120);
-					context.menutimeout = setTimeout(function() {context.refresh();}, 400);
+					clearTimeout(context.t40);
+					clearTimeout(context.t120);
+					clearTimeout(context.t400);
+					context.t40 = setTimeout(function() {context.refresh();}, 40);
+					context.t120 = setTimeout(function() {context.refresh();}, 120);
+					context.t400 = setTimeout(function() {context.refresh();}, 400);
 				}
 				else if (canvas.isbuttonrect) 
 				{
