@@ -2081,9 +2081,6 @@ var panlst =
 				}
 				else
 				{
-					//var k = type == "panleft" ? 1 : -1;
-					//galleryobj.leftright(context, k * context.canvas.speedobj.value() / 5);
-
 					var obj = context.canvas.scrollobj.value();
 					var e = canvas.startx - x;
 					var k = panhorz(obj, e);
@@ -2097,49 +2094,12 @@ var panlst =
 			} 
 			else if (type == "panup" || type == "pandown") 
 			{
-				if (canvas.isspeedrect) 
-				{
-					var k = (y - canvas.speedrect.y) / canvas.speedrect.height;
-					canvas.speedobj.setperc(k);
-					context.canvas.lastime = -0.0000000000101010101;
-					menuobj.updown(context, canvas.speedobj.value());
-					if (!global.swipetimeout) 
-					{
-						global.swipetimeout = setInterval(function() {
-							context.refresh()
-						}, TIMEMAIN);
-					}
-				} 
-				else if (canvas.isreducerect) 
-				{
-					var k = (y - canvas.reducerect.y) / canvas.reducerect.height;
-					canvas.reduceobj.setperc(k);
-					context.canvas.lastime = -0.0000000000101010101;
-					menuobj.updown(context, canvas.speedobj.value());
-					if (!global.swipetimeout) {
-						global.swipetimeout = setInterval(function() {
-							context.refresh()
-						}, TIMEMAIN);
-					}
-				} 
-				else if (canvas.isvscrollrect)
+				if (canvas.isvscrollrect)
 				{
 					var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
 					canvas.timeobj.setperc(1 - k);
 					context.refresh()
-					clearTimeout(context.t40);
-					clearTimeout(context.t120);
-					clearTimeout(context.t400);
-					context.t40 = setTimeout(function() {context.refresh();}, 40);
-					context.t120 = setTimeout(function() {context.refresh();}, 120);
-					context.t400 = setTimeout(function() {context.refresh();}, 400);
 				}
-				else if (canvas.isbuttonrect) 
-				{
-					var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
-					buttonobj.setperc(k);
-					contextobj.reset();
-				} 
 				else 
 				{
 					var e = canvas.starty - y;
@@ -2165,9 +2125,6 @@ var panlst =
 			canvas.timeobj.setanchor(canvas.timeobj.current());
 			canvas.isvscrollrect = canvas.vscrollrect && canvas.vscrollrect.hitest(x, y);
 			canvas.ishscrollrect = canvas.hscrollrect && canvas.hscrollrect.hitest(x, y);
-			canvas.isbuttonrect = canvas.buttonrect && canvas.buttonrect.hitest(x, y);
-			canvas.isspeedrect = canvas.speedrect && canvas.speedrect.hitest(x, y);
-			canvas.isreducerect = canvas.reducerect && canvas.reducerect.hitest(x, y);
 		},
 		panend: function(context, rect, x, y) 
 		{
@@ -3773,7 +3730,7 @@ menuobj.draw = function()
 				thumbimg.src = imagepath(slice);
 				thumbimg.onload = function() {
 					this.count = 0;
-					if (!canvas.panning && !canvas.slideshow)
+					//if (!canvas.panning && !canvas.slideshow)
 						menuobj.draw();
 				}
 
