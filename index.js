@@ -2011,39 +2011,11 @@ var droplst =
 			} 
 			else if (files[0].name.iszip()) 
 			{
-				const form = new FormData();
-				form.append("file", new File([files[0]], 'drop.zip'));
-				
-				fetch(`https://bucket.reportbase5836.workers.dev/bucket1/drop.zip`,
-					{
-						method: 'post',
-						headers: 
-						{
-						    //'Content-Type': 'multipart/form-data'
-						    'Content-Type': 'application/zip'
-						},
-						
-						//body: form
-						body: new Blob([files[0]])
-					})
-					.then(function(response) 
-					      {
-						      if (response.ok)
-							return response.json()
-							throw Error(response.statusText);
-					      })
-					.then(function(json)
-					      {
-						      console.log(json)
-					      })
-					.catch(error => console.log(error));
-
-				loadzip(blob);
+				loadzip(files[0]);
 			} 
 			else if (files[0].name.isjson()) 
 			{
-				var blob = files[0];
-				loadjson(blob);
+				loadjson(files[0]);
 			}
 		} else {
 			loadimages(files);
