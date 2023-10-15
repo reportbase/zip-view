@@ -1632,7 +1632,9 @@ var wheelst =
 		name: "MENU",
 		updown: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
-			delta = util.clamp(5,1000,delta);
+			delta = delta < 0 ?
+				util.clamp(-1000,-5,delta):
+				util.clamp(5,1000,delta);
 			if (ctrl) 
 			{
 				context.canvas.pinching = 1;
