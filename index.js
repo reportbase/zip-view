@@ -1632,9 +1632,8 @@ var wheelst =
 		name: "MENU",
 		updown: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
-			delta = delta < 0 ?
-				util.clamp(-1000,-5,delta):
-				util.clamp(5,1000,delta);
+			if (Math.abs(delta) < 5)//todo test
+				return;
 			if (ctrl) 
 			{
 				context.canvas.pinching = 1;
@@ -2348,10 +2347,13 @@ var presslst =
 		name: "GALLERY",
 		pressup: function(context, rect, x, y) 
 		{
-			fitwidth();
 		},
-		press: function(context, rect, x, y) {
-			   
+			//todo fitwidth();
+			headcnv.height = headcnv.height?0:BEXTENT;
+			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+		},
+		press: function(context, rect, x, y) 
+		{
 		}
 	},
 	{
@@ -2363,6 +2365,9 @@ var presslst =
 		name: "BOSS",
 		pressup: function(context, rect, x, y) 
 		{
+			headcnv.height = headcnv.height?0:BEXTENT;
+			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+			fitwidth();
 		},
 		press: function(context, rect, x, y) 
 		{
@@ -2910,8 +2915,7 @@ var taplst = [
 			}
 			else 
 			{
-				headcnv.height = headcnv.height?0:BEXTENT;
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+				//todo
 			}
 		},
 	},
