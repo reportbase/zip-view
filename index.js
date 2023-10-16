@@ -2347,7 +2347,6 @@ var presslst =
 		name: "GALLERY",
 		pressup: function(context, rect, x, y) 
 		{
-		},
 			//todo fitwidth();
 			headcnv.height = headcnv.height?0:BEXTENT;
 			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
