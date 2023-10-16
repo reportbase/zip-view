@@ -5617,8 +5617,6 @@ function fooload(path)
 {
 	if (path.isimage())
 		loadimages(path);
-	else if (path.iszip())
-		loadzip(path);
 	else if (path.isjson())
 	{
 		fetch(path)
