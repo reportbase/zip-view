@@ -2837,8 +2837,6 @@ var taplst = [
 			{
 				var k = (context.canvas.timeobj.length()/rect.width)*20
 				context.canvas.timeobj.rotate(k);
-				context.refresh();
-				evt.preventDefault();
 			}
 
 			_4cnvctx.refresh();
