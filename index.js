@@ -1632,8 +1632,6 @@ var wheelst =
 		name: "MENU",
 		updown: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
-			if (Math.abs(delta) < 5)//todo test
-				return;
 			if (ctrl) 
 			{
 				context.canvas.pinching = 1;
@@ -1646,6 +1644,8 @@ var wheelst =
 			}
 			else
 			{
+				if (Math.abs(delta) < 3.5)
+					return;
 				menuobj.updown(context, delta);
 				context.refresh();
 			}
@@ -2804,13 +2804,17 @@ var taplst = [
 				var k = (y - context.stretchrect.y) / context.stretchrect.height;
 				obj.setperc(k);
 				context.refresh();
-			} else if (context.slicewidthrect &&
-				context.slicewidthrect.hitest(x, y)) {
+			} 
+			else if (context.slicewidthrect &&
+				context.slicewidthrect.hitest(x, y)) 
+			{
 				var k = (y - context.slicewidthrect.y) / context.slicewidthrect.height;
 				if (galleryobj.debug) {
 					slicewidthobj.setperc(k);
 					contextobj.reset()
-				} else {
+				} 
+				else 
+				{
 					context.canvas.speedobj.setperc(k);
 					bossobj.leftright(-1 * context.canvas.speedobj.value());
 				}
@@ -2830,6 +2834,7 @@ var taplst = [
 			}
 			else 
 			{
+				//todo
 				headcnv.height = headcnv.height?0:BEXTENT;
 				headobj.set(BOSS);
 				headham.panel = headobj.value();
@@ -2914,7 +2919,9 @@ var taplst = [
 			}
 			else 
 			{
-				//todo
+				var k = canvas.timeobj.length()/galleryobj.length();
+				canvas.timeobj.rotate(x<rect.width/2?k:-k);
+				menuobj.draw();
 			}
 		},
 	},
