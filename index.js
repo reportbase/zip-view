@@ -2917,7 +2917,7 @@ var taplst = [
 			else 
 			{
 				var k = canvas.timeobj.length()/galleryobj.length();
-				canvas.timeobj.rotate(x<rect.width/2?k:-k);
+				canvas.timeobj.rotate(y<rect.height/2?k:-k);
 				menuobj.draw();
 			}
 		},
