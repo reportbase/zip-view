@@ -5687,7 +5687,7 @@ else if (url.searchParams.has("r2"))
 	url.path = url.searchParams.get("r2");
       fetch(`https://bucket.reportbase5836.workers.dev/${url.path}`)
 	.then((response) => blobhandler(response))
-	.then(function (blob) { loadbzip(blob); })
+	.then(function (blob) { loadzip(blob); })
 	.catch((error) => { });	
 } 
 else if (url.searchParams.has("res")) 
