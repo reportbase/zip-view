@@ -1857,7 +1857,7 @@ infobj.reset = function()
 				infobj.data = value.folder.split("/");
 			infobj.data.push(`${index.toFixed(1)} of ${galleryobj.length()}`);
 			var j = _8cnv.scrollobj.value().berp()
-			infobj.data.push(`${j.toFixed(5)}`);
+			infobj.data.push(`${j.toFixed(2)}`);
 		}
 		else
 		{
@@ -1867,9 +1867,9 @@ infobj.reset = function()
 				infobj.data = value.folder.split("/");
 			infobj.data.push(`${index+1} of ${galleryobj.length()}`);
 			var e = 1-_4cnv.timeobj.berp();
-			infobj.data.push(`${e.toFixed(5)}`);
+			infobj.data.push(`${e.toFixed(2)}`);
 			var j = rowobj.berp();
-			infobj.data.push(`${j.toFixed(5)}`);
+			infobj.data.push(`${j.toFixed(2)}`);
 		}
 
 }
