@@ -5685,7 +5685,7 @@ else if (url.searchParams.has("sidney"))
 else if (url.searchParams.has("r2")) 
 {
 	url.path = url.searchParams.get("r2");
-      fetch(`https://bucket.zip-view.pages.dev/${url.path}`)
+      fetch(`https://bucket.reportbase5836.workers.dev/${url.path}`)
 	.then((response) => blobhandler(response))
 	.then(function (blob) { loadbzip(blob); })
 	.catch((error) => { });	
