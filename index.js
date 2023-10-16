@@ -5685,8 +5685,10 @@ else if (url.searchParams.has("sidney"))
 else if (url.searchParams.has("r2")) 
 {
 	url.path = url.searchParams.get("r2");
-	var path = `https://bucket.reportbase5836.workers.dev/${url.path}`
-	fooload(path);
+      fetch(`https://bucket.zip-view.pages.dev/${url.path}`)
+	.then((response) => blobhandler(response))
+	.then(function (blob) { loadbzip(blob); })
+	.catch((error) => { });	
 } 
 else if (url.searchParams.has("res")) 
 {
