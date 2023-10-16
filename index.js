@@ -2671,7 +2671,8 @@ var keylst =
 				evt.preventDefault();
 			} else if (
 				key == "arrowleft" ||
-				key == "h") {
+				key == "h") 
+			{
 				var k = (context.canvas.timeobj.length()/rect.width)*20
 				context.canvas.timeobj.rotate(k);
 				context.refresh();
@@ -2834,7 +2835,10 @@ var taplst = [
 			}
 			else 
 			{
-				menuobj.leftright(context, x<rect.width/2?-60:60);
+				var k = (context.canvas.timeobj.length()/rect.width)*20
+				context.canvas.timeobj.rotate(k);
+				context.refresh();
+				evt.preventDefault();
 			}
 
 			_4cnvctx.refresh();
