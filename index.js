@@ -1344,7 +1344,7 @@ var makehammer = function(context, v, t) {
 		threshold: 20
 	}); //10
 	ham.get('press').set({
-		time: 400
+		time: 320
 	}); //251
 
 	ham.on("pinch", function(evt) {
@@ -2834,12 +2834,7 @@ var taplst = [
 			}
 			else 
 			{
-				//todo
-				headcnv.height = headcnv.height?0:BEXTENT;
-				headobj.set(BOSS);
-				headham.panel = headobj.value();
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-				context.refresh();
+				menuobj.leftright(context, x<rect.width/2?-60:60);
 			}
 
 			_4cnvctx.refresh();
