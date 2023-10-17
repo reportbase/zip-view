@@ -5435,7 +5435,7 @@ galleryobj.init = function(obj)
 			var k = galleryobj.data[n];
 			var j = {};
 			j.title = `${n+1} of ${galleryobj.data.length}`;
-			j.func = menuimage;
+			j.func = gotoimage;
 			_5cnv.sliceobj.data.push(j);
 		};
 	}
