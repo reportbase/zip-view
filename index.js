@@ -5263,7 +5263,6 @@ galleryobj.init = function(obj)
 		Object.assign(galleryobj, obj);
 	if (url.searchParams.has("dl")) 
 		this.data.length = Number(url.searchParams.get("dl"));
-		
 	
 	delete _4cnv.thumbcanvas;
 	delete photo.image;
@@ -5416,7 +5415,8 @@ galleryobj.init = function(obj)
 
 	_5cnv.sliceobj.data = [];
 	var j = 0;
-	for (var n = 0; n < galleryobj.data.length; ++n) {
+	for (var n = 0; n < galleryobj.data.length; ++n) 
+	{
 		var k = galleryobj.data[n];
 		if (!k.folder)
 			continue;
@@ -5428,6 +5428,18 @@ galleryobj.init = function(obj)
 			_5cnv.sliceobj.data.push(k);
 	};
 
+	if (!_5cnv.sliceobj.data.length)
+	{
+		for (var n = 0; n < galleryobj.data.length; ++n) 
+		{
+			var k = galleryobj.data[n];
+			var j = {};
+			j.title = `${n+1} of ${galleryobj.data.length}`;
+			j.func = menuimage;
+			_5cnv.sliceobj.data.push(j);
+		};
+	}
+	
 	var a = Array(_5cnv.sliceobj.length()).fill().map((_, index) => index);
 	_5cnv.rotated = [...a, ...a, ...a];
 
