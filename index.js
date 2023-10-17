@@ -3428,7 +3428,9 @@ var buttonlst = [{
 	},
 	{
 		name: "OPTION",
-		draw: function(context, rect, user, time) {
+		draw: function(context, rect, user, time) 
+		{
+			var canvas = context.canvas;
 			context.save()
 			var clr = FILLBAR;
 			if (user.tap) {
@@ -3444,7 +3446,7 @@ var buttonlst = [{
 					0,
 					new Layer(
 						[
-							new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8), 10, 20),
+							new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8), canvas.buttonmargin, canvas.buttonmargin),
 							new panel.shrink(new panel.multitext(e), 20, 0),
 						]),
 					0,
@@ -3469,7 +3471,9 @@ var buttonlst = [{
 	},
 	{
 		name: "MENU",
-		draw: function(context, rect, user, time) {
+		draw: function(context, rect, user, time) 
+		{
+			var canvas = context.canvas;
 			context.save()
 			var clr = FILLBAR;
 			if (user.tap) {
@@ -3484,7 +3488,7 @@ var buttonlst = [{
 					0,
 					new Layer(
 						[
-							new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8), 10, 10),
+							new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8), canvas.buttonmargin, canvas.buttonmargin),
 							new panel.shrink(new panel.text("white", "center", "middle", 0, 0), 20, 0),
 						]),
 					0,
@@ -3792,6 +3796,7 @@ var eventlst = [{
 		bar: new panel.empty(),
 		scroll: new panel.scrollbar(),
 		buttonheight: 0,
+		buttonmargin: 10,
 		width: 640
 	},
 	{
@@ -3813,6 +3818,7 @@ var eventlst = [{
 		bar: new panel.empty(),
 		scroll: new panel.scrollbar(),
 		buttonheight: 90,
+		buttonmargin: 10,
 		width: 640
 	},
 	{
@@ -3834,6 +3840,7 @@ var eventlst = [{
 		bar: new panel.empty(),
 		scroll: new panel.scrollbar(),
 		buttonheight: 90,
+		buttonmargin: 10,
 		width: 640
 	},
 	{
@@ -3855,6 +3862,7 @@ var eventlst = [{
 		bar: new panel.empty(),
 		scroll: new panel.empty(),
 		buttonheight: 30,
+		buttonmargin: 10,
 		width: 640
 	},
 	{
@@ -3876,6 +3884,7 @@ var eventlst = [{
 		bar: new panel.empty(),
 		scroll: new panel.scrollbar(),
 		buttonheight: 150,
+		buttonmargin: 10,
 		width: 640
 	},
 	{
@@ -3897,6 +3906,7 @@ var eventlst = [{
 		bar: new panel.empty(),
 		scroll: new panel.scrollbar(),
 		buttonheight: 90,
+		buttonmargin: 10,
 		width: 640
 	},
 	{
@@ -3918,6 +3928,7 @@ var eventlst = [{
 		bar: new panel.empty(),
 		scroll: new panel.scrollbar(),
 		buttonheight: 120,
+		buttonmargin: 10,
 		width: 640
 	},
 	{
@@ -3939,6 +3950,7 @@ var eventlst = [{
 		bar: new panel.gallerybar(),
 		scroll: new panel.galleryscroll(),
 		buttonheight: 320,
+		buttonmargin: 10,
 		width: iOS() ? 720 : 5160
 	},
 	{
@@ -3960,6 +3972,7 @@ var eventlst = [{
 		bar: new panel.empty("Image Browser"),
 		scroll: new panel.scrollbar(),
 		buttonheight: 50,
+		buttonmargin: 10,
 		width: 640
 	},
 	{
@@ -3981,6 +3994,7 @@ var eventlst = [{
 		bar: new panel.empty("Image Browser"),
 		scroll: new panel.scrollbar(),
 		buttonheight: 50,
+		buttonmargin: 10,
 		width: 640
 	},
 	{
@@ -4002,6 +4016,7 @@ var eventlst = [{
 		bar: new panel.empty("Image Browser"),
 		scroll: new panel.scrollbar(),
 		buttonheight: 90,
+		buttonmargin: 10,
 		width: 640
 	},
 	{
@@ -4023,6 +4038,7 @@ var eventlst = [{
 		bar: new panel.empty("Image Browser"),
 		scroll: new panel.scrollbar(),
 		buttonheight: 50,
+		buttonmargin: 10,
 		width: 640
 	},
 	{
@@ -4044,6 +4060,7 @@ var eventlst = [{
 		bar: new panel.empty("Image Browser"),
 		scroll: new panel.scrollbar(),
 		buttonheight: 50,
+		buttonmargin: 10,
 		width: 640
 	},
 	{
@@ -4065,6 +4082,7 @@ var eventlst = [{
 		bar: new panel.empty("Image Browser"),
 		scroll: new panel.scrollbar(),
 		buttonheight: 50,
+		buttonmargin: 10,
 		width: 640
 	},
 	{
@@ -4086,6 +4104,7 @@ var eventlst = [{
 		bar: new panel.empty("Image Browser"),
 		scroll: new panel.scrollbar(),
 		buttonheight: 50,
+		buttonmargin: 10,
 		width: 640
 	},
 ];
@@ -5430,7 +5449,8 @@ galleryobj.init = function(obj)
 
 	if (!_5cnv.sliceobj.data.length)
 	{
-		_5cnv.buttonheight = 60;
+		_5cnv.buttonheight = 50;
+		_5cnv.buttonmargin = 0;
 		for (var n = 0; n < galleryobj.data.length; ++n) 
 		{
 			var k = galleryobj.data[n];
