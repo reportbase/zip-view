@@ -5450,7 +5450,7 @@ galleryobj.init = function(obj)
 	if (!_5cnv.sliceobj.data.length)
 	{
 		_5cnv.buttonheight = 50;
-		_5cnv.buttonmargin = 0;
+		_5cnv.buttonmargin = 5;
 		for (var n = 0; n < galleryobj.data.length; ++n) 
 		{
 			var k = galleryobj.data[n];
