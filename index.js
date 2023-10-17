@@ -5029,7 +5029,7 @@ var headlst = [
 					g?new panel.zoom():0,
 					g?new panel.fitwidth():0,
 					0,
-					e ? 0 : new panel.folders(),
+					new panel.folders(),
 					0,
 				]);
 
