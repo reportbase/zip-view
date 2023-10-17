@@ -2377,8 +2377,9 @@ var presslst =
 var pressobj = new circular_array("PRESS", presslst);
 pressobj.set(3);
 
-function gotoimage(n,top=1) 
+function gotoimage(n) 
 {
+	var top = _8cnv.buttonheight < window.innerHeight ? 1 : 0; 
 	var k = TIMEOBJ - TIMEOBJ / galleryobj.length() / 2;
 	k -= n * (TIMEOBJ / galleryobj.length());
 	_8cnv.timeobj.set(k);
@@ -2968,7 +2969,7 @@ var taplst = [
 					menuobj.hide();
 					delete slice.tap;
 					if (slice.func)
-						slice.func(n,1)
+						slice.func(n,x/context.rect().width)
 					context.refresh();
 					_4cnvctx.refresh();
 					headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
@@ -3592,9 +3593,7 @@ _14ham.panel = new panel.yoll();
 _15ham.panel = new panel.yoll();
 
 let contextlst = [_1cnvctx, _2cnvctx, _3cnvctx, _4cnvctx, _5cnvctx, _6cnvctx, _7cnvctx, _8cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
-let menulst = [0, _1cnvctx, _2cnvctx, _3cnvctx, _5cnvctx, _6cnvctx, _7cnvctx, _8cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
-var menuobj = new circular_array("MENU", menulst);
-menuobj.toggle = function(context) {
+umenuobj.toggle = function(context) {
 	if (menuobj.value() == context) {
 		context.hide();
 		menuobj.set(0);
@@ -5900,18 +5899,22 @@ function MovingAverage() {
 movingx = new MovingAverage();
 movingy = new MovingAverage();
 
-function importdialog() {
+function importdialog() 
+{
 	var input = document.createElement("input");
 	input.type = "file";
 	input.multiple = true;
 	input.accept = ".zip,.cbz,.json,.png,.jpeg,.jpg,.webp,.gif,.avif";
-	return new Promise(function(resolve) {
-		document.activeElement.onfocus = function() {
+	return new Promise(function(resolve) 
+	{
+		document.activeElement.onfocus = function() 
+		{
 			document.activeElement.onfocus = null;
 			setTimeout(resolve, 500);
 		};
 
-		input.onchange = function() {
+		input.onchange = function() 
+		{
 			var files = Array.from(input.files);
 			delete galleryobj.datalength;
 			if (files.length == 1 && files[0].name) {
