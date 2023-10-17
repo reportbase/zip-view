@@ -2968,7 +2968,7 @@ var taplst = [
 					menuobj.hide();
 					delete slice.tap;
 					if (slice.func)
-						slice.func(x / rect.width)
+						slice.func(n)
 					context.refresh();
 					_4cnvctx.refresh();
 					headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
