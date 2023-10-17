@@ -5430,6 +5430,7 @@ galleryobj.init = function(obj)
 
 	if (!_5cnv.sliceobj.data.length)
 	{
+		_5cnv.buttonheight = 50;
 		for (var n = 0; n < galleryobj.data.length; ++n) 
 		{
 			var k = galleryobj.data[n];
@@ -5527,11 +5528,8 @@ galleryobj.init = function(obj)
 	_9cnv.rotated = [...a, ...a, ...a];
 
 	_11cnv.sliceobj.data = 
-	[{
-		title: "",
-		path: "",
-		func: function() {}
-	}, ];
+	[
+	];
 
 	var a = Array(_11cnv.sliceobj.length()).fill().map((_, index) => index);
 	_11cnv.rotated = [...a, ...a, ...a];
