@@ -4957,10 +4957,13 @@ var headlst = [
 			{
 				galleryobj.set(_8cnv.lastcurrent)
 				galleryobj.rightctx.hide()
-				if (menuobj.value() == galleryobj.leftctx) {
+				if (menuobj.value() == galleryobj.leftctx) 
+				{
 					galleryobj.leftctx.hide();
 					menuobj.setindex(_8cnvctx);
 					menuobj.draw();
+					galleryobj.leftnv = _7cnv;
+					galleryobj.leftctx = _7cnvctx;
 				} else {
 					menuobj.setindex(galleryobj.leftctx);
 					menuobj.show();
@@ -5477,7 +5480,7 @@ galleryobj.init = function(obj)
 	_7cnv.sliceobj.data = 
 		[
 		{
-			title: "Image",
+			title: "Image &#9658;",
 			func: function() 
 			{
 				galleryobj.leftcnv = _6cnv;
