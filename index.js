@@ -5561,7 +5561,7 @@ galleryobj.init = function(obj)
 	_9cnv.sliceobj.data = galleryobj.base ? galleryobj.base :[];
 
 	//todo: login
-	//todo: galleries
+	//todo: gallerie
 	
 	if (_9cnv.sliceobj.data.length)
 		_7cnv.sliceobj.data.push(
