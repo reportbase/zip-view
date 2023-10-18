@@ -3593,7 +3593,9 @@ _14ham.panel = new panel.yoll();
 _15ham.panel = new panel.yoll();
 
 let contextlst = [_1cnvctx, _2cnvctx, _3cnvctx, _4cnvctx, _5cnvctx, _6cnvctx, _7cnvctx, _8cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
-umenuobj.toggle = function(context) {
+let menulst = [0, _1cnvctx, _2cnvctx, _3cnvctx, _5cnvctx, _6cnvctx, _7cnvctx, _8cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
+var menuobj = new circular_array("MENU", menulst);
+menuobj.toggle = function(context) {
 	if (menuobj.value() == context) {
 		context.hide();
 		menuobj.set(0);
