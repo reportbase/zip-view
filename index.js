@@ -5481,9 +5481,10 @@ galleryobj.init = function(obj)
 			func: function() 
 			{
 				galleryobj.leftcnv = _6cnv;
-				galleryobj.rightctx = _6cnvctx;
-				menuobj.setindex(galleryobj.rightctx);
+				galleryobj.leftctx = _6cnvctx;
+				menuobj.setindex(galleryobj.leftctx);
 				menuobj.show();
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 			}
 		},
 		{
