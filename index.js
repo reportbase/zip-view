@@ -1069,17 +1069,17 @@ panel.fitwidth = function()
 	}
 };
 
-panel.folders = function() {
+panel.rightmenu = function() {
 	this.draw = function(context, rect, user, time) {
 		context.save();
-		context.foldersrect = new rectangle();
+		context.rightmenurect = new rectangle();
 		var s = menuobj.value() == _5cnvctx;
 		var j = 5;
 		var k = j / 2;
 		var e = new panel.fill(OPTIONFILL);
 		var a = new Layer(
 			[
-				new panel.rectangle(context.foldersrect),
+				new panel.rectangle(context.rightmenurect),
 				s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
 				new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
 				new panel.row([0, rect.height * 0.20, 0],
@@ -4953,7 +4953,7 @@ var headlst = [
 			global.timeauto = 0;
 			context.refresh();
 
-			if (canvas.helprect && canvas.helprect.hitest(x, y)) 
+			if (canvas.leftmenurect && canvas.leftmenurect.hitest(x, y)) 
 			{
 				galleryobj.set(_8cnv.lastcurrent)
 				galleryobj.rightctx.hide()
@@ -5011,10 +5011,10 @@ var headlst = [
 				context.fullrect.hitest(x, y)) {
 				screenfull.toggle()
 			} else if (
-				context.foldersrect &&
-				context.foldersrect.hitest(x, y)) {
+				context.rightmenurect &&
+				context.rightmenurect.hitest(x, y)) {
 				galleryobj.leftctx.hide()
-				if (menuobj.value() == _5cnvctx) {
+				if (menuobj.value() == galleryobj.rightctx) {
 					galleryobj.rightctx.hide();
 					menuobj.setindex(_8cnvctx);
 					menuobj.draw();
@@ -5048,13 +5048,13 @@ var headlst = [
 				[5, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT, ALIEXTENT, 0, ALIEXTENT, 5],
 				[
 					0,
-					new panel.help(),
+					new panel.leftmenu(),
 					0,
 					g?new panel.fullscreen():0,
 					g?new panel.zoom():0,
 					g?new panel.fitwidth():0,
 					0,
-					new panel.folders(),
+					new panel.rightmenu(),
 					0,
 				]);
 
@@ -5120,18 +5120,17 @@ panel.gallery = function(size) {
 	}
 };
 
-panel.help = function() {
+panel.leftmenu = function() {
 	this.draw = function(context, rect, user, time) {
 		context.save()
-		context.canvas.helprect = new rectangle()
+		context.canvas.leftmenurect = new rectangle()
 		var j = 5;
 		var k = j / 2;
 		var e = new panel.fill(OPTIONFILL);
-		var s = menuobj.value() == _3cnvctx ||
-			menuobj.value() == _7cnvctx;
+		var s = menuobj.value() == galleryobj.leftctx;
 		var a = new Layer(
 			[
-				new panel.rectangle(context.canvas.helprect),
+				new panel.rectangle(context.canvas.leftmenurect),
 				s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
 				new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
 				new panel.col([0, rect.height * 0.20, 0],
