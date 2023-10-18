@@ -3490,7 +3490,7 @@ var buttonlst = [{
 					new Layer(
 						[
 							new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8), canvas.buttonmargin, canvas.buttonmargin),
-							new panel.shrink(new panel.text("white", "center", "top", 0, 0), 20, 0),
+							new panel.shrink(new panel.text("white", "center", "middle", 0, 0), 20, 0),
 						]),
 					0,
 				]);
