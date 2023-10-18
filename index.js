@@ -1644,7 +1644,7 @@ var wheelst =
 			}
 			else
 			{
-				if (Math.abs(delta) < 3.5)
+				if (Math.abs(delta) < 10)
 					return;
 				menuobj.updown(context, delta);
 				context.refresh();
@@ -5469,7 +5469,7 @@ galleryobj.init = function(obj)
 	_7cnv.sliceobj.data = 
 		[
 		{
-			title: "Goto\nkey+g",
+			title: "Goto",
 			func: function() 
 			{
 				var value = galleryobj.current()+1;
@@ -5479,13 +5479,13 @@ galleryobj.init = function(obj)
 			}
 		},
 		{
-			title: "File Explorer\nkey+x",
+			title: "Open",
 			func: function() {
 				importdialog();
 			}
 		},
 		{
-			title: "Tom Brinkman\nAll Rights Reserved",
+			title: "Developer\nTom Brinkman\nimages@zip-view.com",
 			func: function() {}
 		},
 		{
@@ -5493,16 +5493,20 @@ galleryobj.init = function(obj)
 			func: function() {}
 		},
 		{
-			title: "Download\nkey+d",
-			func: function() {
-				if (galleryobj.value().blob) {
+			title: "Download",
+			func: function() 
+			{
+				if (galleryobj.value().blob) 
+				{
 					const anchor = document.createElement('a');
 					anchor.href = URL.createObjectURL(galleryobj.value().blob);
 					anchor.download = galleryobj.value().name;
 					anchor.click();
 					URL.revokeObjectURL(anchor.href);
 					anchor.remove();
-				} else {
+				} 
+				else 
+				{
 					var id = galleryobj.value().id;
 					var path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
 					if (galleryobj.value().full)
@@ -5512,13 +5516,13 @@ galleryobj.init = function(obj)
 					window.open(path, "download");
 				}
 			},
-			enabled: function() {
+			enabled: function() 
+			{
 				return 0;
 			}
 		},
-
 		{
-			title: "Full Screen\nkey+f",
+			title: "Full Screen",
 			func: function() {
 				screenfull.toggle()
 			},
