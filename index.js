@@ -3786,7 +3786,8 @@ menuobj.draw = function()
 	context.canvas.scroll.draw(context, rect, 0, 0);
 }
 
-var eventlst = [{
+var eventlst = [
+	{//1
 		hideontap: 1,
 		speed: 60,
 		reduce: 5,
@@ -3808,7 +3809,7 @@ var eventlst = [{
 		buttonmargin: 10,
 		width: 640
 	},
-	{
+	{//2
 		hideontap: 0,
 		speed: 60,
 		reduce: 10,
@@ -3830,7 +3831,7 @@ var eventlst = [{
 		buttonmargin: 10,
 		width: 640
 	},
-	{
+	{//3
 		hideontap: 1,
 		speed: 60,
 		reduce: 5,
@@ -3852,7 +3853,7 @@ var eventlst = [{
 		buttonmargin: 10,
 		width: 640
 	},
-	{
+	{//4
 		hideontap: 1,
 		speed: 40,
 		reduce: 40,
@@ -3874,7 +3875,7 @@ var eventlst = [{
 		buttonmargin: 10,
 		width: 640
 	},
-	{
+	{//5
 		hideontap: 1,
 		speed: 60,
 		reduce: 5,
@@ -3896,7 +3897,7 @@ var eventlst = [{
 		buttonmargin: 10,
 		width: 640
 	},
-	{
+	{//6
 		hideontap: 1,
 		speed: 60,
 		reduce: 5,
@@ -3918,7 +3919,7 @@ var eventlst = [{
 		buttonmargin: 5,
 		width: 640
 	},
-	{
+	{//7
 		hideontap: 1,
 		speed: 60,
 		reduce: 5,
@@ -3940,7 +3941,7 @@ var eventlst = [{
 		buttonmargin: 10,
 		width: 640
 	},
-	{
+	{//8
 		hideontap: 1,
 		speed: 50,
 		reduce: 10,
@@ -3962,7 +3963,7 @@ var eventlst = [{
 		buttonmargin: 10,
 		width: iOS() ? 720 : 5160
 	},
-	{
+	{//9
 		hideontap: 1,
 		speed: 60,
 		reduce: 5,
@@ -3981,10 +3982,10 @@ var eventlst = [{
 		bar: new panel.empty("Image Browser"),
 		scroll: new panel.scrollbar(),
 		buttonheight: 240,
-		buttonmargin: 10,
+		buttonmargin: 20,
 		width: 640
 	},
-	{
+	{//10
 		hideontap: 1,
 		speed: 60,
 		reduce: 5,
@@ -4006,7 +4007,7 @@ var eventlst = [{
 		buttonmargin: 10,
 		width: 640
 	},
-	{
+	{//11
 		hideontap: 1,
 		speed: 60,
 		reduce: 5,
@@ -4028,7 +4029,7 @@ var eventlst = [{
 		buttonmargin: 10,
 		width: 640
 	},
-	{
+	{//12
 		hideontap: 1,
 		speed: 60,
 		reduce: 5,
@@ -4050,7 +4051,7 @@ var eventlst = [{
 		buttonmargin: 10,
 		width: 640
 	},
-	{
+	{//13
 		hideontap: 1,
 		speed: 60,
 		reduce: 5,
@@ -4072,7 +4073,7 @@ var eventlst = [{
 		buttonmargin: 10,
 		width: 640
 	},
-	{
+	{//14
 		hideontap: 1,
 		speed: 60,
 		reduce: 5,
@@ -4094,7 +4095,7 @@ var eventlst = [{
 		buttonmargin: 10,
 		width: 640
 	},
-	{
+	{//15
 		hideontap: 1,
 		speed: 60,
 		reduce: 5,
@@ -5471,6 +5472,13 @@ galleryobj.init = function(obj)
 	_7cnv.sliceobj.data = 
 		[
 		{
+			title: "Login",
+			func: function() 
+			{
+				gotodialog(global.login?global.login:"", "Login", gologin);
+			}
+		},
+		{
 			title: "Open (*.zip, *.cbz, *.json)",
 			func: function() {
 				importdialog();
@@ -5777,6 +5785,11 @@ function downloadtext(name, text) {
 	document.body.appendChild(element);
 	element.click();
 	document.body.removeChild(element);
+}
+
+function gologin(id) 
+{
+	global.id = id;
 }
 
 function goimage(image) 
