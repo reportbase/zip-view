@@ -2351,9 +2351,17 @@ var presslst =
 		name: "GALLERY",
 		pressup: function(context, rect, x, y) 
 		{
-			//todo: not scrollbars
-			headcnv.height = headcnv.height?0:BEXTENT;
-			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+			if (canvas.vscrollrect && canvas.vscrollrect.hitest(x, y)) 
+			{
+			} 
+			else if (canvas.hscrollrect && canvas.hscrollrect.hitest(x, y)) 
+			{
+			}
+			else
+			{
+				headcnv.height = headcnv.height?0:BEXTENT;
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+			}
 		},
 		press: function(context, rect, x, y) 
 		{
@@ -2368,9 +2376,17 @@ var presslst =
 		name: "BOSS",
 		pressup: function(context, rect, x, y) 
 		{
-			//todo: not scrollbars
-			headcnv.height = headcnv.height?0:BEXTENT;
-			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+			if (canvas.zoomrect && canvas.zoomrect.hitest(x, y)) 
+			{
+			} 
+			else if (canvas.stretchrect && canvas.stretchrect.hitest(x, y)) 
+			{
+			}
+			else
+			{
+				headcnv.height = headcnv.height?0:BEXTENT;
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+			}
 		},
 		press: function(context, rect, x, y) 
 		{
@@ -5804,8 +5820,6 @@ function goimage(image)
 
 function gotodialog(value, title, func) 
 {
-	if (IFRAME)//todo
-		return;	
 	var input = document.getElementById("goto-input");
 	var button = document.getElementById("goto-ok");
 	button.innerHTML = title;
