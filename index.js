@@ -5448,7 +5448,7 @@ galleryobj.init = function(obj)
 			_5cnv.sliceobj.data.push(k);
 	};
 
-	if (!_5cnv.sliceobj.data.length)
+	if (_5cnv.sliceobj.data.length <= 1)
 	{
 		_5cnv.buttonheight = 50;
 		_5cnv.buttonmargin = 5;
