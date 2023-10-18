@@ -2878,6 +2878,7 @@ var taplst = [
 			} 
 			else if 
 			(
+				0 &&
 				context.chapterect &&
 				context.chapterect.hitest(x, y)) 
 			{
@@ -5412,15 +5413,19 @@ galleryobj.init = function(obj)
 		},
 		{
 			title: "offscreen.js",
-			func: function() {
+			func: function() 
+			{
 				var offcnv = new offscreencanvas(200, 200);
 				const offworker = new worker('js/offscreen.js');
-				offworker.postmessage({
+				offworker.postmessage(
+				{
 					msg: 'offscreen',
 					canvas: offcnv
 				}, [offcnv]);
-				offworker.addeventlistener('message', function(ev) {
-					if (ev.data.msg === 'render') {
+				offworker.addeventlistener('message', function(ev) 
+				{
+					if (ev.data.msg === 'render') 
+					{
 						var canvas = document.createelement("canvas");
 						let context = canvas.getcontext("bitmaprenderer");
 						context.transferfromimagebitmap(ev.data.bitmap);
@@ -5428,7 +5433,8 @@ galleryobj.init = function(obj)
 					}
 				});
 			},
-			enabled: function() {
+			enabled: function() 
+			{
 				return false
 			}
 		}
@@ -5445,7 +5451,8 @@ galleryobj.init = function(obj)
 		if (!k.folder)
 			continue;
 		k.func = selectfolder;
-		var j = _5cnv.sliceobj.data.findIndex(function(a) {
+		var j = _5cnv.sliceobj.data.findIndex(function(a) 
+		{
 			return a.folder == k.folder;
 		});
 		if (j == -1)
@@ -5471,17 +5478,17 @@ galleryobj.init = function(obj)
 	_7cnv.sliceobj.data = 
 		[
 		{
-			title: "Goto",
+			title: "Image",
 			func: function() 
 			{
-				var value = galleryobj.current()+1;
-				if (menuobj.value() == _8cnvctx) 
-					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(GOTOFIXED)
-				gotodialog(value, "Goto", goimage);
+				galleryobj.leftcnv = _6cnv;
+				galleryobj.rightctx = _6cnvctx;
+				menuobj.setindex(galleryobj.rightctx);
+				menuobj.show();
 			}
 		},
 		{
-			title: "Open",
+			title: "Open (*.zip, *.cbz, *.json)",
 			func: function() {
 				importdialog();
 			}
