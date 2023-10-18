@@ -2362,6 +2362,7 @@ var presslst =
 			{
 				headcnv.height = headcnv.height?0:BEXTENT;
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+				menuobj.draw();
 			}
 		},
 		press: function(context, rect, x, y) 
@@ -2388,6 +2389,7 @@ var presslst =
 			{
 				headcnv.height = headcnv.height?0:BEXTENT;
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+				context.refresh();
 			}
 		},
 		press: function(context, rect, x, y) 
@@ -5344,7 +5346,7 @@ galleryobj.init = function(obj)
 	_3cnv.sliceobj.data = 
 		[
 		{
-			title: "delete image",
+			title: "Delete Image",
 			func: function() {
 				var id = galleryobj.value().id;
 				fetch(`https://ipfs-view.pages.dev/image/${id}`, 
@@ -5408,7 +5410,7 @@ galleryobj.init = function(obj)
 			}
 		},
 		{
-			title: "post",
+			title: "Post",
 			func: function() 
 			{
 				fetch(`https://bucket.reportbase5836.workers.dev/test.txt`, 
@@ -5433,7 +5435,7 @@ galleryobj.init = function(obj)
 			}
 		},
 		{
-			title: "offscreen.js",
+			title: "Offscreen.js",
 			func: function() 
 			{
 				var offcnv = new offscreencanvas(200, 200);
@@ -5498,7 +5500,8 @@ galleryobj.init = function(obj)
 		},
 		{
 			title: "Open (*.zip, *.cbz, *.json)",
-			func: function() {
+			func: function() 
+			{
 				importdialog();
 			}
 		},
@@ -5551,6 +5554,7 @@ galleryobj.init = function(obj)
 	];
 
 	if (_5cnv.sliceobj.data.length >= 2)
+	{
 		_7cnv.sliceobj.data.push(
 		{
 			title: "Image \u{25B6}",
@@ -5563,7 +5567,24 @@ galleryobj.init = function(obj)
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 			}
 		});
+	}
 
+	if (url.searchParams.has("debug"))
+	{
+		_7cnv.sliceobj.data.push(
+		{
+			title: "Debug",
+			func: function() 
+			{
+				galleryobj.leftcnv = _3cnv;
+				galleryobj.leftctx = _3cnvctx;
+				menuobj.setindex(galleryobj.leftctx);
+				menuobj.show();
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+			}
+		});
+	}
+	
 	_8cnv.sliceobj.data = galleryobj.data;
 	_9cnv.sliceobj.data = galleryobj.base ? galleryobj.base :[];
 
@@ -5795,7 +5816,8 @@ try {
 		localobj = JSON.parse(k);
 } catch (_) {}
 
-function downloadtext(name, text) {
+function downloadtext(name, text) 
+{
 	var element = document.createElement('a');
 	element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
 	element.setAttribute('download', name);
@@ -5805,9 +5827,9 @@ function downloadtext(name, text) {
 	document.body.removeChild(element);
 }
 
-function gologin(id) 
+function gologin(login) 
 {
-	global.id = id;
+	global.login = login;
 }
 
 function goimage(image) 
