@@ -3839,7 +3839,7 @@ var eventlst = [
 		tap: "MENU",
 		pan: "MENU",
 		swipe: "MENU",
-		button: "SETUP",
+		button: "OPTION",
 		wheel: "MENU",
 		drop: "DEFAULT",
 		key: "MENU",
@@ -3847,7 +3847,7 @@ var eventlst = [
 		pinch: "MENU",
 		bar: new panel.empty(),
 		scroll: new panel.scrollbar(),
-		buttonheight: 90,
+		buttonheight: 160,
 		buttonmargin: 10,
 		width: 640
 	},
