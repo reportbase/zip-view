@@ -5322,10 +5322,6 @@ galleryobj.init = function(obj)
 	headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
 	headham.panel = headobj.value();
 	_2cnv.sliceobj.data = [];
-
-	var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
-	_2cnv.rotated = [...a, ...a, ...a];
-
 	_3cnv.sliceobj.data = 
 		[
 		{
@@ -5446,9 +5442,6 @@ galleryobj.init = function(obj)
 		}
 	];
 
-	var a = Array(_3cnv.sliceobj.length()).fill().map((_, index) => index);
-	_3cnv.rotated = [...a, ...a, ...a];
-
 	_5cnv.sliceobj.data = [];
 	var j = 0;
 	for (var n = 0; n < galleryobj.data.length; ++n) 
@@ -5465,9 +5458,6 @@ galleryobj.init = function(obj)
 			_5cnv.sliceobj.data.push(k);
 	};
 	
-	var a = Array(_5cnv.sliceobj.length()).fill().map((_, index) => index);
-	_5cnv.rotated = [...a, ...a, ...a];
-
 	_6cnv.sliceobj.data = [];
 	for (var n = 0; n < galleryobj.data.length; ++n) 
 	{
@@ -5478,9 +5468,6 @@ galleryobj.init = function(obj)
 		_6cnv.sliceobj.data.push(j);
 	};
 	
-	var a = Array(_6cnv.sliceobj.length()).fill().map((_, index) => index);
-	_6cnv.rotated = [...a, ...a, ...a];
-
 	_7cnv.sliceobj.data = 
 		[
 		{
@@ -5551,18 +5538,9 @@ galleryobj.init = function(obj)
 			}
 		});
 
-	var a = Array(_7cnv.sliceobj.length()).fill().map((_, index) => index);
-	_7cnv.rotated = [...a, ...a, ...a];
-
 	_8cnv.sliceobj.data = galleryobj.data;
-	var a = Array(galleryobj.length()).fill().map((_, index) => index);
-	_8cnv.rotated = [...a, ...a, ...a];
-
 	_9cnv.sliceobj.data = galleryobj.base ? galleryobj.base :[];
 
-	//todo: login
-	//todo: gallerie
-	
 	if (_9cnv.sliceobj.data.length)
 		_7cnv.sliceobj.data.push(
 		{
@@ -5577,25 +5555,29 @@ galleryobj.init = function(obj)
 			}
 		});
 	
-	var a = Array(_9cnv.sliceobj.length()).fill().map((_, index) => index);
-	_9cnv.rotated = [...a, ...a, ...a];
+	_10cnv.sliceobj.data = [];
+	_11cnv.sliceobj.data = [];
 
-	_11cnv.sliceobj.data = 
-	[
-	];
-
-	var a = Array(_11cnv.sliceobj.length()).fill().map((_, index) => index);
-	_11cnv.rotated = [...a, ...a, ...a];
+	var lst = [_2cnv,_3cnv,_5cnv,_6cnv,_7cnv,_8cnv,_9cnv,_10cnv,_11cnv];
+	for (var n = 0; n < lst.length; n++)
+	{
+		var cnv = lst[n];
+		var a = Array(cnv.sliceobj.length()).fill().map((_, index) => index);
+		cnv.rotated = [...a, ...a, ...a];
+	}		
 
 	galleryobj.leftcnv = _7cnv;
 	galleryobj.rightcnv = _5cnv.sliceobj.data.length >= 2 ? _5cnv : _6cnv;
 	galleryobj.leftctx = _7cnvctx;
 	galleryobj.rightctx = _5cnv.sliceobj.data.length >= 2 ? _5cnvctx : _6cnvctx;
 	
-	if (galleryobj.width) {
+	if (galleryobj.width) 
+	{
 		buttonobj.reset();
 		initime();
-	} else {
+	} 
+	else 
+	{
 		var image = new Image();
 		var current = galleryobj.lerp(1 - _8cnv.timeobj.berp());
 		image.src = imagepath(galleryobj.data[current]);
