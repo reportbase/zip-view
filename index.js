@@ -3423,7 +3423,9 @@ bossobj.reset = function() {
 	context.refresh();
 }
 
-var buttonlst = [{
+var buttonlst = 
+[
+	{
 		name: "DEFAULT",
 		draw: function(context, rect, user, time) {}
 	},
@@ -3502,7 +3504,8 @@ var buttonlst = [{
 	},
 	{
 		name: "GALLERY",
-		draw: function(context, rect, user, time) {
+		draw: function(context, rect, user, time) 
+		{
 			var index = time % IMAGELSTSIZE;
 			var view = Math.floor(time / IMAGELSTSIZE);
 			var thumbimg = thumbimglst[index];
@@ -3906,7 +3909,7 @@ var eventlst = [{
 		pinch: "MENU",
 		bar: new panel.empty(),
 		scroll: new panel.scrollbar(),
-		buttonheight: 50,
+		buttonheight: 60,
 		buttonmargin: 5,
 		width: 640
 	},
@@ -3972,7 +3975,7 @@ var eventlst = [{
 		pinch: "MENU",
 		bar: new panel.empty("Image Browser"),
 		scroll: new panel.scrollbar(),
-		buttonheight: 50,
+		buttonheight: 60,
 		buttonmargin: 10,
 		width: 640
 	},
@@ -4463,8 +4466,10 @@ panel.rotated_text = function() {
 };
 
 panel.text = function(color, align = "center", baseline = "alphabetic",
-	reverse = 0, noclip = 0, font = DEFAULTFONT) {
-	this.draw = function(context, rect, user, time) {
+	reverse = 0, noclip = 0, font = DEFAULTFONT) 
+{
+	this.draw = function(context, rect, user, time) 
+	{
 		if (typeof(user) !== "string")
 			return;
 
