@@ -2379,7 +2379,7 @@ pressobj.set(3);
 
 function gotoimage(n) 
 {
-	var top = _8cnv.buttonheight < window.innerHeight ? 1 : 0; 
+	var top = _8cnv.buttonheight < window.innerHeight ? 0 : 1; 
 	var k = TIMEOBJ - TIMEOBJ / galleryobj.length() / 2;
 	k -= n * (TIMEOBJ / galleryobj.length());
 	_8cnv.timeobj.set(k);
@@ -3490,7 +3490,7 @@ var buttonlst = [{
 					new Layer(
 						[
 							new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8), canvas.buttonmargin, canvas.buttonmargin),
-							new panel.shrink(new panel.text("white", "center", "middle", 0, 0), 20, 0),
+							new panel.shrink(new panel.text("white", "center", "top", 0, 0), 20, 0),
 						]),
 					0,
 				]);
