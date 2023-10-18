@@ -5546,7 +5546,7 @@ galleryobj.init = function(obj)
 	galleryobj.leftcnv = _7cnv;
 	galleryobj.rightcnv = _5cnv;
 	galleryobj.leftctx = _7cnvctx;
-	galleryobj.rightctx = _5cnvcnv;
+	galleryobj.rightctx = _5cnvctx;
 	
 	if (galleryobj.width) {
 		buttonobj.reset();
