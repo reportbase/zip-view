@@ -5544,9 +5544,9 @@ galleryobj.init = function(obj)
 	_11cnv.rotated = [...a, ...a, ...a];
 
 	galleryobj.leftcnv = _7cnv;
-	galleryobj.rightcnv = _5cnv;
+	galleryobj.rightcnv = _5cnv.sliceobj.data.length >= 2 ? _5cnv : _6cnv;
 	galleryobj.leftctx = _7cnvctx;
-	galleryobj.rightctx = _5cnvctx;
+	galleryobj.rightctx = _5cnv.sliceobj.data.length >= 2 ? _5cnvctx : _6cnvctx;
 	
 	if (galleryobj.width) {
 		buttonobj.reset();
