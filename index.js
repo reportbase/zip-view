@@ -1075,7 +1075,7 @@ panel.rightmenu = function()
 	{
 		context.save();
 		context.rightmenurect = new rectangle();
-		var s = menuobj.value() == galleryobj.rightmenu;
+		var s = menuobj.value() == galleryobj.rightctx;
 		var j = 5;
 		var k = j / 2;
 		var e = new panel.fill(OPTIONFILL);
