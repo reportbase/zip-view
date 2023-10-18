@@ -1069,11 +1069,13 @@ panel.fitwidth = function()
 	}
 };
 
-panel.rightmenu = function() {
-	this.draw = function(context, rect, user, time) {
+panel.rightmenu = function() 
+{
+	this.draw = function(context, rect, user, time) 
+	{
 		context.save();
 		context.rightmenurect = new rectangle();
-		var s = menuobj.value() == _5cnvctx;
+		var s = menuobj.value() == galleryobj.rightmenu;
 		var j = 5;
 		var k = j / 2;
 		var e = new panel.fill(OPTIONFILL);
@@ -5533,7 +5535,7 @@ galleryobj.init = function(obj)
 		},
 	];
 
-	if (1)//_5cnv.sliceobj.data.length >= 2)
+	if (_5cnv.sliceobj.data.length >= 2)
 		_7cnv.sliceobj.data.push(
 		{
 			title: "Image \u{25B6}",
