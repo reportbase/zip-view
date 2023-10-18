@@ -3972,7 +3972,7 @@ var eventlst = [{
 		tap: "MENU",
 		pan: "MENU",
 		swipe: "MENU",
-		button: "MENU",
+		button: "OPTION",
 		wheel: "MENU",
 		drop: "DEFAULT",
 		key: "MENU",
@@ -3980,7 +3980,7 @@ var eventlst = [{
 		pinch: "MENU",
 		bar: new panel.empty("Image Browser"),
 		scroll: new panel.scrollbar(),
-		buttonheight: 60,
+		buttonheight: 240,
 		buttonmargin: 10,
 		width: 640
 	},
