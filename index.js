@@ -2351,6 +2351,7 @@ var presslst =
 		name: "GALLERY",
 		pressup: function(context, rect, x, y) 
 		{
+			var canvas = context.canvas;
 			if (canvas.vscrollrect && canvas.vscrollrect.hitest(x, y)) 
 			{
 			} 
@@ -2376,6 +2377,7 @@ var presslst =
 		name: "BOSS",
 		pressup: function(context, rect, x, y) 
 		{
+			var canvas = context.canvas;
 			if (canvas.zoomrect && canvas.zoomrect.hitest(x, y)) 
 			{
 			} 
