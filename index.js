@@ -1644,8 +1644,10 @@ var wheelst =
 			}
 			else
 			{
-				if (Math.abs(delta) < 10)
-					return;
+				if (delta > -6 && delta < 0)
+					delta = -6;
+				else if (delta < 6 && delta > 0)
+					delta = 6;
 				menuobj.updown(context, delta);
 				context.refresh();
 			}
