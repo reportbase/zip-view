@@ -5331,17 +5331,18 @@ galleryobj.init = function(obj)
 			title: "delete image",
 			func: function() {
 				var id = galleryobj.value().id;
-				fetch(`https://ipfs-view.pages.dev/image/${id}`, {
-						method: 'delete'
-					})
-					.then(res => {
-						location.reload();
-						return res.json()
-					})
-					.then(data => console.log(data))
-					.catch(error => {
-						console.log("error:", error);
-					});
+				fetch(`https://ipfs-view.pages.dev/image/${id}`, 
+				{
+					method: 'delete'
+				})
+				.then(res => {
+					location.reload();
+					return res.json()
+				})
+				.then(data => console.log(data))
+				.catch(error => {
+					console.log("error:", error);
+				});
 			},
 			enabled: function() {
 				return false
@@ -5556,10 +5557,22 @@ galleryobj.init = function(obj)
 	var a = Array(galleryobj.length()).fill().map((_, index) => index);
 	_8cnv.rotated = [...a, ...a, ...a];
 
-	_9cnv.sliceobj.data = galleryobj.base ? galleryobj.base :
-	[
-	];
+	_9cnv.sliceobj.data = galleryobj.base ? galleryobj.base :[];
 
+	if (_5cnv.sliceobj.data.length >= 2)
+		_7cnv.sliceobj.data.push(
+		{
+			title: "Help \u{25B6}",
+			func: function() 
+			{
+				galleryobj.leftcnv = _9cnv;
+				galleryobj.leftctx = _9cnvctx;
+				menuobj.setindex(galleryobj.leftctx);
+				menuobj.show();
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+			}
+		});
+	
 	var a = Array(_9cnv.sliceobj.length()).fill().map((_, index) => index);
 	_9cnv.rotated = [...a, ...a, ...a];
 
