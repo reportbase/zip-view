@@ -4141,7 +4141,8 @@ contextlst.forEach(function(context, n)
 	canvas.bar = obj.bar;
 	canvas.scroll = obj.scroll;
 	canvas.buttonheight = obj.buttonheight;
-
+	canvas.buttonmargin = obj.buttonmargin;
+	
 	var k = pinchlst.findIndex(function(a) 
 	{
 		return a.name == obj.pinch
