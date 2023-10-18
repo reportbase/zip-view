@@ -5560,7 +5560,10 @@ galleryobj.init = function(obj)
 
 	_9cnv.sliceobj.data = galleryobj.base ? galleryobj.base :[];
 
-	if (_5cnv.sliceobj.data.length >= 2)
+	//todo: login
+	//todo: galleries
+	
+	if (_9cnv.sliceobj.data.length)
 		_7cnv.sliceobj.data.push(
 		{
 			title: "Help \u{25B6}",
