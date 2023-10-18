@@ -5480,17 +5480,6 @@ galleryobj.init = function(obj)
 	_7cnv.sliceobj.data = 
 		[
 		{
-			title: "Image \u{25BA}",
-			func: function() 
-			{
-				galleryobj.leftcnv = _6cnv;
-				galleryobj.leftctx = _6cnvctx;
-				menuobj.setindex(galleryobj.leftctx);
-				menuobj.show();
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-			}
-		},
-		{
 			title: "Open (*.zip, *.cbz, *.json)",
 			func: function() {
 				importdialog();
@@ -5543,6 +5532,21 @@ galleryobj.init = function(obj)
 			}
 		},
 	];
+
+	if (_5cnv.sliceobj.data.length >= 2)
+		_7cnv.sliceobj.data.push(
+		{
+			{
+			title: "Image \u{25B6}",
+			func: function() 
+			{
+				galleryobj.leftcnv = _6cnv;
+				galleryobj.leftctx = _6cnvctx;
+				menuobj.setindex(galleryobj.leftctx);
+				menuobj.show();
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+			}
+		};
 
 	var a = Array(_7cnv.sliceobj.length()).fill().map((_, index) => index);
 	_7cnv.rotated = [...a, ...a, ...a];
