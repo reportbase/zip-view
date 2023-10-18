@@ -5636,6 +5636,9 @@ galleryobj.init = function(obj)
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 			}
 		});
+
+		var a = Array(_7cnv.sliceobj.length()).fill().map((_, index) => index);
+		_7cnv.rotated = [...a, ...a, ...a];
 	})
 	.catch(error => console.log(error));
 		
