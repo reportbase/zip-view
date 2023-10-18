@@ -5480,7 +5480,7 @@ galleryobj.init = function(obj)
 	_7cnv.sliceobj.data = 
 		[
 		{
-			title: "Image &#9658;",
+			title: "Image \u{25BA}",
 			func: function() 
 			{
 				galleryobj.leftcnv = _6cnv;
