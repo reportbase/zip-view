@@ -5536,7 +5536,6 @@ galleryobj.init = function(obj)
 	if (_5cnv.sliceobj.data.length >= 2)
 		_7cnv.sliceobj.data.push(
 		{
-			{
 			title: "Image \u{25B6}",
 			func: function() 
 			{
