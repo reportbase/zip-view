@@ -2351,7 +2351,7 @@ var presslst =
 		name: "GALLERY",
 		pressup: function(context, rect, x, y) 
 		{
-			//todo fitwidth();
+			//todo: not scrollbars
 			headcnv.height = headcnv.height?0:BEXTENT;
 			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 		},
@@ -2368,9 +2368,9 @@ var presslst =
 		name: "BOSS",
 		pressup: function(context, rect, x, y) 
 		{
+			//todo: not scrollbars
 			headcnv.height = headcnv.height?0:BEXTENT;
 			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-			fitwidth();
 		},
 		press: function(context, rect, x, y) 
 		{
@@ -4836,9 +4836,10 @@ var headlst = [
 			k.canvas.panstart_(k, rect, x, y);
 		};
 
-		this.pressup = function(context, rect, x, y) {
-			var k = menuobj.value() ? menuobj.value() : _4cnvctx;
-			k.canvas.pressup_(k, rect, x, y);
+		this.pressup = function(context, rect, x, y) 
+		{
+			//var k = menuobj.value() ? menuobj.value() : _4cnvctx;
+			//k.canvas.pressup_(k, rect, x, y);
 		};
 
 		this.tap = function(context, rect, x, y) {
