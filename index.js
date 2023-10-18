@@ -5342,31 +5342,7 @@ galleryobj.init = function(obj)
 
 	headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
 	headham.panel = headobj.value();
-	_2cnv.sliceobj.data = [];
-	
-    	var login = global.login?global.login:"reportbase@gmail.com";
-	fetch(`https://bucket.reportbase5836.workers.dev/zips/${login}`)
-	.then(function(response) 
-	      {
-		      if (response.ok)
-	 		return response.json()
-			throw Error(response.statusText);
-	      })
-	.then(function(results)
-	{      
-		for (var n = 0; n < results.length; ++n)
-		{
-			var result = results[n];
-			result.func = function() 
-			{
-				
-			}
-   		}
 
-		_2cnv.sliceobj.data = results 
-	})
-	.catch(error => console.log(error));
-	
 	_3cnv.sliceobj.data = 
 		[
 		{
@@ -5611,22 +5587,6 @@ galleryobj.init = function(obj)
 	
 	_8cnv.sliceobj.data = galleryobj.data;
 	_9cnv.sliceobj.data = galleryobj.base ? galleryobj.base :[];
-
-	if (_2cnv.sliceobj.data.length)
-	{
-		_7cnv.sliceobj.data.push(
-		{
-			title: "Galleries \u{25B6}",
-			func: function() 
-			{
-				galleryobj.leftcnv = _2cnv;
-				galleryobj.leftctx = _2cnvctx;
-				menuobj.setindex(galleryobj.leftctx);
-				menuobj.show();
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-			}
-		});
-	}
 	
 	if (_9cnv.sliceobj.data.length)
 	{
@@ -5643,7 +5603,42 @@ galleryobj.init = function(obj)
 			}
 		});
 	}
-	
+
+	_2cnv.sliceobj.data = [];
+    	var login = global.login?global.login:"reportbase@gmail.com";
+	fetch(`https://bucket.reportbase5836.workers.dev/zips/${login}`)
+	.then(function(response) 
+	      {
+		      if (response.ok)
+	 		return response.json()
+			throw Error(response.statusText);
+	      })
+	.then(function(results)
+	{      
+		for (var n = 0; n < results.length; ++n)
+		{
+			var result = results[n];
+			result.func = function() 
+			{				
+			}
+   		}
+
+		_2cnv.sliceobj.data = results 
+		_7cnv.sliceobj.data.push(
+		{
+			title: "Galleries \u{25B6}",
+			func: function() 
+			{
+				galleryobj.leftcnv = _2cnv;
+				galleryobj.leftctx = _2cnvctx;
+				menuobj.setindex(galleryobj.leftctx);
+				menuobj.show();
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+			}
+		});
+	})
+	.catch(error => console.log(error));
+		
 	_10cnv.sliceobj.data = [];
 	_11cnv.sliceobj.data = [];
 
