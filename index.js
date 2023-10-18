@@ -4947,7 +4947,7 @@ var headlst = [
 			if (canvas.helprect && canvas.helprect.hitest(x, y)) 
 			{
 				galleryobj.set(_8cnv.lastcurrent)
-				galleryobj.righctx.hide()
+				galleryobj.rightctx.hide()
 				if (menuobj.value() == galleryobj.leftctx) {
 					galleryobj.leftctx.hide();
 					menuobj.setindex(_8cnvctx);
