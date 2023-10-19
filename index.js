@@ -225,6 +225,10 @@ let circular_array = function(title, data)
 	this.rotateanchored = function(index) 
 	{
 		this.CURRENT = this.ANCHOR - index;
+		if (this.CURRENT >= this.length())
+			this.CURRENT = this.CURRENT - this.length();
+		else if (this.CURRENT < 0)
+			this.CURRENT = this.length() + this.CURRENT;
 	};
 
 	this.setrotate = function(x, w) 
@@ -5621,6 +5625,8 @@ galleryobj.init = function(obj)
 	}
 
 	_2cnv.sliceobj.data = [];
+	_10cnv.sliceobj.data = [];
+	_11cnv.sliceobj.data = [];
     	var login = localobj.login?localobj.login:"reportbase@gmail.com";
 	fetch(`https://bucket.reportbase5836.workers.dev/zips/${login}`)
 	.then(function(response) 
@@ -5661,9 +5667,6 @@ galleryobj.init = function(obj)
 		_7cnv.rotated = [...a, ...a, ...a];
 	})
 	.catch(error => console.log(error));
-		
-	_10cnv.sliceobj.data = [];
-	_11cnv.sliceobj.data = [];
 
 	var lst = [_2cnv,_3cnv,_5cnv,_6cnv,_7cnv,_8cnv,_9cnv,_10cnv,_11cnv];
 	for (var n = 0; n < lst.length; n++)
