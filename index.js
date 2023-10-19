@@ -1911,7 +1911,7 @@ function uploadzip(file)
 		.then(function(response) 
 		      {
 			      if (response.ok)
-				return response.text()
+				return response.json()
 				throw Error(response.statusText);
 		      })
 		.then(function(results)
