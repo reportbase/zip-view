@@ -1894,6 +1894,33 @@ var userobj = {}
 
 async function loadzip(path) 
 {
+	var login = localobj.login;
+	if (!login)
+	    login = "reportbase@gmail.com";
+	    
+	      const form = new FormData();
+	      form.append('file', path);
+	      form.append('title', "xxxx";
+	      form.append('email', login);
+	
+	      fetch(`https://bucket.reportbase5836.workers.dev/bucket1`,
+	      {
+		'method': 'POST',
+		'body': form
+	      })
+		.then(function(response) 
+		      {
+			      if (response.ok)
+				return response.text()
+				throw Error(response.statusText);
+		      })
+		.then(function(results)
+		      {
+			      gridshow();
+		      })
+		.catch(error => console.log(error)); 	
+
+	//****************************
 	const {entries} = await unzipit.unzip(path);
 	let keys = Object.keys(entries);
 	keys.sort();
