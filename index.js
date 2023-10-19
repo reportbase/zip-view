@@ -5474,7 +5474,8 @@ galleryobj.init = function(obj)
 			title: "Login",
 			func: function() 
 			{
-				gotodialog(global.login?global.login:"", "Login", gologin);
+				gotodialog(localobj.login, "Login", gologin);
+				//todo: load in gallery and window.open latest gallery
 			}
 		},
 		{
@@ -5584,7 +5585,7 @@ galleryobj.init = function(obj)
 	}
 
 	_2cnv.sliceobj.data = [];
-    	var login = global.login?global.login:"reportbase@gmail.com";
+    	var login = localobj.login?localobj.login:"reportbase@gmail.com";
 	fetch(`https://bucket.reportbase5836.workers.dev/zips/${login}`)
 	.then(function(response) 
 	      {
@@ -5832,6 +5833,7 @@ else
 
 var localobj = {};
 localobj.time = 0;
+localobj.login = "reportbase@gmail.com";
 
 try {
 	var k = localStorage.getItem(url.path);
@@ -5852,7 +5854,7 @@ function downloadtext(name, text)
 
 function gologin(login) 
 {
-	global.login = login;
+	localobj.login = login;
 }
 
 function goimage(image) 
@@ -5877,7 +5879,7 @@ function gotodialog(value, title, func)
 		if (event.keyCode === 13) 
 		{
 			var page = input.value.clean();
-			func(Number(page));
+			func(page);
 			dialog.close();
 		}
 	});
@@ -5888,7 +5890,7 @@ function gotodialog(value, title, func)
 		if (event.target.id == "goto-ok") 
 		{
 			var page = input.value.clean();
-			func(Number(page));
+			func(page);
 			dialog.close();
 		} 
 		else if (!rect.hitest(event.x, event.y)) 
