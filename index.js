@@ -3536,7 +3536,8 @@ var buttonlst =
 			var thumbfitted = thumbfittedlst[index];
 
 			if (context.canvas.scrollobj.current() == 0 &&
-				thumbimg && thumbimg.width) {
+				thumbimg && thumbimg.width) 
+			{
 				var obj = context.canvas.scrollobj.value();
 				var b = thumbimg.width / thumbimg.height;
 				var b2 = rect.width / rect.height;
@@ -3594,6 +3595,11 @@ var buttonlst =
 						0, yyy, ww, hhh);
 				}
 
+				if (user.tap)
+				{
+					var a = new panel.fill("rgba(0,0,0,0.5)");
+					a.draw(context, r, 0, 0);
+				}
 			}
 		}
 	},
@@ -3796,12 +3802,6 @@ menuobj.draw = function()
 					context.canvas.visibles.push(j);
 				ctx.translate(0, j.y);
 				context.canvas.draw(ctx, r, j.slice, j.n);
-				if (slice.tap)
-				{
-					var a = new panel.fill("rgba(0,0,0,0.5)");
-					a.draw(context, r, 0, 0);
-				}
-				
 				ctx.translate(0, -j.y);
 			}
 		}
