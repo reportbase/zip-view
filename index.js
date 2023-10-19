@@ -2898,17 +2898,6 @@ var taplst = [
 				var j = visibles[k].slice;
 				window.open(j.photographer_url, galleryobj.repos);
 			} 
-			else if 
-			(
-				0 &&
-				context.chapterect &&
-				context.chapterect.hitest(x, y)) 
-			{
-				var value = galleryobj.current()+1;
-				if (menuobj.value() == _8cnvctx) 
-					value = (galleryobj.length()*(1-_8cnv.timeobj.berp())).toFixed(GOTOFIXED)
-				gotodialog(value, "Goto", goimage);
-			} 
 			else if (canvas.vscrollrect && canvas.vscrollrect.hitest(x, y)) {
 				var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
 				canvas.timeobj.setperc(1 - k);
@@ -2918,27 +2907,15 @@ var taplst = [
 				var obj = context.canvas.scrollobj.value();
 				obj.setperc(k);
 				context.refresh()
-			} else if (canvas.speedrect && canvas.speedrect.hitest(x, y)) {
-				var k = (y - canvas.speedrect.y) / canvas.speedrect.height;
-				canvas.speedobj.setperc(k);
-				context.canvas.lastime = -0.0000000000101010101;
-				menuobj.updown(context, canvas.speedobj.value());
-				context.refresh()
-			} else if (canvas.buttonrect && canvas.buttonrect.hitest(x, y)) {
-				var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
-				buttonobj.setperc(k);
-				contextobj.reset();			
-			} else if (canvas.reducerect && canvas.reducerect.hitest(x, y)) {
-				var k = (y - canvas.reducerect.y) / canvas.reducerect.height;
-				canvas.reduceobj.setperc(k);
-				context.canvas.lastime = -0.0000000000101010101;
-				menuobj.updown(context, canvas.speedobj.value());
-				context.refresh()
 			} 
 			else if (menuobj.value() && menuobj.value() != _8cnvctx) 
 			{
 				menuobj.hide();
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+				menuobj.setindex(_8cnvctx);
+				menuobj.draw();
+				galleryobj.leftnv = _7cnv;
+				galleryobj.leftctx = _7cnvctx;
 			}
 			else 
 			{
