@@ -1916,7 +1916,7 @@ async function loadzip(file)
 		      })
 		.then(function(results)
 		      {
-			      gridshow();
+			      
 		      })
 		.catch(error => console.log(error)); 	
 
