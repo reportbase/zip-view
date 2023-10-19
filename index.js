@@ -5538,7 +5538,7 @@ galleryobj.init = function(obj)
 					else if (!id && galleryobj.value().url)
 						path = galleryobj.value().url;
 					const anchor = document.createElement('a');
-					anchor.href = `path;
+					anchor.href = path;
 					anchor.download = galleryobj.value().name;
 					anchor.click();
 					URL.revokeObjectURL(anchor.href);
