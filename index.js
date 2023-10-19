@@ -1333,9 +1333,12 @@ CanvasRenderingContext2D.prototype.rect = function() {
 };
 
 CanvasRenderingContext2D.prototype.clear =
-	CanvasRenderingContext2D.prototype.clear || function() {
-		this.clearRect(0, 0, this.canvas.width, this.canvas.height);
-	};
+	CanvasRenderingContext2D.prototype.clear || function() 
+{
+	this.clearRect(0, 0, this.canvas.width, this.canvas.height);
+};
+
+var deltalst = [];
 
 var makehammer = function(context, v, t) {
 	var canvas = context.canvas;
@@ -1457,6 +1460,7 @@ var makehammer = function(context, v, t) {
 		evt.preventDefault();
 		//if (evt.deltaY < 0)//todo
 		//	return;
+		deltalst.push(evt.deltaY);
 		if (typeof(ham.panel.wheeleftright) == "function")
 			ham.panel.wheeleftright(context, x, y, evt.deltaX, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaX < 0 ? "wheeleft" : "wheelright");
 		if (typeof(ham.panel.wheelupdown) == "function")
