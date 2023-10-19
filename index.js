@@ -1900,7 +1900,7 @@ async function loadzip(path)
 	    
 	      const form = new FormData();
 	      form.append('file', path);
-	      form.append('title', "xxxx";
+	      form.append('title', "xxxx");
 	      form.append('email', login);
 	
 	      fetch(`https://bucket.reportbase5836.workers.dev/bucket1`,
