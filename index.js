@@ -496,7 +496,8 @@ panel.empty = function() {
 
 panel.gallerybar = function() 
 {
-	this.draw = function(context, rect, user, time) {
+	this.draw = function(context, rect, user, time) 
+	{
 		var canvas = context.canvas;
 		canvas.speedrect = new rectangle();
 		canvas.reducerect = new rectangle();
@@ -597,6 +598,8 @@ panel.galleryscroll = function()
 		canvas.vscrollrect = new rectangle();
 		canvas.hscrollrect = new rectangle();
 		canvas.buttonrect = new rectangle();
+		if (!headcnv.height)
+			return;
 		var obj = context.canvas.scrollobj.value();
 		var bh = rect.height/2;
 		var bw = rect.width/2;
