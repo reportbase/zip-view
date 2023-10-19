@@ -1455,7 +1455,7 @@ var makehammer = function(context, v, t) {
 		var x = evt.offsetX;
 		var y = evt.offsetY;
 		evt.preventDefault();
-		if (y < evt.deltaY)//todo
+		if (evt.deltaY < 0)//todo
 			return;
 		//if (typeof(ham.panel.wheeleftright) == "function")
 		//	ham.panel.wheeleftright(context, x, y, evt.deltaX, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaX < 0 ? "wheeleft" : "wheelright");
@@ -1646,10 +1646,6 @@ var wheelst =
 		{
 			if (ctrl) 
 				return;
-			if (delta > -6 && delta < 0)
-				delta = -6;
-			else if (delta < 6 && delta > 0)
-				delta = 6;
 			menuobj.updown(context, delta);
 			context.refresh();
 		},
