@@ -1915,62 +1915,60 @@ async function loadzip(file)
 				throw Error(response.statusText);
 		      })
 		.then(function(results)
-		      {
-			      
-		      })
+		{
+			const {entries} = await unzipit.unzip(file);
+			let keys = Object.keys(entries);
+			keys.sort();
+			var count = 0;
+			galleryobj.title = "";
+			for (var n = 0; n < keys.length; ++n) {
+				var key = keys[n];
+				if (iOS() && key.charAt(0) == '_')
+					continue;
+				if (!key.isimage())
+					continue;
+				count += 1;
+			}
+		
+			if (!count)
+				return;
+		
+			galleryobj.data = [];
+			galleryobj.width = 0;
+			galleryobj.height = 0;
+			localobj.time = 0;
+			delete galleryobj.repos;
+			for (var n = 0; n < keys.length; ++n) 
+			{
+				var key = keys[n];
+				var k = Array.from(key);
+				if (iOS() && k.charAt(0) == '_')
+					continue;
+				var entry = entries[key];
+				if (entry.isDirectory)
+					continue;
+				if (key.isimage()) 
+				{
+					var k = {}
+					k.ext = key.ext();
+					k.blob = await entry.blob(`image/${k.ext}`);
+					var lst = key.split("/");
+					k.name = lst.pop();
+					k.folder = lst.join("/");
+					galleryobj.data.push(k);
+				} 
+				else if (key.isjson()) 
+				{
+					var blob = await entry.blob(`image/text`);
+					var text = await blob.text();
+					Object.assign(galleryobj, JSON.parse(text));
+				}
+			}
+		
+			galleryobj.init(galleryobj)			      
+		})
 		.catch(error => console.log(error)); 	
 
-	//****************************
-	const {entries} = await unzipit.unzip(file);
-	let keys = Object.keys(entries);
-	keys.sort();
-	var count = 0;
-	galleryobj.title = "";
-	for (var n = 0; n < keys.length; ++n) {
-		var key = keys[n];
-		if (iOS() && key.charAt(0) == '_')
-			continue;
-		if (!key.isimage())
-			continue;
-		count += 1;
-	}
-
-	if (!count)
-		return;
-
-	galleryobj.data = [];
-	galleryobj.width = 0;
-	galleryobj.height = 0;
-	localobj.time = 0;
-	delete galleryobj.repos;
-	for (var n = 0; n < keys.length; ++n) 
-	{
-		var key = keys[n];
-		var k = Array.from(key);
-		if (iOS() && k.charAt(0) == '_')
-			continue;
-		var entry = entries[key];
-		if (entry.isDirectory)
-			continue;
-		if (key.isimage()) 
-		{
-			var k = {}
-			k.ext = key.ext();
-			k.blob = await entry.blob(`image/${k.ext}`);
-			var lst = key.split("/");
-			k.name = lst.pop();
-			k.folder = lst.join("/");
-			galleryobj.data.push(k);
-		} 
-		else if (key.isjson()) 
-		{
-			var blob = await entry.blob(`image/text`);
-			var text = await blob.text();
-			Object.assign(galleryobj, JSON.parse(text));
-		}
-	}
-
-	galleryobj.init(galleryobj)
 }
 
 async function loadblob(blob) {
