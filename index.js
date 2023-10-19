@@ -3649,13 +3649,24 @@ menuobj.show = function() {
 	if (!context)
 		return;
 	var canvas = context.canvas;
-	if (canvas.width_ > window.innerWidth) {
+	if (canvas.width_ > window.innerWidth) 
+	{
+		headcnv.style.zIndex = 100;
+		canvas.style.zIndex = 10;
 		context.show(0, 0, window.innerWidth, window.innerHeight);
-	} else if (window.innerWidth - canvas.width_ < 180) {
+	} 
+	else if (window.innerWidth - canvas.width_ < 180) 
+	{
+		headcnv.style.zIndex = 10;
+		canvas.style.zIndex = 100;
 		var w = window.innerWidth - 180;
 		var l = Math.floor((window.innerWidth - w) / 2);
 		context.show(l, 0, w, window.innerHeight);
-	} else {
+	} 
+	else 
+	{
+		headcnv.style.zIndex = 10;
+		canvas.style.zIndex = 100;
 		var w = canvas.width_;
 		var l = Math.floor((window.innerWidth - w) / 2);
 		context.show(l, 0, w, window.innerHeight);
