@@ -5437,6 +5437,49 @@ galleryobj.init = function(obj)
 			}
 		},
 		{
+			title: "Download",
+			func: function() 
+			{
+				if (galleryobj.value().blob) 
+				{
+					const anchor = document.createElement('a');
+					anchor.href = URL.createObjectURL(galleryobj.value().blob);
+					anchor.download = galleryobj.value().name;
+					anchor.click();
+					URL.revokeObjectURL(anchor.href);
+					anchor.remove();
+				} 
+				else 
+				{
+					var id = galleryobj.value().id;
+					var path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
+					if (galleryobj.value().full)
+						path = galleryobj.value().full;
+					else if (!id && galleryobj.value().url)
+						path = galleryobj.value().url;
+					const anchor = document.createElement('a');
+					anchor.href = path;
+					anchor.download = id;
+					anchor.click();
+					URL.revokeObjectURL(anchor.href);
+					anchor.remove();
+				}
+			},
+			enabled: function() 
+			{
+				return 0;
+			}
+		},
+		{
+			title: "Full Screen",
+			func: function() {
+				screenfull.toggle()
+			},
+			enabled: function() {
+				return screenfull.isFullscreen;
+			}
+		},			
+		{
 			title: "Offscreen.js",
 			func: function() 
 			{
@@ -5515,49 +5558,6 @@ galleryobj.init = function(obj)
 		{
 			title: "Image and Document Viewer\nWebp, Jpg, Avif, Gif, and Png\nZip, Cbz, and Ipfs\nNewspapers, Magazines and Graphic Novels",
 			func: function() {}
-		},
-		{
-			title: "Download",
-			func: function() 
-			{
-				if (galleryobj.value().blob) 
-				{
-					const anchor = document.createElement('a');
-					anchor.href = URL.createObjectURL(galleryobj.value().blob);
-					anchor.download = galleryobj.value().name;
-					anchor.click();
-					URL.revokeObjectURL(anchor.href);
-					anchor.remove();
-				} 
-				else 
-				{
-					var id = galleryobj.value().id;
-					var path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
-					if (galleryobj.value().full)
-						path = galleryobj.value().full;
-					else if (!id && galleryobj.value().url)
-						path = galleryobj.value().url;
-					const anchor = document.createElement('a');
-					anchor.href = path;
-					anchor.download = id;
-					anchor.click();
-					URL.revokeObjectURL(anchor.href);
-					anchor.remove();
-				}
-			},
-			enabled: function() 
-			{
-				return 0;
-			}
-		},
-		{
-			title: "Full Screen",
-			func: function() {
-				screenfull.toggle()
-			},
-			enabled: function() {
-				return screenfull.isFullscreen;
-			}
 		},
 	];
 
