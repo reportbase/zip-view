@@ -1918,7 +1918,7 @@ function uploadzip(file)
 		{
 			galleryobj.init(); 
 			var path = `${url.origin}/?r2=${results.key}`;
-			window.history.replaceState(“”, url.origin, path);
+			window.history.replaceState("", url.origin, path);
 		})
 		.catch(error => console.log(error)); 	
 }
