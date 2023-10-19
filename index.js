@@ -3598,7 +3598,7 @@ var buttonlst =
 				if (user.tap)
 				{
 					var a = new panel.fill("rgba(0,0,0,0.5)");
-					a.draw(context, r, 0, 0);
+					a.draw(context, rect, 0, 0);
 				}
 			}
 		}
