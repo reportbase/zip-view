@@ -3694,7 +3694,7 @@ menuobj.draw = function()
 	{
 		var k = canvas.autodirect;
 		context.canvas.timeobj.rotate(k * context.canvas.slideshow);
-		if (!context.canvas.keydown)//todo
+		//if (!context.canvas.keydown)//todo
 			context.canvas.slideshow -= context.canvas.slidereduce
 	} 
 	else if (global.swipetimeout) 
