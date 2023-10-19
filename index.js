@@ -2945,8 +2945,15 @@ var taplst = [
 
 				if (k == visibles.length)
 					return;
-				var j = visibles[k].slice;
-				
+				var n = visibles[k].n;
+				var slice = canvas.sliceobj.data[n];
+				slice.tap = 1;
+				menuobj.draw();
+				setTimeout(function() 
+				{
+					slice.tap = 0;
+					menuobj.draw();
+				}, 200);
 			}
 		},
 	},
@@ -3765,7 +3772,6 @@ menuobj.draw = function()
 			var y = j * context.canvas.virtualheight;
 			var e = (canvas.virtualheight - rect.height) / 2;
 			y -= e;
-			//y = Math.floor(y);
 			if (y > 0 && y < lasty)
 				y = lasty;
 			lasty = y;
@@ -3788,6 +3794,12 @@ menuobj.draw = function()
 					context.canvas.visibles.push(j);
 				ctx.translate(0, j.y);
 				context.canvas.draw(ctx, r, j.slice, j.n);
+				if (slice.tap)
+				{
+					var a = new panel.fill("rgba(0,0,0,0.25)");
+					a.draw(context, slice.rect, 0, 0);
+				}
+				
 				ctx.translate(0, -j.y);
 			}
 		}
