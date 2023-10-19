@@ -1892,15 +1892,15 @@ var pinchobj = new circular_array("PINCH", [heightobj, zoomobj]);
 
 var userobj = {}
 
-async function loadzip(path) 
+async function loadzip(file) 
 {
 	var login = localobj.login;
 	if (!login)
 	    login = "reportbase@gmail.com";
 	    
 	      const form = new FormData();
-	      form.append('file', path);
-	      form.append('title', "xxxx");
+	      form.append('file', file);
+	      form.append('title', file.name);
 	      form.append('email', login);
 	
 	      fetch(`https://bucket.reportbase5836.workers.dev/bucket1`,
@@ -1921,7 +1921,7 @@ async function loadzip(path)
 		.catch(error => console.log(error)); 	
 
 	//****************************
-	const {entries} = await unzipit.unzip(path);
+	const {entries} = await unzipit.unzip(file);
 	let keys = Object.keys(entries);
 	keys.sort();
 	var count = 0;
@@ -1943,7 +1943,8 @@ async function loadzip(path)
 	galleryobj.height = 0;
 	localobj.time = 0;
 	delete galleryobj.repos;
-	for (var n = 0; n < keys.length; ++n) {
+	for (var n = 0; n < keys.length; ++n) 
+	{
 		var key = keys[n];
 		var k = Array.from(key);
 		if (iOS() && k.charAt(0) == '_')
@@ -1951,7 +1952,8 @@ async function loadzip(path)
 		var entry = entries[key];
 		if (entry.isDirectory)
 			continue;
-		if (key.isimage()) {
+		if (key.isimage()) 
+		{
 			var k = {}
 			k.ext = key.ext();
 			k.blob = await entry.blob(`image/${k.ext}`);
@@ -1959,7 +1961,9 @@ async function loadzip(path)
 			k.name = lst.pop();
 			k.folder = lst.join("/");
 			galleryobj.data.push(k);
-		} else if (key.isjson()) {
+		} 
+		else if (key.isjson()) 
+		{
 			var blob = await entry.blob(`image/text`);
 			var text = await blob.text();
 			Object.assign(galleryobj, JSON.parse(text));
