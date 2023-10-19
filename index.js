@@ -2952,7 +2952,15 @@ var taplst = [
 				setTimeout(function() 
 				{
 					slice.tap = 0;
-					menuobj.draw();
+					galleryobj.set(n);
+					headcnv.height = HEADHEIGHT;
+					headobj.set(BOSS);
+					headham.panel = headobj.value();
+					headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+					delete _4cnv.thumbcanvas;
+					delete photo.image;
+					menuobj.hide();
+					contextobj.reset();
 				}, 200);
 			}
 		},
