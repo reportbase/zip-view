@@ -1910,6 +1910,7 @@ function uploadzip(file)
 
 async function loadzip(file) 
 {
+	global.zip = file;
 	const {entries} = await unzipit.unzip(file);
 	let keys = Object.keys(entries);
 	keys.sort();
@@ -2037,7 +2038,6 @@ var droplst =
 			else if (files[0].name.iszip()) 
 			{
 				loadzip(files[0]);
-				uploadzip(files[0]);
 			} 
 			else if (files[0].name.isjson()) 
 			{
@@ -5537,6 +5537,13 @@ galleryobj.init = function(obj)
 	_7cnv.sliceobj.data = 
 		[
 		{
+			title: "Upload",
+			func: function() 
+			{
+				uploadzip(global.zip)
+			}
+		},
+		{
 			title: "Login",
 			func: function() 
 			{
@@ -6051,7 +6058,6 @@ function importdialog()
 				else if (name.iszip()) 
 				{
 					loadzip(files[0]);
-					uploadzip(files[0]);
 				} 
 				else if (name.isjson()) 
 				{
