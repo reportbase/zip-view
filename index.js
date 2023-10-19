@@ -5598,8 +5598,9 @@ galleryobj.init = function(obj)
 		{
 			var result = results[n];
 			result.func = function() 
-			{		
-				console.log(this);
+			{	
+				var path = `${url.origin}/?r2=${this.id}`;
+				window.open(path, "_self");
 			}
    		}
 
