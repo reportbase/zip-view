@@ -1,4 +1,4 @@
-/* 
+"do/* 
 Copyright 2017 Tom Brinkman
 https://zip-view.com
 https://ipfs-view.com
@@ -5539,7 +5539,7 @@ galleryobj.init = function(obj)
 						path = galleryobj.value().url;
 					const anchor = document.createElement('a');
 					anchor.href = path;
-					anchor.download = galleryobj.value().name;
+					anchor.download = id;
 					anchor.click();
 					URL.revokeObjectURL(anchor.href);
 					anchor.remove();
