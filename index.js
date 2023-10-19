@@ -5537,7 +5537,12 @@ galleryobj.init = function(obj)
 						path = galleryobj.value().full;
 					else if (!id && galleryobj.value().url)
 						path = galleryobj.value().url;
-					window.open(path, "download");
+					const anchor = document.createElement('a');
+					anchor.href = `path;
+					anchor.download = galleryobj.value().name;
+					anchor.click();
+					URL.revokeObjectURL(anchor.href);
+					anchor.remove();
 				}
 			},
 			enabled: function() 
