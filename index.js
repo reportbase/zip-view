@@ -679,7 +679,7 @@ panel.scrollbar = function()
 		var a = new panel.colA([5, 9, 0, 9, 5],
 			[
 				0,
-				new panel.row([5, 0, 5],
+				new panel.row([90, 0, 90],
 						[
 							0,
 							new Layer(
@@ -690,7 +690,7 @@ panel.scrollbar = function()
 							0,
 						]),
 				0,
-				new panel.row([5, 0, 5],
+				new panel.row([90, 0, 90],
 					[
 						0,
 						new Layer(
@@ -1644,24 +1644,13 @@ var wheelst =
 		updown: function(context, x, y, delta, ctrl, shift, alt, type) 
 		{
 			if (ctrl) 
-			{
-				context.canvas.pinching = 1;
-				var k = -1*(context.canvas.buttonheight*(delta/100));
-				context.canvas.buttonheight += k;  
-				context.canvas.buttonheight = Math.floor(context.canvas.buttonheight);
-				context.canvas.lastime = -0.0000000000101010101;
-				menuobj.draw();
-				context.canvas.pinching = 0;
-			}
-			else
-			{
-				if (delta > -6 && delta < 0)
-					delta = -6;
-				else if (delta < 6 && delta > 0)
-					delta = 6;
-				menuobj.updown(context, delta);
-				context.refresh();
-			}
+				return;
+			if (delta > -6 && delta < 0)
+				delta = -6;
+			else if (delta < 6 && delta > 0)
+				delta = 6;
+			menuobj.updown(context, delta);
+			context.refresh();
 		},
 		leftright: function(context, x, y, delta, ctrl, shift, alt) 
 		{
@@ -4829,50 +4818,6 @@ window.addEventListener("screenorientation", (evt) => {
 
 var headlst = [
 	new function() {
-		this.wheeleftright = function(context, x, y, ctrl, shift, alt, type) {
-			var k = menuobj.value() ? menuobj.value() : _4cnvctx;
-			k.canvas.wheeleftright_(k, x, y, ctrl, shift, alt, type);
-		};
-
-		this.wheelupdown = function(context, x, y, delta, ctrl, shift, alt, type) {
-			var k = menuobj.value() ? menuobj.value() : _4cnvctx;
-			k.canvas.wheelupdown_(k, x, y, delta, ctrl, shift, alt, type);
-		};
-
-		this.swipeleftright = function(context, rect, x, y, type) {
-			var k = menuobj.value() ? menuobj.value() : _4cnvctx;
-			k.canvas.swipeleftright_(k, rect, x, y, type);
-		};
-
-		this.swipeupdown = function(context, rect, x, y, type) {
-			var k = menuobj.value() ? menuobj.value() : _4cnvctx;
-			k.canvas.swipeupdown_(k, rect, x, y, type);
-		};
-
-		this.pan = function(context, rect, x, y, type) {
-			var k = menuobj.value() ? menuobj.value() : _4cnvctx;
-			k.canvas.pan_(k, rect, x, y, type);
-		};
-
-		this.panend = function(context, rect, x, y) {
-			var k = menuobj.value() ? menuobj.value() : _4cnvctx;
-			k.canvas.panend_(k, rect, x, y);
-		};
-
-		this.panleftright = function(context, rect, x, y, type) {
-			var k = menuobj.value() ? menuobj.value() : _4cnvctx;
-			k.canvas.panleftright_(k, rect, x, y, type);
-		};
-
-		this.panupdown = function(context, rect, x, y, type) {
-			var k = menuobj.value() ? menuobj.value() : _4cnvctx;
-			k.canvas.panupdown_(k, rect, x, y, type);
-		};
-
-		this.panstart = function(context, rect, x, y) {
-			var k = menuobj.value() ? menuobj.value() : _4cnvctx;
-			k.canvas.panstart_(k, rect, x, y);
-		};
 
 		this.tap = function(context, rect, x, y) {
 
@@ -4928,50 +4873,6 @@ var headlst = [
 		}
 	},
 	new function() {
-		this.wheeleftright = function(context, x, y, ctrl, shift, alt, type) {
-			var k = menuobj.value() ? menuobj.value() : _8cnvctx;
-			k.canvas.wheeleftright_(k, x, y, ctrl, shift, alt, type);
-		};
-
-		this.wheelupdown = function(context, x, y, delta, ctrl, shift, alt, type) {
-			var k = menuobj.value() ? menuobj.value() : _8cnvctx;
-			k.canvas.wheelupdown_(k, x, y, delta, ctrl, shift, alt, type);
-		};
-
-		this.swipeleftright = function(context, rect, x, y, type) {
-			var k = menuobj.value() ? menuobj.value() : _8cnvctx;
-			k.canvas.swipeleftright_(k, rect, x, y, type);
-		};
-
-		this.swipeupdown = function(context, rect, x, y, type) {
-			var k = menuobj.value() ? menuobj.value() : _8cnvctx;
-			k.canvas.swipeupdown_(k, rect, x, y, type);
-		};
-
-		this.pan = function(context, rect, x, y, type) {
-			var k = menuobj.value() ? menuobj.value() : _8cnvctx;
-			k.canvas.pan_(k, rect, x, y, type);
-		};
-
-		this.panend = function(context, rect, x, y) {
-			var k = menuobj.value() ? menuobj.value() : _8cnvctx;
-			k.canvas.panend_(k, rect, x, y);
-		};
-
-		this.panleftright = function(context, rect, x, y, type) {
-			var k = menuobj.value() ? menuobj.value() : _8cnvctx;
-			k.canvas.panleftright_(k, rect, x, y, type);
-		};
-
-		this.panupdown = function(context, rect, x, y, type) {
-			var k = menuobj.value() ? menuobj.value() : _8cnvctx;
-			k.canvas.panupdown_(k, rect, x, y, type);
-		};
-
-		this.panstart = function(context, rect, x, y) {
-			var k = menuobj.value() ? menuobj.value() : _8cnvctx;
-			k.canvas.panstart_(k, rect, x, y);
-		};
 
 		this.tap = function(context, rect, x, y) 
 		{
