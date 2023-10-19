@@ -1813,30 +1813,12 @@ var pinchlst =
 		name: "MENU",
 		pinch: function(context, x, y, scale) 
 		{
-			if (!context.buttonanchor)
-				context.buttonanchor = context.canvas.buttonheight;
-			if (!context.scaleanchor)
-				context.scaleanchor = scale;
-			context.scale = scale;
-			var k = context.scale/context.scaleanchor;
-			context.canvas.buttonheight = context.buttonachor * k;
-			context.canvas.buttonheight = Math.floor(context.canvas.buttonheight);
-			context.refresh();
 		},
 		pinchstart: function(context, rect, x, y) 
 		{
-			context.canvas.pinching = 1;
-			delete context.scale;
-			delete context.buttonanchor;
 		},
 		pinchend: function(context) 
 		{
-			setTimeout(function()
-			{
-				delete context.buttonanchor;
-				delete context.scaleanchor;
-				context.canvas.pinching = 0;
-			}, 40);
 		},
 	},
 ];
@@ -3709,8 +3691,8 @@ menuobj.draw = function()
 	{
 		var k = canvas.autodirect;
 		context.canvas.timeobj.rotate(k * context.canvas.slideshow);
-		//if (!context.canvas.keydown)
-		context.canvas.slideshow -= context.canvas.slidereduce
+		if (!context.canvas.keydown)//todo
+			context.canvas.slideshow -= context.canvas.slidereduce
 	} 
 	else if (global.swipetimeout) 
 	{
