@@ -1455,9 +1455,10 @@ var makehammer = function(context, v, t) {
 		var x = evt.offsetX;
 		var y = evt.offsetY;
 		evt.preventDefault();
-
-		if (typeof(ham.panel.wheeleftright) == "function")
-			ham.panel.wheeleftright(context, x, y, evt.deltaX, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaX < 0 ? "wheeleft" : "wheelright");
+		if (y < 0)//todo
+			return;
+		//if (typeof(ham.panel.wheeleftright) == "function")
+		//	ham.panel.wheeleftright(context, x, y, evt.deltaX, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaX < 0 ? "wheeleft" : "wheelright");
 		if (typeof(ham.panel.wheelupdown) == "function")
 			ham.panel.wheelupdown(context, x, y, evt.deltaY, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaY < 0 ? "wheelup" : "wheeldown");
 	});
