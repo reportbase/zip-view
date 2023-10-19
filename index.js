@@ -1455,7 +1455,7 @@ var makehammer = function(context, v, t) {
 		var x = evt.offsetX;
 		var y = evt.offsetY;
 		evt.preventDefault();
-		if (y < 0)//todo
+		if (y < evt.deltaY)//todo
 			return;
 		//if (typeof(ham.panel.wheeleftright) == "function")
 		//	ham.panel.wheeleftright(context, x, y, evt.deltaX, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaX < 0 ? "wheeleft" : "wheelright");
