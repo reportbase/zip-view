@@ -5855,6 +5855,7 @@ function downloadtext(name, text)
 function gologin(login) 
 {
 	localobj.login = login;
+	galleryobj.init();
 }
 
 function goimage(image) 
