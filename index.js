@@ -5474,8 +5474,8 @@ galleryobj.init = function(obj)
 			title: "Login",
 			func: function() 
 			{
-				gotodialog(localobj.login, "Login", gologin);
-				//todo: load in gallery and window.open latest gallery
+				gotodialog(localobj.login?localobj.login:"", "Login", gologin);
+				galleryobj.init();
 			}
 		},
 		{
