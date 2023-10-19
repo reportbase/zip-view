@@ -3697,12 +3697,15 @@ menuobj.draw = function()
 	if (!rect.width || !rect.height)
 		return;
 
-	if (context.canvas.slideshow > 0) {
+	if (context.canvas.slideshow > 0) 
+	{
 		var k = canvas.autodirect;
 		context.canvas.timeobj.rotate(k * context.canvas.slideshow);
 		//if (!context.canvas.keydown)
-			context.canvas.slideshow -= context.canvas.slidereduce
-	} else if (global.swipetimeout) {
+		context.canvas.slideshow -= context.canvas.slidereduce
+	} 
+	else if (global.swipetimeout) 
+	{
 		clearInterval(global.swipetimeout)
 		global.swipetimeout = 0;
 		context.canvas.slideshow = 0;
@@ -3712,17 +3715,21 @@ menuobj.draw = function()
 	var delayinterval = TIMEOBJ / len / 1000;
 	context.canvas.virtualheight = len * canvas.buttonheight;
 	context.clear();
-	if (context == _8cnvctx) {
+	if (context == _8cnvctx) 
+	{
 		canvas.buttonheight = buttonobj.value();
 		context.canvas.virtualheight = len * canvas.buttonheight * 0.635;
-	} else {
+	} 
+	else 
+	{
 		var a = new panel.fill(FILLMENU);
 		a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
 	}
 
 	var current = context.canvas.sliceobj.lerp(
 		1 - context.canvas.timeobj.berp());
-	if (canvas.lastcurrent != current) {
+	if (canvas.lastcurrent != current) 
+	{
 		canvas.lastcurrent = current;
 		var size = Math.ceil(rect.height / canvas.buttonheight) + 4;
 		canvas.normal = util.rotated_list(canvas.rotated, slices.length, current, size);
@@ -3744,8 +3751,10 @@ menuobj.draw = function()
 		var view = Math.floor(n / IMAGELSTSIZE);
 		var thumbimg = thumbimglst[index];
 		var thumbfitted = thumbfittedlst[index];
-		if (context == _8cnvctx && thumbimg.view != view) {
-			try {
+		if (context == _8cnvctx && thumbimg.view != view) 
+		{
+			try 
+			{
 				thumbimg.view = view;
 				thumbimg.src = imagepath(slice);
 				thumbimg.onload = function() {
@@ -3796,8 +3805,8 @@ menuobj.draw = function()
 				context.canvas.draw(ctx, r, j.slice, j.n);
 				if (slice.tap)
 				{
-					var a = new panel.fill("rgba(0,0,0,0.25)");
-					a.draw(context, slice.rect, 0, 0);
+					var a = new panel.fill("rgba(0,0,0,0.5)");
+					a.draw(context, r, 0, 0);
 				}
 				
 				ctx.translate(0, -j.y);
