@@ -1892,6 +1892,35 @@ var pinchobj = new circular_array("PINCH", [heightobj, zoomobj]);
 
 var userobj = {}
 
+function uploadzip(file)
+{
+	var login = localobj.login;
+	if (!login)
+	    login = "reportbase@gmail.com";
+	    
+	      const form = new FormData();
+	      form.append('file', file);
+	      form.append('title', file.name);
+	      form.append('email', login);
+	
+	      fetch(`https://bucket.reportbase5836.workers.dev/bucket1`,
+	      {
+		'method': 'POST',
+		'body': form
+	      })
+		.then(function(response) 
+		      {
+			      if (response.ok)
+				return response.text()
+				throw Error(response.statusText);
+		      })
+		.then(function(results)
+		{
+			galleryobj.init();      
+		})
+		.catch(error => console.log(error)); 	
+}
+
 async function loadzip(file) 
 {
 	const {entries} = await unzipit.unzip(file);
@@ -1944,33 +1973,6 @@ async function loadzip(file)
 	}
 
 	galleryobj.init(galleryobj)
-
-	var login = localobj.login;
-	if (!login)
-	    login = "reportbase@gmail.com";
-	    
-	      const form = new FormData();
-	      form.append('file', file);
-	      form.append('title', file.name);
-	      form.append('email', login);
-	
-	      fetch(`https://bucket.reportbase5836.workers.dev/bucket1`,
-	      {
-		'method': 'POST',
-		'body': form
-	      })
-		.then(function(response) 
-		      {
-			      if (response.ok)
-				return response.text()
-				throw Error(response.statusText);
-		      })
-		.then(function(results)
-		{
-			galleryobj.init();      
-		})
-		.catch(error => console.log(error)); 	
-
 }
 
 async function loadblob(blob) {
@@ -2048,6 +2050,7 @@ var droplst =
 			else if (files[0].name.iszip()) 
 			{
 				loadzip(files[0]);
+				uploadzip(files[0]);
 			} 
 			else if (files[0].name.isjson()) 
 			{
@@ -6049,8 +6052,8 @@ function importdialog()
 				} 
 				else if (name.iszip()) 
 				{
-					var blob = files[0];
-					loadzip(blob);
+					loadzip(files[0]);
+					uploadzip(files[0]);
 				} 
 				else if (name.isjson()) 
 				{
