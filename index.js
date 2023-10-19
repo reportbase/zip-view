@@ -1338,7 +1338,6 @@ CanvasRenderingContext2D.prototype.clear =
 	this.clearRect(0, 0, this.canvas.width, this.canvas.height);
 };
 
-var deltalst = [];
 
 var makehammer = function(context, v, t) {
 	var canvas = context.canvas;
@@ -1458,13 +1457,16 @@ var makehammer = function(context, v, t) {
 		var x = evt.offsetX;
 		var y = evt.offsetY;
 		evt.preventDefault();
-		//if (evt.deltaY < 0)//todo
-		//	return;
-		deltalst.push(evt.deltaY);
+		var deltax = evt.deltaX;
+		var deltay = evt.deltaY;
+		if (deltax > -1 && deltax < 0)
+			deltax = 1;
+		if (deltay < 1 && deltay > 0)
+			deltay = 1;
 		if (typeof(ham.panel.wheeleftright) == "function")
-			ham.panel.wheeleftright(context, x, y, evt.deltaX, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaX < 0 ? "wheeleft" : "wheelright");
+			ham.panel.wheeleftright(context, x, y, deltax, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaX < 0 ? "wheeleft" : "wheelright");
 		if (typeof(ham.panel.wheelupdown) == "function")
-			ham.panel.wheelupdown(context, x, y, evt.deltaY, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaY < 0 ? "wheelup" : "wheeldown");
+			ham.panel.wheelupdown(context, x, y, deltay, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaY < 0 ? "wheelup" : "wheeldown");
 	});
 
 	ham.on("press", function(evt) {
