@@ -1877,7 +1877,7 @@ var pinchobj = new circular_array("PINCH", [heightobj, zoomobj]);
 
 var userobj = {}
 
-function uploadzip(file)
+function publishzip(file)
 {
 	var login = localobj.login;
 	if (!login)
@@ -5537,10 +5537,11 @@ galleryobj.init = function(obj)
 	_7cnv.sliceobj.data = 
 		[
 		{
-			title: "Upload",
+			title: "Publish",
 			func: function() 
 			{
-				uploadzip(global.zip)
+				if (global.zip)
+					publishzip(global.zip)
 			}
 		},
 		{
