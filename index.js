@@ -125,10 +125,12 @@ function pause(ms)
 	return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function sleep(milliseconds) {
+function sleep(milliseconds) 
+{
 	const date = Date.now();
 	let currentDate = null;
-	do {
+	do 
+	{
 		currentDate = Date.now();
 	} while (currentDate - date < milliseconds);
 }
@@ -5596,7 +5598,8 @@ galleryobj.init = function(obj)
 		{
 			var result = results[n];
 			result.func = function() 
-			{				
+			{		
+				console.log(this);
 			}
    		}
 
