@@ -3842,7 +3842,7 @@ var buttonlst = [
         if (user.tap)
             clr = MENUTAP;
 
-        if (user.options)
+        if (1)//u1ser.options)
         {
                var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
                 [
