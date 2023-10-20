@@ -3911,7 +3911,7 @@ var buttonlst = [
                 [
                     new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8), 
                                      canvas.buttonmargin, canvas.buttonmargin),
-                    new panel.text("white", "center", "middle", 0, 0)
+                    new panel.text()
                 ]),
                 0,
             ]);
@@ -4969,8 +4969,8 @@ panel.rotated_text = function()
         context.restore();
     }
 };
-var ylst = [];
-panel.text = function(color, align = "center", baseline = "alphabetic",
+
+panel.text = function(color = "white", align = "center", baseline = "alphabetic",
     reverse = 0, noclip = 0, font = DEFAULTFONT)
 {
     this.draw = function(context, rect, user, time)
@@ -5016,7 +5016,7 @@ panel.text = function(color, align = "center", baseline = "alphabetic",
         else if (align == "right")
             x = rect.x + rect.width - 1;
         var y = rect.y + rect.height / 2;
-ylst.push(y);
+
         if (reverse)
             str = str.split("").reverse().join("");
         context.fillText(str, x, y);
