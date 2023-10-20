@@ -4371,7 +4371,7 @@ var eventlst = [
     scroll: new panel.scrollbar(),
     buttonheight: 60,
     buttonmargin: 5,
-    width: 640
+    width: 320
 },
 { //7
     hideontap: 1,
@@ -5911,7 +5911,7 @@ galleryobj.init = function(obj)
     {
         var k = galleryobj.data[n];
         var j = {};
-        j.title = `${n+1} of ${galleryobj.data.length}`;
+        j.title = `${n+1}`;// of ${galleryobj.data.length}`;
         j.func = gotoimage;
         _6cnv.sliceobj.data.push(j);
     };
