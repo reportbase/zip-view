@@ -1847,7 +1847,7 @@ infobj.reset = function()
 			if (value && value.folder)
 				infobj.data = value.folder.split("/");
 			infobj.data.push(`${index.toFixed(2)} of ${galleryobj.length()}`);
-			var j = _8cnv.scrollobj.value().berp()
+			var j = 100*_8cnv.scrollobj.value().berp()
 			infobj.data.push(`${j.toFixed(2)}`);
 		}
 		else
@@ -1857,9 +1857,9 @@ infobj.reset = function()
 			if (value && value.folder)
 				infobj.data = value.folder.split("/");
 			infobj.data.push(`${index+1} of ${galleryobj.length()}`);
-			var e = 1-_4cnv.timeobj.berp();
-			var j = rowobj.berp();
-			infobj.data.push(`${e.toFixed(2)}:${j.toFixed(2)}`);
+			var e = 100*(1-_4cnv.timeobj.berp();
+			var j = 100*rowobj.berp();
+			infobj.data.push(`${e.toFixed(2)} : ${j.toFixed(2)}`);
 		}
 
 }
@@ -3592,12 +3592,10 @@ var buttonlst =
 			var canvas = context.canvas;
 			context.save()
 			var clr = FILLBAR;
-			if (user.tap) {
+			if (user.tap) 
 				clr = MENUTAP;
-			} else if (user.enabled) {
-				if (user.enabled())
-					clr = MENUSELECT;
-			}
+			else if (user.enabled) 
+				clr = MENUSELECT;
 
 			var e = context.canvas.scrollobj.berp();
 			var a = new panel.col([BUTTONMARGIN, 0, BUTTONMARGIN],
@@ -3624,8 +3622,43 @@ var buttonlst =
 	},
 	{
 		name: "SETUP",
-		draw: function(context, rect, user, time) {
+		draw: function(context, rect, user, time) 
+		{
+			var canvas = context.canvas;
+			context.save()
+			var clr = FILLBAR;
+			if (user.tap) 
+				clr = MENUTAP;
+			
+			var e = context.canvas.scrollobj.berp();
+			var a = new panel.col([BUTTONMARGIN, 0, BUTTONMARGIN],
+				[
+					0,
+					new Layer(
+						[
+							new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8), 
+									 canvas.buttonmargin, canvas.buttonmargin),
+							new panel.row([0.75,0.25],
+							[
+								new panel.shrink(new panel.multitext(e), 20, 0),
+								new panel.layer(
+									[
+										new panel.rounded("rgb(0,0,80)", 0, 0, 8, 0), 			
+									]),
+							])
+						]),
+					0,
+				]);
 
+			var k = typeof(user.title) == "function" ? user.title() : user.title;
+			var d = "\n";
+			if (!k) {
+				k = user.folder;
+				d = "/";
+			}
+
+			a.draw(context, rect, k ? k.split(d) : "", time);
+			context.restore();
 		}
 	},
 	{
