@@ -3645,7 +3645,6 @@ menuobj.hide = function()
 	if (!context)
 		return;
 	context.hide();
-	headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
 	this.setindex(_8cnv.height ? _8cnvctx : 0);
 }
 
@@ -3672,15 +3671,6 @@ menuobj.show = function()
 		context.show(l, 0, w, window.innerHeight);
 	}
 
-	if (menuobj.value() != _8cnvctx &&
-	   canvas.width == window.innerWidth)
-	{
-		if (menuobj.value() == galleryobj.leftctx)
-			headcnvctx.show(0, 0, HEADHEIGHT, HEADHEIGHT);
-		else
-			headcnvctx.show(window.innerWidth-HEADHEIGHT, 0, HEADHEIGHT, HEADHEIGHT);
-	}
-	
 	function f() {
 		context.canvas.lastime = -0.0000000000101010101;
 		menuobj.draw();
@@ -4916,11 +4906,22 @@ var headlst = [
 					menuobj.draw();
 					galleryobj.leftnv = _7cnv;
 					galleryobj.leftctx = _7cnvctx;
-				} else {
+					if (galleryobj.rect().width == window.innerWidth)
+						headcnvctx.show(0, 0, HEADHEIGHT, HEADHEIGHT);
+					else
+						headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+				} 
+				else 
+				{
 					menuobj.setindex(galleryobj.leftctx);
 					menuobj.show();
+					headcnvctx.show(window.innerWidth-HEADHEIGHT, 0, HEADHEIGHT, HEADHEIGHT);
+					if (galleryobj.rect().width == window.innerWidth)
+						headcnvctx.show(window.innerWidth-HEADHEIGHT, 0, HEADHEIGHT, HEADHEIGHT);
+					else
+						headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
 				}
-
+				
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 			} 
 			else if (
