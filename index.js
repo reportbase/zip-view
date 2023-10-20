@@ -3844,35 +3844,87 @@ var buttonlst = [
         if (user.tap)
             clr = MENUTAP;
 
-        var e = context.canvas.scrollobj.berp();
-        var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
-            [
-                0,
-                panel.layers(
-                    [
-                        new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
-                            canvas.buttonmargin, canvas.buttonmargin),
-                        new panel.rows([0.75, 0.25],
-                            [
-                                new panel.shrink(new panel.multitext(e), 20, 0),
-                                panel.layers(
-                                    [
-                                        new panel.rounded("rgb(0,0,80)", 0, 0, 8, 0),
-                                    ]),
-                            ])
-                    ]),
-                0,
-            ]);
-
-        var k = typeof(user.title) == "function" ? user.title() : user.title;
-        var d = "\n";
-        if (!k)
+        if (1)//user.options)
         {
-            k = user.folder;
-            d = "/";
+               var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
+                [
+                    0,
+                    panel.layers(
+                        [
+                            new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                                canvas.buttonmargin, canvas.buttonmargin),
+                            new panel.rowsA([0.25,0.25,0.25,0.25],
+                                [
+                                    panel.layers(
+                                        [
+                                            new panel.rounded("rgb(0,0,180)", 0, 0, 8, 0),
+                                            new panel.text("white", "center", "middle", 0, 0)
+                                        ]),
+                                    panel.layers(
+                                        [
+                                            new panel.rounded("rgb(0,0,180)", 0, 0, 8, 0),
+                                            new panel.text("white", "center", "middle", 0, 0)
+                                        ]),
+                                    panel.layers(
+                                        [
+                                            new panel.rounded("rgb(0,0,180)", 0, 0, 8, 0),
+                                            new panel.text("white", "center", "middle", 0, 0)
+                                        ]),
+                                    panel.layers(
+                                        [
+                                            new panel.rounded("rgb(0,0,80)", 0, 0, 8, 0),
+                                            new panel.text("white", "center", "middle", 0, 0)
+                                        ]),
+                                ])
+                        ]),
+                    0,
+                ]);
+    
+                a.draw(context, rect, 
+                        [
+                           "Download",
+                            "Unzip",
+                            "Delte",
+                            "Options"
+                        ], time);
         }
-
-        a.draw(context, rect, k ? k.split(d) : "", time);
+        else
+        {
+            var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
+                [
+                    0,
+                    panel.layers(
+                        [
+                            new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                                canvas.buttonmargin, canvas.buttonmargin),
+                            new panel.rowsA([0.75, 0.25],
+                                [
+                                    new panel.shrink(new panel.multitext(e), 20, 0),
+                                    panel.layers(
+                                        [
+                                            new panel.rounded("rgb(0,0,80)", 0, 0, 8, 0),
+                                            new panel.text("white", "center", "middle", 0, 0)
+                                        ]),
+                                ])
+                        ]),
+                    0,
+                ]);
+    
+            var k = typeof(user.title) == "function" ? user.title() : user.title;
+            var d = "\n";
+            if (!k)
+            {
+                k = user.folder;
+                d = "/";
+            }
+    
+            a.draw(context, rect, 
+                    [
+                       k ? k.split(d) : "",
+                        "Options"
+                    ], time);
+        }
+        
         context.restore();
     }
 },
