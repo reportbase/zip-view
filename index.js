@@ -3113,9 +3113,7 @@ var bosslst = [
 				[
 					[
 						0,
-						galleryobj.debug ?
-						slicewidthobj :
-						zoomobj.value(),
+						galleryobj.debug ? slicewidthobj : zoomobj.value(),
 						0,
 						stretchobj.value(),
 						0,
@@ -3131,20 +3129,21 @@ var bosslst = [
 
 			var bw = rect.width/2;
 			var a = new panel.row([0, SCROLLBARWIDTH, 4],
+			[
+				0,
+				new panel.col([0, bw, 0],
 				[
 					0,
-					new panel.col([0, bw, 0],
+					new Layer(
 						[
-							0,
-							new Layer(
-								[
-									new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8), 
-									new panel.expand(new panel.rectangle(context.timerect), 0, 10),
-									new panel.shrink(new panel.currentH(new panel.rounded("white", 0, TRANSPARENT, 5, 5),  ALIEXTENT, 1), 3, 3)
-								]),
-							0,
-						])
+							new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8), 
+							new panel.expand(new panel.rectangle(context.timerect), 0, 10),
+							new panel.shrink(new panel.currentH(
+								new panel.rounded("white", 0, TRANSPARENT, 5, 5),  ALIEXTENT, 0), 3, 3)
+						]),
+					0,
 				])
+			])
 						
 			a.draw(context, rect, context.canvas.timeobj, 0);
 			
@@ -3247,20 +3246,6 @@ bossobj.draw = function() {
 	else
 		canvas.lastime = canvas.timeobj.current();
 
-	if (0)//global.swipetimeout) 
-	{
-		if (!context.canvas.keydown)// && !context.canvas.panning)
-			canvas.slidestop -= canvas.slidereduce;
-		if (canvas.slidestop > 0) {
-			var j = canvas.autodirect * (TIMEOBJ / 1000)
-			canvas.timeobj.rotate(j * canvas.slidestop);
-		} else {
-			clearInterval(global.swipetimeout);
-			global.swipetimeout = 0;
-			canvas.lastdelta = -1;
-		}
-	}
-
 	var stretch = stretchobj.value();
 	var virtualpinch = _4cnv.virtualwidth * (stretch.value() / 100);
 	var colwidth = _4cnv.colwidth;
@@ -3273,7 +3258,8 @@ bossobj.draw = function() {
 	if (!slice)
 		return;
 	context.save();
-	if (galleryobj.debug) {
+	if (galleryobj.debug) 
+	{
 		var a = new panel.fill("gray");
 		a.draw(context, rect, 0, 0);
 	} else if (galleryobj.value() && galleryobj.value().ispng) {
