@@ -4914,8 +4914,8 @@ var headlst = [
 					menuobj.setindex(galleryobj.leftctx);
 					menuobj.show();
 					headcnvctx.show(0, 0, 
-						galleryobj.rect().width == 
-						window.innerWidth?HEADHEIGHT:window.innerWidth, HEADHEIGHT);
+						headcnv.width == window.innerWidth?
+							HEADHEIGHT:window.innerWidth, HEADHEIGHT);
 				}
 				
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
@@ -4977,10 +4977,10 @@ var headlst = [
 				{
 					menuobj.setindex(galleryobj.rightctx);
 					menuobj.show();
-					headcnvctx.show(galleryobj.rect().width == 
-							window.innerWidth ? window.innerWidth-HEADHEIGHT:0, 0, 
-						galleryobj.rect().width == 
-							window.innerWidth?HEADHEIGHT:window.innerWidth, HEADHEIGHT);
+					headcnvctx.show(headcnv.width == window.innerWidth ? 
+							window.innerWidth-HEADHEIGHT:0, 0, 
+						headcnv.width == window.innerWidth?
+							HEADHEIGHT:window.innerWidth, HEADHEIGHT);
 				}
 
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
