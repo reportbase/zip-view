@@ -2934,7 +2934,7 @@ var taplst = [
 				{
 					slice.tap = 0;
 					galleryobj.set(n);
-					headcnv.height = HEADHEIGHT;
+					headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
 					headobj.set(BOSS);
 					headham.panel = headobj.value();
 					headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
@@ -2992,6 +2992,7 @@ var taplst = [
 						slice.func(n,x/context.rect().width)
 					context.refresh();
 					_4cnvctx.refresh();
+					headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
 					headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 				}, 200);
 			}
@@ -3670,7 +3671,14 @@ menuobj.show = function()
 		context.show(l, 0, w, window.innerHeight);
 	}
 
-	headcnv.height = 0;
+	if (menuobj.value() != _8cnvctx &&
+	   canvas.width == window.innerWidth)
+	{
+		if (menuobj.value() == galleryobj.leftmenu)
+			headcnvctx.show(0, 0, HEADHEIGHT, HEADHEIGHT);
+		else
+			headcnvctx.show(window.innerWidth-HEADHEIGHT, 0, HEADHEIGHT, HEADHEIGHT);
+	}
 	
 	function f() {
 		context.canvas.lastime = -0.0000000000101010101;
