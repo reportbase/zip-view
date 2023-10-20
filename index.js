@@ -1857,7 +1857,7 @@ infobj.reset = function()
 			if (value && value.folder)
 				infobj.data = value.folder.split("/");
 			infobj.data.push(`${index+1} of ${galleryobj.length()}`);
-			var e = 100*(1-_4cnv.timeobj.berp();
+			var e = 100*(1-_4cnv.timeobj.berp());
 			var j = 100*rowobj.berp();
 			infobj.data.push(`${e.toFixed(2)} : ${j.toFixed(2)}`);
 		}
