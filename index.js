@@ -4855,6 +4855,7 @@ var headlst = [
 				headobj.set(GALLERY);
 				headham.panel = headobj.value();
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);	
+				_4cnv.height = 0;
 			}							
 			else {
 				var k = menuobj.value() ? MENU : BOSS;
@@ -4961,6 +4962,7 @@ var headlst = [
 				delete _4cnv.thumbcanvas;
 				delete photo.image;
 				menuobj.hide();
+				_4cnv.height = window.innerHeight;
 				contextobj.reset();
 			} 
 			else if 
