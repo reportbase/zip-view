@@ -519,10 +519,10 @@ panel.gallerybar = function()
 		context.save();
 		var a = new panel.layerA(
 			[
-				new panel.colA([10, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 10],
+				new panel.colsA([10, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 10],
 					[
 						0,
-						new panel.row([0, bh, 0],
+						new panel.rows([0, bh, 0],
 							[
 								0,
 								0 ? new Layer(
@@ -534,7 +534,7 @@ panel.gallerybar = function()
 								0,
 							]),
 						0,
-						new panel.row([0, bh, 0],
+						new panel.rows([0, bh, 0],
 							[
 								0,
 								0 ? new Layer(
@@ -547,11 +547,11 @@ panel.gallerybar = function()
 							]),
 						0,
 					]),
-				new panel.rowA([80, 0, rows * rh, 8, SCROLLBARWIDTH, 4],
+				new panel.rowsA([80, 0, rows * rh, 8, SCROLLBARWIDTH, 4],
 					[
 						0,
 						0,
-						new panel.col([0, w, 0],
+						new panel.cols([0, w, 0],
 							[
 								0,
 								s ? 0 : new Layer(
@@ -606,10 +606,10 @@ panel.galleryscroll = function()
 		var obj = context.canvas.scrollobj.value();
 		var bh = rect.height/2;
 		var bw = rect.width/2;
-		var a = new panel.colA([6, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 6],
+		var a = new panel.colsA([6, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 6],
 			[
 				0,
-				1?0:new panel.row([0, bh, 0],
+				1?0:new panel.rows([0, bh, 0],
 					[
 						0,
 						new Layer(
@@ -621,7 +621,7 @@ panel.galleryscroll = function()
 						0,
 					]),		
 				0,
-				new panel.row([0, bh, 0],
+				new panel.rows([0, bh, 0],
 					[
 						0,
 						new Layer(
@@ -644,10 +644,10 @@ panel.galleryscroll = function()
 			       0,
 		      ], 0);
 		
-		var a = new panel.row([0, SCROLLBARWIDTH, 4],
+		var a = new panel.rows([0, SCROLLBARWIDTH, 4],
 			[
 				0,
-				new panel.col([0, bw, 0],
+				new panel.cols([0, bw, 0],
 					[
 						0,
 						new Layer(
@@ -675,10 +675,10 @@ panel.scrollbar = function()
 		canvas.vscrollrect = new rectangle();
 		canvas.hscrollrect = new rectangle();
 		var kh = context.rect().width == window.innerWidth ? 90 : 5;
-		var a = new panel.colA([5, 9, 0, 9, 5],
+		var a = new panel.colsA([5, 9, 0, 9, 5],
 			[
 				0,
-				new panel.row([kh, 0, kh],
+				new panel.rows([kh, 0, kh],
 						[
 							0,
 							new Layer(
@@ -689,7 +689,7 @@ panel.scrollbar = function()
 							0,
 						]),
 				0,
-				new panel.row([kh, 0, kh],
+				new panel.rows([kh, 0, kh],
 					[
 						0,
 						new Layer(
@@ -1028,7 +1028,7 @@ panel.meta = function() {
 				new panel.rectangle(context.canvas.metarect),
 				s ? 0 : new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), 22, 22),
 				new panel.shrink(new panel.circle(s ? SCROLLNAB : TRANSPARENT, SEARCHFRAME, 4), 17, 17),
-				new panel.shrink(new panel.row([0, 4, 0],
+				new panel.shrink(new panel.rows([0, 4, 0],
 					[
 						new panel.circle("white"),
 						0,
@@ -1095,10 +1095,10 @@ panel.rightmenu = function()
 					new panel.rectangle(context.rightmenurect),
 					s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
 					new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-					new panel.row([0, rect.height * 0.20, 0],
+					new panel.rows([0, rect.height * 0.20, 0],
 						[
 							0,
-							new panel.col([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0, ]),
+							new panel.cols([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0, ]),
 							0,
 						]),
 				])
@@ -2354,7 +2354,7 @@ var overlaylst = [{
 	{
 		name: "DEBUG",
 		draw: function(context, rect, user, time) {
-			var a = new panel.row([0, 60, 0],
+			var a = new panel.rows([0, 60, 0],
 				[
 					0,
 					new panel.shadow(new panel.text("white", "center", "middle", 0, 0)),
@@ -3201,10 +3201,10 @@ var bosslst = [
 			var cw = rect.width - 30;
 			var a = new panel.layerA(
 				[
-					new panel.colA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
+					new panel.colsA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
 						[
 							0,
-							new panel.row([0, bh, 0],
+							new panel.rows([0, bh, 0],
 								[
 									0,
 									new Layer(
@@ -3217,7 +3217,7 @@ var bosslst = [
 									0,
 								]),
 							0,
-							new panel.row([0, bh, 0],
+							new panel.rows([0, bh, 0],
 								[
 									0,
 									new Layer(
@@ -3230,10 +3230,10 @@ var bosslst = [
 								]),
 							0,
 						]),
-					new panel.rowA([0, rows * rh, 8, SCROLLBARWIDTH, 4],
+					new panel.rowsA([0, rows * rh, 8, SCROLLBARWIDTH, 4],
 						[
 							0,
-							new panel.col([0, w, 0],
+							new panel.cols([0, w, 0],
 								[
 									0,
 									new Layer(
@@ -3246,7 +3246,7 @@ var bosslst = [
 									0,
 								]),
 							0,
-							new panel.col([0, cw, 0],
+							new panel.cols([0, cw, 0],
 								[
 									0,
 									1 ? 0 : new Layer(
@@ -3279,10 +3279,10 @@ var bosslst = [
 				]);
 
 			var bw = rect.width/2;
-			var a = new panel.row([0, SCROLLBARWIDTH, 4],
+			var a = new panel.rows([0, SCROLLBARWIDTH, 4],
 			[
 				0,
-				new panel.col([0, bw, 0],
+				new panel.cols([0, bw, 0],
 				[
 					0,
 					new Layer(
@@ -3604,7 +3604,7 @@ var buttonlst =
 				clr = MENUSELECT;
 
 			var e = context.canvas.scrollobj.berp();
-			var a = new panel.col([BUTTONMARGIN, 0, BUTTONMARGIN],
+			var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
 				[
 					0,
 					new Layer(
@@ -3637,17 +3637,17 @@ var buttonlst =
 				clr = MENUTAP;
 			
 			var e = context.canvas.scrollobj.berp();
-			var a = new panel.col([BUTTONMARGIN, 0, BUTTONMARGIN],
+			var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
 				[
 					0,
 					new Layer(
 						[
 							new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8), 
 									 canvas.buttonmargin, canvas.buttonmargin),
-							new panel.row([0.75,0.25],
+							new panel.rows([0.75,0.25],
 							[
 								new panel.shrink(new panel.multitext(e), 20, 0),
-								new panel.layer(
+								new panel.layers(
 									[
 										new panel.rounded("rgb(0,0,80)", 0, 0, 8, 0), 			
 									]),
@@ -3681,7 +3681,7 @@ var buttonlst =
 					clr = MENUSELECT;
 			}
 
-			var a = new panel.col([BUTTONMARGIN, 0, BUTTONMARGIN],
+			var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
 				[
 					0,
 					new Layer(
@@ -4735,7 +4735,7 @@ panel.text = function(color, align = "center", baseline = "alphabetic",
 	};
 };
 
-panel.row = function(e, panel) {
+panel.rows = function(e, panel) {
 	this.draw = function(context, rect, user, time) {
 		if (!e.length)
 			e = new Array(panel.length).fill(0);
@@ -4756,7 +4756,7 @@ panel.row = function(e, panel) {
 	};
 };
 
-panel.col = function(e, panel) {
+panel.cols = function(e, panel) {
 	this.draw = function(context, rect, user, time) {
 		if (!e.length)
 			e = new Array(panel.length).fill(0);
@@ -4775,7 +4775,7 @@ panel.col = function(e, panel) {
 	};
 };
 
-panel.rowA = function(e, panel) {
+panel.rowsA = function(e, panel) {
 	this.draw = function(context, rect, user, time) {
 		var j = gridToGridB(e, rect.height);
 		var y = 0;
@@ -4792,7 +4792,7 @@ panel.rowA = function(e, panel) {
 	};
 };
 
-panel.colA = function(e, panel) {
+panel.colsA = function(e, panel) {
 	this.draw = function(context, rect, user, time) {
 		var j = gridToGridB(e, rect.width);
 		var x = 0;
@@ -5014,9 +5014,9 @@ var headlst =
 			var w = k ? k.canvas.width : 0;
 			var b = window.innerWidth == w;
 			context.save();
-			var a = new panel.row([BEXTENT, 0],
+			var a = new panel.rows([BEXTENT, 0],
 				[
-					new panel.col([5, 0, ALIEXTENT, ALIEXTENT+10, ALIEXTENT, 0, 5],
+					new panel.cols([5, 0, ALIEXTENT, ALIEXTENT+10, ALIEXTENT, 0, 5],
 						[
 							0,0,
 							
@@ -5047,7 +5047,7 @@ var headlst =
 			var g = ctx == _8cnvctx;
 			delete context.leftmenurect;
 			delete context.rightmenurect;
-			var a = new panel.col(
+			var a = new panel.cols(
 				[5, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT+10, ALIEXTENT, 0, ALIEXTENT, 5],
 				[
 					0,
@@ -5085,10 +5085,10 @@ var ClosePanel = function(size)
 		var e = new panel.fill(OPTIONFILL);
 		var a = new Layer(
 			[
-				new panel.row([0, rect.height * 0.35, 0],
+				new panel.rows([0, rect.height * 0.35, 0],
 					[
 						0,
-						new panel.col([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0, ]),
+						new panel.cols([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0, ]),
 						0,
 					]),
 			])
@@ -5111,10 +5111,10 @@ panel.gallery = function(size) {
 				new panel.rectangle(context.canvas.galleryrect),
 				s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), 22, 22) : 0,
 				new panel.shrink(new panel.circle(s ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), 17, 17),
-				new panel.row([0, rect.height * 0.20, 0],
+				new panel.rows([0, rect.height * 0.20, 0],
 					[
 						0,
-						new panel.col([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0, ]),
+						new panel.cols([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0, ]),
 						0,
 					]),
 			])
@@ -5140,10 +5140,10 @@ panel.leftmenu = function() {
 					new panel.rectangle(context.leftmenurect),
 					s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
 					new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-					new panel.col([0, rect.height * 0.20, 0],
+					new panel.cols([0, rect.height * 0.20, 0],
 						[
 							0,
-							new panel.row([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0]),
+							new panel.rows([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0]),
 							0,
 						]),
 				]);
