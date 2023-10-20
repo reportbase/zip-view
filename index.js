@@ -1158,7 +1158,7 @@ panel.zoom = function() {
 		context.zoomrect = new rectangle();
 		var Panel = function() {
 			this.draw = function(context, rect, user, time) {
-				rect.x += 2;
+				rect.x += 5;
 				rect.y += 7;
 				rect.width = 19;
 				rect.height = 19;
@@ -4965,7 +4965,8 @@ window.addEventListener("screenorientation", (evt) => {
 	resize();
 });
 
-var headlst = [
+var headlst = 
+[
 	new function() 
 	{
 		this.draw = function(context, rect, user, time) {
