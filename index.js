@@ -3624,8 +3624,10 @@ _15ham.panel = new panel.yoll();
 let contextlst = [_1cnvctx, _2cnvctx, _3cnvctx, _4cnvctx, _5cnvctx, _6cnvctx, _7cnvctx, _8cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
 let menulst = [0, _1cnvctx, _2cnvctx, _3cnvctx, _5cnvctx, _6cnvctx, _7cnvctx, _8cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
 var menuobj = new circular_array("MENU", menulst);
-menuobj.toggle = function(context) {
-	if (menuobj.value() == context) {
+menuobj.toggle = function(context) 
+{
+	if (menuobj.value() == context) 
+	{
 		context.hide();
 		menuobj.set(0);
 	} else {
@@ -3636,7 +3638,8 @@ menuobj.toggle = function(context) {
 	headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 }
 
-menuobj.hide = function() {
+menuobj.hide = function() 
+{
 	var context = this.value();
 	if (!context)
 		return;
@@ -3644,36 +3647,31 @@ menuobj.hide = function() {
 	this.setindex(_8cnv.height ? _8cnvctx : 0);
 }
 
-menuobj.show = function() {
+menuobj.show = function() 
+{
 	var context = this.value();
 	if (!context)
 		return;
 	var canvas = context.canvas;
 	if (canvas.width_ > window.innerWidth) 
 	{
-		headcnv.style.zIndex = 100;
-		canvas.style.zIndex = 10;
 		context.show(0, 0, window.innerWidth, window.innerHeight);
 	} 
 	else if (window.innerWidth - canvas.width_ < 180) 
 	{
-		headcnv.style.zIndex = 10;
-		canvas.style.zIndex = 100;
 		var w = window.innerWidth - 180;
 		var l = Math.floor((window.innerWidth - w) / 2);
 		context.show(l, 0, w, window.innerHeight);
 	} 
 	else 
 	{
-		headcnv.style.zIndex = 10;
-		canvas.style.zIndex = 100;
 		var w = canvas.width_;
 		var l = Math.floor((window.innerWidth - w) / 2);
 		context.show(l, 0, w, window.innerHeight);
 	}
 
-	headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-
+	headcnv.height = 0;
+	
 	function f() {
 		context.canvas.lastime = -0.0000000000101010101;
 		menuobj.draw();
