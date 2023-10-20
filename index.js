@@ -3363,7 +3363,7 @@ bossobj.reset = function() {
 		zoomobj.set(window.landscape());
 		positxobj.set(window.landscape());
 		posityobj.set(window.landscape());
-		context.show(0, 0, window.innerWidth, 0);//window.innerHeight);
+		context.show(0, 0, window.innerWidth, menuobj.value() ? 0 : window.innerHeight);
 	}
 
 	var zoomax = galleryobj.zoomax ? galleryobj.zoomax : ZOOMAX;
