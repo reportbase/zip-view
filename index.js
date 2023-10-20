@@ -3,6 +3,7 @@ Copyright 2017 Tom Brinkman
 https://zip-view.com
 https://ipfs-view.com
 */
+
 function iOS()
 {
     return [
@@ -4968,7 +4969,7 @@ panel.rotated_text = function()
         context.restore();
     }
 };
-
+var ylst = [];
 panel.text = function(color, align = "center", baseline = "alphabetic",
     reverse = 0, noclip = 0, font = DEFAULTFONT)
 {
@@ -5015,7 +5016,7 @@ panel.text = function(color, align = "center", baseline = "alphabetic",
         else if (align == "right")
             x = rect.x + rect.width - 1;
         var y = rect.y + rect.height / 2;
-
+ylst.push(y);
         if (reverse)
             str = str.split("").reverse().join("");
         context.fillText(str, x, y);
