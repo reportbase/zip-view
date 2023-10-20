@@ -5015,7 +5015,7 @@ var headlst = [
 			var rh = 26;
 			var ctx = menuobj.value();
 			var g = ctx == _8cnvctx;
-			if (rect.width != window.innerWidth)
+			if (!g && ctx && rect.width != window.innerWidth)
 			{
 				var a = new panel.col(
 					[5, ALIEXTENT, 5],
