@@ -3899,14 +3899,9 @@ var buttonlst = [
         context.save()
         var clr = FILLBAR;
         if (user.tap)
-        {
             clr = MENUTAP;
-        }
         else if (user.enabled)
-        {
-            if (user.enabled())
                 clr = MENUSELECT;
-        }
 
         var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
             [
