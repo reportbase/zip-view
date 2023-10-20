@@ -3684,11 +3684,7 @@ var buttonlst =
 			var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
 				[
 					0,
-					new Layer(
-						[
-							new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8), canvas.buttonmargin, canvas.buttonmargin),
-							new panel.shrink(new panel.text("white", "center", "middle", 0, 0), 20, 0),
-						]),
+					new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8), canvas.buttonmargin, canvas.buttonmargin),
 					0,
 				]);
 
