@@ -2915,6 +2915,7 @@ var taplst = [
 			}
 			else 
 			{
+				headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
 				var visibles = canvas.visibles;
 				var k;
 				for (k = 0; k < visibles.length; k++) {
@@ -4884,8 +4885,8 @@ var headlst = [
 			context.restore();
 		}
 	},
-	new function() {
-
+	new function() 
+	{
 		this.tap = function(context, rect, x, y) 
 		{
 			var canvas = context.canvas;
@@ -4911,11 +4912,12 @@ var headlst = [
 				} 
 				else 
 				{
+					var kw = 10+ALIEXTENT;
 					menuobj.setindex(galleryobj.leftctx);
 					menuobj.show();
 					headcnvctx.show(0, 0, 
 						headcnv.width == window.innerWidth?
-							HEADHEIGHT:window.innerWidth, HEADHEIGHT);
+							kw:window.innerWidth, HEADHEIGHT);
 				}
 				
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
@@ -4975,12 +4977,13 @@ var headlst = [
 				} 
 				else 
 				{
+					var kw = 10+ALIEXTENT;
 					menuobj.setindex(galleryobj.rightctx);
 					menuobj.show();
 					headcnvctx.show(headcnv.width == window.innerWidth ? 
-							window.innerWidth-HEADHEIGHT:0, 0, 
+							window.innerWidth-kw:0, 0, 
 						headcnv.width == window.innerWidth?
-							HEADHEIGHT:window.innerWidth, HEADHEIGHT);
+							kw:window.innerWidth, HEADHEIGHT);
 				}
 
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
