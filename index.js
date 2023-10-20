@@ -1847,8 +1847,8 @@ infobj.reset = function()
 			if (value && value.folder)
 				infobj.data = value.folder.split("/");
 			infobj.data.push(`${index.toFixed(2)} of ${galleryobj.length()}`);
-			var j = 100*_8cnv.scrollobj.value().berp()
-			infobj.data.push(`${j.toFixed(2)}`);
+			var j = 100*(1-_8cnv.scrollobj.value().berp());
+			infobj.data.push(`${j.toFixed(2)}%`);
 		}
 		else
 		{
@@ -1859,7 +1859,7 @@ infobj.reset = function()
 			infobj.data.push(`${index+1} of ${galleryobj.length()}`);
 			var e = 100*(1-_4cnv.timeobj.berp());
 			var j = 100*rowobj.berp();
-			infobj.data.push(`${e.toFixed(2)} : ${j.toFixed(2)}`);
+			infobj.data.push(`x - ${e.toFixed(2)}%, y - ${j.toFixed(2)}%`);
 		}
 
 }
