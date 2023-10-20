@@ -2907,6 +2907,7 @@ var taplst = [
 			else if (menuobj.value() && menuobj.value() != _8cnvctx) 
 			{
 				menuobj.hide();
+				headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 				menuobj.setindex(_8cnvctx);
 				menuobj.draw();
@@ -5008,21 +5009,35 @@ var headlst = [
 			var rows = infobj.data.length;
 			var rh = 26;
 			var g = menuobj.value() == _8cnvctx;
-			var a = new panel.col(
-				[5, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT, ALIEXTENT, 0, ALIEXTENT, 5],
-				[
-					0,
-					new panel.leftmenu(),
-					0,
-					g?new panel.fullscreen():0,
-					g?new panel.zoom():0,
-					g?new panel.fitwidth():0,
-					0,
-					new panel.rightmenu(),
-					0,
-				]);
-
-			a.draw(context, rect, 0, 0);
+			if (context.rect().width == window.innerWidth)
+			{
+				var a = new panel.col(
+					[5, ALIEXTENT, 5],
+					[
+						0,
+						new panel.rightmenu(),
+						0,
+					]);
+				a.draw(context, rect, 0, 0);
+			}
+			else
+			{
+				var a = new panel.col(
+					[5, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT, ALIEXTENT, 0, ALIEXTENT, 5],
+					[
+						0,
+						new panel.leftmenu(),
+						0,
+						g?new panel.fullscreen():0,
+						g?new panel.zoom():0,
+						g?new panel.fitwidth():0,
+						0,
+						new panel.rightmenu(),
+						0,
+					]);
+				a.draw(context, rect, 0, 0);
+			}
+			
 			context.restore();
 		}
 	},
