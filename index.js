@@ -6,7 +6,8 @@ https://ipfs-view.com
 
 function iOS() 
 {
-	return [
+	return 
+	[
 		'iPad Simulator',
 		'iPhone Simulator',
 		'iPod Simulator',
@@ -4906,20 +4907,15 @@ var headlst = [
 					menuobj.draw();
 					galleryobj.leftnv = _7cnv;
 					galleryobj.leftctx = _7cnvctx;
-					if (galleryobj.rect().width == window.innerWidth)
-						headcnvctx.show(0, 0, HEADHEIGHT, HEADHEIGHT);
-					else
-						headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+					headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
 				} 
 				else 
 				{
 					menuobj.setindex(galleryobj.leftctx);
 					menuobj.show();
-					headcnvctx.show(window.innerWidth-HEADHEIGHT, 0, HEADHEIGHT, HEADHEIGHT);
-					if (galleryobj.rect().width == window.innerWidth)
-						headcnvctx.show(window.innerWidth-HEADHEIGHT, 0, HEADHEIGHT, HEADHEIGHT);
-					else
-						headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+					headcnvctx.show(0, 0, 
+						galleryobj.rect().width == 
+						window.innerWidth?HEADHEIGHT:window.innerWidth, HEADHEIGHT);
 				}
 				
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
@@ -4970,13 +4966,21 @@ var headlst = [
 				context.rightmenurect &&
 				context.rightmenurect.hitest(x, y)) {
 				galleryobj.leftctx.hide()
-				if (menuobj.value() == galleryobj.rightctx) {
+				if (menuobj.value() == galleryobj.rightctx) 
+				{
 					galleryobj.rightctx.hide();
 					menuobj.setindex(_8cnvctx);
 					menuobj.draw();
-				} else {
+					headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+				} 
+				else 
+				{
 					menuobj.setindex(galleryobj.rightctx);
 					menuobj.show();
+					headcnvctx.show(galleryobj.rect().width == 
+							window.innerWidth ? window.innerWidth-HEADHEIGHT:0, 0, 
+						galleryobj.rect().width == 
+							window.innerWidth?HEADHEIGHT:window.innerWidth, HEADHEIGHT);
 				}
 
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
