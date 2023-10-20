@@ -5015,7 +5015,7 @@ var headlst = [
 			var rh = 26;
 			var ctx = menuobj.value();
 			var g = ctx == _8cnvctx;
-			if (!g && menuobj.value())
+			if (rect.width != window.innerWidth)
 			{
 				var a = new panel.col(
 					[5, ALIEXTENT, 5],
@@ -5024,9 +5024,8 @@ var headlst = [
 						new panel.rightmenu(),
 						0,
 					]);
-				var x = window.innerWidth-10-ALIEXTENT;
-				var w = 10+ALIEXTENT
-				a.draw(context, new rectangle(x, 0, w, HEADHEIGHT), 0, 0);
+				
+				a.draw(context, rect, 0, 0);
 			}
 			else
 			{
