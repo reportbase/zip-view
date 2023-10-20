@@ -1847,8 +1847,11 @@ infobj.reset = function()
 			if (value && value.folder)
 				infobj.data = value.folder.split("/");
 			infobj.data.push(`${index.toFixed(2)} of ${galleryobj.length()}`);
-			var j = 100*(1-_8cnv.scrollobj.value().berp());
-			infobj.data.push(`${j.toFixed(2)}%`);
+			if (url.searchParams.has("debug"))
+			{
+				var j = 100*(1-_8cnv.scrollobj.value().berp());
+				infobj.data.push(`${j.toFixed(2)}%`);
+			}
 		}
 		else
 		{
@@ -1857,9 +1860,12 @@ infobj.reset = function()
 			if (value && value.folder)
 				infobj.data = value.folder.split("/");
 			infobj.data.push(`${index+1} of ${galleryobj.length()}`);
-			var e = 100*(1-_4cnv.timeobj.berp());
-			var j = 100*rowobj.berp();
-			infobj.data.push(`x - ${e.toFixed(2)}%, y - ${j.toFixed(2)}%`);
+			if (url.searchParams.has("debug"))
+			{
+				var e = 100*(1-_4cnv.timeobj.berp());
+				var j = 100*rowobj.berp();
+				infobj.data.push(`x - ${e.toFixed(2)}%, y - ${j.toFixed(2)}%`);
+			}
 		}
 
 }
@@ -4029,7 +4035,7 @@ var eventlst = [
 		button: "OPTION",
 		wheel: "MENU",
 		drop: "DEFAULT",
-		key: "MENU",
+		key: "SETUP",
 		press: "MENU",
 		pinch: "MENU",
 		bar: new panel.empty(),
