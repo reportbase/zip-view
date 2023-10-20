@@ -3844,52 +3844,6 @@ var buttonlst = [
         if (user.tap)
             clr = MENUTAP;
 
-        if (1)//user.options)
-        {
-               var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
-                [
-                    0,
-                    new panel.layers(
-                        [
-                            new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
-                                canvas.buttonmargin, canvas.buttonmargin),
-                            new panel.rowsA([0.25,0.25,0.25,0.25],
-                                [
-                                    new panel.layers(
-                                        [
-                                            new panel.rounded("rgb(0,0,180)", 0, 0, 0, 0),
-                                            new panel.text("white", "center", "middle", 0, 0)
-                                        ]),
-                                    new panel.layers(
-                                        [
-                                            new panel.rounded("rgb(0,0,180)", 0, 0, 0, 0),
-                                            new panel.text("white", "center", "middle", 0, 0)
-                                        ]),
-                                    new panel.layers(
-                                        [
-                                            new panel.rounded("rgb(0,0,180)", 0, 0, 0, 0),
-                                            new panel.text("white", "center", "middle", 0, 0)
-                                        ]),
-                                    new panel.layers(
-                                        [
-                                            new panel.rounded("rgb(0,0,80)", 0, 0, 0, 0),
-                                            new panel.text("white", "center", "middle", 0, 0)
-                                        ]),
-                                ])
-                        ]),
-                    0,
-                ]);
-    
-                a.draw(context, rect, 
-                        [
-                           "Download",
-                            "Unzip",
-                            "Delete",
-                            "Options"
-                        ], time);
-        }
-        else
-        {
             var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
                 [
                     0,
@@ -3901,10 +3855,15 @@ var buttonlst = [
                                 [
                                     new panel.shrink(new panel.multitext(e), 20, 0),
                                     new panel.layers(
+                                    [
+                                        new panel.fill("rgb(0,0,80)"),
+                                        new panel.colsA([0, 0, 0],
                                         [
-                                            new panel.rounded("rgb(0,0,80)", 0, 0, 8, 0),
-                                            new panel.text("white", "center", "middle", 0, 0)
-                                        ]),
+                                             new panel.text("white", "center", "middle", 0, 0),
+                                             new panel.text("white", "center", "middle", 0, 0),
+                                             new panel.text("white", "center", "middle", 0, 0)
+                                        ])
+                                    ])
                                 ])
                         ]),
                     0,
@@ -3921,9 +3880,12 @@ var buttonlst = [
             a.draw(context, rect, 
                     [
                        k ? k.split(d) : "",
-                        "Options"
+                       [
+                           "Unzip",
+                           "Download",
+                           "Delete",
+                        ]
                     ], time);
-        }
         
         context.restore();
     }
