@@ -5004,14 +5004,17 @@ var headlst = [
 			}
 		};
 
-		this.draw = function(context, rect, user, time) {
+		this.draw = function(context, rect, user, time) 
+		{
+			var canvas = context
 			context.clear();
 			context.save();
 			var w = Math.min(360, rect.width - 100);
 			var rows = infobj.data.length;
 			var rh = 26;
-			var g = menuobj.value() == _8cnvctx;
-			if (!g && menuobj.value() && rect.width == window.innerWidth)
+			var ctx = menuobj.value();
+			var g = ctx == _8cnvctx;
+			if (!g && menuobj.value() && ctx.rect().width == window.innerWidth)
 			{
 				var a = new panel.col(
 					[5, ALIEXTENT, 5],
