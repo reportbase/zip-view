@@ -2911,7 +2911,6 @@ var taplst = [
 			else if (menuobj.value() && menuobj.value() != _8cnvctx) 
 			{
 				menuobj.hide();
-				headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 				menuobj.setindex(_8cnvctx);
 				menuobj.draw();
@@ -2920,8 +2919,6 @@ var taplst = [
 			}
 			else 
 			{
-				headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 				var visibles = canvas.visibles;
 				var k;
 				for (k = 0; k < visibles.length; k++) {
@@ -2942,7 +2939,6 @@ var taplst = [
 				{
 					slice.tap = 0;
 					galleryobj.set(n);
-					headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
 					headobj.set(BOSS);
 					headham.panel = headobj.value();
 					headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
@@ -3000,7 +2996,6 @@ var taplst = [
 						slice.func(n,x/context.rect().width)
 					context.refresh();
 					_4cnvctx.refresh();
-					headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
 					headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 				}, 200);
 			}
@@ -4918,16 +4913,12 @@ var headlst = [
 					menuobj.draw();
 					galleryobj.leftnv = _7cnv;
 					galleryobj.leftctx = _7cnvctx;
-					headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
 				} 
 				else 
 				{
 					var kw = 10+ALIEXTENT;
 					menuobj.setindex(galleryobj.leftctx);
 					menuobj.show();
-					headcnvctx.show(0, 0, 
-						headcnv.width == window.innerWidth?
-							kw:window.innerWidth, HEADHEIGHT);
 				}
 				
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
@@ -4986,18 +4977,12 @@ var headlst = [
 					galleryobj.rightctx.hide();
 					menuobj.setindex(_8cnvctx);
 					menuobj.draw();
-					headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
 				} 
 				else 
 				{
 					var kw = 10+ALIEXTENT;
 					menuobj.setindex(galleryobj.rightctx);
 					menuobj.show();
-					headcnvctx.show(
-						headcnv.width == window.innerWidth ? window.innerWidth-kw:0, 
-						0, 
-						kw, 
-						HEADHEIGHT);
 				}
 
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
@@ -5026,36 +5011,20 @@ var headlst = [
 			var g = ctx == _8cnvctx;
 			delete canvas.leftmenurect;
 			delete canvas.rightmenurect;
-			if (!g && ctx && rect.width != window.innerWidth)
-			{
-				var a = new panel.col(
-					[5, ALIEXTENT, 5],
-					[
-						0,
-						new panel.rightmenu(),
-						0,
-					]);
-				
-				a.draw(context, rect, 0, 0);
-			}
-			else
-			{
-				var a = new panel.col(
-					[5, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT, ALIEXTENT, 0, ALIEXTENT, 5],
-					[
-						0,
-						new panel.leftmenu(),
-						0,
-						g?new panel.fullscreen():0,
-						g?new panel.zoom():0,
-						g?new panel.fitwidth():0,
-						0,
-						new panel.rightmenu(),
-						0,
-					]);
-				a.draw(context, rect, 0, 0);
-			}
-			
+			var a = new panel.col(
+				[5, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT, ALIEXTENT, 0, ALIEXTENT, 5],
+				[
+					0,
+					new panel.leftmenu(),
+					0,
+					g?new panel.fullscreen():0,
+					g?new panel.zoom():0,
+					g?new panel.fitwidth():0,
+					0,
+					new panel.rightmenu(),
+					0,
+				]);
+			a.draw(context, rect, 0, 0);
 			context.restore();
 		}
 	},
