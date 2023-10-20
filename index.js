@@ -4032,7 +4032,7 @@ var eventlst = [
 		tap: "MENU",
 		pan: "MENU",
 		swipe: "MENU",
-		button: "OPTION",
+		button: "SETUP",
 		wheel: "MENU",
 		drop: "DEFAULT",
 		key: "MENU",
