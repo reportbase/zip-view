@@ -1176,8 +1176,8 @@ panel.zoom = function() {
 		var a = new Layer(
 			[
 				new panel.rectangle(context.zoomrect),
-				s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), 19, 19) : 0,
-				new panel.shrink(new panel.circle(s ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), 15, 15),
+				s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), 16, 16) : 0,
+				new panel.shrink(new panel.circle(s ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), 12, 12),
 				new panel.shrink(new Panel(), 15, 20),
 			]);
 
@@ -4977,7 +4977,7 @@ var headlst = [
 			context.save();
 			var a = new panel.row([BEXTENT, 0],
 				[
-					new panel.col([5, 0, ALIEXTENT, ALIEXTENT, ALIEXTENT, 0, 5],
+					new panel.col([5, 0, ALIEXTENT, ALIEXTENT+10, ALIEXTENT, 0, 5],
 						[
 							0,0,
 							
@@ -5009,7 +5009,7 @@ var headlst = [
 			delete context.leftmenurect;
 			delete context.rightmenurect;
 			var a = new panel.col(
-				[5, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT, ALIEXTENT, 0, ALIEXTENT, 5],
+				[5, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT+10, ALIEXTENT, 0, ALIEXTENT, 5],
 				[
 					0,
 					new panel.leftmenu(),
