@@ -5007,7 +5007,7 @@ var headlst = [
 
 		this.draw = function(context, rect, user, time) 
 		{
-			var canvas = context
+			var canvas = context.canvas;
 			context.clear();
 			context.save();
 			var w = Math.min(360, rect.width - 100);
