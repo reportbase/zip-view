@@ -1082,25 +1082,30 @@ panel.rightmenu = function()
 	this.draw = function(context, rect, user, time) 
 	{
 		context.save();
-		context.rightmenurect = new rectangle();
-		var s = menuobj.value() == galleryobj.rightctx;
-		var j = 5;
-		var k = j / 2;
-		var e = new panel.fill(OPTIONFILL);
-		var a = new Layer(
-			[
-				new panel.rectangle(context.rightmenurect),
-				s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-				new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-				new panel.row([0, rect.height * 0.20, 0],
-					[
-						0,
-						new panel.col([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0, ]),
-						0,
-					]),
-			])
-
-		a.draw(context, rect, user, time);
+		if (	menuobj.value() == _8cnvctx ||
+		   	menuobj.value() != galleryobj.leftctx)
+		{
+			context.rightmenurect = new rectangle();
+			var s = menuobj.value() == galleryobj.rightctx;
+			var j = 5;
+			var k = j / 2;
+			var e = new panel.fill(OPTIONFILL);
+			var a = new Layer(
+				[
+					new panel.rectangle(context.rightmenurect),
+					s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+					new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+					new panel.row([0, rect.height * 0.20, 0],
+						[
+							0,
+							new panel.col([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0, ]),
+							0,
+						]),
+				])
+	
+			a.draw(context, rect, user, time);
+		}
+		
 		context.restore();
 	}
 };
@@ -5001,6 +5006,8 @@ var headlst = [
 			var rh = 26;
 			var ctx = menuobj.value();
 			var g = ctx == _8cnvctx;
+			delete context.leftmenurect;
+			delete context.rightmenurect;
 			var a = new panel.col(
 				[5, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT, ALIEXTENT, 0, ALIEXTENT, 5],
 				[
@@ -5081,25 +5088,30 @@ panel.gallery = function(size) {
 panel.leftmenu = function() {
 	this.draw = function(context, rect, user, time) {
 		context.save()
-		context.leftmenurect = new rectangle()
-		var j = 5;
-		var k = j / 2;
-		var e = new panel.fill(OPTIONFILL);
-		var s = menuobj.value() == galleryobj.leftctx;
-		var a = new Layer(
-			[
-				new panel.rectangle(context.leftmenurect),
-				s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-				new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-				new panel.col([0, rect.height * 0.20, 0],
-					[
-						0,
-						new panel.row([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0]),
-						0,
-					]),
-			]);
-
-		a.draw(context, rect, user, time);
+		if (	menuobj.value() == _8cnvctx ||
+		   	menuobj.value() != galleryobj.rightctx)
+		{
+			context.leftmenurect = new rectangle()
+			var j = 5;
+			var k = j / 2;
+			var e = new panel.fill(OPTIONFILL);
+			var s = menuobj.value() == galleryobj.leftctx;
+			var a = new Layer(
+				[
+					new panel.rectangle(context.leftmenurect),
+					s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+					new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+					new panel.col([0, rect.height * 0.20, 0],
+						[
+							0,
+							new panel.row([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0]),
+							0,
+						]),
+				]);
+	
+			a.draw(context, rect, user, time);
+		}
+		
 		context.restore()
 	}
 };
