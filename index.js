@@ -3139,7 +3139,7 @@ var bosslst = [
 							new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8), 
 							new panel.expand(new panel.rectangle(context.timerect), 0, 10),
 							new panel.shrink(new panel.currentH(
-								new panel.rounded("white", 0, TRANSPARENT, 5, 5),  ALIEXTENT, 0), 3, 3)
+								new panel.rounded("white", 0, TRANSPARENT, 5, 5),  ALIEXTENT, 1), 3, 3)
 						]),
 					0,
 				])
@@ -4748,10 +4748,10 @@ panel.image = function(shrink) {
 	};
 };
 
-panel.currentH = function(panel, extent) {
+panel.currentH = function(panel, extent, rev) {
 	this.draw = function(context, rect, user, time) {
 		context.save();
-		var current = user.current();
+		var current = rev ? user.length() - user.current() : user.current();
 		var length = user.length();
 		var nub = Math.nub(current, length, extent, rect.width);
 		var r = new rectangle(rect.x + nub, rect.y, extent, rect.height);
