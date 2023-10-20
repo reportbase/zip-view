@@ -676,11 +676,11 @@ panel.scrollbar = function()
 		context.save();
 		canvas.vscrollrect = new rectangle();
 		canvas.hscrollrect = new rectangle();
-		
+		var kh = context.rect().width == window.innerWidth ? 90 : 5;
 		var a = new panel.colA([5, 9, 0, 9, 5],
 			[
 				0,
-				new panel.row([90, 0, 90],
+				new panel.row([kh, 0, kh],
 						[
 							0,
 							new Layer(
@@ -691,7 +691,7 @@ panel.scrollbar = function()
 							0,
 						]),
 				0,
-				new panel.row([90, 0, 90],
+				new panel.row([kh, 0, kh],
 					[
 						0,
 						new Layer(
@@ -2916,6 +2916,7 @@ var taplst = [
 			else 
 			{
 				headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 				var visibles = canvas.visibles;
 				var k;
 				for (k = 0; k < visibles.length; k++) {
