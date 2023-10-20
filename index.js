@@ -4964,9 +4964,11 @@ var headlst = [
 			else if 
 				(
 				context.fullrect &&
-				context.fullrect.hitest(x, y)) {
+				context.fullrect.hitest(x, y)) 
+			{
 				screenfull.toggle()
-			} else if (
+			} 
+			else if (
 				context.rightmenurect &&
 				context.rightmenurect.hitest(x, y)) {
 				galleryobj.leftctx.hide()
@@ -5009,7 +5011,7 @@ var headlst = [
 			var rows = infobj.data.length;
 			var rh = 26;
 			var g = menuobj.value() == _8cnvctx;
-			if (context.rect().width == window.innerWidth)
+			if (!g && menuobj.value())
 			{
 				var a = new panel.col(
 					[5, ALIEXTENT, 5],
