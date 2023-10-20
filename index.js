@@ -3008,8 +3008,8 @@ var taplst = [
 				{
 					tapobj.data[MENU].tap(menuobj.value(), menuobj.value().rect(), x, y)
 				}
-    				*/
-			}
+    			}
+				*/
 			else if (canvas.vscrollrect && canvas.vscrollrect.hitest(x, y)) 
 			{
 				var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
