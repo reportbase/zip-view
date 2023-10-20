@@ -3082,8 +3082,6 @@ var taplst = [
         }
         else
         {
-            //var k = (context.canvas.timeobj.length()/rect.width)*20
-            //context.canvas.timeobj.rotate(k);
             menuobj.setindex(_8cnvctx);
             menuobj.show();
             headobj.set(GALLERY);
@@ -3331,7 +3329,7 @@ var taplst = [
                 menuobj.hide();
                 delete slice.tap;
                 if (slice.func)
-                    slice.func(n, x / context.rect().width)
+                    slice.func(n, x / context.rect().width, y/ context.rect().height)
                 context.refresh();
                 _4cnvctx.refresh();
                 headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
@@ -3857,22 +3855,22 @@ var buttonlst = [
                                 [
                                     new panel.layers(
                                         [
-                                            new panel.rounded("rgb(0,0,180)", 0, 0, 8, 0),
+                                            new panel.rounded("rgb(0,0,180)", 0, 0, 0, 0),
                                             new panel.text("white", "center", "middle", 0, 0)
                                         ]),
                                     new panel.layers(
                                         [
-                                            new panel.rounded("rgb(0,0,180)", 0, 0, 8, 0),
+                                            new panel.rounded("rgb(0,0,180)", 0, 0, 0, 0),
                                             new panel.text("white", "center", "middle", 0, 0)
                                         ]),
                                     new panel.layers(
                                         [
-                                            new panel.rounded("rgb(0,0,180)", 0, 0, 8, 0),
+                                            new panel.rounded("rgb(0,0,180)", 0, 0, 0, 0),
                                             new panel.text("white", "center", "middle", 0, 0)
                                         ]),
                                     new panel.layers(
                                         [
-                                            new panel.rounded("rgb(0,0,80)", 0, 0, 8, 0),
+                                            new panel.rounded("rgb(0,0,80)", 0, 0, 0, 0),
                                             new panel.text("white", "center", "middle", 0, 0)
                                         ]),
                                 ])
@@ -3884,7 +3882,7 @@ var buttonlst = [
                         [
                            "Download",
                             "Unzip",
-                            "Delte",
+                            "Delete",
                             "Options"
                         ], time);
         }
