@@ -3649,6 +3649,7 @@ menuobj.hide = function()
 	if (!context)
 		return;
 	context.hide();
+	_4cnv.height = window.innerHeight;
 	this.setindex(_8cnv.height ? _8cnvctx : 0);
 }
 
@@ -3658,6 +3659,7 @@ menuobj.show = function()
 	if (!context)
 		return;
 	var canvas = context.canvas;
+	_4cnv.height = 0;
 	if (canvas.width_ > window.innerWidth) 
 	{
 		context.show(0, 0, window.innerWidth, window.innerHeight);
