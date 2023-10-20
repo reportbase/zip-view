@@ -4984,10 +4984,11 @@ var headlst = [
 					var kw = 10+ALIEXTENT;
 					menuobj.setindex(galleryobj.rightctx);
 					menuobj.show();
-					headcnvctx.show(headcnv.width == window.innerWidth ? 
-							window.innerWidth-kw:0, 0, 
-						headcnv.width == window.innerWidth?
-							kw:window.innerWidth, HEADHEIGHT);
+					headcnvctx.show(
+						headcnv.width == window.innerWidth ? window.innerWidth-kw:0, 
+						0, 
+						kw, 
+						HEADHEIGHT);
 				}
 
 				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
