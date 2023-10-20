@@ -3844,6 +3844,7 @@ var buttonlst = [
         if (user.tap)
             clr = MENUTAP;
 
+        var e = context.canvas.scrollobj.berp();
             var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
                 [
                     0,
