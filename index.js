@@ -1746,6 +1746,8 @@ _8ham.get('pinch').set(
     enable: true
 });
 
+delta = new MovingAverage();
+
 var wheelst = [
 {
     name: "DEFAULT",
@@ -1776,6 +1778,8 @@ var wheelst = [
         else
         {
             clearInterval(context.canvas.leftright)
+            delta = movingx.update(delta);
+            
             menuobj.updown(context, delta)
             if (global.swipetimeout)
                 return;
