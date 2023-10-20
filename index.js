@@ -2232,7 +2232,7 @@ var panlst =
 				if (context.istimerect)
 				{
 					var k = (x - context.timerect.x) / context.timerect.width;
-					canvas.timeobj.setperc(k);
+					canvas.timeobj.setperc(1-k);
 					context.refresh();
 				}
 				else
