@@ -5020,7 +5020,8 @@ var headlst = [
 						new panel.rightmenu(),
 						0,
 					]);
-				a.draw(context, rect, 0, 0);
+				a.draw(context, new rectangle(window.innerWidth-10-ALIEXTENT, 
+							      0, 10+ALIEXTENT), 0, 0);
 			}
 			else
 			{
