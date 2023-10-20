@@ -1746,8 +1746,6 @@ _8ham.get('pinch').set(
     enable: true
 });
 
-delta = new MovingAverage();
-
 var wheelst = [
 {
     name: "DEFAULT",
@@ -1778,7 +1776,6 @@ var wheelst = [
         else
         {
             clearInterval(context.canvas.leftright)
-            delta = movingx.update(delta);
             
             menuobj.updown(context, delta)
             if (global.swipetimeout)
@@ -3333,14 +3330,15 @@ var taplst = [
                 menuobj.hide();
                 delete slice.tap;
                 if (slice.func)
-                    slice.func(n, x / context.rect().width, y/ context.rect().height)
+                    slice.func(n, x, y)
                 context.refresh();
                 _4cnvctx.refresh();
                 headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
             }, 200);
         }
     },
-}, ];
+}, 
+];
 
 var tapobj = new circular_array("TAP", taplst);
 
@@ -6053,7 +6051,7 @@ galleryobj.init = function(obj)
             for (var n = 0; n < results.length; ++n)
             {
                 var result = results[n];
-                result.func = function()
+                result.func = function(n, x, y)
                 {
                     var path = `${url.origin}/?r2=${this.id}`;
                     window.open(path, "_self");
@@ -6064,7 +6062,7 @@ galleryobj.init = function(obj)
             _7cnv.sliceobj.data.push(
             {
                 title: "Galleries \u{25B6}",
-                func: function()
+                func: function(n, x, y)
                 {
                     galleryobj.leftcnv = _2cnv;
                     galleryobj.leftctx = _2cnvctx;
