@@ -5011,7 +5011,7 @@ var headlst = [
 			var rows = infobj.data.length;
 			var rh = 26;
 			var g = menuobj.value() == _8cnvctx;
-			if (!g && menuobj.value())
+			if (!g && menuobj.value() && rect.width == window.innerWidth)
 			{
 				var a = new panel.col(
 					[5, ALIEXTENT, 5],
