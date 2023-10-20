@@ -3329,7 +3329,7 @@ var taplst = [
                 menuobj.hide();
                 delete slice.tap;
                 if (slice.func)
-                    slice.func(n, x / context.rect().width, y/ context.rect().height)
+                    slice.func(x, y)
                 context.refresh();
                 _4cnvctx.refresh();
                 headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
@@ -3842,7 +3842,7 @@ var buttonlst = [
         if (user.tap)
             clr = MENUTAP;
 
-        if (1)//user.options)
+        if (user.options)
         {
                var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
                 [
@@ -6049,10 +6049,12 @@ galleryobj.init = function(obj)
             for (var n = 0; n < results.length; ++n)
             {
                 var result = results[n];
-                result.func = function()
+                result.func = function(x, y)
                 {
-                    var path = `${url.origin}/?r2=${this.id}`;
-                    window.open(path, "_self");
+                    this.options = this.options?0:1;
+                    menuobj.draw();
+                    //var path = `${url.origin}/?r2=${this.id}`;
+                    //window.open(path, "_self");
                 }
             }
 
@@ -6060,7 +6062,7 @@ galleryobj.init = function(obj)
             _7cnv.sliceobj.data.push(
             {
                 title: "Galleries \u{25B6}",
-                func: function()
+                func: function(x, y)
                 {
                     galleryobj.leftcnv = _2cnv;
                     galleryobj.leftctx = _2cnvctx;
