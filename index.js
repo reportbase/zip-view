@@ -3346,7 +3346,8 @@ bossobj.reset = function() {
 	var canvas = _4cnv;
 	var context = _4cnvctx;
 	if (canvas.width != window.innerWidth ||
-		canvas.height != window.innerheight) {
+		canvas.height != window.innerheight) 
+	{
 		window.headrect = new rectangle(0, 0, window.innerWidth, ALIEXTENT);
 		window.leftrect = new rectangle(0, 0, window.innerWidth / 2, window.innerHeight);
 		window.rightrect = new rectangle(window.innerWidth / 2, 0, window.innerWidth / 2, window.innerHeight);
@@ -3362,7 +3363,7 @@ bossobj.reset = function() {
 		zoomobj.set(window.landscape());
 		positxobj.set(window.landscape());
 		posityobj.set(window.landscape());
-		context.show(0, 0, window.innerWidth, window.innerHeight);
+		context.show(0, 0, window.innerWidth, 0);//window.innerHeight);
 	}
 
 	var zoomax = galleryobj.zoomax ? galleryobj.zoomax : ZOOMAX;
