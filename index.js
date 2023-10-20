@@ -2820,7 +2820,26 @@ var taplst = [
 		{
 			headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 
-			if (context.canvas.thumbrect && context.canvas.thumbrect.hitest(x, y)) 
+			if (headcnvctx.moveprev && headcnvctx.moveprev.hitest(x, y)) 
+			{
+				_4cnvctx.movepage(-1);
+			} 
+			else if (headcnvctx.movenext && headcnvctx.movenext.hitest(x, y))
+			{
+				_4cnvctx.movepage(1);
+			}
+			else if (
+				headcnvctx.zoomrect &&
+				headcnvctx.zoomrect.hitest(x, y)) 
+			{
+				menuobj.setindex(_8cnvctx);
+				menuobj.show();
+				headobj.set(GALLERY);
+				headham.panel = headobj.value();
+				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);	
+				_4cnv.height = 0;
+			}							
+			else if (context.canvas.thumbrect && context.canvas.thumbrect.hitest(x, y)) 
 			{
 				if (context.canvas.selectrect &&
 					context.canvas.selectrect.hitest(x, y) >= 0) 
@@ -4821,34 +4840,6 @@ window.addEventListener("screenorientation", (evt) => {
 
 var headlst = [
 	new function() {
-
-		this.tap = function(context, rect, x, y) {
-
-			if (context.moveprev && context.moveprev.hitest(x, y)) 
-			{
-				_4cnvctx.movepage(-1);
-			} 
-			else if (context.movenext && context.movenext.hitest(x, y))
-			{
-				_4cnvctx.movepage(1);
-			}
-			else if (
-				context.zoomrect &&
-				context.zoomrect.hitest(x, y)) 
-			{
-				menuobj.setindex(_8cnvctx);
-				menuobj.show();
-				headobj.set(GALLERY);
-				headham.panel = headobj.value();
-				headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);	
-				_4cnv.height = 0;
-			}							
-			else {
-				var k = menuobj.value() ? MENU : BOSS;
-				var j = menuobj.value() ? menuobj.value() : _4cnvctx;
-				tapobj.data[k].tap(j, rect, x, y)
-			}
-		};
 
 		this.draw = function(context, rect, user, time) {
 			context.clear();
