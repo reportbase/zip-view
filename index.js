@@ -561,7 +561,7 @@ panel.gallerybar = function()
                         new panel.rows([0, bh, 0],
                             [
                                 0,
-                                0 ? panel.layers(
+                                0 ? new panel.layers(
                                     [
                                         new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
                                         new panel.expand(new panel.rectangle(canvas.speedrect), 10, 0),
@@ -573,7 +573,7 @@ panel.gallerybar = function()
                         new panel.rows([0, bh, 0],
                             [
                                 0,
-                                0 ? panel.layers(
+                                0 ? new panel.layers(
                                     [
                                         new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
                                         new panel.expand(new panel.rectangle(canvas.reducerect), 10, 0),
@@ -590,7 +590,7 @@ panel.gallerybar = function()
                         new panel.cols([0, w, 0],
                             [
                                 0,
-                                s ? 0 : panel.layers(
+                                s ? 0 : new panel.layers(
                                     [
                                         new panel.rectangle(context.chapterect),
                                         new panel.gridA(1, rows, 1,
@@ -648,7 +648,7 @@ panel.galleryscroll = function()
                 1 ? 0 : new panel.rows([0, bh, 0],
                     [
                         0,
-                        panel.layers(
+                        new panel.layers(
                             [
                                 new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
                                 new panel.expand(new panel.rectangle(canvas.buttonrect), 10, 0),
@@ -660,7 +660,7 @@ panel.galleryscroll = function()
                 new panel.rows([0, bh, 0],
                     [
                         0,
-                        panel.layers(
+                        new panel.layers(
                             [
                                 new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
                                 new panel.expand(new panel.rectangle(canvas.vscrollrect), 10, 0),
@@ -686,7 +686,7 @@ panel.galleryscroll = function()
                 new panel.cols([0, bw, 0],
                     [
                         0,
-                        panel.layers(
+                        new panel.layers(
                             [
                                 new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
                                 new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 10),
@@ -717,7 +717,7 @@ panel.scrollbar = function()
                 new panel.rows([kh, 0, kh],
                     [
                         0,
-                        panel.layers(
+                        new panel.layers(
                             [
                                 new panel.expand(new panel.rectangle(canvas.vscrollrect), 10, 0),
                                 new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 0),
@@ -728,7 +728,7 @@ panel.scrollbar = function()
                 new panel.rows([kh, 0, kh],
                     [
                         0,
-                        panel.layers(
+                        new panel.layers(
                             [
                                 new panel.expand(new panel.rectangle(canvas.hscrollrect), 10, 0),
                                 new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1),
@@ -956,7 +956,7 @@ panel.fullscreen = function()
     {
         context.save();
         context.fullrect = new rectangle()
-        var a = panel.layers(
+        var a = new panel.layers(
             [
                 new panel.rectangle(context.fullrect),
                 screenfull.isFullscreen ?
@@ -1046,7 +1046,7 @@ panel.open = function()
             }
         };
 
-        var a = panel.layers(
+        var a = new panel.layers(
             [
                 new panel.rectangle(context.canvas.openrect),
                 new panel.shrink(new panel.circle(SCROLLNAB, SEARCHFRAME, 4), 15, 15),
@@ -1083,7 +1083,7 @@ panel.upload = function()
             }
         };
 
-        var a = panel.layers(
+        var a = new panel.layers(
             [
                 new panel.rectangle(context.canvas.uploadrect),
                 new panel.shrink(new panel.circle(SCROLLNAB, SEARCHFRAME, 4), 15, 15),
@@ -1103,7 +1103,7 @@ panel.meta = function()
         context.canvas.metarect = new rectangle();
         var s = _8cnv.scrollobj.current() == 0;
 
-        var a = panel.layers(
+        var a = new panel.layers(
             [
                 new panel.rectangle(context.canvas.metarect),
                 s ? 0 : new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), 22, 22),
@@ -1145,7 +1145,7 @@ panel.fitwidth = function()
     {
         context.save();
         context.fitwidthrect = new rectangle()
-        var a = panel.layers(
+        var a = new panel.layers(
             [
                 new panel.rectangle(context.fitwidthrect),
                 _8cnv.fitflash ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
@@ -1171,7 +1171,7 @@ panel.rightmenu = function()
             var j = 5;
             var k = j / 2;
             var e = new panel.fill(OPTIONFILL);
-            var a = panel.layers(
+            var a = new panel.layers(
                 [
                     new panel.rectangle(context.rightmenurect),
                     s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
@@ -1200,7 +1200,7 @@ panel.previous = function()
         context.fillStyle = "white";
         context.strokeStyle = "white";
 
-        var a = panel.layers(
+        var a = new panel.layers(
             [
                 new panel.rectangle(context.moveprev),
                 _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
@@ -1222,7 +1222,7 @@ panel.next = function()
         context.fillStyle = "white";
         context.strokeStyle = "white";
 
-        var a = panel.layers(
+        var a = new panel.layers(
             [
                 new panel.rectangle(context.movenext),
                 _4cnv.movingpage == 1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
@@ -1262,7 +1262,7 @@ panel.zoom = function()
         };
 
         var s = menuobj.value() != _8cnvctx;
-        var a = panel.layers(
+        var a = new panel.layers(
             [
                 new panel.rectangle(context.zoomrect),
                 s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), 16, 16) : 0,
@@ -3398,7 +3398,7 @@ var bosslst = [
                             new panel.rows([0, bh, 0],
                                 [
                                     0,
-                                    panel.layers(
+                                    new panel.layers(
                                         [
                                             new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
                                             new panel.expand(new panel.rectangle(galleryobj.debug ?
@@ -3411,7 +3411,7 @@ var bosslst = [
                             new panel.rows([0, bh, 0],
                                 [
                                     0,
-                                    panel.layers(
+                                    new panel.layers(
                                         [
                                             new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
                                             new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
@@ -3427,7 +3427,7 @@ var bosslst = [
                             new panel.cols([0, w, 0],
                                 [
                                     0,
-                                    panel.layers(
+                                    new panel.layers(
                                         [
                                             new panel.rectangle(context.chapterect),
                                             new panel.gridA(1, rows, 1,
@@ -3440,7 +3440,7 @@ var bosslst = [
                             new panel.cols([0, cw, 0],
                                 [
                                     0,
-                                    1 ? 0 : panel.layers(
+                                    1 ? 0 : new panel.layers(
                                         [
                                             new panel.expand(new panel.rectangle(context.heightrect), 0, 10),
                                             new panel.currentH(new panel.fill(NUBAR), bh / 5, 1),
@@ -3476,7 +3476,7 @@ var bosslst = [
                     new panel.cols([0, bw, 0],
                         [
                             0,
-                            panel.layers(
+                            new panel.layers(
                                 [
                                     new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
                                     new panel.expand(new panel.rectangle(context.timerect), 0, 10),
@@ -3814,7 +3814,7 @@ var buttonlst = [
         var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
             [
                 0,
-                panel.layers(
+                new panel.layers(
                     [
                         new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8), canvas.buttonmargin, canvas.buttonmargin),
                         new panel.shrink(new panel.multitext(e), 20, 0),
@@ -3849,28 +3849,28 @@ var buttonlst = [
                var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
                 [
                     0,
-                    panel.layers(
+                    new panel.layers(
                         [
                             new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
                                 canvas.buttonmargin, canvas.buttonmargin),
                             new panel.rowsA([0.25,0.25,0.25,0.25],
                                 [
-                                    panel.layers(
+                                    new panel.layers(
                                         [
                                             new panel.rounded("rgb(0,0,180)", 0, 0, 8, 0),
                                             new panel.text("white", "center", "middle", 0, 0)
                                         ]),
-                                    panel.layers(
+                                    new panel.layers(
                                         [
                                             new panel.rounded("rgb(0,0,180)", 0, 0, 8, 0),
                                             new panel.text("white", "center", "middle", 0, 0)
                                         ]),
-                                    panel.layers(
+                                    new panel.layers(
                                         [
                                             new panel.rounded("rgb(0,0,180)", 0, 0, 8, 0),
                                             new panel.text("white", "center", "middle", 0, 0)
                                         ]),
-                                    panel.layers(
+                                    new panel.layers(
                                         [
                                             new panel.rounded("rgb(0,0,80)", 0, 0, 8, 0),
                                             new panel.text("white", "center", "middle", 0, 0)
@@ -3893,14 +3893,14 @@ var buttonlst = [
             var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
                 [
                     0,
-                    panel.layers(
+                    new panel.layers(
                         [
                             new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
                                 canvas.buttonmargin, canvas.buttonmargin),
                             new panel.rowsA([0.75, 0.25],
                                 [
                                     new panel.shrink(new panel.multitext(e), 20, 0),
-                                    panel.layers(
+                                    new panel.layers(
                                         [
                                             new panel.rounded("rgb(0,0,80)", 0, 0, 8, 0),
                                             new panel.text("white", "center", "middle", 0, 0)
@@ -5483,7 +5483,7 @@ panel.gallery = function(size)
         var k = j / 2;
         var e = new panel.fill(OPTIONFILL);
         var s = menuobj.value() == _2cnvctx;
-        var a = panel.layers(
+        var a = new panel.layers(
             [
                 new panel.rectangle(context.canvas.galleryrect),
                 s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), 22, 22) : 0,
@@ -5514,7 +5514,7 @@ panel.leftmenu = function()
             var k = j / 2;
             var e = new panel.fill(OPTIONFILL);
             var s = menuobj.value() == galleryobj.leftctx;
-            var a = panel.layers(
+            var a = new panel.layers(
                 [
                     new panel.rectangle(context.leftmenurect),
                     s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
