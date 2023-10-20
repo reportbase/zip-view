@@ -2723,6 +2723,10 @@ var keylst =
 				context.refresh();
 				evt.preventDefault();
 			} 
+			else if (key == "z")
+			{
+ 				headcnv.style.pointerEvents = "none"; 
+			}
 			else if 
 			(
 				key == "arrowright" ||
