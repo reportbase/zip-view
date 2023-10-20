@@ -4035,7 +4035,7 @@ var eventlst = [
 		button: "OPTION",
 		wheel: "MENU",
 		drop: "DEFAULT",
-		key: "SETUP",
+		key: "MENU",
 		press: "MENU",
 		pinch: "MENU",
 		bar: new panel.empty(),
