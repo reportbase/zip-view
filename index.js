@@ -3647,7 +3647,7 @@ var buttonlst =
 							new panel.rows([0.75,0.25],
 							[
 								new panel.shrink(new panel.multitext(e), 20, 0),
-								new Layer
+								new Layer(
 									[
 										new panel.rounded("rgb(0,0,80)", 0, 0, 8, 0), 			
 									]),
