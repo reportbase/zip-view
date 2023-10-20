@@ -4970,7 +4970,7 @@ panel.rotated_text = function()
     }
 };
 
-panel.text = function(color = "white", align = "center", baseline = "alphabetic",
+panel.text = function(color = "white", align = "center", baseline = "middle",
     reverse = 0, noclip = 0, font = DEFAULTFONT)
 {
     this.draw = function(context, rect, user, time)
@@ -4994,8 +4994,8 @@ panel.text = function(color = "white", align = "center", baseline = "alphabetic"
         context.font = font;
 
         var metrics;
-        var str;
-
+        var str = user;
+/*
         if (!noclip)
         {
             do {
@@ -5009,7 +5009,8 @@ panel.text = function(color = "white", align = "center", baseline = "alphabetic"
         {
             str = user;
         }
-
+*/
+        
         var x = rect.x;
         if (align == "center")
             x = rect.x + rect.width / 2;
