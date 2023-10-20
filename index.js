@@ -5023,9 +5023,9 @@ var headlst = [
 						new panel.rightmenu(),
 						0,
 					]);
-				a.draw(context, new rectangle(
-					window.innerWidth-10-ALIEXTENT, 
-							      0, 10+ALIEXTENT, HEADHEIGHT), 0, 0);
+				var x = window.innerWidth-10-ALIEXTENT;
+				var w = 10+ALIEXTENT
+				a.draw(context, new rectangle(x, 0, w, HEADHEIGHT), 0, 0);
 			}
 			else
 			{
