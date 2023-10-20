@@ -3645,6 +3645,7 @@ menuobj.hide = function()
 	if (!context)
 		return;
 	context.hide();
+	headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
 	this.setindex(_8cnv.height ? _8cnvctx : 0);
 }
 
@@ -3674,7 +3675,7 @@ menuobj.show = function()
 	if (menuobj.value() != _8cnvctx &&
 	   canvas.width == window.innerWidth)
 	{
-		if (menuobj.value() == galleryobj.leftmenu)
+		if (menuobj.value() == galleryobj.leftctx)
 			headcnvctx.show(0, 0, HEADHEIGHT, HEADHEIGHT);
 		else
 			headcnvctx.show(window.innerWidth-HEADHEIGHT, 0, HEADHEIGHT, HEADHEIGHT);
