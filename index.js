@@ -6303,6 +6303,7 @@ function gotodialog(value, title, func)
             var page = input.value.clean();
             func(page);
             dialog.close();
+            menuobj.draw();
         }
     });
 
@@ -6314,6 +6315,7 @@ function gotodialog(value, title, func)
             var page = input.value.clean();
             func(page);
             dialog.close();
+            menuobj.draw();
         }
         else if (!rect.hitest(event.x, event.y))
         {
