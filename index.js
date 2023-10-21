@@ -646,7 +646,7 @@ panel.galleryscroll = function()
             return;
         var bh = rect.height / 2;
         var bw = rect.width / 2;
-        var a = new panel.colsA([0, SCROLLBARWIDTH, 6],
+        var a = new panel.cols([0, SCROLLBARWIDTH, 6],
             [
                 0,
                 new panel.rows([0, bh, 0],
