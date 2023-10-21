@@ -3365,7 +3365,8 @@ Number.prototype.pad = function(size)
     return s;
 }
 
-var bosslst = [
+var bosslst = 
+[
     new function()
     {
         this.draw = function(context, r, user, time)
@@ -3649,15 +3650,13 @@ bossobj.draw = function()
             slice.x, 0, colwidth, rect.height,
             x, 0, w, rect.height);
 
-        if (galleryobj.debug)
-        {
-            //            overlayobj.value().draw(offbossctx,
-            //              new rectangle(x,0,w,rect.height),
-            //                  `${n+1}of${slices.length}`, 0);
+//            overlayobj.value().draw(offbossctx,
+//              new rectangle(x,0,w,rect.height),
+//                  `${n+1}of${slices.length}`, 0);
         }
     }
 
-    context.drawImage(offbosscnv, 0, 0)
+    context.drawImage(offbosscnv, 0, 0);
     context.restore();
 
     delete _4cnv.selectrect;
@@ -4130,6 +4129,8 @@ menuobj.draw = function()
         context.canvas.slideshow = 0;
     }
 
+    offmenucnv.width = rect.width;
+    offmenucnv.height = rect.height;
     var len = context.canvas.sliceobj.length()
     var delayinterval = TIMEOBJ / len / 1000;
     context.canvas.virtualheight = len * canvas.buttonheight;
@@ -4215,6 +4216,7 @@ menuobj.draw = function()
                 y,
                 n
             };
+            
             slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight);
             slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
             if (slice.isvisible)
@@ -4224,13 +4226,14 @@ menuobj.draw = function()
                 isvisiblecount += j.slice.isvisible ? 1 : 0;
                 if (slice.isvisible)
                     context.canvas.visibles.push(j);
-                ctx.translate(0, j.y);
+                context.translate(0, j.y);
                 context.canvas.draw(ctx, r, j.slice, j.n);
-                ctx.translate(0, -j.y);
+                context.translate(0, -j.y);
             }
         }
     }
 
+    //context.drawImage(offmenucnv, 0, 0);
     infobj.data = [];
     if (headcnv.height)
     {
