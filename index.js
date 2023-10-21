@@ -5978,7 +5978,7 @@ galleryobj.init = function(obj)
             {
                 var result = results[n];
                 result.body = JSON.parse(result.body);
-                result.title = result.body.name;
+                result.title = result.body.title;
                 result.func = function(n, x, y)
                 {
                     galleryobj.init(this.body)
