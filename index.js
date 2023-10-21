@@ -151,8 +151,8 @@ util.rotated_list = function(lst, size, start, width)
     {
         return a == v;
     });
+    
     var e = k.slice(j).concat(k.slice(0, j));
-
     var unique = e.filter(function(value, index, array)
     {
         return array.indexOf(value) === index;
@@ -2341,11 +2341,11 @@ var panlst = [
             }
             else
             {
-                var k = x - canvas.startx;
-                var j = (canvas.timeobj.length() / canvas.virtualwidth) * k;
-                canvas.timeobj.CURRENT = canvas.timeobj.ANCHOR + j;
-                canvas.timeobj.wrap();
-                context.refresh();
+                var e = x - canvas.startx;
+                var jvalue = TIMEOBJ / canvas.virtualwidth
+                jvalue *= e;
+                canvas.timeobj.rotateanchored(jvalue);
+                context.refresh()
             }
         }
         else if (type == "panup" || type == "pandown")
@@ -2374,9 +2374,11 @@ var panlst = [
             }
             else
             {
-                var k = canvas.starty - y;
-                rowobj.CURRENT = rowobj.ANCHOR + k;
-                contextobj.reset();
+                var e = y - canvas.starty;
+                var jvalue = window.innerWidth / canvas.virtualwidth
+                jvalue *= e;
+                rowobj.CURRENT = rowobj.ANCHOR + jvalue;
+                context.refresh()
             }
         }
     },
