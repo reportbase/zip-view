@@ -3877,7 +3877,7 @@ var buttonlst = [
 
         if (thumbimg && thumbimg.width)
         {
-            var obj = context.canvas.scrollobj;
+            var obj = _8cnv.scrollobj;
             var b = thumbimg.width / thumbimg.height;
             var b2 = rect.width / rect.height;
             var hh = Math.floor(rect.height);
@@ -4153,12 +4153,14 @@ menuobj.draw = function()
             lasty = y;
 
             var x = rect.width / 2;
-            var j = {
+            var j = 
+            {
                 slice,
                 x,
                 y,
                 n
             };
+            
             slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight);
             slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
             if (slice.isvisible)
@@ -4169,7 +4171,6 @@ menuobj.draw = function()
                 if (slice.isvisible)
                     context.canvas.visibles.push(j);
 
-                offmenucnv.scrollobj = canvas.scrollobj;
                 offmenuctx.translate(0, j.y);
                 context.canvas.draw(offmenuctx, r, j.slice, j.n);
                 offmenuctx.translate(0, -j.y);
