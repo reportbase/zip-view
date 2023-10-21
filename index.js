@@ -1124,7 +1124,7 @@ panel.meta = function()
 
 function fitwidth()
 {
-    localobj.time = _8cnv.timeobj.current();
+    localobj.time[7] = _8cnv.timeobj.current();
     var j = _8cnv.centered;
     var index = j % IMAGELSTSIZE;
     galleryobj.width = thumbfittedlst[index].width;
@@ -2074,7 +2074,7 @@ async function loadzip(file)
     galleryobj.data = [];
     galleryobj.width = 0;
     galleryobj.height = 0;
-    localobj.time = 0;
+    localobj.time[7] = 0;
     delete galleryobj.repos;
     for (var n = 0; n < keys.length; ++n)
     {
@@ -2112,7 +2112,7 @@ async function loadblob(blob)
     galleryobj.data = [];
     galleryobj.width = 0;
     galleryobj.height = 0;
-    localobj.time = 0;
+    localobj.time[7] = 0;
     delete galleryobj.repos;
     galleryobj.set(0);
 
@@ -2148,7 +2148,7 @@ async function loadimages(blobs)
     galleryobj.data = [];
     galleryobj.width = 0;
     galleryobj.height = 0;
-    localobj.time = 0;
+    localobj.time[7] = 0;
     delete galleryobj.repos;
 
     for (var i = 0; i < blobs.length; i++)
@@ -5543,10 +5543,20 @@ window.addEventListener("visibilitychange", (evt) =>
     {
         menuobj.draw();
         bossobj.draw();
+        for (var n = 0; n < contextlst.length; ++n)
+        {
+            var cnv = contextlst[n].canvas;
+            cnv.timeobj.setcurrent(localobj.time[n]);
+        }
     }
     else
     {
-        localobj.time = _8cnv.timeobj.current();
+        for (var n = 0; n < contextlst.length; ++n)
+        {
+            var cnv = contextlst[n].canvas;
+            localobj.time[n] = cnv.timeobj.current();
+        }
+        
         localStorage.setItem(url.path, JSON.stringify(localobj));
     }
 });
@@ -6091,7 +6101,7 @@ function initime()
     headobj.set(galleryobj.length() > BOSSMIN ? GALLERY : BOSS);
     headham.panel = headobj.value();
     headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-    var j = Number(localobj.time);
+    var j = Number(localobj.time[7]);
 
     if (url.searchParams.has("n"))
     {
@@ -6282,7 +6292,7 @@ else
 }
 
 var localobj = {};
-localobj.time = 0;
+localobj.time = [];
 localobj.login = "reportbase@gmail.com";
 
 try
@@ -6535,7 +6545,7 @@ function selectname(name)
         if (!e.name || !e.name.wild(name))
             continue;
         gotoimage(m);
-        localobj.time = _8cnv.timeobj.current();
+        localobj.time[7] = _8cnv.timeobj.current();
         galleryobj.width = 0;
         galleryobj.height = 0;
         galleryobj.init();
@@ -6551,7 +6561,7 @@ function selectfolder()
         if (!e.folder || e.folder != this.folder)
             continue;
         gotoimage(m);
-        localobj.time = _8cnv.timeobj.current();
+        localobj.time[7] = _8cnv.timeobj.current();
         galleryobj.width = 0;
         galleryobj.height = 0;
         galleryobj.init();
@@ -6567,7 +6577,7 @@ function selectid(id)
         if (!e.id || e.id != id)
             continue;
         gotoimage(m);
-        localobj.time = _8cnv.timeobj.current();
+        localobj.time[7] = _8cnv.timeobj.current();
         galleryobj.width = 0;
         galleryobj.height = 0;
         galleryobj.init();
