@@ -515,6 +515,15 @@ offbossctx.font = DEFAULTFONT;
 offbossctx.fillText("  ", 0, 0);
 offbossctx.imageSmoothingEnabled = false;
 offbossctx.imageSmoothingQuality = "high";
+offbosscnv.width = window.innerWidth;
+offbosscnv.height = window.innerHeight;
+  
+var offmenucnv = new OffscreenCanvas(1, 1);
+var offmenuctx = offbosscnv.getContext("2d");
+offmenuctx.font = DEFAULTFONT;
+offmenuctx.fillText("  ", 0, 0);
+offmenuctx.imageSmoothingEnabled = false;
+offmenuctx.imageSmoothingQuality = "high";
 
 let canvaslst = [];
 for (var n = 0; n < 6; ++n)
@@ -3616,8 +3625,6 @@ bossobj.draw = function()
     for (var m = 0; m < slices.length; ++m)
         slices[m].stretchwidth = 0;
 
-    offbosscnv.width = rect.width;
-    offbosscnv.height = rect.height;
     for (var m = slices.length; m < slices.length * 2; ++m)
     {
         var n = _4cnv.rotated[m];
@@ -4228,8 +4235,6 @@ menuobj.draw = function()
     if (headcnv.height)
     {
         infobj.reset();
-        if (galleryobj.debug)
-            infobj.data.push(`${isvisiblecount} of ${canvas.normal.length}`);
     }
 
     context.canvas.bar.draw(context, rect, 0, 0);
@@ -4991,7 +4996,7 @@ panel.text = function(color = "white", align = "center", baseline = "middle",
 
         var metrics;
         var str = user;
-/*
+
         if (!noclip)
         {
             do {
@@ -5005,7 +5010,6 @@ panel.text = function(color = "white", align = "center", baseline = "middle",
         {
             str = user;
         }
-*/
         
         var x = rect.x;
         if (align == "center")
@@ -5310,6 +5314,8 @@ function resize()
     buttonobj.reset()
     contextobj.reset();
     _4cnvctx.refresh();
+    offbosscnv.width = window.innerWidth;
+    offbosscnv.height = window.innerHeight;
     headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
     headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
     if (menuobj.value() == _8cnvctx)
