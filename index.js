@@ -595,7 +595,7 @@ panel.gallerybar = function()
                         new panel.cols([0, w, 0],
                             [
                                 0,
-                                s ? 0 : new panel.layers(
+                                new panel.layers(
                                     [
                                         new panel.rectangle(context.chapterect),
                                         new panel.gridA(1, rows, 1,
