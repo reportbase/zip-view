@@ -5977,7 +5977,8 @@ galleryobj.init = function(obj)
             for (var n = 0; n < results.length; ++n)
             {
                 var result = results[n];
-                result.body = JSON.parse(result.body);
+                const cleanedData = result.body.replace(/,\s*}$/, '');
+                result.body = JSON.parse(cleanedData);
                 result.title = result.body.title;
                 result.func = function(n, x, y)
                 {
