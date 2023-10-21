@@ -6301,9 +6301,9 @@ function gotodialog(value, title, func)
         if (event.keyCode === 13)
         {
             var page = input.value.clean();
-            func(page);
             dialog.close();
             menuobj.draw();
+            func(page);
         }
     });
 
@@ -6313,9 +6313,9 @@ function gotodialog(value, title, func)
         if (event.target.id == "goto-ok")
         {
             var page = input.value.clean();
-            func(page);
             dialog.close();
             menuobj.draw();
+            func(page);
         }
         else if (!rect.hitest(event.x, event.y))
         {
