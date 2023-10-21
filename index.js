@@ -1756,6 +1756,10 @@ var wheelst = [
     {
         if (ctrl)
             return;
+        if (delta < 5 && delta > 0)
+            return;
+        else if (delta > -5 && delta < 0)
+            return;
         menuobj.updown(context, delta);
         context.refresh();
     },
