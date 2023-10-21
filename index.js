@@ -5634,6 +5634,7 @@ async function loadjson(blob)
     {
         var text = await blob.text();
         var json = JSON.parse(text);
+        publishzip(text);
         galleryobj.init(json)
     }
     catch (_)
@@ -5884,14 +5885,6 @@ galleryobj.init = function(obj)
     };
 
     _7cnv.sliceobj.data = [
-    {
-        title: "Publish",
-        func: function()
-        {
-            if (global.zip)
-                publishzip(global.zip)
-        }
-    },
     {
         title: "Login",
         func: function()
