@@ -4168,6 +4168,8 @@ menuobj.draw = function()
     {
       offmenucnv[property] = canvas[property];
     }
+
+    offmenucnv.scrollobj = context.canvas.scrollobj;
     
     for (var m = 0; m < canvas.normal.length; ++m)
     {
