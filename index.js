@@ -5634,6 +5634,7 @@ async function loadjson(blob)
     try
     {
         var text = await blob.text();
+        text = text.replace(/,\s*}$/, '');
         var json = JSON.parse(text);
         publishzip(text);
         galleryobj.init(json)
@@ -5977,8 +5978,8 @@ galleryobj.init = function(obj)
             for (var n = 0; n < results.length; ++n)
             {
                 var result = results[n];
-                const cleanedData = result.body.replace(/,\s*}$/, '');
-                result.body = JSON.parse(cleanedData);
+                var k = result.body.replace(/,\s*}$/, '');
+                result.body = JSON.parse(k);
                 result.title = result.body.title;
                 result.func = function(n, x, y)
                 {
