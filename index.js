@@ -4113,7 +4113,6 @@ menuobj.draw = function()
     var context = this.value();
     if (!context)
         return;
-    var canvas = context.canvas;
     var time = canvas.timeobj.value() / 1000;
     var slices = context.canvas.sliceobj.data;
     const rect = context.rect();
@@ -4164,11 +4163,6 @@ menuobj.draw = function()
     var r = new rectangle(0, 0, rect.width, canvas.buttonheight);
     var lasty = -10000000;
     var delay = 0;
-    
-    for (var property in context.canvas) 
-    {
-      offmenucnv[property] = canvas[property];
-    }
 
     for (var m = 0; m < canvas.normal.length; ++m)
     {
