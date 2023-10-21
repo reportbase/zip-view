@@ -505,10 +505,6 @@ let _15cnvctx = _15cnv.getContext("2d", opts);
 let headcnv = document.getElementById("head");
 let headcnvctx = headcnv.getContext("2d", opts);
 
-headcnvctx.canvas.scrollobj = new circular_array("TEXTSCROLL", window.innerWidth / 4);
-headcnvctx.font = DEFAULTFONT;
-headcnvctx.fillText("  ", 0, 0);
-
 var offbosscnv = new OffscreenCanvas(1, 1);
 var offbossctx = offbosscnv.getContext("2d");
 offbossctx.font = DEFAULTFONT;
@@ -558,7 +554,6 @@ panel.gallerybar = function()
         var w = Math.min(360, rect.width - 100);
         var j = window.innerWidth - rect.width >= 180;
         var rows = infobj.data.length;
-        var s = canvas.scrollobj.current() == 1;
         var rh = 26;
         var bh = rect.height / 2;
         var cw = rect.width - 30;
@@ -649,7 +644,6 @@ panel.galleryscroll = function()
         canvas.buttonrect = new rectangle();
         if (!headcnv.height)
             return;
-        var obj = context.canvas.scrollobj.value();
         var bh = rect.height / 2;
         var bw = rect.width / 2;
         var a = new panel.colsA([6, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 6],
@@ -706,7 +700,7 @@ panel.galleryscroll = function()
                     ])
             ])
 
-        a.draw(context, rect, obj, 0);
+        a.draw(context, rect, context.canvas.scrollobj.value(), 0);
         context.restore();
     }
 };
@@ -1098,32 +1092,6 @@ panel.upload = function()
                 new panel.rectangle(context.canvas.uploadrect),
                 new panel.shrink(new panel.circle(SCROLLNAB, SEARCHFRAME, 4), 15, 15),
                 new panel.shrink(new Panel(), 16, 34),
-            ]);
-
-        a.draw(context, rect, user, time);
-        context.restore();
-    }
-};
-
-panel.meta = function()
-{
-    this.draw = function(context, rect, user, time)
-    {
-        context.save();
-        context.canvas.metarect = new rectangle();
-        var s = _8cnv.scrollobj.current() == 0;
-
-        var a = new panel.layers(
-            [
-                new panel.rectangle(context.canvas.metarect),
-                s ? 0 : new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), 22, 22),
-                new panel.shrink(new panel.circle(s ? SCROLLNAB : TRANSPARENT, SEARCHFRAME, 4), 17, 17),
-                new panel.shrink(new panel.rows([0, 4, 0],
-                    [
-                        new panel.circle("white"),
-                        0,
-                        new panel.circle("white"),
-                    ]), 22, 30),
             ]);
 
         a.draw(context, rect, user, time);
@@ -4590,6 +4558,7 @@ contextlst.forEach(function(context, n)
     canvas.timeobj = new circular_array("", TIMEOBJ);
     canvas.timeobj.set(TIMEOBJ / 2);
     canvas.scrollobj = new circular_array("TEXTSCROLL", window.innerHeight / 2);
+    //todo: remove
     canvas.imagescrollobj = new circular_array("IMAGESCROLL", window.innerWidth);
     canvas.imagescrollobj.set(0.5 * canvas.imagescrollobj.length());
     canvas.textscrollobj = new circular_array("TEXTSCROLL", window.innerHeight / 2);
