@@ -1804,12 +1804,20 @@ var wheelst = [
         }
         else
         {
+            if (delta < 1 && > 0)
+                delta = 1;
+            else if (delta > -1 && < 0)
+                delta = -1;
             rowobj.addpercrotate(0.001 * delta);
             contextobj.reset();
         }
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     { 
+            if (delta < 1 && > 0)
+                delta = 1;
+            else if (delta > -1 && < 0)
+                delta = -1;
         context.canvas.timeobj.addperc(-delta/1000);
         context.refresh();
     },
