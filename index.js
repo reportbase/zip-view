@@ -5539,11 +5539,6 @@ window.addEventListener("visibilitychange", (evt) =>
     {
         menuobj.draw();
         bossobj.draw();
-        for (var n = 0; n < contextlst.length; ++n)
-        {
-            var cnv = contextlst[n].canvas;
-            cnv.timeobj.setcurrent(localobj.time[n]);
-        }
     }
     else
     {
@@ -6295,6 +6290,12 @@ try
     var k = localStorage.getItem(url.path);
     if (k)
         localobj = JSON.parse(k);
+
+    for (var n = 0; n < contextlst.length; ++n)
+    {
+        var cnv = contextlst[n].canvas;
+        cnv.timeobj.setcurrent(localobj.time[n]);
+    }    
 }
 catch (_)
 {}
