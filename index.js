@@ -2382,7 +2382,7 @@ var panlst = [
                 if (k == rowobj.anchor())
                     return;
                 rowobj.set(k);
-                context.refresh()
+                contextobj.reset();
             }
         }
     },
