@@ -3594,12 +3594,9 @@ bossobj.draw = function()
             slice.x, 0, colwidth, rect.height,
             x, 0, w, rect.height);
 
-        if (galleryobj.debug)
-        {
-            //            overlayobj.value().draw(offbossctx,
-            //              new rectangle(x,0,w,rect.height),
-            //                  `${n+1}of${slices.length}`, 0);
-        }
+//            overlayobj.value().draw(offbossctx,
+//              new rectangle(x,0,w,rect.height),
+//                  `${n+1}of${slices.length}`, 0);
     }
 
     context.drawImage(offbosscnv, 0, 0)
@@ -4027,6 +4024,9 @@ menuobj.show = function()
         context.show(l, 0, w, window.innerHeight);
     }
 
+    offmenucnv.width = canvas.width;
+    offmenucnv.height = canvas.height;
+    
     function f()
     {
         context.canvas.lastime = -0.0000000000101010101;
@@ -4168,12 +4168,16 @@ menuobj.draw = function()
                 isvisiblecount += j.slice.isvisible ? 1 : 0;
                 if (slice.isvisible)
                     context.canvas.visibles.push(j);
-                ctx.translate(0, j.y);
-                context.canvas.draw(ctx, r, j.slice, j.n);
-                ctx.translate(0, -j.y);
+
+                offmenuctx.scrollobj = context.scrollobj;
+                offmenuctx.translate(0, j.y);
+                context.canvas.draw(offmenuctx, r, j.slice, j.n);
+                offmenuctx.translate(0, -j.y);
             }
         }
     }
+
+    context.drawImage(offmenucnv, 0, 0)
 
     infobj.data = [];
     if (headcnv.height)
