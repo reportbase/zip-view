@@ -1810,7 +1810,7 @@ var wheelst = [
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     { 
-        context.canvas.timeobj.addperc(delta/100);
+        context.canvas.timeobj.addperc(-delta/1000);
         context.refresh();
     },
 }, ];
