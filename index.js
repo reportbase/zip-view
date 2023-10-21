@@ -515,7 +515,7 @@ offbosscnv.width = window.innerWidth;
 offbosscnv.height = window.innerHeight;
   
 var offmenucnv = new OffscreenCanvas(1, 1);
-var offmenuctx = offbosscnv.getContext("2d");
+var offmenuctx = offmenucnv.getContext("2d");
 offmenuctx.font = DEFAULTFONT;
 offmenuctx.fillText("  ", 0, 0);
 offmenuctx.imageSmoothingEnabled = false;
@@ -4171,14 +4171,14 @@ menuobj.draw = function()
                 if (slice.isvisible)
                     context.canvas.visibles.push(j);
 
-                context.translate(0, j.y);
-                context.canvas.draw(context, r, j.slice, j.n);
-                context.translate(0, -j.y);
+                offmenuctx.translate(0, j.y);
+                context.canvas.draw(offmenuctx, r, j.slice, j.n);
+                offmenuctx.translate(0, -j.y);
             }
         }
     }
 
-    //context.drawImage(offmenucnv, 0, 0)
+    context.drawImage(offmenucnv, 0, 0)
 
     infobj.data = [];
     if (headcnv.height)
