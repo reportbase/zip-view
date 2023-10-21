@@ -3933,7 +3933,7 @@ var buttonlst = [
         var thumbimg = thumbimglst[index];
         var thumbfitted = thumbfittedlst[index];
 
-        if (context.canvas.scrollobj.current() == 0 &&
+        if (//context.canvas.scrollobj.current() == 0 &&
             thumbimg && thumbimg.width)
         {
             var obj = context.canvas.scrollobj.value();
@@ -4169,8 +4169,6 @@ menuobj.draw = function()
       offmenucnv[property] = canvas[property];
     }
 
-    offmenucnv.scrollobj = context.canvas.scrollobj;
-    
     for (var m = 0; m < canvas.normal.length; ++m)
     {
         var n = canvas.normal[m];
