@@ -4171,14 +4171,14 @@ menuobj.draw = function()
                 if (slice.isvisible)
                     context.canvas.visibles.push(j);
 
-                offmenuctx.translate(0, j.y);
-                context.canvas.draw(offmenuctx, r, j.slice, j.n);
-                offmenuctx.translate(0, -j.y);
+                context.translate(0, j.y);
+                context.canvas.draw(context, r, j.slice, j.n);
+                context.translate(0, -j.y);
             }
         }
     }
 
-    context.drawImage(offmenucnv, 0, 0)
+    //context.drawImage(offmenucnv, 0, 0)
 
     infobj.data = [];
     if (headcnv.height)
