@@ -646,20 +646,8 @@ panel.galleryscroll = function()
             return;
         var bh = rect.height / 2;
         var bw = rect.width / 2;
-        var a = new panel.colsA([6, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 6],
+        var a = new panel.colsA([0, SCROLLBARWIDTH, 6],
             [
-                0,
-                1 ? 0 : new panel.rows([0, bh, 0],
-                    [
-                        0,
-                        new panel.layers(
-                            [
-                                new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.buttonrect), 10, 0),
-                                new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
-                            ]),
-                        0,
-                    ]),
                 0,
                 new panel.rows([0, bh, 0],
                     [
@@ -675,15 +663,8 @@ panel.galleryscroll = function()
                 0
             ]);
 
-        a.draw(context, rect,
-            [
-                0,
-                buttonobj,
-                0,
-                context.canvas.timeobj,
-                0,
-            ], 0);
-
+        a.draw(context, rect, context.canvas.timeobj, 0);
+          
         var a = new panel.rows([0, SCROLLBARWIDTH, 4],
             [
                 0,
@@ -694,7 +675,7 @@ panel.galleryscroll = function()
                             [
                                 new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
                                 new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 10),
-                                new panel.shrink(new panel.currentH(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3)
+                                new panel.shrink(new panel.currentH(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
                             ]),
                         0,
                     ])
