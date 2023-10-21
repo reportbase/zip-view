@@ -2341,7 +2341,7 @@ var panlst = [
             }
             else
             {
-                var e = x - canvas.startx;
+                var e = canvas.startx-x;
                 var jvalue = TIMEOBJ / canvas.virtualwidth
                 jvalue *= e;
                 canvas.timeobj.rotateanchored(jvalue);
@@ -2375,7 +2375,7 @@ var panlst = [
             else
             {
                 var e = y - canvas.starty;
-                var jvalue = window.innerWidth / canvas.virtualwidth
+                var jvalue = window.innerHeight / canvas.virtualheight
                 jvalue *= e;
                 rowobj.CURRENT = rowobj.ANCHOR + jvalue;
                 context.refresh()
