@@ -699,7 +699,7 @@ panel.scrollbar = function()
         var a = new panel.colsA([5, 9, 0, 9, 5],
             [
                 0,
-                new panel.rows([kh, 0, kh],
+                1?0:new panel.rows([kh, 0, kh],
                     [
                         0,
                         new panel.layers(
@@ -726,7 +726,7 @@ panel.scrollbar = function()
         a.draw(context, rect,
             [
                 0,
-                canvas.scrollobj,
+                0,//canvas.scrollobj,
                 0,
                 canvas.timeobj,
                 0,
