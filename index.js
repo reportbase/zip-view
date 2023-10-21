@@ -5976,10 +5976,10 @@ galleryobj.init = function(obj)
             for (var n = 0; n < results.length; ++n)
             {
                 var result = results[n];
+                result.body = JSON.parse(result.body);
                 result.func = function(n, x, y)
                 {
-                    var path = `${url.origin}/?r2=${this.id}`;
-                    window.open(path, "_self");
+                    galleryobj.init(this.body)
                 }
             }
 
