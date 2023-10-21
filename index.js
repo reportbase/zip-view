@@ -252,6 +252,12 @@ let circular_array = function(title, data)
         //this.ANCHOR = this.CURRENT;
     };
 
+    this.add = function(index)
+    {
+        var k = this.current() + index;
+        this.set(k);
+    };
+    
     this.rotate = function(index)
     {
         this.CURRENT += index;
@@ -295,12 +301,6 @@ let circular_array = function(title, data)
     {
         this.setcurrent(index);
         this.setanchor(index);
-    };
-
-    this.add = function(index)
-    {
-        var k = this.current() + index;
-        this.set(k);
     };
 
     this.addperc = function(g)
@@ -1809,9 +1809,8 @@ var wheelst = [
         }
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
-    {
-        var k = -0.0005 * delta * context.canvas.timeobj.length();
-        context.canvas.timeobj.rotate(k);
+    { 
+        context.canvas.timeobj.addperc(delta/100);
         context.refresh();
     },
 }, ];
