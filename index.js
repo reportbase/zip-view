@@ -2374,10 +2374,9 @@ var panlst = [
             }
             else
             {
-                var e = y - canvas.starty;
-                var jvalue = window.innerHeight / canvas.virtualheight
-                jvalue *= e;
-                rowobj.CURRENT = rowobj.ANCHOR + jvalue;
+                var y = Math.nub(rowobj.value(), rowobj.length(),
+                        window.innnerHeight, canvas.virtualheight);
+                rowobj.set(y);
                 context.refresh()
             }
         }
@@ -3921,7 +3920,7 @@ var buttonlst = [
                     ww, thumbfitted.width);
                 context.drawImage(thumbfitted,
                     Math.floor(x), yyy, ww, hhh,
-                    0, yyy, ww, hhh);
+                    0, yyy, ww, hhh); 
             }
             else
             {
