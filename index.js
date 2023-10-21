@@ -3487,7 +3487,7 @@ var bosslst = [
                                     new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
                                     new panel.expand(new panel.rectangle(context.timerect), 0, 10),
                                     new panel.shrink(new panel.currentH(
-                                        new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3)
+                                        new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
                                 ]),
                             0,
                         ])
