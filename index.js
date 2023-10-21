@@ -3932,11 +3932,12 @@ var buttonlst = [
         var view = Math.floor(time / IMAGELSTSIZE);
         var thumbimg = thumbimglst[index];
         var thumbfitted = thumbfittedlst[index];
-
-        if (//context.canvas.scrollobj.current() == 0 &&
+        
+        if (
+            //context.canvas.scrollobj.current() == 0 &&
             thumbimg && thumbimg.width)
         {
-            var obj = context.canvas.scrollobj.value();
+            var obj = _8cnv.scrollobj.value();
             var b = thumbimg.width / thumbimg.height;
             var b2 = rect.width / rect.height;
             var hh = Math.floor(rect.height);
