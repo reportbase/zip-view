@@ -1810,7 +1810,7 @@ var wheelst = [
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     {
-        var k = -0.001 * delta * context.canvas.timeobj.length();
+        var k = -0.0005 * delta * context.canvas.timeobj.length();
         context.canvas.timeobj.rotate(k);
         context.refresh();
     },
@@ -4171,14 +4171,12 @@ menuobj.draw = function()
                 if (slice.isvisible)
                     context.canvas.visibles.push(j);
 
-                offmenuctx.translate(0, j.y);
-                context.canvas.draw(offmenuctx, r, j.slice, j.n);
-                offmenuctx.translate(0, -j.y);
+                context.translate(0, j.y);
+                context.canvas.draw(context, r, j.slice, j.n);
+                context.translate(0, -j.y);
             }
         }
     }
-
-    context.drawImage(offmenucnv, 0, 0)
 
     infobj.data = [];
     if (headcnv.height)
