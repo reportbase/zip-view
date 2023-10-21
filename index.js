@@ -625,7 +625,7 @@ panel.gallerybar = function()
                     0,
                     infobj.data,
                     0,
-                    canvas.scrollobj.value(),
+                    canvas.scrollobj,
                     0,
                 ],
             ], 0, 0);
@@ -700,7 +700,7 @@ panel.galleryscroll = function()
                     ])
             ])
 
-        a.draw(context, rect, context.canvas.scrollobj.value(), 0);
+        a.draw(context, rect, context.canvas.scrollobj, 0);
         context.restore();
     }
 };
@@ -1959,7 +1959,7 @@ infobj.reset = function()
         infobj.data.push(`${index.toFixed(2)} of ${galleryobj.length()}`);
         if (url.searchParams.has("debug"))
         {
-            var j = 100 * (1 - _8cnv.scrollobj.value().berp());
+            var j = 100 * (1 - _8cnv.scrollobj.berp());
             infobj.data.push(`${j.toFixed(2)}%`);
         }
     }
@@ -2193,19 +2193,19 @@ var panlst = [
         var canvas = context.canvas;
         if (canvas.pinching)
             return;
-        var obj = canvas.scrollobj.value();
+        var obj = canvas.scrollobj;
         if (type == "panleft" || type == "panright")
         {
             if (canvas.ishscrollrect)
             {
                 var k = (x - canvas.hscrollrect.x) / canvas.hscrollrect.width;
-                var obj = context.canvas.scrollobj.value();
+                var obj = context.canvas.scrollobj;
                 obj.setperc(k);
                 context.refresh();
             }
             else
             {
-                var obj = context.canvas.scrollobj.value();
+                var obj = context.canvas.scrollobj;
                 var e = canvas.startx - x;
                 var k = panhorz(obj, e);
                 if (k == -1)
@@ -2259,11 +2259,7 @@ var panlst = [
         delete context.canvas.timeobj.offset;
         delete buttonobj.offset;
         delete context.canvas.isvbarect;
-        var obj = context.canvas.scrollobj;
-        if (context == _8cnvctx)
-            obj = context.canvas.scrollobj.value();
-        if (obj)
-            delete obj.offset;
+        delete context.canvas.scrollobj.offset;
         context.refresh();
     }
 },
@@ -3077,7 +3073,7 @@ var taplst = [
         var timeauto = global.timeauto;
         clearInterval(global.timeauto);
         global.timeauto = 0;
-        var obj = canvas.scrollobj.value();
+        var obj = canvas.scrollobj;
         context.refresh();
         if (headcnvctx.leftmenurect && headcnvctx.leftmenurect.hitest(x, y))
         {
@@ -3173,7 +3169,7 @@ var taplst = [
         else if (canvas.hscrollrect && canvas.hscrollrect.hitest(x, y))
         {
             var k = (x - canvas.hscrollrect.x) / canvas.hscrollrect.width;
-            var obj = context.canvas.scrollobj.value();
+            var obj = context.canvas.scrollobj;
             obj.setperc(k);
             context.refresh()
         }
@@ -3903,7 +3899,7 @@ var buttonlst = [
 
         if (thumbimg && thumbimg.width)
         {
-            var obj = _8cnv.scrollobj.value();
+            var obj = _8cnv.scrollobj;
             var b = thumbimg.width / thumbimg.height;
             var b2 = rect.width / rect.height;
             var hh = Math.floor(rect.height);
@@ -4558,10 +4554,6 @@ contextlst.forEach(function(context, n)
     canvas.timeobj = new circular_array("", TIMEOBJ);
     canvas.timeobj.set(TIMEOBJ / 2);
     canvas.scrollobj = new circular_array("TEXTSCROLL", window.innerHeight / 2);
-    //todo: remove
-    canvas.imagescrollobj = new circular_array("IMAGESCROLL", window.innerWidth);
-    canvas.imagescrollobj.set(0.5 * canvas.imagescrollobj.length());
-    canvas.textscrollobj = new circular_array("TEXTSCROLL", window.innerHeight / 2);
     canvas.speedobj = new circular_array("SPEED", 120);
     canvas.speedobj.set(obj.speed);
     canvas.reduceobj = new circular_array("REDUCE", 100);
@@ -4662,8 +4654,6 @@ contextlst.forEach(function(context, n)
     context.canvas.panleftright_ = k.leftright;
     context.canvas.panend_ = k.panend;
 });
-
-_8cnv.scrollobj = new circular_array("SCROLL", [_8cnvctx.canvas.imagescrollobj, _8cnvctx.canvas.textscrollobj]);
 
 contextobj.reset = function()
 {
@@ -6582,7 +6572,7 @@ galleryobj.leftright = function(context, delta)
     else
         context.canvas.startleftright = (window.innerHeight / h) * Math.abs(delta / 2);
     var e = context.canvas.startleftright / 40;
-    var obj = context.canvas.scrollobj.value();
+    var obj = context.canvas.scrollobj;
     clearInterval(context.canvas.leftrightime);
     context.canvas.leftrightime = setInterval(function()
     {
