@@ -2374,9 +2374,14 @@ var panlst = [
             }
             else
             {
-                var y = Math.nub(rowobj.value(), rowobj.length(),
-                        window.innnerHeight, canvas.virtualheight);
-                rowobj.set(y);
+                var obj = context.canvas.scrollobj;
+                var e = canvas.starty - y;
+                var k = panvert(rowobj, e);
+                if (k == -1)
+                    return;
+                if (k == rowobj.anchor())
+                    return;
+                rowobj.set(k);
                 context.refresh()
             }
         }
@@ -3311,7 +3316,8 @@ Number.prototype.pad = function(size)
     return s;
 }
 
-var bosslst = [
+var bosslst = 
+[
     new function()
     {
         this.draw = function(context, r, user, time)
