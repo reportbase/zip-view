@@ -2359,13 +2359,7 @@ var panlst = [
         {
             var zoom = zoomobj.value()
             context.refresh()
-            if (context.islicewidthrect)
-            {
-                var k = (y - context.slicewidthrect.y) / context.slicewidthrect.height;
-                slicewidthobj.setperc(k);
-                contextobj.reset()
-            }
-            else if (context.iszoomrect)
+            if (context.iszoomrect)
             {
                 var k = (y - context.zoomrect.y) / context.zoomrect.height;
                 var zoom = zoomobj.value();
@@ -2382,8 +2376,9 @@ var panlst = [
             else
             {
                 var obj = context.canvas.scrollobj;
+                var j = window.innerHeight / canvas.virtualheight;
                 var e = canvas.starty - y;
-                var k = panvert(rowobj, e);
+                var k = panvert(rowobj, e*j);
                 if (k == -1)
                     return;
                 if (k == rowobj.anchor())
