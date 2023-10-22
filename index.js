@@ -6181,7 +6181,7 @@ else if (url.searchParams.has("id"))
         .then((response) => jsonhandler(response))
         .then(function(json)
         {
-            loadjson(json.body);
+            loadjson(json);
         })
         .catch((error) =>
         {});
