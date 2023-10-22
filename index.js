@@ -2009,7 +2009,7 @@ function publishzip(file)
         })
         .then(function(results)
         {
-            var path = `${url.origin}/?r2=${results.zipid}`;
+            var path = `${url.origin}/?id=${results.zipid}`;
             window.history.replaceState("", url.origin, path);
         })
         .catch(error => console.log(error));
