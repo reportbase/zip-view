@@ -2376,7 +2376,7 @@ var panlst = [
             else
             {
                 var obj = context.canvas.scrollobj;
-                var j = window.innerHeight / canvas.virtualheight;
+                var j = canvas.selectrect[0].height / canvas.thumbrect.height;
                 var e = canvas.starty - y;
                 var k = panvert(rowobj, e*j);
                 if (k == -1)
