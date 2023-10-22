@@ -1794,7 +1794,7 @@ var wheelst =
             context.zoomrect.hitest(x, y))
         {
             var zoom = zoomobj.value();
-            zoom.addperc(0.025);
+            zoom.addperc(-delta/500);
             contextobj.reset()
         }
         else if (context.stretchrect &&
@@ -1806,7 +1806,7 @@ var wheelst =
         }
         else
         {
-            rowobj.addperc(-delta/500);
+            rowobj.addperc(-delta/1000);
             contextobj.reset()
         }
     },
