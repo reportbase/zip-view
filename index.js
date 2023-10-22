@@ -1801,20 +1801,20 @@ var wheelst =
             context.zoomrect.hitest(x, y))
         {
             var zoom = zoomobj.value();
-            zoom.addperc(delta * 0.001);
+            zoom.addperc(delta/1000);
             contextobj.reset()
         }
         else if (context.stretchrect &&
             context.stretchrect.hitest(x, y))
         {
             var stretch = stretchobj.value();
-            stretch.addperc(delta * 0.001);
+            stretch.addperc(delta/1000);
             bossobj.draw();
         }
         else
         {
-            rowobj.addperc(-delta/100);
-            bossobj.draw();
+            rowobj.addperc(-delta/1000);
+            contextobj.reset()
         }
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
