@@ -6209,11 +6209,10 @@ else if (url.searchParams.has("sidney"))
         .catch((error) =>
         {});
 }
-else if (url.searchParams.has("r2"))
+else if (url.searchParams.has("id"))
 {
-    url.path = url.searchParams.get("r2");
-    fetch(`https://bucket1.zip-view.com/${url.path}`)
-    //fetch(`https://bucket.reportbase5836.workers.dev/${url.path}`)
+    url.path = url.searchParams.get("id");
+    fetch(`https://bucket.reportbase5836.workers.dev/${url.path}`)
         .then((response) => blobhandler(response))
         .then(function(blob)
         {
