@@ -252,7 +252,6 @@ let circular_array = function(title, data)
             this.CURRENT = this.CURRENT - this.length();
         else if (this.CURRENT < 0)
             this.CURRENT = this.length() + this.CURRENT;
-        //this.ANCHOR = this.CURRENT;
     };
 
     this.add = function(index)
@@ -307,12 +306,6 @@ let circular_array = function(title, data)
     };
 
     this.addperc = function(g)
-    {
-        var k = this.length() * g;
-        this.add(k);
-    };
-
-    this.addpercrotate = function(g)
     {
         var k = this.length() * g;
         this.add(k);
@@ -1801,14 +1794,14 @@ var wheelst =
             context.zoomrect.hitest(x, y))
         {
             var zoom = zoomobj.value();
-            zoom.addperc(delta/1000);
+            zoom.addperc(0.025);
             contextobj.reset()
         }
         else if (context.stretchrect &&
             context.stretchrect.hitest(x, y))
         {
             var stretch = stretchobj.value();
-            stretch.addperc(delta/1000);
+            stretch.addperc(0.025);
             bossobj.draw();
         }
         else
@@ -1819,8 +1812,12 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     { 
-        context.canvas.timeobj.addperc(-delta/1000);
-        context.canvas.timeobj.wrap();
+        var obj = context.canvas.timeobj;
+        obj.addperc(-delta/5000);
+        if (obj.CURRENT >= obj.length())
+            obj.CURRENT = obj.CURRENT - obj.length();
+        else if (obj.CURRENT < 0)
+            obj.CURRENT = obj.length() - obj.CURRENT;
         bossobj.draw();
     },
 }, 
