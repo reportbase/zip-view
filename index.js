@@ -6212,11 +6212,12 @@ else if (url.searchParams.has("sidney"))
 else if (url.searchParams.has("id"))
 {
     url.path = url.searchParams.get("id");
+    //todo: 
     fetch(`https://bucket.reportbase5836.workers.dev/${url.path}`)
-        .then((response) => blobhandler(response))
-        .then(function(blob)
+        .then((response) => jsonhandler(response))
+        .then(function(json)
         {
-            loadzip(blob);
+            loadjson(json);
         })
         .catch((error) =>
         {});
