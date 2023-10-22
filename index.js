@@ -6143,7 +6143,9 @@ function initime()
 function fooload(path)
 {
     if (path.isimage())
+    {
         loadimages(path);
+    }
     else if (path.isjson())
     {
         fetch(path)
@@ -6176,12 +6178,6 @@ else if (url.searchParams.has("image"))
 {
     url.path = url.searchParams.get("image");
     loadimages(url.path)
-}
-else if (url.searchParams.has("storj"))
-{
-    url.path = url.searchParams.get("storj");
-    var path = `https://demo.storj-ipfs.com/ipfs/${url.path}`;
-    fooload(path);
 }
 else if (url.searchParams.has("filebase"))
 {
@@ -6239,12 +6235,8 @@ else if (url.searchParams.has("path"))
 }
 else
 {
-    url.path = "home";
-    fetch("res/home.json")
-        .then(response => jsonhandler(response))
-        .then((obj) => galleryobj.init(obj))
-        .catch((error) =>
-        {});
+    url.path = "res/home";
+    fooload(url.path);
 }
 
 var localobj = {};
