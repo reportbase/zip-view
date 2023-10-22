@@ -4553,7 +4553,7 @@ contextlst.forEach(function(context, n)
     canvas.timeobj = new circular_array("", TIMEOBJ);
     canvas.timeobj.set(TIMEOBJ / 2);
     canvas.scrollobj = new circular_array("TEXTSCROLL", 100);
-    canvas.speedobj.set(50);
+    canvas.scrollobj.set(50);
     canvas.speedobj = new circular_array("SPEED", 120);
     canvas.speedobj.set(obj.speed);
     canvas.reduceobj = new circular_array("REDUCE", 100);
