@@ -1813,7 +1813,7 @@ var wheelst =
         }
         else
         {
-            rowobj.addperc(-delta/1000);
+            rowobj.addperc(-delta/100);
             bossobj.draw();
         }
     },
