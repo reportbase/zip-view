@@ -2010,7 +2010,7 @@ function publishzip(file)
         .then(function(results)
         {
             galleryobj.init();
-            var path = `${url.origin}/?r2=${results.key}`;
+            var path = `${url.origin}/?r2=${results.id}`;
             window.history.replaceState("", url.origin, path);
         })
         .catch(error => console.log(error));
