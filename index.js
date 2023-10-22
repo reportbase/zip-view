@@ -2327,10 +2327,10 @@ var panlst = [
         var canvas = context.canvas;
         if (canvas.pinching)
             return;
-        x = movingx.update(x);
-        y = movingy.update(y);
         if (context.canvas.isthumb)
         {
+            x = movingx.update(x);
+            y = movingy.update(y);
             context.hithumb(x, y);
             if (y != canvas.lasty)
                 contextobj.reset()
