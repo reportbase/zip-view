@@ -1801,12 +1801,12 @@ var wheelst =
             context.stretchrect.hitest(x, y))
         {
             var stretch = stretchobj.value();
-            stretch.addperc(0.025);
+            stretch.addperc(-delta/500);
             bossobj.draw();
         }
         else
         {
-            rowobj.addperc(-delta/1000);
+            rowobj.addperc(-delta/500);
             contextobj.reset()
         }
     },
