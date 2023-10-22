@@ -6208,7 +6208,7 @@ else if (url.searchParams.has("path"))
 }
 else
 {
-    url.path = "res/home";
+    url.path = "res/home.json";
     fooload(url.path);
 }
 
