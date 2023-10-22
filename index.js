@@ -6213,7 +6213,7 @@ else if (url.searchParams.has("id"))
 {
     url.path = url.searchParams.get("id");
     //todo: 
-    fetch(`https://bucket.reportbase5836.workers.dev/${url.path}`)
+    fetch(`https://scooby.reportbase5836.workers.dev/${url.path}`)
         .then((response) => jsonhandler(response))
         .then(function(json)
         {
