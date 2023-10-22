@@ -1820,6 +1820,7 @@ var wheelst =
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     { 
         context.canvas.timeobj.addperc(-delta/1000);
+        context.canvas.timeobj.wrap();
         bossobj.draw();
     },
 }, 
