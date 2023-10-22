@@ -1707,7 +1707,8 @@ _8ham.get('pinch').set(
     enable: true
 });
 
-var wheelst = [
+var wheelst = 
+[
 {
     name: "DEFAULT",
     updown: function(context, x, y, delta, ctrl, shift, alt, type) {},
@@ -1723,7 +1724,7 @@ var wheelst = [
         {
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
-            buttonobj.addperc(k * 0.01);
+            buttonobj.addperc(k * 0.05);
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
             context.canvas.pinching = 0;
@@ -1741,6 +1742,7 @@ var wheelst = [
             menuobj.updown(context, delta)
             if (global.swipetimeout)
                 return;
+            
             global.swipetimeout = setInterval(function()
             {
                 context.canvas.lastime = -0.0000000000101010101;
@@ -1768,8 +1770,8 @@ var wheelst = [
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt)
     {
-        menuobj.leftright(context, delta);
-        context.refresh();
+        context.canvas.scrollobj.addperc(delta / 1000);
+        menuobj.draw()
     },
 },
 {
@@ -1787,11 +1789,11 @@ var wheelst = [
                 var obj = heightobj.value();
                 delete context.canvas.thumbcanvas;
                 obj.addperc(type == "wheelup" ? 0.02 : -0.02);
-                context.refresh();
+                bossobj.draw();
             }
             else
             {
-                zoomobj.value().addperc(type == "wheelup" ? 0.02 : -0.02);
+                zoomobj.value().addperc(type == "wheelup" ? 0.05 : -0.05);
                 contextobj.reset()
             }
         }
@@ -1807,28 +1809,21 @@ var wheelst = [
         {
             var stretch = stretchobj.value();
             stretch.addperc(delta * 0.001);
-            context.refresh()
+            bossobj.draw();
         }
         else
         {
-            if (delta < 1 && delta > 0)
-                return;
-            else if (delta > -1 && delta < 0)
-                return;
             rowobj.addpercrotate(0.001 * delta);
-            contextobj.reset();
+            bossobj.draw();
         }
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     { 
-            if (delta < 1 && delta > 0)
-                return;
-            else if (delta > -1 && delta < 0)
-                return;
         context.canvas.timeobj.addperc(-delta/1000);
-        context.refresh();
+        bossobj.draw();
     },
-}, ];
+}, 
+];
 
 var pinchlst = [
 {
@@ -2814,13 +2809,13 @@ var keylst = [
             }
             else if (key == "arrowleft")
             {
-                menuobj.leftright(context, -60);
-                context.refresh();
+                context.canvas.scrollobj.addperc(-60 / 1000);
+                menuobj.draw()
             }
             else if (key == "arrowright")
             {
-                menuobj.leftright(context, 60);
-                context.refresh();
+                context.canvas.scrollobj.addperc(60 / 1000);
+                menuobj.draw()
             }
         }
     },
@@ -6169,28 +6164,6 @@ if (url.searchParams.has("data"))
         .catch((error) =>
         {});
 }
-else if (url.searchParams.has("zip"))
-{
-    url.path = url.searchParams.get("zip");
-    loadzip(url.path)
-}
-else if (url.searchParams.has("image"))
-{
-    url.path = url.searchParams.get("image");
-    loadimages(url.path)
-}
-else if (url.searchParams.has("filebase"))
-{
-    url.path = url.searchParams.get("filebase");
-    var path = `https://ipfs.filebase.io/ipfs/${url.path}`;
-    fooload(path);
-}
-else if (url.searchParams.has("web3.storage"))
-{
-    url.path = url.searchParams.get("web3.storage");
-    var path = `https://w3s.link/ipfs/${url.path}`;
-    fooload(path);
-}
 else if (url.searchParams.has("pexels"))
 {
     url.path = url.searchParams.get("pexels");
@@ -6536,12 +6509,6 @@ function selectid(id)
         galleryobj.init();
         break;
     }
-}
-
-menuobj.leftright = function(context, delta)
-{
-    context.canvas.scrollobj.addperc(delta / 1000);
-    context.refresh()
 }
 
 galleryobj.leftright = function(context, delta)
