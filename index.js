@@ -1794,14 +1794,14 @@ var wheelst =
             context.zoomrect.hitest(x, y))
         {
             var zoom = zoomobj.value();
-            zoom.addperc(-delta/500);
+            zoom.addperc(delta/500);
             contextobj.reset()
         }
         else if (context.stretchrect &&
             context.stretchrect.hitest(x, y))
         {
             var stretch = stretchobj.value();
-            stretch.addperc(-delta/500);
+            stretch.addperc(delta/500);
             bossobj.draw();
         }
         else
