@@ -6183,11 +6183,11 @@ else if (url.searchParams.has("id"))
             if (response.ok)
                 return response.json()
             throw Error(response.statusText);
-        }
+        })
         .then(function(obj)
         {
             galleryobj.init(obj)
-        }
+        })
         .catch(function(error)
         {
             console.log(error)
