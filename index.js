@@ -6027,7 +6027,8 @@ galleryobj.init = function(obj)
     else
     {
         var image = new Image();
-        var current = galleryobj.lerp(1 - _8cnv.timeobj.berp());
+        var berp = _8cnv.timeobj.berp();
+        var current = galleryobj.lerp(1 - berp);
         image.src = imagepath(galleryobj.data[current]);
         image.onload = function()
         {
