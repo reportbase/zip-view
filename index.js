@@ -6178,20 +6178,10 @@ else if (url.searchParams.has("id"))
 {
     url.path = url.searchParams.get("id");
     fetch(`https://scooby.reportbase5836.workers.dev/${url.path}`)
-        .then(function(response)
-        {
-            if (response.ok)
-                return response.json()
-            throw Error(response.statusText);
-        })
-        .then(function(obj)
-        {
-            galleryobj.init(obj)
-        })
-        .catch(function(error)
-        {
-            console.log(error)
-        });
+        .then((response) => jsonhandler(response))
+        .then((obj) => galleryobj.init(obj))
+        .catch((error) =>
+        {});
 }
 else if (url.searchParams.has("res"))
 {
