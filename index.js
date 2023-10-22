@@ -1724,7 +1724,7 @@ var wheelst =
         {
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
-            buttonobj.addperc(k * 0.05);
+            buttonobj.addperc(k * 0.025);
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
             context.canvas.pinching = 0;
@@ -1793,7 +1793,7 @@ var wheelst =
             }
             else
             {
-                zoomobj.value().addperc(type == "wheelup" ? 0.05 : -0.05);
+                zoomobj.value().addperc(type == "wheelup" ? 0.025 : -0.025);
                 contextobj.reset()
             }
         }
@@ -3778,8 +3778,8 @@ var buttonlst = [
                 0,
                 new panel.layers(
                     [
-                        new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8), canvas.buttonmargin, canvas.buttonmargin),
-                        new panel.shrink(new panel.multitext(e), 20, 0),
+                        new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                        new panel.shrink(new panel.multitext(e), 20, 20),
                     ]),
                 0,
             ]);
@@ -3812,8 +3812,7 @@ var buttonlst = [
                     0,
                     new panel.layers(
                         [
-                            new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
-                                canvas.buttonmargin, canvas.buttonmargin),
+                            new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
                             new panel.rowsA([0.75, 0.25],
                                 [
                                     new panel.shrink(new panel.multitext(e), 20, 0),
@@ -3870,8 +3869,7 @@ var buttonlst = [
                 0,
                 new panel.layers(
                 [
-                    new panel.expand(new panel.rounded(clr, 4, SEARCHFRAME, 8, 8), 
-                                     canvas.buttonmargin, canvas.buttonmargin),
+                    new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
                     new panel.text()
                 ]),
                 0,
