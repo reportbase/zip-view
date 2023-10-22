@@ -1,10 +1,10 @@
 {
   "title": "storj",
-  describe: "https://demo.storj-ipfs.com/ipfs/${url.path}",
-  data:
+  "describe": "https://www.storj.io/ipfs",
+  "data":
   [
   {
-    url: ""
+    "url": "https://demo.storj-ipfs.com/ipfs/QmPpgBFR3oXnytDi7mCJhGK3rWyPsa7E6XdQwqYQDgxpmT"
   }
   ]
 }
