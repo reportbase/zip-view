@@ -225,8 +225,10 @@ let circular_array = function(title, data)
 
     this.lerp = function(berp)
     {
-        console.assert(Array.isArray(this.data));
-        return Math.floor(Math.lerp(0, this.length(), berp));
+        if (Array.isArray(this.data))
+            return Math.floor(Math.lerp(0, this.length() - 1, berp));
+        else
+            return Math.floor(Math.lerp(0, this.length(), berp));
     };
 
     this.rotateanchored = function(index)
