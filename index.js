@@ -1954,8 +1954,9 @@ infobj.reset = function()
         infobj.data.push(`${index.toFixed(2)} of ${galleryobj.length()}`);
         if (url.searchParams.has("debug"))
         {
-            var j = 100 * (1 - _8cnv.scrollobj.berp());
+            var j = 100 * _8cnv.scrollobj.berp();
             infobj.data.push(`${j.toFixed(2)}%`);
+            infobj.data.push(galleryobj.data[k].id);
         }
     }
     else
