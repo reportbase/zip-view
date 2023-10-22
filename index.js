@@ -5639,7 +5639,8 @@ async function loadjson(blob)
         galleryobj.init(json)
     }
     catch (_)
-    {}
+    {
+    }
 }
 
 //galleryobj init
@@ -5965,7 +5966,7 @@ galleryobj.init = function(obj)
     _10cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
     var login = localobj.login ? localobj.login : "reportbase@gmail.com";
-    fetch(`https://bucket.reportbase5836.workers.dev/zips/${login}`)
+    fetch(`https://bucket.reportbase5836.workers.dev/${login}`)
         .then(function(response)
         {
             if (response.ok)
@@ -5979,6 +5980,7 @@ galleryobj.init = function(obj)
                 var result = results[n];
                 result.body = JSON.parse(result.body);
                 result.title = result.body.title;
+                result.body.id = result.id;
                 result.func = function(n, x, y)
                 {
                     galleryobj.init(this.body)
