@@ -1,0 +1,30 @@
+export default 
+{
+  async fetch(request, env, ctx) 
+  {
+      var headers = new Headers(
+      {
+        "Access-Control-Allow-Origin": "*",
+        "content-type": "application/json;charset=UTF-8"
+      }
+    );
+
+    var url = new URL(request.url); 
+    const { DATABASE } = env; 
+
+    var id = request.url.split("/").slice(-1)[0];
+    var type = request.url.split("/").slice(-2)[0];
+    if (type == "gallery")
+    {
+      var k = DATABASE.prepare(
+      `SELECT * FROM galleries WHERE id = ?`)
+        .bind(id);
+      var { results } = await k.all();           
+      return new Response(
+        results[0].body,{headers});    
+    }
+    else if (type == "unused")
+    {
+    }
+  },
+};
