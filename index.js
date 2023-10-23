@@ -5668,7 +5668,8 @@ galleryobj.init = function(obj)
     headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
     headham.panel = headobj.value();
 
-    _3cnv.sliceobj.data = [
+    _3cnv.sliceobj.data = 
+    [
         {
             title: "Delete Image",
             func: function()
@@ -6176,7 +6177,7 @@ else if (url.searchParams.has("sidney"))
 else if (url.searchParams.has("id"))
 {
     url.path = url.searchParams.get("id");
-    fetch(`https://scooby.reportbase5836.workers.dev/${url.path}`)
+    fetch(`https://galleries.reportbase5836.workers.dev/${url.path}`)
         .then((response) => jsonhandler(response))
         .then((obj) => galleryobj.init(obj))
         .catch((error) =>
