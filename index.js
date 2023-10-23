@@ -1981,7 +1981,7 @@ var pinchobj = new circular_array("PINCH", [heightobj, zoomobj]);
 
 var userobj = {}
 
-function publishzip(json)
+function publishgallery(json)
 {
     var email = localobj.email;
     if (!email)
@@ -2006,6 +2006,7 @@ function publishzip(json)
         {
             var path = `${url.origin}/?id=${results.gallery_id}`;
             window.history.replaceState("", url.origin, path);
+            galleryobj.init();
         })
         .catch(error => console.log(error));
 }
@@ -4215,6 +4216,7 @@ var eventlst = [
     scroll: new panel.scrollbar(),
     buttonheight: 0,
     buttonmargin: 10,
+    scrollinit: 0,
     width: 640
 },
 { //2
@@ -4237,6 +4239,7 @@ var eventlst = [
     scroll: new panel.scrollbar(),
     buttonheight: 160,
     buttonmargin: 10,
+    scrollinit: 2,
     width: 640
 },
 { //3
@@ -4259,6 +4262,7 @@ var eventlst = [
     scroll: new panel.scrollbar(),
     buttonheight: 90,
     buttonmargin: 10,
+    scrollinit: 0,
     width: 640
 },
 { //4
@@ -4281,6 +4285,7 @@ var eventlst = [
     scroll: new panel.empty(),
     buttonheight: 30,
     buttonmargin: 10,
+    scrollinit: 0,
     width: 640
 },
 { //5
@@ -4303,6 +4308,7 @@ var eventlst = [
     scroll: new panel.scrollbar(),
     buttonheight: 150,
     buttonmargin: 10,
+    scrollinit: 0,
     width: 640
 },
 { //6
@@ -4325,6 +4331,7 @@ var eventlst = [
     scroll: new panel.scrollbar(),
     buttonheight: 60,
     buttonmargin: 5,
+    scrollinit: 0,
     width: 320
 },
 { //7
@@ -4347,6 +4354,7 @@ var eventlst = [
     scroll: new panel.scrollbar(),
     buttonheight: 120,
     buttonmargin: 10,
+    scrollinit: 0,
     width: 640
 },
 { //8
@@ -4369,6 +4377,7 @@ var eventlst = [
     scroll: new panel.galleryscroll(),
     buttonheight: 320,
     buttonmargin: 10,
+    scrollinit: 0.5,
     width: iOS() ? 720 : 5160
 },
 { //9
@@ -4391,6 +4400,7 @@ var eventlst = [
     scroll: new panel.scrollbar(),
     buttonheight: 240,
     buttonmargin: 20,
+    scrollinit: 0,
     width: 640
 },
 { //10
@@ -4413,6 +4423,7 @@ var eventlst = [
     scroll: new panel.scrollbar(),
     buttonheight: 50,
     buttonmargin: 10,
+    scrollinit: 0,
     width: 640
 },
 { //11
@@ -4435,6 +4446,7 @@ var eventlst = [
     scroll: new panel.scrollbar(),
     buttonheight: 90,
     buttonmargin: 10,
+    scrollinit: 0,
     width: 640
 },
 { //12
@@ -4457,6 +4469,7 @@ var eventlst = [
     scroll: new panel.scrollbar(),
     buttonheight: 50,
     buttonmargin: 10,
+    scrollinit: 0,
     width: 640
 },
 { //13
@@ -4479,6 +4492,7 @@ var eventlst = [
     scroll: new panel.scrollbar(),
     buttonheight: 50,
     buttonmargin: 10,
+    scrollinit: 0,
     width: 640
 },
 { //14
@@ -4501,6 +4515,7 @@ var eventlst = [
     scroll: new panel.scrollbar(),
     buttonheight: 50,
     buttonmargin: 10,
+    scrollinit: 0,
     width: 640
 },
 { //15
@@ -4523,6 +4538,7 @@ var eventlst = [
     scroll: new panel.scrollbar(),
     buttonheight: 50,
     buttonmargin: 10,
+    scrollinit: 0,
     width: 640
 }, ];
 
@@ -4544,7 +4560,6 @@ contextlst.forEach(function(context, n)
     canvas.timeobj = new circular_array("", TIMEOBJ);
     canvas.timeobj.set(TIMEOBJ / 2);
     canvas.scrollobj = new circular_array("TEXTSCROLL", window.innerHeight);
-    canvas.scrollobj.set(window.innerHeight/2);
     canvas.speedobj = new circular_array("SPEED", 120);
     canvas.speedobj.set(obj.speed);
     canvas.reduceobj = new circular_array("REDUCE", 100);
@@ -4556,6 +4571,7 @@ contextlst.forEach(function(context, n)
     canvas.scroll = obj.scroll;
     canvas.buttonheight = obj.buttonheight;
     canvas.buttonmargin = obj.buttonmargin;
+    canvas.scrollobj.set(obj.scrollinit);
 
     var k = pinchlst.findIndex(function(a)
     {
@@ -5623,7 +5639,7 @@ async function loadjson(blob)
     {
         var text = await blob.text();
         var json = JSON.parse(text);
-        publishzip(text);
+        publishgallery(text);
         galleryobj.init(json)
     }
     catch (_)
