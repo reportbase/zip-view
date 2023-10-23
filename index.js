@@ -1981,18 +1981,17 @@ var pinchobj = new circular_array("PINCH", [heightobj, zoomobj]);
 
 var userobj = {}
 
-function publishzip(file)
+function publishzip(json)
 {
-    var login = localobj.login;
-    if (!login)
-        login = "reportbase@gmail.com";
+    var email = localobj.email;
+    if (!email)
+        email = "reportbase@gmail.com";
 
     const form = new FormData();
-    form.append('file', file);
-    form.append('title', file.name);
-    form.append('email', login);
+    form.append('json', json);
+    form.append('email', email);
 
-    fetch(`https://bucket.reportbase5836.workers.dev/bucket1`,
+    fetch(`https://galleries.reportbase5836.workers.dev`,
         {
             'method': 'POST',
             'body': form
@@ -2005,7 +2004,7 @@ function publishzip(file)
         })
         .then(function(results)
         {
-            var path = `${url.origin}/?id=${results.zipid}`;
+            var path = `${url.origin}/?id=${results.gallery_id}`;
             window.history.replaceState("", url.origin, path);
         })
         .catch(error => console.log(error));
@@ -5880,7 +5879,7 @@ galleryobj.init = function(obj)
         title: "Login",
         func: function()
         {
-            gotodialog(localobj.login ? localobj.login : "", "Login", gologin);
+            gotodialog(localobj.email ? localobj.email : "", "Login", gologin);
             galleryobj.init();
         }
     },
@@ -5954,8 +5953,8 @@ galleryobj.init = function(obj)
     _2cnv.sliceobj.data = [];
     _10cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
-    var login = localobj.login ? localobj.login : "reportbase@gmail.com";
-    fetch(`https://bucket.reportbase5836.workers.dev/${login}`)
+    var email = localobj.email ? localobj.email : "reportbase@gmail.com";
+    fetch(`https://galleries.reportbase5836.workers.dev/list/${email}`)
         .then(function(response)
         {
             if (response.ok)
@@ -5967,11 +5966,11 @@ galleryobj.init = function(obj)
             for (var n = 0; n < results.length; ++n)
             {
                 var result = results[n];
-                result.body = JSON.parse(result.body);
-                result.title = result.body.title;
+                result.json = JSON.parse(result.json);
+                result.title = result.json.title;
                 result.func = function(n, x, y)
                 {
-                    galleryobj.init(this.body)
+                    galleryobj.init(this.json)
                 }
             }
 
@@ -6202,7 +6201,7 @@ else
 
 var localobj = {};
 localobj.time = [];
-localobj.login = "reportbase@gmail.com";
+localobj.email = "reportbase@gmail.com";
 
 try
 {
@@ -6230,9 +6229,9 @@ function downloadtext(name, text)
     document.body.removeChild(element);
 }
 
-function gologin(login)
+function gologin(email)
 {
-    localobj.login = login;
+    localobj.email = email;
     galleryobj.init();
 }
 
