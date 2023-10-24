@@ -4088,20 +4088,23 @@ menuobj.draw = function()
     context.canvas.virtualheight = len * canvas.buttonheight;
     
     context.clear();
-    if (context == _8cnvctx)
-    {
-        canvas.buttonheight = buttonobj.value();
-        context.canvas.virtualheight = len * canvas.buttonheight * 0.635;
-    }
-    else if (context.canvas.virtualheight < window.innerHeight)
+    if (context.canvas.virtualheight < window.innerHeight)
     {
         canvas.buttonheight = window.innerHeight / len;
         context.canvas.virtualheight = len * canvas.buttonheight;
     }
+    else if (context == _8cnvctx)
+    {
+        canvas.buttonheight = buttonobj.value();
+        context.canvas.virtualheight = len * canvas.buttonheight * 0.635;
+    }
 
-    var a = new panel.fill(FILLMENU);
-    a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
-
+    if (context != _8cnvctx)
+    {
+        var a = new panel.fill(FILLMENU);
+        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
+    }
+    
     var current = context.canvas.sliceobj.lerp(
         1 - context.canvas.timeobj.berp());
     if (canvas.lastcurrent != current)
