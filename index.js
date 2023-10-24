@@ -5718,7 +5718,7 @@ galleryobj.init = function(obj)
                     form.append('name', "yyyy");
                     form.append('email', "xxxx");
 
-                     fetch(`https://user.reportbase5836.workers.dev`,
+                     fetch(`https://users.reportbase5836.workers.dev`,
                     {
                         'method': 'POST',
                         'body': form
