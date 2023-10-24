@@ -5718,17 +5718,9 @@ galleryobj.init = function(obj)
                         'method': 'DELETE',
                         'body': JSON.stringify(galleryobj)
                     })
-                    .then(function(response)
-                    {
-                        if (response.ok)
-                            return response.json()
-                        throw Error(response.statusText);
-                    })
-                    .then(function(results)
-                    {
-                        console.log(result);
-                    })
-                    .catch(error => console.log(error));
+                    .then(response => response.json())
+                    .then(response => console.log(response))
+                    .catch(err => console.error(err));
            }
         },
 
@@ -5736,23 +5728,15 @@ galleryobj.init = function(obj)
             title: "Insert All",
             func: function()
             {
-                     fetch(`https://images.reportbase5836.workers.dev`,
+                    fetch(`https://images.reportbase5836.workers.dev`,
                     {
                         'method': 'POST',
                         'body': JSON.stringify(galleryobj)
                     })
-                    .then(function(response)
-                    {
-                        if (response.ok)
-                            return response.json()
-                        throw Error(response.statusText);
-                    })
-                    .then(function(results)
-                    {
-                        console.log(result);
-                    })
-                    .catch(error => console.log(error));
-           }
+                    .then(response => response.json())
+                    .then(response => console.log(response))
+                    .catch(err => console.error(err));     
+            }
         },
         
         {
@@ -5768,18 +5752,10 @@ galleryobj.init = function(obj)
                         'method': 'POST',
                         'body': form
                     })
-                    .then(function(response)
-                    {
-                        if (response.ok)
-                            return response.json()
-                        throw Error(response.statusText);
-                    })
-                    .then(function(results)
-                    {
-                        console.log(result);
-                    })
-                    .catch(error => console.log(error));
-           }
+                  .then(response => response.json())
+                    .then(response => console.log(response))
+                    .catch(err => console.error(err));   
+            }
         },
 
         {
