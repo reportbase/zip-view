@@ -6254,8 +6254,6 @@ try
 catch (_)
 {}
 
-localinit();
-
 function downloadtext(name, text)
 {
     var element = document.createElement('a');
