@@ -2159,6 +2159,8 @@ var droplst = [
         {
             loadimages(files);
         }
+
+        _8cnv.keydown = 0;
     },
 }, ];
 
@@ -4071,8 +4073,8 @@ menuobj.draw = function()
     {
         var k = canvas.autodirect;
         context.canvas.timeobj.rotate(k * context.canvas.slideshow);
-        //if (!context.canvas.keydown)//todo
-        context.canvas.slideshow -= context.canvas.slidereduce
+        if (!context.canvas.keydown)
+            context.canvas.slideshow -= context.canvas.slidereduce
     }
     else if (global.swipetimeout)
     {
@@ -4586,6 +4588,7 @@ contextlst.forEach(function(context, n)
     {
         return a.name == obj.drop
     });
+    
     k = droplst[k];
     canvas.drop = k.drop;
 
@@ -5887,7 +5890,7 @@ galleryobj.init = function(obj)
     {
         var k = galleryobj.data[n];
         var j = {};
-        j.title = `${n+1}`;// of ${galleryobj.data.length}`;
+        j.title = `${n+1}`;
         j.func = gotoimage;
         _6cnv.sliceobj.data.push(j);
     };
@@ -5989,6 +5992,8 @@ galleryobj.init = function(obj)
                 result.func = function(n, x, y)
                 {
                     galleryobj.init(this.json)
+                    var path = `${url.origin}/?id=${result.id}`;
+                    window.history.replaceState("", url.origin, path);                
                 }
             }
 
