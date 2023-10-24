@@ -4086,16 +4086,16 @@ menuobj.draw = function()
     var len = context.canvas.sliceobj.length()
     var delayinterval = TIMEOBJ / len / 1000;
     context.canvas.virtualheight = len * canvas.buttonheight;
-    if (context.canvas.virtualheight < 1400)
-    {
-        canvas.buttonheight = 1400 / len;
-        context.canvas.virtualheight = len * canvas.buttonheight
-    }
     
     context.clear();
     if (context == _8cnvctx)
     {
         canvas.buttonheight = buttonobj.value();
+        context.canvas.virtualheight = len * canvas.buttonheight * 0.635;
+    }
+    else if (context.canvas.virtualheight < 1000)
+    {
+        canvas.buttonheight = 1000 / len;
         context.canvas.virtualheight = len * canvas.buttonheight * 0.635;
     }
     else
