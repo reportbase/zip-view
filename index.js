@@ -1983,7 +1983,7 @@ var userobj = {}
 
 function publishgallery(json)
 {
-    var email = localobj.email;
+    var email = local.email;
     if (!email)
         email = "reportbase@gmail.com";
 
@@ -5519,10 +5519,10 @@ window.addEventListener("visibilitychange", (evt) =>
         for (var n = 0; n < contextlst.length; ++n)
         {
             var cnv = contextlst[n].canvas;
-            localobj.time[n] = cnv.timeobj.current();
+            local.time[n] = cnv.timeobj.current();
         }
         
-        localStorage.setItem(url.path, JSON.stringify(localobj));
+        localStorage.setItem(url.path, JSON.stringify(local));
     }
 });
 
@@ -5900,7 +5900,7 @@ galleryobj.init = function(obj)
         title: "Login",
         func: function()
         {
-            gotodialog(localobj.email ? localobj.email : "", "Login", gologin);
+            gotodialog(local.email ? local.email : "", "Login", gologin);
             galleryobj.init();
         }
     },
@@ -5974,7 +5974,7 @@ galleryobj.init = function(obj)
     _2cnv.sliceobj.data = [];
     _10cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
-    var email = localobj.email ? localobj.email : "reportbase@gmail.com";
+    var email = local.email ? local.email : "reportbase@gmail.com";
     fetch(`https://gallery.reportbase5836.workers.dev/list/${email}`)
         .then(function(response)
         {
@@ -5992,7 +5992,9 @@ galleryobj.init = function(obj)
                 result.func = function(n, x, y)
                 {
                     var path = `${url.origin}/?id=${this.id}`;
-                    window.history.replaceState("", url.origin, path);                
+                    window.history.replaceState("", url.origin, path); 
+                    url.path = this.id;
+                    localinit()
                     galleryobj.init(this.json)
                 }
             }
@@ -6222,24 +6224,28 @@ else
     fooload(url.path);
 }
 
-var localobj = {};
-localobj.time = [];
-localobj.email = "reportbase@gmail.com";
-
-try
+var local = {};
+local.time = [];
+local.email = "reportbase@gmail.com";
+function localinit()
 {
-    var k = localStorage.getItem(url.path);
-    if (k)
-        localobj = JSON.parse(k);
-
-    for (var n = 0; n < contextlst.length; ++n)
+    try
     {
-        var cnv = contextlst[n].canvas;
-        cnv.timeobj.setcurrent(localobj.time[n]);
-    }    
+        var k = localStorage.getItem(url.path);
+        if (k)
+            local = JSON.parse(k);
+    
+        for (var n = 0; n < contextlst.length; ++n)
+        {
+            var cnv = contextlst[n].canvas;
+            cnv.timeobj.setcurrent(local.time[n]);
+        }    
+    }
+    catch (_)
+    {}
 }
-catch (_)
-{}
+
+localinit();
 
 function downloadtext(name, text)
 {
@@ -6254,7 +6260,7 @@ function downloadtext(name, text)
 
 function gologin(email)
 {
-    localobj.email = email;
+    local.email = email;
     galleryobj.init();
 }
 
