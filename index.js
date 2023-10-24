@@ -3813,7 +3813,7 @@ var buttonlst = [
                                     new panel.shrink(new panel.multitext(e), 20, 0),
                                     new panel.layers(
                                     [
-                                        new panel.fill("rgb(0,0,80)"),
+                                        //new panel.fill("rgb(0,0,80)"),
                                         new panel.colsA([0, 0, 0],
                                         [
                                              new panel.text("white", "center", "middle", 0, 0),
