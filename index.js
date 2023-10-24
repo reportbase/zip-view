@@ -6001,10 +6001,8 @@ galleryobj.init = function(obj)
                              _8cnv.timeobj.setcurrent(k)
                         galleryobj.init(this.json)
                     }
-                    .catch(error =>
-                    {
-                        console.log("error:", error);
-                    });
+                    catch (_)
+                    {}
                 }
             }
 
