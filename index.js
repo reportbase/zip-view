@@ -4073,8 +4073,7 @@ menuobj.draw = function()
     {
         var k = canvas.autodirect;
         context.canvas.timeobj.rotate(k * context.canvas.slideshow);
-        if (!context.canvas.keydown)
-            context.canvas.slideshow -= context.canvas.slidereduce
+        context.canvas.slideshow -= context.canvas.slidereduce
     }
     else if (global.swipetimeout)
     {
