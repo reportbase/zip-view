@@ -5711,6 +5711,37 @@ galleryobj.init = function(obj)
         },
 
         {
+            title: "Add User",
+            func: function()
+            {
+                    const form = new FormData();
+                    form.append('name', "yyyy");
+                    form.append('email', "xxxx");
+
+                     fetch(`https://user.reportbase5836.workers.dev`,
+                    {
+                        'method': 'POST',
+                        'body': form
+                    })
+                    .then(function(response)
+                    {
+                        if (response.ok)
+                            return response.json()
+                        throw Error(response.statusText);
+                    })
+                    .then(function(results)
+                    {
+                        console.log(result);
+                    })
+                    .catch(error => console.log(error));
+           },
+            enabled: function()
+            {
+                return galleryobj.debug;
+            }
+        },
+
+        {
             title: "Debug",
             func: function()
             {
