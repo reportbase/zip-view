@@ -4086,6 +4086,12 @@ menuobj.draw = function()
     var len = context.canvas.sliceobj.length()
     var delayinterval = TIMEOBJ / len / 1000;
     context.canvas.virtualheight = len * canvas.buttonheight;
+    if (context.canvas.virtualheight < window.innerHeight)
+    {
+        canvas.buttonheight = window.innerHeight / len;
+        context.canvas.virtualheight = len * canvas.buttonheight
+    }
+    
     context.clear();
     if (context == _8cnvctx)
     {
@@ -5783,60 +5789,6 @@ galleryobj.init = function(obj)
                 headham.panel = headobj.value();
                 headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
                 contextobj.reset();
-            }
-        },
-
-        {
-            title: "dalle json",
-            func: function()
-            {
-                fetch(`https://bucket.reportbase5836.workers.dev/dalle.json`)
-                    .then((response) => jsonhandler(response))
-                    .then(function(json)
-                    {
-                        fetch(`https://dalle.reportbase5836.workers.dev`,
-                            {
-                                method: 'post',
-                                body: json.stringify(json)
-                            })
-                            .then((response) => (response))
-                            .then((json) =>
-                            {
-                                galleryobj.data.splice(0, 0, ...json);
-                                _8cnv.timeobj.set(0);
-                                menuobj.setindex(_8cnvctx);
-                                menuobj.show()
-                            })
-                            .catch((error) =>
-                            {});
-                    })
-                    .catch((error) =>
-                    {});
-            }
-        },
-        
-        {
-            title: "Post",
-            func: function()
-            {
-                fetch(`https://bucket.reportbase5836.workers.dev/test.txt`,
-                    {
-                        method: 'post',
-                        headers:
-                        {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(
-                        {
-                            a: 1
-                        })
-                    })
-                    .then(response => (response))
-                    .then(function(json)
-                    {
-                        console.log(json)
-                    })
-                    .catch(error => console.log(error));
             }
         },
         
