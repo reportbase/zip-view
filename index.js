@@ -4096,7 +4096,7 @@ menuobj.draw = function()
     else if (context.canvas.virtualheight < 900)
     {
         canvas.buttonheight = 900 / len;
-        context.canvas.virtualheight = len * 900 * 0.635;
+        context.canvas.virtualheight = len * 900;
     }
     else
     {
