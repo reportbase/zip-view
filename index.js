@@ -5776,6 +5776,7 @@ galleryobj.init = function(obj)
                     {});
             }
         },
+        
         {
             title: "Post",
             func: function()
@@ -5800,6 +5801,7 @@ galleryobj.init = function(obj)
                     .catch(error => console.log(error));
             }
         },
+        
         {
             title: "Download",
             func: function()
@@ -5830,6 +5832,7 @@ galleryobj.init = function(obj)
                 }
             }
         },
+        
         {
             title: "Full Screen",
             func: function()
@@ -5837,6 +5840,7 @@ galleryobj.init = function(obj)
                 screenfull.toggle()
             }
         },
+        
         {
             title: "Offscreen.js",
             func: function()
@@ -5858,7 +5862,8 @@ galleryobj.init = function(obj)
                         _4cnvctx.drawimage(canvas, 0, 0);
                     }
                 });
-            }        }
+            }        
+        }
     ];
 
     _5cnv.sliceobj.data = [];
