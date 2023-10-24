@@ -4354,8 +4354,8 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty(),
     scroll: new panel.scrollbar(),
-    buttonheight: 120,
-    buttonmargin: 10,
+    buttonheight: 180,
+    buttonmargin: 20,
     scrollinit: 0,
     width: 640
 },
