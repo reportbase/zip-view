@@ -5522,7 +5522,7 @@ window.addEventListener("visibilitychange", (evt) =>
             local.time[n] = cnv.timeobj.current();
         }
         
-        localStorage.setItem(url.path, JSON.stringify(local));
+        localStorage.setItem("local", JSON.stringify(local));
     }
 });
 
@@ -5994,16 +5994,14 @@ galleryobj.init = function(obj)
                     var path = `${url.origin}/?id=${this.id}`;
                     window.history.replaceState("", url.origin, path); 
                     url.path = this.id;
-                    ///todo
-                    /*
-                     var k = localStorage.getItem(url.path);
-                     if (k)
-                     {
-                         var j = JSON.parse(k);
-                         _8cnv.timeobj.setcurrent(local.time[7])
-                     }
-                     */
-                    galleryobj.init(this.json)
+                    try
+                    {
+                        var k = localStorage.getItem(url.path);
+                        if (typeof val !== "undefined" && !Number.isNaN(val) && val != null)
+                             _8cnv.timeobj.setcurrent(k)
+                        galleryobj.init(this.json)
+                    }
+                    catch (){}
                 }
             }
 
@@ -6235,23 +6233,25 @@ else
 var local = {};
 local.time = [];
 local.email = "reportbase@gmail.com";
-function localinit()
-{
-    try
-    {
-        var k = localStorage.getItem(url.path);
-        if (k)
-            local = JSON.parse(k);
     
-        for (var n = 0; n < contextlst.length; ++n)
-        {
-            var cnv = contextlst[n].canvas;
-            cnv.timeobj.setcurrent(local.time[n]);
-        }    
-    }
-    catch (_)
-    {}
+try
+{
+    var k = localStorage.getItem("local");
+    if (k)
+        local = JSON.parse(k);
+
+    for (var n = 0; n < contextlst.length; ++n)
+    {
+        var cnv = contextlst[n].canvas;
+        cnv.timeobj.setcurrent(local.time[n]);
+    }    
+
+    var k = localStorage.getItem(url.path);
+    if (typeof val !== "undefined" && !Number.isNaN(val) && val != null)
+        _8cnv.timeobj.setcurrent(k);
 }
+catch (_)
+{}
 
 localinit();
 
