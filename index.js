@@ -5759,6 +5759,19 @@ galleryobj.init = function(obj)
         },
 
         {
+             title: "Show Header",
+            func: function()
+            {        
+                fetch(`https://users.reportbase5836.workers.dev`)
+                  .then(function(response)
+                  {
+                    for (let [key, value] of response.headers)
+                        console.log(`${key} = ${value}`);
+                  });
+            }
+        },
+        
+        {
             title: "Debug",
             func: function()
             {
