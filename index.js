@@ -5703,10 +5703,6 @@ galleryobj.init = function(obj)
                     {
                         console.log("error:", error);
                     });
-            },
-            enabled: function()
-            {
-                return false
             }
         },
 
@@ -5734,11 +5730,7 @@ galleryobj.init = function(obj)
                         console.log(result);
                     })
                     .catch(error => console.log(error));
-           },
-            enabled: function()
-            {
-                return galleryobj.debug;
-            }
+           }
         },
 
         {
@@ -5753,10 +5745,6 @@ galleryobj.init = function(obj)
                 headham.panel = headobj.value();
                 headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
                 contextobj.reset();
-            },
-            enabled: function()
-            {
-                return galleryobj.debug;
             }
         },
 
@@ -5786,10 +5774,6 @@ galleryobj.init = function(obj)
                     })
                     .catch((error) =>
                     {});
-            },
-            enabled: function()
-            {
-                return false
             }
         },
         {
@@ -5814,10 +5798,6 @@ galleryobj.init = function(obj)
                         console.log(json)
                     })
                     .catch(error => console.log(error));
-            },
-            enabled: function()
-            {
-                return false
             }
         },
         {
@@ -5848,10 +5828,6 @@ galleryobj.init = function(obj)
                     URL.revokeObjectURL(anchor.href);
                     anchor.remove();
                 }
-            },
-            enabled: function()
-            {
-                return 0;
             }
         },
         {
@@ -5859,10 +5835,6 @@ galleryobj.init = function(obj)
             func: function()
             {
                 screenfull.toggle()
-            },
-            enabled: function()
-            {
-                return screenfull.isFullscreen;
             }
         },
         {
@@ -5886,12 +5858,7 @@ galleryobj.init = function(obj)
                         _4cnvctx.drawimage(canvas, 0, 0);
                     }
                 });
-            },
-            enabled: function()
-            {
-                return false
-            }
-        }
+            }        }
     ];
 
     _5cnv.sliceobj.data = [];
