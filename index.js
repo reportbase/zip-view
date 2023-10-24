@@ -5991,9 +5991,9 @@ galleryobj.init = function(obj)
                 result.title = result.json.title;
                 result.func = function(n, x, y)
                 {
-                    galleryobj.init(this.json)
                     var path = `${url.origin}/?id=${result.id}`;
                     window.history.replaceState("", url.origin, path);                
+                    galleryobj.init(this.json)
                 }
             }
 
