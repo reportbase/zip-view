@@ -5709,6 +5709,29 @@ galleryobj.init = function(obj)
             }
         },
 
+         {
+            title: "Delete All",
+            func: function()
+            {
+                     fetch(`https://delete.reportbase5836.workers.dev`,
+                    {
+                        'method': 'POST',
+                        'body': JSON.stringify(galleryobj)
+                    })
+                    .then(function(response)
+                    {
+                        if (response.ok)
+                            return response.json()
+                        throw Error(response.statusText);
+                    })
+                    .then(function(results)
+                    {
+                        console.log(result);
+                    })
+                    .catch(error => console.log(error));
+           }
+        },
+       
         {
             title: "Add User",
             func: function()
