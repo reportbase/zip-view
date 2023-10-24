@@ -1991,7 +1991,7 @@ function publishgallery(json)
     form.append('json', json);
     form.append('email', email);
 
-    fetch(`https://galleries.reportbase5836.workers.dev`,
+    fetch(`https://gallery.reportbase5836.workers.dev`,
         {
             'method': 'POST',
             'body': form
@@ -5969,7 +5969,7 @@ galleryobj.init = function(obj)
     _10cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
     var email = localobj.email ? localobj.email : "reportbase@gmail.com";
-    fetch(`https://galleries.reportbase5836.workers.dev/list/${email}`)
+    fetch(`https://gallery.reportbase5836.workers.dev/list/${email}`)
         .then(function(response)
         {
             if (response.ok)
@@ -6191,7 +6191,7 @@ else if (url.searchParams.has("sidney"))
 else if (url.searchParams.has("id"))
 {
     url.path = url.searchParams.get("id");
-    fetch(`https://galleries.reportbase5836.workers.dev/${url.path}`)
+    fetch(`https://gallery.reportbase5836.workers.dev/${url.path}`)
         .then((response) => jsonhandler(response))
         .then((obj) => galleryobj.init(obj))
         .catch((error) =>
