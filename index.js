@@ -5994,7 +5994,15 @@ galleryobj.init = function(obj)
                     var path = `${url.origin}/?id=${this.id}`;
                     window.history.replaceState("", url.origin, path); 
                     url.path = this.id;
-                    localinit()
+                    ///todo
+                    /*
+                     var k = localStorage.getItem(url.path);
+                     if (k)
+                     {
+                         var j = JSON.parse(k);
+                         _8cnv.timeobj.setcurrent(local.time[7])
+                     }
+                     */
                     galleryobj.init(this.json)
                 }
             }
