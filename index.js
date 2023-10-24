@@ -4093,9 +4093,9 @@ menuobj.draw = function()
         canvas.buttonheight = buttonobj.value();
         context.canvas.virtualheight = len * canvas.buttonheight * 0.635;
     }
-    else if (context.canvas.virtualheight < 1200)
+    else if (context.canvas.virtualheight < window.innerHeight)
     {
-        canvas.buttonheight = 1200 / len;
+        canvas.buttonheight = window.innerHeight / len;
         context.canvas.virtualheight = len * canvas.buttonheight;
     }
 
