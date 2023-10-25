@@ -5547,7 +5547,7 @@ window.addEventListener("visibilitychange", (evt) =>
             local.time[n] = cnv.timeobj.current();
         }
 
-        localStorage.setItem("local", JSON.stringify(local));
+        localStorage.setItem("local", JSON.stringify(0al));
         
         var lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
         var jst = [];
@@ -6293,7 +6293,7 @@ try
     if (k)
         local = JSON.parse(k);
 
-    let lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
+    var lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
                _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
                _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
     for (var n = 0; n < lst.length; ++n)
@@ -6304,7 +6304,7 @@ try
 
     var k = localStorage.getItem(url.path);
     var jst = JSON.parse(k);
-    let lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
+    var lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
     if (jst.length == lst.length)
     {
         for (var n = 0; n < lst.length; ++n)
