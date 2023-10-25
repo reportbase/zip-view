@@ -1934,10 +1934,7 @@ var pinchlst = [
 var rowobj = new circular_array("ROW", window.innerHeight);
 rowobj.set(Math.floor((50 / 100) * window.innerHeight));
 
-var pretchobj = new circular_array("PORTSTRETCH", 100);
-var letchobj = new circular_array("LANDSTRETCH", 100);
 var stretchobj = new circular_array("STRETCH", 100);
-
 var extentobj = new circular_array("EXTENT", []);
 
 var infobj = new circular_array("INFO", []);
@@ -3029,9 +3026,8 @@ var taplst = [
         }
         else if (context.stretchrect && context.stretchrect.hitest(x, y))
         {
-            var obj = stretchobj
             var k = (y - context.stretchrect.y) / context.stretchrect.height;
-            obj.setperc(k);
+            stretchobj.setperc(k);
             context.refresh();
         }
         else if (context.slicewidthrect &&
@@ -3502,11 +3498,11 @@ var bosslst =
             context.clip(region);
 
             var ww = Math.max(30, (rect.width / canvas.virtualwidth) * w);
-            var stretch = stretchobj;
+            var stretch = stretchobj.value();
             if (stretch < 50)
-                stretch = (50 - stretch.value()) / 100;
+                stretch = (50 - stretchobj.value()) / 100;
             else
-                stretch = (stretch.value() - 50) / 100;
+                stretch = (stretchobj.value() - 50) / 100;
             stretch = 1 - stretch;
             ww *= stretch;
 
