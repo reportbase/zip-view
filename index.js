@@ -5341,8 +5341,9 @@ var headlst = [
             context.save();
             var a = new panel.rows([BEXTENT, 0],
                 [
-                    new panel.cols([5, 0, ALIEXTENT, ALIEXTENT + 10, ALIEXTENT, 0, 5],
+                    new panel.cols([5, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT + 10, ALIEXTENT, 0, ALIEXTENT, 5],
                         [
+                            0
                             galleryobj.length() < BOSSMIN ? new panel.leftmenu():0, 
                             0,
 
@@ -5350,7 +5351,7 @@ var headlst = [
                             new panel.zoom(),
                             new panel.next(),
 
-                            0, 0,
+                            0, 0, 0
                         ]),
                     0,
                 ]);
