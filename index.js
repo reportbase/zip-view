@@ -28,7 +28,7 @@ const BUTTONMARGIN = 30;
 const IFRAME = window.self !== window.top;
 const ALIEXTENT = 60;
 const BEXTENT = 80;
-const BOSSMIN = 3;
+const BOSSMIN = 4;
 const HEADHEIGHT = IFRAME ? 0 : 80;
 const TIMEOBJ = 3927;
 const DELAYCENTER = TIMEOBJ / 1000;
@@ -5656,12 +5656,6 @@ async function loadjson(blob)
 //galleryobj init
 galleryobj.init = function(obj)
 {
-    headcnv.height = BEXTENT;
-    headobj.set(GALLERY);
-    headham.panel = headobj.value();
-    headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
-    headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-
     if (obj)
         Object.assign(galleryobj, obj);
     
@@ -6053,14 +6047,21 @@ galleryobj.init = function(obj)
 
 function initime()
 {
+    contextobj.reset();
     if (galleryobj.length() > BOSSMIN)
     {
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
+        headobj.set(GALLERY);
     }
-
-    contextobj.reset();
-    _4cnvctx.refresh();
+    else
+    {
+        headobj.set(BOSS);
+    }
+    
+    headham.panel = headobj.value();
+    headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
+    headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 
     if (url.searchParams.has("n"))
     {
