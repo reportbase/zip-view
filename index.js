@@ -5657,10 +5657,17 @@ async function loadjson(blob)
 //galleryobj init
 galleryobj.init = function(obj)
 {
+    headcnv.height = BEXTENT;
+    headobj.set(GALLERY);
+    headham.panel = headobj.value();
+    headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+
     if (obj)
         Object.assign(galleryobj, obj);
     if (this.data.length < 4)
+    {
         return;
+    }
     
     delete _4cnv.thumbcanvas;
     delete photo.image;
@@ -6058,10 +6065,6 @@ function initime()
 
     contextobj.reset();
     _4cnvctx.refresh();
-    headcnv.height = BEXTENT;
-    headobj.set(galleryobj.length() > BOSSMIN ? GALLERY : BOSS);
-    headham.panel = headobj.value();
-    headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 
     if (url.searchParams.has("n"))
     {
