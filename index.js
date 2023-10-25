@@ -5303,10 +5303,8 @@ function resize()
     }
 }
 
-window.addEventListener("focus", (evt) =>
-{});
-window.addEventListener("blur", (evt) =>
-{});
+window.addEventListener("focus", (evt) =>{});
+window.addEventListener("blur", (evt) =>{});
 window.addEventListener("resize", (evt) =>
 {
     resize();
@@ -5660,6 +5658,7 @@ galleryobj.init = function(obj)
     headcnv.height = BEXTENT;
     headobj.set(GALLERY);
     headham.panel = headobj.value();
+    headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
     headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 
     if (obj)
