@@ -682,6 +682,13 @@ panel.galleryscroll = function()
     }
 };
 
+panel.footerbar = function()
+{
+    this.draw = function(context, rect, user, time)
+    {
+    }
+}
+
 //panel scrollbar
 panel.scrollbar = function()
 {
@@ -4221,6 +4228,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty(),
     scroll: new panel.scrollbar(),
+    footer: new panel.empty(),
     buttonheight: 0,
     buttonmargin: 10,
     scrollinit: 0,
@@ -4244,6 +4252,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty(),
     scroll: new panel.scrollbar(),
+    footer: new panel.empty(),
     buttonheight: 240,
     buttonmargin: 20,
     scrollinit: 2,
@@ -4267,6 +4276,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty(),
     scroll: new panel.scrollbar(),
+    footer: new panel.empty(),
     buttonheight: 90,
     buttonmargin: 10,
     scrollinit: 0,
@@ -4290,6 +4300,7 @@ var eventlst = [
     pinch: "BOSS",
     bar: new panel.empty(),
     scroll: new panel.empty(),
+    footer: new panel.empty(),
     buttonheight: 30,
     buttonmargin: 10,
     scrollinit: 0,
@@ -4313,6 +4324,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty(),
     scroll: new panel.scrollbar(),
+    footer: new panel.footerbar(),
     buttonheight: 150,
     buttonmargin: 10,
     scrollinit: 0,
@@ -4336,6 +4348,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty(),
     scroll: new panel.scrollbar(),
+    footer: new panel.footerbar(),
     buttonheight: 60,
     buttonmargin: 5,
     scrollinit: 0,
@@ -4359,6 +4372,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty(),
     scroll: new panel.scrollbar(),
+    footer: new panel.empty(),
     buttonheight: 180,
     buttonmargin: 20,
     scrollinit: 0,
@@ -4382,6 +4396,7 @@ var eventlst = [
     pinch: "GALLERY",
     bar: new panel.gallerybar(),
     scroll: new panel.galleryscroll(),
+    footer: new panel.empty(),
     buttonheight: 320,
     buttonmargin: 10,
     scrollinit: 0.5,
@@ -4405,6 +4420,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty("Image Browser"),
     scroll: new panel.scrollbar(),
+    footer: new panel.empty(),
     buttonheight: 240,
     buttonmargin: 20,
     scrollinit: 0,
@@ -4428,6 +4444,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty("Image Browser"),
     scroll: new panel.scrollbar(),
+    footer: new panel.empty(),
     buttonheight: 50,
     buttonmargin: 10,
     scrollinit: 0,
@@ -4451,6 +4468,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty("Image Browser"),
     scroll: new panel.scrollbar(),
+    footer: new panel.empty(),
     buttonheight: 90,
     buttonmargin: 10,
     scrollinit: 0,
@@ -4474,6 +4492,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty("Image Browser"),
     scroll: new panel.scrollbar(),
+    footer: new panel.empty(),
     buttonheight: 50,
     buttonmargin: 10,
     scrollinit: 0,
@@ -4497,6 +4516,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty("Image Browser"),
     scroll: new panel.scrollbar(),
+    footer: new panel.empty(),
     buttonheight: 50,
     buttonmargin: 10,
     scrollinit: 0,
@@ -4520,6 +4540,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty("Image Browser"),
     scroll: new panel.scrollbar(),
+    footer: new panel.empty(),
     buttonheight: 50,
     buttonmargin: 10,
     scrollinit: 0,
@@ -4543,6 +4564,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty("Image Browser"),
     scroll: new panel.scrollbar(),
+    footer: new panel.empty(),
     buttonheight: 50,
     buttonmargin: 10,
     scrollinit: 0,
@@ -5520,13 +5542,20 @@ window.addEventListener("visibilitychange", (evt) =>
     }
     else
     {
-        for (var n = 0; n < contextlst.length; ++n)
+        
+        let lst = [_1cnvctx, _2cnvctx, _3cnvctx, _4cnvctx, 
+                   _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
+                   _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
+        for (var n = 0; n < lst.length; ++n)
         {
-            var cnv = contextlst[n].canvas;
+            var cnv = lst[n].canvas;
             local.time[n] = cnv.timeobj.current();
         }
-        
+
         localStorage.setItem("local", JSON.stringify(local));
+        
+       let lst = [_5cnv.time, _6cnv.time, _8cnv.time]        
+        localStorage.setItem(url.path, JSON.stringify(lst));
     }
 });
 
@@ -5675,17 +5704,15 @@ galleryobj.init = function(obj)
     letchobj.split(60, "40-90", letchobj.length());
     traitobj.split(60, "0.1-1.0", traitobj.length());
     scapeobj.split(60, "0.1-1.0", scapeobj.length());
-    positxpobj.set(50);
-    positypobj.set(50);
-    positxlobj.set(50);
-    positylobj.set(50);
+    positxpobj.set(50);//todo
+    positypobj.set(50);//todo
+    positxlobj.set(50);//todo
+    positylobj.set(50);//todo
 
     var zoom = (typeof galleryobj.zoom === "undefined") ? 25 : galleryobj.zoom;
-    poomobj.set(zoom);
+    poomobj.set(zoom);//todo
     loomobj.set(zoom);
-
-    slicewidthobj.set(galleryobj.slicewidth ? galleryobj.slicewidth : SLICEWIDTH);
-
+    slicewidthobj.set(SLICEWIDTH);
     headcnv.style.pointerEvents = "none";
     headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
     headham.panel = headobj.value();
@@ -6269,15 +6296,29 @@ try
     if (k)
         local = JSON.parse(k);
 
-    for (var n = 0; n < contextlst.length; ++n)
+    let lst = [_1cnvctx, _2cnvctx, _3cnvctx, _4cnvctx, _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
+    for (var n = 0; n < lst.length; ++n)
     {
-        var cnv = contextlst[n].canvas;
+        var cnv = lst[n].canvas;
         cnv.timeobj.setcurrent(local.time[n]);
     }    
 
     var k = localStorage.getItem(url.path);
-    if (typeof val !== "undefined" && !Number.isNaN(val) && val != null)
-        _8cnv.timeobj.setcurrent(k);
+    var jst = JSON.parse(k);
+    let lst = [_5cnvctx, _6cnvctx, _8cnvctx];
+    if (jst.length == lst.length)
+    {
+        for (var n = 0; n < lst.length; ++n)
+        {
+            var canvas = lst[n];
+            var val = jst[n];
+            if (typeof val === "undefined" || 
+                Number.isNaN(val) || 
+                val == null)
+                continue
+            canvas.timeobj.setcurrent(val);
+        }
+    }
 }
 catch (_)
 {}
@@ -6303,7 +6344,7 @@ function goimage(image)
 {
     image = util.clamp(1, galleryobj.length(), image);
     gotoimage(image - 1, true);
-    galleryobj.set(image - 1);
+    galleryobj.set(image-1);
     delete _4cnv.thumbcanvas;
     delete photo.image;
     contextobj.reset();
