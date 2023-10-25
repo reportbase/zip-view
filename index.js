@@ -4013,8 +4013,7 @@ menuobj.show = function()
     if (!context)
         return;
     var canvas = context.canvas;
-    if (galleryobj.length() >= BOSSMIN) 
-        _4cnv.height = 0;
+    _4cnv.height = 0;
     if (canvas.width_ > window.innerWidth)
     {
         context.show(0, 0, window.innerWidth, window.innerHeight);
