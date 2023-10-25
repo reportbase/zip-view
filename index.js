@@ -5548,7 +5548,7 @@ window.addEventListener("visibilitychange", (evt) =>
             local.time[n] = cnv.timeobj.current();
         }
 
-        localStorage.setItem("local", JSON.stringify(locaal));
+        localStorage.setItem("local", JSON.stringify(local));
         
         var lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
         var jst = [];
