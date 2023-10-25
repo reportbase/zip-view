@@ -1791,8 +1791,7 @@ var wheelst =
             }
         }
         else if (context.zoomrect &&
-            context.zoomrect.hitest(x, y) && 
-                galleryobj.length() >= BOSSMIN)
+            context.zoomrect.hitest(x, y))
         {
             var zoom = zoomobj.value();
             zoom.addperc(delta/500);
@@ -3043,7 +3042,7 @@ var taplst = [
                 bossobj.leftright(-1 * context.canvas.speedobj.value());
             }
         }
-        else if (galleryobj.length() >= BOSSMIN)
+        else 
         {
             menuobj.setindex(_8cnvctx);
             menuobj.show();
@@ -5660,6 +5659,7 @@ galleryobj.init = function(obj)
 {
     if (obj)
         Object.assign(galleryobj, obj);
+    //todo: if less than four
     
     delete _4cnv.thumbcanvas;
     delete photo.image;
