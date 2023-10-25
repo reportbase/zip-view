@@ -3647,7 +3647,6 @@ bossobj.reset = function()
             return window.rect.width < window.rect.height ? 1 : 0;
         }
         
-        zoomobj.set(window.landscape());
         positxobj.set(window.landscape());
         posityobj.set(window.landscape());
         context.show(0, 0, window.innerWidth, menuobj.value() ? 0 : window.innerHeight);
