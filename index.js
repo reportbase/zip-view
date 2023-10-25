@@ -5612,6 +5612,7 @@ galleryobj.getpath = function(index)
 {
     var gallery = this.data[index];
     var id = gallery.id;
+    var path = "";
     if (galleryobj.raw)
     {
         path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
@@ -5663,7 +5664,8 @@ galleryobj.init = function(obj)
 {
     if (obj)
         Object.assign(galleryobj, obj);
-    //todo: if less than four
+    if (galleryobj.length() < BOSSMIN)
+        galleryobj.data.length = BOSSMIN;
     
     delete _4cnv.thumbcanvas;
     delete photo.image;
