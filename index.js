@@ -2031,7 +2031,7 @@ async function loadzip(file)
         count += 1;
     }
 
-    if (count < 4)
+    if (!count)
         return;
 
     galleryobj.data = [];
@@ -2094,8 +2094,6 @@ async function loadblob(blob)
 
 async function loadimages(blobs)
 {
-    if (blobs.length < 4)
-        return;
     var count = 0;
     for (var i = 0; i < blobs.length; i++)
     {
@@ -3044,7 +3042,7 @@ var taplst = [
                 bossobj.leftright(-1 * context.canvas.speedobj.value());
             }
         }
-        else
+        else if (galleryobj.length() >= BOSSMIN)
         {
             menuobj.setindex(_8cnvctx);
             menuobj.show();
@@ -6048,7 +6046,7 @@ galleryobj.init = function(obj)
 function initime()
 {
     contextobj.reset();
-    if (galleryobj.length() > BOSSMIN)
+    if (galleryobj.length() >= BOSSMIN)
     {
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
