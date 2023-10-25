@@ -6310,7 +6310,7 @@ try
     {
         for (var n = 0; n < lst.length; ++n)
         {
-            var canvas = lst[n];
+            var canvas = lst[n].canvas;
             var val = jst[n];
             if (typeof val === "undefined" || 
                 Number.isNaN(val) || 
