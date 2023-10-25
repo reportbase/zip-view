@@ -686,6 +686,16 @@ panel.footerbar = function()
 {
     this.draw = function(context, rect, user, time)
     {
+        var a = new panel.rows([0,60],
+            [
+                0,
+                new panel.layer(
+                [
+                    new panel.fill("black"),
+                    new panel.text(),
+                ])
+            ]);
+        a.draw(context, rect, "Folders", 0);
     }
 }
 
@@ -4181,6 +4191,7 @@ menuobj.draw = function()
 
     context.canvas.bar.draw(context, rect, 0, 0);
     context.canvas.scroll.draw(context, rect, 0, 0);
+    context.canvas.footer.draw(context, rect, 0, 0);
 }
 
 var eventlst = [
@@ -4572,6 +4583,7 @@ contextlst.forEach(function(context, n)
     canvas.width_ = obj.width;
     canvas.bar = obj.bar;
     canvas.scroll = obj.scroll;
+    canvas.footer = obj.footer;
     canvas.buttonheight = obj.buttonheight;
     canvas.buttonmargin = obj.buttonmargin;
     canvas.scrollobj.set(obj.scrollinit*window.innerHeight);
