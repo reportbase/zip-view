@@ -5664,10 +5664,6 @@ galleryobj.init = function(obj)
 
     if (obj)
         Object.assign(galleryobj, obj);
-    if (this.data.length < 4)
-    {
-        return;
-    }
     
     delete _4cnv.thumbcanvas;
     delete photo.image;
