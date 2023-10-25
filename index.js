@@ -1968,10 +1968,7 @@ infobj.reset = function()
 }
 
 var slicewidthobj = new circular_array("SLICEWIDTH", SLICEWIDTHSIZE);
-
 var zoomobj = new circular_array("ZOOM", 100);
-var traitobj = new circular_array("TRAIT", 100);
-var scapeobj = new circular_array("SCAPE", 100);
 var heightobj = new circular_array("HEIGHT", 100);
 heightobj.set(50);
 
@@ -3449,10 +3446,8 @@ var bosslst =
             var r = calculateAspectRatioFit(photo.image.width, photo.image.height, width, height);
             var h = r.height;
             var w = r.width;
-            var positx = positxobj.value();
-            var posity = posityobj.value();
-            var x = Math.floor(Math.nub(positx.value(), positx.length(), w, rect.width));
-            var y = Math.floor(Math.nub(posity.value(), posity.length(), h, rect.height));
+            var x = Math.floor(Math.nub(positxobj.value(), positxobj.length(), w, rect.width));
+            var y = Math.floor(Math.nub(posityobj.value(), posityobj.length(), h, rect.height));
             canvas.thumbrect = new rectangle(x, y, w, h);
 
             var r = canvas.thumbrect;
@@ -3647,8 +3642,6 @@ bossobj.reset = function()
             return window.rect.width < window.rect.height ? 1 : 0;
         }
         
-        positxobj.set(window.landscape());
-        posityobj.set(window.landscape());
         context.show(0, 0, window.innerWidth, menuobj.value() ? 0 : window.innerHeight);
     }
 
@@ -5385,12 +5378,10 @@ var headlst = [
 
 var headobj = new circular_array("HEAD", headlst);
 var metaobj = new circular_array("", 6);
-var positxpobj = new circular_array("POSITIONX", 100);
-var positypobj = new circular_array("POSITIONY", 100);
-var positxlobj = new circular_array("POSITIONX", 100);
-var positylobj = new circular_array("POSITIONY", 100);
-var positxobj = new circular_array("POSITIONX", [positxpobj, positxlobj]);
-var posityobj = new circular_array("POSITIONY", [positypobj, positylobj]);
+var positxobj = new circular_array("POSITIONX", 100);
+var posityobj = new circular_array("POSITIONY", 100);
+positxobj.set(50);
+posityobj.set(50);
 
 var ClosePanel = function(size)
 {
@@ -5685,13 +5676,7 @@ galleryobj.init = function(obj)
 
     setfavicon();
     stretchobj.split(60, "40-90", stretchobj.length());
-    traitobj.split(60, "0.1-1.0", traitobj.length());
-    scapeobj.split(60, "0.1-1.0", scapeobj.length());
-    positxpobj.set(50);//todo
-    positypobj.set(50);//todo
-    positxlobj.set(50);//todo
-    positylobj.set(50);//todo
-
+    
     zoomobj.set(25);
     slicewidthobj.set(SLICEWIDTH);
     headcnv.style.pointerEvents = "none";
