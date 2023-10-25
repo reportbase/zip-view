@@ -1807,7 +1807,7 @@ var wheelst =
         else if (context.stretchrect &&
             context.stretchrect.hitest(x, y))
         {
-            var stretch = stretchobj.value();
+            var stretch = stretchobj;
             stretch.addperc(delta/500);
             bossobj.draw();
         }
@@ -1936,7 +1936,7 @@ rowobj.set(Math.floor((50 / 100) * window.innerHeight));
 
 var pretchobj = new circular_array("PORTSTRETCH", 100);
 var letchobj = new circular_array("LANDSTRETCH", 100);
-var stretchobj = new circular_array("STRETCH", [pretchobj, letchobj]);
+var stretchobj = new circular_array("STRETCH", 100);
 
 var extentobj = new circular_array("EXTENT", []);
 
@@ -2378,7 +2378,7 @@ var panlst =
             else if (context.isstretchrect)
             {
                 var k = (y - context.stretchrect.y) / context.stretchrect.height;
-                var stretch = stretchobj.value();
+                var stretch = stretchobj;
                 stretch.setperc(k);
                 contextobj.reset()
             }
@@ -2423,7 +2423,7 @@ var panlst =
         canvas.slidestop = 0;
         canvas.isthumb = 0;
         delete canvas.timeobj.offset;
-        delete stretchobj.value().offset;
+        delete stretchobj.offset;
         delete zoomobj.value().offset;
         delete canvas.startx;
         delete canvas.starty;
@@ -2926,12 +2926,12 @@ var keylst = [
             }
             else if (key == "[")
             {
-                stretchobj.value().add(-1);
+                stretchobj.add(-1);
                 context.refresh();
             }
             else if (key == "]")
             {
-                stretchobj.value().add(1);
+                stretchobj.add(1);
                 context.refresh();
             }
         }
@@ -3029,7 +3029,7 @@ var taplst = [
         }
         else if (context.stretchrect && context.stretchrect.hitest(x, y))
         {
-            var obj = stretchobj.value()
+            var obj = stretchobj
             var k = (y - context.stretchrect.y) / context.stretchrect.height;
             obj.setperc(k);
             context.refresh();
@@ -3426,7 +3426,7 @@ var bosslst =
                         0,
                         galleryobj.debug ? slicewidthobj : zoomobj.value(),
                         0,
-                        stretchobj.value(),
+                        stretchobj,
                         0,
                     ],
                     [
@@ -3502,7 +3502,7 @@ var bosslst =
             context.clip(region);
 
             var ww = Math.max(30, (rect.width / canvas.virtualwidth) * w);
-            var stretch = stretchobj.value();
+            var stretch = stretchobj;
             if (stretch < 50)
                 stretch = (50 - stretch.value()) / 100;
             else
@@ -3563,7 +3563,7 @@ bossobj.draw = function()
     else
         canvas.lastime = canvas.timeobj.current();
 
-    var stretch = stretchobj.value();
+    var stretch = stretchobj;
     var virtualpinch = _4cnv.virtualwidth * (stretch.value() / 100);
     var colwidth = _4cnv.colwidth;
     var virtualeft = (virtualpinch - rect.width) / 2;
@@ -3663,7 +3663,6 @@ bossobj.reset = function()
             return window.rect.width < window.rect.height ? 1 : 0;
         }
         
-        stretchobj.set(window.landscape());
         zoomobj.set(window.landscape());
         positxobj.set(window.landscape());
         posityobj.set(window.landscape());
@@ -5703,8 +5702,7 @@ galleryobj.init = function(obj)
     }
 
     setfavicon();
-    pretchobj.split(60, "40-90", pretchobj.length());
-    letchobj.split(60, "40-90", letchobj.length());
+    stretchobj.split(60, "40-90", stretchobj.length());
     traitobj.split(60, "0.1-1.0", traitobj.length());
     scapeobj.split(60, "0.1-1.0", scapeobj.length());
     positxpobj.set(50);//todo
