@@ -689,7 +689,7 @@ panel.footerbar = function()
         var a = new panel.rows([0,60],
             [
                 0,
-                new panel.layer(
+                new panel.layers(
                 [
                     new panel.fill("black"),
                     new panel.text(),
