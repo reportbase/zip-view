@@ -3837,7 +3837,7 @@ var buttonlst = [
                     [
                        k ? k.split(d) : "",
                        [
-                           0
+                           0,
                            "Title",
                            "Delete",
                            0,
