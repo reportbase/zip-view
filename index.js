@@ -4243,8 +4243,8 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty(),
     scroll: new panel.scrollbar(),
-    buttonheight: 160,
-    buttonmargin: 10,
+    buttonheight: 240,
+    buttonmargin: 20,
     scrollinit: 2,
     width: 640
 },
@@ -4548,7 +4548,7 @@ var eventlst = [
     width: 640
 }, ];
 
-var contextobj = new circular_array("CTX", contextlst);
+var contextobj = new circular_array("", contextlst);
 contextlst.forEach(function(context, n)
 {
     var obj = eventlst[n];
@@ -5892,7 +5892,7 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: "Open (*.zip, *.cbz, *.json, *.png, *.jpg, *.avif, *.webp, *.gif)",
+        title: "Open (*.zip, *.cbz,\n*.json, *.png, *.jpg,\n*.avif, *.webp, *.gif)",
         func: function()
         {
             importdialog();
