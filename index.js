@@ -2164,7 +2164,8 @@ var droplst = [
     },
 }, ];
 
-var panlst = [
+var panlst = 
+[
 {
     name: "DEFAULT",
     updown: function(context, rect, x, y, type) {},
@@ -3808,19 +3809,16 @@ var buttonlst = [
                     new panel.layers(
                         [
                             new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
-                            new panel.rowsA([0.75, 0.25],
+                            new panel.rowsA([0, 50, 10],
                                 [
                                     new panel.shrink(new panel.multitext(e), 20, 0),
-                                    new panel.layers(
+                                    new panel.colsA([0.30, 0, 0.30],
                                     [
-                                        //new panel.fill("rgb(0,0,80)"),
-                                        new panel.colsA([0, 0, 0],
-                                        [
-                                             new panel.text("white", "center", "middle", 0, 0),
-                                             new panel.text("white", "center", "middle", 0, 0),
-                                             new panel.text("white", "center", "middle", 0, 0)
-                                        ])
-                                    ])
+                                         new panel.text("white", "center", "middle", 0, 0),
+                                         new panel.text("white", "center", "middle", 0, 0),
+                                         new panel.text("white", "center", "middle", 0, 0)
+                                    ]),
+                                    0,
                                 ])
                         ]),
                     0,
@@ -3838,7 +3836,7 @@ var buttonlst = [
                     [
                        k ? k.split(d) : "",
                        [
-                           "Unzip",
+                           "Upload",
                            "Download",
                            "Delete",
                         ]
@@ -5661,7 +5659,9 @@ galleryobj.init = function(obj)
 {
     if (obj)
         Object.assign(galleryobj, obj);
-
+    if (this.data.length < 4)
+        return;
+    
     delete _4cnv.thumbcanvas;
     delete photo.image;
 
@@ -5892,7 +5892,7 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: "Open (*.zip, *.cbz, *.json)",
+        title: "Open (*.zip, *.cbz, *.json, *.png, *.jpg, *.avif, *.webp, *.gif)",
         func: function()
         {
             importdialog();
