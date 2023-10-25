@@ -5343,7 +5343,7 @@ var headlst = [
                 [
                     new panel.cols([5, 0, ALIEXTENT, ALIEXTENT + 10, ALIEXTENT, 0, 5],
                         [
-                            galleryobj.length() >= BOSSMIN ? new panel.leftmenu():0, 
+                            galleryobj.length() < BOSSMIN ? new panel.leftmenu():0, 
                             0,
 
                             new panel.previous(),
