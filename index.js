@@ -2013,7 +2013,6 @@ function publishgallery(json)
 
 async function loadzip(file)
 {
-    global.zip = file;
     const
     {
         entries
@@ -2032,7 +2031,7 @@ async function loadzip(file)
         count += 1;
     }
 
-    if (!count)
+    if (count < 4)
         return;
 
     galleryobj.data = [];
@@ -2095,6 +2094,8 @@ async function loadblob(blob)
 
 async function loadimages(blobs)
 {
+    if (blobs.length < 4)
+        return;
     var count = 0;
     for (var i = 0; i < blobs.length; i++)
     {
