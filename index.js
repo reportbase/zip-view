@@ -3408,7 +3408,7 @@ var bosslst =
                 [
                     [
                         0,
-                        galleryobj.debug ? slicewidthobj : zoomobj,
+                        zoomobj,
                         0,
                         stretchobj,
                         0,
