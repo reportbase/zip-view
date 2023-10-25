@@ -5343,7 +5343,7 @@ var headlst = [
                 [
                     new panel.cols([5, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT + 10, ALIEXTENT, 0, ALIEXTENT, 5],
                         [
-                            0
+                            0,
                             galleryobj.length() < BOSSMIN ? new panel.leftmenu():0, 
                             0,
 
