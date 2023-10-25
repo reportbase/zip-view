@@ -1791,22 +1791,20 @@ var wheelst =
             }
             else
             {
-                zoomobj.value().addperc(type == "wheelup" ? 0.025 : -0.025);
+                zoomobj.addperc(type == "wheelup" ? 0.025 : -0.025);
                 contextobj.reset()
             }
         }
         else if (context.zoomrect &&
             context.zoomrect.hitest(x, y))
         {
-            var zoom = zoomobj.value();
-            zoom.addperc(delta/500);
+            zoomobj.addperc(delta/500);
             contextobj.reset()
         }
         else if (context.stretchrect &&
             context.stretchrect.hitest(x, y))
         {
-            var stretch = stretchobj;
-            stretch.addperc(delta/500);
+            stretchobj.addperc(delta/500);
             bossobj.draw();
         }
         else
@@ -1971,9 +1969,7 @@ infobj.reset = function()
 
 var slicewidthobj = new circular_array("SLICEWIDTH", SLICEWIDTHSIZE);
 
-var poomobj = new circular_array("PORTZOOM", 100);
-var loomobj = new circular_array("LANDZOOM", 100);
-var zoomobj = new circular_array("ZOOM", [poomobj, loomobj]);
+var zoomobj = new circular_array("ZOOM", 100);
 var traitobj = new circular_array("TRAIT", 100);
 var scapeobj = new circular_array("SCAPE", 100);
 var heightobj = new circular_array("HEIGHT", 100);
@@ -2359,20 +2355,17 @@ var panlst =
         }
         else if (type == "panup" || type == "pandown")
         {
-            var zoom = zoomobj.value()
             context.refresh()
             if (context.iszoomrect)
             {
                 var k = (y - context.zoomrect.y) / context.zoomrect.height;
-                var zoom = zoomobj.value();
-                zoom.setperc(k);
+                zoomobj.setperc(k);
                 contextobj.reset()
             }
             else if (context.isstretchrect)
             {
                 var k = (y - context.stretchrect.y) / context.stretchrect.height;
-                var stretch = stretchobj;
-                stretch.setperc(k);
+                stretchobj.setperc(k);
                 contextobj.reset()
             }
             else
@@ -2417,7 +2410,7 @@ var panlst =
         canvas.isthumb = 0;
         delete canvas.timeobj.offset;
         delete stretchobj.offset;
-        delete zoomobj.value().offset;
+        delete zoomobj.offset;
         delete canvas.startx;
         delete canvas.starty;
         delete rowobj.offset;
@@ -2909,12 +2902,12 @@ var keylst = [
             }
             else if (key == "-" || key == "{")
             {
-                zoomobj.value().add(-1);
+                zoomobj.add(-1);
                 contextobj.reset()
             }
             else if (key == "+" || key == "}" || key == "=")
             {
-                zoomobj.value().add(1);
+                zoomobj.add(1);
                 contextobj.reset()
             }
             else if (key == "[")
@@ -3015,9 +3008,8 @@ var taplst = [
         }
         else if (context.zoomrect && context.zoomrect.hitest(x, y))
         {
-            var obj = zoomobj.value()
             var k = (y - context.zoomrect.y) / context.zoomrect.height;
-            obj.setperc(k);
+            zoomobj.setperc(k);
             contextobj.reset();
         }
         else if (context.stretchrect && context.stretchrect.hitest(x, y))
@@ -3416,7 +3408,7 @@ var bosslst =
                 [
                     [
                         0,
-                        galleryobj.debug ? slicewidthobj : zoomobj.value(),
+                        galleryobj.debug ? slicewidthobj : zoomobj,
                         0,
                         stretchobj,
                         0,
@@ -3676,10 +3668,9 @@ bossobj.reset = function()
             break;
     }
 
-    var zoom = zoomobj.value()
     var str = `${n}-${zoomax}`;
-    zoom.split(zoom.current(), str, 100);
-    var z = zoom.value();
+    zoomobj.split(zoomobj.current(), str, 100);
+    var z = zoomobj.value();
     var zoom = (100 - z) / 100;
     _4cnv.imageheight = photo.image.height * zoom;
     _4cnv.virtualheight = _4cnv.height;
@@ -5702,9 +5693,7 @@ galleryobj.init = function(obj)
     positxlobj.set(50);//todo
     positylobj.set(50);//todo
 
-    var zoom = (typeof galleryobj.zoom === "undefined") ? 25 : galleryobj.zoom;
-    poomobj.set(zoom);//todo
-    loomobj.set(zoom);
+    zoomobj.set(25);
     slicewidthobj.set(SLICEWIDTH);
     headcnv.style.pointerEvents = "none";
     headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
