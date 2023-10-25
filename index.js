@@ -5665,7 +5665,10 @@ galleryobj.init = function(obj)
     if (obj)
         Object.assign(galleryobj, obj);
     if (galleryobj.length() < BOSSMIN)
-        galleryobj.data.length = 1;
+    {
+        for (var n = galleryobj.length(); n < BOSSMIN; ++n)
+            galleryobj.data.push(Object.assign({}, galleryobj.data[0]);
+    }
     
     delete _4cnv.thumbcanvas;
     delete photo.image;
@@ -6099,19 +6102,7 @@ function initime()
     headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
     headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 
-    if (url.searchParams.has("n"))
-    {
-        var name = url.searchParams.get("n");
-        for (var m = 0; m < galleryobj.data.length; ++m)
-        {
-            var e = galleryobj.data[m];
-            if (!e.name || !e.name.wild("*" + name + "*"))
-                continue;
-            gotoimage(m);
-            break;
-        }
-    }
-    else if (url.searchParams.has("e"))
+    if (url.searchParams.has("e"))
     {
         var folder = url.searchParams.get("e");
         for (var m = 0; m < galleryobj.data.length; ++m)
@@ -6122,27 +6113,6 @@ function initime()
             gotoimage(m);
             break;
         }
-    }
-    else if (url.searchParams.has("g"))
-    {
-        var g = url.searchParams.get("g");
-        gotoimage(g);
-    }
-    else if (url.searchParams.has("i"))
-    {
-        var id = url.searchParams.get("i");
-        for (var m = 0; m < galleryobj.data.length; ++m)
-        {
-            var e = galleryobj.data[m];
-            if (!e.id || !e.id.wild("*" + id + "*"))
-                continue;
-            gotoimage(m);
-            break;
-        }
-    }
-    else if (j > 0 && j < TIMEOBJ)
-    {
-        _8cnv.timeobj.set(j);
     }
     else
     {
