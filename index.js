@@ -5553,7 +5553,7 @@ window.addEventListener("visibilitychange", (evt) =>
         var lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
         var jst = [];
         for (var n = 0; n < lst.length; ++n)
-            jst.push(lst[n].time);
+            jst.push(lst[n].canvas.time);
         localStorage.setItem(url.path, JSON.stringify(jst));
     }
 });
