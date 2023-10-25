@@ -4036,7 +4036,7 @@ menuobj.show = function()
     }, 1000);
 }
 
-//menuobj draw
+//galleryobj init
 menuobj.draw = function()
 {
     var context = this.value();
@@ -5665,7 +5665,27 @@ galleryobj.init = function(obj)
     if (obj)
         Object.assign(galleryobj, obj);
     if (galleryobj.length() < BOSSMIN)
+    {
         galleryobj.data.length = BOSSMIN;
+        if (galleryobj.data[0].id)
+        {
+            if (!galleryobj.data[1].id)
+                galleryobj.data[1].id = galleryobj.data[0].id;
+            if (!galleryobj.data[2].id)
+                galleryobj.data[2].id = galleryobj.data[0].id;
+            if (!galleryobj.data[3].id)
+                galleryobj.data[3].id = galleryobj.data[0].id;
+        }
+        else if (galleryobj.data[0].url)
+        {
+            if (!galleryobj.data[1].url)
+                galleryobj.data[1].url = galleryobj.data[0].url;
+            if (!galleryobj.data[2].url)
+                galleryobj.data[2].url = galleryobj.data[0].url;
+            if (!galleryobj.data[3].url)
+                galleryobj.data[3].url = galleryobj.data[0].url;
+        }
+    }
     
     delete _4cnv.thumbcanvas;
     delete photo.image;
