@@ -5667,7 +5667,7 @@ galleryobj.init = function(obj)
     if (galleryobj.length() < BOSSMIN)
     {
         for (var n = galleryobj.length(); n < BOSSMIN; ++n)
-            galleryobj.data.push(Object.assign({}, galleryobj.data[0]);
+            galleryobj.data.push(Object.assign({}, galleryobj.data[0]));
     }
     
     delete _4cnv.thumbcanvas;
