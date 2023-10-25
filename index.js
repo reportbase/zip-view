@@ -5538,7 +5538,7 @@ window.addEventListener("visibilitychange", (evt) =>
     else
     {
         
-        let lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
+        var lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
                    _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
                    _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
         for (var n = 0; n < lst.length; ++n)
@@ -5549,7 +5549,7 @@ window.addEventListener("visibilitychange", (evt) =>
 
         localStorage.setItem("local", JSON.stringify(local));
         
-       let lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
+        var lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
         var jst = [];
         for (var n = 0; n < lst.length; ++n)
             jst.push(lst[n].time);
