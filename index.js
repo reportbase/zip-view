@@ -1982,6 +1982,7 @@ var traitobj = new circular_array("TRAIT", 100);
 var scapeobj = new circular_array("SCAPE", 100);
 var heightobj = new circular_array("HEIGHT", 100);
 var pinchobj = new circular_array("PINCH", [heightobj, zoomobj]);
+heightobj.set(50);
 
 var userobj = {}
 
