@@ -3812,11 +3812,12 @@ var buttonlst = [
                             new panel.rowsA([0, 50, 10],
                                 [
                                     new panel.shrink(new panel.multitext(e), 20, 0),
-                                    new panel.colsA([0.30, 0, 0.30],
+                                    new panel.colsA([0,60,60,0],
                                     [
+                                            0,
                                          new panel.text("white", "center", "middle", 0, 0),
                                          new panel.text("white", "center", "middle", 0, 0),
-                                         new panel.text("white", "center", "middle", 0, 0)
+                                            0,
                                     ]),
                                     0,
                                 ])
@@ -3836,9 +3837,10 @@ var buttonlst = [
                     [
                        k ? k.split(d) : "",
                        [
-                           "Upload",
-                           "Download",
+                           0
+                           "Title",
                            "Delete",
+                           0,
                         ]
                     ], time);
         
@@ -5889,7 +5891,23 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: "Open (*.zip, *.cbz,\n*.json, *.png, *.jpg,\n*.avif, *.webp, *.gif)",
+        title: "Signup",
+        func: function()
+        {
+            gotodialog(local.email ? local.email : "", "Login", gologin);
+            galleryobj.init();
+        }
+    },
+    {
+        title: "Account",
+        func: function()
+        {
+            gotodialog(local.email ? local.email : "", "Login", gologin);
+            galleryobj.init();
+        }
+    },
+    {
+        title: "Open\n(*.zip, *.cbz, .json,\n*.png, *.jpg, .avif,\n*.webp, *.gif)",
         func: function()
         {
             importdialog();
@@ -5900,9 +5918,10 @@ galleryobj.init = function(obj)
         func: function() {}
     },
     {
-        title: "Image and Document Viewer\nWebp, Jpg, Avif, Gif, and Png\nZip, Cbz, and Ipfs\nNewspapers, Magazines and Graphic Novels",
+        title: "Zip-view\nImage Viewer\nWebp, Jpg, Avif, Gif, and Png\nZip, Cbz, and Ipfs",
         func: function() {}
-    }, ];
+    }, 
+    ];
 
     if (_5cnv.sliceobj.data.length >= 2)
     {
