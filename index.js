@@ -1785,10 +1785,8 @@ var wheelst =
                 context.canvas.thumbrect.hitest(x, y);
             if (isthumb)
             {
-                pinchobj.set(0);
-                var obj = heightobj;
                 delete context.canvas.thumbcanvas;
-                obj.addperc(type == "wheelup" ? 0.02 : -0.02);
+                heightobj.addperc(type == "wheelup" ? 0.02 : -0.02);
                 bossobj.draw();
             }
             else
@@ -1882,7 +1880,7 @@ var pinchlst = [
     name: "BOSS",
     pinch: function(context, x, y, scale)
     {
-        var obj = context.obj;
+        var obj = heightobj;
         if (!context.buttonachor)
             context.buttonachor = obj.value();
         if (!context.scaleanchor)
@@ -1908,8 +1906,6 @@ var pinchlst = [
         context.canvas.isthumb = context.canvas.thumbrect &&
             context.canvas.thumbrect.expand &&
             context.canvas.thumbrect.expand(40, 40).hitest(x, y);
-        pinchobj.set(context.canvas.isthumb ? 0 : 1)
-        context.obj = pinchobj.value().value();
         context.scale = 0;
     },
     pinchend: function(context)
@@ -1981,7 +1977,6 @@ var zoomobj = new circular_array("ZOOM", [poomobj, loomobj]);
 var traitobj = new circular_array("TRAIT", 100);
 var scapeobj = new circular_array("SCAPE", 100);
 var heightobj = new circular_array("HEIGHT", 100);
-var pinchobj = new circular_array("PINCH", [heightobj, zoomobj]);
 heightobj.set(50);
 
 var userobj = {}
