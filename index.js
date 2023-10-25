@@ -4236,7 +4236,7 @@ var eventlst = [
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "SETUP",
+    button: "MENU",
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
@@ -5823,14 +5823,6 @@ galleryobj.init = function(obj)
         },
         
         {
-            title: "Full Screen",
-            func: function()
-            {
-                screenfull.toggle()
-            }
-        },
-        
-        {
             title: "Offscreen.js",
             func: function()
             {
@@ -5921,6 +5913,36 @@ galleryobj.init = function(obj)
         title: "Zip-view\nImage Viewer\nWebp, Jpg, Avif, Gif, and Png\nZip, Cbz, and Ipfs",
         func: function() {}
     }, 
+       
+    {
+        title: "Full Screen",
+        func: function()
+        {
+            screenfull.toggle()
+        }
+    },
+         
+    {
+        title: "New Gallery",
+        func: function()
+        {
+         
+        }
+    },
+    {
+        title: "Edit Gallery",
+        func: function()
+        {
+         
+        }
+    },
+    {
+        title: "Delete Gallery",
+        func: function()
+        {
+         
+        }
+    },
     ];
 
     if (_5cnv.sliceobj.data.length >= 2)
