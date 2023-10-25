@@ -1786,7 +1786,7 @@ var wheelst =
             if (isthumb)
             {
                 pinchobj.set(0);
-                var obj = heightobj.value();
+                var obj = heightobj;
                 delete context.canvas.thumbcanvas;
                 obj.addperc(type == "wheelup" ? 0.02 : -0.02);
                 bossobj.draw();
@@ -1983,7 +1983,7 @@ var loomobj = new circular_array("LANDZOOM", 100);
 var zoomobj = new circular_array("ZOOM", [poomobj, loomobj]);
 var traitobj = new circular_array("TRAIT", 100);
 var scapeobj = new circular_array("SCAPE", 100);
-var heightobj = new circular_array("HEIGHT", [traitobj, scapeobj]);
+var heightobj = new circular_array("HEIGHT", 100);
 var pinchobj = new circular_array("PINCH", [heightobj, zoomobj]);
 
 var userobj = {}
@@ -3433,7 +3433,7 @@ var bosslst =
                         0,
                         lst,
                         0,
-                        heightobj.value(),
+                        heightobj,
                         0,
                     ]
                 ]);
@@ -3458,7 +3458,7 @@ var bosslst =
 
             a.draw(context, rect, context.canvas.timeobj, 0);
 
-            var he = heightobj.value();
+            var he = heightobj;
             var b = Math.berp(0, he.length() - 1, he.current());
             var height = Math.lerp(90, rect.height - 180, b);
             var width = Math.lerp(90, rect.width - 80, b);
@@ -3662,7 +3662,7 @@ bossobj.reset = function()
         {
             return window.rect.width < window.rect.height ? 1 : 0;
         }
-        heightobj.set(window.landscape());
+        
         stretchobj.set(window.landscape());
         zoomobj.set(window.landscape());
         positxobj.set(window.landscape());
@@ -5543,7 +5543,7 @@ window.addEventListener("visibilitychange", (evt) =>
     else
     {
         
-        let lst = [_1cnvctx, _2cnvctx, _3cnvctx, _4cnvctx, 
+        let lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
                    _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
                    _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
         for (var n = 0; n < lst.length; ++n)
@@ -5554,8 +5554,11 @@ window.addEventListener("visibilitychange", (evt) =>
 
         localStorage.setItem("local", JSON.stringify(local));
         
-       let lst = [_5cnv.time, _6cnv.time, _8cnv.time]        
-        localStorage.setItem(url.path, JSON.stringify(lst));
+       let lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
+        var jst = [];
+        for (var n = 0; n < lst.length; ++n)
+            jst.push(lst[n].time);
+        localStorage.setItem(url.path, JSON.stringify(jst));
     }
 });
 
@@ -6296,7 +6299,9 @@ try
     if (k)
         local = JSON.parse(k);
 
-    let lst = [_1cnvctx, _2cnvctx, _3cnvctx, _4cnvctx, _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
+    let lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
+               _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
+               _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
     for (var n = 0; n < lst.length; ++n)
     {
         var cnv = lst[n].canvas;
@@ -6305,7 +6310,7 @@ try
 
     var k = localStorage.getItem(url.path);
     var jst = JSON.parse(k);
-    let lst = [_5cnvctx, _6cnvctx, _8cnvctx];
+    let lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
     if (jst.length == lst.length)
     {
         for (var n = 0; n < lst.length; ++n)
