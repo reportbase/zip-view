@@ -5899,7 +5899,7 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: "Open\n(*.zip, *.cbz, .json,\n*.png, *.jpg, .avif,\n*.webp, *.gif)",
+        title: "Open\n*.zip, *.cbz, *.json,\n*.png, *.jpg, *.avif,\n*.webp, *.gif",
         func: function()
         {
             importdialog();
@@ -5910,7 +5910,7 @@ galleryobj.init = function(obj)
         func: function() {}
     },
     {
-        title: "Zip-view\nImage Viewer\nWebp, Jpg, Avif, Gif, and Png\nZip, Cbz, and Ipfs",
+        title: "zip-view\nImage Viewer\nWebp, jpg, avif, gif, and png\nzip, cbz, and ipfs",
         func: function() {}
     }, 
        
@@ -5980,22 +5980,6 @@ galleryobj.init = function(obj)
     _8cnv.sliceobj.data = galleryobj.data;
     _9cnv.sliceobj.data = galleryobj.base ? galleryobj.base : [];
 
-    if (_9cnv.sliceobj.data.length)
-    {
-        _7cnv.sliceobj.data.push(
-        {
-            title: "Help \u{25B6}",
-            func: function()
-            {
-                galleryobj.leftcnv = _9cnv;
-                galleryobj.leftctx = _9cnvctx;
-                menuobj.setindex(galleryobj.leftctx);
-                menuobj.show();
-                headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-            }
-        });
-    }
-
     _2cnv.sliceobj.data = [];
     _10cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
@@ -6052,6 +6036,22 @@ galleryobj.init = function(obj)
         })
         .catch(error => console.log(error));
 
+    if (_9cnv.sliceobj.data.length)
+    {
+        _7cnv.sliceobj.data.push(
+        {
+            title: "Help \u{25B6}",
+            func: function()
+            {
+                galleryobj.leftcnv = _9cnv;
+                galleryobj.leftctx = _9cnvctx;
+                menuobj.setindex(galleryobj.leftctx);
+                menuobj.show();
+                headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            }
+        });
+    }
+    
     var lst = [_2cnv, _3cnv, _5cnv, _6cnv, _7cnv, _8cnv, _9cnv, _10cnv, _11cnv];
     for (var n = 0; n < lst.length; n++)
     {
