@@ -1791,7 +1791,8 @@ var wheelst =
             }
         }
         else if (context.zoomrect &&
-            context.zoomrect.hitest(x, y))
+            context.zoomrect.hitest(x, y) && 
+                galleryobj.length() >= BOSSMIN)
         {
             var zoom = zoomobj.value();
             zoom.addperc(delta/500);
@@ -2973,7 +2974,21 @@ var taplst = [
     {
         headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 
-        if (headcnvctx.moveprev && headcnvctx.moveprev.hitest(x, y))
+        if (headcnvctx.leftmenurect && headcnvctx.leftmenurect.hitest(x, y))
+        {
+            if (menuobj.value() == _7cnvctx)
+            {
+                galleryobj.leftctx.hide();
+            }
+            else
+            {
+                menuobj.setindex(_7cnvctx);
+                menuobj.show();
+            }
+
+            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+        }
+        else if (headcnvctx.moveprev && headcnvctx.moveprev.hitest(x, y))
         {
             _4cnvctx.movepage(-1);
         }
@@ -5328,7 +5343,8 @@ var headlst = [
                 [
                     new panel.cols([5, 0, ALIEXTENT, ALIEXTENT + 10, ALIEXTENT, 0, 5],
                         [
-                            0, 0,
+                            galleryobj.length() >= BOSSMIN ? new panel.leftmenu():0, 
+                            0,
 
                             new panel.previous(),
                             new panel.zoom(),
