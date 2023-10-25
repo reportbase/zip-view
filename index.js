@@ -2974,21 +2974,7 @@ var taplst = [
     {
         headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
 
-        if (headcnvctx.leftmenurect && headcnvctx.leftmenurect.hitest(x, y))
-        {
-            if (menuobj.value() == _7cnvctx)
-            {
-                galleryobj.leftctx.hide();
-            }
-            else
-            {
-                menuobj.setindex(_7cnvctx);
-                menuobj.show();
-            }
-
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-        }
-        else if (headcnvctx.moveprev && headcnvctx.moveprev.hitest(x, y))
+        if (headcnvctx.moveprev && headcnvctx.moveprev.hitest(x, y))
         {
             _4cnvctx.movepage(-1);
         }
@@ -4027,7 +4013,8 @@ menuobj.show = function()
     if (!context)
         return;
     var canvas = context.canvas;
-    _4cnv.height = 0;
+    if (galleryobj.length() >= BOSSMIN) 
+        _4cnv.height = 0;
     if (canvas.width_ > window.innerWidth)
     {
         context.show(0, 0, window.innerWidth, window.innerHeight);
@@ -5341,11 +5328,10 @@ var headlst = [
             context.save();
             var a = new panel.rows([BEXTENT, 0],
                 [
-                    new panel.cols([5, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT + 10, ALIEXTENT, 0, ALIEXTENT, 5],
+                    new panel.cols([5, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT + 10, 
+                                    ALIEXTENT, 0, ALIEXTENT, 5],
                         [
-                            0,
-                            galleryobj.length() < BOSSMIN ? new panel.leftmenu():0, 
-                            0,
+                            0, 0, 0,
 
                             new panel.previous(),
                             new panel.zoom(),
