@@ -785,7 +785,7 @@ panel.homebar = function()
         canvas.homerect = new rectangle();
         canvas.exploreect = new rectangle();
         canvas.signinrect = new rectangle();
-        var a = new panel.rows([ALIEXTENT,0,ALIEXTENT],
+        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
                 [
