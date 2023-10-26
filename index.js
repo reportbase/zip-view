@@ -818,7 +818,7 @@ panel.homebar = function()
         a.draw(context, rect, 
                [
                    url.host,
-                   0
+                   0,
                    [
                        "Open",
                        "Sign-in"
