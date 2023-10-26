@@ -1030,7 +1030,6 @@ panel.multitext = function(e)
 {
     this.draw = function(context, rect, user, time)
     {
-        context.font = SMALLFONT;
         var lst = [];
         for (var n = 0; n < user.length; n++)
         {
