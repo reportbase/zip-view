@@ -1056,9 +1056,8 @@ panel.multitext = function(e)
         var N = Math.min(len, lst.length);
         for (var n = 0; n < N; n++)
         {
+            //todo
             var lines = wraptext(context, lst[n], rect.width);
-            if (lines <= maxlines)
-                continue;
             for (var m = 0; m < lines.length; m++)
             {
                 var str = lines[m].clean();
