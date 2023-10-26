@@ -701,7 +701,7 @@ panel.folderbar = function()
                         new panel.layers(
                         [
                             galleryobj.rightctx == _6cnvctx ? new panel.fill("rgba(0,0,255,0.5)"):0,
-                            new panel.rectangle(canvas.imageect),
+                            new panel.rectangle(canvas.imagerect),
                             new panel.text(),
                         ]),
                         new panel.layers(
@@ -3284,7 +3284,7 @@ var taplst = [
             galleryobj.rightcnv = _6cnv;
             galleryobj.rightctx = _6cnvctx;
             menuobj.setindex(galleryobj.rightctx);
-            menuobj.show();
+            menuobj.draw();
         }
         else if (canvas.folderect &&
             canvas.folderect.hitest(x, y))
@@ -3292,7 +3292,7 @@ var taplst = [
             galleryobj.rightcnv = _5cnv;
             galleryobj.rightctx = _5cnvctx;
             menuobj.setindex(galleryobj.rightctx);
-            menuobj.show();
+            menuobj.draw();
         }
         else if (canvas.hscrollrect &&
             canvas.hscrollrect.hitest(x, y))
