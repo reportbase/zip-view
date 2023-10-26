@@ -823,7 +823,7 @@ panel.helpbar = function()
         
         a.draw(context, rect, 
                [
-                   "Help",
+                   "Home / Help",
                    0,
                    [
                        "Sign-up",
