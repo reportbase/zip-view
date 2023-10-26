@@ -1048,7 +1048,7 @@ panel.multitext = function(e)
         rect.y -= (len * (rowheight)) / 2;
         rect.y += 10;
 
-        if (e && len > maxlines)
+        if (e && lst.length > maxlines)
         {
             var j = Math.round(Math.lerp(0, lst.length - 1, e));
             lst = lst.slice(j);
