@@ -778,7 +778,7 @@ panel.folderbar = function()
         
         a.draw(context, rect, 
                [
-                   galleryobj.title,
+                   galleryobj.title?galleryobj.title:"",
                    0,
                    [
                        "Images",
