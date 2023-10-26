@@ -747,7 +747,7 @@ panel.folderbar = function()
         context.save();     
         canvas.imagerect = new rectangle();
         canvas.folderect = new rectangle();
-        var a = new panel.rows([ALIEXTENT,0,ALIEXTENT],
+        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
                 [
