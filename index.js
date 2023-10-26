@@ -792,7 +792,7 @@ panel.homebar = function()
                     new panel.fill("rgba(0,0,0,0.8)"),
                     new panel.text(),
                     new panel.rectangle(canvas.homerect),
-                ])
+                ]),
                 0,
                 new panel.layers(
                 [
