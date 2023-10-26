@@ -5540,8 +5540,7 @@ window.addEventListener("visibilitychange", (evt) =>
         bossobj.draw();
     }
     else
-    {
-        
+    {   
         var lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
                    _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
                    _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
@@ -5737,13 +5736,13 @@ galleryobj.init = function(obj)
                         console.log("error:", error);
                     });
             }
-        },
+          },
 
          {
             title: "Delete All",
             func: function()
             {
-                     fetch(`https://images.reportbase5836.workers.dev`,
+                    fetch(`https://images.reportbase5836.workers.dev`,
                     {
                         'method': 'DELETE',
                         'body': JSON.stringify(galleryobj)
@@ -5754,7 +5753,7 @@ galleryobj.init = function(obj)
            }
         },
 
-           {
+        {
             title: "Insert All",
             func: function()
             {
@@ -5768,7 +5767,6 @@ galleryobj.init = function(obj)
                     .catch(err => console.error(err));     
             }
         },
-        
         {
             title: "Add User",
             func: function()
@@ -5787,9 +5785,8 @@ galleryobj.init = function(obj)
                     .catch(err => console.error(err));   
             }
         },
-
         {
-             title: "Show Header",
+            title: "Show Header",
             func: function()
             {        
                 fetch(`https://users.reportbase5836.workers.dev`)
@@ -5879,11 +5876,27 @@ galleryobj.init = function(obj)
         var k = galleryobj.data[n];
         if (!k.folder)
             continue;
-        k.func = selectfolder;
+        
+        k.func = function()
+        {
+            for (var m = 0; m < galleryobj.data.length; ++m)
+            {
+                var e = galleryobj.data[m];
+                if (!e.folder || e.folder != this.folder)
+                    continue;
+                gotoimage(m);
+                galleryobj.width = 0;
+                galleryobj.height = 0;
+                galleryobj.init();
+                break;
+            }
+        }
+;
         var j = _5cnv.sliceobj.data.findIndex(function(a)
         {
             return a.folder == k.folder;
         });
+        
         if (j == -1)
             _5cnv.sliceobj.data.push(k);
     };
@@ -5929,16 +5942,15 @@ galleryobj.init = function(obj)
         {
             importdialog();
         }
-    },
+    },   
     {
         title: "Developer\nTom Brinkman\nimages@zip-view.com",
         func: function() {}
-    },
+    },     
     {
         title: "zip-view\nImage Viewer\nWebp, jpg, avif, gif, and png\nzip, cbz, and ipfs",
         func: function() {}
-    }, 
-       
+    },     
     {
         title: "Full Screen",
         func: function()
@@ -6531,21 +6543,6 @@ function selectname(name)
     {
         var e = galleryobj.data[m];
         if (!e.name || !e.name.wild(name))
-            continue;
-        gotoimage(m);
-        galleryobj.width = 0;
-        galleryobj.height = 0;
-        galleryobj.init();
-        break;
-    }
-}
-
-function selectfolder()
-{
-    for (var m = 0; m < galleryobj.data.length; ++m)
-    {
-        var e = galleryobj.data[m];
-        if (!e.folder || e.folder != this.folder)
             continue;
         gotoimage(m);
         galleryobj.width = 0;
