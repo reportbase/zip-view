@@ -776,6 +776,59 @@ panel.folderbar = function()
     }
 }
 
+panel.homebar = function()
+{
+    this.draw = function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save();     
+        canvas.homerect = new rectangle();
+        canvas.exploreect = new rectangle();
+        canvas.signinrect = new rectangle();
+        var a = new panel.rows([ALIEXTENT,0,ALIEXTENT],
+            [
+                new panel.layers(
+                [
+                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.text(),
+                    new panel.rectangle(canvas.homerect),
+                ])
+                0,
+                new panel.layers(
+                [
+                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.colsA([0,0],
+                    [
+                        new panel.layers(
+                        [
+                            galleryobj.rightctx == _6cnvctx ? new panel.fill("rgba(0,0,255,0.5)"):0,
+                            new panel.rectangle(canvas.openrect),
+                            new panel.text(),
+                        ]),
+                        new panel.layers(
+                        [
+                            galleryobj.rightctx == _5cnvctx ? new panel.fill("rgba(0,0,255,0.8)"):0,
+                            new panel.rectangle(canvas.signinrect),
+                            new panel.text(),
+                        ]),
+                    ])                            
+                ])
+            ]);
+        
+        a.draw(context, rect, 
+               [
+                   url.host,
+                   0
+                   [
+                       "Open",
+                       "Sign-in"
+                   ],
+                ]
+                0);
+        context.restore();
+    }
+}
+
 //panel scrollbar
 panel.scrollbar = function()
 {
@@ -4315,7 +4368,8 @@ var eventlst = [
     scrollinit: 0,
     width: 640
 },
-{ //2 galleries
+{ 
+    //2 galleries
     hideontap: 0,
     speed: 60,
     reduce: 10,
@@ -4453,7 +4507,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty(),
     scroll: new panel.scrollbar(),
-    footer: new panel.empty(),
+    footer: new panel.homebar(),
     buttonheight: 180,
     buttonmargin: 20,
     scrollinit: 0,
