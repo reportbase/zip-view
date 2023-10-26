@@ -700,12 +700,13 @@ panel.folderbar = function()
                     [
                         new panel.layers(
                         [
+                            galleryobj.rightctx == _6cnvctx ? new panel.fill("rgba(0,0,255,0.8)"):0,
                             new panel.rectangle(canvas.imageect),
                             new panel.text(),
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.folderect),
+                            galleryobj.rightctx == _5cnvctx ? new panel.fill("rgba(0,0,255,0.8)"):0,
                             new panel.text(),
                         ]),
                     ])                            
