@@ -4549,7 +4549,7 @@ var eventlst = [
     scrollinit: 0.5,
     width: iOS() ? 720 : 5160
 },
-{ //9
+{ //9 help
     hideontap: 1,
     speed: 60,
     reduce: 5,
@@ -4569,7 +4569,7 @@ var eventlst = [
     scroll: new panel.scrollbar(),
     footer: new panel.empty(),
     buttonheight: 240,
-    buttonmargin: 20,
+    buttonmargin: 30,
     scrollinit: 0,
     width: 640
 },
@@ -4720,7 +4720,7 @@ var eventlst = [
 
 var contextobj = new circular_array("", contextlst);
 
-contextlst.forEach(function(context, n)//todo
+contextlst.forEach(function(context, n)
 {
     var obj = eventlst[n];
     var canvas = context.canvas;
@@ -4756,6 +4756,7 @@ contextlst.forEach(function(context, n)//todo
     {
         return a.name == obj.pinch
     });
+    
     k = pinchlst[k];
     canvas.pinch_ = k.pinch;
     canvas.pinchstart_ = k.pinchstart;
@@ -4812,6 +4813,7 @@ contextlst.forEach(function(context, n)//todo
     {
         return a.name == obj.swipe
     });
+    
     k = swipelst[k];
     canvas.swipeleftright_ = k.swipeleftright;
     canvas.swipeupdown_ = k.swipeupdown;
@@ -4820,6 +4822,7 @@ contextlst.forEach(function(context, n)//todo
     {
         return a.name == obj.button
     });
+    
     k = buttonlst[k];
     canvas.draw = k.draw;
 
@@ -4827,6 +4830,7 @@ contextlst.forEach(function(context, n)//todo
     {
         return a.name.toLowerCase() == obj.tap.toLowerCase()
     });
+    
     k = taplst[k];
     canvas.tap_ = k.tap;
 
@@ -4834,6 +4838,7 @@ contextlst.forEach(function(context, n)//todo
     {
         return a.name == obj.pan
     });
+    
     k = panlst[k];
     context.canvas.panstart_ = k.panstart;
     context.canvas.pan_ = k.pan;
