@@ -3281,6 +3281,7 @@ var taplst = [
         else if (canvas.imagerect &&
             canvas.imagerect.hitest(x, y))
         {
+            menuobj.hide();
             galleryobj.rightcnv = _6cnv;
             galleryobj.rightctx = _6cnvctx;
             menuobj.setindex(galleryobj.rightctx);
@@ -5985,29 +5986,14 @@ galleryobj.init = function(obj)
         {
             screenfull.toggle()
         }
-    },
-         
+    },       
     {
-        title: "New Gallery",
+        title: "Fit Window",
         func: function()
         {
-         
+            fitwidth();
         }
-    },
-    {
-        title: "Edit Gallery",
-        func: function()
-        {
-         
-        }
-    },
-    {
-        title: "Delete Gallery",
-        func: function()
-        {
-         
-        }
-    },
+    },       
     ];
 
     if (_5cnv.sliceobj.data.length >= BOSSMIN)
