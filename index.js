@@ -1041,6 +1041,7 @@ panel.multitext = function(e)
         }
 
         var rowheight = 20;
+        var maxlines = Math.floor(rect.height/rowheight);
         var len = Math.min(lst.length, Math.floor(rect.height / rowheight));
         var k = len < lst.length;
         rect.y -= (len * (rowheight)) / 2;
@@ -1052,15 +1053,18 @@ panel.multitext = function(e)
             lst = lst.slice(j);
         }
 
-        for (var n = 0; n < Math.min(len, lst.length); n++)
+        var N = Math.min(len, lst.length);
+        for (var n = 0; n < N; n++)
         {
             var lines = wraptext(context, lst[n], rect.width);
+            if (lines <= maxlines)
+                continue;
             for (var m = 0; m < lines.length; m++)
             {
                 var str = lines[m].clean();
                 if (!str.length)
                     continue;
-                var a = new panel.text("white", "center", "middle", 0, 0, SMALLFONT);
+                var a = new panel.text();
                 a.draw(context, rect, str, 0);
                 rect.y += rowheight;
             }
@@ -2030,22 +2034,21 @@ var pinchlst = [
     name: "BOSS",
     pinch: function(context, x, y, scale)
     {
-        var obj = heightobj;
         if (!context.buttonachor)
-            context.buttonachor = obj.value();
+            context.buttonachor = zoomobj.value();
         if (!context.scaleanchor)
             context.scaleanchor = scale;
         context.scale = scale;
         var k = context.scale / context.scaleanchor;
         var j = context.buttonachor * k;
         var n = 1;
-        for (; n < obj.length(); ++n)
+        for (; n < zoomobj.length(); ++n)
         {
-            var b = obj.data[n - 1];
-            var b2 = obj.data[n];
+            var b = zoomobj.data[n - 1];
+            var b2 = zoomobj.data[n];
             if (j < b || j > b2)
                 continue;
-            obj.setcurrent(n);
+            zoomobj.setcurrent(n);
             contextobj.reset();
             break;
         }
@@ -2408,15 +2411,15 @@ var panlst =
 
     pan: function(context, rect, x, y, type)
     {
-        var obj = context.canvas.scrollobj;
-        if (obj && (type == "panleft" || type == "panright"))
+        var scrollobj = context.canvas.scrollobj;
+        if (scrollobj && (type == "panleft" || type == "panright"))
         {
-            var k = panhorz(obj, rect.width - x);
+            var k = panhorz(scrollobj, rect.width - x);
             if (k == -1)
                 return;
-            if (k == obj.anchor())
+            if (k == scrollobj.anchor())
                 return;
-            obj.set(k);
+            scrollobj.set(k);
             context.refresh()
         }
         else if (type == "panup" || type == "pandown")
@@ -4167,6 +4170,7 @@ menuobj.show = function()
         return;
     var canvas = context.canvas;
     _4cnv.height = 0;
+    canvas.scrollobj.set(canvas.scrollinit*window.innerHeight);
     if (canvas.width_ > window.innerWidth)
     {
         context.show(0, 0, window.innerWidth, window.innerHeight);
@@ -4749,7 +4753,8 @@ contextlst.forEach(function(context, n)//todo
     canvas.footer = obj.footer;
     canvas.buttonheight = obj.buttonheight;
     canvas.buttonmargin = obj.buttonmargin;
-    canvas.scrollobj.set(obj.scrollinit*window.innerHeight);
+    canvas.scrollinit = obj.scrollinit;
+    canvas.scrollobj.set(canvas.scrollinit*window.innerHeight);
 
     var k = pinchlst.findIndex(function(a)
     {
