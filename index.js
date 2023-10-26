@@ -734,7 +734,7 @@ panel.uploadbar = function()
                        "Edit",
                        "Delete"
                    ], 
-                );
+                ]);
         context.restore();    
     }
 }
