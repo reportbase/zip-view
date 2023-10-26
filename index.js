@@ -823,7 +823,7 @@ panel.homebar = function()
                        "Open",
                        "Sign-in"
                    ],
-                ]
+                ],
                 0);
         context.restore();
     }
