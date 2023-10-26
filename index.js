@@ -747,8 +747,13 @@ panel.folderbar = function()
         context.save();     
         canvas.imagerect = new rectangle();
         canvas.folderect = new rectangle();
-        var a = new panel.rows([0,ALIEXTENT],
+        var a = new panel.rows([ALIEXTENT,0,ALIEXTENT],
             [
+                new panel.layers(
+                [
+                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.text(),
+                ]),
                 0,
                 new panel.layers(
                 [
@@ -771,7 +776,16 @@ panel.folderbar = function()
                 ])
             ]);
         
-        a.draw(context, rect, ["Images","Folders"], 0);
+        a.draw(context, rect, 
+               [
+                   galleryobj.title,
+                   0,
+                   [
+                       "Images",
+                       "Folders"
+                   ], 
+                ], 0);
+        
         context.restore();
     }
 }
@@ -801,13 +815,11 @@ panel.homebar = function()
                     [
                         new panel.layers(
                         [
-                            galleryobj.rightctx == _6cnvctx ? new panel.fill("rgba(0,0,255,0.5)"):0,
                             new panel.rectangle(canvas.openrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
                         [
-                            galleryobj.rightctx == _5cnvctx ? new panel.fill("rgba(0,0,255,0.8)"):0,
                             new panel.rectangle(canvas.signinrect),
                             new panel.text(),
                         ]),
@@ -838,7 +850,7 @@ panel.scrollbar = function()
         context.save();
         canvas.vscrollrect = new rectangle();
         canvas.hscrollrect = new rectangle();
-        var kh = context.rect().width == window.innerWidth ? 90 : 5;
+        var kh = context.rect().width == window.innerWidth ? 90 : ALIEXTENT;
         var a = new panel.colsA([5, 9, 0, 9, 5],
             [
                 0,
@@ -4707,7 +4719,8 @@ var eventlst = [
 }, ];
 
 var contextobj = new circular_array("", contextlst);
-contextlst.forEach(function(context, n)
+
+contextlst.forEach(function(context, n)//todo
 {
     var obj = eventlst[n];
     var canvas = context.canvas;
@@ -5902,6 +5915,7 @@ galleryobj.init = function(obj)
                     .catch(err => console.error(err));     
             }
         },
+        
         {
             title: "Add User",
             func: function()
@@ -6106,22 +6120,6 @@ galleryobj.init = function(obj)
         }
     },       
     ];
-
-    if (_5cnv.sliceobj.data.length >= BOSSMIN)
-    {
-        _7cnv.sliceobj.data.push(
-        {
-            title: "Image \u{25B6}",
-            func: function()
-            {
-                galleryobj.leftcnv = _6cnv;
-                galleryobj.leftctx = _6cnvctx;
-                menuobj.setindex(galleryobj.leftctx);
-                menuobj.show();
-                headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-            }
-        });
-    }
 
     if (url.searchParams.has("debug"))
     {
