@@ -595,9 +595,7 @@ panel.gallerybar = function()
                                     [
                                         new panel.rectangle(context.chapterect),
                                         new panel.gridA(1, rows, 1,
-                                            new panel.shadow(new panel.text(
-                                                NUBAR,
-                                                "center", "middle", 0, 0))),
+                                            new panel.shadow(new panel.text())),
                                     ]),
                                 0,
                             ]),
@@ -1026,10 +1024,11 @@ panel.pattern = function()
     };
 };
 
-panel.multitext = function(e)
+panel.multitext = function(e, font=DEFAULTFONT)
 {
     this.draw = function(context, rect, user, time)
     {
+        context.font = font;
         var lst = [];
         for (var n = 0; n < user.length; n++)
         {
@@ -2611,7 +2610,7 @@ var overlaylst = [
         var a = new panel.rows([0, 60, 0],
             [
                 0,
-                new panel.shadow(new panel.text("white", "center", "middle", 0, 0)),
+                new panel.shadow(new panel.text()),
                 0,
             ]);
 
@@ -3553,8 +3552,7 @@ var bosslst =
                                         [
                                             new panel.rectangle(context.chapterect),
                                             new panel.gridA(1, rows, 1,
-                                                new panel.shadow(new panel.text(
-                                                    NUBAR, "center", "middle", 0, 0))),
+                                                new panel.shadow(new panel.text())),
                                         ]),
                                     0,
                                 ]),
@@ -3967,8 +3965,8 @@ var buttonlst = [
                                     new panel.colsA([0,60,60,0],
                                     [
                                             0,
-                                         new panel.text("white", "center", "middle", 0, 0),
-                                         new panel.text("white", "center", "middle", 0, 0),
+                                         new panel.text(),
+                                         new panel.text(),
                                             0,
                                     ]),
                                     0,
@@ -5139,7 +5137,7 @@ panel.text = function(color = "white", align = "center", baseline = "middle",
         context.textAlign = align;
         context.textBaseline = baseline;
         context.fillStyle = color;
-        context.font = font;
+        context.font = DEFAULTFONT;
 
         var metrics;
         var str = user;
@@ -5716,6 +5714,7 @@ window.addEventListener("load", async () =>
 
 function wraptext(ctx, text, maxWidth)
 {
+    
     if (!text)
         return [];
     let words = text.split(' ');
