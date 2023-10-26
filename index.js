@@ -3107,7 +3107,6 @@ var taplst = [
             }
             else
             {
-                var kw = 10 + ALIEXTENT;
                 menuobj.setindex(galleryobj.rightctx);
                 menuobj.show();
             }
@@ -6088,9 +6087,9 @@ galleryobj.init = function(obj)
     }
 
     galleryobj.leftcnv = _7cnv;
-    galleryobj.rightcnv = _5cnv.sliceobj.data.length >= 2 ? _5cnv : _6cnv;
+    galleryobj.rightcnv = _6cnv;
     galleryobj.leftctx = _7cnvctx;
-    galleryobj.rightctx = _5cnv.sliceobj.data.length >= 2 ? _5cnvctx : _6cnvctx;
+    galleryobj.rightctx = _6cnvctx;
 
     if (galleryobj.width)
     {
