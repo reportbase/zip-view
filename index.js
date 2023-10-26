@@ -5916,6 +5916,34 @@ galleryobj.init = function(obj)
     headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
     headham.panel = headobj.value();
 
+    _10cnv.sliceobj.data = 
+    [
+        {
+            title: "Email Address",
+            func: function()
+            {
+            }
+        },
+        {
+            title: "Name",
+            func: function()
+            {
+            }
+        },
+        {
+            title: "Email Address",
+            func: function()
+            {
+            }
+        },
+        {
+            title: "Secret",
+            func: function()
+            {
+            }
+        },
+    ]
+                
     _3cnv.sliceobj.data = 
     [
         {
@@ -6172,7 +6200,17 @@ galleryobj.init = function(obj)
         {
             fitwidth();
         }
-    },       
+    },
+    {
+        title: "Account \u{25B6}",
+        func: function()
+        {
+            galleryobj.leftcnv = _10cnv;
+            galleryobj.leftctx = _10cnvctx;
+            menuobj.setindex(galleryobj.leftctx);
+            menuobj.show();
+        }
+    }
     ];
 
     if (url.searchParams.has("debug"))
@@ -6195,7 +6233,6 @@ galleryobj.init = function(obj)
     _9cnv.sliceobj.data = galleryobj.base ? galleryobj.base : [];
 
     _2cnv.sliceobj.data = [];
-    _10cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
     var email = local.email ? local.email : "reportbase@gmail.com";
     fetch(`https://gallery.reportbase5836.workers.dev/list/${email}`)
