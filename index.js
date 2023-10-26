@@ -695,7 +695,7 @@ panel.footerbar = function()
                 new panel.layers(
                 [
                     new panel.rectangle(canvas.folderect),
-                    new panel.fill("black"),
+                    new panel.fill("rgba(0,0,0,0.8)"),
                     new panel.text(),
                 ])
             ]);
@@ -3268,8 +3268,8 @@ var taplst = [
             canvas.folderect.hitest(x, y))
         {
             galleryobj.rightctx.hide();
-            galleryobj.rightcnv = _5cnv;
-            galleryobj.rightctx = _5cnvctx;
+            galleryobj.rightcnv = galleryobj.rightcnv == _5cnv ? _6cnv : _5cnv;
+            galleryobj.rightctx = galleryobj.rightctx == _5cnvctx ? _6cnvctx : _5cnvctx;
             menuobj.setindex(galleryobj.rightctx);
             menuobj.show();
         }
