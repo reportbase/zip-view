@@ -686,16 +686,22 @@ panel.footerbar = function()
 {
     this.draw = function(context, rect, user, time)
     {
+        var canvas = context.canvas;
+        context.save();        
+        canvas.folderect = new rectangle();
         var a = new panel.rows([0,60],
             [
                 0,
                 new panel.layers(
                 [
+                    new panel.rectangle(canvas.folderect),
                     new panel.fill("black"),
                     new panel.text(),
                 ])
             ]);
-        a.draw(context, rect, "Folders", 0);
+        
+        a.draw(context, rect, "Folders \u{25B6}", 0);
+        context.restore();
     }
 }
 
@@ -2135,11 +2141,14 @@ async function loadimages(blobs)
     galleryobj.init(galleryobj)
 }
 
-var droplst = [
+var droplst = 
+[
 {
     name: "DEFAULT",
     drop: function(context, evt)
     {
+        if (menuobj.value() != _8cnvctx)
+            menuobj.hide();
         var files = evt.dataTransfer.files;
         delete galleryobj.datalength;
         if (files.length == 1 && files[0].name)
@@ -3258,6 +3267,14 @@ var taplst = [
             canvas.scrollobj.setperc(k);
             context.refresh()
         }
+        else if (canvas.folderect &&
+            canvas.folderect.hitest(x, y))
+        {
+            menuobj.setindex(_5cnvctx);
+            menuobj.draw();
+            galleryobj.rightctx = _5cnv;
+            galleryobj.rightctx = _5cnvctx;
+        }
         else if (canvas.hscrollrect &&
             canvas.hscrollrect.hitest(x, y))
         {
@@ -4291,7 +4308,7 @@ var eventlst = [
     scrollinit: 0,
     width: 640
 },
-{ //5
+{ //5 folders
     hideontap: 1,
     speed: 60,
     reduce: 5,
@@ -4313,9 +4330,9 @@ var eventlst = [
     buttonheight: 150,
     buttonmargin: 10,
     scrollinit: 0,
-    width: 640
+    width: 480
 },
-{ //6
+{ //6 images
     hideontap: 1,
     speed: 60,
     reduce: 5,
@@ -4337,7 +4354,7 @@ var eventlst = [
     buttonheight: 60,
     buttonmargin: 5,
     scrollinit: 0,
-    width: 320
+    width: 480
 },
 { //7
     hideontap: 1,
