@@ -3284,7 +3284,7 @@ var taplst = [
             galleryobj.rightcnv = _6cnv;
             galleryobj.rightctx = _6cnvctx;
             menuobj.setindex(galleryobj.rightctx);
-            menuobj.draw();
+            menuobj.show();
         }
         else if (canvas.folderect &&
             canvas.folderect.hitest(x, y))
@@ -3292,7 +3292,7 @@ var taplst = [
             galleryobj.rightcnv = _5cnv;
             galleryobj.rightctx = _5cnvctx;
             menuobj.setindex(galleryobj.rightctx);
-            menuobj.draw();
+            menuobj.show();
         }
         else if (canvas.hscrollrect &&
             canvas.hscrollrect.hitest(x, y))
