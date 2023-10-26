@@ -3269,10 +3269,11 @@ var taplst = [
         else if (canvas.folderect &&
             canvas.folderect.hitest(x, y))
         {
-            menuobj.setindex(_5cnvctx);
-            menuobj.draw();
             galleryobj.rightctx = _5cnv;
             galleryobj.rightctx = _5cnvctx;
+            menuobj.setindex(galleryobj.rightctx);
+            menuobj.show();
+            menuobj.draw();
         }
         else if (canvas.hscrollrect &&
             canvas.hscrollrect.hitest(x, y))
