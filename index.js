@@ -737,6 +737,58 @@ panel.uploadbar = function()
     }
 }
 
+panel.accountbar = function()
+{
+    this.draw = function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save();     
+        canvas.homerect = new rectangle();
+        canvas.signinrect = new rectangle();
+        canvas.signuprect = new rectangle();
+        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
+            [
+                new panel.layers(
+                [
+                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.text(),
+                ]),
+                0,
+                new panel.layers(
+                [
+                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.colsA([0,0],
+                    [
+                        new panel.layers(
+                        [
+                            galleryobj.rightctx == _6cnvctx ? new panel.fill("rgba(0,0,255,0.5)"):0,
+                            new panel.rectangle(canvas.signinrect),
+                            new panel.text(),
+                        ]),
+                        new panel.layers(
+                        [
+                            galleryobj.rightctx == _5cnvctx ? new panel.fill("rgba(0,0,255,0.8)"):0,
+                            new panel.rectangle(canvas.signuprect),
+                            new panel.text(),
+                        ]),
+                    ])                            
+                ])
+            ]);
+        
+        a.draw(context, rect, 
+               [
+                   "Home / Account",
+                   0,
+                   [
+                       "Sign-In",
+                       "Sign-Up"
+                   ], 
+                ], 0);
+        
+        context.restore();
+    }
+}
+
 panel.folderbar = function()
 {
     this.draw = function(context, rect, user, time)
@@ -4758,7 +4810,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty("Image Browser"),
     scroll: new panel.scrollbar(),
-    footer: new panel.empty(),
+    footer: new panel.accountbar(),
     buttonheight: 50,
     buttonmargin: 10,
     scrollinit: 0,
