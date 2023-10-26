@@ -5972,7 +5972,7 @@ galleryobj.init = function(obj)
     },
     ];
 
-    if (_5cnv.sliceobj.data.length >= 2)
+    if (_5cnv.sliceobj.data.length >= BOSSMIN)
     {
         _7cnv.sliceobj.data.push(
         {
