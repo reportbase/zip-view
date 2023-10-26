@@ -3289,6 +3289,7 @@ var taplst = [
         else if (canvas.folderect &&
             canvas.folderect.hitest(x, y))
         {
+            menuobj.hide();
             galleryobj.rightcnv = _5cnv;
             galleryobj.rightctx = _5cnvctx;
             menuobj.setindex(galleryobj.rightctx);
@@ -3297,6 +3298,7 @@ var taplst = [
         else if (canvas.hscrollrect &&
             canvas.hscrollrect.hitest(x, y))
         {
+            menuobj.hide();
             var k = (y - canvas.hscrollrect.y) / canvas.hscrollrect.height;
             context.canvas.timeobj.setperc(1 - k);
             context.refresh()
