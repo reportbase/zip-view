@@ -1043,11 +1043,12 @@ panel.multitext = function(e)
         var rowheight = 20;
         var maxlines = Math.floor(rect.height/rowheight);
         var len = Math.min(lst.length, Math.floor(rect.height / rowheight));
+            
         var k = len < lst.length;
         rect.y -= (len * (rowheight)) / 2;
         rect.y += 10;
 
-        if (e)
+        if (e && len > maxlines)
         {
             var j = Math.round(Math.lerp(0, lst.length - 1, e));
             lst = lst.slice(j);
@@ -1056,7 +1057,6 @@ panel.multitext = function(e)
         var N = Math.min(len, lst.length);
         for (var n = 0; n < N; n++)
         {
-            //todo
             var lines = wraptext(context, lst[n], rect.width);
             for (var m = 0; m < lines.length; m++)
             {
