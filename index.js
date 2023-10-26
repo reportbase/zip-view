@@ -682,25 +682,37 @@ panel.galleryscroll = function()
     }
 };
 
-panel.footerbar = function()
+panel.folderbar = function()
 {
     this.draw = function(context, rect, user, time)
     {
         var canvas = context.canvas;
-        context.save();        
+        context.save();     
+        canvas.imagerect = new rectangle();
         canvas.folderect = new rectangle();
         var a = new panel.rows([0,60],
             [
                 0,
                 new panel.layers(
                 [
-                    new panel.rectangle(canvas.folderect),
                     new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.text(),
+                    new panel.colsA([0,0],
+                    [
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.imageect),
+                            new panel.text(),
+                        ],
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.folderect),
+                            new panel.text(),
+                        ],
+                    ])                            
                 ])
             ]);
         
-        a.draw(context, rect, "Folders \u{25B6}", 0);
+        a.draw(context, rect, ["Images","Folders"], 0);
         context.restore();
     }
 }
@@ -3264,12 +3276,21 @@ var taplst = [
             canvas.scrollobj.setperc(k);
             context.refresh()
         }
+        else if (canvas.imagerect &&
+            canvas.imagerect.hitest(x, y))
+        {
+            galleryobj.rightctx.hide();
+            galleryobj.rightcnv = _6cnv;
+            galleryobj.rightctx = _6cnvctx;
+            menuobj.setindex(galleryobj.rightctx);
+            menuobj.show();
+        }
         else if (canvas.folderect &&
             canvas.folderect.hitest(x, y))
         {
             galleryobj.rightctx.hide();
-            galleryobj.rightcnv = galleryobj.rightcnv == _5cnv ? _6cnv : _5cnv;
-            galleryobj.rightctx = galleryobj.rightctx == _5cnvctx ? _6cnvctx : _5cnvctx;
+            galleryobj.rightcnv = _5cnv;
+            galleryobj.rightctx = _5cnvctx;
             menuobj.setindex(galleryobj.rightctx);
             menuobj.show();
         }
@@ -4324,7 +4345,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty(),
     scroll: new panel.scrollbar(),
-    footer: new panel.footerbar(),
+    footer: new panel.folderbar(),
     buttonheight: 150,
     buttonmargin: 10,
     scrollinit: 0,
@@ -4348,7 +4369,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty(),
     scroll: new panel.scrollbar(),
-    footer: new panel.footerbar(),
+    footer: new panel.folderbar(),
     buttonheight: 60,
     buttonmargin: 5,
     scrollinit: 0,
