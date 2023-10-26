@@ -725,7 +725,7 @@ panel.uploadbar = function()
         
         a.draw(context, rect, 
                [
-                   "Galleries",
+                   "Home / Galleries",
                    0,
                    [
                        "Open",
@@ -776,7 +776,7 @@ panel.folderbar = function()
         
         a.draw(context, rect, 
                [
-                   galleryobj.title?galleryobj.title:"",
+                   galleryobj.title?galleryobj.title:"Untitled",
                    0,
                    [
                        "Images",
@@ -784,6 +784,53 @@ panel.folderbar = function()
                    ], 
                 ], 0);
         
+        context.restore();
+    }
+}
+
+panel.helpbar = function()
+{
+    this.draw = function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save();     
+        canvas.homerect = new rectangle();
+        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
+            [
+                new panel.layers(
+                [
+                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.text(),
+                    new panel.rectangle(canvas.homerect),
+                ]),
+                0,
+                new panel.layers(
+                [
+                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.colsA([0,0],
+                    [
+                        new panel.layers(
+                        [
+                            new panel.text(),
+                        ]),
+                        new panel.layers(
+                        [
+                            new panel.text(),
+                        ]),
+                    ])                            
+                ])
+            ]);
+        
+        a.draw(context, rect, 
+               [
+                   "Help",
+                   0,
+                   [
+                       "Sign-up",
+                       "Sign-in"
+                   ],
+                ],
+                0);
         context.restore();
     }
 }
@@ -827,7 +874,7 @@ panel.homebar = function()
         
         a.draw(context, rect, 
                [
-                   url.host,
+                   "Home",
                    0,
                    [
                        "Open",
@@ -4567,7 +4614,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty("Image Browser"),
     scroll: new panel.scrollbar(),
-    footer: new panel.empty(),
+    footer: new panel.helpbar(),
     buttonheight: 240,
     buttonmargin: 30,
     scrollinit: 0,
