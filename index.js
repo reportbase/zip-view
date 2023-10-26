@@ -682,6 +682,63 @@ panel.galleryscroll = function()
     }
 };
 
+panel.uploadbar = function()
+{
+    this.draw = function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save();     
+        canvas.uploadrect = new rectangle();
+        canvas.openrect = new rectangle();
+        canvas.editrect = new rectangle();        
+        canvas.deleterect = new rectangle();
+        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
+            [
+                new panel.layers(
+                [
+                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.rectangle(canvas.uploadrect),
+                    new panel.text(),
+                ]),
+                0,
+                new panel.layers(
+                [
+                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.colsA([0,0,0],
+                    [
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.openrect),
+                            new panel.text(),
+                        ]),
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.editrect),
+                            new panel.text(),
+                        ]),
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.delete),
+                            new panel.text(),
+                        ]),
+                    ])                            
+                ])
+            ]);
+        
+        a.draw(context, rect, 
+               [
+                   "Galleries",
+                   0,
+                   [
+                       "Open",
+                       "Edit",
+                       "Delete"
+                   ], 
+                );
+        context.restore();    
+    }
+}
+
 panel.folderbar = function()
 {
     this.draw = function(context, rect, user, time)
@@ -690,7 +747,7 @@ panel.folderbar = function()
         context.save();     
         canvas.imagerect = new rectangle();
         canvas.folderect = new rectangle();
-        var a = new panel.rows([0,60],
+        var a = new panel.rows([0,ALIEXTENT],
             [
                 0,
                 new panel.layers(
@@ -4258,7 +4315,7 @@ var eventlst = [
     scrollinit: 0,
     width: 640
 },
-{ //2
+{ //2 galleries
     hideontap: 0,
     speed: 60,
     reduce: 10,
@@ -4276,7 +4333,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty(),
     scroll: new panel.scrollbar(),
-    footer: new panel.empty(),
+    footer: new panel.uploadbar(),
     buttonheight: 240,
     buttonmargin: 20,
     scrollinit: 2,
