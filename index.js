@@ -5884,6 +5884,9 @@ galleryobj.init = function(obj)
                 var e = galleryobj.data[m];
                 if (!e.folder || e.folder != this.folder)
                     continue;
+                galleryobj.rightctx.hide();
+                menuobj.setindex(_8cnvctx);
+                menuobj.draw();
                 gotoimage(m);
                 galleryobj.width = 0;
                 galleryobj.height = 0;
