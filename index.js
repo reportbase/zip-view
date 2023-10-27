@@ -3864,7 +3864,7 @@ bossobj.draw = function()
     context.restore();
 
 //    delete _4cnv.selectrect;
-    delete _4cnv.thumbrect;
+//    delete _4cnv.thumbrect;
     delete context.extentrect;
     delete context.slicerect;
     delete context.slicewidthrect;
