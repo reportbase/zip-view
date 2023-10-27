@@ -4601,7 +4601,7 @@ var eventlst = [
     scroll: new panel.scrollbar(),
     footer: new panel.folderbar(),
     buttonheight: 60,
-    buttonmargin: 5,
+    buttonmargin: 15,
     scrollinit: 0,
     width: 480
 },
