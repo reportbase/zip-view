@@ -68,9 +68,6 @@ const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const GOTOFIXED = 0;
 const MULTITEXTROWHEIGHT = 24;
-const LEFTARROW = "\u{25C0}"
-const RIGHTARROW = "\u{25B6}"
-const UPARROW = "\u{25B2}"
 const DOWNARROW = "\u{25BC}"
 const SMALLSQUARE = "\u{25FE}"
 const BLACKDIAMOND = "\u{25C6}"
@@ -744,7 +741,7 @@ panel.galleriesbar = function()
         
         a.draw(context, rect, 
                [
-                   `${LEFTARROW} Gallery`,
+                   `$\u{25C0} Gallery`,
                    0,
                    [
                        `${HEAVYCROSS} Add`,
@@ -795,7 +792,7 @@ panel.accountbar = function()
         
         a.draw(context, rect, 
                [
-                   `${LEFTARROW} Account`,
+                   `\u{25C0} Account`,
                    0,
                    [
                        "Images",
@@ -895,7 +892,7 @@ panel.helpbar = function()
         
         a.draw(context, rect, 
                [
-                   `${LEFTARROW} Help`,
+                   `\u{25C0} Help`,
                    0,
                    [
                        "Sign-up",
@@ -6217,7 +6214,7 @@ galleryobj.init = function(obj)
 
     _7cnv.sliceobj.data = [
     {
-        title: `Login ${RIGHTARROW}`,
+        title: `Login \u{25B6}`,
         func: function()
         {
             gotodialog(local.email ? local.email : "", "Login", gologin);
@@ -6225,7 +6222,7 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: `Signup ${RIGHTARROW}`,
+        title: `Signup \u{25B6}`,
         func: function()
         {
             gotodialog(local.email ? local.email : "", "Login", gologin);
@@ -6233,7 +6230,7 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: `Open ${RIGHTARROW}\n*.zip, *.cbz, *.json,\n*.png, *.jpg, *.avif,\n*.webp, *.gif`,
+        title: `Open \u{25B6}\n*.zip, *.cbz, *.json,\n*.png, *.jpg, *.avif,\n*.webp, *.gif`,
         func: function()
         {
             importdialog();
@@ -6266,7 +6263,7 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: `Account ${RIGHTARROw}`,
+        title: `Account \u{25B6}`,
         func: function()
         {
             galleryobj.leftcnv = _10cnv;
@@ -6333,7 +6330,7 @@ galleryobj.init = function(obj)
             _2cnv.sliceobj.data = results
             _7cnv.sliceobj.data.push(
             {
-                title: `Galley ${RIGHTARROW}`,
+                title: `Galley \u{25B6}`,
                 func: function(n, x, y)
                 {
                     galleryobj.leftcnv = _2cnv;
@@ -6355,7 +6352,7 @@ galleryobj.init = function(obj)
     {
         _7cnv.sliceobj.data.push(
         {
-            title: `Help ${RIGHTARROW}`,
+            title: `Help \u{25B6}`,
             func: function()
             {
                 galleryobj.leftcnv = _9cnv;
