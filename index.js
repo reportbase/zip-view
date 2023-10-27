@@ -795,7 +795,7 @@ panel.accountbar = function()
         
         a.draw(context, rect, 
                [
-                   `{LEFTARROW} Account`,
+                   `${LEFTARROW} Account`,
                    0,
                    [
                        "Images",
