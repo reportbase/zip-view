@@ -1013,21 +1013,13 @@ buttonobj.reset = function()
     var w = galleryobj.width;
     var h = galleryobj.height;
     var a = w / h;
-    if (galleryobj.width > galleryobj.height)
-    {
-        var gheight = Math.floor(window.innerHeight * a);
-        var bheight = Math.floor(Math.min(2400, h*3));
-    }
-    else
-    {
-        var gheight = Math.floor(window.innerWidth / a);
-        var bheight = Math.floor(Math.min(4800, h*3));
-    }
-    
     buttonobj.data = [];
+    var gheight = Math.floor(window.innerWidth / a / 2);
+    var dheight = Math.floor(window.innerWidth / a) - gheight;
+    var bheight = Math.floor(Math.min(4800, h*3));
     for (var n = gheight; n < bheight; ++n)
         buttonobj.data.push(n);
-    buttonobj.set(0);
+    buttonobj.set(dheight);
 }
 
 buttonobj.fit = function()
