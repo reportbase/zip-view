@@ -4984,7 +4984,7 @@ contextobj.reset = function()
             extentobj.data[2] = galleryobj.value().id ? galleryobj.value().id : "Undefined";
             extentobj.data[3] = `${window.innerWidth} x ${window.innerHeight}`;
             var e = galleryobj.value();
-            document.title = url.host;
+            document.title = galleryobj.title?galleryobj.title:url.host;
             headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
             _4cnv.autodirect = -_4cnv.movingpage;
             _4cnv.movingpage = 0;
