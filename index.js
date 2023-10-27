@@ -6218,7 +6218,6 @@ galleryobj.init = function(obj)
             menuobj.setindex(_8cnvctx);
             menuobj.draw();
             gotoimage(n);
-            galleryobj.init();
         }
     };
 
@@ -6394,8 +6393,8 @@ galleryobj.init = function(obj)
 
     galleryobj.leftcnv = _7cnv;
     galleryobj.leftctx = _7cnvctx;
-    galleryobj.rightcnv = _6cnv;
-    galleryobj.rightctx = _6cnvctx;
+    galleryobj.rightcnv = _5cnv;
+    galleryobj.rightctx = _5cnvctx;
 
     if (galleryobj.width)
     {
