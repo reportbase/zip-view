@@ -2804,40 +2804,10 @@ pressobj.set(3);
 
 function gotoimage(n)
 {
-    var top = _8cnv.buttonheight < window.innerHeight ? 0 : 1;
     var k = TIMEOBJ - TIMEOBJ / galleryobj.length() / 2;
     k -= n * (TIMEOBJ / galleryobj.length());
     _8cnv.timeobj.set(k);
     menuobj.draw();
-    if (!top)
-        return;
-    if (galleryobj.aligntop)
-        return;
-    var e = buttonobj.value() / galleryobj.length();
-    var j = e / _8cnv.virtualheight;
-    var data = _8cnv.sliceobj.data;
-    var count = 0;
-    var b = Math.floor(n);
-    if (data[b].isvisible)
-    {
-        while (data[b].isvisible)
-        {
-            if (++count > galleryobj.length())
-                break;
-            _8cnv.timeobj.add(-TIMEOBJ * j);
-            menuobj.draw();
-        }
-    }
-    else
-    {
-        while (!data[b].isvisible)
-        {
-            if (++count > galleryobj.length())
-                break;
-            _8cnv.timeobj.add(TIMEOBJ * j);
-            menuobj.draw();
-        }
-    }
 }
 
 var swipelst = [
