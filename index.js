@@ -3176,16 +3176,6 @@ var keylst = [
 
 CanvasRenderingContext2D.prototype.hithumb = function(x, y)
 {
-    /*
-    var rect = this.canvas.thumbrect;
-    var select = this.canvas.selectrect[0];
-    var b = (x - rect.x) / rect.width;
-    var e = (1 - b) * TIMEOBJ;
-    this.canvas.timeobj.set(e);
-    var b = (y - rect.y) / rect.height;
-    var e = b * rowobj.length();
-    rowobj.set(e);
-    */
     if (typeof x !== "undefined")
     {
         var rect = this.canvas.thumbrect;
@@ -3873,7 +3863,7 @@ bossobj.draw = function()
     context.drawImage(offbosscnv, 0, 0)
     context.restore();
 
-    delete _4cnv.selectrect;
+//    delete _4cnv.selectrect;
     delete _4cnv.thumbrect;
     delete context.extentrect;
     delete context.slicerect;
