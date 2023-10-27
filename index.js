@@ -67,6 +67,7 @@ const GALLERYMIN = 1;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const GOTOFIXED = 0;
+const MULTITEXTROWHEIGHT = 22;
 
 var panel = {}
 var global = {};
@@ -680,7 +681,7 @@ panel.galleryscroll = function()
     }
 };
 
-panel.uploadbar = function()
+panel.galleriesbar = function()
 {
     this.draw = function(context, rect, user, time)
     {
@@ -725,10 +726,10 @@ panel.uploadbar = function()
         
         a.draw(context, rect, 
                [
-                   "\u{25C0} Galleries",
+                   "\u{25C0} Gallery",
                    0,
                    [
-                       "Open",
+                       "Add",
                        "Edit",
                        "Delete"
                    ], 
@@ -775,10 +776,10 @@ panel.accountbar = function()
         
         a.draw(context, rect, 
                [
-                   local.email,
+                   "Account",
                    0,
                    [
-                       "Sign-In",
+                       "Images",
                        "Sign-Up"
                    ], 
                 ], 0);
@@ -826,7 +827,7 @@ panel.folderbar = function()
         
         a.draw(context, rect, 
                [
-                   galleryobj.title?galleryobj.title:"Untitled",
+                   "Open",
                    0,
                    [
                        "Images",
@@ -1135,12 +1136,11 @@ panel.multitext = function(e, font=DEFAULTFONT)
             lst = lst.concat(wraptext(context, str, rect.width));
         }
 
-        var rowheight = 20;
-        var maxlines = Math.floor(rect.height/rowheight);
-        var len = Math.min(lst.length, Math.floor(rect.height / rowheight));
+        var maxlines = Math.floor(rect.height/MULTITEXTROWHEIGHT);
+        var len = Math.min(lst.length, Math.floor(rect.height / MULTITEXTROWHEIGHT));
             
         var k = len < lst.length;
-        rect.y -= (len * (rowheight)) / 2;
+        rect.y -= (len * (MULTITEXTROWHEIGHT)) / 2;
         rect.y += 10;
 
         if (e && lst.length > maxlines)
@@ -1160,7 +1160,7 @@ panel.multitext = function(e, font=DEFAULTFONT)
                     continue;
                 var a = new panel.text();
                 a.draw(context, rect, str, 0);
-                rect.y += rowheight;
+                rect.y += MULTITEXTROWHEIGHT;
             }
         }
     };
@@ -4493,7 +4493,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty(),
     scroll: new panel.scrollbar(),
-    footer: new panel.uploadbar(),
+    footer: new panel.galleriesbar(),
     buttonheight: 240,
     buttonmargin: 20,
     scrollinit: 2,
