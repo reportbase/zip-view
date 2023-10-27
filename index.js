@@ -718,7 +718,7 @@ panel.galleriesbar = function()
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.colsA([0,0,0],
+                    new panel.colsA([0.30,0,0.30],
                     [
                         new panel.layers(
                         [
@@ -727,12 +727,12 @@ panel.galleriesbar = function()
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.editrect),
+                            new panel.rectangle(canvas.deleterect),
                             new panel.text(),
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.delete),
+                            new panel.rectangle(canvas.editrect),
                             new panel.text(),
                         ]),
                     ])                            
@@ -741,14 +741,15 @@ panel.galleriesbar = function()
         
         a.draw(context, rect, 
                [
-                   `$\u{25C0} Gallery`,
+                   `\u{25C0} Gallery`,
                    0,
                    [
                        `\u{271A} Add`,
-                       `\u{270F} Edit`,
-                       `\u{2718} Delete`
+                       `\u{2718} Delete`,
+                       `\u{25C5} Edit`
                    ], 
                 ]);
+        
         context.restore();    
     }
 }
