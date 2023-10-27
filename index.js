@@ -830,13 +830,13 @@ panel.folderbar = function()
                     [
                         new panel.layers(
                         [
-                            galleryobj.rightctx == _6cnvctx ? new panel.fill("rgba(0,0,255,0.5)"):0,
+                            galleryobj.rightctx == _5cnvctx ? new panel.fill("rgba(0,0,255,0.5)"):0,
                             new panel.rectangle(canvas.folderect),
                             new panel.text(),
                         ]),
                         new panel.layers(
                         [
-                            galleryobj.rightctx == _5cnvctx ? new panel.fill("rgba(0,0,255,0.8)"):0,
+                            galleryobj.rightctx == _6cnvctx ? new panel.fill("rgba(0,0,255,0.8)"):0,
                             new panel.rectangle(canvas.imagerect),
                             new panel.text(),
                         ]),
@@ -6188,26 +6188,6 @@ galleryobj.init = function(obj)
         if (!k.folder)
             continue;
         
-        k.func = function()
-        {
-            for (var m = 0; m < galleryobj.data.length; ++m)
-            {
-                var e = galleryobj.data[m];
-                if (!e.folder || e.folder != this.folder)
-                    continue;
-                _5cnvctx.hide();
-                _6cnvctx.hide();
-                _7cnvctx.hide();
-                menuobj.setindex(_8cnvctx);
-                menuobj.draw();
-                gotoimage(m);
-                galleryobj.width = 0;
-                galleryobj.height = 0;
-                galleryobj.init();
-                break;
-            }
-        }
-;
         var j = _5cnv.sliceobj.data.findIndex(function(a)
         {
             return a.folder == k.folder;
@@ -6215,6 +6195,30 @@ galleryobj.init = function(obj)
         
         if (j == -1)
             _5cnv.sliceobj.data.push(k);
+        
+        k.func = function()
+        {
+            if (!gallerobj.folders)
+            {
+                gallerobj.folders = {};
+                for (var m = galleryobj.length()-1; m >= 0; --m)
+                {
+                    var e = galleryobj.data[m];
+                    if (!e.folder)
+                        continue;
+                    gallerobj.folders[e.folder] = m;
+                }
+            }
+            
+            var n = gallerobj.folders[this.folder];
+            if (typeof n == "undefined")
+                return;
+            menuobj.hide();
+            menuobj.setindex(_8cnvctx);
+            menuobj.draw();
+            gotoimage(n);
+            galleryobj.init();
+        }
     };
 
     _6cnv.sliceobj.data = [];
