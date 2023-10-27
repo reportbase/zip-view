@@ -6214,9 +6214,8 @@ galleryobj.init = function(obj)
             var n = galleryobj.folders[this.folder];
             if (typeof n == "undefined")
                 return;
-            menuobj.hide();
             menuobj.setindex(_8cnvctx);
-            menuobj.draw();
+            menuobj.show();
             gotoimage(n);
         }
     };
