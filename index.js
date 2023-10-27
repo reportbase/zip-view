@@ -748,7 +748,7 @@ panel.galleriesbar = function()
                    `${LEFTARROW} Gallery`,
                    0,
                    [
-                       "${HEAVYCROSS} Add",
+                       `${HEAVYCROSS} Add`,
                        `${EDITPENCIL} Edit`,
                        `${DELETEMARK} Delete`
                    ], 
