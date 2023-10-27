@@ -746,7 +746,7 @@ panel.galleriesbar = function()
                    [
                        `\u{271A} Add`,
                        `\u{2718} Delete`,
-                       `\u{270E} Edit`
+                       `\u{00BB} Edit`
                    ], 
                 ]);
         
@@ -846,10 +846,10 @@ panel.folderbar = function()
         
         a.draw(context, rect, 
                [
-                   "Open Images ...",
+                   "Images",
                    0,
                    [
-                       "Images",
+                       "Index",
                        "Folders"
                    ], 
                 ], 0);
