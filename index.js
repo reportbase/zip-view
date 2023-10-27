@@ -6200,17 +6200,17 @@ galleryobj.init = function(obj)
         {
             if (!gallerobj.folders)
             {
-                gallerobj.folders = {};
+                galleryobj.folders = {};
                 for (var m = galleryobj.length()-1; m >= 0; --m)
                 {
                     var e = galleryobj.data[m];
                     if (!e.folder)
                         continue;
-                    gallerobj.folders[e.folder] = m;
+                    galleryobj.folders[e.folder] = m;
                 }
             }
             
-            var n = gallerobj.folders[this.folder];
+            var n = galleryobj.folders[this.folder];
             if (typeof n == "undefined")
                 return;
             menuobj.hide();
