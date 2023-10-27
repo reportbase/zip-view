@@ -67,7 +67,7 @@ const GALLERYMIN = 1;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const GOTOFIXED = 0;
-const MULTITEXTROWHEIGHT = 22;
+const MULTITEXTROWHEIGHT = 24;
 
 var panel = {}
 var global = {};
@@ -827,7 +827,7 @@ panel.folderbar = function()
         
         a.draw(context, rect, 
                [
-                   "Open",
+                   "Open Images ...",
                    0,
                    [
                        "Images",
