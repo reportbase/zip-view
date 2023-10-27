@@ -2230,6 +2230,7 @@ infobj.reset = function()
             var j = 100 * _8cnv.scrollobj.berp();
             infobj.data.push(`${j.toFixed(2)}%`);
             infobj.data.push(galleryobj.data[k].id);
+            infobj.data.push(_8cnv.timeobj.current().fixed(6));
         }
     }
     else
