@@ -81,7 +81,7 @@ const FOOTPRINTS = "\u{1F463}";
 const COPYRIGHT = "\u{00A9}";
 const EDITPENCIL = "\u{270F}";
 const CHECKMARK = "\u{2713}";
-const DELETEMARK = "\u{2718}";
+const DELETEMARK = "";
 const HEAVYCROSS = "\u{271A}";
 
 var panel = {}
@@ -744,9 +744,9 @@ panel.galleriesbar = function()
                    `$\u{25C0} Gallery`,
                    0,
                    [
-                       `${HEAVYCROSS} Add`,
-                       `${EDITPENCIL} Edit`,
-                       `${DELETEMARK} Delete`
+                       `\u{271A} Add`,
+                       `\u{270F} Edit`,
+                       `\u{2718} Delete`
                    ], 
                 ]);
         context.restore();    
