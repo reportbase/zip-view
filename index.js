@@ -4504,7 +4504,7 @@ var eventlst = [
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "MENU",
+    button: "OPTION",
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
@@ -6331,7 +6331,7 @@ galleryobj.init = function(obj)
             _2cnv.sliceobj.data = results
             _7cnv.sliceobj.data.push(
             {
-                title: `Galley \u{25B6}`,
+                title: `Gallery \u{25B6}`,
                 func: function(n, x, y)
                 {
                     galleryobj.leftcnv = _2cnv;
