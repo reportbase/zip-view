@@ -761,13 +761,11 @@ panel.accountbar = function()
                     [
                         new panel.layers(
                         [
-                            galleryobj.rightctx == _6cnvctx ? new panel.fill("rgba(0,0,255,0.5)"):0,
                             new panel.rectangle(canvas.signinrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
                         [
-                            galleryobj.rightctx == _5cnvctx ? new panel.fill("rgba(0,0,255,0.8)"):0,
                             new panel.rectangle(canvas.signuprect),
                             new panel.text(),
                         ]),
@@ -777,7 +775,7 @@ panel.accountbar = function()
         
         a.draw(context, rect, 
                [
-                   "Home / Account",
+                   local.email,
                    0,
                    [
                        "Sign-In",
@@ -926,11 +924,11 @@ panel.homebar = function()
         
         a.draw(context, rect, 
                [
-                   "Home",
+                   url.host,
                    0,
                    [
                        "Open",
-                       "Sign-in"
+                       "Signup"
                    ],
                 ],
                 0);
@@ -3404,6 +3402,13 @@ var taplst = [
             var obj = context.canvas.scrollobj;
             obj.setperc(k);
             context.refresh()
+        }
+        else if (canvas.homerect && canvas.homerect.hitest(x, y))
+        {
+            galleryobj.leftcnv = _7cnv;
+            galleryobj.leftctx = _7cnvctx;
+            menuobj.setindex(galleryobj.leftctx);
+            menuobj.show();
         }
         else if (menuobj.value() && menuobj.value() != _8cnvctx)
         {
