@@ -4690,7 +4690,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty("Image Browser"),
     scroll: new panel.scrollbar(),
-    footer: new panel.empty(),
+    footer: new panel.accountbar(),
     buttonheight: 50,
     buttonmargin: 10,
     scrollinit: 0,
@@ -4810,7 +4810,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty("Image Browser"),
     scroll: new panel.scrollbar(),
-    footer: new panel.accountbar(),
+    footer: new panel.empty(),
     buttonheight: 50,
     buttonmargin: 10,
     scrollinit: 0,
@@ -6210,14 +6210,6 @@ galleryobj.init = function(obj)
     },
     {
         title: "Signup",
-        func: function()
-        {
-            gotodialog(local.email ? local.email : "", "Login", gologin);
-            galleryobj.init();
-        }
-    },
-    {
-        title: "Account",
         func: function()
         {
             gotodialog(local.email ? local.email : "", "Login", gologin);
