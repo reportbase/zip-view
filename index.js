@@ -68,6 +68,25 @@ const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const GOTOFIXED = 0;
 const MULTITEXTROWHEIGHT = 24;
+const LEFTARROW = "\u{25C0}"
+const RIGHTARROW = "\u{25B6}"
+const UPARROW = "\u{25B2}"
+const DOWNARROW = "\u{25BC}"
+const SMALLSQUARE = "\u{25FE}"
+const BLACKDIAMOND = "\n{25C6}"
+const LARGESQUARE = "\u{25FE}"
+const BLACKCIRCLE = "\u{25CF}"
+const BLACKSTAR = "\u{2605}"
+const CIRCLESTAR = "\u{U235F}"
+const SMALLSTAR = "\u{066D}";
+const BALOONSTAR = "\u{2749}";
+const BLACKFLAG = "\u{2691}";
+const FOOTPRINTS = "\u{1F463}";
+const COPYRIGHT = "\u{00A9}";
+const EDITPENCIL = "\u{270F}";
+const CHECKMARK = "\u{2713}";
+const DELETEMARK = "\u{2718}";
+const HEAVYCROSS = "\u{271A}";
 
 var panel = {}
 var global = {};
@@ -726,12 +745,12 @@ panel.galleriesbar = function()
         
         a.draw(context, rect, 
                [
-                   "\u{25C0} Gallery",
+                   `${LEFTARROW} Gallery`,
                    0,
                    [
-                       "Add",
-                       "Edit",
-                       "Delete"
+                       "${HEAVYCROSS} Add",
+                       `${EDITPENCIL} Edit`,
+                       `${DELETEMARK} Delete`
                    ], 
                 ]);
         context.restore();    
@@ -777,7 +796,7 @@ panel.accountbar = function()
         
         a.draw(context, rect, 
                [
-                   "\u{25C0} Account",
+                   `{LEFTARROW} Account`,
                    0,
                    [
                        "Images",
@@ -877,7 +896,7 @@ panel.helpbar = function()
         
         a.draw(context, rect, 
                [
-                   "\u{25C0} Help",
+                   `${LEFTARROW} Help`,
                    0,
                    [
                        "Sign-up",
@@ -6199,7 +6218,7 @@ galleryobj.init = function(obj)
 
     _7cnv.sliceobj.data = [
     {
-        title: "Login \u{25B6}",
+        title: `Login ${RIGHTARROW}`,
         func: function()
         {
             gotodialog(local.email ? local.email : "", "Login", gologin);
@@ -6207,7 +6226,7 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: "Signup \u{25B6}",
+        title: `Signup ${RIGHTARROW}`,
         func: function()
         {
             gotodialog(local.email ? local.email : "", "Login", gologin);
@@ -6215,7 +6234,7 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: "Open \u{25B6}\n*.zip, *.cbz, *.json,\n*.png, *.jpg, *.avif,\n*.webp, *.gif",
+        title: `Open ${RIGHTARROW}\n*.zip, *.cbz, *.json,\n*.png, *.jpg, *.avif,\n*.webp, *.gif`,
         func: function()
         {
             importdialog();
@@ -6248,7 +6267,7 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: "Account \u{25B6}",
+        title: `Account ${RIGHTARROw}`,
         func: function()
         {
             galleryobj.leftcnv = _10cnv;
@@ -6315,7 +6334,7 @@ galleryobj.init = function(obj)
             _2cnv.sliceobj.data = results
             _7cnv.sliceobj.data.push(
             {
-                title: "Galleries \u{25B6}",
+                title: `Galley ${RIGHTARROW}`,
                 func: function(n, x, y)
                 {
                     galleryobj.leftcnv = _2cnv;
@@ -6337,7 +6356,7 @@ galleryobj.init = function(obj)
     {
         _7cnv.sliceobj.data.push(
         {
-            title: "Help \u{25B6}",
+            title: `Help ${RIGHTARROW}`,
             func: function()
             {
                 galleryobj.leftcnv = _9cnv;
