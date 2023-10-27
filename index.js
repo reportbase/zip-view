@@ -725,7 +725,7 @@ panel.uploadbar = function()
         
         a.draw(context, rect, 
                [
-                   "Home / Galleries",
+                   "\u{25C0} Galleries",
                    0,
                    [
                        "Open",
