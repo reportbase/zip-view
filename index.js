@@ -6198,7 +6198,7 @@ galleryobj.init = function(obj)
         
         k.func = function()
         {
-            if (!gallerobj.folders)
+            if (!galleryobj.folders)
             {
                 galleryobj.folders = {};
                 for (var m = galleryobj.length()-1; m >= 0; --m)
