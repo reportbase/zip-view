@@ -4019,7 +4019,7 @@ var buttonlst = [
         var clr = FILLBAR;
         if (user.tap)
             clr = MENUTAP;
-        else if (user.enabled)
+        else if (user.enabled())
             clr = MENUSELECT;
 
         var e = context.canvas.scrollobj.berp();
@@ -4110,7 +4110,7 @@ var buttonlst = [
         var clr = FILLBAR;
         if (user.tap)
             clr = MENUTAP;
-        else if (user.enabled)
+        else if (user.enabled())
                 clr = MENUSELECT;
 
         var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
@@ -6206,7 +6206,7 @@ galleryobj.init = function(obj)
 
     _7cnv.sliceobj.data = [
     {
-        title: "Login",
+        title: "Login \u{25B6}",
         func: function()
         {
             gotodialog(local.email ? local.email : "", "Login", gologin);
@@ -6214,7 +6214,7 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: "Signup",
+        title: "Signup \u{25B6}",
         func: function()
         {
             gotodialog(local.email ? local.email : "", "Login", gologin);
@@ -6222,7 +6222,7 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: "Open\n*.zip, *.cbz, *.json,\n*.png, *.jpg, *.avif,\n*.webp, *.gif",
+        title: "Open \u{25B6}\n*.zip, *.cbz, *.json,\n*.png, *.jpg, *.avif,\n*.webp, *.gif",
         func: function()
         {
             importdialog();
@@ -6233,7 +6233,7 @@ galleryobj.init = function(obj)
         func: function() {}
     },     
     {
-        title: "zip-view\nImage Viewer\nWebp, jpg, avif, gif, and png\nzip, cbz, and ipfs",
+        title: "zip-view\nImage Viewer\nDrag and drop images from the desktop.\nClick here to open the file explorer.",
         func: function() {}
     },     
     {
@@ -6241,6 +6241,10 @@ galleryobj.init = function(obj)
         func: function()
         {
             screenfull.toggle()
+        },
+        enabled: function()
+        {
+            return screenfull.isFullscreen;
         }
     },       
     {
