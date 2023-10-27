@@ -831,13 +831,13 @@ panel.folderbar = function()
                         new panel.layers(
                         [
                             galleryobj.rightctx == _6cnvctx ? new panel.fill("rgba(0,0,255,0.5)"):0,
-                            new panel.rectangle(canvas.imagerect),
+                            new panel.rectangle(canvas.folderect),
                             new panel.text(),
                         ]),
                         new panel.layers(
                         [
                             galleryobj.rightctx == _5cnvctx ? new panel.fill("rgba(0,0,255,0.8)"):0,
-                            new panel.rectangle(canvas.folderect),
+                            new panel.rectangle(canvas.imagerect),
                             new panel.text(),
                         ]),
                     ])                            
@@ -849,8 +849,8 @@ panel.folderbar = function()
                    "Images",
                    0,
                    [
+                       "Contents",
                        "Index",
-                       "Folders"
                    ], 
                 ], 0);
         
@@ -1007,6 +1007,45 @@ panel.scrollbar = function()
 };
 
 var buttonobj = new circular_array("", []);
+
+buttonobj.reset = function()
+{
+    var w = galleryobj.width;
+    var h = galleryobj.height;
+    var a = w / h;
+    if (galleryobj.width > galleryobj.height)
+    {
+        var gheight = Math.floor(window.innerHeight * a);
+        var bheight = Math.floor(Math.min(2400, h*3));
+    }
+    else
+    {
+        var gheight = Math.floor(window.innerWidth / a);
+        var bheight = Math.floor(Math.min(4800, h*3));
+    }
+    
+    buttonobj.data = [];
+    for (var n = gheight; n < bheight; ++n)
+        buttonobj.data.push(n);
+    buttonobj.set(0);
+}
+
+buttonobj.fit()
+{
+    var j = _8cnv.centered;
+    var index = j % IMAGELSTSIZE;
+    galleryobj.width = thumbfittedlst[index].width;
+    galleryobj.height = thumbfittedlst[index].height;
+    buttonobj.reset()
+    menuobj.draw();
+    _8cnv.fitflash = 1;
+    headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+    setTimeout(function()
+    {
+        _8cnv.fitflash = 0;
+        headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+    }, 400);
+}
 
 function calculateAspectRatioFit(imgwidth, imgheight, rectwidth, rectheight)
 {
@@ -1351,23 +1390,6 @@ panel.upload = function()
         context.restore();
     }
 };
-
-function fitwidth()
-{
-    var j = _8cnv.centered;
-    var index = j % IMAGELSTSIZE;
-    galleryobj.width = thumbfittedlst[index].width;
-    galleryobj.height = thumbfittedlst[index].height;
-    buttonobj.reset()
-    menuobj.draw();
-    _8cnv.fitflash = 1;
-    headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-    setTimeout(function()
-    {
-        _8cnv.fitflash = 0;
-        headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-    }, 400);
-}
 
 panel.fitwidth = function()
 {
@@ -3359,7 +3381,7 @@ var taplst = [
             headcnvctx.fitwidthrect &&
             headcnvctx.fitwidthrect.hitest(x, y))
         {
-            fitwidth();
+            buttonobj.fit();
         }
         else if (
             headcnvctx.zoomrect &&
@@ -6260,7 +6282,7 @@ galleryobj.init = function(obj)
         title: "Fit Window",
         func: function()
         {
-            fitwidth();
+            buttonobj.fit();
         }
     },
     {
@@ -6884,18 +6906,3 @@ galleryobj.leftright = function(context, delta)
     }, TIMEMAIN);
 }
 
-buttonobj.reset = function()
-{
-    var w = galleryobj.width ? galleryobj.width : 1024;
-    var h = galleryobj.height ? galleryobj.height : 1024;
-    var a = w / h;
-    var gheight = Math.floor(galleryobj.minheight ?
-        h * galleryobj.minheight :
-        window.innerWidth / a);
-    var bheight = Math.floor(Math.min(4800,
-        h * (galleryobj.maxheight ? galleryobj.maxheight : 3)));
-    buttonobj.data = [];
-    for (var n = gheight; n < bheight; ++n)
-        buttonobj.data.push(n);
-    buttonobj.set(0);
-}
