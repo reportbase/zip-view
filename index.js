@@ -746,7 +746,7 @@ panel.galleriesbar = function()
                    [
                        `\u{271A} Add`,
                        `\u{2718} Delete`,
-                       `\u{00BB} Edit`
+                       `\u{2605} Edit`
                    ], 
                 ]);
         
