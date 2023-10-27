@@ -4019,7 +4019,7 @@ var buttonlst = [
         var clr = FILLBAR;
         if (user.tap)
             clr = MENUTAP;
-        else if (user.enabled())
+        else if (user.enabled && user.enabled())
             clr = MENUSELECT;
 
         var e = context.canvas.scrollobj.berp();
@@ -4110,7 +4110,7 @@ var buttonlst = [
         var clr = FILLBAR;
         if (user.tap)
             clr = MENUTAP;
-        else if (user.enabled())
+        else if (user.enabled && user.enabled())
                 clr = MENUSELECT;
 
         var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
