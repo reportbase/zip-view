@@ -746,7 +746,7 @@ panel.galleriesbar = function()
                    [
                        `\u{271A} Add`,
                        `\u{2718} Delete`,
-                       `\u{25C5} Edit`
+                       `\u{270E} Edit`
                    ], 
                 ]);
         
@@ -944,7 +944,7 @@ panel.homebar = function()
         
         a.draw(context, rect, 
                [
-                   url.host,
+                   "zip-view.com,
                    0,
                    [
                        "Open",
