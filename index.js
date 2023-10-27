@@ -687,8 +687,8 @@ panel.galleriesbar = function()
     {
         var canvas = context.canvas;
         context.save();     
-        canvas.uploadrect = new rectangle();
-        canvas.openrect = new rectangle();
+        canvas.homerect = new rectangle();
+        canvas.addrect = new rectangle();
         canvas.editrect = new rectangle();        
         canvas.deleterect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
@@ -696,7 +696,7 @@ panel.galleriesbar = function()
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.rectangle(canvas.uploadrect),
+                    new panel.rectangle(canvas.homerect),
                     new panel.text(),
                 ]),
                 0,
@@ -707,7 +707,7 @@ panel.galleriesbar = function()
                     [
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.openrect),
+                            new panel.rectangle(canvas.addrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
@@ -753,6 +753,7 @@ panel.accountbar = function()
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
                     new panel.text(),
+                    new panel.rectangle(canvas.homerect),
                 ]),
                 0,
                 new panel.layers(
@@ -776,7 +777,7 @@ panel.accountbar = function()
         
         a.draw(context, rect, 
                [
-                   "Account",
+                   "\u{25C0} Account",
                    0,
                    [
                        "Images",
@@ -796,12 +797,14 @@ panel.folderbar = function()
         context.save();     
         canvas.imagerect = new rectangle();
         canvas.folderect = new rectangle();
+        canvas.homerect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
                     new panel.text(),
+                    new panel.rectangle(canvas.homerect),
                 ]),
                 0,
                 new panel.layers(
@@ -874,7 +877,7 @@ panel.helpbar = function()
         
         a.draw(context, rect, 
                [
-                   "Home / Help",
+                   "\u{25C0} Help",
                    0,
                    [
                        "Sign-up",
