@@ -944,7 +944,7 @@ panel.homebar = function()
         
         a.draw(context, rect, 
                [
-                   "zip-view.com,
+                   "zip-view.com",
                    0,
                    [
                        "Open",
