@@ -1030,7 +1030,7 @@ buttonobj.reset = function()
     buttonobj.set(0);
 }
 
-buttonobj.fit()
+buttonobj.fit = function()
 {
     var j = _8cnv.centered;
     var index = j % IMAGELSTSIZE;
