@@ -4600,7 +4600,7 @@ var eventlst = [
     bar: new panel.empty(),
     scroll: new panel.scrollbar(),
     footer: new panel.folderbar(),
-    buttonheight: 60,
+    buttonheight: 70,
     buttonmargin: 15,
     scrollinit: 0,
     width: 480
