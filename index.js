@@ -3497,6 +3497,8 @@ var taplst = [
             menuobj.draw();
             galleryobj.leftnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
+            headcnv.height = HEADHEIGHT;
+            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);        
         }
         else if (canvas.homerect && canvas.homerect.hitest(x, y))
         {
