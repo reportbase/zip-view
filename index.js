@@ -825,10 +825,10 @@ panel.folderbar = function()
                     new panel.rectangle(canvas.closerect),
                 ]),
                 0,
-                new panel.layers(
+                _5cnv.sliceobj.length()?new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
-                    _5cnv.sliceobj.length()?new panel.colsA([0,0],
+                    new panel.colsA([0,0],
                     [
                         new panel.layers(
                         [
@@ -842,8 +842,8 @@ panel.folderbar = function()
                             new panel.rectangle(canvas.imagerect),
                             new panel.text(),
                         ]),
-                    ]):0                            
-                ])
+                    ])                           
+                ]):0
             ]);
 
         var k = galleryobj.title?galleryobj.title:"Images";
