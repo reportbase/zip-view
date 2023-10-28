@@ -761,8 +761,9 @@ panel.accountbar = function()
         var canvas = context.canvas;
         context.save();     
         canvas.homerect = new rectangle();
-        canvas.signinrect = new rectangle();
-        canvas.signuprect = new rectangle();
+        canvas.setuprect = new rectangle();
+        canvas.imagesrect = new rectangle();
+        canvas.invoicerect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
@@ -775,8 +776,14 @@ panel.accountbar = function()
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.colsA([0,0],
+                    new panel.colsA([0,0.4,0],
                     [
+                        new panel.layers(
+                        [
+                            galleryobj.rightctx == _10cnvctx ? new panel.fill("rgba(0,0,255,0.5)"):0,
+                            new panel.rectangle(canvas.setuprect),
+                            new panel.text(),
+                        ]),
                         new panel.layers(
                         [
                             new panel.rectangle(canvas.signinrect),
@@ -784,7 +791,7 @@ panel.accountbar = function()
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.signuprect),
+                            new panel.rectangle(canvas.invoicerect),
                             new panel.text(),
                         ]),
                     ])                            
@@ -796,8 +803,9 @@ panel.accountbar = function()
                    `\u{25C0} Account`,
                    0,
                    [
+                       "Setup",
+                       "Invoices",
                        "Images",
-                       "Sign-Up"
                    ], 
                 ], 0);
         
@@ -896,8 +904,8 @@ panel.helpbar = function()
                    `\u{25C0} Help`,
                    0,
                    [
-                       "Sign-up",
-                       "Sign-in"
+                       "Notes",
+                       "Features"
                    ],
                 ],
                 0);
@@ -3487,6 +3495,7 @@ var taplst = [
         }
         else if (canvas.homerect && canvas.homerect.hitest(x, y))
         {
+            menuobj.hide();
             galleryobj.leftcnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
             menuobj.setindex(galleryobj.leftctx);
