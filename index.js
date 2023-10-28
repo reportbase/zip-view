@@ -849,7 +849,7 @@ panel.folderbar = function()
         var k = galleryobj.title?galleryobj.title:"Images";
         a.draw(context, rect, 
                [
-                   `\u{2718} ${k}`,
+                   k,
                    0,
                    [
                        "Folders",
@@ -947,7 +947,7 @@ panel.homebar = function()
         
         a.draw(context, rect, 
                [
-                   "\u{2718} url.host",
+                   url.host,
                    0,
                    [
                        "Open",
@@ -6373,8 +6373,8 @@ galleryobj.init = function(obj)
 
     galleryobj.leftcnv = _7cnv;
     galleryobj.leftctx = _7cnvctx;
-    galleryobj.rightcnv = _5cnv;
-    galleryobj.rightctx = _5cnvctx;
+    galleryobj.rightcnv = _5cnv.sliceobj.length()?_5cnv:_6cnv;
+    galleryobj.rightctx = _5cnv.sliceobj.length()?_5cnvctx:_6cnvctx;
 
     if (galleryobj.width)
     {
