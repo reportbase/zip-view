@@ -2012,7 +2012,7 @@ var wheelst =
         {
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
-            buttonobj.addperc(k * 0.025);
+            buttonobj.addperc(k * 0.01);
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
             context.canvas.pinching = 0;
@@ -3492,11 +3492,11 @@ var taplst = [
         }
         else if (canvas.closerect && canvas.closerect.hitest(x, y))
         {
-            menuobj.hide();
-            galleryobj.leftcnv = _7cnv;
-            galleryobj.leftctx = _7cnvctx;
+            galleryobj.leftctx.hide();
             menuobj.setindex(_8cnvctx);
-            menuobj.show();
+            menuobj.draw();
+            galleryobj.leftnv = _7cnv;
+            galleryobj.leftctx = _7cnvctx;
         }
         else if (canvas.homerect && canvas.homerect.hitest(x, y))
         {
