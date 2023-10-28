@@ -5622,8 +5622,13 @@ var headlst = [
             context.save();
             var a = new panel.rows([BEXTENT, 0],
                 [
-                    new panel.cols([5, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT + 10, 
-                                    ALIEXTENT, 0, ALIEXTENT, 5],
+                    new panel.cols([5, 
+                                    ALIEXTENT, 0, 
+                                    ALIEXTENT, 
+                                    window.innerWidth >= 320 ? (ALIEXTENT + 10) : -1, 
+                                    ALIEXTENT, 
+                                    0, ALIEXTENT, 
+                                    5],
                         [
                             0, 0, 0,
 
