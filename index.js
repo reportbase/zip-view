@@ -2409,6 +2409,7 @@ async function loadimages(blobs)
     }
 
     galleryobj.init(galleryobj)
+    menuobj.draw();
 }
 
 var droplst = 
@@ -2438,8 +2439,6 @@ var droplst =
         {
             loadimages(files);
         }
-
-        _8cnv.keydown = 0;
     },
 }, ];
 
