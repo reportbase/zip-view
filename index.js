@@ -5642,7 +5642,7 @@ var headlst =
             var canvas = context.canvas;
             context.clear();
             if (menuobj.value() != _8cnvctx && 
-                rect.width == window.innerWidth)
+                menuobj.value().canvas.width == window.innerWidth)
                 return;
             context.save();
             var w = Math.min(360, rect.width - 100);
