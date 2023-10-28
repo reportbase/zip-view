@@ -2096,16 +2096,10 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     { 
-        clearInterval(global.swipetimeout);
-        global.swipetimeout = setInterval(function()
-        {
-            _4cnv.lastime = -0.0000000000101010101;
-            var obj = _4cnv.timeobj;
-            obj.CURRENT += obj.length()*(-delta/5000);
-            bossobj.draw()
-        }, TIMEMAIN);
-  
-        bossobj.draw();
+        _4cnv.lastime = -0.0000000000101010101;
+        var obj = _4cnv.timeobj;
+        obj.CURRENT += obj.length()*(-delta/5000);
+        bossobj.draw()
     },
 }, 
 ];
