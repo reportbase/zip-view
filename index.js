@@ -2096,12 +2096,16 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     { 
-        var obj = context.canvas.timeobj;
-        obj.CURRENT += obj.length()*(-delta/5000);
-        if (obj.CURRENT >= obj.length())
-            obj.CURRENT = obj.CURRENT - obj.length();
-        else if (obj.CURRENT < 0)
-            obj.CURRENT = obj.length() - obj.CURRENT;
+        var context = this;
+        clearInterval(global.swipetimeout);
+        global.swipetimeout = setInterval(function()
+        {
+            context.canvas.lastime = -0.0000000000101010101;
+            var obj = context.canvas.timeobj;
+            obj.CURRENT += obj.length()*(-delta/5000);
+            bossobj.draw()
+        }, TIMEMAIN);
+  
         bossobj.draw();
     },
 }, 
