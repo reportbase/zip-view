@@ -866,14 +866,14 @@ panel.helpbar = function()
     {
         var canvas = context.canvas;
         context.save();     
-        canvas.closerect = new rectangle();
+        canvas.homerect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
                     new panel.text(),
-                    new panel.rectangle(canvas.closerect),
+                    new panel.rectangle(canvas.homerect),
                 ]),
                 0,
                 new panel.layers(
@@ -913,7 +913,7 @@ panel.homebar = function()
     {
         var canvas = context.canvas;
         context.save();     
-        canvas.homerect = new rectangle();
+        canvas.closerect = new rectangle();
         canvas.openrect = new rectangle();
         canvas.signinrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
@@ -922,7 +922,7 @@ panel.homebar = function()
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
                     new panel.text(),
-                    new panel.rectangle(canvas.homerect),
+                    new panel.rectangle(canvas.closerect),
                 ]),
                 0,
                 new panel.layers(
@@ -5686,29 +5686,6 @@ var positxobj = new circular_array("POSITIONX", 100);
 var posityobj = new circular_array("POSITIONY", 100);
 positxobj.set(50);
 posityobj.set(50);
-
-var ClosePanel = function(size)
-{
-    this.draw = function(context, rect, user, time)
-    {
-        context.save()
-        var j = rect.width * size;
-        var k = j / 2;
-        var e = new panel.fill(OPTIONFILL);
-        var a = new panel.layers(
-            [
-                new panel.rows([0, rect.height * 0.35, 0],
-                    [
-                        0,
-                        new panel.cols([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0, ]),
-                        0,
-                    ]),
-            ])
-
-        a.draw(context, rect, user, time);
-        context.restore()
-    }
-};
 
 panel.gallery = function(size)
 {
