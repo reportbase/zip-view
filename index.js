@@ -1657,7 +1657,7 @@ CanvasRenderingContext2D.prototype.movepage = function(j)
     }
 
     var k = _8cnv.timeobj.length() / galleryobj.length();
-    _8cnv.timeobj.rotate(j*k);
+    _8cnv.timeobj.rotate(-j*k);
                     
     _4cnv.slidestop = 0;
     _4cnv.movingpage = j;
