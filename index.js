@@ -755,9 +755,8 @@ panel.accountbar = function()
         var canvas = context.canvas;
         context.save();     
         canvas.homerect = new rectangle();
-        canvas.setuprect = new rectangle();
         canvas.imagesrect = new rectangle();
-        canvas.invoicerect = new rectangle();
+        canvas.invoicesrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
@@ -770,22 +769,16 @@ panel.accountbar = function()
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.colsA([0,0.4,0],
+                    new panel.colsA([0,0],
                     [
                         new panel.layers(
                         [
-                            galleryobj.rightctx == _10cnvctx ? new panel.fill("rgba(0,0,255,0.5)"):0,
-                            new panel.rectangle(canvas.setuprect),
+                            new panel.rectangle(canvas.imagesrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.signinrect),
-                            new panel.text(),
-                        ]),
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.invoicerect),
+                            new panel.rectangle(canvas.invoicesrect),
                             new panel.text(),
                         ]),
                     ])                            
@@ -797,7 +790,6 @@ panel.accountbar = function()
                    `\u{25C0} Account`,
                    0,
                    [
-                       "Setup",
                        "Invoices",
                        "Images",
                    ], 
@@ -1017,9 +1009,9 @@ buttonobj.reset = function()
     var h = galleryobj.height;
     var a = w / h;
     buttonobj.data = [];
-    var gheight = Math.floor(window.innerWidth / a / 2);
+    var gheight = Math.max(window.innerHeight/4,Math.floor(window.innerWidth / a / 2));
     var dheight = Math.floor(window.innerWidth / a) - gheight;
-    var bheight = Math.floor(Math.min(4800, h*3));
+    var bheight = Math.floor(Math.min(4800, gheight*4));
     for (var n = gheight; n < bheight; ++n)
         buttonobj.data.push(n);
     buttonobj.set(dheight);
