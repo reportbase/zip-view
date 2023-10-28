@@ -2957,7 +2957,9 @@ var keylst = [
                 var value = galleryobj.current() + 1;
                 if (menuobj.value() == _8cnvctx)
                     value = (galleryobj.length() * (1 - _8cnv.timeobj.berp())).toFixed(0);
-                gotodialog(value, "Goto", goimage);
+                if (!gotodialog(value, "Goto", goimage))
+                    return;
+                galleryobj.init()
             }
             else if (key == "\\" || key == "/")
             {
@@ -3151,8 +3153,9 @@ var keylst = [
                 var value = galleryobj.current() + 1;
                 if (menuobj.value() == _8cnvctx)
                     value = (galleryobj.length() * (1 - _8cnv.timeobj.berp())).toFixed()
-                gotodialog(value, "Goto", goimage);
-
+                if (!gotodialog(value, "Goto", goimage))
+                    return;
+                galleryobj.init(); 
             }
             else if (key == "-" || key == "{")
             {
@@ -3492,7 +3495,8 @@ var taplst = [
         }
         else if (canvas.signinrect && canvas.signinrect.hitest(x, y))
         {
-            gotodialog(local.email ? local.email : "", "Login", gologin);
+            if (!gotodialog(local.email ? local.email : "", "Login", gologin))
+                return;
             galleryobj.init();
         }
         else if (canvas.closerect && canvas.closerect.hitest(x, y))
@@ -6214,7 +6218,8 @@ galleryobj.init = function(obj)
         title: `Login \u{25B6}`,
         func: function()
         {
-            gotodialog(local.email ? local.email : "", "Login", gologin);
+            if (!gotodialog(local.email ? local.email : "", "Login", gologin))
+                return;
             galleryobj.init();
         }
     },
@@ -6222,7 +6227,8 @@ galleryobj.init = function(obj)
         title: `Signup \u{25B6}`,
         func: function()
         {
-            gotodialog(local.email ? local.email : "", "Login", gologin);
+            if (!gotodialog(local.email ? local.email : "", "Login", gologin))
+                return;
             galleryobj.init();
         }
     },
@@ -6594,7 +6600,7 @@ function downloadtext(name, text)
 function gologin(email)
 {
     local.email = email;
-    galleryobj.init();
+    return true;
 }
 
 function goimage(image)
@@ -6621,7 +6627,7 @@ function gotodialog(value, title, func)
             var page = input.value.clean();
             dialog.close();
             menuobj.draw();
-            func(page);
+            return func(page);
         }
     });
 
@@ -6633,12 +6639,13 @@ function gotodialog(value, title, func)
             var page = input.value.clean();
             dialog.close();
             menuobj.draw();
-            func(page);
+            return func(page);
         }
         else if (!rect.hitest(event.x, event.y))
         {
             if (!dialog.clickblocked)
                 dialog.close();
+            return false;
         }
     });
 
@@ -6771,6 +6778,13 @@ function importdialog()
 
         input.onchange = function()
         {
+            galleryobj.rightctx.hide()
+            galleryobj.leftctx.hide();
+            menuobj.setindex(_8cnvctx);
+            menuobj.draw();
+            galleryobj.leftnv = _7cnv;
+            galleryobj.leftctx = _7cnvctx;
+            
             var files = Array.from(input.files);
             delete galleryobj.datalength;
             if (files.length == 1 && files[0].name)
