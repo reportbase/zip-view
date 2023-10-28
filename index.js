@@ -815,20 +815,20 @@ panel.folderbar = function()
         context.save();     
         canvas.imagerect = new rectangle();
         canvas.folderect = new rectangle();
-        canvas.homerect = new rectangle();
+        canvas.closerect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
                     new panel.text(),
-                    new panel.rectangle(canvas.homerect),
+                    new panel.rectangle(canvas.closerect),
                 ]),
                 0,
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.colsA([0,0],
+                    _5cnv.sliceobj.length()?new panel.colsA([0,0],
                     [
                         new panel.layers(
                         [
@@ -842,13 +842,14 @@ panel.folderbar = function()
                             new panel.rectangle(canvas.imagerect),
                             new panel.text(),
                         ]),
-                    ])                            
+                    ]):0                            
                 ])
             ]);
-        
+
+        var k = galleryobj.title?galleryobj.title:"Images";
         a.draw(context, rect, 
                [
-                   galleryobj.title?galleryobj.title:"Images",
+                   `\u{2718} ${k}`,
                    0,
                    [
                        "Folders",
@@ -946,7 +947,7 @@ panel.homebar = function()
         
         a.draw(context, rect, 
                [
-                   url.host,
+                   "\u{2718} url.host",
                    0,
                    [
                        "Open",
