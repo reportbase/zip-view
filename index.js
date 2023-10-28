@@ -2284,9 +2284,6 @@ function publishgallery(json)
 
 async function loadzip(file)
 {
-     if (menuobj.value() && menuobj.value() != _8cnvctx)
-        menuobj.hide();
-    
     const
     {
         entries
@@ -2368,9 +2365,6 @@ async function loadblob(blob)
 
 async function loadimages(blobs)
 {
-    if (menuobj.value() && menuobj.value() != _8cnvctx)
-        menuobj.hide();
-    
     var count = 0;
     for (var i = 0; i < blobs.length; i++)
     {
@@ -2415,6 +2409,9 @@ var droplst =
     name: "DEFAULT",
     drop: function(context, evt)
     {
+        if (menuobj.value() && menuobj.value() != _8cnvctx)
+            return;
+        
         var files = evt.dataTransfer.files;
         delete galleryobj.datalength;
         if (files.length == 1 && files[0].name)
@@ -3488,6 +3485,15 @@ var taplst = [
             }
 
             headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+        }
+        else if (canvas.openrect && canvas.openrect.hitest(x, y))
+        {
+            importdialog()
+        }
+        else if (canvas.signinrect && canvas.signinrect.hitest(x, y))
+        {
+            gotodialog(local.email ? local.email : "", "Login", gologin);
+            galleryobj.init();
         }
         else if (canvas.closerect && canvas.closerect.hitest(x, y))
         {
@@ -5931,8 +5937,6 @@ async function loadjson(blob)
 {
     try
     {
-         if (menuobj.value() && menuobj.value() != _8cnvctx)
-            menuobj.hide();
         var text = await blob.text();
         var json = JSON.parse(text);
         publishgallery(text);
