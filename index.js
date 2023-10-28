@@ -866,14 +866,14 @@ panel.helpbar = function()
     {
         var canvas = context.canvas;
         context.save();     
-        canvas.homerect = new rectangle();
+        canvas.closerect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
                     new panel.text(),
-                    new panel.rectangle(canvas.homerect),
+                    new panel.rectangle(canvas.closerect),
                 ]),
                 0,
                 new panel.layers(
@@ -3489,6 +3489,14 @@ var taplst = [
             }
 
             headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+        }
+        else if (canvas.closerect && canvas.closerect.hitest(x, y))
+        {
+            menuobj.hide();
+            galleryobj.leftcnv = _7cnv;
+            galleryobj.leftctx = _7cnvctx;
+            menuobj.setindex(_8cnvctx);
+            menuobj.show();
         }
         else if (canvas.homerect && canvas.homerect.hitest(x, y))
         {
