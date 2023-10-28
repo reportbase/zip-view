@@ -928,14 +928,8 @@ panel.homebar = function()
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.colsA([0,0,0],
+                    new panel.colsA([0,0],
                     [
-                        new panel.layers(
-                        [
-                            galleryobj.leftctx == _7cnvctx ? new panel.fill("rgba(0,0,255,0.5)"):0,
-                            new panel.rectangle(canvas.openrect),
-                            new panel.text(),
-                        ]),
                         new panel.layers(
                         [
                             new panel.rectangle(canvas.openrect),
@@ -955,7 +949,6 @@ panel.homebar = function()
                    url.host,
                    0,
                    [
-                       "Home",
                        "Open",
                        "\u{2605} Signup"
                    ],
@@ -5599,12 +5592,14 @@ window.addEventListener("resize", (evt) =>
 {
     resize();
 });
+
 window.addEventListener("screenorientation", (evt) =>
 {
     resize();
 });
 
-var headlst = [
+var headlst = 
+[
     new function()
     {
         this.draw = function(context, rect, user, time)
@@ -5646,6 +5641,8 @@ var headlst = [
         {
             var canvas = context.canvas;
             context.clear();
+            if (rect.width == window.innerWidth)
+                return;
             context.save();
             var w = Math.min(360, rect.width - 100);
             var rows = infobj.data.length;
