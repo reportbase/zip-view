@@ -2804,8 +2804,11 @@ pressobj.set(3);
 
 function gotoimage(n)
 {
-    var k = CYLSEAL - CYLSEAL / galleryobj.length() / 2;
+    var top = buttonobj.value() > window.innerHeight;
+    var k = CYLSEAL - (CYLSEAL / galleryobj.length() / 2);
     k -= n * (CYLSEAL / galleryobj.length());
+    var j = (CYLSEAL / galleryobj.length()) / 2;
+    k -= j;
     _8cnv.timeobj.set(k);
     menuobj.draw();
 }
