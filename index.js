@@ -858,7 +858,7 @@ panel.folderbar = function()
                    0,
                    [
                        "Folders",
-                       "Index",
+                       "Images",
                    ], 
                 ], 0);
         
