@@ -3493,7 +3493,7 @@ var taplst = [
         }
         else if (canvas.closerect && canvas.closerect.hitest(x, y))
         {
-            galleryobj.leftctx.hide();
+            galleryobj.hide();
             menuobj.setindex(_8cnvctx);
             menuobj.draw();
             galleryobj.leftnv = _7cnv;
