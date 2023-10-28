@@ -2804,6 +2804,7 @@ pressobj.set(3);
 
 function gotoimage(n)
 {
+    buttonobj.fit();
     var top = buttonobj.value() > window.innerHeight;
     var k = CYLSEAL - (CYLSEAL / galleryobj.length() / 2);
     k -= n * (CYLSEAL / galleryobj.length());
@@ -6257,7 +6258,7 @@ galleryobj.init = function(obj)
         }
     },       
     {
-        title: "Fit Window",
+        title: "Fit Width",
         func: function()
         {
             buttonobj.fit();
@@ -6598,7 +6599,7 @@ function gologin(email)
 function goimage(image)
 {
     image = util.clamp(1, galleryobj.length(), image);
-    gotoimage(image - 1, true);
+    gotoimage(image - 1);
     galleryobj.set(image-1);
     delete _4cnv.thumbcanvas;
     delete photo.image;
