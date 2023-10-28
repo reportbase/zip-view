@@ -2287,6 +2287,9 @@ function publishgallery(json)
 
 async function loadzip(file)
 {
+     if (menuobj.value() && menuobj.value() != _8cnvctx)
+        menuobj.hide();
+    
     const
     {
         entries
@@ -2368,6 +2371,9 @@ async function loadblob(blob)
 
 async function loadimages(blobs)
 {
+    if (menuobj.value() && menuobj.value() != _8cnvctx)
+        menuobj.hide();
+    
     var count = 0;
     for (var i = 0; i < blobs.length; i++)
     {
@@ -5922,6 +5928,8 @@ async function loadjson(blob)
 {
     try
     {
+         if (menuobj.value() && menuobj.value() != _8cnvctx)
+            menuobj.hide();
         var text = await blob.text();
         var json = JSON.parse(text);
         publishgallery(text);
