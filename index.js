@@ -54,18 +54,14 @@ const LARGEFONT = "20px archivo black";
 const HUGEFONT = "22px archivo black";
 const DOTSFONT = "60px archivo black";
 const SLICEWIDTH = 36;
-const SLICEWIDTHSIZE = 36 * 20;
 const ZOOMAX = 92;
 const IMAGELSTSIZE = iOS() ? 30 : 120;
 const BOSS = 0;
 const GALLERY = 1;
 const MENU = 2;
 const TIMEMAIN = 4;
-const TIMESECOND = 8;
-const GALLERYMIN = 1;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
-const GOTOFIXED = 0;
 const MULTITEXTROWHEIGHT = 24;
 const DOWNARROW = "\u{25BC}"
 const SMALLSQUARE = "\u{25FE}"
@@ -80,7 +76,6 @@ const FOOTPRINTS = "\u{1F463}";
 const COPYRIGHT = "\u{00A9}";
 const EDITPENCIL = "\u{270F}";
 const CHECKMARK = "\u{2713}";
-const DELETEMARK = "";
 const HEAVYCROSS = "\u{271A}";
 
 var panel = {}
@@ -2267,7 +2262,7 @@ infobj.reset = function()
 
 }
 
-var slicewidthobj = new circular_array("SLICEWIDTH", SLICEWIDTHSIZE);
+var slicewidthobj = new circular_array("SLICEWIDTH", SLICEWIDTH * 20);
 var zoomobj = new circular_array("ZOOM", 100);
 var heightobj = new circular_array("HEIGHT", 100);
 heightobj.set(50);
@@ -2972,7 +2967,7 @@ var keylst = [
                 evt.preventDefault();
                 var value = galleryobj.current() + 1;
                 if (menuobj.value() == _8cnvctx)
-                    value = (galleryobj.length() * (1 - _8cnv.timeobj.berp())).toFixed(GOTOFIXED);
+                    value = (galleryobj.length() * (1 - _8cnv.timeobj.berp())).toFixed(0);
                 gotodialog(value, "Goto", goimage);
             }
             else if (key == "\\" || key == "/")
@@ -3166,7 +3161,7 @@ var keylst = [
             {
                 var value = galleryobj.current() + 1;
                 if (menuobj.value() == _8cnvctx)
-                    value = (galleryobj.length() * (1 - _8cnv.timeobj.berp())).toFixed(GOTOFIXED)
+                    value = (galleryobj.length() * (1 - _8cnv.timeobj.berp())).toFixed()
                 gotodialog(value, "Goto", goimage);
 
             }
