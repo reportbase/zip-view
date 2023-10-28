@@ -841,7 +841,7 @@ panel.folderbar = function()
         var k = galleryobj.title?galleryobj.title:"Images";
         a.draw(context, rect, 
                [
-                   k,
+                   `\u{25C0} ${k}`,
                    0,
                    [
                        "Folders",
@@ -869,7 +869,7 @@ panel.helpbar = function()
                     new panel.rectangle(canvas.homerect),
                 ]),
                 0,
-                new panel.layers(
+                1?0:new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
                     new panel.colsA([0,0],
@@ -939,7 +939,7 @@ panel.homebar = function()
         
         a.draw(context, rect, 
                [
-                   url.host,
+                   `\u{25C0} ${url.host}`,
                    0,
                    [
                        "Open",
@@ -1011,7 +1011,7 @@ buttonobj.reset = function()
     buttonobj.data = [];
     var gheight = Math.max(window.innerHeight/4,Math.floor(window.innerWidth / a / 2));
     var dheight = Math.floor(window.innerWidth / a) - gheight;
-    var bheight = Math.floor(Math.min(4800, gheight*4));
+    var bheight = Math.floor(Math.min(1080*5, gheight*6));
     for (var n = gheight; n < bheight; ++n)
         buttonobj.data.push(n);
     buttonobj.set(dheight);
