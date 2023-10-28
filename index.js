@@ -2379,7 +2379,6 @@ async function loadimages(blobs)
     if (!count)
         return;
 
-    menuobj.hide();
     galleryobj.data = [];
     galleryobj.width = 0;
     galleryobj.height = 0;
@@ -2412,8 +2411,6 @@ var droplst =
     name: "DEFAULT",
     drop: function(context, evt)
     {
-        if (menuobj.value() != _8cnvctx)
-            menuobj.hide();
         var files = evt.dataTransfer.files;
         delete galleryobj.datalength;
         if (files.length == 1 && files[0].name)
