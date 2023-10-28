@@ -920,7 +920,7 @@ panel.homebar = function()
         var canvas = context.canvas;
         context.save();     
         canvas.homerect = new rectangle();
-        canvas.exploreect = new rectangle();
+        canvas.openrect = new rectangle();
         canvas.signinrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
@@ -934,11 +934,16 @@ panel.homebar = function()
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.colsA([0,0],
+                    new panel.colsA([0,0,0],
                     [
                         new panel.layers(
                         [
                             galleryobj.leftctx == _7cnvctx ? new panel.fill("rgba(0,0,255,0.5)"):0,
+                            new panel.rectangle(canvas.openrect),
+                            new panel.text(),
+                        ]),
+                        new panel.layers(
+                        [
                             new panel.rectangle(canvas.openrect),
                             new panel.text(),
                         ]),
@@ -957,7 +962,8 @@ panel.homebar = function()
                    0,
                    [
                        "Home",
-                       "Signup"
+                       "Open",
+                       "\u{2605} Signup"
                    ],
                 ],
                 0);
@@ -6236,11 +6242,17 @@ galleryobj.init = function(obj)
     },   
     {
         title: "Developer\nTom Brinkman\nimages@zip-view.com",
-        func: function() {}
+        func: function() 
+        {
+            importdialog();
+        }
     },     
     {
-        title: "zip-view\nImage Viewer\nDrag and drop images from the desktop.\nClick here to open the file explorer.",
-        func: function() {}
+        title: "zip-view\nImage Viewer\nTo load images, drag and drop from the desktop or click here.",
+        func: function() 
+        {
+            importdialog();
+        }
     },     
     {
         title: "Full Screen",
