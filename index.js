@@ -2808,7 +2808,7 @@ function gotoimage(n)
     var k = CYLSEAL - (CYLSEAL / galleryobj.length() / 2);
     k -= n * (CYLSEAL / galleryobj.length());
     var j = (CYLSEAL / galleryobj.length()) / 2;
-    k += j;
+    k -= j;
     _8cnv.timeobj.set(k);
     menuobj.draw();
 }
