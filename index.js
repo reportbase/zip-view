@@ -741,7 +741,7 @@ panel.galleriesbar = function()
         
         a.draw(context, rect, 
                [
-                   `\u{25C0} Gallery`,
+                   `\u{25C0} Galleries`,
                    0,
                    [
                        `\u{271A} Add`,
@@ -846,10 +846,10 @@ panel.folderbar = function()
         
         a.draw(context, rect, 
                [
-                   "Images",
+                   galleryobj.title?galleryobj.title:"Images",
                    0,
                    [
-                       "Contents",
+                       "Folders",
                        "Index",
                    ], 
                 ], 0);
@@ -930,6 +930,7 @@ panel.homebar = function()
                     [
                         new panel.layers(
                         [
+                            galleryobj.leftctx == _7cnvctx ? new panel.fill("rgba(0,0,255,0.5)"):0,
                             new panel.rectangle(canvas.openrect),
                             new panel.text(),
                         ]),
@@ -944,10 +945,10 @@ panel.homebar = function()
         
         a.draw(context, rect, 
                [
-                   "zip-view.com",
+                   url.host,
                    0,
                    [
-                       "Open",
+                       "Home",
                        "Signup"
                    ],
                 ],
@@ -3397,13 +3398,6 @@ var taplst = [
             obj.setperc(k);
             context.refresh()
         }
-        else if (canvas.homerect && canvas.homerect.hitest(x, y))
-        {
-            galleryobj.leftcnv = _7cnv;
-            galleryobj.leftctx = _7cnvctx;
-            menuobj.setindex(galleryobj.leftctx);
-            menuobj.show();
-        }
         else if (menuobj.value() && menuobj.value() != _8cnvctx)
         {
             menuobj.hide();
@@ -3490,6 +3484,13 @@ var taplst = [
             }
 
             headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+        }
+        else if (canvas.homerect && canvas.homerect.hitest(x, y))
+        {
+            galleryobj.leftcnv = _7cnv;
+            galleryobj.leftctx = _7cnvctx;
+            menuobj.setindex(galleryobj.leftctx);
+            menuobj.show();
         }
         else if (canvas.vscrollrect &&
             canvas.vscrollrect.hitest(x, y))
@@ -6318,7 +6319,7 @@ galleryobj.init = function(obj)
             _2cnv.sliceobj.data = results
             _7cnv.sliceobj.data.push(
             {
-                title: `Gallery \u{25B6}`,
+                title: `Galleries \u{25B6}`,
                 func: function(n, x, y)
                 {
                     galleryobj.leftcnv = _2cnv;
