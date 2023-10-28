@@ -30,8 +30,7 @@ const ALIEXTENT = 60;
 const BEXTENT = 80;
 const BOSSMIN = 4;
 const HEADHEIGHT = IFRAME ? 0 : 80;
-const TIMEOBJ = 3927;
-const DELAYCENTER = TIMEOBJ / 1000;
+const CYLSEAL = 3927;
 const SCROLLMARGIN = 8;
 const MENUSELECT = "rgba(255,175,0,0.4)";
 const MENUTAP = "rgba(255,125,0,0.7)";
@@ -2514,7 +2513,7 @@ var panlst =
             else
             {
                 var e = canvas.starty - y;
-                var jvalue = TIMEOBJ / canvas.virtualheight
+                var jvalue = CYLSEAL / canvas.virtualheight
                 jvalue *= e;
                 canvas.timeobj.rotateanchored(jvalue);
                 context.refresh()
@@ -2588,7 +2587,7 @@ var panlst =
             else
             {
                 var e = canvas.starty - y;
-                var jvalue = TIMEOBJ / canvas.virtualheight
+                var jvalue = CYLSEAL / canvas.virtualheight
                 jvalue *= e;
                 canvas.timeobj.rotateanchored(jvalue);
                 context.refresh()
@@ -2648,7 +2647,7 @@ var panlst =
             else
             {
                 var e = canvas.startx-x;
-                var jvalue = TIMEOBJ / canvas.virtualwidth
+                var jvalue = CYLSEAL / canvas.virtualwidth
                 jvalue *= e;
                 canvas.timeobj.rotateanchored(jvalue);
                 context.refresh()
@@ -2822,8 +2821,8 @@ pressobj.set(3);
 
 function gotoimage(n)
 {
-    var k = TIMEOBJ - TIMEOBJ / galleryobj.length() / 2;
-    k -= n * (TIMEOBJ / galleryobj.length());
+    var k = CYLSEAL - CYLSEAL / galleryobj.length() / 2;
+    k -= n * (CYLSEAL / galleryobj.length());
     _8cnv.timeobj.set(k);
     menuobj.draw();
 }
@@ -3205,10 +3204,11 @@ CanvasRenderingContext2D.prototype.hithumb = function(x, y)
         var b = c / rect.width;
         var e = this.canvas.sliceobj.length();
         var m = (1 - b) * e;
-        var j = DELAYCENTER / e;
+        var d = CYLSEAL / 1000;
+        var j = d / e;
         var time = j * m;
-        var k = time % DELAYCENTER;
-        var e = this.canvas.timeobj.length() * (k / DELAYCENTER);
+        var k = time % d;
+        var e = this.canvas.timeobj.length() * (k / d);
         this.canvas.timeobj.set(e);
     }
 
@@ -3833,7 +3833,7 @@ bossobj.draw = function()
     var virtualpinch = _4cnv.virtualwidth * (stretch.value() / 100);
     var colwidth = _4cnv.colwidth;
     var virtualeft = (virtualpinch - rect.width) / 2;
-    var j = (colwidth / (colwidth + _4cnv.virtualwidth)) * TIMEOBJ;
+    var j = (colwidth / (colwidth + _4cnv.virtualwidth)) * CYLSEAL;
     var time = (canvas.timeobj.value() + j) / 1000;
 
     var slices = _4cnv.sliceobj.data;
@@ -4351,7 +4351,7 @@ menuobj.draw = function()
     }
 
     var len = context.canvas.sliceobj.length()
-    var delayinterval = TIMEOBJ / len / 1000;
+    var delayinterval = CYLSEAL / len / 1000;
     context.canvas.virtualheight = len * canvas.buttonheight;
     
     context.clear();
@@ -4851,8 +4851,8 @@ contextlst.forEach(function(context, n)
     canvas.slidestop = 0;
     canvas.lastime = 0;
     canvas.sliceobj = new circular_array("", []);
-    canvas.timeobj = new circular_array("", TIMEOBJ);
-    canvas.timeobj.set(TIMEOBJ / 2);
+    canvas.timeobj = new circular_array("", CYLSEAL);
+    canvas.timeobj.set(CYLSEAL / 2);
     canvas.scrollobj = new circular_array("TEXTSCROLL", window.innerHeight);
     canvas.speedobj = new circular_array("SPEED", 120);
     canvas.speedobj.set(obj.speed);
@@ -6824,7 +6824,7 @@ menuobj.updown = function(context, delta)
     var lst = [1.5, 1.75, 2.0, 2.25, 2.5, 3.0, 3.5, 4.0];
     var j = util.clamp(0, lst.length - 1, canvas.sliceobj.length());
     var k = lst[j] * f;
-    canvas.slideshow = (TIMEOBJ / canvas.virtualheight) * k * 1.5;
+    canvas.slideshow = (CYLSEAL / canvas.virtualheight) * k * 1.5;
     //if (canvas.slideshow < 0.5)
     //    canvas.slideshow = 0.5;
     canvas.slidereduce = canvas.slideshow / g;
