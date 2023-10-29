@@ -3868,8 +3868,7 @@ bossobj.draw = function()
     if (galleryobj.nostretchcolumn || (
         galleryobj.value() && galleryobj.value().ispng))
     {
-        context.clearRect(0, 0, canvas.width, 
-                             canvas.height);
+        context.clear();
     }
 
     for (var m = 0; m < slices.length; ++m)
@@ -3901,13 +3900,12 @@ bossobj.draw = function()
 
         if (galleryobj.nostretchcolumn)
         {
-            overlayobj.value().draw(offbossctx,
+            overlayobj.value().draw(context,
               new rectangle(x,0,w,rect.height),
                   `${n+1}of${slices.length}`, 0);
         }
     }
 
-    //context.drawImage(offbosscnv, 0, 0)
     context.restore();
 
     delete context.extentrect;
