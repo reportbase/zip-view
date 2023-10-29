@@ -2246,7 +2246,7 @@ infobj.reset = function()
             var aspect = photo.image.width / photo.image.height;
             infobj.data.push(aspect.toFixed(2));
             var size = ((photo.image.width * photo.image.height) / 1000000).toFixed(1) + "MP";
-            infobj.data.push(size.toFixed(2));
+            infobj.data.push(size);
             var extent = `${photo.image.width}x${photo.image.height}`;
             infobj.data.push(extent.toFixed(2));
         }
