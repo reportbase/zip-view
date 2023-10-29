@@ -1,151 +1,53 @@
 {
-  "title": "Repba Gallery",
-      "width": 1280,
-      "height": 1927,
-  "data": [
+  "title": "Batman - The Killing Joke",
+      "data": [
     {
-      "id": "KILL.0004",
-      "index": "5 of 64",
-      "width": 1280,
-      "height": 1999,
-      "extent": "1280x1999 0.64",
-      "size": "2.6MP",
-      "quote": "Teamwork Makes the Dream Work"
+      "id": "KILL.0004"
     },
     {
-      "id": "KILL.0005",
-      "index": "6 of 64",
-      "width": 1280,
-      "height": 1995,
-      "extent": "1280x1995 0.64",
-      "size": "2.6MP",
-      "quote": "OK Monday, Lets Do This"
+      "id": "KILL.0005"
     },
     {
-      "id": "KILL.0006",
-      "index": "7 of 64",
-      "width": 1280,
-      "height": 2007,
-      "extent": "1280x2007 0.64",
-      "size": "2.6MP",
-      "quote": "Do Not Decrease the Goal, Increase the Effort"
+      "id": "KILL.0006"
     },
     {
-      "id": "KILL.0007",
-      "index": "8 of 64",
-      "width": 1280,
-      "height": 2012,
-      "extent": "1280x2012 0.64",
-      "size": "2.6MP",
-      "quote": "We Didn't Lose the Game, We Just Ran Out of Time"
+      "id": "KILL.0007"
     },
     {
-      "id": "KILL.0008",
-      "index": "9 of 64",
-      "width": 1280,
-      "height": 2012,
-      "extent": "1280x2012 0.64",
-      "size": "2.6MP",
-      "quote": "The Seeds of Doubt Grow Bitter Fruit"
+      "id": "KILL.0008"
     },
     {
-      "id": "KILL.0009",
-      "index": "10 of 64",
-      "width": 1280,
-      "height": 1978,
-      "extent": "1280x1978 0.65",
-      "size": "2.5MP",
-      "quote": "Success Consists of Getting Up Just One More Time Than You Fail"
+      "id": "KILL.0009"
     },
     {
-      "id": "KILL.0010",
-      "index": "11 of 64",
-      "width": 1280,
-      "height": 2009,
-      "extent": "1280x2009 0.64",
-      "size": "2.6MP",
-      "quote": "Enjoy Life Today, Yesterday Is Gone Tomorrow"
+      "id": "KILL.0010"
     },
     {
-      "id": "KILL.0011",
-      "index": "12 of 64",
-      "width": 1280,
-      "height": 2004,
-      "extent": "1280x2004 0.64",
-      "size": "2.6MP",
-      "quote": "If Not Us Who? If Not Now When?"
+      "id": "KILL.0011"
     },
     {
-      "id": "KILL.0012",
-      "index": "13 of 64",
-      "width": 1280,
-      "height": 2006,
-      "extent": "1280x2006 0.64",
-      "size": "2.6MP",
-      "quote": "If Opportunity Does Not Knock, Build a Door"
+      "id": "KILL.0012"
     },
     {
-      "id": "KILL.0013",
-      "index": "14 of 64",
-      "width": 1280,
-      "height": 2017,
-      "extent": "1280x2017 0.63",
-      "size": "2.6MP",
-      "quote": "It Was Not Raining When Noah Built the Ark"
+      "id": "KILL.0013"
     },
     {
-      "id": "KILL.0014",
-      "index": "15 of 64",
-      "width": 1280,
-      "height": 2000,
-      "extent": "1280x2000 0.64",
-      "size": "2.6MP",
-      "quote": "What We Are is God's Gift, What We Become is Our Gift to God"
+      "id": "KILL.0014"
     },
     {
-      "id": "KILL.0015",
-      "index": "16 of 64",
-      "width": 1280,
-      "height": 2003,
-      "extent": "1280x2003 0.64",
-      "size": "2.6MP",
-      "quote": "The Best Way to Predict the Future is To Invent It"
+      "id": "KILL.0015"
     },
     {
-      "id": "KILL.0016",
-      "index": "17 of 64",
-      "width": 1280,
-      "height": 2009,
-      "extent": "1280x2009 0.64",
-      "size": "2.6MP",
-      "quote": "Failure is the Condiment Which Gives Success Its Flavor"
+      "id": "KILL.0016"
     },
     {
-      "id": "KILL.0017",
-      "index": "18 of 64",
-      "width": 1280,
-      "height": 2004,
-      "extent": "1280x2004 0.64",
-      "size": "2.6MP",
-      "quote": "I can Resist Everything Except Temptation"
+      "id": "KILL.0017"
     },
     {
-      "id": "KILL.0018",
-      "index": "19 of 64",
-      "width": 1280,
-      "height": 2001,
-      "extent": "1280x2001 0.64",
-      "size": "2.6MP",
-      "quote": "What's Another Word For Thesaurus"
+      "id": "KILL.0018"
     },
     {
-      "id": "KILL.0019",
-      "index": "20 of 64",
-      "width": 1280,
-      "height": 2002,
-      "extent": "1280x2002 0.64",
-      "size": "2.6MP",
-      "quote": "It Is During the Darkest Moments That We Must Focus To See the Light"
+      "id": "KILL.0019"
     },
     {
       "id": "KILL.0020",
