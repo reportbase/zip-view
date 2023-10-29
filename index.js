@@ -3244,7 +3244,8 @@ var taplst =
             headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
             _4cnv.height = 0;
         }
-        else if (context.canvas.thumbrect && context.canvas.thumbrect.hitest(x, y))
+        else if (context.canvas.thumbrect && 
+                 context.canvas.thumbrect.hitest(x, y))
         {
             if (context.canvas.selectrect &&
                 context.canvas.selectrect.hitest(x, y) >= 0)
@@ -3529,11 +3530,13 @@ var taplst =
         }
         else if (canvas.homerect && canvas.homerect.hitest(x, y))
         {
+            galleryobj.leftctx.hide();
+            galleryobj.rightctx.hide();
             galleryobj.leftcnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
             menuobj.setindex(galleryobj.leftctx);
             menuobj.show();
-            return true;
+            return false;
         }
         else if (canvas.vscrollrect &&
             canvas.vscrollrect.hitest(x, y))
