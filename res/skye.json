@@ -1,8 +1,7 @@
 {
-  "title": "Cyberpunk Gallery",
+  "title": "Cyberpunk 2088",
   "describe": "Featuring futuristic technological and scientific achievements and cybernetics, juxtaposed with societal collapse, dystopia or decay.",
-      "width": 1600,
-      "height": 1000,
+      "id": "bb506a48-0cda-450d-905a-a708e018036b",
   "data": [
     {
       "id": "SKYE.0000"
