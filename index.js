@@ -3868,12 +3868,8 @@ bossobj.draw = function()
     if (!slice)
         return;
     context.save();
-    if (galleryobj.debug)
-    {
-        var a = new panel.fill("gray");
-        a.draw(context, rect, 0, 0);
-    }
-    else if (galleryobj.value() && galleryobj.value().ispng)
+    if (galleryobj.nostretchcolumn || (
+        galleryobj.value() && galleryobj.value().ispng))
     {
         context.clear();
     }
@@ -3896,7 +3892,7 @@ bossobj.draw = function()
         var x2 = Math.berp(-1, 1, b2) * virtualpinch - virtualeft;
 
         var g = x2 > x ? x2 - x : x - x2;
-        var w = galleryobj.stretchcolumn ? g : colwidth;
+        var w = galleryobj.nostretchcolumn ? g : colwidth;
         w = Math.ceil(x + w) - x;
 
         if (x < -w || x >= rect.width)
@@ -3905,6 +3901,7 @@ bossobj.draw = function()
             slice.x, 0, colwidth, rect.height,
             x, 0, w, rect.height);
 
+        
 //            overlayobj.value().draw(offbossctx,
 //              new rectangle(x,0,w,rect.height),
 //                  `${n+1}of${slices.length}`, 0);
@@ -6116,14 +6113,14 @@ galleryobj.init = function(obj)
             title: "Stretch Columns",
             func: function()
             {
-                galleryobj.stretchcolumn = galleryobj.stretchcolumn ? 0 : 1;
-                overlayobj.set(galleryobj.stretchcolumn);
+                galleryobj.nostretchcolumn = galleryobj.nostretchcolumn ? 0 : 1;
+                overlayobj.set(galleryobj.nostretchcolumn);
                 _4cnvctx.refresh();
                 return true;
             },
             enabled: function()
             {
-                return galleryobj.stretchcolumn;
+                return galleryobj.nostretchcolumn;
             }
         },
         {
