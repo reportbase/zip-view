@@ -6284,11 +6284,12 @@ galleryobj.init = function(obj)
         title: `Account \u{25B6}`,
         func: function()
         {
+            menuobj.hide();
             galleryobj.leftcnv = _10cnv;
             galleryobj.leftctx = _10cnvctx;
             menuobj.setindex(galleryobj.leftctx);
             menuobj.show();
-            return false;
+            return true;
         }
     }
     ];
@@ -6300,12 +6301,13 @@ galleryobj.init = function(obj)
             title: "Debug",
             func: function()
             {
+                menuobj.hide();
                 galleryobj.leftcnv = _3cnv;
                 galleryobj.leftctx = _3cnvctx;
                 menuobj.setindex(galleryobj.leftctx);
                 menuobj.show();
                 headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-                return false;
+                return true;
             }
         });
     }
@@ -6355,12 +6357,13 @@ galleryobj.init = function(obj)
                 title: `Galleries \u{25B6}`,
                 func: function(n, x, y)
                 {
+                    menuobj.hide();
                     galleryobj.leftcnv = _2cnv;
                     galleryobj.leftctx = _2cnvctx;
                     menuobj.setindex(galleryobj.leftctx);
                     menuobj.show();
                     headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-                    return false;
+                    return true;
                 }
             });
 
@@ -6378,6 +6381,7 @@ galleryobj.init = function(obj)
             title: `Help \u{25B6}`,
             func: function()
             {
+                menuobj.hide();
                 galleryobj.leftcnv = _9cnv;
                 galleryobj.leftctx = _9cnvctx;
                 menuobj.setindex(galleryobj.leftctx);
