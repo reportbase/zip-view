@@ -3902,7 +3902,7 @@ bossobj.draw = function()
         {
             overlayobj.value().draw(context,
               new rectangle(x,0,w,rect.height),
-                  `${n+1}of${slices.length}`, 0);
+                  `${n+1}`, 0);
         }
     }
 
