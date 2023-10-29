@@ -3896,7 +3896,7 @@ bossobj.draw = function()
         var x2 = Math.berp(-1, 1, b2) * virtualpinch - virtualeft;
 
         var g = x2 > x ? x2 - x : x - x2;
-        var w = galleryobj.debug ? colwidth : g;
+        var w = galleryobj.stretchcolumn ? g : colwidth;
         w = Math.ceil(x + w) - x;
 
         if (x < -w || x >= rect.width)
@@ -3913,8 +3913,6 @@ bossobj.draw = function()
     context.drawImage(offbosscnv, 0, 0)
     context.restore();
 
-//    delete _4cnv.selectrect;
-//    delete _4cnv.thumbrect;
     delete context.extentrect;
     delete context.slicerect;
     delete context.slicewidthrect;
@@ -6114,20 +6112,30 @@ galleryobj.init = function(obj)
                 return true;
             }
         },
-        
+        {
+            title: "Stretch Columns",
+            func: function()
+            {
+                galleryobj.stretchcolumn = galleryobj.stretchcolumn ? 0 : 1;
+                overlayobj.set(galleryobj.stretchcolumn);
+                _4cnvctx.refresh();
+                return true;
+            },
+            enabled: function()
+            {
+                return galleryobj.stretchcolumn;
+            }
+        },
         {
             title: "Debug",
             func: function()
             {
                 galleryobj.debug = galleryobj.debug ? 0 : 1;
-                overlayobj.set(overlayobj.current() == 0 ? 1 : 0);
-                menuobj.hide();
-                headcnv.height = HEADHEIGHT;
-                headobj.set(BOSS);
-                headham.panel = headobj.value();
-                headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-                contextobj.reset();
                 return true;
+            },
+            enabled: function()
+            {
+                return galleryobj.debug;
             }
         },
         
