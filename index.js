@@ -2121,19 +2121,18 @@ var pinchlst = [
     name: "GALLERY",
     pinch: function(context, x, y, scale)
     {
-        var obj = buttonobj;
         if (!context.buttonanchor)
-            context.buttonanchor = obj.value();
+            context.buttonanchor = buttonobj.value();
         if (!context.scaleanchor)
             context.scaleanchor = scale;
         context.scale = scale;
         var k = context.scale / context.scaleanchor;
         var j = context.buttonanchor * k;
         var n = 1;
-        for (; n < obj.length(); ++n)
+        for (; n < buttonobj.length(); ++n)
         {
-            var b = obj.data[n - 1];
-            var b2 = obj.data[n];
+            var b = buttonobj.data[n-1];
+            var b2 = buttonobj.data[n];
             if (j < b || j > b2)
                 continue;
             obj.setcurrent(n);
@@ -6394,7 +6393,7 @@ galleryobj.init = function(obj)
                     {
                         try
                         {
-                            initlocal();
+                            local.reset();
                             galleryobj.init(json)
                         }
                         catch (_)
@@ -6616,7 +6615,7 @@ var local = {};
 local.time = [];
 local.email = "reportbase@gmail.com";
 
-function initlocal()
+local.reset()
 {
     try
     {
@@ -6654,7 +6653,7 @@ function initlocal()
     {}
 }
 
-initlocal();
+local.reset();
 
 function downloadtext(name, text)
 {
