@@ -1002,14 +1002,14 @@ panel.scrollbar = function()
 
 var buttonobj = new circular_array("", []);
 
+//buttonobj reset
 buttonobj.reset = function()
 {
     var w = galleryobj.width;
     var h = galleryobj.height;
     var a = w / h;
     buttonobj.data = [];
-    var gheight = Math.max(window.innerHeight/4,
-            Math.floor(w / a / 2));
+    var gheight = Math.floor(w / a / 4);
     var dheight = Math.floor(window.innerWidth / a) - gheight;
     var bheight = Math.floor(Math.min(1080*5, gheight*6));
     for (var n = gheight; n < bheight; ++n)
