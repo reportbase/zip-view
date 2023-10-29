@@ -3835,13 +3835,13 @@ var bosslst =
 ];
 
 var bossobj = new circular_array("", bosslst);
+
+//bossobj draw
 bossobj.draw = function()
 {
     if (!photo.image)
         return;
     if (!photo.image.complete)
-        return;
-    if (!photo.image.naturalHeight)
         return;
 
     var canvas = _4cnv;
@@ -3899,10 +3899,12 @@ bossobj.draw = function()
             slice.x, 0, colwidth, rect.height,
             x, 0, w, rect.height);
 
-        
-//            overlayobj.value().draw(offbossctx,
-//              new rectangle(x,0,w,rect.height),
-//                  `${n+1}of${slices.length}`, 0);
+        if (galleryobj.nostretchcolumn)
+        {
+            overlayobj.value().draw(offbossctx,
+              new rectangle(x,0,w,rect.height),
+                  `${n+1}of${slices.length}`, 0);
+        }
     }
 
     //context.drawImage(offbosscnv, 0, 0)
