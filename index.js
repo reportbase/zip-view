@@ -6289,7 +6289,7 @@ galleryobj.init = function(obj)
             galleryobj.leftctx = _10cnvctx;
             menuobj.setindex(galleryobj.leftctx);
             menuobj.show();
-            return true;
+            return false;
         }
     }
     ];
@@ -6307,7 +6307,7 @@ galleryobj.init = function(obj)
                 menuobj.setindex(galleryobj.leftctx);
                 menuobj.show();
                 headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-                return true;
+                return false;
             }
         });
     }
@@ -6363,7 +6363,7 @@ galleryobj.init = function(obj)
                     menuobj.setindex(galleryobj.leftctx);
                     menuobj.show();
                     headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-                    return true;
+                    return false;
                 }
             });
 
