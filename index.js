@@ -1008,7 +1008,8 @@ buttonobj.reset = function()
     var h = galleryobj.height;
     var a = w / h;
     buttonobj.data = [];
-    var gheight = Math.max(window.innerHeight/4,Math.floor(window.innerWidth / a / 2));
+    var gheight = Math.max(window.innerHeight/4,
+            Math.floor(w / a / 2));
     var dheight = Math.floor(window.innerWidth / a) - gheight;
     var bheight = Math.floor(Math.min(1080*5, gheight*6));
     for (var n = gheight; n < bheight; ++n)
@@ -6447,25 +6448,17 @@ galleryobj.init = function(obj)
     galleryobj.rightcnv = _5cnv.sliceobj.length()?_5cnv:_6cnv;
     galleryobj.rightctx = _5cnv.sliceobj.length()?_5cnvctx:_6cnvctx;
 
-    if (galleryobj.width)
+    var image = new Image();
+    var berp = _8cnv.timeobj.berp();
+    var current = galleryobj.lerp(1 - berp);
+    image.src = imagepath(galleryobj.data[current]);
+    image.onload = function()
     {
+        galleryobj.width = this.width;
+        galleryobj.height = this.height;
         buttonobj.reset();
         initime();
-    }
-    else
-    {
-        var image = new Image();
-        var berp = _8cnv.timeobj.berp();
-        var current = galleryobj.lerp(1 - berp);
-        image.src = imagepath(galleryobj.data[current]);
-        image.onload = function()
-        {
-            galleryobj.width = this.width;
-            galleryobj.height = this.height;
-            buttonobj.reset();
-            initime();
-        };
-    }
+    };
 }
 
 function initime()
