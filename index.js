@@ -6394,9 +6394,9 @@ galleryobj.init = function(obj)
                     {
                         try
                         {
-                            var k = localStorage.getItem(url.path);
-                            if (typeof val !== "undefined" && !Number.isNaN(val) && val != null)
-                                 _8cnv.timeobj.setcurrent(k)
+                            //var k = localStorage.getItem(url.path);
+                            //if (typeof val !== "undefined" && !Number.isNaN(val) && val != null)
+                             //    _8cnv.timeobj.setcurrent(k)
                             galleryobj.init(json)
                         }
                         catch (_)
