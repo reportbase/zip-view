@@ -6398,17 +6398,6 @@ galleryobj.init = function(obj)
                             if (typeof val !== "undefined" && !Number.isNaN(val) && val != null)
                                  _8cnv.timeobj.setcurrent(k)
                             galleryobj.init(json)
-                            var image = new Image();
-                            var berp = _8cnv.timeobj.berp();
-                            var current = galleryobj.lerp(1 - berp);
-                            image.src = imagepath(galleryobj.data[current]);
-                            image.onload = function()
-                            {
-                                galleryobj.width = this.width;
-                                galleryobj.height = this.height;
-                                buttonobj.reset();
-                                initime();
-                            };
                         }
                         catch (_)
                         {}
@@ -6471,6 +6460,18 @@ galleryobj.init = function(obj)
     galleryobj.leftctx = _7cnvctx;
     galleryobj.rightcnv = _5cnv.sliceobj.length()?_5cnv:_6cnv;
     galleryobj.rightctx = _5cnv.sliceobj.length()?_5cnvctx:_6cnvctx;
+
+   var image = new Image();
+    var berp = _8cnv.timeobj.berp();
+    var current = galleryobj.lerp(1 - berp);
+    image.src = imagepath(galleryobj.data[current]);
+    image.onload = function()
+    {
+        galleryobj.width = this.width;
+        galleryobj.height = this.height;
+        buttonobj.reset();
+        initime();
+    };
 }
 
 function initime()
