@@ -2225,15 +2225,6 @@ infobj.reset = function()
             infobj.data.push(`${j.toFixed(2)}%`);
             infobj.data.push(galleryobj.data[k].id);
             infobj.data.push(_8cnv.timeobj.current().toFixed(5));
-            if (galleryobj.value().id)
-                infobj.data.push(galleryobj.value().id);
-            infobj.data.push(`${window.innerWidth} x ${window.innerHeight}`);
-            var aspect = photo.image.width / photo.image.height;
-            infobj.data.push(aspect.toFixed(2));
-            var size = ((photo.image.width * photo.image.height) / 1000000).toFixed(1) + "MP";
-            infobj.data.push(size.toFixed(2));
-            var extent = `${photo.image.width}x${photo.image.height}`;
-            infobj.data.push(extent.toFixed(2));
         }
     }
     else
@@ -2249,6 +2240,15 @@ infobj.reset = function()
             var e = 100 * (1 - _4cnv.timeobj.berp());
             var j = 100 * rowobj.berp();
             infobj.data.push(`x - ${e.toFixed(2)}%, y - ${j.toFixed(2)}%`);
+            if (galleryobj.value().id)
+                infobj.data.push(galleryobj.value().id);
+            infobj.data.push(`${window.innerWidth} x ${window.innerHeight}`);
+            var aspect = photo.image.width / photo.image.height;
+            infobj.data.push(aspect.toFixed(2));
+            var size = ((photo.image.width * photo.image.height) / 1000000).toFixed(1) + "MP";
+            infobj.data.push(size.toFixed(2));
+            var extent = `${photo.image.width}x${photo.image.height}`;
+            infobj.data.push(extent.toFixed(2));
         }
     }
 
