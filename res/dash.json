@@ -1,8 +1,6 @@
 {
-  "title": "Dash Gallery",
-      "showboss": 1,
-      "width": 3507,
-      "height": 2565,
+  "title": "renaissance Paintings",
+      "boss": 1,
   "data": [
     {
       "id": "DASH.0000",
