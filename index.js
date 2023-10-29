@@ -1016,7 +1016,7 @@ buttonobj.reset = function()
     var dheight = Math.floor(window.innerWidth / a) - gheight;
     if (dheight < 0)
         dheight = 0;
-    var bheight = Math.floor(Math.min(1080*5, gheight*6));
+    var bheight = (2000*3000)/w;
     for (var n = gheight; n < bheight; ++n)
         buttonobj.data.push(n);
     buttonobj.set(dheight);
