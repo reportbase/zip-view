@@ -3515,18 +3515,10 @@ var taplst =
         }
         else if (canvas.closerect && canvas.closerect.hitest(x, y))
         {
-            menuobj.hide();
-            menuobj.setindex(_8cnvctx);
-            menuobj.draw();
-            galleryobj.leftnv = _7cnv;
-            galleryobj.leftctx = _7cnvctx;
-            headcnv.height = HEADHEIGHT;
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0); 
             return true;
         }
         else if (canvas.homerect && canvas.homerect.hitest(x, y))
         {
-            menuobj.hide();
             galleryobj.leftcnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
             menuobj.setindex(galleryobj.leftctx);
@@ -3544,7 +3536,6 @@ var taplst =
         else if (canvas.imagerect &&
             canvas.imagerect.hitest(x, y))
         {
-            menuobj.hide();
             galleryobj.rightcnv = _6cnv;
             galleryobj.rightctx = _6cnvctx;
             menuobj.setindex(galleryobj.rightctx);
@@ -3554,7 +3545,6 @@ var taplst =
         else if (canvas.folderect &&
             canvas.folderect.hitest(x, y))
         {
-            menuobj.hide();
             galleryobj.rightcnv = _5cnv;
             galleryobj.rightctx = _5cnvctx;
             menuobj.setindex(galleryobj.rightctx);
@@ -3564,7 +3554,6 @@ var taplst =
         else if (canvas.hscrollrect &&
             canvas.hscrollrect.hitest(x, y))
         {
-            menuobj.hide();
             var k = (y - canvas.hscrollrect.y) / canvas.hscrollrect.height;
             context.canvas.timeobj.setperc(1 - k);
             context.refresh()
@@ -3596,8 +3585,14 @@ var taplst =
             {
                 delete slice.tap;
                 context.refresh();
-                if (slice.func(n, x, y))
-                    menuobj.hide();
+                if (!slice.func(n, x, y))
+                    continue;
+                galleryobj.leftctx.hide();
+                galleryobj.rightctx.hide();
+                  menuobj.setindex(_8cnvctx);
+                menuobj.show();
+                galleryobj.leftnv = _7cnv;
+                galleryobj.leftctx = _7cnvctx;
             }, 200);
         }
     },
@@ -3892,7 +3887,7 @@ bossobj.draw = function()
         var x2 = Math.berp(-1, 1, b2) * virtualpinch - virtualeft;
 
         var g = x2 > x ? x2 - x : x - x2;
-        var w = galleryobj.nostretchcolumn ? g : colwidth;
+        var w = galleryobj.nostretchcolumn ? colwidth : g;
         w = Math.ceil(x + w) - x;
 
         if (x < -w || x >= rect.width)
