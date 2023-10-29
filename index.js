@@ -3587,12 +3587,14 @@ var taplst =
                 context.refresh();
                 if (!slice.func(n, x, y))
                     return;
+                
                 galleryobj.leftctx.hide();
                 galleryobj.rightctx.hide();
                 menuobj.setindex(_8cnvctx);
                 menuobj.show();
                 galleryobj.leftnv = _7cnv;
                 galleryobj.leftctx = _7cnvctx;
+                headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
             }, 200);
         }
     },
