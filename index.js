@@ -6378,22 +6378,30 @@ galleryobj.init = function(obj)
             for (var n = 0; n < results.length; ++n)
             {
                 var result = results[n];
-                result.json = JSON.parse(result.json);
-                result.title = result.json.title;
                 result.func = function(n, x, y)
                 {
                     var path = `${url.origin}/?id=${this.id}`;
                     window.history.replaceState("", url.origin, path); 
                     url.path = this.id;
-                    try
+                    fetch(this.json)
+                    .then(function(response)
                     {
-                        var k = localStorage.getItem(url.path);
-                        if (typeof val !== "undefined" && !Number.isNaN(val) && val != null)
-                             _8cnv.timeobj.setcurrent(k)
-                        galleryobj.init(this.json)
-                    }
-                    catch (_)
-                    {}
+                        if (response.ok)
+                            return response.json()
+                        throw Error(response.statusText);
+                    })
+                    .then(function(json)
+                    {
+                        try
+                        {
+                            var k = localStorage.getItem(url.path);
+                            if (typeof val !== "undefined" && !Number.isNaN(val) && val != null)
+                                 _8cnv.timeobj.setcurrent(k)
+                            galleryobj.init(json)
+                        }
+                        catch (_)
+                        {}
+                    });
 
                     return true;
                 }
