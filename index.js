@@ -860,7 +860,7 @@ panel.helpbar = function()
         var canvas = context.canvas;
         context.save();     
         canvas.homerect = new rectangle();
-        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
+        var a = new panel.rows([ALIEXTENT,0],
             [
                 new panel.layers(
                 [
@@ -868,34 +868,10 @@ panel.helpbar = function()
                     new panel.text(),
                     new panel.rectangle(canvas.homerect),
                 ]),
-                0,
-                1?0:new panel.layers(
-                [
-                    new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.colsA([0,0],
-                    [
-                        new panel.layers(
-                        [
-                            new panel.text(),
-                        ]),
-                        new panel.layers(
-                        [
-                            new panel.text(),
-                        ]),
-                    ])                            
-                ])
+                0
             ]);
         
-        a.draw(context, rect, 
-               [
-                   `\u{25C0} Help`,
-                   0,
-                   [
-                       "Notes",
-                       "Features"
-                   ],
-                ],
-                0);
+        a.draw(context, rect, `\u{25C0} Help`, 0);
         context.restore();
     }
 }
@@ -3470,6 +3446,7 @@ var taplst =
             }
 
             headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            return true;
         }
         else if (
             headcnvctx.rightmenurect &&
@@ -3489,16 +3466,19 @@ var taplst =
             }
 
             headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            return true;
         }
         else if (canvas.openrect && canvas.openrect.hitest(x, y))
         {
             importdialog()
+            return true;
         }
         else if (canvas.signinrect && canvas.signinrect.hitest(x, y))
         {
             if (!gotodialog(local.email ? local.email : "", "Login", gologin))
-                return;
+                return false;
             galleryobj.init();
+            return true;
         }
         else if (canvas.closerect && canvas.closerect.hitest(x, y))
         {
@@ -3508,7 +3488,8 @@ var taplst =
             galleryobj.leftnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
             headcnv.height = HEADHEIGHT;
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);        
+            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0); 
+            return true;
         }
         else if (canvas.homerect && canvas.homerect.hitest(x, y))
         {
@@ -3517,6 +3498,7 @@ var taplst =
             galleryobj.leftctx = _7cnvctx;
             menuobj.setindex(galleryobj.leftctx);
             menuobj.show();
+            return true;
         }
         else if (canvas.vscrollrect &&
             canvas.vscrollrect.hitest(x, y))
@@ -3524,6 +3506,7 @@ var taplst =
             var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
             canvas.scrollobj.setperc(k);
             context.refresh()
+            return true;
         }
         else if (canvas.imagerect &&
             canvas.imagerect.hitest(x, y))
@@ -3533,6 +3516,7 @@ var taplst =
             galleryobj.rightctx = _6cnvctx;
             menuobj.setindex(galleryobj.rightctx);
             menuobj.show();
+            return true;
         }
         else if (canvas.folderect &&
             canvas.folderect.hitest(x, y))
@@ -3542,6 +3526,7 @@ var taplst =
             galleryobj.rightctx = _5cnvctx;
             menuobj.setindex(galleryobj.rightctx);
             menuobj.show();
+            return true;
         }
         else if (canvas.hscrollrect &&
             canvas.hscrollrect.hitest(x, y))
@@ -3550,6 +3535,7 @@ var taplst =
             var k = (y - canvas.hscrollrect.y) / canvas.hscrollrect.height;
             context.canvas.timeobj.setperc(1 - k);
             context.refresh()
+            return true;
         }
         else
         {
