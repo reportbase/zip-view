@@ -3207,7 +3207,8 @@ CanvasRenderingContext2D.prototype.hithumb = function(x, y)
     }
 }
 
-var taplst = [
+var taplst = 
+[
 {
     name: "BOSS",
     tap: function(context, rect, x, y, shift, ctrl)
@@ -3567,17 +3568,17 @@ var taplst = [
 
             var n = visibles[k].n;
             var slice = canvas.sliceobj.data[n];
+            if (!slice.func)
+                return;
             slice.tap = 1;
             context.refresh();
+                
             setTimeout(function()
             {
-                menuobj.hide();
                 delete slice.tap;
-                if (slice.func)
-                    slice.func(n, x, y)
                 context.refresh();
-                _4cnvctx.refresh();
-                headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+                if (slice.func(n, x, y))
+                    menuobj.hide();
             }, 200);
         }
     },
@@ -5986,24 +5987,28 @@ galleryobj.init = function(obj)
             title: "Email Address",
             func: function()
             {
+                return true;
             }
         },
         {
             title: "Name",
             func: function()
             {
+                return true;
             }
         },
         {
             title: "Email Address",
             func: function()
             {
+                return true;
             }
         },
         {
             title: "Secret",
             func: function()
             {
+                return true;
             }
         },
     ]
@@ -6029,6 +6034,7 @@ galleryobj.init = function(obj)
                     {
                         console.log("error:", error);
                     });
+                return true;
             }
           },
 
@@ -6044,6 +6050,7 @@ galleryobj.init = function(obj)
                     .then(response => response.json())
                     .then(response => console.log(response))
                     .catch(err => console.error(err));
+                return true;
            }
         },
 
@@ -6059,6 +6066,7 @@ galleryobj.init = function(obj)
                     .then(response => response.json())
                     .then(response => console.log(response))
                     .catch(err => console.error(err));     
+                return true;
             }
         },
         
@@ -6077,7 +6085,8 @@ galleryobj.init = function(obj)
                     })
                   .then(response => response.json())
                     .then(response => console.log(response))
-                    .catch(err => console.error(err));   
+                    .catch(err => console.error(err));  
+                return true;
             }
         },
         {
@@ -6090,6 +6099,7 @@ galleryobj.init = function(obj)
                     for (let [key, value] of response.headers)
                         console.log(`${key} = ${value}`);
                   });
+                return true;
             }
         },
         
@@ -6105,6 +6115,7 @@ galleryobj.init = function(obj)
                 headham.panel = headobj.value();
                 headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
                 contextobj.reset();
+                return true;
             }
         },
         
@@ -6136,6 +6147,8 @@ galleryobj.init = function(obj)
                     URL.revokeObjectURL(anchor.href);
                     anchor.remove();
                 }
+
+                return true;
             }
         },
         
@@ -6160,6 +6173,8 @@ galleryobj.init = function(obj)
                         _4cnvctx.drawimage(canvas, 0, 0);
                     }
                 });
+
+                return true;
             }        
         }
     ];
@@ -6200,6 +6215,7 @@ galleryobj.init = function(obj)
             menuobj.setindex(_8cnvctx);
             menuobj.show();
             gotoimage(n);
+            return true;
         }
     };
 
@@ -6219,8 +6235,9 @@ galleryobj.init = function(obj)
         func: function()
         {
             if (!gotodialog(local.email ? local.email : "", "Login", gologin))
-                return;
+                return false;
             galleryobj.init();
+            return true;
         }
     },
     {
@@ -6228,8 +6245,9 @@ galleryobj.init = function(obj)
         func: function()
         {
             if (!gotodialog(local.email ? local.email : "", "Login", gologin))
-                return;
+                return false;
             galleryobj.init();
+            return true;
         }
     },
     {
@@ -6237,6 +6255,7 @@ galleryobj.init = function(obj)
         func: function()
         {
             importdialog();
+            return true;
         }
     },   
     {
@@ -6244,6 +6263,7 @@ galleryobj.init = function(obj)
         func: function() 
         {
             importdialog();
+            return true;
         }
     },     
     {
@@ -6251,6 +6271,7 @@ galleryobj.init = function(obj)
         func: function() 
         {
             importdialog();
+            return true;
         }
     },     
     {
@@ -6258,6 +6279,7 @@ galleryobj.init = function(obj)
         func: function()
         {
             screenfull.toggle()
+            return true;
         },
         enabled: function()
         {
@@ -6269,6 +6291,7 @@ galleryobj.init = function(obj)
         func: function()
         {
             buttonobj.fit();
+            return true;
         }
     },
     {
@@ -6279,6 +6302,7 @@ galleryobj.init = function(obj)
             galleryobj.leftctx = _10cnvctx;
             menuobj.setindex(galleryobj.leftctx);
             menuobj.show();
+            return true;
         }
     }
     ];
@@ -6295,6 +6319,7 @@ galleryobj.init = function(obj)
                 menuobj.setindex(galleryobj.leftctx);
                 menuobj.show();
                 headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+                return true;
             }
         });
     }
@@ -6333,6 +6358,8 @@ galleryobj.init = function(obj)
                     }
                     catch (_)
                     {}
+
+                    return true;
                 }
             }
 
@@ -6347,6 +6374,7 @@ galleryobj.init = function(obj)
                     menuobj.setindex(galleryobj.leftctx);
                     menuobj.show();
                     headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+                    return true;
                 }
             });
 
@@ -6369,6 +6397,7 @@ galleryobj.init = function(obj)
                 menuobj.setindex(galleryobj.leftctx);
                 menuobj.show();
                 headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+                return true;
             }
         });
     }
