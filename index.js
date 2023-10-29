@@ -3586,10 +3586,10 @@ var taplst =
                 delete slice.tap;
                 context.refresh();
                 if (!slice.func(n, x, y))
-                    continue;
+                    return;
                 galleryobj.leftctx.hide();
                 galleryobj.rightctx.hide();
-                  menuobj.setindex(_8cnvctx);
+                menuobj.setindex(_8cnvctx);
                 menuobj.show();
                 galleryobj.leftnv = _7cnv;
                 galleryobj.leftctx = _7cnvctx;
