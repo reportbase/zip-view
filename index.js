@@ -2205,7 +2205,6 @@ var rowobj = new circular_array("ROW", window.innerHeight);
 rowobj.set(Math.floor((50 / 100) * window.innerHeight));
 
 var stretchobj = new circular_array("STRETCH", 100);
-var extentobj = new circular_array("EXTENT", []);
 
 var infobj = new circular_array("INFO", []);
 infobj.reset = function()
@@ -2221,10 +2220,20 @@ infobj.reset = function()
         infobj.data.push(`${index.toFixed(2)} of ${galleryobj.length()}`);
         if (url.searchParams.has("debug"))
         {
+            infobj.data.push(buttonobj.value().toFixed(2));
             var j = 100 * _8cnv.scrollobj.berp();
             infobj.data.push(`${j.toFixed(2)}%`);
             infobj.data.push(galleryobj.data[k].id);
             infobj.data.push(_8cnv.timeobj.current().toFixed(5));
+            if (galleryobj.value().id)
+                infobj.data.push(galleryobj.value().id);
+            infobj.data.push(`${window.innerWidth} x ${window.innerHeight}`);
+            var aspect = photo.image.width / photo.image.height;
+            infobj.data.push(aspect.toFixed(2));
+            var size = ((photo.image.width * photo.image.height) / 1000000).toFixed(1) + "MP";
+            infobj.data.push(size.toFixed(2));
+            var extent = `${photo.image.width}x${photo.image.height}`;
+            infobj.data.push(extent.toFixed(2));
         }
     }
     else
@@ -2234,6 +2243,7 @@ infobj.reset = function()
         if (value && value.folder)
             infobj.data = value.folder.split("/");
         infobj.data.push(`${index+1} of ${galleryobj.length()}`);
+        infobj.data.push(_4cnv.timeobj.current().toFixed(5));
         if (url.searchParams.has("debug"))
         {
             var e = 100 * (1 - _4cnv.timeobj.berp());
@@ -5016,13 +5026,6 @@ contextobj.reset = function()
 
         photo.image.onload = function()
         {
-            this.aspect = this.width / this.height;
-            this.size = ((this.width * this.height) / 1000000).toFixed(1) + "MP";
-            this.extent = `${this.width}x${this.height}`;
-            extentobj.data[0] = `${galleryobj.current()+1} of ${galleryobj.length()}`;
-            extentobj.data[1] = this.extent;
-            extentobj.data[2] = galleryobj.value().id ? galleryobj.value().id : "Undefined";
-            extentobj.data[3] = `${window.innerWidth} x ${window.innerHeight}`;
             var e = galleryobj.value();
             document.title = galleryobj.title?galleryobj.title:url.host;
             headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
