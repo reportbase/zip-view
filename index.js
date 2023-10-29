@@ -37,7 +37,7 @@ const MENUTAP = "rgba(255,125,0,0.7)";
 const SCROLLNAB = "rgba(0,0,0,0.3)";
 const MENUCOLOR = "rgba(0,0,0,0.5)";
 const OPTIONFILL = "white";
-const THUMBFILP = "rgba(0,0,0,0.4)";
+const THUMBTRANSPARENT = "rgba(0,0,0,0.2)";
 const THUMBFILL = "rgba(255,155,0,0.4)";
 const THUMBSTROKE = "rgba(255,255,255,0.4)";
 const SEARCHFRAME = "rgba(255,255,255,0.5)";
@@ -2010,7 +2010,8 @@ var wheelst =
         {
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
-            buttonobj.addperc(k * 0.005);
+            var j = Math.lerp(0.001,0.1,buttonobj.berp());
+            buttonobj.addperc(k * j);
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
             context.canvas.pinching = 0;
@@ -3786,7 +3787,7 @@ var bosslst =
             context.shadowOffsetY = 0;
             if (galleryobj.transparent)
             {
-                var blackfill = new panel.fill(THUMBFILP);
+                var blackfill = new panel.fill(THUMBTRANSPARENT);
                 blackfill.draw(context, canvas.thumbrect, 0, 0);
             }
             else
@@ -3797,7 +3798,6 @@ var bosslst =
                     canvas.thumbcanvas.width = w;
                     canvas.thumbcanvas.height = h;
                     var thumbcontext = canvas.thumbcanvas.getContext('2d');
-
                     thumbcontext.drawImage(photo.image, 0, 0, w, h);
                 }
 
@@ -6394,9 +6394,7 @@ galleryobj.init = function(obj)
                     {
                         try
                         {
-                            //var k = localStorage.getItem(url.path);
-                            //if (typeof val !== "undefined" && !Number.isNaN(val) && val != null)
-                             //    _8cnv.timeobj.setcurrent(k)
+                            initlocal();
                             galleryobj.init(json)
                         }
                         catch (_)
@@ -6617,41 +6615,46 @@ else
 var local = {};
 local.time = [];
 local.email = "reportbase@gmail.com";
-    
-try
+
+function initlocal()
 {
-    var k = localStorage.getItem("local");
-    if (k)
-        local = JSON.parse(k);
-
-    var lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
-               _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
-               _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
-    for (var n = 0; n < lst.length; ++n)
+    try
     {
-        var cnv = lst[n].canvas;
-        cnv.timeobj.setcurrent(local.time[n]);
-    }    
-
-    var k = localStorage.getItem(url.path);
-    var jst = JSON.parse(k);
-    var lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
-    if (jst.length == lst.length)
-    {
+        var k = localStorage.getItem("local");
+        if (k)
+            local = JSON.parse(k);
+    
+        var lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
+                   _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
+                   _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
         for (var n = 0; n < lst.length; ++n)
         {
-            var canvas = lst[n].canvas;
-            var val = jst[n];
-            if (typeof val === "undefined" || 
-                Number.isNaN(val) || 
-                val == null)
-                continue
-            canvas.timeobj.setcurrent(val);
+            var cnv = lst[n].canvas;
+            cnv.timeobj.setcurrent(local.time[n]);
+        }    
+    
+        var k = localStorage.getItem(url.path);
+        var jst = JSON.parse(k);
+        var lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
+        if (jst.length == lst.length)
+        {
+            for (var n = 0; n < lst.length; ++n)
+            {
+                var canvas = lst[n].canvas;
+                var val = jst[n];
+                if (typeof val === "undefined" || 
+                    Number.isNaN(val) || 
+                    val == null)
+                    continue
+                canvas.timeobj.setcurrent(val);
+            }
         }
     }
+    catch (_)
+    {}
 }
-catch (_)
-{}
+
+initlocal();
 
 function downloadtext(name, text)
 {
