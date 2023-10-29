@@ -2818,6 +2818,7 @@ function gotoimage(n)
     }
     _8cnv.timeobj.set(k);
     menuobj.draw();
+    return true;
 }
 
 var swipelst = [
