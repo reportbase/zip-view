@@ -3868,8 +3868,8 @@ bossobj.draw = function()
     if (galleryobj.nostretchcolumn || (
         galleryobj.value() && galleryobj.value().ispng))
     {
-        offbossctx.clearRect(0, 0, offbosscnv.width, 
-                             offbosscnv.height);
+        context.clearRect(0, 0, canvas.width, 
+                             canvas.height);
     }
 
     for (var m = 0; m < slices.length; ++m)
@@ -3895,7 +3895,7 @@ bossobj.draw = function()
 
         if (x < -w || x >= rect.width)
             continue;
-        offbossctx.drawImage(slice.canvas,
+        context.drawImage(slice.canvas,
             slice.x, 0, colwidth, rect.height,
             x, 0, w, rect.height);
 
@@ -3905,7 +3905,7 @@ bossobj.draw = function()
 //                  `${n+1}of${slices.length}`, 0);
     }
 
-    context.drawImage(offbosscnv, 0, 0)
+    //context.drawImage(offbosscnv, 0, 0)
     context.restore();
 
     delete context.extentrect;
