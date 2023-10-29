@@ -3460,7 +3460,8 @@ var taplst =
     tap: function(context, rect, x, y)
     {
         var canvas = context.canvas;
-        if (headcnvctx.leftmenurect && headcnvctx.leftmenurect.hitest(x, y))
+        if (headcnvctx.leftmenurect && 
+            headcnvctx.leftmenurect.hitest(x, y))
         {
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.rightctx.hide()
@@ -3513,9 +3514,17 @@ var taplst =
             galleryobj.init();
             return true;
         }
-        else if (canvas.closerect && canvas.closerect.hitest(x, y))
+        else if (canvas.closerect && 
+                 canvas.closerect.hitest(x, y))
         {
-            return true;
+            galleryobj.leftctx.hide();
+            galleryobj.rightctx.hide();
+            menuobj.setindex(_8cnvctx);
+            menuobj.show();
+            galleryobj.leftnv = _7cnv;
+            galleryobj.leftctx = _7cnvctx;
+            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+           return false;
         }
         else if (canvas.homerect && canvas.homerect.hitest(x, y))
         {
