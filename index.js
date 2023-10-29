@@ -3868,7 +3868,8 @@ bossobj.draw = function()
     if (galleryobj.nostretchcolumn || (
         galleryobj.value() && galleryobj.value().ispng))
     {
-        offbossctx.clear();
+        offbossctx.clearRect(0, 0, offbosscnv.width, 
+                             offbosscnv.height);
     }
 
     for (var m = 0; m < slices.length; ++m)
