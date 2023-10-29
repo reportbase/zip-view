@@ -853,6 +853,29 @@ panel.folderbar = function()
     }
 }
 
+panel.debugbar = function()
+{
+    this.draw = function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save();     
+        canvas.homerect = new rectangle();
+        var a = new panel.rows([ALIEXTENT,0],
+            [
+                new panel.layers(
+                [
+                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.text(),
+                    new panel.rectangle(canvas.homerect),
+                ]),
+                0
+            ]);
+        
+        a.draw(context, rect, `\u{25C0} Debug`, 0);
+        context.restore();
+    }
+}
+
 panel.helpbar = function()
 {
     this.draw = function(context, rect, user, time)
@@ -4516,7 +4539,7 @@ var eventlst = [
     scrollinit: 2,
     width: 640
 },
-{ //3
+{ //3 debug
     hideontap: 1,
     speed: 60,
     reduce: 5,
@@ -4534,7 +4557,7 @@ var eventlst = [
     pinch: "MENU",
     bar: new panel.empty(),
     scroll: new panel.scrollbar(),
-    footer: new panel.empty(),
+    footer: new panel.debugbar(),
     buttonheight: 90,
     buttonmargin: 10,
     scrollinit: 0,
@@ -6298,7 +6321,7 @@ galleryobj.init = function(obj)
     {
         _7cnv.sliceobj.data.push(
         {
-            title: "Debug",
+            title: "Debug \u{25B6}",
             func: function()
             {
                 menuobj.hide();
