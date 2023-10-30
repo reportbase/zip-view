@@ -1636,10 +1636,10 @@ CanvasRenderingContext2D.prototype.savetime = function()
     clearTimeout(this.svaetimeout);
     this.savetimeout = setTimeout(function()
         {
-            var e = url.searchParams.get('e');
+            var e = url.searchParams.get('_8');
             if (e != _8cnv.timeobj.current())
             {
-                url.searchParams.set('e', _8cnv.timeobj.current());
+                url.searchParams.set('_8', _8cnv.timeobj.current());
                 window.history.replaceState("", url.origin, url);
             }
               
@@ -6388,9 +6388,9 @@ galleryobj.init = function(obj)
         galleryobj.width = this.width;
         galleryobj.height = this.height;
         buttonobj.reset();
-        var e = url.searchParams.get('e');
-        if (e != null)
-            _8cnv.timeobj.set(Number(e));
+        var k = url.searchParams.get('_8');
+        if (k != null)
+            _8cnv.timeobj.set(Number(k));
         contextobj.reset();
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
