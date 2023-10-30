@@ -1996,6 +1996,7 @@ var wheelst =
     updown: function(context, x, y, delta, ctrl, shift, alt, type)
     {
         var canvas = context.canvas;
+        context.savetime();
         context.canvas.slideshow = 0;
         if (ctrl)
         {
@@ -6716,6 +6717,7 @@ function importdialog()
 
 menuobj.updown = function(context, delta)
 {
+    context.savetime();
     var canvas = context.canvas;
     canvas.autodirect = delta < 0 ? 1 : -1;
     var f = Math.abs(delta) / canvas.speedobj.length();
