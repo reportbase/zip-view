@@ -6622,7 +6622,7 @@ var local = {};
 local.time = [];
 local.email = "reportbase@gmail.com";
 
-local.reset()
+local.reset = function()
 {
     try
     {
