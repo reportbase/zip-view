@@ -722,7 +722,7 @@ panel.galleriesbar = function()
                    [
                        `\u{271A} New`,
                        `\u{2718} Delete`,
-                       `\u{2713} Edit`
+                       `\u{25FE} Edit`
                    ], 
                 ]);
         
@@ -3919,10 +3919,6 @@ bossobj.draw = function()
     }
 }
 
-bossobj.updown = function(delta) {
-
-}
-
 bossobj.reset = function()
 {
     if (!photo.image ||
@@ -4983,45 +4979,40 @@ var local = {};
 local.time = [];
 local.email = "reportbase@gmail.com";
 
-local.reset = function()
+try
 {
-    try
+    var k = localStorage.getItem("local");
+    if (k)
+        local = JSON.parse(k);
+
+    var lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
+               _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
+               _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
+    for (var n = 0; n < lst.length; ++n)
     {
-        var k = localStorage.getItem("local");
-        if (k)
-            local = JSON.parse(k);
-    
-        var lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
-                   _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
-                   _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
+        var cnv = lst[n].canvas;
+        cnv.timeobj.setcurrent(local.time[n]);
+    }    
+
+    var k = localStorage.getItem(url.path);
+    var jst = JSON.parse(k);
+    var lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
+    if (jst.length == lst.length)
+    {
         for (var n = 0; n < lst.length; ++n)
         {
-            var cnv = lst[n].canvas;
-            cnv.timeobj.setcurrent(local.time[n]);
-        }    
-    
-        var k = localStorage.getItem(url.path);
-        var jst = JSON.parse(k);
-        var lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
-        if (jst.length == lst.length)
-        {
-            for (var n = 0; n < lst.length; ++n)
-            {
-                var canvas = lst[n].canvas;
-                var val = jst[n];
-                if (typeof val === "undefined" || 
-                    Number.isNaN(val) || 
-                    val == null)
-                    continue
-                canvas.timeobj.setcurrent(val);
-            }
+            var canvas = lst[n].canvas;
+            var val = jst[n];
+            if (typeof val === "undefined" || 
+                Number.isNaN(val) || 
+                val == null)
+                continue
+            canvas.timeobj.setcurrent(val);
         }
     }
-    catch (_)
-    {}
 }
-
-local.reset();
+catch (_)
+{}
 
 contextobj.reset = function()
 {
@@ -6482,37 +6473,6 @@ function initime()
     else
     {
         gotoimage(0);
-    }
-
-    if (galleryobj.length() == 1)
-    {
-        _8cnv.timeobj.set(2700);
-        menuobj.draw();
-    }
-    else if (galleryobj.length() == 2)
-    {
-        _8cnv.timeobj.set(3300);
-        menuobj.draw();
-    }
-    else if (galleryobj.length() == 3)
-    {
-        _8cnv.timeobj.set(3400);
-        menuobj.draw();
-    }
-    else if (galleryobj.length() == 4)
-    {
-        _8cnv.timeobj.set(3500);
-        menuobj.draw();
-    }
-    else if (galleryobj.length() == 5)
-    {
-        _8cnv.timeobj.set(3600);
-        menuobj.draw();
-    }
-    else if (galleryobj.length() == 6)
-    {
-        _8cnv.timeobj.set(3700);
-        menuobj.draw();
     }
 }
 
