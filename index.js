@@ -2797,7 +2797,6 @@ pressobj.set(3);
 
 function gotoimage(n)
 {
-   //todo buttonobj.fit();
     var top = buttonobj.value() > window.innerHeight;
     var k = CYLSEAL - (CYLSEAL / galleryobj.length() / 2);
     k -= n * (CYLSEAL / galleryobj.length());
@@ -4462,7 +4461,8 @@ menuobj.draw = function()
                 y,
                 n
             };
-            
+
+            //todo:
             slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight);
             slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
             if (slice.isvisible)
@@ -4987,6 +4987,7 @@ var local = {};
 local.time = [];
 local.email = "reportbase@gmail.com";
 
+//todo
 local.reset = function()
 {
     try
@@ -5635,8 +5636,6 @@ function resize()
     buttonobj.reset()
     contextobj.reset();
     _4cnvctx.refresh();
-    offbosscnv.width = window.innerWidth;
-    offbosscnv.height = window.innerHeight;
     headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
     headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
     if (menuobj.value() == _8cnvctx)
@@ -6207,32 +6206,6 @@ galleryobj.init = function(obj)
                 return true;
             }
         },
-        
-        {
-            title: "Offscreen.js",
-            func: function()
-            {
-                var offcnv = new offscreencanvas(200, 200);
-                const offworker = new worker('js/offscreen.js');
-                offworker.postmessage(
-                {
-                    msg: 'offscreen',
-                    canvas: offcnv
-                }, [offcnv]);
-                offworker.addeventlistener('message', function(ev)
-                {
-                    if (ev.data.msg === 'render')
-                    {
-                        var canvas = document.createelement("canvas");
-                        let context = canvas.getcontext("bitmaprenderer");
-                        context.transferfromimagebitmap(ev.data.bitmap);
-                        _4cnvctx.drawimage(canvas, 0, 0);
-                    }
-                });
-
-                return true;
-            }        
-        }
     ];
 
     _5cnv.sliceobj.data = [];
