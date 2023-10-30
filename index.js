@@ -84,6 +84,10 @@ let photo = {};
 let util = {};
 photo.image = 0;
 
+var local = {};
+local.time = [];
+local.email = "reportbase@gmail.com";
+
 let url = new URL(window.location.href);
 
 util.random_color = function()
@@ -510,22 +514,6 @@ let _15cnv = document.getElementById("_15");
 let _15cnvctx = _15cnv.getContext("2d", opts);
 let headcnv = document.getElementById("head");
 let headcnvctx = headcnv.getContext("2d", opts);
-
-var offbosscnv = new OffscreenCanvas(1, 1);
-var offbossctx = offbosscnv.getContext("2d");
-offbossctx.font = DEFAULTFONT;
-offbossctx.fillText("  ", 0, 0);
-offbossctx.imageSmoothingEnabled = false;
-offbossctx.imageSmoothingQuality = "high";
-offbosscnv.width = window.innerWidth;
-offbosscnv.height = window.innerHeight;
-  
-var offmenucnv = new OffscreenCanvas(1, 1);
-var offmenuctx = offmenucnv.getContext("2d");
-offmenuctx.font = DEFAULTFONT;
-offmenuctx.fillText("  ", 0, 0);
-offmenuctx.imageSmoothingEnabled = false;
-offmenuctx.imageSmoothingQuality = "high";
 
 let canvaslst = [];
 for (var n = 0; n < 6; ++n)
@@ -5002,6 +4990,47 @@ contextlst.forEach(function(context, n)
     context.canvas.panend_ = k.panend;
 });
 
+
+local.reset = function()
+{
+    try
+    {
+        var k = localStorage.getItem("local");
+        if (k)
+            local = JSON.parse(k);
+    
+        var lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
+                   _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
+                   _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
+        for (var n = 0; n < lst.length; ++n)
+        {
+            var cnv = lst[n].canvas;
+            cnv.timeobj.setcurrent(local.time[n]);
+        }    
+    
+        var k = localStorage.getItem(url.path);
+        var jst = JSON.parse(k);
+        var lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
+        if (jst.length == lst.length)
+        {
+            for (var n = 0; n < lst.length; ++n)
+            {
+                var canvas = lst[n].canvas;
+                var val = jst[n];
+                if (typeof val === "undefined" || 
+                    Number.isNaN(val) || 
+                    val == null)
+                    continue
+                canvas.timeobj.setcurrent(val);
+            }
+        }
+    }
+    catch (_)
+    {}
+}
+
+local.reset();
+
 contextobj.reset = function()
 {
     var context = _4cnvctx;
@@ -6599,49 +6628,6 @@ else
     fooload(url.path);
 }
 
-var local = {};
-local.time = [];
-local.email = "reportbase@gmail.com";
-
-local.reset = function()
-{
-    try
-    {
-        var k = localStorage.getItem("local");
-        if (k)
-            local = JSON.parse(k);
-    
-        var lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
-                   _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
-                   _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
-        for (var n = 0; n < lst.length; ++n)
-        {
-            var cnv = lst[n].canvas;
-            cnv.timeobj.setcurrent(local.time[n]);
-        }    
-    
-        var k = localStorage.getItem(url.path);
-        var jst = JSON.parse(k);
-        var lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
-        if (jst.length == lst.length)
-        {
-            for (var n = 0; n < lst.length; ++n)
-            {
-                var canvas = lst[n].canvas;
-                var val = jst[n];
-                if (typeof val === "undefined" || 
-                    Number.isNaN(val) || 
-                    val == null)
-                    continue
-                canvas.timeobj.setcurrent(val);
-            }
-        }
-    }
-    catch (_)
-    {}
-}
-
-local.reset();
 
 function downloadtext(name, text)
 {
