@@ -2813,7 +2813,7 @@ pressobj.set(3);
 
 function gotoimage(n)
 {
-    buttonobj.fit();
+   //todo buttonobj.fit();
     var top = buttonobj.value() > window.innerHeight;
     var k = CYLSEAL - (CYLSEAL / galleryobj.length() / 2);
     k -= n * (CYLSEAL / galleryobj.length());
