@@ -6382,7 +6382,9 @@ galleryobj.init = function(obj)
                     var path = `${url.origin}/?id=${this.id}`;
                     window.history.replaceState("", url.origin, path); 
                     url.path = this.id;
-                    loadgalleryid(this.json);
+                    fetch(this.json)
+                        .then((response) => jsonhandler(response))
+                        .then((obj) => galleryobj.init(obj))
                     return true;
                 }
             }
@@ -6532,8 +6534,6 @@ function fooload(path)
         fetch(path)
             .then((response) => jsonhandler(response))
             .then((obj) => galleryobj.init(obj))
-            .catch((error) =>
-            {});
     }
     else
     {
@@ -6575,10 +6575,10 @@ else if (url.searchParams.has("id"))
         .then((response) => jsonhandler(response))
         .then(function(obj)
           {
-              loadgalleryid(obj.json);
+                 fetch(obj.json)
+                    .then((response) => jsonhandler(response))
+                    .then((obj) => galleryobj.init(obj))
           })
-        .catch((error) =>
-        {});
 }
 else if (url.searchParams.has("res"))
 {
@@ -6595,22 +6595,6 @@ else
 {
     url.path = "res/home.json";
     fooload(url.path);
-}
-
-function loadgalleryid(path)
-{
-    fetch(path)
-    .then(function(response)
-    {
-        if (response.ok)
-            return response.json()
-        throw Error(response.statusText);
-    })
-    .then(function(json)
-    {
-        //local.reset();
-        galleryobj.init(json)
-    });
 }
 
 var local = {};
