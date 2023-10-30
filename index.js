@@ -84,10 +84,6 @@ let photo = {};
 let util = {};
 photo.image = 0;
 
-var local = {};
-local.time = [];
-local.email = "reportbase@gmail.com";
-
 let url = new URL(window.location.href);
 
 util.random_color = function()
@@ -4987,6 +4983,9 @@ contextlst.forEach(function(context, n)
     context.canvas.panend_ = k.panend;
 });
 
+var local = {};
+local.time = [];
+local.email = "reportbase@gmail.com";
 
 local.reset = function()
 {
@@ -6592,17 +6591,15 @@ else if (url.searchParams.has("sidney"))
     fetch(`https://sidney.reportbase5836.workers.dev`)
         .then((response) => jsonhandler(response))
         .then((obj) => galleryobj.init(obj))
-        .catch((error) =>
-        {});
 }
 else if (url.searchParams.has("id"))
 {
     url.path = url.searchParams.get("id");
-    local.reset();
     fetch(`https://gallery.reportbase5836.workers.dev/${url.path}`)
         .then((response) => jsonhandler(response))
         .then(function(obj)
           {
+                local.reset();
                  fetch(obj.json)
                     .then((response) => jsonhandler(response))
                     .then((obj) => galleryobj.init(obj))
