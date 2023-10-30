@@ -1644,6 +1644,22 @@ CanvasRenderingContext2D.prototype.hide = function()
     this.canvas.height = 0;
 };
 
+CanvasRenderingContext2D.prototype.save = function()
+{
+    var canvas = this.canvas;
+    clearTimeout(this.svaetimeout);
+    this.savetimeout = setTimeout(function()
+      {
+            try
+            {
+                localStorage.setItem(canvas.id, canvas.timeobj.current());
+            }
+            catch (_)
+            {    
+            }
+      }, 100)
+}
+
 CanvasRenderingContext2D.prototype.refresh = function()
 {
     var context = this;
@@ -3298,15 +3314,6 @@ var taplst =
     {
         clearInterval(context.canvas.leftright)
         var canvas = context.canvas;
-        
-        try
-        {
-            localStorage.setItem(canvas.id, canvas.timeobj.current());
-        }
-        catch (_)
-        {    
-        }
-        
         canvas.slideshow = 0;
         var timeauto = global.timeauto;
         clearInterval(global.timeauto);
@@ -3457,16 +3464,7 @@ var taplst =
     name: "MENU",
     tap: function(context, rect, x, y)
     {
-        var canvas = context.canvas;
-
-        try
-        {
-            localStorage.setItem(canvas.id, canvas.timeobj.current());
-        }
-        catch (_)
-        {    
-        }
-        
+        var canvas = context.canvas;   
         if (headcnvctx.leftmenurect && 
             headcnvctx.leftmenurect.hitest(x, y))
         {
@@ -4366,7 +4364,7 @@ menuobj.draw = function()
     const rect = context.rect();
     if (!rect.width || !rect.height)
         return;
-
+    context.save();
     if (context.canvas.slideshow > 0)
     {
         var k = canvas.autodirect;
