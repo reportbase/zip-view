@@ -6416,23 +6416,6 @@ function initime()
     headham.panel = headobj.value();
     headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
     headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-
-    if (url.searchParams.has("e"))
-    {
-        var folder = url.searchParams.get("e");
-        for (var m = 0; m < galleryobj.data.length; ++m)
-        {
-            var e = galleryobj.data[m];
-            if (!e.folder || !e.folder.wild("*" + folder + "*"))
-                continue;
-            gotoimage(m);
-            break;
-        }
-    }
-    else
-    {
-        gotoimage(0);
-    }
 }
 
 function fooload(path)
