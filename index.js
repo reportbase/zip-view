@@ -4668,7 +4668,7 @@ var eventlst = [
 { //8
     hideontap: 1,
     speed: 50,
-    reduce: 10,
+    reduce: 25,
     updownmax: 60,
     mouse: "GALLERY",
     thumb: "DEFAULT",
