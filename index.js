@@ -5802,7 +5802,7 @@ window.addEventListener("keydown", function(evt)
 
 window.onerror = function(message, source, lineno, colno, error)
 {
-    //window.alert( error+","+lineno+","+console.trace());
+    window.alert( error+","+lineno+","+console.trace());
 };
 
 window.addEventListener("pagehide", (evt) =>
