@@ -2039,7 +2039,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     {
-        galleryobj.leftright(context, delta);
+        galleryobjleftright(context, delta);
     },
 },
 {
@@ -2851,7 +2851,7 @@ var swipelst = [
     swipeleftright: function(context, rect, x, y, evt)
     {
         var k = evt.type == "swipeleft" ? 1 : -1;
-        galleryobj.leftright(context, k * context.canvas.speedobj.value());
+        galleryobjleftright(context, k * context.canvas.speedobj.value());
     },
     swipeupdown: function(context, rect, x, y, evt)
     {
@@ -3003,7 +3003,7 @@ var keylst = [
                 key == "h")
             {
                 evt.preventDefault();
-                galleryobj.leftright(context, -canvas.speedobj.value() / 2)
+                galleryobjleftright(context, -canvas.speedobj.value() / 2)
             }
             else if (
                 (!canvas.shiftKey && key == "tab") ||
@@ -3011,7 +3011,7 @@ var keylst = [
                 key == "l")
             {
                 evt.preventDefault();
-                galleryobj.leftright(context, canvas.speedobj.value() / 2)
+                galleryobjleftright(context, canvas.speedobj.value() / 2)
             }
             else if (key == "d")
             {
@@ -6935,7 +6935,7 @@ function selectid(id)
     }
 }
 
-galleryobj.leftright = function(context, delta)
+function galleryobjleftright(context, delta)
 {
     if (context.pinching)
         return;
