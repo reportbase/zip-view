@@ -983,6 +983,8 @@ buttonobj.reset = function()
     if (dheight < 0)
         dheight = 0;
     var bheight = (2000*3000)/w;
+    if (bheight > galleryobj.height)
+        bheight = galleryobj.height;
     for (var n = gheight; n < bheight; ++n)
         buttonobj.data.push(n);
     buttonobj.set(dheight);
