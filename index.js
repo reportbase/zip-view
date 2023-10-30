@@ -3301,7 +3301,7 @@ var taplst =
         
         try
         {
-            localStorage.setItem(context.id, canvas.timeobj.current());
+            localStorage.setItem(canvas.id, canvas.timeobj.current());
         }
         catch (_)
         {    
@@ -3458,6 +3458,15 @@ var taplst =
     tap: function(context, rect, x, y)
     {
         var canvas = context.canvas;
+
+        try
+        {
+            localStorage.setItem(canvas.id, canvas.timeobj.current());
+        }
+        catch (_)
+        {    
+        }
+        
         if (headcnvctx.leftmenurect && 
             headcnvctx.leftmenurect.hitest(x, y))
         {
@@ -4875,7 +4884,7 @@ contextlst.forEach(function(context, n)
     
     try
     {
-        var k = localStorage.getItem(context.id);
+        var k = localStorage.getItem(canvas.id);
         if (typeof k !== "undefined" && Number.isNaN(k) && k != null)
             canvas.timeobj.setcurrent(k);
         else
