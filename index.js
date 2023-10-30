@@ -4327,9 +4327,6 @@ menuobj.show = function()
         context.show(l, 0, w, window.innerHeight);
     }
 
-    offmenucnv.width = canvas.width;
-    offmenucnv.height = canvas.height;
-    
     function f()
     {
         context.canvas.lastime = -0.0000000000101010101;
