@@ -6624,6 +6624,8 @@ local.email = "reportbase@gmail.com";
 
 local.reset = function()
 {
+    return;
+    
     try
     {
         var k = localStorage.getItem("local");
