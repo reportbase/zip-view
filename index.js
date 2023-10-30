@@ -1635,16 +1635,22 @@ CanvasRenderingContext2D.prototype.savetime = function()
     var canvas = this.canvas;
     clearTimeout(this.svaetimeout);
     this.savetimeout = setTimeout(function()
-      {
+        {
+            var e = url.searchParams.get('e');
+            if (e != _8cnv.timeobj.current())
+            {
+                url.searchParams.set('e', _8cnv.timeobj.current());
+                window.history.pushState({}, '', url);
+            }
+              
             try
             {
-                localStorage.setItem("id", galleryobj.id);
                 localStorage.setItem(canvas.id, canvas.timeobj.current());
             }
             catch (_)
             {    
             }
-      }, 100)
+      }, 400)
 }
 
 CanvasRenderingContext2D.prototype.refresh = function()
@@ -6382,37 +6388,17 @@ galleryobj.init = function(obj)
         galleryobj.width = this.width;
         galleryobj.height = this.height;
         buttonobj.reset();
-        initime();
-    };
-}
-
-function initime()
-{
-    try
-    {
-        var j = localStorage.getItem("id");
-        if (j != galleryobj.id)
-            gotoimage(0);
-    }
-    catch (_)
-    {    
-    }
-    
-    contextobj.reset();
-    if (galleryobj.length() >= BOSSMIN)
-    {
+        var e = url.searchParams.get('e');
+        if (e != null)
+            _8cnv.timeobj.set(Number(e));
+        contextobj.reset();
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
         headobj.set(GALLERY);
-    }
-    else
-    {
-        headobj.set(BOSS);
-    }
-    
-    headham.panel = headobj.value();
-    headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
-    headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+        headham.panel = headobj.value();
+        headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
+        headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+    };
 }
 
 function fooload(path)
