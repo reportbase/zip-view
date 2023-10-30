@@ -2016,6 +2016,7 @@ var wheelst =
             {
                 context.canvas.lastime = -0.0000000000101010101;
                 menuobj.draw();
+                local.set();
             }, TIMEMAIN);
         }
     },
@@ -2036,11 +2037,13 @@ var wheelst =
             return;
         menuobj.updown(context, delta);
         context.refresh();
+        local.set();
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt)
     {
         context.canvas.scrollobj.addperc(delta / 1000);
         menuobj.draw()
+        local.set();
     },
 },
 {
@@ -2081,6 +2084,8 @@ var wheelst =
             rowobj.addperc(-delta/1000);
             contextobj.reset()
         }
+
+        local.set();
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     { 
@@ -2088,6 +2093,7 @@ var wheelst =
         var obj = _4cnv.timeobj;
         obj.CURRENT += obj.length()*(-delta/5000);
         bossobj.draw()
+        local.set();
     },
 }, 
 ];
@@ -2520,6 +2526,7 @@ var panlst =
         delete buttonobj.offset;
         delete context.canvas.isvbarect;
         delete context.canvas.scrollobj.offset;
+        local.set();
         context.refresh();
     }
 },
@@ -2588,6 +2595,7 @@ var panlst =
         var obj = context.canvas.scrollobj;
         delete obj.offset;
         context.refresh();
+        local.set();
     }
 },
 {
@@ -2689,6 +2697,7 @@ var panlst =
         delete canvas.starty;
         delete rowobj.offset;
         context.refresh();
+        local.set();
     }
 }, ];
 
@@ -5771,13 +5780,6 @@ window.addEventListener("keydown", function(evt)
     return context.canvas.keydown_(evt);
 }, false);
 
-window.onerror = function(message, source, lineno, colno, error)
-{
-    window.alert( error+","+lineno+","+console.trace());
-};
-
-window.addEventListener("pagehide", (evt) =>
-{});
 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function()
 {
     setfavicon();
@@ -5799,20 +5801,10 @@ window.addEventListener("visibilitychange", (evt) =>
         menuobj.draw();
         bossobj.draw();
     } 
-    else 
-    {
-        local.set();
-    }    
-});
-
-window.addEventListener("beforeunload", async () =>
-{
-    local.set();
 });
 
 function wraptext(ctx, text, maxWidth)
 {
-    
     if (!text)
         return [];
     let words = text.split(' ');
