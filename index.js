@@ -2529,6 +2529,7 @@ var panlst =
         delete buttonobj.offset;
         delete context.canvas.isvbarect;
         delete context.canvas.scrollobj.offset;
+        context.savetime();
         context.refresh();
     }
 },
@@ -4357,7 +4358,6 @@ menuobj.draw = function()
     const rect = context.rect();
     if (!rect.width || !rect.height)
         return;
-    context.savetime();
     if (context.canvas.slideshow > 0)
     {
         var k = canvas.autodirect;
