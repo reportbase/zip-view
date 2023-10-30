@@ -5863,7 +5863,7 @@ function imagepath(user)
         ((user.id.charAt(user.id.length - 5) == '.') ||
             user.id.charAt(8) == '-'))
     {
-        var template = galleryobj.gallerytemplate ? galleryobj.gallerytemplate : "2160x2160";
+        var template = galleryobj.gallerytemplate ? galleryobj.gallerytemplate : "640x640";
         src = `https://image.reportbase5836.workers.dev/image/${user.id}/${template}`;
     }
     else if (user.id && user.id.length > 1 &&
