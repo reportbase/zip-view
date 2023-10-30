@@ -1644,7 +1644,7 @@ CanvasRenderingContext2D.prototype.hide = function()
     this.canvas.height = 0;
 };
 
-CanvasRenderingContext2D.prototype.save = function()
+CanvasRenderingContext2D.prototype.savetime = function()
 {
     var canvas = this.canvas;
     clearTimeout(this.svaetimeout);
@@ -4364,7 +4364,7 @@ menuobj.draw = function()
     const rect = context.rect();
     if (!rect.width || !rect.height)
         return;
-    context.save();
+    context.savetime();
     if (context.canvas.slideshow > 0)
     {
         var k = canvas.autodirect;
