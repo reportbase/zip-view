@@ -1640,7 +1640,7 @@ CanvasRenderingContext2D.prototype.savetime = function()
             if (e != _8cnv.timeobj.current())
             {
                 url.searchParams.set('e', _8cnv.timeobj.current());
-                window.history.pushState({}, '', url);
+                window.history.replaceState("", url.origin, url);
             }
               
             try
@@ -1650,7 +1650,7 @@ CanvasRenderingContext2D.prototype.savetime = function()
             catch (_)
             {    
             }
-      }, 400)
+      }, 1000)
 }
 
 CanvasRenderingContext2D.prototype.refresh = function()
