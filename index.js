@@ -5609,7 +5609,7 @@ function resize()
     buttonobj.reset()
     contextobj.reset();
     _4cnvctx.refresh();
-    headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
+    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
     headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
     if (menuobj.value() == _8cnvctx)
     {
@@ -5967,7 +5967,7 @@ galleryobj.init = function(obj)
     stretchobj.set(90);
     slicewidthobj.set(SLICEWIDTH);
     headcnv.style.pointerEvents = "none";
-    headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
+    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
     headham.panel = headobj.value();
 
     _10cnv.sliceobj.data = 
@@ -6404,7 +6404,7 @@ galleryobj.init = function(obj)
         menuobj.toggle(_8cnvctx);
         headobj.set(GALLERY);
         headham.panel = headobj.value();
-        headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
+        headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
         headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
     };
 }
