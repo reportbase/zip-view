@@ -722,7 +722,7 @@ panel.galleriesbar = function()
                    [
                        `\u{271A} New`,
                        `\u{2718} Delete`,
-                       `\u{25FE} Edit`
+                       `\u{2713} Edit`
                    ], 
                 ]);
         
@@ -6375,7 +6375,6 @@ galleryobj.init = function(obj)
                     var path = `${url.origin}/?id=${this.id}`;
                     window.history.replaceState("", url.origin, path); 
                     url.path = this.id;
-                    local.reset();
                     fetch(this.json)
                         .then((response) => jsonhandler(response))
                         .then((obj) => galleryobj.init(obj))
