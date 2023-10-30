@@ -5794,32 +5794,21 @@ function setfavicon()
 
 window.addEventListener("visibilitychange", (evt) =>
 {
-});
-
-window.addEventListener("load", async () =>
-{
-    menuobj.draw();
-    bossobj.draw();
-});
-
-window.addEventListener("unload", async () =>
-{
-    var lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
-               _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
-               _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
-    for (var n = 0; n < lst.length; ++n)
+    if (document.visibilityState === "visible") 
     {
-        var cnv = lst[n].canvas;
-        local.time[n] = cnv.timeobj.current();
-    }
+        menuobj.draw();
+        bossobj.draw();
+    } 
+    else 
+    {
+        local.set();
+    }    
+});
 
-    localStorage.setItem("local", JSON.stringify(local));
-    
-    var lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
-    var jst = [];
-    for (var n = 0; n < lst.length; ++n)
-        jst.push(lst[n].canvas.timeobj.current());
-    localStorage.setItem(url.path, JSON.stringify(jst));});
+window.addEventListener("beforeunload", async () =>
+{
+    local.set();
+});
 
 function wraptext(ctx, text, maxWidth)
 {
@@ -6458,6 +6447,26 @@ function fooload(path)
 var local = {};
 local.time = [];
 local.email = "reportbase@gmail.com";
+local.set = function()
+{
+    var lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
+               _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
+               _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
+    for (var n = 0; n < lst.length; ++n)
+    {
+        var cnv = lst[n].canvas;
+        local.time[n] = cnv.timeobj.current();
+    }
+
+    localStorage.setItem("local", JSON.stringify(local));
+    
+    var lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
+    var jst = [];
+    for (var n = 0; n < lst.length; ++n)
+        jst.push(lst[n].canvas.timeobj.current());
+    localStorage.setItem(url.path, JSON.stringify(jst));    
+}
+
 local.reset = function()
 {
     try
