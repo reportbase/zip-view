@@ -2769,7 +2769,7 @@ var presslst = [
         {}
         else
         {
-            headcnv.height = headcnv.height ? 0 : BEXTENT;
+            headcnv.height = headcnv.height ? 0 : HEADHEIGHT;
             headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
             menuobj.draw();
         }
