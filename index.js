@@ -63,22 +63,8 @@ const TIMEMAIN = 4;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 24;
-const DOWNARROW = "\u{25BC}"
-const SMALLSQUARE = "\u{25FE}"
-const BLACKDIAMOND = "\u{25C6}"
-const LARGESQUARE = "\u{25FE}"
-const BLACKCIRCLE = "\u{25CF}"
-const BLACKSTAR = "\u{2605}"
-const SMALLSTAR = "\u{066D}";
-const BALOONSTAR = "\u{2749}";
-const BLACKFLAG = "\u{2691}";
-const FOOTPRINTS = "\u{1F463}";
-const COPYRIGHT = "\u{00A9}";
-const EDITPENCIL = "\u{270F}";
-const CHECKMARK = "\u{2713}";
-const HEAVYCROSS = "\u{271A}";
 
-var panel = {}
+var panel = {};
 var global = {};
 let photo = {};
 let util = {};
@@ -1652,6 +1638,7 @@ CanvasRenderingContext2D.prototype.savetime = function()
       {
             try
             {
+                localStorage.setItem("id", galleryobj.id);
                 localStorage.setItem(canvas.id, canvas.timeobj.current());
             }
             catch (_)
@@ -4883,7 +4870,7 @@ contextlst.forEach(function(context, n)
     try
     {
         var k = localStorage.getItem(canvas.id);
-        if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
+        if (k !== "undefined" && !Number.isNaN(k) && k != null)
             canvas.timeobj.setcurrent(Number(k));
         else
             canvas.timeobj.set(CYLSEAL / 2);
@@ -6401,6 +6388,16 @@ galleryobj.init = function(obj)
 
 function initime()
 {
+    try
+    {
+        var j = localStorage.getItem("id");
+        if (j != galleryobj.id)
+            gotoimage(0);
+    }
+    catch (_)
+    {    
+    }
+    
     contextobj.reset();
     if (galleryobj.length() >= BOSSMIN)
     {
