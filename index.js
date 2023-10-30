@@ -2253,6 +2253,7 @@ infobj.reset = function()
 
 var slicewidthobj = new circular_array("SLICEWIDTH", SLICEWIDTH * 20);
 var zoomobj = new circular_array("ZOOM", 100);
+zoomobj.set(25);
 var heightobj = new circular_array("HEIGHT", 100);
 heightobj.set(50);
 
@@ -3420,7 +3421,7 @@ var taplst =
             galleryobj.leftnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
         }
-        else
+        else if (galleryobj.boss)
         {
             var visibles = canvas.visibles;
             var k;
@@ -5694,7 +5695,7 @@ var headlst =
                     new panel.leftmenu(),
                     0,
                     g ? new panel.fullscreen() : 0,
-                    g ? new panel.zoom() : 0,
+                    (g && galleryobj.boss) ? new panel.zoom() : 0,
                     g ? new panel.fitwidth() : 0,
                     0,
                     new panel.rightmenu(),
@@ -6150,11 +6151,15 @@ galleryobj.init = function(obj)
 
     _5cnv.sliceobj.data = [];
     var j = 0;
+    var folder = "";
     for (var n = 0; n < galleryobj.data.length; ++n)
     {
         var k = galleryobj.data[n];
         if (!k.folder)
+        {
+            k.folder = folder;
             continue;
+        }
         
         var j = _5cnv.sliceobj.data.findIndex(function(a)
         {
