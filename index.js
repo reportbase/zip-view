@@ -2001,7 +2001,7 @@ var wheelst =
         {
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
-            buttonobj.add(k*3);
+            buttonobj.add(k*5);
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
             context.canvas.pinching = 0;
@@ -3644,7 +3644,7 @@ var bosslst =
             context.slicewidthrect = new rectangle();
             context.chapterect = new rectangle();
             context.heightrect = new rectangle();
-
+            
             if (
                 !photo.image ||
                 !photo.image.complete ||
@@ -3852,7 +3852,9 @@ bossobj.draw = function()
         return;
     if (!photo.image.complete)
         return;
-
+    if (menuobj.value())
+        return;
+    
     var canvas = _4cnv;
     var context = _4cnvctx;
     var rect = context.rect();
@@ -3921,6 +3923,7 @@ bossobj.draw = function()
     delete context.slicerect;
     delete context.slicewidthrect;
     delete context.stretchrect;
+    delete context.canvas.thumbrect;
 
     if (headcnv.height && !menuobj.value())
     {
@@ -5687,9 +5690,10 @@ var headlst =
             var g = ctx == _8cnvctx;
             delete context.leftmenurect;
             delete context.rightmenurect;
+            var s = SAFARI ? -1: ALIEXTENT;
             var e = galleryobj.boss ? ALIEXTENT + 10 : -1;
             var a = new panel.cols(
-                [5, ALIEXTENT, 0, ALIEXTENT, e, ALIEXTENT, 0, ALIEXTENT, 5],
+                [5, ALIEXTENT, 0, s, e, ALIEXTENT, 0, ALIEXTENT, 5],
                 [
                     0,
                     new panel.leftmenu(),
