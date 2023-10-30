@@ -191,9 +191,8 @@ let circular_array = function(title, data)
         return this.CURRENT;
     };
 
-    this.split = function(k, j, size)
+    this.makerange = function(j, size)
     {
-        k = Math.floor(k);
         let s = j.split("-");
         let begin = Number(s[0]);
         let end = Number(s[1]);
@@ -206,7 +205,6 @@ let circular_array = function(title, data)
         for (let n = 0; n < size; ++n, mn += ad)
             lst.push(mn.toFixed(4));
         this.data = lst;
-        this.set(k);
         this.begin = begin;
         this.end = end;
     }
@@ -3974,7 +3972,7 @@ bossobj.reset = function()
     }
 
     var str = `${n}-${zoomax}`;
-    zoomobj.split(zoomobj.current(), str, 100);
+    zoomobj.makerange(str, 100);
     var z = zoomobj.value();
     var zoom = (100 - z) / 100;
     _4cnv.imageheight = photo.image.height * zoom;
@@ -5960,9 +5958,8 @@ galleryobj.init = function(obj)
     }
 
     setfavicon();
-    stretchobj.split(60, "40-90", stretchobj.length());
-    
-    zoomobj.set(25);
+    stretchobj.makerange("40-90", stretchobj.length());  
+    stretchobj.set(90);
     slicewidthobj.set(SLICEWIDTH);
     headcnv.style.pointerEvents = "none";
     headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
