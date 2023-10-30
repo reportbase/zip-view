@@ -2002,7 +2002,7 @@ var wheelst =
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             var j = Math.lerp(0.0005,0.1,buttonobj.berp());
-            buttonobj.addperc(k * j);
+            buttonobj.addperc(0.0005);
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
             context.canvas.pinching = 0;
