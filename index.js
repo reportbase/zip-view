@@ -4886,7 +4886,7 @@ contextlst.forEach(function(context, n)
     {
         var k = localStorage.getItem(canvas.id);
         if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
-            canvas.timeobj.setcurrent(k);
+            canvas.timeobj.setcurrent(Number(k));
         else
             canvas.timeobj.set(CYLSEAL / 2);
     }
