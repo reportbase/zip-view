@@ -5025,8 +5025,6 @@ local.reset = function()
     {}
 }
 
-local.reset();
-
 contextobj.reset = function()
 {
     var context = _4cnvctx;
@@ -6406,7 +6404,6 @@ galleryobj.init = function(obj)
                 {
                     var path = `${url.origin}/?id=${this.id}`;
                     window.history.replaceState("", url.origin, path); 
-                    local.reset();
                     url.path = this.id;
                     fetch(this.json)
                         .then((response) => jsonhandler(response))
@@ -6599,7 +6596,6 @@ else if (url.searchParams.has("id"))
         .then((response) => jsonhandler(response))
         .then(function(obj)
           {
-                local.reset();
                  fetch(obj.json)
                     .then((response) => jsonhandler(response))
                     .then((obj) => galleryobj.init(obj))
