@@ -2016,7 +2016,6 @@ var wheelst =
             {
                 context.canvas.lastime = -0.0000000000101010101;
                 menuobj.draw();
-                local.set();
             }, TIMEMAIN);
         }
     },
@@ -2037,13 +2036,11 @@ var wheelst =
             return;
         menuobj.updown(context, delta);
         context.refresh();
-        local.set();
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt)
     {
         context.canvas.scrollobj.addperc(delta / 1000);
         menuobj.draw()
-        local.set();
     },
 },
 {
@@ -2084,8 +2081,6 @@ var wheelst =
             rowobj.addperc(-delta/1000);
             contextobj.reset()
         }
-
-        local.set();
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     { 
@@ -2093,7 +2088,6 @@ var wheelst =
         var obj = _4cnv.timeobj;
         obj.CURRENT += obj.length()*(-delta/5000);
         bossobj.draw()
-        local.set();
     },
 }, 
 ];
@@ -2526,7 +2520,6 @@ var panlst =
         delete buttonobj.offset;
         delete context.canvas.isvbarect;
         delete context.canvas.scrollobj.offset;
-        local.set();
         context.refresh();
     }
 },
@@ -2595,7 +2588,6 @@ var panlst =
         var obj = context.canvas.scrollobj;
         delete obj.offset;
         context.refresh();
-        local.set();
     }
 },
 {
@@ -2697,7 +2689,6 @@ var panlst =
         delete canvas.starty;
         delete rowobj.offset;
         context.refresh();
-        local.set();
     }
 }, ];
 
@@ -3307,6 +3298,15 @@ var taplst =
     {
         clearInterval(context.canvas.leftright)
         var canvas = context.canvas;
+        
+        try
+        {
+            localStorage.setItem(context.id, canvas.timeobj.current());
+        }
+        catch (_)
+        {    
+        }
+        
         canvas.slideshow = 0;
         var timeauto = global.timeauto;
         clearInterval(global.timeauto);
@@ -4872,7 +4872,19 @@ contextlst.forEach(function(context, n)
     canvas.lastime = 0;
     canvas.sliceobj = new circular_array("", []);
     canvas.timeobj = new circular_array("", CYLSEAL);
-    canvas.timeobj.set(CYLSEAL / 2);
+    
+    try
+    {
+        var k = localStorage.getItem(context.id);
+        if (typeof k !== "undefined" && Number.isNaN(k) && k != null)
+            canvas.timeobj.setcurrent(k);
+        else
+            canvas.timeobj.set(CYLSEAL / 2);
+    }
+    catch (_)
+    {    
+    }
+
     canvas.scrollobj = new circular_array("TEXTSCROLL", window.innerHeight);
     canvas.speedobj = new circular_array("SPEED", 120);
     canvas.speedobj.set(obj.speed);
@@ -6306,7 +6318,6 @@ galleryobj.init = function(obj)
                     var path = `${url.origin}/?id=${this.id}`;
                     window.history.replaceState("", url.origin, path); 
                     url.path = this.id;
-                    local.reset();
                     fetch(this.json)
                         .then((response) => jsonhandler(response))
                         .then((obj) => galleryobj.init(obj))
@@ -6435,72 +6446,22 @@ function fooload(path)
     }
 }
 
-
 var local = {};
-local.time = [];
 local.email = "reportbase@gmail.com";
-local.set = function()
-{
-    var lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
-               _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
-               _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
-    for (var n = 0; n < lst.length; ++n)
-    {
-        var cnv = lst[n].canvas;
-        local.time[n] = cnv.timeobj.current();
-    }
 
-    localStorage.setItem("local", JSON.stringify(local));
-    
-    var lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
-    var jst = [];
-    for (var n = 0; n < lst.length; ++n)
-        jst.push(lst[n].canvas.timeobj.current());
-    localStorage.setItem(url.path, JSON.stringify(jst));    
+try
+{
+    var k = localStorage.getItem("local");
+    if (k)
+        local = JSON.parse(k);
 }
-
-local.reset = function()
-{
-    try
-    {
-        var k = localStorage.getItem("local");
-        if (k)
-            local = JSON.parse(k);
-    
-        var lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
-                   _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
-                   _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
-        for (var n = 0; n < lst.length; ++n)
-        {
-            var cnv = lst[n].canvas;
-            cnv.timeobj.setcurrent(local.time[n]);
-        }    
-    
-        var k = localStorage.getItem(url.path);
-        var jst = JSON.parse(k);
-        var lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
-        if (jst.length == lst.length)
-        {
-            for (var n = 0; n < lst.length; ++n)
-            {
-                var canvas = lst[n].canvas;
-                var val = jst[n];
-                if (typeof val === "undefined" || 
-                    Number.isNaN(val) || 
-                    val == null)
-                    continue
-                canvas.timeobj.setcurrent(val);
-            }
-        }
-    }
-    catch (_)
-    {}
+catch (_)
+{    
 }
 
 if (url.searchParams.has("data"))
 {
     url.path = url.searchParams.get("data");
-    local.reset();
     fetch(`data/${url.path}/index.json`)
         .then(response => jsonhandler(response))
         .then((obj) => galleryobj.init(obj))
@@ -6510,7 +6471,6 @@ if (url.searchParams.has("data"))
 else if (url.searchParams.has("pexels"))
 {
     url.path = url.searchParams.get("pexels");
-    local.reset();
     fetch(`https://pexels.reportbase5836.workers.dev/?search=${url.path}`)
         .then((response) => jsonhandler(response))
         .then((obj) => galleryobj.init(obj))
@@ -6520,7 +6480,6 @@ else if (url.searchParams.has("pexels"))
 else if (url.searchParams.has("sidney"))
 {
     url.path = "sidney";
-    local.reset();
     fetch(`https://sidney.reportbase5836.workers.dev`)
         .then((response) => jsonhandler(response))
         .then((obj) => galleryobj.init(obj))
@@ -6528,7 +6487,6 @@ else if (url.searchParams.has("sidney"))
 else if (url.searchParams.has("id"))
 {
     url.path = url.searchParams.get("id");
-    local.reset();
     fetch(`https://gallery.reportbase5836.workers.dev/${url.path}`)
         .then((response) => jsonhandler(response))
         .then(function(obj)
@@ -6541,23 +6499,19 @@ else if (url.searchParams.has("id"))
 else if (url.searchParams.has("res"))
 {
     url.path = url.searchParams.get("res");
-    local.reset();
     var path = `res/${url.path}`;
     fooload(path);
 }
 else if (url.searchParams.has("path"))
 {
     url.path = url.searchParams.get("path");
-    local.reset();
     fooload(url.path);
 }
 else
 {
     url.path = "res/home.json";
-    local.reset();
     fooload(url.path);
 }
-
 
 function downloadtext(name, text)
 {
