@@ -2253,6 +2253,7 @@ infobj.reset = function()
 
 var slicewidthobj = new circular_array("SLICEWIDTH", SLICEWIDTH * 20);
 var zoomobj = new circular_array("ZOOM", 100);
+zoomobj.set(25);
 var heightobj = new circular_array("HEIGHT", 100);
 heightobj.set(50);
 
@@ -3929,7 +3930,6 @@ bossobj.draw = function()
     }
 }
 
-//bossobj reset
 bossobj.reset = function()
 {
     if (!photo.image ||
@@ -3975,7 +3975,6 @@ bossobj.reset = function()
 
     var str = `${n}-${zoomax}`;
     zoomobj.split(zoomobj.current(), str, 100);
-    zoomobj.set(26);
     var z = zoomobj.value();
     var zoom = (100 - z) / 100;
     _4cnv.imageheight = photo.image.height * zoom;
@@ -4998,7 +4997,6 @@ contextlst.forEach(function(context, n)
     context.canvas.panend_ = k.panend;
 });
 
-contextobj reset
 contextobj.reset = function()
 {
     var context = _4cnvctx;
@@ -5963,6 +5961,8 @@ galleryobj.init = function(obj)
 
     setfavicon();
     stretchobj.split(60, "40-90", stretchobj.length());
+    
+    zoomobj.set(25);
     slicewidthobj.set(SLICEWIDTH);
     headcnv.style.pointerEvents = "none";
     headcnvctx.show(0, 0, window.innerWidth, BEXTENT);
@@ -6806,4 +6806,3 @@ galleryobj.leftright = function(context, delta)
         menuobj.draw();
     }, TIMEMAIN);
 }
-
