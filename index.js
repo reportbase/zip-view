@@ -923,7 +923,7 @@ panel.homebar = function()
                    `\u{25C0} ${url.host}`,
                    0,
                    [
-                       "Open",
+                       "Open \u{25B6}",
                        "\u{1F4AB} Signup"
                    ],
                 ],
@@ -4975,45 +4975,6 @@ contextlst.forEach(function(context, n)
     context.canvas.panend_ = k.panend;
 });
 
-var local = {};
-local.time = [];
-local.email = "reportbase@gmail.com";
-
-try
-{
-    var k = localStorage.getItem("local");
-    if (k)
-        local = JSON.parse(k);
-
-    var lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
-               _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
-               _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
-    for (var n = 0; n < lst.length; ++n)
-    {
-        var cnv = lst[n].canvas;
-        cnv.timeobj.setcurrent(local.time[n]);
-    }    
-
-    var k = localStorage.getItem(url.path);
-    var jst = JSON.parse(k);
-    var lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
-    if (jst.length == lst.length)
-    {
-        for (var n = 0; n < lst.length; ++n)
-        {
-            var canvas = lst[n].canvas;
-            var val = jst[n];
-            if (typeof val === "undefined" || 
-                Number.isNaN(val) || 
-                val == null)
-                continue
-            canvas.timeobj.setcurrent(val);
-        }
-    }
-}
-catch (_)
-{}
-
 contextobj.reset = function()
 {
     var context = _4cnvctx;
@@ -6366,6 +6327,7 @@ galleryobj.init = function(obj)
                     var path = `${url.origin}/?id=${this.id}`;
                     window.history.replaceState("", url.origin, path); 
                     url.path = this.id;
+                    local.reset();
                     fetch(this.json)
                         .then((response) => jsonhandler(response))
                         .then((obj) => galleryobj.init(obj))
@@ -6497,6 +6459,7 @@ function fooload(path)
 if (url.searchParams.has("data"))
 {
     url.path = url.searchParams.get("data");
+    local.reset();
     fetch(`data/${url.path}/index.json`)
         .then(response => jsonhandler(response))
         .then((obj) => galleryobj.init(obj))
@@ -6506,6 +6469,7 @@ if (url.searchParams.has("data"))
 else if (url.searchParams.has("pexels"))
 {
     url.path = url.searchParams.get("pexels");
+    local.reset();
     fetch(`https://pexels.reportbase5836.workers.dev/?search=${url.path}`)
         .then((response) => jsonhandler(response))
         .then((obj) => galleryobj.init(obj))
@@ -6515,6 +6479,7 @@ else if (url.searchParams.has("pexels"))
 else if (url.searchParams.has("sidney"))
 {
     url.path = "sidney";
+    local.reset();
     fetch(`https://sidney.reportbase5836.workers.dev`)
         .then((response) => jsonhandler(response))
         .then((obj) => galleryobj.init(obj))
@@ -6522,6 +6487,7 @@ else if (url.searchParams.has("sidney"))
 else if (url.searchParams.has("id"))
 {
     url.path = url.searchParams.get("id");
+    local.reset();
     fetch(`https://gallery.reportbase5836.workers.dev/${url.path}`)
         .then((response) => jsonhandler(response))
         .then(function(obj)
@@ -6534,17 +6500,20 @@ else if (url.searchParams.has("id"))
 else if (url.searchParams.has("res"))
 {
     url.path = url.searchParams.get("res");
+    local.reset();
     var path = `res/${url.path}`;
     fooload(path);
 }
 else if (url.searchParams.has("path"))
 {
     url.path = url.searchParams.get("path");
+    local.reset();
     fooload(url.path);
 }
 else
 {
     url.path = "res/home.json";
+    local.reset();
     fooload(url.path);
 }
 
@@ -6861,4 +6830,45 @@ galleryobj.leftright = function(context, delta)
 
         menuobj.draw();
     }, TIMEMAIN);
+}
+
+var local = {};
+local.time = [];
+local.email = "reportbase@gmail.com";
+local.reset = function()
+{
+    try
+    {
+        var k = localStorage.getItem("local");
+        if (k)
+            local = JSON.parse(k);
+    
+        var lst = [_1cnvctx, _2cnvctx, _3cnvctx,  
+                   _7cnvctx, _9cnvctx, _10cnvctx, _11cnvctx, 
+                   _12cnvctx, _13cnvctx, _14cnvctx, _15cnvctx];
+        for (var n = 0; n < lst.length; ++n)
+        {
+            var cnv = lst[n].canvas;
+            cnv.timeobj.setcurrent(local.time[n]);
+        }    
+    
+        var k = localStorage.getItem(url.path);
+        var jst = JSON.parse(k);
+        var lst = [_4cnvctx, _5cnvctx, _6cnvctx, _8cnvctx];
+        if (jst.length == lst.length)
+        {
+            for (var n = 0; n < lst.length; ++n)
+            {
+                var canvas = lst[n].canvas;
+                var val = jst[n];
+                if (typeof val === "undefined" || 
+                    Number.isNaN(val) || 
+                    val == null)
+                    continue
+                canvas.timeobj.setcurrent(val);
+            }
+        }
+    }
+    catch (_)
+    {}
 }
