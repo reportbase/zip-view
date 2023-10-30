@@ -6382,24 +6382,7 @@ galleryobj.init = function(obj)
                     var path = `${url.origin}/?id=${this.id}`;
                     window.history.replaceState("", url.origin, path); 
                     url.path = this.id;
-                    fetch(this.json)
-                    .then(function(response)
-                    {
-                        if (response.ok)
-                            return response.json()
-                        throw Error(response.statusText);
-                    })
-                    .then(function(json)
-                    {
-                        try
-                        {
-                            local.reset();
-                            galleryobj.init(json)
-                        }
-                        catch (_)
-                        {}
-                    });
-
+                    loadgalleryid(this.json);
                     return true;
                 }
             }
@@ -6590,7 +6573,10 @@ else if (url.searchParams.has("id"))
     url.path = url.searchParams.get("id");
     fetch(`https://gallery.reportbase5836.workers.dev/${url.path}`)
         .then((response) => jsonhandler(response))
-        .then((obj) => galleryobj.init(obj))
+        .then(function(obj)
+          {
+              loadgalleryid(obj.json);
+          })
         .catch((error) =>
         {});
 }
@@ -6609,6 +6595,27 @@ else
 {
     url.path = "res/home.json";
     fooload(url.path);
+}
+
+function loadgalleryid(path)
+{
+    fetch(path)
+    .then(function(response)
+    {
+        if (response.ok)
+            return response.json()
+        throw Error(response.statusText);
+    })
+    .then(function(json)
+    {
+        try
+        {
+            local.reset();
+            galleryobj.init(json)
+        }
+        catch (_)
+        {}
+    });
 }
 
 var local = {};
