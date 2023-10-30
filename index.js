@@ -6381,6 +6381,7 @@ galleryobj.init = function(obj)
                 {
                     var path = `${url.origin}/?id=${this.id}`;
                     window.history.replaceState("", url.origin, path); 
+                    local.reset();
                     url.path = this.id;
                     fetch(this.json)
                         .then((response) => jsonhandler(response))
@@ -6571,6 +6572,7 @@ else if (url.searchParams.has("sidney"))
 else if (url.searchParams.has("id"))
 {
     url.path = url.searchParams.get("id");
+    local.reset();
     fetch(`https://gallery.reportbase5836.workers.dev/${url.path}`)
         .then((response) => jsonhandler(response))
         .then(function(obj)
