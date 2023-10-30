@@ -6608,13 +6608,8 @@ function loadgalleryid(path)
     })
     .then(function(json)
     {
-        try
-        {
-            local.reset();
-            galleryobj.init(json)
-        }
-        catch (_)
-        {}
+        //local.reset();
+        galleryobj.init(json)
     });
 }
 
@@ -6624,8 +6619,6 @@ local.email = "reportbase@gmail.com";
 
 local.reset = function()
 {
-    return;
-    
     try
     {
         var k = localStorage.getItem("local");
