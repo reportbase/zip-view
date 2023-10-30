@@ -722,7 +722,7 @@ panel.galleriesbar = function()
                    [
                        `\u{271A} New`,
                        `\u{2718} Delete`,
-                       `\u{25FE} Edit`
+                       `\u{25C7} Edit`
                    ], 
                 ]);
         
@@ -924,7 +924,7 @@ panel.homebar = function()
                    0,
                    [
                        "Open",
-                       "\u{2605} Signup"
+                       "\u{2600} Signup"
                    ],
                 ],
                 0);
