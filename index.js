@@ -5688,14 +5688,15 @@ var headlst =
             var g = ctx == _8cnvctx;
             delete context.leftmenurect;
             delete context.rightmenurect;
+            var e = galleryobj.boss ? ALIEXTENT + 10 : -1;
             var a = new panel.cols(
-                [5, ALIEXTENT, 0, ALIEXTENT, ALIEXTENT + 10, ALIEXTENT, 0, ALIEXTENT, 5],
+                [5, ALIEXTENT, 0, ALIEXTENT, e, ALIEXTENT, 0, ALIEXTENT, 5],
                 [
                     0,
                     new panel.leftmenu(),
                     0,
                     g ? new panel.fullscreen() : 0,
-                    (g && galleryobj.boss) ? new panel.zoom() : 0,
+                    g ? new panel.zoom() : 0,
                     g ? new panel.fitwidth() : 0,
                     0,
                     new panel.rightmenu(),
