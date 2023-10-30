@@ -2039,7 +2039,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     {
-        galleryobjleftright(context, delta);
+        galleryobj.leftright(context, delta);
     },
 },
 {
@@ -2851,7 +2851,7 @@ var swipelst = [
     swipeleftright: function(context, rect, x, y, evt)
     {
         var k = evt.type == "swipeleft" ? 1 : -1;
-        galleryobjleftright(context, k * context.canvas.speedobj.value());
+        galleryobj.leftright(context, k * context.canvas.speedobj.value());
     },
     swipeupdown: function(context, rect, x, y, evt)
     {
@@ -3003,7 +3003,7 @@ var keylst = [
                 key == "h")
             {
                 evt.preventDefault();
-                galleryobjleftright(context, -canvas.speedobj.value() / 2)
+                galleryobj.leftright(context, -canvas.speedobj.value() / 2)
             }
             else if (
                 (!canvas.shiftKey && key == "tab") ||
@@ -3011,7 +3011,7 @@ var keylst = [
                 key == "l")
             {
                 evt.preventDefault();
-                galleryobjleftright(context, canvas.speedobj.value() / 2)
+                galleryobj.leftright(context, canvas.speedobj.value() / 2)
             }
             else if (key == "d")
             {
@@ -6935,7 +6935,7 @@ function selectid(id)
     }
 }
 
-function galleryobjleftright(context, delta)
+galleryobj.leftright = function(context, delta)
 {
     if (context.pinching)
         return;
@@ -6975,4 +6975,3 @@ function galleryobjleftright(context, delta)
         menuobj.draw();
     }, TIMEMAIN);
 }
-
