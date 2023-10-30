@@ -1633,7 +1633,7 @@ CanvasRenderingContext2D.prototype.hide = function()
 CanvasRenderingContext2D.prototype.savetime = function()
 {
     var canvas = this.canvas;
-    clearTimeout(this.svaetimeout);
+    clearTimeout(this.savetimeout);
     this.savetimeout = setTimeout(function()
         {
             var e = url.searchParams.get('_8');
@@ -1996,7 +1996,6 @@ var wheelst =
     updown: function(context, x, y, delta, ctrl, shift, alt, type)
     {
         var canvas = context.canvas;
-        context.savetime();
         context.canvas.slideshow = 0;
         if (ctrl)
         {
