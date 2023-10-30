@@ -464,7 +464,6 @@ panel.yoll = function()
     }
 };
 
-
 const opts = {
     synchronized: true,
     alpha: true,
@@ -595,7 +594,6 @@ panel.gallerybar = function()
                             ]),
                         0,
                         0,
-
                     ]),
             ]);
 
@@ -722,9 +720,9 @@ panel.galleriesbar = function()
                    `\u{25C0} Galleries`,
                    0,
                    [
-                       `\u{271A} Add`,
+                       `\u{271A} New`,
                        `\u{2718} Delete`,
-                       `\u{2605} Edit`
+                       `\u{25FE} Edit`
                    ], 
                 ]);
         
@@ -4461,8 +4459,6 @@ menuobj.draw = function()
                 y,
                 n
             };
-
-            //todo:
             slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight);
             slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
             if (slice.isvisible)
@@ -4987,7 +4983,6 @@ var local = {};
 local.time = [];
 local.email = "reportbase@gmail.com";
 
-//todo
 local.reset = function()
 {
     try
@@ -5025,6 +5020,8 @@ local.reset = function()
     catch (_)
     {}
 }
+
+local.reset();
 
 contextobj.reset = function()
 {
@@ -6378,6 +6375,7 @@ galleryobj.init = function(obj)
                     var path = `${url.origin}/?id=${this.id}`;
                     window.history.replaceState("", url.origin, path); 
                     url.path = this.id;
+                    local.reset();
                     fetch(this.json)
                         .then((response) => jsonhandler(response))
                         .then((obj) => galleryobj.init(obj))
