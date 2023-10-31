@@ -778,7 +778,7 @@ panel.homebar = function()
 
 var templatelst = 
 [
-    '360x360",
+    "360x360",
     "480x480",
     "640x480",
     "800x800",
