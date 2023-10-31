@@ -822,7 +822,7 @@ var displaylst =
                             [
                                 new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
                                 new panel.expand(new panel.rectangle(canvas.buttonrect), 10, 0),
-                                new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
+                                new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
                             ]),
                         0,
                     ]),
@@ -831,7 +831,7 @@ var displaylst =
 
         a.draw(context, rect, buttonobj, 0); 
 
-       var a = new panel.rows([0, SCROLLBARWIDTH, 4],
+        var a = new panel.rows([0, SCROLLBARWIDTH, 4],
             [
                 0,
                 new panel.cols([0, bw, 0],
@@ -2225,15 +2225,11 @@ var wheelst =
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
 
-        var k = displaylst.findIndex(function(a)
-        {
-            return a.name == "BUTTON"
-        });
-        
-        canvas.display_ = displaylst[k];
-        
         if (ctrl)
         {
+            var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
+            canvas.display_ = displaylst[k];
+        
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             buttonobj.add(k*10);
@@ -2249,8 +2245,10 @@ var wheelst =
         }
         else
         {
-            clearInterval(context.canvas.leftright)
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            canvas.display_ = displaylst[k];
             
+            clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
             if (global.swipetimeout)
                 return;
@@ -2371,11 +2369,7 @@ var pinchlst = [
         delete context.buttonanchor;
         context.canvas.slideshow = 0;
         context.canvas.pinching = 1;
-        var k = displaylst.findIndex(function(a)
-        {
-            return a.name == "GALLERY"
-        });
-        
+        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
         canvas.display_ = displaylst[k];
     },
     pinchend: function(context)
@@ -2733,7 +2727,11 @@ var panlst =
             {
                 var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
                 canvas.timeobj.setperc(1 - k);
-                context.refresh()
+            }
+            else if (canvas.isbuttonrect)
+            {
+                var k = (y - buttonrect.y) / buttonrect.height;
+                buttonrect.setperc(1 - k);
             }
             else
             {
@@ -2741,8 +2739,9 @@ var panlst =
                 var jvalue = CYLSEAL / canvas.virtualheight
                 jvalue *= e;
                 canvas.timeobj.rotateanchored(jvalue);
-                context.refresh()
             }
+            
+            menuobj.draw()
         }
     },
     panstart: function(context, rect, x, y)
@@ -2766,6 +2765,7 @@ var panlst =
         canvas.startx = x;
         canvas.starty = y;
         canvas.timeobj.setanchor(canvas.timeobj.current());
+        canvas.isbuttonrect = canvas.buttonrect && canvas.buttonrect.hitest(x, y);
         canvas.isvscrollrect = canvas.vscrollrect && canvas.vscrollrect.hitest(x, y);
         canvas.ishscrollrect = canvas.hscrollrect && canvas.hscrollrect.hitest(x, y);
     },
@@ -3594,6 +3594,14 @@ var taplst =
             headcnvctx.fitwidthrect.hitest(x, y))
         {
             buttonobj.fit();
+        }
+        else if (
+            buttonrect &&
+            buttonrect.hitest(x, y))
+        {
+            var k = (y - buttonrect.y) / buttonrect.height;
+            buttonrect.setperc(1 - k);
+            menuobj.draw()              
         }
         else if (
             headcnvctx.zoomrect &&
