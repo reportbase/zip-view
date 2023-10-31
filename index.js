@@ -516,14 +516,6 @@ panel.empty = function()
     this.draw = function(context, rect, user, time) {}
 };
 
-panel.gallerybar = function()
-{
-    this.draw = function(context, rect, user, time)
-    {
-
-    }
-};
-
 panel.galleriesbar = function()
 {
     this.draw = function(context, rect, user, time)
@@ -784,7 +776,24 @@ panel.homebar = function()
     }
 }
 
-//panel scrollbar
+var templatelst = 
+[
+    '360x360",
+    "480x480",
+    "640x480",
+    "800x800",
+    "1080x1080",
+    "1280x1280",
+    "1600x1600",
+    "1960x1960",
+    "2160x2160",
+    "3400x3400",
+    "6760x5760"
+];
+
+var templateobj = new circular_array("", templatelst);
+templateobj.set(4)
+
 var displaylst = 
 [
 {
@@ -820,7 +829,26 @@ var displaylst =
                 0
             ]);
 
-        a.draw(context, rect, buttonobj, 0);   
+        a.draw(context, rect, buttonobj, 0); 
+
+       var a = new panel.rows([0, SCROLLBARWIDTH, 4],
+            [
+                0,
+                new panel.cols([0, bw, 0],
+                    [
+                        0,
+                        new panel.layers(
+                            [
+                                new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                new panel.expand(new panel.rectangle(canvas.templaterect), 0, 10),
+                                new panel.shrink(new panel.currentH(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
+                            ]),
+                        0,
+                    ])
+            ])
+
+        a.draw(context, rect, templateobj, 0);
+         
         context.restore();
     }
 },
