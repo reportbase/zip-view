@@ -4499,7 +4499,7 @@ var eventlst = [
 { //1
     hideontap: 1,
     speed: 60,
-    reduce: 5,
+    reduce: 2.5,
     updownmax: 60,
     mouse: "DEFAULT",
     thumb: "DEFAULT",
@@ -4524,7 +4524,7 @@ var eventlst = [
     //2 galleries
     hideontap: 0,
     speed: 60,
-    reduce: 10,
+    reduce: 2.5,
     updownmax: 60,
     mouse: "DEFAULT",
     thumb: "DEFAULT",
@@ -4548,7 +4548,7 @@ var eventlst = [
 { //3 debug
     hideontap: 1,
     speed: 60,
-    reduce: 5,
+    reduce: 2.5,
     updownmax: 60,
     mouse: "DEFAULT",
     thumb: "DEFAULT",
@@ -4572,7 +4572,7 @@ var eventlst = [
 { //4
     hideontap: 1,
     speed: 40,
-    reduce: 40,
+    reduce: 2.5,
     updownmax: 60,
     mouse: "BOSS",
     thumb: "BOSS",
@@ -4596,7 +4596,7 @@ var eventlst = [
 { //5 folders
     hideontap: 1,
     speed: 60,
-    reduce: 5,
+    reduce: 2.5,
     updownmax: 60,
     mouse: "DEFAULT",
     thumb: "DEFAULT",
@@ -4620,7 +4620,7 @@ var eventlst = [
 { //6 images
     hideontap: 1,
     speed: 60,
-    reduce: 5,
+    reduce: 2.5,
     updownmax: 60,
     mouse: "DEFAULT",
     thumb: "DEFAULT",
@@ -4644,7 +4644,7 @@ var eventlst = [
 { //7
     hideontap: 1,
     speed: 60,
-    reduce: 5,
+    reduce: 2.5,
     updownmax: 60,
     mouse: "DEFAULT",
     thumb: "DEFAULT",
@@ -4668,7 +4668,7 @@ var eventlst = [
 { //8
     hideontap: 1,
     speed: 50,
-    reduce: 2,
+    reduce: 2.5,
     updownmax: 60,
     mouse: "GALLERY",
     thumb: "DEFAULT",
@@ -4692,7 +4692,7 @@ var eventlst = [
 { //9 help
     hideontap: 1,
     speed: 60,
-    reduce: 5,
+    reduce: 2.5,
     updownmax: 60,
     mouse: "DEFAULT",
     thumb: "DEFAULT",
@@ -4716,7 +4716,7 @@ var eventlst = [
 { //10
     hideontap: 1,
     speed: 60,
-    reduce: 5,
+    reduce: 2.5,
     updownmax: 60,
     mouse: "DEFAULT",
     thumb: "DEFAULT",
@@ -4740,7 +4740,7 @@ var eventlst = [
 { //11
     hideontap: 1,
     speed: 60,
-    reduce: 5,
+    reduce: 2.5,
     updownmax: 60,
     mouse: "DEFAULT",
     thumb: "DEFAULT",
@@ -4764,7 +4764,7 @@ var eventlst = [
 { //12
     hideontap: 1,
     speed: 60,
-    reduce: 5,
+    reduce: 2.5,
     updownmax: 60,
     mouse: "DEFAULT",
     thumb: "DEFAULT",
@@ -4788,7 +4788,7 @@ var eventlst = [
 { //13
     hideontap: 1,
     speed: 60,
-    reduce: 5,
+    reduce: 2.5,
     updownmax: 60,
     mouse: "DEFAULT",
     thumb: "DEFAULT",
@@ -4812,7 +4812,7 @@ var eventlst = [
 { //14
     hideontap: 1,
     speed: 60,
-    reduce: 5,
+    reduce: 2.5,
     updownmax: 60,
     mouse: "DEFAULT",
     thumb: "DEFAULT",
@@ -4836,7 +4836,7 @@ var eventlst = [
 { //15
     hideontap: 1,
     speed: 60,
-    reduce: 5,
+    reduce: 2,
     updownmax: 60,
     mouse: "DEFAULT",
     thumb: "DEFAULT",
@@ -5863,7 +5863,7 @@ function imagepath(user)
         ((user.id.charAt(user.id.length - 5) == '.') ||
             user.id.charAt(8) == '-'))
     {
-        var template = galleryobj.gallerytemplate ? galleryobj.gallerytemplate : "640x640";
+        var template = url.searchParams.has("template") ? url.searchParams.get("template") : "640x640";
         src = `https://image.reportbase5836.workers.dev/image/${user.id}/${template}`;
     }
     else if (user.id && user.id.length > 1 &&
