@@ -919,7 +919,7 @@ var displaylst =
 },
 {
     name: "BOSS",
-    draw: function(context, rect, user, time)
+    draw: function(context, r, user, time)
     {
             var canvas = context.canvas;
             context.extentrect = new rectangle();
