@@ -494,6 +494,9 @@ let _15cnvctx = _15cnv.getContext("2d", opts);
 let headcnv = document.getElementById("head");
 let headcnvctx = headcnv.getContext("2d", opts);
 
+_8cnvctx.font = DEFAULTFONT;
+_8cnvctx.fillText(" ", 0, 0);
+
 let canvaslst = [];
 for (var n = 0; n < 6; ++n)
     canvaslst[n] = document.createElement("canvas");
@@ -4922,9 +4925,6 @@ contextlst.forEach(function(context, n)
     context.canvas.panupdown_ = k.updown;
     context.canvas.panleftright_ = k.leftright;
     context.canvas.panend_ = k.panend;
-
-    context.font = DEFAULTFONT;
-    context.fillText(" ", 0, 0);
 });
 
 contextobj.reset = function()
