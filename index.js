@@ -4923,8 +4923,8 @@ contextlst.forEach(function(context, n)
     context.canvas.panleftright_ = k.leftright;
     context.canvas.panend_ = k.panend;
 
-    var a = new panel.text();
-    a.draw(context, context.rect(), " ", 0)
+    context.font = DEFAULTFONT;
+    context.fillText("", 0, 0);
 });
 
 contextobj.reset = function()
@@ -5215,7 +5215,7 @@ panel.text = function(color = "white", align = "center", baseline = "middle",
         context.textAlign = align;
         context.textBaseline = baseline;
         context.fillStyle = color;
-        context.font = DEFAULTFONT;
+        context.font = font;
 
         var metrics;
         var str = user;
