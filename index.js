@@ -2228,10 +2228,10 @@ var wheelst =
         {
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
             canvas.display_ = displaylst[k];
-        
-            context.canvas.pinching = 1;
+            var j = buttonobj.length()/25;
+/            context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
-            buttonobj.add(k*10);
+            buttonobj.add(k*j);
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
             context.canvas.pinching = 0;
