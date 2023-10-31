@@ -4,7 +4,7 @@ https://zip-view.com
 https://ipfs-view.com
 */
 
-function iOS()
+function ios()
 {
     return 
     [
@@ -22,7 +22,7 @@ const NUBACK = "rgba(0,0,0,0.4)";
 const SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 const VIRTCONST = 0.8;
-const MAXVIRTUAL = 5760 * (iOS() ? 3 : 10);
+const MAXVIRTUAL = 5760 * (SAFARI ? 3 : 10);
 const THUMBORDER = 5;
 const BUTTONMARGIN = 30;
 const IFRAME = window.self !== window.top;
@@ -55,7 +55,7 @@ const HUGEFONT = "22px archivo black";
 const DOTSFONT = "60px archivo black";
 const SLICEWIDTH = 36;
 const ZOOMAX = 92;
-const IMAGELSTSIZE = iOS() ? 30 : 120;
+const IMAGELSTSIZE = SAFARI ? 30 : 120;
 const BOSS = 0;
 const GALLERY = 1;
 const MENU = 2;
@@ -2302,7 +2302,7 @@ async function loadzip(file)
     for (var n = 0; n < keys.length; ++n)
     {
         var key = keys[n];
-        if (iOS() && key.charAt(0) == '_')
+        if (SAFARI && key.charAt(0) == '_')
             continue;
         if (!key.isimage())
             continue;
@@ -2320,7 +2320,7 @@ async function loadzip(file)
     {
         var key = keys[n];
         var k = Array.from(key);
-        if (iOS() && k.charAt(0) == '_')
+        if (SAFARI && k.charAt(0) == '_')
             continue;
         var entry = entries[key];
         if (entry.isDirectory)
@@ -4688,7 +4688,7 @@ var eventlst = [
     buttonheight: 320,
     buttonmargin: 10,
     scrollinit: 0.5,
-    width: iOS() ? 720 : 5160
+    width: SAFARI ? 720 : 5160
 },
 { //9 help
     hideontap: 1,
@@ -5691,7 +5691,7 @@ var headlst =
             var g = ctx == _8cnvctx;
             delete context.leftmenurect;
             delete context.rightmenurect;
-            var s = IOS() ? -1: ALIEXTENT;
+            var s = SAFARI ? -1: ALIEXTENT;
             var e = galleryobj.boss ? (ALIEXTENT + 10) : -1;
             var a = new panel.cols(
                 [5, ALIEXTENT, 0, s, e, ALIEXTENT, 0, ALIEXTENT, 5],
