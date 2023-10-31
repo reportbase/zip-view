@@ -3408,7 +3408,7 @@ var taplst =
             galleryobj.leftnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
         }
-        else if (galleryobj.boss)
+        else if (galleryobj.boss || canvas.shiftKey)
         {
             var visibles = canvas.visibles;
             var k;
@@ -5674,6 +5674,9 @@ var headlst =
             var rh = 26;
             var ctx = menuobj.value();
             var g = ctx == _8cnvctx;
+            delete context.zoomrect;
+            delete context.fitwidthrect;
+            delete context.fullrect;
             delete context.leftmenurect;
             delete context.rightmenurect;
             var s = SAFARI ? -1: ALIEXTENT;
