@@ -2730,7 +2730,7 @@ var panlst =
             else if (canvas.isbuttonrect)
             {
                 var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
-                buttonobj.setperc(1 - k);
+                buttonobj.setperc(k);
             }
             else
             {
