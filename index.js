@@ -4924,7 +4924,7 @@ contextlst.forEach(function(context, n)
     context.canvas.panend_ = k.panend;
 
     context.font = DEFAULTFONT;
-    context.fillText("", 0, 0);
+    context.fillText(" ", 0, 0);
 });
 
 contextobj.reset = function()
