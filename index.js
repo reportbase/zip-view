@@ -516,90 +516,7 @@ panel.gallerybar = function()
 {
     this.draw = function(context, rect, user, time)
     {
-        var canvas = context.canvas;
-        canvas.speedrect = new rectangle();
-        canvas.reducerect = new rectangle();
-        canvas.bscrollrect = new rectangle();
-        canvas.hscrollrect = new rectangle();
-        canvas.vscrollrect = new rectangle();
-        context.chapterect = new rectangle();
-        canvas.galleryrect = new rectangle();
-        var w = Math.min(360, rect.width - 100);
-        var j = window.innerWidth - rect.width >= 180;
-        var rows = infobj.data.length;
-        var rh = 26;
-        var bh = rect.height / 2;
-        var cw = rect.width - 30;
-        context.save();
-        var a = new panel.layerA(
-            [
-                new panel.colsA([10, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 10],
-                    [
-                        0,
-                        new panel.rows([0, bh, 0],
-                            [
-                                0,
-                                0 ? new panel.layers(
-                                    [
-                                        new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                        new panel.expand(new panel.rectangle(canvas.speedrect), 10, 0),
-                                        new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 6, 6), ALIEXTENT, 0), 3, 3),
-                                    ]) : 0,
-                                0,
-                            ]),
-                        0,
-                        new panel.rows([0, bh, 0],
-                            [
-                                0,
-                                0 ? new panel.layers(
-                                    [
-                                        new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                        new panel.expand(new panel.rectangle(canvas.reducerect), 10, 0),
-                                        new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 6, 6), ALIEXTENT, 0), 3, 3)
-                                    ]) : 0,
-                                0,
-                            ]),
-                        0,
-                    ]),
-                new panel.rowsA([80, 0, rows * rh, 8, SCROLLBARWIDTH, 4],
-                    [
-                        0,
-                        0,
-                        new panel.cols([0, w, 0],
-                            [
-                                0,
-                                new panel.layers(
-                                    [
-                                        new panel.rectangle(context.chapterect),
-                                        new panel.gridA(1, rows, 1,
-                                            new panel.shadow(new panel.text())),
-                                    ]),
-                                0,
-                            ]),
-                        0,
-                        0,
-                    ]),
-            ]);
 
-        a.draw(context, rect,
-            [
-                [
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                ],
-                [
-                    0,
-                    0,
-                    infobj.data,
-                    0,
-                    canvas.scrollobj,
-                    0,
-                ],
-            ], 0, 0);
-        context.restore();
     }
 };
 
@@ -917,9 +834,107 @@ panel.homebar = function()
 }
 
 //panel scrollbar
-panel.scrollbar = function()
+var displaylst = 
+[
 {
-    this.draw = function(context, rect, user, time)
+    name: "DEFAULT",
+    draw: function(context, rect, user, time)
+    {
+    }
+},
+{
+    name: "GALLERY",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        canvas.speedrect = new rectangle();
+        canvas.reducerect = new rectangle();
+        canvas.bscrollrect = new rectangle();
+        canvas.hscrollrect = new rectangle();
+        canvas.vscrollrect = new rectangle();
+        context.chapterect = new rectangle();
+        canvas.galleryrect = new rectangle();
+        var w = Math.min(360, rect.width - 100);
+        var j = window.innerWidth - rect.width >= 180;
+        var rows = infobj.data.length;
+        var rh = 26;
+        var bh = rect.height / 2;
+        var cw = rect.width - 30;
+        context.save();
+        var a = new panel.layerA(
+            [
+                new panel.colsA([10, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 10],
+                    [
+                        0,
+                        new panel.rows([0, bh, 0],
+                            [
+                                0,
+                                0 ? new panel.layers(
+                                    [
+                                        new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                        new panel.expand(new panel.rectangle(canvas.speedrect), 10, 0),
+                                        new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 6, 6), ALIEXTENT, 0), 3, 3),
+                                    ]) : 0,
+                                0,
+                            ]),
+                        0,
+                        new panel.rows([0, bh, 0],
+                            [
+                                0,
+                                0 ? new panel.layers(
+                                    [
+                                        new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                        new panel.expand(new panel.rectangle(canvas.reducerect), 10, 0),
+                                        new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 6, 6), ALIEXTENT, 0), 3, 3)
+                                    ]) : 0,
+                                0,
+                            ]),
+                        0,
+                    ]),
+                new panel.rowsA([80, 0, rows * rh, 8, SCROLLBARWIDTH, 4],
+                    [
+                        0,
+                        0,
+                        new panel.cols([0, w, 0],
+                            [
+                                0,
+                                new panel.layers(
+                                    [
+                                        new panel.rectangle(context.chapterect),
+                                        new panel.gridA(1, rows, 1,
+                                            new panel.shadow(new panel.text())),
+                                    ]),
+                                0,
+                            ]),
+                        0,
+                        0,
+                    ]),
+            ]);
+
+        a.draw(context, rect,
+            [
+                [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                ],
+                [
+                    0,
+                    0,
+                    infobj.data,
+                    0,
+                    canvas.scrollobj,
+                    0,
+                ],
+            ], 0, 0);
+        context.restore();        
+    }
+},
+{
+    name: "MENU",
+    draw: function(context, rect, user, time)
     {
         var canvas = context.canvas;
         context.save();
@@ -962,10 +977,18 @@ panel.scrollbar = function()
                 0,
             ]);
 
-        context.restore();
+        context.restore();    
     }
-};
+},
+{
+    name: "BOSS",
+    draw: function(context, rect, user, time)
+    {
+    }
+},
+];    
 
+var displayobj = new circular_array("", displaylst);
 var buttonobj = new circular_array("", []);
 
 //buttonobj reset
@@ -4478,8 +4501,7 @@ menuobj.draw = function()
         infobj.reset();
     }
 
-    context.canvas.bar.draw(context, rect, 0, 0);
-    context.canvas.scroll.draw(context, rect, 0, 0);
+    context.canvas.display_.draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
 }
 
@@ -4500,8 +4522,7 @@ var eventlst = [
     key: "MENU",
     press: "DEFAULT",
     pinch: "MENU",
-    bar: new panel.empty(),
-    scroll: new panel.scrollbar(),
+    display: "MENU",
     footer: new panel.empty(),
     buttonheight: 0,
     buttonmargin: 10,
@@ -4525,8 +4546,7 @@ var eventlst = [
     key: "MENU",
     press: "MENU",
     pinch: "MENU",
-    bar: new panel.empty(),
-    scroll: new panel.scrollbar(),
+    display: "MENU",
     footer: new panel.galleriesbar(),
     buttonheight: 240,
     buttonmargin: 20,
@@ -4549,8 +4569,7 @@ var eventlst = [
     key: "MENU",
     press: "MENU",
     pinch: "MENU",
-    bar: new panel.empty(),
-    scroll: new panel.scrollbar(),
+    display: "MENU",
     footer: new panel.debugbar(),
     buttonheight: 90,
     buttonmargin: 10,
@@ -4573,8 +4592,7 @@ var eventlst = [
     key: "BOSS",
     press: "BOSS",
     pinch: "BOSS",
-    bar: new panel.empty(),
-    scroll: new panel.empty(),
+    display: "MENU",
     footer: new panel.empty(),
     buttonheight: 30,
     buttonmargin: 10,
@@ -4597,8 +4615,7 @@ var eventlst = [
     key: "MENU",
     press: "MENU",
     pinch: "MENU",
-    bar: new panel.empty(),
-    scroll: new panel.scrollbar(),
+    display: "MENU",
     footer: new panel.folderbar(),
     buttonheight: 150,
     buttonmargin: 10,
@@ -4621,8 +4638,7 @@ var eventlst = [
     key: "MENU",
     press: "MENU",
     pinch: "MENU",
-    bar: new panel.empty(),
-    scroll: new panel.scrollbar(),
+    display: "MENU",
     footer: new panel.folderbar(),
     buttonheight: 70,
     buttonmargin: 15,
@@ -4645,8 +4661,7 @@ var eventlst = [
     key: "MENU",
     press: "MENU",
     pinch: "MENU",
-    bar: new panel.empty(),
-    scroll: new panel.scrollbar(),
+    display: "MENU",
     footer: new panel.homebar(),
     buttonheight: 180,
     buttonmargin: 20,
@@ -4669,8 +4684,7 @@ var eventlst = [
     key: "GALLERY",
     press: "GALLERY",
     pinch: "GALLERY",
-    bar: new panel.gallerybar(),
-    scroll: new panel.galleryscroll(),
+    display: "GALLERY",
     footer: new panel.empty(),
     buttonheight: 320,
     buttonmargin: 10,
@@ -4693,8 +4707,7 @@ var eventlst = [
     key: "MENU",
     press: "MENU",
     pinch: "MENU",
-    bar: new panel.empty("Image Browser"),
-    scroll: new panel.scrollbar(),
+    display: "MENU",
     footer: new panel.helpbar(),
     buttonheight: 240,
     buttonmargin: 30,
@@ -4717,8 +4730,7 @@ var eventlst = [
     key: "MENU",
     press: "MENU",
     pinch: "MENU",
-    bar: new panel.empty("Image Browser"),
-    scroll: new panel.scrollbar(),
+    display: "MENU",
     footer: new panel.accountbar(),
     buttonheight: 50,
     buttonmargin: 10,
@@ -4741,8 +4753,7 @@ var eventlst = [
     key: "MENU",
     press: "MENU",
     pinch: "MENU",
-    bar: new panel.empty("Image Browser"),
-    scroll: new panel.scrollbar(),
+    display: "MENU",
     footer: new panel.empty(),
     buttonheight: 90,
     buttonmargin: 10,
@@ -4765,8 +4776,7 @@ var eventlst = [
     key: "MENU",
     press: "MENU",
     pinch: "MENU",
-    bar: new panel.empty("Image Browser"),
-    scroll: new panel.scrollbar(),
+    display: "MENU",
     footer: new panel.empty(),
     buttonheight: 50,
     buttonmargin: 10,
@@ -4789,8 +4799,7 @@ var eventlst = [
     key: "MENU",
     press: "MENU",
     pinch: "MENU",
-    bar: new panel.empty("Image Browser"),
-    scroll: new panel.scrollbar(),
+    display: "MENU",
     footer: new panel.empty(),
     buttonheight: 50,
     buttonmargin: 10,
@@ -4813,8 +4822,7 @@ var eventlst = [
     key: "MENU",
     press: "MENU",
     pinch: "MENU",
-    bar: new panel.empty("Image Browser"),
-    scroll: new panel.scrollbar(),
+    display: "MENU",
     footer: new panel.empty(),
     buttonheight: 50,
     buttonmargin: 10,
@@ -4837,8 +4845,7 @@ var eventlst = [
     key: "MENU",
     press: "MENU",
     pinch: "MENU",
-    bar: new panel.empty("Image Browser"),
-    scroll: new panel.scrollbar(),
+    display: "MENU",
     footer: new panel.empty(),
     buttonheight: 50,
     buttonmargin: 10,
@@ -4882,13 +4889,19 @@ contextlst.forEach(function(context, n)
     canvas.autodirect = -1;
     canvas.hideontap = obj.hideontap;
     canvas.width_ = obj.width;
-    canvas.bar = obj.bar;
-    canvas.scroll = obj.scroll;
     canvas.footer = obj.footer;
     canvas.buttonheight = obj.buttonheight;
     canvas.buttonmargin = obj.buttonmargin;
-    canvas.scrollinit = obj.scrollinit;
+    
+    canvas.scrollinit = obj.scrollinit;//todo
     canvas.scrollobj.set(canvas.scrollinit*window.innerHeight);
+
+    var k = displaylst.findIndex(function(a)
+    {
+        return a.name == obj.display
+    });
+    
+    canvas.display_ = displaylst[k];
 
     var k = pinchlst.findIndex(function(a)
     {
