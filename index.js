@@ -2730,8 +2730,8 @@ var panlst =
             }
             else if (canvas.isbuttonrect)
             {
-                var k = (y - buttonrect.y) / buttonrect.height;
-                buttonrect.setperc(1 - k);
+                var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
+                canvas.buttonrect.setperc(1 - k);
             }
             else
             {
@@ -3596,11 +3596,11 @@ var taplst =
             buttonobj.fit();
         }
         else if (
-            buttonrect &&
-            buttonrect.hitest(x, y))
+            canvas.buttonrect &&
+            canvas.buttonrect.hitest(x, y))
         {
-            var k = (y - buttonrect.y) / buttonrect.height;
-            buttonrect.setperc(1 - k);
+            var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
+            canvas.buttonrect.setperc(1 - k);
             menuobj.draw()              
         }
         else if (
