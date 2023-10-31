@@ -2229,7 +2229,7 @@ var wheelst =
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
             canvas.display_ = displaylst[k];
             var j = buttonobj.length()/25;
-/            context.canvas.pinching = 1;
+            context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             buttonobj.add(k*j);
             context.canvas.lastime = -0.0000000000101010101;
