@@ -985,7 +985,7 @@ buttonobj.reset = function()
     var bheight = (2000*3000)/w;
     if (bheight > galleryobj.height)
         bheight = galleryobj.height;
-    for (var n = gheight; n < bheight; ++n)
+    for (var n = gheight; n <= bheight; ++n)
         buttonobj.data.push(n);
     buttonobj.set(dheight);
 }
@@ -2001,7 +2001,7 @@ var wheelst =
         {
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
-            buttonobj.add(k*5);
+            buttonobj.add(k*10);
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
             context.canvas.pinching = 0;
@@ -5691,8 +5691,8 @@ var headlst =
             var g = ctx == _8cnvctx;
             delete context.leftmenurect;
             delete context.rightmenurect;
-            var s = SAFARI ? -1: ALIEXTENT;
-            var e = galleryobj.boss ? ALIEXTENT + 10 : -1;
+            var s = IOS() ? -1: ALIEXTENT;
+            var e = galleryobj.boss ? (ALIEXTENT + 10) : -1;
             var a = new panel.cols(
                 [5, ALIEXTENT, 0, s, e, ALIEXTENT, 0, ALIEXTENT, 5],
                 [
