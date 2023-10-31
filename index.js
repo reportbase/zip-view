@@ -2216,6 +2216,7 @@ infobj.reset = function()
         infobj.data.push(`${index.toFixed(2)} of ${galleryobj.length()}`);
         if (url.searchParams.has("debug"))
         {
+            infobj.data.push(`${galleryobj.width}x${galleryobj.height}`);
             infobj.data.push(buttonobj.value().toFixed(2));
             var j = 100 * _8cnv.scrollobj.berp();
             infobj.data.push(`${j.toFixed(2)}%`);
