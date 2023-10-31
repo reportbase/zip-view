@@ -977,8 +977,8 @@ buttonobj.reset = function()
     buttonobj.data = [];
     var j = w > h ? 4 : 8
     var gheight = Math.floor(w / a / j);
-    if (gheight < (window.innerHeight*2)/galleryobj.length())
-        gheight = (window.innerHeight*2)/galleryobj.length();
+    if (gheight < (window.innerHeight*1.5)/galleryobj.length())
+        gheight = (window.innerHeight*1.5)/galleryobj.length();
     if (gheight < 160)
         gheight = 160;
     var dheight = Math.floor(window.innerWidth / a) - gheight;
