@@ -2240,7 +2240,7 @@ var wheelst =
         else if (canvas.buttonrect &&
             canvas.buttonrect.hitest(x, y))
         {
-            buttonobj.addperc(delta * 0.001);
+            buttonobj.addperc(-1 * delta * 0.001);
             menuobj.draw();
         }
         else
@@ -2731,7 +2731,7 @@ var panlst =
             else if (canvas.isbuttonrect)
             {
                 var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
-                canvas.buttonrect.setperc(1 - k);
+                canvas.buttonobj.setperc(1 - k);
             }
             else
             {
@@ -3600,7 +3600,7 @@ var taplst =
             canvas.buttonrect.hitest(x, y))
         {
             var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
-            canvas.buttonrect.setperc(1 - k);
+            canvas.buttonobj.setperc(1 - k);
             menuobj.draw()              
         }
         else if (
