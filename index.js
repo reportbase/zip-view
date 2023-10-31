@@ -4518,7 +4518,7 @@ var eventlst = [
     key: "BOSS",
     press: "BOSS",
     pinch: "BOSS",
-    display: "MENU",
+    display: "BOSS",
     footer: new panel.empty(),
     buttonheight: 30,
     buttonmargin: 10,
