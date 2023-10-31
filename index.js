@@ -977,14 +977,16 @@ buttonobj.reset = function()
     buttonobj.data = [];
     var j = w > h ? 4 : 8
     var gheight = Math.floor(w / a / j);
-    if (gheight < 120)
-        gheight = 120;
+    if (gheight < window.innerHeight/galleryobj.length())
+        gheight = window.innerHeight/galleryobj.length();
+    if (gheight < 160)
+        gheight = 160;
     var dheight = Math.floor(window.innerWidth / a) - gheight;
     if (dheight < 0)
         dheight = 0;
     var bheight = (4000*4000)/w;
-    if (bheight > galleryobj.height)
-        bheight = galleryobj.height;
+    if (bheight > galleryobj.height*1.25)
+        bheight = galleryobj.height*1.25;
     for (var n = gheight; n <= bheight; ++n)
         buttonobj.data.push(n);
     buttonobj.set(dheight);
@@ -4351,8 +4353,7 @@ menuobj.draw = function()
     {
         var k = canvas.autodirect;
         context.canvas.timeobj.rotate(k * context.canvas.slideshow);
-        if (!context.canvas.keydown)//todo
-            context.canvas.slideshow -= context.canvas.slidereduce
+        context.canvas.slideshow -= context.canvas.slidereduce
     }
     else if (global.swipetimeout)
     {
