@@ -794,6 +794,37 @@ var displaylst =
     }
 },
 {
+    name: "BUTTON",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save();
+        canvas.buttonrect = new rectangle();
+        canvas.templaterect = new rectangle();
+        var bh = rect.height / 2;
+        var bw = rect.width / 2;
+        var a = new panel.cols([6, SCROLLBARWIDTH, 0],
+            [
+                0,
+                new panel.rows([0, bh, 0],
+                    [
+                        0,
+                        new panel.layers(
+                            [
+                                new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                new panel.expand(new panel.rectangle(canvas.buttonrect), 10, 0),
+                                new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
+                            ]),
+                        0,
+                    ]),
+                0
+            ]);
+
+        a.draw(context, rect, buttonobj, 0);   
+        context.restore();
+    }
+},
+{
     name: "GALLERY",
     draw: function(context, rect, user, time)
     {
@@ -801,8 +832,7 @@ var displaylst =
         context.save();
         canvas.vscrollrect = new rectangle();
         canvas.hscrollrect = new rectangle();
-        canvas.buttonrect = new rectangle();
-        if (!headcnv.height)
+        if (!headcnv.height)//todo
             return;
         var bh = rect.height / 2;
         var bw = rect.width / 2;
@@ -2166,6 +2196,14 @@ var wheelst =
     {
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
+
+        var k = displaylst.findIndex(function(a)
+        {
+            return a.name == "BUTTON"
+        });
+        
+        canvas.display_ = displaylst[k];
+        
         if (ctrl)
         {
             context.canvas.pinching = 1;
@@ -2305,6 +2343,12 @@ var pinchlst = [
         delete context.buttonanchor;
         context.canvas.slideshow = 0;
         context.canvas.pinching = 1;
+        var k = displaylst.findIndex(function(a)
+        {
+            return a.name == "GALLERY"
+        });
+        
+        canvas.display_ = displaylst[k];
     },
     pinchend: function(context)
     {
@@ -2677,6 +2721,14 @@ var panlst =
     {
         var canvas = context.canvas;
         canvas.panning = 1;
+        
+        var k = displaylst.findIndex(function(a)
+        {
+            return a.name == "GALLERY"
+        });
+        
+        canvas.display_ = displaylst[k];
+        
         movingx = new MovingAverage();
         movingy = new MovingAverage();
         delete canvas.slideshow;
@@ -4856,6 +4908,7 @@ contextlst.forEach(function(context, n)
         return a.name == obj.key
     });
     k = keylst[k];
+    
     canvas.keyup_ = k.keyup;
     canvas.keydown_ = k.keydown;
 
