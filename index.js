@@ -821,7 +821,7 @@ var displaylst =
                         new panel.layers(
                             [
                                 new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.buttonrect), 10, 0),
+                                new panel.expand(new panel.rectangle(canvas.buttonrect), 20, 0),
                                 new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
                             ]),
                         0,
@@ -840,7 +840,7 @@ var displaylst =
                         new panel.layers(
                             [
                                 new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.templaterect), 0, 10),
+                                new panel.expand(new panel.rectangle(canvas.templaterect), 0, 20),
                                 new panel.shrink(new panel.currentH(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
                             ]),
                         0,
@@ -848,7 +848,6 @@ var displaylst =
             ])
 
         a.draw(context, rect, templateobj, 0);
-         
         context.restore();
     }
 },
@@ -873,7 +872,7 @@ var displaylst =
                         new panel.layers(
                             [
                                 new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.vscrollrect), 10, 0),
+                                new panel.expand(new panel.rectangle(canvas.vscrollrect), 20, 0),
                                 new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
                             ]),
                         0,
@@ -892,7 +891,7 @@ var displaylst =
                         new panel.layers(
                             [
                                 new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 10),
+                                new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 20),
                                 new panel.shrink(new panel.currentH(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
                             ]),
                         0,
@@ -2735,6 +2734,9 @@ var panlst =
             }
             else
             {
+                var k = displaylst.findIndex(function(a) {return a.name == "GALLERY"});
+                canvas.display_ = displaylst[k];
+
                 var e = canvas.starty - y;
                 var jvalue = CYLSEAL / canvas.virtualheight
                 jvalue *= e;
@@ -2748,14 +2750,6 @@ var panlst =
     {
         var canvas = context.canvas;
         canvas.panning = 1;
-        
-        var k = displaylst.findIndex(function(a)
-        {
-            return a.name == "GALLERY"
-        });
-        
-        canvas.display_ = displaylst[k];
-        
         movingx = new MovingAverage();
         movingy = new MovingAverage();
         delete canvas.slideshow;
@@ -3600,7 +3594,7 @@ var taplst =
             canvas.buttonrect.hitest(x, y))
         {
             var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
-            buttonobj.setperc(1 - k);
+            buttonobj.setperc(k);
             menuobj.draw()              
         }
         else if (
