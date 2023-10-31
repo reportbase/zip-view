@@ -838,94 +838,35 @@ var displaylst =
             ])
 
         a.draw(context, rect, context.canvas.scrollobj, 0);
-        context.restore();
         
-        /*
-        var canvas = context.canvas;
-        canvas.speedrect = new rectangle();
-        canvas.reducerect = new rectangle();
-        canvas.bscrollrect = new rectangle();
-        canvas.hscrollrect = new rectangle();
-        canvas.vscrollrect = new rectangle();
         context.chapterect = new rectangle();
-        canvas.galleryrect = new rectangle();
         var w = Math.min(360, rect.width - 100);
         var j = window.innerWidth - rect.width >= 180;
         var rows = infobj.data.length;
         var rh = 26;
         var bh = rect.height / 2;
         var cw = rect.width - 30;
-        context.save();
-        var a = new panel.layerA(
-            [
-                new panel.colsA([10, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 10],
-                    [
-                        0,
-                        new panel.rows([0, bh, 0],
-                            [
-                                0,
-                                0 ? new panel.layers(
-                                    [
-                                        new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                        new panel.expand(new panel.rectangle(canvas.speedrect), 10, 0),
-                                        new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 6, 6), ALIEXTENT, 0), 3, 3),
-                                    ]) : 0,
-                                0,
-                            ]),
-                        0,
-                        new panel.rows([0, bh, 0],
-                            [
-                                0,
-                                0 ? new panel.layers(
-                                    [
-                                        new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                        new panel.expand(new panel.rectangle(canvas.reducerect), 10, 0),
-                                        new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 6, 6), ALIEXTENT, 0), 3, 3)
-                                    ]) : 0,
-                                0,
-                            ]),
-                        0,
-                    ]),
-                new panel.rowsA([80, 0, rows * rh, 8, SCROLLBARWIDTH, 4],
-                    [
-                        0,
-                        0,
-                        new panel.cols([0, w, 0],
-                            [
-                                0,
-                                new panel.layers(
-                                    [
-                                        new panel.rectangle(context.chapterect),
-                                        new panel.gridA(1, rows, 1,
-                                            new panel.shadow(new panel.text())),
-                                    ]),
-                                0,
-                            ]),
-                        0,
-                        0,
-                    ]),
-            ]);
-
-        a.draw(context, rect,
-            [
+        var a = new panel.rows([80, 0, rows * rh, 8, SCROLLBARWIDTH, 4],
+        [
+            0,
+            0,
+            new panel.cols([0, w, 0],
                 [
                     0,
+                    new panel.layers(
+                        [
+                            new panel.rectangle(context.chapterect),
+                            new panel.gridA(1, rows, 1,
+                                new panel.shadow(new panel.text())),
+                        ]),
                     0,
-                    0,
-                    0,
-                    0,
-                ],
-                [
-                    0,
-                    0,
-                    infobj.data,
-                    0,
-                    canvas.scrollobj,
-                    0,
-                ],
-            ], 0, 0);
+                ]),
+            0,
+            0,
+        ]);
+            
+        a.draw(context, rect, infobj.data, 0);
         context.restore();     
-        */
     }
 },
 {
