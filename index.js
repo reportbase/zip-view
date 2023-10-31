@@ -4922,6 +4922,9 @@ contextlst.forEach(function(context, n)
     context.canvas.panupdown_ = k.updown;
     context.canvas.panleftright_ = k.leftright;
     context.canvas.panend_ = k.panend;
+
+    var a = new panel.text();
+    a.draw(context, context.rect(), " ", 0)
 });
 
 contextobj.reset = function()
