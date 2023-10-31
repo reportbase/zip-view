@@ -520,59 +520,6 @@ panel.gallerybar = function()
     }
 };
 
-panel.galleryscroll = function()
-{
-    this.draw = function(context, rect, user, time)
-    {
-        var canvas = context.canvas;
-        context.save();
-        canvas.vscrollrect = new rectangle();
-        canvas.hscrollrect = new rectangle();
-        canvas.buttonrect = new rectangle();
-        if (!headcnv.height)
-            return;
-        var bh = rect.height / 2;
-        var bw = rect.width / 2;
-        var a = new panel.cols([0, SCROLLBARWIDTH, 6],
-            [
-                0,
-                new panel.rows([0, bh, 0],
-                    [
-                        0,
-                        new panel.layers(
-                            [
-                                new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.vscrollrect), 10, 0),
-                                new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
-                            ]),
-                        0,
-                    ]),
-                0
-            ]);
-
-        a.draw(context, rect, context.canvas.timeobj, 0);
-          
-        var a = new panel.rows([0, SCROLLBARWIDTH, 4],
-            [
-                0,
-                new panel.cols([0, bw, 0],
-                    [
-                        0,
-                        new panel.layers(
-                            [
-                                new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 10),
-                                new panel.shrink(new panel.currentH(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
-                            ]),
-                        0,
-                    ])
-            ])
-
-        a.draw(context, rect, context.canvas.scrollobj, 0);
-        context.restore();
-    }
-};
-
 panel.galleriesbar = function()
 {
     this.draw = function(context, rect, user, time)
@@ -847,6 +794,54 @@ var displaylst =
     draw: function(context, rect, user, time)
     {
         var canvas = context.canvas;
+        context.save();
+        canvas.vscrollrect = new rectangle();
+        canvas.hscrollrect = new rectangle();
+        canvas.buttonrect = new rectangle();
+        if (!headcnv.height)
+            return;
+        var bh = rect.height / 2;
+        var bw = rect.width / 2;
+        var a = new panel.cols([0, SCROLLBARWIDTH, 6],
+            [
+                0,
+                new panel.rows([0, bh, 0],
+                    [
+                        0,
+                        new panel.layers(
+                            [
+                                new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                new panel.expand(new panel.rectangle(canvas.vscrollrect), 10, 0),
+                                new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
+                            ]),
+                        0,
+                    ]),
+                0
+            ]);
+
+        a.draw(context, rect, context.canvas.timeobj, 0);
+          
+        var a = new panel.rows([0, SCROLLBARWIDTH, 4],
+            [
+                0,
+                new panel.cols([0, bw, 0],
+                    [
+                        0,
+                        new panel.layers(
+                            [
+                                new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 10),
+                                new panel.shrink(new panel.currentH(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
+                            ]),
+                        0,
+                    ])
+            ])
+
+        a.draw(context, rect, context.canvas.scrollobj, 0);
+        context.restore();
+        
+        /*
+        var canvas = context.canvas;
         canvas.speedrect = new rectangle();
         canvas.reducerect = new rectangle();
         canvas.bscrollrect = new rectangle();
@@ -929,7 +924,8 @@ var displaylst =
                     0,
                 ],
             ], 0, 0);
-        context.restore();        
+        context.restore();     
+        */
     }
 },
 {
