@@ -848,6 +848,27 @@ var displaylst =
             ])
 
         a.draw(context, rect, templateobj, 0);
+
+        var w = Math.min(360, rect.width - 100);
+        var rows = infobj.data.length;
+        var rh = 26;
+        var a = new panel.rows([80, 0, rows * rh, 8, SCROLLBARWIDTH, 4],
+        [
+            0,
+            0,
+            new panel.cols([0, w, 0],
+                [
+                    0,
+                    new panel.gridA(1, rows, 1,
+                        new panel.shadow(new panel.text())),
+                    0,
+                ]),
+            0,
+            0,
+        ]);
+
+        var data = [templateobj.value()];
+        a.draw(context, rect, data, 0);      
         context.restore();
     }
 },
@@ -900,7 +921,6 @@ var displaylst =
 
         a.draw(context, rect, context.canvas.scrollobj, 0);
         
-        context.chapterect = new rectangle();
         var w = Math.min(360, rect.width - 100);
         var j = window.innerWidth - rect.width >= 180;
         var rows = infobj.data.length;
@@ -914,12 +934,8 @@ var displaylst =
             new panel.cols([0, w, 0],
                 [
                     0,
-                    new panel.layers(
-                        [
-                            new panel.rectangle(context.chapterect),
-                            new panel.gridA(1, rows, 1,
-                                new panel.shadow(new panel.text())),
-                        ]),
+                    new panel.gridA(1, rows, 1,
+                        new panel.shadow(new panel.text())),
                     0,
                 ]),
             0,
@@ -988,7 +1004,6 @@ var displaylst =
             context.stretchrect = new rectangle();
             context.timerect = new rectangle();
             context.slicewidthrect = new rectangle();
-            context.chapterect = new rectangle();
             context.heightrect = new rectangle();
             
             if (
@@ -1045,12 +1060,8 @@ var displaylst =
                             new panel.cols([0, w, 0],
                                 [
                                     0,
-                                    new panel.layers(
-                                        [
-                                            new panel.rectangle(context.chapterect),
-                                            new panel.gridA(1, rows, 1,
-                                                new panel.shadow(new panel.text())),
-                                        ]),
+                                    new panel.gridA(1, rows, 1,
+                                        new panel.shadow(new panel.text())),
                                     0,
                                 ]),
                             0,
@@ -5291,7 +5302,7 @@ panel.text = function(color = "white", align = "center", baseline = "middle",
         var n = user.length;
         if (n <= 0)
             return;
-
+        
         if (reverse)
             user = user.split("").reverse().join("");
 
@@ -5306,7 +5317,8 @@ panel.text = function(color = "white", align = "center", baseline = "middle",
 
         if (!noclip)
         {
-            do {
+            do 
+            {
                 str = user.substr(0, n);
                 metrics = context.measureText(str);
                 n--;
