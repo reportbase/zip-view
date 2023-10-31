@@ -49,10 +49,9 @@ const GALLERYSCROLL = "rgba(0,0,0,0.3)";
 const ARROWFILL = "white";
 const SCROLLBARWIDTH = 16;
 const SMALLFONT = "16px archivo black";
-const DEFAULTFONT = "18px archivo black";
-const LARGEFONT = "20px archivo black";
+const DEFAULTFONT = "17px archivo black";
+const LARGEFONT = "19px archivo black";
 const HUGEFONT = "22px archivo black";
-const DOTSFONT = "60px archivo black";
 const SLICEWIDTH = 36;
 const ZOOMAX = 92;
 const IMAGELSTSIZE = SAFARI ? 30 : 120;
@@ -495,6 +494,8 @@ let headcnv = document.getElementById("head");
 let headcnvctx = headcnv.getContext("2d", opts);
 
 _8cnvctx.font = DEFAULTFONT;
+_8cnv.width = 100;
+_8cnv.height = 100;
 _8cnvctx.fillText(" ", 0, 0);
 
 let canvaslst = [];
