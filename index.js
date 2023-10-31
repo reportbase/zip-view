@@ -585,9 +585,9 @@ panel.gallerybar = function()
             [
                 [
                     0,
-                    canvas.speedobj,
                     0,
-                    canvas.reduceobj,
+                    0,
+                    0,
                     0,
                 ],
                 [
@@ -2827,7 +2827,7 @@ var swipelst = [
         setTimeout(function()
         {
             var k = evt.type == "swipeleft" ? -1 : 1;
-            bossobj.leftright(k * context.canvas.speedobj.value());
+            bossobj.leftright(k * context.canvas.speed);
             context.refresh();
         }, TIMEMAIN);
     },
@@ -2835,7 +2835,7 @@ var swipelst = [
     swipeupdown: function(context, rect, x, y, evt)
     {
         var k = evt.type == "swipeup" ? -1 : 1;
-        bossobj.updown(k * context.canvas.speedobj.value());
+        bossobj.updown(k * context.canvas.speed);
     },
 },
 {
@@ -2843,12 +2843,12 @@ var swipelst = [
     swipeleftright: function(context, rect, x, y, evt)
     {
         var k = evt.type == "swipeleft" ? 1 : -1;
-        galleryobj.leftright(context, k * context.canvas.speedobj.value());
+        galleryobj.leftright(context, k * context.canvas.speed);
     },
     swipeupdown: function(context, rect, x, y, evt)
     {
         var k = evt.type == "swipeup" ? 1 : -1;
-        menuobj.updown(context, k * context.canvas.speedobj.value());
+        menuobj.updown(context, k * context.canvas.speed);
         if (!global.swipetimeout)
         {
             global.swipetimeout = setInterval(function()
@@ -2865,7 +2865,7 @@ var swipelst = [
     swipeupdown: function(context, rect, x, y, evt)
     {
         var k = evt.type == "swipeup" ? 1 : -1;
-        menuobj.updown(context, k * context.canvas.speedobj.value());
+        menuobj.updown(context, k * context.canvas.speed);
     },
 }, ];
 
@@ -2918,11 +2918,11 @@ var keylst = [
                 (canvas.shiftKey && key == " ") ||
                 key == "k")
             {
-                var e = canvas.speedobj.value() / 2;
+                var e = canvas.speed / 2;
                 if (key == "pageup" || key == "enter")
-                    e = canvas.speedobj.value();
+                    e = canvas.speed;
                 else if (key == "backspace" || key == " " || (key == "arrowup" && canvas.ctrlKey))
-                    e = canvas.speedobj.value() * 2;
+                    e = canvas.speed * 2;
                 menuobj.updown(context, -e);
                 if (!global.swipetimeout)
                 {
@@ -2941,11 +2941,11 @@ var keylst = [
                 key == " " ||
                 key == "j")
             {
-                var e = canvas.speedobj.value() / 2;
+                var e = canvas.speed / 2;
                 if (key == "pagedown" || key == "enter")
-                    e = canvas.speedobj.value();
+                    e = canvas.speed;
                 else if (key == " " || (key == "arrowdown" && canvas.ctrlKey))
-                    e = canvas.speedobj.value() * 2;
+                    e = canvas.speed * 2;
 
                 menuobj.updown(context, e);
                 if (!global.swipetimeout)
@@ -2995,7 +2995,7 @@ var keylst = [
                 key == "h")
             {
                 evt.preventDefault();
-                galleryobj.leftright(context, -canvas.speedobj.value() / 2)
+                galleryobj.leftright(context, -canvas.speed / 2)
             }
             else if (
                 (!canvas.shiftKey && key == "tab") ||
@@ -3003,7 +3003,7 @@ var keylst = [
                 key == "l")
             {
                 evt.preventDefault();
-                galleryobj.leftright(context, canvas.speedobj.value() / 2)
+                galleryobj.leftright(context, canvas.speed / 2)
             }
             else if (key == "d")
             {
@@ -3045,7 +3045,7 @@ var keylst = [
                 (canvas.shiftKey && key == " ") ||
                 key == "j")
             {
-                menuobj.updown(context, -canvas.speedobj.value());
+                menuobj.updown(context, -canvas.speed);
                 context.refresh();
             }
             else if (
@@ -3056,7 +3056,7 @@ var keylst = [
                 key == "s" ||
                 key == "k")
             {
-                menuobj.updown(context, canvas.speedobj.value());
+                menuobj.updown(context, canvas.speed);
                 context.refresh();
             }
             else if (key == "arrowleft")
@@ -3275,21 +3275,6 @@ var taplst =
             var k = (y - context.stretchrect.y) / context.stretchrect.height;
             stretchobj.setperc(k);
             context.refresh();
-        }
-        else if (context.slicewidthrect &&
-            context.slicewidthrect.hitest(x, y))
-        {
-            var k = (y - context.slicewidthrect.y) / context.slicewidthrect.height;
-            if (galleryobj.debug)
-            {
-                slicewidthobj.setperc(k);
-                contextobj.reset()
-            }
-            else
-            {
-                context.canvas.speedobj.setperc(k);
-                bossobj.leftright(-1 * context.canvas.speedobj.value());
-            }
         }
         else 
         {
@@ -4890,10 +4875,8 @@ contextlst.forEach(function(context, n)
     }
 
     canvas.scrollobj = new circular_array("TEXTSCROLL", window.innerHeight);
-    canvas.speedobj = new circular_array("SPEED", 120);
-    canvas.speedobj.set(obj.speed);
-    canvas.reduceobj = new circular_array("REDUCE", 100);
-    canvas.reduceobj.set(obj.reduce);
+    canvas.speed = obj.speed;
+    canvas.reduce = obj.reduce;
     canvas.autodirect = -1;
     canvas.hideontap = obj.hideontap;
     canvas.width_ = obj.width;
@@ -5043,7 +5026,7 @@ contextobj.reset = function()
             contextobj.reset()
 
             if (galleryobj.autopan)
-                bossobj.leftright(-1 * context.canvas.speedobj.value());
+                bossobj.leftright(-1 * context.canvas.speed);
 
             headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
             bossobj.draw();
@@ -6728,14 +6711,13 @@ menuobj.updown = function(context, delta)
     context.savetime();
     var canvas = context.canvas;
     canvas.autodirect = delta < 0 ? 1 : -1;
-    var f = Math.abs(delta) / canvas.speedobj.length();
-    var g = Math.lerp(0.01, 2160, canvas.reduceobj.berp());
+    var f = Math.abs(delta) / 100;
+    var b = canvas.reduce/100;
+    var g = Math.lerp(0.01, 2160, b);
     var lst = [1.5, 1.75, 2.0, 2.25, 2.5, 3.0, 3.5, 4.0];
     var j = util.clamp(0, lst.length - 1, canvas.sliceobj.length());
     var k = lst[j] * f;
     canvas.slideshow = (CYLSEAL / canvas.virtualheight) * k * 1.5;
-    //if (canvas.slideshow < 0.5)
-    //    canvas.slideshow = 0.5;
     canvas.slidereduce = canvas.slideshow / g;
 }
 
