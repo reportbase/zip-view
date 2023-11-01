@@ -3655,7 +3655,7 @@ var taplst =
         else if (canvas.templaterect && canvas.templaterect.hitest(x, y))
         {
             var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
-            templatobj.setperc(k);
+            templateobj.setperc(k);
             menuobj.draw()
         }
         else if (canvas.holllyrect && canvas.holllyrect.hitest(x, y))
