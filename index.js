@@ -2254,9 +2254,6 @@ var wheelst =
         }
         else
         {
-            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            canvas.display_ = displaylst[k];
-            
             clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
             if (global.swipetimeout)
@@ -2746,17 +2743,8 @@ var panlst =
                 var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
                 buttonobj.setperc(k);
             }
-            else if (canvas.ishollyrect)
-            {
-            }
-            else if (canvas.istemplaterect)
-            {
-            }
             else
             {
-                var k = displaylst.findIndex(function(a) {return a.name == "GALLERY"});
-                canvas.display_ = displaylst[k];
-
                 var e = canvas.starty - y;
                 var jvalue = CYLSEAL / canvas.virtualheight
                 jvalue *= e;
@@ -2786,8 +2774,6 @@ var panlst =
     },
     panend: function(context, rect, x, y)
     {
-    delete context.canvas.istemplaterect;
-        delete context.canvas.isholllyrect;
         delete context.canvas.type;
         delete context.canvas.panning;
         delete context.canvas.starty;
@@ -3716,6 +3702,12 @@ var taplst =
                 menuobj.hide();
                 contextobj.reset();
             }, 200);
+        }
+        else
+        {
+            var k = displaylst.findIndex(function(a) {return a.name == "GALLERY"});
+            canvas.display_ = displaylst[k];
+            menuobj.draw();
         }
     },
 },
