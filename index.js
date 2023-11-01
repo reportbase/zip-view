@@ -884,7 +884,7 @@ var displaylst =
         delete canvas.buttonrect;
         canvas.vscrollrect = new rectangle();
         canvas.holllyrect = new rectangle();
-        if (!headcnv.height)//todo
+        if (!headcnv.height)
             return;
         var bh = rect.height / 2;
         var bw = rect.width / 2;
@@ -2237,7 +2237,7 @@ var wheelst =
         if (ctrl)
         {
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
-            canvas.display_ = displaylst[k];
+            canvas.display = displaylst[k];
             var j = buttonobj.length()/100;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
@@ -3704,7 +3704,7 @@ var taplst =
         else
         {
             var k = displaylst.findIndex(function(a) {return a.name == "GALLERY"});
-            canvas.display_ = displaylst[k];
+            canvas.display = displaylst[k];
             menuobj.draw();
         } 
     },
@@ -3969,7 +3969,7 @@ bossobj.draw = function()
 
     if (headcnv.height && !menuobj.value())
     {
-        context.canvas.display_.draw(context, rect, 0, 0);
+        context.canvas.display.draw(context, rect, 0, 0);
     }
 }
 
@@ -4352,7 +4352,7 @@ menuobj.show = function()
         return;
     var canvas = context.canvas;
     _4cnv.height = 0;
-    canvas.hollyobj.set(canvas.scrollinit*window.innerHeight);
+    canvas.hollyobj.set(canvas.hollyinit*window.innerHeight);
     if (canvas.width_ > window.innerWidth)
     {
         context.show(0, 0, window.innerWidth, window.innerHeight);
@@ -4531,7 +4531,7 @@ menuobj.draw = function()
         infobj.reset();
     }
 
-    context.canvas.display_.draw(context, rect, 0, 0);
+    context.canvas.display.draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
 }
 
@@ -4556,7 +4556,7 @@ var eventlst = [
     footer: new panel.empty(),
     buttonheight: 0,
     buttonmargin: 10,
-    scrollinit: 0,
+    hollyinit: 0,
     width: 640
 },
 { 
@@ -4580,7 +4580,7 @@ var eventlst = [
     footer: new panel.galleriesbar(),
     buttonheight: 240,
     buttonmargin: 20,
-    scrollinit: 2,
+    hollyinit: 2,
     width: 640
 },
 { //3 debug
@@ -4603,7 +4603,7 @@ var eventlst = [
     footer: new panel.debugbar(),
     buttonheight: 90,
     buttonmargin: 10,
-    scrollinit: 0,
+    hollyinit: 0,
     width: 640
 },
 { //4
@@ -4626,7 +4626,7 @@ var eventlst = [
     footer: new panel.empty(),
     buttonheight: 30,
     buttonmargin: 10,
-    scrollinit: 0,
+    hollyinit: 0,
     width: 640
 },
 { //5 folders
@@ -4649,7 +4649,7 @@ var eventlst = [
     footer: new panel.folderbar(),
     buttonheight: 150,
     buttonmargin: 10,
-    scrollinit: 0,
+    hollyinit: 0,
     width: 480
 },
 { //6 images
@@ -4672,7 +4672,7 @@ var eventlst = [
     footer: new panel.folderbar(),
     buttonheight: 70,
     buttonmargin: 15,
-    scrollinit: 0,
+    hollyinit: 0,
     width: 480
 },
 { //7
@@ -4695,7 +4695,7 @@ var eventlst = [
     footer: new panel.homebar(),
     buttonheight: 180,
     buttonmargin: 20,
-    scrollinit: 0,
+    hollyinit: 0,
     width: 640
 },
 { //8
@@ -4718,7 +4718,7 @@ var eventlst = [
     footer: new panel.empty(),
     buttonheight: 320,
     buttonmargin: 10,
-    scrollinit: 0.5,
+    hollyinit: 0.5,
     width: SAFARI ? 720 : 5160
 },
 { //9 help
@@ -4741,7 +4741,7 @@ var eventlst = [
     footer: new panel.helpbar(),
     buttonheight: 240,
     buttonmargin: 30,
-    scrollinit: 0,
+    hollyinit: 0,
     width: 640
 },
 { //10
@@ -4764,7 +4764,7 @@ var eventlst = [
     footer: new panel.accountbar(),
     buttonheight: 50,
     buttonmargin: 10,
-    scrollinit: 0,
+    hollyinit: 0,
     width: 640
 },
 { //11
@@ -4787,7 +4787,7 @@ var eventlst = [
     footer: new panel.empty(),
     buttonheight: 90,
     buttonmargin: 10,
-    scrollinit: 0,
+    hollyinit: 0,
     width: 640
 },
 { //12
@@ -4810,7 +4810,7 @@ var eventlst = [
     footer: new panel.empty(),
     buttonheight: 50,
     buttonmargin: 10,
-    scrollinit: 0,
+    hollyinit: 0,
     width: 640
 },
 { //13
@@ -4833,7 +4833,7 @@ var eventlst = [
     footer: new panel.empty(),
     buttonheight: 50,
     buttonmargin: 10,
-    scrollinit: 0,
+    hollyinit: 0,
     width: 640
 },
 { //14
@@ -4856,7 +4856,7 @@ var eventlst = [
     footer: new panel.empty(),
     buttonheight: 50,
     buttonmargin: 10,
-    scrollinit: 0,
+    hollyinit: 0,
     width: 640
 },
 { //15
@@ -4879,7 +4879,7 @@ var eventlst = [
     footer: new panel.empty(),
     buttonheight: 50,
     buttonmargin: 10,
-    scrollinit: 0,
+    hollyinit: 0,
     width: 640
 }, ];
 
@@ -4923,15 +4923,15 @@ contextlst.forEach(function(context, n)
     canvas.buttonheight = obj.buttonheight;
     canvas.buttonmargin = obj.buttonmargin;
     
-    canvas.scrollinit = obj.scrollinit;//todo
-    canvas.hollyobj.set(canvas.scrollinit*window.innerHeight);
+    canvas.hollyinit = obj.hollyinit;
+    canvas.hollyobj.set(canvas.hollyinit*window.innerHeight);
 
     var k = displaylst.findIndex(function(a)
     {
         return a.name == obj.display
     });
     
-    canvas.display_ = displaylst[k];
+    canvas.display = displaylst[k];
 
     var k = pinchlst.findIndex(function(a)
     {
