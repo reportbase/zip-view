@@ -2705,7 +2705,7 @@ var panlst =
         var obj = canvas.hollyobj;
         if (type == "panleft" || type == "panright")
         {
-            if (canvas.isholllyrect)
+            if (canvas.holllyrect && canvas.isholllyrect)
             {
                 var k = (x - canvas.holllyrect.x) / canvas.holllyrect.width;
                 context.canvas.hollyobj.setperc(k);
