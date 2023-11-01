@@ -790,7 +790,7 @@ var templatelst =
 ];
 
 const SEAL = 3927
-var sealobj = new circular_array("", SEAL*5);
+var sealobj = new circular_array("", SEAL*2);
 sealobj.set(SEAL);
 
 var templateobj = new circular_array("", templatelst);
@@ -2743,7 +2743,13 @@ var panlst =
             {
                 var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
                 //todo canvas.timeobj.setperc(1 - k);
-                sealobj.setperc(1 - k);
+                //todo sealobj.setperc(1 - k);
+                sealobj.setperc(k);
+            }
+            else if (canvas.issealrect)
+            {
+                var k = (y - canvas.sealrect.y) / canvas.sealrect.height;
+                sealobj.setperc(k);
             }
             else if (canvas.isbuttonrect)
             {
