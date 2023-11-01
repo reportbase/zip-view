@@ -2266,17 +2266,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     {
-         var canvas = context.canvas;
-         if (canvas.templaterect &&
-            canvas.templaterect.hitest(x, y))
-        {
-            templateobj.addperc(-1 * delta * 0.001);
-            menuobj.draw();
-        }
-        else
-        {
-            galleryobj.leftright(context, delta);
-        }
+        galleryobj.leftright(context, delta);
     },
 },
 {
@@ -2718,9 +2708,14 @@ var panlst =
             if (canvas.isholllyrect)
             {
                 var k = (x - canvas.holllyrect.x) / canvas.holllyrect.width;
-                var obj = context.canvas.hollyobj;
-                obj.setperc(k);
-                context.refresh();
+                context.canvas.hollyobj.setperc(k);
+                menuobj.draw();
+            }
+            else if (canvas.istemplaterect)
+            {
+                var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
+                context.canvas.templateobj.setperc(k);
+                menuobj.draw();
             }
             else
             {
@@ -2774,6 +2769,7 @@ var panlst =
         canvas.startx = x;
         canvas.starty = y;
         canvas.timeobj.setanchor(canvas.timeobj.current());
+        canvas.istemplaterect = canvas.templaterect && canvas.templaterect.hitest(x, y);
         canvas.isbuttonrect = canvas.buttonrect && canvas.buttonrect.hitest(x, y);
         canvas.isvscrollrect = canvas.vscrollrect && canvas.vscrollrect.hitest(x, y);
         canvas.isholllyrect = canvas.holllyrect && canvas.holllyrect.hitest(x, y);
@@ -3654,14 +3650,19 @@ var taplst =
         {
             var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
             canvas.timeobj.setperc(1 - k);
-            context.refresh()
+            menuobj.draw()
+        }
+        else if (canvas.templaterect && canvas.templaterect.hitest(x, y))
+        {
+            var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
+            context.canvas.templatobj.setperc(k);
+            menuobj.draw()
         }
         else if (canvas.holllyrect && canvas.holllyrect.hitest(x, y))
         {
             var k = (x - canvas.holllyrect.x) / canvas.holllyrect.width;
-            var obj = context.canvas.hollyobj;
-            obj.setperc(k);
-            context.refresh()
+            context.canvas.hollyobj.setperc(k);
+            menuobj.draw()
         }
         else if (menuobj.value() && menuobj.value() != _8cnvctx)
         {
