@@ -3706,7 +3706,7 @@ var taplst =
             var k = displaylst.findIndex(function(a) {return a.name == "GALLERY"});
             canvas.display_ = displaylst[k];
             menuobj.draw();
-        }
+        } 
     },
 },
 {
