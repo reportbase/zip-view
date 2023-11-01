@@ -2067,13 +2067,17 @@ var makehammer = function(context, v, t)
         evt.preventDefault();
         var deltax = evt.deltaX;
         var deltay = evt.deltaY;
+        /*
         if (deltax > -1 && deltax < 0)
             deltax = 1;
         if (deltay < 1 && deltay > 0)
             deltay = 1;
-        if (typeof(ham.panel.wheeleftright) == "function" && deltax)
+        */
+        if (Math.abs(deltax) >= 1)
+            return;
+        if (typeof(ham.panel.wheeleftright) == "function")
             ham.panel.wheeleftright(context, x, y, deltax, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaX < 0 ? "wheeleft" : "wheelright");
-        if (typeof(ham.panel.wheelupdown) == "function" && deltay)
+        if (typeof(ham.panel.wheelupdown) == "function")
             ham.panel.wheelupdown(context, x, y, deltay, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaY < 0 ? "wheelup" : "wheeldown");
     });
 
