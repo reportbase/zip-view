@@ -2296,7 +2296,7 @@ var wheelst =
                 thumbimglst[n] = new Image();
             }    
 
-            templateobj.addperc(-1 * delta * 0.001);
+            templateobj.addperc(delta * 0.001);
             menuobj.draw();
         }
         else
