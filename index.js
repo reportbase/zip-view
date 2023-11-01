@@ -2287,22 +2287,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     {
-        var canvas = context.canvas;
-        if (canvas.templaterect && canvas.templaterect.hitest(x, y)) 
-        {
-            for (var n = 0; n < IMAGELSTSIZE; ++n)
-            {
-                thumbfittedlst[n] = document.createElement("canvas");
-                thumbimglst[n] = new Image();
-            }    
-
-            templateobj.addperc(-delta/10000);
-            menuobj.draw();
-        }
-        else
-        {
-            galleryobj.leftright(context, delta);
-        }
+        galleryobj.leftright(context, delta);
     },
 },
 {
