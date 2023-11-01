@@ -2458,6 +2458,7 @@ infobj.reset = function()
         var value = galleryobj.data[k];
         if (value && value.folder)
             infobj.data = value.folder.split("/");
+        infobj.data.push(sealobj.value());
         infobj.data.push(`${index.toFixed(2)} of ${galleryobj.length()}`);
         if (url.searchParams.has("debug"))
         {
