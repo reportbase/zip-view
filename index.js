@@ -5888,8 +5888,15 @@ function imagepath(user)
         ((user.id.charAt(user.id.length - 5) == '.') ||
             user.id.charAt(8) == '-'))
     {
-        var template = url.searchParams.has("template") ? url.searchParams.get("template") : "1080x1080";
-        src = `https://image.reportbase5836.workers.dev/image/${user.id}/${template}`;
+        var n = 0;
+        for (; n < templatelst.length; ++n)
+            {
+                var j = templatelst[n].split("x")[0];
+                if (buttonobj.value() > Number(j))
+                    break;    
+            }
+        
+        src = `https://image.reportbase5836.workers.dev/image/${user.id}/${templatelst[n]}`;
     }
     else if (user.id && user.id.length > 1 &&
         ((user.id.charAt(0) == 'Q' && user.id.charAt(1) == 'm') ||
