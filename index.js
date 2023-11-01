@@ -3025,7 +3025,6 @@ var presslst = [
                     headcnv.height ? "GALLERY" : "DEFAULT"});
             canvas.display = displaylst[k];
             menuobj.draw();
-        }
     },
     press: function(context, rect, x, y) {}
 },
