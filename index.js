@@ -3535,10 +3535,18 @@ var taplst =
         }
         else 
         {
-            menuobj.setindex(_8cnvctx);
-            menuobj.show();
-            headobj.set(GALLERY);
-            headham.panel = headobj.value();
+            if (headcnv.height)
+            {
+                menuobj.setindex(_8cnvctx);
+                menuobj.show();
+                headobj.set(GALLERY);
+                headham.panel = headobj.value();
+            }
+            else
+            {
+                headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+            }
+                
             headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
         }
 
