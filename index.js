@@ -2367,7 +2367,7 @@ var pinchlst = [
             var b2 = buttonobj.data[n];
             if (j < b || j > b2)
                 continue;
-            obj.setcurrent(n);
+            buttonobj.setcurrent(n);
             menuobj.draw();
             break;
         }
