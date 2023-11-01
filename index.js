@@ -852,7 +852,8 @@ var displaylst =
         a.draw(context, rect, templateobj, 0);
 
         var w = Math.min(360, rect.width - 100);
-        var rows = infobj.data.length;
+        var data = [templateobj.value()];
+        var rows = data.length;
         var rh = 26;
         var a = new panel.rows([80, 0, rows * rh, 8, SCROLLBARWIDTH, 4],
         [
@@ -869,7 +870,6 @@ var displaylst =
             0,
         ]);
 
-        var data = [templateobj.value()];
         a.draw(context, rect, data, 0);      
         context.restore();
     }
@@ -1847,7 +1847,6 @@ CanvasRenderingContext2D.prototype.movepage = function(j)
 
     var k = _8cnv.timeobj.length() / galleryobj.length();
     _8cnv.timeobj.rotate(-j*k);
-                    
     _4cnv.slidestop = 0;
     _4cnv.movingpage = j;
     galleryobj.rotate(j);
@@ -1873,10 +1872,15 @@ CanvasRenderingContext2D.prototype.savetime = function()
     this.savetimeout = setTimeout(function()
         {
             var e = url.searchParams.get('_8');
-            if (e != _8cnv.timeobj.current())
+            if (e != _8cnv.timeobj.current().toFixed(4))
             {
-                url.searchParams.set('_8', _8cnv.timeobj.current());
-                window.history.replaceState("", url.origin, url);
+                var k = _8cnv.timeobj.current();
+                if (k !== "undefined" && !Number.isNaN(k) && k != null)
+                {
+                    k = k.toFixed(4)
+                    url.searchParams.set('_8', k);
+                    window.history.replaceState("", url.origin, url);
+                }
             }
               
             try
@@ -4929,52 +4933,31 @@ contextlst.forEach(function(context, n)
     canvas.hollyinit = obj.hollyinit;
     canvas.hollyobj.set(canvas.hollyinit*window.innerHeight);
 
-    var k = displaylst.findIndex(function(a)
-    {
-        return a.name == obj.display
-    });
-    
+    var k = displaylst.findIndex(function(a){return a.name == obj.display});
     canvas.display = displaylst[k];
 
-    var k = pinchlst.findIndex(function(a)
-    {
-        return a.name == obj.pinch
-    });
-    
+    var k = pinchlst.findIndex(function(a){return a.name == obj.pinch});
     k = pinchlst[k];
     canvas.pinch_ = k.pinch;
     canvas.pinchstart_ = k.pinchstart;
     canvas.pinchend_ = k.pinchend;
 
-    var k = droplst.findIndex(function(a)
-    {
-        return a.name == obj.drop
-    });
-    
+    var k = droplst.findIndex(function(a){return a.name == obj.drop});
     k = droplst[k];
     canvas.drop = k.drop;
 
-    var k = keylst.findIndex(function(a)
-    {
-        return a.name == obj.key
-    });
+    var k = keylst.findIndex(function(a){return a.name == obj.key});
     k = keylst[k];
     
     canvas.keyup_ = k.keyup;
     canvas.keydown_ = k.keydown;
 
-    var k = wheelst.findIndex(function(a)
-    {
-        return a.name == obj.wheel
-    });
+    var k = wheelst.findIndex(function(a){return a.name == obj.wheel});
     k = wheelst[k];
     canvas.wheelupdown_ = k.updown;
     canvas.wheeleftright_ = k.leftright;
 
-    var k = mouselst.findIndex(function(a)
-    {
-        return a.name == obj.mouse
-    });
+    var k = mouselst.findIndex(function(a){return a.name == obj.mouse});
     k = mouselst[k];
     canvas.mouse = k;
 
