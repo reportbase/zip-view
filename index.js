@@ -3012,10 +3012,10 @@ var presslst = [
     pressup: function(context, rect, x, y)
     {
         var canvas = context.canvas;
-        if ((canvas.vscrollrect && canvas.vscrollrect.hitest(x, y) ||
-             (canvas.buttonrect && canvas.buttonrect.hitest(x, y) ||
-              (canvas.templaterect && canvas.templaterect.hitest(x, y) ||
-               (canvas.hollyrect && canvas.hollyrect.hitest(x, y))
+        if ((canvas.vscrollrect && canvas.vscrollrect.hitest(x, y)) ||
+             (canvas.buttonrect && canvas.buttonrect.hitest(x, y)) ||
+              (canvas.templaterect && canvas.templaterect.hitest(x, y)) ||
+               (canvas.hollyrect && canvas.hollyrect.hitest(x, y)))
                return;
              
             headcnv.height = headcnv.height ? 0 : HEADHEIGHT;
