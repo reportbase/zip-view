@@ -1875,7 +1875,10 @@ CanvasRenderingContext2D.prototype.savetime = function()
             if (e != _8cnv.timeobj.current().toFixed(4))
             {
                 var k = _8cnv.timeobj.current();
-                if (k !== "undefined" && !Number.isNaN(k) && k != null)
+                if (k !== "undefined" && 
+                    !Number.isNaN(k) && 
+                    k != null &&
+                    k != Infinity)
                 {
                     k = k.toFixed(4)
                     url.searchParams.set('_8', k);
@@ -2240,6 +2243,7 @@ var wheelst =
         {
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
             canvas.display = displaylst[k];
+            
             var j = buttonobj.length()/100;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
@@ -3706,12 +3710,6 @@ var taplst =
                 contextobj.reset();
             }, 200);
         }
-        else
-        {
-            var k = displaylst.findIndex(function(a) {return a.name == "GALLERY"});
-            canvas.display = displaylst[k];
-            menuobj.draw();
-        } 
     },
 },
 {
@@ -5711,7 +5709,7 @@ var headlst =
             delete context.leftmenurect;
             delete context.rightmenurect;
             var s = SAFARI ? -1: ALIEXTENT;
-            var e = galleryobj.boss ? (ALIEXTENT + 10) : -1;
+            var e = ALIEXTENT + 10;
             var a = new panel.cols(
                 [5, ALIEXTENT, 0, s, e, ALIEXTENT, 0, ALIEXTENT, 5],
                 [
