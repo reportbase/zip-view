@@ -18,6 +18,8 @@ function ios()
         (navigator.userAgent.includes("Mac") && "ontouchend" in document)
 }
 
+let url = new URL(window.location.href);
+const CYLSEAL = url.searchParams.get("d");//3927
 const NUBACK = "rgba(0,0,0,0.4)";
 const SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
@@ -30,7 +32,6 @@ const ALIEXTENT = 60;
 const BEXTENT = 80;
 const BOSSMIN = 4;
 const HEADHEIGHT = IFRAME ? 0 : 80;
-const CYLSEAL = 3927;
 const SCROLLMARGIN = 8;
 const MENUSELECT = "rgba(255,175,0,0.4)";
 const MENUTAP = "rgba(255,125,0,0.7)";
@@ -68,8 +69,6 @@ var global = {};
 let photo = {};
 let util = {};
 photo.image = 0;
-
-let url = new URL(window.location.href);
 
 util.random_color = function()
 {
