@@ -884,8 +884,6 @@ var displaylst =
         delete canvas.buttonrect;
         canvas.vscrollrect = new rectangle();
         canvas.holllyrect = new rectangle();
-        if (!headcnv.height)
-            return;
         var bh = rect.height / 2;
         var bw = rect.width / 2;
         var a = new panel.cols([0, SCROLLBARWIDTH, 6],
@@ -3014,14 +3012,18 @@ var presslst = [
     pressup: function(context, rect, x, y)
     {
         var canvas = context.canvas;
-        if (canvas.vscrollrect && canvas.vscrollrect.hitest(x, y))
-        {}
-        else if (canvas.holllyrect && canvas.holllyrect.hitest(x, y))
-        {}
-        else
-        {
+        if ((canvas.vscrollrect && canvas.vscrollrect.hitest(x, y) ||
+             (canvas.buttonrect && canvas.buttonrect.hitest(x, y) ||
+              (canvas.templaterect && canvas.templaterect.hitest(x, y) ||
+               (canvas.hollyrect && canvas.hollyrect.hitest(x, y))
+               return;
+             
             headcnv.height = headcnv.height ? 0 : HEADHEIGHT;
             headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+        
+            var k = displaylst.findIndex(function(a){return a.name == 
+                    headcnv.height ? "GALLERY" : "DEFAULT"});
+            canvas.display = displaylst[k];
             menuobj.draw();
         }
     },
