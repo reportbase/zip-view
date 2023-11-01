@@ -3801,6 +3801,7 @@ var taplst =
         else if (canvas.imagerect &&
             canvas.imagerect.hitest(x, y))
         {
+            galleryobj.rightctx.hide();
             galleryobj.rightcnv = _6cnv;
             galleryobj.rightctx = _6cnvctx;
             menuobj.setindex(galleryobj.rightctx);
@@ -3810,6 +3811,7 @@ var taplst =
         else if (canvas.folderect &&
             canvas.folderect.hitest(x, y))
         {
+            galleryobj.rightctx.hide();
             galleryobj.rightcnv = _5cnv;
             galleryobj.rightctx = _5cnvctx;
             menuobj.setindex(galleryobj.rightctx);
