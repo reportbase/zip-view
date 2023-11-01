@@ -2707,6 +2707,12 @@ var panlst =
             }
             else if (canvas.istemplaterect)
             {
+                for (var n = 0; n < IMAGELSTSIZE; ++n)
+                {
+                    thumbfittedlst[n] = document.createElement("canvas");
+                    thumbimglst[n] = new Image();
+                }                
+                
                 var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
                 templateobj.setperc(k);
                 menuobj.draw();
