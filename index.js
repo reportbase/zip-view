@@ -1211,17 +1211,13 @@ buttonobj.reset = function()
     buttonobj.data = [];
     var j = w > h ? 4 : 8
     var gheight = Math.floor(w / a / j);
-    if (gheight < (window.innerHeight*1.5)/galleryobj.length())
-        gheight = (window.innerHeight*1.5)/galleryobj.length();
-    if (gheight < 160)
-        gheight = 160;
     var dheight = Math.floor(window.innerWidth / a) - gheight;
-    if (dheight < 0)
-        dheight = 0;
     var bheight = (4000*4000)/w;
     if (bheight > galleryobj.height*1.25)
         bheight = galleryobj.height*1.25;
-    for (var n = gheight; n <= bheight; ++n)
+    if (bheight < gheight)
+        bheight = gheight;
+    for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
         buttonobj.data.push(n);
     buttonobj.set(dheight);
 }
