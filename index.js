@@ -19,7 +19,7 @@ function ios()
 }
 
 let url = new URL(window.location.href);
-const CYLSEAL = url.searchParams.get("d");//3927
+const SEAL = 3927
 const NUBACK = "rgba(0,0,0,0.4)";
 const SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
@@ -790,6 +790,7 @@ var templatelst =
     "6760x5760"
 ];
 
+var sealobj = new circular_array("", SEAL*5)
 var templateobj = new circular_array("", templatelst);
 templateobj.set(4)
 
@@ -920,7 +921,7 @@ var displaylst =
                     ])
             ])
 
-        a.draw(context, rect, context.canvas.hollyobj, 0);
+        a.draw(context, rect, sealobj, 0);//todo context.canvas.hollyobj, 0);
         
         var w = Math.min(360, rect.width - 100);
         var rows = infobj.data.length;
@@ -2747,7 +2748,7 @@ var panlst =
             else
             {
                 var e = canvas.starty - y;
-                var jvalue = CYLSEAL / canvas.virtualheight
+                var jvalue = SEAL / canvas.virtualheight
                 jvalue *= e;
                 canvas.timeobj.rotateanchored(jvalue);
             }
@@ -2825,7 +2826,7 @@ var panlst =
             else
             {
                 var e = canvas.starty - y;
-                var jvalue = CYLSEAL / canvas.virtualheight
+                var jvalue = SEAL / canvas.virtualheight
                 jvalue *= e;
                 canvas.timeobj.rotateanchored(jvalue);
                 context.refresh()
@@ -2885,7 +2886,7 @@ var panlst =
             else
             {
                 var e = canvas.startx-x;
-                var jvalue = CYLSEAL / canvas.virtualwidth
+                var jvalue = SEAL / canvas.virtualwidth
                 jvalue *= e;
                 canvas.timeobj.rotateanchored(jvalue);
                 context.refresh()
@@ -3063,11 +3064,11 @@ pressobj.set(3);
 function gotoimage(n)
 {
     var top = buttonobj.value() > window.innerHeight;
-    var k = CYLSEAL - (CYLSEAL / galleryobj.length() / 2);
-    k -= n * (CYLSEAL / galleryobj.length());
+    var k = SEAL - (SEAL / galleryobj.length() / 2);
+    k -= n * (SEAL / galleryobj.length());
     if (top)
     {
-        var j = (CYLSEAL / galleryobj.length())/4;
+        var j = (SEAL / galleryobj.length())/4;
         k += j;
     }
     _8cnv.timeobj.set(k);
@@ -3455,7 +3456,7 @@ CanvasRenderingContext2D.prototype.hithumb = function(x, y)
         var b = c / rect.width;
         var e = this.canvas.sliceobj.length();
         var m = (1 - b) * e;
-        var d = CYLSEAL / 1000;
+        var d = SEAL / 1000;
         var j = d / e;
         var time = j * m;
         var k = time % d;
@@ -3920,7 +3921,7 @@ bossobj.draw = function()
     var virtualpinch = _4cnv.virtualwidth * (stretch.value() / 100);
     var colwidth = _4cnv.colwidth;
     var virtualeft = (virtualpinch - rect.width) / 2;
-    var j = (colwidth / (colwidth + _4cnv.virtualwidth)) * CYLSEAL;
+    var j = (colwidth / (colwidth + _4cnv.virtualwidth)) * SEAL;
     var time = (canvas.timeobj.value() + j) / 1000;
 
     var slices = _4cnv.sliceobj.data;
@@ -4424,7 +4425,7 @@ menuobj.draw = function()
     }
 
     var len = context.canvas.sliceobj.length()
-    var delayinterval = CYLSEAL / len / 1000;
+    var delayinterval = SEAL / len / 1000;
     context.canvas.virtualheight = len * canvas.buttonheight;
     
     context.clear();
@@ -4907,7 +4908,7 @@ contextlst.forEach(function(context, n)
     canvas.slidestop = 0;
     canvas.lastime = 0;
     canvas.sliceobj = new circular_array("", []);
-    canvas.timeobj = new circular_array("", CYLSEAL);
+    canvas.timeobj = new circular_array("", SEAL);
     
     try
     {
@@ -4918,7 +4919,7 @@ contextlst.forEach(function(context, n)
             Number.isFinite(k))
             canvas.timeobj.setcurrent(Number(k));
         else
-            canvas.timeobj.set(CYLSEAL / 2);
+            canvas.timeobj.set(SEAL / 2);
     }
     catch (_)
     {    
@@ -5635,7 +5636,6 @@ function resize()
     if (menuobj.value() == _8cnvctx)
     {
         menuobj.show();
-        menuobj.draw();
     }
     else if (menuobj.value() && menuobj.value() != _8cnvctx)
     {
@@ -5643,7 +5643,6 @@ function resize()
         menuobj.setindex(_8cnvctx);
         menuobj.setindex(k);
         menuobj.show();
-        menuobj.draw();
     }
 }
 
@@ -6766,7 +6765,7 @@ menuobj.updown = function(context, delta)
     var lst = [1.5, 1.75, 2.0, 2.25, 2.5, 3.0, 3.5, 4.0];
     var j = util.clamp(0, lst.length - 1, canvas.sliceobj.length());
     var k = lst[j] * f;
-    canvas.slideshow = (CYLSEAL / canvas.virtualheight) * k * 1.5;
+    canvas.slideshow = (SEAL / canvas.virtualheight) * k * 1.5;
     canvas.slidereduce = canvas.slideshow / g;
 }
 
