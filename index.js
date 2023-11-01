@@ -2374,8 +2374,6 @@ var pinchlst = [
         delete context.buttonanchor;
         context.canvas.slideshow = 0;
         context.canvas.pinching = 1;
-        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-        canvas.display_ = displaylst[k];
     },
     pinchend: function(context)
     {
