@@ -5896,14 +5896,6 @@ function imagepath(user)
         ((user.id.charAt(user.id.length - 5) == '.') ||
             user.id.charAt(8) == '-'))
     {
-        var n = 0;
-        for (; n < templatelst.length; ++n)
-            {
-                var j = templatelst[n].split("x")[0];
-                if (window.innerWidth < Number(j))
-                    break;    
-            }
-        templateobj.set(n);
         src = `https://image.reportbase5836.workers.dev/image/${user.id}/${templateobj.value()}`;
     }
     else if (user.id && user.id.length > 1 &&
@@ -5996,6 +5988,23 @@ galleryobj.init = function(obj)
     delete _4cnv.thumbcanvas;
     delete photo.image;
 
+    if (galleryobj.template)
+    {
+        var k = templatelst.findIndex(function(a){return a == galleryobj.template});
+        templateobj.set(k);
+    }
+    else
+    {
+        var n = 0;
+        for (; n < templatelst.length; ++n)
+            {
+                var j = templatelst[n].split("x")[0];
+                if (window.innerWidth < Number(j))
+                    break;    
+            }
+        templateobj.set(n);
+    }
+    
     for (var n = 0; n < IMAGELSTSIZE; ++n)
     {
         thumbfittedlst[n] = document.createElement("canvas");
