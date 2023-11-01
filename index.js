@@ -2776,6 +2776,8 @@ var panlst =
     },
     panend: function(context, rect, x, y)
     {
+    delete context.canvas.istemplaterect;
+        delete context.canvas.isholllyrect;
         delete context.canvas.type;
         delete context.canvas.panning;
         delete context.canvas.starty;
