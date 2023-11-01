@@ -4529,6 +4529,8 @@ menuobj.draw = function()
         infobj.reset();
     }
 
+    delete context.canvas.templaterect;
+    delete context.canvas.hollyrect;
     context.canvas.display_.draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
 }
