@@ -905,8 +905,7 @@ var displaylst =
                 0
             ]);
 
-        //a.draw(context, rect, context.canvas.timeobj, 0);//todo
-          a.draw(context, rect, sealobj, 0);
+        a.draw(context, rect, context.canvas.timeobj, 0);
         
         var a = new panel.rows([0, SCROLLBARWIDTH, 4],
             [
@@ -2742,9 +2741,7 @@ var panlst =
             if (canvas.isvscrollrect)
             {
                 var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
-                //todo canvas.timeobj.setperc(1 - k);
-                //todo sealobj.setperc(1 - k);
-                sealobj.setperc(1-k);
+                canvas.timeobj.setperc(1 - k);
             }
             else if (canvas.issealrect)
             {
