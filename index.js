@@ -2071,9 +2071,9 @@ var makehammer = function(context, v, t)
             deltax = 1;
         if (deltay < 1 && deltay > 0)
             deltay = 1;
-        if (typeof(ham.panel.wheeleftright) == "function")
+        if (typeof(ham.panel.wheeleftright) == "function" && deltax)
             ham.panel.wheeleftright(context, x, y, deltax, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaX < 0 ? "wheeleft" : "wheelright");
-        if (typeof(ham.panel.wheelupdown) == "function")
+        if (typeof(ham.panel.wheelupdown) == "function" && deltay)
             ham.panel.wheelupdown(context, x, y, deltay, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaY < 0 ? "wheelup" : "wheeldown");
     });
 
@@ -2261,8 +2261,7 @@ var wheelst =
             clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
             if (global.swipetimeout)
-                return;
-            
+                return;            
             global.swipetimeout = setInterval(function()
             {
                 context.canvas.lastime = -0.0000000000101010101;
