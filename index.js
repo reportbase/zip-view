@@ -3022,12 +3022,12 @@ var presslst = [
                (canvas.hollyrect && canvas.hollyrect.hitest(x, y)))
                return;
              
-            headcnv.height = headcnv.height ? 0 : HEADHEIGHT;
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            //headcnv.height = headcnv.height ? 0 : HEADHEIGHT;
+            //headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
         
-            var k = displaylst.findIndex(function(a){return a.name == 
-                    headcnv.height ? "GALLERY" : "DEFAULT"});
-            canvas.display = displaylst[k];
+            var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
+            var j = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            canvas.display = displaylst[k] == canvas.display ? displaylst[j] : displaylst[k];
             menuobj.draw();
     },
     press: function(context, rect, x, y) {}
