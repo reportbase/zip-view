@@ -5892,7 +5892,7 @@ function imagepath(user)
         for (; n < templatelst.length; ++n)
             {
                 var j = templatelst[n].split("x")[0];
-                if (buttonobj.value() > Number(j))
+                if (window.innerWidth < Number(j))
                     break;    
             }
         
