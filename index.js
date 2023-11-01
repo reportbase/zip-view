@@ -2744,12 +2744,12 @@ var panlst =
                 var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
                 //todo canvas.timeobj.setperc(1 - k);
                 //todo sealobj.setperc(1 - k);
-                sealobj.setperc(k);
+                sealobj.setperc(1-k);
             }
             else if (canvas.issealrect)
             {
                 var k = (y - canvas.sealrect.y) / canvas.sealrect.height;
-                sealobj.setperc(k);
+                sealobj.setperc(1-k);
             }
             else if (canvas.isbuttonrect)
             {
