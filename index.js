@@ -5895,8 +5895,8 @@ function imagepath(user)
                 if (window.innerWidth < Number(j))
                     break;    
             }
-        
-        src = `https://image.reportbase5836.workers.dev/image/${user.id}/${templatelst[n]}`;
+        templateobj.set(n);
+        src = `https://image.reportbase5836.workers.dev/image/${user.id}/${templateobj.value()}`;
     }
     else if (user.id && user.id.length > 1 &&
         ((user.id.charAt(0) == 'Q' && user.id.charAt(1) == 'm') ||
