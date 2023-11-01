@@ -5636,6 +5636,7 @@ function resize()
     if (menuobj.value() == _8cnvctx)
     {
         menuobj.show();
+        menuobj.draw();
     }
     else if (menuobj.value() && menuobj.value() != _8cnvctx)
     {
@@ -5643,6 +5644,7 @@ function resize()
         menuobj.setindex(_8cnvctx);
         menuobj.setindex(k);
         menuobj.show();
+        menuobj.draw();
     }
 }
 
