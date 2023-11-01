@@ -2344,7 +2344,7 @@ var wheelst =
         }
         else
         {
-            rowobj.addperc(-delta/1000);
+            rowobj.addperc(delta/1000);
             contextobj.reset()
         }
     },
@@ -2693,7 +2693,7 @@ var panlst =
                 }                
                 
                 var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
-                templateobj.setperc(k);
+                templateobj.setperc(1-k);
                 menuobj.draw();
             }
             else
