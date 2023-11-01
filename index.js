@@ -879,7 +879,7 @@ var displaylst =
         var canvas = context.canvas;
         context.save();
         canvas.vscrollrect = new rectangle();
-        canvas.hscrollrect = new rectangle();
+        canvas.holllyrect = new rectangle();
         if (!headcnv.height)//todo
             return;
         var bh = rect.height / 2;
@@ -912,21 +912,18 @@ var displaylst =
                         new panel.layers(
                             [
                                 new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.hscrollrect), 0, 20),
+                                new panel.expand(new panel.rectangle(canvas.holllyrect), 0, 20),
                                 new panel.shrink(new panel.currentH(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
                             ]),
                         0,
                     ])
             ])
 
-        a.draw(context, rect, context.canvas.scrollobj, 0);
+        a.draw(context, rect, context.canvas.hollyobj, 0);
         
         var w = Math.min(360, rect.width - 100);
-        var j = window.innerWidth - rect.width >= 180;
         var rows = infobj.data.length;
         var rh = 26;
-        var bh = rect.height / 2;
-        var cw = rect.width - 30;
         var a = new panel.rows([80, 0, rows * rh, 8, SCROLLBARWIDTH, 4],
         [
             0,
@@ -953,7 +950,7 @@ var displaylst =
         var canvas = context.canvas;
         context.save();
         canvas.vscrollrect = new rectangle();
-        canvas.hscrollrect = new rectangle();
+        canvas.holllyrect = new rectangle();
         var kh = context.rect().width == window.innerWidth ? 90 : ALIEXTENT;
         var a = new panel.colsA([5, 9, 0, 9, 5],
             [
@@ -974,7 +971,7 @@ var displaylst =
                         0,
                         new panel.layers(
                             [
-                                new panel.expand(new panel.rectangle(canvas.hscrollrect), 10, 0),
+                                new panel.expand(new panel.rectangle(canvas.holllyrect), 10, 0),
                                 new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1),
                             ]),
                         0,
@@ -985,7 +982,7 @@ var displaylst =
         a.draw(context, rect,
             [
                 0,
-                0,//canvas.scrollobj,
+                0,//canvas.hollyobj,
                 0,
                 canvas.timeobj,
                 0,
@@ -2269,7 +2266,17 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     {
-        galleryobj.leftright(context, delta);
+         var canvas = context.canvas;
+         if (canvas.templaterect &&
+            canvas.templaterect.hitest(x, y))
+        {
+            canvas.templateobj.addperc(-1 * delta * 0.001);
+            menuobj.draw();
+        }
+        else
+        {
+            galleryobj.leftright(context, delta);
+        }
     },
 },
 {
@@ -2287,7 +2294,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt)
     {
-        context.canvas.scrollobj.addperc(delta / 1000);
+        context.canvas.hollyobj.addperc(delta / 1000);
         menuobj.draw()
     },
 },
@@ -2460,7 +2467,7 @@ infobj.reset = function()
         {
             infobj.data.push(`${galleryobj.width}x${galleryobj.height}`);
             infobj.data.push(buttonobj.value().toFixed(2));
-            var j = 100 * _8cnv.scrollobj.berp();
+            var j = 100 * _8cnv.hollyobj.berp();
             infobj.data.push(`${j.toFixed(2)}%`);
             infobj.data.push(galleryobj.data[k].id);
             infobj.data.push(_8cnv.timeobj.current().toFixed(5));
@@ -2705,19 +2712,19 @@ var panlst =
         var canvas = context.canvas;
         if (canvas.pinching)
             return;
-        var obj = canvas.scrollobj;
+        var obj = canvas.hollyobj;
         if (type == "panleft" || type == "panright")
         {
-            if (canvas.ishscrollrect)
+            if (canvas.isholllyrect)
             {
-                var k = (x - canvas.hscrollrect.x) / canvas.hscrollrect.width;
-                var obj = context.canvas.scrollobj;
+                var k = (x - canvas.holllyrect.x) / canvas.holllyrect.width;
+                var obj = context.canvas.hollyobj;
                 obj.setperc(k);
                 context.refresh();
             }
             else
             {
-                var obj = context.canvas.scrollobj;
+                var obj = context.canvas.hollyobj;
                 var e = canvas.startx - x;
                 var k = panhorz(obj, e);
                 if (k == -1)
@@ -2769,7 +2776,7 @@ var panlst =
         canvas.timeobj.setanchor(canvas.timeobj.current());
         canvas.isbuttonrect = canvas.buttonrect && canvas.buttonrect.hitest(x, y);
         canvas.isvscrollrect = canvas.vscrollrect && canvas.vscrollrect.hitest(x, y);
-        canvas.ishscrollrect = canvas.hscrollrect && canvas.hscrollrect.hitest(x, y);
+        canvas.isholllyrect = canvas.holllyrect && canvas.holllyrect.hitest(x, y);
     },
     panend: function(context, rect, x, y)
     {
@@ -2780,7 +2787,7 @@ var panlst =
         delete context.canvas.timeobj.offset;
         delete buttonobj.offset;
         delete context.canvas.isvbarect;
-        delete context.canvas.scrollobj.offset;
+        delete context.canvas.hollyobj.offset;
         context.savetime();
         context.refresh();
     }
@@ -2792,30 +2799,30 @@ var panlst =
 
     pan: function(context, rect, x, y, type)
     {
-        var scrollobj = context.canvas.scrollobj;
-        if (scrollobj && (type == "panleft" || type == "panright"))
+        var hollyobj = context.canvas.hollyobj;
+        if (hollyobj && (type == "panleft" || type == "panright"))
         {
-            var k = panhorz(scrollobj, rect.width - x);
+            var k = panhorz(hollyobj, rect.width - x);
             if (k == -1)
                 return;
-            if (k == scrollobj.anchor())
+            if (k == hollyobj.anchor())
                 return;
-            scrollobj.set(k);
+            hollyobj.set(k);
             context.refresh()
         }
         else if (type == "panup" || type == "pandown")
         {
             var canvas = context.canvas;
-            if (canvas.ishscrollrect)
+            if (canvas.isholllyrect)
             {
                 var obj = canvas.timeobj;
-                var k = (y - canvas.hscrollrect.y) / canvas.hscrollrect.height;
+                var k = (y - canvas.holllyrect.y) / canvas.holllyrect.height;
                 obj.setperc(1 - k);
                 context.refresh()
             }
             else if (canvas.isvscrollrect)
             {
-                var obj = canvas.scrollobj;
+                var obj = canvas.hollyobj;
                 var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
                 obj.setperc(k);
                 context.refresh()
@@ -2838,7 +2845,7 @@ var panlst =
         global.timeauto = 0;
         canvas.starty = y;
         canvas.timeobj.setanchor(canvas.timeobj.current());
-        canvas.ishscrollrect = canvas.hscrollrect && canvas.hscrollrect.hitest(x, y);
+        canvas.isholllyrect = canvas.holllyrect && canvas.holllyrect.hitest(x, y);
         canvas.isvscrollrect = canvas.vscrollrect && canvas.vscrollrect.hitest(x, y);
     },
     panend: function(context, rect, x, y)
@@ -2847,7 +2854,7 @@ var panlst =
         delete canvas.starty;
         delete context.startt;
         delete canvas.timeobj.offset;
-        var obj = context.canvas.scrollobj;
+        var obj = context.canvas.hollyobj;
         delete obj.offset;
         context.refresh();
     }
@@ -2906,7 +2913,7 @@ var panlst =
             }
             else
             {
-                var obj = context.canvas.scrollobj;
+                var obj = context.canvas.hollyobj;
                 var j = canvas.selectrect[0].height / canvas.thumbrect.height;
                 var e = canvas.starty - y;
                 var k = panvert(rowobj, e*j);
@@ -3017,7 +3024,7 @@ var presslst = [
         var canvas = context.canvas;
         if (canvas.vscrollrect && canvas.vscrollrect.hitest(x, y))
         {}
-        else if (canvas.hscrollrect && canvas.hscrollrect.hitest(x, y))
+        else if (canvas.holllyrect && canvas.holllyrect.hitest(x, y))
         {}
         else
         {
@@ -3312,12 +3319,12 @@ var keylst = [
             }
             else if (key == "arrowleft")
             {
-                context.canvas.scrollobj.addperc(-60 / 1000);
+                context.canvas.hollyobj.addperc(-60 / 1000);
                 menuobj.draw()
             }
             else if (key == "arrowright")
             {
-                context.canvas.scrollobj.addperc(60 / 1000);
+                context.canvas.hollyobj.addperc(60 / 1000);
                 menuobj.draw()
             }
         }
@@ -3549,7 +3556,7 @@ var taplst =
         var timeauto = global.timeauto;
         clearInterval(global.timeauto);
         global.timeauto = 0;
-        var obj = canvas.scrollobj;
+        var obj = canvas.hollyobj;
         context.refresh();
         if (headcnvctx.leftmenurect && headcnvctx.leftmenurect.hitest(x, y))
         {
@@ -3649,10 +3656,10 @@ var taplst =
             canvas.timeobj.setperc(1 - k);
             context.refresh()
         }
-        else if (canvas.hscrollrect && canvas.hscrollrect.hitest(x, y))
+        else if (canvas.holllyrect && canvas.holllyrect.hitest(x, y))
         {
-            var k = (x - canvas.hscrollrect.x) / canvas.hscrollrect.width;
-            var obj = context.canvas.scrollobj;
+            var k = (x - canvas.holllyrect.x) / canvas.holllyrect.width;
+            var obj = context.canvas.hollyobj;
             obj.setperc(k);
             context.refresh()
         }
@@ -3784,7 +3791,7 @@ var taplst =
             canvas.vscrollrect.hitest(x, y))
         {
             var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
-            canvas.scrollobj.setperc(k);
+            canvas.hollyobj.setperc(k);
             context.refresh()
             return true;
         }
@@ -3806,10 +3813,10 @@ var taplst =
             menuobj.show();
             return true;
         }
-        else if (canvas.hscrollrect &&
-            canvas.hscrollrect.hitest(x, y))
+        else if (canvas.holllyrect &&
+            canvas.holllyrect.hitest(x, y))
         {
-            var k = (y - canvas.hscrollrect.y) / canvas.hscrollrect.height;
+            var k = (y - canvas.holllyrect.y) / canvas.holllyrect.height;
             context.canvas.timeobj.setperc(1 - k);
             context.refresh()
             return true;
@@ -4094,7 +4101,7 @@ var buttonlst = [
         else if (user.enabled && user.enabled())
             clr = MENUSELECT;
 
-        var e = context.canvas.scrollobj.berp();
+        var e = context.canvas.hollyobj.berp();
         var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
             [
                 0,
@@ -4128,7 +4135,7 @@ var buttonlst = [
         if (user.tap)
             clr = MENUTAP;
 
-        var e = context.canvas.scrollobj.berp();
+        var e = context.canvas.hollyobj.berp();
             var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
                 [
                     0,
@@ -4212,7 +4219,7 @@ var buttonlst = [
 
         if (thumbimg && thumbimg.width)
         {
-            var obj = _8cnv.scrollobj;
+            var obj = _8cnv.hollyobj;
             var b = thumbimg.width / thumbimg.height;
             var b2 = rect.width / rect.height;
             var hh = Math.floor(rect.height);
@@ -4342,7 +4349,7 @@ menuobj.show = function()
         return;
     var canvas = context.canvas;
     _4cnv.height = 0;
-    canvas.scrollobj.set(canvas.scrollinit*window.innerHeight);
+    canvas.hollyobj.set(canvas.scrollinit*window.innerHeight);
     if (canvas.width_ > window.innerWidth)
     {
         context.show(0, 0, window.innerWidth, window.innerHeight);
@@ -4903,7 +4910,7 @@ contextlst.forEach(function(context, n)
     {    
     }
 
-    canvas.scrollobj = new circular_array("TEXTSCROLL", window.innerHeight);
+    canvas.hollyobj = new circular_array("TEXTSCROLL", window.innerHeight);
     canvas.speed = obj.speed;
     canvas.reduce = obj.reduce;
     canvas.autodirect = -1;
@@ -4914,7 +4921,7 @@ contextlst.forEach(function(context, n)
     canvas.buttonmargin = obj.buttonmargin;
     
     canvas.scrollinit = obj.scrollinit;//todo
-    canvas.scrollobj.set(canvas.scrollinit*window.innerHeight);
+    canvas.hollyobj.set(canvas.scrollinit*window.innerHeight);
 
     var k = displaylst.findIndex(function(a)
     {
@@ -6814,7 +6821,7 @@ galleryobj.leftright = function(context, delta)
     else
         context.canvas.startleftright = (window.innerHeight / h) * Math.abs(delta / 2);
     var e = context.canvas.startleftright / 40;
-    var obj = context.canvas.scrollobj;
+    var obj = context.canvas.hollyobj;
     clearInterval(context.canvas.leftrightime);
     context.canvas.leftrightime = setInterval(function()
     {
