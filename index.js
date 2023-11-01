@@ -808,6 +808,8 @@ var displaylst =
     {
         var canvas = context.canvas;
         context.save();
+        delete canvas.hollyrect;
+        delete canvas.vscrollrect;
         canvas.buttonrect = new rectangle();
         canvas.templaterect = new rectangle();
         var bh = rect.height / 2;
@@ -878,6 +880,8 @@ var displaylst =
     {
         var canvas = context.canvas;
         context.save();
+        delete canvas.templaterect;
+        delete canvas.buttonrect;
         canvas.vscrollrect = new rectangle();
         canvas.holllyrect = new rectangle();
         if (!headcnv.height)//todo
@@ -2705,7 +2709,7 @@ var panlst =
         var obj = canvas.hollyobj;
         if (type == "panleft" || type == "panright")
         {
-            if (canvas.holllyrect && canvas.isholllyrect)
+            if (canvas.isholllyrect)
             {
                 var k = (x - canvas.holllyrect.x) / canvas.holllyrect.width;
                 context.canvas.hollyobj.setperc(k);
@@ -4531,8 +4535,6 @@ menuobj.draw = function()
         infobj.reset();
     }
 
-    delete context.canvas.templaterect;
-    delete context.canvas.hollyrect;
     context.canvas.display_.draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
 }
