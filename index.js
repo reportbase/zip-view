@@ -2257,8 +2257,7 @@ var wheelst =
         if (ctrl)
         {
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
-            canvas.display = displaylst[k];
-            
+            canvas.display = displaylst[k]; 
             var j = buttonobj.length()/100;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
@@ -2288,7 +2287,22 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     {
-        galleryobj.leftright(context, delta);
+        var canvas = context.canvas;
+        if (canvas.templaterect && canvas.templaterect.hitest(x, y)) 
+        {
+            for (var n = 0; n < IMAGELSTSIZE; ++n)
+            {
+                thumbfittedlst[n] = document.createElement("canvas");
+                thumbimglst[n] = new Image();
+            }    
+
+            templateobj.addperc(-1 * delta * 0.001);
+            menuobj.draw();
+        }
+        else
+        {
+            galleryobj.leftright(context, delta);
+        }
     },
 },
 {
@@ -3005,9 +3019,6 @@ var presslst = [
               (canvas.templaterect && canvas.templaterect.hitest(x, y)) ||
                (canvas.hollyrect && canvas.hollyrect.hitest(x, y)))
                return;
-             
-            //headcnv.height = headcnv.height ? 0 : HEADHEIGHT;
-            //headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
         
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
             var j = displaylst.findIndex(function(a){return a.name == "GALLERY"});
@@ -3647,6 +3658,12 @@ var taplst =
         }
         else if (canvas.templaterect && canvas.templaterect.hitest(x, y))
         {
+            for (var n = 0; n < IMAGELSTSIZE; ++n)
+            {
+                thumbfittedlst[n] = document.createElement("canvas");
+                thumbimglst[n] = new Image();
+            }                
+           
             var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
             templateobj.setperc(k);
             menuobj.draw()
