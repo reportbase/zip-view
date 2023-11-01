@@ -19,7 +19,6 @@ function ios()
 }
 
 let url = new URL(window.location.href);
-const SEAL = 3927
 const NUBACK = "rgba(0,0,0,0.4)";
 const SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
@@ -790,7 +789,10 @@ var templatelst =
     "6760x5760"
 ];
 
-var sealobj = new circular_array("", SEAL*5)
+const SEAL = 3927
+var sealobj = new circular_array("", SEAL*5);
+sealobj.set(SEAL);
+
 var templateobj = new circular_array("", templatelst);
 templateobj.set(4)
 
@@ -2748,7 +2750,7 @@ var panlst =
             else
             {
                 var e = canvas.starty - y;
-                var jvalue = SEAL / canvas.virtualheight
+                var jvalue = sealobj.value() / canvas.virtualheight
                 jvalue *= e;
                 canvas.timeobj.rotateanchored(jvalue);
             }
@@ -2826,7 +2828,7 @@ var panlst =
             else
             {
                 var e = canvas.starty - y;
-                var jvalue = SEAL / canvas.virtualheight
+                var jvalue = sealobj.value() / canvas.virtualheight
                 jvalue *= e;
                 canvas.timeobj.rotateanchored(jvalue);
                 context.refresh()
@@ -2886,7 +2888,7 @@ var panlst =
             else
             {
                 var e = canvas.startx-x;
-                var jvalue = SEAL / canvas.virtualwidth
+                var jvalue = sealobj.value() / canvas.virtualwidth
                 jvalue *= e;
                 canvas.timeobj.rotateanchored(jvalue);
                 context.refresh()
@@ -3064,11 +3066,11 @@ pressobj.set(3);
 function gotoimage(n)
 {
     var top = buttonobj.value() > window.innerHeight;
-    var k = SEAL - (SEAL / galleryobj.length() / 2);
-    k -= n * (SEAL / galleryobj.length());
+    var k = sealobj.value() - (sealobj.value() / galleryobj.length() / 2);
+    k -= n * (sealobj.value() / galleryobj.length());
     if (top)
     {
-        var j = (SEAL / galleryobj.length())/4;
+        var j = (sealobj.value() / galleryobj.length())/4;
         k += j;
     }
     _8cnv.timeobj.set(k);
@@ -3456,7 +3458,7 @@ CanvasRenderingContext2D.prototype.hithumb = function(x, y)
         var b = c / rect.width;
         var e = this.canvas.sliceobj.length();
         var m = (1 - b) * e;
-        var d = SEAL / 1000;
+        var d = sealobj.value() / 1000;
         var j = d / e;
         var time = j * m;
         var k = time % d;
@@ -3921,7 +3923,7 @@ bossobj.draw = function()
     var virtualpinch = _4cnv.virtualwidth * (stretch.value() / 100);
     var colwidth = _4cnv.colwidth;
     var virtualeft = (virtualpinch - rect.width) / 2;
-    var j = (colwidth / (colwidth + _4cnv.virtualwidth)) * SEAL;
+    var j = (colwidth / (colwidth + _4cnv.virtualwidth)) * sealobj.value();
     var time = (canvas.timeobj.value() + j) / 1000;
 
     var slices = _4cnv.sliceobj.data;
@@ -4425,7 +4427,7 @@ menuobj.draw = function()
     }
 
     var len = context.canvas.sliceobj.length()
-    var delayinterval = SEAL / len / 1000;
+    var delayinterval = sealobj.value() / len / 1000;
     context.canvas.virtualheight = len * canvas.buttonheight;
     
     context.clear();
@@ -4908,7 +4910,7 @@ contextlst.forEach(function(context, n)
     canvas.slidestop = 0;
     canvas.lastime = 0;
     canvas.sliceobj = new circular_array("", []);
-    canvas.timeobj = new circular_array("", SEAL);
+    canvas.timeobj = new circular_array("", sealobj.value());
     
     try
     {
@@ -4919,7 +4921,7 @@ contextlst.forEach(function(context, n)
             Number.isFinite(k))
             canvas.timeobj.setcurrent(Number(k));
         else
-            canvas.timeobj.set(SEAL / 2);
+            canvas.timeobj.set(sealobj.value() / 2);
     }
     catch (_)
     {    
@@ -6765,7 +6767,7 @@ menuobj.updown = function(context, delta)
     var lst = [1.5, 1.75, 2.0, 2.25, 2.5, 3.0, 3.5, 4.0];
     var j = util.clamp(0, lst.length - 1, canvas.sliceobj.length());
     var k = lst[j] * f;
-    canvas.slideshow = (SEAL / canvas.virtualheight) * k * 1.5;
+    canvas.slideshow = (sealobj.value() / canvas.virtualheight) * k * 1.5;
     canvas.slidereduce = canvas.slideshow / g;
 }
 
