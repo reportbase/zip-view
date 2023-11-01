@@ -1875,10 +1875,10 @@ CanvasRenderingContext2D.prototype.savetime = function()
             if (e != _8cnv.timeobj.current().toFixed(4))
             {
                 var k = _8cnv.timeobj.current();
-                if (k !== "undefined" && 
+                if (typeof k != "undefined" && 
                     !Number.isNaN(k) && 
                     k != null &&
-                    k != Infinity)
+                    Number.isFinite(k))
                 {
                     k = k.toFixed(4)
                     url.searchParams.set('_8', k);
@@ -4909,7 +4909,10 @@ contextlst.forEach(function(context, n)
     try
     {
         var k = localStorage.getItem(canvas.id);
-        if (k !== "undefined" && !Number.isNaN(k) && k != null)
+        if (typeof k != "undefined" && 
+            !Number.isNaN(k) && 
+            k != null &&
+            Number.isFinite(k))
             canvas.timeobj.setcurrent(Number(k));
         else
             canvas.timeobj.set(CYLSEAL / 2);
