@@ -1015,7 +1015,7 @@ var displaylst =
             var j = window.innerWidth - r.width >= 180;
 
             infobj.data = [];
-            infobj.reset();
+            infobj.reset();//todo move to displaylst
             var lst = infobj.data;
 
             var rows = lst.length;
@@ -1077,7 +1077,7 @@ var displaylst =
                             0,
                         ])
                 ]);
-
+            if (headcnv.height)
             a.draw(context, rect,
                 [
                     [
@@ -1114,7 +1114,8 @@ var displaylst =
                         ])
                 ])
 
-            a.draw(context, rect, context.canvas.timeobj, 0);
+            if (headcnv.height)
+                a.draw(context, rect, context.canvas.timeobj, 0);
 
             var he = heightobj;
             var b = Math.berp(0, he.length() - 1, he.current());
@@ -1126,7 +1127,8 @@ var displaylst =
             var x = Math.floor(Math.nub(positxobj.value(), positxobj.length(), w, rect.width));
             var y = Math.floor(Math.nub(posityobj.value(), posityobj.length(), h, rect.height));
             canvas.thumbrect = new rectangle(x, y, w, h);
-
+            if (!headcnv.height)
+                return;
             var r = canvas.thumbrect;
             context.save();
             context.shadowOffsetX = 0;
@@ -3968,10 +3970,8 @@ bossobj.draw = function()
     delete context.stretchrect;
     delete context.canvas.thumbrect;
 
-    if (headcnv.height && !menuobj.value())
-    {
+    if (!menuobj.value())
         context.canvas.display.draw(context, rect, 0, 0);
-    }
 }
 
 bossobj.reset = function()
