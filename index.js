@@ -5695,9 +5695,6 @@ var headlst =
                 menuobj.value().canvas.width == window.innerWidth)
                 return;
             context.save();
-            var w = Math.min(360, rect.width - 100);
-            var rows = infobj.data.length;
-            var rh = 26;
             var ctx = menuobj.value();
             var g = ctx == _8cnvctx;
             delete context.zoomrect;
