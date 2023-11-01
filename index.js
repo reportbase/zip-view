@@ -924,9 +924,27 @@ var displaylst =
             ])
 
         a.draw(context, rect, context.canvas.hollyobj, 0);
+
+        var data = [];
+        var index = 1 - _8cnv.timeobj.berp();
+        index *= galleryobj.length();
+        var k = Math.floor(index);
+        var value = galleryobj.data[k];
+        if (value && value.folder)
+            infobj.data = value.folder.split("/");
+        data.push(`${index.toFixed(2)} of ${galleryobj.length()}`);
+        if (url.searchParams.has("debug"))
+        {
+            data.push(`${galleryobj.width}x${galleryobj.height}`);
+            data.push(buttonobj.value().toFixed(2));
+            var j = 100 * _8cnv.hollyobj.berp();
+            data.push(`${j.toFixed(2)}%`);
+            data.push(galleryobj.data[k].id);
+            data.push(_8cnv.timeobj.current().toFixed(5));
+        }      
         
         var w = Math.min(360, rect.width - 100);
-        var rows = infobj.data.length;
+        var rows = data.length;
         var rh = 26;
         var a = new panel.rows([80, 0, rows * rh, 8, SCROLLBARWIDTH, 4],
         [
@@ -943,7 +961,7 @@ var displaylst =
             0,
         ]);
             
-        a.draw(context, rect, infobj.data, 0);
+        a.draw(context, rect, data, 0);
         context.restore();     
     }
 },
@@ -1016,11 +1034,30 @@ var displaylst =
             var w = Math.min(360, r.width - 100);
             var j = window.innerWidth - r.width >= 180;
 
-            infobj.data = [];
-            infobj.reset();//todo move to displaylst
-            var lst = infobj.data;
-
-            var rows = lst.length;
+            var data = [];
+            var index = galleryobj.current();
+            var value = galleryobj.data[index];
+            if (value && value.folder)
+                data = value.folder.split("/");
+            data.push(`${index+1} of ${galleryobj.length()}`);
+            data.push(_4cnv.timeobj.current().toFixed(5));
+            if (url.searchParams.has("debug"))
+            {
+                var e = 100 * (1 - _4cnv.timeobj.berp());
+                var j = 100 * rowobj.berp();
+                data.push(`x - ${e.toFixed(2)}%, y - ${j.toFixed(2)}%`);
+                if (galleryobj.value().id)
+                    infobj.data.push(galleryobj.value().id);
+                data.push(`${window.innerWidth} x ${window.innerHeight}`);
+                var aspect = photo.image.width / photo.image.height;
+                data.push(aspect.toFixed(2));
+                var size = ((photo.image.width * photo.image.height) / 1000000).toFixed(1) + "MP";
+                data.push(size);
+                var extent = `${photo.image.width}x${photo.image.height}`;
+                data.push(extent);
+            }
+            
+            var rows = data.length;
             var rh = 26;
             var bh = rect.height / 2;
             var cw = rect.width - 30;
@@ -1079,6 +1116,7 @@ var displaylst =
                             0,
                         ])
                 ]);
+        
             if (headcnv.height)
             a.draw(context, rect,
                 [
@@ -1091,7 +1129,7 @@ var displaylst =
                     ],
                     [
                         0,
-                        lst,
+                        data,
                         0,
                         heightobj,
                         0,
@@ -2445,56 +2483,6 @@ var rowobj = new circular_array("ROW", window.innerHeight);
 rowobj.set(Math.floor((50 / 100) * window.innerHeight));
 
 var stretchobj = new circular_array("STRETCH", 100);
-
-var infobj = new circular_array("INFO", []);
-infobj.reset = function()
-{
-    if (menuobj.value() == _8cnvctx)
-    {
-        index = 1 - _8cnv.timeobj.berp();
-        index *= galleryobj.length();
-        var k = Math.floor(index);
-        var value = galleryobj.data[k];
-        if (value && value.folder)
-            infobj.data = value.folder.split("/");
-        infobj.data.push(sealobj.value().toFixed(2));
-        infobj.data.push(`${index.toFixed(2)} of ${galleryobj.length()}`);
-        if (url.searchParams.has("debug"))
-        {
-            infobj.data.push(`${galleryobj.width}x${galleryobj.height}`);
-            infobj.data.push(buttonobj.value().toFixed(2));
-            var j = 100 * _8cnv.hollyobj.berp();
-            infobj.data.push(`${j.toFixed(2)}%`);
-            infobj.data.push(galleryobj.data[k].id);
-            infobj.data.push(_8cnv.timeobj.current().toFixed(5));
-        }
-    }
-    else
-    {
-        var index = galleryobj.current();
-        var value = galleryobj.data[index];
-        if (value && value.folder)
-            infobj.data = value.folder.split("/");
-        infobj.data.push(`${index+1} of ${galleryobj.length()}`);
-        infobj.data.push(_4cnv.timeobj.current().toFixed(5));
-        if (url.searchParams.has("debug"))
-        {
-            var e = 100 * (1 - _4cnv.timeobj.berp());
-            var j = 100 * rowobj.berp();
-            infobj.data.push(`x - ${e.toFixed(2)}%, y - ${j.toFixed(2)}%`);
-            if (galleryobj.value().id)
-                infobj.data.push(galleryobj.value().id);
-            infobj.data.push(`${window.innerWidth} x ${window.innerHeight}`);
-            var aspect = photo.image.width / photo.image.height;
-            infobj.data.push(aspect.toFixed(2));
-            var size = ((photo.image.width * photo.image.height) / 1000000).toFixed(1) + "MP";
-            infobj.data.push(size);
-            var extent = `${photo.image.width}x${photo.image.height}`;
-            infobj.data.push(extent);
-        }
-    }
-
-}
 
 var slicewidthobj = new circular_array("SLICEWIDTH", SLICEWIDTH * 20);
 var zoomobj = new circular_array("ZOOM", 100);
@@ -4540,12 +4528,6 @@ menuobj.draw = function()
                 context.translate(0, -j.y);
             }
         }
-    }
-
-    infobj.data = [];
-    if (headcnv.height)
-    {
-        infobj.reset();
     }
 
     context.canvas.display.draw(context, rect, 0, 0);
