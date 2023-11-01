@@ -2073,7 +2073,7 @@ var makehammer = function(context, v, t)
         if (deltay < 1 && deltay > 0)
             deltay = 1;
         */
-        if (Math.abs(deltax) >= 1)
+        if (Math.abs(deltax) <= 1)
             return;
         if (typeof(ham.panel.wheeleftright) == "function")
             ham.panel.wheeleftright(context, x, y, deltax, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaX < 0 ? "wheeleft" : "wheelright");
