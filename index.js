@@ -2270,7 +2270,7 @@ var wheelst =
          if (canvas.templaterect &&
             canvas.templaterect.hitest(x, y))
         {
-            canvas.templateobj.addperc(-1 * delta * 0.001);
+            templateobj.addperc(-1 * delta * 0.001);
             menuobj.draw();
         }
         else
