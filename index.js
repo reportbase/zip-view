@@ -2746,6 +2746,12 @@ var panlst =
                 var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
                 buttonobj.setperc(k);
             }
+            else if (canvas.ishollyrect)
+            {
+            }
+            else if (canvas.istemplaterect)
+            {
+            }
             else
             {
                 var k = displaylst.findIndex(function(a) {return a.name == "GALLERY"});
