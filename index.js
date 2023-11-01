@@ -905,8 +905,9 @@ var displaylst =
                 0
             ]);
 
-        a.draw(context, rect, context.canvas.timeobj, 0);
-          
+        //a.draw(context, rect, context.canvas.timeobj, 0);//todo
+          a.draw(context, rect, sealobj, 0);
+        
         var a = new panel.rows([0, SCROLLBARWIDTH, 4],
             [
                 0,
@@ -923,7 +924,7 @@ var displaylst =
                     ])
             ])
 
-        a.draw(context, rect, sealobj, 0);//todo context.canvas.hollyobj, 0);
+        a.draw(context, rect, context.canvas.hollyobj, 0);
         
         var w = Math.min(360, rect.width - 100);
         var rows = infobj.data.length;
