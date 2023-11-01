@@ -2741,7 +2741,8 @@ var panlst =
             if (canvas.isvscrollrect)
             {
                 var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
-                canvas.timeobj.setperc(1 - k);
+                //todo canvas.timeobj.setperc(1 - k);
+                sealobj.setperc(1 - k);
             }
             else if (canvas.isbuttonrect)
             {
