@@ -2714,7 +2714,7 @@ var panlst =
             else if (canvas.istemplaterect)
             {
                 var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
-                context.canvas.templateobj.setperc(k);
+                templateobj.setperc(k);
                 menuobj.draw();
             }
             else
@@ -3655,7 +3655,7 @@ var taplst =
         else if (canvas.templaterect && canvas.templaterect.hitest(x, y))
         {
             var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
-            context.canvas.templatobj.setperc(k);
+            templatobj.setperc(k);
             menuobj.draw()
         }
         else if (canvas.holllyrect && canvas.holllyrect.hitest(x, y))
