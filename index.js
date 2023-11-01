@@ -931,7 +931,7 @@ var displaylst =
         var k = Math.floor(index);
         var value = galleryobj.data[k];
         if (value && value.folder)
-            infobj.data = value.folder.split("/");
+            data = value.folder.split("/");
         data.push(`${index.toFixed(2)} of ${galleryobj.length()}`);
         if (url.searchParams.has("debug"))
         {
@@ -1047,7 +1047,7 @@ var displaylst =
                 var j = 100 * rowobj.berp();
                 data.push(`x - ${e.toFixed(2)}%, y - ${j.toFixed(2)}%`);
                 if (galleryobj.value().id)
-                    infobj.data.push(galleryobj.value().id);
+                    data.push(galleryobj.value().id);
                 data.push(`${window.innerWidth} x ${window.innerHeight}`);
                 var aspect = photo.image.width / photo.image.height;
                 data.push(aspect.toFixed(2));
