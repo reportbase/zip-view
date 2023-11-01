@@ -1801,28 +1801,14 @@ panel.arrow = function(color, degrees)
 
 function rectangle(x, y, w, h, user)
 {
-    if (x && x.width)
-    {
-        this.x = x.x;
-        this.y = x.y;
-        this.width = x.width;
-        this.height = x.height;
-        this.right = x.right;
-        this.left = x.left;
-        this.top = x.top;
-        this.bottom = x.bottom;
-    }
-    else
-    {
-        this.x = x;
-        this.y = y;
-        this.width = w;
-        this.height = h;
-        this.right = x + w;
-        this.left = x;
-        this.top = y;
-        this.bottom = y + h;
-    }
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+    this.right = x + w;
+    this.left = x;
+    this.top = y;
+    this.bottom = y + h;
 }
 
 rectangle.prototype.hitest = function(x, y)
@@ -1838,15 +1824,6 @@ rectangle.prototype.get = function(x, y, w, h)
 {
     return new rectangle(this.x + x, this.y + y, w, h);
 };
-
-rectangle.prototype.getindex = function(cols, rows, x, y)
-{
-    var b = (x - this.x) / this.width;
-    var col = Math.floor(b * cols);
-    var b = (y - this.y) / this.height;
-    var row = Math.floor(b * rows);
-    return cols * row + col;
-}
 
 rectangle.prototype.shrink = function(x, y)
 {
@@ -2548,6 +2525,7 @@ async function loadzip(file)
     galleryobj.data = [];
     galleryobj.width = 0;
     galleryobj.height = 0;
+    galleryobj.set(0);
     delete galleryobj.repos;
     for (var n = 0; n < keys.length; ++n)
     {
@@ -2585,6 +2563,7 @@ async function loadblob(blob)
     galleryobj.data = [];
     galleryobj.width = 0;
     galleryobj.height = 0;
+    galleryobj.set(0);
     delete galleryobj.repos;
     galleryobj.set(0);
 
@@ -2619,6 +2598,7 @@ async function loadimages(blobs)
     galleryobj.data = [];
     galleryobj.width = 0;
     galleryobj.height = 0;
+    galleryobj.set(0);
     delete galleryobj.repos;
 
     for (var i = 0; i < blobs.length; i++)
