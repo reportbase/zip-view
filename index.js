@@ -4012,7 +4012,7 @@ bossobj.reset = function()
     }
 
     for (var end = 100; end >= 0; --end)
-    {  
+    {   
         var str = `${start}-${end}`;
         zoomobj.makerange(str, 100);
         var z = zoomobj.value();
