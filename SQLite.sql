@@ -7,7 +7,9 @@ DROP TABLE IF EXISTS user_images;
 CREATE TABLE users 
 (
   id INT PRIMARY KEY, 
-  email VARCHAR(255)
+  email VARCHAR(255),
+  name VARCHAR(255),
+  secret VARCHAR(255),
 );
 
 CREATE TABLE galleries 
