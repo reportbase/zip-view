@@ -1173,7 +1173,7 @@ var displaylst =
             context.save();
             context.shadowOffsetX = 0;
             context.shadowOffsetY = 0;
-            if (galleryobj.transparent)
+            if (!galleryobj.notransparent)
             {
                 var blackfill = new panel.fill(THUMBTRANSPARENT);
                 blackfill.draw(context, canvas.thumbrect, 0, 0);
@@ -2681,7 +2681,7 @@ var panlst =
             if (canvas.isholllyrect)
             {
                 var k = (x - canvas.holllyrect.x) / canvas.holllyrect.width;
-                context.canvas.hollyobj.setperc(k);
+                context.canvas.hollyobj.setperc(1-k);
                 menuobj.draw();
             }
             else if (canvas.istemplaterect)
@@ -2693,7 +2693,7 @@ var panlst =
                 }                
                 
                 var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
-                templateobj.setperc(1-k);
+                templateobj.setperc(k);
                 menuobj.draw();
             }
             else
@@ -3483,7 +3483,7 @@ var taplst =
             if (context.canvas.selectrect &&
                 context.canvas.selectrect.hitest(x, y) >= 0)
             {
-                galleryobj.transparent = galleryobj.transparent ? 0 : 1;
+                galleryobj.notransparent = galleryobj.notransparent ? 1 : 0;
                 context.refresh();
             }
             else
