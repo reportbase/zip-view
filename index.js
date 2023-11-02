@@ -885,7 +885,7 @@ var displaylst =
         delete canvas.templaterect;
         delete canvas.buttonrect;
         canvas.vscrollrect = new rectangle();
-        canvas.holllyrect = new rectangle();
+        canvas.hollyrect = new rectangle();
         var bh = rect.height / 2;
         var bw = rect.width / 2;
         var a = new panel.cols([0, SCROLLBARWIDTH, 6],
@@ -972,7 +972,7 @@ var displaylst =
         var canvas = context.canvas;
         context.save();
         canvas.vscrollrect = new rectangle();
-        canvas.holllyrect = new rectangle();
+        canvas.hollyrect = new rectangle();
         var kh = context.rect().width == window.innerWidth ? 90 : ALIEXTENT;
         var a = new panel.colsA([5, 9, 0, 9, 5],
             [
@@ -993,7 +993,7 @@ var displaylst =
                         0,
                         new panel.layers(
                             [
-                                new panel.expand(new panel.rectangle(canvas.holllyrect), 10, 0),
+                                new panel.expand(new panel.rectangle(canvas.hollyrect), 10, 0),
                                 new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1),
                             ]),
                         0,
@@ -2678,9 +2678,9 @@ var panlst =
         var obj = canvas.hollyobj;
         if (type == "panleft" || type == "panright")
         {
-            if (canvas.isholllyrect)
+            if (canvas.ishollyrect)
             {
-                var k = (x - canvas.holllyrect.x) / canvas.holllyrect.width;
+                var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
                 context.canvas.hollyobj.setperc(1-k);
                 menuobj.draw();
             }
@@ -2753,7 +2753,7 @@ var panlst =
         canvas.istemplaterect = canvas.templaterect && canvas.templaterect.hitest(x, y);
         canvas.isbuttonrect = canvas.buttonrect && canvas.buttonrect.hitest(x, y);
         canvas.isvscrollrect = canvas.vscrollrect && canvas.vscrollrect.hitest(x, y);
-        canvas.isholllyrect = canvas.holllyrect && canvas.holllyrect.hitest(x, y);
+        canvas.ishollyrect = canvas.hollyrect && canvas.hollyrect.hitest(x, y);
     },
     panend: function(context, rect, x, y)
     {
@@ -2790,10 +2790,10 @@ var panlst =
         else if (type == "panup" || type == "pandown")
         {
             var canvas = context.canvas;
-            if (canvas.isholllyrect)
+            if (canvas.ishollyrect)
             {
                 var obj = canvas.timeobj;
-                var k = (y - canvas.holllyrect.y) / canvas.holllyrect.height;
+                var k = (y - canvas.hollyrect.y) / canvas.hollyrect.height;
                 obj.setperc(1 - k);
                 context.refresh()
             }
@@ -2822,7 +2822,7 @@ var panlst =
         global.timeauto = 0;
         canvas.starty = y;
         canvas.timeobj.setanchor(canvas.timeobj.current());
-        canvas.isholllyrect = canvas.holllyrect && canvas.holllyrect.hitest(x, y);
+        canvas.ishollyrect = canvas.hollyrect && canvas.hollyrect.hitest(x, y);
         canvas.isvscrollrect = canvas.vscrollrect && canvas.vscrollrect.hitest(x, y);
     },
     panend: function(context, rect, x, y)
@@ -3653,9 +3653,9 @@ var taplst =
             templateobj.setperc(k);
             menuobj.draw()
         }
-        else if (canvas.holllyrect && canvas.holllyrect.hitest(x, y))
+        else if (canvas.hollyrect && canvas.hollyrect.hitest(x, y))
         {
-            var k = (x - canvas.holllyrect.x) / canvas.holllyrect.width;
+            var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
             context.canvas.hollyobj.setperc(k);
             menuobj.draw()
         }
@@ -3811,10 +3811,10 @@ var taplst =
             menuobj.show();
             return true;
         }
-        else if (canvas.holllyrect &&
-            canvas.holllyrect.hitest(x, y))
+        else if (canvas.hollyrect &&
+            canvas.hollyrect.hitest(x, y))
         {
-            var k = (y - canvas.holllyrect.y) / canvas.holllyrect.height;
+            var k = (y - canvas.hollyrect.y) / canvas.hollyrect.height;
             context.canvas.timeobj.setperc(1 - k);
             context.refresh()
             return true;
