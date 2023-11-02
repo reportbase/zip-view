@@ -4014,7 +4014,9 @@ bossobj.reset = function()
         var height = photo.image.height * zoom;
         var aspect = photo.image.width / height;
         var width = window.innerHeight * aspect;
-        if (width*height > 4000*3000);
+        var j = width*height;
+        var k = 4000*3000 
+        if (j > k);
             break;
     }
 
