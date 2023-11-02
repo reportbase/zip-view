@@ -3960,7 +3960,6 @@ bossobj.draw = function()
     }
 
     context.restore();
-
     delete context.extentrect;
     delete context.slicerect;
     delete context.slicewidthrect;
@@ -4012,18 +4011,11 @@ bossobj.reset = function()
             break;
     }
 
-    var end = 0;
-    for (; end <= 90; ++end)
-    {
-        var zoom = (100 - end) / 100;
-        var height = photo.image.height * zoom;
-        var aspect = photo.image.width / height;
-        var width = window.innerHeight * aspect;
-        var j = width*height;
-        var k = 3000*3000 
-        if (j > k)
-            break;
-    }
+    var s = (3000*3000);
+    var vw = s/window.innerHeight;
+    var a = photo.image.width / photo.image.height;
+    var vh = vw / a;
+    var end = ((vh/window.innerHeight) * 100) - 100;
 
     var str = `${start}-${end}`;
     zoomobj.makerange(str, 100);
