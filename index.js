@@ -1049,7 +1049,7 @@ var displaylst =
                 if (galleryobj.value().id)
                     data.push(galleryobj.value().id);
                 data.push(`${window.innerWidth} x ${window.innerHeight}`);
-                var mp = canvas.virtualwidth * window.innerHeight;
+                var mp = (canvas.virtualwidth * window.innerHeight)/1000000;
                 data.push(`${mp.toFixed(2)} MP`);
                 var aspect = photo.image.width / photo.image.height;
                 data.push(aspect.toFixed(2));
