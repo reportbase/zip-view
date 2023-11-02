@@ -4016,7 +4016,7 @@ bossobj.reset = function()
         var width = window.innerHeight * aspect;
         var j = width*height;
         var k = 4000*3000 
-        if (j > k);
+        if (j > k)
             break;
     }
 
