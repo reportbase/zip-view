@@ -1049,6 +1049,8 @@ var displaylst =
                 if (galleryobj.value().id)
                     data.push(galleryobj.value().id);
                 data.push(`${window.innerWidth} x ${window.innerHeight}`);
+                var mp = canvas.virtualwidth * window.innerHeight;
+                data.push(`${mp.toFixed(2)MP}`);
                 var aspect = photo.image.width / photo.image.height;
                 data.push(aspect.toFixed(2));
                 var size = ((photo.image.width * photo.image.height) / 1000000).toFixed(1) + "MP";
@@ -1173,7 +1175,7 @@ var displaylst =
             context.save();
             context.shadowOffsetX = 0;
             context.shadowOffsetY = 0;
-            if (!galleryobj.notransparent)
+            if (1)//!galleryobj.notransparent)
             {
                 var blackfill = new panel.fill(THUMBTRANSPARENT);
                 blackfill.draw(context, canvas.thumbrect, 0, 0);
