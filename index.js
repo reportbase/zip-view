@@ -2358,7 +2358,8 @@ var wheelst =
 }, 
 ];
 
-var pinchlst = [
+var pinchlst = 
+[
 {
     name: "DEFAULT",
     pinch: function(context, x, y, scale) {},
@@ -3994,22 +3995,21 @@ bossobj.reset = function()
         context.show(0, 0, window.innerWidth, menuobj.value() ? 0 : window.innerHeight);
     }
 
-    var zoomax = galleryobj.zoomax ? galleryobj.zoomax : ZOOMAX;
     var n = 0;
-    for (; n < zoomax; ++n)
+    for (; n < ZOOMAX; ++n)
     {
         var zoom = (100 - n) / 100;
         var height = photo.image.height * zoom;
         var aspect = photo.image.width / height;
         var width = _4cnv.height * aspect;
-        var j = width / window.innerWidth;
-        if (window.portrait() && j > 2.0)
+        var j = width / window.innerWidth;//todo
+        if (window.portrait() && j > 1.5)
             break;
         else if (window.landscape() && j > 1.5)
             break;
     }
 
-    var str = `${n}-${zoomax}`;
+    var str = `${n}-${ZOOMAX}`;
     zoomobj.makerange(str, 100);
     var z = zoomobj.value();
     var zoom = (100 - z) / 100;
