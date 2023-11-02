@@ -4008,7 +4008,7 @@ bossobj.reset = function()
     }
 
     var end = 0;
-    for (; end < 100; ++end)
+    for (; end <= 90; ++end)
     {
         var zoom = (100 - end) / 100;
         var height = photo.image.height * zoom;
