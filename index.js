@@ -1045,16 +1045,17 @@ var displaylst =
                 data.push(_4cnv.timeobj.current().toFixed(5));
                 var e = 100 * (1 - _4cnv.timeobj.berp());
                 var j = 100 * rowobj.berp();
-                data.push(`x - ${e.toFixed(2)}%, y - ${j.toFixed(2)}%`);
+                data.push(`${e.toFixed(2)}%, ${j.toFixed(2)}%`);
                 if (galleryobj.value().id)
                     data.push(galleryobj.value().id);
                 data.push(`${window.innerWidth} x ${window.innerHeight}`);
-                var mp = (canvas.virtualwidth * window.innerHeight)/1000000;
-                data.push(`${mp.toFixed(2)} MP`);
                 var aspect = photo.image.width / photo.image.height;
                 data.push(aspect.toFixed(2));
-                var size = ((photo.image.width * photo.image.height) / 1000000).toFixed(1) + "MP";
-                data.push(size);
+                data.push(`${zoomobj.value().toFixed(2)}%`);
+                var mp = (canvas.virtualwidth * window.innerHeight)/1000000;
+                data.push(`${mp.toFixed(2)} MP`);
+                var mp = (photo.image.width * photo.image.height) / 1000000;
+                data.push(`${mp.toFixed(2)} MP`);
                 var extent = `${photo.image.width}x${photo.image.height}`;
                 data.push(extent);
             }
