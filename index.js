@@ -3967,6 +3967,7 @@ bossobj.draw = function()
         context.canvas.display.draw(context, rect, 0, 0);
 }
 
+//bossobj reset
 bossobj.reset = function()
 {
     if (!photo.image ||
@@ -4015,7 +4016,7 @@ bossobj.reset = function()
         var aspect = photo.image.width / height;
         var width = window.innerHeight * aspect;
         var j = width*height;
-        var k = 4000*3000 
+        var k = 3000*3000 
         if (j > k)
             break;
     }
