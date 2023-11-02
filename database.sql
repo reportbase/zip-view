@@ -94,4 +94,33 @@ LIMIT 1;
 
 SELECT * FROM user_galleries;
 
+INSERT INTO user_images (image_id, user_id)
+SELECT 1234, u.id 
+FROM users u
+WHERE u.email = 'user2@test.com'; 
+ 
+SELECT * from user_images;
+
+DELETE FROM user_images
+WHERE user_id IN (
+  SELECT id FROM users
+  WHERE email = 'user2@test.com'
+);
+
+SELECT * from user_images;
+
+WHERE id IN (
+  SELECT gallery_id
+  FROM user_galleries
+  WHERE user_id IN (
+    SELECT id 
+    FROM users
+    WHERE email = 'user2@test.com'
+  )
+);
+
+select * from user_images;
+
+
+
 
