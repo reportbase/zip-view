@@ -1,3 +1,5 @@
+#https://sqliteonline.com/
+  
 DROP TABLE IF EXISTS demo;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS galleries;
@@ -79,12 +81,17 @@ WHERE id IN (
 
 SELECT * FROM galleries;
 
-INSERT INTO galleries (id, json)
-VALUES (100, '{"new": "gallery"}');
+INSERT INTO galleries (json) 
+VALUES ('{"new": "gallery"}');
 
 INSERT INTO user_galleries (user_id, gallery_id)
-SELECT id, LAST_INSERT_ROWID()
-FROM users
-WHERE email = 'user@email.com';
+SELECT u.id, g.id
+FROM users u 
+CROSS JOIN galleries g
+WHERE u.email = 'user2@test.com'
+ORDER BY g.id DESC
+LIMIT 1;
 
 SELECT * FROM user_galleries;
+
+
