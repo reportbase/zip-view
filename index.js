@@ -3995,21 +3995,30 @@ bossobj.reset = function()
         context.show(0, 0, window.innerWidth, menuobj.value() ? 0 : window.innerHeight);
     }
 
-    var n = 0;
-    for (; n < ZOOMAX; ++n)
+    var start = 0;
+    for (; start < 100; ++start)
     {
-        var zoom = (100 - n) / 100;
+        var zoom = (100 - start) / 100;
         var height = photo.image.height * zoom;
         var aspect = photo.image.width / height;
         var width = _4cnv.height * aspect;
-        var j = width / window.innerWidth;//todo
-        if (window.portrait() && j > 1.5)
-            break;
-        else if (window.landscape() && j > 1.5)
+        var j = width / window.innerWidth;
+        if (j > 1.5)
             break;
     }
 
-    var str = `${n}-${ZOOMAX}`;
+    var end = 0;
+    for (; end < 100; ++end)
+    {
+        var zoom = (100 - end) / 100;
+        var height = photo.image.height * zoom;
+        var aspect = photo.image.width / height;
+        var width = _4cnv.height * aspect;
+        if (width*height > 4000*3000);
+            break;
+    }
+
+    var str = `${start}-${end}`;
     zoomobj.makerange(str, 100);
     var z = zoomobj.value();
     var zoom = (100 - z) / 100;
