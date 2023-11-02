@@ -1051,7 +1051,8 @@ var displaylst =
                 data.push(`${window.innerWidth} x ${window.innerHeight}`);
                 var aspect = photo.image.width / photo.image.height;
                 data.push(aspect.toFixed(2));
-                data.push(`${zoomobj.value().toFixed(2)}%`);
+                var j = zoomobj.value();
+                data.push(`${j.toFixed(2)}%`);
                 var mp = (canvas.virtualwidth * window.innerHeight)/1000000;
                 data.push(`${mp.toFixed(2)} MP`);
                 var mp = (photo.image.width * photo.image.height) / 1000000;
