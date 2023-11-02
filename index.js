@@ -4001,7 +4001,7 @@ bossobj.reset = function()
         var zoom = (100 - start) / 100;
         var height = photo.image.height * zoom;
         var aspect = photo.image.width / height;
-        var width = _4cnv.height * aspect;
+        var width = window.innerHeight * aspect;
         var j = width / window.innerWidth;
         if (j > 1.5)
             break;
@@ -4013,7 +4013,7 @@ bossobj.reset = function()
         var zoom = (100 - end) / 100;
         var height = photo.image.height * zoom;
         var aspect = photo.image.width / height;
-        var width = _4cnv.height * aspect;
+        var width = window.innerHeight * aspect;
         if (width*height > 4000*3000);
             break;
     }
