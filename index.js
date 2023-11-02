@@ -2681,7 +2681,7 @@ var panlst =
             if (canvas.ishollyrect)
             {
                 var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
-                context.canvas.hollyobj.setperc(1-k);
+                context.canvas.hollyobj.setperc(k);
                 menuobj.draw();
             }
             else if (canvas.istemplaterect)
