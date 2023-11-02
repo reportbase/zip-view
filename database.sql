@@ -121,6 +121,29 @@ WHERE id IN (
 
 select * from user_images;
 
+UPDATE users
+SET 
+  name = 'New Name',
+  secret = 'new secret'
+WHERE email = 'user2@test.com'; 
 
+select * from users;
+
+SELECT * 
+FROM users
+ORDER BY name
+LIMIT 10;
+
+SELECT g.*
+FROM galleries g
+JOIN user_galleries ug ON g.id = ug.gallery_id
+JOIN users u ON ug.user_id = u.id
+WHERE u.email = 'user2@test.com';
+
+SELECT i.* 
+FROM user_images i
+JOIN users u ON i.user_id = u.id
+JOIN images im ON i.image_id = im.id
+WHERE u.email = 'user2@test.com';
 
 
