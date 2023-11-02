@@ -1040,9 +1040,9 @@ var displaylst =
             if (value && value.folder)
                 data = value.folder.split("/");
             data.push(`${index+1} of ${galleryobj.length()}`);
-            data.push(_4cnv.timeobj.current().toFixed(5));
             if (url.searchParams.has("debug"))
             {
+                data.push(_4cnv.timeobj.current().toFixed(5));
                 var e = 100 * (1 - _4cnv.timeobj.berp());
                 var j = 100 * rowobj.berp();
                 data.push(`x - ${e.toFixed(2)}%, y - ${j.toFixed(2)}%`);
