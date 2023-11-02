@@ -4011,20 +4011,21 @@ bossobj.reset = function()
             break;
     }
 
-    var s = (3000*3000);
-    var vw = s/window.innerHeight;
-    var a = photo.image.width / photo.image.height;
-    var vh = vw / a;
-    var end = ((vh/window.innerHeight) * 100) - 100;
-
-    var str = `${start}-${end}`;
-    zoomobj.makerange(str, 100);
-    var z = zoomobj.value();
-    var zoom = (100 - z) / 100;
-    _4cnv.imageheight = photo.image.height * zoom;
-    _4cnv.virtualheight = _4cnv.height;
-    var imageaspect = photo.image.width / _4cnv.imageheight;
-    _4cnv.virtualwidth = _4cnv.height * imageaspect;
+    for (var end = 100; end >= 0; --end)
+    {
+        var str = `${start}-${end}`;
+        zoomobj.makerange(str, 100);
+        var z = zoomobj.value();
+        var zoom = (100 - z) / 100;
+        _4cnv.imageheight = photo.image.height * zoom;
+        _4cnv.virtualheight = _4cnv.height;
+        var imageaspect = photo.image.width / _4cnv.imageheight;
+        _4cnv.virtualwidth = _4cnv.height * imageaspect;
+        var size = _4cnv.virtualwidth * _4cnv.virtualheight;
+        if (size < 3000*3000)
+            break;
+    }
+    
     var y = util.clamp(0, _4cnv.height - 1, _4cnv.height * rowobj.berp());
     _4cnv.nuby = Math.nub(y, _4cnv.height, _4cnv.imageheight, photo.image.height);
 
