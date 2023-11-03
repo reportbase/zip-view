@@ -2674,6 +2674,11 @@ var panlst =
         var canvas = context.canvas;
         if (canvas.pinching)
             return;
+
+        var canvas = context.canvas;
+        var j = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+        canvas.display = displaylst[j];
+      
         var obj = canvas.hollyobj;
         if (type == "panleft" || type == "panright")
         {
