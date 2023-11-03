@@ -1282,7 +1282,7 @@ buttonobj.reset = function()
         if (dheight < 0)
             dheight = 0;
         var bheight = h;
-        if (bheight < ghieght)
+        if (bheight < gheight)
             gheight = bheight/2;
         for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
             buttonobj.data.push(n);
