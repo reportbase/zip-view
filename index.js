@@ -1265,19 +1265,25 @@ buttonobj.reset = function()
 {
     var w = galleryobj.width;
     var h = galleryobj.height;
-    var a = w / h;
-    buttonobj.data = [];
-    var j = w > h ? 4 : 8
-    var gheight = Math.floor(h / j);
-    var dheight = Math.floor(window.innerWidth / a) - gheight;
-    if (dheight < 0)
-        dheight = 0;
-    var bheight = h;
-    if (bheight < gheight)
-        bheight = gheight;
-    for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
-        buttonobj.data.push(n);
-    buttonobj.set(dheight);
+    if (w*h > 3000*3000)
+    {
+        buttonobj.data = [];
+        buttonobj.data.push(h);
+    }
+    else
+    {
+        var a = w / h;
+        buttonobj.data = [];
+        var j = w > h ? 4 : 8
+        var gheight = Math.floor(h / j);
+        var dheight = Math.floor(window.innerWidth / a) - gheight;
+        if (dheight < 0)
+            dheight = 0;
+        var bheight = h*1.5;
+        for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
+            buttonobj.data.push(n);
+        buttonobj.set(dheight);
+    }
 }
 
 buttonobj.fit = function()
