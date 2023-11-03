@@ -859,7 +859,7 @@ var displaylst =
         var data = [templateobj.value()];
         var rows = data.length;
         var rh = 26;
-        var a = new panel.rows([80, 0, rows * rh, 8, SCROLLBARWIDTH, 4],
+        var a = new panel.rows([80, 0, rows * rh, 11, SCROLLBARWIDTH, 4],
         [
             0,
             0,
@@ -952,7 +952,7 @@ var displaylst =
         var w = Math.min(360, rect.width - 100);
         var rows = data.length;
         var rh = 26;
-        var a = new panel.rows([80, 0, rows * rh, 8, SCROLLBARWIDTH, 4],
+        var a = new panel.rows([80, 0, rows * rh, 11, SCROLLBARWIDTH, 4],
         [
             0,
             0,
@@ -1106,7 +1106,7 @@ var displaylst =
                                 ]),
                             0,
                         ]),
-                    new panel.rowsA([0, rows * rh, 8, SCROLLBARWIDTH, 4],
+                    new panel.rowsA([0, rows * rh, 11, SCROLLBARWIDTH, 4],
                         [
                             0,
                             new panel.cols([0, w, 0],
