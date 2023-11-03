@@ -859,7 +859,7 @@ var displaylst =
         var data = [templateobj.value()];
         var rows = data.length;
         var rh = 26;
-        var a = new panel.rows([80, 0, rows * rh, 8, SCROLLBARWIDTH, 4],
+        var a = new panel.rows([80, 0, rows * rh, 11, SCROLLBARWIDTH, 4],
         [
             0,
             0,
@@ -952,7 +952,7 @@ var displaylst =
         var w = Math.min(360, rect.width - 100);
         var rows = data.length;
         var rh = 26;
-        var a = new panel.rows([80, 0, rows * rh, 8, SCROLLBARWIDTH, 4],
+        var a = new panel.rows([80, 0, rows * rh, 11, SCROLLBARWIDTH, 4],
         [
             0,
             0,
@@ -1106,7 +1106,7 @@ var displaylst =
                                 ]),
                             0,
                         ]),
-                    new panel.rowsA([0, rows * rh, 8, SCROLLBARWIDTH, 4],
+                    new panel.rowsA([0, rows * rh, 11, SCROLLBARWIDTH, 4],
                         [
                             0,
                             new panel.cols([0, w, 0],
@@ -5672,8 +5672,8 @@ var headlst =
         this.draw = function(context, rect, user, time)
         {
             context.clear();
-            var b = 0;
             var k = menuobj.value();
+            context.uploadrect = new rectangle();;
             var w = k ? k.canvas.width : 0;
             var b = window.innerWidth == w;
             context.save();
@@ -5695,10 +5695,14 @@ var headlst =
 
                             0, 0, 0
                         ]),
-                    0,
+                    new panel.layers(
+                    [
+                        new rectangle(context.uploadrect),
+                        new panel.text()
+                    ])
                 ]);
 
-            a.draw(context, rect, 0, 0);
+            a.draw(context, rect, "Upload \u{25B6}", 0);
             context.restore();
         }
     },
@@ -5719,6 +5723,7 @@ var headlst =
             delete context.fullrect;
             delete context.leftmenurect;
             delete context.rightmenurect;
+            context.uploadrect = new rectangle();
             var s = SAFARI ? -1: ALIEXTENT;
             var e = ALIEXTENT + 10;
             var a = new panel.rows([BEXTENT, 0],
@@ -5736,10 +5741,14 @@ var headlst =
                         new panel.rightmenu(),
                         0,
                     ]),
-                    0
+                    new panel.layers(
+                    [
+                        new rectangle(context.uploadrect),
+                        new panel.text()
+                    ])
                 ]);
             
-            a.draw(context, rect, 0, 0);
+            a.draw(context, rect, Upload \u{25B6}, 0);
             context.restore();
         }
     },
@@ -5846,11 +5855,6 @@ function setfavicon()
 
 window.addEventListener("visibilitychange", (evt) =>
 {
-    if (document.visibilityState === "visible") 
-    {
-        menuobj.draw();
-        bossobj.draw();
-    } 
 });
 
 function wraptext(ctx, text, maxWidth)
