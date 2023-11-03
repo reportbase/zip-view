@@ -4945,6 +4945,9 @@ contextlst.forEach(function(context, n)
     var k = displaylst.findIndex(function(a){return a.name == obj.display});
     canvas.display = displaylst[k];
 
+    var k = footlst.findIndex(function(a){return a.name == obj.footer});
+    canvas.footer = footlst[k];
+
     var k = pinchlst.findIndex(function(a){return a.name == obj.pinch});
     k = pinchlst[k];
     canvas.pinch_ = k.pinch;
