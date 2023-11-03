@@ -228,28 +228,15 @@ let circular_array = function(title, data)
     this.rotateanchored = function(index)
     {
         this.CURRENT = this.ANCHOR - index;
-        /*todo
-        if (this.CURRENT >= this.length())
-            this.CURRENT = this.CURRENT - this.length();
-        else if (this.CURRENT < 0)
-            this.CURRENT = this.length() + this.CURRENT;
-            */
-    };
-
-    this.setrotate = function(x, w)
-    {
-        var p = (x * this.length()) / w;
-        this.CURRENT = this.ANCHOR + p;
+        this.wrap();
     };
 
     this.wrap = function()
     {
-        /*
         if (this.CURRENT >= this.length())
             this.CURRENT = this.CURRENT - this.length();
         else if (this.CURRENT < 0)
             this.CURRENT = this.length() + this.CURRENT;
-        */
     };
 
     this.add = function(index)
@@ -261,13 +248,7 @@ let circular_array = function(title, data)
     this.rotate = function(index)
     {
         this.CURRENT += index;
-        /*
-        if (this.CURRENT >= this.length())
-            this.CURRENT = this.CURRENT - this.length();
-        else if (this.CURRENT < 0)
-            this.CURRENT = this.length() + this.CURRENT;
-        this.ANCHOR = this.CURRENT;
-        */
+        this.wrap();
     };
 
     this.setanchor = function(index)
@@ -2360,7 +2341,8 @@ var wheelst =
     { 
         _4cnv.lastime = -0.0000000000101010101;
         var obj = _4cnv.timeobj;
-        obj.CURRENT += obj.length()*(-delta/5000);
+        var j = obj.length()*(-delta/5000);
+        obj.rotate(j);
         bossobj.draw()
     },
 }, 
