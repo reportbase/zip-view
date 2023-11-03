@@ -2266,6 +2266,9 @@ var wheelst =
         }
         else
         {
+            var j = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            canvas.display = displaylst[j];
+
             clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
             if (global.swipetimeout)
@@ -2279,6 +2282,8 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     {
+        var j = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+        canvas.display = displaylst[j];
         galleryobj.leftright(context, delta);
     },
 },
@@ -2998,12 +3003,8 @@ var presslst = [
                (canvas.hollyrect && canvas.hollyrect.hitest(x, y)))
                return;
 
-            context.refresh();
-
             headcnv.height = headcnv.height ? 0 : HEADHEIGHT;
             headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-            var j = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            canvas.display = displaylst[j];
             menuobj.draw();
     },
     press: function(context, rect, x, y) {}
