@@ -1270,7 +1270,7 @@ buttonobj.reset = function()
     var a = w / h;
     buttonobj.data = [];
     var gheight = window.innerHeight/2;
-    if (gheight < h)
+    if (h < gheight)
         gheight = h;
     var dheight = Math.floor(window.innerWidth / a) - gheight;
     if (dheight < 0)
