@@ -789,7 +789,105 @@ var footlst =
     }
 },
 ]
-    
+
+var headlst = 
+[
+{
+    name: "DEFAULT",
+    draw: function(context, rect, user, time)
+    {
+    }
+},
+{
+    name: "BOSS",
+    draw: function(context, rect, user, time)
+    {
+            context.clear();
+            var b = 0;
+            var k = menuobj.value();
+            var w = k ? k.canvas.width : 0;
+            var b = window.innerWidth == w;
+            context.save();
+            context.uploadrect = new rectangle();
+            var a = new panel.rows([BEXTENT, 0],
+                [
+                    new panel.cols([5, 
+                                    ALIEXTENT, 0, 
+                                    ALIEXTENT, 
+                                    window.innerWidth >= 320 ? (ALIEXTENT + 10) : -1, 
+                                    ALIEXTENT, 
+                                    0, ALIEXTENT, 
+                                    5],
+                        [
+                            0, 0, 0,
+
+                            new panel.previous(),
+                            new panel.zoom(),
+                            new panel.next(),
+
+                            0, 0, 0
+                        ]),
+                    new panel.layers(
+                        [
+                            new panel.rectangle(context.uploadrect),
+                            new panel.shadow(new panel.text()),
+                        ]),
+                ]);
+
+            a.draw(context, rect, "Upload \u{25B6}", 0);
+            context.restore();        
+    }
+},
+{
+    name: "GALLERY",
+    draw: function(context, rect, user, time)
+    {
+            var canvas = context.canvas;
+            context.clear();
+            if (menuobj.value() != _8cnvctx && 
+                menuobj.value().canvas.width == window.innerWidth)
+                return;
+            context.save();
+            var ctx = menuobj.value();
+            var g = ctx == _8cnvctx;
+            delete context.zoomrect;
+            delete context.fitwidthrect;
+            delete context.fullrect;
+            delete context.leftmenurect;
+            delete context.rightmenurect;
+            context.uploadrect = new rectangle();
+            var s = SAFARI ? -1: ALIEXTENT;
+            var e = ALIEXTENT + 10;
+            var a = new panel.rows([BEXTENT, 0],
+                [
+                    new panel.cols(
+                    [5, ALIEXTENT, 0, s, e, ALIEXTENT, 0, ALIEXTENT, 5],
+                    [
+                        0,
+                        new panel.leftmenu(),
+                        0,
+                        g ? new panel.fullscreen() : 0,
+                        g ? new panel.zoom() : 0,
+                        g ? new panel.fitwidth() : 0,
+                        0,
+                        new panel.rightmenu(),
+                        0,
+                    ]),
+                     g ? new panel.layers(
+                        [
+                            new panel.rectangle(context.uploadrect),
+                            new panel.shadow(new panel.text()),
+                        ]): 0,
+                ]);
+            
+            a.draw(context, rect, "Open \u{25B6}", 0);
+            context.restore();        
+    }
+}
+]
+
+var headobj = new circular_array("HEAD", headlst);
+
 var displaylst = 
 [
 {
@@ -1294,8 +1392,8 @@ buttonobj.fit = function()
         contextobj.reset();
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
-        headobj.set(GALLERY);
-        headham.panel = headobj.value();
+        var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+        headham.panel = headlst[k];
         headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
         headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
     };    
@@ -3467,8 +3565,8 @@ var taplst =
         {
             menuobj.setindex(_8cnvctx);
             menuobj.show();
-            headobj.set(GALLERY);
-            headham.panel = headobj.value();
+            var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+            headham.panel = headlst[k];
             headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
             _4cnv.height = 0;
         }
@@ -3512,8 +3610,8 @@ var taplst =
             {
                 menuobj.setindex(_8cnvctx);
                 menuobj.show();
-                headobj.set(GALLERY);
-                headham.panel = headobj.value();
+                var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+                headham.panel = headlst[k];
             }
             else
             {
@@ -3630,8 +3728,8 @@ var taplst =
             var n = visibles[k].n;
             galleryobj.set(n);
             headcnv.height = HEADHEIGHT;
-            headobj.set(BOSS);
-            headham.panel = headobj.value();
+            var k = headlst.findIndex(function(a){return a.name == "BOSS"});
+            headham.panel = headlst[k];
             headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
             delete _4cnv.thumbcanvas;
             delete photo.image;
@@ -3701,8 +3799,8 @@ var taplst =
             {
                 slice.tap = 0;
                 galleryobj.set(n);
-                headobj.set(BOSS);
-                headham.panel = headobj.value();
+                var k = headlst.findIndex(function(a){return a.name == "BOSS"});
+                headham.panel = headlst[k];
                 headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
                 delete _4cnv.thumbcanvas;
                 delete photo.image;
@@ -5653,98 +5751,6 @@ window.addEventListener("screenorientation", (evt) =>
     resize();
 });
 
-//todo: use names
-var headlst = 
-[
-    new function()
-    {
-        this.draw = function(context, rect, user, time)
-        {
-            context.clear();
-            var b = 0;
-            var k = menuobj.value();
-            var w = k ? k.canvas.width : 0;
-            var b = window.innerWidth == w;
-            context.save();
-            context.uploadrect = new rectangle();
-            var a = new panel.rows([BEXTENT, 0],
-                [
-                    new panel.cols([5, 
-                                    ALIEXTENT, 0, 
-                                    ALIEXTENT, 
-                                    window.innerWidth >= 320 ? (ALIEXTENT + 10) : -1, 
-                                    ALIEXTENT, 
-                                    0, ALIEXTENT, 
-                                    5],
-                        [
-                            0, 0, 0,
-
-                            new panel.previous(),
-                            new panel.zoom(),
-                            new panel.next(),
-
-                            0, 0, 0
-                        ]),
-                    new panel.layers(
-                        [
-                            new panel.rectangle(context.uploadrect),
-                            new panel.shadow(new panel.text()),
-                        ]),
-                ]);
-
-            a.draw(context, rect, "Upload \u{25B6}", 0);
-            context.restore();
-        }
-    },
-    new function()
-    {
-        this.draw = function(context, rect, user, time)
-        {
-            var canvas = context.canvas;
-            context.clear();
-            if (menuobj.value() != _8cnvctx && 
-                menuobj.value().canvas.width == window.innerWidth)
-                return;
-            context.save();
-            var ctx = menuobj.value();
-            var g = ctx == _8cnvctx;
-            delete context.zoomrect;
-            delete context.fitwidthrect;
-            delete context.fullrect;
-            delete context.leftmenurect;
-            delete context.rightmenurect;
-            context.uploadrect = new rectangle();
-            var s = SAFARI ? -1: ALIEXTENT;
-            var e = ALIEXTENT + 10;
-            var a = new panel.rows([BEXTENT, 0],
-                [
-                    new panel.cols(
-                    [5, ALIEXTENT, 0, s, e, ALIEXTENT, 0, ALIEXTENT, 5],
-                    [
-                        0,
-                        new panel.leftmenu(),
-                        0,
-                        g ? new panel.fullscreen() : 0,
-                        g ? new panel.zoom() : 0,
-                        g ? new panel.fitwidth() : 0,
-                        0,
-                        new panel.rightmenu(),
-                        0,
-                    ]),
-                     g ? new panel.layers(
-                        [
-                            new panel.rectangle(context.uploadrect),
-                            new panel.shadow(new panel.text()),
-                        ]): 0,
-                ]);
-            
-            a.draw(context, rect, "Open \u{25B6}", 0);
-            context.restore();
-        }
-    },
-];
-
-var headobj = new circular_array("HEAD", headlst);
 var metaobj = new circular_array("", 6);
 var positxobj = new circular_array("POSITIONX", 100);
 var posityobj = new circular_array("POSITIONY", 100);
@@ -6450,8 +6456,8 @@ galleryobj.init = function(obj)
         contextobj.reset();
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
-        headobj.set(GALLERY);
-        headham.panel = headobj.value();
+        var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+        headham.panel = headlst[k];
         headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
         headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
     };    
