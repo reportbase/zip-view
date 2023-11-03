@@ -1269,11 +1269,11 @@ buttonobj.reset = function()
     var h = galleryobj.height;
     var a = w / h;
     buttonobj.data = [];
-    var gheight = window.innerHeight*(2/3);
+    var gheight = window.innerHeight/2;
     var dheight = Math.floor(window.innerWidth / a) - gheight;
     if (dheight < 0)
         dheight = 0;
-    var bheight = window.innerHeight*2;
+    var bheight = h;
     for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
         buttonobj.data.push(n);
     buttonobj.set(dheight);
