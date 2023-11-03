@@ -5695,10 +5695,13 @@ var headlst =
 
                             0, 0, 0
                         ]),
-                    0,
+                    new panel.layers(
+                        [
+                            new panel.text(),
+                        ]),
                 ]);
 
-            a.draw(context, rect, 0, 0);
+            a.draw(context, rect, "Upload \u{25B6}", 0);
             context.restore();
         }
     },
@@ -5736,10 +5739,13 @@ var headlst =
                         new panel.rightmenu(),
                         0,
                     ]),
-                    0
+                     new panel.layers(
+                        [
+                            new panel.text(),
+                        ]),
                 ]);
             
-            a.draw(context, rect, 0, 0);
+            a.draw(context, rect, "Upload \u{25B6}", 0);
             context.restore();
         }
     },
