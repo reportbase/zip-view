@@ -30,6 +30,7 @@ const IFRAME = window.self !== window.top;
 const ALIEXTENT = 60;
 const BEXTENT = 80;
 const BOSSMIN = 4;
+const FOOTSEP = 15;
 const HEADHEIGHT = IFRAME ? 0 : 120;
 const SCROLLMARGIN = 8;
 const MENUSELECT = "rgba(255,175,0,0.4)";
@@ -859,7 +860,7 @@ var displaylst =
         var data = [templateobj.value()];
         var rows = data.length;
         var rh = 26;
-        var a = new panel.rows([80, 0, rows * rh, 11, SCROLLBARWIDTH, 4],
+        var a = new panel.rows([80, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
         [
             0,
             0,
@@ -952,7 +953,7 @@ var displaylst =
         var w = Math.min(360, rect.width - 100);
         var rows = data.length;
         var rh = 26;
-        var a = new panel.rows([80, 0, rows * rh, 11, SCROLLBARWIDTH, 4],
+        var a = new panel.rows([80, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
         [
             0,
             0,
@@ -1106,7 +1107,7 @@ var displaylst =
                                 ]),
                             0,
                         ]),
-                    new panel.rowsA([0, rows * rh, 11, SCROLLBARWIDTH, 4],
+                    new panel.rowsA([0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
                         [
                             0,
                             new panel.cols([0, w, 0],
@@ -5713,11 +5714,11 @@ var headlst =
                         new panel.rightmenu(),
                         0,
                     ]),
-                     new panel.layers(
+                     g ? new panel.layers(
                         [
                             new panel.rectangle(context.uploadrect),
                             new panel.text(),
-                        ]),
+                        ]): 0,
                 ]);
             
             a.draw(context, rect, "Upload \u{25B6}", 0);
