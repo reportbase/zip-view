@@ -5748,7 +5748,7 @@ var headlst =
                     ])
                 ]);
             
-            a.draw(context, rect, Upload \u{25B6}, 0);
+            a.draw(context, rect, "Upload \u{25B6}", 0);
             context.restore();
         }
     },
