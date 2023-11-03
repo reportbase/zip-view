@@ -6117,7 +6117,7 @@ galleryobj.init = function(obj)
         },
         
         {
-            title: "Add User",
+            title: "users-post",
             func: function()
             {
                     const form = new FormData();
@@ -6136,7 +6136,7 @@ galleryobj.init = function(obj)
             }
         },
         {
-            title: "Show Header",
+            title: "user.get.list",
             func: function()
             {        
                 fetch(`https://users.reportbase5836.workers.dev`)
