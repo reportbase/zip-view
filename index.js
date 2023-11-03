@@ -2356,12 +2356,6 @@ var wheelst =
         }
         else
         {
-            if (canvas.templaterect && !canvas.templaterect.hitest(x, y))
-            {
-                var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-                canvas.display = displaylst[k]; 
-            }
-  
             clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
             if (global.swipetimeout)
@@ -2376,11 +2370,6 @@ var wheelst =
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     {
         var canvas = context.canvas;
-        if (canvas.templaterect && !canvas.templaterect.hitest(x, y))
-        {
-            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            canvas.display = displaylst[k]; 
-        }
         galleryobj.leftright(context, delta);
     },
 },
@@ -2771,15 +2760,9 @@ var panlst =
         var canvas = context.canvas;
         if (canvas.pinching)
             return;
-
+//todo: toggle templaterect
+        
         var canvas = context.canvas;
-
-        if (canvas.templaterect && !canvas.templaterect.hitest(x, y))
-        {
-            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            canvas.display = displaylst[k]; 
-        }
-
         var obj = canvas.hollyobj;
         if (type == "panleft" || type == "panright")
         {
@@ -6474,24 +6457,6 @@ galleryobj.init = function(obj)
     };    
 }
 
-function fooload(path)
-{
-    if (path.isimage())
-    {
-        loadimages(path);
-    }
-    else if (path.isjson())
-    {
-        fetch(path)
-            .then((response) => jsonhandler(response))
-            .then((obj) => galleryobj.init(obj))
-    }
-    else
-    {
-        loadzip(path);
-    }
-}
-
 var local = {};
 local.email = "reportbase@gmail.com";
 
@@ -6542,15 +6507,30 @@ else if (url.searchParams.has("id"))
                     .then((obj) => galleryobj.init(obj))
           })
 }
-else if (url.searchParams.has("path"))//todo
+else if (url.searchParams.has("path"))
 {
     url.path = url.searchParams.get("path");
-    fooload(url.path);
+    if (url.path.isimage())
+    {
+        loadimages(url.);
+    }
+    else if (url..isjson())
+    {
+        fetch(url.)
+            .then((response) => jsonhandler(response))
+            .then((obj) => galleryobj.init(obj))
+    }
+    else
+    {
+        loadzip(url.);
+    }
 }
 else
 {
     url.path = "res/home.json";
-    fooload(url.path);
+    fetch(url.path)
+        .then((response) => jsonhandler(response))
+        .then((obj) => galleryobj.init(obj))
 }
 
 function downloadtext(name, text)
