@@ -1365,6 +1365,8 @@ buttonobj.reset = function()
     if (dheight < 0)
         dheight = 0;
     var bheight = h;
+    if (bheight*w > MAXIMAGESIZE)
+        bheight = MAXIMAGESIZE / w;
     for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
         buttonobj.data.push(n);
     buttonobj.set(dheight);
