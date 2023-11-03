@@ -1268,11 +1268,11 @@ buttonobj.reset = function()
     var a = w / h;
     buttonobj.data = [];
     var j = w > h ? 4 : 8
-    var gheight = Math.floor(w / a / j);
+    var gheight = Math.floor(h / j);
     var dheight = Math.floor(window.innerWidth / a) - gheight;
     if (dheight < 0)
         dheight = 0;
-    var bheight = Math.floor(w / a) * 1.5;
+    var bheight = h;
     if (bheight < gheight)
         bheight = gheight;
     for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
