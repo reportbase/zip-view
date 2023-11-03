@@ -564,7 +564,7 @@ panel.galleriesbar = function()
                    [
                        `\u{271A} New`,
                        `\u{2718} Delete`,
-                       `... Edit`
+                       `\u{1F4AB} Edit`
                    ], 
                 ]);
         
@@ -766,7 +766,7 @@ panel.homebar = function()
                    0,
                    [
                        "Open \u{25B6}",
-                       "\u{1F4AB} Signup"
+                       "Upload \u{1F4AB}"
                    ],
                 ],
                 0);
