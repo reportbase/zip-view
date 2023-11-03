@@ -961,7 +961,7 @@ var displaylst =
                     0,
                     new panel.layers(
                         [
-                            new rectangle(canvas.gorect),
+                            new panel.rectangle(canvas.gorect),
                             new panel.gridA(1, rows, 1,
                                 new panel.shadow(new panel.text())),
                         ]),
