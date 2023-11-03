@@ -1273,6 +1273,7 @@ buttonobj.reset = function()
     {
         galleryobj.width = this.width;
         galleryobj.height = this.height;
+
         var w = galleryobj.width;
         var h = galleryobj.height;
         var a = w / h;
@@ -1285,19 +1286,28 @@ buttonobj.reset = function()
         for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
             buttonobj.data.push(n);
         buttonobj.set(dheight);
-    headobj.set(GALLERY);
-    headham.panel = headobj.value();
-    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-    headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+        
+        var k = url.searchParams.get('_8');
+        if (k != null)
+            _8cnv.timeobj.set(Number(k));
+        contextobj.reset();
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
-        menuobj.draw();
+        headobj.set(GALLERY);
+        headham.panel = headobj.value();
+        headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+        headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
     };
 }
 
 buttonobj.fit = function()
 {
+    var j = _8cnv.centered;
+    var index = j % IMAGELSTSIZE;
+    galleryobj.width = thumbfittedlst[index].width;
+    galleryobj.height = thumbfittedlst[index].height;
     buttonobj.reset()
+    menuobj.draw();
     _8cnv.fitflash = 1;
     headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
     setTimeout(function()
@@ -6429,14 +6439,6 @@ galleryobj.init = function(obj)
     galleryobj.rightcnv = _5cnv.sliceobj.length()?_5cnv:_6cnv;
     galleryobj.rightctx = _5cnv.sliceobj.length()?_5cnvctx:_6cnvctx;
 
-    var k = url.searchParams.get('_8');
-    if (k != null)
-        _8cnv.timeobj.set(Number(k));
-    headobj.set(GALLERY);
-    headham.panel = headobj.value();
-    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-    headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-    
     buttonobj.reset();    
 }
 
