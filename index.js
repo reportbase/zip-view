@@ -1060,7 +1060,7 @@ var displaylst =
                 if (galleryobj.value().id)
                     data.push(galleryobj.value().id);
                 data.push(`${window.innerWidth} x ${window.innerHeight}`);
-                data.push(`${canvas.virtualwidth} x ${window.innerHeight}`);
+                data.push(`${canvas.virtualwidth.toFixed(0)} x ${window.innerHeight}`);
                 var aspect = photo.image.width / photo.image.height;
                 data.push(aspect.toFixed(2));
                 var j = Number(zoomobj.value());
@@ -4015,7 +4015,7 @@ bossobj.reset = function()
         var imageaspect = photo.image.width / _4cnv.imageheight;
         _4cnv.virtualwidth = _4cnv.height * imageaspect;
         var size = _4cnv.virtualwidth * _4cnv.virtualheight;
-        if (size < 3000*3000)
+        if (size < 3000*3000 && _4cnv.virtualwidth < 12000)
             break;
     }
     
