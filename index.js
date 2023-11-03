@@ -2337,11 +2337,8 @@ var wheelst =
 
         if (ctrl)
         {
-            if (canvas.templaterect && !canvas.templaterect.hitest(x, y))
-            {
-                var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
-                canvas.display = displaylst[k]; 
-            }
+            var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
+            canvas.display = displaylst[k]; 
             
             var j = buttonobj.length()/100;
             context.canvas.pinching = 1;
