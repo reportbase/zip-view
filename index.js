@@ -30,7 +30,7 @@ const IFRAME = window.self !== window.top;
 const ALIEXTENT = 60;
 const BEXTENT = 80;
 const BOSSMIN = 4;
-const HEADHEIGHT = IFRAME ? 0 : 80;
+const HEADHEIGHT = IFRAME ? 0 : 120;
 const SCROLLMARGIN = 8;
 const MENUSELECT = "rgba(255,175,0,0.4)";
 const MENUTAP = "rgba(255,125,0,0.7)";
@@ -766,7 +766,7 @@ panel.homebar = function()
                    0,
                    [
                        "Open \u{25B6}",
-                       "Upload \u{1F4AB}"
+                       "Upload \u{25B6}"
                    ],
                 ],
                 0);
@@ -886,8 +886,10 @@ var displaylst =
         context.save();
         delete canvas.templaterect;
         delete canvas.buttonrect;
+        delete canvas.gorect;
         canvas.vscrollrect = new rectangle();
         canvas.hollyrect = new rectangle();
+        canvas.gorect = new rectangle();
         if (!headcnv.height)
             return;        
         var bh = rect.height / 2;
@@ -936,7 +938,7 @@ var displaylst =
         var value = galleryobj.data[k];
         if (value && value.folder)
             data = value.folder.split("/");
-        data.push(`${index.toFixed(2)} of ${galleryobj.length()}`);
+        data.push(`${index.toFixed(2)} of ${galleryobj.length()} \u{25B6}`);
         if (url.searchParams.has("debug"))
         {
             data.push(`${galleryobj.width}x${galleryobj.height}`);
@@ -957,8 +959,12 @@ var displaylst =
             new panel.cols([0, w, 0],
                 [
                     0,
-                    new panel.gridA(1, rows, 1,
-                        new panel.shadow(new panel.text())),
+                    new panel.layers(
+                        [
+                            new rectangle(canvas.gorect),
+                            new panel.gridA(1, rows, 1,
+                                new panel.shadow(new panel.text())),
+                        ]),
                     0,
                 ]),
             0,
@@ -3592,6 +3598,17 @@ var taplst =
             headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
+            canvas.gorect &&
+            canvas.gorect.hitest(x, y))
+        {
+            var value = galleryobj.current() + 1;
+            if (menuobj.value() == _8cnvctx)
+                value = (galleryobj.length() * (1 - _8cnv.timeobj.berp())).toFixed(0);
+            if (!gotodialog(value, "Goto", goimage))
+                return;
+            galleryobj.init()     
+        }
+        else if (
             headcnvctx.fitwidthrect &&
             headcnvctx.fitwidthrect.hitest(x, y))
         {
@@ -5704,20 +5721,24 @@ var headlst =
             delete context.rightmenurect;
             var s = SAFARI ? -1: ALIEXTENT;
             var e = ALIEXTENT + 10;
-            var a = new panel.cols(
-                [5, ALIEXTENT, 0, s, e, ALIEXTENT, 0, ALIEXTENT, 5],
+            var a = new panel.rows([BEXTENT, 0],
                 [
-                    0,
-                    new panel.leftmenu(),
-                    0,
-                    g ? new panel.fullscreen() : 0,
-                    g ? new panel.zoom() : 0,
-                    g ? new panel.fitwidth() : 0,
-                    0,
-                    new panel.rightmenu(),
-                    0,
+                    new panel.cols(
+                    [5, ALIEXTENT, 0, s, e, ALIEXTENT, 0, ALIEXTENT, 5],
+                    [
+                        0,
+                        new panel.leftmenu(),
+                        0,
+                        g ? new panel.fullscreen() : 0,
+                        g ? new panel.zoom() : 0,
+                        g ? new panel.fitwidth() : 0,
+                        0,
+                        new panel.rightmenu(),
+                        0,
+                    ]),
+                    0
                 ]);
-
+            
             a.draw(context, rect, 0, 0);
             context.restore();
         }
