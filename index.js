@@ -32,6 +32,8 @@ const BEXTENT = 80;
 const BOSSMIN = 4;
 const FOOTSEP = 15;
 const HEADHEIGHT = IFRAME ? 0 : 120;
+const MAXEXTENT = 10000;
+const MAXIMAGESIZE = MAXEXTENT*MAXEXTENT;
 const SCROLLMARGIN = 8;
 const MENUSELECT = "rgba(255,175,0,0.4)";
 const MENUTAP = "rgba(255,125,0,0.7)";
@@ -1267,29 +1269,14 @@ buttonobj.reset = function()
     var h = galleryobj.height;
     var a = w / h;
     buttonobj.data = [];
-    if (w*h > 3000*3000)
-    {
-        var gheight = window.innerHeight;
-        var dheight = Math.floor(window.innerWidth / a) - gheight;
-        if (dheight < 0)
-            dheight = 0;
-        var bheight = window.innerHeight*2;
-        for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
-            buttonobj.data.push(n);
-        buttonobj.set(dheight);
-    }
-    else
-    {
-        var j = w > h ? 4 : 8
-        var gheight = Math.floor(h / j);
-        var dheight = Math.floor(window.innerWidth / a) - gheight;
-        if (dheight < 0)
-            dheight = 0;
-        var bheight = h*1.5;
-        for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
-            buttonobj.data.push(n);
-        buttonobj.set(dheight);
-    }
+    var gheight = window.innerHeight*(2/3);
+    var dheight = Math.floor(window.innerWidth / a) - gheight;
+    if (dheight < 0)
+        dheight = 0;
+    var bheight = window.innerHeight*2;
+    for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
+        buttonobj.data.push(n);
+    buttonobj.set(dheight);
 }
 
 buttonobj.fit = function()
