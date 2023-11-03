@@ -1395,7 +1395,7 @@ buttonobj.fit = function()
         var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
         headham.panel = headlst[k];
         headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-        headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+        headlst[k].draw(headcnvctx, headcnvctx.rect(), 0);
     };    
 }
 
@@ -3567,7 +3567,7 @@ var taplst =
             menuobj.show();
             var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
             headham.panel = headlst[k];
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            headlst[k].draw(headcnvctx, headcnvctx.rect(), 0);
             _4cnv.height = 0;
         }
         else if (context.canvas.thumbrect && 
@@ -3618,7 +3618,7 @@ var taplst =
                 headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
             }
                 
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
 
         _4cnvctx.refresh();
@@ -3730,7 +3730,7 @@ var taplst =
             headcnv.height = HEADHEIGHT;
             var k = headlst.findIndex(function(a){return a.name == "BOSS"});
             headham.panel = headlst[k];
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             delete _4cnv.thumbcanvas;
             delete photo.image;
             menuobj.hide();
@@ -3801,7 +3801,7 @@ var taplst =
                 galleryobj.set(n);
                 var k = headlst.findIndex(function(a){return a.name == "BOSS"});
                 headham.panel = headlst[k];
-                headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
                 delete _4cnv.thumbcanvas;
                 delete photo.image;
                 menuobj.hide();
@@ -6459,7 +6459,7 @@ galleryobj.init = function(obj)
         var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
         headham.panel = headlst[k];
         headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-        headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
     };    
 }
 
@@ -6531,13 +6531,7 @@ else if (url.searchParams.has("id"))
                     .then((obj) => galleryobj.init(obj))
           })
 }
-else if (url.searchParams.has("res"))
-{
-    url.path = url.searchParams.get("res");
-    var path = `res/${url.path}`;
-    fooload(path);
-}
-else if (url.searchParams.has("path"))
+else if (url.searchParams.has("path"))//todo
 {
     url.path = url.searchParams.get("path");
     fooload(url.path);
