@@ -2765,10 +2765,6 @@ var panlst =
         if (canvas.pinching)
             return;
 
-        var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
-        var k = displaylst.findIndex(function(a){return a.name == j})
-        canvas.display = displaylst[k]; 
-        
         var canvas = context.canvas;
         var obj = canvas.hollyobj;
         if (type == "panleft" || type == "panright")
@@ -2806,6 +2802,10 @@ var panlst =
         }
         else if (type == "panup" || type == "pandown")
         {
+            var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
+            var k = displaylst.findIndex(function(a){return a.name == j})
+            canvas.display = displaylst[k]; 
+        
             if (canvas.isvscrollrect)
             {
                 var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
