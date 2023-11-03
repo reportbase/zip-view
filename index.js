@@ -516,10 +516,115 @@ panel.empty = function()
 {
     this.draw = function(context, rect, user, time) {}
 };
+    
+var templatelst = 
+[
+    "360x360",
+    "480x480",
+    "640x640",
+    "800x800",
+    "1080x1080",
+    "1280x1280",
+    "1600x1600",
+    "1960x1960",
+    "2160x2160",
+    "3400x3400",
+    "5760x5760"
+];
 
-panel.galleriesbar = function()
+const SEAL = 3927
+var sealobj = new circular_array("", SEAL*2);
+sealobj.set(SEAL);
+
+var templateobj = new circular_array("", templatelst);
+templateobj.set(4)
+
+var footlst = 
+[
 {
-    this.draw = function(context, rect, user, time)
+    name: "DEFAULT",
+    draw: function(context, rect, user, time)
+    {
+    }
+},
+{
+    name: "FOLDER",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save();     
+        canvas.imagerect = new rectangle();
+        canvas.folderect = new rectangle();
+        canvas.closerect = new rectangle();
+        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
+            [
+                new panel.layers(
+                [
+                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.text(),
+                    new panel.rectangle(canvas.closerect),
+                ]),
+                0,
+                _5cnv.sliceobj.length()?new panel.layers(
+                [
+                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.colsA([0,0],
+                    [
+                        new panel.layers(
+                        [
+                            galleryobj.rightctx == _5cnvctx ? new panel.fill("rgba(0,0,255,0.5)"):0,
+                            new panel.rectangle(canvas.folderect),
+                            new panel.text(),
+                        ]),
+                        new panel.layers(
+                        [
+                            galleryobj.rightctx == _6cnvctx ? new panel.fill("rgba(0,0,255,0.8)"):0,
+                            new panel.rectangle(canvas.imagerect),
+                            new panel.text(),
+                        ]),
+                    ])                           
+                ]):0
+            ]);
+
+        var k = galleryobj.title?galleryobj.title:"Images";
+        a.draw(context, rect, 
+               [
+                   `\u{25C0} ${k}`,
+                   0,
+                   [
+                       "Folders",
+                       "Images",
+                   ], 
+                ], 0);
+        
+        context.restore();
+    }
+},
+{
+    name: "DEBUG",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save();     
+        canvas.homerect = new rectangle();
+        var a = new panel.rows([ALIEXTENT,0],
+            [
+                new panel.layers(
+                [
+                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.text(),
+                    new panel.rectangle(canvas.homerect),
+                ]),
+                0
+            ]);
+        
+        a.draw(context, rect, `\u{25C0} Debug`, 0);
+        context.restore();
+    }
+},
+{
+    name: "GALLERIES",
+    draw: function(context, rect, user, time)
     {
         var canvas = context.canvas;
         context.save();     
@@ -573,11 +678,32 @@ panel.galleriesbar = function()
         
         context.restore();    
     }
-}
-
-panel.accountbar = function()
+},
 {
-    this.draw = function(context, rect, user, time)
+    name: "HELP",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save();     
+        canvas.homerect = new rectangle();
+        var a = new panel.rows([ALIEXTENT,0],
+            [
+                new panel.layers(
+                [
+                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.text(),
+                    new panel.rectangle(canvas.homerect),
+                ]),
+                0
+            ]);
+        
+        a.draw(context, rect, `\u{25C0} Help`, 0);
+        context.restore();
+    }
+},
+{
+    name: "ACCOUNT",
+    draw: function(context, rect, user, time)
     {
         var canvas = context.canvas;
         context.save();     
@@ -624,111 +750,10 @@ panel.accountbar = function()
         
         context.restore();
     }
-}
-
-panel.folderbar = function()
+},
 {
-    this.draw = function(context, rect, user, time)
-    {
-        var canvas = context.canvas;
-        context.save();     
-        canvas.imagerect = new rectangle();
-        canvas.folderect = new rectangle();
-        canvas.closerect = new rectangle();
-        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
-            [
-                new panel.layers(
-                [
-                    new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.text(),
-                    new panel.rectangle(canvas.closerect),
-                ]),
-                0,
-                _5cnv.sliceobj.length()?new panel.layers(
-                [
-                    new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.colsA([0,0],
-                    [
-                        new panel.layers(
-                        [
-                            galleryobj.rightctx == _5cnvctx ? new panel.fill("rgba(0,0,255,0.5)"):0,
-                            new panel.rectangle(canvas.folderect),
-                            new panel.text(),
-                        ]),
-                        new panel.layers(
-                        [
-                            galleryobj.rightctx == _6cnvctx ? new panel.fill("rgba(0,0,255,0.8)"):0,
-                            new panel.rectangle(canvas.imagerect),
-                            new panel.text(),
-                        ]),
-                    ])                           
-                ]):0
-            ]);
-
-        var k = galleryobj.title?galleryobj.title:"Images";
-        a.draw(context, rect, 
-               [
-                   `\u{25C0} ${k}`,
-                   0,
-                   [
-                       "Folders",
-                       "Images",
-                   ], 
-                ], 0);
-        
-        context.restore();
-    }
-}
-
-panel.debugbar = function()
-{
-    this.draw = function(context, rect, user, time)
-    {
-        var canvas = context.canvas;
-        context.save();     
-        canvas.homerect = new rectangle();
-        var a = new panel.rows([ALIEXTENT,0],
-            [
-                new panel.layers(
-                [
-                    new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.text(),
-                    new panel.rectangle(canvas.homerect),
-                ]),
-                0
-            ]);
-        
-        a.draw(context, rect, `\u{25C0} Debug`, 0);
-        context.restore();
-    }
-}
-
-panel.helpbar = function()
-{
-    this.draw = function(context, rect, user, time)
-    {
-        var canvas = context.canvas;
-        context.save();     
-        canvas.homerect = new rectangle();
-        var a = new panel.rows([ALIEXTENT,0],
-            [
-                new panel.layers(
-                [
-                    new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.text(),
-                    new panel.rectangle(canvas.homerect),
-                ]),
-                0
-            ]);
-        
-        a.draw(context, rect, `\u{25C0} Help`, 0);
-        context.restore();
-    }
-}
-
-panel.homebar = function()
-{
-    this.draw = function(context, rect, user, time)
+    name: "HOME",
+    draw: function(context, rect, user, time)
     {
         var canvas = context.canvas;
         context.save();     
@@ -775,30 +800,9 @@ panel.homebar = function()
                 0);
         context.restore();
     }
-}
-
-var templatelst = 
-[
-    "360x360",
-    "480x480",
-    "640x640",
-    "800x800",
-    "1080x1080",
-    "1280x1280",
-    "1600x1600",
-    "1960x1960",
-    "2160x2160",
-    "3400x3400",
-    "6760x5760"
-];
-
-const SEAL = 3927
-var sealobj = new circular_array("", SEAL*2);
-sealobj.set(SEAL);
-
-var templateobj = new circular_array("", templatelst);
-templateobj.set(4)
-
+},
+]
+    
 var displaylst = 
 [
 {
@@ -4562,7 +4566,7 @@ var eventlst = [
     press: "DEFAULT",
     pinch: "MENU",
     display: "MENU",
-    footer: new panel.empty(),
+    footer: "DEFAULT",
     buttonheight: 0,
     buttonmargin: 10,
     hollyinit: 0,
@@ -4586,7 +4590,7 @@ var eventlst = [
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: new panel.galleriesbar(),
+    footer: "GALLERIES",
     buttonheight: 240,
     buttonmargin: 20,
     hollyinit: 2,
@@ -4609,7 +4613,7 @@ var eventlst = [
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: new panel.debugbar(),
+    footer: "DEBUG",
     buttonheight: 90,
     buttonmargin: 10,
     hollyinit: 0,
@@ -4632,7 +4636,7 @@ var eventlst = [
     press: "BOSS",
     pinch: "BOSS",
     display: "BOSS",
-    footer: new panel.empty(),
+    footer: "DEFAULT",
     buttonheight: 30,
     buttonmargin: 10,
     hollyinit: 0,
@@ -4655,7 +4659,7 @@ var eventlst = [
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: new panel.folderbar(),
+    footer: "FOLDER",
     buttonheight: 150,
     buttonmargin: 10,
     hollyinit: 0,
@@ -4678,7 +4682,7 @@ var eventlst = [
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: new panel.folderbar(),
+    footer: "FOLDER",
     buttonheight: 70,
     buttonmargin: 15,
     hollyinit: 0,
@@ -4701,7 +4705,7 @@ var eventlst = [
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: new panel.homebar(),
+    footer: "HOME",
     buttonheight: 180,
     buttonmargin: 20,
     hollyinit: 0,
@@ -4724,7 +4728,7 @@ var eventlst = [
     press: "GALLERY",
     pinch: "GALLERY",
     display: "GALLERY",
-    footer: new panel.empty(),
+    footer: "DEFAULT",
     buttonheight: 320,
     buttonmargin: 10,
     hollyinit: 0.5,
@@ -4747,7 +4751,7 @@ var eventlst = [
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: new panel.helpbar(),
+    footer: "HELP",
     buttonheight: 240,
     buttonmargin: 30,
     hollyinit: 0,
@@ -4770,7 +4774,7 @@ var eventlst = [
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: new panel.accountbar(),
+    footer: "ACCOUNT",
     buttonheight: 50,
     buttonmargin: 10,
     hollyinit: 0,
@@ -4793,7 +4797,7 @@ var eventlst = [
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: new panel.empty(),
+    footer: "DEFAULT",
     buttonheight: 90,
     buttonmargin: 10,
     hollyinit: 0,
@@ -4816,7 +4820,7 @@ var eventlst = [
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: new panel.empty(),
+    footer: "DEFAULT",
     buttonheight: 50,
     buttonmargin: 10,
     hollyinit: 0,
@@ -4839,7 +4843,7 @@ var eventlst = [
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: new panel.empty(),
+    footer: "DEFAULT",
     buttonheight: 50,
     buttonmargin: 10,
     hollyinit: 0,
@@ -4862,7 +4866,7 @@ var eventlst = [
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: new panel.empty(),
+    footer: "DEFAULT",
     buttonheight: 50,
     buttonmargin: 10,
     hollyinit: 0,
@@ -4885,7 +4889,7 @@ var eventlst = [
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: new panel.empty(),
+    footer: "DEFAULT",
     buttonheight: 50,
     buttonmargin: 10,
     hollyinit: 0,
