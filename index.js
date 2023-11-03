@@ -1373,7 +1373,7 @@ buttonobj.reset = function()
 buttonobj.fit = function()
 {
     _8cnv.fitflash = 1;
-    headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
     var image = new Image();
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
@@ -1383,7 +1383,7 @@ buttonobj.fit = function()
         setTimeout(function()
         {
             _8cnv.fitflash = 0;
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }, 400);
 
         galleryobj.width = this.width;
@@ -1948,7 +1948,7 @@ CanvasRenderingContext2D.prototype.movepage = function(j)
     galleryobj.rotate(j);
     _4cnvctx.refresh();
     _8cnvctx.refresh();
-    headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
     delete _4cnv.thumbcanvas;
     delete photo.image;
     contextobj.reset();
@@ -3009,7 +3009,7 @@ var panlst =
             canvas.thumbrect.hitest(x, y);
         movingx = new MovingAverage();
         movingy = new MovingAverage();
-        headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         context.istimerect = context.timerect && context.timerect.hitest(x, y);
         context.iszoomrect = context.zoomrect && context.zoomrect.hitest(x, y);
         context.isstretchrect = context.stretchrect && context.stretchrect.hitest(x, y);
@@ -3100,7 +3100,7 @@ var presslst = [
                return;
 
             headcnv.height = headcnv.height ? 0 : HEADHEIGHT;
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             menuobj.draw();
     },
     press: function(context, rect, x, y) {}
@@ -3119,7 +3119,7 @@ var presslst = [
             (canvas.stretchrect && canvas.stretchrect.hitest(x, y)))
             return;
         headcnv.height = headcnv.height ? 0 : HEADHEIGHT;
-        headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         context.refresh();
     },
     press: function(context, rect, x, y) {}
@@ -3297,7 +3297,7 @@ var keylst = [
             {
                 var h = headcnv.height ? 0 : HEADHEIGHT;
                 headcnvctx.show(0, 0, window.innerWidth, h);
-                headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
                 context.refresh()
                 evt.preventDefault();
             }
@@ -3463,7 +3463,7 @@ var keylst = [
             {
                 var h = headcnv.height ? 0 : HEADHEIGHT;
                 headcnvctx.show(0, 0, window.innerWidth, h);
-                headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
                 context.refresh()
             }
             else if (
@@ -3545,7 +3545,7 @@ var taplst =
     name: "BOSS",
     tap: function(context, rect, x, y, shift, ctrl)
     {
-        headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
 
         if (headcnvctx.moveprev && headcnvctx.moveprev.hitest(x, y))
         {
@@ -3655,7 +3655,7 @@ var taplst =
                 menuobj.show();
             }
 
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (headcnvctx.uploadrect && headcnvctx.uploadrect.hitest(x, y))
         {
@@ -3678,7 +3678,7 @@ var taplst =
                 menuobj.show();
             }
 
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
             canvas.gorect &&
@@ -3770,7 +3770,7 @@ var taplst =
         else if (menuobj.value() && menuobj.value() != _8cnvctx)
         {
             menuobj.hide();
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             menuobj.setindex(_8cnvctx);
             menuobj.draw();
             galleryobj.leftnv = _7cnv;
@@ -3834,7 +3834,7 @@ var taplst =
                 menuobj.show();
             }
 
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             return true;
         }
         else if (
@@ -3854,7 +3854,7 @@ var taplst =
                 menuobj.show();
             }
 
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             return true;
         }
         else if (canvas.openrect && canvas.openrect.hitest(x, y))
@@ -3878,7 +3878,7 @@ var taplst =
             menuobj.show();
             galleryobj.leftnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
            return false;
         }
         else if (canvas.homerect && canvas.homerect.hitest(x, y))
@@ -3962,7 +3962,7 @@ var taplst =
                 menuobj.show();
                 galleryobj.leftnv = _7cnv;
                 galleryobj.leftctx = _7cnvctx;
-                headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             }, 200);
         }
     },
@@ -4437,7 +4437,7 @@ menuobj.toggle = function(context)
         menuobj.show();
     }
 
-    headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
 }
 
 menuobj.hide = function()
@@ -5138,7 +5138,7 @@ contextobj.reset = function()
             photo.image.src = galleryobj.getpath(id);
         }
 
-        headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
 
         photo.image.onerror =
             photo.image.onabort = function(e)
@@ -5150,7 +5150,7 @@ contextobj.reset = function()
         {
             var e = galleryobj.value();
             document.title = galleryobj.title?galleryobj.title:url.host;
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             _4cnv.autodirect = -_4cnv.movingpage;
             _4cnv.movingpage = 0;
             contextobj.reset()
@@ -5158,7 +5158,7 @@ contextobj.reset = function()
             if (galleryobj.autopan)
                 bossobj.leftright(-1 * context.canvas.speed);
 
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             bossobj.draw();
 
             var rotated = util.rotated_list(
@@ -5725,7 +5725,7 @@ function resize()
     contextobj.reset();
     _4cnvctx.refresh();
     headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-    headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
     if (menuobj.value() == _8cnvctx)
     {
         menuobj.show();
@@ -6022,7 +6022,7 @@ galleryobj.init = function(obj)
     slicewidthobj.set(SLICEWIDTH);
     headcnv.style.pointerEvents = "none";
     headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-    headham.panel = headobj.value();
+    headham.panel = headham.panel;
 
     _10cnv.sliceobj.data = 
     [
@@ -6351,7 +6351,7 @@ galleryobj.init = function(obj)
                 galleryobj.leftctx = _3cnvctx;
                 menuobj.setindex(galleryobj.leftctx);
                 menuobj.show();
-                headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
                 return false;
             }
         });
@@ -6398,7 +6398,7 @@ galleryobj.init = function(obj)
                     galleryobj.leftctx = _2cnvctx;
                     menuobj.setindex(galleryobj.leftctx);
                     menuobj.show();
-                    headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+                    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
                     return false;
                 }
             });
@@ -6422,7 +6422,7 @@ galleryobj.init = function(obj)
                 galleryobj.leftctx = _9cnvctx;
                 menuobj.setindex(galleryobj.leftctx);
                 menuobj.show();
-                headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
                 return false;
             }
         });
