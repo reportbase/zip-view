@@ -1273,7 +1273,6 @@ buttonobj.reset = function()
     {
         galleryobj.width = this.width;
         galleryobj.height = this.height;
-
         var w = galleryobj.width;
         var h = galleryobj.height;
         var a = w / h;
@@ -1283,6 +1282,8 @@ buttonobj.reset = function()
         if (dheight < 0)
             dheight = 0;
         var bheight = h;
+        if (bheight < ghieght)
+            gheight = bheight/2;
         for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
             buttonobj.data.push(n);
         buttonobj.set(dheight);
@@ -1302,12 +1303,7 @@ buttonobj.reset = function()
 
 buttonobj.fit = function()
 {
-    var j = _8cnv.centered;
-    var index = j % IMAGELSTSIZE;
-    galleryobj.width = thumbfittedlst[index].width;
-    galleryobj.height = thumbfittedlst[index].height;
     buttonobj.reset()
-    menuobj.draw();
     _8cnv.fitflash = 1;
     headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
     setTimeout(function()
