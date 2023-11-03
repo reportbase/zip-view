@@ -1602,43 +1602,6 @@ panel.open = function()
     }
 };
 
-panel.upload = function()
-{
-    this.draw = function(context, rect, user, time)
-    {
-        context.save();
-        context.canvas.uploadrect = new rectangle();
-
-        var Panel = function()
-        {
-            this.draw = function(context, rect, user, time)
-            {
-                context.save();
-                var w = rect.width;
-                var h = rect.height;
-                var a = new panel.arrow(ARROWFILL, 0);
-                a.draw(context, rect, user, time);
-                var a = new panel.fill(ARROWFILL);
-                var r = new rectangle(rect.x + rect.width / 2 - 3, rect.y + 7, 6, 10);
-                a.draw(context, r, user, time);
-                var r = new rectangle(rect.x, rect.y - 6, rect.width, 3);
-                a.draw(context, r, user, time);
-                context.restore();
-            }
-        };
-
-        var a = new panel.layers(
-            [
-                new panel.rectangle(context.canvas.uploadrect),
-                new panel.shrink(new panel.circle(SCROLLNAB, SEARCHFRAME, 4), 15, 15),
-                new panel.shrink(new Panel(), 16, 34),
-            ]);
-
-        a.draw(context, rect, user, time);
-        context.restore();
-    }
-};
-
 panel.fitwidth = function()
 {
     this.draw = function(context, rect, user, time)
@@ -3480,6 +3443,10 @@ var taplst =
         {
             _4cnvctx.movepage(1);
         }
+        else if (headcnvctx.uploadrect && headcnvctx.uploadrect.hitest(x, y))
+        {
+            
+        }
         else if (
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
@@ -3577,6 +3544,10 @@ var taplst =
             }
 
             headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+        }
+        else if (headcnvctx.uploadrect && headcnvctx.uploadrect.hitest(x, y))
+        {
+            
         }
         else if (
             headcnvctx.rightmenurect &&
@@ -5677,6 +5648,7 @@ var headlst =
             var w = k ? k.canvas.width : 0;
             var b = window.innerWidth == w;
             context.save();
+            context.uploadrect = new rectangle();
             var a = new panel.rows([BEXTENT, 0],
                 [
                     new panel.cols([5, 
@@ -5697,6 +5669,7 @@ var headlst =
                         ]),
                     new panel.layers(
                         [
+                            new panel.rectangle(context.uploadrect),
                             new panel.text(),
                         ]),
                 ]);
@@ -5722,6 +5695,7 @@ var headlst =
             delete context.fullrect;
             delete context.leftmenurect;
             delete context.rightmenurect;
+            context.uploadrect = new rectangle();
             var s = SAFARI ? -1: ALIEXTENT;
             var e = ALIEXTENT + 10;
             var a = new panel.rows([BEXTENT, 0],
@@ -5741,6 +5715,7 @@ var headlst =
                     ]),
                      new panel.layers(
                         [
+                            new panel.rectangle(context.uploadrect),
                             new panel.text(),
                         ]),
                 ]);
