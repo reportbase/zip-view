@@ -1060,6 +1060,7 @@ var displaylst =
                 if (galleryobj.value().id)
                     data.push(galleryobj.value().id);
                 data.push(`${window.innerWidth} x ${window.innerHeight}`);
+                data.push(`${canvas.virtualwidth} x ${window.innerHeight}`);
                 var aspect = photo.image.width / photo.image.height;
                 data.push(aspect.toFixed(2));
                 var j = Number(zoomobj.value());
@@ -5830,8 +5831,8 @@ window.addEventListener("visibilitychange", (evt) =>
 {
     if (document.visibilityState === "visible") 
     {
-        menuobj.draw();
-        bossobj.draw();
+        //menuobj.draw();
+        //bossobj.draw();
     } 
 });
 
