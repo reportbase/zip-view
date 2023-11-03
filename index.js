@@ -2356,6 +2356,9 @@ var wheelst =
         }
         else
         {
+            var k = displaylst.findIndex(function(a){return a.name == x<rect.width/2?"BUTTON":"GALLERY"});
+            canvas.display = displaylst[k]; 
+
             clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
             if (global.swipetimeout)
@@ -2760,8 +2763,10 @@ var panlst =
         var canvas = context.canvas;
         if (canvas.pinching)
             return;
-//todo: toggle templaterect
-        
+
+        var k = displaylst.findIndex(function(a){return a.name == x<rect.width/2?"BUTTON":"GALLERY"});
+        canvas.display = displaylst[k]; 
+
         var canvas = context.canvas;
         var obj = canvas.hollyobj;
         if (type == "panleft" || type == "panright")
