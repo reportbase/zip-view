@@ -1285,18 +1285,15 @@ buttonobj.reset = function()
         for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
             buttonobj.data.push(n);
         buttonobj.set(dheight);
+        menuobj.set(_8cnvctx);
+        menuobj.toggle(_8cnvctx);
         menuobj.draw();
     };
 }
 
 buttonobj.fit = function()
 {
-    var j = _8cnv.centered;
-    var index = j % IMAGELSTSIZE;
-    galleryobj.width = thumbfittedlst[index].width;
-    galleryobj.height = thumbfittedlst[index].height;
     buttonobj.reset()
-    menuobj.draw();
     _8cnv.fitflash = 1;
     headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
     setTimeout(function()
@@ -6431,8 +6428,6 @@ galleryobj.init = function(obj)
     var k = url.searchParams.get('_8');
     if (k != null)
         _8cnv.timeobj.set(Number(k));
-    menuobj.set(_8cnvctx);
-    menuobj.toggle(_8cnvctx);
     headobj.set(GALLERY);
     headham.panel = headobj.value();
     headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
