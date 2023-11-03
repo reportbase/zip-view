@@ -1,6 +1,6 @@
 /* 
 Copyright 2017 Tom Brinkman
-https://zip-view.com
+https://zip-view.com 
 https://ipfs-view.com
 */
 
@@ -1269,9 +1269,11 @@ buttonobj.reset = function()
     buttonobj.data = [];
     if (w*h > 3000*3000)
     {
-        var gheight = window.innerHeight/3;
+        var gheight = window.innerHeight;
         var dheight = Math.floor(window.innerWidth / a) - gheight;
-        var bheight = window.innerHeight;
+        if (dheight < 0)
+            dheight = 0;
+        var bheight = window.innerHeight*2;
         for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
             buttonobj.data.push(n);
         buttonobj.set(dheight);
