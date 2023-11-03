@@ -2337,8 +2337,12 @@ var wheelst =
 
         if (ctrl)
         {
-            var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
-            canvas.display = displaylst[k]; 
+            if (canvas.templaterect && !canvas.templaterect.hitest(x, y))
+            {
+                var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
+                canvas.display = displaylst[k]; 
+            }
+            
             var j = buttonobj.length()/100;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
@@ -2355,9 +2359,12 @@ var wheelst =
         }
         else
         {
-            var j = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            canvas.display = displaylst[j];
-
+            if (canvas.templaterect && !canvas.templaterect.hitest(x, y))
+            {
+                var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+                canvas.display = displaylst[k]; 
+            }
+  
             clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
             if (global.swipetimeout)
@@ -2372,8 +2379,11 @@ var wheelst =
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     {
         var canvas = context.canvas;
-        var j = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-        canvas.display = displaylst[j];
+        if (canvas.templaterect && !canvas.templaterect.hitest(x, y))
+        {
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            canvas.display = displaylst[k]; 
+        }
         galleryobj.leftright(context, delta);
     },
 },
@@ -2766,9 +2776,13 @@ var panlst =
             return;
 
         var canvas = context.canvas;
-        var j = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-        canvas.display = displaylst[j];
-      
+
+        if (canvas.templaterect && !canvas.templaterect.hitest(x, y))
+        {
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            canvas.display = displaylst[k]; 
+        }
+
         var obj = canvas.hollyobj;
         if (type == "panleft" || type == "panright")
         {
