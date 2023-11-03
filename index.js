@@ -6512,17 +6512,17 @@ else if (url.searchParams.has("path"))
     url.path = url.searchParams.get("path");
     if (url.path.isimage())
     {
-        loadimages(url.);
+        loadimages(url.path);
     }
-    else if (url..isjson())
+    else if (url.isjson())
     {
-        fetch(url.)
+        fetch(url.path)
             .then((response) => jsonhandler(response))
             .then((obj) => galleryobj.init(obj))
     }
     else
     {
-        loadzip(url.);
+        loadzip(url.path);
     }
 }
 else
