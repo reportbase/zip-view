@@ -1265,32 +1265,39 @@ var buttonobj = new circular_array("", []);
 //buttonobj reset
 buttonobj.reset = function()
 {
+    var w = galleryobj.width;
+    var h = galleryobj.height;
+    var a = w / h;
+    buttonobj.data = [];
+    var gheight = window.innerHeight/2;
+    var dheight = Math.floor(window.innerWidth / a) - gheight;
+    if (dheight < 0)
+        dheight = 0;
+    var bheight = h;
+    for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
+        buttonobj.data.push(n);
+    buttonobj.set(dheight);
+}
+
+buttonobj.fit = function()
+{
+    _8cnv.fitflash = 1;
+    headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
     var image = new Image();
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
     image.src = imagepath(galleryobj.data[current]);
     image.onload = function()
     {
+        setTimeout(function()
+        {
+            _8cnv.fitflash = 0;
+            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+        }, 400);
+
         galleryobj.width = this.width;
         galleryobj.height = this.height;
-        var w = galleryobj.width;
-        var h = galleryobj.height;
-        var a = w / h;
-        buttonobj.data = [];
-        var gheight = window.innerHeight/2;
-        var dheight = Math.floor(window.innerWidth / a) - gheight;
-        if (dheight < 0)
-            dheight = 0;
-        var bheight = h;
-        if (bheight < gheight)
-            gheight = bheight/2;
-        for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
-            buttonobj.data.push(n);
-        buttonobj.set(dheight);
-        
-        var k = url.searchParams.get('_8');
-        if (k != null)
-            _8cnv.timeobj.set(Number(k));
+        buttonobj.reset();
         contextobj.reset();
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
@@ -1298,19 +1305,7 @@ buttonobj.reset = function()
         headham.panel = headobj.value();
         headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
         headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-    };
-}
-
-buttonobj.fit = function()
-{
-    buttonobj.reset()
-    _8cnv.fitflash = 1;
-    headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-    setTimeout(function()
-    {
-        _8cnv.fitflash = 0;
-        headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-    }, 400);
+    };    
 }
 
 function calculateAspectRatioFit(imgwidth, imgheight, rectwidth, rectheight)
@@ -6435,7 +6430,26 @@ galleryobj.init = function(obj)
     galleryobj.rightcnv = _5cnv.sliceobj.length()?_5cnv:_6cnv;
     galleryobj.rightctx = _5cnv.sliceobj.length()?_5cnvctx:_6cnvctx;
 
-    buttonobj.reset();    
+    var image = new Image();
+    var berp = _8cnv.timeobj.berp();
+    var current = galleryobj.lerp(1 - berp);
+    image.src = imagepath(galleryobj.data[current]);
+    image.onload = function()
+    {
+        galleryobj.width = this.width;
+        galleryobj.height = this.height;
+        buttonobj.reset();
+        var k = url.searchParams.get('_8');
+        if (k != null)
+            _8cnv.timeobj.set(Number(k));
+        contextobj.reset();
+        menuobj.set(_8cnvctx);
+        menuobj.toggle(_8cnvctx);
+        headobj.set(GALLERY);
+        headham.panel = headobj.value();
+        headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+        headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+    };    
 }
 
 function fooload(path)
