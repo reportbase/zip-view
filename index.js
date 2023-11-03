@@ -5671,7 +5671,7 @@ var headlst =
                     new panel.layers(
                         [
                             new panel.rectangle(context.uploadrect),
-                            new panel.text(),
+                            new panel.shadow(new panel.text()),
                         ]),
                 ]);
 
@@ -5717,7 +5717,7 @@ var headlst =
                      g ? new panel.layers(
                         [
                             new panel.rectangle(context.uploadrect),
-                            new panel.text(),
+                            new panel.shadow(new panel.text()),
                         ]): 0,
                 ]);
             
