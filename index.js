@@ -6514,7 +6514,7 @@ else if (url.searchParams.has("path"))
     {
         loadimages(url.path);
     }
-    else if (url.isjson())
+    else if (url.path.isjson())
     {
         fetch(url.path)
             .then((response) => jsonhandler(response))
