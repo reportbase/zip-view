@@ -2633,7 +2633,7 @@ var droplst =
     {
         if (menuobj.value() && menuobj.value() != _8cnvctx)
             return;
-        
+        galleryobj.boss = 1;
         var files = evt.dataTransfer.files;
         delete galleryobj.datalength;
         if (files.length == 1 && files[0].name)
@@ -6752,7 +6752,7 @@ function importdialog()
             menuobj.draw();
             galleryobj.leftnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
-            
+            galleryobj.boss = 1;
             var files = Array.from(input.files);
             delete galleryobj.datalength;
             if (files.length == 1 && files[0].name)
