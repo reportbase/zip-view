@@ -2356,7 +2356,8 @@ var wheelst =
         }
         else
         {
-            var k = displaylst.findIndex(function(a){return a.name == x<rect.width/2?"BUTTON":"GALLERY"});
+            var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
+            var k = displaylst.findIndex(function(a){return a.name == j})
             canvas.display = displaylst[k]; 
 
             clearInterval(context.canvas.leftright)
@@ -2764,9 +2765,10 @@ var panlst =
         if (canvas.pinching)
             return;
 
-        var k = displaylst.findIndex(function(a){return a.name == x<rect.width/2?"BUTTON":"GALLERY"});
+        var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
+        var k = displaylst.findIndex(function(a){return a.name == j})
         canvas.display = displaylst[k]; 
-
+        
         var canvas = context.canvas;
         var obj = canvas.hollyobj;
         if (type == "panleft" || type == "panright")
