@@ -2282,6 +2282,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     {
+        var canvas = context.canvas;
         var j = displaylst.findIndex(function(a){return a.name == "GALLERY"});
         canvas.display = displaylst[j];
         galleryobj.leftright(context, delta);
