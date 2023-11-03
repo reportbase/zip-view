@@ -814,6 +814,8 @@ var displaylst =
         delete canvas.vscrollrect;
         canvas.buttonrect = new rectangle();
         canvas.templaterect = new rectangle();
+        if (!headcnv.height)
+            return;
         var bh = rect.height / 2;
         var bw = rect.width / 2;
         var a = new panel.cols([6, SCROLLBARWIDTH, 0],
@@ -886,6 +888,8 @@ var displaylst =
         delete canvas.buttonrect;
         canvas.vscrollrect = new rectangle();
         canvas.hollyrect = new rectangle();
+        if (!headcnv.height)
+            return;        
         var bh = rect.height / 2;
         var bw = rect.width / 2;
         var a = new panel.cols([0, SCROLLBARWIDTH, 6],
@@ -3009,10 +3013,13 @@ var presslst = [
               (canvas.templaterect && canvas.templaterect.hitest(x, y)) ||
                (canvas.hollyrect && canvas.hollyrect.hitest(x, y)))
                return;
-        
-            var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
+
+            context.refresh();
+
+            headcnv.height = headcnv.height ? 0 : HEADHEIGHT;
+            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
             var j = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            canvas.display = displaylst[k] == canvas.display ? displaylst[j] : displaylst[k];
+            canvas.display = displaylst[j];
             menuobj.draw();
     },
     press: function(context, rect, x, y) {}
@@ -3027,16 +3034,12 @@ var presslst = [
     pressup: function(context, rect, x, y)
     {
         var canvas = context.canvas;
-        if (canvas.zoomrect && canvas.zoomrect.hitest(x, y))
-        {}
-        else if (canvas.stretchrect && canvas.stretchrect.hitest(x, y))
-        {}
-        else
-        {
-            headcnv.height = headcnv.height ? 0 : BEXTENT;
-            headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
-            context.refresh();
-        }
+        if ((canvas.zoomrect && canvas.zoomrect.hitest(x, y)) ||
+            (canvas.stretchrect && canvas.stretchrect.hitest(x, y)))
+            return;
+        headcnv.height = headcnv.height ? 0 : HEADHEIGHT;
+        headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
+        context.refresh();
     },
     press: function(context, rect, x, y) {}
 }, ];
