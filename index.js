@@ -228,10 +228,12 @@ let circular_array = function(title, data)
     this.rotateanchored = function(index)
     {
         this.CURRENT = this.ANCHOR - index;
+        /*todo
         if (this.CURRENT >= this.length())
             this.CURRENT = this.CURRENT - this.length();
         else if (this.CURRENT < 0)
             this.CURRENT = this.length() + this.CURRENT;
+            */
     };
 
     this.setrotate = function(x, w)
@@ -242,10 +244,12 @@ let circular_array = function(title, data)
 
     this.wrap = function()
     {
+        /*
         if (this.CURRENT >= this.length())
             this.CURRENT = this.CURRENT - this.length();
         else if (this.CURRENT < 0)
             this.CURRENT = this.length() + this.CURRENT;
+        */
     };
 
     this.add = function(index)
@@ -257,11 +261,13 @@ let circular_array = function(title, data)
     this.rotate = function(index)
     {
         this.CURRENT += index;
+        /*
         if (this.CURRENT >= this.length())
             this.CURRENT = this.CURRENT - this.length();
         else if (this.CURRENT < 0)
             this.CURRENT = this.length() + this.CURRENT;
         this.ANCHOR = this.CURRENT;
+        */
     };
 
     this.setanchor = function(index)
