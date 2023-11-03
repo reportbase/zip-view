@@ -5695,11 +5695,7 @@ var headlst =
 
                             0, 0, 0
                         ]),
-                    new panel.layers(
-                    [
-                        new rectangle(context.uploadrect),
-                        new panel.text()
-                    ])
+                    0
                 ]);
 
             a.draw(context, rect, "Upload \u{25B6}", 0);
@@ -5741,11 +5737,7 @@ var headlst =
                         new panel.rightmenu(),
                         0,
                     ]),
-                    new panel.layers(
-                    [
-                        new rectangle(context.uploadrect),
-                        new panel.text()
-                    ])
+                    0
                 ]);
             
             a.draw(context, rect, "Upload \u{25B6}", 0);
