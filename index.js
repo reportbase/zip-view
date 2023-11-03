@@ -1285,6 +1285,10 @@ buttonobj.reset = function()
         for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
             buttonobj.data.push(n);
         buttonobj.set(dheight);
+    headobj.set(GALLERY);
+    headham.panel = headobj.value();
+    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+    headobj.value().draw(headcnvctx, headcnvctx.rect(), 0);
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
         menuobj.draw();
