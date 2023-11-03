@@ -3573,7 +3573,7 @@ var taplst =
         }
         else if (headcnvctx.uploadrect && headcnvctx.uploadrect.hitest(x, y))
         {
-            
+            importdialog();
         }
         else if (
             headcnvctx.rightmenurect &&
@@ -5665,6 +5665,7 @@ window.addEventListener("screenorientation", (evt) =>
     resize();
 });
 
+//todo: use names
 var headlst = 
 [
     new function()
@@ -5749,7 +5750,7 @@ var headlst =
                         ]): 0,
                 ]);
             
-            a.draw(context, rect, "Upload \u{25B6}", 0);
+            a.draw(context, rect, "Open \u{25B6}", 0);
             context.restore();
         }
     },
