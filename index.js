@@ -2415,7 +2415,7 @@ var wheelst =
                 canvas.templateblock = setTimeout(function()
                   {
                       canvas.templateblock = 0;
-                  }, 500);      
+                  }, 250);      
             }
         }   
         else
