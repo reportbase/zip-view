@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS user_images;
 
 CREATE TABLE users 
 (
-  id VARCHAR PRIMARY KEY, 
+  id VARCHAR PRIMARY KEY AUTOINCREMENT, 
   email VARCHAR UNIQUE,
   name VARCHAR,
   secret VARCHAR,
@@ -19,16 +19,55 @@ CREATE TABLE images
 (
   id VARCHAR PRIMARY KEY, 
   title VARCHAR,
-  tags TEXT,
-  folder VARCHAR,
   describe TEXT,
   created VARCHAR
 )
+
+CREATE TABLE gallery_folders 
+(
+  folder_id VARCHAR,
+  gallery_id INTEGER,
+  PRIMARY KEY(folder_id, gallery_id),
+  FOREIGN KEY (folder_id) REFERENCES folders(id),
+  FOREIGN KEY (gallery_id) REFERENCES galleries(id)
+);
+
+CREATE TABLE image_tags 
+(
+  image_id VARCHAR,
+  tag_id INTEGER,
+  PRIMARY KEY(image_id, tag_id),
+  FOREIGN KEY (image_id) REFERENCES images(id),
+  FOREIGN KEY (tag_id) REFERENCES tags(id)
+);
+
+CREATE TABLE tags 
+(
+  id VARCHAR PRIMARY KEY AUTOINCREMENT, 
+  title VARCHAR,
+  describe TEXT
+);
+  
+CREATE TABLE folders 
+(
+  id VARCHAR PRIMARY KEY AUTOINCREMENT, 
+  title VARCHAR,
+  describe TEXT
+);
   
 CREATE TABLE galleries 
 (
   id VARCHAR PRIMARY KEY AUTOINCREMENT, 
-  json TEXT
+  title VARCHAR,
+  describe TEXT
+);
+
+CREATE TABLE external_galleries 
+(
+  id VARCHAR PRIMARY KEY AUTOINCREMENT, 
+  title VARCHAR,
+  json TEXT,
+  describe TEXT
 );
 
 CREATE TABLE user_galleries 
