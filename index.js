@@ -2407,9 +2407,16 @@ var wheelst =
                 thumbimglst[n] = new Image();
             }                
 
-             var j = delta > 1 ? 0.1: -0.1;
-            templateobj.addperc(j);
-            menuobj.draw()
+            if (!canvas.templateblock)
+            {
+                var j = delta > 1 ? 1: -1;
+                templateobj.addperc(j);
+                menuobj.draw();
+                canvas.templateblock = setTimeout(function()
+                  {
+                      canvas.templateblock = 0;
+                  }, 1000);      
+            }
         }   
         else
         {
