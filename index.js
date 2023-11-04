@@ -657,9 +657,9 @@ var footlst =
                    `\u{25C0} Galleries`,
                    0,
                    [
-                       `\u{271A} New`,
-                       `\u{2718} Delete`,
-                       `\u{1F4AB} Edit`
+                       `New`,
+                       `Edit`,
+                       `Delete`
                    ], 
                 ]);
         
@@ -730,8 +730,8 @@ var footlst =
                    `\u{25C0} Account`,
                    0,
                    [
-                       "Invoices",
-                       "Images",
+                       "Login",
+                       "Secret \u{25B6}",
                    ], 
                 ], 0);
         
@@ -781,7 +781,7 @@ var footlst =
                    0,
                    [
                        "Open \u{25B6}",
-                       "Upload \u{25B6}"
+                       "Login"
                    ],
                 ],
                 0);
