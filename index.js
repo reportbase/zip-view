@@ -6139,7 +6139,7 @@ galleryobj.init = function(obj)
             }
         },
         {
-            title: "users.get",
+            title: "users-get",
             func: function()
             {        
                 fetch(`https://users.reportbase5836.workers.dev/reportbase@gmail.com`)
@@ -6156,6 +6156,24 @@ galleryobj.init = function(obj)
                 return true;
             }
         },
+        {
+            title: "users-list",
+            func: function()
+            {        
+                fetch(`https://users.reportbase5836.workers.dev/list`)
+                  .then(function(response)
+                  {
+                    for (let [key, value] of response.headers)
+                        console.log(`${key} = ${value}`);
+                      return response.json();
+                  })
+                  .then(function(obj)
+                        {
+                            console.log(obj);
+                        });  
+                return true;
+            }
+        },        
         {
             title: "Stretch Columns",
             func: function()
