@@ -3652,8 +3652,11 @@ var taplst =
         }
         else if (headcnvctx.uploadrect && headcnvctx.uploadrect.hitest(x, y))
         {
-            galleryobj.leftctx.hide();
-            galleryobj.rightctx.hide();
+            menuobj.setindex(_8cnvctx);
+            menuobj.show();
+            var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+            headham.panel = headlst[k];
+            headlst[k].draw(headcnvctx, headcnvctx.rect(), 0);
             galleryobj.leftcnv = _1cnv;
             galleryobj.leftctx = _1cnvctx;
             menuobj.setindex(galleryobj.leftctx);
