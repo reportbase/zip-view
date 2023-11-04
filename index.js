@@ -6124,7 +6124,7 @@ galleryobj.init = function(obj)
                     form.append('name', "yyyy");
                     form.append('email', "xxxx");
 
-                     fetch(`https://users.reportbase5836.workers.dev`,
+                    fetch(`https://users.reportbase5836.workers.dev`,
                     {
                         'method': 'POST',
                         'body': form
@@ -6135,7 +6135,6 @@ galleryobj.init = function(obj)
                               console.log(obj);
                           })
                     .catch(err => console.error(err));  
-                return true;
             }
         },
         {
@@ -6173,7 +6172,44 @@ galleryobj.init = function(obj)
                         });  
                 return true;
             }
-        },        
+        },  
+        {
+            title: "users-delete",
+            func: function()
+            {        
+                    fetch(`https://users.reportbase5836.workers.dev/reportbase@gmail.com`,
+                    {
+                        'method': 'DELETE'
+                    })
+                  .then(response => response.json())
+                    .then(function(obj)
+                          {
+                              console.log(obj);
+                          })
+                    .catch(err => console.error(err));  
+            }
+        },
+        {
+            title: "users-patch",
+            func: function()
+            {  
+                    const form = new FormData();
+                    form.append('name', "gggg");
+                    form.append('email', "xxxx");
+
+                    fetch(`https://users.reportbase5836.workers.dev/reportbase@gmail.com`,
+                    {
+                        'method': 'PATCH',
+                        'body': form
+                    })
+                  .then(response => response.json())
+                    .then(function(obj)
+                          {
+                              console.log(obj);
+                          })
+                    .catch(err => console.error(err));                 
+            }
+        },
         {
             title: "Stretch Columns",
             func: function()
