@@ -2339,6 +2339,8 @@ _8ham.get('pinch').set(
     enable: true
 });
 
+var galleryobj = new circular_array("", 0);
+
 var wheelst = 
 [
 {
@@ -5998,7 +6000,6 @@ async function loadjson(blob)
 }
 
 //galleryobj init
-var galleryobj = new circular_array("", 0);
 galleryobj.init = function(obj)
 {
     if (obj)
