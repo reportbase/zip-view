@@ -1031,7 +1031,7 @@ var displaylst =
         if (value && value.folder)
             data = value.folder.split("/");
         data.push(`${index.toFixed(2)} of ${galleryobj.length()} \u{25B6}`);
-        if (url.searchParams.has("debug"))
+        if (global.debug)
         {
             data.push(`${galleryobj.width}x${galleryobj.height}`);
             data.push(buttonobj.value().toFixed(2));
@@ -1142,7 +1142,7 @@ var displaylst =
             if (value && value.folder)
                 data = value.folder.split("/");
             data.push(`${index+1} of ${galleryobj.length()}`);
-            if (url.searchParams.has("debug"))
+            if (global.debug)
             {
                 data.push(_4cnv.timeobj.current().toFixed(5));
                 var e = 100 * (1 - _4cnv.timeobj.berp());
@@ -1179,7 +1179,7 @@ var displaylst =
                                     new panel.layers(
                                         [
                                             new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                            new panel.expand(new panel.rectangle(galleryobj.debug ?
+                                            new panel.expand(new panel.rectangle(global.debug ?
                                                 context.slicewidthrect : context.zoomrect), 10, 1),
                                             new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
                                         ]),
@@ -1439,6 +1439,18 @@ String.prototype.ext = function()
     return this.replace(/^.*\./, '');
 }
 
+String.prototype.isext = function(str)
+{
+    var ext = this.ext();
+    ext = ext.toLowerCase();
+    var lst = [str];
+    var k = lst.findIndex(function(a)
+    {
+        return a == ext;
+    })
+    return k >= 0;
+}
+
 String.prototype.isjson = function()
 {
     var ext = this.ext();
@@ -1474,6 +1486,10 @@ String.prototype.isimage = function()
     })
     return k >= 0;
 }
+
+global.debug = url.searchParams.has("debug");
+if (url.hostname.isext("dev"))
+    global.debug = 1;
 
 String.prototype.proper = function()
 {
@@ -5895,7 +5911,6 @@ function wraptext(ctx, text, maxWidth)
 
 let thumbfittedlst = [];
 let thumbimglst = [];
-var galleryobj = new circular_array("", 0);
 
 function imagepath(user)
 {
@@ -5983,6 +5998,7 @@ async function loadjson(blob)
 }
 
 //galleryobj init
+var galleryobj = new circular_array("", 0);
 galleryobj.init = function(obj)
 {
     if (obj)
@@ -5992,7 +6008,7 @@ galleryobj.init = function(obj)
         for (var n = galleryobj.length(); n < BOSSMIN; ++n)
             galleryobj.data.push(Object.assign({}, galleryobj.data[0]));
     }
-    
+
     delete _4cnv.thumbcanvas;
     delete photo.image;
 
@@ -6228,12 +6244,12 @@ galleryobj.init = function(obj)
             title: "Debug",
             func: function()
             {
-                galleryobj.debug = galleryobj.debug ? 0 : 1;
+                global.debug = global.debug ? 0 : 1;
                 return true;
             },
             enabled: function()
             {
-                return galleryobj.debug;
+                return global.debug;
             }
         },
         
@@ -6404,7 +6420,7 @@ galleryobj.init = function(obj)
     }
     ];
 
-    if (url.searchParams.has("debug"))
+    if (global.debug)
     {
         _7cnv.sliceobj.data.push(
         {
