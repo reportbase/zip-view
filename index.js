@@ -907,7 +907,7 @@ var displaylst =
         var a = new panel.cols([j, 0, j],
             [
                 0,
-                new panel.rounded(NUBACK, 10, "white", 8, 8),0
+                new panel.rounded(NUBACK, 10, "white", 8, 8),
                 0,
             ]);
         a.draw(context, rect, 0, 0);
