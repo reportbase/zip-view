@@ -3638,7 +3638,7 @@ var taplst =
         {
             var k = displaylst.findIndex(function(a){
                 return a.name == "UPLOAD"});
-            canvas.display = displaylst[k];
+            context.canvas.display = displaylst[k];
             context.refresh();  
         }
         else if (
