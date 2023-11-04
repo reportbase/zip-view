@@ -6130,7 +6130,10 @@ galleryobj.init = function(obj)
                         'body': form
                     })
                   .then(response => response.json())
-                    .then(response => console.log(response))
+                    .then(function(obj)
+                          {
+                              console.log(obj);
+                          })
                     .catch(err => console.error(err));  
                 return true;
             }
