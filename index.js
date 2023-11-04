@@ -903,11 +903,15 @@ var displaylst =
         if (!headcnv.height)
             return;
         var j = ALIEXTENT;
+        var k = 100;
         
         var a = new panel.cols([j, 0, j],
             [
                 0,
-                new panel.rounded(NUBACK, 10, "white", 8, 8),
+                new panel.rows([k, 0, k],
+                [
+                    new panel.rounded(NUBACK, 10, "white", 8, 8),
+                ]),
                 0,
             ]);
         a.draw(context, rect, 0, 0);
@@ -1200,9 +1204,9 @@ var displaylst =
                                     new panel.layers(
                                         [
                                             new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                            new panel.expand(new panel.rectangle(global.debug ?
-                                                context.slicewidthrect : context.zoomrect), 10, 1),
-                                            new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
+                                            new panel.expand(new panel.rectangle(context.zoomrect), 10, 1),
+                                            new panel.shrink(new panel.currentV(new panel.rounded("white", 
+                                                    0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
                                         ]),
                                     0,
                                 ]),
@@ -1214,7 +1218,8 @@ var displaylst =
                                         [
                                             new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
                                             new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
-                                            new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
+                                            new panel.shrink(new panel.currentV(new panel.rounded("white", 0, 
+                                                    TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
                                         ]),
                                     0,
                                 ]),
