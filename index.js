@@ -786,43 +786,7 @@ var footlst =
         context.restore();
     }
 },
-{
-    name: "UPLOAD",
-    draw: function(context, rect, user, time)
-    {
-        var canvas = context.canvas;
-        context.save();     
-        canvas.closerect = new rectangle();
-        canvas.uploadrect = new rectangle();
-        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
-            [
-                new panel.layers(
-                [
-                    new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.text(),
-                    new panel.rectangle(canvas.closerect),
-                ]),
-                0,
-                new panel.layers(
-                [
-                    new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.layers(
-                    [
-                        new panel.rectangle(canvas.uploadrect),
-                        new panel.text(),
-                    ])                           
-                ])
-            ]);
-        
-        a.draw(context, rect, 
-            [
-                   local.email,
-                   0,
-                   "Upload",
-            ],0);
-        context.restore();
-    }
-},
+
 ]
 
 var headlst = 
@@ -929,6 +893,25 @@ var displaylst =
     name: "DEFAULT",
     draw: function(context, rect, user, time)
     {
+    }
+},
+{
+    name: "UPLOAD",
+    draw: function(context, rect, user, time)
+    {
+        context.save();
+        if (!headcnv.height)
+            return;
+        var j = ALIEXTENT;
+        
+        var a = new panel.cols([j, 0, j],
+            [
+                0,
+                new panel.rounded(NUBACK, 10, "white", 8, 8),0
+                0,
+            ]);
+        a.draw(context, rect, 0, 0);
+        context.restore(); 
     }
 },
 {
@@ -3650,18 +3633,13 @@ var taplst =
         {
             _4cnvctx.movepage(1);
         }
-        else if (headcnvctx.uploadrect && headcnvctx.uploadrect.hitest(x, y))
+        else if (headcnvctx.uploadrect && 
+                 headcnvctx.uploadrect.hitest(x, y))
         {
-            menuobj.setindex(_8cnvctx);
-            menuobj.show();
-            var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
-            headham.panel = headlst[k];
-            headlst[k].draw(headcnvctx, headcnvctx.rect(), 0);
-            galleryobj.leftcnv = _1cnv;
-            galleryobj.leftctx = _1cnvctx;
-            menuobj.setindex(galleryobj.leftctx);
-            menuobj.show();
-            return false;            
+            var k = displaylst.findIndex(function(a){
+                return a.name == "UPLOAD"});
+            canvas.display = displaylst[k];
+            context.refresh();  
         }
         else if (
             headcnvctx.zoomrect &&
@@ -4741,7 +4719,7 @@ menuobj.draw = function()
 
 var eventlst = 
 [
-{ //1
+{ //1 unused
     hideontap: 1,
     speed: 60,
     reduce: 2.5,
@@ -4758,7 +4736,7 @@ var eventlst =
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: "UPLOAD",
+    footer: "DEFAULT",
     buttonheight: 180,
     buttonmargin: 20,
     hollyinit: 0,
@@ -5701,7 +5679,8 @@ panel.shrink = function(p, extentw, extenth)
     };
 };
 
-panel.rounded = function(color, linewidth, strokecolor, radiustop, radiusbot)
+panel.rounded = function(color, linewidth, 
+                strokecolor, radiustop, radiusbot)
 {
     this.draw = function(context, rect, user, time)
     {
@@ -6128,73 +6107,6 @@ galleryobj.init = function(obj)
     headcnv.style.pointerEvents = "none";
     headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
     headham.panel = headham.panel;
-
-    _1cnv.sliceobj.data = [
-    {
-        title: `ID`,
-        func: function()
-        {
-            return true;
-        }
-    },
-    {
-        title: `Title`,
-        func: function()
-        {
-            return true;
-        }
-    },
-    {
-        title: `Description`,
-        func: function()
-        {
-            return true;
-        }
-    },
-    {
-        title: `Notes`,
-        func: function()
-        {
-            return true;
-        }
-    },
-    {
-        title: `Galleries \u{25B6}`,
-        func: function()
-        {
-            return true;
-        }
-    },
-    {
-        title: `Chapters \u{25B6}`,
-        func: function()
-        {
-            return true;
-        }
-    },
-    {
-        title: `Tags \u{25B6}`,
-        func: function()
-        {
-            return true;
-        }
-    },    
-    {
-        title: `Extent`,
-        func: function()
-        {
-            return true;
-        }
-    },    
-    {
-        title: `Upload Date`,
-        func: function()
-        {
-            return true;
-        }
-    },    
-
-    ];
     
     _10cnv.sliceobj.data = 
     [
