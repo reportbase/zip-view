@@ -946,7 +946,10 @@ var displaylst =
         a.draw(context, rect, templateobj, 0);
 
         var w = Math.min(360, rect.width - 100);
-        var data = [templateobj.value()];
+        var data = [];
+        if (globalobj.debug)
+            data.push("3-Nov-2003");
+        data.push(templateobj.value());
         var rows = data.length;
         var rh = 26;
         var a = new panel.rows([80, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
@@ -2799,6 +2802,12 @@ var panlst =
             }
             else if (canvas.istemplaterect)
             {
+                for (var n = 0; n < IMAGELSTSIZE; ++n)
+                {
+                    thumbfittedlst[n] = document.createElement("canvas");
+                    thumbimglst[n] = new Image();
+                }                
+          
                 var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
                 templateobj.setperc(k);
                 menuobj.draw();
