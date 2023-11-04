@@ -6139,15 +6139,20 @@ galleryobj.init = function(obj)
             }
         },
         {
-            title: "user.get.list",
+            title: "users.get",
             func: function()
             {        
-                fetch(`https://users.reportbase5836.workers.dev`)
+                fetch(`https://users.reportbase5836.workers.dev/reportbase@gmail.com`)
                   .then(function(response)
                   {
                     for (let [key, value] of response.headers)
                         console.log(`${key} = ${value}`);
-                  });
+                      return response.json();
+                  })
+                  .then(function(obj)
+                        {
+                            console.log(obj);
+                        });  
                 return true;
             }
         },
