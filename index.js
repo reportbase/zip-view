@@ -903,14 +903,16 @@ var displaylst =
         if (!headcnv.height)
             return;
         var j = ALIEXTENT;
-        var k = 100;
+        var k = HEADHEIGHT+10;
         
         var a = new panel.cols([j, 0, j],
             [
                 0,
                 new panel.rows([k, 0, k],
                 [
-                    new panel.rounded(NUBACK, 10, "white", 8, 8),
+                    0,
+                    new panel.rounded(NUBACK, 5, "white", 8, 8),
+                    0,
                 ]),
                 0,
             ]);
