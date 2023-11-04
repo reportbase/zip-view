@@ -1,11 +1,6 @@
 #https://sqliteonline.com/
   
-DROP TABLE IF EXISTS demo;
 DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS galleries;
-DROP TABLE IF EXISTS user_galleries;
-DROP TABLE IF EXISTS user_images;
-
 CREATE TABLE users 
 (
   id VARCHAR PRIMARY KEY AUTOINCREMENT, 
@@ -15,6 +10,7 @@ CREATE TABLE users
   created VARCHAR
 );
 
+DROP TABLE IF EXISTS images;
 CREATE TABLE images 
 (
   id VARCHAR PRIMARY KEY, 
@@ -23,6 +19,7 @@ CREATE TABLE images
   created VARCHAR
 )
 
+DROP TABLE IF EXISTS gallery_folders;
 CREATE TABLE gallery_folders 
 (
   folder_id VARCHAR,
@@ -32,6 +29,7 @@ CREATE TABLE gallery_folders
   FOREIGN KEY (gallery_id) REFERENCES galleries(id)
 );
 
+DROP TABLE IF EXISTS image_tags;
 CREATE TABLE image_tags 
 (
   image_id VARCHAR,
@@ -41,20 +39,23 @@ CREATE TABLE image_tags
   FOREIGN KEY (tag_id) REFERENCES tags(id)
 );
 
+DROP TABLE IF EXISTS tags;
 CREATE TABLE tags 
 (
   id VARCHAR PRIMARY KEY AUTOINCREMENT, 
   title VARCHAR,
   describe TEXT
 );
-  
+
+DROP TABLE IF EXISTS folders;
 CREATE TABLE folders 
 (
   id VARCHAR PRIMARY KEY AUTOINCREMENT, 
   title VARCHAR,
   describe TEXT
 );
-  
+
+DROP TABLE IF EXISTS galleries;
 CREATE TABLE galleries 
 (
   id VARCHAR PRIMARY KEY AUTOINCREMENT, 
@@ -62,14 +63,7 @@ CREATE TABLE galleries
   describe TEXT
 );
 
-CREATE TABLE external_galleries 
-(
-  id VARCHAR PRIMARY KEY AUTOINCREMENT, 
-  title VARCHAR,
-  json TEXT,
-  describe TEXT
-);
-
+DROP TABLE IF EXISTS user_galleries;
 CREATE TABLE user_galleries 
 (
   user_id,
@@ -78,7 +72,28 @@ CREATE TABLE user_galleries
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (gallery_id) REFERENCES galleries(id)
 );
-  
+
+DROP TABLE IF EXISTS user_folders;
+CREATE TABLE user_folders 
+(
+  user_id,
+  folder_id,
+  PRIMARY KEY(user_id, folder_id),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (folder_id) REFERENCES folders(id)
+);
+
+DROP TABLE IF EXISTS user_tags;
+CREATE TABLE user_tags 
+(
+  user_id,
+  tag_id,
+  PRIMARY KEY(user_id, tag_id),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (tag_id) REFERENCES tags(id)
+);
+
+DROP TABLE IF EXISTS user_images;
 CREATE TABLE user_images 
 (
   image_id,
