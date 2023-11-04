@@ -2403,13 +2403,19 @@ var wheelst =
         {
             if (!canvas.templateblock)
             {
+                var j = delta > 1 ?-1:1;
+                if (j == -1 && templateobj.current() == 0)
+                    return;
+                else if (j == 1 && templateobj.current() == 
+                         templateobj.length()-1)
+                    return;
+                
                 for (var n = 0; n < IMAGELSTSIZE; ++n)
                 {
                     thumbfittedlst[n] = document.createElement("canvas");
                     thumbimglst[n] = new Image();
                 }                
     
-                var j = delta > 1 ?-1:1;
                 templateobj.add(j);
                 menuobj.draw();
                 canvas.templateblock = setTimeout(function()
