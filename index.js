@@ -2409,7 +2409,7 @@ var wheelst =
                     thumbimglst[n] = new Image();
                 }                
     
-                var j = delta > 1 ? 1: -1;
+                var j = delta > 1 ?-1:1;
                 templateobj.add(j);
                 menuobj.draw();
                 canvas.templateblock = setTimeout(function()
