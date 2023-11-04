@@ -2410,7 +2410,7 @@ var wheelst =
             if (!canvas.templateblock)
             {
                 var j = delta > 1 ? 1: -1;
-                templateobj.addperc(j);
+                templateobj.add(j);
                 menuobj.draw();
                 canvas.templateblock = setTimeout(function()
                   {
