@@ -8,15 +8,16 @@ DROP TABLE IF EXISTS user_images;
 
 CREATE TABLE users 
 (
-  id INTEGER PRIMARY KEY, 
+  id VARCHAR PRIMARY KEY, 
   email VARCHAR,
   name VARCHAR,
-  secret VARCHAR
+  secret VARCHAR,
+  created VARCHAR
 );
 
 CREATE TABLE galleries 
 (
-  id INTEGER PRIMARY KEY, 
+  id VARCHAR PRIMARY KEY, 
   json TEXT
 );
 
@@ -29,11 +30,20 @@ CREATE TABLE user_galleries
   FOREIGN KEY (gallery_id) REFERENCES galleries(id)
 );
 
+CREATE TABLE images 
+(
+  id VARCHAR PRIMARY KEY, 
+  title VARCHAR,
+  tags TEXT,
+  describe TEXT, 
+)
+  
 CREATE TABLE user_images 
 (
   image_id,
   user_id,
   PRIMARY KEY(image_id, user_id),
+  FOREIGN KEY (image_id) REFERENCES images(id),
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
