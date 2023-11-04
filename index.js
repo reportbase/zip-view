@@ -2398,7 +2398,6 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     {
-        var canvas = context.canvas;
         galleryobj.leftright(context, delta);
     },
 },
@@ -3788,7 +3787,8 @@ var taplst =
             }                
            
             var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
-            templateobj.setperc(k);
+            var j = Math.lerp(0,templateobj.length()-1,k);
+            templateobj.set(Math.round(j));
             menuobj.draw()
         }
         else if (canvas.hollyrect && canvas.hollyrect.hitest(x, y))
