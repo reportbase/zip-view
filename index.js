@@ -2398,7 +2398,24 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     {
-        galleryobj.leftright(context, delta);
+        var canvas = context.canvas;
+        if (canvas.templaterect && canvas.templaterect.hitest(x, y))
+        {
+            for (var n = 0; n < IMAGELSTSIZE; ++n)
+            {
+                thumbfittedlst[n] = document.createElement("canvas");
+                thumbimglst[n] = new Image();
+            }                
+
+            var k = templatelst.length()/10;
+            var j = delta > 1 ? 1: -1;
+            templateobj.add(j);
+            menuobj.draw()
+        }   
+        else
+        {
+            galleryobj.leftright(context, delta);
+        }
     },
 },
 {
