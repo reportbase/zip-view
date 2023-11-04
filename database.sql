@@ -15,6 +15,16 @@ CREATE TABLE users
   created VARCHAR
 );
 
+CREATE TABLE images 
+(
+  id VARCHAR PRIMARY KEY, 
+  title VARCHAR,
+  tags TEXT,
+  folder VARCHAR,
+  describe TEXT,
+  created VARCHAR
+)
+  
 CREATE TABLE galleries 
 (
   id VARCHAR PRIMARY KEY AUTOINCREMENT, 
@@ -29,15 +39,6 @@ CREATE TABLE user_galleries
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (gallery_id) REFERENCES galleries(id)
 );
-
-CREATE TABLE images 
-(
-  id VARCHAR PRIMARY KEY, 
-  title VARCHAR,
-  tags TEXT,
-  describe TEXT,
-  created VARCHAR
-)
   
 CREATE TABLE user_images 
 (
