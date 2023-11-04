@@ -786,6 +786,43 @@ var footlst =
         context.restore();
     }
 },
+{
+    name: "UPLOAD",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save();     
+        canvas.closerect = new rectangle();
+        canvas.uploadrect = new rectangle();
+        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
+            [
+                new panel.layers(
+                [
+                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.text(),
+                    new panel.rectangle(canvas.closerect),
+                ]),
+                0,
+                new panel.layers(
+                [
+                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.layers(
+                    [
+                        new panel.rectangle(canvas.uploadrect),
+                        new panel.text(),
+                    ])                           
+                ])
+            ]);
+        
+        a.draw(context, rect, 
+            [
+                   local.email,
+                   0,
+                   "Upload",
+            ],0);
+        context.restore();
+    }
+},
 ]
 
 var headlst = 
@@ -3615,7 +3652,13 @@ var taplst =
         }
         else if (headcnvctx.uploadrect && headcnvctx.uploadrect.hitest(x, y))
         {
-            
+            galleryobj.leftctx.hide();
+            galleryobj.rightctx.hide();
+            galleryobj.leftcnv = _1cnv;
+            galleryobj.leftctx = _1cnvctx;
+            menuobj.setindex(galleryobj.leftctx);
+            menuobj.show();
+            return false;            
         }
         else if (
             headcnvctx.zoomrect &&
@@ -4693,7 +4736,8 @@ menuobj.draw = function()
     context.canvas.footer.draw(context, rect, 0, 0);
 }
 
-var eventlst = [
+var eventlst = 
+[
 { //1
     hideontap: 1,
     speed: 60,
@@ -4702,18 +4746,18 @@ var eventlst = [
     mouse: "DEFAULT",
     thumb: "DEFAULT",
     tap: "MENU",
-    pan: "DEFAULT",
+    pan: "MENU",
     swipe: "MENU",
-    button: "DEFAULT",
-    wheel: "DEFAULT",
+    button: "OPTION",
+    wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
-    press: "DEFAULT",
+    press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: "DEFAULT",
-    buttonheight: 0,
-    buttonmargin: 10,
+    footer: "UPLOAD",
+    buttonheight: 180,
+    buttonmargin: 20,
     hollyinit: 0,
     width: 640
 },
@@ -6082,6 +6126,73 @@ galleryobj.init = function(obj)
     headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
     headham.panel = headham.panel;
 
+    _1cnv.sliceobj.data = [
+    {
+        title: `ID`,
+        func: function()
+        {
+            return true;
+        }
+    },
+    {
+        title: `Title`,
+        func: function()
+        {
+            return true;
+        }
+    },
+    {
+        title: `Description`,
+        func: function()
+        {
+            return true;
+        }
+    },
+    {
+        title: `Notes`,
+        func: function()
+        {
+            return true;
+        }
+    },
+    {
+        title: `Galleries \u{25B6}`,
+        func: function()
+        {
+            return true;
+        }
+    },
+    {
+        title: `Chapters \u{25B6}`,
+        func: function()
+        {
+            return true;
+        }
+    },
+    {
+        title: `Tags \u{25B6}`,
+        func: function()
+        {
+            return true;
+        }
+    },    
+    {
+        title: `Extent`,
+        func: function()
+        {
+            return true;
+        }
+    },    
+    {
+        title: `Upload Date`,
+        func: function()
+        {
+            return true;
+        }
+    },    
+
+    ];
+    
     _10cnv.sliceobj.data = 
     [
         {
