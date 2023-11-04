@@ -2401,21 +2401,21 @@ var wheelst =
         var canvas = context.canvas;
         if (canvas.templaterect && canvas.templaterect.hitest(x, y))
         {
-            for (var n = 0; n < IMAGELSTSIZE; ++n)
-            {
-                thumbfittedlst[n] = document.createElement("canvas");
-                thumbimglst[n] = new Image();
-            }                
-
             if (!canvas.templateblock)
             {
+                for (var n = 0; n < IMAGELSTSIZE; ++n)
+                {
+                    thumbfittedlst[n] = document.createElement("canvas");
+                    thumbimglst[n] = new Image();
+                }                
+    
                 var j = delta > 1 ? 1: -1;
                 templateobj.add(j);
                 menuobj.draw();
                 canvas.templateblock = setTimeout(function()
                   {
                       canvas.templateblock = 0;
-                  }, 1000);      
+                  }, 500);      
             }
         }   
         else
