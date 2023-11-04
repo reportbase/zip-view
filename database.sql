@@ -9,7 +9,7 @@ DROP TABLE IF EXISTS user_images;
 CREATE TABLE users 
 (
   id VARCHAR PRIMARY KEY, 
-  email VARCHAR,
+  email VARCHAR UNIQUE,
   name VARCHAR,
   secret VARCHAR,
   created VARCHAR
@@ -35,7 +35,8 @@ CREATE TABLE images
   id VARCHAR PRIMARY KEY, 
   title VARCHAR,
   tags TEXT,
-  describe TEXT, 
+  describe TEXT,
+  created VARCHAR
 )
   
 CREATE TABLE user_images 
@@ -155,5 +156,26 @@ FROM user_images i
 JOIN users u ON i.user_id = u.id
 JOIN images im ON i.image_id = im.id
 WHERE u.email = 'user2@test.com';
+
+SELECT images.*
+FROM users
+JOIN user_images ON users.id = user_images.user_id
+JOIN images ON user_images.image_id = images.id
+WHERE users.email = 'user@example.com';
+
+INSERT INTO images (id, title, tags, describe, created)
+VALUES ('image001', 'Cat Photo', 'cat,pet', 'Cute photo of a cat', 'date');
+
+DELETE FROM images 
+WHERE id = 'image001';
+
+DELETE FROM images
+WHERE id IN ('image001', 'image002');
+
+UPDATE images
+SET title = 'New Title', 
+    tags = 'cat,kitten',
+    describe = 'Updated description'
+WHERE id = 'image001';
 
 
