@@ -947,7 +947,7 @@ var displaylst =
 
         var w = Math.min(360, rect.width - 100);
         var data = [];
-        if (globalobj.debug)
+        if (global.debug)
             data.push("3-Nov-2003");
         data.push(templateobj.value());
         var rows = data.length;
