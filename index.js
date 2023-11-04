@@ -513,9 +513,7 @@ var templatelst =
     "1080x1080",
     "1280x1280",
     "1600x1600",
-    "1960x1960",
     "2160x2160",
-    "3400x3400",
     "5760x5760"
 ];
 
@@ -2376,10 +2374,14 @@ var wheelst =
         }
         else
         {
-            var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
-            var k = displaylst.findIndex(function(a){return a.name == j})
-            canvas.display = displaylst[k]; 
-
+            if (x < window.innerWidth*0.20 ||
+                x > window.innerWidth*0.80)
+            {
+                var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
+                var k = displaylst.findIndex(function(a){return a.name == j})
+                canvas.display = displaylst[k]; 
+            }
+            
             clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
             if (global.swipetimeout)
@@ -2797,12 +2799,6 @@ var panlst =
             }
             else if (canvas.istemplaterect)
             {
-                for (var n = 0; n < IMAGELSTSIZE; ++n)
-                {
-                    thumbfittedlst[n] = document.createElement("canvas");
-                    thumbimglst[n] = new Image();
-                }                
-                
                 var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
                 templateobj.setperc(k);
                 menuobj.draw();
@@ -2822,10 +2818,14 @@ var panlst =
         }
         else if (type == "panup" || type == "pandown")
         {
-            var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
-            var k = displaylst.findIndex(function(a){return a.name == j})
-            canvas.display = displaylst[k]; 
-        
+            if (x < window.innerWidth*0.20 ||
+                x > window.innerWidth*0.80)
+            {
+                var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
+                var k = displaylst.findIndex(function(a){return a.name == j})
+                canvas.display = displaylst[k]; 
+            }
+            
             if (canvas.isvscrollrect)
             {
                 var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
