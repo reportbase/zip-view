@@ -31,7 +31,7 @@ const IFRAME = window.self !== window.top;
 const ALIEXTENT = 60;
 const BEXTENT = 80;
 const BOSSMIN = 4;
-const FOOTSEP = 15;
+const FOOTSEP = 20;
 const HEADHEIGHT = IFRAME ? 0 : 140;
 const MAXEXTENT = 10000;
 const MAXIMAGESIZE = MAXEXTENT*MAXEXTENT;
