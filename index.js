@@ -1017,7 +1017,7 @@ var displaylst =
         canvas.hollyrect = new rectangle();
         canvas.gorect = new rectangle();
         context.gallerytoprect = new rectangle();
-        context. = new rectangle();
+        context.gallerybotrect = new rectangle();
         if (!headcnv.height)
             return;        
         var bh = rect.height * 0.4;
