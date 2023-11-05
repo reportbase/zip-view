@@ -1080,9 +1080,8 @@ var displaylst =
         var hollyobj = canvas.hollyobj;
         var st = `\u{25C0}   ${hollyobj.current().toFixed(2)} of ${hollyobj.length()}   \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
-        var rows = data.length;
         var rh = RAINSTEP;
-        var a = new panel.rowsA([HEADHEIGHT, 40, 0, rows*rh, FOOTSEP, SCROLLBARWIDTH, 4],
+        var a = new panel.rowsA([HEADHEIGHT, 40, 40, rows*rh, FOOTSEP, SCROLLBARWIDTH, 4],
         [
             0,
             new panel.cols([0, RAINSTEP, 0],
@@ -1229,14 +1228,14 @@ var displaylst =
             
             var rows = data.length;
             var rh = 26;
-            var bh = rect.height / 2;
+            var bh = rect.height * 0.4;
             var cw = rect.width - 30;
             var a = new panel.layerA(
                 [
                     new panel.colsA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
                         [
                             0,
-                            new panel.rows([0, cw, 0],
+                            new panel.rows([0, bh, 0],
                                 [
                                     0,
                                     new panel.layers(
