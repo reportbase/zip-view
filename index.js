@@ -1308,8 +1308,8 @@ var displaylst =
             var he = heightobj;
             var b = Math.berp(0, he.length() - 1, he.current());
             var height = Math.lerp(90, rect.height - 180, b);
-            if (height > 480)
-                height = 480;
+            if (height > 320)
+                height = 320;
             var width = Math.lerp(90, rect.width - 80, b);
             var r = calculateAspectRatioFit(photo.image.width, photo.image.height, width, height);
             var h = r.height;
