@@ -1248,21 +1248,28 @@ var displaylst =
                     new panel.rowsA([HEADHEIGHT, 40, 0, rows*rh, FOOTSEP, SCROLLBARWIDTH, 4],
                         [
                             0,
-                            new panel.layers(
-                            [
-                                new panel.expand(new panel.rectangle(context.bosstoprect), 10, 10),
-                                new panel.shadow(new panel.text()),
-                            ]),
+                            new panel.cols([0,120,0],
+                                [
+                                    0,
+                                    new panel.layers(
+                                    [
+                                        new panel.fill("red"),
+                                        new panel.expand(new panel.rectangle(context.bosstoprect), 10, 10),
+                                        new panel.shadow(new panel.text()),
+                                    ]),
+                                    0,
+                                ]),
                             0,
                             new panel.cols([0, w, 0],
                                 [
                                     0,
                                     new panel.layers(
-                                        [
-                                            new panel.expand(new panel.rectangle(context.bossbotrect), 10, 10),
-                                            new panel.gridA(1, rows, 1,
-                                                new panel.shadow(new panel.text())),
-                                        ]),
+                                    [
+                                        new panel.fill("red"),
+                                        new panel.expand(new panel.rectangle(context.bossbotrect), 10, 10),
+                                        new panel.gridA(1, rows, 1,
+                                            new panel.shadow(new panel.text())),
+                                    ]),
                                     0,
                                 ]),
                             0,
@@ -1292,7 +1299,7 @@ var displaylst =
                     ],
                     [
                         0,
-                        `\u{25C0}   Hello   \u{25B6}`,
+                        `\u{25C0}   Thumbnail   \u{25B6}`,
                         0,
                         data,
                         0,
