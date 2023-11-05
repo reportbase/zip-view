@@ -914,10 +914,10 @@ var displaylst =
         var j = ALIEXTENT;
         var k = HEADHEIGHT+10;
         
-        var a = new panel.cols([80, 0, 80],
+        var a = new panel.cols([40, 0, 40],
             [
                 0,
-                new panel.rows([k, 0, k],
+                new panel.rows([80, 0, 80],
                 [
                     0,
                     new panel.rounded(NUBACK, 5, "rgba(255,255,255,0.6)", 8, 8),
