@@ -946,7 +946,7 @@ var displaylst =
         var data = [];
         if (global.debug)
             data.push("3-Nov-2003");
-        var st = `\u{25C0}   ${buttonobj.current()+1} of ${buttonobj.length()}   \u{25B6}`;
+        var st = `\u{25C0}   ${hollyobj.current()+1} of ${hollyobj.length()}   \u{25B6}`;
         data.push(`\u{25C0}   ${templateobj.value()}   \u{25B6}`);
         var rows = data.length;
         var rh = 26;
@@ -1053,7 +1053,7 @@ var displaylst =
             data.push(_8cnv.timeobj.current().toFixed(5));
         }      
 
-        var st = `\u{25C0}   ${buttonobj.current()+1} of ${buttonobj.length()}   \u{25B6}`;
+        var st = `\u{25C0}   ${hollyobj.current()+1} of ${hollyobj.length()}   \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
         var rows = data.length;
         var rh = 26;
@@ -2386,7 +2386,7 @@ var wheelst =
         }
         else
         {
-            if (delta > 120)
+            if (Math.abs(delta) > 120)
             {
                 var k = displaylst.findIndex(function(a){return a.name == 
                     (delta < 0 ? "GALLERY" : "BUTTON")})
