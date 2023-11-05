@@ -2388,13 +2388,6 @@ var wheelst =
         }
         else
         {
-            if (Math.abs(delta) > 120)
-            {
-                var k = displaylst.findIndex(function(a){return a.name == 
-                    (delta > 0 ? "GALLERY" : "BUTTON")})
-                context.canvas.display = displaylst[k]; 
-            }
-            
             clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
             if (global.swipetimeout)
@@ -3230,10 +3223,6 @@ var swipelst = [
     },
     swipeupdown: function(context, rect, x, y, evt)
     {
-        var k = displaylst.findIndex(function(a){return a.name == 
-            (evt.type == "swipeup" ? "GALLERY" : "BUTTON")})
-        context.canvas.display = displaylst[k]; 
-        
         var k = evt.type == "swipeup" ? 1 : -1;
         menuobj.updown(context, k * context.canvas.speed);
         if (!global.swipetimeout)
@@ -3703,6 +3692,8 @@ var taplst =
         global.timeauto = 0;
         var obj = canvas.hollyobj;
         context.refresh();
+        var button = displaylst.findIndex(function(a){return a.name == "BUTTON"})
+        
         if (headcnvctx.leftmenurect && headcnvctx.leftmenurect.hitest(x, y))
         {
             galleryobj.set(_8cnv.lastcurrent)
@@ -3847,6 +3838,13 @@ var taplst =
         {
             headcnv.height = HEADHEIGHT;
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            menuobj.draw();
+        }
+        else if (context.canvas.display == displaylst[button])
+        {
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"})
+            context.canvas.display = displaylst[k]; 
+            menuobj.draw();
         }
         else if (galleryobj.boss || canvas.shiftKey)
         {
