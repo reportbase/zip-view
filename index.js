@@ -1052,13 +1052,18 @@ var displaylst =
             data.push(galleryobj.data[k].id);
             data.push(_8cnv.timeobj.current().toFixed(5));
         }      
-        
+
+        var st = `\u{25C0}   ${buttonobj.current()+1} of ${buttonobj.length()}   \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
         var rows = data.length;
         var rh = 26;
-        var a = new panel.rows([80, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
+        var a = new panel.rowsA([HEADHEIGHT, 50, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
         [
             0,
+            new panel.layers(
+            [
+                new panel.shadow(new panel.text()),
+            ]),
             0,
             new panel.cols([0, w, 0],
                 [
@@ -1073,9 +1078,19 @@ var displaylst =
                 ]),
             0,
             0,
+            0
         ]);
             
-        a.draw(context, rect, data, 0);
+        a.draw(context, rect, 
+            [
+                0,
+                st,
+                0,
+                data,
+                0,
+                0,
+                
+            ], 0);
         context.restore();     
     }
 },
@@ -2375,7 +2390,7 @@ var wheelst =
             {
                 var k = displaylst.findIndex(function(a){return a.name == 
                     (delta < 0 ? "GALLERY" : "BUTTON")})
-                canvas.display = displaylst[k]; 
+                context.canvas.display = displaylst[k]; 
             }
             
             clearInterval(context.canvas.leftright)
@@ -3215,7 +3230,7 @@ var swipelst = [
     {
         var k = displaylst.findIndex(function(a){return a.name == 
             (evt.type == "swipeup" ? "GALLERY" : "BUTTON")})
-        canvas.display = displaylst[k]; 
+        context.canvas.display = displaylst[k]; 
         
         var k = evt.type == "swipeup" ? 1 : -1;
         menuobj.updown(context, k * context.canvas.speed);
