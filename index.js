@@ -899,6 +899,7 @@ var displaylst =
         context.save();
         delete canvas.hollyrect;
         delete canvas.vscrollrect;
+        var hollyobj = canvas.hollyobj;
         canvas.buttonrect = new rectangle();
         canvas.templaterect = new rectangle();
         if (!headcnv.height)
@@ -946,7 +947,7 @@ var displaylst =
         var data = [];
         if (global.debug)
             data.push("3-Nov-2003");
-        var st = `\u{25C0}   ${context.canvas..current()+1} of ${context.canvas..length()}   \u{25B6}`;
+        var st = `\u{25C0}   ${hollyobj.current()+1} of ${hollyobj.length()}   \u{25B6}`;
         data.push(`\u{25C0}   ${templateobj.value()}   \u{25B6}`);
         var rows = data.length;
         var rh = 26;
@@ -1053,7 +1054,8 @@ var displaylst =
             data.push(_8cnv.timeobj.current().toFixed(5));
         }      
 
-        var st = `\u{25C0}   ${context.canvas..current()+1} of ${context.canvas..length()}   \u{25B6}`;
+        var hollyobj = canvas.hollyobj;
+        var st = `\u{25C0}   ${hollyobj.current()+1} of ${hollyobj.length()}   \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
         var rows = data.length;
         var rh = 26;
