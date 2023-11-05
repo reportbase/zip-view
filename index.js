@@ -947,7 +947,7 @@ var displaylst =
         var data = [];
         if (global.debug)
             data.push("3-Nov-2003");
-        var st = `\u{25C0}   ${hollyobj.current()+1} of ${hollyobj.length()}   \u{25B6}`;
+        var st = `\u{25C0}   ${(hollyobj.current()+1.toFixed(2)} of ${hollyobj.length()}   \u{25B6}`;
         data.push(`\u{25C0}   ${templateobj.value()}   \u{25B6}`);
         var rows = data.length;
         var rh = 26;
