@@ -829,12 +829,17 @@ var headlst =
 
                             0, 0, 0
                         ]),
-                    new panel.layers(
+                    new panel.cols([0,180,0],
                         [
-                            j ? new panel.fill("rgba(0,0,0,0.5)") : 0,
-                            new panel.rectangle(context.uploadrect),
-                            new panel.shadow(new panel.text()),
-                        ]),
+                            0,
+                            new panel.layers(
+                                [
+                                    j ? new panel.rounded(NUBACK, 5, "rgba(255,255,255,0.6)", 8, 8) : 0,
+                                    new panel.rectangle(context.uploadrect),
+                                    new panel.shadow(new panel.text()),
+                                ]),
+                            0,
+                        ])
                 ]);
 
             a.draw(context, rect, "Upload \u{25B6}", 0);
