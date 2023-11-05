@@ -834,7 +834,7 @@ var headlst =
                             0,
                             new panel.layers(
                                 [
-                                    j ? 0: new panel.rounded(NUBACK, 5, TRANSPARENT, 8, 8),
+                                    //j ? 0: new panel.rounded(NUBACK, 5, TRANSPARENT, 8, 8),
                                     new panel.rectangle(context.uploadrect),
                                     new panel.shadow(new panel.text()),
                                 ]),
@@ -914,7 +914,7 @@ var displaylst =
         var j = ALIEXTENT;
         var k = HEADHEIGHT+10;
         
-        var a = new panel.cols([j, 0, j],
+        var a = new panel.cols([80, 0, 80],
             [
                 0,
                 new panel.rows([k, 0, k],
