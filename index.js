@@ -911,11 +911,11 @@ var displaylst =
         context.save();
         if (!headcnv.height)
             return;
-        var j = 640;
-        if (rect.width < 720);
+        var j = 360;
+        if (rect.width < 440);
             j = rect.width - 80;
-        var k = 480;
-        if (rect.height < 640)
+        var k = 360;
+        if (rect.height < 520)
             k = rect.height - 160;
         
         var a = new panel.cols([40, j, 40],
