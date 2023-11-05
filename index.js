@@ -72,6 +72,7 @@ var global = {};
 let photo = {};
 let util = {};
 photo.image = 0;
+global.debug = url.searchParams.has("debug");
 
 util.random_color = function()
 {
@@ -842,7 +843,7 @@ var headlst =
                         ])
                 ]);
 
-            a.draw(context, rect, "\u{25C0} Upload \u{25B6}", 0);
+            a.draw(context, rect, "\u{25C0} Description \u{25B6}", 0);
             context.restore();        
     }
 },
@@ -1513,10 +1514,6 @@ String.prototype.isimage = function()
     })
     return k >= 0;
 }
-
-global.debug = url.searchParams.has("debug");
-if (url.hostname.isext("dev"))
-    global.debug = 1;
 
 String.prototype.proper = function()
 {
