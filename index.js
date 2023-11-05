@@ -3803,20 +3803,6 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
-            context.buttontoprect &&
-            context.buttontoprect.hitest(x, y))
-        {
-            var k = (x - context.buttontoprect.x) / context.buttontoprect.width;
-            console.log(k);
-        }
-        else if (
-            context.buttonbotrect &&
-            context.buttonbotrect.hitest(x, y))
-        {
-            var k = (x - context.buttonbotrect.x) / context.buttonbotrect.width;
-            console.log(k);
-        }
-        else if (
             context.gallerytoprect &&
             context.gallerytoprect.hitest(x, y))
         {
@@ -3825,7 +3811,7 @@ var taplst =
         }
         else if (
             context.gallerybotrect &&
-            context..hitest(x, y))
+            context.gallerybotrect.hitest(x, y))
         {
             var value = galleryobj.current() + 1;
             if (menuobj.value() == _8cnvctx)
