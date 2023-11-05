@@ -507,15 +507,15 @@ panel.empty = function()
     
 var templatelst = 
 [
-    "360x360",
-    "480x480",
-    "640x640",
-    "800x800",
-    "1080x1080",
-    "1280x1280",
-    "1600x1600",
-    "2160x2160",
-    "5760x5760"
+    "360 x 360",
+    "480 x 480",
+    "640 x 640",
+    "800 x 800",
+    "1080 x 1080",
+    "1280 x 1280",
+    "1600 x 1600",
+    "2160 x 2160",
+    "5760 x 5760"
 ];
 
 const SEAL = 3927
@@ -950,7 +950,8 @@ var displaylst =
         var hh = buttonobj.value();
         var ww = hh * (galleryobj.width/galleryobj.height);
         var st = `\u{25C0}   ${ww.toFixed(0)} x ${hh.toFixed(0)}   \u{25B6}`;
-        data.push(`\u{25C0}   ${templateobj.value()}   \u{25B6}`);
+        var jp = templateobj.value().split("x");
+        data.push(`\u{25C0}   ${jp[0]} x ${jp[1]}   \u{25B6}`);
         var rows = data.length;
         var rh = 26;
         var a = new panel.rowsA([HEADHEIGHT, 50, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
