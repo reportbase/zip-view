@@ -1081,8 +1081,8 @@ var displaylst =
         var st = `\u{25C0}   ${hollyobj.current().toFixed(2)} of ${hollyobj.length()}   \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
         var rows = data.length;
-        var rh = 26;
-        var a = new panel.rowsA([HEADHEIGHT, 40, 0, rows*rh, 40, SCROLLBARWIDTH, 4],
+        var rh = RAINSTEP;
+        var a = new panel.rowsA([HEADHEIGHT, 40, 0, rows*rh, FOOTSEP, SCROLLBARWIDTH, 4],
         [
             0,
             new panel.cols([0, RAINSTEP, 0],
@@ -1263,7 +1263,7 @@ var displaylst =
                                 ]),
                             0,
                         ]),
-                    new panel.rowsA([HEADHEIGHT, 40, 0, 40, 40, SCROLLBARWIDTH, 4],
+                    new panel.rowsA([HEADHEIGHT, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
                         [
                             0,
                             new panel.cols([0,RAINSTEP,0],
