@@ -6,6 +6,7 @@ https://ipfs-view.com
 
 function ios()
 {
+    return 0;//todo
     return 
     [
         'iPad Simulator',
@@ -912,7 +913,7 @@ var displaylst =
         if (!headcnv.height)
             return;
         var j = 360;
-        if (rect.width < 440);
+        if (rect.width < 440)
             j = rect.width - 80;
         var k = 360;
         if (rect.height < 520)
