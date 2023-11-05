@@ -1168,6 +1168,8 @@ var displaylst =
             context.timerect = new rectangle();
             context.slicewidthrect = new rectangle();
             context.heightrect = new rectangle();
+            context.bosstoprect = new rectangle();
+            context.bossbotrect = new rectangle();
             
             if (
                 !photo.image ||
@@ -1248,15 +1250,19 @@ var displaylst =
                             0,
                             new panel.layers(
                             [
-                                new panel.expand(new panel.rectangle(canvas.buttontoprect), 10, 10),
+                                new panel.expand(new panel.rectangle(canvas.bosstoprect), 10, 10),
                                 new panel.shadow(new panel.text()),
                             ]),
                             0,
                             new panel.cols([0, w, 0],
                                 [
                                     0,
-                                    new panel.gridA(1, rows, 1,
-                                        new panel.shadow(new panel.text())),
+                                    new panel.layers(
+                                        [
+                                            new panel.expand(new panel.rectangle(canvas.bossbotrect), 10, 10),
+                                            new panel.gridA(1, rows, 1,
+                                                new panel.shadow(new panel.text())),
+                                        ])
                                     0,
                                 ]),
                             0,
