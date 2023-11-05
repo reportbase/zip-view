@@ -911,13 +911,17 @@ var displaylst =
         context.save();
         if (!headcnv.height)
             return;
-        var j = ALIEXTENT;
-        var k = HEADHEIGHT+10;
+        var j = 640;
+        if (rect.width < 720);
+            j = rect.width - 80;
+        var k = 480;
+        if (rect.height < 640)
+            k = rect.height - 80 - 80;
         
-        var a = new panel.cols([40, 0, 40],
+        var a = new panel.cols([40, j, 40],
             [
                 0,
-                new panel.rows([80, 0, 80],
+                new panel.rows([80, k, 0],
                 [
                     0,
                     new panel.rounded(NUBACK, 5, "rgba(255,255,255,0.6)", 8, 8),
