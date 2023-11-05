@@ -1250,7 +1250,7 @@ var displaylst =
                             0,
                             new panel.layers(
                             [
-                                new panel.expand(new panel.rectangle(canvas.bosstoprect), 10, 10),
+                                new panel.expand(new panel.rectangle(context.bosstoprect), 10, 10),
                                 new panel.shadow(new panel.text()),
                             ]),
                             0,
@@ -1259,7 +1259,7 @@ var displaylst =
                                     0,
                                     new panel.layers(
                                         [
-                                            new panel.expand(new panel.rectangle(canvas.bossbotrect), 10, 10),
+                                            new panel.expand(new panel.rectangle(context.bossbotrect), 10, 10),
                                             new panel.gridA(1, rows, 1,
                                                 new panel.shadow(new panel.text())),
                                         ]),
@@ -3695,6 +3695,20 @@ var taplst =
             headcnv.height = HEADHEIGHT;
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
+        else if (
+            context.bosstoprect &&
+            context.bosstoprect.hitest(x, y))
+        {
+            var k = (x - context.bosstoprect.x) / context.bosstoprect.width;
+            console.log(k);
+        }
+        else if (
+            context.bossbotrect &&
+            context.bossbotrect.hitest(x, y))
+        {
+            var k = (x - context.bossbotrect.x) / context.bossbotrect.width;
+            console.log(k);
+        }    
         else
         {
             menuobj.setindex(_8cnvctx);
