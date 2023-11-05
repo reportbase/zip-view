@@ -731,7 +731,7 @@ var footlst =
                    0,
                    [
                        "Login",
-                       "Secret \u{25B6}",
+                       "Secret  \u{25B6}",
                    ], 
                 ], 0);
         
@@ -780,7 +780,7 @@ var footlst =
                    `\u{25C0}  ${url.host}`,
                    0,
                    [
-                       "Open \u{25B6}",
+                       "Open  \u{25B6}",
                        "Login"
                    ],
                 ],
@@ -6536,7 +6536,7 @@ galleryobj.init = function(obj)
             _2cnv.sliceobj.data = results
             _7cnv.sliceobj.data.push(
             {
-                title: `Galleries \u{25B6}`,
+                title: `Galleries  \u{25B6}`,
                 func: function(n, x, y)
                 {
                     menuobj.hide();
