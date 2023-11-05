@@ -2391,7 +2391,7 @@ var wheelst =
             if (Math.abs(delta) > 120)
             {
                 var k = displaylst.findIndex(function(a){return a.name == 
-                    (delta < 0 ? "GALLERY" : "BUTTON")})
+                    (delta > 0 ? "GALLERY" : "BUTTON")})
                 context.canvas.display = displaylst[k]; 
             }
             
