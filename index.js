@@ -889,7 +889,7 @@ var headlst =
                         ]): 0,
                 ]);
             
-            a.draw(context, rect, "Open \u{25B6}", 0);
+            a.draw(context, rect, "\u{25C0} Open \u{25B6}", 0);
             context.restore();        
     }
 }
@@ -989,7 +989,7 @@ var displaylst =
         var data = [];
         if (global.debug)
             data.push("3-Nov-2003");
-        data.push(templateobj.value());
+        data.push(`\u{25C0} ${templateobj.value()} \u{25B6}`);
         var rows = data.length;
         var rh = 26;
         var a = new panel.rows([80, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
@@ -1071,7 +1071,7 @@ var displaylst =
         var value = galleryobj.data[k];
         if (value && value.folder)
             data = value.folder.split("/");
-        data.push(`${index.toFixed(2)} of ${galleryobj.length()} \u{25B6}`);
+        data.push(`\u{25C0} ${index.toFixed(2)} of ${galleryobj.length()} \u{25B6}`);
         if (global.debug)
         {
             data.push(`${galleryobj.width}x${galleryobj.height}`);
