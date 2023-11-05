@@ -1400,6 +1400,7 @@ buttonobj.fit = function()
         contextobj.reset();
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
+        menuobj.show()
         var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
         headham.panel = headlst[k];
         headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
@@ -4516,6 +4517,7 @@ menuobj.hide = function()
     this.setindex(_8cnv.height ? _8cnvctx : 0);
 }
 
+//menuobj show
 menuobj.show = function()
 {
     var context = this.value();
@@ -6583,6 +6585,7 @@ galleryobj.init = function(obj)
         contextobj.reset();
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
+        menuobj.show();
         var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
         headham.panel = headlst[k];
         headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
