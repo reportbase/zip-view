@@ -946,7 +946,7 @@ var displaylst =
         var data = [];
         if (global.debug)
             data.push("3-Nov-2003");
-        var st = `\u{25C0}   ${buttonobj.current().toFixed(2)} of ${buttonobj.value().toFixed(0)}   \u{25B6}`;
+        var st = `\u{25C0}   ${buttonobj.value().toFixed(2)} of ${buttonobj.length().toFixed(0)}   \u{25B6}`;
         data.push(`\u{25C0}   ${templateobj.value()}   \u{25B6}`);
         var rows = data.length;
         var rh = 26;
@@ -955,7 +955,7 @@ var displaylst =
             0,
             new panel.layers(
             [
-                new panel.text(),
+                new panel.shadow(new panel.text()),
             ]),
             0,
             new panel.cols([0, w, 0],
