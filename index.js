@@ -31,7 +31,7 @@ const ALIEXTENT = 60;
 const BEXTENT = 80;
 const BOSSMIN = 4;
 const FOOTSEP = 20;
-const HEADHEIGHT = IFRAME ? 0 : 130;
+const HEADHEIGHT = IFRAME ? 0 : 80;
 const MAXEXTENT = 10000;
 const MAXIMAGESIZE = MAXEXTENT*MAXEXTENT;
 const SCROLLMARGIN = 8;
@@ -830,19 +830,10 @@ var headlst =
 
                             0, 0, 0
                         ]),
-                    new panel.cols([0,180,0],
-                        [
-                            0,
-                            new panel.layers(
-                                [
-                                    new panel.rectangle(context.uploadrect),
-                                    new panel.shadow(new panel.text()),
-                                ]),
-                            0,
-                        ])
+                        0
                 ]);
 
-            a.draw(context, rect, "\u{25C0}   Description   \u{25B6}", 0);
+            a.draw(context, rect, 0, 0);
             context.restore();        
     }
 },
@@ -881,14 +872,10 @@ var headlst =
                         new panel.rightmenu(),
                         0,
                     ]),
-                     g ? new panel.layers(
-                        [
-                            new panel.rectangle(context.uploadrect),
-                            new panel.shadow(new panel.text()),
-                        ]): 0,
+                    0
                 ]);
             
-            a.draw(context, rect, "\u{25C0}   Open   \u{25B6}", 0);
+            a.draw(context, rect, 0, 0);
             context.restore();        
     }
 }
@@ -966,13 +953,13 @@ var displaylst =
         var data = [];
         if (global.debug)
             data.push("3-Nov-2003");
-        data.push(buttonobj.value().toFixed(0));
+        //data.push(buttonobj.value().toFixed(0));
         data.push(`\u{25C0}   ${templateobj.value()}   \u{25B6}`);
         var rows = data.length;
         var rh = 26;
         var a = new panel.rows([80, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
         [
-            0,
+            0,//todo 
             0,
             new panel.cols([0, w, 0],
                 [
