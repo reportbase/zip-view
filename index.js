@@ -1346,7 +1346,9 @@ var displaylst =
             region.rect(x, y, w, h);
             context.clip(region);
 
-            var ww = Math.max(30, (rect.width / canvas.virtualwidth) * w);
+            var ww = Math.max(ALIEXTENT, (rect.width / canvas.virtualwidth) * w);
+            if (ww > 640)
+                ww = 640;
             var stretch = stretchobj.value();
             if (stretch < 50)
                 stretch = (50 - stretchobj.value()) / 100;
