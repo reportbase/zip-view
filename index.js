@@ -835,7 +835,6 @@ var headlst =
                             0,
                             new panel.layers(
                                 [
-                                    //j ? 0: new panel.rounded(NUBACK, 5, TRANSPARENT, 8, 8),
                                     new panel.rectangle(context.uploadrect),
                                     new panel.shadow(new panel.text()),
                                 ]),
@@ -843,7 +842,7 @@ var headlst =
                         ])
                 ]);
 
-            a.draw(context, rect, "Upload \u{25B6}", 0);
+            a.draw(context, rect, "\u{25C0} Upload \u{25B6}", 0);
             context.restore();        
     }
 },
