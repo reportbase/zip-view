@@ -919,7 +919,7 @@ var displaylst =
         if (rect.height < 520)
             k = rect.height - 160;
         
-        var a = new panel.cols([40, j, 40],
+        var a = new panel.cols([0, j, 0],
             [
                 0,
                 new panel.rows([80, k, 0],
