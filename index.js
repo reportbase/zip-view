@@ -808,6 +808,9 @@ var headlst =
             var b = window.innerWidth == w;
             context.save();
             context.uploadrect = new rectangle();
+            var k = displaylst.findIndex(function(a){
+                return a.name == "UPLOAD"});
+            var j = _4cnvctx.display == displaylst[k];
             var a = new panel.rows([BEXTENT, 0],
                 [
                     new panel.cols([5, 
@@ -828,6 +831,7 @@ var headlst =
                         ]),
                     new panel.layers(
                         [
+                            j ? new panel.fill("rgba(0,0,0,0.5)") : 0,
                             new panel.rectangle(context.uploadrect),
                             new panel.shadow(new panel.text()),
                         ]),
@@ -3645,7 +3649,10 @@ var taplst =
         {
             var k = displaylst.findIndex(function(a){
                 return a.name == "UPLOAD"});
-            context.canvas.display = displaylst[k];
+            var j = displaylst.findIndex(function(a){
+                return a.name == "BOSS"});
+            context.canvas.display = context.canvas.display == displaylst[k] ?
+                displaylst[j] : displaylst[k];
             context.refresh();  
         }
         else if (
