@@ -1081,7 +1081,7 @@ var displaylst =
         var w = Math.min(360, rect.width - 100);
         var rows = data.length;
         var rh = 26;
-        var a = new panel.rowsA([HEADHEIGHT, 40, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
+        var a = new panel.rowsA([HEADHEIGHT, 40, 0, rows*rh, FOOTSEP, SCROLLBARWIDTH, 4],
         [
             0,
             new panel.cols([0, 180, 0],
@@ -1094,7 +1094,8 @@ var displaylst =
                         new panel.shadow(new panel.text()),
                     ]),
                     0,
-                ])
+                ]),
+            0,
             new panel.cols([0, 180, 0],
                 [
                     0,
