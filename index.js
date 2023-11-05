@@ -953,13 +953,17 @@ var displaylst =
         var data = [];
         if (global.debug)
             data.push("3-Nov-2003");
-        //data.push(buttonobj.value().toFixed(0));
+        var st = `\u{25C0}   ${buttonobj.current().toFixed(2)} of ${buttonobj.value().toFixed(0)}   \u{25B6}`;
         data.push(`\u{25C0}   ${templateobj.value()}   \u{25B6}`);
         var rows = data.length;
         var rh = 26;
-        var a = new panel.rows([80, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
+        var a = new panel.rowsA([HEADHEIGHT, 50, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
         [
-            0,//todo 
+            0,
+            new panel.layer(
+            [
+                new panel.text(),
+            ]),
             0,
             new panel.cols([0, w, 0],
                 [
@@ -970,9 +974,19 @@ var displaylst =
                 ]),
             0,
             0,
+            0,
         ]);
 
-        a.draw(context, rect, data, 0);      
+        a.draw(context, rect, 
+            [
+                0,
+                st,
+                0,
+                0,
+                data,
+                0,
+                0
+            ], 0);      
         context.restore();
     }
 },
