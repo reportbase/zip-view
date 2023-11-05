@@ -2377,9 +2377,9 @@ var wheelst =
         }
         else
         {
-            var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
-            var k = displaylst.findIndex(function(a){return a.name == j})
-            canvas.display = displaylst[k]; 
+            //var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
+            //var k = displaylst.findIndex(function(a){return a.name == j})
+            //canvas.display = displaylst[k]; 
             
             clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
@@ -2850,9 +2850,9 @@ var panlst =
         }
         else if (type == "panup" || type == "pandown")
         {
-            var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
-            var k = displaylst.findIndex(function(a){return a.name == j})
-            canvas.display = displaylst[k]; 
+            //var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
+            //var k = displaylst.findIndex(function(a){return a.name == j})
+            //canvas.display = displaylst[k]; 
             
             if (canvas.isvscrollrect)
             {
