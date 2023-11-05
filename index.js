@@ -1245,10 +1245,10 @@ var displaylst =
                                 ]),
                             0,
                         ]),
-                    new panel.rowsA([HEADHEIGHT, 40, 0, rows*rh, FOOTSEP, SCROLLBARWIDTH, 4],
+                    new panel.rowsA([HEADHEIGHT, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
                         [
                             0,
-                            new panel.cols([0,120,0],
+                            new panel.cols([0,180,0],
                                 [
                                     0,
                                     new panel.layers(
