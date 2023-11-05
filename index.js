@@ -902,6 +902,8 @@ var displaylst =
         var hollyobj = canvas.hollyobj;
         canvas.buttonrect = new rectangle();
         canvas.templaterect = new rectangle();
+        canvas.buttontoprect = new rectangle();
+        canvas.buttonbotrect = new rectangle();
         if (!headcnv.height)
             return;
         var bh = rect.height * 0.4;
@@ -959,14 +961,19 @@ var displaylst =
             0,
             new panel.layers(
             [
+                new panel.expand(new panel.rectangle(canvas.buttontoprect), 10, 10),
                 new panel.shadow(new panel.text()),
             ]),
             0,
             new panel.cols([0, w, 0],
                 [
                     0,
-                    new panel.gridA(1, rows, 1,
-                        new panel.shadow(new panel.text())),
+                    new panel.layers(
+                    [
+                        new panel.expand(new panel.rectangle(canvas.bottonbotrect), 10, 10),
+                        new panel.gridA(1, rows, 1,
+                            new panel.shadow(new panel.text())),
+                    ]),
                     0,
                 ]),
             0,
@@ -999,6 +1006,8 @@ var displaylst =
         canvas.vscrollrect = new rectangle();
         canvas.hollyrect = new rectangle();
         canvas.gorect = new rectangle();
+        canvas.gallerytoprect = new rectangle();
+        canvas.gallerybotrect = new rectangle();
         if (!headcnv.height)
             return;        
         var bh = rect.height * 0.4;
@@ -1067,6 +1076,7 @@ var displaylst =
             0,
             new panel.layers(
             [
+                new panel.expand(new panel.rectangle(canvas.buttontoprect), 10, 10),
                 new panel.shadow(new panel.text()),
             ]),
             0,
@@ -1075,7 +1085,7 @@ var displaylst =
                     0,
                     new panel.layers(
                         [
-                            new panel.rectangle(canvas.gorect),
+                            new panel.expand(new panel.rectangle(canvas.gallerybotrect), 10, 10),
                             new panel.gridA(1, rows, 1,
                                 new panel.shadow(new panel.text())),
                         ]),
@@ -3742,8 +3752,23 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
-            canvas.gorect &&
-            canvas.gorect.hitest(x, y))
+            canvas.buttontoprect &&
+            canvas.buttontoprect.hitest(x, y))
+        {
+        }
+        else if (
+            canvas.buttonbotrect &&
+            canvas.buttonbotrect.hitest(x, y))
+        {
+        }
+        else if (
+            canvas.gallerytoprect &&
+            canvas.gallerytoprect.hitest(x, y))
+        {
+        }
+        else if (
+            canvas.gallerybotrect &&
+            canvas.gallerybotrect.hitest(x, y))
         {
             var value = galleryobj.current() + 1;
             if (menuobj.value() == _8cnvctx)
