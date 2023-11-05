@@ -834,7 +834,7 @@ var headlst =
                             0,
                             new panel.layers(
                                 [
-                                    j ? 0: new panel.rounded(NUBACK, 5, "rgba(255,255,255,0.6)", 8, 8),
+                                    j ? 0: new panel.rounded(NUBACK, 5, TRANSPARENT, 8, 8),
                                     new panel.rectangle(context.uploadrect),
                                     new panel.shadow(new panel.text()),
                                 ]),
