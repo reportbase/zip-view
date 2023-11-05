@@ -6,7 +6,6 @@ https://ipfs-view.com
 
 function ios()
 {
-    return 0;//todo
     return 
     [
         'iPad Simulator',
@@ -1561,7 +1560,7 @@ panel.multitext = function(e, font=DEFAULTFONT)
         var lst = [];
         for (var n = 0; n < user.length; n++)
         {
-            var str = user[n].clean();
+            var str = user[n];
             if (!str.length)
                 continue;
             lst = lst.concat(wraptext(context, str, rect.width));
