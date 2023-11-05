@@ -892,13 +892,6 @@ var displaylst =
     }
 },
 {
-    name: "UPLOAD",
-    draw: function(context, rect, user, time)
-    {
-
-    }
-},
-{
     name: "BUTTON",
     draw: function(context, rect, user, time)
     {
@@ -960,7 +953,7 @@ var displaylst =
         var a = new panel.rowsA([HEADHEIGHT, 50, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
         [
             0,
-            new panel.layer(
+            new panel.layers(
             [
                 new panel.text(),
             ]),
