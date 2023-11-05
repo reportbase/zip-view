@@ -912,11 +912,11 @@ var displaylst =
         if (!headcnv.height)
             return;
         var j = 640;
-        if (rect.width < 720);
-            j = rect.width - 80;
+        if (rect.width < 800);
+            j = rect.width - 160;
         var k = 480;
         if (rect.height < 640)
-            k = rect.height - 80 - 80;
+            k = rect.height - 160;
         
         var a = new panel.cols([40, j, 40],
             [
