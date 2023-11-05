@@ -3668,12 +3668,16 @@ var taplst =
             stretchobj.setperc(k);
             context.refresh();
         }
-        else 
+        else if (!headcnv.height)
+        {
+            headcnv.height = HEADHEIGHT;
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        }
+        else
         {
             menuobj.setindex(_8cnvctx);
             menuobj.show();
             var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
-            headcnv.height = HEADHEIGHT;
             headham.panel = headlst[k];
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
@@ -3833,6 +3837,11 @@ var taplst =
             galleryobj.leftnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
         }
+        else if (!headcnv.height)
+        {
+            headcnv.height = HEADHEIGHT;
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        }
         else if (galleryobj.boss || canvas.shiftKey)
         {
             var visibles = canvas.visibles;
@@ -3857,7 +3866,6 @@ var taplst =
                 slice.tap = 0;
                 galleryobj.set(n);
                 var k = headlst.findIndex(function(a){return a.name == "BOSS"});
-                headcnv.height = HEADHEIGHT;
                 headham.panel = headlst[k];
                 headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
                 delete photo.image;
@@ -4127,7 +4135,7 @@ bossobj.draw = function()
     delete context.canvas.thumbrect;
     //todo delete thumbrect
 
-    if (!menuobj.value())
+    if (!menuobj.value() && headcnv.height)
         context.canvas.display.draw(context, rect, 0, 0);
 }
 
