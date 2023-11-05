@@ -956,7 +956,7 @@ var displaylst =
         data.push(`\u{25C0}   ${jp[0]} x ${jp[1]}   \u{25B6}`);
         var rows = data.length;
         var rh = 26;
-        var a = new panel.rowsA([HEADHEIGHT, 50, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
+        var a = new panel.rowsA([HEADHEIGHT, 40, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
         [
             0,
             new panel.layers(
@@ -1071,7 +1071,7 @@ var displaylst =
         var w = Math.min(360, rect.width - 100);
         var rows = data.length;
         var rh = 26;
-        var a = new panel.rowsA([HEADHEIGHT, 50, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
+        var a = new panel.rowsA([HEADHEIGHT, 40, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
         [
             0,
             new panel.layers(
@@ -1148,7 +1148,7 @@ var displaylst =
         a.draw(context, rect,
             [
                 0,
-                0,//canvas.hollyobj,
+                0,
                 0,
                 canvas.timeobj,
                 0,
@@ -1243,8 +1243,14 @@ var displaylst =
                                 ]),
                             0,
                         ]),
-                    new panel.rowsA([0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
+                    new panel.rowsA([HEADHEIGHT, 40, 0, rows*rh, FOOTSEP, SCROLLBARWIDTH, 4],
                         [
+                            0,
+                            new panel.layers(
+                            [
+                                new panel.expand(new panel.rectangle(canvas.buttontoprect), 10, 10),
+                                new panel.shadow(new panel.text()),
+                            ]),
                             0,
                             new panel.cols([0, w, 0],
                                 [
@@ -1279,6 +1285,8 @@ var displaylst =
                         0,
                     ],
                     [
+                        0,
+                        `\u{25C0}   Hello   \u{25B6}`,
                         0,
                         data,
                         0,
