@@ -31,7 +31,7 @@ const ALIEXTENT = 60;
 const BEXTENT = 80;
 const BOSSMIN = 4;
 const FOOTSEP = 20;
-const HEADHEIGHT = IFRAME ? 0 : 140;
+const HEADHEIGHT = IFRAME ? 0 : 130;
 const MAXEXTENT = 10000;
 const MAXIMAGESIZE = MAXEXTENT*MAXEXTENT;
 const SCROLLMARGIN = 8;
@@ -923,8 +923,8 @@ var displaylst =
         canvas.templaterect = new rectangle();
         if (!headcnv.height)
             return;
-        var bh = rect.height / 2;
-        var bw = rect.width / 2;
+        var bh = rect.height * 0.4;
+        var bw = rect.width * 0.4;
         var a = new panel.cols([6, SCROLLBARWIDTH, 0],
             [
                 0,
@@ -1002,8 +1002,8 @@ var displaylst =
         canvas.gorect = new rectangle();
         if (!headcnv.height)
             return;        
-        var bh = rect.height / 2;
-        var bw = rect.width / 2;
+        var bh = rect.height * 0.4;
+        var bw = rect.width * 0.4;
         var a = new panel.cols([0, SCROLLBARWIDTH, 6],
             [
                 0,
@@ -2360,8 +2360,7 @@ var wheelst =
         if (ctrl)
         {
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
-            canvas.display = displaylst[k]; 
-            
+            canvas.display = displaylst[k];         
             var j = buttonobj.length()/100;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
@@ -2378,13 +2377,9 @@ var wheelst =
         }
         else
         {
-            if (x < window.innerWidth*0.20 ||
-                x > window.innerWidth*0.80)
-            {
-                var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
-                var k = displaylst.findIndex(function(a){return a.name == j})
-                canvas.display = displaylst[k]; 
-            }
+            var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
+            var k = displaylst.findIndex(function(a){return a.name == j})
+            canvas.display = displaylst[k]; 
             
             clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
@@ -4887,7 +4882,7 @@ var eventlst =
     buttonheight: 320,
     buttonmargin: 10,
     hollyinit: 0.5,
-    width: SAFARI ? 720 : 5160
+    width: 5160
 },
 { //9 help
     hideontap: 1,
