@@ -966,6 +966,7 @@ var displaylst =
         var data = [];
         if (global.debug)
             data.push("3-Nov-2003");
+        data.push(buttonobj.value().toFixed(0));
         data.push(`\u{25C0}   ${templateobj.value()}   \u{25B6}`);
         var rows = data.length;
         var rh = 26;
@@ -1052,7 +1053,6 @@ var displaylst =
         if (global.debug)
         {
             data.push(`${galleryobj.width}x${galleryobj.height}`);
-            data.push(buttonobj.value().toFixed(2));
             var j = 100 * _8cnv.hollyobj.berp();
             data.push(`${j.toFixed(2)}%`);
             data.push(galleryobj.data[k].id);
@@ -2850,13 +2850,9 @@ var panlst =
         }
         else if (type == "panup" || type == "pandown")
         {
-            if (x < window.innerWidth*0.20 ||
-                x > window.innerWidth*0.80)
-            {
-                var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
-                var k = displaylst.findIndex(function(a){return a.name == j})
-                canvas.display = displaylst[k]; 
-            }
+            var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
+            var k = displaylst.findIndex(function(a){return a.name == j})
+            canvas.display = displaylst[k]; 
             
             if (canvas.isvscrollrect)
             {
