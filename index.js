@@ -2364,9 +2364,11 @@ var wheelst =
         }
         else
         {
-            //var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
-            //var k = displaylst.findIndex(function(a){return a.name == j})
-            //canvas.display = displaylst[k]; 
+            if (delta > 120)
+            {
+                var k = displaylst.findIndex(function(a){return a.name == "GALLERY"})
+                canvas.display = displaylst[k]; 
+            }
             
             clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
@@ -2837,10 +2839,6 @@ var panlst =
         }
         else if (type == "panup" || type == "pandown")
         {
-            //var j = x<window.innerWidth/2?"BUTTON":"GALLERY";
-            //var k = displaylst.findIndex(function(a){return a.name == j})
-            //canvas.display = displaylst[k]; 
-            
             if (canvas.isvscrollrect)
             {
                 var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
@@ -3207,6 +3205,9 @@ var swipelst = [
     },
     swipeupdown: function(context, rect, x, y, evt)
     {
+        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"})
+        canvas.display = displaylst[k]; 
+        
         var k = evt.type == "swipeup" ? 1 : -1;
         menuobj.updown(context, k * context.canvas.speed);
         if (!global.swipetimeout)
