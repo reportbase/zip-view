@@ -1173,7 +1173,7 @@ var displaylst =
                 !photo.image.naturalHeight)
                 return;
 
-            var w = Math.min(360, r.width - 100);
+            var w = Math.min(320, r.width - 100);
             var j = window.innerWidth - r.width >= 180;
 
             var data = [];
@@ -1321,34 +1321,16 @@ var displaylst =
             context.save();
             context.shadowOffsetX = 0;
             context.shadowOffsetY = 0;
-            if (1)//!galleryobj.notransparent)
-            {
-                var blackfill = new panel.fill(THUMBTRANSPARENT);
-                blackfill.draw(context, canvas.thumbrect, 0, 0);
-            }
-            else
-            {
-                if (!canvas.thumbcanvas)
-                {
-                    canvas.thumbcanvas = document.createElement('canvas');
-                    canvas.thumbcanvas.width = w;
-                    canvas.thumbcanvas.height = h;
-                    var thumbcontext = canvas.thumbcanvas.getContext('2d');
-                    thumbcontext.drawImage(photo.image, 0, 0, w, h);
-                }
-
-                context.drawImage(canvas.thumbcanvas, x, y, w, h);
-            }
-
+            var blackfill = new panel.fill(THUMBTRANSPARENT);
+            blackfill.draw(context, canvas.thumbrect, 0, 0);
+        
             var whitestroke = new panel.stroke(THUMBSTROKE, THUMBORDER);
             whitestroke.draw(context, r, 0, 0);
             var region = new Path2D();
             region.rect(x, y, w, h);
             context.clip(region);
 
-            var ww = Math.max(ALIEXTENT, (rect.width / canvas.virtualwidth) * w);
-            if (ww > 640)
-                ww = 640;
+            var ww = Math.max(30, (rect.width / canvas.virtualwidth) * w);
             var stretch = stretchobj.value();
             if (stretch < 50)
                 stretch = (50 - stretchobj.value()) / 100;
@@ -2010,7 +1992,6 @@ CanvasRenderingContext2D.prototype.movepage = function(j)
     _4cnvctx.refresh();
     _8cnvctx.refresh();
     headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-    delete _4cnv.thumbcanvas;
     delete photo.image;
     contextobj.reset();
 }
@@ -2502,7 +2483,6 @@ var wheelst =
                 context.canvas.thumbrect.hitest(x, y);
             if (isthumb)
             {
-                delete context.canvas.thumbcanvas;
                 heightobj.addperc(type == "wheelup" ? 0.02 : -0.02);
                 bossobj.draw();
             }
@@ -3838,7 +3818,6 @@ var taplst =
             var k = headlst.findIndex(function(a){return a.name == "BOSS"});
             headham.panel = headlst[k];
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-            delete _4cnv.thumbcanvas;
             delete photo.image;
             menuobj.hide();
             _4cnv.height = window.innerHeight;
@@ -3910,7 +3889,6 @@ var taplst =
                 var k = headlst.findIndex(function(a){return a.name == "BOSS"});
                 headham.panel = headlst[k];
                 headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-                delete _4cnv.thumbcanvas;
                 delete photo.image;
                 menuobj.hide();
                 contextobj.reset();
@@ -5830,7 +5808,6 @@ function rotate(pointX, pointY, originX, originY, angle)
 
 function resize()
 {
-    delete _4cnv.thumbcanvas;
     buttonobj.reset()
     contextobj.reset();
     _4cnvctx.refresh();
@@ -6099,7 +6076,6 @@ galleryobj.init = function(obj)
             galleryobj.data.push(Object.assign({}, galleryobj.data[0]));
     }
 
-    delete _4cnv.thumbcanvas;
     delete photo.image;
 
     if (galleryobj.template)
@@ -6732,7 +6708,6 @@ function goimage(image)
     image = util.clamp(1, galleryobj.length(), image);
     gotoimage(image - 1);
     galleryobj.set(image-1);
-    delete _4cnv.thumbcanvas;
     delete photo.image;
     contextobj.reset();
 }
