@@ -576,7 +576,7 @@ var footlst =
         var k = galleryobj.title?galleryobj.title:"Images";
         a.draw(context, rect, 
                [
-                   `\u{25C0} ${k}`,
+                   `\u{25C0}  ${k}`,
                    0,
                    [
                        "Folders",
@@ -605,7 +605,7 @@ var footlst =
                 0
             ]);
         
-        a.draw(context, rect, `\u{25C0} Debug`, 0);
+        a.draw(context, rect, `\u{25C0}  Debug`, 0);
         context.restore();
     }
 },
@@ -654,7 +654,7 @@ var footlst =
         
         a.draw(context, rect, 
                [
-                   `\u{25C0} Galleries`,
+                   `\u{25C0}  Galleries`,
                    0,
                    [
                        `New`,
@@ -684,7 +684,7 @@ var footlst =
                 0
             ]);
         
-        a.draw(context, rect, `\u{25C0} Help`, 0);
+        a.draw(context, rect, `\u{25C0}  Help`, 0);
         context.restore();
     }
 },
@@ -727,7 +727,7 @@ var footlst =
         
         a.draw(context, rect, 
                [
-                   `\u{25C0} Account`,
+                   `\u{25C0}  Account`,
                    0,
                    [
                        "Login",
@@ -777,7 +777,7 @@ var footlst =
         
         a.draw(context, rect, 
                [
-                   `\u{25C0} ${url.host}`,
+                   `\u{25C0}  ${url.host}`,
                    0,
                    [
                        "Open \u{25B6}",
@@ -843,7 +843,7 @@ var headlst =
                         ])
                 ]);
 
-            a.draw(context, rect, "\u{25C0} Description \u{25B6}", 0);
+            a.draw(context, rect, "\u{25C0}   Description   \u{25B6}", 0);
             context.restore();        
     }
 },
@@ -889,7 +889,7 @@ var headlst =
                         ]): 0,
                 ]);
             
-            a.draw(context, rect, "\u{25C0} Open \u{25B6}", 0);
+            a.draw(context, rect, "\u{25C0}   Open   \u{25B6}", 0);
             context.restore();        
     }
 }
@@ -989,7 +989,7 @@ var displaylst =
         var data = [];
         if (global.debug)
             data.push("3-Nov-2003");
-        data.push(`\u{25C0} ${templateobj.value()} \u{25B6}`);
+        data.push(`\u{25C0}   ${templateobj.value()}   \u{25B6}`);
         var rows = data.length;
         var rh = 26;
         var a = new panel.rows([80, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
@@ -1071,7 +1071,7 @@ var displaylst =
         var value = galleryobj.data[k];
         if (value && value.folder)
             data = value.folder.split("/");
-        data.push(`\u{25C0} ${index.toFixed(2)} of ${galleryobj.length()} \u{25B6}`);
+        data.push(`\u{25C0}   ${index.toFixed(2)} of ${galleryobj.length()}   \u{25B6}`);
         if (global.debug)
         {
             data.push(`${galleryobj.width}x${galleryobj.height}`);
@@ -6408,7 +6408,7 @@ galleryobj.init = function(obj)
 
     _7cnv.sliceobj.data = [
     {
-        title: `Login \u{25B6}`,
+        title: `Login  \u{25B6}`,
         func: function()
         {
             if (!gotodialog(local.email ? local.email : "", "Login", gologin))
@@ -6418,7 +6418,7 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: `Signup \u{25B6}`,
+        title: `Signup  \u{25B6}`,
         func: function()
         {
             if (!gotodialog(local.email ? local.email : "", "Login", gologin))
@@ -6428,7 +6428,7 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: `Open \u{25B6}\n*.zip, *.cbz, *.json,\n*.png, *.jpg, *.avif,\n*.webp, *.gif`,
+        title: `Open  \u{25B6}\n*.zip, *.cbz, *.json,\n*.png, *.jpg, *.avif,\n*.webp, *.gif`,
         func: function()
         {
             importdialog();
@@ -6472,7 +6472,7 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: `Account \u{25B6}`,
+        title: `Account  \u{25B6}`,
         func: function()
         {
             menuobj.hide();
@@ -6489,7 +6489,7 @@ galleryobj.init = function(obj)
     {
         _7cnv.sliceobj.data.push(
         {
-            title: "Debug \u{25B6}",
+            title: "Debug  \u{25B6}",
             func: function()
             {
                 menuobj.hide();
