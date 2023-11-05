@@ -912,8 +912,8 @@ var displaylst =
         if (!headcnv.height)
             return;
         var j = 640;
-        if (rect.width < 800);
-            j = rect.width - 160;
+        if (rect.width < 720);
+            j = rect.width - 80;
         var k = 480;
         if (rect.height < 640)
             k = rect.height - 160;
