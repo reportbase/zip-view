@@ -810,7 +810,7 @@ var headlst =
             context.uploadrect = new rectangle();
             var k = displaylst.findIndex(function(a){
                 return a.name == "UPLOAD"});
-            var j = _4cnvctx.display == displaylst[k];
+            var j = _4cnv.display == displaylst[k];
             var a = new panel.rows([BEXTENT, 0],
                 [
                     new panel.cols([5, 
@@ -915,7 +915,7 @@ var displaylst =
                 new panel.rows([k, 0, k],
                 [
                     0,
-                    new panel.rounded(NUBACK, 5, "white", 8, 8),
+                    new panel.rounded(NUBACK, 5, "rgba(255,255,255,0.6)", 8, 8),
                     0,
                 ]),
                 0,
