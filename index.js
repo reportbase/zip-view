@@ -576,7 +576,7 @@ var footlst =
         var k = galleryobj.title?galleryobj.title:"Images";
         a.draw(context, rect, 
                [
-                   `\u{25C0}  ${k}`,
+                   `\u{25C0}   ${k}`,
                    0,
                    [
                        "Folders",
@@ -605,7 +605,7 @@ var footlst =
                 0
             ]);
         
-        a.draw(context, rect, `\u{25C0}  Debug`, 0);
+        a.draw(context, rect, `\u{25C0}   Debug`, 0);
         context.restore();
     }
 },
@@ -654,7 +654,7 @@ var footlst =
         
         a.draw(context, rect, 
                [
-                   `\u{25C0}  Galleries`,
+                   `\u{25C0}   Galleries`,
                    0,
                    [
                        `New`,
@@ -684,7 +684,7 @@ var footlst =
                 0
             ]);
         
-        a.draw(context, rect, `\u{25C0}  Help`, 0);
+        a.draw(context, rect, `\u{25C0}   Help`, 0);
         context.restore();
     }
 },
@@ -727,11 +727,11 @@ var footlst =
         
         a.draw(context, rect, 
                [
-                   `\u{25C0}  Account`,
+                   `\u{25C0}   Account`,
                    0,
                    [
                        "Login",
-                       "Secret  \u{25B6}",
+                       "Secret   \u{25B6}",
                    ], 
                 ], 0);
         
@@ -777,10 +777,10 @@ var footlst =
         
         a.draw(context, rect, 
                [
-                   `\u{25C0}  ${url.host}`,
+                   `\u{25C0}   ${url.host}`,
                    0,
                    [
-                       "Open  \u{25B6}",
+                       "Open   \u{25B6}",
                        "Login"
                    ],
                 ],
@@ -909,29 +909,7 @@ var displaylst =
     name: "UPLOAD",
     draw: function(context, rect, user, time)
     {
-        context.save();
-        if (!headcnv.height)
-            return;
-        var j = 360;
-        if (rect.width < 440)
-            j = rect.width - 80;
-        var k = 360;
-        if (rect.height < 520)
-            k = rect.height - 160;
-        
-        var a = new panel.cols([0, j, 0],
-            [
-                0,
-                new panel.rows([80, k, 0],
-                [
-                    0,
-                    new panel.rounded(NUBACK, 5, "rgba(255,255,255,0.6)", 8, 8),
-                    0,
-                ]),
-                0,
-            ]);
-        a.draw(context, rect, 0, 0);
-        context.restore(); 
+
     }
 },
 {
@@ -1182,7 +1160,8 @@ var displaylst =
             var value = galleryobj.data[index];
             if (value && value.folder)
                 data = value.folder.split("/");
-            data.push(`${index+1} of ${galleryobj.length()}`);
+        
+            data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
             if (global.debug)
             {
                 data.push(_4cnv.timeobj.current().toFixed(5));
@@ -6408,7 +6387,7 @@ galleryobj.init = function(obj)
 
     _7cnv.sliceobj.data = [
     {
-        title: `Login  \u{25B6}`,
+        title: `Login   \u{25B6}`,
         func: function()
         {
             if (!gotodialog(local.email ? local.email : "", "Login", gologin))
@@ -6418,7 +6397,7 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: `Signup  \u{25B6}`,
+        title: `Signup   \u{25B6}`,
         func: function()
         {
             if (!gotodialog(local.email ? local.email : "", "Login", gologin))
@@ -6428,7 +6407,7 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: `Open  \u{25B6}\n*.zip, *.cbz, *.json,\n*.png, *.jpg, *.avif,\n*.webp, *.gif`,
+        title: `Open   \u{25B6}\n*.zip, *.cbz, *.json,\n*.png, *.jpg, *.avif,\n*.webp, *.gif`,
         func: function()
         {
             importdialog();
@@ -6472,7 +6451,7 @@ galleryobj.init = function(obj)
         }
     },
     {
-        title: `Account  \u{25B6}`,
+        title: `Account   \u{25B6}`,
         func: function()
         {
             menuobj.hide();
@@ -6489,7 +6468,7 @@ galleryobj.init = function(obj)
     {
         _7cnv.sliceobj.data.push(
         {
-            title: "Debug  \u{25B6}",
+            title: "Debug   \u{25B6}",
             func: function()
             {
                 menuobj.hide();
@@ -6536,7 +6515,7 @@ galleryobj.init = function(obj)
             _2cnv.sliceobj.data = results
             _7cnv.sliceobj.data.push(
             {
-                title: `Galleries  \u{25B6}`,
+                title: `Galleries   \u{25B6}`,
                 func: function(n, x, y)
                 {
                     menuobj.hide();
@@ -6560,7 +6539,7 @@ galleryobj.init = function(obj)
     {
         _7cnv.sliceobj.data.push(
         {
-            title: `Help \u{25B6}`,
+            title: `Help   \u{25B6}`,
             func: function()
             {
                 menuobj.hide();
