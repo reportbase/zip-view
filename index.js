@@ -947,9 +947,9 @@ var displaylst =
         var data = [];
         if (global.debug)
             data.push("3-Nov-2003");
-        var h = buttonobj.length();
-        var w = h * (galleryobj.width/galleryobj.height);
-        var st = `\u{25C0}   ${w.toFixed(0)} x ${h.toFixed(0)}   \u{25B6}`;
+        var hh = buttonobj.value();
+        var ww = h * (galleryobj.width/galleryobj.height);
+        var st = `\u{25C0}   ${ww.toFixed(0)} x ${hh.toFixed(0)}   \u{25B6}`;
         data.push(`\u{25C0}   ${templateobj.value()}   \u{25B6}`);
         var rows = data.length;
         var rh = 26;
