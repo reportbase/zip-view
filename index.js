@@ -946,7 +946,7 @@ var displaylst =
         var data = [];
         if (global.debug)
             data.push("3-Nov-2003");
-        var st = `\u{25C0}   ${buttonobj.current().toFixed(2)} of ${buttonobj.length().toFixed(0)}   \u{25B6}`;
+        var st = `\u{25C0}   ${buttonobj.current()+1} of ${buttonobj.length()}   \u{25B6}`;
         data.push(`\u{25C0}   ${templateobj.value()}   \u{25B6}`);
         var rows = data.length;
         var rh = 26;
@@ -975,8 +975,8 @@ var displaylst =
                 0,
                 st,
                 0,
-                0,
                 data,
+                0,
                 0,
                 0
             ], 0);      
@@ -2373,7 +2373,8 @@ var wheelst =
         {
             if (delta > 120)
             {
-                var k = displaylst.findIndex(function(a){return a.name == "GALLERY"})
+                var k = displaylst.findIndex(function(a){return a.name == 
+                    (delta < 0 ? "GALLERY" : "BUTTON")})
                 canvas.display = displaylst[k]; 
             }
             
@@ -3212,7 +3213,8 @@ var swipelst = [
     },
     swipeupdown: function(context, rect, x, y, evt)
     {
-        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"})
+        var k = displaylst.findIndex(function(a){return a.name == 
+            (evt.type == "swipeup" ? "GALLERY" : "BUTTON")})
         canvas.display = displaylst[k]; 
         
         var k = evt.type == "swipeup" ? 1 : -1;
