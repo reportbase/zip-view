@@ -2443,7 +2443,7 @@ var wheelst =
         if (ctrl)
         {
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
-            canvas.display = displaylst[k];         
+            displayobj.set(k);
             var j = buttonobj.length()/100;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
@@ -3768,7 +3768,6 @@ var taplst =
         global.timeauto = 0;
         var obj = canvas.hollyobj;
         context.refresh();
-        var button = displaylst.findIndex(function(a){return a.name == "BUTTON"})
         
         if (headcnvctx.leftmenurect && headcnvctx.leftmenurect.hitest(x, y))
         {
@@ -3941,10 +3940,11 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             menuobj.draw();
         }
-        else if (context.canvas.display == displaylst[button])
+        else if (displayobj.current() == 
+                 displaylst.findIndex(function(a){return a.name == "BUTTON"}))
         {
             var k = displaylst.findIndex(function(a){return a.name == "GALLERY"})
-            context.canvas.display = displaylst[k]; 
+            displayobj.set(k); 
             menuobj.draw();
         }
         else if (galleryobj.boss || canvas.shiftKey)
@@ -4637,6 +4637,10 @@ menuobj.show = function()
     var canvas = context.canvas;
     _4cnv.height = 0;
     delete photo.image
+
+    var k = displaylst.findIndex(function(a){return a.name == context.display});
+    displayobj.set(k);
+    
     canvas.hollyobj.set(canvas.hollyinit*window.innerHeight);
     if (canvas.width_ > window.innerWidth)
     {
@@ -4810,7 +4814,7 @@ menuobj.draw = function()
         }
     }
 
-    context.canvas.display.draw(context, rect, 0, 0);
+    displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
 }
 
@@ -5205,12 +5209,10 @@ contextlst.forEach(function(context, n)
     canvas.footer = obj.footer;
     canvas.buttonheight = obj.buttonheight;
     canvas.buttonmargin = obj.buttonmargin;
+    canvas.display = obj.display;
     
     canvas.hollyinit = obj.hollyinit;
     canvas.hollyobj.set(canvas.hollyinit*window.innerHeight);
-
-    var k = displaylst.findIndex(function(a){return a.name == obj.display});
-    canvas.display = displaylst[k];
 
     var k = footlst.findIndex(function(a){return a.name == obj.footer});
     canvas.footer = footlst[k];
