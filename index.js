@@ -6079,10 +6079,11 @@ function resetfitted()
 {
     thumbfittedlst = [];
     thumbimglst = [];
+    var j = galleryobj.length();
     var k = buttonobj.value();
-    if (!k)
-        return;
-    var size = Math.max(4,Math.floor(galleryobj.length()/k));
+    var size = 4;
+    if (j && k)
+        size = Math.floor(j/k));
     for (var n = 0; n < size; ++n)
     {
         thumbfittedlst[n] = document.createElement("canvas");
