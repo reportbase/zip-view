@@ -58,7 +58,7 @@ const LARGEFONT = "19px archivo black";
 const HUGEFONT = "22px archivo black";
 const SLICEWIDTH = 36;
 const ZOOMAX = 92;
-const IMAGELSTSIZE = 12;
+const IMAGELSTSIZE = 16;
 const BOSS = 0;
 const GALLERY = 1;
 const MENU = 2;
@@ -2066,7 +2066,6 @@ CanvasRenderingContext2D.prototype.savetime = function()
                 {
                     k = k.toFixed(4)
                     url.searchParams.set('_8', k);
-                    window.history.replaceState("", url.origin, url);
                 }
             }
       }, 1000)
@@ -2469,7 +2468,6 @@ var wheelst =
                 {
                     thumbfittedlst[n] = document.createElement("canvas");
                     thumbimglst[n] = new Image();
-                    thumbviewlst[n] = -1;
                 }                
     
                 templateobj.add(j);
@@ -2901,7 +2899,6 @@ var panlst =
                 {
                     thumbfittedlst[n] = document.createElement("canvas");
                     thumbimglst[n] = new Image();
-                    thumbviewlst[n] = -1;
                 }                
           
                 var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
@@ -3840,7 +3837,6 @@ var taplst =
             {
                 thumbfittedlst[n] = document.createElement("canvas");
                 thumbimglst[n] = new Image();
-                thumbviewlst[n] = -1;
             }      
             
             var k = (x - context.template2rect.x) / context.template2rect.width;
@@ -3919,7 +3915,6 @@ var taplst =
             {
                 thumbfittedlst[n] = document.createElement("canvas");
                 thumbimglst[n] = new Image();
-                thumbviewlst[n] = -1;
             }                
            
             var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
@@ -4496,8 +4491,7 @@ var buttonlst = [
         var view = Math.floor(time / IMAGELSTSIZE);
         var thumbimg = thumbimglst[index];
         var thumbfitted = thumbfittedlst[index];
-        var thumbview = thumbviewlst[index];
-        
+
         if (thumbimg && thumbimg.width)
         {
             var obj = _8cnv.hollyobj;
@@ -4521,12 +4515,13 @@ var buttonlst = [
                     hhh = window.innerHeight - user.rect.y;
             }
 
-            thumbviewlst[index] = view;
+            if (thumbfitted.view != view)
+                thumbfitted.view = view;
 
             if (b > b2)
             {
                 if (thumbfitted.height != hh ||
-                    thumbfitted.count < 1)
+                    thumbimg.count < 1)
                 {
                     var thumbfittedctx = thumbfitted.getContext("2d");
                     thumbfitted.height = hh;
@@ -4534,7 +4529,7 @@ var buttonlst = [
                     thumbfittedctx.drawImage(
                         thumbimg, 0, 0, thumbimg.width, thumbimg.height,
                         0, 0, thumbfitted.width, thumbfitted.height);
-                    thumbfitted.count = 1;
+                    thumbimg.count = 1;
                 }
 
                 var x = Math.nub(obj.value(), obj.length(),
@@ -4546,7 +4541,7 @@ var buttonlst = [
             else
             {
                 if (thumbfitted.width != ww ||
-                    thumbfitted.count < 1)
+                    thumbimg.count < 1)
                 {
                     var thumbfittedctx = thumbfitted.getContext("2d");
                     thumbfitted.width = ww
@@ -4554,7 +4549,7 @@ var buttonlst = [
                     thumbfittedctx.drawImage(
                         thumbimg, 0, 0, thumbimg.width, thumbimg.height,
                         0, 0, thumbfitted.width, thumbfitted.height);
-                    thumbfitted.count = 1;
+                    thumbimg.count = 1;
                 }
 
                 var y = Math.nub(obj.value(), obj.length(),
@@ -4562,8 +4557,6 @@ var buttonlst = [
                 context.drawImage(thumbfitted,
                     0, Math.floor(y) + yyy, ww, hhh,
                     0, yyy, ww, hhh);
-
-                delete thumbimglst[index];
             }
 
             if (user.tap)
@@ -4625,7 +4618,6 @@ menuobj.hide = function()
     {
         thumbfittedlst[n] = document.createElement("canvas");
         thumbimglst[n] = new Image();
-        thumbviewlst[n] = -1;
     }                
 
     context.hide();
@@ -4755,11 +4747,11 @@ menuobj.draw = function()
         var view = Math.floor(n / IMAGELSTSIZE);
         var thumbimg = thumbimglst[index];
         var thumbfitted = thumbfittedlst[index];
-        if (context == _8cnvctx && thumbviewlst[index] != view)
+        if (context == _8cnvctx && thumbimg.view != view)
         {
             try
             {
-                thumbviewlst[index] = view;
+                thumbimg.view = view;
                 thumbimg.src = imagepath(slice);
                 thumbimg.onload = function()
                 {
@@ -6070,7 +6062,6 @@ function wraptext(ctx, text, maxWidth)
 
 let thumbfittedlst = [];
 let thumbimglst = [];
-let thumbviewlst = [];
 
 function imagepath(user)
 {
@@ -6191,7 +6182,6 @@ galleryobj.init = function(obj)
     {
         thumbfittedlst[n] = document.createElement("canvas");
         thumbimglst[n] = new Image();
-        thumbviewlst[n] = -1;
     }
 
     setfavicon();
