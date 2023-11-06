@@ -1137,6 +1137,31 @@ var bossdisplaylst =
         a.draw(context, rect, data, 0)
     }
 },
+{
+    name: "DESCRIBE",
+    title: "Description",
+    draw: function(context, rect, user, time)
+    {
+        //edit button
+    }
+},
+{
+    name: "DETAILS",
+    title: "Details",
+    draw: function(context, rect, user, time)
+    {
+        //not editable
+    }
+},
+{
+    name: "ACTIONS",
+    title: "Actions",
+    draw: function(context, rect, user, time)
+    {
+        //not editable
+    }
+},
+    
 ];
 
 var bossdisplayobj = new circular_array("", bossdisplaylst);
@@ -6565,6 +6590,12 @@ galleryobj.init = function(obj)
         {
             buttonobj.fit();
             return true;
+        }
+    },
+    {
+        title: `Images   \u{25B6}`,
+        func: function()
+        {
         }
     },
     {
