@@ -1121,7 +1121,6 @@ var bossdisplaylst =
         data.push(`${galleryobj.width}x${galleryobj.height}`);
         var j = 100 * _8cnv.hollyobj.berp();
         data.push(`${j.toFixed(2)}%`);
-        data.push(galleryobj.data[k].id);
         data.push(_8cnv.timeobj.current().toFixed(5));
 
         var a = new panel.rows([80,40,0,data.length*25,0,80],
