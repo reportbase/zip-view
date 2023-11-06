@@ -1096,7 +1096,7 @@ var bossdisplaylst =
 {
     name: "BOSS",
     title: "Debug",
-    draw: function(context, r, user, time)
+    draw: function(context, rect, user, time)
     {
         var canvas = context.canvas
         var data = [];
