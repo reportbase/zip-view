@@ -905,7 +905,7 @@ var displaylst =
         canvas.buttonrect = new rectangle();
         canvas.templaterect = new rectangle();
         context.button2rect = new rectangle();
-        context.buttonbotrect = new rectangle();
+        context.template2rect = new rectangle();
         if (!headcnv.height)
             return;
         var bh = rect.height * 0.4;
@@ -3820,11 +3820,18 @@ var taplst =
             menuobj.draw();
         }
         else if (
-            context.buttonbotrect &&
-            context.buttonbotrect.hitest(x, y))
+            context.template2rect &&
+            context.template2rect.hitest(x, y))
         {
-            var k = (x - context.buttonbotrect.x) / context.buttonbotrect.width;
-            console.log(k);
+             for (var n = 0; n < IMAGELSTSIZE; ++n)
+            {
+                thumbfittedlst[n] = document.createElement("canvas");
+                thumbimglst[n] = new Image();
+            }      
+            
+            var k = (x - context.template2rect.x) / context.template2rect.width;
+            templateobj.add(k < 0.5 ? -1 : 1);
+            menuobj.draw();            
         }
         else if (
             context.time2rect &&
