@@ -882,21 +882,244 @@ var headobj = new circular_array("HEAD", headlst);
 var bossdisplaylst =
 [
 {
-    id: "BOSS",
-    title: "Thumnail",
+    name: "BOSS",
+    title: "Thumbnails",
+    draw: function(context, r, user, time)
+    {
+            var canvas = context.canvas;
+            context.extentrect = new rectangle();
+            context.zoomrect = new rectangle();
+            context.stretchrect = new rectangle();
+            context.timerect = new rectangle();
+            context.slicewidthrect = new rectangle();
+            context.heightrect = new rectangle();
+            context.bossdisplayrect = new rectangle();
+            context.pagerect = new rectangle();
+            
+            if (
+                !photo.image ||
+                !photo.image.complete ||
+                !photo.image.naturalHeight)
+                return;
+
+            var w = Math.min(320, r.width - 100);
+            var j = window.innerWidth - r.width >= 180;
+
+            var data = [];
+            var index = galleryobj.current();
+            var value = galleryobj.data[index];
+            if (value && value.folder)
+                data = value.folder.split("/");
+        
+            data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
+            if (global.debug)
+            {
+                data.push(_4cnv.timeobj.current().toFixed(5));
+                var e = 100 * (1 - _4cnv.timeobj.berp());
+                var j = 100 * rowobj.berp();
+                data.push(`${e.toFixed(2)}%, ${j.toFixed(2)}%`);
+                if (galleryobj.value().id)
+                    data.push(galleryobj.value().id);
+                data.push(`${window.innerWidth} x ${window.innerHeight}`);
+                data.push(`${canvas.virtualwidth.toFixed(0)} x ${window.innerHeight}`);
+                var aspect = photo.image.width / photo.image.height;
+                data.push(aspect.toFixed(2));
+                var j = Number(zoomobj.value());
+                data.push(`${j.toFixed(2)}%`);
+                var mp = (canvas.virtualwidth * window.innerHeight)/1000000;
+                data.push(`${mp.toFixed(2)} MP`);
+                var mp = (photo.image.width * photo.image.height) / 1000000;
+                data.push(`${mp.toFixed(2)} MP`);
+                var extent = `${photo.image.width}x${photo.image.height}`;
+                data.push(extent);
+            }
+            
+            var rows = data.length;
+            var rh = 26;
+            var bh = rect.height * 0.4;
+            var cw = rect.width - 30;
+            var a = new panel.layerA(
+                [
+                    new panel.colsA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
+                        [
+                            0,
+                            new panel.rows([0, bh, 0],
+                                [
+                                    0,
+                                    new panel.layers(
+                                        [
+                                            new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                            new panel.expand(new panel.rectangle(context.zoomrect), 10, 1),
+                                            new panel.shrink(new panel.currentV(new panel.rounded("white", 
+                                                    0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
+                                        ]),
+                                    0,
+                                ]),
+                            0,
+                            new panel.rows([0, bh, 0],
+                                [
+                                    0,
+                                    new panel.layers(
+                                        [
+                                            new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                            new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
+                                            new panel.shrink(new panel.currentV(new panel.rounded("white", 0, 
+                                                    TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
+                                        ]),
+                                    0,
+                                ]),
+                            0,
+                        ]),
+                    new panel.rowsA([HEADHEIGHT, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
+                        [
+                            0,
+                            new panel.cols([0,RAINSTEP,0],
+                                [
+                                    0,
+                                    new panel.layers(
+                                    [
+                                        new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
+                                        new panel.shadow(new panel.text()),
+                                    ]),
+                                    0,
+                                ]),
+                            0,
+                            new panel.cols([0, RAINSTEP, 0],
+                                [
+                                    0,
+                                    new panel.layers(
+                                    [
+                                        new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
+                                        new panel.gridA(1, rows, 1,
+                                            new panel.shadow(new panel.text())),
+                                    ]),
+                                    0,
+                                ]),
+                            0,
+                            new panel.cols([0, cw, 0],
+                                [
+                                    0,
+                                    1 ? 0 : new panel.layers(
+                                        [
+                                            new panel.expand(new panel.rectangle(context.heightrect), 0, 10),
+                                            new panel.currentH(new panel.fill(NUBAR), bh / 5, 1),
+                                        ]),
+                                    0,
+                                ]),
+                            0,
+                        ])
+                ]);
+        
+            if (headcnv.height)
+            a.draw(context, rect,
+                [
+                    [
+                        0,
+                        zoomobj,
+                        0,
+                        stretchobj,
+                        0,
+                    ],
+                    [
+                        0,
+                        `\u{25C0}   Thumbnails   \u{25B6}`,
+                        0,
+                        data,
+                        0,
+                        heightobj,
+                        0,
+                    ]
+                ]);
+
+            var bw = rect.width / 2;
+            var a = new panel.rows([0, SCROLLBARWIDTH, 4],
+                [
+                    0,
+                    new panel.cols([0, bw, 0],
+                        [
+                            0,
+                            new panel.layers(
+                                [
+                                    new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                    new panel.expand(new panel.rectangle(context.timerect), 0, 10),
+                                    new panel.shrink(new panel.currentH(
+                                        new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3)
+                                ]),
+                            0,
+                        ])
+                ])
+
+            if (headcnv.height)
+                a.draw(context, rect, context.canvas.timeobj, 0);
+
+            var he = heightobj;
+            var b = Math.berp(0, he.length() - 1, he.current());
+            var height = Math.lerp(90, rect.height - 180, b);
+            if (height > 320)
+                height = 320;
+            var width = Math.lerp(90, rect.width - 80, b);
+            var r = calculateAspectRatioFit(photo.image.width, photo.image.height, width, height);
+            var h = r.height;
+            var w = r.width;
+            var x = Math.floor(Math.nub(positxobj.value(), positxobj.length(), w, rect.width));
+            var y = Math.floor(Math.nub(posityobj.value(), posityobj.length(), h, rect.height));
+            canvas.thumbrect = new rectangle(x, y, w, h);
+            if (!headcnv.height)
+                return;
+            var r = canvas.thumbrect;
+            context.save();
+            context.shadowOffsetX = 0;
+            context.shadowOffsetY = 0;
+            var blackfill = new panel.fill(THUMBTRANSPARENT);
+            blackfill.draw(context, canvas.thumbrect, 0, 0);
+        
+            var whitestroke = new panel.stroke(THUMBSTROKE, THUMBORDER);
+            whitestroke.draw(context, r, 0, 0);
+            var region = new Path2D();
+            region.rect(x, y, w, h);
+            context.clip(region);
+
+            var ww = Math.max(30, (rect.width / canvas.virtualwidth) * w);
+            var stretch = stretchobj.value();
+            if (stretch < 50)
+                stretch = (50 - stretchobj.value()) / 100;
+            else
+                stretch = (stretchobj.value() - 50) / 100;
+            stretch = 1 - stretch;
+            ww *= stretch;
+
+            var b = Math.berp(0, photo.image.height, canvas.imageheight);
+            var hh = Math.lerp(0, h, b);
+            var b = Math.berp(0, photo.image.height, _4cnv.nuby);
+            var yy = y + Math.lerp(0, h, b);
+            var jj = canvas.timeobj.berp();
+            var bb = w * (1 - jj);
+            var xx = x + bb - ww / 2;
+            context.lineWidth = THUMBORDER;
+            var r = new rectangle(xx, yy, ww, hh);
+            canvas.selectrect = []
+            canvas.selectrect.push(r);
+            var blackfill = new panel.fill(THUMBFILL);
+            blackfill.draw(context, r, 0, 0);
+            whitestroke.draw(context, r, 0, 0);
+            if (xx > x) //leftside
+            {
+                var r = new rectangle(xx - w, yy, ww, hh);
+                canvas.selectrect.push(r);
+                blackfill.draw(context, r, 0, 0);
+                whitestroke.draw(context, r, 0, 0);
+            }
+            else if (xx < x) //right side
+            {
+                var r = new rectangle(w + xx, yy, ww, hh);
+                canvas.selectrect.push(r);
+                blackfill.draw(context, r, 0, 0);
+                whitestroke.draw(context, r, 0, 0);
+            }
+
+            context.restore();
+    }
 },
-{
-    id: "RED",
-    title: "Description",
-},    
-{
-    id: "BLUE",
-    title: "Relates",
-},    
-{
-    id: "GREEN",
-    title: "Meta",
-},    
 ];
 
 var bossdisplayobj = new circular_array("", bossdisplaylst);
@@ -1210,244 +1433,6 @@ var displaylst =
             ]);
 
         context.restore();    
-    }
-},
-{
-    name: "BOSS",
-    draw: function(context, r, user, time)
-    {
-            var canvas = context.canvas;
-            context.extentrect = new rectangle();
-            context.zoomrect = new rectangle();
-            context.stretchrect = new rectangle();
-            context.timerect = new rectangle();
-            context.slicewidthrect = new rectangle();
-            context.heightrect = new rectangle();
-            context.bossdisplayrect = new rectangle();
-            context.pagerect = new rectangle();
-            
-            if (
-                !photo.image ||
-                !photo.image.complete ||
-                !photo.image.naturalHeight)
-                return;
-
-            var w = Math.min(320, r.width - 100);
-            var j = window.innerWidth - r.width >= 180;
-
-            var data = [];
-            var index = galleryobj.current();
-            var value = galleryobj.data[index];
-            if (value && value.folder)
-                data = value.folder.split("/");
-        
-            data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
-            if (global.debug)
-            {
-                data.push(_4cnv.timeobj.current().toFixed(5));
-                var e = 100 * (1 - _4cnv.timeobj.berp());
-                var j = 100 * rowobj.berp();
-                data.push(`${e.toFixed(2)}%, ${j.toFixed(2)}%`);
-                if (galleryobj.value().id)
-                    data.push(galleryobj.value().id);
-                data.push(`${window.innerWidth} x ${window.innerHeight}`);
-                data.push(`${canvas.virtualwidth.toFixed(0)} x ${window.innerHeight}`);
-                var aspect = photo.image.width / photo.image.height;
-                data.push(aspect.toFixed(2));
-                var j = Number(zoomobj.value());
-                data.push(`${j.toFixed(2)}%`);
-                var mp = (canvas.virtualwidth * window.innerHeight)/1000000;
-                data.push(`${mp.toFixed(2)} MP`);
-                var mp = (photo.image.width * photo.image.height) / 1000000;
-                data.push(`${mp.toFixed(2)} MP`);
-                var extent = `${photo.image.width}x${photo.image.height}`;
-                data.push(extent);
-            }
-            
-            var rows = data.length;
-            var rh = 26;
-            var bh = rect.height * 0.4;
-            var cw = rect.width - 30;
-            var a = new panel.layerA(
-                [
-                    new panel.colsA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
-                        [
-                            0,
-                            new panel.rows([0, bh, 0],
-                                [
-                                    0,
-                                    new panel.layers(
-                                        [
-                                            new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                            new panel.expand(new panel.rectangle(context.zoomrect), 10, 1),
-                                            new panel.shrink(new panel.currentV(new panel.rounded("white", 
-                                                    0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
-                                        ]),
-                                    0,
-                                ]),
-                            0,
-                            new panel.rows([0, bh, 0],
-                                [
-                                    0,
-                                    new panel.layers(
-                                        [
-                                            new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                            new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
-                                            new panel.shrink(new panel.currentV(new panel.rounded("white", 0, 
-                                                    TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
-                                        ]),
-                                    0,
-                                ]),
-                            0,
-                        ]),
-                    new panel.rowsA([HEADHEIGHT, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
-                        [
-                            0,
-                            new panel.cols([0,RAINSTEP,0],
-                                [
-                                    0,
-                                    new panel.layers(
-                                    [
-                                        new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
-                                        new panel.shadow(new panel.text()),
-                                    ]),
-                                    0,
-                                ]),
-                            0,
-                            new panel.cols([0, RAINSTEP, 0],
-                                [
-                                    0,
-                                    new panel.layers(
-                                    [
-                                        new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
-                                        new panel.gridA(1, rows, 1,
-                                            new panel.shadow(new panel.text())),
-                                    ]),
-                                    0,
-                                ]),
-                            0,
-                            new panel.cols([0, cw, 0],
-                                [
-                                    0,
-                                    1 ? 0 : new panel.layers(
-                                        [
-                                            new panel.expand(new panel.rectangle(context.heightrect), 0, 10),
-                                            new panel.currentH(new panel.fill(NUBAR), bh / 5, 1),
-                                        ]),
-                                    0,
-                                ]),
-                            0,
-                        ])
-                ]);
-        
-            if (headcnv.height)
-            a.draw(context, rect,
-                [
-                    [
-                        0,
-                        zoomobj,
-                        0,
-                        stretchobj,
-                        0,
-                    ],
-                    [
-                        0,
-                        `\u{25C0}   ${bossdisplayobj.value().title}   \u{25B6}`,
-                        0,
-                        data,//todo
-                        0,
-                        heightobj,
-                        0,
-                    ]
-                ]);
-
-            var bw = rect.width / 2;
-            var a = new panel.rows([0, SCROLLBARWIDTH, 4],
-                [
-                    0,
-                    new panel.cols([0, bw, 0],
-                        [
-                            0,
-                            new panel.layers(
-                                [
-                                    new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                    new panel.expand(new panel.rectangle(context.timerect), 0, 10),
-                                    new panel.shrink(new panel.currentH(
-                                        new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3)
-                                ]),
-                            0,
-                        ])
-                ])
-
-            if (headcnv.height)
-                a.draw(context, rect, context.canvas.timeobj, 0);
-
-            var he = heightobj;
-            var b = Math.berp(0, he.length() - 1, he.current());
-            var height = Math.lerp(90, rect.height - 180, b);
-            if (height > 320)
-                height = 320;
-            var width = Math.lerp(90, rect.width - 80, b);
-            var r = calculateAspectRatioFit(photo.image.width, photo.image.height, width, height);
-            var h = r.height;
-            var w = r.width;
-            var x = Math.floor(Math.nub(positxobj.value(), positxobj.length(), w, rect.width));
-            var y = Math.floor(Math.nub(posityobj.value(), posityobj.length(), h, rect.height));
-            canvas.thumbrect = new rectangle(x, y, w, h);
-            if (!headcnv.height)
-                return;
-            var r = canvas.thumbrect;
-            context.save();
-            context.shadowOffsetX = 0;
-            context.shadowOffsetY = 0;
-            var blackfill = new panel.fill(THUMBTRANSPARENT);
-            blackfill.draw(context, canvas.thumbrect, 0, 0);
-        
-            var whitestroke = new panel.stroke(THUMBSTROKE, THUMBORDER);
-            whitestroke.draw(context, r, 0, 0);
-            var region = new Path2D();
-            region.rect(x, y, w, h);
-            context.clip(region);
-
-            var ww = Math.max(30, (rect.width / canvas.virtualwidth) * w);
-            var stretch = stretchobj.value();
-            if (stretch < 50)
-                stretch = (50 - stretchobj.value()) / 100;
-            else
-                stretch = (stretchobj.value() - 50) / 100;
-            stretch = 1 - stretch;
-            ww *= stretch;
-
-            var b = Math.berp(0, photo.image.height, canvas.imageheight);
-            var hh = Math.lerp(0, h, b);
-            var b = Math.berp(0, photo.image.height, _4cnv.nuby);
-            var yy = y + Math.lerp(0, h, b);
-            var jj = canvas.timeobj.berp();
-            var bb = w * (1 - jj);
-            var xx = x + bb - ww / 2;
-            context.lineWidth = THUMBORDER;
-            var r = new rectangle(xx, yy, ww, hh);
-            canvas.selectrect = []
-            canvas.selectrect.push(r);
-            var blackfill = new panel.fill(THUMBFILL);
-            blackfill.draw(context, r, 0, 0);
-            whitestroke.draw(context, r, 0, 0);
-            if (xx > x) //leftside
-            {
-                var r = new rectangle(xx - w, yy, ww, hh);
-                canvas.selectrect.push(r);
-                blackfill.draw(context, r, 0, 0);
-                whitestroke.draw(context, r, 0, 0);
-            }
-            else if (xx < x) //right side
-            {
-                var r = new rectangle(w + xx, yy, ww, hh);
-                canvas.selectrect.push(r);
-                blackfill.draw(context, r, 0, 0);
-                whitestroke.draw(context, r, 0, 0);
-            }
-
-            context.restore();
     }
 },
 ];    
@@ -4253,10 +4238,9 @@ bossobj.draw = function()
     delete context.slicewidthrect;
     delete context.stretchrect;
     delete context.canvas.thumbrect;
-    //todo delete thumbrect
-
+   
     if (!menuobj.value() && headcnv.height)
-        context.canvas.display.draw(context, rect, 0, 0);
+        bossdisplayobj.value().draw(context, rect, 0, 0);
 }
 
 //bossobj reset
@@ -4589,7 +4573,8 @@ var buttonlst = [
 {
     name: "BOSS",
     draw: function(unused, rect, user, time) {}
-}, ];
+}, 
+];
 
 _1ham.panel = new panel.yoll();
 _2ham.panel = new panel.yoll();
