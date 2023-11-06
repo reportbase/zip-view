@@ -4586,9 +4586,16 @@ menuobj.hide = function()
     var context = this.value();
     if (!context)
         return;
+    
+    for (var n = 0; n < IMAGELSTSIZE; ++n)
+    {
+        thumbfittedlst[n] = document.createElement("canvas");
+        thumbimglst[n] = new Image();
+    }                
+
     context.hide();
     _4cnv.height = window.innerHeight;
-    this.setindex(_8cnv.height ? _8cnvctx : 0);
+    this.setindex(0);
 }
 
 //menuobj show
@@ -4599,6 +4606,7 @@ menuobj.show = function()
         return;
     var canvas = context.canvas;
     _4cnv.height = 0;
+    delete photo.image
     canvas.hollyobj.set(canvas.hollyinit*window.innerHeight);
     if (canvas.width_ > window.innerWidth)
     {
