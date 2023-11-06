@@ -4761,7 +4761,6 @@ menuobj.draw = function()
 
     context.canvas.visibles = [];
     var ctx = context;
-    var isvisiblecount = 0;
     context.canvas.centered = 0;
     var r = new rectangle(0, 0, rect.width, canvas.buttonheight);
     var lasty = -10000000;
@@ -4784,7 +4783,6 @@ menuobj.draw = function()
                 thumbimg.onload = function()
                 {
                     this.count = 0;
-                    //if (!canvas.panning && !canvas.slideshow)
                     menuobj.draw();
                 }
 
@@ -4825,12 +4823,13 @@ menuobj.draw = function()
             slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
             if (slice.isvisible)
             {
-                if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
-                    context.canvas.centered = j.n;
-                isvisiblecount += j.slice.isvisible ? 1 : 0;
                 if (slice.isvisible)
+                {
+                    if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
+                        context.canvas.centered = j.n;//todo: fitted
                     context.canvas.visibles.push(j);
-
+                }
+                
                 context.translate(0, j.y);
                 context.canvas.draw(context, r, j.slice, j.n);
                 context.translate(0, -j.y);
