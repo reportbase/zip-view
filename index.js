@@ -899,6 +899,7 @@ var displaylst =
         var canvas = context.canvas;
         context.save();
         delete canvas.hollyrect;
+        delete canvas.holly2rect;
         delete canvas.vscrollrect;
         var hollyobj = canvas.hollyobj;
         canvas.buttonrect = new rectangle();
@@ -1013,7 +1014,7 @@ var displaylst =
         context.save();
         delete canvas.templaterect;
         delete canvas.buttonrect;
-        delete canvas.gorect;
+        delete context.button2rect;
         canvas.vscrollrect = new rectangle();
         canvas.hollyrect = new rectangle();
         canvas.gorect = new rectangle();
