@@ -3810,6 +3810,20 @@ var taplst =
             console.log(k);
         }
         else if (
+            context.buttontoprect &&
+            context.buttontoprect.hitest(x, y))
+        {
+            var k = (x - context.buttontoprect.x) / context.buttontoprect.width;
+            console.log(k);
+        }
+        else if (
+            context.buttonbotrect &&
+            context.buttonbotrect.hitest(x, y))
+        {
+            var k = (x - context.buttonbotrect.x) / context.buttonbotrect.width;
+            console.log(k);
+        }
+        else if (
             context.gallerybotrect &&
             context.gallerybotrect.hitest(x, y))
         {
