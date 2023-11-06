@@ -1223,7 +1223,7 @@ var displaylst =
             context.timerect = new rectangle();
             context.slicewidthrect = new rectangle();
             context.heightrect = new rectangle();
-            context.bosstoprect = new rectangle();
+            context.bossdisplayrect = new rectangle();
             context.pagerect = new rectangle();
             
             if (
@@ -1240,7 +1240,7 @@ var displaylst =
             var value = galleryobj.data[index];
             if (value && value.folder)
                 data = value.folder.split("/");
-        //todo
+        
             data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
             if (global.debug)
             {
@@ -1308,7 +1308,7 @@ var displaylst =
                                     0,
                                     new panel.layers(
                                     [
-                                        new panel.expand(new panel.rectangle(context.bosstoprect), 10, 10),
+                                        new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
                                         new panel.shadow(new panel.text()),
                                     ]),
                                     0,
@@ -3745,11 +3745,12 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
-            context.bosstoprect &&
-            context.bosstoprect.hitest(x, y))
+            context.bossdisplayrect &&
+            context.bossdisplayrect.hitest(x, y))
         {
-            var k = (x - context.bosstoprect.x) / context.bosstoprect.width;
-            console.log(k);
+            var k = (x - context.bossdisplayrect.x) / context.bossdisplayrect.width;
+            bossdisplayobj.add(k < 0.5 ? -1 : 1);
+            context.refresh()
         }
         else if (
             context.pagerect &&
