@@ -826,7 +826,7 @@ var headlst =
                             new panel.zoom(),
                             new panel.next(),
                             0, 
-                            new panel.next(), 
+                            new panel.close(), 
                             0
                         ]),
                         new panel.cols([0,RAINSTEP,0],
@@ -1865,6 +1865,28 @@ panel.previous = function()
                 _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.arrow(ARROWFILL, 270), 20, 30),
+            ]);
+
+        a.draw(context, rect, user, time);
+        context.restore();
+    }
+};
+
+panel.close = function()
+{
+    this.draw = function(context, rect, user, time)
+    {
+        context.save();
+        context.closeboss = new rectangle()
+        context.fillStyle = "white";
+        context.strokeStyle = "white";
+
+        var a = new panel.layers(
+            [
+                new panel.rectangle(context.closeboss),
+                _4cnv.movingpage == 1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+                new panel.shrink(new panel.circle(_4cnv.movingpage == 1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.arrow(ARROWFILL, 90), 20, 30),
             ]);
 
         a.draw(context, rect, user, time);
@@ -3736,6 +3758,16 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
+            headcnvctx.closeboss &&
+            headcnvctx.closeboss.hitest(x, y))
+        {
+            menuobj.setindex(_8cnvctx);
+            menuobj.show();
+            var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+            headham.panel = headlst[k];
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        }
+        else if (
             headcnvctx.bossdisplayrect &&
             headcnvctx.bossdisplayrect.hitest(x, y))
         {
@@ -3753,13 +3785,6 @@ var taplst =
         }    
         else
         {
-            /*todo
-            menuobj.setindex(_8cnvctx);
-            menuobj.show();
-            var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
-            headham.panel = headlst[k];
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-            */
         }
 
         _4cnvctx.refresh();
