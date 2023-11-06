@@ -1126,13 +1126,13 @@ var bossdisplaylst =
 
         var a = new panel.rows([80,40,0,data.length*25,0,80],
         [
-            new panel.fill("red"),
-            new panel.fill("green"),
-            new panel.fill("blue"),
+            0,
+            0,
+            0,
             new panel.gridA(1,data.length, 1,
                 new panel.shadow(new panel.text())),
-            new panel.fill("yellow"),
-            new panel.fill("orange"),
+            0,
+            0,
         ]);
         
         a.draw(context, rect, data, 0)
