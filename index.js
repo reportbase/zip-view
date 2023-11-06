@@ -1279,7 +1279,6 @@ var displaylst =
                                     0,
                                     new panel.layers(
                                     [
-                                        new panel.fill("red"),//todo
                                         new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
                                         new panel.gridA(1, rows, 1,
                                             new panel.shadow(new panel.text())),
@@ -3729,7 +3728,6 @@ var taplst =
         {
             var k = (x - context.pagerect.x) / context.pagerect.width;
             context.movepage(k < 0.5 ? -1 : 1);
-            galleryobj.init();
         }    
         else
         {
