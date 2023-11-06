@@ -6083,7 +6083,7 @@ function resetfitted()
     var k = buttonobj.value();
     var size = 4;
     if (j && k)
-        size = Math.floor(j/k));
+        size = Math.floor(j/k);
     for (var n = 0; n < size; ++n)
     {
         thumbfittedlst[n] = document.createElement("canvas");
