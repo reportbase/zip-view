@@ -4638,7 +4638,7 @@ menuobj.show = function()
     _4cnv.height = 0;
     delete photo.image
 
-    var k = displaylst.findIndex(function(a){return a.name == context.display});
+    var k = displaylst.findIndex(function(a){return a.name == canvas.display});
     displayobj.set(k);
     
     canvas.hollyobj.set(canvas.hollyinit*window.innerHeight);
