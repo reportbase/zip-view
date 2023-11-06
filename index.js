@@ -884,6 +884,28 @@ var headlst =
 
 var headobj = new circular_array("HEAD", headlst);
 
+var bossdisplaylst =
+[
+{
+    id: "BOSS",
+    title: "Thumnail",
+},
+{
+    id: "RED",
+    title: "Description",
+},    
+{
+    id: "BLUE",
+    title: "Relates",
+},    
+{
+    id: "GREEN",
+    title: "Meta",
+},    
+];
+
+var bossdisplayobj = new circular_array("", bossdisplaylst);
+
 var displaylst = 
 [
 {
@@ -892,6 +914,30 @@ var displaylst =
     {
     }
 },
+{
+    name: "RED",
+    draw: function(context, rect, user, time)
+    {
+        var a = new panel.fill("red");
+        a.draw.context, rect, user, time);
+    }
+},    
+{
+    name: "BLUE",
+    draw: function(context, rect, user, time)
+    {
+        var a = new panel.fill("blue");
+        a.draw.context, rect, user, time);
+    }
+},    
+{
+    name: "GREEN",
+    draw: function(context, rect, user, time)
+    {
+        var a = new panel.fill("green");
+        a.draw.context, rect, user, time);
+    }
+},    
 {
     name: "BUTTON",
     draw: function(context, rect, user, time)
@@ -1267,7 +1313,6 @@ var displaylst =
                                     0,
                                     new panel.layers(
                                     [
-                                        new panel.fill("red"),//todo
                                         new panel.expand(new panel.rectangle(context.bosstoprect), 10, 10),
                                         new panel.shadow(new panel.text()),
                                     ]),
