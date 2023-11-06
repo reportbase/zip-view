@@ -1118,8 +1118,13 @@ var bossdisplaylst =
         data.push(`${mp.toFixed(2)} MP`);
         var extent = `${photo.image.width}x${photo.image.height}`;
         data.push(extent);
+        data.push(`${galleryobj.width}x${galleryobj.height}`);
+        var j = 100 * _8cnv.hollyobj.berp();
+        data.push(`${j.toFixed(2)}%`);
+        data.push(galleryobj.data[k].id);
+        data.push(_8cnv.timeobj.current().toFixed(5));
 
-        var a = new panel.rows([80,40,0,data.length*40,0,80],
+        var a = new panel.rows([80,40,0,data.length*25,0,80],
         [
             new panel.fill("red"),
             new panel.fill("green"),
@@ -1315,15 +1320,6 @@ var displaylst =
         if (value && value.folder)
             data = value.folder.split("/");
         data.push(`\u{25C0}   ${index.toFixed(0)} of ${galleryobj.length()}   \u{25B6}`);
-        if (global.debug)
-        {
-            data.push(`${galleryobj.width}x${galleryobj.height}`);
-            var j = 100 * _8cnv.hollyobj.berp();
-            data.push(`${j.toFixed(2)}%`);
-            data.push(galleryobj.data[k].id);
-            data.push(_8cnv.timeobj.current().toFixed(5));
-        }      
-
         var hollyobj = canvas.hollyobj;
         var st = `\u{25C0}   ${hollyobj.current().toFixed(0)} of ${hollyobj.length()}   \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
