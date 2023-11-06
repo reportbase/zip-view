@@ -23,7 +23,7 @@ const NUBACK = "rgba(0,0,0,0.4)";
 const SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 const VIRTCONST = 0.8;
-const MAXVIRTUAL = 5760 * (SAFARI ? 3 : 10);
+const MAXVIRTUAL = 5760*3;
 const THUMBORDER = 5;
 const BUTTONMARGIN = 30;
 const IFRAME = window.self !== window.top;
@@ -913,7 +913,7 @@ var displaylst =
     name: "RED",
     draw: function(context, rect, user, time)
     {
-        var a = new panel.fill("red");
+        var a = new panel.fill("rgba(255,0,0,0.5)");
         a.draw(context, rect, user, time);
     }
 },    
@@ -921,7 +921,7 @@ var displaylst =
     name: "BLUE",
     draw: function(context, rect, user, time)
     {
-        var a = new panel.fill("blue");
+        var a = new panel.fill("rgba(0,0,255,0.5)");
         a.draw(context, rect, user, time);
     }
 },    
@@ -929,7 +929,7 @@ var displaylst =
     name: "GREEN",
     draw: function(context, rect, user, time)
     {
-        var a = new panel.fill("green");
+        var a = new panel.fill("rgba(0,255,0,0.5)");
         a.draw(context, rect, user, time);
     }
 },    
