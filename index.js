@@ -899,7 +899,7 @@ var displaylst =
         var canvas = context.canvas;
         context.save();
         delete canvas.hollyrect;
-        delete canvas.holly2rect;
+        delete context.holly2rect;
         delete canvas.vscrollrect;
         var hollyobj = canvas.hollyobj;
         canvas.buttonrect = new rectangle();
