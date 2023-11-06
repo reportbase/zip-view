@@ -3717,10 +3717,10 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
-            context.bossdisplayrect &&
-            context.bossdisplayrect.hitest(x, y))
+            headcnvctx.bossdisplayrect &&
+            headcnvctx.bossdisplayrect.hitest(x, y))
         {
-            var k = (x - context.bossdisplayrect.x) / context.bossdisplayrect.width;
+            var k = (x - headcnvctx.bossdisplayrect.x) / headcnvctx.bossdisplayrect.width;
             bossdisplayobj.rotate(k < 0.5 ? -1 : 1);
             context.refresh()
         }
