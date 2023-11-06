@@ -809,10 +809,6 @@ var headlst =
             var w = k ? k.canvas.width : 0;
             var b = window.innerWidth == w;
             context.save();
-            context.uploadrect = new rectangle();
-            var k = displaylst.findIndex(function(a){
-                return a.name == "UPLOAD"});
-            var j = _4cnv.display == displaylst[k];
             var a = new panel.rows([BEXTENT, 0],
                 [
                     new panel.cols([5, 
@@ -855,7 +851,6 @@ var headlst =
             delete context.fullrect;
             delete context.leftmenurect;
             delete context.rightmenurect;
-            context.uploadrect = new rectangle();
             var s = SAFARI ? -1: ALIEXTENT;
             var e = ALIEXTENT + 10;
             var a = new panel.rows([BEXTENT, 0],
@@ -3699,17 +3694,6 @@ var taplst =
         {
             _4cnvctx.movepage(1);
         }
-        else if (headcnvctx.uploadrect && 
-                 headcnvctx.uploadrect.hitest(x, y))
-        {
-            var k = displaylst.findIndex(function(a){
-                return a.name == "UPLOAD"});
-            var j = displaylst.findIndex(function(a){
-                return a.name == "BOSS"});
-            context.canvas.display = context.canvas.display == displaylst[k] ?
-                displaylst[j] : displaylst[k];
-            context.refresh();  
-        }
         else if (
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
@@ -3820,10 +3804,6 @@ var taplst =
             }
 
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-        }
-        else if (headcnvctx.uploadrect && headcnvctx.uploadrect.hitest(x, y))
-        {
-            importdialog();
         }
         else if (
             headcnvctx.rightmenurect &&
