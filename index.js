@@ -4526,7 +4526,7 @@ var buttonlst = [
             if (b > b2)
             {
                 if (thumbfitted.height != hh ||
-                    thumbimg.count < 1)
+                    thumbfitted.count < 1)
                 {
                     var thumbfittedctx = thumbfitted.getContext("2d");
                     thumbfitted.height = hh;
@@ -4534,7 +4534,8 @@ var buttonlst = [
                     thumbfittedctx.drawImage(
                         thumbimg, 0, 0, thumbimg.width, thumbimg.height,
                         0, 0, thumbfitted.width, thumbfitted.height);
-                    thumbimg.count = 1;
+                    delete thumbimg; 
+                    thumbfitted.count = 1;
                 }
 
                 var x = Math.nub(obj.value(), obj.length(),
@@ -4546,7 +4547,7 @@ var buttonlst = [
             else
             {
                 if (thumbfitted.width != ww ||
-                    thumbimg.count < 1)
+                    thumbfitted.count < 1)
                 {
                     var thumbfittedctx = thumbfitted.getContext("2d");
                     thumbfitted.width = ww
@@ -4554,7 +4555,8 @@ var buttonlst = [
                     thumbfittedctx.drawImage(
                         thumbimg, 0, 0, thumbimg.width, thumbimg.height,
                         0, 0, thumbfitted.width, thumbfitted.height);
-                    thumbimg.count = 1;
+                    delete thumbimg;
+                    thumbfitted.count = 1;
                 }
 
                 var y = Math.nub(obj.value(), obj.length(),
