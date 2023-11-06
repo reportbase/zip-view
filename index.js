@@ -804,6 +804,7 @@ var headlst =
     draw: function(context, rect, user, time)
     {
             context.clear();
+            context.bossdisplayrect = new rectangle();
             var b = 0;
             var k = menuobj.value();
             var w = k ? k.canvas.width : 0;
@@ -820,14 +821,21 @@ var headlst =
                                     5],
                         [
                             0, 0, 0,
-
                             new panel.previous(),
                             new panel.zoom(),
                             new panel.next(),
-
                             0, 0, 0
                         ]),
-                        new panel.fill("red"),
+                        new panel.cols([0,RAINSTEP,0],
+                        [
+                                0,
+                                new panel.layers(
+                                [
+                                    new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
+                                    new panel.shadow(new panel.text()),
+                                ]),
+                                0,
+                        ]),               
                 ]);
 
             a.draw(context, rect, 0, 0);
@@ -840,9 +848,6 @@ var headlst =
     {
             var canvas = context.canvas;
             context.clear();
-            //if (menuobj.value() != _8cnvctx && 
-            //    menuobj.value().canvas.width == window.innerWidth)
-            //    return;
             context.save();
             var ctx = menuobj.value();
             var g = ctx == _8cnvctx;
@@ -894,7 +899,6 @@ var bossdisplaylst =
             context.timerect = new rectangle();
             context.slicewidthrect = new rectangle();
             context.heightrect = new rectangle();
-            context.bossdisplayrect = new rectangle();
             context.pagerect = new rectangle();
             
             if (
@@ -974,16 +978,7 @@ var bossdisplaylst =
                     new panel.rowsA([HEADHEIGHT, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
                         [
                             0,
-                            new panel.cols([0,RAINSTEP,0],
-                                [
-                                    0,
-                                    new panel.layers(
-                                    [
-                                        new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
-                                        new panel.shadow(new panel.text()),
-                                    ]),
-                                    0,
-                                ]),
+                            0,
                             0,
                             new panel.cols([0, RAINSTEP, 0],
                                 [
@@ -1128,36 +1123,6 @@ var bossdisplayobj = new circular_array("", bossdisplaylst);
 var displaylst = 
 [
 {
-    name: "DEFAULT",
-    draw: function(context, rect, user, time)
-    {
-    }
-},
-{
-    name: "RED",
-    draw: function(context, rect, user, time)
-    {
-        var a = new panel.fill("rgba(255,0,0,0.5)");
-        a.draw(context, rect, user, time);
-    }
-},    
-{
-    name: "BLUE",
-    draw: function(context, rect, user, time)
-    {
-        var a = new panel.fill("rgba(0,0,255,0.5)");
-        a.draw(context, rect, user, time);
-    }
-},    
-{
-    name: "GREEN",
-    draw: function(context, rect, user, time)
-    {
-        var a = new panel.fill("rgba(0,255,0,0.5)");
-        a.draw(context, rect, user, time);
-    }
-},    
-{
     name: "BUTTON",
     draw: function(context, rect, user, time)
     {
@@ -1223,7 +1188,7 @@ var displaylst =
         data.push(`\u{25C0}   ${jp[0]} x ${jp[1]}   \u{25B6}`);
         var rows = data.length;
         var rh = 40;
-        var a = new panel.rowsA([HEADHEIGHT, 40, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
+        var a = new panel.rowsA([80, 40, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
         [
             0,
             
@@ -1345,7 +1310,7 @@ var displaylst =
         var hollyobj = canvas.hollyobj;
         var st = `\u{25C0}   ${hollyobj.current().toFixed(0)} of ${hollyobj.length()}   \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
-        var a = new panel.rowsA([HEADHEIGHT, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
+        var a = new panel.rowsA([80, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
         [
             0,
             new panel.cols([0, RAINSTEP, 0],
