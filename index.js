@@ -58,7 +58,7 @@ const LARGEFONT = "19px archivo black";
 const HUGEFONT = "22px archivo black";
 const SLICEWIDTH = 36;
 const ZOOMAX = 92;
-const IMAGELSTSIZE = 16;
+const IMAGELSTSIZE = 32;
 const BOSS = 0;
 const GALLERY = 1;
 const MENU = 2;
@@ -1343,7 +1343,7 @@ var displaylst =
         var value = galleryobj.data[k];
         if (value && value.folder)
             data = value.folder.split("/");
-        data.push(`\u{25C0}   ${index.toFixed(0)} of ${galleryobj.length()}   \u{25B6}`);
+        data.push(`\u{25C0}   ${index.toFixed(1)} of ${galleryobj.length()}   \u{25B6}`);
         var hollyobj = canvas.hollyobj;
         var st = `\u{25C0}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
