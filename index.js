@@ -927,7 +927,7 @@ var displaylst =
     draw: function(context, rect, user, time)
     {
         var a = new panel.fill("blue");
-        a.draw(ontext, rect, user, time);
+        a.draw(context, rect, user, time);
     }
 },    
 {
@@ -935,7 +935,7 @@ var displaylst =
     draw: function(context, rect, user, time)
     {
         var a = new panel.fill("green");
-        a.draw.(ontext, rect, user, time);
+        a.draw(context, rect, user, time);
     }
 },    
 {
