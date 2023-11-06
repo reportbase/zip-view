@@ -3728,7 +3728,7 @@ var taplst =
             context.pagerect.hitest(x, y))
         {
             var k = (x - context.pagerect.x) / context.pagerect.width;
-            galleryobj.add(k < 0.5 ? -1 : 1);
+            context.movepage(k < 0.5 ? -1 : 1);
             galleryobj.init();
         }    
         else
