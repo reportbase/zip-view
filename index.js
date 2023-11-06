@@ -982,7 +982,7 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.fill("red"),
-                        new panel.expand(new panel.rectangle(context.bottonbotrect), 10, 10),
+                        new panel.expand(new panel.rectangle(context.template2rect), 10, 10),
                         new panel.gridA(1, rows, 1,
                             new panel.shadow(new panel.text())),
                     ]),
