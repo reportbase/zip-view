@@ -1119,9 +1119,18 @@ var bossdisplaylst =
         var extent = `${photo.image.width}x${photo.image.height}`;
         data.push(extent);
 
-        var a = new panel.gridA(1,data.length, 1,
-                new panel.shadow(new panel.text()));
-        a.draw(context, rect, 0, 0)
+        var = new panel.rows([headcnv,40,0,data.length*40,0,80],
+        [
+            new panel.fill("red"),
+            new panel.fill("green"),
+            new panel.fill("blue"),
+            new panel.gridA(1,data.length, 1,
+                new panel.shadow(new panel.text())),
+            new panel.fill("yellow"),
+            new panel.fill("orange"),
+        ]);
+        
+        a.draw(context, rect, data, 0)
     }
 },
 ];
@@ -3201,7 +3210,8 @@ var overlaylst = [
 
 var overlayobj = new circular_array("OVERLAY", overlaylst);
 
-var presslst = [
+var presslst = 
+[
 {
     name: "DEFAULT",
     pressup: function(context, rect, x, y) {},
@@ -3211,6 +3221,7 @@ var presslst = [
     name: "GALLERY",
     pressup: function(context, rect, x, y)
     {
+        /*
         var canvas = context.canvas;
         if ((canvas.vscrollrect && canvas.vscrollrect.hitest(x, y)) ||
              (canvas.buttonrect && canvas.buttonrect.hitest(x, y)) ||
@@ -3221,6 +3232,7 @@ var presslst = [
             headcnv.height = headcnv.height ? 0 : HEADHEIGHT;
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             menuobj.draw();
+        */
     },
     press: function(context, rect, x, y) {}
 },
@@ -3233,6 +3245,7 @@ var presslst = [
     name: "BOSS",
     pressup: function(context, rect, x, y)
     {
+        /*
         var canvas = context.canvas;
         if ((canvas.zoomrect && canvas.zoomrect.hitest(x, y)) ||
             (canvas.stretchrect && canvas.stretchrect.hitest(x, y)))
@@ -3240,9 +3253,11 @@ var presslst = [
         headcnv.height = headcnv.height ? 0 : HEADHEIGHT;
         headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         context.refresh();
+        */
     },
     press: function(context, rect, x, y) {}
-}, ];
+}, 
+];
 
 var pressobj = new circular_array("PRESS", presslst);
 pressobj.set(3);
