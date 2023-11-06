@@ -2066,16 +2066,7 @@ CanvasRenderingContext2D.prototype.savetime = function()
                 {
                     k = k.toFixed(4)
                     url.searchParams.set('_8', k);
-                    window.history.replaceState("", url.origin, url);
                 }
-            }
-              
-            try
-            {
-                localStorage.setItem(canvas.id, canvas.timeobj.current());
-            }
-            catch (_)
-            {    
             }
       }, 1000)
 }
@@ -5195,22 +5186,7 @@ contextlst.forEach(function(context, n)
     canvas.lastime = 0;
     canvas.sliceobj = new circular_array("", []);
     canvas.timeobj = new circular_array("", sealobj.value());
-    
-    try
-    {
-        var k = localStorage.getItem(canvas.id);
-        if (typeof k != "undefined" && 
-            !Number.isNaN(k) && 
-            k != null &&
-            Number.isFinite(k))
-            canvas.timeobj.setcurrent(Number(k));
-        else
-            canvas.timeobj.set(sealobj.value() / 2);
-    }
-    catch (_)
-    {    
-    }
-
+    canvas.timeobj.set(sealobj.value() / 2);
     canvas.hollyobj = new circular_array("TEXTSCROLL", window.innerHeight);
     canvas.speed = obj.speed;
     canvas.reduce = obj.reduce;
@@ -6702,6 +6678,9 @@ galleryobj.init = function(obj)
     galleryobj.rightctx = _5cnv.sliceobj.length()?_5cnvctx:_6cnvctx;
 
     var image = new Image();
+    var k = url.searchParams.get('_8');
+    if (k != null)
+        _8cnv.timeobj.set(Number(k));
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
     image.src = imagepath(galleryobj.data[current]);
@@ -6710,9 +6689,6 @@ galleryobj.init = function(obj)
         galleryobj.width = this.width;
         galleryobj.height = this.height;
         buttonobj.reset();
-        var k = url.searchParams.get('_8');
-        if (k != null)
-            _8cnv.timeobj.set(Number(k));
         contextobj.reset();
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
@@ -6727,16 +6703,6 @@ galleryobj.init = function(obj)
 
 var local = {};
 local.email = "reportbase@gmail.com";
-
-try
-{
-    var k = localStorage.getItem("local");
-    if (k)
-        local = JSON.parse(k);
-}
-catch (_)
-{    
-}
 
 if (url.searchParams.has("data"))
 {
