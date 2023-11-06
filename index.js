@@ -1466,32 +1466,14 @@ buttonobj.reset = function()
 
 buttonobj.fit = function()
 {
+    buttonobj.reset();
     _8cnv.fitflash = 1;
     headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-    var image = new Image();
-    var berp = _8cnv.timeobj.berp();
-    var current = galleryobj.lerp(1 - berp);
-    image.src = imagepath(galleryobj.data[current]);
-    image.onload = function()
+    setTimeout(function()
     {
-        setTimeout(function()
-        {
-            _8cnv.fitflash = 0;
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-        }, 400);
-
-        galleryobj.width = this.width;
-        galleryobj.height = this.height;
-        buttonobj.reset();
-        contextobj.reset();
-        menuobj.set(_8cnvctx);
-        menuobj.toggle(_8cnvctx);
-        menuobj.show()
-        var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
-        headham.panel = headlst[k];
-        headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-        headlst[k].draw(headcnvctx, headcnvctx.rect(), 0);
-    };    
+        _8cnv.fitflash = 0;
+        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+    }, 400);
 }
 
 function calculateAspectRatioFit(imgwidth, imgheight, rectwidth, rectheight)
@@ -4516,7 +4498,7 @@ var buttonlst = [
     {
         var index = time % IMAGELSTSIZE;
         var view = Math.floor(time / IMAGELSTSIZE);
-        var thumbimg = thumbimglst[index];//todo centereed
+        var thumbimg = thumbimglst[index];
         var thumbfitted = thumbfittedlst[index];
 
         if (thumbimg && thumbimg.width)
@@ -4819,6 +4801,7 @@ menuobj.draw = function()
                 y,
                 n
             };
+            
             slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight);
             slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
             if (slice.isvisible)
@@ -4826,7 +4809,12 @@ menuobj.draw = function()
                 if (slice.isvisible)
                 {
                     if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
+                    {
+                        galleryobj.width = thumbimg.width;
+                        galleryobj.height = thumbimg.height;
                         context.canvas.centered = j.n;//todo: fitted
+                    }
+                    
                     context.canvas.visibles.push(j);
                 }
                 
