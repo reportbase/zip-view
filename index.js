@@ -1017,7 +1017,7 @@ var displaylst =
         canvas.vscrollrect = new rectangle();
         canvas.hollyrect = new rectangle();
         canvas.gorect = new rectangle();
-        context.gallerytoprect = new rectangle();
+        context.holly2rect = new rectangle();
         context.gallerybotrect = new rectangle();
         if (!headcnv.height)
             return;        
@@ -1089,7 +1089,7 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.fill("red"),
-                        new panel.expand(new panel.rectangle(context.gallerytoprect), 10, 10),
+                        new panel.expand(new panel.rectangle(context.holly2rect), 10, 10),
                         new panel.shadow(new panel.text()),
                     ]),
                     0,
@@ -3803,11 +3803,12 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
-            context.gallerytoprect &&
-            context.gallerytoprect.hitest(x, y))
+            context.holly2rect &&
+            context.holly2rect.hitest(x, y))
         {
-            var k = (x - context.gallerytoprect.x) / context.gallerytoprect.width;
-            console.log(k);
+            var k = (x - context.holly2rect.x) / context.holly2rect.width;
+            canvas.hollyobj.addperc(k < 0.5 ? -0.05 : 0.05);
+            menuobj.draw();
         }
         else if (
             context.buttontoprect &&
