@@ -817,14 +817,17 @@ var headlst =
                                     ALIEXTENT, 
                                     window.innerWidth >= 320 ? (ALIEXTENT + 10) : -1, 
                                     ALIEXTENT, 
-                                    0, ALIEXTENT, 
+                                    0, 
+                                    ALIEXTENT, 
                                     5],
                         [
                             0, 0, 0,
                             new panel.previous(),
                             new panel.zoom(),
                             new panel.next(),
-                            0, 0, 0
+                            0, 
+                            new panel.next(), 
+                            0
                         ]),
                         new panel.cols([0,RAINSTEP,0],
                         [
@@ -3750,11 +3753,13 @@ var taplst =
         }    
         else
         {
+            /*todo
             menuobj.setindex(_8cnvctx);
             menuobj.show();
             var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
             headham.panel = headlst[k];
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            */
         }
 
         _4cnvctx.refresh();
