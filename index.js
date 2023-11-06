@@ -32,7 +32,7 @@ const BEXTENT = 80;
 const BOSSMIN = 4;
 const FOOTSEP = 20;
 const RAINSTEP = 240;
-const HEADHEIGHT = IFRAME ? 0 : 80;
+const HEADHEIGHT = IFRAME ? 0 : 120;
 const MAXEXTENT = 10000;
 const MAXIMAGESIZE = MAXEXTENT*MAXEXTENT;
 const SCROLLMARGIN = 8;
@@ -827,7 +827,7 @@ var headlst =
 
                             0, 0, 0
                         ]),
-                        0
+                        new panel.fill("red"),
                 ]);
 
             a.draw(context, rect, 0, 0);
@@ -882,8 +882,9 @@ var headobj = new circular_array("HEAD", headlst);
 var bossdisplaylst =
 [
 {
+    //todo: Description
     name: "BOSS",
-    title: "Thumbnails",
+    title: "Thumbnail",
     draw: function(context, r, user, time)
     {
             var canvas = context.canvas;
