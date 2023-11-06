@@ -838,7 +838,7 @@ var headlst =
                         ]),               
                 ]);
 
-            a.draw(context, rect, 0, 0);
+            a.draw(context, rect, `\u{25C0}   ${bossdisplayobj.value().title}   \u{25B6}`, 0);
             context.restore();        
     }
 },
@@ -1018,7 +1018,7 @@ var bossdisplaylst =
                     ],
                     [
                         0,
-                        `\u{25C0}   Thumbnails   \u{25B6}`,
+                        0,
                         0,
                         data,
                         0,
