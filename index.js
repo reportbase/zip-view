@@ -919,7 +919,7 @@ var displaylst =
     draw: function(context, rect, user, time)
     {
         var a = new panel.fill("red");
-        a.draw.context, rect, user, time);
+        a.draw(context, rect, user, time);
     }
 },    
 {
@@ -927,7 +927,7 @@ var displaylst =
     draw: function(context, rect, user, time)
     {
         var a = new panel.fill("blue");
-        a.draw.context, rect, user, time);
+        a.draw(ontext, rect, user, time);
     }
 },    
 {
@@ -935,7 +935,7 @@ var displaylst =
     draw: function(context, rect, user, time)
     {
         var a = new panel.fill("green");
-        a.draw.context, rect, user, time);
+        a.draw.(ontext, rect, user, time);
     }
 },    
 {
@@ -1357,7 +1357,7 @@ var displaylst =
                     ],
                     [
                         0,
-                        `\u{25C0}   Thumbnail   \u{25B6}`,//todo
+                        `\u{25C0}   ${bossdisplayobj.value().title}   \u{25B6}`,
                         0,
                         data,//todo
                         0,
