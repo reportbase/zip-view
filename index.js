@@ -6206,8 +6206,6 @@ galleryobj.init = function(obj)
         templateobj.set(n);
     }
 
-    resetfitted();
-
     setfavicon();
     stretchobj.makerange("40-90", stretchobj.length());  
     stretchobj.set(90);
@@ -6701,6 +6699,7 @@ galleryobj.init = function(obj)
     galleryobj.rightcnv = _5cnv.sliceobj.length()?_5cnv:_6cnv;
     galleryobj.rightctx = _5cnv.sliceobj.length()?_5cnvctx:_6cnvctx;
 
+    resetfitted();
     var image = new Image();
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
@@ -6709,7 +6708,8 @@ galleryobj.init = function(obj)
     {
         galleryobj.width = this.width;
         galleryobj.height = this.height;
-        buttonobj.reset();
+        buttonobj.reset();        
+        resetfitted();
         var k = url.searchParams.get('_8');
         if (k != null)
             _8cnv.timeobj.set(Number(k));
