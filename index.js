@@ -1119,7 +1119,7 @@ var bossdisplaylst =
         var extent = `${photo.image.width}x${photo.image.height}`;
         data.push(extent);
 
-        var = new panel.rows([headcnv,40,0,data.length*40,0,80],
+        var a = new panel.rows([headcnv,40,0,data.length*40,0,80],
         [
             new panel.fill("red"),
             new panel.fill("green"),
@@ -3745,7 +3745,8 @@ var taplst =
         {
             var k = (x - headcnvctx.bossdisplayrect.x) / headcnvctx.bossdisplayrect.width;
             bossdisplayobj.rotate(k < 0.5 ? -1 : 1);
-            context.refresh()
+            context.refresh();
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
             context.pagerect &&
