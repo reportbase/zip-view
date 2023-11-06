@@ -58,7 +58,7 @@ const LARGEFONT = "19px archivo black";
 const HUGEFONT = "22px archivo black";
 const SLICEWIDTH = 36;
 const ZOOMAX = 92;
-const IMAGELSTSIZE = 16;
+const IMAGELSTSIZE = 12;
 const BOSS = 0;
 const GALLERY = 1;
 const MENU = 2;
@@ -2066,6 +2066,7 @@ CanvasRenderingContext2D.prototype.savetime = function()
                 {
                     k = k.toFixed(4)
                     url.searchParams.set('_8', k);
+                    window.history.replaceState("", url.origin, url);
                 }
             }
       }, 1000)
@@ -2468,6 +2469,7 @@ var wheelst =
                 {
                     thumbfittedlst[n] = document.createElement("canvas");
                     thumbimglst[n] = new Image();
+                    thumbviewlst[n] = -1;
                 }                
     
                 templateobj.add(j);
@@ -2899,6 +2901,7 @@ var panlst =
                 {
                     thumbfittedlst[n] = document.createElement("canvas");
                     thumbimglst[n] = new Image();
+                    thumbviewlst[n] = -1;
                 }                
           
                 var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
@@ -3837,6 +3840,7 @@ var taplst =
             {
                 thumbfittedlst[n] = document.createElement("canvas");
                 thumbimglst[n] = new Image();
+                thumbviewlst[n] = -1;
             }      
             
             var k = (x - context.template2rect.x) / context.template2rect.width;
@@ -3915,6 +3919,7 @@ var taplst =
             {
                 thumbfittedlst[n] = document.createElement("canvas");
                 thumbimglst[n] = new Image();
+                thumbviewlst[n] = -1;
             }                
            
             var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
@@ -4491,7 +4496,8 @@ var buttonlst = [
         var view = Math.floor(time / IMAGELSTSIZE);
         var thumbimg = thumbimglst[index];
         var thumbfitted = thumbfittedlst[index];
-
+        var thumbview = thumbviewlst[index];
+        
         if (thumbimg && thumbimg.width)
         {
             var obj = _8cnv.hollyobj;
@@ -4515,8 +4521,7 @@ var buttonlst = [
                     hhh = window.innerHeight - user.rect.y;
             }
 
-            if (thumbfitted.view != view)
-                thumbfitted.view = view;
+            thumbviewlst[index] = view;
 
             if (b > b2)
             {
@@ -4747,7 +4752,8 @@ menuobj.draw = function()
         var view = Math.floor(n / IMAGELSTSIZE);
         var thumbimg = thumbimglst[index];
         var thumbfitted = thumbfittedlst[index];
-        if (context == _8cnvctx && thumbimg.view != view)
+        var thumbview = thumbviewlst[index];
+        if (context == _8cnvctx && thumbview != view)
         {
             try
             {
@@ -6062,6 +6068,7 @@ function wraptext(ctx, text, maxWidth)
 
 let thumbfittedlst = [];
 let thumbimglst = [];
+let thumbviewlst = [];
 
 function imagepath(user)
 {
@@ -6182,6 +6189,7 @@ galleryobj.init = function(obj)
     {
         thumbfittedlst[n] = document.createElement("canvas");
         thumbimglst[n] = new Image();
+        thumbviewlst[n] = -1;
     }
 
     setfavicon();
