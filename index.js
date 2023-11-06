@@ -3928,11 +3928,11 @@ var taplst =
         {
             menuobj.hide();
             menuobj.setindex(_8cnvctx);
+            menuobj.show();
             galleryobj.leftnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
             headcnv.height = HEADHEIGHT;
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-            menuobj.draw();
         }
         else if (!headcnv.height)
         {
