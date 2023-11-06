@@ -3817,7 +3817,7 @@ var taplst =
         {
             var k = (x - context.button2rect.x) / context.button2rect.width;
             buttonobj.addperc(k < 0.5 ? -0.025 : 0.025);
-            console.log(k);
+            menuobj.draw();
         }
         else if (
             context.buttonbotrect &&
