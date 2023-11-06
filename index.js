@@ -4623,6 +4623,7 @@ menuobj.hide = function()
     {
         thumbfittedlst[n] = document.createElement("canvas");
         thumbimglst[n] = new Image();
+        thumbviewlst[n] = -1;
     }                
 
     context.hide();
