@@ -3917,11 +3917,12 @@ var taplst =
         else if (menuobj.value() && menuobj.value() != _8cnvctx)
         {
             menuobj.hide();
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             menuobj.setindex(_8cnvctx);
-            menuobj.draw();
             galleryobj.leftnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
+            headcnv.height = HEADHEIGHT;
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            menuobj.draw();
         }
         else if (!headcnv.height)
         {
