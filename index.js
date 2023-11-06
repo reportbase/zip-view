@@ -2460,6 +2460,9 @@ var wheelst =
         }
         else
         {
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            displayobj.set(k);
+
             clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
             if (global.swipetimeout)
@@ -2499,8 +2502,15 @@ var wheelst =
                   }, 250);      
             }
         }   
+        else if (canvas.buttonrect &&
+            canvas.buttonrect.hitest(x, y))
+        {
+        }
         else
         {
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            displayobj.set(k);
+
             galleryobj.leftright(context, delta);
         }
     },
@@ -2894,6 +2904,10 @@ var panlst =
 
         var canvas = context.canvas;
         var obj = canvas.hollyobj;
+
+        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"})
+        displayobj.set(k); 
+        
         if (type == "panleft" || type == "panright")
         {
             if (canvas.ishollyrect)
@@ -3938,13 +3952,6 @@ var taplst =
         {
             headcnv.height = HEADHEIGHT;
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-            menuobj.draw();
-        }
-        else if (displayobj.current() == 
-                 displaylst.findIndex(function(a){return a.name == "BUTTON"}))
-        {
-            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"})
-            displayobj.set(k); 
             menuobj.draw();
         }
         else if (galleryobj.boss || canvas.shiftKey)
