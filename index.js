@@ -3749,7 +3749,7 @@ var taplst =
             context.bossdisplayrect.hitest(x, y))
         {
             var k = (x - context.bossdisplayrect.x) / context.bossdisplayrect.width;
-            bossdisplayobj.add(k < 0.5 ? -1 : 1);
+            bossdisplayobj.rotate(k < 0.5 ? -1 : 1);
             context.refresh()
         }
         else if (
