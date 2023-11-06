@@ -1119,7 +1119,7 @@ var bossdisplaylst =
         var extent = `${photo.image.width}x${photo.image.height}`;
         data.push(extent);
 
-        var a = new panel.rows([headcnv,40,0,data.length*40,0,80],
+        var a = new panel.rows([80,40,0,data.length*40,0,80],
         [
             new panel.fill("red"),
             new panel.fill("green"),
