@@ -4534,7 +4534,7 @@ var buttonlst = [
                     thumbfittedctx.drawImage(
                         thumbimg, 0, 0, thumbimg.width, thumbimg.height,
                         0, 0, thumbfitted.width, thumbfitted.height);
-                    delete thumbimg; 
+                    thumbimglst[index] = 0;
                     thumbfitted.count = 1;
                 }
 
@@ -4555,7 +4555,7 @@ var buttonlst = [
                     thumbfittedctx.drawImage(
                         thumbimg, 0, 0, thumbimg.width, thumbimg.height,
                         0, 0, thumbfitted.width, thumbfitted.height);
-                    delete thumbimg;
+                    thumbimglst[index] = 0;
                     thumbfitted.count = 1;
                 }
 
@@ -4564,6 +4564,8 @@ var buttonlst = [
                 context.drawImage(thumbfitted,
                     0, Math.floor(y) + yyy, ww, hhh,
                     0, yyy, ww, hhh);
+
+                delete thumbimglst[index];
             }
 
             if (user.tap)
