@@ -1102,7 +1102,7 @@ var displaylst =
                         [
                             new panel.fill("red"),
                             new panel.expand(new panel.rectangle(context.gallerybotrect), 10, 10),
-                            new panel.gridA(1, rows, 1,
+                            new panel.gridA(1, 1, 1,
                                 new panel.shadow(new panel.text())),
                         ]),
                     0,
