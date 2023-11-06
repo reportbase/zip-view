@@ -967,7 +967,6 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.fill("red"),
                         new panel.expand(new panel.rectangle(context.button2rect), 10, 10),
                         new panel.shadow(new panel.text()),
                     ]),
@@ -981,7 +980,6 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.fill("red"),
                         new panel.expand(new panel.rectangle(context.template2rect), 10, 10),
                         new panel.gridA(1, rows, 1,
                             new panel.shadow(new panel.text())),
@@ -1069,7 +1067,7 @@ var displaylst =
         var value = galleryobj.data[k];
         if (value && value.folder)
             data = value.folder.split("/");
-        data.push(`\u{25C0}   ${index.toFixed(2)} of ${galleryobj.length()}   \u{25B6}`);
+        data.push(`\u{25C0}   ${index.toFixed(0)} of ${galleryobj.length()}   \u{25B6}`);
         if (global.debug)
         {
             data.push(`${galleryobj.width}x${galleryobj.height}`);
@@ -1080,7 +1078,7 @@ var displaylst =
         }      
 
         var hollyobj = canvas.hollyobj;
-        var st = `\u{25C0}   ${hollyobj.current().toFixed(2)} of ${hollyobj.length()}   \u{25B6}`;
+        var st = `\u{25C0}   ${hollyobj.current().toFixed(0)} of ${hollyobj.length()}   \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
         var a = new panel.rowsA([HEADHEIGHT, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
         [
@@ -1090,7 +1088,6 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.fill("red"),
                         new panel.expand(new panel.rectangle(context.holly2rect), 10, 10),
                         new panel.shadow(new panel.text()),
                     ]),
@@ -1102,7 +1099,6 @@ var displaylst =
                     0,
                     new panel.layers(
                         [
-                            new panel.fill("red"),
                             new panel.expand(new panel.rectangle(context.time2rect), 10, 10),
                             new panel.gridA(1, 1, 1,
                                 new panel.shadow(new panel.text())),
