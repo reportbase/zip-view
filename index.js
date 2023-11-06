@@ -6673,6 +6673,7 @@ galleryobj.init = function(obj)
         galleryobj.width = this.width;
         galleryobj.height = this.height;
         buttonobj.reset();
+        buttonobj.fit();
         var k = url.searchParams.get('_8');
         if (k != null)
             _8cnv.timeobj.set(Number(k));
