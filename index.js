@@ -1015,6 +1015,7 @@ var displaylst =
         delete canvas.templaterect;
         delete canvas.buttonrect;
         delete context.button2rect;
+        delete context.template2rect;
         canvas.vscrollrect = new rectangle();
         canvas.hollyrect = new rectangle();
         canvas.gorect = new rectangle();
