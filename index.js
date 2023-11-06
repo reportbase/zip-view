@@ -4752,12 +4752,11 @@ menuobj.draw = function()
         var view = Math.floor(n / IMAGELSTSIZE);
         var thumbimg = thumbimglst[index];
         var thumbfitted = thumbfittedlst[index];
-        var thumbview = thumbviewlst[index];
-        if (context == _8cnvctx && thumbview != view)
+        if (context == _8cnvctx && thumbviewlst[index] != view)
         {
             try
             {
-                thumbimg.view = view;
+                thumbviewlst[index] = view;
                 thumbimg.src = imagepath(slice);
                 thumbimg.onload = function()
                 {
