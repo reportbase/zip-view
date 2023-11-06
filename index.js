@@ -4534,7 +4534,6 @@ var buttonlst = [
                     thumbfittedctx.drawImage(
                         thumbimg, 0, 0, thumbimg.width, thumbimg.height,
                         0, 0, thumbfitted.width, thumbfitted.height);
-                    thumbimglst[index] = 0;
                     thumbfitted.count = 1;
                 }
 
@@ -4555,7 +4554,6 @@ var buttonlst = [
                     thumbfittedctx.drawImage(
                         thumbimg, 0, 0, thumbimg.width, thumbimg.height,
                         0, 0, thumbfitted.width, thumbfitted.height);
-                    thumbimglst[index] = 0;
                     thumbfitted.count = 1;
                 }
 
