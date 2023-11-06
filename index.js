@@ -1183,7 +1183,7 @@ var displaylst =
             context.slicewidthrect = new rectangle();
             context.heightrect = new rectangle();
             context.bosstoprect = new rectangle();
-            context.bossbotrect = new rectangle();
+            context.pagerect = new rectangle();
             
             if (
                 !photo.image ||
@@ -1199,7 +1199,7 @@ var displaylst =
             var value = galleryobj.data[index];
             if (value && value.folder)
                 data = value.folder.split("/");
-        
+        //todo
             data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
             if (global.debug)
             {
@@ -1267,7 +1267,7 @@ var displaylst =
                                     0,
                                     new panel.layers(
                                     [
-                                        new panel.fill("red"),
+                                        new panel.fill("red"),//todo
                                         new panel.expand(new panel.rectangle(context.bosstoprect), 10, 10),
                                         new panel.shadow(new panel.text()),
                                     ]),
@@ -1279,8 +1279,8 @@ var displaylst =
                                     0,
                                     new panel.layers(
                                     [
-                                        new panel.fill("red"),
-                                        new panel.expand(new panel.rectangle(context.bossbotrect), 10, 10),
+                                        new panel.fill("red"),//todo
+                                        new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
                                         new panel.gridA(1, rows, 1,
                                             new panel.shadow(new panel.text())),
                                     ]),
@@ -1313,9 +1313,9 @@ var displaylst =
                     ],
                     [
                         0,
-                        `\u{25C0}   Thumbnail   \u{25B6}`,
+                        `\u{25C0}   Thumbnail   \u{25B6}`,//todo
                         0,
-                        data,
+                        data,//todo
                         0,
                         heightobj,
                         0,
@@ -3724,11 +3724,12 @@ var taplst =
             console.log(k);
         }
         else if (
-            context.bossbotrect &&
-            context.bossbotrect.hitest(x, y))
+            context.pagerect &&
+            context.pagerect.hitest(x, y))
         {
-            var k = (x - context.bossbotrect.x) / context.bossbotrect.width;
-            console.log(k);
+            var k = (x - context.pagerect.x) / context.pagerect.width;
+            galleryobj.add(k < 0.5 ? -1 : 1);
+            galleryobj.init();
         }    
         else
         {
