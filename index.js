@@ -6673,7 +6673,6 @@ galleryobj.init = function(obj)
         galleryobj.width = this.width;
         galleryobj.height = this.height;
         buttonobj.reset();
-        buttonobj.fit();
         var k = url.searchParams.get('_8');
         if (k != null)
             _8cnv.timeobj.set(Number(k));
@@ -6685,6 +6684,7 @@ galleryobj.init = function(obj)
         headham.panel = headlst[k];
         headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
         headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        buttonobj.fit();
     };    
 }
 
