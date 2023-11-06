@@ -1345,7 +1345,7 @@ var displaylst =
             data = value.folder.split("/");
         data.push(`\u{25C0}   ${index.toFixed(0)} of ${galleryobj.length()}   \u{25B6}`);
         var hollyobj = canvas.hollyobj;
-        var st = `\u{25C0}  \u{25B6}`;
+        var st = `\u{25C0}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
         var a = new panel.rowsA([80, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
         [
@@ -3845,7 +3845,7 @@ var taplst =
             context.holly2rect.hitest(x, y))
         {
             var k = (x - context.holly2rect.x) / context.holly2rect.width;
-            canvas.hollyobj.addperc(k < 0.5 ? -0.025 : 0.025);
+            canvas.hollyobj.addperc(k < 0.5 ? -0.05 : 0.05);
             menuobj.draw();
         }
         else if (
