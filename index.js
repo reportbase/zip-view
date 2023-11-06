@@ -903,7 +903,7 @@ var displaylst =
         var hollyobj = canvas.hollyobj;
         canvas.buttonrect = new rectangle();
         canvas.templaterect = new rectangle();
-        context.time2rect = new rectangle();
+        context.buttontoprect = new rectangle();
         context.buttonbotrect = new rectangle();
         if (!headcnv.height)
             return;
@@ -967,7 +967,7 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.fill("red"),
-                        new panel.expand(new panel.rectangle(context.time2rect), 10, 10),
+                        new panel.expand(new panel.rectangle(context.buttontoprect), 10, 10),
                         new panel.shadow(new panel.text()),
                     ]),
                     0
@@ -3822,7 +3822,7 @@ var taplst =
             context.gallerybotrect.hitest(x, y))
         {
             var k = canvas.timeobj.length() / galleryobj.length();
-            canvas.timeobj.rotate(k);
+            canvas.timeobj.add(k < 0.5 ? -1 : 1);
             menuobj.draw();            
         }
         else if (
