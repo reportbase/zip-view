@@ -3821,9 +3821,10 @@ var taplst =
             context.gallerybotrect &&
             context.gallerybotrect.hitest(x, y))
         {
-            var k = canvas.timeobj.length() / galleryobj.length();
-            canvas.timeobj.add(k < 0.5 ? -1 : 1);
-            menuobj.draw();            
+            var k = (x - context.gallerybotrect.x) / context.gallerybotrect.width;
+            var j = canvas.timeobj.length() / galleryobj.length();
+            canvas.timeobj.rotate(k < 0.5 ? 1 :-1);
+            menuobj.draw();           
         }
         else if (
             headcnvctx.fitwidthrect &&
