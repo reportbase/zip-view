@@ -1345,7 +1345,7 @@ var displaylst =
             data = value.folder.split("/");
         data.push(`\u{25C0}   ${index.toFixed(0)} of ${galleryobj.length()}   \u{25B6}`);
         var hollyobj = canvas.hollyobj;
-        var st = `\u{25C0}   ${hollyobj.current().toFixed(0)} of ${hollyobj.length()}   \u{25B6}`;
+        var st = `\u{25C0}  \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
         var a = new panel.rowsA([80, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
         [
