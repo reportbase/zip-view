@@ -2905,12 +2905,13 @@ var panlst =
         var canvas = context.canvas;
         var obj = canvas.hollyobj;
 
-        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"})
-        displayobj.set(k); 
-        
         if (type == "panleft" || type == "panright")
         {
-            if (canvas.ishollyrect)
+            if (canvas.buttonrect &&
+                canvas.buttonrect.hitest(x, y))
+            {
+            }   
+            else if (canvas.ishollyrect)
             {
                 var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
                 context.canvas.hollyobj.setperc(k);
@@ -2930,6 +2931,9 @@ var panlst =
             }
             else
             {
+                var k = displaylst.findIndex(function(a){return a.name == "GALLERY"})
+                displayobj.set(k); 
+        
                 var obj = context.canvas.hollyobj;
                 var e = canvas.startx - x;
                 var k = panhorz(obj, e);
@@ -2960,6 +2964,9 @@ var panlst =
             }
             else
             {
+                var k = displaylst.findIndex(function(a){return a.name == "GALLERY"})
+                displayobj.set(k); 
+
                 var e = canvas.starty - y;
                 var jvalue = sealobj.value() / canvas.virtualheight
                 jvalue *= e;
