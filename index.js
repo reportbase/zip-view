@@ -4516,7 +4516,7 @@ var buttonlst = [
     {
         var index = time % IMAGELSTSIZE;
         var view = Math.floor(time / IMAGELSTSIZE);
-        var thumbimg = thumbimglst[index];
+        var thumbimg = thumbimglst[index];//todo centereed
         var thumbfitted = thumbfittedlst[index];
 
         if (thumbimg && thumbimg.width)
