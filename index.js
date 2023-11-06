@@ -58,7 +58,7 @@ const LARGEFONT = "19px archivo black";
 const HUGEFONT = "22px archivo black";
 const SLICEWIDTH = 36;
 const ZOOMAX = 92;
-const IMAGELSTSIZE = 20;
+const IMAGELSTSIZE = 4;
 const BOSS = 0;
 const GALLERY = 1;
 const MENU = 2;
@@ -1122,7 +1122,7 @@ var bossdisplaylst =
         var j = 100 * _8cnv.hollyobj.berp();
         data.push(`${j.toFixed(2)}%`);
         data.push(_8cnv.timeobj.current().toFixed(5));
-        data.push(thumbfittedlst.length.toFixed(0));
+
         var a = new panel.rows([80,40,0,data.length*25,0,80],
         [
             0,
@@ -2490,8 +2490,12 @@ var wheelst =
                 else if (j == 1 && templateobj.current() == 
                          templateobj.length()-1)
                     return;
-
-                resetfitted();
+                
+                for (var n = 0; n < IMAGELSTSIZE; ++n)
+                {
+                    thumbfittedlst[n] = document.createElement("canvas");
+                    thumbimglst[n] = new Image();
+                }                
     
                 templateobj.add(j);
                 menuobj.draw();
@@ -2918,7 +2922,12 @@ var panlst =
             }
             else if (canvas.istemplaterect)
             {
-                resetfitted()
+                for (var n = 0; n < IMAGELSTSIZE; ++n)
+                {
+                    thumbfittedlst[n] = document.createElement("canvas");
+                    thumbimglst[n] = new Image();
+                }                
+          
                 var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
                 templateobj.setperc(k);
                 menuobj.draw();
@@ -3851,7 +3860,12 @@ var taplst =
             context.template2rect &&
             context.template2rect.hitest(x, y))
         {
-            resetfitted()
+             for (var n = 0; n < IMAGELSTSIZE; ++n)
+            {
+                thumbfittedlst[n] = document.createElement("canvas");
+                thumbimglst[n] = new Image();
+            }      
+            
             var k = (x - context.template2rect.x) / context.template2rect.width;
             templateobj.add(k < 0.5 ? -1 : 1);
             menuobj.draw();            
@@ -3924,7 +3938,12 @@ var taplst =
         }
         else if (canvas.templaterect && canvas.templaterect.hitest(x, y))
         {
-            resetfitted()
+            for (var n = 0; n < IMAGELSTSIZE; ++n)
+            {
+                thumbfittedlst[n] = document.createElement("canvas");
+                thumbimglst[n] = new Image();
+            }                
+           
             var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
             var j = Math.lerp(0,templateobj.length()-1,k);
             templateobj.set(Math.round(j));
@@ -4495,8 +4514,8 @@ var buttonlst = [
     name: "GALLERY",
     draw: function(context, rect, user, time)
     {
-        var index = time % thumbimglst.length;
-        var view = Math.floor(time / thumbimglst.length);
+        var index = time % IMAGELSTSIZE;
+        var view = Math.floor(time / IMAGELSTSIZE);
         var thumbimg = thumbimglst[index];
         var thumbfitted = thumbfittedlst[index];
 
@@ -4621,7 +4640,13 @@ menuobj.hide = function()
     var context = this.value();
     if (!context)
         return;
-    resetfitted();
+    
+    for (var n = 0; n < IMAGELSTSIZE; ++n)
+    {
+        thumbfittedlst[n] = document.createElement("canvas");
+        thumbimglst[n] = new Image();
+    }                
+
     context.hide();
     _4cnv.height = window.innerHeight;
     this.setindex(0);
@@ -4746,8 +4771,8 @@ menuobj.draw = function()
     {
         var n = canvas.normal[m];
         var slice = slices[n];
-        var index = n % thumbimglst.length;
-        var view = Math.floor(n / thumbimglst.length);
+        var index = n % IMAGELSTSIZE;
+        var view = Math.floor(n / IMAGELSTSIZE);
         var thumbimg = thumbimglst[index];
         var thumbfitted = thumbfittedlst[index];
         if (context == _8cnvctx && thumbimg.view != view)
@@ -6075,22 +6100,6 @@ function wraptext(ctx, text, maxWidth)
 let thumbfittedlst = [];
 let thumbimglst = [];
 
-function resetfitted()
-{
-    thumbfittedlst = [];
-    thumbimglst = [];
-    var j = galleryobj.length();
-    var k = buttonobj.value();
-    var size = 4;
-    if (j && k)
-        size = Math.floor(j/k);
-    for (var n = 0; n < size; ++n)
-    {
-        thumbfittedlst[n] = document.createElement("canvas");
-        thumbimglst[n] = new Image();
-    }                
-}
-
 function imagepath(user)
 {
     var src;
@@ -6204,6 +6213,12 @@ galleryobj.init = function(obj)
                     break;    
             }
         templateobj.set(n);
+    }
+    
+    for (var n = 0; n < IMAGELSTSIZE; ++n)
+    {
+        thumbfittedlst[n] = document.createElement("canvas");
+        thumbimglst[n] = new Image();
     }
 
     setfavicon();
@@ -6699,7 +6714,6 @@ galleryobj.init = function(obj)
     galleryobj.rightcnv = _5cnv.sliceobj.length()?_5cnv:_6cnv;
     galleryobj.rightctx = _5cnv.sliceobj.length()?_5cnvctx:_6cnvctx;
 
-    resetfitted();
     var image = new Image();
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
@@ -6708,8 +6722,7 @@ galleryobj.init = function(obj)
     {
         galleryobj.width = this.width;
         galleryobj.height = this.height;
-        buttonobj.reset();        
-        resetfitted();
+        buttonobj.reset();
         var k = url.searchParams.get('_8');
         if (k != null)
             _8cnv.timeobj.set(Number(k));
