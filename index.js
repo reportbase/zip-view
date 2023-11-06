@@ -844,9 +844,9 @@ var headlst =
     {
             var canvas = context.canvas;
             context.clear();
-            if (menuobj.value() != _8cnvctx && 
-                menuobj.value().canvas.width == window.innerWidth)
-                return;
+            //if (menuobj.value() != _8cnvctx && 
+            //    menuobj.value().canvas.width == window.innerWidth)
+            //    return;
             context.save();
             var ctx = menuobj.value();
             var g = ctx == _8cnvctx;
