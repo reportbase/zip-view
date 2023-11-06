@@ -3811,13 +3811,6 @@ var taplst =
             menuobj.draw();
         }
         else if (
-            context.time2rect &&
-            context.time2rect.hitest(x, y))
-        {
-            var k = (x - context.time2rect.x) / context.time2rect.width;
-            context.canvas.timeobj.addperc(k < 0.5 ? -0.025 : 0.025);
-        }
-        else if (
             context.buttonbotrect &&
             context.buttonbotrect.hitest(x, y))
         {
@@ -3828,12 +3821,9 @@ var taplst =
             context.gallerybotrect &&
             context.gallerybotrect.hitest(x, y))
         {
-            var value = galleryobj.current() + 1;
-            if (menuobj.value() == _8cnvctx)
-                value = (galleryobj.length() * (1 - _8cnv.timeobj.berp())).toFixed(0);
-            if (!gotodialog(value, "Goto", goimage))
-                return;
-            galleryobj.init()     
+            var k = canvas.timeobj.length() / galleryobj.length();
+            canvas.timeobj.rotate(k);
+            menuobj.draw();            
         }
         else if (
             headcnvctx.fitwidthrect &&
