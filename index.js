@@ -1098,9 +1098,10 @@ var bossdisplaylst =
     title: "Debug",
     draw: function(context, r, user, time)
     {
+        var canvas = context.canvas
         var data = [];
-        data.push(_4cnv.timeobj.current().toFixed(5));
-        var e = 100 * (1 - _4cnv.timeobj.berp());
+        data.push(canvas.timeobj.current().toFixed(5));
+        var e = 100 * (1 - canvas.timeobj.berp());
         var j = 100 * rowobj.berp();
         data.push(`${e.toFixed(2)}%, ${j.toFixed(2)}%`);
         if (galleryobj.value().id)
