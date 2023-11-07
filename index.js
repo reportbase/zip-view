@@ -905,6 +905,7 @@ var bossdisplaylst =
             context.heightrect = new rectangle();
             context.pagerect = new rectangle();
             context.windowrect = new rectangle();
+            context.gallery2rect = new rectangle();
         
             if (
                 !photo.image ||
@@ -929,8 +930,14 @@ var bossdisplaylst =
                     new panel.colsA([4, SCROLLBARWIDTH, 4],
                         [
                             0,
-                            0,
-                            0
+                             new panel.layers(
+                                [
+                                    new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                    new panel.expand(new panel.rectangle(context.gallery2rect), 10, 1),
+                                    new panel.shrink(new panel.currentV(new panel.rounded("white", 
+                                            0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
+                                ]),
+                           0
                         ]),
                     new panel.rowsA([HEADHEIGHT, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
                         [
