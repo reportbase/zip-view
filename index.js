@@ -3201,7 +3201,7 @@ var panlst =
             {
                 var k = (y - context.galleryrect.y) / context.galleryrect.height;
                 var j = Math.floor(Math.lerp(0,galleryobj.length()-1,k));
-                var e = galleryobj.current()-j;
+                var e = j-galleryobj.current();
                 context.movepage(e);
             }
             else if (context.isstretchrect)
