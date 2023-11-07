@@ -3202,7 +3202,7 @@ var panlst =
                 var k = (y - context.galleryrect.y) / context.galleryrect.height;
                 var j = Math.floor(Math.lerp(0,galleryobj.length()-1,k));
                 galleryobj.set(j);
-                delete photo.image;
+                //delete photo.image;
                 context.refresh();
             }
             else if (context.isstretchrect)
