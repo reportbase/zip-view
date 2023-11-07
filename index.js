@@ -3830,7 +3830,7 @@ var taplst =
             context.stretchcolumnrect &&
             context.stretchcolumnrect.hitest(x, y))
         {
-            context.nostretchcolumn = context.nostretchcolumn ? 1 : 0;           
+            context.nostretchcolumn = context.nostretchcolumn ? 0 : 1;           
         }
  
         context.refresh();
