@@ -1893,7 +1893,7 @@ panel.close = function()
             [
                 new panel.rectangle(context.closeboss),
                 new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), 20, 20),
-                new panel.text("white", "center", "middle", 0, 0, MEDIUMTFONT),
+                new panel.text("white", "center", "middle", 0, 0, MEDIUMFONT),
             ]);
 
         a.draw(context, rect, 'X', time);
@@ -3701,14 +3701,12 @@ var taplst =
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
-            /*
-            menuobj.setindex(_8cnvctx);
-            menuobj.show();
-            var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
-            headham.panel = headlst[k];
-            headlst[k].draw(headcnvctx, headcnvctx.rect(), 0);
-            _4cnv.height = 0;
-            */
+                var value = galleryobj.current() + 1;
+                if (menuobj.value() == _8cnvctx)
+                    value = (galleryobj.length() * (1 - _8cnv.timeobj.berp())).toFixed(0);
+                if (!gotodialog(value, "Goto", goimage))
+                    return;
+                galleryobj.init()
         }
         else if (context.canvas.thumbrect && 
                  context.canvas.thumbrect.hitest(x, y))
