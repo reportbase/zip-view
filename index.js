@@ -1104,7 +1104,7 @@ var bossdisplaylst =
             var rh = 26;
             var bh = rect.height * 0.4;
             var cw = rect.width - 30;
-            var a = new panel.colsA([4, SCROLLBARWIDTH, 0 SCROLLBARWIDTH, 4],
+            var a = new panel.colsA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
                     [
                         0,
                         new panel.rows([0,bh,0],
