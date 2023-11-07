@@ -1891,7 +1891,7 @@ panel.close = function()
                 new panel.text("white", "center", "middle", 0, 0, HUGEFONT),
             ]);
 
-        a.draw(context, rect, user, time);
+        a.draw(context, rect, '\u{2716}', time);
         context.restore();
     }
 };
