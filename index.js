@@ -1029,8 +1029,8 @@ var bossdisplaylst =
             var r = calculateAspectRatioFit(photo.image.width, photo.image.height, width, height);
             var h = r.height;
             var w = r.width;
-            var x = Math.floor(Math.nub(1, 2, w, rect.width));
-            var y = Math.floor(Math.nub(1, 2, h, rect.height));
+            var x = 0.5;
+            var y = 0.5;
             canvas.thumbrect = new rectangle(x, y, w, h);
             if (!headcnv.height || context.nothumb)
                 return;
