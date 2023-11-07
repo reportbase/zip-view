@@ -3830,10 +3830,10 @@ var taplst =
             context.stretchcolumnrect &&
             context.stretchcolumnrect.hitest(x, y))
         {
-            context.nostretchcolumn = context.nostretchcolumn ? 0 : 1;           
+            context.nostretchcolumn = context.nostretchcolumn ? 1 : 0;           
         }
  
-        _4cnvctx.refresh();
+        context.refresh();
     }
 },
 {
@@ -4244,7 +4244,7 @@ bossobj.draw = function()
     if (!slice)
         return;
     context.save();
-    if (!context.nostretchcolumn || (
+    if (context.nostretchcolumn || (
         galleryobj.value() && galleryobj.value().ispng))
     {
         context.clear();
@@ -4268,7 +4268,7 @@ bossobj.draw = function()
         var x2 = Math.berp(-1, 1, b2) * virtualpinch - virtualeft;
 
         var g = x2 > x ? x2 - x : x - x2;
-        var w = context.nostretchcolumn ? g : colwidth;
+        var w = context.nostretchcolumn ? colwidth : g;
         w = Math.ceil(x + w) - x;
 
         if (x < -w || x >= rect.width)
