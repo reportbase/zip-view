@@ -927,16 +927,21 @@ var bossdisplaylst =
             var a = new panel.layerA(
                 [
                     new panel.rectangle(context.windowrect),
-                    new panel.colsA([4, SCROLLBARWIDTH, 4],
+                    new panel.colsA([0, SCROLLBARWIDTH, 4],
                         [
                             0,
-                             new panel.layers(
-                                [
-                                    new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                    new panel.expand(new panel.rectangle(context.gallery2rect), 10, 1),
-                                    new panel.shrink(new panel.currentV(new panel.rounded("white", 
-                                            0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
-                                ]),
+                            new panel.rows([0,bh,0],
+                            [
+                                0,
+                                new panel.layers(
+                                    [
+                                        new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                        new panel.expand(new panel.rectangle(context.gallery2rect), 10, 1),
+                                        new panel.shrink(new panel.currentV(new panel.rounded("white", 
+                                                0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
+                                    ]),
+                                0,
+                            ]),
                            0
                         ]),
                     new panel.rowsA([HEADHEIGHT, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
