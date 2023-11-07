@@ -1892,7 +1892,7 @@ panel.close = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.closeboss),
-                new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), 20, 20),
+                new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), 22, 22),
                 new panel.text("white", "center", "middle", 0, 0, MEDIUMFONT),
             ]);
 
