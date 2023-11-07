@@ -1041,7 +1041,7 @@ var bossdisplaylst =
             var x = Math.floor(Math.nub(positxobj.value(), positxobj.length(), w, rect.width));
             var y = Math.floor(Math.nub(posityobj.value(), posityobj.length(), h, rect.height));
             canvas.thumbrect = new rectangle(x, y, w, h);
-            if (!headcnv.height)
+            if (!headcnv.height || global.nothumb)
                 return;
             var r = canvas.thumbrect;
             context.save();
@@ -1894,7 +1894,7 @@ panel.close = function()
                 new panel.text("white", "center", "middle", 0, 0, HUGEFONT),
             ]);
 
-        a.draw(context, rect, '\u{2716}', time);
+        a.draw(context, rect, '\u{274C}', time);
         context.restore();
     }
 };
@@ -3784,7 +3784,7 @@ var taplst =
             context.windowrect &&
             context.windowrect.hitest(x, y))
         {
-            global.thumb = global.thumb ? 0 : 1;           
+            global.nothumb = global.nothumb ? 0 : 1;           
         }
 
         _4cnvctx.refresh();
