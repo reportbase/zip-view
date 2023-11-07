@@ -1360,7 +1360,7 @@ var displaylst =
         var a = new panel.rowsA([80, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
         [
             0,
-            new panel.cols([0, RAINSTEP, 0],
+            1?0:new panel.cols([0, RAINSTEP, 0],
                 [
                     0,
                     new panel.layers(
