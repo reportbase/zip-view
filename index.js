@@ -1132,7 +1132,7 @@ var bossdisplaylst =
                             ]),
                         0
                     ])
-            )]
+            ])
         
             if (headcnv.height)
             a.draw(context, rect,
