@@ -3300,18 +3300,10 @@ var swipelst = [
     name: "BOSS",
     swipeleftright: function(context, rect, x, y, evt)
     {
-        setTimeout(function()
-        {
-            var k = evt.type == "swipeleft" ? -1 : 1;
-            bossobj.leftright(k * context.canvas.speed);
-            context.refresh();
-        }, TIMEMAIN);
     },
 
     swipeupdown: function(context, rect, x, y, evt)
     {
-        var k = evt.type == "swipeup" ? -1 : 1;
-        bossobj.updown(k * context.canvas.speed);
     },
 },
 {
@@ -3848,7 +3840,7 @@ var taplst =
             context.holly2rect.hitest(x, y))
         {
             var k = (x - context.holly2rect.x) / context.holly2rect.width;
-            canvas.hollyobj.addperc(k < 0.5 ? -0.05 : 0.05);
+            canvas.hollyobj.addperc(k < 0.5 ? -0.1 : 0.1);
             menuobj.draw();
         }
         else if (
@@ -5354,9 +5346,6 @@ contextobj.reset = function()
             _4cnv.autodirect = -_4cnv.movingpage;
             _4cnv.movingpage = 0;
             contextobj.reset()
-
-            if (galleryobj.autopan)
-                bossobj.leftright(-1 * context.canvas.speed);
 
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             bossobj.draw();
