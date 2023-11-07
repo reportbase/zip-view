@@ -1077,7 +1077,7 @@ var bossdisplaylst =
     title: "Zoom and Stretch",
     draw: function(context, rect, user, time)
     {
-             var canvas = context.canvas;
+            var canvas = context.canvas;
             context.extentrect = new rectangle();
             context.zoomrect = new rectangle();
             context.stretchrect = new rectangle();
@@ -1093,17 +1093,7 @@ var bossdisplaylst =
                 !photo.image.naturalHeight)
                 return;
 
-            var w = Math.min(320, r.width - 100);
-            var j = window.innerWidth - r.width >= 180;
-
-            var data = [];
-            var index = galleryobj.current();
-            data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
-            
-            var rows = data.length;
-            var rh = 26;
             var bh = rect.height * 0.4;
-            var cw = rect.width - 30;
             var a = new panel.colsA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
                     [
                         0,
