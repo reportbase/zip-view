@@ -986,7 +986,7 @@ var bossdisplaylst =
             var bw = rect.width / 2;
             var a = new panel.layers(
             [
-                new panel.rectangle(context.nostretchcolumnrect),
+                new panel.rectangle(context.windowrect),
                 new panel.rows([0, SCROLLBARWIDTH, 4],
                 [
                     0,
@@ -1090,7 +1090,7 @@ var bossdisplaylst =
             context.heightrect = new rectangle();
             context.pagerect = new rectangle();
             delete context.windowrect;
-            context.nostretchcolumn = new rectangle();
+            context.nostretchcolumnrect = new rectangle();
         
             if (
                 !photo.image ||
@@ -1101,7 +1101,7 @@ var bossdisplaylst =
             var bh = rect.height * 0.4;
             var a = new panel.layers(
             [
-                new panel.rectangle(context.nostretchcolumn),
+                new panel.rectangle(context.nostretchcolumnrect),
                 new panel.colsA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
                     [
                         0,
@@ -3827,10 +3827,10 @@ var taplst =
             context.nothumb = context.nothumb ? 0 : 1;           
         }
         else if (
-            context.nostretchcolumn &&
-            context.nostretchcolumn.hitest(x, y))
+            context.stretchcolumnrect &&
+            context.stretchcolumnrect.hitest(x, y))
         {
-            overlayobj.nostretchcolumn = overlayobj.nostretchcolumn ? 0 : 1;           
+            context.nostretchcolumn = context.nostretchcolumn ? 0 : 1;           
         }
  
         _4cnvctx.refresh();
@@ -4244,7 +4244,7 @@ bossobj.draw = function()
     if (!slice)
         return;
     context.save();
-    if (galleryobj.nostretchcolumn || (
+    if (!context.nostretchcolumn || (
         galleryobj.value() && galleryobj.value().ispng))
     {
         context.clear();
@@ -4268,7 +4268,7 @@ bossobj.draw = function()
         var x2 = Math.berp(-1, 1, b2) * virtualpinch - virtualeft;
 
         var g = x2 > x ? x2 - x : x - x2;
-        var w = galleryobj.nostretchcolumn ? colwidth : g;
+        var w = context.nostretchcolumn ? g : colwidth;
         w = Math.ceil(x + w) - x;
 
         if (x < -w || x >= rect.width)
@@ -4277,13 +4277,10 @@ bossobj.draw = function()
             slice.x, 0, colwidth, rect.height,
             x, 0, w, rect.height);
 
-        if (overlay.nostretchcolumn)
-        {
-            overlayobj.value().draw(context,
-              new rectangle(x,0,w,rect.height),
-                  `${n+1}`, 0);
-        }
-    }
+        //overlayobj.value().draw(context,
+          //new rectangle(x,0,w,rect.height),
+            //  `${n+1}`, 0);
+     }
 
     context.restore();
     delete context.extentrect;
