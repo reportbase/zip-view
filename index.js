@@ -926,47 +926,10 @@ var bossdisplaylst =
             var a = new panel.layerA(
                 [
                     new panel.rectangle(context.windowrect),
-                    new panel.colsA([4, SCROLLBARWIDTH, 4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
+                    new panel.colsA([4, SCROLLBARWIDTH, 4],
                         [
                             0,
-                            new panel.rows([0,bh,0],
-                                [
-                                    0,
-                                    new panel.layers(
-                                        [
-                                            new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                            new panel.expand(new panel.rectangle(context.zoomrect), 10, 1),
-                                            new panel.shrink(new panel.currentV(new panel.rounded("white", 
-                                                    0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
-                                        ]),
-                                    0,
-                                ]),
                             0,
-                            new panel.rows([0, bh, 0],
-                                [
-                                    0,
-                                    new panel.layers(
-                                        [
-                                            new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                            new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
-                                            new panel.shrink(new panel.currentV(new panel.rounded("white", 0, 
-                                                    TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
-                                        ]),
-                                    0,
-                                ]),
-                            0,
-                            new panel.rows([0, bh, 0],
-                                [
-                                    0,
-                                    new panel.layers(
-                                        [
-                                            new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                            new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
-                                            new panel.shrink(new panel.currentV(new panel.rounded("white", 0, 
-                                                    TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
-                                        ]),
-                                    0,
-                                ]),
                             0
                         ]),
                     new panel.rowsA([HEADHEIGHT, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
@@ -1006,11 +969,7 @@ var bossdisplaylst =
                     0,
                     [
                         0,
-                        zoomobj,
-                        0,
-                        stretchobj,
-                        0,
-                        stretchobj,
+                        galleryobj,
                         0
                     ],
                     [
@@ -1111,6 +1070,83 @@ var bossdisplaylst =
             }
 
             context.restore();
+    }
+},
+{
+    name: "BOSS",
+    title: "Zoom and Stretch",
+    draw: function(context, rect, user, time)
+    {
+             var canvas = context.canvas;
+            context.extentrect = new rectangle();
+            context.zoomrect = new rectangle();
+            context.stretchrect = new rectangle();
+            context.timerect = new rectangle();
+            context.slicewidthrect = new rectangle();
+            context.heightrect = new rectangle();
+            context.pagerect = new rectangle();
+            context.windowrect = new rectangle();
+        
+            if (
+                !photo.image ||
+                !photo.image.complete ||
+                !photo.image.naturalHeight)
+                return;
+
+            var w = Math.min(320, r.width - 100);
+            var j = window.innerWidth - r.width >= 180;
+
+            var data = [];
+            var index = galleryobj.current();
+            data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
+            
+            var rows = data.length;
+            var rh = 26;
+            var bh = rect.height * 0.4;
+            var cw = rect.width - 30;
+            var a = new panel.colsA([4, SCROLLBARWIDTH, 0 SCROLLBARWIDTH, 4],
+                    [
+                        0,
+                        new panel.rows([0,bh,0],
+                            [
+                                0,
+                                new panel.layers(
+                                    [
+                                        new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                        new panel.expand(new panel.rectangle(context.zoomrect), 10, 1),
+                                        new panel.shrink(new panel.currentV(new panel.rounded("white", 
+                                                0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
+                                    ]),
+                                0,
+                            ]),
+                        0,
+                        new panel.rows([0, bh, 0],
+                            [
+                                0,
+                                new panel.layers(
+                                    [
+                                        new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                        new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
+                                        new panel.shrink(new panel.currentV(new panel.rounded("white", 0, 
+                                                TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
+                                    ]),
+                                0,
+                            ]),
+                        0
+                    ]);
+        
+            if (headcnv.height)
+            a.draw(context, rect,
+                    [
+                        0,
+                        zoomobj,
+                        0,
+                        stretchobj,
+                        0,
+                    ]
+                );
+
+            context.restore();   
     }
 },
 {
