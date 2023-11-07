@@ -1267,7 +1267,7 @@ var displaylst =
                     [
                         new panel.expand(new panel.rectangle(context.template2rect), 10, 10),
                         new panel.gridA(1, rows, 1,
-                            new panel.shadow(new panel.text("white", "center", "middle", 0, 0, LARGEFONT))),
+                            new panel.shadow(new panel.text())),
                     ]),
                     0,
                 ]),
