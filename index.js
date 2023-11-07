@@ -3893,32 +3893,12 @@ var taplst =
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
-            clearInterval(global.swipetimeout);
-            global.swipetimeout = 0;
-            var visibles = _8cnv.visibles;
-            var k;
-            for (k = 0; k < visibles.length; k++)
-            {
-                var j = visibles[k];
-                if (!j.slice || !j.slice.rect)
-                    continue;
-                if (j.slice.rect.hitest(x, y))
-                    break;
-            }
-
-            if (k == visibles.length)
-                return;
-
-            var n = visibles[k].n;
-            galleryobj.set(n);
-            headcnv.height = HEADHEIGHT;
-            var k = headlst.findIndex(function(a){return a.name == "BOSS"});
-            headham.panel = headlst[k];
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-            delete photo.image;
-            menuobj.hide();
-            _4cnv.height = window.innerHeight;
-            contextobj.reset();
+                var value = galleryobj.current() + 1;
+                if (menuobj.value() == _8cnvctx)
+                    value = (galleryobj.length() * (1 - _8cnv.timeobj.berp())).toFixed(0);
+                if (!gotodialog(value, "Goto", goimage))
+                    return;
+                galleryobj.init()
         }
         else if (
             headcnvctx.fullrect &&
