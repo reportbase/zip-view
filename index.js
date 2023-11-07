@@ -984,7 +984,10 @@ var bossdisplaylst =
                 ]);
 
             var bw = rect.width / 2;
-            var a = new panel.rows([0, SCROLLBARWIDTH, 4],
+            var a = new panel.layers(
+            [
+                new panel.rectangle(context.nostretchcolumnrect),
+                new panel.rows([0, SCROLLBARWIDTH, 4],
                 [
                     0,
                     new panel.cols([0, bw, 0],
@@ -999,7 +1002,8 @@ var bossdisplaylst =
                                 ]),
                             0,
                         ])
-                ])
+                ]),
+            ])
 
             if (headcnv.height)
                 a.draw(context, rect, context.canvas.timeobj, 0);
@@ -1085,7 +1089,8 @@ var bossdisplaylst =
             context.slicewidthrect = new rectangle();
             context.heightrect = new rectangle();
             context.pagerect = new rectangle();
-            context.windowrect = new rectangle();
+            delete context.windowrect;
+            context.nostretchcolumn = new rectangle();
         
             if (
                 !photo.image ||
@@ -1094,7 +1099,10 @@ var bossdisplaylst =
                 return;
 
             var bh = rect.height * 0.4;
-            var a = new panel.colsA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
+            var a = new panel.layers(
+            [
+                new panel.rectangle(context.nostretchcolumn),
+                new panel.colsA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
                     [
                         0,
                         new panel.rows([0,bh,0],
@@ -1123,7 +1131,8 @@ var bossdisplaylst =
                                 0,
                             ]),
                         0
-                    ]);
+                    ])
+            )]
         
             if (headcnv.height)
             a.draw(context, rect,
@@ -3257,10 +3266,6 @@ var mouseobj = new circular_array("MOUSE", mouselst);
 
 var overlaylst = [
 {
-    name: "DEFAULT",
-    draw: function(context, rect, x, y) {}
-},
-{
     name: "DEBUG",
     draw: function(context, rect, user, time)
     {
@@ -3821,7 +3826,13 @@ var taplst =
         {
             context.nothumb = context.nothumb ? 0 : 1;           
         }
-
+        else if (
+            context.nostretchcolumn &&
+            context.nostretchcolumn.hitest(x, y))
+        {
+            overlayobj.nostretchcolumn = overlayobj.nostretchcolumn ? 0 : 1;           
+        }
+ 
         _4cnvctx.refresh();
     }
 },
@@ -4266,7 +4277,7 @@ bossobj.draw = function()
             slice.x, 0, colwidth, rect.height,
             x, 0, w, rect.height);
 
-        if (galleryobj.nostretchcolumn)
+        if (overlay.nostretchcolumn)
         {
             overlayobj.value().draw(context,
               new rectangle(x,0,w,rect.height),
@@ -6415,20 +6426,6 @@ galleryobj.init = function(obj)
                               console.log(obj);
                           })
                     .catch(err => console.error(err));                 
-            }
-        },
-        {
-            title: "Stretch Columns",
-            func: function()
-            {
-                galleryobj.nostretchcolumn = galleryobj.nostretchcolumn ? 0 : 1;
-                overlayobj.set(galleryobj.nostretchcolumn);
-                _4cnvctx.refresh();
-                return true;
-            },
-            enabled: function()
-            {
-                return galleryobj.nostretchcolumn;
             }
         },
         {
