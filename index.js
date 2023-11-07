@@ -905,7 +905,7 @@ var bossdisplaylst =
             context.heightrect = new rectangle();
             context.pagerect = new rectangle();
             context.windowrect = new rectangle();
-            context.gallery2rect = new rectangle();
+            context.galleryrect = new rectangle();
         
             if (
                 !photo.image ||
@@ -936,7 +936,7 @@ var bossdisplaylst =
                                 new panel.layers(
                                     [
                                         new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                        new panel.expand(new panel.rectangle(context.gallery2rect), 10, 1),
+                                        new panel.expand(new panel.rectangle(context.galleryrect), 10, 1),
                                         new panel.shrink(new panel.currentV(new panel.rounded("white", 
                                                 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
                                     ]),
@@ -3192,6 +3192,12 @@ var panlst =
                 zoomobj.setperc(k);
                 contextobj.reset()
             }
+            else if (context.isgalleryrect)
+            {
+                var k = (y - context.galleryrect.y) / context.galleryrect.height;
+                galleryobj.setperc(k);
+                contextobj.reset()
+            }
             else if (context.isstretchrect)
             {
                 var k = (y - context.stretchrect.y) / context.stretchrect.height;
@@ -3226,6 +3232,7 @@ var panlst =
         movingx = new MovingAverage();
         movingy = new MovingAverage();
         headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        context.isgalleryrect = context.galleryrect && context.galleryrect.hitest(x, y);
         context.istimerect = context.timerect && context.timerect.hitest(x, y);
         context.iszoomrect = context.zoomrect && context.zoomrect.hitest(x, y);
         context.isstretchrect = context.stretchrect && context.stretchrect.hitest(x, y);
@@ -5982,40 +5989,6 @@ window.addEventListener("screenorientation", (evt) =>
 {
     resize();
 });
-
-var metaobj = new circular_array("", 6);
-var positxobj = new circular_array("POSITIONX", 100);
-var posityobj = new circular_array("POSITIONY", 100);
-positxobj.set(50);
-posityobj.set(50);
-
-panel.gallery = function(size)
-{
-    this.draw = function(context, rect, user, time)
-    {
-        context.save()
-        context.canvas.galleryrect = new rectangle()
-        var j = 5;
-        var k = j / 2;
-        var e = new panel.fill(OPTIONFILL);
-        var s = menuobj.value() == _2cnvctx;
-        var a = new panel.layers(
-            [
-                new panel.rectangle(context.canvas.galleryrect),
-                s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), 22, 22) : 0,
-                new panel.shrink(new panel.circle(s ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), 17, 17),
-                new panel.rows([0, rect.height * 0.20, 0],
-                    [
-                        0,
-                        new panel.cols([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0, ]),
-                        0,
-                    ]),
-            ])
-
-        a.draw(context, rect, user, time);
-        context.restore()
-    }
-};
 
 panel.leftmenu = function()
 {
