@@ -1090,7 +1090,7 @@ var bossdisplaylst =
             context.heightrect = new rectangle();
             context.pagerect = new rectangle();
             delete context.windowrect;
-            context.nostretchcolumnrect = new rectangle();
+            context.stretchcolumnrect = new rectangle();
         
             if (
                 !photo.image ||
@@ -1101,7 +1101,7 @@ var bossdisplaylst =
             var bh = rect.height * 0.4;
             var a = new panel.layers(
             [
-                new panel.rectangle(context.nostretchcolumnrect),
+                new panel.rectangle(context.stretchcolumnrect),
                 new panel.colsA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
                     [
                         0,
