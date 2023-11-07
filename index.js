@@ -56,7 +56,7 @@ const SMALLFONT = "16px archivo black";
 const DEFAULTFONT = "17px archivo black";
 const MEDIUMFONT = "19px archivo black";
 const LARGEFONT = "21px archivo black";
-const HUGEFONT = "30px archivo black";
+const HUGEFONT = "24px archivo black";
 const SLICEWIDTH = 36;
 const ZOOMAX = 92;
 const IMAGELSTSIZE = 32;
@@ -903,7 +903,8 @@ var bossdisplaylst =
             context.slicewidthrect = new rectangle();
             context.heightrect = new rectangle();
             context.pagerect = new rectangle();
-            
+            context.windowrect = new rectangle();
+        
             if (
                 !photo.image ||
                 !photo.image.complete ||
@@ -914,10 +915,6 @@ var bossdisplaylst =
             var j = window.innerWidth - r.width >= 180;
 
             var data = [];
-            var index = galleryobj.current();
-            var value = galleryobj.data[index];
-            //if (value && value.folder)
-            //    data = value.folder.split("/");
             data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
             
             var rows = data.length;
@@ -926,6 +923,7 @@ var bossdisplaylst =
             var cw = rect.width - 30;
             var a = new panel.layerA(
                 [
+                    new panel.rectangle(context.windowrect),
                     new panel.colsA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
                         [
                             0,
@@ -990,6 +988,7 @@ var bossdisplaylst =
             if (headcnv.height)
             a.draw(context, rect,
                 [
+                    0,
                     [
                         0,
                         zoomobj,
@@ -1104,7 +1103,11 @@ var bossdisplaylst =
     {
         var canvas = context.canvas
         var data = [];
-        data.push(canvas.timeobj.current().toFixed(5));
+        var index = galleryobj.current();
+        var value = galleryobj.data[index];
+        if (value && value.folder)
+            data = value.folder.split("/");
+         data.push(canvas.timeobj.current().toFixed(5));
         var e = 100 * (1 - canvas.timeobj.berp());
         var j = 100 * rowobj.berp();
         data.push(`${e.toFixed(2)}%, ${j.toFixed(2)}%`);
@@ -1126,7 +1129,7 @@ var bossdisplaylst =
         var j = 100 * _8cnv.hollyobj.berp();
         data.push(`${j.toFixed(2)}%`);
         data.push(_8cnv.timeobj.current().toFixed(5));
-
+ 
         var a = new panel.rows([80,40,0,data.length*25,0,80],
         [
             0,
@@ -1886,8 +1889,7 @@ panel.close = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.closeboss),
-                _4cnv.movingpage == 1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(_4cnv.movingpage == 1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.text("white", "center", "middle", 0, 0, HUGEFONT),
             ]);
 
@@ -3777,8 +3779,11 @@ var taplst =
             var k = (x - context.pagerect.x) / context.pagerect.width;
             context.movepage(k < 0.5 ? -1 : 1);
         }    
-        else
+        else if (
+            context.windowrect &&
+            context.windowrect.hitest(x, y))
         {
+            global.thumb = global.thumb ? 0 : 1;           
         }
 
         _4cnvctx.refresh();
