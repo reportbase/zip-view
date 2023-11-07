@@ -3258,7 +3258,7 @@ var panlst =
         delete canvas.startx;
         delete canvas.starty;
         delete rowobj.offset;
-        contextobj.reseth();
+        contextobj.reset();
         context.refresh();
     }
 }, ];
