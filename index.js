@@ -3200,7 +3200,8 @@ var panlst =
             else if (context.isgalleryrect)
             {
                 var k = (y - context.galleryrect.y) / context.galleryrect.height;
-                galleryobj.setperc(k);
+                var j = Math.floor(Math.lerp(0,galleryobj.length()-1,k);
+                galleryobj.set(j);
                 contextobj.reset()
             }
             else if (context.isstretchrect)
