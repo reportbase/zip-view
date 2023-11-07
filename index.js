@@ -4268,7 +4268,7 @@ bossobj.draw = function()
         var x2 = Math.berp(-1, 1, b2) * virtualpinch - virtualeft;
 
         var g = x2 > x ? x2 - x : x - x2;
-        var w = context.nostretchcolumn ? colwidth : ;
+        var w = context.nostretchcolumn ? colwidth : g;
         w = Math.ceil(x + w) - x;
 
         if (x < -w || x >= rect.width)
