@@ -1891,11 +1891,11 @@ panel.close = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.closeboss),
-                new panel.shrink(new panel.circle(TRANSPARENT, SEARCHFRAME, 4), 20, 20),
+                new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), 20, 20),
                 new panel.text("white", "center", "middle", 0, 0, DEFAULTFONT),
             ]);
 
-        a.draw(context, rect, '\u{274C}', time);
+        a.draw(context, rect, 'X', time);
         context.restore();
     }
 };
@@ -1952,8 +1952,8 @@ panel.zoom = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.zoomrect),
-                s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), 16, 16) : 0,
-                new panel.shrink(new panel.circle(s ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), 12, 12),
+                //s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), 16, 16) : 0,
+                new panel.shrink(new panel.circle(SCROLLNAB, SEARCHFRAME, 4), 12, 12),
                 new panel.shrink(new Panel(), 15, 20),
             ]);
 
@@ -3269,15 +3269,6 @@ var presslst =
     name: "BOSS",
     pressup: function(context, rect, x, y)
     {
-        /*
-        var canvas = context.canvas;
-        if ((canvas.zoomrect && canvas.zoomrect.hitest(x, y)) ||
-            (canvas.stretchrect && canvas.stretchrect.hitest(x, y)))
-            return;
-        headcnv.height = headcnv.height ? 0 : HEADHEIGHT;
-        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-        context.refresh();
-        */
     },
     press: function(context, rect, x, y) {}
 }, 
@@ -3709,12 +3700,14 @@ var taplst =
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
+            /*
             menuobj.setindex(_8cnvctx);
             menuobj.show();
             var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
             headham.panel = headlst[k];
             headlst[k].draw(headcnvctx, headcnvctx.rect(), 0);
             _4cnv.height = 0;
+            */
         }
         else if (context.canvas.thumbrect && 
                  context.canvas.thumbrect.hitest(x, y))
