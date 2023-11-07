@@ -54,8 +54,9 @@ const ARROWFILL = "white";
 const SCROLLBARWIDTH = 16;
 const SMALLFONT = "16px archivo black";
 const DEFAULTFONT = "17px archivo black";
-const LARGEFONT = "19px archivo black";
-const HUGEFONT = "22px archivo black";
+const MEDIUMFONT = "19px archivo black";
+const LARGEFONT = "21px archivo black";
+const HUGEFONT = "30px archivo black";
 const SLICEWIDTH = 36;
 const ZOOMAX = 92;
 const IMAGELSTSIZE = 32;
@@ -1261,7 +1262,7 @@ var displaylst =
                     [
                         new panel.expand(new panel.rectangle(context.template2rect), 10, 10),
                         new panel.gridA(1, rows, 1,
-                            new panel.shadow(new panel.text())),
+                            new panel.shadow(new panel.text("white", "center", "middle", 0, 0, LARGEFONT))),
                     ]),
                     0,
                 ]),
@@ -1331,7 +1332,8 @@ var displaylst =
                             [
                                 new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
                                 new panel.expand(new panel.rectangle(canvas.hollyrect), 0, 20),
-                                new panel.shrink(new panel.currentH(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
+                                new panel.shrink(new panel.currentH(
+                                    new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
                             ]),
                         0,
                     ])
@@ -1359,7 +1361,7 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.expand(new panel.rectangle(context.holly2rect), 10, 10),
-                        new panel.shadow(new panel.text()),
+                        new panel.shadow(new panel.text("white", "center", "middle", 0, 0, LARGEFONT)),
                     ]),
                     0,
                 ]),
@@ -1886,7 +1888,7 @@ panel.close = function()
                 new panel.rectangle(context.closeboss),
                 _4cnv.movingpage == 1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(_4cnv.movingpage == 1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                new panel.shrink(new panel.arrow(ARROWFILL, 90), 20, 30),
+                new panel.text("white", "center", "middle", 0, 0, HUGEFONT),
             ]);
 
         a.draw(context, rect, user, time);
