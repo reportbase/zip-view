@@ -926,7 +926,7 @@ var bossdisplaylst =
             var a = new panel.layerA(
                 [
                     new panel.rectangle(context.windowrect),
-                    new panel.colsA([4, SCROLLBARWIDTH, 4, SCROLLBARWIDTH, 0],
+                    new panel.colsA([4, SCROLLBARWIDTH, 4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
                         [
                             0,
                             new panel.rows([0,bh,0],
@@ -955,6 +955,19 @@ var bossdisplaylst =
                                     0,
                                 ]),
                             0,
+                            new panel.rows([0, bh, 0],
+                                [
+                                    0,
+                                    new panel.layers(
+                                        [
+                                            new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                            new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
+                                            new panel.shrink(new panel.currentV(new panel.rounded("white", 0, 
+                                                    TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
+                                        ]),
+                                    0,
+                                ]),
+                            0
                         ]),
                     new panel.rowsA([HEADHEIGHT, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
                         [
@@ -997,6 +1010,8 @@ var bossdisplaylst =
                         0,
                         stretchobj,
                         0,
+                        stretchobj,
+                        0
                     ],
                     [
                         0,
@@ -1042,7 +1057,7 @@ var bossdisplaylst =
             var x = Math.floor(Math.nub(positxobj.value(), positxobj.length(), w, rect.width));
             var y = Math.floor(Math.nub(posityobj.value(), posityobj.length(), h, rect.height));
             canvas.thumbrect = new rectangle(x, y, w, h);
-            if (!headcnv.height || global.nothumb)
+            if (!headcnv.height || context.nothumb)
                 return;
             var r = canvas.thumbrect;
             context.save();
@@ -1293,6 +1308,7 @@ var displaylst =
     name: "GALLERY",
     draw: function(context, rect, user, time)
     {
+        
         var canvas = context.canvas;
         context.save();
         delete canvas.templaterect;
@@ -3777,7 +3793,7 @@ var taplst =
             context.windowrect &&
             context.windowrect.hitest(x, y))
         {
-            global.nothumb = global.nothumb ? 0 : 1;           
+            context.nothumb = context.nothumb ? 0 : 1;           
         }
 
         _4cnvctx.refresh();
