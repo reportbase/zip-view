@@ -42,7 +42,8 @@ const SCROLLNAB = "rgba(0,0,0,0.3)";
 const MENUCOLOR = "rgba(0,0,0,0.5)";
 const OPTIONFILL = "white";
 const THUMBTRANSPARENT = "rgba(0,0,0,0.2)";
-const THUMBFILL = "rgba(255,155,0,0.4)";
+const LIGHTHUMBFILLL = "rgba(255,155,0,0.20)";
+const THUMBFILL = "rgba(255,155,0,0.35)";
 const THUMBSTROKE = "rgba(255,255,255,0.4)";
 const SEARCHFRAME = "rgba(255,255,255,0.5)";
 const TRANSPARENT = "rgba(0,0,0,0)";
@@ -1076,7 +1077,7 @@ var bossdisplaylst =
             var r = new rectangle(xx, yy, ww, hh);
             canvas.selectrect = []
             canvas.selectrect.push(r);
-            var blackfill = new panel.fill(THUMBFILL);
+            var blackfill = new panel.fill(LIGHTHUMBFILL);
             blackfill.draw(context, r, 0, 0);
             whitestroke.draw(context, r, 0, 0);
             if (xx > x) //leftside
@@ -1890,8 +1891,8 @@ panel.close = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.closeboss),
-                new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                new panel.text("white", "center", "middle", 0, 0, HUGEFONT),
+                new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), 12, 12),
+                new panel.text("white", "center", "middle", 0, 0, MEDIUMFONT),
             ]);
 
         a.draw(context, rect, '\u{274C}', time);
