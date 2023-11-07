@@ -1077,7 +1077,7 @@ var bossdisplaylst =
             var r = new rectangle(xx, yy, ww, hh);
             canvas.selectrect = []
             canvas.selectrect.push(r);
-            var blackfill = new panel.fill(LIGHTHUMBFILL);
+            var blackfill = new panel.fill("rgba(0,0,0,0.2)");
             blackfill.draw(context, r, 0, 0);
             whitestroke.draw(context, r, 0, 0);
             if (xx > x) //leftside
@@ -1891,7 +1891,7 @@ panel.close = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.closeboss),
-                new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), 12, 12),
+                new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), 20, 20),
                 new panel.text("white", "center", "middle", 0, 0, MEDIUMFONT),
             ]);
 
