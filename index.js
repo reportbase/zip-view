@@ -3203,7 +3203,7 @@ var panlst =
                 var j = Math.floor(Math.lerp(0,galleryobj.length()-1,k));
                 delete photo.image;
                 galleryobj.set(j);
-                context.reset();
+                contextobj.reset();
             }
             else if (context.isstretchrect)
             {
