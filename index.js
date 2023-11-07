@@ -889,6 +889,11 @@ var headlst =
 
 var headobj = new circular_array("HEAD", headlst);
 
+var positxobj = new circular_array("POSITIONX", 100);
+var posityobj = new circular_array("POSITIONY", 100);
+positxobj.set(50);
+posityobj.set(50);
+
 var bossdisplaylst =
 [
 {
@@ -1029,8 +1034,8 @@ var bossdisplaylst =
             var r = calculateAspectRatioFit(photo.image.width, photo.image.height, width, height);
             var h = r.height;
             var w = r.width;
-            var x = 0.5;
-            var y = 0.5;
+            var x = Math.floor(Math.nub(positxobj.value(), positxobj.length(), w, rect.width));
+            var y = Math.floor(Math.nub(posityobj.value(), posityobj.length(), h, rect.height));
             canvas.thumbrect = new rectangle(x, y, w, h);
             if (!headcnv.height || context.nothumb)
                 return;
