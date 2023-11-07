@@ -926,10 +926,10 @@ var bossdisplaylst =
             var a = new panel.layerA(
                 [
                     new panel.rectangle(context.windowrect),
-                    new panel.colsA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
+                    new panel.colsA([4, SCROLLBARWIDTH, 4, SCROLLBARWIDTH, 0],
                         [
                             0,
-                            new panel.rows([0,5,0,bh],
+                            new panel.rows([0,bh,0],
                                 [
                                     0,
                                     new panel.layers(
