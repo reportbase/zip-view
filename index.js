@@ -1090,7 +1090,7 @@ var bossdisplaylst =
             context.heightrect = new rectangle();
             context.pagerect = new rectangle();
             delete context.windowrect;
-            context.stretchcolumnrect = new rectangle();
+            context.nostretchcolumnrect = new rectangle();
         
             if (
                 !photo.image ||
@@ -1101,7 +1101,7 @@ var bossdisplaylst =
             var bh = rect.height * 0.4;
             var a = new panel.layers(
             [
-                new panel.rectangle(context.stretchcolumnrect),
+                new panel.rectangle(context.nostretchcolumnrect),
                 new panel.colsA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
                     [
                         0,
@@ -3830,10 +3830,10 @@ var taplst =
             context.stretchcolumnrect &&
             context.stretchcolumnrect.hitest(x, y))
         {
-            context.nostretchcolumn = context.nostretchcolumn ? 1 : 0;           
+            context.nostretchcolumn = context.nostretchcolumn ? 0 : 1;           
         }
  
-        context.refresh();
+        _4cnvctx.refresh();
     }
 },
 {
@@ -4244,7 +4244,7 @@ bossobj.draw = function()
     if (!slice)
         return;
     context.save();
-    if (context.nostretchcolumn || (
+    if (!context.nostretchcolumn || (
         galleryobj.value() && galleryobj.value().ispng))
     {
         context.clear();
@@ -4268,7 +4268,7 @@ bossobj.draw = function()
         var x2 = Math.berp(-1, 1, b2) * virtualpinch - virtualeft;
 
         var g = x2 > x ? x2 - x : x - x2;
-        var w = context.nostretchcolumn ? colwidth : g;
+        var w = context.nostretchcolumn ? g : colwidth;
         w = Math.ceil(x + w) - x;
 
         if (x < -w || x >= rect.width)
