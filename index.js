@@ -3201,9 +3201,8 @@ var panlst =
             {
                 var k = (y - context.galleryrect.y) / context.galleryrect.height;
                 var j = Math.floor(Math.lerp(0,galleryobj.length()-1,k));
-                delete photo.image;
                 galleryobj.set(j);
-                contextobj.reset();
+                galleryobj.init(obj)
             }
             else if (context.isstretchrect)
             {
