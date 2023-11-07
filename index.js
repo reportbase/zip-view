@@ -1887,12 +1887,13 @@ panel.close = function()
         context.closeboss = new rectangle()
         context.fillStyle = "white";
         context.strokeStyle = "white";
-
+        context.shadowOffsetX = 0;
+        context.shadowOffsetY = 0;
         var a = new panel.layers(
             [
                 new panel.rectangle(context.closeboss),
                 new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), 20, 20),
-                new panel.text("white", "center", "middle", 0, 0, DEFAULTFONT),
+                new panel.text("white", "center", "middle", 0, 0, MEDIUMTFONT),
             ]);
 
         a.draw(context, rect, 'X', time);
