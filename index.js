@@ -915,6 +915,7 @@ var bossdisplaylst =
             var j = window.innerWidth - r.width >= 180;
 
             var data = [];
+            var index = galleryobj.current();
             data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
             
             var rows = data.length;
