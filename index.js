@@ -1891,8 +1891,8 @@ panel.close = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.closeboss),
-                new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), 20, 20),
-                new panel.text("white", "center", "middle", 0, 0, MEDIUMFONT),
+                new panel.shrink(new panel.circle(TRANSPARENT, SEARCHFRAME, 4), 20, 20),
+                new panel.text("white", "center", "middle", 0, 0, DEFAULTFONT),
             ]);
 
         a.draw(context, rect, '\u{274C}', time);
