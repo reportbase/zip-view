@@ -1277,9 +1277,9 @@ var bossdisplaylst =
         [
             0,
             0,
-            0,
+            new panel.fill("red"),
 
-            new panel.cols([0,360,0],
+            new panel.cols([0,j,0],
                 [
                     0,
                     new panel.multitext(0),
