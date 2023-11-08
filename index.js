@@ -1226,8 +1226,8 @@ var bossdisplaylst =
     }
 },
 {
-    name: "DESCRIBE",
-    title: "Description",
+    name: "DETAILS",
+    title: "Details",
     draw: function(context, rect, user, time)
     {
         var canvas = context.canvas
@@ -1243,14 +1243,14 @@ var bossdisplaylst =
         var extent = `${photo.image.width}x${photo.image.height}`;
         data.push(extent);
   
-        var a = new panel.rowsA([80,40,0,data.length*25,0,40,80],
+        var a = new panel.rowsA([80,40,0,data.length*25,0,80],
         [
             0,
             0,
             0,
             
             new panel.gridA(1,data.length, 1,
-                new panel.shadow(new panel.text())),
+                new panel.shadow(new panel.text())),//todo
             
             0,
             new panel.colsA([0,120,120,120,0],
@@ -1279,14 +1279,13 @@ var bossdisplaylst =
                        "Upload",
                        "Copy",
                        0
-                    ],
-                   0
+                    ]
                 ], 0)        
     }
 },
 {
-    name: "DETAILS",
-    title: "Details",
+    name: "DESCRIPTION",
+    title: "Description",
     draw: function(context, rect, user, time)
     {
         var str = `Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur`;
