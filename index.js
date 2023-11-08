@@ -1095,7 +1095,7 @@ var bossdisplaylst =
 },
 {
     name: "BOSS",
-    title: "Zoom and Stretch",
+    title: "Zoom",
     draw: function(context, rect, user, time)
     {
             var canvas = context.canvas;
@@ -1115,10 +1115,7 @@ var bossdisplaylst =
                 return;
 
             var bh = rect.height * 0.4;
-            var a = new panel.layers(
-            [
-                new panel.rectangle(context.stretchcolumnrect),
-                new panel.colsA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
+            var a = new panel.colsA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
                     [
                         0,
                         new panel.rows([0,bh,0],
@@ -1147,10 +1144,8 @@ var bossdisplaylst =
                                 0,
                             ]),
                         0
-                    ])
-            ])
+                    ]);
         
-            if (headcnv.height)
             a.draw(context, rect,
                     [
                         0,
@@ -1160,6 +1155,24 @@ var bossdisplaylst =
                         0,
                     ]
                 );
+
+            var rows = panel.rows([0,40,40],
+                [
+                    0,
+                    new panel.cols([0,120,0],
+                    [
+                        0,
+                        new panel.layers(
+                        [
+                            new panel.rectangle(context.stretchcolumnrect),
+                            new panel.shadow(new panel.text()),
+                        ]),
+                        0
+                    ]),
+                    0,
+                ]);
+
+            a.draw(context, rect, "Stretch", 0);
 
             context.restore();   
     }
