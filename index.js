@@ -1226,19 +1226,19 @@ var bossdisplaylst =
                     new panel.layers(
                     [
                         new panel.fill("orange"),
-                        new rectangle(context.upload),
+                        //new rectangle(context.upload),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
                         new panel.fill("yellow"),
-                        new rectangle(context.download),
+                        //new rectangle(context.download),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
                         new panel.fill("brown"),
-                        new rectangle(context.delete),
+                        //new rectangle(context.delete),
                         new panel.shadow(new panel.text()),
                     ]),
                     0,
