@@ -1243,7 +1243,7 @@ var bossdisplaylst =
             new panel.cols([0,360,0],
                 [
                     0,
-                    new panel.text(),
+                    new panel.shadow(new panel.text()),
                     0,
                 ]),
             0,
@@ -1277,7 +1277,7 @@ var bossdisplaylst =
         [
             0,
             0,
-            new panel.fill("red"),
+            0,
 
             new panel.cols([0,j,0],
                 [
@@ -1290,7 +1290,7 @@ var bossdisplaylst =
             new panel.cols([0,j,0],
                 [
                     0,
-                    new panel.text(),
+                    new panel.shadow(new panel.text()),
                     0,
                 ]),
             0,
@@ -1780,7 +1780,7 @@ panel.pattern = function()
     };
 };
 
-panel.multitext = function(e, font=DEFAULTFONT)
+panel.multitext = function(e, panel)
 {
     this.draw = function(context, rect, user, time)
     {
@@ -1816,8 +1816,7 @@ panel.multitext = function(e, font=DEFAULTFONT)
                 var str = lines[m].clean();
                 if (!str.length)
                     continue;
-                var a = new panel.text();
-                a.draw(context, rect, str, 0);
+                panel.draw(context, rect, str, 0);
                 rect.y += MULTITEXTROWHEIGHT;
             }
         }
@@ -4520,7 +4519,7 @@ var buttonlst = [
                 new panel.layers(
                     [
                         new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
-                        new panel.shrink(new panel.multitext(e), 20, 20),
+                        new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
                     ]),
                 0,
             ]);
@@ -4556,7 +4555,8 @@ var buttonlst = [
                             new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
                             new panel.rowsA([0, 50, 10],
                                 [
-                                    new panel.shrink(new panel.multitext(e), 20, 0),
+                                    new panel.shrink(
+                                        new panel.multitext(e,new panel.text()), 20, 0),
                                     new panel.colsA([0,60,60,0],
                                     [
                                             0,
