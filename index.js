@@ -1217,11 +1217,41 @@ var bossdisplaylst =
     title: "Description",
     draw: function(context, rect, user, time)
     {
-        //folder
-        //gallery title
-        //tags
-        //extent
-        //size (mp)
+        var canvas = context.canvas
+        var data = [];
+        var index = galleryobj.current();
+        var value = galleryobj.data[index];
+        if (value && value.folder)
+            data = value.folder.split("/");
+        if (galleryobj.value().id)
+            data.push(galleryobj.value().id);
+        var mp = (photo.image.width * photo.image.height) / 1000000;
+        data.push(`${mp.toFixed(2)} MP`);
+        var extent = `${photo.image.width}x${photo.image.height}`;
+        data.push(extent);
+  
+        var a = new panel.rowsA([80,40,0,data.length*25,0,40,80],
+        [
+            0,
+            0,
+            0,
+            new panel.gridA(1,data.length, 1,
+                new panel.shadow(new panel.text())),
+            0,
+            panel.text(),
+            0,
+        ]);
+        
+        a.draw(context, rect, 
+               [
+                   0,
+                   0,
+                   0,
+                   data,
+                   0,
+                   "Upload",
+                   0
+                ], 0)        
     }
 },
 {
