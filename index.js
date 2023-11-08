@@ -930,75 +930,75 @@ var bossdisplaylst =
             var bh = rect.height * 0.4;
             var cw = rect.width - 30;
             var a = new panel.layerA(
+            [
+                new panel.rectangle(context.windowrect),
+                new panel.colsA([0, SCROLLBARWIDTH, 4],
                 [
-                    new panel.rectangle(context.windowrect),
-                    new panel.colsA([0, SCROLLBARWIDTH, 4],
+                    0,
+                    new panel.rows([0,bh,0],
+                    [
+                        0,
+                        new panel.layers(
                         [
-                            0,
-                            new panel.rows([0,bh,0],
-                            [
-                                0,
-                                new panel.layers(
-                                    [
-                                        new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                        new panel.expand(new panel.rectangle(context.galleryrect), 10, 1),
-                                        new panel.shrink(new panel.currentV(new panel.rounded("white", 
-                                                0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
-                                    ]),
-                                0,
-                            ]),
-                           0
+                            new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                            new panel.expand(new panel.rectangle(context.galleryrect), 10, 1),
+                            new panel.shrink(new panel.currentV(new panel.rounded("white", 
+                                    0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
                         ]),
-                    new panel.rowsA([HEADHEIGHT, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
+                        0,
+                    ]),
+                   0
+                ]),
+                new panel.rowsA([HEADHEIGHT, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
+                [
+                    0,
+                    0,
+                    0,
+                    new panel.cols([0, RAINSTEP, 0],
+                    [
+                        0,
+                        new panel.layers(
                         [
-                            0,
-                            0,
-                            0,
-                            new panel.cols([0, RAINSTEP, 0],
-                                [
-                                    0,
-                                    new panel.layers(
-                                    [
-                                        new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
-                                        new panel.gridA(1, rows, 1,
-                                            new panel.shadow(new panel.text())),
-                                    ]),
-                                    0,
-                                ]),
-                            0,
-                            new panel.cols([0, cw, 0],
-                                [
-                                    0,
-                                    1 ? 0 : new panel.layers(
-                                        [
-                                            new panel.expand(new panel.rectangle(context.heightrect), 0, 10),
-                                            new panel.currentH(new panel.fill(NUBAR), bh / 5, 1),
-                                        ]),
-                                    0,
-                                ]),
-                            0,
-                        ])
-                ]);
+                            new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
+                            new panel.gridA(1, rows, 1,
+                                new panel.shadow(new panel.text())),
+                        ]),
+                        0,
+                    ]),
+                    0,
+                    new panel.cols([0, cw, 0],
+                    [
+                        0,
+                        1 ? 0 : new panel.layers(
+                        [
+                            new panel.expand(new panel.rectangle(context.heightrect), 0, 10),
+                            new panel.currentH(new panel.fill(NUBAR), bh / 5, 1),
+                        ]),
+                        0,
+                    ]),
+                    0,
+                ])
+            ]);
         
             if (headcnv.height)
             a.draw(context, rect,
+            [
+                0,
                 [
                     0,
-                    [
-                        0,
-                        galleryobj,
-                        0
-                    ],
-                    [
-                        0,
-                        0,
-                        0,
-                        data,
-                        0,
-                        heightobj,
-                        0,
-                    ]
-                ]);
+                    galleryobj,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    data,
+                    0,
+                    heightobj,
+                    0,
+                ]
+            ]);
 
             var bw = rect.width / 2;
             var a = new panel.layers(
@@ -1008,17 +1008,17 @@ var bossdisplaylst =
                 [
                     0,
                     new panel.cols([0, bw, 0],
+                    [
+                        0,
+                        new panel.layers(
                         [
-                            0,
-                            new panel.layers(
-                                [
-                                    new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                    new panel.expand(new panel.rectangle(context.timerect), 0, 10),
-                                    new panel.shrink(new panel.currentH(
-                                        new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3)
-                                ]),
-                            0,
-                        ])
+                            new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                            new panel.expand(new panel.rectangle(context.timerect), 0, 10),
+                            new panel.shrink(new panel.currentH(
+                                new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3)
+                        ]),
+                        0,
+                    ])
                 ]),
             ])
 
@@ -1116,61 +1116,60 @@ var bossdisplaylst =
 
             var bh = rect.height * 0.4;
             var a = new panel.colsA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
-                    [
-                        0,
-                        new panel.rows([0,bh,0],
-                            [
-                                0,
-                                new panel.layers(
-                                    [
-                                        new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                        new panel.expand(new panel.rectangle(context.zoomrect), 10, 1),
-                                        new panel.shrink(new panel.currentV(new panel.rounded("white", 
-                                                0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
-                                    ]),
-                                0,
-                            ]),
-                        0,
-                        new panel.rows([0, bh, 0],
-                            [
-                                0,
-                                new panel.layers(
-                                    [
-                                        new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                        new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
-                                        new panel.shrink(new panel.currentV(new panel.rounded("white", 0, 
-                                                TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
-                                    ]),
-                                0,
-                            ]),
-                        0
-                    ]);
-        
-            a.draw(context, rect,
-                    [
-                        0,
-                        zoomobj,
-                        0,
-                        stretchobj,
-                        0,
-                    ]
-                );
-
-            var a = new panel.rows([0,40,40],
+            [
+                0,
+                new panel.rows([0,bh,0],
                 [
                     0,
-                    new panel.cols([0,120,0],
+                    new panel.layers(
                     [
-                        0,
-                        new panel.layers(
-                        [
-                            new panel.rectangle(context.stretchcolumnrect),
-                            new panel.shadow(new panel.text()),
-                        ]),
-                        0
+                        new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                        new panel.expand(new panel.rectangle(context.zoomrect), 10, 1),
+                        new panel.shrink(new panel.currentV(new panel.rounded("white", 
+                                0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
                     ]),
                     0,
-                ]);
+                ]),
+                0,
+                new panel.rows([0, bh, 0],
+                [
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                        new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
+                        new panel.shrink(new panel.currentV(new panel.rounded("white", 0, 
+                                TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
+                    ]),
+                    0,
+                ]),
+                0
+            ]);
+        
+            a.draw(context, rect,
+            [
+                0,
+                zoomobj,
+                0,
+                stretchobj,
+                0,
+            ]);
+
+            var a = new panel.rows([0,40,40],
+            [
+                0,
+                new panel.cols([0,120,0],
+                [
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.stretchcolumnrect),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    0
+                ]),
+                0,
+            ]);
 
             a.draw(context, rect, "Stretch", 0);
             context.restore();   
@@ -1206,54 +1205,58 @@ var bossdisplaylst =
         data.push("Extent");
         data.push(extent);
   
-        var a = new panel.rowsA([80,40,0,data.length*25,0,80],
+        var a = new panel.layers(
         [
-            0,
-            0,
-            0,
-            new panel.layers(
+            new panel.fill("rgba(0,0,0,0.35)"),
+            new panel.rowsA([80,40,0,data.length*25,0,80],
             [
-                new panel.rectangle(context.copyid),
-                new panel.multitext(0, new panel.shadow(new panel.text())),
-            ]),
-            0,
-            new panel.colsA([0,120,120,120,0],
-            [
+                0,
+                0,
                 0,
                 new panel.layers(
                 [
-                    new panel.rectangle(context.upload),
-                    new panel.shadow(new panel.text()),
-                ]),
-                new panel.layers(
-                [
-                    new panel.rectangle(context.download),
-                    new panel.shadow(new panel.text()),
-                ]),
-                new panel.layers(
-                [
-                    new panel.rectangle(context.delete),
-                    new panel.shadow(new panel.text()),
+                    new panel.rectangle(context.copyid),
+                    new panel.multitext(0, new panel.shadow(new panel.text())),
                 ]),
                 0,
-            ]),
-        ]);
+                new panel.colsA([0,120,120,120,0],
+                [
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.upload),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.download),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.delete),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    0,
+                ]),
+            ])
+        ])
         
         a.draw(context, rect, 
-               [
-                   0,
-                   0,
-                   0,
-                   data,
-                   0,
-                   [
-                       0,
-                       "Upload",
-                       "Download",
-                       "Delete",
-                       0
-                    ]
-                ], 0)        
+        [
+           0,
+           0,
+           0,
+           data,
+           0,
+           [
+               0,
+               "Upload",
+               "Download",
+               "Delete",
+               0
+            ]
+        ], 0)        
     }
 },
 {
@@ -1268,7 +1271,7 @@ var bossdisplaylst =
         
         var a = new panel.layers(
         [
-            new panel.fill("rgba(0,0,0,0.2)"),
+            new panel.fill("rgba(0,0,0,0.35)"),
             new panel.rowsA([80,40,10,0,10,80],
             [
                 0,
@@ -1294,48 +1297,24 @@ var bossdisplaylst =
         ]);
         
         a.draw(context, rect, 
-               [
-                   0,
-                   0,
-                   0,
-                   
-                   [str],
+        [
+           0,
+           0,
+           0,
+           
+           [str],
 
-                   0,
-                   [
-                       0,
-                       "Edit",
-                       "Copy",
-                       "Paste",
-                       0,
-                   ],
-                ], 0)  
+           0,
+           [
+               0,
+               "Edit",
+               "Copy",
+               "Paste",
+               0,
+           ],
+        ], 0)  
     }
 },
-{
-    name: "TEMPLATES",
-    title: "Templates",
-    draw: function(context, rect, user, time)
-    {
-    
-    }
-},
-{
-    name: "UPSCALE",
-    title: "Upscale",
-    draw: function(context, rect, user, time)
-    {
-    
-    }
-},
-{
-    name: "TAGS",
-    title: "Tags",
-    draw: function(context, rect, user, time)
-    {
-    
-    }
-},   
 {
     name: "BOSS",
     title: "Debug",
