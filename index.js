@@ -522,7 +522,7 @@ var templatelst =
 ];
 
 const SEAL = 3927
-var sealobj = new circular_array("", SEAL);
+var sealobj = new circular_array("", SEAL*2);
 sealobj.set(SEAL);
 
 var templateobj = new circular_array("", templatelst);
@@ -3458,21 +3458,7 @@ var keylst = [
                 key == "k")
             {
                 var e = canvas.speed / 2;
-                if (key == "pageup" || key == "enter")
-                    e = canvas.speed;
-                else if (key == "backspace" || key == " " || (key == "arrowup" && canvas.ctrlKey))
-                    e = canvas.speed * 2;
-                menuobj.updown(context, -e);
-                if (!global.swipetimeout)
-                {
-
-                    global.swipetimeout = setInterval(function()
-                    {
-                        context.canvas.lastime = -0.0000000000101010101;
-                        menuobj.draw();
-                    }, TIMEMAIN);
-                }
-
+                menuobj.updown(context, canvas.speed);
                 evt.preventDefault();
             }
             else if (
@@ -3481,21 +3467,7 @@ var keylst = [
                 key == "j")
             {
                 var e = canvas.speed / 2;
-                if (key == "pagedown" || key == "enter")
-                    e = canvas.speed;
-                else if (key == " " || (key == "arrowdown" && canvas.ctrlKey))
-                    e = canvas.speed * 2;
-
                 menuobj.updown(context, e);
-                if (!global.swipetimeout)
-                {
-                    global.swipetimeout = setInterval(function()
-                    {
-                        context.canvas.lastime = -0.0000000000101010101;
-                        menuobj.draw();
-                    }, TIMEMAIN);
-                }
-
                 evt.preventDefault();
             }
             else if (key == "g")
