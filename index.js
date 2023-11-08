@@ -1217,25 +1217,29 @@ var bossdisplaylst =
                 new panel.multitext(0, new panel.shadow(new panel.text())),
             ]),
             new panel.fill("red"),
-            new panel.colsA([0,120,120,120,0],
+            new panel.layers(
             [
-                0,
-                new panel.layers(
+                new panel.fill("green"),
+                new panel.colsA([0,120,120,120,0],
                 [
-                    new rectangle(context.upload),
-                    new panel.shadow(new panel.text()),
+                    0,
+                    new panel.layers(
+                    [
+                        new rectangle(context.upload),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    new panel.layers(
+                    [
+                        new rectangle(context.download),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    new panel.layers(
+                    [
+                        new rectangle(context.delete),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    0,
                 ]),
-                new panel.layers(
-                [
-                    new rectangle(context.download),
-                    new panel.shadow(new panel.text()),
-                ]),
-                new panel.layers(
-                [
-                    new rectangle(context.delete),
-                    new panel.shadow(new panel.text()),
-                ]),
-                0,
             ]),
         ]);
         
