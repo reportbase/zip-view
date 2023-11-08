@@ -522,7 +522,7 @@ var templatelst =
 ];
 
 const SEAL = 3927
-var sealobj = new circular_array("", SEAL*2);
+var sealobj = new circular_array("", SEAL);
 sealobj.set(SEAL);
 
 var templateobj = new circular_array("", templatelst);
