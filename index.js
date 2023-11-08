@@ -1261,9 +1261,11 @@ var bossdisplaylst =
 
                    0,
                    [
+                       0,
                        "Edit",
                        "Upload",
-                       "Copy"
+                       "Copy",
+                       0
                     ],
                    0
                 ], 0)        
