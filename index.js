@@ -1183,6 +1183,10 @@ var bossdisplaylst =
     {
         var canvas = context.canvas
         var data = [];
+        context.copyid = new rectangle();
+        context.download = new rectangle();
+        context.upload = new rectangle();
+        context.delete = new rectangle();
         var index = galleryobj.current();
         var value = galleryobj.data[index];
         if (value && value.folder)
@@ -1207,14 +1211,30 @@ var bossdisplaylst =
             0,
             0,
             0,
-            new panel.multitext(0, new panel.shadow(new panel.text())),
+            new panel.layers(
+            [
+                new panel.rectangle(context.copyid),
+                new panel.multitext(0, new panel.shadow(new panel.text())),
+            ]),
             0,
             new panel.colsA([0,120,120,120,0],
                 [
                     0,
-                    new panel.shadow(new panel.text()),
-                    new panel.shadow(new panel.text()),
-                    new panel.shadow(new panel.text()),
+                    new panel.layers(
+                        [
+                            new rectangle(context.upload),
+                            new panel.shadow(new panel.text()),
+                        ]),
+                    new panel.layers(
+                    [
+                        new rectangle(context.download),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    new panel.layers(
+                    (
+                        new rectangle(context.delete),
+                        new panel.shadow(new panel.text()),
+                    )],
                     0,
                 ]),
             0,
@@ -1858,7 +1878,7 @@ panel.multitext = function(e, panel)
             var lines = wraptext(context, lst[n], rect.width);
             for (var m = 0; m < lines.length; m++)
             {
-                var str = lines[m].clean();
+                var str = lines[m];
                 if (!str.length)
                     continue;
                 panel.draw(context, rect, str, 0);
@@ -3866,6 +3886,22 @@ var taplst =
         {
             _4cnvctx.movepage(1);
         }
+        else if (context.delete && context.delete.hitest(x, y))
+        {
+                
+        }
+        else if (context.upload && context.upload.hitest(x, y))
+        {
+                
+        }
+        else if (context.download && context.download.hitest(x, y))
+        {
+                
+        }
+        else if (context.copyid && context.copyid.hitest(x, y))
+        {
+             copytext(galleryobj.value().id);   
+        }
         else if (
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
@@ -4415,8 +4451,11 @@ bossobj.draw = function()
     delete context.pagerect;
     delete context.stretchcolumnrect;
     delete context.windowrect;
-    delete context.galleryrect;       
-
+    delete context.galleryrect;    
+    delete context.copyid;
+    delete context.delete;
+    delete context.download;
+    delete context.upload;
     if (!menuobj.value() && headcnv.height)
         bossdisplayobj.value().draw(context, rect, 0, 0);
 }
@@ -6968,35 +7007,6 @@ function gotodialog(value, title, func)
     {
         dialog.clickblocked = 0;
     }, 40);
-    dialog.showModal();
-}
-
-function negativepromptdialog()
-{
-    var input = document.getElementById("negative-prompt-input");
-    dialog = document.getElementById("negative-prompt-dialog");
-
-    dialog.addEventListener("click", function(event)
-    {
-        var rect = new rectangle(input.getBoundingClientRect());
-        if (event.target.id == "negative-prompt-ok")
-        {
-            if (input.value)
-                input.value = input.value.clean();
-            if (!input.value)
-                return;
-            text2imageobj.negative_prompt = input.value;
-            dialog.close();
-            menuobj.draw();
-        }
-        else if (!rect.hitest(event.x, event.y))
-        {
-            dialog.close();
-        }
-
-    });
-
-    input.value = text2imageobj.negative_prompt;
     dialog.showModal();
 }
 
