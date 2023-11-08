@@ -1240,9 +1240,11 @@ var bossdisplaylst =
                 new panel.shadow(new panel.text())),
             
             0,
-            new panel.cols([0,360,0],
+            new panel.colsA([0,120,120,120,0],
                 [
                     0,
+                    new panel.shadow(new panel.text()),
+                    new panel.shadow(new panel.text()),
                     new panel.shadow(new panel.text()),
                     0,
                 ]),
@@ -1258,7 +1260,11 @@ var bossdisplaylst =
                    data,
 
                    0,
-                   "Upload",
+                   [
+                       "Edit",
+                       "Upload",
+                       "Copy"
+                    ],
                    0
                 ], 0)        
     }
