@@ -1240,7 +1240,7 @@ var bossdisplaylst =
                 new panel.shadow(new panel.text())),
             
             0,
-            panel.fill("red"),
+            panel.fill("blue"),
             0,
         ]);
         
