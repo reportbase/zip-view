@@ -1252,7 +1252,7 @@ var bossdisplaylst =
                    
                    data,
 
-                   0
+                   0,
                    "Upload",
                    0
                 ], 0)        
