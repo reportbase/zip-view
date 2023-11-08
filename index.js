@@ -1235,10 +1235,12 @@ var bossdisplaylst =
             0,
             0,
             0,
+            
             new panel.gridA(1,data.length, 1,
                 new panel.shadow(new panel.text())),
+            
             0,
-            panel.text(),
+            panel.fill("red"),
             0,
         ]);
         
@@ -1247,8 +1249,10 @@ var bossdisplaylst =
                    0,
                    0,
                    0,
+                   
                    data,
-                   0,
+
+                   0
                    "Upload",
                    0
                 ], 0)        
