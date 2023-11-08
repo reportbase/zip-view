@@ -3055,7 +3055,7 @@ var panlst =
 
         var canvas = context.canvas;
         var obj = canvas.hollyobj;
-        context.savetimeout()
+        context.savetime()
         
         if (type == "panleft" || type == "panright")
         {
