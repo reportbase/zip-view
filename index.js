@@ -1237,10 +1237,18 @@ var bossdisplaylst =
         if (value && value.folder)
             data = value.folder.split("/");
         if (galleryobj.value().id)
+        {
+            data.push("ID");
             data.push(galleryobj.value().id);
+            data.push(" ");
+        }
+        
         var mp = (photo.image.width * photo.image.height) / 1000000;
+        data.push("Size");
         data.push(`${mp.toFixed(2)} MP`);
+        data.push(" ");
         var extent = `${photo.image.width}x${photo.image.height}`;
+        data.push("Extent");
         data.push(extent);
   
         var a = new panel.rowsA([80,40,0,data.length*25,0,80],
@@ -1275,9 +1283,9 @@ var bossdisplaylst =
                    0,
                    [
                        0,
-                       "Edit",
                        "Upload",
-                       "Copy",
+                       "Download",
+                       "Delete",
                        0
                     ]
                 ], 0)        
@@ -1307,9 +1315,11 @@ var bossdisplaylst =
                 ]),
             
             0,
-            new panel.cols([0,j,0],
+             new panel.colsA([0,120,120,120,0],
                 [
                     0,
+                    new panel.shadow(new panel.text()),
+                    new panel.shadow(new panel.text()),
                     new panel.shadow(new panel.text()),
                     0,
                 ]),
@@ -1325,20 +1335,39 @@ var bossdisplaylst =
                    [str],
 
                    0,
-                   "Update",
+                   [
+                       "Edit",
+                       "Copy",
+                       "Paste",
+                   ],
                    0
                 ], 0)  
     }
 },
 {
-    name: "ACTIONS",
-    title: "Actions",
+    name: "TEMPLATES",
+    title: "Templates",
     draw: function(context, rect, user, time)
     {
-        //not editable
+    
     }
 },
+{
+    name: "UPSCALE",
+    title: "Upscale",
+    draw: function(context, rect, user, time)
+    {
     
+    }
+},
+{
+    name: "TAGS",
+    title: "Tags",
+    draw: function(context, rect, user, time)
+    {
+    
+    }
+},    
 ];
 
 var bossdisplayobj = new circular_array("", bossdisplaylst);
