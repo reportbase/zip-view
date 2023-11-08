@@ -2239,16 +2239,9 @@ CanvasRenderingContext2D.prototype.savetime = function()
             var e = url.searchParams.get('_8');
             if (e != _8cnv.timeobj.current().toFixed(4))
             {
-                var k = _8cnv.timeobj.current();
-                if (typeof k != "undefined" && 
-                    !Number.isNaN(k) && 
-                    k != null &&
-                    Number.isFinite(k))
-                {
-                    k = k.toFixed(4)
-                    url.searchParams.set('_8', k);
-                    //todo
-                }
+                var k = _8cnv.timeobj.current().toFixed(4);
+                url.searchParams.set('_8', k);
+                window.history.replaceState("", url.origin, url);
             }
       }, 1000)
 }
@@ -3062,7 +3055,8 @@ var panlst =
 
         var canvas = context.canvas;
         var obj = canvas.hollyobj;
-
+        context.savetimeout()
+        
         if (type == "panleft" || type == "panright")
         {
             if (canvas.buttonrect &&
