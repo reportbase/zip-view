@@ -3457,8 +3457,9 @@ var keylst = [
                 (canvas.shiftKey && key == " ") ||
                 key == "k")
             {
-                var e = canvas.speed / 2;
-                menuobj.updown(context, canvas.speed);
+                var k = canvas.timeobj.length() / galleryobj.length()/6;
+                canvas.timeobj.rotate(-k);
+                menuobj.draw();
                 evt.preventDefault();
             }
             else if (
@@ -3466,8 +3467,9 @@ var keylst = [
                 key == " " ||
                 key == "j")
             {
-                var e = canvas.speed / 2;
-                menuobj.updown(context, e);
+                var k = canvas.timeobj.length() / galleryobj.length()/6;
+                canvas.timeobj.rotate(k);
+                menuobj.draw();
                 evt.preventDefault();
             }
             else if (key == "g")
