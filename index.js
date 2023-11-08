@@ -3255,7 +3255,10 @@ var panlst =
             else
             {
                 var obj = context.canvas.hollyobj;
-                var j = canvas.selectrect[0].height / canvas.thumbrect.height;
+                var a = photo.image.width/photo.image.height;
+                var h = canvas.virtualwidth / a;
+                var j = canvas.selectrect[0].height / thumbrect.height;
+                var j2 = rect.height/h;
                 var e = canvas.starty - y;
                 var k = panvert(rowobj, e*j);
                 if (k == -1)
