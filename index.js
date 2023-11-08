@@ -1784,7 +1784,7 @@ panel.multitext = function(e, panel)
 {
     this.draw = function(context, rect, user, time)
     {
-        context.font = font;
+        context.font = DEFAULTFONT;
         var lst = [];
         for (var n = 0; n < user.length; n++)
         {
