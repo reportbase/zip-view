@@ -1217,7 +1217,11 @@ var bossdisplaylst =
     title: "Description",
     draw: function(context, rect, user, time)
     {
-        //edit button
+        //folder
+        //gallery title
+        //tags
+        //extent
+        //size (mp)
     }
 },
 {
@@ -3808,6 +3812,8 @@ var taplst =
             headcnvctx.bossdisplayrect &&
             headcnvctx.bossdisplayrect.hitest(x, y))
         {
+            context.nothumb = 0;
+            context.nostretchcolumn = 0;
             var k = (x - headcnvctx.bossdisplayrect.x) / headcnvctx.bossdisplayrect.width;
             bossdisplayobj.rotate(k < 0.5 ? -1 : 1);
             context.refresh();
