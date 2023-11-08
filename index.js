@@ -1173,56 +1173,7 @@ var bossdisplaylst =
                 ]);
 
             a.draw(context, rect, "Stretch", 0);
-
             context.restore();   
-    }
-},
-{
-    name: "BOSS",
-    title: "Debug",
-    draw: function(context, rect, user, time)
-    {
-        var canvas = context.canvas
-        var data = [];
-        var index = galleryobj.current();
-        var value = galleryobj.data[index];
-        if (value && value.folder)
-            data = value.folder.split("/");
-         data.push(canvas.timeobj.current().toFixed(5));
-        var e = 100 * (1 - canvas.timeobj.berp());
-        var j = 100 * rowobj.berp();
-        data.push(`${e.toFixed(2)}%, ${j.toFixed(2)}%`);
-        if (galleryobj.value().id)
-            data.push(galleryobj.value().id);
-        data.push(`${window.innerWidth} x ${window.innerHeight}`);
-        data.push(`${canvas.virtualwidth.toFixed(0)} x ${window.innerHeight}`);
-        var aspect = photo.image.width / photo.image.height;
-        data.push(aspect.toFixed(2));
-        var j = Number(zoomobj.value());
-        data.push(`${j.toFixed(2)}%`);
-        var mp = (canvas.virtualwidth * window.innerHeight)/1000000;
-        data.push(`${mp.toFixed(2)} MP`);
-        var mp = (photo.image.width * photo.image.height) / 1000000;
-        data.push(`${mp.toFixed(2)} MP`);
-        var extent = `${photo.image.width}x${photo.image.height}`;
-        data.push(extent);
-        data.push(`${galleryobj.width}x${galleryobj.height}`);
-        var j = 100 * _8cnv.hollyobj.berp();
-        data.push(`${j.toFixed(2)}%`);
-        data.push(_8cnv.timeobj.current().toFixed(5));
- 
-        var a = new panel.rows([80,40,0,data.length*25,0,80],
-        [
-            0,
-            0,
-            0,
-            new panel.gridA(1,data.length, 1,
-                new panel.shadow(new panel.text())),
-            0,
-            0,
-        ]);
-        
-        a.draw(context, rect, data, 0)
     }
 },
 {
@@ -1256,10 +1207,7 @@ var bossdisplaylst =
             0,
             0,
             0,
-            
-            new panel.gridA(1,data.length, 1,
-                new panel.shadow(new panel.text())),//todo
-            
+            new panel.multitext(0, new panel.shadow(new panel.text())),
             0,
             new panel.colsA([0,120,120,120,0],
                 [
@@ -1277,9 +1225,7 @@ var bossdisplaylst =
                    0,
                    0,
                    0,
-                   
                    data,
-
                    0,
                    [
                        0,
@@ -1336,9 +1282,11 @@ var bossdisplaylst =
 
                    0,
                    [
+                       0,
                        "Edit",
                        "Copy",
                        "Paste",
+                       0,
                    ],
                    0
                 ], 0)  
@@ -1366,6 +1314,54 @@ var bossdisplaylst =
     draw: function(context, rect, user, time)
     {
     
+    }
+},   
+{
+    name: "BOSS",
+    title: "Debug",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas
+        var data = [];
+        var index = galleryobj.current();
+        var value = galleryobj.data[index];
+        if (value && value.folder)
+            data = value.folder.split("/");
+         data.push(canvas.timeobj.current().toFixed(5));
+        var e = 100 * (1 - canvas.timeobj.berp());
+        var j = 100 * rowobj.berp();
+        data.push(`${e.toFixed(2)}%, ${j.toFixed(2)}%`);
+        if (galleryobj.value().id)
+            data.push(galleryobj.value().id);
+        data.push(`${window.innerWidth} x ${window.innerHeight}`);
+        data.push(`${canvas.virtualwidth.toFixed(0)} x ${window.innerHeight}`);
+        var aspect = photo.image.width / photo.image.height;
+        data.push(aspect.toFixed(2));
+        var j = Number(zoomobj.value());
+        data.push(`${j.toFixed(2)}%`);
+        var mp = (canvas.virtualwidth * window.innerHeight)/1000000;
+        data.push(`${mp.toFixed(2)} MP`);
+        var mp = (photo.image.width * photo.image.height) / 1000000;
+        data.push(`${mp.toFixed(2)} MP`);
+        var extent = `${photo.image.width}x${photo.image.height}`;
+        data.push(extent);
+        data.push(`${galleryobj.width}x${galleryobj.height}`);
+        var j = 100 * _8cnv.hollyobj.berp();
+        data.push(`${j.toFixed(2)}%`);
+        data.push(_8cnv.timeobj.current().toFixed(5));
+ 
+        var a = new panel.rows([80,40,0,data.length*25,0,80],
+        [
+            0,
+            0,
+            0,
+            new panel.gridA(1,data.length, 1,
+                new panel.shadow(new panel.text())),
+            0,
+            0,
+        ]);
+        
+        a.draw(context, rect, data, 0)
     }
 },    
 ];
