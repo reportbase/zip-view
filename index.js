@@ -1156,7 +1156,7 @@ var bossdisplaylst =
                     ]
                 );
 
-            var a = panel.rows([0,40,40],
+            var a = new panel.rows([0,40,40],
                 [
                     0,
                     new panel.cols([0,120,0],
