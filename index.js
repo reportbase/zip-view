@@ -1094,8 +1094,8 @@ var bossdisplaylst =
     }
 },
 {
-    name: "BOSS",
-    title: "Zoom",
+    name: "STRETCH",
+    title: "Stretch",
     draw: function(context, rect, user, time)
     {
             var canvas = context.canvas;
@@ -1156,7 +1156,7 @@ var bossdisplaylst =
                     ]
                 );
 
-            var rows = panel.rows([0,40,40],
+            var a = panel.rows([0,40,40],
                 [
                     0,
                     new panel.cols([0,120,0],
