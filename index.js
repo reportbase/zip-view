@@ -1302,7 +1302,7 @@ var bossdisplaylst =
                    0,
                    0,
                    
-                   str,
+                   [str],
 
                    0,
                    "Update",
