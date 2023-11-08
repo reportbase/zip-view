@@ -1273,7 +1273,7 @@ var bossdisplaylst =
         if (j > rect.width-40)
             j = rect.width-40;
         
-         var a = new panel.rowsA([80,40,0,data.length*25,0,40,80],
+         var a = new panel.rowsA([80,40,10,0,10,40,80],
         [
             0,
             0,
@@ -2247,6 +2247,7 @@ CanvasRenderingContext2D.prototype.savetime = function()
                 {
                     k = k.toFixed(4)
                     url.searchParams.set('_8', k);
+                    //todo
                 }
             }
       }, 1000)
