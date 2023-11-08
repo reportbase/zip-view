@@ -1226,15 +1226,15 @@ var bossdisplaylst =
                             new panel.shadow(new panel.text()),
                         ]),
                     new panel.layers(
-                    [
-                        new rectangle(context.download),
-                        new panel.shadow(new panel.text()),
-                    ]),
+                        [
+                            new rectangle(context.download),
+                            new panel.shadow(new panel.text()),
+                        ]),
                     new panel.layers(
-                    (
-                        new rectangle(context.delete),
-                        new panel.shadow(new panel.text()),
-                    )],
+                        [
+                            new rectangle(context.delete),
+                            new panel.shadow(new panel.text()),
+                        ]),
                     0,
                 ]),
             0,
