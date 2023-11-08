@@ -1266,21 +1266,22 @@ var bossdisplaylst =
         if (j > rect.width-40)
             j = rect.width-40;
         
-         var a = new panel.rowsA([80,40,10,0,10,40,80],
+        var a = new panel.layers(
         [
-            0,
-            0,
-            0,
-
-            new panel.cols([0,j,0],
+            new panel.fill("rgba(0,0,0,0.2)"),
+            new panel.rowsA([80,40,10,0,10,80],
+            [
+                0,
+                0,
+                0,
+                new panel.cols([0,j,0],
                 [
                     0,
                     new panel.multitext(0, new panel.shadow(new panel.text())),
                     0,
                 ]),
-            
-            0,
-             new panel.colsA([0,120,120,120,0],
+                0,
+                new panel.colsA([0,120,120,120,0],
                 [
                     0,
                     new panel.shadow(new panel.text()),
@@ -1288,7 +1289,8 @@ var bossdisplaylst =
                     new panel.shadow(new panel.text()),
                     0,
                 ]),
-            0,
+                0,
+            ])
         ]);
         
         a.draw(context, rect, 
@@ -1307,7 +1309,6 @@ var bossdisplaylst =
                        "Paste",
                        0,
                    ],
-                   0
                 ], 0)  
     }
 },
