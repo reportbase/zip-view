@@ -1282,7 +1282,7 @@ var bossdisplaylst =
             new panel.cols([0,j,0],
                 [
                     0,
-                    new panel.multitext(0),
+                    new panel.multitext(0, new panel.shadow(new panel.text())),
                     0,
                 ]),
             
