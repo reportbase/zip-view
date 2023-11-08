@@ -5385,6 +5385,7 @@ contextlst.forEach(function(context, n)
     context.canvas.panend_ = k.panend;
 });
 
+//contextobj reset
 contextobj.reset = function()
 {
     var context = _4cnvctx;
@@ -6175,8 +6176,9 @@ galleryobj.getpath = function(index)
         ((id.charAt(id.length - 5) == '.') ||
             id.charAt(8) == '-'))
     {
-        var template = galleryobj.bosstemplate ? galleryobj.bosstemplate : "3840x3840";
-        path = `https://image.reportbase5836.workers.dev/image/${id}/${template}`;
+        path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
+        //var template = galleryobj.bosstemplate ? galleryobj.bosstemplate : "3840x3840";
+        //path = `https://image.reportbase5836.workers.dev/image/${id}/${template}`;
     }
     else if (id && id.length > 1 &&
         ((id.charAt(0) == 'Q' && id.charAt(1) == 'm') ||
