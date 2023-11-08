@@ -1106,9 +1106,8 @@ var bossdisplaylst =
             context.slicewidthrect = new rectangle();
             context.heightrect = new rectangle();
             context.pagerect = new rectangle();
-            delete context.windowrect;
             context.stretchcolumnrect = new rectangle();
-        
+
             if (
                 !photo.image ||
                 !photo.image.complete ||
@@ -4315,7 +4314,11 @@ bossobj.draw = function()
     delete context.slicewidthrect;
     delete context.stretchrect;
     delete context.canvas.thumbrect;
-   
+    delete context.pagerect;
+    delete context.stretchcolumnrect;
+    delete context.windowrect;
+    delete context.galleryrect;       
+
     if (!menuobj.value() && headcnv.height)
         bossdisplayobj.value().draw(context, rect, 0, 0);
 }
