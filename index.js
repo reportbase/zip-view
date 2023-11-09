@@ -46,8 +46,8 @@ const SCROLLNAB = "rgba(0,0,0,0.3)";
 const MENUCOLOR = "rgba(0,0,0,0.5)";
 const OPTIONFILL = "white";
 const THUMBTRANSPARENT = "rgba(0,0,0,0.2)";
-const LIGHTHUMBFILLL = "rgba(255,155,0,0.35)";
-const THUMBFILL = "rgba(255,155,0,0.50)";
+const LIGHTHUMBFILLL = "rgba(255,125,0,0.25)";
+const THUMBFILL = "rgba(255,125,0,0.40)";
 const THUMBSTROKE = "rgba(255,255,255,0.4)";
 const SEARCHFRAME = "rgba(255,255,255,0.5)";
 const TRANSPARENT = "rgba(0,0,0,0)";
@@ -1225,7 +1225,7 @@ var bossdisplaylst =
         
         var a = new panel.layers(
         [
-            new panel.fill("rgba(255,100,0,0.275)"),
+            //new panel.fill("rgba(255,100,0,0.275)"),
             new panel.rowsA([HEADTOP,ALIEXTENT,0,data.length*25,0,ALIEXTENT,HEADTOP],
             [
                 0,
@@ -1303,7 +1303,7 @@ var bossdisplaylst =
         var e = context.canvas.hollyobj.berp();
         var a = new panel.layers(
         [
-            new panel.fill("rgba(0,255,100,0.35)"),
+            //new panel.fill("rgba(0,255,100,0.35)"),
             new panel.rowsA([HEADHEIGHT,ALIEXTENT,0,ALIEXTENT,FOOTHEIGHT],
             [
                 0,
