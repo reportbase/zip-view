@@ -1884,8 +1884,8 @@ panel.multitext = function(e, panel)
         var len = Math.min(lst.length, Math.floor(rect.height / MULTITEXTROWHEIGHT));
             
         var k = len < lst.length;
-        rect.y -= (len * (MULTITEXTROWHEIGHT)) / 2;
-        rect.y += 10;
+        //rect.y -= (len * (MULTITEXTROWHEIGHT)) / 2;
+        //rect.y += 10;
 
         if (e && lst.length > maxlines)
         {
