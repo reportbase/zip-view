@@ -6245,7 +6245,7 @@ function wraptext(ctx, text, maxWidth)
 let thumbfittedlst = [];
 let thumbimglst = [];
 
-function imagepath(user)
+async function imagepath(user)
 {
     var src;
     if (user.id && user.id.length >= 5 &&
