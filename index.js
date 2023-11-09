@@ -909,32 +909,39 @@ var bossdisplaylst =
         context.download = new rectangle();
         context.upload = new rectangle();
         context.delete = new rectangle();
-
+        var data = [];
+        
         var b = 480;
         if (b > rect.width-40)
             b = rect.width-40;
 
         var str = "Image\n";
         str += `${galleryobj.current()+1} of ${galleryobj.length()}\n`;
+        data.push(str);
         
         if (galleryobj.value().id)
         {
-            str += "\nID\n";
+            var str = "\nID\n";
             str += galleryobj.value().id + "\n\n";
+            data.push(str);
         }
         
         var mp = (photo.image.width * photo.image.height) / 1000000;
-        str += "Size\n";
+        var str = "Size\n";
         str +=`${mp.toFixed(2)} MP\n\n`;
+        data.push(str);
         
-        var extent = `${photo.image.width}x${photo.image.height}`;
-        str += "Extent\n";
-        str += extent + "\n";
+        var str = "Extent\n";
+        str += `${photo.image.width}x${photo.image.height}\n`;
+        data.push(str);
         
         var index = galleryobj.current();
         var value = galleryobj.data[index];
         if (value && value.folder)
-            str += `\n${value.folder}\n`;
+        {
+            var str = `\n${value.folder}\n`;
+            data.push(str);
+        }
         
         var a = new panel.layers(
         [
@@ -981,7 +988,7 @@ var bossdisplaylst =
         [
            0,
            0,
-           [str],
+           data,
            0,
            [
                0,
