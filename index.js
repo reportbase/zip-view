@@ -6254,6 +6254,28 @@ function wraptext(ctx, text, maxWidth)
 let thumbfittedlst = [];
 let thumbimglst = [];
 
+async function getblobpath2(thumbimg, slice)
+{
+    var blob = await slice.entry.blob(`image/${slice.ext}`);
+    thumbimg.onload = function()
+    {
+            galleryobj.width = this.width;
+            galleryobj.height = this.height;
+            buttonobj.reset();
+            contextobj.reset();
+            menuobj.set(_8cnvctx);
+            menuobj.toggle(_8cnvctx);
+            menuobj.show();
+            var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+            headham.panel = headlst[k];
+            headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            buttonobj.fit();
+    }
+    
+    thumbimg.src = URL.createObjectURL(blob);
+}
+
 async function getblobpath(thumbimg, slice)
 {
     var blob = await slice.entry.blob(`image/${slice.ext}`);
@@ -6873,22 +6895,29 @@ galleryobj.init = function(obj)
         _8cnv.timeobj.set(Number(k));
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
-    image.src = imagepath(galleryobj.data[current]);
-    image.onload = function()
+    if (j.entry)
     {
-        galleryobj.width = this.width;
-        galleryobj.height = this.height;
-        buttonobj.reset();
-        contextobj.reset();
-        menuobj.set(_8cnvctx);
-        menuobj.toggle(_8cnvctx);
-        menuobj.show();
-        var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
-        headham.panel = headlst[k];
-        headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-        buttonobj.fit();
-    };    
+        getblobpath2(image, j)
+    }
+    else
+    {
+        image.src = imagepath(j);
+        image.onload = function()
+        {
+            galleryobj.width = this.width;
+            galleryobj.height = this.height;
+            buttonobj.reset();
+            contextobj.reset();
+            menuobj.set(_8cnvctx);
+            menuobj.toggle(_8cnvctx);
+            menuobj.show();
+            var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+            headham.panel = headlst[k];
+            headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            buttonobj.fit();
+        };    
+    }
 }
 
 var local = {};
