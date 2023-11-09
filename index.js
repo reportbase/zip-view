@@ -29,6 +29,7 @@ const BUTTONMARGIN = 30;
 const IFRAME = window.self !== window.top;
 const ALIEXTENT = 60;
 const BEXTENT = 80;
+const BETHWIDTH = 120;
 const BOSSMIN = 4;
 const FOOTSEP = 20;
 const RAINSTEP = 240;
@@ -963,7 +964,7 @@ var bossdisplaylst =
                 ]),
                 0,
                 0,
-                new panel.colsA([0,120,120,120,0],
+                new panel.colsA([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
                 [
                     0,
                     new panel.layers(
@@ -1229,7 +1230,7 @@ var bossdisplaylst =
                     0,
                 ]),
                 0,
-                new panel.colsA([0,120,120,120,0],
+                new panel.colsA([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
                 [
                     0,
                     new panel.layers(
@@ -1333,7 +1334,7 @@ var bossdisplaylst =
             var a = new panel.rows([0,FOOTHEIGHT],
             [
                 0,
-                new panel.cols([0,120,0],
+                new panel.cols([0,BETHWIDTH,0],
                 [
                     0,
                     new panel.layers(
@@ -3110,7 +3111,6 @@ var panlst =
 
         var canvas = context.canvas;
         var obj = canvas.hollyobj;
-        //context.savetime()
         
         if (type == "panleft" || type == "panright")
         {
@@ -3304,11 +3304,11 @@ var panlst =
         }
         else if (type == "panleft" || type == "panright")
         {
-            if (canvas.ishollyrect)
+            if (context.ishollyrect)
             {
-                var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
+                var k = (x - context.hollyrect.x) / context.hollyrect.width;
                 context.canvas.hollyobj.setperc(k);
-                menuobj.draw();
+                context.refresh();
             }
             else if (context.istimerect)
             {
