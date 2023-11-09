@@ -2964,14 +2964,15 @@ async function loadzip(file)
         var k = Array.from(key);
         if (SAFARI && k.charAt(0) == '_')
             continue;
-        k.entry = entries[key];
-        if (k.entry.isDirectory)
+        var entry = entries[key];
+        if (entry.isDirectory)
             continue;
         if (!key.isimage())
             continue;
         var k = {}
         k.ext = key.ext();
-        k.blob = await k.entry.blob(`image/${k.ext}`);
+        k.entry = entry;
+        k.blob = await entry.blob(`image/${k.ext}`);
         var lst = key.split("/");
         k.name = lst.pop();
         k.folder = lst.join("/");
