@@ -3945,7 +3945,6 @@ var taplst =
             var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
             headham.panel = headlst[k];
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-            contextobj.reset();
         }
         else if (
             headcnvctx.bossdisplayrect &&
@@ -3955,8 +3954,7 @@ var taplst =
             context.nostretchcolumn = 0;
             var k = (x - headcnvctx.bossdisplayrect.x) / headcnvctx.bossdisplayrect.width;
             bossdisplayobj.rotate(k < 0.5 ? -1 : 1);
-            context.refresh();
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            contextobj.reset();
         }
         else if (
             context.pagerect &&
