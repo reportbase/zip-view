@@ -2971,6 +2971,11 @@ async function loadzip(file)
             continue;
         var k = {}
         k.ext = key.ext();
+        k.entry.blob(`image/${k.ext}`)
+        .then(function(r)
+              {
+                console.log(r)
+              });
         k.blob = await k.entry.blob(`image/${k.ext}`);
         var lst = key.split("/");
         k.name = lst.pop();
