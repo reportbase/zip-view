@@ -944,9 +944,8 @@ var bossdisplaylst =
         var a = new panel.layers(
         [
             new panel.fill("rgba(0,0,0,0.275)"),
-            new panel.rowsA([80,40,0,data.length*25,0,80],
+            new panel.rowsA([80,0,data.length*25,0,80],
             [
-                0,
                 0,
                 0,
                 new panel.cols([0,b,0],
@@ -985,7 +984,6 @@ var bossdisplaylst =
         
         a.draw(context, rect, 
         [
-           0,
            0,
            0,
            data,
