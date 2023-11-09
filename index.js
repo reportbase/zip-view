@@ -46,8 +46,8 @@ const SCROLLNAB = "rgba(0,0,0,0.3)";
 const MENUCOLOR = "rgba(0,0,0,0.5)";
 const OPTIONFILL = "white";
 const THUMBTRANSPARENT = "rgba(0,0,0,0.2)";
-const LIGHTHUMBFILLL = "rgba(255,155,0,0.20)";
-const THUMBFILL = "rgba(255,155,0,0.35)";
+const LIGHTHUMBFILLL = "rgba(255,155,0,0.35)";
+const THUMBFILL = "rgba(255,155,0,0.50)";
 const THUMBSTROKE = "rgba(255,255,255,0.4)";
 const SEARCHFRAME = "rgba(255,255,255,0.5)";
 const TRANSPARENT = "rgba(0,0,0,0)";
@@ -4622,7 +4622,6 @@ var buttonlst = [
                 new panel.layers(
                     [
                         new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
-                        new panel.shrink(new panel.fill("red"), 20, 20),//todo
                         new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
                     ]),
                 0,
@@ -4644,6 +4643,7 @@ var buttonlst = [
     name: "SETUP",
     draw: function(context, rect, user, time)
     {
+        /*
         var canvas = context.canvas;
         context.save()
         var clr = FILLBAR;
@@ -4693,7 +4693,7 @@ var buttonlst = [
                            0,
                         ]
                     ], time);
-        
+        */
         context.restore();
     }
 },
