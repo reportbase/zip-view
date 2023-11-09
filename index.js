@@ -943,7 +943,7 @@ var bossdisplaylst =
         var a = new panel.layers(
         [
             new panel.fill("rgba(0,0,0,0.275)"),
-            new panel.rowsA([80,50,0,data.length*25,0,50,50],
+            new panel.rowsA([80,60,0,data.length*25,0,60,80],
             [
                 0,
                 0,
