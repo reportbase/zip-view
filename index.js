@@ -679,15 +679,15 @@ var footlst =
         context.save();     
         canvas.homerect = new rectangle();
         var a = new panel.rows([ALIEXTENT,0],
+        [
+            new panel.layers(
             [
-                new panel.layers(
-                [
-                    new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.text(),
-                    new panel.rectangle(canvas.homerect),
-                ]),
-                0
-            ]);
+                new panel.fill("rgba(0,0,0,0.8)"),
+                new panel.text(),
+                new panel.rectangle(canvas.homerect),
+            ]),
+            0
+        ]);
         
         a.draw(context, rect, `\u{25C0}   Help`, 0);
         context.restore();
@@ -4617,6 +4617,7 @@ var buttonlst = [
                 new panel.layers(
                     [
                         new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                        new panel.shrink(new panel.fill("red")), 20, 20),
                         new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
                     ]),
                 0,
@@ -6821,24 +6822,6 @@ galleryobj.init = function(obj)
             _7cnv.rotated = [...a, ...a, ...a];
         })
         .catch(error => console.log(error));
-
-    if (_9cnv.sliceobj.data.length)
-    {
-        _7cnv.sliceobj.data.push(
-        {
-            title: `Help   \u{25B6}`,
-            func: function()
-            {
-                menuobj.hide();
-                galleryobj.leftcnv = _9cnv;
-                galleryobj.leftctx = _9cnvctx;
-                menuobj.setindex(galleryobj.leftctx);
-                menuobj.show();
-                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-                return false;
-            }
-        });
-    }
     
     var lst = [_2cnv, _3cnv, _5cnv, _6cnv, _7cnv, _8cnv, _9cnv, _10cnv, _11cnv];
     for (var n = 0; n < lst.length; n++)
