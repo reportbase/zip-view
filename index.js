@@ -1872,6 +1872,7 @@ panel.multitext = function(e, panel)
     {
         context.save();
         context.setTransform(1, 0, 0, 1, 0, 0);
+        context.transform(0,-rect.height/2)
         context.font = DEFAULTFONT;
         var lst = [];
         for (var n = 0; n < user.length; n++)
