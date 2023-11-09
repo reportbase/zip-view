@@ -2970,7 +2970,7 @@ async function loadzip(file)
         if (!key.isimage())
             continue;
         var k = {}
-        k.ext = key.ext();    
+        k.ext = key.ext();
         k.blob = await k.entry.blob(`image/${k.ext}`);
         var lst = key.split("/");
         k.name = lst.pop();
@@ -4967,12 +4967,27 @@ menuobj.draw = function()
         var thumbfitted = thumbfittedlst[index];
         if (context == _8cnvctx && thumbimg.view != view)
         {
-            thumbimg.src = imagepath(slice);
-            thumbimg.onload = function()
+            try
             {
-                this.view = view;
-                this.count = 0;
-                menuobj.draw();
+                thumbimg.view = view;
+                thumbimg.src = imagepath(slice);
+                thumbimg.onload = function()
+                {
+                    this.count = 0;
+                    menuobj.draw();
+                }
+
+                thumbimg.onerror =
+                    thumbimg.onabort = function(error)
+                    {
+                        thumbimg.view = 0;
+                        console.log(error);
+                    }
+            }
+            catch (error)
+            {
+                thumbimg.view = 0;
+                console.log(error);
             }
         }
         else
@@ -6269,11 +6284,26 @@ galleryobj.getpath = function(index)
     var gallery = this.data[index];
     var id = gallery.id;
     var path = "";
-    if (id && id.length >= 5 &&
+    if (galleryobj.raw)
+    {
+        path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
+    }
+    else if (id && id.length >= 5 &&
         ((id.charAt(id.length - 5) == '.') ||
             id.charAt(8) == '-'))
     {
         path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
+        //var template = galleryobj.bosstemplate ? galleryobj.bosstemplate : "3840x3840";
+        //path = `https://image.reportbase5836.workers.dev/image/${id}/${template}`;
+    }
+    else if (id && id.length > 1 &&
+        ((id.charAt(0) == 'Q' && id.charAt(1) == 'm') ||
+            (id.charAt(0) == 'b')))
+    {
+        //path = `https://ipfs.io/ipfs/${id}`;
+        path = `https://cloudflare-ipfs.com/ipfs/${id}`;
+        // path = `https://ipfs.filebase.io/ipfs/${id}`;
+        //path = `https://${url.path}.ipfs.dweb.link/`;
     }
     else if (gallery.full)
     {
@@ -6822,12 +6852,7 @@ galleryobj.init = function(obj)
         _8cnv.timeobj.set(Number(k));
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
-    var j = galleryobj.data[current];
-    if (j.entry)
-    {
-        k.blob = await k.entry.blob(`image/${k.ext}`);
-    }
-    image.src = imagepath(j);
+    image.src = imagepath(galleryobj.data[current]);
     image.onload = function()
     {
         galleryobj.width = this.width;
