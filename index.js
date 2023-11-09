@@ -6245,7 +6245,7 @@ function wraptext(ctx, text, maxWidth)
 let thumbfittedlst = [];
 let thumbimglst = [];
 
-async function imagepath(user)
+function imagepath(user)
 {
     var src;
     if (user.id && user.id.length >= 5 &&
@@ -6271,11 +6271,6 @@ async function imagepath(user)
     {
         src = user.url;
     }
-    else if (user.entry)
-    {
-        var blob = await user.entry.blob(`image/${user.ext}`);
-        src = URL.createObjectURL(blob);
-    }
     else if (user.blob)
     {
         src = URL.createObjectURL(user.blob);
@@ -6284,7 +6279,7 @@ async function imagepath(user)
     return src;
 }
 
-galleryobj.getpath = function(index)
+async galleryobj.getpath = function(index)
 {
     var gallery = this.data[index];
     var id = gallery.id;
@@ -6857,7 +6852,17 @@ galleryobj.init = function(obj)
         _8cnv.timeobj.set(Number(k));
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
-    image.src = imagepath(galleryobj.data[current]);
+    var j = galleryobj.data[current];
+    if (j.entry)
+    {
+        var blob = await j.entry.blob(`image/${j.ext}`);
+        image.src = URL.createObjectURL(blob);
+    }
+    else
+    {
+        image.src = imagepath(j);
+    }
+    
     image.onload = function()
     {
         galleryobj.width = this.width;
