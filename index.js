@@ -911,36 +911,33 @@ var bossdisplaylst =
         context.delete = new rectangle();
         var data = [];
         
-        var b = 480;
+        var b = 360;
         if (b > rect.width-40)
             b = rect.width-40;
 
-        var str = "Image\n";
-        str += `${galleryobj.current()+1} of ${galleryobj.length()}\n`;
-        data.push(str);
+        data.push("Image";
+        data.push(`${galleryobj.current()+1} of ${galleryobj.length()}`);
+        data.push(" ");
         
-        if (galleryobj.value().id)
-        {
-            var str = "\nID\n";
-            str += galleryobj.value().id + "\n\n";
-            data.push(str);
-        }
+        data.push("ID");
+        data.push(galleryobj.value().id?galleryobj.value().id:"Undefined");
+        data.push(" ");
         
         var mp = (photo.image.width * photo.image.height) / 1000000;
-        var str = "Size\n";
-        str +=`${mp.toFixed(2)} MP\n\n`;
-        data.push(str);
+        data.push("Size");
+        data.push(`${mp.toFixed(2)} MP`);
+        data.push(" ");
         
-        var str = "Extent\n";
-        str += `${photo.image.width}x${photo.image.height}\n`;
-        data.push(str);
+        data.push("Extent");
+        data.push(`${photo.image.width}x${photo.image.height}`);
+        data.push(" ");
         
         var index = galleryobj.current();
         var value = galleryobj.data[index];
         if (value && value.folder)
         {
-            var str = `\n${value.folder}\n`;
-            data.push(str);
+            data.push("Folder");
+            data.push(`\n${value.folder}\n`);
         }
         
         var a = new panel.layers(
