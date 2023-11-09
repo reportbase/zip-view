@@ -6257,22 +6257,6 @@ let thumbimglst = [];
 async function getblobpath2(thumbimg, slice)
 {
     var blob = await slice.entry.blob(`image/${slice.ext}`);
-    thumbimg.onload = function()
-    {
-            galleryobj.width = this.width;
-            galleryobj.height = this.height;
-            buttonobj.reset();
-            contextobj.reset();
-            menuobj.set(_8cnvctx);
-            menuobj.toggle(_8cnvctx);
-            menuobj.show();
-            var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
-            headham.panel = headlst[k];
-            headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-            buttonobj.fit();
-    }
-    
     thumbimg.src = URL.createObjectURL(blob);
 }
 
@@ -6890,6 +6874,21 @@ galleryobj.init = function(obj)
     galleryobj.rightctx = _5cnv.sliceobj.length()?_5cnvctx:_6cnvctx;
 
     var image = new Image();
+    image.onload = function()
+    {
+        galleryobj.width = this.width;
+        galleryobj.height = this.height;
+        buttonobj.reset();
+        contextobj.reset();
+        menuobj.set(_8cnvctx);
+        menuobj.toggle(_8cnvctx);
+        menuobj.show();
+        var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+        headham.panel = headlst[k];
+        headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        buttonobj.fit();
+    };    
     var k = url.searchParams.get('_8');
     if (k != null)
         _8cnv.timeobj.set(Number(k));
@@ -6897,28 +6896,9 @@ galleryobj.init = function(obj)
     var current = galleryobj.lerp(1 - berp);
     var j = galleryobj.data[current];
     if (j.entry)
-    {
         getblobpath2(image, j)
-    }
     else
-    {
         image.src = imagepath(j);
-        image.onload = function()
-        {
-            galleryobj.width = this.width;
-            galleryobj.height = this.height;
-            buttonobj.reset();
-            contextobj.reset();
-            menuobj.set(_8cnvctx);
-            menuobj.toggle(_8cnvctx);
-            menuobj.show();
-            var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
-            headham.panel = headlst[k];
-            headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-            buttonobj.fit();
-        };    
-    }
 }
 
 var local = {};
