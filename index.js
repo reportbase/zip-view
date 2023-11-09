@@ -2971,8 +2971,7 @@ async function loadzip(file)
             continue;
         var k = {}
         k.ext = key.ext();
-        k.entry = entry;
-        k.blob = await entry.blob(`image/${k.ext}`);//todo remove 
+        k.blob = await entry.blob(`image/${k.ext}`);
         var lst = key.split("/");
         k.name = lst.pop();
         k.folder = lst.join("/");
@@ -6246,7 +6245,7 @@ function wraptext(ctx, text, maxWidth)
 let thumbfittedlst = [];
 let thumbimglst = [];
 
-async function imagepath(user)
+function imagepath(user)
 {
     var src;
     if (user.id && user.id.length >= 5 &&
@@ -6272,14 +6271,9 @@ async function imagepath(user)
     {
         src = user.url;
     }
-    else if (user.entry)
-    {
-        var blob = await user.entry.blob(`image/${user.ext}`);    
-        src = URL.createObjectURL(blob);
-    }
     else if (user.blob)
     {
-         src = URL.createObjectURL(user.blob);//todo remove
+        src = URL.createObjectURL(user.blob);
     }
 
     return src;
