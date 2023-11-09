@@ -6245,7 +6245,7 @@ function wraptext(ctx, text, maxWidth)
 let thumbfittedlst = [];
 let thumbimglst = [];
 
-function imagepath(user)
+async function imagepath(user)
 {
     var src;
     if (user.id && user.id.length >= 5 &&
@@ -6332,7 +6332,7 @@ async function loadjson(blob)
 }
 
 //galleryobj init
-async galleryobj.init = function(obj)
+galleryobj.init = function(obj)
 {
     if (obj)
         Object.assign(galleryobj, obj);
