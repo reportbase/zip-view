@@ -1570,7 +1570,7 @@ var displaylst =
             0,
             0,
             0,
-            new panel.cols([0, RAINSTEP, 0],
+            new panel.cols([0, data.length*28, 0],
                 [
                     0,
                     new panel.layers(
