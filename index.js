@@ -1241,24 +1241,26 @@ var bossdisplaylst =
                     ]),
                     0,
                 ]),
-                0,
-                0,
+                new panel.fill("orange"),
+                new panel.fill("yellow"),
                 new panel.colsA([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
                 [
                     0,
                     new panel.layers(
                     [
-                        new panel.fill("red"),
+                        new panel.fill("blue"),
                         new panel.rectangle(context.uploadrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
+                        new panel.fill("green"),
                         new panel.rectangle(context.downloadrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
+                        new panel.fill("red"),
                         new panel.rectangle(context.deleterect),
                         new panel.shadow(new panel.text()),
                     ]),
