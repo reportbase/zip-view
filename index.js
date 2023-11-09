@@ -55,7 +55,7 @@ const NUBAR = "rgba(255,255,255,0.8)";
 const FILLMENU = "rgba(0,0,0,0.6)";
 const GALLERYSCROLL = "rgba(0,0,0,0.3)";
 const ARROWFILL = "white";
-const SCROLLBARWIDTH = 16;
+const SCROLLBAREXTENT = 16;
 const SMALLFONT = "16px archivo black";
 const DEFAULTFONT = "17px archivo black";
 const MEDIUMFONT = "19px archivo black";
@@ -908,10 +908,10 @@ var bossdisplaylst =
             return;
         var canvas = context.canvas
         var data = [];
-        context.copyid = new rectangle();
-        context.download = new rectangle();
-        context.upload = new rectangle();
-        context.delete = new rectangle();
+        context.copyidrect = new rectangle();
+        context.downloadrect = new rectangle();
+        context.uploadrect = new rectangle();
+        context.deleterect = new rectangle();
         var data = [];
         
         var b = 360;
@@ -956,7 +956,7 @@ var bossdisplaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.rectangle(context.copyid),
+                        new panel.rectangle(context.copyidrect),
                         new panel.multitext(0, new panel.shadow(new panel.text())),
                     ]),
                     0,
@@ -968,17 +968,17 @@ var bossdisplaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.rectangle(context.upload),
+                        new panel.rectangle(context.uploadrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
-                        new panel.rectangle(context.download),
+                        new panel.rectangle(context.downloadrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
-                        new panel.rectangle(context.delete),
+                        new panel.rectangle(context.deleterect),
                         new panel.shadow(new panel.text()),
                     ]),
                     0,
@@ -1040,7 +1040,7 @@ var bossdisplaylst =
             var a = new panel.layerA(
             [
                 new panel.rectangle(context.windowrect),
-                new panel.colsA([0, SCROLLBARWIDTH, 4],
+                new panel.colsA([0, SCROLLBAREXTENT, 4],
                 [
                     0,
                     new panel.rows([0,bh,0],
@@ -1057,7 +1057,7 @@ var bossdisplaylst =
                     ]),
                    0
                 ]),
-                new panel.rowsA([0, 50, SCROLLBARWIDTH, 4],
+                new panel.rowsA([0, 50, SCROLLBAREXTENT, 4],
                 [
                     0,
                     new panel.cols([0, RAINSTEP, 0],
@@ -1106,7 +1106,7 @@ var bossdisplaylst =
             var a = new panel.layers(
             [
                 new panel.rectangle(context.windowrect),
-                new panel.rows([0, SCROLLBARWIDTH, 4],
+                new panel.rows([0, SCROLLBAREXTENT, 4],
                 [
                     0,
                     new panel.cols([0, bw, 0],
@@ -1200,9 +1200,9 @@ var bossdisplaylst =
     title: "Description",
     draw: function(context, rect, user, time)
     {
-        context.editdescription = new rectangle();
-        context.copydescription = new rectangle();
-        context.pastedescription = new rectangle();
+        context.editrect = new rectangle();
+        context.copyrect = new rectangle();
+        context.pasterect = new rectangle();
         context.hollyrect = new rectangle();
         
         var str = `Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur`;
@@ -1234,17 +1234,17 @@ var bossdisplaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.rectangle(context.editdescription),
+                        new panel.rectangle(context.editrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
-                        new panel.rectangle(context.copydescription),
+                        new panel.rectangle(context.copyrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
-                        new panel.rectangle(context.pastedescription),
+                        new panel.rectangle(context.pasterect),
                         new panel.shadow(new panel.text()),
                     ]),
                     0,
@@ -1290,7 +1290,7 @@ var bossdisplaylst =
                 return;
 
             var bh = rect.height * 0.4;
-            var a = new panel.colsA([4, SCROLLBARWIDTH, 0, SCROLLBARWIDTH, 4],
+            var a = new panel.colsA([4, SCROLLBAREXTENT, 0, SCROLLBAREXTENT, 4],
             [
                 0,
                 new panel.rows([0,bh,0],
@@ -1330,7 +1330,7 @@ var bossdisplaylst =
                 0,
             ]);
 
-            var a = new panel.rows([0,40,40],
+            var a = new panel.rows([0,FOOTHEIGHT],
             [
                 0,
                 new panel.cols([0,120,0],
@@ -1343,7 +1343,7 @@ var bossdisplaylst =
                     ]),
                     0
                 ]),
-                0,
+                0
             ]);
 
             a.draw(context, rect, "Stretch", 0);
@@ -1422,7 +1422,7 @@ var displaylst =
             return;
         var bh = rect.height * 0.4;
         var bw = rect.width * 0.4;
-        var a = new panel.cols([6, SCROLLBARWIDTH, 0],
+        var a = new panel.cols([6, SCROLLBAREXTENT, 0],
             [
                 0,
                 new panel.rows([0, bh, 0],
@@ -1441,7 +1441,7 @@ var displaylst =
 
         a.draw(context, rect, buttonobj, 0); 
 
-        var a = new panel.rows([0, SCROLLBARWIDTH, 4],
+        var a = new panel.rows([0, SCROLLBAREXTENT, 4],
             [
                 0,
                 new panel.cols([0, bw, 0],
@@ -1470,7 +1470,7 @@ var displaylst =
         data.push(`\u{25C0}   ${jp[0]} x ${jp[1]}   \u{25B6}`);
         var rows = data.length;
         var rh = 40;
-        var a = new panel.rowsA([80, 40, 0, rows * rh, FOOTSEP, SCROLLBARWIDTH, 4],
+        var a = new panel.rowsA([80, 40, 0, rows * rh, FOOTSEP, SCROLLBAREXTENT, 4],
         [
             0,
             
@@ -1536,7 +1536,7 @@ var displaylst =
             return;        
         var bh = rect.height * 0.4;
         var bw = rect.width * 0.4;
-        var a = new panel.cols([0, SCROLLBARWIDTH, 6],
+        var a = new panel.cols([0, SCROLLBAREXTENT, 6],
             [
                 0,
                 new panel.rows([0, bh, 0],
@@ -1555,7 +1555,7 @@ var displaylst =
 
         a.draw(context, rect, context.canvas.timeobj, 0);
         
-        var a = new panel.rows([0, SCROLLBARWIDTH, 4],
+        var a = new panel.rows([0, SCROLLBAREXTENT, 4],
             [
                 0,
                 new panel.cols([0, bw, 0],
@@ -1584,7 +1584,7 @@ var displaylst =
         data.push(`\u{25C0}   ${index.toFixed(1)} of ${galleryobj.length()}   \u{25B6}`);
         var st = `\u{25C0}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
-        var a = new panel.rowsA([80, 40, 0, data.length*28, FOOTSEP, SCROLLBARWIDTH, 4],
+        var a = new panel.rowsA([80, 40, 0, data.length*28, FOOTSEP, SCROLLBAREXTENT, 4],
         [
             0,
             0,
@@ -3884,31 +3884,31 @@ var taplst =
         {
             _4cnvctx.movepage(1);
         }
-        else if (context.delete && context.delete.hitest(x, y))
+        else if (context.deleterect && context.deleterect.hitest(x, y))
         {
                 
         }
-        else if (context.upload && context.upload.hitest(x, y))
+        else if (context.uploadrect && context.uploadrect.hitest(x, y))
         {
                 
         }
-        else if (context.download && context.download.hitest(x, y))
+        else if (context.downloadrect && context.downloadrect.hitest(x, y))
         {
                 
         }
-        else if (context.editdescription && context.editdescription.hitest(x, y))
+        else if (context.editrect && context.editrect.hitest(x, y))
         {
                 
         }
-        else if (context.pastedescription && context.pastedescription.hitest(x, y))
+        else if (context.pasterect && context.pasterect.hitest(x, y))
         {
                 
         }
-        else if (context.copydescription && context.copydescription.hitest(x, y))
+        else if (context.copyrect && context.copyrect.hitest(x, y))
         {
                 
         }
-        else if (context.copyid && context.copyid.hitest(x, y))
+        else if (context.copyidrect && context.copyidrect.hitest(x, y))
         {
              copytext(galleryobj.value().id);   
         }
@@ -4462,14 +4462,14 @@ bossobj.draw = function()
     delete context.stretchcolumnrect;
     delete context.windowrect;
     delete context.galleryrect;    
-    delete context.copyid;
-    delete context.delete;
-    delete context.download;
-    delete context.upload;
+    delete context.copyidrect;
+    delete context.deleterect;
+    delete context.downloadrect;
+    delete context.uploadrect;
     delete context.hollyyrect;
-    delete context.editdescription;
-    delete context.copydescription;
-    delete context.pastedescription;
+    delete context.editrect;
+    delete context.copyrect;
+    delete context.pasterect;
     if (!menuobj.value() && headcnv.height)
         bossdisplayobj.value().draw(context, rect, 0, 0);
 }
