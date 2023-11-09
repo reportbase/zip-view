@@ -4968,7 +4968,7 @@ function menuobjdraw()
         if (context == _8cnvctx && thumbimg.view != view)
         {
             thumbimg.view = view;
-            thumbimg.src = await imagepath(slice);
+            thumbimg.src = imagepath(slice);
             thumbimg.onload = function()
             {
                 this.count = 0;
@@ -6230,7 +6230,7 @@ function wraptext(ctx, text, maxWidth)
 let thumbfittedlst = [];
 let thumbimglst = [];
 
-async function imagepath(user)
+function imagepath(user)
 {
     var src;
     if (user.id && user.id.length >= 5 &&
@@ -6838,7 +6838,7 @@ galleryobj.init = function(obj)
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
     var j = galleryobj.data[current];
-    image.src = await imagepath(j);
+    image.src = imagepath(j);
     image.onload = function()
     {
         galleryobj.width = this.width;
