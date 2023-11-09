@@ -6706,7 +6706,7 @@ galleryobj.init = function(obj)
         }
     },     
     {
-        title: "zip-view\nImage Viewer\nTo load images, drag and drop from the desktop or click here.",
+        title: "zip-view\nImage Viewer\nTo load images, drag and drop from the desktop or click here. To load images, drag and drop from the desktop or click here. To load images, drag and drop from the desktop or click here",
         func: function() 
         {
             importdialog();
@@ -6772,8 +6772,7 @@ galleryobj.init = function(obj)
     }
 
     _8cnv.sliceobj.data = galleryobj.data;
-    _9cnv.sliceobj.data = galleryobj.base ? galleryobj.base : [];
-
+    _9cnv.sliceobj.data = [];
     _2cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
     var email = local.email ? local.email : "reportbase@gmail.com";
