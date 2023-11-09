@@ -914,6 +914,10 @@ var bossdisplaylst =
         if (b > rect.width-40)
             b = rect.width-40;
         
+        data.push("Image");
+        data.push(`${galleryobj.current()+1} of ${galleryobj.length()}`);
+        data.push(" ");
+        
         if (galleryobj.value().id)
         {
             data.push("ID");
@@ -925,13 +929,11 @@ var bossdisplaylst =
         data.push("Size");
         data.push(`${mp.toFixed(2)} MP`);
         data.push(" ");
+        
         var extent = `${photo.image.width}x${photo.image.height}`;
         data.push("Extent");
         data.push(extent);
         data.push(" ");
-
-        data.push("Image");
-        data.push(`${galleryobj.current()+1} of ${galleryobj.length()}`);
         
         var index = galleryobj.current();
         var value = galleryobj.data[index];
