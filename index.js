@@ -915,7 +915,7 @@ var bossdisplaylst =
         if (b > rect.width-40)
             b = rect.width-40;
 
-        data.push("Image";
+        data.push("Image");
         data.push(`${galleryobj.current()+1} of ${galleryobj.length()}`);
         data.push(" ");
         
