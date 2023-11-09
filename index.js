@@ -897,6 +897,90 @@ posityobj.set(50);
 var bossdisplaylst =
 [
 {
+    name: "DETAILS",
+    title: "Details",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas
+        var data = [];
+        context.copyid = new rectangle();
+        context.download = new rectangle();
+        context.upload = new rectangle();
+        context.delete = new rectangle();
+        var index = galleryobj.current();
+        var value = galleryobj.data[index];
+        if (value && value.folder)
+            data = value.folder.split("/");
+        if (galleryobj.value().id)
+        {
+            data.push("ID");
+            data.push(galleryobj.value().id);
+            data.push(" ");
+        }
+        
+        var mp = (photo.image.width * photo.image.height) / 1000000;
+        data.push("Size");
+        data.push(`${mp.toFixed(2)} MP`);
+        data.push(" ");
+        var extent = `${photo.image.width}x${photo.image.height}`;
+        data.push("Extent");
+        data.push(extent);
+  
+        var a = new panel.layers(
+        [
+            new panel.fill("rgba(0,0,0,0.275)"),
+            new panel.rowsA([80,40,0,data.length*25,0,80],
+            [
+                0,
+                0,
+                0,
+                new panel.layers(
+                [
+                    new panel.rectangle(context.copyid),
+                    new panel.multitext(0, new panel.shadow(new panel.text())),
+                ]),
+                0,
+                new panel.colsA([0,120,120,120,0],
+                [
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.upload),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.download),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.delete),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    0,
+                ]),
+            ])
+        ])
+        
+        a.draw(context, rect, 
+        [
+           0,
+           0,
+           0,
+           data,
+           0,
+           [
+               0,
+               "Upload",
+               "Download",
+               "Delete",
+               0
+            ]
+        ], 0)        
+    }
+},    
+{
     name: "BOSS",
     title: "Thumbnail",
     draw: function(context, r, user, time)
@@ -1094,6 +1178,78 @@ var bossdisplaylst =
     }
 },
 {
+    name: "DESCRIPTION",
+    title: "Description",
+    draw: function(context, rect, user, time)
+    {
+        context.editdescription = new rectangle();
+        context.copydescription = new rectangle();
+        context.pastedescription = new rectangle();
+        
+        var str = `Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur`;
+        var j = 480;
+        if (j > rect.width-40)
+            j = rect.width-40;
+        
+        var a = new panel.layers(
+        [
+            new panel.fill("rgba(0,0,0,0.35)"),
+            new panel.rowsA([80,40,10,0,10,80],
+            [
+                0,
+                0,
+                0,
+                new panel.cols([0,j,0],
+                [
+                    0,
+                    new panel.multitext(0, new panel.shadow(new panel.text())),
+                    0,
+                ]),
+                0,
+                new panel.colsA([0,120,120,120,0],
+                [
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.editdescription),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.copydescription),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.pastedescription),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    0,
+                ]),
+                0,
+            ])
+        ]);
+        
+        a.draw(context, rect, 
+        [
+           0,
+           0,
+           0,
+           
+           [str],
+
+           0,
+           [
+               0,
+               "Edit",
+               "Copy",
+               "Paste",
+               0,
+           ],
+        ], 0)  
+    }
+},    
+{
     name: "STRETCH",
     title: "Stretch",
     draw: function(context, rect, user, time)
@@ -1173,146 +1329,6 @@ var bossdisplaylst =
 
             a.draw(context, rect, "Stretch", 0);
             context.restore();   
-    }
-},
-{
-    name: "DETAILS",
-    title: "Details",
-    draw: function(context, rect, user, time)
-    {
-        var canvas = context.canvas
-        var data = [];
-        context.copyid = new rectangle();
-        context.download = new rectangle();
-        context.upload = new rectangle();
-        context.delete = new rectangle();
-        var index = galleryobj.current();
-        var value = galleryobj.data[index];
-        if (value && value.folder)
-            data = value.folder.split("/");
-        if (galleryobj.value().id)
-        {
-            data.push("ID");
-            data.push(galleryobj.value().id);
-            data.push(" ");
-        }
-        
-        var mp = (photo.image.width * photo.image.height) / 1000000;
-        data.push("Size");
-        data.push(`${mp.toFixed(2)} MP`);
-        data.push(" ");
-        var extent = `${photo.image.width}x${photo.image.height}`;
-        data.push("Extent");
-        data.push(extent);
-  
-        var a = new panel.layers(
-        [
-            new panel.fill("rgba(0,0,0,0.35)"),
-            new panel.rowsA([80,40,0,data.length*25,0,80],
-            [
-                0,
-                0,
-                0,
-                new panel.layers(
-                [
-                    new panel.rectangle(context.copyid),
-                    new panel.multitext(0, new panel.shadow(new panel.text())),
-                ]),
-                0,
-                new panel.colsA([0,120,120,120,0],
-                [
-                    0,
-                    new panel.layers(
-                    [
-                        new panel.rectangle(context.upload),
-                        new panel.shadow(new panel.text()),
-                    ]),
-                    new panel.layers(
-                    [
-                        new panel.rectangle(context.download),
-                        new panel.shadow(new panel.text()),
-                    ]),
-                    new panel.layers(
-                    [
-                        new panel.rectangle(context.delete),
-                        new panel.shadow(new panel.text()),
-                    ]),
-                    0,
-                ]),
-            ])
-        ])
-        
-        a.draw(context, rect, 
-        [
-           0,
-           0,
-           0,
-           data,
-           0,
-           [
-               0,
-               "Upload",
-               "Download",
-               "Delete",
-               0
-            ]
-        ], 0)        
-    }
-},
-{
-    name: "DESCRIPTION",
-    title: "Description",
-    draw: function(context, rect, user, time)
-    {
-        var str = `Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur`;
-        var j = 480;
-        if (j > rect.width-40)
-            j = rect.width-40;
-        
-        var a = new panel.layers(
-        [
-            new panel.fill("rgba(0,0,0,0.35)"),
-            new panel.rowsA([80,40,10,0,10,80],
-            [
-                0,
-                0,
-                0,
-                new panel.cols([0,j,0],
-                [
-                    0,
-                    new panel.multitext(0, new panel.shadow(new panel.text())),
-                    0,
-                ]),
-                0,
-                new panel.colsA([0,120,120,120,0],
-                [
-                    0,
-                    new panel.shadow(new panel.text()),
-                    new panel.shadow(new panel.text()),
-                    new panel.shadow(new panel.text()),
-                    0,
-                ]),
-                0,
-            ])
-        ]);
-        
-        a.draw(context, rect, 
-        [
-           0,
-           0,
-           0,
-           
-           [str],
-
-           0,
-           [
-               0,
-               "Edit",
-               "Copy",
-               "Paste",
-               0,
-           ],
-        ], 0)  
     }
 },
 {
@@ -3877,6 +3893,18 @@ var taplst =
         {
                 
         }
+        else if (context.editdescription && context.editdescription.hitest(x, y))
+        {
+                
+        }
+        else if (context.pastedescription && context.pastedescription.hitest(x, y))
+        {
+                
+        }
+        else if (context.copydescription && context.copydescription.hitest(x, y))
+        {
+                
+        }
         else if (context.copyid && context.copyid.hitest(x, y))
         {
              copytext(galleryobj.value().id);   
@@ -4435,6 +4463,9 @@ bossobj.draw = function()
     delete context.delete;
     delete context.download;
     delete context.upload;
+    delete context.editdescription;
+    delete context.copydescription;
+    delete context.pastedescription;
     if (!menuobj.value() && headcnv.height)
         bossdisplayobj.value().draw(context, rect, 0, 0);
 }
