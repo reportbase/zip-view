@@ -913,37 +913,29 @@ var bossdisplaylst =
         var b = 480;
         if (b > rect.width-40)
             b = rect.width-40;
-        
-        data.push("Image");
-        data.push(`${galleryobj.current()+1} of ${galleryobj.length()}`);
-        data.push(" ");
+
+        var str = "Image\n";
+        str += `${galleryobj.current()+1} of ${galleryobj.length()}\n`;
         
         if (galleryobj.value().id)
         {
-            data.push("ID");
-            data.push(galleryobj.value().id);
-            data.push(" ");
+            str += "\nID\n";
+            str += galleryobj.value().id + "\n\n";
         }
         
         var mp = (photo.image.width * photo.image.height) / 1000000;
-        data.push("Size");
-        data.push(`${mp.toFixed(2)} MP`);
-        data.push(" ");
+        str += "Size\n";
+        str +=`${mp.toFixed(2)} MP\n\n`;
         
         var extent = `${photo.image.width}x${photo.image.height}`;
-        data.push("Extent");
-        data.push(extent);
-        data.push(" ");
+        str += "Extent\n";
+        str += extent + "\n";
         
         var index = galleryobj.current();
         var value = galleryobj.data[index];
         if (value && value.folder)
-        {
-            data.push(" ");
-            var lst = value.folder.split("/");
-            data = data.concat(lst);
-        }
-
+            str += `\n${value.folder}\n`;
+        
         var a = new panel.layers(
         [
             new panel.fill("rgba(0,0,0,0.275)"),
@@ -989,7 +981,7 @@ var bossdisplaylst =
         [
            0,
            0,
-           data,
+           [str],
            0,
            [
                0,
