@@ -2971,11 +2971,6 @@ async function loadzip(file)
             continue;
         var k = {}
         k.ext = key.ext();
-        k.entry.blob(`image/${k.ext}`)
-        .then(function(r)
-              {
-                console.log(r)
-              });
         k.blob = await k.entry.blob(`image/${k.ext}`);
         var lst = key.split("/");
         k.name = lst.pop();
@@ -4975,7 +4970,11 @@ menuobj.draw = function()
             try
             {
                 thumbimg.view = view;
-                thumbimg.src = imagepath(slice);
+
+                if (slice.entry)
+                    thumbimg.src = getblobpath(slice)
+                else
+                    thumbimg.src = imagepath(slice);
                 thumbimg.onload = function()
                 {
                     this.count = 0;
@@ -6249,6 +6248,14 @@ function wraptext(ctx, text, maxWidth)
 
 let thumbfittedlst = [];
 let thumbimglst = [];
+
+k.blob = await k.entry.blob(`image/${k.ext}`);
+
+async function getblobpath(user)
+{
+    var blob = await user.entry.blob(`image/${user.ext}`);
+    return URL.createObjectURL(blob);
+}
 
 function imagepath(user)
 {
