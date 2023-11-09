@@ -6271,11 +6271,6 @@ function imagepath(user)
     {
         src = user.url;
     }
-    else if (user.entry)
-    {
-        var blob = await user.entry.blob(`image/${user.ext}`);
-        src = URL.createObjectURL(blob);
-    }
     else if (user.blob)
     {
         src = URL.createObjectURL(user.blob);
