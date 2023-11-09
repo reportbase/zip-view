@@ -2970,14 +2970,7 @@ async function loadzip(file)
         if (!key.isimage())
             continue;
         var k = {}
-        k.ext = key.ext();
-        
-        k.entry.blob(`image/${k.ext}`)
-        .then(function(response)
-              {
-                    console.log(response);
-              })
-        
+        k.ext = key.ext();    
         k.blob = await k.entry.blob(`image/${k.ext}`);
         var lst = key.split("/");
         k.name = lst.pop();
