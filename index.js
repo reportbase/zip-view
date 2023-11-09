@@ -2253,7 +2253,7 @@ CanvasRenderingContext2D.prototype.movepage = function(j)
     galleryobj.rotate(j);
     var k = galleryobj.value();
     galleryobj.set(e);
-    if (!k.blob && (_4cnv.movingpage || !k.loaded || galleryobj.length() == 1))
+    if (!k.entry && (_4cnv.movingpage || !k.loaded || galleryobj.length() == 1))
     {
         _4cnv.movingpage = 0;
         this.refresh();
