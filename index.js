@@ -2936,10 +2936,7 @@ function publishgallery(json)
 
 async function loadzip(file)
 {
-    const
-    {
-        entries
-    } = await unzipit.unzip(file);
+    const {entries} = await unzipit.unzip(file);
     let keys = Object.keys(entries);
     keys.sort();
     var count = 0;
@@ -2961,7 +2958,6 @@ async function loadzip(file)
     galleryobj.width = 0;
     galleryobj.height = 0;
     galleryobj.set(0);
-    delete galleryobj.repos;
     for (var n = 0; n < keys.length; ++n)
     {
         var key = keys[n];
@@ -2971,22 +2967,15 @@ async function loadzip(file)
         var entry = entries[key];
         if (entry.isDirectory)
             continue;
-        if (key.isimage())
-        {
-            var k = {}
-            k.ext = key.ext();
-            k.blob = await entry.blob(`image/${k.ext}`);
-            var lst = key.split("/");
-            k.name = lst.pop();
-            k.folder = lst.join("/");
-            galleryobj.data.push(k);
-        }
-        else if (key.isjson())
-        {
-            var blob = await entry.blob(`image/text`);
-            var text = await blob.text();
-            Object.assign(galleryobj, JSON.parse(text));
-        }
+        if (!key.isimage())
+            continue;
+        var k = {}
+        k.ext = key.ext();
+        k.blob = await entry.blob(`image/${k.ext}`);
+        var lst = key.split("/");
+        k.name = lst.pop();
+        k.folder = lst.join("/");
+        galleryobj.data.push(k);
     }
 
     galleryobj.init(galleryobj)
@@ -2999,7 +2988,6 @@ async function loadblob(blob)
     galleryobj.width = 0;
     galleryobj.height = 0;
     galleryobj.set(0);
-    delete galleryobj.repos;
     galleryobj.set(0);
 
     var k = {}
@@ -3034,7 +3022,6 @@ async function loadimages(blobs)
     galleryobj.width = 0;
     galleryobj.height = 0;
     galleryobj.set(0);
-    delete galleryobj.repos;
 
     for (var i = 0; i < blobs.length; i++)
     {
