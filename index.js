@@ -2972,7 +2972,6 @@ async function loadzip(file)
         var k = {}
         k.ext = key.ext();
         k.entry = entry;
-        //k.blob = await entry.blob(`image/${k.ext}`);
         var lst = key.split("/");
         k.name = lst.pop();
         k.folder = lst.join("/");
@@ -5503,20 +5502,12 @@ contextobj.reset = function()
     }
     else
     {
-        if (galleryobj.value().blob)
-        {
-            photo.image = new Image();
-            URL.revokeObjectURL(photo.image.blob);
-            photo.image.blob = URL.createObjectURL(galleryobj.value().blob)
-            photo.image.src = photo.image.blob;
-        }
+        photo.image = new Image();
+        if (galleryobj.value().entry)
+            getblobpath(photo.image, galleryobj.value())
         else
-        {
-            photo.image = new Image();
-            var id = galleryobj.current();
-            photo.image.src = galleryobj.getpath(id);
-        }
-
+            photo.image.src = galleryobj.getpath(galleryobj.current());
+        
         headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
 
         photo.image.onerror =
