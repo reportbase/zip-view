@@ -1222,11 +1222,15 @@ var bossdisplaylst =
             data.push("Folder");
             data.push(`\n${value.folder}\n`);
         }
+
+        var j = data.length*25;
+        if (j > rect.height-HEADTOP-ALIEXTENT-ALIEXTENT-FOOTHEIGHT)
+            j = rect.height-HEADTOP-ALIEXTENT-ALIEXTENT-FOOTHEIGHT;
         
         var a = new panel.layers(
         [
             //new panel.fill("rgba(255,100,0,0.275)"),
-            new panel.rowsA([HEADTOP,ALIEXTENT,data.length*25,0,ALIEXTENT,FOOTHEIGHT],
+            new panel.rowsA([HEADTOP,ALIEXTENT,j,0,ALIEXTENT,FOOTHEIGHT],
             [
                 0,
                 0,
@@ -1274,7 +1278,7 @@ var bossdisplaylst =
            0,
            data,
            0,
-            0,
+           0,
            [
                0,
                "Upload",
