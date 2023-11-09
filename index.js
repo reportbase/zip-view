@@ -1226,7 +1226,7 @@ var bossdisplaylst =
         var a = new panel.layers(
         [
             //new panel.fill("rgba(255,100,0,0.275)"),
-            new panel.rowsA([HEADTOP,ALIEXTENT,0,ALIEXTENT,FOOTHEIGHT],
+            new panel.rowsA([HEADTOP,ALIEXTENT,data.length*25,0,ALIEXTENT,FOOTHEIGHT],
             [
                 0,
                 0,
@@ -1240,6 +1240,7 @@ var bossdisplaylst =
                     ]),
                     0,
                 ]),
+                0,
                 new panel.fill("orange"),
                 new panel.colsA([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
                 [
@@ -1271,10 +1272,9 @@ var bossdisplaylst =
         [
            0,
            0,
-           0,
            data,
            0,
-           0,
+            0,
            [
                0,
                "Upload",
