@@ -1870,6 +1870,7 @@ panel.multitext = function(e, panel)
 {
     this.draw = function(context, rect, user, time)
     {
+        context.save();
         context.font = DEFAULTFONT;
         var lst = [];
         for (var n = 0; n < user.length; n++)
@@ -1881,11 +1882,11 @@ panel.multitext = function(e, panel)
         }
 
         var maxlines = Math.floor(rect.height/MULTITEXTROWHEIGHT);
-        var len = Math.min(lst.length, Math.floor(rect.height / MULTITEXTROWHEIGHT));
+        var len = Math.min(lst.length, maxlines);
             
         var k = len < lst.length;
-        //rect.y -= (len * (MULTITEXTROWHEIGHT)) / 2;
-        //rect.y += 10;
+        rect.y -= (len * (MULTITEXTROWHEIGHT)) / 2;
+        rect.y += MULTITEXTROWHEIGHT/2;
 
         if (e && lst.length > maxlines)
         {
@@ -1906,6 +1907,7 @@ panel.multitext = function(e, panel)
                 rect.y += MULTITEXTROWHEIGHT;
             }
         }
+        context.restore();
     };
 };
 
