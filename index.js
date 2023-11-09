@@ -4968,36 +4968,17 @@ menuobj.draw = function()
         var thumbfitted = thumbfittedlst[index];
         if (context == _8cnvctx && thumbimg.view != view)
         {
-            try
+            thumbimg.view = view;
+            thumbimg.onload = function()
             {
-                thumbimg.view = view;
+                this.count = 0;
+                menuobj.draw();
+            }
 
-                if (slice.entry)
-                {
-                    getblobpath(thumbimg, slice)
-                }
-                else
-                {
-                    thumbimg.src = imagepath(slice);
-                    thumbimg.onload = function()
-                    {
-                        this.count = 0;
-                        menuobj.draw();
-                    }
-    
-                    thumbimg.onerror =
-                        thumbimg.onabort = function(error)
-                        {
-                            thumbimg.view = 0;
-                            console.log(error);
-                        }
-                }
-            }
-            catch (error)
-            {
-                thumbimg.view = 0;
-                console.log(error);
-            }
+            if (slice.entry)
+                getblobpath(thumbimg, slice)
+            else
+                thumbimg.src = imagepath(slice);
         }
         else
         {
@@ -6254,22 +6235,10 @@ function wraptext(ctx, text, maxWidth)
 let thumbfittedlst = [];
 let thumbimglst = [];
 
-async function getblobpath2(thumbimg, slice)
+async function getblobpath(img, slice)
 {
     var blob = await slice.entry.blob(`image/${slice.ext}`);
-    thumbimg.src = URL.createObjectURL(blob);
-}
-
-async function getblobpath(thumbimg, slice)
-{
-    var blob = await slice.entry.blob(`image/${slice.ext}`);
-    thumbimg.onload = function()
-    {
-        this.count = 0;
-        menuobj.draw();
-    }
-    
-    thumbimg.src = URL.createObjectURL(blob);
+    img.src = URL.createObjectURL(blob);
 }
 
 function imagepath(user)
@@ -6896,7 +6865,7 @@ galleryobj.init = function(obj)
     var current = galleryobj.lerp(1 - berp);
     var j = galleryobj.data[current];
     if (j.entry)
-        getblobpath2(image, j)
+        getblobpath(image, j)
     else
         image.src = imagepath(j);
 }
