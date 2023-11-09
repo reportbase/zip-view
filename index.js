@@ -6332,7 +6332,7 @@ async function loadjson(blob)
 }
 
 //galleryobj init
-galleryobj.init = function(obj)
+async galleryobj.init = function(obj)
 {
     if (obj)
         Object.assign(galleryobj, obj);
