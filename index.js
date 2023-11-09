@@ -901,7 +901,7 @@ var bossdisplaylst =
     title: "Details",
     draw: function(context, rect, user, time)
     {
-        if (!photo.image)
+        if (!photo.image || !photo.image.width)
             return;
         var canvas = context.canvas
         var data = [];
