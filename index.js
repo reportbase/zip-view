@@ -6279,7 +6279,7 @@ function imagepath(user)
     return src;
 }
 
-async galleryobj.getpath = function(index)
+galleryobj.getpath = function(index)
 {
     var gallery = this.data[index];
     var id = gallery.id;
@@ -6332,7 +6332,7 @@ async function loadjson(blob)
 }
 
 //galleryobj init
-galleryobj.init = function(obj)
+async galleryobj.init = function(obj)
 {
     if (obj)
         Object.assign(galleryobj, obj);
