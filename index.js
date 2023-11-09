@@ -3945,6 +3945,7 @@ var taplst =
             var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
             headham.panel = headlst[k];
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            contextobj.reset();
         }
         else if (
             headcnvctx.bossdisplayrect &&
