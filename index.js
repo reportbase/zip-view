@@ -934,7 +934,8 @@ var bossdisplaylst =
         var value = galleryobj.data[index];
         if (value && value.folder)
         {
-            data = value.folder.split("/");
+            var lst = value.folder.split("/");
+            data = data.concat(lst);
             data.push(" ");
         }
 
