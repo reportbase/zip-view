@@ -6249,8 +6249,6 @@ function wraptext(ctx, text, maxWidth)
 let thumbfittedlst = [];
 let thumbimglst = [];
 
-k.blob = await k.entry.blob(`image/${k.ext}`);
-
 async function getblobpath(user)
 {
     var blob = await user.entry.blob(`image/${user.ext}`);
