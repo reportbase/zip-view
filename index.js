@@ -1565,12 +1565,12 @@ var displaylst =
         data.push(`\u{25C0}   ${index.toFixed(1)} of ${galleryobj.length()}   \u{25B6}`);
         var st = `\u{25C0}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
-        var a = new panel.rowsA([80, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
+        var a = new panel.rowsA([80, 40, 0, data.length*28, FOOTSEP, SCROLLBARWIDTH, 4],
         [
             0,
             0,
             0,
-            new panel.cols([0, data.length*28, 0],
+            new panel.cols([0, RAINSTEP, 0],
                 [
                     0,
                     new panel.layers(
@@ -6626,6 +6626,9 @@ galleryobj.init = function(obj)
         }
     };
 
+    if (_5cnv.sliceobj.length() == 1)
+        _5cnv.sliceobj.data = [];
+    
     _6cnv.sliceobj.data = [];
     for (var n = 0; n < galleryobj.data.length; ++n)
     {
