@@ -3306,9 +3306,14 @@ var panlst =
         {
             if (context.ishollyrect)
             {
-                var k = (x - context.hollyrect.x) / context.hollyrect.width;
-                context.canvas.hollyobj.setperc(k);
-                context.refresh();
+                var hollyobj = context.canvas.hollyobj;
+                var k = panhorz(hollyobj, rect.width - x);
+                if (k == -1)
+                    return;
+                if (k == hollyobj.anchor())
+                    return;
+                hollyobj.set(k);
+                context.refresh()
             }
             else if (context.istimerect)
             {
@@ -3397,7 +3402,7 @@ var panlst =
         delete canvas.starty;
         delete rowobj.offset;
         delete photo.image;
-        //contextobj.reset();
+        delete canvas.hollyobj.offset;
         context.refresh();
     }
 }, ];
