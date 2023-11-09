@@ -4972,8 +4972,8 @@ menuobj.draw = function()
             {
                 thumbimg.view = view;
 
-                if (0)//slice.entry)
-                    thumbimg.src = getblobpath(slice)
+                if (slice.entry)
+                    thumbimg.src = getblobpath(thumbimg, slice)
                 else
                     thumbimg.src = imagepath(slice);
                 thumbimg.onload = function()
@@ -6250,10 +6250,16 @@ function wraptext(ctx, text, maxWidth)
 let thumbfittedlst = [];
 let thumbimglst = [];
 
-async function getblobpath(user)
+async function getblobpath(thumbimg, slice)
 {
-    var blob = await user.entry.blob(`image/${user.ext}`);
-    return URL.createObjectURL(blob);
+    var blob = await slice.entry.blob(`image/${slice.ext}`);
+    thumbimg.onload = function()
+    {
+        this.count = 0;
+        menuobj.draw();
+    }
+    
+    thumbimg.src = URL.createObjectURL(blob);
 }
 
 function imagepath(user)
