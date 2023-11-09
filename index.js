@@ -1251,19 +1251,19 @@ var bossdisplaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.fill("rgba(0,0,255,0.75)"),
+                        new panel.fill("rgba(0,0,255,0.5)"),
                         new panel.rectangle(context.uploadrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
-                        new panel.fill("rgba(0,255,0,0.75)"),
+                        new panel.fill("rgba(0,255,0,0.5)"),
                         new panel.rectangle(context.downloadrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
-                        new panel.fill("rgba(255,0,0,0.75)"),
+                        new panel.fill("rgba(255,0,0,0.5)"),
                         new panel.rectangle(context.deleterect),
                         new panel.shadow(new panel.text()),
                     ]),
@@ -1312,7 +1312,7 @@ var bossdisplaylst =
             new panel.rowsA([HEADHEIGHT,ALIEXTENT,0,ALIEXTENT,FOOTHEIGHT],
             [
                 0,
-                0,
+                new panel.fill("red"),
                 new panel.cols([0,j,0],
                 [
                     0,
@@ -1323,25 +1323,25 @@ var bossdisplaylst =
                     ]),
                     0,
                 ]),
-                0,
+                new panel.fill("blue"),
                 new panel.colsA([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
                 [
                     0,
                     new panel.layers(
                     [
-                        new panel.fill("rgba(0,100,255,0.75)"),
+                        new panel.fill("rgba(0,100,255,0.5)"),
                         new panel.rectangle(context.editrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
-                        new panel.fill("rgba(100,0,255,0.75)"),
+                        new panel.fill("rgba(100,0,255,0.5)"),
                         new panel.rectangle(context.copyrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
-                        new panel.fill("rgba(0,255,100,0.75)"),
+                        new panel.fill("rgba(0,255,100,0.5)"),
                         new panel.rectangle(context.pasterect),
                         new panel.shadow(new panel.text()),
                     ]),
