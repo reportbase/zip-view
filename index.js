@@ -1882,7 +1882,7 @@ panel.multitext = function(e, panel)
         }
 
         var maxlines = Math.floor(rect.height/MULTITEXTROWHEIGHT);
-        var len = Math.min(lst.length, maxlines)-1;
+        var len = Math.min(lst.length, maxlines);
         var hh = len * MULTITEXTROWHEIGHT;     
         var y2 = (rect.height - hh) / 2
         rect.y -= y2;
