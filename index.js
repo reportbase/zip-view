@@ -6332,7 +6332,7 @@ async function loadjson(blob)
 }
 
 //galleryobj init
-async galleryobj.init = function(obj)
+galleryobj.init = function(obj)
 {
     if (obj)
         Object.assign(galleryobj, obj);
@@ -6853,16 +6853,7 @@ async galleryobj.init = function(obj)
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
     var j = galleryobj.data[current];
-    if (j.entry)
-    {
-        var blob = await j.entry.blob(`image/${j.ext}`);
-        image.src = URL.createObjectURL(blob);
-    }
-    else
-    {
-        image.src = imagepath(j);
-    }
-    
+    image.src = imagepath(j);
     image.onload = function()
     {
         galleryobj.width = this.width;
