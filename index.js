@@ -929,17 +929,18 @@ var bossdisplaylst =
         data.push("Extent");
         data.push(extent);
         data.push(" ");
+
+        data.push("Image");
+        data.push(`${galleryobj.current()+1} of ${galleryobj.length()}`);
         
         var index = galleryobj.current();
         var value = galleryobj.data[index];
         if (value && value.folder)
         {
+            data.push(" ");
             var lst = value.folder.split("/");
             data = data.concat(lst);
-            data.push(" ");
         }
-
-        data.push(`${galleryobj.current()+1} of ${galleryobj.length()}`);
 
         var a = new panel.layers(
         [
