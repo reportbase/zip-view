@@ -3954,6 +3954,7 @@ var taplst =
             context.nostretchcolumn = 0;
             var k = (x - headcnvctx.bossdisplayrect.x) / headcnvctx.bossdisplayrect.width;
             bossdisplayobj.rotate(k < 0.5 ? -1 : 1);
+            context.refresh();
             contextobj.reset();
         }
         else if (
