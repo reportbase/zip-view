@@ -4973,21 +4973,25 @@ menuobj.draw = function()
                 thumbimg.view = view;
 
                 if (slice.entry)
-                    thumbimg.src = getblobpath(thumbimg, slice)
-                else
-                    thumbimg.src = imagepath(slice);
-                thumbimg.onload = function()
                 {
-                    this.count = 0;
-                    menuobj.draw();
+                    getblobpath(thumbimg, slice)
                 }
-
-                thumbimg.onerror =
-                    thumbimg.onabort = function(error)
+                else
+                {
+                    thumbimg.src = imagepath(slice);
+                    thumbimg.onload = function()
                     {
-                        thumbimg.view = 0;
-                        console.log(error);
+                        this.count = 0;
+                        menuobj.draw();
                     }
+    
+                    thumbimg.onerror =
+                        thumbimg.onabort = function(error)
+                        {
+                            thumbimg.view = 0;
+                            console.log(error);
+                        }
+                }
             }
             catch (error)
             {
