@@ -1093,8 +1093,8 @@ var bossdisplaylst =
 },
 
 {
-    name: "STRETCH",
-    title: "Stretch",
+    name: "ZOOM",
+    title: "Zoom",
     draw: function(context, rect, user, time)
     {
             var canvas = context.canvas;
@@ -1226,7 +1226,7 @@ var bossdisplaylst =
         var a = new panel.layers(
         [
             //new panel.fill("rgba(255,100,0,0.275)"),
-            new panel.rowsA([HEADTOP,ALIEXTENT,0,data.length*25,0,ALIEXTENT,HEADTOP],
+            new panel.rowsA([HEADTOP,ALIEXTENT,0,data.length*25,0,ALIEXTENT,FOOTHEIGHT],
             [
                 0,
                 0,
@@ -1248,6 +1248,7 @@ var bossdisplaylst =
                     0,
                     new panel.layers(
                     [
+                        new panel.fill("red"),
                         new panel.rectangle(context.uploadrect),
                         new panel.shadow(new panel.text()),
                     ]),
@@ -3352,6 +3353,7 @@ var panlst =
                 var k = (y - context.galleryrect.y) / context.galleryrect.height;
                 var j = Math.floor(Math.lerp(0,galleryobj.length()-1,k));
                 galleryobj.set(j);
+                context.pangallery = 1;
                 context.refresh();
             }
             else if (context.isstretchrect)
@@ -3411,6 +3413,9 @@ var panlst =
         delete rowobj.offset;
         delete photo.image;
         delete canvas.hollyobj.offset;
+        if (context.pangallery)
+            contextobj.reset();
+        delete context.pangallery; 
         context.refresh();
     }
 }, ];
