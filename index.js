@@ -1563,22 +1563,12 @@ var displaylst =
         if (value && value.folder)
             data = value.folder.split("/");
         data.push(`\u{25C0}   ${index.toFixed(1)} of ${galleryobj.length()}   \u{25B6}`);
-        var hollyobj = canvas.hollyobj;
         var st = `\u{25C0}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
         var a = new panel.rowsA([80, 40, 0, 40, FOOTSEP, SCROLLBARWIDTH, 4],
         [
             0,
-            1?0:new panel.cols([0, RAINSTEP, 0],
-                [
-                    0,
-                    new panel.layers(
-                    [
-                        new panel.expand(new panel.rectangle(context.holly2rect), 10, 10),
-                        new panel.shadow(new panel.text("white", "center", "middle", 0, 0, LARGEFONT)),
-                    ]),
-                    0,
-                ]),
+            0,
             0,
             new panel.cols([0, RAINSTEP, 0],
                 [
@@ -1586,7 +1576,7 @@ var displaylst =
                     new panel.layers(
                         [
                             new panel.expand(new panel.rectangle(context.time2rect), 10, 10),
-                            new panel.gridA(1, 1, 1,
+                            new panel.gridA(1, data.length, 1,
                                 new panel.shadow(new panel.text())),
                         ]),
                     0,
