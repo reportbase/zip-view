@@ -4972,7 +4972,7 @@ menuobj.draw = function()
             {
                 thumbimg.view = view;
 
-                if (slice.entry)
+                if (0)//slice.entry)
                     thumbimg.src = getblobpath(slice)
                 else
                     thumbimg.src = imagepath(slice);
