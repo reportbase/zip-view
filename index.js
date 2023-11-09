@@ -1871,8 +1871,6 @@ panel.multitext = function(e, panel)
     this.draw = function(context, rect, user, time)
     {
         context.save();
-        context.setTransform(1, 0, 0, 1, 0, 0);
-        context.transform(0,-rect.height/2)
         context.font = DEFAULTFONT;
         var lst = [];
         for (var n = 0; n < user.length; n++)
@@ -1887,7 +1885,7 @@ panel.multitext = function(e, panel)
         var len = Math.min(lst.length, maxlines);
             
         var k = len < lst.length;
-        //rect.y -= (len * (MULTITEXTROWHEIGHT)) / 2;
+        rect.y -= rect.height/2;
         //rect.y += MULTITEXTROWHEIGHT/2;
 
         if (e && lst.length > maxlines)
