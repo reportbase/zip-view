@@ -901,111 +901,6 @@ posityobj.set(50);
 var bossdisplaylst =
 [
 {
-    name: "DETAILS",
-    title: "Details",
-    draw: function(context, rect, user, time)
-    {
-        if (!photo.image || !photo.image.width)
-            return;
-        var canvas = context.canvas
-        var data = [];
-        context.copyidrect = new rectangle();
-        context.downloadrect = new rectangle();
-        context.uploadrect = new rectangle();
-        context.deleterect = new rectangle();
-        var data = [];
-        
-        var b = 360;
-        if (b > rect.width-40)
-            b = rect.width-40;
-
-        data.push("Image");
-        data.push(`${galleryobj.current()+1} of ${galleryobj.length()}`);
-        data.push(" ");
-        
-        data.push("ID");
-        data.push(galleryobj.value().id?galleryobj.value().id:"Undefined");
-        data.push(" ");
-        
-        var mp = (photo.image.width * photo.image.height) / 1000000;
-        data.push("Size");
-        data.push(`${mp.toFixed(2)} MP`);
-        data.push(" ");
-        
-        data.push("Extent");
-        data.push(`${photo.image.width}x${photo.image.height}`);
-        data.push(" ");
-        
-        var index = galleryobj.current();
-        var value = galleryobj.data[index];
-        if (value && value.folder)
-        {
-            data.push("Folder");
-            data.push(`\n${value.folder}\n`);
-        }
-        
-        var a = new panel.layers(
-        [
-            new panel.fill("rgba(0,0,0,0.275)"),
-            new panel.rowsA([HEADTOP,ALIEXTENT,0,data.length*25,0,ALIEXTENT,HEADTOP],
-            [
-                0,
-                0,
-                0,
-                new panel.cols([0,b,0],
-                [
-                    0,
-                    new panel.layers(
-                    [
-                        new panel.rectangle(context.copyidrect),
-                        new panel.multitext(0, new panel.shadow(new panel.text())),
-                    ]),
-                    0,
-                ]),
-                0,
-                0,
-                new panel.colsA([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
-                [
-                    0,
-                    new panel.layers(
-                    [
-                        new panel.rectangle(context.uploadrect),
-                        new panel.shadow(new panel.text()),
-                    ]),
-                    new panel.layers(
-                    [
-                        new panel.rectangle(context.downloadrect),
-                        new panel.shadow(new panel.text()),
-                    ]),
-                    new panel.layers(
-                    [
-                        new panel.rectangle(context.deleterect),
-                        new panel.shadow(new panel.text()),
-                    ]),
-                    0,
-                ]),
-            ])
-        ])
-        
-        a.draw(context, rect, 
-        [
-           0,
-           0,
-           0,
-           data,
-           0,
-           0,
-           [
-               0,
-               "Upload",
-               "Download",
-               "Delete",
-               0
-            ]
-        ], 0)        
-    }
-},    
-{
     name: "BOSS",
     title: "Thumbnail",
     draw: function(context, r, user, time)
@@ -1196,79 +1091,7 @@ var bossdisplaylst =
             context.restore();
     }
 },
-{
-    name: "DESCRIPTION",
-    title: "Description",
-    draw: function(context, rect, user, time)
-    {
-        context.editrect = new rectangle();
-        context.copyrect = new rectangle();
-        context.pasterect = new rectangle();
-        context.hollyrect = new rectangle();
-        
-        var str = `Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur`;
-        var j = 480;
-        if (j > rect.width-40)
-            j = rect.width-40;
 
-        var e = context.canvas.hollyobj.berp();
-        var a = new panel.layers(
-        [
-            new panel.fill("rgba(0,0,0,0.35)"),
-            new panel.rowsA([HEADHEIGHT,ALIEXTENT,0,ALIEXTENT,FOOTHEIGHT],
-            [
-                0,
-                0,
-                new panel.cols([0,j,0],
-                [
-                    0,
-                    new panel.layers(
-                    [
-                        new panel.rectangle(context.hollyrect),
-                        new panel.multitext(e, new panel.shadow(new panel.text())),
-                    ]),
-                    0,
-                ]),
-                0,
-                new panel.colsA([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
-                [
-                    0,
-                    new panel.layers(
-                    [
-                        new panel.rectangle(context.editrect),
-                        new panel.shadow(new panel.text()),
-                    ]),
-                    new panel.layers(
-                    [
-                        new panel.rectangle(context.copyrect),
-                        new panel.shadow(new panel.text()),
-                    ]),
-                    new panel.layers(
-                    [
-                        new panel.rectangle(context.pasterect),
-                        new panel.shadow(new panel.text()),
-                    ]),
-                    0,
-                ])
-            ])
-        ]);
-        
-        a.draw(context, rect, 
-        [
-           0,
-           0,   
-           [str],
-           0,
-           [
-               0,
-               "Edit",
-               "Copy",
-               "Paste",
-               0,
-           ],
-        ], 0)  
-    }
-},    
 {
     name: "STRETCH",
     title: "Stretch",
@@ -1351,8 +1174,193 @@ var bossdisplaylst =
             context.restore();   
     }
 },
+    
 {
-    name: "BOSS",
+    name: "DETAILS",
+    title: "Details",
+    draw: function(context, rect, user, time)
+    {
+        if (!photo.image || !photo.image.width)
+            return;
+        var canvas = context.canvas
+        var data = [];
+        context.copyidrect = new rectangle();
+        context.downloadrect = new rectangle();
+        context.uploadrect = new rectangle();
+        context.deleterect = new rectangle();
+        var data = [];
+        
+        var b = 360;
+        if (b > rect.width-40)
+            b = rect.width-40;
+
+        data.push("Image");
+        data.push(`${galleryobj.current()+1} of ${galleryobj.length()}`);
+        data.push(" ");
+        
+        data.push("ID");
+        data.push(galleryobj.value().id?galleryobj.value().id:"Undefined");
+        data.push(" ");
+        
+        var mp = (photo.image.width * photo.image.height) / 1000000;
+        data.push("Size");
+        data.push(`${mp.toFixed(2)} MP`);
+        data.push(" ");
+        
+        data.push("Width");
+        data.push(`${photo.image.width}`);
+        data.push(" ");
+
+        data.push("Height");
+        data.push(`${photo.image.height}`);
+        data.push(" ");
+        
+        var index = galleryobj.current();
+        var value = galleryobj.data[index];
+        if (value && value.folder)
+        {
+            data.push("Folder");
+            data.push(`\n${value.folder}\n`);
+        }
+        
+        var a = new panel.layers(
+        [
+            new panel.fill("rgba(255,100,0,0.275)"),
+            new panel.rowsA([HEADTOP,ALIEXTENT,0,data.length*25,0,ALIEXTENT,HEADTOP],
+            [
+                0,
+                0,
+                0,
+                new panel.cols([0,b,0],
+                [
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.copyidrect),
+                        new panel.multitext(0, new panel.shadow(new panel.text())),
+                    ]),
+                    0,
+                ]),
+                0,
+                0,
+                new panel.colsA([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
+                [
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.uploadrect),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.downloadrect),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.deleterect),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    0,
+                ]),
+            ])
+        ])
+        
+        a.draw(context, rect, 
+        [
+           0,
+           0,
+           0,
+           data,
+           0,
+           0,
+           [
+               0,
+               "Upload",
+               "Download",
+               "Delete",
+               0
+            ]
+        ], 0)        
+    }
+},    
+
+{
+    name: "DESCRIPTION",
+    title: "Description",
+    draw: function(context, rect, user, time)
+    {
+        context.editrect = new rectangle();
+        context.copyrect = new rectangle();
+        context.pasterect = new rectangle();
+        context.hollyrect = new rectangle();
+        
+        var str = `Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur`;
+        var j = 480;
+        if (j > rect.width-40)
+            j = rect.width-40;
+
+        var e = context.canvas.hollyobj.berp();
+        var a = new panel.layers(
+        [
+            new panel.fill("rgba(0,255,100,0.35)"),
+            new panel.rowsA([HEADHEIGHT,ALIEXTENT,0,ALIEXTENT,FOOTHEIGHT],
+            [
+                0,
+                0,
+                new panel.cols([0,j,0],
+                [
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.hollyrect),
+                        new panel.multitext(e, new panel.shadow(new panel.text())),
+                    ]),
+                    0,
+                ]),
+                0,
+                new panel.colsA([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
+                [
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.editrect),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.copyrect),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.pasterect),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    0,
+                ])
+            ])
+        ]);
+        
+        a.draw(context, rect, 
+        [
+           0,
+           0,   
+           [str],
+           0,
+           [
+               0,
+               "Edit",
+               "Copy",
+               "Paste",
+               0,
+           ],
+        ], 0)  
+    }
+},    
+
+{
+    name: "DEBJG",
     title: "Debug",
     draw: function(context, rect, user, time)
     {
