@@ -5785,7 +5785,7 @@ panel.text = function(color = "white", align = "center", baseline = "middle",
         context.textAlign = align;
         context.textBaseline = baseline;
         context.fillStyle = color;
-        context.font = font;
+        context.font = DEFAULTFONT;//font;
 
         var metrics;
         var str = user;
