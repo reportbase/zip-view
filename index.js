@@ -35,6 +35,7 @@ const RAINSTEP = 240;
 const HEADTOP = 80;
 const HEADBOT = 40;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
+const FOOTHEIGHT = 80;
 const MAXEXTENT = 10000;
 const MAXIMAGESIZE = MAXEXTENT*MAXEXTENT;
 const SCROLLMARGIN = 8;
@@ -1211,9 +1212,8 @@ var bossdisplaylst =
         var a = new panel.layers(
         [
             new panel.fill("rgba(0,0,0,0.35)"),
-            new panel.rowsA([80,40,10,0,10,80],
+            new panel.rowsA([HEADHEIGHT,ALIEXTENT,0,ALIEXTENT,FOOTHEIGHT],
             [
-                0,
                 0,
                 0,
                 new panel.cols([0,j,0],
@@ -1242,19 +1242,15 @@ var bossdisplaylst =
                         new panel.shadow(new panel.text()),
                     ]),
                     0,
-                ]),
-                0,
+                ])
             ])
         ]);
         
         a.draw(context, rect, 
         [
            0,
-           0,
-           0,
-           
+           0,   
            [str],
-
            0,
            [
                0,
