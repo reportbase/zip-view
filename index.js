@@ -4967,27 +4967,12 @@ function menuobjdraw()
         var thumbfitted = thumbfittedlst[index];
         if (context == _8cnvctx && thumbimg.view != view)
         {
-            try
+            thumbimg.view = view;
+            thumbimg.src = await imagepath(slice);
+            thumbimg.onload = function()
             {
-                thumbimg.view = view;
-                thumbimg.src = await imagepath(slice);
-                thumbimg.onload = function()
-                {
-                    this.count = 0;
-                    menuobjdraw();
-                }
-
-                thumbimg.onerror =
-                    thumbimg.onabort = function(error)
-                    {
-                        thumbimg.view = 0;
-                        console.log(error);
-                    }
-            }
-            catch (error)
-            {
-                thumbimg.view = 0;
-                console.log(error);
+                this.count = 0;
+                menuobjdraw();
             }
         }
         else
