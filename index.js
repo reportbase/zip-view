@@ -912,7 +912,14 @@ var bossdisplaylst =
         var index = galleryobj.current();
         var value = galleryobj.data[index];
         if (value && value.folder)
+        {
             data = value.folder.split("/");
+            data.push(" ");
+        }
+
+        data.push(`${galleryobj.current()+1} of ${galleryobj.length()}`);
+        data.push(" ");
+        
         if (galleryobj.value().id)
         {
             data.push("ID");
