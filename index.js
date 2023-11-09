@@ -4617,7 +4617,7 @@ var buttonlst = [
                 new panel.layers(
                     [
                         new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
-                        new panel.shrink(new panel.fill("red")), 20, 20),
+                        new panel.shrink(new panel.fill("red"), 20, 20),//todo
                         new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
                     ]),
                 0,
@@ -4652,6 +4652,7 @@ var buttonlst = [
                     new panel.layers(
                         [
                             new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                            new panel.fill("green"),
                             new panel.rowsA([0, 50, 10],
                                 [
                                     new panel.shrink(
