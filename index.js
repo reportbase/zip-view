@@ -1309,10 +1309,10 @@ var bossdisplaylst =
         var a = new panel.layers(
         [
             //new panel.fill("rgba(0,255,100,0.35)"),
-            new panel.rowsA([HEADHEIGHT,ALIEXTENT,0,ALIEXTENT,FOOTHEIGHT],
+            new panel.rowsA([HEADHEIGHT,30,0,30,FOOTHEIGHT],
             [
                 0,
-                new panel.fill("red"),
+                0,
                 new panel.cols([0,j,0],
                 [
                     0,
@@ -1323,7 +1323,7 @@ var bossdisplaylst =
                     ]),
                     0,
                 ]),
-                new panel.fill("blue"),
+                0,
                 new panel.colsA([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
                 [
                     0,
