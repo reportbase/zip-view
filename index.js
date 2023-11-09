@@ -1881,12 +1881,12 @@ panel.multitext = function(e, panel)
             lst = lst.concat(wraptext(context, str, rect.width));
         }
 
-        var maxlines = Math.floor(rect.height/MULTITEXTROWHEIGHT)-1;
-        var len = Math.min(lst.length, maxlines);
-            
-        rect.y -= rect.height/2;
-        //rect.y += MULTITEXTROWHEIGHT/2;
-
+        var maxlines = Math.floor(rect.height/MULTITEXTROWHEIGHT);
+        var len = Math.min(lst.length, maxlines)-1;
+        var hh = len * MULTITEXTROWHEIGHT;     
+        var y2 = (rect.height - hh) / 2
+        rect.y -= y2;
+        
         if (e && lst.length > maxlines)
         {
             var j = Math.round(Math.lerp(0, lst.length - 1, e));
