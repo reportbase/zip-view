@@ -901,6 +901,8 @@ var bossdisplaylst =
     title: "Details",
     draw: function(context, rect, user, time)
     {
+        if (!photo.image)
+            return;
         var canvas = context.canvas
         var data = [];
         context.copyid = new rectangle();
@@ -2265,8 +2267,8 @@ CanvasRenderingContext2D.prototype.movepage = function(j)
     _4cnv.slidestop = 0;
     _4cnv.movingpage = j;
     galleryobj.rotate(j);
-    _4cnvctx.refresh();
-    _8cnvctx.refresh();
+    //_4cnvctx.refresh();
+    //_8cnvctx.refresh();
     headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
     delete photo.image;
     contextobj.reset();
