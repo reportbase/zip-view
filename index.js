@@ -3091,7 +3091,7 @@ var panlst =
 
         var canvas = context.canvas;
         var obj = canvas.hollyobj;
-        context.savetime()
+        //context.savetime()
         
         if (type == "panleft" || type == "panright")
         {
@@ -3371,7 +3371,7 @@ var panlst =
         delete canvas.starty;
         delete rowobj.offset;
         delete photo.image;
-        contextobj.reset();
+        //contextobj.reset();
         context.refresh();
     }
 }, ];
