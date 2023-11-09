@@ -1881,10 +1881,9 @@ panel.multitext = function(e, panel)
             lst = lst.concat(wraptext(context, str, rect.width));
         }
 
-        var maxlines = Math.floor(rect.height/MULTITEXTROWHEIGHT);
+        var maxlines = Math.floor(rect.height/MULTITEXTROWHEIGHT)-1;
         var len = Math.min(lst.length, maxlines);
             
-        var k = len < lst.length;
         rect.y -= rect.height/2;
         //rect.y += MULTITEXTROWHEIGHT/2;
 
