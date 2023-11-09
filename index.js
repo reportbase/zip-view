@@ -1210,7 +1210,7 @@ var bossdisplaylst =
         if (j > rect.width-40)
             j = rect.width-40;
 
-        var e
+        var e = context.canvas.hollyobj.berp();
         var a = new panel.layers(
         [
             new panel.fill("rgba(0,0,0,0.35)"),
