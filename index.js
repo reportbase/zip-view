@@ -2964,14 +2964,14 @@ async function loadzip(file)
         var k = Array.from(key);
         if (SAFARI && k.charAt(0) == '_')
             continue;
-        var entry = entries[key];
-        if (entry.isDirectory)
+        k.entry = entries[key];
+        if (k.entry.isDirectory)
             continue;
         if (!key.isimage())
             continue;
         var k = {}
         k.ext = key.ext();
-        k.blob = await entry.blob(`image/${k.ext}`);
+        k.blob = await k.entry.blob(`image/${k.ext}`);
         var lst = key.split("/");
         k.name = lst.pop();
         k.folder = lst.join("/");
@@ -6270,6 +6270,11 @@ function imagepath(user)
     else if (user.url)
     {
         src = user.url;
+    }
+    else if (user.entry)
+    {
+        var blob = await user.entry.blob(`image/${user.ext}`);
+        src = URL.createObjectURL(blob);
     }
     else if (user.blob)
     {
