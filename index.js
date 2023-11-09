@@ -909,16 +909,10 @@ var bossdisplaylst =
         context.download = new rectangle();
         context.upload = new rectangle();
         context.delete = new rectangle();
-        var index = galleryobj.current();
-        var value = galleryobj.data[index];
-        if (value && value.folder)
-        {
-            data = value.folder.split("/");
-            data.push(" ");
-        }
 
-        data.push(`${galleryobj.current()+1} of ${galleryobj.length()}`);
-        data.push(" ");
+        var b = 480;
+        if (b > rect.width-40)
+            b = rect.width-40;
         
         if (galleryobj.value().id)
         {
@@ -934,7 +928,18 @@ var bossdisplaylst =
         var extent = `${photo.image.width}x${photo.image.height}`;
         data.push("Extent");
         data.push(extent);
-  
+        data.push(" ");
+        
+        var index = galleryobj.current();
+        var value = galleryobj.data[index];
+        if (value && value.folder)
+        {
+            data = value.folder.split("/");
+            data.push(" ");
+        }
+
+        data.push(`${galleryobj.current()+1} of ${galleryobj.length()}`);
+
         var a = new panel.layers(
         [
             new panel.fill("rgba(0,0,0,0.275)"),
@@ -943,10 +948,15 @@ var bossdisplaylst =
                 0,
                 0,
                 0,
-                new panel.layers(
+                new panel.cols([0,b,0],
                 [
-                    new panel.rectangle(context.copyid),
-                    new panel.multitext(0, new panel.shadow(new panel.text())),
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.copyid),
+                        new panel.multitext(0, new panel.shadow(new panel.text())),
+                    ]),
+                    0,
                 ]),
                 0,
                 new panel.colsA([0,120,120,120,0],
