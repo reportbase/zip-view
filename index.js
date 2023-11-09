@@ -959,6 +959,7 @@ var bossdisplaylst =
                     0,
                 ]),
                 0,
+                0,
                 new panel.colsA([0,120,120,120,0],
                 [
                     0,
@@ -979,9 +980,6 @@ var bossdisplaylst =
                     ]),
                     0,
                 ]),
-                0,
-                0,
-                0
             ])
         ])
         
@@ -999,10 +997,7 @@ var bossdisplaylst =
                "Download",
                "Delete",
                0
-            ],
-            0,
-            0,
-            0
+            ]
         ], 0)        
     }
 },    
