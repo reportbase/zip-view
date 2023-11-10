@@ -2509,21 +2509,21 @@ var makehammer = function(context, v, t)
 function istrackpad()
  {
     var isTouchPadDefined = isTouchPad || typeof isTouchPad !== "undefined";
-    if (!isTouchPadDefined) 
-    {
-        if (eventCount === 0) 
-            eventCountStart = new Date().getTime();
-        eventCount++;
+    if (isTouchPadDefined) 
+        return;
+    
+    if (eventCount === 0) 
+        eventCountStart = new Date().getTime();
+    eventCount++;
 
-        if (new Date().getTime() - eventCountStart > 100) 
-        {
-                if (eventCount > 10) 
-                    isTouchPad = true;
-                else 
-                    isTouchPad = false;
-                isTouchPadDefined = true;
-        }
-    }
+    if (new Date().getTime() - eventCountStart < 100) 
+        return;
+    if (eventCount > 10) 
+        isTouchPad = true;
+    else 
+        isTouchPad = false;
+    isTouchPadDefined = true;
+ }
      
         if (1)
         {
