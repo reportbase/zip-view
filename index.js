@@ -1879,7 +1879,7 @@ panel.multitext = function(e, panel)
         var lst = [];
         for (var n = 0; n < user.length; n++)
         {
-            var str = user[n].clean();
+            var str = user[n];
             lst = lst.concat(wraptext(context, str, rect.width));
         }
 
@@ -1901,7 +1901,7 @@ panel.multitext = function(e, panel)
             var lines = wraptext(context, lst[n], rect.width);
             for (var m = 0; m < 1; m++)
             {
-                var str = lines[m].clean();
+                var str = lines[m];
                 panel.draw(context, rect, str, 0);
                 rect.y += MULTITEXTROWHEIGHT;
             }
