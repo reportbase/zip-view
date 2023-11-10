@@ -3646,7 +3646,7 @@ var keylst = [
             }
             else if (key == " ")
             {
-                var j = context.shift ? 1 : -1;
+                var j = context.shiftKey ? 1 : -1;
                 var k = canvas.timeobj.length() / galleryobj.length()/3;
                 canvas.timeobj.rotate(j*k);
                 menuobj.draw();
@@ -6330,17 +6330,11 @@ galleryobj.getpath = function(index)
     var gallery = this.data[index];
     var id = gallery.id;
     var path = "";
-    if (galleryobj.raw)
-    {
-        path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
-    }
-    else if (id && id.length >= 5 &&
+    if (id && id.length >= 5 &&
         ((id.charAt(id.length - 5) == '.') ||
             id.charAt(8) == '-'))
     {
         path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
-        //var template = galleryobj.bosstemplate ? galleryobj.bosstemplate : "3840x3840";
-        //path = `https://image.reportbase5836.workers.dev/image/${id}/${template}`;
     }
     else if (id && id.length > 1 &&
         ((id.charAt(0) == 'Q' && id.charAt(1) == 'm') ||
