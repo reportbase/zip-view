@@ -2801,6 +2801,12 @@ var wheelst =
             zoomobj.addperc(delta/500);
             contextobj.reset()
         }
+        else if (context.hollyrect &&
+            context.hollyrect.hitest(x, y))
+        {
+            hollyobj.addperc(delta/500);
+            context.refresh();
+        }
         else if (context.stretchrect &&
             context.stretchrect.hitest(x, y))
         {
@@ -2815,11 +2821,20 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     { 
-        _4cnv.lastime = -0.0000000000101010101;
-        var obj = _4cnv.timeobj;
-        var j = obj.length()*(-delta/5000);
-        obj.rotate(j);
-        bossobj.draw()
+        if (context.hollyrect &&
+            context.hollyrect.hitest(x, y))
+        {
+            hollyobj.addperc(delta/500);
+            context.refresh();
+        }
+        else
+        {
+            _4cnv.lastime = -0.0000000000101010101;
+            var obj = _4cnv.timeobj;
+            var j = obj.length()*(-delta/5000);
+            obj.rotate(j);
+            bossobj.draw()
+        }
     },
 }, 
 ];
