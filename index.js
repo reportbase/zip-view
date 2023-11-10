@@ -1157,14 +1157,17 @@ var bossdisplaylst =
             var a = new panel.rows([0,FOOTHEIGHT],
             [
                 0,
-                new panel.cols([0,BETHWIDTH,0],
+                new panel.cols([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
                 [
+                    0,
                     0,
                     new panel.layers(
                     [
+                        new panel.fill("rgba(255,255,0,0.5)"),
                         new panel.rectangle(context.stretchcolumnrect),
                         new panel.shadow(new panel.text()),
                     ]),
+                    0,
                     0
                 ]),
                 0
@@ -1184,7 +1187,7 @@ var bossdisplaylst =
             return;
         var canvas = context.canvas
         var data = [];
-        context.copyidrect = new rectangle();
+        context.hollyrect = new rectangle();
         context.downloadrect = new rectangle();
         context.uploadrect = new rectangle();
         context.deleterect = new rectangle();
@@ -1229,23 +1232,24 @@ var bossdisplaylst =
         
         var a = new panel.layers(
         [
-            //new panel.fill("rgba(255,100,0,0.275)"),
+            0,
             new panel.rowsA([HEADTOP,ALIEXTENT,j,0,ALIEXTENT,FOOTHEIGHT],
             [
                 0,
-                new panel.fill("red"),
+                0,
                 new panel.cols([0,b,0],
                 [
                     0,
                     new panel.layers(
                     [
-                        new panel.rectangle(context.copyidrect),
+                        new panel.rectangle(context.hollyrect),
+                        //new panel.rectangle(context.copyidrect),
                         new panel.multitext(0, new panel.shadow(new panel.text())),
                     ]),
                     0,
                 ]),
                 0,
-                new panel.fill("red"),
+                0,
                 new panel.colsA([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
                 [
                     0,
@@ -1308,12 +1312,12 @@ var bossdisplaylst =
         var e = context.canvas.hollyobj.berp();
         var a = new panel.layers(
         [
-            //new panel.fill("rgba(0,255,100,0.35)"),
+            0,
             new panel.rowsA([HEADTOP,HEADBOT,30,0,30,HEADBOT,HEADTOP],
             [
                 0,
-                new panel.fill("rgba(0,0,255,0.3)"),
-                new panel.fill("rgba(0,255,0,0.3)"),
+                0,
+                0,
                 new panel.cols([0,j,0],
                 [
                     0,
@@ -1324,8 +1328,8 @@ var bossdisplaylst =
                     ]),
                     0,
                 ]),
-                new panel.fill("rgba(255,0,255,0.3)"),
-                new panel.fill("rgba(0,255,255,0.3)"),
+                0,
+                0,
                 new panel.colsA([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
                 [
                     0,
