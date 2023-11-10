@@ -2504,7 +2504,7 @@ var makehammer = function(context, v, t)
     ham.element.addEventListener("wheel", function(evt)
     {
         evt.preventDefault();
-        
+//todo
 //https://stackoverflow.com/questions/10744645/detect-touchpad-vs-mouse-in-javascript
 function istrackpad()
  {
@@ -6409,6 +6409,11 @@ galleryobj.init = function(obj)
             galleryobj.data.push(Object.assign({}, galleryobj.data[0]));
     }
 
+    //todo
+    var j = url.searchParams.get('max');
+    if (j)
+        galleryobj.data.length = j;
+    
     delete photo.image;
 
     if (galleryobj.template)
