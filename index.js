@@ -2508,7 +2508,7 @@ var makehammer = function(context, v, t)
         var isTouchPad = evt.wheelDeltaY ? 
             evt.wheelDeltaY === -3 * evt.deltaY : evt.deltaMode === 0
         evt.preventDefault();
-        if (isTouchPad)
+        if (1)//isTouchPad)
         {
             var x = evt.offsetX;
             var y = evt.offsetY;
