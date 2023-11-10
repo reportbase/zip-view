@@ -2503,23 +2503,8 @@ var makehammer = function(context, v, t)
 
     ham.element.addEventListener("wheel", function(evt)
     {
-function detectTrackPad(e) 
-{
-  var isTrackpad = false;
-  if (e.wheelDeltaY) {
-    if (e.wheelDeltaY === (e.deltaY * -3)) {
-      isTrackpad = true;
-    }
-  }
-  else if (e.deltaMode === 0) {
-    isTrackpad = true;
-  }
-
-    return isTrackpad;
-}        
-        const {deltaY} = evt;
+        //https://stackoverflow.com/questions/10744645/detect-touchpad-vs-mouse-in-javascript
         evt.preventDefault();
-        var trackpad = detectTrackPad(evt);
         if (1)
         {
             var x = evt.offsetX;
@@ -2689,12 +2674,12 @@ var wheelst =
 [
 {
     name: "DEFAULT",
-    updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad) {},
-    leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad) {},
+    updown: function(context, x, y, delta, ctrl, shift, alt, type) {},
+    leftright: function(context, x, y, delta, ctrl, shift, alt, type) {},
 },
 {
     name: "GALLERY",
-    updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
+    updown: function(context, x, y, delta, ctrl, shift, alt, type)
     {
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
@@ -2776,7 +2761,7 @@ var wheelst =
 },
 {
     name: "MENU",
-    updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
+    updown: function(context, x, y, delta, ctrl, shift, alt, type)
     {
         if (ctrl)
             return;
@@ -2795,7 +2780,7 @@ var wheelst =
 },
 {
     name: "BOSS",
-    updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
+    updown: function(context, x, y, delta, ctrl, shift, alt, type)
     {
         var canvas = context.canvas;
         if (ctrl)
