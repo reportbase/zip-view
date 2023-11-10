@@ -2801,7 +2801,7 @@ var wheelst =
             zoomobj.addperc(delta/500);
             contextobj.reset()
         }
-        else if (context.hollyrect &&
+        else if (0 && context.hollyrect &&
             context.hollyrect.hitest(x, y))
         {
             var hollyobj = context.canvas.hollyobj;
@@ -3353,7 +3353,7 @@ var panlst =
                 zoomobj.setperc(k);
                 contextobj.reset()
             }
-            else if (context.ishollyrect)
+            else if (0)//context.ishollyrect)
             {
                 var hollyobj = context.canvas.hollyobj;
                 var k = panvert(hollyobj, rect.height - y);
