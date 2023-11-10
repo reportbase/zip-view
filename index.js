@@ -29,7 +29,7 @@ const BUTTONMARGIN = 30;
 const IFRAME = window.self !== window.top;
 const ALIEXTENT = 60;
 const BEXTENT = 80;
-const BETHWIDTH = 120;
+const BETHWIDTH = window.innerWidth < 360 ? 100 : 120;
 const BOSSMIN = 4;
 const FOOTSEP = 20;
 const RAINSTEP = 240;
@@ -3359,6 +3359,17 @@ var panlst =
                 var k = (y - context.zoomrect.y) / context.zoomrect.height;
                 zoomobj.setperc(k);
                 contextobj.reset()
+            }
+            else if (context.ishollyrect)
+            {
+                var hollyobj = context.canvas.hollyobj;
+                var k = panvert(hollyobj, rect.height - y);
+                if (k == -1)
+                    return;
+                if (k == hollyobj.anchor())
+                    return;
+                hollyobj.set(k);
+                context.refresh()
             }
             else if (context.isgalleryrect)
             {
