@@ -1323,7 +1323,7 @@ var bossdisplaylst =
                     ]),
                     0,
                 ]),
-                new panel.fill("red"),,
+                new panel.fill("red"),
                 new panel.colsA([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
                 [
                     0,
