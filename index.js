@@ -2503,23 +2503,28 @@ var makehammer = function(context, v, t)
 
     ham.element.addEventListener("wheel", function(evt)
     {
-        const
-        {
-            deltaY
-        } = evt;
+        const {deltaY} = evt;
         var trackpad = deltaY && !Number.isInteger(deltaY);
-
-        var x = evt.offsetX;
-        var y = evt.offsetY;
-        evt.preventDefault();
-        var deltax = evt.deltaX;
-        var deltay = evt.deltaY;
-        if (Math.abs(deltax) <= 1 && Math.abs(deltay) <= 1)
-            return;
-        if (typeof(ham.panel.wheeleftright) == "function")
-            ham.panel.wheeleftright(context, x, y, deltax, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaX < 0 ? "wheeleft" : "wheelright");
-        if (typeof(ham.panel.wheelupdown) == "function")
-            ham.panel.wheelupdown(context, x, y, deltay, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaY < 0 ? "wheelup" : "wheeldown");
+        var isTouchPad = evt.wheelDeltaY ? 
+            evt.wheelDeltaY === -3 * evt.deltaY : evt.deltaMode === 0
+        if (trackpad)
+        {
+            var x = evt.offsetX;
+            var y = evt.offsetY;
+            evt.preventDefault();
+            var deltax = evt.deltaX;
+            var deltay = evt.deltaY;
+            if (Math.abs(deltax) <= 1 && Math.abs(deltay) <= 1)
+                return;
+            if (typeof(ham.panel.wheeleftright) == "function")
+                ham.panel.wheeleftright(context, x, y, deltax, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaX < 0 ? "wheeleft" : "wheelright");
+            if (typeof(ham.panel.wheelupdown) == "function")
+                ham.panel.wheelupdown(context, x, y, deltay, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaY < 0 ? "wheelup" : "wheeldown");
+        }
+        else
+        {
+            //todo  keyup keydown
+        }
     });
 
     ham.on("press", function(evt)
@@ -2672,12 +2677,12 @@ var wheelst =
 [
 {
     name: "DEFAULT",
-    updown: function(context, x, y, delta, ctrl, shift, alt, type) {},
-    leftright: function(context, x, y, delta, ctrl, shift, alt, type) {},
+    updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad) {},
+    leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad) {},
 },
 {
     name: "GALLERY",
-    updown: function(context, x, y, delta, ctrl, shift, alt, type)
+    updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
@@ -2759,7 +2764,7 @@ var wheelst =
 },
 {
     name: "MENU",
-    updown: function(context, x, y, delta, ctrl, shift, alt, type)
+    updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         if (ctrl)
             return;
@@ -2778,7 +2783,7 @@ var wheelst =
 },
 {
     name: "BOSS",
-    updown: function(context, x, y, delta, ctrl, shift, alt, type)
+    updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         var canvas = context.canvas;
         if (ctrl)
