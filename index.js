@@ -1879,9 +1879,7 @@ panel.multitext = function(e, panel)
         var lst = [];
         for (var n = 0; n < user.length; n++)
         {
-            var str = user[n];
-            if (!str.length)
-                continue;
+            var str = user[n].clean();
             lst = lst.concat(wraptext(context, str, rect.width));
         }
 
@@ -1891,7 +1889,7 @@ panel.multitext = function(e, panel)
         rect.y -= hh / 2;
         rect.y += MULTITEXTROWHEIGHT/2;
         
-        if (e && lst.length > maxlines)
+        if (lst.length > maxlines)
         {
             var j = Math.round(Math.lerp(0, lst.length - 1, e));
             lst = lst.slice(j);
@@ -1903,9 +1901,7 @@ panel.multitext = function(e, panel)
             var lines = wraptext(context, lst[n], rect.width);
             for (var m = 0; m < lines.length; m++)
             {
-                var str = lines[m];
-                if (!str.length)
-                    continue;
+                var str = lines[m].clean();
                 panel.draw(context, rect, str, 0);
                 rect.y += MULTITEXTROWHEIGHT;
             }
