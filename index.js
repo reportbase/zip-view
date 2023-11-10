@@ -2519,7 +2519,8 @@ function detectTrackPad(e)
 }        
         const {deltaY} = evt;
         evt.preventDefault();
-        if (detectTrackPad(evt))
+        var trackpad = detectTrackPad(evt);
+        if (1)
         {
             var x = evt.offsetX;
             var y = evt.offsetY;
