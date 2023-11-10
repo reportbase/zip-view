@@ -4210,7 +4210,7 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             menuobj.draw();
         }
-        else if (galleryobj.boss || canvas.shiftKey)
+        else if (!galleryobj.noboss || canvas.shiftKey)
         {
             var visibles = canvas.visibles;
             var k;
