@@ -2503,8 +2503,28 @@ var makehammer = function(context, v, t)
 
     ham.element.addEventListener("wheel", function(evt)
     {
-        //https://stackoverflow.com/questions/10744645/detect-touchpad-vs-mouse-in-javascript
         evt.preventDefault();
+        
+//https://stackoverflow.com/questions/10744645/detect-touchpad-vs-mouse-in-javascript
+funcion istrackpad()
+ {
+    var isTouchPadDefined = isTouchPad || typeof isTouchPad !== "undefined";
+    if (!isTouchPadDefined) 
+    {
+        if (eventCount === 0) 
+            eventCountStart = new Date().getTime();
+        eventCount++;
+
+        if (new Date().getTime() - eventCountStart > 100) 
+        {
+                if (eventCount > 10) 
+                    isTouchPad = true;
+                else 
+                    isTouchPad = false;
+                isTouchPadDefined = true;
+        }
+    }
+     
         if (1)
         {
             var x = evt.offsetX;
