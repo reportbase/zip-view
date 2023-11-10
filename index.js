@@ -2507,7 +2507,7 @@ var makehammer = function(context, v, t)
         var trackpad = deltaY && !Number.isInteger(deltaY);
         var isTouchPad = evt.wheelDeltaY ? 
             evt.wheelDeltaY === -3 * evt.deltaY : evt.deltaMode === 0
-        if (trackpad)
+        if (isTouchPad)
         {
             var x = evt.offsetX;
             var y = evt.offsetY;
