@@ -2503,12 +2503,23 @@ var makehammer = function(context, v, t)
 
     ham.element.addEventListener("wheel", function(evt)
     {
+function detectTrackPad(e) 
+{
+  var isTrackpad = false;
+  if (e.wheelDeltaY) {
+    if (e.wheelDeltaY === (e.deltaY * -3)) {
+      isTrackpad = true;
+    }
+  }
+  else if (e.deltaMode === 0) {
+    isTrackpad = true;
+  }
+
+    return isTrackpad;
+}        
         const {deltaY} = evt;
-        var trackpad = deltaY && !Number.isInteger(deltaY);
-        var isTouchPad = evt.wheelDeltaY ? 
-            evt.wheelDeltaY === -3 * evt.deltaY : evt.deltaMode === 0
         evt.preventDefault();
-        if (1)//isTouchPad)
+        if (detectTrackPad(evt))
         {
             var x = evt.offsetX;
             var y = evt.offsetY;
