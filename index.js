@@ -3029,30 +3029,6 @@ async function loadzip(file)
     galleryobj.init(galleryobj)
 }
 
-async function loadblob(blob)
-{
-    menuobj.hide();
-    galleryobj.data = [];
-    galleryobj.width = 0;
-    galleryobj.height = 0;
-    galleryobj.set(0);
-    galleryobj.set(0);
-
-    var k = {}
-    k.blob = blob;
-    galleryobj.data.push(k);
-    var image = new Image();
-    image.src = URL.createObjectURL(blob);
-    image.onload = function(file)
-    {
-        galleryobj.width = this.width;
-        galleryobj.height = this.height;
-        URL.revokeObjectURL(this.src);
-        buttonobj.reset()
-        galleryobj.init(galleryobj)
-    };
-}
-
 async function loadimages(blobs)
 {
     var count = 0;
