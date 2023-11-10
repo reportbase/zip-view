@@ -6353,7 +6353,11 @@ galleryobj.getpath = function(index)
     {
         path = gallery.url;
     }
-
+    else if (gallery.blob)
+    {
+        path = URL.createObjectURL(gallery.blob);
+    }
+    
     return path;
 }
 
