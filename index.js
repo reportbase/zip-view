@@ -1898,7 +1898,7 @@ panel.multitext = function(e, panel)
         var N = Math.min(len, lst.length);
         for (var n = 0; n < N; n++)
         {
-            var lines = wraptext(context, lst[n], rect.width);
+            var lines = 1;//wraptext(context, lst[n], rect.width);
             for (var m = 0; m < lines.length; m++)
             {
                 var str = lines[m].clean();
