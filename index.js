@@ -29,7 +29,8 @@ const BUTTONMARGIN = 30;
 const IFRAME = window.self !== window.top;
 const ALIEXTENT = 60;
 const BEXTENT = 80;
-const BETHWIDTH = window.innerWidth < 360 ? 100 : 120;
+const BETHCIDTH = (window.innerWidth < 420 ? window.innerWidth/3 : 420/3)+20;
+const BETHWIDTH = (window.innerWidth < 420 ? window.innerWidth/3 : 420/3)-10;
 const BOSSMIN = 4;
 const FOOTSEP = 20;
 const RAINSTEP = 240;
@@ -1157,7 +1158,7 @@ var bossdisplaylst =
             var a = new panel.rows([0,FOOTHEIGHT],
             [
                 0,
-                new panel.cols([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
+                new panel.cols([0,BETHWIDTH,BETHCIDTH,BETHWIDTH,0],
                 [
                     0,
                     0,
@@ -1179,8 +1180,8 @@ var bossdisplaylst =
 },
     
 {
-    name: "DETAILS",
-    title: "Details",
+    name: "UPLOAD",
+    title: "Upload",
     draw: function(context, rect, user, time)
     {
         if (!photo.image || !photo.image.width)
@@ -1250,7 +1251,7 @@ var bossdisplaylst =
                 ]),
                 0,
                 0,
-                new panel.colsA([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
+                new panel.colsA([0,BETHWIDTH,BETHCIDTH,BETHWIDTH,0],
                 [
                     0,
                     new panel.layers(
@@ -1330,7 +1331,7 @@ var bossdisplaylst =
                 ]),
                 0,
                 0,
-                new panel.colsA([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
+                new panel.colsA([0,BETHWIDTH,BETHCIDTH,BETHWIDTH,0],
                 [
                     0,
                     new panel.layers(
