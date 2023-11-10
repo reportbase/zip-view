@@ -2804,6 +2804,7 @@ var wheelst =
         else if (context.hollyrect &&
             context.hollyrect.hitest(x, y))
         {
+            var hollyobj = context.canvas.hollyobj;
             hollyobj.addperc(delta/500);
             context.refresh();
         }
@@ -2824,6 +2825,7 @@ var wheelst =
         if (context.hollyrect &&
             context.hollyrect.hitest(x, y))
         {
+            var hollyobj = context.canvas.hollyobj;
             hollyobj.addperc(delta/500);
             context.refresh();
         }
