@@ -3628,21 +3628,27 @@ var keylst = [
             }
             else if (
                 key == "arrowup" ||
-                (canvas.shiftKey && key == " ") ||
                 key == "k")
+            {
+                var k = canvas.timeobj.length() / galleryobj.length()/6;
+                canvas.timeobj.rotate(k);
+                menuobj.draw();
+                evt.preventDefault();
+            }
+            else if (
+                key == "arrowdown" ||
+                key == "j")
             {
                 var k = canvas.timeobj.length() / galleryobj.length()/6;
                 canvas.timeobj.rotate(-k);
                 menuobj.draw();
                 evt.preventDefault();
             }
-            else if (
-                key == "arrowdown" ||
-                key == " " ||
-                key == "j")
+            else if (key == " ")
             {
-                var k = canvas.timeobj.length() / galleryobj.length()/6;
-                canvas.timeobj.rotate(k);
+                var j = context.shift ? 1 : -1;
+                var k = canvas.timeobj.length() / galleryobj.length()/3;
+                canvas.timeobj.rotate(j*k);
                 menuobj.draw();
                 evt.preventDefault();
             }
