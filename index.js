@@ -1312,8 +1312,8 @@ var bossdisplaylst =
             new panel.rowsA([HEADTOP,HEADBOT,30,0,30,HEADBOT,HEADTOP],
             [
                 0,
-                new panel.fill("green"),
-                new panel.fill("red"),
+                new panel.fill("rgba(0,0,255,0.3)"),
+                new panel.fill("rgba(0,255,0,0.3)"),
                 new panel.cols([0,j,0],
                 [
                     0,
@@ -1324,8 +1324,8 @@ var bossdisplaylst =
                     ]),
                     0,
                 ]),
-                new panel.fill("blue"),
-                new panel.fill("red"),
+                new panel.fill("rgba(255,0,255,0.3)"),
+                new panel.fill("rgba(0,255,255,0.3)"),
                 new panel.colsA([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
                 [
                     0,
