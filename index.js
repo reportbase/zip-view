@@ -2506,7 +2506,7 @@ var makehammer = function(context, v, t)
         evt.preventDefault();
         
 //https://stackoverflow.com/questions/10744645/detect-touchpad-vs-mouse-in-javascript
-funcion istrackpad()
+function istrackpad()
  {
     var isTouchPadDefined = isTouchPad || typeof isTouchPad !== "undefined";
     if (!isTouchPadDefined) 
