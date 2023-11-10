@@ -1312,7 +1312,7 @@ var bossdisplaylst =
             new panel.rowsA([HEADHEIGHT,30,0,30,FOOTHEIGHT],
             [
                 0,
-                0,
+                new panel.fill("red"),
                 new panel.cols([0,j,0],
                 [
                     0,
@@ -1323,7 +1323,7 @@ var bossdisplaylst =
                     ]),
                     0,
                 ]),
-                0,
+                new panel.fill("red"),,
                 new panel.colsA([0,BETHWIDTH,BETHWIDTH,BETHWIDTH,0],
                 [
                     0,
