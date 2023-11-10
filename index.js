@@ -1356,7 +1356,9 @@ var bossdisplaylst =
         [
            0,
            0,   
+           0,
            [str],
+           0,
            0,
            [
                0,
