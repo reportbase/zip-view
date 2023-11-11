@@ -534,7 +534,6 @@ var beavobj = new circular_array("", 100)
 beavobj.set(62.10);
 var dolpobj = new circular_array("", 100)
 dolpobj.set(80);
-var horsobj = new circular_array("", 0)
 
 var footlst = 
 [
@@ -3759,11 +3758,6 @@ var keylst = [
                 evt.preventDefault();
                 screenfull.toggle();
             }
-            else if (key == "n")
-            {
-                var k = canvas.shiftKey?-1:1;
-                horsobj.add(k);
-            }
         }
     },
     {
@@ -5029,7 +5023,7 @@ menuobj.draw = function()
         context.canvas.slideshow = 0;
     }
 
-    var len = horsobj.value();
+    var len = galleryobj.length();
     var delayinterval = sealobj.value() / len / 1000;
     context.canvas.virtualheight = len * canvas.buttonheight;
     
@@ -6440,9 +6434,6 @@ galleryobj.init = function(obj)
             galleryobj.data.push(Object.assign({}, galleryobj.data[0]));
     }
 
-    horsobj.data = galleryobj.length();
-    horsobj.set(galleryobj.length()-1);
-    
     delete photo.image;
 
     if (galleryobj.template)
