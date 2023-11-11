@@ -8,9 +8,6 @@ function ios()
 {
     return 
     [
-        'iPad Simulator',
-        'iPhone Simulator',
-        'iPod Simulator',
         'iPad',
         'iPhone',
         'iPod'
@@ -57,7 +54,8 @@ const NUBAR = "rgba(255,255,255,0.8)";
 const FILLMENU = "rgba(0,0,0,0.6)";
 const GALLERYSCROLL = "rgba(0,0,0,0.3)";
 const ARROWFILL = "white";
-const SCROLLBAREXTENT = 16;
+const SCROLLEXTENT = 16;
+const SCROLLMARGIN = 6;
 const SMALLFONT = "16px archivo black";
 const DEFAULTFONT = "17px archivo black";
 const MEDIUMFONT = "19px archivo black";
@@ -941,7 +939,7 @@ var bossdisplaylst =
             var a = new panel.layerA(
             [
                 new panel.rectangle(context.windowrect),
-                new panel.colsA([0, SCROLLBAREXTENT, 4],
+                new panel.colsA([0, SCROLLEXTENT, SCROLLMARGIN],
                 [
                     0,
                     new panel.rows([0,bh,0],
@@ -958,7 +956,7 @@ var bossdisplaylst =
                     ]),
                    0
                 ]),
-                new panel.rowsA([0, 50, SCROLLBAREXTENT, 4],
+                new panel.rowsA([0, 50, SCROLLEXTENT, SCROLLMARGIN],
                 [
                     0,
                     new panel.cols([0, RAINSTEP, 0],
@@ -1007,7 +1005,7 @@ var bossdisplaylst =
             var a = new panel.layers(
             [
                 new panel.rectangle(context.windowrect),
-                new panel.rows([0, SCROLLBAREXTENT, 4],
+                new panel.rows([0, SCROLLEXTENT, SCROLLMARGIN],
                 [
                     0,
                     new panel.cols([0, bw, 0],
@@ -1119,7 +1117,7 @@ var bossdisplaylst =
                 return;
 
             var bh = rect.height * 0.4;
-            var a = new panel.colsA([4, SCROLLBAREXTENT, 0, SCROLLBAREXTENT, 4],
+            var a = new panel.colsA([SCROLLMARGIN, SCROLLEXTENT, 0, SCROLLEXTENT, SCROLLMARGIN],
             [
                 0,
                 new panel.rows([0,bh,0],
@@ -1452,7 +1450,7 @@ var displaylst =
             return;
         var bh = rect.height * 0.4;
         var bw = rect.width * 0.4;
-        var a = new panel.cols([6, SCROLLBAREXTENT, 0],
+        var a = new panel.cols([SCROLLMARGIN, SCROLLEXTENT, 0],
             [
                 0,
                 new panel.rows([0, bh, 0],
@@ -1471,7 +1469,7 @@ var displaylst =
 
         a.draw(context, rect, buttonobj, 0); 
 
-        var a = new panel.rows([0, SCROLLBAREXTENT, 4],
+        var a = new panel.rows([0, SCROLLEXTENT, SCROLLMARGIN],
             [
                 0,
                 new panel.cols([0, bw, 0],
@@ -1500,7 +1498,7 @@ var displaylst =
         data.push(`\u{25C0}   ${jp[0]} x ${jp[1]}   \u{25B6}`);
         var rows = data.length;
         var rh = 40;
-        var a = new panel.rowsA([80, 40, 0, rows * rh, FOOTSEP, SCROLLBAREXTENT, 4],
+        var a = new panel.rowsA([80, 40, 0, rows * rh, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,    
             new panel.cols([0, RAINSTEP, 0],
@@ -1562,7 +1560,7 @@ var displaylst =
             return;        
         var bh = rect.height * 0.4;
         var bw = rect.width * 0.4;
-        var a = new panel.cols([0, SCROLLBAREXTENT, 6],
+        var a = new panel.cols([0, SCROLLEXTENT, SCROLLMARGIN],
             [
                 0,
                 new panel.rows([0, bh, 0],
@@ -1581,7 +1579,7 @@ var displaylst =
 
         a.draw(context, rect, beaverobj, 0);
         
-        var a = new panel.rows([0, SCROLLBAREXTENT, 4],
+        var a = new panel.rows([0, SCROLLEXTENT, SCROLLMARGIN],
             [
                 0,
                 new panel.cols([0, bw, 0],
@@ -1610,7 +1608,7 @@ var displaylst =
         data.push(`\u{25C0}   ${index.toFixed(1)} of ${galleryobj.length()}   \u{25B6}`);
         var st = `\u{25C0}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
-        var a = new panel.rowsA([80, 40, 0, data.length*28, FOOTSEP, SCROLLBAREXTENT, 4],
+        var a = new panel.rowsA([80, 40, 0, data.length*28, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,
             0,
@@ -1663,7 +1661,7 @@ var displaylst =
             return;        
         var bh = rect.height * 0.4;
         var bw = rect.width * 0.4;
-        var a = new panel.cols([0, SCROLLBAREXTENT, 6],
+        var a = new panel.cols([0, SCROLLEXTENT, SCROLLMARGIN],
             [
                 0,
                 new panel.rows([0, bh, 0],
@@ -1682,7 +1680,7 @@ var displaylst =
 
         a.draw(context, rect, context.canvas.timeobj, 0);
         
-        var a = new panel.rows([0, SCROLLBAREXTENT, 4],
+        var a = new panel.rows([0, SCROLLEXTENT, 6],
             [
                 0,
                 new panel.cols([0, bw, 0],
@@ -1711,7 +1709,7 @@ var displaylst =
         data.push(`\u{25C0}   ${index.toFixed(1)} of ${galleryobj.length()}   \u{25B6}`);
         var st = `\u{25C0}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
-        var a = new panel.rowsA([80, 40, 0, data.length*28, FOOTSEP, SCROLLBAREXTENT, 4],
+        var a = new panel.rowsA([80, 40, 0, data.length*28, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,
             0,
