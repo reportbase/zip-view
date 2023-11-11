@@ -529,8 +529,11 @@ var templatelst =
 var templateobj = new circular_array("", templatelst);
 templateobj.set(4)
 
-const SEAL = 4445.61;//3927;
-var sealobj = new circular_array("", SEAL*2);
+const SEAL = 3928;
+var lst = []
+for (var n = 3928-400; n < 3928+400*2; ++n)
+    lst.push(n)
+var sealobj = new circular_array("", 400*2);
 sealobj.set(SEAL);
 var virtualheightobj = new circular_array("", 100)
 virtualheightobj.set(62.10);
