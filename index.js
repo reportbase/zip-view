@@ -1441,6 +1441,8 @@ var displaylst =
         delete canvas.hollyrect;
         delete context.holly2rect;
         delete canvas.vscrollrect;
+        delete canvas.sealrect;
+        delete canvas.beavrect;
         var hollyobj = canvas.hollyobj;
         canvas.buttonrect = new rectangle();
         canvas.templaterect = new rectangle();
@@ -1601,6 +1603,8 @@ var displaylst =
         context.save();
         delete canvas.templaterect;
         delete canvas.buttonrect;
+        delete context.button2rect;
+        delete context.template2rect;
         delete context.button2rect;
         delete context.template2rect;
         canvas.vscrollrect = new rectangle();
@@ -3234,9 +3238,6 @@ var panlst =
             }
             else
             {
-               // var k = displaylst.findIndex(function(a){return a.name == "GALLERY"})
-               // displayobj.set(k); 
-        
                 var obj = context.canvas.hollyobj;
                 var e = canvas.startx - x;
                 var k = panhorz(obj, e);
@@ -3268,9 +3269,6 @@ var panlst =
             }
             else
             {
-                var k = displaylst.findIndex(function(a){return a.name == "GALLERY"})
-                displayobj.set(k); 
-
                 var e = canvas.starty - y;
                 var jvalue = sealobj.value() / canvas.virtualheight
                 jvalue *= e;
