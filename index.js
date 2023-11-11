@@ -1494,7 +1494,7 @@ var displaylst =
         var st = `\u{25C0}   ${ww.toFixed(0)} x ${hh.toFixed(0)}   \u{25B6}`;
         var jp = templateobj.value().split("x");
         data.push(`\u{25C0}   ${jp[0]} x ${jp[1]}   \u{25B6}`);
-        var a = new panel.rowsA([HEADTOP, HEADBOT, 0, data.length * WRAPROWHEIGHT, 
+        var a = new panel.rowsA([HEADTOP, HEADBOT, 0, data.length*WRAPROWHEIGHT, 
                                  FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,    
@@ -1515,7 +1515,7 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.expand(new panel.rectangle(context.template2rect), 10, 10),
-                        new panel.gridA(1, rows, 1,
+                        new panel.gridA(1, data.length, 1,
                             new panel.shadow(new panel.text())),
                     ]),
                     0,
