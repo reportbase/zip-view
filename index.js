@@ -527,8 +527,8 @@ var templatelst =
 ];
 
 const SEAL = 3927
-var sealobj = new circular_array("", SEAL);
-sealobj.set(SEAL/2);
+var sealobj = new circular_array("", SEAL*2);
+sealobj.set(SEAL);
 
 var templateobj = new circular_array("", templatelst);
 templateobj.set(4)
@@ -3158,7 +3158,7 @@ var panlst =
                 var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
                 //todo context.canvas.hollyobj.setperc(k);
                 //virtualheightobj.setperc(k);
-                seal.setperc(k);
+                sealobj.setperc(k);
                 menuobj.draw();
             }
             else if (canvas.istemplaterect)
