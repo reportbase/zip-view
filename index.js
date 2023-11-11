@@ -3205,8 +3205,7 @@ var panlst =
         
         if (type == "panleft" || type == "panright")
         {
-            if (canvas.buttonrect &&
-                canvas.buttonrect.hitest(x, y))
+            if (canvas.isbuttonrect)
             {
             }   
             else if (canvas.issealrect)
@@ -3311,6 +3310,12 @@ var panlst =
         delete buttonobj.offset;
         delete context.canvas.isvbarect;
         delete context.canvas.hollyobj.offset;
+        delete canvas.istemplaterect;
+        delete canvas.isbuttonrect;
+        delete canvas.isvscrollrect;
+        delete canvas.ishollyrect;
+        delete canvas.isbeavrect;
+        delete canvas.issealrect;
         context.savetime();
         context.refresh();
     }
