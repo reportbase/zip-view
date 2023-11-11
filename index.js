@@ -3759,6 +3759,11 @@ var keylst = [
                 evt.preventDefault();
                 screenfull.toggle();
             }
+            else if (key == "n")
+            {
+                var k = context.shiftKey?-1:1;
+                horseobj.add(k);
+            }
         }
     },
     {
@@ -5024,8 +5029,7 @@ menuobj.draw = function()
         context.canvas.slideshow = 0;
     }
 
-    var len2 = context.canvas.sliceobj.length()
-    var len = horsobj.current();
+    var len = horsobj.value();
     var delayinterval = sealobj.value() / len / 1000;
     context.canvas.virtualheight = len * canvas.buttonheight;
     
@@ -5053,7 +5057,7 @@ menuobj.draw = function()
     {
         canvas.lastcurrent = current;
         var size = Math.ceil(rect.height / canvas.buttonheight) + 4;
-        canvas.normal = util.rotated_list(canvas.rotated, slices.length, current, size);
+        canvas.normal = util.rotated_list(canvas.rotated, len, current, size);
     }
 
     context.canvas.visibles = [];
