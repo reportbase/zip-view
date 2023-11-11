@@ -33,6 +33,7 @@ const FOOTSEP = 20;
 const RAINSTEP = 240;
 const HEADTOP = 80;
 const HEADBOT = 40;
+const WRAPROWHEIGHT = 40;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
 const FOOTHEIGHT = 80;
 const MAXEXTENT = 10000;
@@ -1496,8 +1497,7 @@ var displaylst =
         var jp = templateobj.value().split("x");
         data.push(`\u{25C0}   ${jp[0]} x ${jp[1]}   \u{25B6}`);
         var rows = data.length;
-        var rh = 40;
-        var a = new panel.rowsA([80, 40, 0, rows * rh, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
+        var a = new panel.rowsA([80, 40, 0, rows * WRAPROWHEIGHT, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,    
             new panel.cols([0, RAINSTEP, 0],
@@ -1607,7 +1607,7 @@ var displaylst =
         data.push(`\u{25C0}   ${index.toFixed(1)} of ${galleryobj.length()}   \u{25B6}`);
         var st = `\u{25C0}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
-        var a = new panel.rowsA([80, 40, 0, data.length*28, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
+        var a = new panel.rowsA([80, 40, 0, data.length*WRAPROWHEIGHT, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,
             0,
@@ -1708,7 +1708,7 @@ var displaylst =
         data.push(`\u{25C0}   ${index.toFixed(1)} of ${galleryobj.length()}   \u{25B6}`);
         var st = `\u{25C0}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
-        var a = new panel.rowsA([80, 40, 0, data.length*28, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
+        var a = new panel.rowsA([80, 40, 0, data.length*WRAPROWHEIGHT, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,
             0,
