@@ -526,8 +526,8 @@ var templatelst =
     "5760x5760"
 ];
 
-const SEAL = 4455;//3927
-var sealobj = new circular_array("", SEAL*2);
+const SEAL = 4455;
+var sealobj = new circular_array("", 3927*2);
 sealobj.set(SEAL);
 
 var templateobj = new circular_array("", templatelst);
@@ -5461,7 +5461,7 @@ var eventlst =
 
 var contextobj = new circular_array("", contextlst);
 var virtualheightobj = new circular_array("", 100)
-virtualheightobj.set(64.10);
+virtualheightobj.set(62.10);
 var virtualconstobj = new circular_array("", 100)
 virtualconstobj.set(80);
 
