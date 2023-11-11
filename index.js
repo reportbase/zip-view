@@ -2778,7 +2778,7 @@ var wheelst =
         }
         else
         {
-            if (Math.abs(delta) > 160)
+            if (Math.abs(delta) > 160 && !debug)
             {
                 var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
                 displayobj.set(k);    
@@ -2797,7 +2797,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     {
-        if (Math.abs(delta) > 160)
+        if (Math.abs(delta) > 160 && !debug)
         {
             var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
             displayobj.set(k);    
@@ -3649,16 +3649,23 @@ var swipelst = [
     name: "GALLERY",
     swipeleftright: function(context, rect, x, y, evt)
     {
-        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-        displayobj.set(k);
+        if (!debug)
+        {
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            displayobj.set(k);
+        }
+        
         var k = evt.type == "swipeleft" ? 1 : -1;
         galleryobj.leftright(context, k * context.canvas.speed);
     },
     swipeupdown: function(context, rect, x, y, evt)
     {
-        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-        displayobj.set(k);
-
+        if (!debug)
+        {
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            displayobj.set(k);
+        }
+        
         var k = evt.type == "swipeup" ? 1 : -1;
         menuobj.updown(context, k * context.canvas.speed);
         if (!global.swipetimeout)
