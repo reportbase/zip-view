@@ -2757,7 +2757,7 @@ var wheelst =
         if (ctrl)
         {
             var j = url.searchParams.get('debug');
-            var k = displaylst.findIndex(function(a){return a.name == j ? "DEBUG" : "BUTTON"});
+            var k = displaylst.findIndex(function(a){return a.name == (j ? "DEBUG" : "BUTTON")});
             displayobj.set(k);
             var j = buttonobj.length()/100;
             context.canvas.pinching = 1;
@@ -2928,7 +2928,7 @@ var pinchlst =
     pinch: function(context, x, y, scale)
     {
         var j = url.searchParams.get('debug');
-        var k = displaylst.findIndex(function(a){return a.name == j ? "DEBUG" : "BUTTON"});
+        var k = displaylst.findIndex(function(a){return a.name == (j ? "DEBUG" : "BUTTON")});
         displayobj.set(k);
         if (!context.buttonanchor)
             context.buttonanchor = buttonobj.value();
