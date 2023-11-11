@@ -1566,7 +1566,7 @@ var displaylst =
                             [
                                 new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
                                 new panel.expand(new panel.rectangle(canvas.beavrect), 20, 0),
-                                new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
+                                new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
                             ]),
                         0,
                     ]),
@@ -3258,12 +3258,12 @@ var panlst =
             if (canvas.isvscrollrect)
             {
                 var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
-                canvas.timeobj.setperc(1 - k);
+                canvas.timeobj.setperc(1-k);
             }
             else if (canvas.isbeavrect)
             {
                 var k = (x - canvas.beavrect.x) / canvas.beavrect.width;
-                beavobj.setperc(k);
+                beavobj.setperc(1-k);
                 menuobj.draw();
             }
             else if (canvas.isbuttonrect)
