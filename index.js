@@ -3762,7 +3762,7 @@ var keylst = [
             else if (key == "n")
             {
                 var k = context.shiftKey?-1:1;
-                horseobj.add(k);
+                horsobj.add(k);
             }
         }
     },
