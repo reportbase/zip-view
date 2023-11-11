@@ -530,8 +530,8 @@ templateobj.set(4)
 const SEAL = 3927;
 var sealobj = new circular_array("", SEAL*2);
 sealobj.set(SEAL);
-var beaverobj = new circular_array("", 100)
-beaverobj.set(62.10);
+var beavobj = new circular_array("", 100)
+beavobj.set(62.10);
 var virtualconstobj = new circular_array("", 100)
 virtualconstobj.set(80);
 
@@ -1550,11 +1550,8 @@ var displaylst =
         delete canvas.buttonrect;
         delete context.button2rect;
         delete context.template2rect;
-        canvas.vscrollrect = new rectangle();
-        canvas.hollyrect = new rectangle();
-        canvas.gorect = new rectangle();
-        context.holly2rect = new rectangle();
-        context.time2rect = new rectangle();
+        canvas.beavrect = new rectangle();
+        canvas.sealrect = new rectangle();
         if (!headcnv.height)
             return;        
         var bh = rect.height * 0.4;
@@ -1568,7 +1565,7 @@ var displaylst =
                         new panel.layers(
                             [
                                 new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.vscrollrect), 20, 0),
+                                new panel.expand(new panel.rectangle(canvas.beavrect), 20, 0),
                                 new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
                             ]),
                         0,
@@ -1576,7 +1573,7 @@ var displaylst =
                 0
             ]);
 
-        a.draw(context, rect, beaverobj, 0);
+        a.draw(context, rect, beavobj, 0);
         
         var a = new panel.rows([0, SCROLLEXTENT, SCROLLMARGIN],
             [
@@ -1587,7 +1584,7 @@ var displaylst =
                         new panel.layers(
                             [
                                 new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.hollyrect), 0, 20),
+                                new panel.expand(new panel.rectangle(canvas.sealrect), 0, 20),
                                 new panel.shrink(new panel.currentH(
                                     new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
                             ]),
@@ -1595,50 +1592,7 @@ var displaylst =
                     ])
             ])
 
-        a.draw(context, rect, sealobj, 0);
-    
-        var data = [];
-        var index = 1 - _8cnv.timeobj.berp();
-        index *= galleryobj.length();
-        var k = Math.floor(index);
-        var value = galleryobj.data[k];
-        if (value && value.folder)
-            data = value.folder.split("/");
-        data.push(`\u{25C0}   ${index.toFixed(1)} of ${galleryobj.length()}   \u{25B6}`);
-        var st = `\u{25C0}    \u{25B6}`;
-        var w = Math.min(360, rect.width - 100);
-        var a = new panel.rowsA([80, 40, 0, data.length*WRAPROWHEIGHT, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
-        [
-            0,
-            0,
-            0,
-            new panel.cols([0, RAINSTEP, 0],
-                [
-                    0,
-                    new panel.layers(
-                        [
-                            new panel.expand(new panel.rectangle(context.time2rect), 10, 10),
-                            new panel.gridA(1, data.length, 1,
-                                new panel.shadow(new panel.text())),
-                        ]),
-                    0,
-                ]),
-            0,
-            0,
-            0
-        ]);
-            
-        a.draw(context, rect, 
-            [
-                0,
-                st,
-                0,
-                data,
-                0,
-                0,
-                
-            ], 0);
-        context.restore();     
+        a.draw(context, rect, sealobj, 0); 
     }
 },    
 {
@@ -2638,7 +2592,7 @@ function istrackpad()
         }
         else
         {
-            //todo  keyup keydown
+            
         }
     });
 
@@ -3257,12 +3211,22 @@ var panlst =
                 canvas.buttonrect.hitest(x, y))
             {
             }   
+            else if (canvas.issealrect)
+            {
+                var k = (x - canvas.sealrect.x) / canvas.sealrect.width;
+                sealobj.setperc(k);
+                menuobj.draw();
+            }
+            else if (canvas.isbeavrect)
+            {
+                var k = (x - canvas.beavrect.x) / canvas.beavrect.width;
+                beavobj.setperc(k);
+                menuobj.draw();
+            }
             else if (canvas.ishollyrect)
             {
                 var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
-                //todo context.canvas.hollyobj.setperc(k);
-                //beaverobj.setperc(k);
-                sealobj.setperc(k);
+                context.canvas.hollyobj.setperc(k);
                 menuobj.draw();
             }
             else if (canvas.istemplaterect)
@@ -3341,6 +3305,8 @@ var panlst =
         canvas.isbuttonrect = canvas.buttonrect && canvas.buttonrect.hitest(x, y);
         canvas.isvscrollrect = canvas.vscrollrect && canvas.vscrollrect.hitest(x, y);
         canvas.ishollyrect = canvas.hollyrect && canvas.hollyrect.hitest(x, y);
+        canvas.isbeavrect = canvas.beavrect && canvas.beavrect.hitest(x, y);
+        canvas.issealrect = canvas.sealrect && canvas.sealrect.hitest(x, y);
     },
     panend: function(context, rect, x, y)
     {
@@ -5118,7 +5084,7 @@ menuobj.draw = function()
     else if (context == _8cnvctx)
     {
         canvas.buttonheight = buttonobj.value();
-        context.canvas.virtualheight = len * canvas.buttonheight * beaverobj.value()/100;
+        context.canvas.virtualheight = len * canvas.buttonheight * beavobj.value()/100;
     }
 
     if (context != _8cnvctx)
@@ -5210,6 +5176,8 @@ menuobj.draw = function()
         }
     }
 
+    delete canvas.sealrect;
+    delete canvas.beavrect;
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
 }
