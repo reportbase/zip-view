@@ -542,7 +542,7 @@ beavobj.set(beav);
 var dolpobj = new circular_array("", 100)
 var dolp = url.searchParams.get("dolp");
 if (!dolp)
-   dolp = 79.5; 
+   dolp = 80; 
 dolpobj.set(dolp);
 
 var footlst = 
