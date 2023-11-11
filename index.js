@@ -6441,7 +6441,7 @@ galleryobj.init = function(obj)
     }
 
     horsobj.data = galleryobj.length();
-    horsobj.data.set(galleryobj.length()-1);
+    horsobj.set(galleryobj.length()-1);
     
     delete photo.image;
 
