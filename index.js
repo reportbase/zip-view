@@ -542,7 +542,7 @@ beavobj.set(beav);
 var dolpobj = new circular_array("", 100)
 var dolp = url.searchParams.get("dolp");
 if (!dolp)
-   dolp = 80; 
+   dolp = 79.5; 
 dolpobj.set(dolp);
 
 var footlst = 
@@ -5070,7 +5070,7 @@ menuobj.draw = function()
     var r = new rectangle(0, 0, rect.width, canvas.buttonheight);
     var lasty = -10000000;
     var delay = 0;
-
+    var visy = [];
     for (var m = 0; m < canvas.normal.length; ++m)
     {
         var n = canvas.normal[m];
@@ -5114,7 +5114,8 @@ menuobj.draw = function()
                 y,
                 n
             };
-            
+
+            visy.push(j.y);
             slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight);
             slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
             if (slice.isvisible)
