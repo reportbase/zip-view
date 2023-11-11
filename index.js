@@ -1489,15 +1489,13 @@ var displaylst =
 
         var w = Math.min(360, rect.width - 100);
         var data = [];
-        if (global.debug)
-            data.push("3-Nov-2003");
         var hh = buttonobj.value();
         var ww = hh * (galleryobj.width/galleryobj.height);
         var st = `\u{25C0}   ${ww.toFixed(0)} x ${hh.toFixed(0)}   \u{25B6}`;
         var jp = templateobj.value().split("x");
         data.push(`\u{25C0}   ${jp[0]} x ${jp[1]}   \u{25B6}`);
-        var rows = data.length;
-        var a = new panel.rowsA([80, 40, 0, rows * WRAPROWHEIGHT, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
+        var a = new panel.rowsA([HEADTOP, HEADBOT, 0, data.length * WRAPROWHEIGHT, 
+                                 FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,    
             new panel.cols([0, RAINSTEP, 0],
