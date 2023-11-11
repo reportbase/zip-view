@@ -533,7 +533,7 @@ const SEAL = 3928;
 var lst = []
 for (var n = 3928-400; n < 3928+400*2; ++n)
     lst.push(n)
-var sealobj = new circular_array("", 400*2);
+var sealobj = new circular_array("", lst);
 sealobj.set(400);
 var virtualheightobj = new circular_array("", 100)
 virtualheightobj.set(62.10);
