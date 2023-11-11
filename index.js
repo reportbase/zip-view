@@ -5065,7 +5065,7 @@ menuobj.draw = function()
         {
             var t = time + (n * delayinterval);
             var k = virtualconstobj.value()/100;
-            var bos = Math.tan(t * k);
+            var bos = Math.sin(t * k);
             var j = Math.berp(-1, 1, bos);
             var y = j * context.canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
@@ -5461,7 +5461,7 @@ var eventlst =
 
 var contextobj = new circular_array("", contextlst);
 var virtualheightobj = new circular_array("", 100)
-virtualheightobj.set(63.55);
+virtualheightobj.set(64.10);
 var virtualconstobj = new circular_array("", 100)
 virtualconstobj.set(80);
 
