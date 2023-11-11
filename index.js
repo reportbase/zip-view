@@ -5169,6 +5169,7 @@ menuobj.draw = function()
         }
     }
 
+    delete canvas.isvscrollrect;
     delete canvas.sealrect;
     delete canvas.beavrect;
     displayobj.value().draw(context, rect, 0, 0);
