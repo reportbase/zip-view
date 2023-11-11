@@ -1541,61 +1541,6 @@ var displaylst =
     }
 },
 {
-    name: "DEBUG",
-    draw: function(context, rect, user, time)
-    {    
-        var canvas = context.canvas;
-        context.save();
-        delete canvas.templaterect;
-        delete canvas.buttonrect;
-        delete context.button2rect;
-        delete context.template2rect;
-        canvas.beavrect = new rectangle();
-        canvas.sealrect = new rectangle();
-        if (!headcnv.height)
-            return;        
-        var bh = rect.height * 0.4;
-        var bw = rect.width * 0.4;
-        var a = new panel.cols([0, SCROLLEXTENT, SCROLLMARGIN],
-            [
-                0,
-                new panel.rows([0, bh, 0],
-                    [
-                        0,
-                        new panel.layers(
-                            [
-                                new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.beavrect), 20, 0),
-                                new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
-                            ]),
-                        0,
-                    ]),
-                0
-            ]);
-
-        a.draw(context, rect, beavobj, 0);
-        
-        var a = new panel.rows([0, SCROLLEXTENT, SCROLLMARGIN],
-            [
-                0,
-                new panel.cols([0, bw, 0],
-                    [
-                        0,
-                        new panel.layers(
-                            [
-                                new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.sealrect), 0, 20),
-                                new panel.shrink(new panel.currentH(
-                                    new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
-                            ]),
-                        0,
-                    ])
-            ])
-
-        a.draw(context, rect, sealobj, 0); 
-    }
-},    
-{
     name: "GALLERY",
     draw: function(context, rect, user, time)
     {    
@@ -2778,7 +2723,7 @@ var wheelst =
         }
         else
         {
-            if (Math.abs(delta) > 160 && !debug)
+            if (Math.abs(delta) > 160)
             {
                 var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
                 displayobj.set(k);    
@@ -2797,7 +2742,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     {
-        if (Math.abs(delta) > 160 && !debug)
+        if (Math.abs(delta) > 160)
         {
             var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
             displayobj.set(k);    
@@ -3649,22 +3594,16 @@ var swipelst = [
     name: "GALLERY",
     swipeleftright: function(context, rect, x, y, evt)
     {
-        if (!debug)
-        {
-            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            displayobj.set(k);
-        }
+        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+        displayobj.set(k);
         
         var k = evt.type == "swipeleft" ? 1 : -1;
         galleryobj.leftright(context, k * context.canvas.speed);
     },
     swipeupdown: function(context, rect, x, y, evt)
     {
-        if (!debug)
-        {
-            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            displayobj.set(k);
-        }
+        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+        displayobj.set(k);
         
         var k = evt.type == "swipeup" ? 1 : -1;
         menuobj.updown(context, k * context.canvas.speed);
@@ -5375,7 +5314,7 @@ var eventlst =
     key: "GALLERY",
     press: "GALLERY",
     pinch: "GALLERY",
-    display: debug?"DEBUG":"GALLERY",
+    display: "GALLERY",
     footer: "DEFAULT",
     buttonheight: 320,
     buttonmargin: 10,
