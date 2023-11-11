@@ -532,8 +532,9 @@ var sealobj = new circular_array("", SEAL*2);
 sealobj.set(SEAL);
 var beavobj = new circular_array("", 100)
 beavobj.set(62.10);
-var virtualconstobj = new circular_array("", 100)
-virtualconstobj.set(80);
+var dolpobj = new circular_array("", 100)
+dolpobj.set(80);
+var horsobj = new circular_array("", 0)
 
 var footlst = 
 [
@@ -5023,7 +5024,8 @@ menuobj.draw = function()
         context.canvas.slideshow = 0;
     }
 
-    var len = context.canvas.sliceobj.length()
+    var len2 = context.canvas.sliceobj.length()
+    var len = horsobj.current();
     var delayinterval = sealobj.value() / len / 1000;
     context.canvas.virtualheight = len * canvas.buttonheight;
     
@@ -5086,7 +5088,7 @@ menuobj.draw = function()
         else
         {
             var t = time + (n * delayinterval);
-            var k = virtualconstobj.value()/100;
+            var k = dolpobj.value()/100;
             var bos = Math.tan(t * k);
             var j = Math.berp(-1, 1, bos);
             var y = j * context.canvas.virtualheight;
@@ -6434,9 +6436,8 @@ galleryobj.init = function(obj)
             galleryobj.data.push(Object.assign({}, galleryobj.data[0]));
     }
 
-    var j = url.searchParams.get('max');
-    if (j)
-        galleryobj.data.length = j;
+    horsobj.data = galleryobj.length();
+    horsobj.data.set(galleryobj.length()-1);
     
     delete photo.image;
 
