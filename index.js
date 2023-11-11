@@ -2760,8 +2760,7 @@ var wheelst =
 
         if (ctrl)
         {
-            var j = url.searchParams.get('debug');
-            var k = displaylst.findIndex(function(a){return a.name == (j ? "DEBUG" : "BUTTON")});
+            var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
             displayobj.set(k);
             var j = buttonobj.length()/100;
             context.canvas.pinching = 1;
@@ -2779,9 +2778,6 @@ var wheelst =
         }
         else
         {
-            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            displayobj.set(k);
-
             clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
             if (global.swipetimeout)
@@ -2827,9 +2823,6 @@ var wheelst =
         }
         else
         {
-            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            displayobj.set(k);
-
             galleryobj.leftright(context, delta);
         }
     },
@@ -2931,8 +2924,7 @@ var pinchlst =
     name: "GALLERY",
     pinch: function(context, x, y, scale)
     {
-        var j = url.searchParams.get('debug');
-        var k = displaylst.findIndex(function(a){return a.name == (j ? "DEBUG" : "BUTTON")});
+        var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
         displayobj.set(k);
         if (!context.buttonanchor)
             context.buttonanchor = buttonobj.value();
@@ -5177,6 +5169,8 @@ menuobj.draw = function()
     context.canvas.footer.draw(context, rect, 0, 0);
 }
 
+var debug = url.searchParams.get("debug");
+
 var eventlst = 
 [
 { //1 unused
@@ -5357,7 +5351,7 @@ var eventlst =
     key: "GALLERY",
     press: "GALLERY",
     pinch: "GALLERY",
-    display: "GALLERY",
+    display: debug?"DEBUG":"GALLERY",
     footer: "DEFAULT",
     buttonheight: 320,
     buttonmargin: 10,
