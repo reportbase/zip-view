@@ -3215,12 +3215,6 @@ var panlst =
                 sealobj.setperc(k);
                 menuobj.draw();
             }
-            else if (canvas.isbeavrect)
-            {
-                var k = (x - canvas.beavrect.x) / canvas.beavrect.width;
-                beavobj.setperc(k);
-                menuobj.draw();
-            }
             else if (canvas.ishollyrect)
             {
                 var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
@@ -3262,10 +3256,11 @@ var panlst =
                 var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
                 canvas.timeobj.setperc(1 - k);
             }
-            else if (canvas.issealrect)
+            else if (canvas.isbeavrect)
             {
-                var k = (y - canvas.sealrect.y) / canvas.sealrect.height;
-                sealobj.setperc(1-k);
+                var k = (x - canvas.beavrect.x) / canvas.beavrect.width;
+                beavobj.setperc(k);
+                menuobj.draw();
             }
             else if (canvas.isbuttonrect)
             {
