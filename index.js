@@ -3262,7 +3262,7 @@ var panlst =
             }
             else if (canvas.isbeavrect)
             {
-                var k = (x - canvas.beavrect.x) / canvas.beavrect.width;
+                var k = (y - canvas.beavrect.y) / canvas.beavrect.height;
                 beavobj.setperc(1-k);
                 menuobj.draw();
             }
