@@ -1498,8 +1498,7 @@ var displaylst =
         var rh = 40;
         var a = new panel.rowsA([80, 40, 0, rows * rh, FOOTSEP, SCROLLBAREXTENT, 4],
         [
-            0,
-            
+            0,    
             new panel.cols([0, RAINSTEP, 0],
                 [
                     0,
@@ -1510,9 +1509,7 @@ var displaylst =
                     ]),
                     0
                 ]),
-            
             0,
-            
             new panel.cols([0, RAINSTEP, 0],
                 [
                     0,
@@ -1545,8 +1542,7 @@ var displaylst =
 {
     name: "GALLERY",
     draw: function(context, rect, user, time)
-    {
-        
+    {    
         var canvas = context.canvas;
         context.save();
         delete canvas.templaterect;
@@ -1599,7 +1595,8 @@ var displaylst =
             ])
 
         //todo a.draw(context, rect, context.canvas.hollyobj, 0);
-        a.draw(context, rect, virtualheightobj, 0);
+        //a.draw(context, rect, virtualheightobj, 0);
+        a.draw(context, rect, virtualconstobj, 0);
     
         var data = [];
         var index = 1 - _8cnv.timeobj.berp();
@@ -3160,7 +3157,8 @@ var panlst =
             {
                 var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
                 //todo context.canvas.hollyobj.setperc(k);
-                virtualheightobj.setperc(k);
+                //virtualheightobj.setperc(k);
+                virtualconstobj.setperc(k);
                 menuobj.draw();
             }
             else if (canvas.istemplaterect)
@@ -5066,7 +5064,8 @@ menuobj.draw = function()
         else
         {
             var t = time + (n * delayinterval);
-            var bos = Math.tan(t * VIRTCONST);
+            var k = virtualconstobj.value()/100;
+            var bos = Math.tan(t * k);
             var j = Math.berp(-1, 1, bos);
             var y = j * context.canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
@@ -5463,6 +5462,8 @@ var eventlst =
 var contextobj = new circular_array("", contextlst);
 var virtualheightobj = new circular_array("", 100)
 virtualheightobj.set(63.55);
+var virtualconstobj = new circular_array("", 100)
+virtualconstobj.set(80);
 
 contextlst.forEach(function(context, n)
 {
