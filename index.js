@@ -3234,8 +3234,8 @@ var panlst =
             }
             else
             {
-                var k = displaylst.findIndex(function(a){return a.name == "GALLERY"})
-                displayobj.set(k); 
+               // var k = displaylst.findIndex(function(a){return a.name == "GALLERY"})
+               // displayobj.set(k); 
         
                 var obj = context.canvas.hollyobj;
                 var e = canvas.startx - x;
