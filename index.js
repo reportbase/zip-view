@@ -532,8 +532,8 @@ templateobj.set(4)
 const SEAL = 3927;
 var sealobj = new circular_array("", SEAL*2);
 sealobj.set(SEAL);
-var virtualheightobj = new circular_array("", 100)
-virtualheightobj.set(62.10);
+var beaverobj = new circular_array("", 100)
+beaverobj.set(62.10);
 var virtualconstobj = new circular_array("", 100)
 virtualconstobj.set(80);
 
@@ -1544,6 +1544,107 @@ var displaylst =
     }
 },
 {
+    name: "DEBUG",
+    draw: function(context, rect, user, time)
+    {    
+        var canvas = context.canvas;
+        context.save();
+        delete canvas.templaterect;
+        delete canvas.buttonrect;
+        delete context.button2rect;
+        delete context.template2rect;
+        canvas.vscrollrect = new rectangle();
+        canvas.hollyrect = new rectangle();
+        canvas.gorect = new rectangle();
+        context.holly2rect = new rectangle();
+        context.time2rect = new rectangle();
+        if (!headcnv.height)
+            return;        
+        var bh = rect.height * 0.4;
+        var bw = rect.width * 0.4;
+        var a = new panel.cols([0, SCROLLBAREXTENT, 6],
+            [
+                0,
+                new panel.rows([0, bh, 0],
+                    [
+                        0,
+                        new panel.layers(
+                            [
+                                new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                new panel.expand(new panel.rectangle(canvas.vscrollrect), 20, 0),
+                                new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
+                            ]),
+                        0,
+                    ]),
+                0
+            ]);
+
+        a.draw(context, rect, beaverobj, 0);
+        
+        var a = new panel.rows([0, SCROLLBAREXTENT, 4],
+            [
+                0,
+                new panel.cols([0, bw, 0],
+                    [
+                        0,
+                        new panel.layers(
+                            [
+                                new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                new panel.expand(new panel.rectangle(canvas.hollyrect), 0, 20),
+                                new panel.shrink(new panel.currentH(
+                                    new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
+                            ]),
+                        0,
+                    ])
+            ])
+
+        a.draw(context, rect, sealobj, 0);
+    
+        var data = [];
+        var index = 1 - _8cnv.timeobj.berp();
+        index *= galleryobj.length();
+        var k = Math.floor(index);
+        var value = galleryobj.data[k];
+        if (value && value.folder)
+            data = value.folder.split("/");
+        data.push(`\u{25C0}   ${index.toFixed(1)} of ${galleryobj.length()}   \u{25B6}`);
+        var st = `\u{25C0}    \u{25B6}`;
+        var w = Math.min(360, rect.width - 100);
+        var a = new panel.rowsA([80, 40, 0, data.length*28, FOOTSEP, SCROLLBAREXTENT, 4],
+        [
+            0,
+            0,
+            0,
+            new panel.cols([0, RAINSTEP, 0],
+                [
+                    0,
+                    new panel.layers(
+                        [
+                            new panel.expand(new panel.rectangle(context.time2rect), 10, 10),
+                            new panel.gridA(1, data.length, 1,
+                                new panel.shadow(new panel.text())),
+                        ]),
+                    0,
+                ]),
+            0,
+            0,
+            0
+        ]);
+            
+        a.draw(context, rect, 
+            [
+                0,
+                st,
+                0,
+                data,
+                0,
+                0,
+                
+            ], 0);
+        context.restore();     
+    }
+},    
+{
     name: "GALLERY",
     draw: function(context, rect, user, time)
     {    
@@ -1598,10 +1699,8 @@ var displaylst =
                     ])
             ])
 
-        //todo a.draw(context, rect, context.canvas.hollyobj, 0);
-        //a.draw(context, rect, virtualheightobj, 0);
-        a.draw(context, rect, sealobj, 0);
-    
+        a.draw(context, rect, context.canvas.hollyobj, 0);
+        
         var data = [];
         var index = 1 - _8cnv.timeobj.berp();
         index *= galleryobj.length();
@@ -2708,7 +2807,8 @@ var wheelst =
 
         if (ctrl)
         {
-            var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
+            var j = url.searchParams.get('debug');
+            var k = displaylst.findIndex(function(a){return a.name == j ? "DEBUG" : "BUTTON"});
             displayobj.set(k);
             var j = buttonobj.length()/100;
             context.canvas.pinching = 1;
@@ -2878,6 +2978,9 @@ var pinchlst =
     name: "GALLERY",
     pinch: function(context, x, y, scale)
     {
+        var j = url.searchParams.get('debug');
+        var k = displaylst.findIndex(function(a){return a.name == j ? "DEBUG" : "BUTTON"});
+        displayobj.set(k);
         if (!context.buttonanchor)
             context.buttonanchor = buttonobj.value();
         if (!context.scaleanchor)
@@ -3161,7 +3264,7 @@ var panlst =
             {
                 var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
                 //todo context.canvas.hollyobj.setperc(k);
-                //virtualheightobj.setperc(k);
+                //beaverobj.setperc(k);
                 sealobj.setperc(k);
                 menuobj.draw();
             }
@@ -5018,7 +5121,7 @@ menuobj.draw = function()
     else if (context == _8cnvctx)
     {
         canvas.buttonheight = buttonobj.value();
-        context.canvas.virtualheight = len * canvas.buttonheight * virtualheightobj.value()/100;
+        context.canvas.virtualheight = len * canvas.buttonheight * beaverobj.value()/100;
     }
 
     if (context != _8cnvctx)
@@ -6414,7 +6517,6 @@ galleryobj.init = function(obj)
             galleryobj.data.push(Object.assign({}, galleryobj.data[0]));
     }
 
-    //todo
     var j = url.searchParams.get('max');
     if (j)
         galleryobj.data.length = j;
