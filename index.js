@@ -527,7 +527,9 @@ var templatelst =
 var templateobj = new circular_array("", templatelst);
 templateobj.set(4)
 
-const SEAL = 3927;
+var SEAL = url.searchParams.get("seal");
+if (!SEAL)
+   SEAL = 3927; 
 var sealobj = new circular_array("", SEAL*2);
 sealobj.set(SEAL);
 var beavobj = new circular_array("", 100)
@@ -6433,6 +6435,8 @@ galleryobj.init = function(obj)
         for (var n = galleryobj.length(); n < BOSSMIN; ++n)
             galleryobj.data.push(Object.assign({}, galleryobj.data[0]));
     }
+
+    galleryobj.data.length = 35;//todo
 
     delete photo.image;
 
