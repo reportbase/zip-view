@@ -3302,6 +3302,7 @@ var panlst =
     },
     panend: function(context, rect, x, y)
     {
+        var canvas = context.canvas;
         delete context.canvas.type;
         delete context.canvas.panning;
         delete context.canvas.starty;
