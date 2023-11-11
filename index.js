@@ -526,12 +526,16 @@ var templatelst =
     "5760x5760"
 ];
 
-const SEAL = 4455;
-var sealobj = new circular_array("", 3927*2);
-sealobj.set(SEAL);
-
 var templateobj = new circular_array("", templatelst);
 templateobj.set(4)
+
+const SEAL = 3927;
+var sealobj = new circular_array("", 3927*2);
+sealobj.set(SEAL);
+var virtualheightobj = new circular_array("", 100)
+virtualheightobj.set(62.10);
+var virtualconstobj = new circular_array("", 100)
+virtualconstobj.set(80);
 
 var footlst = 
 [
@@ -5460,10 +5464,6 @@ var eventlst =
 }, ];
 
 var contextobj = new circular_array("", contextlst);
-var virtualheightobj = new circular_array("", 100)
-virtualheightobj.set(62.10);
-var virtualconstobj = new circular_array("", 100)
-virtualconstobj.set(80);
 
 contextlst.forEach(function(context, n)
 {
