@@ -6446,8 +6446,9 @@ galleryobj.init = function(obj)
     }
 
     var size = url.searchParams.get("size");
-    galleryobj.data.length = size;//todo
-
+    if (size)
+        galleryobj.data.length = size;
+    
     delete photo.image;
 
     if (galleryobj.template)
