@@ -530,8 +530,8 @@ templateobj.set(4)
 var SEAL = url.searchParams.get("seal");
 if (!SEAL)
    SEAL = 3927; 
-var sealobj = new circular_array("", SEAL*2);
-sealobj.set(SEAL);
+var sealobj = new circular_array("", SEAL);
+sealobj.set(SEAL/2);
 var beavobj = new circular_array("", 100)
 beavobj.set(62.10);
 var dolpobj = new circular_array("", 100)
@@ -6436,7 +6436,8 @@ galleryobj.init = function(obj)
             galleryobj.data.push(Object.assign({}, galleryobj.data[0]));
     }
 
-    galleryobj.data.length = 35;//todo
+    var size = url.searchParams.get("size");
+    galleryobj.data.length = size;//todo
 
     delete photo.image;
 
