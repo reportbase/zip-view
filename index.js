@@ -1598,8 +1598,9 @@ var displaylst =
                     ])
             ])
 
-        a.draw(context, rect, context.canvas.hollyobj, 0);
-
+        //todo a.draw(context, rect, context.canvas.hollyobj, 0);
+        a.draw(context, rect, virtualheightobj, 0);
+    
         var data = [];
         var index = 1 - _8cnv.timeobj.berp();
         index *= galleryobj.length();
@@ -3158,6 +3159,7 @@ var panlst =
             else if (canvas.ishollyrect)
             {
                 var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
+                //todo context.canvas.hollyobj.setperc(k);
                 context.canvas.hollyobj.setperc(k);
                 menuobj.draw();
             }
@@ -5014,7 +5016,7 @@ menuobj.draw = function()
     else if (context == _8cnvctx)
     {
         canvas.buttonheight = buttonobj.value();
-        context.canvas.virtualheight = len * canvas.buttonheight;//todo * 0.635;
+        context.canvas.virtualheight = len * canvas.buttonheight * virtualheightobj.value()/100;
     }
 
     if (context != _8cnvctx)
@@ -5459,6 +5461,8 @@ var eventlst =
 }, ];
 
 var contextobj = new circular_array("", contextlst);
+var virtualheightobj = new circular_array("", 100)
+virtualheightobj.set(63.55);
 
 contextlst.forEach(function(context, n)
 {
