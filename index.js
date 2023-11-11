@@ -3761,7 +3761,7 @@ var keylst = [
             }
             else if (key == "n")
             {
-                var k = context.shiftKey?-1:1;
+                var k = canvas.shiftKey?-1:1;
                 horsobj.add(k);
             }
         }
