@@ -529,9 +529,9 @@ var templatelst =
 var templateobj = new circular_array("", templatelst);
 templateobj.set(4)
 
-const SEAL = 4457;
+const SEAL = 3927;
 var lst = []
-for (var n = SEAL-400; n < SEAL+400; ++n)
+for (var n = 3927-400; n < 3927+400; ++n)
     lst.push(n)
 var sealobj = new circular_array("", lst);
 sealobj.set(400);
