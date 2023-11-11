@@ -1566,7 +1566,7 @@ var displaylst =
                             [
                                 new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
                                 new panel.expand(new panel.rectangle(canvas.beavrect), 20, 0),
-                                new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
+                                new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
                             ]),
                         0,
                     ]),
@@ -2778,6 +2778,12 @@ var wheelst =
         }
         else
         {
+            if (Math.abs(delta) > 160)
+            {
+                var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+                displayobj.set(k);    
+            }
+            
             clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
             if (global.swipetimeout)
@@ -2791,6 +2797,12 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type)
     {
+        if (Math.abs(delta) > 160)
+        {
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            displayobj.set(k);    
+        }
+
         var canvas = context.canvas;
         if (canvas.templaterect && canvas.templaterect.hitest(x, y))
         {
@@ -3637,11 +3649,16 @@ var swipelst = [
     name: "GALLERY",
     swipeleftright: function(context, rect, x, y, evt)
     {
+        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+        displayobj.set(k);
         var k = evt.type == "swipeleft" ? 1 : -1;
         galleryobj.leftright(context, k * context.canvas.speed);
     },
     swipeupdown: function(context, rect, x, y, evt)
     {
+        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+        displayobj.set(k);
+
         var k = evt.type == "swipeup" ? 1 : -1;
         menuobj.updown(context, k * context.canvas.speed);
         if (!global.swipetimeout)
