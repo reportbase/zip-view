@@ -2715,10 +2715,20 @@ var wheelst =
         }
         else if (!global.isTouchPad)
         {
-            var k = delta < 0 ? 1 : -1;
-            var j = canvas.timeobj.length() / galleryobj.length()/6;
-            canvas.timeobj.rotate(k*j);
-            menuobj.draw();           
+            if (canvas.shiftKey)
+            {
+                var k = delta < 0 ? 1 : -1;
+                var j = canvas.timeobj.length() / galleryobj.length();
+                canvas.timeobj.rotate(k*j);
+                menuobj.draw();               
+            }
+            else
+            {
+                var k = delta < 0 ? 1 : -1;
+                var j = canvas.timeobj.length() / galleryobj.length()/6;
+                canvas.timeobj.rotate(k*j);
+                menuobj.draw();  
+            }
         }
         else if (canvas.buttonrect &&
             canvas.buttonrect.hitest(x, y))
