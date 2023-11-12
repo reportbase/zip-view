@@ -1603,7 +1603,7 @@ var displaylst =
         var value = galleryobj.data[k];
         if (value && value.folder)
             data = value.folder.split("/");
-        data.push(`\u{25C0}   ${index.toFixed(1)} of ${galleryobj.length()}   \u{25B6}`);
+        data.push(`\u{25C0}   ${index.toFixed(4)} of ${galleryobj.length()}   \u{25B6}`);
         var st = `\u{25C0}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
         var a = new panel.rowsA([80, 40, 0, data.length*WRAPROWHEIGHT, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
