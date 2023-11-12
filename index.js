@@ -3217,8 +3217,17 @@ var panlst =
         {
             if (canvas.isvscrollrect)
             {
-                var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
-                canvas.timeobj.setperc(1-k);
+                if (canvas.shiftKey)
+                {
+                    var k = type == "panup" ? 1 : -1;
+                    var j = canvas.timeobj.length() / galleryobj.length();
+                    canvas.timeobj.rotate(k*j);
+                }
+                else
+                {
+                    var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
+                    canvas.timeobj.setperc(1-k);
+                }
             }
             else if (canvas.isbeavrect)
             {
