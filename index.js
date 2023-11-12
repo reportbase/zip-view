@@ -1714,7 +1714,7 @@ buttonobj.reset = function()
         dheight = 0;
     var bheight = h*3;
     var bwidth = bheight*a;
-    while (bheight*bwidth > MAXIMAGESIZE)
+    while (bheight*bwidth > 4000*3000)
     {
         bheight--;
         bwidth = bheight*a;
