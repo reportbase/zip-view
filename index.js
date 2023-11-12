@@ -2696,22 +2696,12 @@ var wheelst =
             menuobj.draw();
             context.canvas.pinching = 0;
         }
-        else if (trackpad)
+        else if (canvas.shiftKey)
         {
-            if (canvas.shiftKey)
-            {
-                var k = delta < 0 ? 1 : -1;
-                var j = canvas.timeobj.length() / galleryobj.length();
-                canvas.timeobj.rotate(k*j);
-                menuobj.draw();               
-            }
-            else
-            {
-                var k = delta < 0 ? 1 : -1;
-                var j = canvas.timeobj.length() / galleryobj.length()/6;
-                canvas.timeobj.rotate(k*j);
-                menuobj.draw();  
-            }
+            var k = delta < 0 ? 1 : -1;
+            var j = canvas.timeobj.length() / galleryobj.length();
+            canvas.timeobj.rotate(k*j);
+            menuobj.draw();               
         }
         else if (canvas.buttonrect &&
             canvas.buttonrect.hitest(x, y))
