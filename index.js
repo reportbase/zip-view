@@ -536,7 +536,7 @@ sealobj.set(SEAL/2);
 var beavobj = new circular_array("", 100)
 var beav = url.searchParams.get("beav");
 if (!beav)
-   beav = 64.5; 
+   beav = 64.0000001; 
 beavobj.set(beav);
 
 var footlst = 
