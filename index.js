@@ -2507,7 +2507,7 @@ var makehammer = function(context, v, t)
     ham.element.addEventListener("wheel", function(evt)
     {
         evt.preventDefault();
- var trackpad = evt.wheelDeltaY ? evtwheelDeltaY === -3 * evt.deltaY : evt.deltaMode === 0
+ var trackpad = evt.wheelDeltaY ? evt.wheelDeltaY === -3 * evt.deltaY : evt.deltaMode === 0
            var trackpad = isTrackPad(evt)
         var x = evt.offsetX;
         var y = evt.offsetY;
