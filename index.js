@@ -1354,7 +1354,7 @@ var bossdisplaylst =
                     ]),
                     new panel.layers(
                     [
-                        new panel.fill("rgba(0,255,100,0.5)"),
+                        new panel.fill("rgba(0,255,0,0.5)"),
                         new panel.rectangle(context.pasterect),
                         new panel.shadow(new panel.text()),
                     ]),
