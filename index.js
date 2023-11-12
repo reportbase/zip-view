@@ -2507,46 +2507,38 @@ var makehammer = function(context, v, t)
     ham.element.addEventListener("wheel", function(evt)
     {
         evt.preventDefault();
-//https://stackoverflow.com/questions/10744645/detect-touchpad-vs-mouse-in-javascript
-function istrackpad()
- {
-    if (global.isTouchPadDefined) 
-        return;
-    
-    if (!global.eventCount) 
-    {
-        global.eventCount = 0;
-        global.eventCountStart = new Date().getTime();
-    }
-     
-    global.eventCount++;
-    if ((new Date().getTime() - global.eventCountStart) < 100) 
-        return;
-    if (global.eventCount > 10) 
-        global.isTouchPad = true;
-    else 
-        global.isTouchPad = false;
-    global.isTouchPadDefined = true;
- }
+        function istrackpad()
+         {
+            if (global.isTouchPadDefined) 
+                return;
+            
+            if (!global.eventCount) 
+            {
+                global.eventCount = 0;
+                global.eventCountStart = new Date().getTime();
+            }
+             
+            global.eventCount++;
+            if ((new Date().getTime() - global.eventCountStart) < 100) 
+                return;
+            if (global.eventCount > 10) 
+                global.isTouchPad = true;
+            else 
+                global.isTouchPad = false;
+            global.isTouchPadDefined = true;
+         }
 
         istrackpad();
-        if (1)
-        {
-            var x = evt.offsetX;
-            var y = evt.offsetY;
-            var deltax = evt.deltaX;
-            var deltay = evt.deltaY;
-            if (Math.abs(deltax) <= 1 && Math.abs(deltay) <= 1)
-                return;
-            if (typeof(ham.panel.wheeleftright) == "function")
-                ham.panel.wheeleftright(context, x, y, deltax, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaX < 0 ? "wheeleft" : "wheelright");
-            if (typeof(ham.panel.wheelupdown) == "function")
-                ham.panel.wheelupdown(context, x, y, deltay, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaY < 0 ? "wheelup" : "wheeldown");
-        }
-        else
-        {
-            
-        }
+        var x = evt.offsetX;
+        var y = evt.offsetY;
+        var deltax = evt.deltaX;
+        var deltay = evt.deltaY;
+        if (Math.abs(deltax) <= 1 && Math.abs(deltay) <= 1)
+            return;
+        if (typeof(ham.panel.wheeleftright) == "function")
+            ham.panel.wheeleftright(context, x, y, deltax, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaX < 0 ? "wheeleft" : "wheelright");
+        if (typeof(ham.panel.wheelupdown) == "function")
+            ham.panel.wheelupdown(context, x, y, deltay, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaY < 0 ? "wheelup" : "wheeldown");
     });
 
     ham.on("press", function(evt)
@@ -2720,6 +2712,13 @@ var wheelst =
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
             context.canvas.pinching = 0;
+        }
+        else if (!global.isTouchPad)
+        {
+            var k = delta < 0 ? 1 : -1;
+            var j = canvas.timeobj.length() / galleryobj.length()/6;
+            canvas.timeobj.rotate(k*j);
+            menuobj.draw();           
         }
         else if (canvas.buttonrect &&
             canvas.buttonrect.hitest(x, y))
