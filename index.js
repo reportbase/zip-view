@@ -2705,7 +2705,7 @@ var wheelst =
         {
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
             displayobj.set(k);
-            var j = buttonobj.length()/100;
+            var j = buttonobj.length()/33;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             buttonobj.add(k*j);
