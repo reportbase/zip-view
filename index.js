@@ -1548,8 +1548,6 @@ var displaylst =
         delete canvas.buttonrect;
         delete context.button2rect;
         delete context.template2rect;
-        delete context.button2rect;
-        delete context.template2rect;
         canvas.vscrollrect = new rectangle();
         canvas.hollyrect = new rectangle();
         canvas.gorect = new rectangle();
@@ -2760,6 +2758,7 @@ var wheelst =
                 }                
     
                 templateobj.add(j);
+                buttonobj.reset()
                 menuobj.draw();
                 canvas.templateblock = setTimeout(function()
                   {
@@ -2827,7 +2826,6 @@ var wheelst =
         {
             var hollyobj = context.canvas.hollyobj;
             hollyobj.addperc(delta/500);
-            buttonobj.reset();
             context.refresh();
         }
         else if (context.stretchrect &&
@@ -2849,7 +2847,6 @@ var wheelst =
         {
             var hollyobj = context.canvas.hollyobj;
             hollyobj.addperc(delta/500);
-            buttonobj.reset();
             context.refresh();
         }
         else
@@ -3166,7 +3163,6 @@ var panlst =
             {
                 var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
                 context.canvas.hollyobj.setperc(k);
-                buttonobj.reset();
                 menuobj.draw();
             }
             else if (canvas.istemplaterect)
@@ -3179,6 +3175,7 @@ var panlst =
           
                 var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
                 templateobj.setperc(k);
+                buttonobj.reset();
                 menuobj.draw();
             }
             else
@@ -3538,18 +3535,6 @@ var presslst =
     name: "GALLERY",
     pressup: function(context, rect, x, y)
     {
-        /*
-        var canvas = context.canvas;
-        if ((canvas.vscrollrect && canvas.vscrollrect.hitest(x, y)) ||
-             (canvas.buttonrect && canvas.buttonrect.hitest(x, y)) ||
-              (canvas.templaterect && canvas.templaterect.hitest(x, y)) ||
-               (canvas.hollyrect && canvas.hollyrect.hitest(x, y)))
-               return;
-
-            headcnv.height = headcnv.height ? 0 : HEADHEIGHT;
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-            menuobj.draw();
-        */
     },
     press: function(context, rect, x, y) {}
 },
@@ -4168,6 +4153,7 @@ var taplst =
             
             var k = (x - context.template2rect.x) / context.template2rect.width;
             templateobj.add(k < 0.5 ? -1 : 1);
+            buttonobj.reset();
             menuobj.draw();            
         }
         else if (
@@ -4226,6 +4212,7 @@ var taplst =
             var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
             var j = Math.lerp(0,templateobj.length()-1,k);
             templateobj.set(Math.round(j));
+            buttonobj.reset();
             menuobj.draw()
         }
         else if (canvas.hollyrect && canvas.hollyrect.hitest(x, y))
