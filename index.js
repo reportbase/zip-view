@@ -527,17 +527,12 @@ var templatelst =
 var templateobj = new circular_array("", templatelst);
 templateobj.set(4)
 
-var SEAL = url.searchParams.get("seal");
-if (!SEAL)
-   SEAL = 6283; 
-var sealobj = new circular_array("", SEAL);
+const SEAL = 6283;
+var sealobj = new circular_array("SEAL", SEAL);
 sealobj.set(SEAL/2);
 
-var beavobj = new circular_array("", 100)
-var beav = url.searchParams.get("beav");
-if (!beav)
-   beav = 64.0000001; 
-beavobj.set(beav);
+var beavobj = new circular_array("BEAV", 100)
+beavobj.set(64.00);
 
 var footlst = 
 [
@@ -6429,10 +6424,7 @@ galleryobj.init = function(obj)
             galleryobj.data.push(Object.assign({}, galleryobj.data[0]));
     }
 
-    var size = url.searchParams.get("size");
-    if (size)
-        galleryobj.data.length = size;
-    
+    //todo - add images to bad numbers
     delete photo.image;
 
     if (galleryobj.template)
