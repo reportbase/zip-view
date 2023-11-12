@@ -33,7 +33,7 @@ const FOOTSEP = 20;
 const RAINSTEP = 240;
 const HEADTOP = 80;
 const HEADBOT = 40;
-const FIXEDTIME = 4;
+const FIXEDTIME = 2;
 const WRAPROWHEIGHT = 40;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
 const FOOTHEIGHT = 80;
@@ -2335,11 +2335,11 @@ CanvasRenderingContext2D.prototype.savetime = function()
     this.savetimeout = setTimeout(function()
         {
             var e = url.searchParams.get('_8');
-            if (e != _8cnv.timeobj.current().toFixed(4))
+            if (e != _8cnv.timeobj.current().toFixed(FIXEDTIME))
             {
                 var k = _8cnv.timeobj.current();
                 if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
-                    url.searchParams.set('_8', k.toFixed(4));
+                    url.searchParams.set('_8', k.toFixed(FIXEDTIME));
                 window.history.replaceState("", url.origin, url);
             }
       }, 1000)
@@ -2827,6 +2827,7 @@ var wheelst =
         {
             var hollyobj = context.canvas.hollyobj;
             hollyobj.addperc(delta/500);
+            buttonobj.reset();
             context.refresh();
         }
         else if (context.stretchrect &&
@@ -2848,6 +2849,7 @@ var wheelst =
         {
             var hollyobj = context.canvas.hollyobj;
             hollyobj.addperc(delta/500);
+            buttonobj.reset();
             context.refresh();
         }
         else
@@ -3164,6 +3166,7 @@ var panlst =
             {
                 var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
                 context.canvas.hollyobj.setperc(k);
+                buttonobj.reset();
                 menuobj.draw();
             }
             else if (canvas.istemplaterect)
