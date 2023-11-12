@@ -2511,9 +2511,9 @@ var makehammer = function(context, v, t)
 function isTrackPad(evt) {
   const { deltaY } = evt;
   if (deltaY && !Number.isInteger(deltaY)) {
-    return false;
+    return true;
   }
-  return true;
+  return false;
 }
         var trackpad = isTrackPad(evt)
         var x = evt.offsetX;
