@@ -3559,15 +3559,9 @@ pressobj.set(3);
 
 function gotoimage(n)
 {
-    //var top = buttonobj.value() > window.innerHeight;
-    var k = sealobj.value() - (sealobj.value() / galleryobj.length() / 2);
-    k -= n * (sealobj.value() / galleryobj.length());
-    if (top)
-    {
-        //var j = (sealobj.value() / galleryobj.length())/4;
-        //k += j;
-    }
-    _8cnv.timeobj.set(k);
+    var k = 1-(n/galleryobj.length())
+    var j = k*sealobj.value()
+    _8cnv.timeobj.set(j);
     menuobj.draw();
     return true;
 }
