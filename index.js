@@ -3557,13 +3557,13 @@ pressobj.set(3);
 
 function gotoimage(n)
 {
-    var top = buttonobj.value() > window.innerHeight;
+    //var top = buttonobj.value() > window.innerHeight;
     var k = sealobj.value() - (sealobj.value() / galleryobj.length() / 2);
     k -= n * (sealobj.value() / galleryobj.length());
     if (top)
     {
-        var j = (sealobj.value() / galleryobj.length())/4;
-        k += j;
+        //var j = (sealobj.value() / galleryobj.length())/4;
+        //k += j;
     }
     _8cnv.timeobj.set(k);
     menuobj.draw();
@@ -6999,7 +6999,7 @@ function gologin(email)
 
 function goimage(image)
 {
-    image = util.clamp(1, galleryobj.length(), image);
+    image = util.clamp(0, galleryobj.length(), image);
     gotoimage(image);
     galleryobj.set(Math.floor(image));
     delete photo.image;
