@@ -2507,27 +2507,29 @@ var makehammer = function(context, v, t)
     ham.element.addEventListener("wheel", function(evt)
     {
         evt.preventDefault();
-//todo
 //https://stackoverflow.com/questions/10744645/detect-touchpad-vs-mouse-in-javascript
 function istrackpad()
  {
-    var isTouchPadDefined = isTouchPad || typeof isTouchPad !== "undefined";
-    if (isTouchPadDefined) 
+    if (global.isTouchPadDefined) 
         return;
     
-    if (eventCount === 0) 
-        eventCountStart = new Date().getTime();
-    eventCount++;
-
-    if (new Date().getTime() - eventCountStart < 100) 
-        return;
-    if (eventCount > 10) 
-        isTouchPad = true;
-    else 
-        isTouchPad = false;
-    isTouchPadDefined = true;
- }
+    if (!global.eventCount) 
+    {
+        global.eventCount = 0;
+        global.eventCountStart = new Date().getTime();
+    }
      
+    global.eventCount++;
+    if ((new Date().getTime() - global.eventCountStart) < 100) 
+        return;
+    if (global.eventCount > 10) 
+        global.isTouchPad = true;
+    else 
+        global.isTouchPad = false;
+    global.isTouchPadDefined = true;
+ }
+
+        istrackpad();
         if (1)
         {
             var x = evt.offsetX;
@@ -5064,7 +5066,6 @@ menuobj.draw = function()
     var r = new rectangle(0, 0, rect.width, canvas.buttonheight);
     var lasty = -10000000;
     var delay = 0;
-    var visy = [];
     for (var m = 0; m < canvas.normal.length; ++m)
     {
         var n = canvas.normal[m];
@@ -5108,7 +5109,6 @@ menuobj.draw = function()
                 n
             };
 
-            visy.push(j.y);
             slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight);
             slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
             if (slice.isvisible)
@@ -5119,7 +5119,7 @@ menuobj.draw = function()
                     {
                         galleryobj.width = thumbimg.width;
                         galleryobj.height = thumbimg.height;
-                        context.canvas.centered = j.n;//todo: fitted
+                        context.canvas.centered = j.n;
                     }
                     
                     context.canvas.visibles.push(j);
