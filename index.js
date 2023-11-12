@@ -539,12 +539,6 @@ if (!beav)
    beav = 64.5; 
 beavobj.set(beav);
 
-var dolpobj = new circular_array("", 100)
-var dolp = url.searchParams.get("dolp");
-if (!dolp)
-   dolp = 100; 
-dolpobj.set(dolp);
-
 var footlst = 
 [
 {
@@ -5096,8 +5090,7 @@ menuobj.draw = function()
         else
         {
             var t = time + (n * delayinterval);
-            var k = dolpobj.value()/100;
-            var bos = Math.tan(t * k);
+            var bos = Math.tan(t);
             var j = Math.berp(-1, 1, bos);
             var y = j * context.canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
