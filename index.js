@@ -77,8 +77,6 @@ var global = {};
 let photo = {};
 let util = {};
 photo.image = 0;
-global.debug = url.searchParams.has("debug");
-
 util.random_color = function()
 {
     const letters = '0123456789ABCDEF';
@@ -3495,7 +3493,8 @@ var mouselst = [
 
 var mouseobj = new circular_array("MOUSE", mouselst);
 
-var overlaylst = [
+var overlaylst = 
+[
 {
     name: "DEBUG",
     draw: function(context, rect, user, time)
@@ -5122,8 +5121,6 @@ menuobj.draw = function()
     context.canvas.footer.draw(context, rect, 0, 0);
 }
 
-var debug = url.searchParams.get("debug");
-
 var eventlst = 
 [
 { //1 unused
@@ -6642,19 +6639,6 @@ galleryobj.init = function(obj)
             }
         },
         {
-            title: "Debug",
-            func: function()
-            {
-                global.debug = global.debug ? 0 : 1;
-                return true;
-            },
-            enabled: function()
-            {
-                return global.debug;
-            }
-        },
-        
-        {
             title: "Download",
             func: function()
             {
@@ -6826,27 +6810,22 @@ galleryobj.init = function(obj)
             menuobj.setindex(galleryobj.leftctx);
             menuobj.show();
             return false;
+        },
+    },
+    {
+        title: "Debug   \u{25B6}",
+        func: function()
+        {
+            menuobj.hide();
+            galleryobj.leftcnv = _3cnv;
+            galleryobj.leftctx = _3cnvctx;
+            menuobj.setindex(galleryobj.leftctx);
+            menuobj.show();
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            return false;
         }
     }
     ];
-
-    if (global.debug)
-    {
-        _7cnv.sliceobj.data.push(
-        {
-            title: "Debug   \u{25B6}",
-            func: function()
-            {
-                menuobj.hide();
-                galleryobj.leftcnv = _3cnv;
-                galleryobj.leftctx = _3cnvctx;
-                menuobj.setindex(galleryobj.leftctx);
-                menuobj.show();
-                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-                return false;
-            }
-        });
-    }
 
     _8cnv.sliceobj.data = galleryobj.data;
     _9cnv.sliceobj.data = [];
