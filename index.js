@@ -4109,7 +4109,6 @@ var taplst =
             }
             else
             {
-                var kw = 10 + ALIEXTENT;
                 menuobj.setindex(galleryobj.leftctx);
                 menuobj.show();
             }
@@ -5014,20 +5013,19 @@ menuobj.draw = function()
         context.canvas.slideshow = 0;
     }
 
-    var len = galleryobj.length();
-    var delayinterval = sealobj.value() / len / 1000;
-    context.canvas.virtualheight = len * canvas.buttonheight;
+    var delayinterval = sealobj.value() / slices.length / 1000;
+    context.canvas.virtualheight = slices.length * canvas.buttonheight;
     
     context.clear();
     if (context.canvas.virtualheight < window.innerHeight)
     {
-        canvas.buttonheight = window.innerHeight / len;
-        context.canvas.virtualheight = len * canvas.buttonheight;
+        canvas.buttonheight = window.innerHeight / slices.length;
+        context.canvas.virtualheight = slices.length * canvas.buttonheight;
     }
     else if (context == _8cnvctx)
     {
         canvas.buttonheight = buttonobj.value();
-        context.canvas.virtualheight = len * canvas.buttonheight * beavobj.value()/100;
+        context.canvas.virtualheight = slices.length * canvas.buttonheight * beavobj.value()/100;
     }
 
     if (context != _8cnvctx)
@@ -5042,7 +5040,7 @@ menuobj.draw = function()
     {
         canvas.lastcurrent = current;
         var size = Math.ceil(rect.height / canvas.buttonheight) + 4;
-        canvas.normal = util.rotated_list(canvas.rotated, len, current, size);
+        canvas.normal = util.rotated_list(canvas.rotated, slices.length, current, size);
     }
 
     context.canvas.visibles = [];
