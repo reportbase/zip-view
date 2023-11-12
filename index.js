@@ -1604,7 +1604,7 @@ var displaylst =
         var value = galleryobj.data[k];
         if (value && value.folder)
             data = value.folder.split("/");
-        data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
+        //data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
         data.push(`\u{25C0}   ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}   \u{25B6}`);
         var st = `\u{25C0}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
@@ -1700,6 +1700,10 @@ buttonobj.reset = function()
 {
     var w = galleryobj.width;
     var h = galleryobj.height;
+    if (!w)
+        return;
+    if (!h)
+        return;
     var a = w / h;
     buttonobj.data = [];
     var gheight = window.innerHeight/2;
@@ -1708,15 +1712,20 @@ buttonobj.reset = function()
     var dheight = Math.floor(window.innerWidth / a) - gheight;
     if (dheight < 0)
         dheight = 0;
-    var bheight = h * 1.5;
-    if (bheight*w > MAXIMAGESIZE)
-        bheight = MAXIMAGESIZE / w;
+    var bheight = h*3;
+    var bwidth = bheight*a;
+    while (bheight*bwidth > MAXIMAGESIZE)
+    {
+        bheight--;
+        bwidth = bheight*a;
+    }
+    
     for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
         buttonobj.data.push(n);
     buttonobj.set(dheight);
 }
 
-buttonobj.fit = function()
+buttonobj.fitwidth = function()
 {
     buttonobj.reset();
     _8cnv.fitflash = 1;
@@ -4170,7 +4179,7 @@ var taplst =
             headcnvctx.fitwidthrect &&
             headcnvctx.fitwidthrect.hitest(x, y))
         {
-            buttonobj.fit();
+            buttonobj.fitwidth();
         }
         else if (
             canvas.buttonrect &&
@@ -6780,7 +6789,7 @@ galleryobj.init = function(obj)
         title: "Fit Width",
         func: function()
         {
-            buttonobj.fit();
+            buttonobj.fitwidth();
             return true;
         }
     },
@@ -6896,7 +6905,7 @@ galleryobj.init = function(obj)
         headham.panel = headlst[k];
         headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
         headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-        buttonobj.fit();
+        buttonobj.fitwidth();
     };    
     var k = url.searchParams.get('_8');
     _8cnv.timeobj.set(0);
