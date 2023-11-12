@@ -335,16 +335,16 @@ panel.yoll = function()
             context.canvas.tap_(context, rect, x, y, shift, ctrl);
     };
 
-    this.wheeleftright = function(context, x, y, delta, ctrl, shift, alt, type)
+    this.wheeleftright = function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         if (context.canvas.wheeleftright_)
-            context.canvas.wheeleftright_(context, x, y, delta, ctrl, shift, alt, type);
+            context.canvas.wheeleftright_(context, x, y, delta, ctrl, shift, alt, type, trackpad);
     };
 
-    this.wheelupdown = function(context, x, y, delta, ctrl, shift, alt, type)
+    this.wheelupdown = function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         if (context.canvas.wheelupdown_)
-            context.canvas.wheelupdown_(context, x, y, delta, ctrl, shift, alt, type);
+            context.canvas.wheelupdown_(context, x, y, delta, ctrl, shift, alt, type, trackpad);
     };
 
     this.drop = function(context, evt)
@@ -2507,28 +2507,15 @@ var makehammer = function(context, v, t)
     ham.element.addEventListener("wheel", function(evt)
     {
         evt.preventDefault();
-        function istrackpad()
-         {
-            if (global.isTouchPadDefined) 
-                return;
-            
-            if (!global.eventCount) 
-            {
-                global.eventCount = 0;
-                global.eventCountStart = new Date().getTime();
-            }
-             
-            global.eventCount++;
-            if ((new Date().getTime() - global.eventCountStart) < 100) 
-                return;
-            if (global.eventCount > 10) 
-                global.isTouchPad = true;
-            else 
-                global.isTouchPad = false;
-            global.isTouchPadDefined = true;
-         }
 
-        istrackpad();
+isTrackPad(evt) {
+  const { deltaY } = evt;
+  if (deltaY && !Number.isInteger(deltaY)) {
+    return false;
+  }
+  return true;
+}
+        var trackpad = isTrackPad(evt)
         var x = evt.offsetX;
         var y = evt.offsetY;
         var deltax = evt.deltaX;
@@ -2536,9 +2523,13 @@ var makehammer = function(context, v, t)
         if (Math.abs(deltax) <= 1 && Math.abs(deltay) <= 1)
             return;
         if (typeof(ham.panel.wheeleftright) == "function")
-            ham.panel.wheeleftright(context, x, y, deltax, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaX < 0 ? "wheeleft" : "wheelright");
+            ham.panel.wheeleftright(context, x, y, deltax, 
+                    evt.ctrlKey, evt.shiftKey, evt.altKey, 
+                    evt.deltaX < 0 ? "wheeleft" : "wheelright", trackpad);
         if (typeof(ham.panel.wheelupdown) == "function")
-            ham.panel.wheelupdown(context, x, y, deltay, evt.ctrlKey, evt.shiftKey, evt.altKey, evt.deltaY < 0 ? "wheelup" : "wheeldown");
+            ham.panel.wheelupdown(context, x, y, deltay, 
+                    evt.ctrlKey, evt.shiftKey, evt.altKey, 
+                    evt.deltaY < 0 ? "wheelup" : "wheeldown", trackpad);
     });
 
     ham.on("press", function(evt)
@@ -2691,12 +2682,12 @@ var wheelst =
 [
 {
     name: "DEFAULT",
-    updown: function(context, x, y, delta, ctrl, shift, alt, type) {},
-    leftright: function(context, x, y, delta, ctrl, shift, alt, type) {},
+    updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad) {},
+    leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad) {},
 },
 {
     name: "GALLERY",
-    updown: function(context, x, y, delta, ctrl, shift, alt, type)
+    updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
@@ -2713,7 +2704,7 @@ var wheelst =
             menuobj.draw();
             context.canvas.pinching = 0;
         }
-        else if (!global.isTouchPad)
+        else if (!trackpad)
         {
             if (canvas.shiftKey)
             {
@@ -2755,7 +2746,7 @@ var wheelst =
             }, TIMEMAIN);
         }
     },
-    leftright: function(context, x, y, delta, ctrl, shift, alt, type)
+    leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         if (Math.abs(delta) > 160)
         {
@@ -2801,7 +2792,7 @@ var wheelst =
 },
 {
     name: "MENU",
-    updown: function(context, x, y, delta, ctrl, shift, alt, type)
+    updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         if (ctrl)
             return;
@@ -2812,7 +2803,7 @@ var wheelst =
         menuobj.updown(context, delta);
         context.refresh();
     },
-    leftright: function(context, x, y, delta, ctrl, shift, alt)
+    leftright: function(context, x, y, delta, ctrl, shift, alt, trackpad)
     {
         context.canvas.hollyobj.addperc(delta / 1000);
         menuobj.draw()
@@ -2820,7 +2811,7 @@ var wheelst =
 },
 {
     name: "BOSS",
-    updown: function(context, x, y, delta, ctrl, shift, alt, type)
+    updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         var canvas = context.canvas;
         if (ctrl)
@@ -2863,7 +2854,7 @@ var wheelst =
             contextobj.reset()
         }
     },
-    leftright: function(context, x, y, delta, ctrl, shift, alt, type)
+    leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     { 
         if (context.hollyrect &&
             context.hollyrect.hitest(x, y))
