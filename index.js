@@ -33,6 +33,7 @@ const FOOTSEP = 20;
 const RAINSTEP = 240;
 const HEADTOP = 80;
 const HEADBOT = 40;
+const FIXEDTIME = 4;
 const WRAPROWHEIGHT = 40;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
 const FOOTHEIGHT = 80;
@@ -1603,7 +1604,8 @@ var displaylst =
         var value = galleryobj.data[k];
         if (value && value.folder)
             data = value.folder.split("/");
-        data.push(`\u{25C0}   ${index.toFixed(4)} of ${galleryobj.length()}   \u{25B6}`);
+        data.push(`${_8cnv.timeobj.current() of ${_8cnv.timeobj.current}`);
+        data.push(`\u{25C0}   ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}   \u{25B6}`);
         var st = `\u{25C0}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
         var a = new panel.rowsA([80, 40, 0, data.length*WRAPROWHEIGHT, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
@@ -3693,7 +3695,7 @@ var keylst = [
                 evt.preventDefault();
                 var index = 1 - _8cnv.timeobj.berp();
                 index *= galleryobj.length();
-                if (!gotodialog(index.toFixed(1), "Goto", goimage))
+                if (!gotodialog(index.toFixed(FIXEDTIME), "Goto", goimage))
                     return;
                 galleryobj.init()
             }
@@ -3888,7 +3890,7 @@ var keylst = [
             {
                  var index = 1 - _8cnv.timeobj.berp();
                  index *= galleryobj.length();
-                 if (!gotodialog(index.toFixed(1), "Goto", goimage))
+                 if (!gotodialog(index.toFixed(FIXEDTIME), "Goto", goimage))
                     return;
                 galleryobj.init(); 
             }
@@ -3992,7 +3994,7 @@ var taplst =
         {
                  var index = 1 - _8cnv.timeobj.berp();
                  index *= galleryobj.length();
-                if (!gotodialog(index.toFixed(1), "Goto", goimage))
+                if (!gotodialog(index.toFixed(FIXEDTIME), "Goto", goimage))
                     return;
                 galleryobj.init()
         }
@@ -4190,7 +4192,7 @@ var taplst =
         {
                 var index = 1 - _8cnv.timeobj.berp();
                 index *= galleryobj.length();
-               if (!gotodialog(index.toFixed(1), "Goto", goimage))
+               if (!gotodialog(index.toFixed(FIXEDTIME), "Goto", goimage))
                     return;
                 galleryobj.init()
         }
