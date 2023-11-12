@@ -2508,7 +2508,7 @@ var makehammer = function(context, v, t)
     {
         evt.preventDefault();
 
-isTrackPad(evt) {
+function isTrackPad(evt) {
   const { deltaY } = evt;
   if (deltaY && !Number.isInteger(deltaY)) {
     return false;
