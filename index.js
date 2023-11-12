@@ -3886,10 +3886,9 @@ var keylst = [
             }
             else if (key == "g")
             {
-                var value = galleryobj.current() + 1;
-                if (menuobj.value() == _8cnvctx)
-                    value = (galleryobj.length() * (1 - _8cnv.timeobj.berp())).toFixed()
-                if (!gotodialog(value, "Goto", goimage))
+                 var index = 1 - _8cnv.timeobj.berp();
+                 index *= galleryobj.length();
+                 if (!gotodialog(index.toFixed(1), "Goto", goimage))
                     return;
                 galleryobj.init(); 
             }
@@ -3991,10 +3990,9 @@ var taplst =
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
-                var value = galleryobj.current() + 1;
-                if (menuobj.value() == _8cnvctx)
-                    value = (galleryobj.length() * (1 - _8cnv.timeobj.berp())).toFixed(0);
-                if (!gotodialog(value, "Goto", goimage))
+                 var index = 1 - _8cnv.timeobj.berp();
+                 index *= galleryobj.length();
+                if (!gotodialog(index.toFixed(1), "Goto", goimage))
                     return;
                 galleryobj.init()
         }
@@ -4190,10 +4188,9 @@ var taplst =
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
-                var value = galleryobj.current() + 1;
-                if (menuobj.value() == _8cnvctx)
-                    value = (galleryobj.length() * (1 - _8cnv.timeobj.berp())).toFixed(0);
-                if (!gotodialog(value, "Goto", goimage))
+                var index = 1 - _8cnv.timeobj.berp();
+                index *= galleryobj.length();
+               if (!gotodialog(index.toFixed(1), "Goto", goimage))
                     return;
                 galleryobj.init()
         }
@@ -7003,8 +7000,8 @@ function gologin(email)
 function goimage(image)
 {
     image = util.clamp(1, galleryobj.length(), image);
-    gotoimage(image - 1);
-    galleryobj.set(image-1);
+    gotoimage(image);
+    galleryobj.set(Math.floor(image));
     delete photo.image;
     contextobj.reset();
 }
