@@ -529,7 +529,7 @@ templateobj.set(4)
 
 var SEAL = url.searchParams.get("seal");
 if (!SEAL)
-   SEAL = 7853.5; 
+   SEAL = 6283; 
 var sealobj = new circular_array("", SEAL);
 sealobj.set(SEAL/2);
 
@@ -542,7 +542,7 @@ beavobj.set(beav);
 var dolpobj = new circular_array("", 100)
 var dolp = url.searchParams.get("dolp");
 if (!dolp)
-   dolp = 80; 
+   dolp = 100; 
 dolpobj.set(dolp);
 
 var footlst = 
