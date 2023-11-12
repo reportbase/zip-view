@@ -2704,7 +2704,7 @@ var wheelst =
             menuobj.draw();
             context.canvas.pinching = 0;
         }
-        else if (!trackpad)
+        else if (trackpad)
         {
             if (canvas.shiftKey)
             {
