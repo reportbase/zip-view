@@ -1604,7 +1604,7 @@ var displaylst =
         var value = galleryobj.data[k];
         if (value && value.folder)
             data = value.folder.split("/");
-        data.push(`${_8cnv.timeobj.current() of ${_8cnv.timeobj.length()}`);
+        data.push(`${_8cnv.timeobj.current()} of ${_8cnv.timeobj.length()}`);
         data.push(`\u{25C0}   ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}   \u{25B6}`);
         var st = `\u{25C0}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
