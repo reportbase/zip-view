@@ -7030,7 +7030,6 @@ function gotodialog(value, title, func)
 
     dialog.addEventListener("click", function(event)
     {
-        var rect = new rectangle(dialog.getBoundingClientRect());
         if (event.target.id == "goto-ok")
         {
             var page = input.value.clean();
@@ -7038,9 +7037,11 @@ function gotodialog(value, title, func)
             menuobj.draw();
             return func(page);
         }
-        else if (!rect.hitest(event.x, event.y))
+        else
         {
-            if (!dialog.clickblocked)
+            var r = dialog.getBoundingClientRect();
+            var rect = new rectangle(r.x,r.y,r.width,r.height);
+            if (!rect.hitest(event.x, event.y) && !dialog.clickblocked)
                 dialog.close();
             return false;
         }
@@ -7052,34 +7053,6 @@ function gotodialog(value, title, func)
     {
         dialog.clickblocked = 0;
     }, 40);
-    dialog.showModal();
-}
-
-function promptdialog()
-{
-    var input = document.getElementById("prompt-input");
-    dialog = document.getElementById("prompt-dialog");
-
-    dialog.addEventListener("click", function(event)
-    {
-        var rect = new rectangle(input.getBoundingClientRect());
-        if (event.target.id == "prompt-ok")
-        {
-            if (input.value)
-                input.value = input.value.clean();
-            if (!input.value)
-                return;
-            text2imageobj.prompt = input.value;
-            dialog.close();
-            menuobj.draw();
-        }
-        else if (!rect.hitest(event.x, event.y))
-        {
-            dialog.close();
-        }
-    });
-
-    input.value = text2imageobj.prompt;
     dialog.showModal();
 }
 
