@@ -6899,7 +6899,7 @@ galleryobj.init = function(obj)
         buttonobj.fit();
     };    
     var k = url.searchParams.get('_8');
-    if (typeof k !== "undefined" && !Number.isNaN(val) && val != null)
+    if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
         _8cnv.timeobj.set(k);
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
