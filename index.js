@@ -6908,8 +6908,9 @@ galleryobj.init = function(obj)
         headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         buttonobj.fitwidth();
     };    
-    var k = url.searchParams.get('_8');
+   
     _8cnv.timeobj.set(0);
+    var k = Number(url.searchParams.get('_8'));
     if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
         _8cnv.timeobj.set(k);
     var berp = _8cnv.timeobj.berp();
