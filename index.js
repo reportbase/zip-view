@@ -3382,7 +3382,7 @@ var panlst =
         canvas.startx = x;
         canvas.starty = y;
         rowobj.setanchor(rowobj.current());
-        canvas.timeobj.setanchor(canvas.timeobj.current());
+        canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
         canvas.isthumb = canvas.thumbrect &&
             canvas.thumbrect.hitest(x, y);
         movingx = new MovingAverage();
