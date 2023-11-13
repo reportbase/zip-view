@@ -3900,9 +3900,7 @@ var taplst =
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
-                 var index = 1 - _8cnv.timeobj.berp();
-                 index *= galleryobj.length();
-                if (!gotodialog(index.toFixed(FIXEDTIME), "Goto", goimage))
+                if (!gotodialog(galleryobj.current()+1, "Goto", goimage))
                     return;
                 galleryobj.init()
         }
@@ -6899,7 +6897,7 @@ function goimage(image)
 {
     image = util.clamp(0, galleryobj.length(), image);
     gotoimage(image);
-    galleryobj.set(Math.floor(image));
+    galleryobj.set(Math.floor(image)-1);
     delete photo.image;
     contextobj.reset();
 }
