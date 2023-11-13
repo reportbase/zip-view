@@ -231,6 +231,12 @@ let circular_array = function(title, data)
             return Math.floor(Math.lerp(0, this.length(), berp));
     };
 
+    this.rotateanchored = function(index)
+    {
+        this.CURRENT = this.ANCHOR - index;
+        this.wrap();
+    };
+
     this.wrap = function()
     {
         if (this.CURRENT >= this.length())
@@ -3178,7 +3184,8 @@ var panlst =
                 var e = canvas.starty - y;
                 var k = sealobj.value() / canvas.virtualheight
                 k *= e;
-                canvas.timeobj.CURRENT = canvas.timeobj.ANCHOR - k;
+                //canvas.timeobj.rotateanchored(jvalue);
+                canvas.timeobj.CURRENT = canvas.timeobj.ANCHOR - k;//todo
             }
             
             menuobj.draw()
@@ -3263,9 +3270,9 @@ var panlst =
             else
             {
                 var e = canvas.starty - y;
-                var k = sealobj.value() / canvas.virtualheight
-                k *= e;
-                canvas.timeobj.CURRENT = canvas.timeobj.ANCHOR - k;
+                var jvalue = sealobj.value() / canvas.virtualheight
+                jvalue *= e;
+                canvas.timeobj.rotateanchored(jvalue);//todo
                 context.refresh()
             }
         }
