@@ -3331,7 +3331,7 @@ var panlst =
                 var e = canvas.startx-x;
                 var k = sealobj.value() / canvas.virtualwidth
                 k *= e;
-                canvas.timeobj.CURRENT = canvas.timeobj - k;
+                canvas.timeobj.CURRENT -= k;
                 //remove todo canvas.timeobj.rotateanchored(jvalue);
                 context.refresh()
             }
