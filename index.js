@@ -6333,7 +6333,21 @@ galleryobj.init = function(obj)
             galleryobj.data.push(Object.assign({}, galleryobj.data[0]));
     }
 
-    //todo - add images to bad numbers
+    var lst = 
+    [
+        33,34,35,36,37,38,39,40,41,
+    ];
+    /*
+65-73,
+97-109,
+129-135,  
+161-167,
+193-199,
+225-231,   
+257-263,
+289-295
+    */
+    
     delete photo.image;
 
     if (galleryobj.template)
