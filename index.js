@@ -6329,7 +6329,7 @@ galleryobj.init = function(obj)
         Object.assign(galleryobj, obj);
     var length = Number(url.searchParams.get('length'));
     galleryobj.data.length = length;    
-    if (galleryobj.length())
+    if (!galleryobj.length())
         return;
     var padlst = 
     [
