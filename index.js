@@ -3808,14 +3808,6 @@ var keylst = [
                 contextobj.reset()
                 evt.preventDefault();
             }
-            else if (key == "g")
-            {
-                 var index = 1 - _8cnv.timeobj.berp();
-                 index *= galleryobj.length();
-                 if (!gotodialog(index.toFixed(FIXEDTIME), "Goto", goimage))
-                    return;
-                galleryobj.init(); 
-            }
             else if (key == "-" || key == "{")
             {
                 zoomobj.add(-1);
