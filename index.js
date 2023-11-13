@@ -931,17 +931,13 @@ var bossdisplaylst =
             data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
             data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
             
-            var rows = data.length;
-            var rh = 26;
-            var bh = rect.height * 0.4;
-            var cw = rect.width - 30;
             var a = new panel.layerA(
             [
                 new panel.rectangle(context.windowrect),
                 new panel.colsA([0, SCROLLEXTENT, SCROLLMARGIN],
                 [
                     0,
-                    new panel.rows([0,bh,0],
+                    new panel.rows([0,(rect.height*0.4),0],
                     [
                         0,
                         new panel.layers(
@@ -955,7 +951,8 @@ var bossdisplaylst =
                     ]),
                    0
                 ]),
-                new panel.rowsA([0, 50, SCROLLEXTENT, SCROLLMARGIN],
+                new panel.rowsA([0, (data.length*WRAPROWHEIGHT), 
+                                 SCROLLEXTENT, SCROLLMARGIN],
                 [
                     0,
                     new panel.cols([0, RAINSTEP, 0],
@@ -964,21 +961,12 @@ var bossdisplaylst =
                         new panel.layers(
                         [
                             new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
-                            new panel.gridA(1, rows, 1,
+                            new panel.gridA(1, data.length, 1,
                                 new panel.shadow(new panel.text())),
                         ]),
                         0,
                     ]),
-                    new panel.cols([0, cw, 0],
-                    [
-                        0,
-                        1 ? 0 : new panel.layers(
-                        [
-                            new panel.expand(new panel.rectangle(context.heightrect), 0, 10),
-                            new panel.currentH(new panel.fill(NUBAR), bh / 5, 1),
-                        ]),
-                        0,
-                    ]),
+                    0,
                     0,
                 ])
             ]);
@@ -1495,7 +1483,7 @@ var displaylst =
         var st = `\u{25C0}   ${ww.toFixed(0)} x ${hh.toFixed(0)}   \u{25B6}`;
         var jp = templateobj.value().split("x");
         data.push(`\u{25C0}   ${jp[0]} x ${jp[1]}   \u{25B6}`);
-        var a = new panel.rowsA([HEADTOP, HEADBOT, 0, data.length*WRAPROWHEIGHT, 
+        var a = new panel.rowsA([HEADTOP, HEADBOT, 0, (data.length*WRAPROWHEIGHT), 
                                  FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,    
