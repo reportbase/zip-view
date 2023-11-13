@@ -6349,8 +6349,8 @@ galleryobj.init = function(obj)
         3,2,1,0,0,0,0,0,0,0,//80
     ];
 
-    var length = Number(url.searchParams.get('length'));
-    var j = padlst[padlst-1]
+    var length = galleryobj.length();
+    var j = padlst[length-1]
     for (var n = 0; n < j; ++n)
     {
         var e = {id: "DARK.0000"};
