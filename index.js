@@ -980,6 +980,8 @@ var bossdisplaylst =
                 ],
                 [
                     0,
+                    0,
+                    0,
                     data,
                     heightobj,
                     0,
