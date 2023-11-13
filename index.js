@@ -3900,13 +3900,13 @@ var taplst =
                 function foo(image)
                 {
                     image = Math.floor(image);
-                    image = util.clamp(1, galleryobj.length(), image);
-                    galleryobj.set(image-1);
+                    image = util.clamp(0, galleryobj.length()-1, image);
+                    galleryobj.set(image);
                     delete photo.image;
                     contextobj.reset();
                 }
             
-                if (!gotodialog(galleryobj.current()+1, "Goto", foo))
+                if (!gotodialog(galleryobj.current(), "Goto", foo))
                     return;
                 galleryobj.init()
         }
