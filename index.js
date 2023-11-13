@@ -907,12 +907,7 @@ var bossdisplaylst =
     draw: function(context, r, user, time)
     {
             var canvas = context.canvas;
-            context.extentrect = new rectangle();
-            context.zoomrect = new rectangle();
-            context.stretchrect = new rectangle();
             context.timerect = new rectangle();
-            context.slicewidthrect = new rectangle();
-            context.heightrect = new rectangle();
             context.pagerect = new rectangle();
             context.windowrect = new rectangle();
             context.galleryrect = new rectangle();
@@ -928,7 +923,7 @@ var bossdisplaylst =
 
             var data = [];
             var index = galleryobj.current();
-            data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
+            //data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
             data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
             
             var a = new panel.layerA(
@@ -1088,12 +1083,9 @@ var bossdisplaylst =
     draw: function(context, rect, user, time)
     {
             var canvas = context.canvas;
-            context.extentrect = new rectangle();
             context.zoomrect = new rectangle();
             context.stretchrect = new rectangle();
             context.timerect = new rectangle();
-            context.slicewidthrect = new rectangle();
-            context.heightrect = new rectangle();
             context.pagerect = new rectangle();
             context.stretchcolumnrect = new rectangle();
 
@@ -2126,8 +2118,8 @@ panel.close = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.closeboss),
-                new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), 22, 22),
-                new panel.text("white", "center", "middle", 0, 0, MEDIUMFONT),
+                new panel.shrink(new panel.circle("rgba(255,0,0,0.6)", SEARCHFRAME, 4), 20, 20),
+                new panel.text("white", "center", "middle", 0, 0, DEFAULTFONT),
             ]);
 
         a.draw(context, rect, 'X', time);
@@ -3392,7 +3384,6 @@ var panlst =
         context.ishollyrect = context.hollyrect && context.hollyrect.hitest(x, y);
         context.iszoomrect = context.zoomrect && context.zoomrect.hitest(x, y);
         context.isstretchrect = context.stretchrect && context.stretchrect.hitest(x, y);
-        context.islicewidthrect = context.slicewidthrect && context.slicewidthrect.hitest(x, y);
         contextobj.reset();
     },
     panend: function(context, rect, x, y)
@@ -4434,9 +4425,7 @@ bossobj.draw = function()
      }
 
     context.restore();
-    delete context.extentrect;
     delete context.slicerect;
-    delete context.slicewidthrect;
     delete context.stretchrect;
     delete context.canvas.thumbrect;
     delete context.pagerect;
