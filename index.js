@@ -1419,11 +1419,6 @@ var displaylst =
     {
         var canvas = context.canvas;
         context.save();
-        delete canvas.hollyrect;
-        delete context.holly2rect;
-        delete canvas.vscrollrect;
-        delete canvas.sealrect;
-        delete canvas.beavrect;
         var hollyobj = canvas.hollyobj;
         canvas.buttonrect = new rectangle();
         canvas.templaterect = new rectangle();
@@ -1527,10 +1522,6 @@ var displaylst =
     {    
         var canvas = context.canvas;
         context.save();
-        delete canvas.templaterect;
-        delete canvas.buttonrect;
-        delete context.button2rect;
-        delete context.template2rect;
         canvas.vscrollrect = new rectangle();
         canvas.hollyrect = new rectangle();
         canvas.gorect = new rectangle();
@@ -5017,14 +5008,7 @@ menuobj.draw = function()
             lasty = y;
 
             var x = rect.width / 2;
-            var j = 
-            {
-                slice,
-                x,
-                y,
-                n
-            };
-
+            var j = {slice,x,y,n};
             slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight);
             slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
             if (slice.isvisible)
@@ -5047,6 +5031,19 @@ menuobj.draw = function()
             }
         }
     }
+
+    //gallery
+    delete canvas.buttonrect;
+    delete canvas.templaterect;
+    delete context.button2rect;
+    delete context.template2rect;
+
+    //button
+    delete canvas.vscrollrect;
+    delete canvas.hollyrect;
+    delete canvas.gorect;
+    delete context.holly2rect;
+    delete context.time2rect;
 
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
