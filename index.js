@@ -924,7 +924,7 @@ var bossdisplaylst =
             var data = [];
             var index = galleryobj.current();
             //data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
-            data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
+            data.push(`\u{25C0}   ${index} of ${galleryobj.length()}   \u{25B6}`);
             
             var a = new panel.layerA(
             [
@@ -1081,7 +1081,6 @@ var bossdisplaylst =
             context.restore();
     }
 },
-
 {
     name: "ZOOM",
     title: "Zoom",
@@ -1090,8 +1089,6 @@ var bossdisplaylst =
             var canvas = context.canvas;
             context.zoomrect = new rectangle();
             context.stretchrect = new rectangle();
-            context.timerect = new rectangle();
-            context.pagerect = new rectangle();
             context.stretchcolumnrect = new rectangle();
 
             if (
@@ -4446,21 +4443,41 @@ bossobj.draw = function()
      }
 
     context.restore();
+
+    //thumbnail
+    delete context.timerect;
+    delete context.pagerect;
+    delete context.windowrect;
+    delete context.galleryrect;
+
+    //zoom
+    delete context.stretchcolumnrect;
+    delete context.zoomrect;
+    delete context.stretchrect;
+    delete context.stretchcolumnrect;
+
+    //Upload
+    delete context.hollyrect;
+    delete context.downloadrect;
+    delete context.uploadrect;
+    delete context.deleterect;
+
+    //Describe
+    delete context.hollyrect;
+    delete context.editrect;
+    delete context.copyrect;
+    delete context.pasterect;
+
+    //others
     delete context.slicerect;
     delete context.stretchrect;
     delete context.canvas.thumbrect;
-    delete context.pagerect;
-    delete context.stretchcolumnrect;
-    delete context.windowrect;
-    delete context.galleryrect;    
     delete context.copyidrect;
     delete context.deleterect;
     delete context.downloadrect;
     delete context.uploadrect;
     delete context.hollyyrect;
-    delete context.editrect;
-    delete context.copyrect;
-    delete context.pasterect;
+    
     if (!menuobj.value() && headcnv.height)
         bossdisplayobj.value().draw(context, rect, 0, 0);
 }
