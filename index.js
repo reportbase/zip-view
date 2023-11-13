@@ -3893,7 +3893,7 @@ var taplst =
                     contextobj.reset();
                 }
             
-                if (!gotodialog(galleryobj.current(), "Goto", foo))
+                if (!gotodialog(galleryobj.current().toFixed(5), "Goto", foo))
                     return;
                 galleryobj.init()
         }
