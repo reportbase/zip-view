@@ -3893,7 +3893,7 @@ var taplst =
                     contextobj.reset();
                 }
             
-                if (!gotodialog(galleryobj.current().toFixed(5), "Goto", foo))
+                if (!gotodialog(galleryobj.current().toFixed(0), "Goto", foo))
                     return;
                 galleryobj.init()
         }
@@ -4098,7 +4098,7 @@ var taplst =
 
             var index = 1 - _8cnv.timeobj.berp();
             index *= galleryobj.length();
-            if (!gotodialog(index.toFixed(FIXEDTIME), "Goto", foo))
+            if (!gotodialog(index.toFixed(5), "Goto", foo))
                 return;
             galleryobj.init()
         }
