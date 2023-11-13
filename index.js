@@ -6327,17 +6327,28 @@ galleryobj.init = function(obj)
 {
     if (obj)
         Object.assign(galleryobj, obj);
-    if (galleryobj.length() < BOSSMIN)
+
+    var size = Number(url.searchParams.get('size'));
+    var padlst = 
+    [
+        3,2,1,0,0,0,0,0,0,0,//10
+        0,0,0,0,0,0,0,0,0,0,//20
+        0,0,0,0,0,0,0,0,0,0,//30
+        0,0,9,8,7,6,5,4,3,2,//40
+        1,0,0,0,0,0,0,0,0,0,//50
+        0,0,0,0,0,0,0,0,0,0,//60
+        0,0,0,0,9,8,7,6,5,4,//70
+        3,2,1,0,0,0,0,0,0,0,//80
+    ];
+
+    var j = padlst[galleryobj.length-1]
+    for (var n = 0; n < j; ++n)
     {
-        for (var n = galleryobj.length(); n < BOSSMIN; ++n)
-            galleryobj.data.push(Object.assign({}, galleryobj.data[0]));
+        galleryobj.data.push({});
     }
 
-    var lst = 
-    [
-        33,34,35,36,37,38,39,40,41,
-    ];
-    /*
+    
+/*
 65-73,
 97-109,
 129-135,  
@@ -6346,7 +6357,7 @@ galleryobj.init = function(obj)
 225-231,   
 257-263,
 289-295
-    */
+*/
     
     delete photo.image;
 
