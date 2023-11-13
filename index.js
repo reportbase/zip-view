@@ -2307,11 +2307,11 @@ CanvasRenderingContext2D.prototype.savetime = function()
     this.savetimeout = setTimeout(function()
         {
             var e = url.searchParams.get('_8');
-            if (e != _8cnv.timeobj.current().toFixed(FIXEDTIME))
+            if (e != _8cnv.timeobj.current().toFixed(5))
             {
                 var k = _8cnv.timeobj.current();
                 if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
-                    url.searchParams.set('_8', k.toFixed(FIXEDTIME));
+                    url.searchParams.set('_8', k.toFixed(5));
                 window.history.replaceState("", url.origin, url);
             }
       }, 1000)
