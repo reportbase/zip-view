@@ -946,9 +946,11 @@ var bossdisplaylst =
                     ]),
                    0
                 ]),
-                new panel.rowsA([0, (data.length*WRAPROWHEIGHT), 
-                                 SCROLLEXTENT, SCROLLMARGIN],
+                new panel.rowsA([HEADTOP, HEADBOT, 0, (data.length*WRAPROWHEIGHT), 
+                                 FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
                 [
+                    0,
+                    0,
                     0,
                     new panel.cols([0, RAINSTEP, 0],
                     [
@@ -961,6 +963,7 @@ var bossdisplaylst =
                         ]),
                         0,
                     ]),
+                    0,
                     0,
                     0,
                 ])
@@ -2118,7 +2121,7 @@ panel.close = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.closeboss),
-                new panel.shrink(new panel.circle("rgba(255,0,0,0.6)", SEARCHFRAME, 4), 20, 20),
+                new panel.shrink(new panel.circle("rgba(255,0,0,0.35)", SEARCHFRAME, 4), 21, 21),
                 new panel.text("white", "center", "middle", 0, 0, DEFAULTFONT),
             ]);
 
