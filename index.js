@@ -3882,15 +3882,8 @@ CanvasRenderingContext2D.prototype.hithumb = function(x, y)
         var rect = this.canvas.thumbrect;
         var c = (x - rect.x) % rect.width;
         var b = c / rect.width;
-        var e = this.canvas.sliceobj.length();
-        var m = (1 - b) * e;
-        var d = sealobj.value() / 1000;
-        var j = d / e;
-        var time = j * m;
-        var k = time % d;
-        ///var e = this.canvas.timeobj.length() * (k / d);
-        var e = sealobj.length() * (k/d);
-        this.canvas.timeobj.set(e);
+        var m = (1 - b) * sealobj.value();
+        this.canvas.timeobj.set(m);
     }
 
     if (typeof y !== "undefined")
