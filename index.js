@@ -2813,7 +2813,6 @@ var wheelst =
         }
         else
         {
-            _4cnv.lastime = -0.0000000000101010101;
             var k = _4cnv.timeobj.length();
             var j = k*(-delta/5000);
             _4cnv.timeobj.CURRENT += j;
@@ -3321,18 +3320,7 @@ var panlst =
         }
         else if (type == "panleft" || type == "panright")
         {
-            if (0)//context.ishollyrect)
-            {
-                var hollyobj = context.canvas.hollyobj;
-                var k = panhorz(hollyobj, rect.width - x);
-                if (k == -1)
-                    return;
-                if (k == hollyobj.anchor())
-                    return;
-                hollyobj.set(k);
-                context.refresh()
-            }
-            else if (context.istimerect)
+            if (context.istimerect)
             {
                 var k = (x - context.timerect.x) / context.timerect.width;
                 canvas.timeobj.setperc(1 - k);
@@ -3341,9 +3329,10 @@ var panlst =
             else
             {
                 var e = canvas.startx-x;
-                var jvalue = sealobj.value() / canvas.virtualwidth
-                jvalue *= e;
-                canvas.timeobj.rotateanchored(jvalue);
+                var k = sealobj.value() / canvas.virtualwidth
+                k *= e;
+                canvas.timeobj.CURRENT = canvas.timeobj - k;
+                //remove todo canvas.timeobj.rotateanchored(jvalue);
                 context.refresh()
             }
         }
@@ -3355,17 +3344,6 @@ var panlst =
                 var k = (y - context.zoomrect.y) / context.zoomrect.height;
                 zoomobj.setperc(k);
                 contextobj.reset()
-            }
-            else if (0)//context.ishollyrect)
-            {
-                var hollyobj = context.canvas.hollyobj;
-                var k = panvert(hollyobj, rect.height - y);
-                if (k == -1)
-                    return;
-                if (k == hollyobj.anchor())
-                    return;
-                hollyobj.set(k);
-                context.refresh()
             }
             else if (context.isgalleryrect)
             {
