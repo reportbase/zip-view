@@ -5465,8 +5465,7 @@ contextlst.forEach(function(context, n)
     canvas.drop = k.drop;
 
     var k = keylst.findIndex(function(a){return a.name == obj.key});
-    k = keylst[k];
-    
+    k = keylst[k];  
     canvas.keyup_ = k.keyup;
     canvas.keydown_ = k.keydown;
 
@@ -5479,10 +5478,8 @@ contextlst.forEach(function(context, n)
     k = mouselst[k];
     canvas.mouse = k;
 
-    var k = presslst.findIndex(function(a)
-    {
-        return a.name == obj.press
-    });
+    var k = presslst.findIndex(function(a){
+        return a.name == obj.press});
     k = presslst[k];
     if (IFRAME)
     {
@@ -5495,37 +5492,24 @@ contextlst.forEach(function(context, n)
         canvas.press_ = k.press;
     }
 
-    var k = swipelst.findIndex(function(a)
-    {
-        return a.name == obj.swipe
-    });
-    
+    var k = swipelst.findIndex(function(a){
+        return a.name == obj.swipe});
     k = swipelst[k];
     canvas.swipeleftright_ = k.swipeleftright;
     canvas.swipeupdown_ = k.swipeupdown;
 
-    var k = buttonlst.findIndex(function(a)
-    {
-        return a.name == obj.button
-    });
-    
+    var k = buttonlst.findIndex(function(a){
+        return a.name == obj.button});    
     k = buttonlst[k];
     canvas.draw = k.draw;
 
-    var k = taplst.findIndex(function(a)
-    {
-        return a.name.toLowerCase() == obj.tap.toLowerCase()
-    });
-    
+    var k = taplst.findIndex(function(a){
+        return a.name.toLowerCase() == obj.tap.toLowerCase()});  
     k = taplst[k];
     canvas.tap_ = k.tap;
 
-    var k = panlst.findIndex(function(a)
-    {
-        return a.name == obj.pan
-    });
-    
-    k = panlst[k];
+    var k = panlst.findIndex(function(a) {return a.name == obj.pan});
+    k = panlst[k];   
     context.canvas.panstart_ = k.panstart;
     context.canvas.pan_ = k.pan;
     context.canvas.panupdown_ = k.updown;
