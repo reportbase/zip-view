@@ -3655,15 +3655,6 @@ var keylst = [
                 menuobj.draw();
                 evt.preventDefault();
             }
-            else if (key == "g")
-            {
-                evt.preventDefault();
-                var index = 1 - _8cnv.timeobj.berp();
-                index *= galleryobj.length();
-                if (!gotodialog(index.toFixed(FIXEDTIME), "Goto", goimage))
-                    return;
-                galleryobj.init()
-            }
             else if (key == "\\" || key == "/")
             {
                 var h = headcnv.height ? 0 : HEADHEIGHT;
@@ -3897,7 +3888,8 @@ CanvasRenderingContext2D.prototype.hithumb = function(x, y)
         var j = d / e;
         var time = j * m;
         var k = time % d;
-        var e = this.canvas.timeobj.length() * (k / d);
+        ///var e = this.canvas.timeobj.length() * (k / d);
+        var e = sealobj.length() * (k/d);
         this.canvas.timeobj.set(e);
     }
 
