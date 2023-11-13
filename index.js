@@ -231,12 +231,6 @@ let circular_array = function(title, data)
             return Math.floor(Math.lerp(0, this.length(), berp));
     };
 
-    this.rotateanchored = function(index)
-    {
-        this.CURRENT = this.ANCHOR - index;
-        this.wrap();
-    };
-
     this.wrap = function()
     {
         if (this.CURRENT >= this.length())
@@ -3182,9 +3176,9 @@ var panlst =
             else
             {
                 var e = canvas.starty - y;
-                var jvalue = sealobj.value() / canvas.virtualheight
-                jvalue *= e;
-                canvas.timeobj.rotateanchored(jvalue);
+                var k = sealobj.value() / canvas.virtualheight
+                k *= e;
+                canvas.timeobj.CURRENT = canvas.timeobj.ANCHOR - k;
             }
             
             menuobj.draw()
@@ -3202,7 +3196,7 @@ var panlst =
         global.timeauto = 0;
         canvas.startx = x;
         canvas.starty = y;
-        canvas.timeobj.setanchor(canvas.timeobj.current());
+        canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
         canvas.istemplaterect = canvas.templaterect && canvas.templaterect.hitest(x, y);
         canvas.isbuttonrect = canvas.buttonrect && canvas.buttonrect.hitest(x, y);
         canvas.isvscrollrect = canvas.vscrollrect && canvas.vscrollrect.hitest(x, y);
@@ -3269,9 +3263,9 @@ var panlst =
             else
             {
                 var e = canvas.starty - y;
-                var jvalue = sealobj.value() / canvas.virtualheight
-                jvalue *= e;
-                canvas.timeobj.rotateanchored(jvalue);
+                var k = sealobj.value() / canvas.virtualheight
+                k *= e;
+                canvas.timeobj.CURRENT = canvas.timeobj.ANCHOR - k;
                 context.refresh()
             }
         }
@@ -3283,7 +3277,7 @@ var panlst =
         clearInterval(global.timeauto);
         global.timeauto = 0;
         canvas.starty = y;
-        canvas.timeobj.setanchor(canvas.timeobj.current());
+        canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
         canvas.ishollyrect = canvas.hollyrect && canvas.hollyrect.hitest(x, y);
         canvas.isvscrollrect = canvas.vscrollrect && canvas.vscrollrect.hitest(x, y);
     },
@@ -3332,7 +3326,6 @@ var panlst =
                 var k = sealobj.value() / canvas.virtualwidth
                 k *= e;
                 canvas.timeobj.CURRENT = canvas.timeobj.ANCHOR - k;
-                //remove todo canvas.timeobj.rotateanchored(jvalue);
                 context.refresh()
             }
         }
