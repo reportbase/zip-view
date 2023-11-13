@@ -6327,9 +6327,10 @@ galleryobj.init = function(obj)
 {
     if (obj)
         Object.assign(galleryobj, obj);
+    var length = Number(url.searchParams.get('length'));
+    galleryobj.data.length = length;    
     if (galleryobj.length())
         return;
-    var size = Number(url.searchParams.get('size'));
     var padlst = 
     [
         3,2,1,0,0,0,0,0,0,0,//10
@@ -6342,7 +6343,8 @@ galleryobj.init = function(obj)
         3,2,1,0,0,0,0,0,0,0,//80
     ];
 
-    var j = padlst[galleryobj.length()-1]
+    var length = Number(url.searchParams.get('length'));
+    var j = padlst[padlst-1]
     for (var n = 0; n < j; ++n)
     {
         galleryobj.data.push({});
