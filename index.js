@@ -2739,34 +2739,7 @@ var wheelst =
             displayobj.set(k);    
         }
 
-        var canvas = context.canvas;
-        if (canvas.templaterect && canvas.templaterect.hitest(x, y))
-        {
-            if (!canvas.templateblock)
-            {
-                var j = delta > 1 ?-1:1;
-                if (j == -1 && templateobj.current() == 0)
-                    return;
-                else if (j == 1 && templateobj.current() == 
-                         templateobj.length()-1)
-                    return;
-                
-                for (var n = 0; n < IMAGELSTSIZE; ++n)
-                {
-                    thumbfittedlst[n] = document.createElement("canvas");
-                    thumbimglst[n] = new Image();
-                }                
-    
-                templateobj.add(j);
-                buttonobj.reset()
-                menuobj.draw();
-                canvas.templateblock = setTimeout(function()
-                  {
-                      canvas.templateblock = 0;
-                  }, 250);      
-            }
-        }   
-        else if (canvas.buttonrect &&
+        if (canvas.buttonrect &&
             canvas.buttonrect.hitest(x, y))
         {
         }
@@ -3359,7 +3332,7 @@ var panlst =
         }
         else if (type == "panleft" || type == "panright")
         {
-            if (context.ishollyrect)
+            if (0)//context.ishollyrect)
             {
                 var hollyobj = context.canvas.hollyobj;
                 var k = panhorz(hollyobj, rect.width - x);
