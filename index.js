@@ -6327,10 +6327,16 @@ galleryobj.init = function(obj)
 {
     if (obj)
         Object.assign(galleryobj, obj);
-    var length = Number(url.searchParams.get('length'));
-    galleryobj.data.length = length;    
+    
+    if (url.searchParams.has('length'))
+    {
+        var length = Number(url.searchParams.get('length'));
+        galleryobj.data.length = length;    
+    }
+    
     if (!galleryobj.length())
         return;
+    
     var padlst = 
     [
         3,2,1,0,0,0,0,0,0,0,//10
