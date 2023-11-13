@@ -6347,7 +6347,8 @@ galleryobj.init = function(obj)
     var j = padlst[padlst-1]
     for (var n = 0; n < j; ++n)
     {
-        galleryobj.data.push({});
+        var e = {id: "DARK.0000"};
+        galleryobj.data.push(e);
     }
 
     
