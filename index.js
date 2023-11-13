@@ -2814,9 +2814,9 @@ var wheelst =
         else
         {
             _4cnv.lastime = -0.0000000000101010101;
-            var obj = _4cnv.timeobj;
-            var j = obj.length()*(-delta/5000);
-            obj.rotate(j);
+            var k = _4cnv.timeobj.length();
+            var j = k*(-delta/5000);
+            _4cnv.timeobj.CURRENT += j;
             bossobj.draw()
         }
     },
