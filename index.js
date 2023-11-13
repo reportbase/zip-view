@@ -3899,12 +3899,9 @@ var taplst =
         {
                 function foo(image)
                 {
-                    if (Math.floor(image) == image)
-                        image--;
-                    else
-                        image = Math.floor(image);
-                    image = util.clamp(0, galleryobj.length()-1, image);
-                    galleryobj.set(image);
+                    image = Math.floor(image);
+                    image = util.clamp(1, galleryobj.length(), image);
+                    galleryobj.set(image-1);
                     delete photo.image;
                     contextobj.reset();
                 }
