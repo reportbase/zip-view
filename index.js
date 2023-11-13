@@ -6760,6 +6760,7 @@ galleryobj.init = function(obj)
                 {
                     var path = `${url.origin}/?id=${this.id}`;
                     window.history.replaceState("", url.origin, path); 
+                    url = new URL(window.location.href);
                     url.path = this.id;
                     fetch(this.json)
                         .then((response) => jsonhandler(response))
