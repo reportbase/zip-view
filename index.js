@@ -3212,7 +3212,6 @@ var panlst =
         delete canvas.ishollyrect;
         delete canvas.isbeavrect;
         delete canvas.issealrect;
-        context.savetime();
         context.refresh();
     }
 },
@@ -5047,6 +5046,7 @@ menuobj.draw = function()
 
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
+    context.savetime();
 }
 
 var eventlst = 
@@ -7065,7 +7065,6 @@ function importdialog()
 
 menuobj.updown = function(context, delta)
 {
-    context.savetime();
     var canvas = context.canvas;
     canvas.autodirect = delta < 0 ? 1 : -1;
     var f = Math.abs(delta) / 100;
