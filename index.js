@@ -3880,7 +3880,7 @@ CanvasRenderingContext2D.prototype.hithumb = function(x, y)
     if (typeof x !== "undefined")
     {
         var rect = this.canvas.thumbrect;
-        var c = (x - rect.x) % rect.width;
+        var c = (x - rect.x);// % rect.width;
         var b = c / rect.width;
         var m = (1 - b) * sealobj.value();
         this.canvas.timeobj.set(m);
