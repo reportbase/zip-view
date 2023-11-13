@@ -928,7 +928,7 @@ var bossdisplaylst =
 
             var data = [];
             var index = galleryobj.current();
-            data.push(`${canvas.timeobj.current()} of ${canvas.timeobj.length()}`);
+            data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
             data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
             
             var rows = data.length;
