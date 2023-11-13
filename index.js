@@ -3492,6 +3492,7 @@ pressobj.set(3);
 
 function gotoimage(n)
 {
+    n = util.clamp(0, n, n);
     var k = 1-(n/galleryobj.length())
     var j = k*sealobj.value()
     _8cnv.timeobj.set(j);
@@ -3896,7 +3897,19 @@ var taplst =
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
-                if (!gotodialog(galleryobj.current()+1, "Goto", goimage))
+                function foo(image)
+                {
+                    if (Math.floor(image) == image)
+                        image--;
+                    else
+                        image = Math.floor(image);
+                    image = util.clamp(0, galleryobj.length()-1, image);
+                    galleryobj.set(image);
+                    delete photo.image;
+                    contextobj.reset();
+                }
+            
+                if (!gotodialog(galleryobj.current()+1, "Goto", foo))
                     return;
                 galleryobj.init()
         }
@@ -4093,11 +4106,17 @@ var taplst =
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
-                var index = 1 - _8cnv.timeobj.berp();
-                index *= galleryobj.length();
-               if (!gotodialog(index.toFixed(FIXEDTIME), "Goto", goimage))
-                    return;
-                galleryobj.init()
+            function foo(image)
+            {
+                gotoimage(image);
+                menuobj.draw();
+            }
+
+            var index = 1 - _8cnv.timeobj.berp();
+            index *= galleryobj.length();
+            if (!gotodialog(index.toFixed(FIXEDTIME), "Goto", foo))
+                return;
+            galleryobj.init()
         }
         else if (
             headcnvctx.fullrect &&
@@ -6885,15 +6904,6 @@ function gologin(email)
 {
     local.email = email;
     return true;
-}
-
-function goimage(image)
-{
-    image = util.clamp(0, galleryobj.length(), image);
-    gotoimage(image);
-    galleryobj.set(Math.floor(image)-1);
-    delete photo.image;
-    contextobj.reset();
 }
 
 function gotodialog(value, title, func)
