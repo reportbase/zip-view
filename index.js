@@ -2739,8 +2739,8 @@ var wheelst =
             displayobj.set(k);    
         }
 
-        if (canvas.buttonrect &&
-            canvas.buttonrect.hitest(x, y))
+        if (context.canvas.buttonrect &&
+            context.canvas.buttonrect.hitest(x, y))
         {
         }
         else
