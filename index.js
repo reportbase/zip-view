@@ -2697,19 +2697,16 @@ var wheelst =
             menuobj.draw();
             context.canvas.pinching = 0;
 
+            if (templateobj.current() != templateobj.length()-1)
             {
-                clearTimeout(context.wheeltimeout);
-                context.wheeltimeout = setTimeout(function()
+                for (var n = 0; n < IMAGELSTSIZE; ++n)
                 {
-                    for (var n = 0; n < IMAGELSTSIZE; ++n)
-                    {
-                        thumbfittedlst[n] = document.createElement("canvas");
-                        thumbimglst[n] = new Image();
-                    }                
-              
-                    templateobj.set(templateobj.length()-1);
-                    menuobj.draw();
-                }, 40);
+                    thumbfittedlst[n] = document.createElement("canvas");
+                    thumbimglst[n] = new Image();
+                }                
+          
+                templateobj.set(templateobj.length()-1);
+                menuobj.draw();
             }
         }
         else if (canvas.shiftKey)
