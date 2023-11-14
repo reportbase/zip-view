@@ -3586,7 +3586,8 @@ var keylst = [
                 key == "arrowup" ||
                 key == "k")
             {
-                var k = canvas.timeobj.length() / galleryobj.length()/6;
+                var j = ALIEXTENT/rect.height;
+                var k = (canvas.timeobj.length() / galleryobj.length()) * j;
                 canvas.timeobj.rotate(k);
                 menuobj.draw();
                 evt.preventDefault();
@@ -3595,7 +3596,8 @@ var keylst = [
                 key == "arrowdown" ||
                 key == "j")
             {
-                var k = canvas.timeobj.length() / galleryobj.length()/6;
+                var j = ALIEXTENT/rect.height;
+                var k = (canvas.timeobj.length() / galleryobj.length())*j;
                 canvas.timeobj.rotate(-k);
                 menuobj.draw();
                 evt.preventDefault();
