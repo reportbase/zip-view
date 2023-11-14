@@ -3650,6 +3650,8 @@ var keylst = [
             }
             else if (key == "-" || key == "[")
             {
+                var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
+                displayobj.set(k);
                 buttonobj.addperc(-1.0 / 100);
                 templateobj.reset();
                 menuobj.draw()
@@ -3657,6 +3659,8 @@ var keylst = [
             }
             else if (key == "+" || key == "]" || key == "=")
             {
+                var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
+                displayobj.set(k);
                 buttonobj.addperc(1.0 / 100);
                 templateobj.reset();
                 menuobj.draw()
