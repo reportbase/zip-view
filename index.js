@@ -2706,7 +2706,8 @@ var wheelst =
             context.wheeltimeout = setTimeout(function()
               {
                     templateobj.reset();
-               }, 100);
+                  menuobj.draw();
+               }, 1000);
             
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
