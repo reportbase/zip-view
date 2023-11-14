@@ -526,7 +526,10 @@ var templatelst =
 var templateobj = new circular_array("", templatelst);
 templateobj.set(4)
 
-const SEAL = 6283;
+var SEAL = 6283;
+var k = url.searchParams.get('seal');
+if (k)
+    SEAL = k;
 var sealobj = new circular_array("SEAL", SEAL);
 sealobj.set(SEAL/2);
 
