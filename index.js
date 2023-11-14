@@ -525,6 +525,17 @@ var templatelst =
 
 var templateobj = new circular_array("", templatelst);
 templateobj.set(4)
+templateobj.reset = function() 
+{
+    var n = 0;
+    for (; n < templatelst.length; ++n)
+        {
+            var j = templatelst[n].split("x")[0];
+            if (window.innerWidth < Number(j))
+                break;    
+        }
+    templateobj.set(n);
+}
 
 var SEAL = 6283;
 var k = url.searchParams.get('seal');
@@ -1702,6 +1713,7 @@ buttonobj.reset = function()
 
 buttonobj.fitwidth = function()
 {
+    templateobj.reset();
     buttonobj.reset();
     _8cnv.fitflash = 1;
     headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
@@ -2666,6 +2678,7 @@ var wheelst =
 
         if (ctrl)
         {
+            templateobj.set(templateobj.length()-1);
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
             displayobj.set(k);
             var j = buttonobj.length()/33;
@@ -2822,6 +2835,7 @@ var pinchlst =
     name: "GALLERY",
     pinch: function(context, x, y, scale)
     {
+        templateobj.set(templateobj.length()-1);
         var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
         displayobj.set(k);
         if (!context.buttonanchor)
@@ -6386,23 +6400,7 @@ galleryobj.init = function(obj)
     }
     
     delete photo.image;
-
-    if (galleryobj.template)
-    {
-        var k = templatelst.findIndex(function(a){return a == galleryobj.template});
-        templateobj.set(k);
-    }
-    else
-    {
-        var n = 0;
-        for (; n < templatelst.length; ++n)
-            {
-                var j = templatelst[n].split("x")[0];
-                if (window.innerWidth < Number(j))
-                    break;    
-            }
-        templateobj.set(n);
-    }
+    templateobj.reset();
     
     for (var n = 0; n < IMAGELSTSIZE; ++n)
     {
