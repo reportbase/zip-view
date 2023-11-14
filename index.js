@@ -2697,18 +2697,21 @@ var wheelst =
             menuobj.draw();
             context.canvas.pinching = 0;
 
-            clearTimeout(context.wheeltimeout);
-            context.wheeltimeout = setTimeout(function()
+            if (templateobj.current() != templateobj.length()-1)
             {
-                for (var n = 0; n < IMAGELSTSIZE; ++n)
+                clearTimeout(context.wheeltimeout);
+                context.wheeltimeout = setTimeout(function()
                 {
-                    thumbfittedlst[n] = document.createElement("canvas");
-                    thumbimglst[n] = new Image();
-                }                
-          
-                templateobj.set(templateobj.length()-1);
-                menuobj.draw();
-            }, 40);
+                    for (var n = 0; n < IMAGELSTSIZE; ++n)
+                    {
+                        thumbfittedlst[n] = document.createElement("canvas");
+                        thumbimglst[n] = new Image();
+                    }                
+              
+                    templateobj.set(templateobj.length()-1);
+                    menuobj.draw();
+                }, 40);
+            }
         }
         else if (canvas.shiftKey)
         {
@@ -2876,6 +2879,22 @@ var pinchlst =
             menuobj.draw();
             break;
         }
+
+            if (templateobj.current() != templateobj.length()-1)
+            {
+                clearTimeout(context.wheeltimeout);
+                context.wheeltimeout = setTimeout(function()
+                {
+                    for (var n = 0; n < IMAGELSTSIZE; ++n)
+                    {
+                        thumbfittedlst[n] = document.createElement("canvas");
+                        thumbimglst[n] = new Image();
+                    }                
+              
+                    templateobj.set(templateobj.length()-1);
+                    menuobj.draw();
+                }, 40);
+            }
     },
     pinchstart: function(context, rect, x, y)
     {
@@ -2891,15 +2910,6 @@ var pinchlst =
             delete context.scaleanchor;
             delete context.buttonheight;
             context.canvas.pinching = 0;
-            
-            for (var n = 0; n < IMAGELSTSIZE; ++n)
-            {
-                thumbfittedlst[n] = document.createElement("canvas");
-                thumbimglst[n] = new Image();
-            }                
-      
-            templateobj.set(templateobj.length()-1);
-            menuobj.draw();
          }, 40);
     },
 },
