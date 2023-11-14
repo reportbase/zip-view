@@ -2196,7 +2196,7 @@ panel.zoom = function()
             [
                 new panel.rectangle(context.zoomrect),
                 //s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), 16, 16) : 0,
-                new panel.shrink(new panel.circle(SCROLLNAB, SEARCHFRAME, 4), 12, 12),
+                new panel.shrink(new panel.circle(SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new Panel(), 15, 20),
             ]);
 
