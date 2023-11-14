@@ -524,7 +524,6 @@ var templatelst =
 ];
 
 var templateobj = new circular_array("", templatelst);
-templateobj.set(templateobj.length()-1);
 templateobj.reset = function() 
 {
     var hh = buttonobj.value();
@@ -6873,7 +6872,6 @@ galleryobj.init = function(obj)
     {
         galleryobj.width = this.width;
         galleryobj.height = this.height;
-        buttonobj.reset();
         contextobj.reset();
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
