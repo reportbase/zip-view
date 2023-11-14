@@ -893,7 +893,7 @@ var headlst =
             delete context.leftmenurect;
             delete context.rightmenurect;
             var s = SAFARI ? -1: ALIEXTENT;
-            var e = rect.width>360?(ALIEXTENT+10):-1;
+            var e = rect.width>=320?(ALIEXTENT+10):-1;
             var a = new panel.rows([BEXTENT, 0],
                 [
                     new panel.cols(
@@ -903,7 +903,7 @@ var headlst =
                         new panel.leftmenu(),
                         0,
                         g ? new panel.fullscreen() : 0,
-                        (g&&rect.width>360) ? new panel.zoom() : 0,
+                        g ? new panel.zoom() : 0,
                         g ? new panel.fitwidth() : 0,
                         0,
                         new panel.rightmenu(),
