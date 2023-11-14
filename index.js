@@ -4037,14 +4037,14 @@ var taplst =
                 galleryobj.leftcnv = _7cnv;
                 galleryobj.leftctx = _7cnvctx;
                 menuobj.setindex(_8cnvctx);
-                menuobj.show();
             }
             else
             {
                 menuobj.setindex(galleryobj.leftctx);
-                menuobj.show();
             }
 
+            menuobj.show();
+            menuobj.draw();
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
