@@ -533,7 +533,7 @@ templateobj.reset = function()
     for (; n < templatelst.length; ++n)
         {
             var j = templatelst[n].split("x")[0];
-            if (ww < Number(j))
+            if (hh < Number(j))
                 break;    
         }
 
@@ -1495,7 +1495,8 @@ var displaylst =
         var data = [];
         var hh = buttonobj.value();
         var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
-        var st = `\u{25C0}   ${ww.toFixed(0)} x ${hh.toFixed(0)}   \u{25B6}`;
+        //var st = `\u{25C0}   ${ww.toFixed(0)} x ${hh.toFixed(0)}   \u{25B6}`;
+        var st = `\u{25C0}   ${hh.toFixed(0)}   \u{25B6}`;
         var jp = templateobj.value().split("x");
         data.push(`\u{25C0}   ${jp[0]} x ${jp[1]}   \u{25B6}`);
         var a = new panel.rowsA([HEADTOP, HEADBOT, 0, (data.length*WRAPROWHEIGHT), 
