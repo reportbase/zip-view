@@ -524,22 +524,28 @@ var templatelst =
 ];
 
 var templateobj = new circular_array("", templatelst);
-templateobj.set(4)
 templateobj.reset = function() 
 {
+    var hh = buttonobj.value();
+    var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
+    
+    var n = 0;
+    for (; n < templatelst.length; ++n)
+        {
+            var j = templatelst[n].split("x")[0];
+            if (ww < Number(j))
+                break;    
+        }
+
+    if (n == templateobj.current())
+        return;
+    
     for (var n = 0; n < IMAGELSTSIZE; ++n)
     {
         thumbfittedlst[n] = document.createElement("canvas");
         thumbimglst[n] = new Image();
     }         
     
-    var n = 0;
-    for (; n < templatelst.length; ++n)
-        {
-            var j = templatelst[n].split("x")[0];
-            if (window.innerWidth < Number(j))
-                break;    
-        }
     templateobj.set(n);
 }
 
@@ -1719,8 +1725,8 @@ buttonobj.reset = function()
 
 buttonobj.fitwidth = function()
 {
-    templateobj.reset();
     buttonobj.reset();
+    templateobj.reset();
     _8cnv.fitflash = 1;
     headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
     setTimeout(function()
@@ -2692,21 +2698,10 @@ var wheelst =
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             buttonobj.add(k*j);
+            templateobj.reset();
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
             context.canvas.pinching = 0;
-
-            if (templateobj.current() != templateobj.length()-1)
-            {
-                for (var n = 0; n < IMAGELSTSIZE; ++n)
-                {
-                    thumbfittedlst[n] = document.createElement("canvas");
-                    thumbimglst[n] = new Image();
-                }                
-          
-                templateobj.set(templateobj.length()-1);
-                menuobj.draw();
-            }
         }
         else if (canvas.shiftKey)
         {
@@ -2871,24 +2866,10 @@ var pinchlst =
             if (j < b || j > b2)
                 continue;
             buttonobj.setcurrent(n);
+            templateobj.reset();
             menuobj.draw();
             break;
         }
-
-            {
-                clearTimeout(context.wheeltimeout);
-                context.wheeltimeout = setTimeout(function()
-                {
-                    for (var n = 0; n < IMAGELSTSIZE; ++n)
-                    {
-                        thumbfittedlst[n] = document.createElement("canvas");
-                        thumbimglst[n] = new Image();
-                    }                
-              
-                    templateobj.set(templateobj.length()-1);
-                    menuobj.draw();
-                }, 40);
-            }
     },
     pinchstart: function(context, rect, x, y)
     {
@@ -6433,7 +6414,6 @@ galleryobj.init = function(obj)
     }
     
     delete photo.image;
-    templateobj.reset();
     
     for (var n = 0; n < IMAGELSTSIZE; ++n)
     {
@@ -6441,6 +6421,8 @@ galleryobj.init = function(obj)
         thumbimglst[n] = new Image();
     }
 
+    templateobj.reset();
+    
     setfavicon();
     stretchobj.makerange("40-90", stretchobj.length());  
     stretchobj.set(90);
