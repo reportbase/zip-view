@@ -2689,7 +2689,7 @@ var wheelst =
             templateobj.set(templateobj.length()-1);
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
             displayobj.set(k);
-            var j = buttonobj.length()/33;
+            var j = buttonobj.length()/66;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             buttonobj.add(k*j);
