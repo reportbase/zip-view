@@ -527,28 +527,32 @@ var templateobj = new circular_array("", templatelst);
 templateobj.set(templateobj.length()-1);
 templateobj.reset = function() 
 {
-    var hh = buttonobj.value();
-    var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
-    var w = Math.max(window.innerWidth,ww);
+    clearTimeout(global.templatetimeout);
+    global.templatetimeout = setTimeout(function()
+      {
+        var hh = buttonobj.value();
+        var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
+        var w = Math.max(window.innerWidth,ww);
+        
+        var n = 0;
+        for (; n < templatelst.length; ++n)
+            {
+                var j = templatelst[n].split("x")[0];
+                if (w < Number(j))
+                    break;    
+            }
     
-    var n = 0;
-    for (; n < templatelst.length; ++n)
+        if (n == templateobj.current())
+            return;
+        
+        for (var m = 0; m < IMAGELSTSIZE; ++m)
         {
-            var j = templatelst[n].split("x")[0];
-            if (w < Number(j))
-                break;    
-        }
-
-    if (n == templateobj.current())
-        return;
-    
-    for (var m = 0; m < IMAGELSTSIZE; ++m)
-    {
-        thumbfittedlst[m] = document.createElement("canvas");
-        thumbimglst[m] = new Image();
-    }         
-    
-    templateobj.set(n);
+            thumbfittedlst[m] = document.createElement("canvas");
+            thumbimglst[m] = new Image();
+        }         
+        
+        templateobj.set(n);
+   }, 500);
 }
 
 var SEAL = 6283;
@@ -2701,14 +2705,7 @@ var wheelst =
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             buttonobj.add(k*j);
-            
-            clearTimeout(context.wheeltimeout);
-            context.wheeltimeout = setTimeout(function()
-              {
-                    templateobj.reset();
-                  menuobj.draw();
-               }, 1000);
-            
+            templateobj.reset();
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
             context.canvas.pinching = 0;
