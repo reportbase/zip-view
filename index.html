@@ -14,7 +14,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
-
 <link href="https://fonts.googleapis.com/css?family=Archivo+Black" rel="stylesheet">
 
 <style type="text/css">
@@ -52,7 +51,6 @@ label
   font-size: 1em; 
   width: 100%; 
   color: white;
-  
   border-radius: 5px;
 }
 
@@ -98,7 +96,6 @@ textarea
   color: black;
   text-align: left;
   font-weight: bold;
-  
 }
 
 button
@@ -108,28 +105,7 @@ button
   padding: 12px; 
   font-size: 1em; 
   font-weight: bold; 
-  border: 0px solid #99B;
-  
-}
-
-.fade 
-{
-  background-color: #DB1F48;
-  color: #fff;
-  transition: background-color 1s;
-}
-
-.fade:hover 
-{
-  background-color: #004369;
-  cursor: pointer;
-}
-
-.fade:focus,
-.fade:active 
-{
-  background-color: darkgreen;
-  transition: none;
+  border: 0px solid #99B; 
 }
 </style>
 
@@ -160,6 +136,9 @@ button
 <body ondragstart="return false;" ondrop="return false"; oncontextmenu='return false;'>
 
 <dialog id="goto-dialog" style="max-width: 80%; width: 720px;">
+      <label>Hello</label>
+      <input id="goto-input" autocapitalize="off" placeholder=""></input>
+      <label>Hello</label>
       <input id="goto-input" autocapitalize="off" placeholder=""></input>
       <button class="fade" id="goto-ok" style="" type="button">Goto</button>
 </dialog>
