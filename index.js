@@ -892,7 +892,7 @@ var headlst =
             delete context.leftmenurect;
             delete context.rightmenurect;
             var s = SAFARI ? -1: ALIEXTENT;
-            var e = ALIEXTENT + 10;
+            var e = rect.width>360?(ALIEXTENT+10):-1;
             var a = new panel.rows([BEXTENT, 0],
                 [
                     new panel.cols(
