@@ -524,6 +524,7 @@ var templatelst =
 ];
 
 var templateobj = new circular_array("", templatelst);
+templateobj.set(templateobj.length()-1);
 templateobj.reset = function() 
 {
     var hh = buttonobj.value();
