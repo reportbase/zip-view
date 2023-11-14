@@ -535,7 +535,7 @@ templateobj.reset = function()
     for (; n < templatelst.length; ++n)
         {
             var j = templatelst[n].split("x")[f];
-            if (e < Number(j))
+            if (e <= Number(j))
                 break;    
         }
 
