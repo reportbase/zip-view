@@ -4033,10 +4033,11 @@ var taplst =
             if (menuobj.value() == galleryobj.leftctx)
             {
                 galleryobj.leftctx.hide();
-                menuobj.setindex(_8cnvctx);
-                menuobj.draw();
-                galleryobj.leftnv = _7cnv;
+                galleryobj.rightctx.hide();
+                galleryobj.leftcnv = _7cnv;
                 galleryobj.leftctx = _7cnvctx;
+                menuobj.setindex(_8cnvctx);
+                menuobj.show();
             }
             else
             {
