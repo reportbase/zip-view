@@ -3987,8 +3987,8 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
-            headcnvctx.closeboss &&
-            headcnvctx.closeboss.hitest(x, y))
+            headcnvctx.closebossrect &&
+            headcnvctx.closebossrect.hitest(x, y))
         {
             menuobj.setindex(_8cnvctx);
             menuobj.show();
@@ -4000,6 +4000,7 @@ var taplst =
             headcnvctx.bossdisplayrect &&
             headcnvctx.bossdisplayrect.hitest(x, y))
         {
+            delete context.canvas.thumbrect;
             context.nothumb = 0;
             context.nostretchcolumn = 0;
             var k = (x - headcnvctx.bossdisplayrect.x) / headcnvctx.bossdisplayrect.width;
