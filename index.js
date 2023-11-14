@@ -540,10 +540,10 @@ templateobj.reset = function()
     if (n == templateobj.current())
         return;
     
-    for (var n = 0; n < IMAGELSTSIZE; ++n)
+    for (var m = 0; m < IMAGELSTSIZE; ++m)
     {
-        thumbfittedlst[n] = document.createElement("canvas");
-        thumbimglst[n] = new Image();
+        thumbfittedlst[m] = document.createElement("canvas");
+        thumbimglst[m] = new Image();
     }         
     
     templateobj.set(n);
