@@ -34,7 +34,7 @@ const RAINSTEP = 240;
 const HEADTOP = 80;
 const HEADBOT = 40;
 const FIXEDTIME = 2;
-const WRAPROWHEIGHT = 40;
+const WRAPROWHEIGHT = 30;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
 const FOOTHEIGHT = 80;
 const MAXEXTENT = 10000;
@@ -71,7 +71,7 @@ const MENU = 2;
 const TIMEMAIN = 4;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
-const MULTITEXTROWHEIGHT = 21;
+const MULTITEXTROWHEIGHT = 24;
 
 var panel = {};
 var global = {};
