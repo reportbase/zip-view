@@ -4043,8 +4043,9 @@ var taplst =
                 menuobj.setindex(galleryobj.leftctx);
             }
 
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            displayobj.set(k);
             menuobj.show();
-            menuobj.draw();
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
