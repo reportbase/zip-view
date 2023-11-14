@@ -529,8 +529,8 @@ templateobj.reset = function()
 {
     var hh = buttonobj.value();
     var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
-    var e = window.innerWidth>window.innerHeight?window.innerWidth:window.innerHeight;
-    var f = window.innerWidth>window.innerHeight?0:1;
+    var e = Math.min(window.innerWidth,window.innerHeight);
+    var f = window.innerWidth<window.innerHeight?0:1;
     var n = 0;
     for (; n < templatelst.length; ++n)
         {
