@@ -2686,6 +2686,8 @@ var wheelst =
 
         if (ctrl)
         {
+            if (templateobj.current() < templateobj.length()/2)
+                templateobj.set(Math.floor(templateobj.length()/2));
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
             displayobj.set(k);
             var j = buttonobj.length()/66;
@@ -2842,6 +2844,8 @@ var pinchlst =
     name: "GALLERY",
     pinch: function(context, x, y, scale)
     {
+        if (templateobj.current() < templateobj.length()/2)
+            templateobj.set(Math.floor(templateobj.length()/2));
         var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
         displayobj.set(k);
         if (!context.buttonanchor)
