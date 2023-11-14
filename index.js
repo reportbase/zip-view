@@ -650,10 +650,11 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.homerect = new rectangle();
-        canvas.addrect = new rectangle();
-        canvas.editrect = new rectangle();        
-        canvas.deleterect = new rectangle();
-        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
+        canvas.addgalleryrect = new rectangle();
+        canvas.opengalleryrect = new rectangle();
+        canvas.editgalleryrect = new rectangle();        
+        canvas.deletegalleryrect = new rectangle();
+        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT,ALIEXTENT],
             [
                 new panel.layers(
                 [
@@ -669,17 +670,17 @@ var footlst =
                     [
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.addrect),
+                            new panel.rectangle(canvas.opengalleryrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.deleterect),
+                            new panel.rectangle(canvas.deletegalleryrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.editrect),
+                            new panel.rectangle(canvas.editgalleryrect),
                             new panel.text(),
                         ]),
                     ])                            
@@ -691,7 +692,7 @@ var footlst =
                    `\u{25C0}   Galleries`,
                    0,
                    [
-                       `New`,
+                       `Open`,
                        `Edit`,
                        `Delete`
                    ], 
@@ -779,7 +780,7 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.closerect = new rectangle();
-        canvas.openrect = new rectangle();
+        canvas.opengalleryrect = new rectangle();
         canvas.signinrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
@@ -797,7 +798,7 @@ var footlst =
                     [
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.openrect),
+                            new panel.rectangle(canvas.opengalleryrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
@@ -860,7 +861,7 @@ var headlst =
                             new panel.zoom(),
                             new panel.next(),
                             0, 
-                            new panel.close(), 
+                            new panel.closeboss(), 
                             0
                         ]),
                         new panel.cols([0,RAINSTEP,0],
@@ -1201,7 +1202,7 @@ var bossdisplaylst =
         context.hollyrect = new rectangle();
         context.downloadrect = new rectangle();
         context.uploadrect = new rectangle();
-        context.deleterect = new rectangle();
+        context.deletegalleryrect = new rectangle();
         var data = [];
         
         var b = 360;
@@ -1279,7 +1280,7 @@ var bossdisplaylst =
                     new panel.layers(
                     [
                         new panel.fill("rgba(255,0,0,0.5)"),
-                        new panel.rectangle(context.deleterect),
+                        new panel.rectangle(context.deletegalleryrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     0,
@@ -1310,7 +1311,7 @@ var bossdisplaylst =
     title: "Description",
     draw: function(context, rect, user, time)
     {
-        context.editrect = new rectangle();
+        context.editgalleryrect = new rectangle();
         context.copyrect = new rectangle();
         context.pasterect = new rectangle();
         context.hollyrect = new rectangle();
@@ -1347,7 +1348,7 @@ var bossdisplaylst =
                     new panel.layers(
                     [
                         new panel.fill("rgba(255,255,0,0.5)"),
-                        new panel.rectangle(context.editrect),
+                        new panel.rectangle(context.editgalleryrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
@@ -2023,7 +2024,7 @@ panel.open = function()
     this.draw = function(context, rect, user, time)
     {
         context.save();
-        context.canvas.openrect = new rectangle();
+        context.canvas.opengalleryrect = new rectangle();
 
         var Panel = function()
         {
@@ -2045,7 +2046,7 @@ panel.open = function()
 
         var a = new panel.layers(
             [
-                new panel.rectangle(context.canvas.openrect),
+                new panel.rectangle(context.canvas.opengalleryrect),
                 new panel.shrink(new panel.circle(SCROLLNAB, SEARCHFRAME, 4), 15, 15),
                 new panel.shrink(new Panel(), 20, 34),
             ]);
@@ -2129,19 +2130,33 @@ panel.previous = function()
     }
 };
 
-panel.close = function()
+panel.addgallery = function()
 {
     this.draw = function(context, rect, user, time)
     {
         context.save();
-        context.closeboss = new rectangle()
-        context.fillStyle = "white";
-        context.strokeStyle = "white";
-        context.shadowOffsetX = 0;
-        context.shadowOffsetY = 0;
+        context.addgalleryrect = new rectangle()
         var a = new panel.layers(
             [
-                new panel.rectangle(context.closeboss),
+                new panel.rectangle(context.addgalleryrect),
+                new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.text("white", "center", "middle", 0, 0, DEFAULTFONT),
+            ]);
+
+        a.draw(context, rect, '+', time);
+        context.restore();
+    }
+};
+
+panel.closeboss = function()
+{
+    this.draw = function(context, rect, user, time)
+    {
+        context.save();
+        context.closebossrect = new rectangle()
+        var a = new panel.layers(
+            [
+                new panel.rectangle(context.closebossrect),
                 new panel.shrink(new panel.circle("rgba(255,0,0,0.35)", SEARCHFRAME, 4), 21, 21),
                 new panel.text("white", "center", "middle", 0, 0, DEFAULTFONT),
             ]);
@@ -2157,9 +2172,6 @@ panel.next = function()
     {
         context.save();
         context.movenext = new rectangle()
-        context.fillStyle = "white";
-        context.strokeStyle = "white";
-
         var a = new panel.layers(
             [
                 new panel.rectangle(context.movenext),
@@ -3890,7 +3902,7 @@ var taplst =
         {
             _4cnvctx.movepage(1);
         }
-        else if (context.deleterect && context.deleterect.hitest(x, y))
+        else if (context.deletegalleryrect && context.deletegalleryrect.hitest(x, y))
         {
                 
         }
@@ -3902,7 +3914,7 @@ var taplst =
         {
                 
         }
-        else if (context.editrect && context.editrect.hitest(x, y))
+        else if (context.editgalleryrect && context.editgalleryrect.hitest(x, y))
         {
                 
         }
@@ -4268,7 +4280,7 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             return true;
         }
-        else if (canvas.openrect && canvas.openrect.hitest(x, y))
+        else if (canvas.opengalleryrect && canvas.opengalleryrect.hitest(x, y))
         {
             importdialog()
             return true;
@@ -4488,11 +4500,11 @@ bossobj.draw = function()
     delete context.hollyrect;
     delete context.downloadrect;
     delete context.uploadrect;
-    delete context.deleterect;
+    delete context.deletegalleryrect;
 
     //Describe
     delete context.hollyrect;
-    delete context.editrect;
+    delete context.editgalleryrect;
     delete context.copyrect;
     delete context.pasterect;
 
@@ -4501,7 +4513,7 @@ bossobj.draw = function()
     delete context.stretchrect;
     delete context.canvas.thumbrect;
     delete context.copyidrect;
-    delete context.deleterect;
+    delete context.deletegalleryrect;
     delete context.downloadrect;
     delete context.uploadrect;
     delete context.hollyyrect;
