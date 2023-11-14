@@ -71,7 +71,7 @@ const MENU = 2;
 const TIMEMAIN = 4;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
-const MULTITEXTROWHEIGHT = 24;
+const MULTITEXTROWHEIGHT = 21;
 
 var panel = {};
 var global = {};
