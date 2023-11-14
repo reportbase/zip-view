@@ -939,8 +939,7 @@ var bossdisplaylst =
             context.pagerect = new rectangle();
             context.windowrect = new rectangle();
             context.galleryrect = new rectangle();
-            canvas.thumbrect = new rectangle();
-        
+            
             if (
                 !photo.image ||
                 !photo.image.complete ||
@@ -4001,6 +4000,7 @@ var taplst =
             headcnvctx.bossdisplayrect &&
             headcnvctx.bossdisplayrect.hitest(x, y))
         {
+            delete context.canvas.thumbrect;
             context.nothumb = 0;
             context.nostretchcolumn = 0;
             var k = (x - headcnvctx.bossdisplayrect.x) / headcnvctx.bossdisplayrect.width;
