@@ -528,7 +528,7 @@ templateobj.reset = function()
 {
     var hh = buttonobj.value();
     var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
-    var w = Math.max(window.innerWidth,ww);
+    var w = Math.min(window.innerWidth,ww);
     
     var n = 0;
     for (; n < templatelst.length; ++n)
@@ -6418,8 +6418,6 @@ galleryobj.init = function(obj)
     }
     
     delete photo.image;
-  
-    templateobj.reset();
     
     setfavicon();
     stretchobj.makerange("40-90", stretchobj.length());  
