@@ -2697,7 +2697,6 @@ var wheelst =
             menuobj.draw();
             context.canvas.pinching = 0;
 
-            if (templateobj.current() != templateobj.length()-1)
             {
                 clearTimeout(context.wheeltimeout);
                 context.wheeltimeout = setTimeout(function()
@@ -2880,7 +2879,6 @@ var pinchlst =
             break;
         }
 
-            if (templateobj.current() != templateobj.length()-1)
             {
                 clearTimeout(context.wheeltimeout);
                 context.wheeltimeout = setTimeout(function()
