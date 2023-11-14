@@ -527,6 +527,12 @@ var templateobj = new circular_array("", templatelst);
 templateobj.set(4)
 templateobj.reset = function() 
 {
+    for (var n = 0; n < IMAGELSTSIZE; ++n)
+    {
+        thumbfittedlst[n] = document.createElement("canvas");
+        thumbimglst[n] = new Image();
+    }         
+    
     var n = 0;
     for (; n < templatelst.length; ++n)
         {
