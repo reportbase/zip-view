@@ -43,6 +43,7 @@ const MENUSELECT = "rgba(255,175,0,0.4)";
 const MENUTAP = "rgba(255,125,0,0.7)";
 const SCROLLNAB = "rgba(0,0,0,0.3)";
 const MENUCOLOR = "rgba(0,0,0,0.5)";
+const FOOTBTNCOLOR = "rgba(0,0,0,0.6)";
 const OPTIONFILL = "white";
 const THUMBTRANSPARENT = "rgba(0,0,0,0.2)";
 const LIGHTHUMBFILLL = "rgba(255,125,0,0.25)";
@@ -585,7 +586,7 @@ var footlst =
                 0,
                 _5cnv.sliceobj.length()?new panel.layers(
                 [
-                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.fill(FOOTBTNCOLOR),
                     new panel.colsA([0,0],
                     [
                         new panel.layers(
@@ -629,7 +630,7 @@ var footlst =
             [
                 new panel.layers(
                 [
-                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.fill(FOOTBTNCOLOR),
                     new panel.text(),
                     new panel.rectangle(canvas.homerect),
                 ]),
@@ -655,14 +656,14 @@ var footlst =
             [
                 new panel.layers(
                 [
-                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.fill(FOOTBTNCOLOR),
                     new panel.rectangle(canvas.homerect),
                     new panel.text(),
                 ]),
                 0,
                 new panel.layers(
                 [
-                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.fill(FOOTBTNCOLOR),
                     new panel.colsA([0,0,0],
                     [
                         new panel.layers(
@@ -709,7 +710,7 @@ var footlst =
         [
             new panel.layers(
             [
-                new panel.fill("rgba(0,0,0,0.8)"),
+                new panel.fill(FOOTBTNCOLOR),
                 new panel.text(),
                 new panel.rectangle(canvas.homerect),
             ]),
@@ -1172,7 +1173,7 @@ var bossdisplaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.fill("rgba(255,255,0,0.5)"),
+                        new panel.fill(FOOTBTNCOLOR),
                         new panel.rectangle(context.stretchcolumnrect),
                         new panel.shadow(new panel.text()),
                     ]),
@@ -1264,19 +1265,19 @@ var bossdisplaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.fill("rgba(0,0,255,0.5)"),
+                        new panel.fill(FOOTBTNCOLOR),
                         new panel.rectangle(context.uploadrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
-                        new panel.fill("rgba(0,255,0,0.5)"),
+                        new panel.fill(FOOTBTNCOLOR),
                         new panel.rectangle(context.downloadrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
-                        new panel.fill("rgba(255,0,0,0.5)"),
+                        new panel.fill(FOOTBTNCOLOR),
                         new panel.rectangle(context.deletegalleryrect),
                         new panel.shadow(new panel.text()),
                     ]),
@@ -1344,19 +1345,19 @@ var bossdisplaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.fill("rgba(255,255,0,0.5)"),
+                        new panel.fill(FOOTBTNCOLOR),
                         new panel.rectangle(context.editgalleryrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
-                        new panel.fill("rgba(100,0,255,0.5)"),
+                        new panel.fill(FOOTBTNCOLOR),
                         new panel.rectangle(context.copyrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
-                        new panel.fill("rgba(0,255,0,0.5)"),
+                        new panel.fill(FOOTBTNCOLOR),
                         new panel.rectangle(context.pasterect),
                         new panel.shadow(new panel.text()),
                     ]),
@@ -4062,6 +4063,8 @@ var taplst =
                 menuobj.show();
             }
 
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            displayobj.set(k);
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
