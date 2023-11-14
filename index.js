@@ -2686,7 +2686,6 @@ var wheelst =
 
         if (ctrl)
         {
-            templateobj.set(templateobj.length()-1);
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
             displayobj.set(k);
             var j = buttonobj.length()/66;
