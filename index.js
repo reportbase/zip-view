@@ -538,9 +538,6 @@ templateobj.reset = function()
                 break;    
         }
 
-    if (n == templateobj.current())
-        return;
-    
     for (var m = 0; m < IMAGELSTSIZE; ++m)
     {
         thumbfittedlst[m] = document.createElement("canvas");
@@ -905,7 +902,7 @@ var headlst =
                         new panel.leftmenu(),
                         0,
                         g ? new panel.fullscreen() : 0,
-                        g ? new panel.zoom() : 0,
+                        (g&&rect.width>360) ? new panel.zoom() : 0,
                         g ? new panel.fitwidth() : 0,
                         0,
                         new panel.rightmenu(),
