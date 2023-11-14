@@ -3196,6 +3196,7 @@ var panlst =
             {
                 var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
                 buttonobj.setperc(k);
+                templateobj.reset();
             }
             else
             {
@@ -4126,6 +4127,7 @@ var taplst =
         {
             var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
             buttonobj.setperc(k);
+             templateobj.reset();
             menuobj.draw()              
         }
         else if (
