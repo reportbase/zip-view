@@ -654,7 +654,7 @@ var footlst =
         canvas.opengalleryrect = new rectangle();
         canvas.editgalleryrect = new rectangle();        
         canvas.deletegalleryrect = new rectangle();
-        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT,ALIEXTENT],
+        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
                 [
@@ -663,11 +663,6 @@ var footlst =
                     new panel.text(),
                 ]),
                 0,
-                new panel.cols([ALIEXTENT, 0],
-                [
-                    new panel.addgallery(),
-                    0,
-                ]),
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
@@ -675,7 +670,7 @@ var footlst =
                     [
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.opengalleryrect),
+                            new panel.rectangle(canvas.addgalleryrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
@@ -696,10 +691,9 @@ var footlst =
                [
                    `\u{25C0}   Galleries`,
                    0,
-                   0,
                    [
-                       `Open`,
-                       `Edit   \u{25B6}`,
+                       `New \u{25B6}`,
+                       `Edit \u{25B6}`,
                        `Delete`
                    ], 
                 ]);
@@ -2132,24 +2126,6 @@ panel.previous = function()
             ]);
 
         a.draw(context, rect, user, time);
-        context.restore();
-    }
-};
-
-panel.addgallery = function()
-{
-    this.draw = function(context, rect, user, time)
-    {
-        context.save();
-        context.addgalleryrect = new rectangle()
-        var a = new panel.layers(
-            [
-                new panel.rectangle(context.addgalleryrect),
-                new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                new panel.text("white", "center", "middle", 0, 0, DEFAULTFONT),
-            ]);
-
-        a.draw(context, rect, '+', time);
         context.restore();
     }
 };
