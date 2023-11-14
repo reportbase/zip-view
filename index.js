@@ -527,32 +527,28 @@ var templateobj = new circular_array("", templatelst);
 templateobj.set(templateobj.length()-1);
 templateobj.reset = function() 
 {
-    clearTimeout(global.templatetimeout);
-    global.templatetimeout = setTimeout(function()
-      {
-        var hh = buttonobj.value();
-        var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
-        var w = Math.max(window.innerWidth,ww);
-        
-        var n = 0;
-        for (; n < templatelst.length; ++n)
-            {
-                var j = templatelst[n].split("x")[0];
-                if (w < Number(j))
-                    break;    
-            }
+    var hh = buttonobj.value();
+    var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
+    var w = Math.max(window.innerWidth,ww);
     
-        if (n == templateobj.current())
-            return;
-        
-        for (var m = 0; m < IMAGELSTSIZE; ++m)
+    var n = 0;
+    for (; n < templatelst.length; ++n)
         {
-            thumbfittedlst[m] = document.createElement("canvas");
-            thumbimglst[m] = new Image();
-        }         
-        
-        templateobj.set(n);
-   }, 500);
+            var j = templatelst[n].split("x")[0];
+            if (w < Number(j))
+                break;    
+        }
+
+    if (n == templateobj.current())
+        return;
+    
+    for (var m = 0; m < IMAGELSTSIZE; ++m)
+    {
+        thumbfittedlst[m] = document.createElement("canvas");
+        thumbimglst[m] = new Image();
+    }         
+    
+    templateobj.set(n);
 }
 
 var SEAL = 6283;
@@ -2705,7 +2701,6 @@ var wheelst =
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             buttonobj.add(k*j);
-            templateobj.reset();
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
             context.canvas.pinching = 0;
@@ -2873,7 +2868,6 @@ var pinchlst =
             if (j < b || j > b2)
                 continue;
             buttonobj.setcurrent(n);
-            templateobj.reset();
             menuobj.draw();
             break;
         }
@@ -3201,7 +3195,6 @@ var panlst =
             {
                 var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
                 buttonobj.setperc(k);
-                templateobj.reset();
             }
             else
             {
@@ -3660,7 +3653,6 @@ var keylst = [
                 var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
                 displayobj.set(k);
                 buttonobj.addperc(-1.0 / 100);
-                templateobj.reset();
                 menuobj.draw()
                 evt.preventDefault();
             }
@@ -3669,7 +3661,6 @@ var keylst = [
                 var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
                 displayobj.set(k);
                 buttonobj.addperc(1.0 / 100);
-                templateobj.reset();
                 menuobj.draw()
                 evt.preventDefault();
             }
@@ -4132,7 +4123,6 @@ var taplst =
         {
             var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
             buttonobj.setperc(k);
-             templateobj.reset();
             menuobj.draw()              
         }
         else if (
@@ -6429,13 +6419,7 @@ galleryobj.init = function(obj)
     }
     
     delete photo.image;
-    
-    for (var n = 0; n < IMAGELSTSIZE; ++n)
-    {
-        thumbfittedlst[n] = document.createElement("canvas");
-        thumbimglst[n] = new Image();
-    }
-
+  
     templateobj.reset();
     
     setfavicon();
