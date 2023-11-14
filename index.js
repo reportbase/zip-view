@@ -1728,6 +1728,8 @@ buttonobj.fitwidth = function()
         _8cnv.fitflash = 0;
         headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
     }, 400);
+
+    menuobj.draw();
 }
 
 function calculateAspectRatioFit(imgwidth, imgheight, rectwidth, rectheight)
@@ -2694,6 +2696,19 @@ var wheelst =
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
             context.canvas.pinching = 0;
+
+            clearTimeout(context.wheeltimeout);
+            context.wheeltimeout = setTimeout(function()
+            {
+                for (var n = 0; n < IMAGELSTSIZE; ++n)
+                {
+                    thumbfittedlst[n] = document.createElement("canvas");
+                    thumbimglst[n] = new Image();
+                }                
+          
+                templateobj.set(templateobj.length()-1);
+                menuobj.draw();
+            }, 40);
         }
         else if (canvas.shiftKey)
         {
@@ -2841,7 +2856,6 @@ var pinchlst =
     name: "GALLERY",
     pinch: function(context, x, y, scale)
     {
-        templateobj.set(templateobj.length()-1);
         var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
         displayobj.set(k);
         if (!context.buttonanchor)
@@ -2877,7 +2891,16 @@ var pinchlst =
             delete context.scaleanchor;
             delete context.buttonheight;
             context.canvas.pinching = 0;
-        }, 40);
+            
+            for (var n = 0; n < IMAGELSTSIZE; ++n)
+            {
+                thumbfittedlst[n] = document.createElement("canvas");
+                thumbimglst[n] = new Image();
+            }                
+      
+            templateobj.set(templateobj.length()-1);
+            menuobj.draw();
+         }, 40);
     },
 },
 {
