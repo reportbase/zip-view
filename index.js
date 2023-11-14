@@ -663,6 +663,11 @@ var footlst =
                     new panel.text(),
                 ]),
                 0,
+                new panel.cols([ALIEXTENT, 0],
+                [
+                    new panel.addgallery(),
+                    0,
+                ]),
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
@@ -691,9 +696,10 @@ var footlst =
                [
                    `\u{25C0}   Galleries`,
                    0,
+                   0,
                    [
                        `Open`,
-                       `Edit`,
+                       `Edit   \u{25B6}`,
                        `Delete`
                    ], 
                 ]);
