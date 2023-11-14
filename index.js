@@ -529,12 +529,13 @@ templateobj.reset = function()
 {
     var hh = buttonobj.value();
     var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
+    var w = Math.max(window.innerWidth,ww);
     
     var n = 0;
     for (; n < templatelst.length; ++n)
         {
             var j = templatelst[n].split("x")[0];
-            if (hh < Number(j))
+            if (w < Number(j))
                 break;    
         }
 
