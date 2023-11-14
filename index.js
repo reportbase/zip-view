@@ -5034,7 +5034,7 @@ menuobj.draw = function()
             if (slice.entry)
                 getblobpath(thumbimg, slice)
             else
-                thumbimg.src = imagepath(slice);
+                thumbimg.src = imagepath(slice,templateobj.value());
         }
         else
         {
@@ -6280,14 +6280,14 @@ async function getblobpath(img, slice)
     img.src = URL.createObjectURL(blob);
 }
 
-function imagepath(user)
+function imagepath(user, template)
 {
     var src;
     if (user.id && user.id.length >= 5 &&
         ((user.id.charAt(user.id.length - 5) == '.') ||
             user.id.charAt(8) == '-'))
     {
-        src = `https://image.reportbase5836.workers.dev/image/${user.id}/${templateobj.value()}`;
+        src = `https://image.reportbase5836.workers.dev/image/${user.id}/${template}`;
     }
     else if (user.id && user.id.length > 1 &&
         ((user.id.charAt(0) == 'Q' && user.id.charAt(1) == 'm') ||
@@ -6904,7 +6904,7 @@ galleryobj.init = function(obj)
     if (j.entry)
         getblobpath(image, j)
     else
-        image.src = imagepath(j);
+        image.src = imagepath(j,"5760x5760");
 }
 
 var local = {};
