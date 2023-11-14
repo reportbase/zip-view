@@ -3651,13 +3651,15 @@ var keylst = [
             else if (key == "-" || key == "[")
             {
                 buttonobj.addperc(-1.0 / 100);
-                context.refresh()
+                templateobj.reset();
+                menuobj.draw()
                 evt.preventDefault();
             }
             else if (key == "+" || key == "]" || key == "=")
             {
                 buttonobj.addperc(1.0 / 100);
-                context.refresh()
+                templateobj.reset();
+                menuobj.draw()
                 evt.preventDefault();
             }
             else if (
