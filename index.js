@@ -1489,10 +1489,10 @@ var displaylst =
         var w = Math.min(360, rect.width - 100);
         var data = [];
         var hh = buttonobj.value();
-        var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
-        //var st = `\u{25C0}   ${ww.toFixed(0)} x ${hh.toFixed(0)}   \u{25B6}`;
-        var st = `\u{25C0}   ${hh.toFixed(0)}   \u{25B6}`;
+        var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)).toFixed(0) : '000';
+        var st = `\u{25C0}   ${ww} x ${hh.toFixed(0)}   \u{25B6}`;
         var jp = templateobj.value().split("x");
+        data.push(`Resolution`);
         data.push(`\u{25C0}   ${jp[0]} x ${jp[1]}   \u{25B6}`);
         var a = new panel.rowsA([HEADTOP, HEADBOT, 0, (data.length*WRAPROWHEIGHT), 
                                  FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
@@ -1599,6 +1599,7 @@ var displaylst =
         if (value && value.folder)
             data = value.folder.split("/");
         //data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
+        data.push(`Cursor`);
         data.push(`\u{25C0}   ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}   \u{25B6}`);
         var st = `\u{25C0}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
