@@ -1335,7 +1335,7 @@ var bossdisplaylst =
         ], 0)  
     }
 },    
-
+/*
 {
     name: "DEBJG",
     title: "Debug",
@@ -1384,6 +1384,7 @@ var bossdisplaylst =
         a.draw(context, rect, data, 0)
     }
 },    
+*/
 ];
 
 var bossdisplayobj = new circular_array("", bossdisplaylst);
