@@ -1007,31 +1007,6 @@ var bossdisplaylst =
                 ]
             ]);
 
-            var bw = rect.width / 2;
-            var a = new panel.layers(
-            [
-                new panel.rectangle(context.windowrect),
-                new panel.rows([0, SCROLLEXTENT, SCROLLMARGIN],
-                [
-                    0,
-                    1?0:new panel.cols([0, bw, 0],
-                    [
-                        0,
-                        new panel.layers(
-                        [
-                            new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                            new panel.expand(new panel.rectangle(context.timerect), 0, 10),
-                            new panel.shrink(new panel.currentH(
-                                new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3)
-                        ]),
-                        0,
-                    ])
-                ]),
-            ])
-
-            if (headcnv.height)
-                a.draw(context, rect, context.canvas.timeobj, 0);
-
             var he = heightobj;
             var b = Math.berp(0, he.length() - 1, he.current());
             var height = Math.lerp(90, rect.height - 180, b);
@@ -1115,6 +1090,11 @@ var bossdisplaylst =
                 !photo.image.complete ||
                 !photo.image.naturalHeight)
                 return;
+
+            var data = [];
+            var index = galleryobj.current();
+            //data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
+            data.push(`\u{25C0}   ${index} of ${galleryobj.length()}   \u{25B6}`);
 
             var bh = rect.height * 0.4;
             var a = new panel.colsA([SCROLLMARGIN, SCROLLEXTENT, 0, SCROLLEXTENT, SCROLLMARGIN],
