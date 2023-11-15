@@ -3248,7 +3248,7 @@ var panlst =
             else if (context.hollyrect &&
                 context.hollyrect.hitest(x, y))
             {
-                var hollyobj = context.canvas.hollyobj;
+                var obj = context.canvas.hollyobj;
                 var k = (x - context.hollyrect.x) / context.hollyrect.width;
                 obj.setperc(1 - k);
                 context.refresh();
