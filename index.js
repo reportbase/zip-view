@@ -3944,8 +3944,6 @@ var taplst =
             }
             else
             {
-                var k = displaylst.findIndex(function(a){return a.name == "MENU"});
-                displayobj.set(k);
                 menuobj.setindex(galleryobj.rightctx);
                 menuobj.show();
             }
