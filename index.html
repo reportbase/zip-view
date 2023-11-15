@@ -42,13 +42,28 @@
 </head>
 <body ondragstart="return false;" ondrop="return false"; oncontextmenu='return false;'>
 
-<dialog id="goto-dialog" style="max-width: 80%; width: 720px;">
-      <label>Hello</label>
-      <input id="goto-input" autocapitalize="off" placeholder=""></input>
-      <label>Hello</label>
-      <input id="goto-input" autocapitalize="off" placeholder=""></input>
-      <button class="fade" id="goto-ok" style="" type="button">Goto</button>
-</dialog>
+<dialog id="goto" style="max-width: 80%; width: 720px;">
+      <div>
+        <input id="goto-input" autocapitalize="off" placeholder=""></input>
+        </div>
+      <div style="margin-top:30;"">
+         <button id="goto-ok" style="" type="button">Goto</button>
+       </div>
+ </dialog>
+                                                       
+<dialog id="gallery" style="max-width: 80%; width: 720px;">
+      <div>
+        <label>Title</label>
+        <input id="gallery-title" autocapitalize="off" placeholder=""></input>
+        <label>Path</label>
+        <input id="gallery-path" autocapitalize="off" placeholder=""></input>
+        <label>Description</label>
+        <input id="gallery-describe" autocapitalize="off" placeholder=""></input>
+      </div>
+      <div style="margin-top:30;"">
+         <button id="gallery-ok" style="" type="button">Save</button>
+       </div>
+ </dialog>
 
 </body>
 
