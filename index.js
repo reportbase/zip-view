@@ -3181,7 +3181,7 @@ var panlst =
                 var e = canvas.starty - y;
                 var jvalue = sealobj.value() / canvas.virtualheight
                 jvalue *= e;
-                canvas.timeobj.rotateanchored(jvalue);//todo
+                canvas.timeobj.rotateanchored(jvalue);
                 context.refresh()
             }
         }
@@ -3958,7 +3958,7 @@ var taplst =
         {
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.leftctx.hide()
-            if (menuobj.value() == galleryobj.leftctx)
+            if (menuobj.value() == galleryobj.rightctx)
             {
                 galleryobj.leftctx.hide();
                 galleryobj.rightctx.hide();
