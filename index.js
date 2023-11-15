@@ -3880,7 +3880,9 @@ var taplst =
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
-                if (showdialog(galleryobj.current().toFixed(0), "goto", function(image)
+                var input = document.getElementById("goto-input");
+                input.value = galleryobj.current().toFixed(0);
+                if (showdialog("goto", function(image)
                 {
                     image = Math.floor(image);
                     image = util.clamp(0, galleryobj.length()-1, image);
@@ -4090,7 +4092,9 @@ var taplst =
         {
             var index = 1 - _8cnv.timeobj.berp();
             index *= galleryobj.length();
-            if (showdialog(index.toFixed(5), "goto", function(image)
+            var input = document.getElementById("goto-input");
+            input.value = galleryobj.current().toFixed(0);
+            if (showdialog("goto", function(image)
             {
                 gotoimage(image);
                 menuobj.draw();
@@ -6536,7 +6540,9 @@ _7cnv.sliceobj.data = [
     title: `Login   \u{25B6}`,
     func: function()
     {
-        if (showdialog(local.email ? local.email : "", "user-login", function(str)
+        var input = document.getElementById("user-login-input");
+        input.value = local.email ? local.email : "";
+        if (showdialog("user-login", function(str)
         {
             local.email = str;
         }))
@@ -6548,7 +6554,9 @@ _7cnv.sliceobj.data = [
     title: `Signup   \u{25B6}`,
     func: function()
     {
-        if (showdialog(local.email ? local.email : "", "user-signup", function(str)
+        var input = document.getElementById("user-signup-input");
+        input.value = local.email ? local.email : "";
+        if (showdialog("user-signup", function(str)
         {
             local.email = str;
         }))
@@ -6913,7 +6921,7 @@ function downloadtext(name, text)
     document.body.removeChild(element);
 }
 
-function showdialog(value, str, func)
+function showdialog(str, func)
 {
     var button = document.getElementById(`${str}-ok`);
     dialog = document.getElementById(str);
@@ -6936,7 +6944,6 @@ function showdialog(value, str, func)
         }
     });
 
-    input.value = value;
     dialog.clickblocked = 1;
     setTimeout(function()
     {
