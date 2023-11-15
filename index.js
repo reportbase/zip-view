@@ -546,7 +546,7 @@ templateobj.reset = function()
     templateobj.set(n);
 }
 
-var SEAL = 6283.21;
+var SEAL = 6283.19;
 var sealobj = new circular_array("SEAL", SEAL);
 sealobj.set(SEAL/2);
 
