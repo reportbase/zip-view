@@ -3965,21 +3965,24 @@ var taplst =
             headcnvctx.rightmenurect &&
             headcnvctx.rightmenurect.hitest(x, y))
         {
+            galleryobj.set(_8cnv.lastcurrent)
             galleryobj.leftctx.hide()
-            if (menuobj.value() == galleryobj.rightctx)
+            if (menuobj.value() == galleryobj.leftctx)
             {
+                galleryobj.leftctx.hide();
                 galleryobj.rightctx.hide();
+                galleryobj.leftcnv = _7cnv;
+                galleryobj.leftctx = _7cnvctx;
                 menuobj.setindex(_8cnvctx);
-                menuobj.draw();
             }
             else
             {
                 menuobj.setindex(galleryobj.rightctx);
-                menuobj.show();
             }
 
             var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
             displayobj.set(k);
+            menuobj.show();
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
