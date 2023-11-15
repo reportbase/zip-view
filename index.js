@@ -4232,7 +4232,7 @@ var taplst =
         }
         else if (canvas.signinrect && canvas.signinrect.hitest(x, y))
         {
-            if (logindialog(local.email ? local.email : "", function(str)
+            if (userlogin(local.email ? local.email : "", function(str)
             {
                 local.email = str;
             }))
@@ -6536,7 +6536,7 @@ _7cnv.sliceobj.data = [
     title: `Login   \u{25B6}`,
     func: function()
     {
-        if (logindialog(local.email ? local.email : "", function(str)
+        if (userlogin(local.email ? local.email : "", function(str)
         {
             local.email = str;
         }))
@@ -6959,10 +6959,10 @@ function gotodialog(value, func)
     dialog.showModal();
 }
 
-function logindialog(value, func)
+function userlogin(value, func)
 {
-    var input = document.getElementById("login-input");
-    var button = document.getElementById("login-ok");
+    var input = document.getElementById("user-login");
+    var button = document.getElementById("user-login-ok");
     dialog = document.getElementById("login");
     //button.innerHTML = title;
     input.addEventListener("keyup", function(event)
