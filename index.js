@@ -3924,8 +3924,8 @@ var taplst =
                 menuobj.setindex(galleryobj.leftctx);
             }
 
-            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            displayobj.set(k);
+            //ar k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            //displayobj.set(k);
             menuobj.show();
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
@@ -3946,8 +3946,8 @@ var taplst =
                 menuobj.show();
             }
 
-            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            displayobj.set(k);
+            //var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            //displayobj.set(k);
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
