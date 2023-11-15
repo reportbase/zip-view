@@ -6800,6 +6800,10 @@ galleryobj.init = function(obj)
         galleryobj.width = this.width;
         galleryobj.height = this.height;
         contextobj.reset();
+        buttonobj.reset();
+        templateobj.reset();
+        templateobj.init();
+        buttonobj.init()
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
         menuobj.show();
@@ -6807,10 +6811,6 @@ galleryobj.init = function(obj)
         headham.panel = headlst[k];
         headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
         headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-        buttonobj.reset();
-        buttonobj.init()
-        templateobj.reset();
-        templateobj.init();
     };    
    
     _8cnv.timeobj.set(0);
