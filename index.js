@@ -1604,16 +1604,7 @@ var displaylst =
         var a = new panel.colsA([5, 9, 0, 9, 5],
             [
                 0,
-                1?0:new panel.rows([kh, 0, kh],
-                    [
-                        0,
-                        new panel.layers(
-                            [
-                                new panel.expand(new panel.rectangle(canvas.vscrollrect), 10, 0),
-                                new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 0),
-                            ]),
-                        0,
-                    ]),
+                0,
                 0,
                 new panel.rows([kh, 0, kh],
                     [
@@ -1633,7 +1624,7 @@ var displaylst =
                 0,
                 0,
                 0,
-                canvas.timeobj,
+                0,
                 0,
             ]);
 
