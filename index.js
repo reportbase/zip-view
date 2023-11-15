@@ -534,7 +534,7 @@ templateobj.init = function()
     var n = 0;
     for (; n < templateobj.length(); ++n)
         if (t == templateobj.data[n])
-            brea;
+            break;
 
     if (n != templateobj.length())
         templateobj.set(n);
