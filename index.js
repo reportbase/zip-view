@@ -1101,8 +1101,8 @@ var bossdisplaylst =
                 0,
             ]);
 
-          var index = galleryobj.current();
-            //data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
+            var data = [];
+            var index = galleryobj.current();
             data.push(`\u{25C0}   ${index} of ${galleryobj.length()}   \u{25B6}`);
             
             var a = new panel.rowsA([HEADTOP, HEADBOT, 0, 
