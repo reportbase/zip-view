@@ -1624,7 +1624,7 @@ var displaylst =
                 0,
                 0,
                 0,
-                0,
+                canvas.timeobj,
                 0,
             ]);
 
