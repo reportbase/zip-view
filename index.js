@@ -1615,7 +1615,7 @@ var displaylst =
                         0,
                     ]),
                 0,
-                1?0:new panel.rows([kh, 0, kh],
+                new panel.rows([kh, 0, kh],
                     [
                         0,
                         new panel.layers(
