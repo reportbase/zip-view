@@ -6993,8 +6993,8 @@ function gotodialog(value, title, func)
 {
     var input = document.getElementById("goto-input");
     var button = document.getElementById("goto-ok");
+    dialog = document.getElementById("goto");
     button.innerHTML = title;
-    dialog = document.getElementById("goto-dialog");
     input.addEventListener("keyup", function(event)
     {
         event.preventDefault();
