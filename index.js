@@ -3884,6 +3884,7 @@ var taplst =
                 input.value = galleryobj.current().toFixed(0);
                 if (showdialog("goto", function(image)
                 {
+                    var image = input.value.clean();
                     image = Math.floor(image);
                     image = util.clamp(0, galleryobj.length()-1, image);
                     galleryobj.set(image);
@@ -4096,6 +4097,7 @@ var taplst =
             input.value = index.toFixed(4);
             if (showdialog("goto", function(image)
             {
+                var image = input.value.clean();
                 gotoimage(image);
                 menuobj.draw();
             }))
@@ -6544,7 +6546,7 @@ _7cnv.sliceobj.data = [
         input.value = local.email ? local.email : "";
         if (showdialog("user-login", function(str)
         {
-            local.email = str;
+            local.email = input.value.clean();
         }))
             galleryobj.init();
         return true;
@@ -6558,7 +6560,7 @@ _7cnv.sliceobj.data = [
         input.value = local.email ? local.email : "";
         if (showdialog("user-signup", function(str)
         {
-            local.email = str;
+            local.email = input.value.clean();
         }))
             galleryobj.init();
         return true;    
@@ -6929,10 +6931,9 @@ function showdialog(str, func)
     {
         if (event.target.id == `${str}-ok`)
         {
-            var page = input.value.clean();
             dialog.close();
             menuobj.draw();
-            return func(page);
+            return func();
         }
         else
         {
