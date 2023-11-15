@@ -1492,34 +1492,44 @@ var displaylst =
         var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)).toFixed(0) : '000';
         var st = `\u{25C0}   ${ww} x ${hh.toFixed(0)}   \u{25B6}`;
         var jp = templateobj.value().split("x");
-        data.push(`Resolution`);
+        data.push(`Template`);
         data.push(`\u{25C0}   ${jp[0]} x ${jp[1]}   \u{25B6}`);
-        var a = new panel.rowsA([HEADTOP, HEADBOT, 0, (data.length*WRAPROWHEIGHT), 
+        var a = new panel.rowsA([HEADTOP, HEADBOT, 30, 0, (data.length*WRAPROWHEIGHT), 
                                  FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,    
             new panel.cols([0, RAINSTEP, 0],
+            [
+                0,
+                new panel.layers(
                 [
-                    0,
-                    new panel.layers(
-                    [
-                        new panel.expand(new panel.rectangle(context.button2rect), 10, 10),
-                        new panel.shadow(new panel.text()),
-                    ]),
-                    0
+                    new panel.expand(new panel.rectangle(context.button2rect), 10, 10),
+                    new panel.shadow(new panel.text()),
                 ]),
+                0
+            ]),
+            new panel.cols([0, RAINSTEP, 0],
+            [
+                0,
+                new panel.layers(
+                [
+                    new panel.expand(new panel.rectangle(context.button2rect), 10, 10),
+                    new panel.shadow(new panel.text()),
+                ]),
+                0
+            ]),           
             0,
             new panel.cols([0, RAINSTEP, 0],
+            [
+                0,
+                new panel.layers(
                 [
-                    0,
-                    new panel.layers(
-                    [
-                        new panel.expand(new panel.rectangle(context.template2rect), 10, 10),
-                        new panel.gridA(1, data.length, 1,
-                            new panel.shadow(new panel.text())),
-                    ]),
-                    0,
+                    new panel.expand(new panel.rectangle(context.template2rect), 10, 10),
+                    new panel.gridA(1, data.length, 1,
+                        new panel.shadow(new panel.text())),
                 ]),
+                0,
+            ]),
             0,
             0,
             0,
@@ -1529,6 +1539,7 @@ var displaylst =
             [
                 0,
                 st,
+                "Resolution",
                 0,
                 data,
                 0,
