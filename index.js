@@ -1596,7 +1596,7 @@ var displaylst =
     name: "MENU",
     draw: function(context, rect, user, time)
     {
-        var canvas = context.canvas;
+         var canvas = context.canvas;
         context.save();
         canvas.vscrollrect = new rectangle();
         canvas.hollyrect = new rectangle();
@@ -1604,7 +1604,7 @@ var displaylst =
         var a = new panel.colsA([5, 9, 0, 9, 5],
             [
                 0,
-                new panel.rows([kh, 0, kh],
+                1?0:new panel.rows([kh, 0, kh],
                     [
                         0,
                         new panel.layers(
@@ -1637,7 +1637,7 @@ var displaylst =
                 0,
             ]);
 
-        context.restore();    
+        context.restore();       
     }
 },
 ];    
