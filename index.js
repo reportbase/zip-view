@@ -967,8 +967,9 @@ var bossdisplaylst =
                     ]),
                    0
                 ]),
-                new panel.rowsA([HEADTOP, HEADBOT, 0, (data.length*WRAPROWHEIGHT), 
-                                 FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
+                new panel.rowsA([HEADTOP, HEADBOT, 0, 
+                                 (data.length*WRAPROWHEIGHT), 
+                                 20],
                 [
                     0,
                     0,
@@ -984,8 +985,6 @@ var bossdisplaylst =
                         ]),
                         0,
                     ]),
-                    0,
-                    0,
                     0,
                 ])
             ]);
@@ -1004,7 +1003,6 @@ var bossdisplaylst =
                     0,
                     0,
                     data,
-                    heightobj,
                     0,
                 ]
             ]);
