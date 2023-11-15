@@ -928,10 +928,7 @@ var bossdisplaylst =
     draw: function(context, r, user, time)
     {
             var canvas = context.canvas;
-            context.timerect = new rectangle();
             context.pagerect = new rectangle();
-            context.windowrect = new rectangle();
-            context.galleryrect = new rectangle();
             
             if (
                 !photo.image ||
@@ -947,27 +944,7 @@ var bossdisplaylst =
             //data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
             data.push(`\u{25C0}   ${index} of ${galleryobj.length()}   \u{25B6}`);
             
-            var a = new panel.layerA(
-            [
-                new panel.rectangle(context.windowrect),
-                new panel.colsA([0, SCROLLEXTENT, SCROLLMARGIN],
-                [
-                    0,
-                    new panel.rows([0,(rect.height*0.4),0],
-                    [
-                        0,
-                        1?0:new panel.layers(
-                        [
-                            new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
-                            new panel.expand(new panel.rectangle(context.galleryrect), 10, 1),
-                            new panel.shrink(new panel.currentV(new panel.rounded("white", 
-                                    0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
-                        ]),
-                        0,
-                    ]),
-                   0
-                ]),
-                new panel.rowsA([HEADTOP, HEADBOT, 0, 
+            var a = new panel.rowsA([HEADTOP, HEADBOT, 0, 
                                  (data.length*WRAPROWHEIGHT), 
                                  20],
                 [
@@ -986,26 +963,17 @@ var bossdisplaylst =
                         0,
                     ]),
                     0,
-                ])
-            ]);
+                ]);
         
             if (headcnv.height)
             a.draw(context, rect,
-            [
-                0,
-                [
-                    0,
-                    galleryobj,
-                    0
-                ],
                 [
                     0,
                     0,
                     0,
                     data,
                     0,
-                ]
-            ]);
+                ]);
 
             var he = heightobj;
             var b = Math.berp(0, he.length() - 1, he.current());
@@ -3936,12 +3904,6 @@ var taplst =
             context.movepage(k < 0.5 ? -1 : 1);
         }    
         else if (
-            context.windowrect &&
-            context.windowrect.hitest(x, y))
-        {
-                       
-        }
-        else if (
             context.stretchcolumnrect &&
             context.stretchcolumnrect.hitest(x, y))
         {
@@ -4422,7 +4384,6 @@ bossobj.draw = function()
     //thumbnail
     delete context.timerect;
     delete context.pagerect;
-    delete context.windowrect;
     delete context.galleryrect;
 
     //zoom
