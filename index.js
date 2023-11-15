@@ -1463,9 +1463,8 @@ var displaylst =
         var hh = buttonobj.value();
         var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)).toFixed(0) : '000';
         var st = `\u{25C0}   ${ww} x ${hh.toFixed(0)}   \u{25B6}`;
-        var jp = templateobj.value().split("x");
-        //data.push(`\u{25C0}   ${jp[0]} x ${jp[1]}   \u{25B6}`);
-        data.push(`\u{25C0}   Resolution   \u{25B6}`);
+        data.push(`Resolution Template`);
+        data.push(`\u{25C0}   ${templateobj.value()}   \u{25B6}`);
         var a = new panel.rowsA([HEADTOP, HEADBOT, 0, (data.length*WRAPROWHEIGHT), 
                                  FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
