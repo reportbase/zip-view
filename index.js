@@ -1049,20 +1049,15 @@ var bossdisplaylst =
     draw: function(context, rect, user, time)
     {
             var canvas = context.canvas;
+            context.pagerect = new rectangle();
             context.zoomrect = new rectangle();
             context.stretchrect = new rectangle();
-            context.stretchcolumnrect = new rectangle();
-
+            
             if (
                 !photo.image ||
                 !photo.image.complete ||
                 !photo.image.naturalHeight)
                 return;
-
-            var data = [];
-            var index = galleryobj.current();
-            //data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
-            data.push(`\u{25C0}   ${index} of ${galleryobj.length()}   \u{25B6}`);
 
             var bh = rect.height * 0.4;
             var a = new panel.colsA([SCROLLMARGIN, SCROLLEXTENT, 0, SCROLLEXTENT, SCROLLMARGIN],
@@ -1095,7 +1090,8 @@ var bossdisplaylst =
                 ]),
                 0
             ]);
-        
+
+            if (headcnv.height)
             a.draw(context, rect,
             [
                 0,
@@ -1105,26 +1101,40 @@ var bossdisplaylst =
                 0,
             ]);
 
-            var a = new panel.rows([0,FOOTHEIGHT],
-            [
-                0,
-                new panel.cols([0,BETHWIDTH,BETHCIDTH,BETHWIDTH,0],
+          var index = galleryobj.current();
+            //data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
+            data.push(`\u{25C0}   ${index} of ${galleryobj.length()}   \u{25B6}`);
+            
+            var a = new panel.rowsA([HEADTOP, HEADBOT, 0, 
+                                 (data.length*WRAPROWHEIGHT), 
+                                 20],
                 [
                     0,
                     0,
-                    1?0:new panel.layers(
+                    0,
+                    new panel.cols([0, RAINSTEP, 0],
                     [
-                        new panel.fill(FOOTBTNCOLOR),
-                        new panel.rectangle(context.stretchcolumnrect),
-                        new panel.shadow(new panel.text()),
+                        0,
+                        new panel.layers(
+                        [
+                            new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
+                            new panel.gridA(1, data.length, 1,
+                                new panel.shadow(new panel.text())),
+                        ]),
+                        0,
                     ]),
                     0,
-                    0
-                ]),
-                0
-            ]);
-
-            a.draw(context, rect, "Stretch", 0);
+                ]);
+        
+            if (headcnv.height)
+            a.draw(context, rect,
+                [
+                    0,
+                    0,
+                    0,
+                    data,
+                    0,
+                ]);
             context.restore();   
     }
 },
@@ -3903,12 +3913,6 @@ var taplst =
             var k = (x - context.pagerect.x) / context.pagerect.width;
             context.movepage(k < 0.5 ? -1 : 1);
         }    
-        else if (
-            context.stretchcolumnrect &&
-            context.stretchcolumnrect.hitest(x, y))
-        {
-            context.nostretchcolumn = context.nostretchcolumn ? 0 : 1;           
-        }
  
         _4cnvctx.refresh();
     }
@@ -4382,15 +4386,12 @@ bossobj.draw = function()
     context.restore();
 
     //thumbnail
-    delete context.timerect;
     delete context.pagerect;
-    delete context.galleryrect;
-
+   
     //zoom
-    delete context.stretchcolumnrect;
+    delete context.pagerect;
     delete context.zoomrect;
     delete context.stretchrect;
-    delete context.stretchcolumnrect;
 
     //Upload
     delete context.hollyrect;
