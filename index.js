@@ -1261,6 +1261,8 @@ var bossdisplaylst =
     draw: function(context, rect, user, time)
     {
         context.editgalleryrect = new rectangle();
+        context.copyrect = new rectangle();
+        context.pasterect = new rectangle();
         context.hollyrect = new rectangle();
         
         var str = `Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur`;
@@ -1292,14 +1294,24 @@ var bossdisplaylst =
                 new panel.colsA([0,BETHWIDTH,BETHCIDTH,BETHWIDTH,0],
                 [
                     0,
-                    0,
-                    new panel.layers(
+                    1?0:new panel.layers(
                     [
                         new panel.fill(FOOTBTNCOLOR),
                         new panel.rectangle(context.editgalleryrect),
                         new panel.shadow(new panel.text()),
                     ]),
-                    0,
+                    new panel.layers(
+                    [
+                        new panel.fill(FOOTBTNCOLOR),
+                        new panel.rectangle(context.copyrect),
+                        new panel.shadow(new panel.text()),
+                    ]),
+                    1?0:new panel.layers(
+                    [
+                        new panel.fill(FOOTBTNCOLOR),
+                        new panel.rectangle(context.pasterect),
+                        new panel.shadow(new panel.text()),
+                    ]),
                     0,
                 ])
             ])
@@ -1584,13 +1596,24 @@ var displaylst =
     name: "MENU",
     draw: function(context, rect, user, time)
     {
-         var canvas = context.canvas;
+        var canvas = context.canvas;
         context.save();
+        canvas.vscrollrect = new rectangle();
         canvas.hollyrect = new rectangle();
         var kh = context.rect().width == window.innerWidth ? 90 : ALIEXTENT;
         var a = new panel.colsA([5, 9, 0, 9, 5],
             [
                 0,
+                1?0:new panel.rows([kh, 0, kh],
+                    [
+                        0,
+                        new panel.layers(
+                            [
+                                new panel.expand(new panel.rectangle(canvas.vscrollrect), 10, 0),
+                                new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 0),
+                            ]),
+                        0,
+                    ]),
                 0,
                 new panel.rows([kh, 0, kh],
                     [
@@ -1610,11 +1633,11 @@ var displaylst =
                 0,
                 0,
                 0,
-                0,
+                canvas.timeobj,
                 0,
             ]);
 
-        context.restore();       
+        context.restore();    
     }
 },
 ];    
@@ -3800,7 +3823,16 @@ var taplst =
                 
         }
         else if (context.editgalleryrect && context.editgalleryrect.hitest(x, y))
-        {       
+        {
+                
+        }
+        else if (context.pasterect && context.pasterect.hitest(x, y))
+        {
+                
+        }
+        else if (context.copyrect && context.copyrect.hitest(x, y))
+        {
+                
         }
         else if (context.copyidrect && context.copyidrect.hitest(x, y))
         {
@@ -3907,12 +3939,10 @@ var taplst =
         var obj = canvas.hollyobj;
         context.refresh();
         
-         if (headcnvctx.leftmenurect && headcnvctx.leftmenurect.hitest(x, y))
+        if (headcnvctx.leftmenurect && headcnvctx.leftmenurect.hitest(x, y))
         {
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.rightctx.hide()
-            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            displayobj.set(k);
             if (menuobj.value() == galleryobj.leftctx)
             {
                 galleryobj.leftctx.hide();
@@ -3926,6 +3956,8 @@ var taplst =
                 menuobj.setindex(galleryobj.leftctx);
             }
 
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            displayobj.set(k);
             menuobj.show();
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
@@ -3934,8 +3966,6 @@ var taplst =
             headcnvctx.rightmenurect.hitest(x, y))
         {
             galleryobj.leftctx.hide()
-            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            displayobj.set(k);
             if (menuobj.value() == galleryobj.rightctx)
             {
                 galleryobj.rightctx.hide();
@@ -3948,6 +3978,8 @@ var taplst =
                 menuobj.show();
             }
 
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            displayobj.set(k);
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
@@ -4379,7 +4411,9 @@ bossobj.draw = function()
     //Describe
     delete context.hollyrect;
     delete context.editgalleryrect;
-   
+    delete context.copyrect;
+    delete context.pasterect;
+
     //others
     delete context.slicerect;
     delete context.stretchrect;
