@@ -1463,9 +1463,9 @@ var displaylst =
         var hh = buttonobj.value();
         var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)).toFixed(0) : '000';
         var st = `\u{25C0}   ${ww} x ${hh.toFixed(0)}   \u{25B6}`;
-        data.push(`Resolution Template`);
+        data.push(`Template`);
         data.push(`\u{25C0}   ${templateobj.value()}   \u{25B6}`);
-        var a = new panel.rowsA([HEADTOP, HEADBOT, 0, (data.length*WRAPROWHEIGHT), 
+        var a = new panel.rowsA([HEADTOP, HEADBOT, 26, 0, (data.length*WRAPROWHEIGHT), 
                                  FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,    
@@ -1479,6 +1479,16 @@ var displaylst =
                 ]),
                 0
             ]), 
+            new panel.cols([0, RAINSTEP, 0],
+            [
+                0,
+                new panel.layers(
+                [
+                    //new panel.expand(new panel.rectangle(context.button2rect), 10, 10),
+                    new panel.shadow(new panel.text()),
+                ]),
+                0
+            ]),
             0,
             new panel.cols([0, RAINSTEP, 0],
             [
@@ -1500,6 +1510,7 @@ var displaylst =
         [
             0,
             st,
+            "Width x Height",
             0,
             data,
             0,
