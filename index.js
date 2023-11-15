@@ -1449,7 +1449,8 @@ var displaylst =
         var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)).toFixed(0) : '000';
         var st = `\u{25C0}   ${ww} x ${hh.toFixed(0)}   \u{25B6}`;
         var jp = templateobj.value().split("x");
-        data.push(`\u{25C0}   ${jp[0]} x ${jp[1]}   \u{25B6}`);
+        //data.push(`\u{25C0}   ${jp[0]} x ${jp[1]}   \u{25B6}`);
+        data.push(`\u{25C0}   Resolution   \u{25B6}`);
         var a = new panel.rowsA([HEADTOP, HEADBOT, 0, (data.length*WRAPROWHEIGHT), 
                                  FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
@@ -2262,6 +2263,8 @@ CanvasRenderingContext2D.prototype.savetime = function()
                 var k = _8cnv.timeobj.current();
                 if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
                     url.searchParams.set('_8', k.toFixed(5));
+                url.searchParams.set("t",templateobj.value());
+                url.searchParams.set("b",buttonobj.value());
                 window.history.replaceState("", url.origin, url);
             }
       }, 1000)
