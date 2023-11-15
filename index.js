@@ -525,7 +525,7 @@ var templatelst =
 ];
 
 var templateobj = new circular_array("", templatelst);
-templateobj.init() = function()
+templateobj.init = function()
 {
     if (!url.searchParams.has("t"))
         return;
@@ -1652,7 +1652,7 @@ var displaylst =
 var displayobj = new circular_array("", displaylst);
 var buttonobj = new circular_array("", []);
 
-buttonobj.init() = function()
+buttonobj.init = function()
 {
     if (!url.searchParams.has("b"))
         return;
