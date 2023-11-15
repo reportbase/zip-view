@@ -1308,7 +1308,7 @@ var bossdisplaylst =
                     ]),
                     1?0:new panel.layers(
                     [
-                        //new panel.fill(FOOTBTNCOLOR),
+                        new panel.fill(FOOTBTNCOLOR),
                         new panel.rectangle(context.pasterect),
                         new panel.shadow(new panel.text()),
                     ]),
@@ -3243,6 +3243,14 @@ var panlst =
             {
                 var k = (x - context.timerect.x) / context.timerect.width;
                 canvas.timeobj.setperc(1 - k);
+                context.refresh();
+            }
+            else if (context.hollyrect &&
+                context.hollyrect.hitest(x, y))
+            {
+                var hollyobj = context.canvas.hollyobj;
+                var k = (x - context.hollyrect.x) / context.hollyrect.width;
+                obj.setperc(1 - k);
                 context.refresh();
             }
             else
