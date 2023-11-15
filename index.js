@@ -2374,30 +2374,12 @@ CanvasRenderingContext2D.prototype.clear =
 var makehammer = function(context, v, t)
 {
     var canvas = context.canvas;
-    var ham = new Hammer(canvas,
-    {
-        domEvents: true
-    });
-    ham.get("pan").set(
-    {
-        direction: Hammer.DIRECTION_ALL
-    });
-    ham.get("swipe").set(
-    {
-        direction: Hammer.DIRECTION_ALL
-    });
-    ham.get('swipe').set(
-    {
-        velocity: 0.6
-    }); //0.40
-    ham.get('swipe').set(
-    {
-        threshold: 20
-    }); //10
-    ham.get('press').set(
-    {
-        time: 320
-    }); //251
+    var ham = new Hammer(canvas,{domEvents: true});
+    ham.get("pan").set({direction: Hammer.DIRECTION_ALL});
+    ham.get("swipe").set({direction: Hammer.DIRECTION_ALL});
+    ham.get('swipe').set({velocity: 0.6}); //0.40
+    ham.get('swipe').set({threshold: 20}); //10
+    ham.get('press').set({time: 400}); //251
 
     ham.on("pinch", function(evt)
     {
@@ -3469,6 +3451,10 @@ var presslst =
     name: "GALLERY",
     pressup: function(context, rect, x, y)
     {
+        var h = headcnv.height ? 0 : HEADHEIGHT;
+        headcnvctx.show(0, 0, window.innerWidth, h);
+        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        context.refresh()
     },
     press: function(context, rect, x, y) {}
 },
@@ -3481,7 +3467,11 @@ var presslst =
     name: "BOSS",
     pressup: function(context, rect, x, y)
     {
-    },
+        var h = headcnv.height ? 0 : HEADHEIGHT;
+        headcnvctx.show(0, 0, window.innerWidth, h);
+        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        context.refresh()
+   },
     press: function(context, rect, x, y) {}
 }, 
 ];
