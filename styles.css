@@ -1,0 +1,89 @@
+* {margin: 0; padding: 0}
+html, body {height: 100%; margin: 0; background-color: rgb(50,50,50)}
+canvas {outline: none; position: absolute; }
+
+dialog
+{
+  max-width: 90%; 
+  position: absolute; 
+  left: 50%; 
+  top: 50%; 
+  transform: translate(-50%, -50%); 
+  background-color: rgb(225,225,225);
+  padding: 20px 20px 20px 20px; 
+  border-radius: 20px;
+  max-height: 80vh;
+  border-width: 5px; 
+  border-color: #DB1F48; 
+  overflow-y: scroll;
+}
+
+dialog::backdrop 
+{
+  background-color: rgba(0,0,0,0.6);
+}
+
+label
+{
+  display: block;
+  font-family: sans-serif; 
+  font-weight: bold; 
+  text-align: center;
+  font-size: 1em; 
+  width: 100%; 
+  border-radius: 5px;
+}
+
+input
+{
+  height: 54px;
+  resize: none;
+  background-color: white;
+  border-radius: 0px;
+  border-width: 0px;
+  outline: none; 
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  font-family: sans-serif; 
+  box-sizing: border-box; 
+  width: 100%; 
+  padding: 10px; 
+  font-size: 1em; 
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button 
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+textarea 
+{
+  height: 100%;
+  resize: none;
+  background-color: white;
+  border-style: inset; 
+  border-radius: 0px;
+  border-width: 0px;
+  outline: none; 
+  font-family: sans-serif; 
+  box-sizing: border-box; 
+  width: 100%; 
+  padding: 10px; 
+  font-size: 1em; 
+  color: black;
+  text-align: left;
+  font-weight: bold;
+}
+
+button
+{
+  height: 54px;
+  width: 100%; 
+  padding: 12px; 
+  font-size: 1em; 
+  font-weight: bold; 
+  border: 0px solid #99B; 
+}
