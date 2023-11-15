@@ -525,6 +525,21 @@ var templatelst =
 ];
 
 var templateobj = new circular_array("", templatelst);
+templateobj.init() = function()
+{
+    if (!url.searchParams.has("t"))
+        return;
+    
+    var t = url.searchParams.get("t");
+    var n = 0;
+    for (; n < templateobj.length(); ++n)
+        if (t == templateobj.data[n])
+            brea;
+
+    if (n != templateobj.length())
+        templateobj.set(n);
+}
+
 templateobj.reset = function() 
 {
     var hh = buttonobj.value();
@@ -1636,6 +1651,25 @@ var displaylst =
 
 var displayobj = new circular_array("", displaylst);
 var buttonobj = new circular_array("", []);
+
+buttonobj.init() = function()
+{
+    if (!url.searchParams.has("b"))
+        return;
+    
+    var b = Number(url.searchParams.get("b"));
+    var n = 1;
+    for (; n < buttonobj.length(); ++n)
+    {
+        var k = buttonobj.data[n-1];
+        var j = buttonobj.data[n];
+        if (b >= k && b < j)
+            break;
+    }
+
+    if (n != buttonobj.length())
+        buttonobj.set(n);
+}
 
 //buttonobj reset
 buttonobj.reset = function()
@@ -6773,21 +6807,10 @@ galleryobj.init = function(obj)
         headham.panel = headlst[k];
         headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
         headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-
-        if (url.searchParams.has("b"))
-        {
-            var b = url.searchParams.get("b");
-            console.log(b);
-        }
-
-        if (url.searchParams.has("t"))
-        {
-            var b = url.searchParams.get("t");
-            console.log(b);
-        }
-        
         buttonobj.reset();
+        buttonobj.init()
         templateobj.reset();
+        templateobj.init();
     };    
    
     _8cnv.timeobj.set(0);
