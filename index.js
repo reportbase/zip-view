@@ -1598,11 +1598,22 @@ var displaylst =
     {
         var canvas = context.canvas;
         context.save();
+        canvas.vscrollrect = new rectangle();
         canvas.hollyrect = new rectangle();
         var kh = context.rect().width == window.innerWidth ? 90 : ALIEXTENT;
         var a = new panel.colsA([5, 9, 0, 9, 5],
             [
                 0,
+                1?0:new panel.rows([kh, 0, kh],
+                    [
+                        0,
+                        new panel.layers(
+                            [
+                                new panel.expand(new panel.rectangle(canvas.vscrollrect), 10, 0),
+                                new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 0),
+                            ]),
+                        0,
+                    ]),
                 0,
                 new panel.rows([kh, 0, kh],
                     [
@@ -1615,7 +1626,6 @@ var displaylst =
                         0,
                     ]),
                 0,
-                0,
             ]);
 
         a.draw(context, rect,
@@ -1623,7 +1633,7 @@ var displaylst =
                 0,
                 0,
                 0,
-                0,
+                canvas.timeobj,
                 0,
             ]);
 
@@ -3959,19 +3969,17 @@ var taplst =
             if (menuobj.value() == galleryobj.rightctx)
             {
                 galleryobj.rightctx.hide();
-                galleryobj.leftctx.hide();
-                galleryobj.leftcnv = _7cnv;
-                galleryobj.leftctx = _7cnvctx;
                 menuobj.setindex(_8cnvctx);
+                menuobj.draw();
             }
             else
             {
                 menuobj.setindex(galleryobj.rightctx);
+                menuobj.show();
             }
 
-             var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
             displayobj.set(k);
-            menuobj.show();
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
