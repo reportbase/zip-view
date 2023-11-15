@@ -4093,7 +4093,7 @@ var taplst =
             var index = 1 - _8cnv.timeobj.berp();
             index *= galleryobj.length();
             var input = document.getElementById("goto-input");
-            input.value = galleryobj.current().toFixed(0);
+            input.value = index.toFixed(4);
             if (showdialog("goto", function(image)
             {
                 gotoimage(image);
