@@ -533,7 +533,7 @@ templateobj.reset = function()
     for (; n < templatelst.length; ++n)
         {
             var j = templatelst[n].split("x")[0];
-            if (window.innerWidth <= Number(j))
+            if (ww <= Number(j))
                 break;    
         }
 
