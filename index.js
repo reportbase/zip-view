@@ -3880,7 +3880,7 @@ var taplst =
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
-                if (gotodialog(galleryobj.current().toFixed(0), function(image)
+                if (showdialog(galleryobj.current().toFixed(0), "goto", function(image)
                 {
                     image = Math.floor(image);
                     image = util.clamp(0, galleryobj.length()-1, image);
@@ -4090,7 +4090,7 @@ var taplst =
         {
             var index = 1 - _8cnv.timeobj.berp();
             index *= galleryobj.length();
-            if (gotodialog(index.toFixed(5), function(image)
+            if (showdialog(index.toFixed(5), "goto", function(image)
             {
                 gotoimage(image);
                 menuobj.draw();
@@ -4232,7 +4232,7 @@ var taplst =
         }
         else if (canvas.signinrect && canvas.signinrect.hitest(x, y))
         {
-            if (userlogin(local.email ? local.email : "", function(str)
+            if (showlogin(local.email ? local.email : "", "user", function(str)
             {
                 local.email = str;
             }))
@@ -6536,7 +6536,7 @@ _7cnv.sliceobj.data = [
     title: `Login   \u{25B6}`,
     func: function()
     {
-        if (userlogin(local.email ? local.email : "", function(str)
+        if (showdialog(local.email ? local.email : "", "user-login", function(str)
         {
             local.email = str;
         }))
@@ -6548,7 +6548,7 @@ _7cnv.sliceobj.data = [
     title: `Signup   \u{25B6}`,
     func: function()
     {
-       if (signupdialog(local.email ? local.email : "", function(str)
+        if (showdialog(local.email ? local.email : "", "user-signup", function(str)
         {
             local.email = str;
         }))
@@ -6913,73 +6913,13 @@ function downloadtext(name, text)
     document.body.removeChild(element);
 }
 
-function gotodialog(value, func)
+function showdialog(value, str, func)
 {
-    var input = document.getElementById("goto-input");
-    var button = document.getElementById("goto-ok");
-    dialog = document.getElementById("goto");
-    //button.innerHTML = title;
-    input.addEventListener("keyup", function(event)
-    {
-        event.preventDefault();
-        if (event.keyCode === 13)
-        {
-            var page = input.value.clean();
-            dialog.close();
-            menuobj.draw();
-            return func(page);
-        }
-    });
-
+    var button = document.getElementById(`${str}-ok`);
+    dialog = document.getElementById(str);
     dialog.addEventListener("click", function(event)
     {
-        if (event.target.id == "goto-ok")
-        {
-            var page = input.value.clean();
-            dialog.close();
-            menuobj.draw();
-            return func(page);
-        }
-        else
-        {
-            var r = dialog.getBoundingClientRect();
-            var rect = new rectangle(r.x,r.y,r.width,r.height);
-            if (!rect.hitest(event.x, event.y) && !dialog.clickblocked)
-                dialog.close();
-            return false;
-        }
-    });
-
-    input.value = value;
-    dialog.clickblocked = 1;
-    setTimeout(function()
-    {
-        dialog.clickblocked = 0;
-    }, 40);
-    dialog.showModal();
-}
-
-function userlogin(value, func)
-{
-    var input = document.getElementById("user-login-email");
-    var button = document.getElementById("user-login-ok");
-    dialog = document.getElementById("user-login");
-    //button.innerHTML = title;
-    input.addEventListener("keyup", function(event)
-    {
-        event.preventDefault();
-        if (event.keyCode === 13)
-        {
-            var page = input.value.clean();
-            dialog.close();
-            menuobj.draw();
-            return func(page);
-        }
-    });
-
-    dialog.addEventListener("click", function(event)
-    {
-        if (event.target.id == "goto-ok")
+        if (event.target.id == `${str}-ok`)
         {
             var page = input.value.clean();
             dialog.close();
