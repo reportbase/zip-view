@@ -3880,18 +3880,15 @@ var taplst =
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
-                function foo(image)
+                if (gotodialog(galleryobj.current().toFixed(0), function(image)
                 {
                     image = Math.floor(image);
                     image = util.clamp(0, galleryobj.length()-1, image);
                     galleryobj.set(image);
                     delete photo.image;
                     contextobj.reset();
-                }
-            
-                if (!gotodialog(galleryobj.current().toFixed(0), "Goto", foo))
-                    return;
-                galleryobj.init()
+                }))
+                    galleryobj.init()
         }
         else if (context.canvas.thumbrect && 
                  context.canvas.thumbrect.hitest(x, y))
@@ -4091,17 +4088,14 @@ var taplst =
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
-            function foo(image)
+            var index = 1 - _8cnv.timeobj.berp();
+            index *= galleryobj.length();
+            if (gotodialog(index.toFixed(5), function(image)
             {
                 gotoimage(image);
                 menuobj.draw();
-            }
-
-            var index = 1 - _8cnv.timeobj.berp();
-            index *= galleryobj.length();
-            if (!gotodialog(index.toFixed(5), "Goto", foo))
-                return;
-            galleryobj.init()
+            }))
+              galleryobj.init()
         }
         else if (
             headcnvctx.fullrect &&
@@ -4238,9 +4232,11 @@ var taplst =
         }
         else if (canvas.signinrect && canvas.signinrect.hitest(x, y))
         {
-            if (!gotodialog(local.email ? local.email : "", "Login", gologin))
-                return false;
-            galleryobj.init();
+            if (logindialog(local.email ? local.email : "", function(str)
+            {
+                local.email = str;
+            }))
+                galleryobj.init();
             return true;
         }
         else if (canvas.closerect && 
@@ -6540,9 +6536,11 @@ _7cnv.sliceobj.data = [
     title: `Login   \u{25B6}`,
     func: function()
     {
-        if (!gotodialog(local.email ? local.email : "", "Login", gologin))
-            return false;
-        galleryobj.init();
+        if (logindialog(local.email ? local.email : "", function(str)
+        {
+            local.email = str;
+        }))
+            galleryobj.init();
         return true;
     }
 },
@@ -6550,10 +6548,12 @@ _7cnv.sliceobj.data = [
     title: `Signup   \u{25B6}`,
     func: function()
     {
-        if (!gotodialog(local.email ? local.email : "", "Login", gologin))
-            return false;
-        galleryobj.init();
-        return true;
+       if (signupdialog(local.email ? local.email : "", function(str)
+        {
+            local.email = str;
+        }))
+            galleryobj.init();
+        return true;    
     }
 },
 {
@@ -6913,18 +6913,58 @@ function downloadtext(name, text)
     document.body.removeChild(element);
 }
 
-function gologin(email)
-{
-    local.email = email;
-    return true;
-}
-
-function gotodialog(value, title, func)
+function gotodialog(value, func)
 {
     var input = document.getElementById("goto-input");
     var button = document.getElementById("goto-ok");
     dialog = document.getElementById("goto");
-    button.innerHTML = title;
+    //button.innerHTML = title;
+    input.addEventListener("keyup", function(event)
+    {
+        event.preventDefault();
+        if (event.keyCode === 13)
+        {
+            var page = input.value.clean();
+            dialog.close();
+            menuobj.draw();
+            return func(page);
+        }
+    });
+
+    dialog.addEventListener("click", function(event)
+    {
+        if (event.target.id == "goto-ok")
+        {
+            var page = input.value.clean();
+            dialog.close();
+            menuobj.draw();
+            return func(page);
+        }
+        else
+        {
+            var r = dialog.getBoundingClientRect();
+            var rect = new rectangle(r.x,r.y,r.width,r.height);
+            if (!rect.hitest(event.x, event.y) && !dialog.clickblocked)
+                dialog.close();
+            return false;
+        }
+    });
+
+    input.value = value;
+    dialog.clickblocked = 1;
+    setTimeout(function()
+    {
+        dialog.clickblocked = 0;
+    }, 40);
+    dialog.showModal();
+}
+
+function logindialog(value, func)
+{
+    var input = document.getElementById("login-input");
+    var button = document.getElementById("login-ok");
+    dialog = document.getElementById("login");
+    //button.innerHTML = title;
     input.addEventListener("keyup", function(event)
     {
         event.preventDefault();
