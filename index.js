@@ -3907,24 +3907,26 @@ var taplst =
         var obj = canvas.hollyobj;
         context.refresh();
         
-     if (headcnvctx.leftmenurect && headcnvctx.leftmenurect.hitest(x, y))
+         if (headcnvctx.leftmenurect && headcnvctx.leftmenurect.hitest(x, y))
         {
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.rightctx.hide()
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            displayobj.set(k);
             if (menuobj.value() == galleryobj.leftctx)
             {
                 galleryobj.leftctx.hide();
-                menuobj.setindex(_8cnvctx);
-                menuobj.draw();
-                galleryobj.leftnv = _7cnv;
+                galleryobj.rightctx.hide();
+                galleryobj.leftcnv = _7cnv;
                 galleryobj.leftctx = _7cnvctx;
+                menuobj.setindex(_8cnvctx);
             }
             else
             {
                 menuobj.setindex(galleryobj.leftctx);
-                menuobj.show();
             }
 
+            menuobj.show();
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
@@ -3932,6 +3934,8 @@ var taplst =
             headcnvctx.rightmenurect.hitest(x, y))
         {
             galleryobj.leftctx.hide()
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            displayobj.set(k);
             if (menuobj.value() == galleryobj.rightctx)
             {
                 galleryobj.rightctx.hide();
