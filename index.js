@@ -6225,6 +6225,37 @@ function imagepath(user, template)
     return src;
 }
 
+var padlst = 
+[
+    3,2,1,0,0,0,0,0,0,0,//00
+    0,0,0,0,0,0,0,0,0,0,//10
+    0,0,0,0,0,0,0,0,0,0,//20
+    0,0,0,9,8,7,6,5,4,3,//30
+    2,1,0,0,0,0,0,0,0,0,//40
+    0,0,0,0,0,0,0,0,0,0,//50
+    0,0,0,0,9,8,7,6,5,4,//60
+    3,2,1,0,0,0,0,0,0,0,//70
+    0,0,0,0,0,0,0,0,0,0,//80
+    0,0,0,0,0,0,0,0,0,0,//90
+    0,0,0,0,0,0,0,0,0,0,//100
+    0,0,0,0,0,0,0,0,0,0,//110
+    0,0,0,0,0,2,0,0,0,0,//120
+    0,0,0,0,0,0,0,0,0,0,//130
+    0,0,0,0,0,0,0,0,0,0,//140
+    0,0,0,0,0,0,0,0,0,0,//150
+    0,0,0,0,0,0,0,0,0,0,//160
+    0,0,0,0,0,0,0,0,0,0,//170
+    0,0,0,0,0,0,0,0,0,0,//180
+    0,0,0,0,0,0,0,0,0,0,//190
+    0,0,0,0,0,0,0,0,0,0,//200
+    0,0,0,0,0,0,0,0,0,0,//210
+    0,0,0,0,0,0,0,0,0,0,//220
+    0,0,0,0,0,0,0,0,0,0,//230
+    0,0,0,0,0,0,0,0,0,0,//240
+    0,0,0,0,0,0,0,0,0,4,//250
+    3,2,1,0,0,0,0,0,0,0,//260
+];
+
 galleryobj.getpath = function(index)
 {
     var gallery = this.data[index];
@@ -6275,6 +6306,301 @@ async function loadjson(blob)
     }
 }
 
+_3cnv.sliceobj.data = 
+[
+    {
+        title: "Delete Image",
+        func: function()
+        {
+            var id = galleryobj.value().id;
+            fetch(`https://ipfs-view.pages.dev/image/${id}`,
+                {
+                    method: 'delete'
+                })
+                .then(res =>
+                {
+                    location.reload();
+                    return res.json()
+                })
+                .then(data => console.log(data))
+                .catch(error =>
+                {
+                    console.log("error:", error);
+                });
+            return true;
+        }
+      },
+
+     {
+        title: "Delete All",
+        func: function()
+        {
+                fetch(`https://images.reportbase5836.workers.dev`,
+                {
+                    'method': 'DELETE',
+                    'body': JSON.stringify(galleryobj)
+                })
+                .then(response => response.json())
+                .then(response => console.log(response))
+                .catch(err => console.error(err));
+            return true;
+       }
+    },
+
+    {
+        title: "Insert All",
+        func: function()
+        {
+                fetch(`https://images.reportbase5836.workers.dev`,
+                {
+                    'method': 'POST',
+                    'body': JSON.stringify(galleryobj)
+                })
+                .then(response => response.json())
+                .then(response => console.log(response))
+                .catch(err => console.error(err));     
+            return true;
+        }
+    },
+    
+    {
+        title: "users-post",
+        func: function()
+        {
+                const form = new FormData();
+                form.append('name', "yyyy");
+                form.append('email', "xxxx");
+
+                fetch(`https://users.reportbase5836.workers.dev`,
+                {
+                    'method': 'POST',
+                    'body': form
+                })
+              .then(response => response.json())
+                .then(function(obj)
+                      {
+                          console.log(obj);
+                      })
+                .catch(err => console.error(err));  
+        }
+    },
+    {
+        title: "users-get",
+        func: function()
+        {        
+            fetch(`https://users.reportbase5836.workers.dev/reportbase@gmail.com`)
+              .then(function(response)
+              {
+                for (let [key, value] of response.headers)
+                    console.log(`${key} = ${value}`);
+                  return response.json();
+              })
+              .then(function(obj)
+                    {
+                        console.log(obj);
+                    });  
+            return true;
+        }
+    },
+    {
+        title: "users-list",
+        func: function()
+        {        
+            fetch(`https://users.reportbase5836.workers.dev/list`)
+              .then(function(response)
+              {
+                for (let [key, value] of response.headers)
+                    console.log(`${key} = ${value}`);
+                  return response.json();
+              })
+              .then(function(obj)
+                    {
+                        console.log(obj);
+                    });  
+            return true;
+        }
+    },  
+    {
+        title: "users-delete",
+        func: function()
+        {        
+                fetch(`https://users.reportbase5836.workers.dev/reportbase@gmail.com`,
+                {
+                    'method': 'DELETE'
+                })
+              .then(response => response.json())
+                .then(function(obj)
+                      {
+                          console.log(obj);
+                      })
+                .catch(err => console.error(err));  
+        }
+    },
+    {
+        title: "users-patch",
+        func: function()
+        {  
+                const form = new FormData();
+                form.append('name', "gggg");
+                form.append('email', "xxxx");
+
+                fetch(`https://users.reportbase5836.workers.dev/reportbase@gmail.com`,
+                {
+                    'method': 'PATCH',
+                    'body': form
+                })
+              .then(response => response.json())
+                .then(function(obj)
+                      {
+                          console.log(obj);
+                      })
+                .catch(err => console.error(err));                 
+        }
+    },
+    {
+        title: "Download",
+        func: function()
+        {
+            if (galleryobj.value().blob)
+            {
+                const anchor = document.createElement('a');
+                anchor.href = URL.createObjectURL(galleryobj.value().blob);
+                anchor.download = galleryobj.value().name;
+                anchor.click();
+                URL.revokeObjectURL(anchor.href);
+                anchor.remove();
+            }
+            else
+            {
+                var id = galleryobj.value().id;
+                var path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
+                if (galleryobj.value().full)
+                    path = galleryobj.value().full;
+                else if (!id && galleryobj.value().url)
+                    path = galleryobj.value().url;
+                const anchor = document.createElement('a');
+                anchor.href = path;
+                anchor.download = id;
+                anchor.click();
+                URL.revokeObjectURL(anchor.href);
+                anchor.remove();
+            }
+
+            return true;
+        }
+    },
+];
+
+_7cnv.sliceobj.data = [
+{
+    title: `Login   \u{25B6}`,
+    func: function()
+    {
+        if (!gotodialog(local.email ? local.email : "", "Login", gologin))
+            return false;
+        galleryobj.init();
+        return true;
+    }
+},
+{
+    title: `Signup   \u{25B6}`,
+    func: function()
+    {
+        if (!gotodialog(local.email ? local.email : "", "Login", gologin))
+            return false;
+        galleryobj.init();
+        return true;
+    }
+},
+{
+    title: `Open   \u{25B6}\n*.zip, *.cbz, *.json,\n*.png, *.jpg, *.avif,\n*.webp, *.gif`,
+    func: function()
+    {
+        importdialog();
+        return true;
+    }
+},   
+{
+    title: "Developer\nTom Brinkman\nimages@zip-view.com",
+    func: function() 
+    {
+        importdialog();
+        return true;
+    }
+},     
+{
+    title: "zip-view\nImage Viewer\nTo load images, drag and drop from the desktop or click here. To load images, drag and drop from the desktop or click here. To load images, drag and drop from the desktop or click here",
+    func: function() 
+    {
+        importdialog();
+        return true;
+    }
+},     
+{
+    title: `Images   \u{25B6}`,
+    func: function()
+    {
+    }
+},
+{
+    title: `Account   \u{25B6}`,
+    func: function()
+    {
+        menuobj.hide();
+        galleryobj.leftcnv = _10cnv;
+        galleryobj.leftctx = _10cnvctx;
+        menuobj.setindex(galleryobj.leftctx);
+        menuobj.show();
+        return false;
+    },
+},
+{
+    title: "Debug   \u{25B6}",
+    func: function()
+    {
+        menuobj.hide();
+        galleryobj.leftcnv = _3cnv;
+        galleryobj.leftctx = _3cnvctx;
+        menuobj.setindex(galleryobj.leftctx);
+        menuobj.show();
+        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        return false;
+    }
+}
+];
+
+_10cnv.sliceobj.data = 
+[
+    {
+        title: "Email Address",
+        func: function()
+        {
+            return true;
+        }
+    },
+    {
+        title: "Name",
+        func: function()
+        {
+            return true;
+        }
+    },
+    {
+        title: "Email Address",
+        func: function()
+        {
+            return true;
+        }
+    },
+    {
+        title: "Secret",
+        func: function()
+        {
+            return true;
+        }
+    },
+]
+
 //galleryobj init
 galleryobj.init = function(obj)
 {
@@ -6290,37 +6616,6 @@ galleryobj.init = function(obj)
     if (!galleryobj.length())
         return;
     
-    var padlst = 
-    [
-        3,2,1,0,0,0,0,0,0,0,//00
-        0,0,0,0,0,0,0,0,0,0,//10
-        0,0,0,0,0,0,0,0,0,0,//20
-        0,0,0,9,8,7,6,5,4,3,//30
-        2,1,0,0,0,0,0,0,0,0,//40
-        0,0,0,0,0,0,0,0,0,0,//50
-        0,0,0,0,9,8,7,6,5,4,//60
-        3,2,1,0,0,0,0,0,0,0,//70
-        0,0,0,0,0,0,0,0,0,0,//80
-        0,0,0,0,0,0,0,0,0,0,//90
-        0,0,0,0,0,0,0,0,0,0,//100
-        0,0,0,0,0,0,0,0,0,0,//110
-        0,0,0,0,0,2,0,0,0,0,//120
-        0,0,0,0,0,0,0,0,0,0,//130
-        0,0,0,0,0,0,0,0,0,0,//140
-        0,0,0,0,0,0,0,0,0,0,//150
-        0,0,0,0,0,0,0,0,0,0,//160
-        0,0,0,0,0,0,0,0,0,0,//170
-        0,0,0,0,0,0,0,0,0,0,//180
-        0,0,0,0,0,0,0,0,0,0,//190
-        0,0,0,0,0,0,0,0,0,0,//200
-        0,0,0,0,0,0,0,0,0,0,//210
-        0,0,0,0,0,0,0,0,0,0,//220
-        0,0,0,0,0,0,0,0,0,0,//230
-        0,0,0,0,0,0,0,0,0,0,//240
-        0,0,0,0,0,0,0,0,0,4,//250
-        3,2,1,0,0,0,0,0,0,0,//260
-    ];
-
     var length = galleryobj.length();
     var pad = padlst[length-1];
     var pad2 = Number(url.searchParams.get('pad'));
@@ -6341,223 +6636,6 @@ galleryobj.init = function(obj)
     headcnv.style.pointerEvents = "none";
     headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
     headham.panel = headham.panel;
-    
-    _10cnv.sliceobj.data = 
-    [
-        {
-            title: "Email Address",
-            func: function()
-            {
-                return true;
-            }
-        },
-        {
-            title: "Name",
-            func: function()
-            {
-                return true;
-            }
-        },
-        {
-            title: "Email Address",
-            func: function()
-            {
-                return true;
-            }
-        },
-        {
-            title: "Secret",
-            func: function()
-            {
-                return true;
-            }
-        },
-    ]
-                
-    _3cnv.sliceobj.data = 
-    [
-        {
-            title: "Delete Image",
-            func: function()
-            {
-                var id = galleryobj.value().id;
-                fetch(`https://ipfs-view.pages.dev/image/${id}`,
-                    {
-                        method: 'delete'
-                    })
-                    .then(res =>
-                    {
-                        location.reload();
-                        return res.json()
-                    })
-                    .then(data => console.log(data))
-                    .catch(error =>
-                    {
-                        console.log("error:", error);
-                    });
-                return true;
-            }
-          },
-
-         {
-            title: "Delete All",
-            func: function()
-            {
-                    fetch(`https://images.reportbase5836.workers.dev`,
-                    {
-                        'method': 'DELETE',
-                        'body': JSON.stringify(galleryobj)
-                    })
-                    .then(response => response.json())
-                    .then(response => console.log(response))
-                    .catch(err => console.error(err));
-                return true;
-           }
-        },
-
-        {
-            title: "Insert All",
-            func: function()
-            {
-                    fetch(`https://images.reportbase5836.workers.dev`,
-                    {
-                        'method': 'POST',
-                        'body': JSON.stringify(galleryobj)
-                    })
-                    .then(response => response.json())
-                    .then(response => console.log(response))
-                    .catch(err => console.error(err));     
-                return true;
-            }
-        },
-        
-        {
-            title: "users-post",
-            func: function()
-            {
-                    const form = new FormData();
-                    form.append('name', "yyyy");
-                    form.append('email', "xxxx");
-
-                    fetch(`https://users.reportbase5836.workers.dev`,
-                    {
-                        'method': 'POST',
-                        'body': form
-                    })
-                  .then(response => response.json())
-                    .then(function(obj)
-                          {
-                              console.log(obj);
-                          })
-                    .catch(err => console.error(err));  
-            }
-        },
-        {
-            title: "users-get",
-            func: function()
-            {        
-                fetch(`https://users.reportbase5836.workers.dev/reportbase@gmail.com`)
-                  .then(function(response)
-                  {
-                    for (let [key, value] of response.headers)
-                        console.log(`${key} = ${value}`);
-                      return response.json();
-                  })
-                  .then(function(obj)
-                        {
-                            console.log(obj);
-                        });  
-                return true;
-            }
-        },
-        {
-            title: "users-list",
-            func: function()
-            {        
-                fetch(`https://users.reportbase5836.workers.dev/list`)
-                  .then(function(response)
-                  {
-                    for (let [key, value] of response.headers)
-                        console.log(`${key} = ${value}`);
-                      return response.json();
-                  })
-                  .then(function(obj)
-                        {
-                            console.log(obj);
-                        });  
-                return true;
-            }
-        },  
-        {
-            title: "users-delete",
-            func: function()
-            {        
-                    fetch(`https://users.reportbase5836.workers.dev/reportbase@gmail.com`,
-                    {
-                        'method': 'DELETE'
-                    })
-                  .then(response => response.json())
-                    .then(function(obj)
-                          {
-                              console.log(obj);
-                          })
-                    .catch(err => console.error(err));  
-            }
-        },
-        {
-            title: "users-patch",
-            func: function()
-            {  
-                    const form = new FormData();
-                    form.append('name', "gggg");
-                    form.append('email', "xxxx");
-
-                    fetch(`https://users.reportbase5836.workers.dev/reportbase@gmail.com`,
-                    {
-                        'method': 'PATCH',
-                        'body': form
-                    })
-                  .then(response => response.json())
-                    .then(function(obj)
-                          {
-                              console.log(obj);
-                          })
-                    .catch(err => console.error(err));                 
-            }
-        },
-        {
-            title: "Download",
-            func: function()
-            {
-                if (galleryobj.value().blob)
-                {
-                    const anchor = document.createElement('a');
-                    anchor.href = URL.createObjectURL(galleryobj.value().blob);
-                    anchor.download = galleryobj.value().name;
-                    anchor.click();
-                    URL.revokeObjectURL(anchor.href);
-                    anchor.remove();
-                }
-                else
-                {
-                    var id = galleryobj.value().id;
-                    var path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
-                    if (galleryobj.value().full)
-                        path = galleryobj.value().full;
-                    else if (!id && galleryobj.value().url)
-                        path = galleryobj.value().url;
-                    const anchor = document.createElement('a');
-                    anchor.href = path;
-                    anchor.download = id;
-                    anchor.click();
-                    URL.revokeObjectURL(anchor.href);
-                    anchor.remove();
-                }
-
-                return true;
-            }
-        },
-    ];
 
     _5cnv.sliceobj.data = [];
     var j = 0;
@@ -6615,84 +6693,6 @@ galleryobj.init = function(obj)
         j.func = gotoimage;
         _6cnv.sliceobj.data.push(j);
     };
-
-    _7cnv.sliceobj.data = [
-    {
-        title: `Login   \u{25B6}`,
-        func: function()
-        {
-            if (!gotodialog(local.email ? local.email : "", "Login", gologin))
-                return false;
-            galleryobj.init();
-            return true;
-        }
-    },
-    {
-        title: `Signup   \u{25B6}`,
-        func: function()
-        {
-            if (!gotodialog(local.email ? local.email : "", "Login", gologin))
-                return false;
-            galleryobj.init();
-            return true;
-        }
-    },
-    {
-        title: `Open   \u{25B6}\n*.zip, *.cbz, *.json,\n*.png, *.jpg, *.avif,\n*.webp, *.gif`,
-        func: function()
-        {
-            importdialog();
-            return true;
-        }
-    },   
-    {
-        title: "Developer\nTom Brinkman\nimages@zip-view.com",
-        func: function() 
-        {
-            importdialog();
-            return true;
-        }
-    },     
-    {
-        title: "zip-view\nImage Viewer\nTo load images, drag and drop from the desktop or click here. To load images, drag and drop from the desktop or click here. To load images, drag and drop from the desktop or click here",
-        func: function() 
-        {
-            importdialog();
-            return true;
-        }
-    },     
-    {
-        title: `Images   \u{25B6}`,
-        func: function()
-        {
-        }
-    },
-    {
-        title: `Account   \u{25B6}`,
-        func: function()
-        {
-            menuobj.hide();
-            galleryobj.leftcnv = _10cnv;
-            galleryobj.leftctx = _10cnvctx;
-            menuobj.setindex(galleryobj.leftctx);
-            menuobj.show();
-            return false;
-        },
-    },
-    {
-        title: "Debug   \u{25B6}",
-        func: function()
-        {
-            menuobj.hide();
-            galleryobj.leftcnv = _3cnv;
-            galleryobj.leftctx = _3cnvctx;
-            menuobj.setindex(galleryobj.leftctx);
-            menuobj.show();
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-            return false;
-        }
-    }
-    ];
 
     _8cnv.sliceobj.data = galleryobj.data;
     _9cnv.sliceobj.data = [];
@@ -6773,8 +6773,21 @@ galleryobj.init = function(obj)
         headham.panel = headlst[k];
         headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
         headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-        buttonobj.reset();//todo use url
-        templateobj.reset();//todo use url
+
+        if (url.searchParams.has("b"))
+        {
+            var b = url.searchParams.get("b");
+            console.log(b);
+        }
+
+        if (url.searchParams.has("t"))
+        {
+            var b = url.searchParams.get("t");
+            console.log(b);
+        }
+        
+        buttonobj.reset();
+        templateobj.reset();
     };    
    
     _8cnv.timeobj.set(0);
