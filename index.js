@@ -956,7 +956,7 @@ var bossdisplaylst =
                     new panel.rows([0,(rect.height*0.4),0],
                     [
                         0,
-                        new panel.layers(
+                        1?0:new panel.layers(
                         [
                             new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
                             new panel.expand(new panel.rectangle(context.galleryrect), 10, 1),
@@ -1016,7 +1016,7 @@ var bossdisplaylst =
                 new panel.rows([0, SCROLLEXTENT, SCROLLMARGIN],
                 [
                     0,
-                    new panel.cols([0, bw, 0],
+                    1?0:new panel.cols([0, bw, 0],
                     [
                         0,
                         new panel.layers(
@@ -1166,7 +1166,7 @@ var bossdisplaylst =
                 [
                     0,
                     0,
-                    new panel.layers(
+                    1?0:new panel.layers(
                     [
                         new panel.fill(FOOTBTNCOLOR),
                         new panel.rectangle(context.stretchcolumnrect),
@@ -1492,9 +1492,8 @@ var displaylst =
         var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)).toFixed(0) : '000';
         var st = `\u{25C0}   ${ww} x ${hh.toFixed(0)}   \u{25B6}`;
         var jp = templateobj.value().split("x");
-        data.push(`Template`);
         data.push(`\u{25C0}   ${jp[0]} x ${jp[1]}   \u{25B6}`);
-        var a = new panel.rowsA([HEADTOP, HEADBOT, WRAPROWHEIGHT, 0, (data.length*WRAPROWHEIGHT), 
+        var a = new panel.rowsA([HEADTOP, HEADBOT, 0, (data.length*WRAPROWHEIGHT), 
                                  FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,    
@@ -1507,17 +1506,7 @@ var displaylst =
                     new panel.shadow(new panel.text()),
                 ]),
                 0
-            ]),
-            new panel.cols([0, RAINSTEP, 0],
-            [
-                0,
-                new panel.layers(
-                [
-                    new panel.expand(new panel.rectangle(context.button2rect), 10, 10),
-                    new panel.shadow(new panel.text()),
-                ]),
-                0
-            ]),           
+            ]), 
             0,
             new panel.cols([0, RAINSTEP, 0],
             [
@@ -1539,7 +1528,6 @@ var displaylst =
         [
             0,
             st,
-            "Resolution",
             0,
             data,
             0,
@@ -1610,7 +1598,6 @@ var displaylst =
         if (value && value.folder)
             data = value.folder.split("/");
         //data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
-        data.push(`Cursor`);
         data.push(`\u{25C0}   ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}   \u{25B6}`);
         var st = `\u{25C0}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
