@@ -3911,10 +3911,10 @@ var taplst =
         {
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.rightctx.hide()
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            displayobj.set(k);
             if (menuobj.value() == galleryobj.leftctx)
             {
-                var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-                displayobj.set(k);
                 galleryobj.leftctx.hide();
                 galleryobj.rightctx.hide();
                 galleryobj.leftcnv = _7cnv;
@@ -3923,8 +3923,6 @@ var taplst =
             }
             else
             {
-                var k = displaylst.findIndex(function(a){return a.name == "MENU"});
-                displayobj.set(k);
                 menuobj.setindex(galleryobj.leftctx);
             }
 
@@ -3936,10 +3934,10 @@ var taplst =
             headcnvctx.rightmenurect.hitest(x, y))
         {
             galleryobj.leftctx.hide()
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            displayobj.set(k);
             if (menuobj.value() == galleryobj.rightctx)
             {
-                var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-                displayobj.set(k);
                 galleryobj.rightctx.hide();
                 menuobj.setindex(_8cnvctx);
                 menuobj.draw();
