@@ -1045,7 +1045,7 @@ var bossdisplaylst =
             var w = r.width;
             var x = Math.floor(Math.nub(positxobj.value(), positxobj.length(), w, rect.width));
             var y = Math.floor(Math.nub(posityobj.value(), posityobj.length(), h, rect.height));
-            if (!headcnv.height || context.nothumb)
+            if (!headcnv.height)
                 return;
             canvas.thumbrect = new rectangle(x, y, w, h);
             var r = canvas.thumbrect;
@@ -2654,14 +2654,8 @@ var _13ham = makehammer(_13cnvctx, 0.5, 15);
 var _14ham = makehammer(_14cnvctx, 0.5, 15);
 var _15ham = makehammer(_15cnvctx, 0.5, 15);
 var headham = makehammer(headcnvctx, 0.5, 15);
-_4ham.get('pinch').set(
-{
-    enable: true
-});
-_8ham.get('pinch').set(
-{
-    enable: true
-});
+_4ham.get('pinch').set({enable: true});
+_8ham.get('pinch').set({enable: true});
 
 var galleryobj = new circular_array("", 0);
 
@@ -2681,16 +2675,6 @@ var wheelst =
 
         if (ctrl)
         {
-            if (templateobj.current() < templateobj.length()/2)
-            {
-                for (var n = 0; n < IMAGELSTSIZE; ++n)
-                {
-                    thumbfittedlst[n] = document.createElement("canvas");
-                    thumbimglst[n] = new Image();
-                }                
-                templateobj.set(Math.ceil(templateobj.length()/2));
-            }
-            
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
             displayobj.set(k);
             var j = buttonobj.length()/66;
@@ -2847,16 +2831,6 @@ var pinchlst =
     name: "GALLERY",
     pinch: function(context, x, y, scale)
     {
-            if (templateobj.current() < templateobj.length()/2)
-            {
-                for (var n = 0; n < IMAGELSTSIZE; ++n)
-                {
-                    thumbfittedlst[n] = document.createElement("canvas");
-                    thumbimglst[n] = new Image();
-                }                
-                templateobj.set(Math.ceil(templateobj.length()/2));
-            }
-
         var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
         displayobj.set(k);
         if (!context.buttonanchor)
@@ -3996,7 +3970,6 @@ var taplst =
             headcnvctx.bossdisplayrect.hitest(x, y))
         {
             delete context.canvas.thumbrect;
-            context.nothumb = 0;
             context.nostretchcolumn = 0;
             var k = (x - headcnvctx.bossdisplayrect.x) / headcnvctx.bossdisplayrect.width;
             bossdisplayobj.rotate(k < 0.5 ? -1 : 1);
@@ -4014,7 +3987,7 @@ var taplst =
             context.windowrect &&
             context.windowrect.hitest(x, y))
         {
-            context.nothumb = context.nothumb ? 0 : 1;           
+                       
         }
         else if (
             context.stretchcolumnrect &&
