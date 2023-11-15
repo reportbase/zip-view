@@ -6961,9 +6961,9 @@ function gotodialog(value, func)
 
 function userlogin(value, func)
 {
-    var input = document.getElementById("user-login");
+    var input = document.getElementById("user-login-email");
     var button = document.getElementById("user-login-ok");
-    dialog = document.getElementById("login");
+    dialog = document.getElementById("user-login");
     //button.innerHTML = title;
     input.addEventListener("keyup", function(event)
     {
