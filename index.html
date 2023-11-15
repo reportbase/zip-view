@@ -43,27 +43,48 @@
 <body ondragstart="return false;" ondrop="return false"; oncontextmenu='return false;'>
 
 <dialog id="goto" style="max-width: 80%; width: 720px;">
-      <div>
-        <input id="goto-input" autocapitalize="off" placeholder=""></input>
-        </div>
-      <div style="margin-top:30;"">
-         <button id="goto-ok" style="" type="button">Goto</button>
-       </div>
- </dialog>
+      <input id="goto-input" autocapitalize="off" placeholder=""></input>
+      <button id="goto-ok" style="margin-top:30;" type="button">Goto</button>
+</dialog>
                                                        
 <dialog id="gallery" style="max-width: 80%; width: 720px;">
-      <div>
-        <label>Title</label>
-        <input id="gallery-title" autocapitalize="off" placeholder=""></input>
-        <label>Path</label>
-        <input id="gallery-path" autocapitalize="off" placeholder=""></input>
-        <label>Description</label>
-        <input id="gallery-describe" autocapitalize="off" placeholder=""></input>
-      </div>
-      <div style="margin-top:30;"">
-         <button id="gallery-ok" style="" type="button">Save</button>
-       </div>
- </dialog>
+      <label>Title</label>
+      <input id="gallery-title" autocapitalize="off" placeholder=""></input>
+      <label>Path</label>
+      <input id="gallery-path" autocapitalize="off" placeholder=""></input>
+      <label>Description</label>
+      <input id="gallery-describe" autocapitalize="off" placeholder=""></input>
+      <button id="gallery-ok" style="margin-top:30;" type="button">Update</button>
+</dialog>
+
+<dialog id="confirm" style="max-width: 80%; width: 720px;">
+      <label id="label">Confirm</label>
+      <button id="confirm-ok" style="margin-top:30;" type="button">Confirm</button>
+</dialog>
+
+<dialog id="user-update" style="max-width: 80%; width: 720px;">
+      <label>Name</label>
+      <input id="user-update-name" autocapitalize="off" placeholder=""></input>
+      <label>Email</label>
+      <input id="user-update-email" autocapitalize="off" placeholder=""></input>
+      <label>Secret</label>
+      <input id="user-update-secret" autocapitalize="off" placeholder=""></input>
+      <button id="user-update-ok" style="margin-top:30;" type="button">Update</button>
+</dialog>
+
+<dialog id="user-login" style="max-width: 80%; width: 720px;">
+      <label>Email</label>
+      <input id="user-login-email" autocapitalize="off" placeholder=""></input>
+      <button id="user-login-ok" style="margin-top:30;" type="button">Login</button>
+</dialog>
+      
+<dialog id="user-signup" style="max-width: 80%; width: 720px;">
+      <label>Name</label>
+      <input id="user-signup-name" autocapitalize="off" placeholder=""></input>
+      <label>Email</label>
+      <input id="user-signum-email" autocapitalize="off" placeholder=""></input>
+      <button id="user-login-ok" style="margin-top:30;" type="button">Signup</button>
+</dialog>
 
 </body>
 
