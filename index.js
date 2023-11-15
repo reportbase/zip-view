@@ -1596,6 +1596,7 @@ var displaylst =
     name: "MENU",
     draw: function(context, rect, user, time)
     {
+        return;
         var canvas = context.canvas;
         context.save();
         canvas.vscrollrect = new rectangle();
