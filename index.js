@@ -1140,8 +1140,8 @@ var bossdisplaylst =
 },
     
 {
-    name: "UPLOAD",
-    title: "Upload",
+    name: "STORAGE",
+    title: "Storage",
     draw: function(context, rect, user, time)
     {
         if (!photo.image || !photo.image.width)
@@ -1294,7 +1294,7 @@ var bossdisplaylst =
                 new panel.colsA([0,BETHWIDTH,BETHCIDTH,BETHWIDTH,0],
                 [
                     0,
-                    new panel.layers(
+                    1?0:new panel.layers(
                     [
                         new panel.fill(FOOTBTNCOLOR),
                         new panel.rectangle(context.editgalleryrect),
@@ -1306,9 +1306,9 @@ var bossdisplaylst =
                         new panel.rectangle(context.copyrect),
                         new panel.shadow(new panel.text()),
                     ]),
-                    new panel.layers(
+                    1?0:new panel.layers(
                     [
-                        new panel.fill(FOOTBTNCOLOR),
+                        //new panel.fill(FOOTBTNCOLOR),
                         new panel.rectangle(context.pasterect),
                         new panel.shadow(new panel.text()),
                     ]),
@@ -1327,9 +1327,9 @@ var bossdisplaylst =
            0,
            [
                0,
-               "Edit",
-               "Copy",
-               "Paste",
+               "",
+               "Edit   \u{25B6}",
+               "",
                0,
            ],
         ], 0)  
