@@ -1494,7 +1494,7 @@ var displaylst =
         var jp = templateobj.value().split("x");
         data.push(`Template`);
         data.push(`\u{25C0}   ${jp[0]} x ${jp[1]}   \u{25B6}`);
-        var a = new panel.rowsA([HEADTOP, HEADBOT, 30, 0, (data.length*WRAPROWHEIGHT), 
+        var a = new panel.rowsA([HEADTOP, HEADBOT, WRAPROWHEIGHT, 0, (data.length*WRAPROWHEIGHT), 
                                  FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,    
@@ -1536,16 +1536,16 @@ var displaylst =
         ]);
 
         a.draw(context, rect, 
-            [
-                0,
-                st,
-                "Resolution",
-                0,
-                data,
-                0,
-                0,
-                0
-            ], 0);      
+        [
+            0,
+            st,
+            "Resolution",
+            0,
+            data,
+            0,
+            0,
+            0
+        ], 0);      
         context.restore();
     }
 },
@@ -1729,21 +1729,6 @@ buttonobj.reset = function()
     for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
         buttonobj.data.push(n);
     buttonobj.set(dheight);
-}
-
-buttonobj.fitwidth = function()
-{
-    buttonobj.reset();
-    templateobj.reset();
-    _8cnv.fitflash = 1;
-    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-    setTimeout(function()
-    {
-        _8cnv.fitflash = 0;
-        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-    }, 400);
-
-    menuobj.draw();
 }
 
 function calculateAspectRatioFit(imgwidth, imgheight, rectwidth, rectheight)
@@ -4101,7 +4086,17 @@ var taplst =
             headcnvctx.fitwidthrect &&
             headcnvctx.fitwidthrect.hitest(x, y))
         {
-            buttonobj.fitwidth();
+            buttonobj.reset();
+            templateobj.reset();
+            _8cnv.fitflash = 1;
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            setTimeout(function()
+            {
+                _8cnv.fitflash = 0;
+                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            }, 400);
+        
+            menuobj.draw();
         }
         else if (
             canvas.buttonrect &&
@@ -6734,26 +6729,6 @@ galleryobj.init = function(obj)
         }
     },     
     {
-        title: "Full Screen",
-        func: function()
-        {
-            screenfull.toggle()
-            return true;
-        },
-        enabled: function()
-        {
-            return screenfull.isFullscreen;
-        }
-    },       
-    {
-        title: "Fit Width",
-        func: function()
-        {
-            buttonobj.fitwidth();
-            return true;
-        }
-    },
-    {
         title: `Images   \u{25B6}`,
         func: function()
         {
@@ -6865,7 +6840,8 @@ galleryobj.init = function(obj)
         headham.panel = headlst[k];
         headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
         headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-        buttonobj.fitwidth();
+        buttonobj.reset();//todo use url
+        templateobj.reset();//todo use url
     };    
    
     _8cnv.timeobj.set(0);
