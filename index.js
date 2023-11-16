@@ -6542,23 +6542,21 @@ _3cnv.sliceobj.data =
 _7cnv.sliceobj.data = 
 [
 {
-    title: `Open   \u{25B6}\n*.zip, *.cbz, *.json,\n*.png, *.jpg, *.avif,\n*.webp, *.gif`,
+    title: `Open   \u{25B6}\n*.zip, *.cbz, *.json, *.png,\n*.jpg, *.avif, *.webp, *.gif`,
     func: function()
     {
-        importdialog();
         return true;
     }
 },   
 {
-    title: "Developer\nTom Brinkman\nimages@zip-view.com",
+    title: "Developer\nTom Brinkman\n\nEmail\nimages@zip-view.com",
     func: function() 
     {
-        importdialog();
         return true;
     }
 },     
 {
-    title: "zip-view\nImage Viewer\nTo load images, drag and drop from the desktop or click here. To load images, drag and drop from the desktop or click here. To load images, drag and drop from the desktop or click here",
+    title: "https://zip-view.com\nImage Viewer\nDrag and drop images and zip files from the desktop or load them from the cloud.",
     func: function() 
     {
         importdialog();
