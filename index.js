@@ -4169,8 +4169,7 @@ var taplst =
             {
                 const form = new FormData();
                 form.append('name', name.value);
-                form.append('email', email.value);
-
+                
                 fetch(`https://user.reportbase5836.workers.dev/${user.email}`,
                 {
                     'method': 'PATCH',
