@@ -6445,19 +6445,19 @@ _10cnv.sliceobj.data =
 [
     {
         title: function(){return `ID: ${user.id}`},
-        func: function(){copytext(user.id); return true;}
+        func: function(){copytext(user.id); return false;}
     },
     {
         title: function(){return `Email: ${user.email}`},
-        func: function(){copytext(user.email); return true;}
+        func: function(){copytext(user.email); return false;}
     },
     {
         title: function(){return `Name: ${user.name}`},
-        func: function(){copytext(user.name); return true;}
+        func: function(){copytext(user.name); return false;}
     },
     {
         title: function(){return `Secret: ${user.secret}`},
-        func: function(){copytext(user.secret); return true;}
+        func: function(){copytext(user.secret); return false;}
     },
 ]
 
