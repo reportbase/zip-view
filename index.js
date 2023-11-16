@@ -6556,7 +6556,7 @@ _7cnv.sliceobj.data =
     }
 },     
 {
-    title: "https://zip-view.com\nImage Viewer\nDrag and drop images and zip files from the desktop or load them from the cloud.",
+    title: "https://zip-view.com\nImage Viewer\nDrag and drop images (*.jpg, *.png, *.webp, *.avif) and zip file image galleries (*.zip, *.cbz) from the desktop or load them from the cloud.",
     func: function() 
     {
         return true;
