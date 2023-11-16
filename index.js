@@ -1268,124 +1268,6 @@ var bossdisplaylst =
     }
 },    
 
-{
-    name: "DESCRIPTION",
-    title: "Description",
-    draw: function(context, rect, user, time)
-    {
-        context.describerect = new rectangle();
-        context.hollyrect = new rectangle();
-        
-        var str = `Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur`;
-        var j = 480;
-        if (j > rect.width-40)
-            j = rect.width-40;
-
-        var e = context.canvas.hollyobj.berp();
-        var a = new panel.layers(
-        [
-            0,
-            new panel.rowsA([HEADTOP,HEADBOT,30,0,30,HEADBOT,HEADTOP],
-            [
-                0,
-                0,
-                0,
-                new panel.cols([0,j,0],
-                [
-                    0,
-                    new panel.layers(
-                    [
-                        new panel.rectangle(context.hollyrect),
-                        new panel.multitext(e, new panel.shadow(new panel.text())),
-                    ]),
-                    0,
-                ]),
-                0,
-                0,
-                new panel.colsA([0,BETHWIDTH,BETHCIDTH,BETHWIDTH,0],
-                [
-                    0,
-                    0,
-                    new panel.layers(
-                    [
-                        new panel.fill(FOOTBTNCOLOR),
-                        new panel.rectangle(context.describerect),
-                        new panel.shadow(new panel.text()),
-                    ]),
-                    0,
-                    0,
-                ])
-            ])
-        ]);
-        
-        a.draw(context, rect, 
-        [
-           0,
-           0,   
-           0,
-           [str],
-           0,
-           0,
-           [
-               0,
-               "",
-               "Edit   \u{25B6}",
-               "",
-               0,
-           ],
-        ], 0)  
-    }
-},    
-/*
-{
-    name: "DEBJG",
-    title: "Debug",
-    draw: function(context, rect, user, time)
-    {
-        var canvas = context.canvas
-        var data = [];
-        var index = galleryobj.current();
-        var value = galleryobj.data[index];
-        if (value && value.folder)
-            data = value.folder.split("/");
-         data.push(canvas.timeobj.current().toFixed(5));
-        var e = 100 * (1 - canvas.timeobj.berp());
-        var j = 100 * rowobj.berp();
-        data.push(`${e.toFixed(2)}%, ${j.toFixed(2)}%`);
-        if (galleryobj.value().id)
-            data.push(galleryobj.value().id);
-        data.push(`${window.innerWidth} x ${window.innerHeight}`);
-        data.push(`${canvas.virtualwidth.toFixed(0)} x ${window.innerHeight}`);
-        var aspect = photo.image.width / photo.image.height;
-        data.push(aspect.toFixed(2));
-        var j = Number(zoomobj.value());
-        data.push(`${j.toFixed(2)}%`);
-        var mp = (canvas.virtualwidth * window.innerHeight)/1000000;
-        data.push(`${mp.toFixed(2)} MP`);
-        var mp = (photo.image.width * photo.image.height) / 1000000;
-        data.push(`${mp.toFixed(2)} MP`);
-        var extent = `${photo.image.width}x${photo.image.height}`;
-        data.push(extent);
-        data.push(`${galleryobj.width}x${galleryobj.height}`);
-        var j = 100 * _8cnv.hollyobj.berp();
-        data.push(`${j.toFixed(2)}%`);
-        data.push(_8cnv.timeobj.current().toFixed(5));
- 
-        var a = new panel.rows([80,40,0,data.length*25,0,80],
-        [
-            0,
-            0,
-            0,
-            new panel.gridA(1,data.length, 1,
-                new panel.shadow(new panel.text())),
-            0,
-            0,
-        ]);
-        
-        a.draw(context, rect, data, 0)
-    }
-},    
-*/
 ];
 
 var bossdisplayobj = new circular_array("", bossdisplaylst);
@@ -3623,10 +3505,10 @@ var keylst = [
                 evt.preventDefault();
                 galleryobj.leftright(context, canvas.speed / 2)
             }
-            else if (key == "d")
+            else if (key == "w")
             {
                 evt.preventDefault();
-                download();
+                buttonobj.fitwidth();
             }
             else if (key == "x")
             {
@@ -3838,13 +3720,40 @@ var taplst =
         {
                 
         }
+        else if (context.deleteimagerect && context.deleteimagerect.hitest(x, y))
+        {
+            if (showdialog("confirm", function(image)
+            {
+                
+            }))
+                galleryobj.init()       
+        }
         else if (context.downloadimagerect && context.downloadimagerect.hitest(x, y))
         {
-                
-        }
-        else if (context.describerect && context.describerect.hitest(x, y))
-        {
-                
+            if (galleryobj.value().blob)
+            {
+                const anchor = document.createElement('a');
+                anchor.href = URL.createObjectURL(galleryobj.value().blob);
+                anchor.download = galleryobj.value().name;
+                anchor.click();
+                URL.revokeObjectURL(anchor.href);
+                anchor.remove();
+            }
+            else
+            {
+                var id = galleryobj.value().id;
+                var path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
+                if (galleryobj.value().full)
+                    path = galleryobj.value().full;
+                else if (!id && galleryobj.value().url)
+                    path = galleryobj.value().url;
+                const anchor = document.createElement('a');
+                anchor.href = path;
+                anchor.download = id;
+                anchor.click();
+                URL.revokeObjectURL(anchor.href);
+                anchor.remove();
+            }
         }
         else if (context.copyidrect && context.copyidrect.hitest(x, y))
         {
@@ -4457,10 +4366,6 @@ bossobj.draw = function()
     delete context.uploadimagerect;
     delete context.deleteimagerect;
 
-    //Describe
-    delete context.hollyrect;
-    delete context.describerect;
- 
     //others
     delete context.slicerect;
     delete context.stretchrect;
@@ -6505,38 +6410,6 @@ _3cnv.sliceobj.data =
                           console.log(obj);
                       })
                 .catch(err => console.error(err));                 
-        }
-    },
-    {
-        title: "Download",
-        func: function()
-        {
-            if (galleryobj.value().blob)
-            {
-                const anchor = document.createElement('a');
-                anchor.href = URL.createObjectURL(galleryobj.value().blob);
-                anchor.download = galleryobj.value().name;
-                anchor.click();
-                URL.revokeObjectURL(anchor.href);
-                anchor.remove();
-            }
-            else
-            {
-                var id = galleryobj.value().id;
-                var path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
-                if (galleryobj.value().full)
-                    path = galleryobj.value().full;
-                else if (!id && galleryobj.value().url)
-                    path = galleryobj.value().url;
-                const anchor = document.createElement('a');
-                anchor.href = path;
-                anchor.download = id;
-                anchor.click();
-                URL.revokeObjectURL(anchor.href);
-                anchor.remove();
-            }
-
-            return true;
         }
     },
 ];
