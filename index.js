@@ -1330,8 +1330,8 @@ var displaylst =
         var data = [];
         var hh = buttonobj.value();
         var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)).toFixed(0) : '000';
-        var st = `\u{25C0}   ${ww} x ${hh.toFixed(0)}   \u{25B6}`;
-        data.push(`Template`);
+        var st = "";//`\u{25C0}   ${ww} x ${hh.toFixed(0)}   \u{25B6}`;
+        //data.push(`Template`);
         data.push(`\u{25C0}   ${templateobj.value()}   \u{25B6}`);
         var a = new panel.rowsA([HEADTOP, HEADBOT, 23, 0, (data.length*WRAPROWHEIGHT), 
                                  FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
