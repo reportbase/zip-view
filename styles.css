@@ -103,8 +103,6 @@ button
     font-size: 1em;
     line-height: 1;
     border-radius: 500px;
-    transition-property: background-color,border-color,color,box-shadow,filter;
-    transition-duration: .3s;
     border: 1px solid transparent;
     letter-spacing: 2px;
     min-width: 160px;
@@ -118,23 +116,4 @@ button
   display: inline-block;
   font-weight: bold;
     height: 48px;
-    :hover{
-        color: #fff;
-        background-color: #616467;
-    }
-/*
-  background-color: #04AA6D;
-  border: 1px solid green;
-  color: white;
-  padding: 15px 32px;
-  font-family: rubik;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-weight: bold;
-  font-size: 1em;
-  cursor: pointer;
-  float: center;
-  margin-top:30;
-*/
 }
