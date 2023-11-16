@@ -826,7 +826,7 @@ var footlst =
                    0,
                    [
                        "Open   \u{25B6}",
-                       "Login"
+                       "Login" 
                    ],
                 ],
                 0);
@@ -4240,12 +4240,13 @@ var taplst =
         }
         else if (canvas.signinrect && canvas.signinrect.hitest(x, y))
         {
-            if (showlogin(local.email ? local.email : "", "user", function(str)
+            var input = document.getElementById("user-signup-input");
+            input.value = local.email ? local.email : "";
+            if (showdialog("user-signup", function(str)
             {
-                local.email = str;
+                local.email = input.value.clean();
             }))
                 galleryobj.init();
-            return true;
         }
         else if (canvas.closerect && 
                  canvas.closerect.hitest(x, y))
@@ -6539,35 +6540,8 @@ _3cnv.sliceobj.data =
     },
 ];
 
-_7cnv.sliceobj.data = [
-{
-    title: `Login   \u{25B6}`,
-    func: function()
-    {
-        var input = document.getElementById("user-login-input");
-        input.value = local.email ? local.email : "";
-        if (showdialog("user-login", function(str)
-        {
-            local.email = input.value.clean();
-        }))
-            galleryobj.init();
-        return true;
-    }
-},
-{
-    title: `Signup   \u{25B6}`,
-    func: function()
-    {
-        var input = document.getElementById("user-signup-input");
-        input.value = local.email ? local.email : "";
-        if (showdialog("user-signup", function(str)
-        {
-            local.email = input.value.clean();
-        }))
-            galleryobj.init();
-        return true;    
-    }
-},
+_7cnv.sliceobj.data = 
+[
 {
     title: `Open   \u{25B6}\n*.zip, *.cbz, *.json,\n*.png, *.jpg, *.avif,\n*.webp, *.gif`,
     func: function()
