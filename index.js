@@ -4166,7 +4166,7 @@ var taplst =
             name.value = user.name?user.name:"";
             email.value = user.email?user.email:"";
             secret.value = user.secret?user.secret:"";
-            id.value = id.secret?user.id:"";
+            id.value = user.id?user.id:"";
             showdialog("user-edit", function(str)
             {
                 const form = new FormData();
@@ -4175,7 +4175,7 @@ var taplst =
                 form.append('email', email.value);
                 form.append('id', id.value);
                 form.append('secret', secret.value);
-                
+                //todo not working
                 fetch(`https://user.reportbase5836.workers.dev`,
                 {
                     'method': 'PATCH',
@@ -6445,31 +6445,19 @@ _10cnv.sliceobj.data =
 [
     {
         title: function(){return `ID: ${user.id}`},
-        func: function()
-        {
-            return true;
-        }
+        func: function(){copytext(user.id); return true;}
     },
     {
         title: function(){return `Email: ${user.email}`},
-        func: function()
-        {
-            return true;
-        }
+        func: function(){copytext(user.email); return true;}
     },
     {
         title: function(){return `Name: ${user.name}`},
-        func: function()
-        {
-            return true;
-        }
+        func: function(){copytext(user.name); return true;}
     },
     {
         title: function(){return `Secret: ${user.secret}`},
-        func: function()
-        {
-            return true;
-        }
+        func: function(){copytext(user.secret); return true;}
     },
 ]
 
