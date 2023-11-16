@@ -4184,7 +4184,7 @@ var taplst =
             });
                 
             return true;              
-        },
+        }
         else if (canvas.closerect && 
                  canvas.closerect.hitest(x, y))
         {
