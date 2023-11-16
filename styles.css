@@ -53,12 +53,12 @@ input
   background-color: #ffffff;
   background-repeat: no-repeat;
   background-position: right 8px center;
-  border: 1px solid #e1e4e8;
+  border: 1px solid black;
   border-radius: 6px;
   outline: none;
   box-shadow: rgba(225, 228, 232, 0.2) 0px 1px 0px 0px inset;
   :focus{
-      border-color: #0366d6;
+      border-color: blue;
       outline: none;
       box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
   }
