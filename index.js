@@ -4171,7 +4171,7 @@ var taplst =
                 form.append('name', name.value);
                 form.append('email', email.value);
 
-                fetch(`https://users.reportbase5836.workers.dev/reportbase@gmail.com`,
+                fetch(`https://users.reportbase5836.workers.dev/${user.email}`,
                 {
                     'method': 'PATCH',
                     'body': form
