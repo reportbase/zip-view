@@ -47,7 +47,6 @@ label
 input
 {
   padding: 5px 12px;
-  font-size: 14px;
   line-height: 20px;
   color: #24292e;
   vertical-align: middle;
@@ -71,11 +70,11 @@ input
   border-radius: 0px;
   border-width: 1px;
   color: black;
-  text-align: left;
+  text-align: center;
   font-weight: bold;
   box-sizing: border-box; 
   width: 100%; 
-  font-size: 1em; 
+  font-size: 1.2em; 
 }
 
 textarea 
