@@ -3703,11 +3703,10 @@ var taplst =
         }
         else if (context.deleteimagerect && context.deleteimagerect.hitest(x, y))
         {
-            if (showdialog("confirm", function(image)
+            showdialog("confirm", function(image)
             {
                 
-            }))
-                galleryobj.init()       
+            })     
         }
         else if (context.downloadimagerect && context.downloadimagerect.hitest(x, y))
         {
@@ -3746,7 +3745,7 @@ var taplst =
         {
             var input = document.getElementById("goto-input");
             input.value = galleryobj.current().toFixed(0);
-            if (showdialog("goto", function(image)
+            showdialog("goto", function(image)
             {
                 var image = input.value.clean();
                 image = Math.floor(image);
@@ -3754,7 +3753,7 @@ var taplst =
                 galleryobj.set(image);
                 delete photo.image;
                 contextobj.reset();
-            }))
+            })
         }
         else if (context.canvas.thumbrect && 
                  context.canvas.thumbrect.hitest(x, y))
@@ -3959,12 +3958,12 @@ var taplst =
             index *= galleryobj.length();
             var input = document.getElementById("goto-input");
             input.value = index.toFixed(4);
-            if (showdialog("goto", function(image)
+            showdialog("goto", function(image)
             {
                 var image = input.value.clean();
                 gotoimage(image);
                 menuobj.draw();
-            }))
+            })
         }
         else if (
             headcnvctx.fullrect &&
@@ -4096,24 +4095,24 @@ var taplst =
         }
         else if (canvas.addgalleryrect && canvas.addgalleryrect.hitest(x, y))
         {
-                if (showdialog("gallery", function(image)
+                showdialog("gallery", function(image)
                 {
                     
-                }))
+                })
         }
         else if (canvas.editgalleryrect && canvas.editgalleryrect.hitest(x, y))
         {
-                if (showdialog("gallery", function(image)
+                showdialog("gallery", function(image)
                 {
                     
-                })) 
+                })
         }
         else if (canvas.deletegalleryrect && canvas.deletegalleryrect.hitest(x, y))
         {
-                if (showdialog("confirm", function(image)
+                showdialog("confirm", function(image)
                 {
                     
-                }))     
+                })   
         }
         else if (canvas.signuprect && canvas.signuprect.hitest(x, y))
         {
@@ -4121,7 +4120,7 @@ var taplst =
             var email = document.getElementById("user-signup-email");
             name.value = local.name?local.name:"";
             email.value = local.email?local.email:"";
-            if (showdialog("user-signup", function(str)
+            showdialog("user-signup", function(str)
             {
                 const form = new FormData();
                 form.append('name', name.value);
@@ -4138,7 +4137,7 @@ var taplst =
                           console.log(obj);
                       })
                 .catch(err => console.error(err));  
-            }));
+            });
                 
             return true;
         }
@@ -4146,7 +4145,7 @@ var taplst =
         {
             var email = document.getElementById("user-signup-email");
             email.value = local.email ? local.email : "";
-            if (showdialog("user-login", function(str)
+            showdialog("user-login", function(str)
             {
                  fetch(`https://users.reportbase5836.workers.dev/${email.value}`)
                   .then(function(response)
@@ -4159,7 +4158,7 @@ var taplst =
                 {
                     console.log(obj);
                 }); 
-            }))
+            })
         }
         else if (canvas.closerect && 
                  canvas.closerect.hitest(x, y))
