@@ -4150,9 +4150,9 @@ var taplst =
                         console.log(`${key} = ${value}`);
                       return response.json();
                   })
-                  .then(function(obj)
+                  .then(function(lst)
                 {
-                    user = obj;
+                    user = lst[0];
                     dialog.close();
                 }); 
             })
