@@ -54,7 +54,6 @@ const TRANSPARENT = "rgba(0,0,0,0)";
 const FILLBAR = "rgba(0,0,0,0.3)";
 const NUBAR = "rgba(255,255,255,0.8)";
 const FILLMENU = "rgba(0,0,0,0.6)";
-const GALLERYSCROLL = "rgba(0,0,0,0.3)";
 const ARROWFILL = "white";
 const SCROLLEXTENT = 16;
 const SCROLLMARGIN = 6;
@@ -4221,12 +4220,15 @@ var taplst =
                 {
                     
                 }))
-                    galleryobj.init()
-       
+                    galleryobj.init()       
         }
         else if (canvas.deletegalleryrect && canvas.deletegalleryrect.hitest(x, y))
         {
-                
+                if (showdialog("confirm", function(image)
+                {
+                    
+                }))
+                    galleryobj.init()       
         }
         else if (canvas.signuprect && canvas.signuprect.hitest(x, y))
         {
