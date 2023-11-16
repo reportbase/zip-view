@@ -3744,18 +3744,17 @@ var taplst =
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
-                var input = document.getElementById("goto-input");
-                input.value = galleryobj.current().toFixed(0);
-                if (showdialog("goto", function(image)
-                {
-                    var image = input.value.clean();
-                    image = Math.floor(image);
-                    image = util.clamp(0, galleryobj.length()-1, image);
-                    galleryobj.set(image);
-                    delete photo.image;
-                    contextobj.reset();
-                }))
-                    galleryobj.init()
+            var input = document.getElementById("goto-input");
+            input.value = galleryobj.current().toFixed(0);
+            if (showdialog("goto", function(image)
+            {
+                var image = input.value.clean();
+                image = Math.floor(image);
+                image = util.clamp(0, galleryobj.length()-1, image);
+                galleryobj.set(image);
+                delete photo.image;
+                contextobj.reset();
+            }))
         }
         else if (context.canvas.thumbrect && 
                  context.canvas.thumbrect.hitest(x, y))
@@ -3966,7 +3965,6 @@ var taplst =
                 gotoimage(image);
                 menuobj.draw();
             }))
-              galleryobj.init()
         }
         else if (
             headcnvctx.fullrect &&
@@ -4102,23 +4100,20 @@ var taplst =
                 {
                     
                 }))
-                    galleryobj.init()
         }
         else if (canvas.editgalleryrect && canvas.editgalleryrect.hitest(x, y))
         {
                 if (showdialog("gallery", function(image)
                 {
                     
-                }))
-                    galleryobj.init()       
+                })) 
         }
         else if (canvas.deletegalleryrect && canvas.deletegalleryrect.hitest(x, y))
         {
                 if (showdialog("confirm", function(image)
                 {
                     
-                }))
-                    galleryobj.init()       
+                }))     
         }
         else if (canvas.signuprect && canvas.signuprect.hitest(x, y))
         {
@@ -4130,7 +4125,7 @@ var taplst =
             {
                 const form = new FormData();
                 form.append('name', name.value);
-                form.append('email', name.email);
+                form.append('email', email.email);
 
                 fetch(`https://users.reportbase5836.workers.dev`,
                 {
@@ -4149,13 +4144,22 @@ var taplst =
         }
         else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
         {
-            var input = document.getElementById("user-signup-input");
-            input.value = local.email ? local.email : "";
+            var email = document.getElementById("user-signup-email");
+            email.value = local.email ? local.email : "";
             if (showdialog("user-login", function(str)
             {
-                local.email = input.value.clean();
+                 fetch(`https://users.reportbase5836.workers.dev/${email.value}`)
+                  .then(function(response)
+                  {
+                    for (let [key, value] of response.headers)
+                        console.log(`${key} = ${value}`);
+                      return response.json();
+                  })
+                  .then(function(obj)
+                {
+                    console.log(obj);
+                }); 
             }))
-                galleryobj.init();
         }
         else if (canvas.closerect && 
                  canvas.closerect.hitest(x, y))
@@ -6314,46 +6318,7 @@ _3cnv.sliceobj.data =
             return true;
         }
     },
-    
-    {
-        title: "users-signup",
-        func: function()
-        {
-                const form = new FormData();
-                form.append('name', "yyyy");
-                form.append('email', "xxxx");
 
-                fetch(`https://users.reportbase5836.workers.dev`,
-                {
-                    'method': 'POST',
-                    'body': form
-                })
-              .then(response => response.json())
-                .then(function(obj)
-                      {
-                          console.log(obj);
-                      })
-                .catch(err => console.error(err));  
-        }
-    },
-    {
-        title: "users-get",
-        func: function()
-        {        
-            fetch(`https://users.reportbase5836.workers.dev/reportbase@gmail.com`)
-              .then(function(response)
-              {
-                for (let [key, value] of response.headers)
-                    console.log(`${key} = ${value}`);
-                  return response.json();
-              })
-              .then(function(obj)
-                    {
-                        console.log(obj);
-                    });  
-            return true;
-        }
-    },
     {
         title: "users-list",
         func: function()
