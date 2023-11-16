@@ -6316,7 +6316,7 @@ _3cnv.sliceobj.data =
     },
     
     {
-        title: "users-post",
+        title: "users-signup",
         func: function()
         {
                 const form = new FormData();
