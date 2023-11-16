@@ -661,7 +661,7 @@ var footlst =
         context.save();     
         canvas.homerect = new rectangle();
         canvas.addgalleryrect = new rectangle();
-        canvas.opengalleryrect = new rectangle();
+        canvas.signuprect = new rectangle();
         canvas.editgalleryrect = new rectangle();        
         canvas.deletegalleryrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
@@ -740,8 +740,8 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.homerect = new rectangle();
-        canvas.imagesrect = new rectangle();
-        canvas.invoicesrect = new rectangle();
+        canvas.logoutrect = new rectangle();
+        canvas.secretrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
@@ -758,12 +758,12 @@ var footlst =
                     [
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.imagesrect),
+                            new panel.rectangle(canvas.logoutrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.invoicesrect),
+                            new panel.rectangle(canvas.secretrect),
                             new panel.text(),
                         ]),
                     ])                            
@@ -775,7 +775,7 @@ var footlst =
                    `\u{25C0}   Account`,
                    0,
                    [
-                       "Login",
+                       "Logout",
                        "Secret   \u{25B6}",
                    ], 
                 ], 0);
@@ -790,8 +790,8 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.closerect = new rectangle();
-        canvas.opengalleryrect = new rectangle();
-        canvas.signinrect = new rectangle();
+        canvas.signuprect = new rectangle();
+        canvas.loginrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
@@ -808,12 +808,12 @@ var footlst =
                     [
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.opengalleryrect),
+                            new panel.rectangle(canvas.signuprect),
                             new panel.text(),
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.signinrect),
+                            new panel.rectangle(canvas.loginrect),
                             new panel.text(),
                         ]),
                     ])                            
@@ -825,8 +825,8 @@ var footlst =
                    `\u{25C0}   ${url.host}`,
                    0,
                    [
-                       "Open   \u{25B6}",
-                       "Login" 
+                       "Signup   \u{25B6}",
+                       "Login  \u{25B6}" 
                    ],
                 ],
                 0);
@@ -1996,7 +1996,7 @@ panel.open = function()
     this.draw = function(context, rect, user, time)
     {
         context.save();
-        context.canvas.opengalleryrect = new rectangle();
+        context.canvas.signuprect = new rectangle();
 
         var Panel = function()
         {
@@ -2018,7 +2018,7 @@ panel.open = function()
 
         var a = new panel.layers(
             [
-                new panel.rectangle(context.canvas.opengalleryrect),
+                new panel.rectangle(context.canvas.signuprect),
                 new panel.shrink(new panel.circle(SCROLLNAB, SEARCHFRAME, 4), 15, 15),
                 new panel.shrink(new Panel(), 20, 34),
             ]);
@@ -4233,16 +4233,22 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             return true;
         }
-        else if (canvas.opengalleryrect && canvas.opengalleryrect.hitest(x, y))
-        {
-            importdialog()
-            return true;
-        }
-        else if (canvas.signinrect && canvas.signinrect.hitest(x, y))
+        else if (canvas.signuprect && canvas.signuprect.hitest(x, y))
         {
             var input = document.getElementById("user-signup-input");
             input.value = local.email ? local.email : "";
             if (showdialog("user-signup", function(str)
+            {
+                local.email = input.value.clean();
+            }))
+                galleryobj.init();
+            return true;
+        }
+        else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
+        {
+            var input = document.getElementById("user-signup-input");
+            input.value = local.email ? local.email : "";
+            if (showdialog("user-login", function(str)
             {
                 local.email = input.value.clean();
             }))
