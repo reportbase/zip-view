@@ -784,7 +784,7 @@ var footlst =
         context.save();     
         canvas.closerect = new rectangle();
         canvas.usersignuprect = new rectangle();
-        canvas.loginrect = new rectangle();
+        canvas.userloginrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
@@ -806,7 +806,7 @@ var footlst =
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.loginrect),
+                            new panel.rectangle(canvas.userloginrect),
                             new panel.text(),
                         ]),
                     ])                            
@@ -4137,7 +4137,7 @@ var taplst =
                 
             return true;
         }
-        else if (canvas.userloginrect && canvas.loginrect.hitest(x, y))
+        else if (canvas.userloginrect && canvas.userloginrect.hitest(x, y))
         {
             var email = document.getElementById("user-signup-email");
             email.value = user.email ? user.email : "";
