@@ -736,8 +736,7 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.homerect = new rectangle();
-        canvas.logoutrect = new rectangle();
-        canvas.secretrect = new rectangle();
+        canvas.usereditrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
@@ -750,18 +749,15 @@ var footlst =
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.colsA([0,0],
+                    new panel.colsA([0,0,0],
                     [
+                        0,
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.logoutrect),
+                            new panel.rectangle(canvas.usereditrect),
                             new panel.text(),
                         ]),
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.secretrect),
-                            new panel.text(),
-                        ]),
+                        0,
                     ])                            
                 ])
             ]);
@@ -771,8 +767,9 @@ var footlst =
                    `\u{25C0}   Account`,
                    0,
                    [
-                       "Logout",
-                       "Secret   \u{25B6}",
+                       "",
+                       "Edit   \u{25B6}",
+                       "",
                    ], 
                 ], 0);
         
@@ -786,7 +783,7 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.closerect = new rectangle();
-        canvas.signuprect = new rectangle();
+        canvas.usersignuprect = new rectangle();
         canvas.loginrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
@@ -804,7 +801,7 @@ var footlst =
                     [
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.signuprect),
+                            new panel.rectangle(canvas.usersignuprect),
                             new panel.text(),
                         ]),
                         new panel.layers(
@@ -1861,7 +1858,7 @@ panel.open = function()
     this.draw = function(context, rect, user, time)
     {
         context.save();
-        context.canvas.signuprect = new rectangle();
+        context.canvas.usersignuprect = new rectangle();
 
         var Panel = function()
         {
@@ -1883,7 +1880,7 @@ panel.open = function()
 
         var a = new panel.layers(
             [
-                new panel.rectangle(context.canvas.signuprect),
+                new panel.rectangle(context.canvas.usersignuprect),
                 new panel.shrink(new panel.circle(SCROLLNAB, SEARCHFRAME, 4), 15, 15),
                 new panel.shrink(new Panel(), 20, 34),
             ]);
@@ -4113,7 +4110,7 @@ var taplst =
                     
                 })   
         }
-        else if (canvas.signuprect && canvas.signuprect.hitest(x, y))
+        else if (canvas.usersignuprect && canvas.usersignuprect.hitest(x, y))
         {
             var name = document.getElementById("user-signup-name");
             var email = document.getElementById("user-signup-email");
@@ -4140,7 +4137,7 @@ var taplst =
                 
             return true;
         }
-        else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
+        else if (canvas.userloginrect && canvas.loginrect.hitest(x, y))
         {
             var email = document.getElementById("user-signup-email");
             email.value = local.email ? local.email : "";
@@ -4159,6 +4156,35 @@ var taplst =
                 }); 
             })
         }
+        else if (canvas.usereditrect && canvas.usereditrect.hitest(x, y))
+        {
+            var name = document.getElementById("user-edit-name");
+            var email = document.getElementById("user-edit-email");
+            var secret = document.getElementById("user-edit-secret");
+            name.value = local.name?local.name:"";
+            email.value = local.email?local.email:"";
+            secret.value = local.secret?local.secret:"";
+            showdialog("user-edit", function(str)
+            {
+                const form = new FormData();
+                form.append('name', name.value);
+                form.append('email', email.value);
+
+                fetch(`https://users.reportbase5836.workers.dev/reportbase@gmail.com`,
+                {
+                    'method': 'PATCH',
+                    'body': form
+                })
+              .then(response => response.json())
+                .then(function(obj)
+                      {
+                          console.log(obj);
+                      })
+                .catch(err => console.error(err));        
+            });
+                
+            return true;              
+        },
         else if (canvas.closerect && 
                  canvas.closerect.hitest(x, y))
         {
@@ -6349,27 +6375,6 @@ _3cnv.sliceobj.data =
                           console.log(obj);
                       })
                 .catch(err => console.error(err));  
-        }
-    },
-    {
-        title: "users-patch",
-        func: function()
-        {  
-                const form = new FormData();
-                form.append('name', "gggg");
-                form.append('email', "xxxx");
-
-                fetch(`https://users.reportbase5836.workers.dev/reportbase@gmail.com`,
-                {
-                    'method': 'PATCH',
-                    'body': form
-                })
-              .then(response => response.json())
-                .then(function(obj)
-                      {
-                          console.log(obj);
-                      })
-                .catch(err => console.error(err));                 
         }
     },
 ];
