@@ -4162,15 +4162,21 @@ var taplst =
             var name = document.getElementById("user-edit-name");
             var email = document.getElementById("user-edit-email");
             var secret = document.getElementById("user-edit-secret");
+            var id = document.getElementById("user-edit-id");
             name.value = user.name?user.name:"";
             email.value = user.email?user.email:"";
             secret.value = user.secret?user.secret:"";
+            id.value = id.secret?user.id:"";
             showdialog("user-edit", function(str)
             {
                 const form = new FormData();
                 form.append('name', name.value);
+                form.append('email.old', user.email);
+                form.append('email', email.value);
+                form.append('id', id.value);
+                form.append('secret', secret.value);
                 
-                fetch(`https://user.reportbase5836.workers.dev/${user.email}`,
+                fetch(`https://user.reportbase5836.workers.dev`,
                 {
                     'method': 'PATCH',
                     'body': form
@@ -6438,28 +6444,28 @@ _7cnv.sliceobj.data =
 _10cnv.sliceobj.data = 
 [
     {
-        title: "Email Address",
+        title: function(){return `ID: ${user.id}`},
         func: function()
         {
             return true;
         }
     },
     {
-        title: "Name",
+        title: function(){return `Email: ${user.email}`},
         func: function()
         {
             return true;
         }
     },
     {
-        title: "Email Address",
+        title: function(){return `Name: ${user.name}`},
         func: function()
         {
             return true;
         }
     },
     {
-        title: "Secret",
+        title: function(){return `Secret: ${user.secret}`},
         func: function()
         {
             return true;
