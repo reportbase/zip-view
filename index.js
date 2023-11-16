@@ -3276,25 +3276,6 @@ var mouselst = [
 
 var mouseobj = new circular_array("MOUSE", mouselst);
 
-var overlaylst = 
-[
-{
-    name: "DEBUG",
-    draw: function(context, rect, user, time)
-    {
-        var a = new panel.rows([0, 60, 0],
-            [
-                0,
-                new panel.shadow(new panel.text()),
-                0,
-            ]);
-
-        a.draw(context, rect, user, time);
-    }
-}]
-
-var overlayobj = new circular_array("OVERLAY", overlaylst);
-
 var presslst = 
 [
 {
@@ -4141,13 +4122,29 @@ var taplst =
         }
         else if (canvas.signuprect && canvas.signuprect.hitest(x, y))
         {
-            var input = document.getElementById("user-signup-input");
-            input.value = local.email ? local.email : "";
+            var name = document.getElementById("user-signup-name");
+            var email = document.getElementById("user-signup-email");
+            name.value = local.name?local.name:"";
+            email.value = local.email?local.email:"";
             if (showdialog("user-signup", function(str)
             {
-                local.email = input.value.clean();
-            }))
-                galleryobj.init();
+                const form = new FormData();
+                form.append('name', name.value);
+                form.append('email', name.email);
+
+                fetch(`https://users.reportbase5836.workers.dev`,
+                {
+                    'method': 'POST',
+                    'body': form
+                })
+              .then(response => response.json())
+                .then(function(obj)
+                      {
+                          console.log(obj);
+                      })
+                .catch(err => console.error(err));  
+            }));
+                
             return true;
         }
         else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
