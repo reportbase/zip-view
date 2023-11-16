@@ -6559,7 +6559,6 @@ _7cnv.sliceobj.data =
     title: "https://zip-view.com\nImage Viewer\nDrag and drop images and zip files from the desktop or load them from the cloud.",
     func: function() 
     {
-        importdialog();
         return true;
     }
 },     
