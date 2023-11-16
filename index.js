@@ -2759,7 +2759,7 @@ var userobj = {}
 
 function publishgallery(json)
 {
-    var email = local.email;
+    var email = user.email;
     if (!email)
         email = "reportbase@gmail.com";
 
@@ -4114,8 +4114,8 @@ var taplst =
         {
             var name = document.getElementById("user-signup-name");
             var email = document.getElementById("user-signup-email");
-            name.value = local.name?local.name:"";
-            email.value = local.email?local.email:"";
+            name.value = user.name?user.name:"";
+            email.value = user.email?user.email:"";
             showdialog("user-signup", function(str)
             {
                 const form = new FormData();
@@ -4140,7 +4140,7 @@ var taplst =
         else if (canvas.userloginrect && canvas.loginrect.hitest(x, y))
         {
             var email = document.getElementById("user-signup-email");
-            email.value = local.email ? local.email : "";
+            email.value = user.email ? user.email : "";
             showdialog("user-login", function(str)
             {
                  fetch(`https://users.reportbase5836.workers.dev/${email.value}`)
@@ -4152,7 +4152,8 @@ var taplst =
                   })
                   .then(function(obj)
                 {
-                    console.log(obj);
+                    user = obj;
+                    dialog.close();
                 }); 
             })
         }
@@ -4161,9 +4162,9 @@ var taplst =
             var name = document.getElementById("user-edit-name");
             var email = document.getElementById("user-edit-email");
             var secret = document.getElementById("user-edit-secret");
-            name.value = local.name?local.name:"";
-            email.value = local.email?local.email:"";
-            secret.value = local.secret?local.secret:"";
+            name.value = user.name?user.name:"";
+            email.value = user.email?user.email:"";
+            secret.value = user.secret?user.secret:"";
             showdialog("user-edit", function(str)
             {
                 const form = new FormData();
@@ -6564,7 +6565,7 @@ galleryobj.init = function(obj)
     _9cnv.sliceobj.data = [];
     _2cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
-    var email = local.email ? local.email : "reportbase@gmail.com";
+    var email = user.email ? user.email : "reportbase@gmail.com";
     fetch(`https://gallery.reportbase5836.workers.dev/list/${email}`)
         .then(function(response)
         {
@@ -6658,8 +6659,8 @@ galleryobj.init = function(obj)
         image.src = imagepath(j,"5760x5760");
 }
 
-var local = {};
-local.email = "reportbase@gmail.com";
+var user = {};
+user.email = "reportbase@gmail.com";
 
 if (url.searchParams.has("data"))
 {
