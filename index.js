@@ -3835,27 +3835,6 @@ var taplst =
         {
             _4cnvctx.movepage(1);
         }
-        else if (context.addgalleryrect && context.addgalleryrect.hitest(x, y))
-        {
-                if (showdialog("gallery", function(image)
-                {
-                    
-                }))
-                    galleryobj.init()
-        }
-        else if (context.editgalleryrect && context.editgalleryrect.hitest(x, y))
-        {
-                if (showdialog("gallery", function(image)
-                {
-                    
-                }))
-                    galleryobj.init()
-       
-        }
-        else if (context.deletegalleryrect && context.deletegalleryrect.hitest(x, y))
-        {
-                
-        }
         else if (context.uploadimagerect && context.uploadimagerect.hitest(x, y))
         {
                 
@@ -4018,6 +3997,28 @@ var taplst =
             displayobj.set(k);
             menuobj.show();
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        }
+
+        else if (context.addgalleryrect && context.addgalleryrect.hitest(x, y))
+        {
+                if (showdialog("gallery", function(image)
+                {
+                    
+                }))
+                    galleryobj.init()
+        }
+        else if (context.editgalleryrect && context.editgalleryrect.hitest(x, y))
+        {
+                if (showdialog("gallery", function(image)
+                {
+                    
+                }))
+                    galleryobj.init()
+       
+        }
+        else if (context.deletegalleryrect && context.deletegalleryrect.hitest(x, y))
+        {
+                
         }
         else if (
             context.holly2rect &&
