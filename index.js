@@ -4143,7 +4143,7 @@ var taplst =
             email.value = user.email ? user.email : "";
             showdialog("user-login", function(str)
             {
-                 fetch(`https://users.reportbase5836.workers.dev/${email.value}`)
+                 fetch(`https://users.reportbase5836.workers.dev/${user.email}`)
                   .then(function(response)
                   {
                     for (let [key, value] of response.headers)
