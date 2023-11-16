@@ -4122,7 +4122,7 @@ var taplst =
                 form.append('name', name.value);
                 form.append('email', email.email);
 
-                fetch(`https://users.reportbase5836.workers.dev`,
+                fetch(`https://user.reportbase5836.workers.dev`,
                 {
                     'method': 'POST',
                     'body': form
@@ -4143,7 +4143,7 @@ var taplst =
             email.value = user.email ? user.email : "";
             showdialog("user-login", function(str)
             {
-                 fetch(`https://users.reportbase5836.workers.dev/${user.email}`)
+                 fetch(`https://user.reportbase5836.workers.dev/${user.email}`)
                   .then(function(response)
                   {
                     for (let [key, value] of response.headers)
@@ -4171,7 +4171,7 @@ var taplst =
                 form.append('name', name.value);
                 form.append('email', email.value);
 
-                fetch(`https://users.reportbase5836.workers.dev/${user.email}`,
+                fetch(`https://user.reportbase5836.workers.dev/${user.email}`,
                 {
                     'method': 'PATCH',
                     'body': form
@@ -6348,7 +6348,7 @@ _3cnv.sliceobj.data =
         title: "users-list",
         func: function()
         {        
-            fetch(`https://users.reportbase5836.workers.dev/list`)
+            fetch(`https://user.reportbase5836.workers.dev/list`)
               .then(function(response)
               {
                 for (let [key, value] of response.headers)
@@ -6366,7 +6366,7 @@ _3cnv.sliceobj.data =
         title: "users-delete",
         func: function()
         {        
-                fetch(`https://users.reportbase5836.workers.dev/reportbase@gmail.com`,
+                fetch(`https://user.reportbase5836.workers.dev/reportbase@gmail.com`,
                 {
                     'method': 'DELETE'
                 })
