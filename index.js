@@ -562,8 +562,6 @@ templateobj.reset = function()
 }
 
 var SEAL = 6283.183;
-if (url.searchParams.has("seal"))
-    SEAL = url.searchParams.get("seal");         
 var sealobj = new circular_array("SEAL", SEAL);
 sealobj.set(SEAL/2);
 
@@ -661,7 +659,6 @@ var footlst =
         context.save();     
         canvas.homerect = new rectangle();
         canvas.addgalleryrect = new rectangle();
-        canvas.signuprect = new rectangle();
         canvas.editgalleryrect = new rectangle();        
         canvas.deletegalleryrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
@@ -685,12 +682,12 @@ var footlst =
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.deletegalleryrect),
+                            new panel.rectangle(canvas.editgalleryrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.editgalleryrect),
+                            new panel.rectangle(canvas.deletegalleryrect),
                             new panel.text(),
                         ]),
                     ])                            
@@ -704,7 +701,7 @@ var footlst =
                    [
                        `New  \u{25B6}`,
                        `Edit  \u{25B6}`,
-                       `Delete`
+                       `Delete  \u{25B6}`
                    ], 
                 ]);
         
@@ -826,7 +823,7 @@ var footlst =
                    0,
                    [
                        "Signup   \u{25B6}",
-                       "Login  \u{25B6}" 
+                       "Login   \u{25B6}" 
                    ],
                 ],
                 0);
@@ -1166,9 +1163,9 @@ var bossdisplaylst =
         var canvas = context.canvas
         var data = [];
         context.hollyrect = new rectangle();
-        context.downloadrect = new rectangle();
-        context.uploadrect = new rectangle();
-        context.deletegalleryrect = new rectangle();
+        context.downloadimagerect = new rectangle();
+        context.uploadimagerect = new rectangle();
+        context.deleteimagerect = new rectangle();
         var data = [];
         
         var b = 360;
@@ -1234,19 +1231,19 @@ var bossdisplaylst =
                     new panel.layers(
                     [
                         new panel.fill(FOOTBTNCOLOR),
-                        new panel.rectangle(context.uploadrect),
+                        new panel.rectangle(context.uploadimagerect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
                         new panel.fill(FOOTBTNCOLOR),
-                        new panel.rectangle(context.downloadrect),
+                        new panel.rectangle(context.downloadimagerect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
                         new panel.fill(FOOTBTNCOLOR),
-                        new panel.rectangle(context.deletegalleryrect),
+                        new panel.rectangle(context.deleteimagerect),
                         new panel.shadow(new panel.text()),
                     ]),
                     0,
@@ -1277,9 +1274,7 @@ var bossdisplaylst =
     title: "Description",
     draw: function(context, rect, user, time)
     {
-        context.editgalleryrect = new rectangle();
-        context.copyrect = new rectangle();
-        context.pasterect = new rectangle();
+        context.describerect = new rectangle();
         context.hollyrect = new rectangle();
         
         var str = `Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur`;
@@ -1311,24 +1306,14 @@ var bossdisplaylst =
                 new panel.colsA([0,BETHWIDTH,BETHCIDTH,BETHWIDTH,0],
                 [
                     0,
-                    1?0:new panel.layers(
-                    [
-                        new panel.fill(FOOTBTNCOLOR),
-                        new panel.rectangle(context.editgalleryrect),
-                        new panel.shadow(new panel.text()),
-                    ]),
+                    0,
                     new panel.layers(
                     [
                         new panel.fill(FOOTBTNCOLOR),
-                        new panel.rectangle(context.copyrect),
+                        new panel.rectangle(context.describerect),
                         new panel.shadow(new panel.text()),
                     ]),
-                    1?0:new panel.layers(
-                    [
-                        new panel.fill(FOOTBTNCOLOR),
-                        new panel.rectangle(context.pasterect),
-                        new panel.shadow(new panel.text()),
-                    ]),
+                    0,
                     0,
                 ])
             ])
@@ -3850,27 +3835,36 @@ var taplst =
         {
             _4cnvctx.movepage(1);
         }
+        else if (context.addgalleryrect && context.addgalleryrect.hitest(x, y))
+        {
+                if (showdialog("gallery", function(image)
+                {
+                    
+                }))
+                    galleryobj.init()
+        }
+        else if (context.editgalleryrect && context.editgalleryrect.hitest(x, y))
+        {
+                if (showdialog("gallery", function(image)
+                {
+                    
+                }))
+                    galleryobj.init()
+       
+        }
         else if (context.deletegalleryrect && context.deletegalleryrect.hitest(x, y))
         {
                 
         }
-        else if (context.uploadrect && context.uploadrect.hitest(x, y))
+        else if (context.uploadimagerect && context.uploadimagerect.hitest(x, y))
         {
                 
         }
-        else if (context.downloadrect && context.downloadrect.hitest(x, y))
+        else if (context.downloadimagerect && context.downloadimagerect.hitest(x, y))
         {
                 
         }
-        else if (context.editgalleryrect && context.editgalleryrect.hitest(x, y))
-        {
-                
-        }
-        else if (context.pasterect && context.pasterect.hitest(x, y))
-        {
-                
-        }
-        else if (context.copyrect && context.copyrect.hitest(x, y))
+        else if (context.describerect && context.describerect.hitest(x, y))
         {
                 
         }
@@ -4456,24 +4450,22 @@ bossobj.draw = function()
 
     //Upload
     delete context.hollyrect;
-    delete context.downloadrect;
-    delete context.uploadrect;
-    delete context.deletegalleryrect;
+    delete context.downloadimagerect;
+    delete context.uploadimagerect;
+    delete context.deleteimagerect;
 
     //Describe
     delete context.hollyrect;
-    delete context.editgalleryrect;
-    delete context.copyrect;
-    delete context.pasterect;
-
+    delete context.describerect;
+ 
     //others
     delete context.slicerect;
     delete context.stretchrect;
     delete context.canvas.thumbrect;
     delete context.copyidrect;
     delete context.deletegalleryrect;
-    delete context.downloadrect;
-    delete context.uploadrect;
+    delete context.downloadimagerect;
+    delete context.uploadimagerect;
     delete context.hollyyrect;
     
     if (!menuobj.value() && headcnv.height)
