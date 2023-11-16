@@ -4152,7 +4152,7 @@ var taplst =
                   })
                   .then(function(lst)
                 {
-                    user = lst[0];
+                    Object.assign(user, lst[0])
                     dialog.close();
                 }); 
             })
