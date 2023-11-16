@@ -4207,7 +4207,7 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             return true;
         }
-        else if (context.addgalleryrect && context.addgalleryrect.hitest(x, y))
+        else if (canvas.addgalleryrect && canvas.addgalleryrect.hitest(x, y))
         {
                 if (showdialog("gallery", function(image)
                 {
@@ -4215,7 +4215,7 @@ var taplst =
                 }))
                     galleryobj.init()
         }
-        else if (context.editgalleryrect && context.editgalleryrect.hitest(x, y))
+        else if (canvas.editgalleryrect && canvas.editgalleryrect.hitest(x, y))
         {
                 if (showdialog("gallery", function(image)
                 {
@@ -4224,7 +4224,7 @@ var taplst =
                     galleryobj.init()
        
         }
-        else if (context.deletegalleryrect && context.deletegalleryrect.hitest(x, y))
+        else if (canvas.deletegalleryrect && canvas.deletegalleryrect.hitest(x, y))
         {
                 
         }
