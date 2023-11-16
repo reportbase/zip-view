@@ -562,7 +562,7 @@ templateobj.reset = function()
 }
 
 var SEAL = 6283.183;
-if (!url.searchParams.has("seal"))
+if (url.searchParams.has("seal"))
     SEAL = url.searchParams.get("seal");         
 var sealobj = new circular_array("SEAL", SEAL);
 sealobj.set(SEAL/2);
