@@ -3999,27 +3999,6 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
 
-        else if (context.addgalleryrect && context.addgalleryrect.hitest(x, y))
-        {
-                if (showdialog("gallery", function(image)
-                {
-                    
-                }))
-                    galleryobj.init()
-        }
-        else if (context.editgalleryrect && context.editgalleryrect.hitest(x, y))
-        {
-                if (showdialog("gallery", function(image)
-                {
-                    
-                }))
-                    galleryobj.init()
-       
-        }
-        else if (context.deletegalleryrect && context.deletegalleryrect.hitest(x, y))
-        {
-                
-        }
         else if (
             context.holly2rect &&
             context.holly2rect.hitest(x, y))
@@ -4227,6 +4206,27 @@ var taplst =
 
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             return true;
+        }
+        else if (context.addgalleryrect && context.addgalleryrect.hitest(x, y))
+        {
+                if (showdialog("gallery", function(image)
+                {
+                    
+                }))
+                    galleryobj.init()
+        }
+        else if (context.editgalleryrect && context.editgalleryrect.hitest(x, y))
+        {
+                if (showdialog("gallery", function(image)
+                {
+                    
+                }))
+                    galleryobj.init()
+       
+        }
+        else if (context.deletegalleryrect && context.deletegalleryrect.hitest(x, y))
+        {
+                
         }
         else if (canvas.signuprect && canvas.signuprect.hitest(x, y))
         {
