@@ -4083,7 +4083,7 @@ var taplst =
                 })
                 .then(function(results)
                 {
-                
+                     console.log(results);               
                 })
                 .catch(error => console.log(error));                
             })
