@@ -2008,7 +2008,7 @@ panel.closeboss = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.closebossrect),
-                new panel.shrink(new panel.circle("rgba(220,0,0,0.75)", SEARCHFRAME, 4), 21, 21),
+                new panel.shrink(new panel.circle("rgba(220,0,0,0.75)", SEARCHFRAME, 5), 20, 20),
                 new panel.text("white", "center", "middle", 0, 0, DEFAULTFONT),
             ]);
 
