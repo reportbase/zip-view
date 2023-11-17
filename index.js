@@ -4062,14 +4062,13 @@ var taplst =
         else if (canvas.addgalleryrect && canvas.addgalleryrect.hitest(x, y))
         {
             var title = document.getElementById("gallery-title");
-            var path = document.getElementById("gallery-path");
-            title.value = "";
-            path.value = "";
+            var json = document.getElementById("gallery-json");
             showdialog("gallery", function(image)
             {
                 const form = new FormData();
                 form.append('title', title.value);
-                form.append('path', path.value);
+                form.append('json', json.value);
+                form.append('user_id', user.id);
                 fetch(`https://gallery.reportbase5836.workers.dev`,
                 {
                     'method': 'POST',
