@@ -581,8 +581,7 @@ var footlst =
     {
         var canvas = context.canvas;
         context.save();     
-        canvas.imagerect = new rectangle();
-        canvas.folderect = new rectangle();
+        canvas.uploadrect = new rectangle();
         canvas.closerect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
@@ -596,20 +595,16 @@ var footlst =
                 _5cnv.sliceobj.length()?new panel.layers(
                 [
                     new panel.fill(FOOTBTNCOLOR),
-                    new panel.colsA([0,0],
+                    new panel.colsA([0,0.5,0],
                     [
-                        new panel.layers(
-                        [
-                            galleryobj.rightctx == _5cnvctx ? new panel.fill("rgba(0,0,255,0.5)"):0,
-                            new panel.rectangle(canvas.folderect),
-                            new panel.text(),
-                        ]),
+                        0,
                         new panel.layers(
                         [
                             galleryobj.rightctx == _6cnvctx ? new panel.fill("rgba(0,0,255,0.8)"):0,
-                            new panel.rectangle(canvas.imagerect),
+                            new panel.rectangle(canvas.uploadrect),
                             new panel.text(),
                         ]),
+                        0
                     ])                           
                 ]):0
             ]);
@@ -619,34 +614,9 @@ var footlst =
                [
                    `\u{25C0}   ${k}`,
                    0,
-                   [
-                       "Folders",
-                       "Images",
-                   ], 
+                   "Upload All   \u{25B6}", 
                 ], 0);
         
-        context.restore();
-    }
-},
-{
-    name: "DEBUG",
-    draw: function(context, rect, user, time)
-    {
-        var canvas = context.canvas;
-        context.save();     
-        canvas.homerect = new rectangle();
-        var a = new panel.rows([ALIEXTENT,0],
-            [
-                new panel.layers(
-                [
-                    new panel.fill(FOOTBTNCOLOR),
-                    new panel.text(),
-                    new panel.rectangle(canvas.homerect),
-                ]),
-                0
-            ]);
-        
-        a.draw(context, rect, `\u{25C0}   Debug`, 0);
         context.restore();
     }
 },
@@ -674,21 +644,13 @@ var footlst =
                     new panel.fill(FOOTBTNCOLOR),
                     new panel.colsA([0,0,0],
                     [
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.galleryaddrect),
-                            new panel.text(),
-                        ]),
+                        0,
                         new panel.layers(
                         [
                             new panel.rectangle(canvas.galleryeditrect),
                             new panel.text(),
                         ]),
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.gallerydeleterect),
-                            new panel.text(),
-                        ]),
+                        0,
                     ])                            
                 ])
             ]);
@@ -698,9 +660,9 @@ var footlst =
                    `\u{25C0}   Galleries`,
                    0,
                    [
-                       `New  \u{25B6}`,
-                       `Edit  \u{25B6}`,
-                       `Delete  \u{25B6}`
+                       0,
+                       `Add   \u{25B6}`,
+                       0
                    ], 
                 ]);
         
@@ -1159,9 +1121,9 @@ var bossdisplaylst =
         var canvas = context.canvas
         var data = [];
         context.hollyrect = new rectangle();
-        context.downloadimagerect = new rectangle();
-        context.uploadimagerect = new rectangle();
-        context.deleteimagerect = new rectangle();
+        context.downloaduploadrect = new rectangle();
+        context.uploaduploadrect = new rectangle();
+        context.deleteuploadrect = new rectangle();
         var data = [];
         
         var b = 360;
@@ -1227,19 +1189,19 @@ var bossdisplaylst =
                     new panel.layers(
                     [
                         new panel.fill(FOOTBTNCOLOR),
-                        new panel.rectangle(context.uploadimagerect),
+                        new panel.rectangle(context.uploaduploadrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
                         new panel.fill(FOOTBTNCOLOR),
-                        new panel.rectangle(context.downloadimagerect),
+                        new panel.rectangle(context.downloaduploadrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
                         new panel.fill(FOOTBTNCOLOR),
-                        new panel.rectangle(context.deleteimagerect),
+                        new panel.rectangle(context.deleteuploadrect),
                         new panel.shadow(new panel.text()),
                     ]),
                     0,
@@ -2525,12 +2487,6 @@ var wheelst =
         }
         else
         {
-            if (Math.abs(delta) > 160)
-            {
-                var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-                displayobj.set(k);    
-            }
-            
             clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
             if (global.swipetimeout)
@@ -2544,20 +2500,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        if (Math.abs(delta) > 160)
-        {
-            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            displayobj.set(k);    
-        }
-
-        if (context.canvas.buttonrect &&
-            context.canvas.buttonrect.hitest(x, y))
-        {
-        }
-        else
-        {
-            galleryobj.leftright(context, delta);
-        }
+        galleryobj.leftright(context, delta);
     },
 },
 {
@@ -3306,16 +3249,13 @@ var swipelst = [
     name: "GALLERY",
     swipeleftright: function(context, rect, x, y, evt)
     {
-        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-        displayobj.set(k);
-        
         var k = evt.type == "swipeleft" ? 1 : -1;
         galleryobj.leftright(context, k * context.canvas.speed);
     },
     swipeupdown: function(context, rect, x, y, evt)
     {
-        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-        displayobj.set(k);
+//        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+//        displayobj.set(k);
         
         var k = evt.type == "swipeup" ? 1 : -1;
         menuobj.updown(context, k * context.canvas.speed);
@@ -3663,18 +3603,18 @@ var taplst =
         {
             _4cnvctx.movepage(1);
         }
-        else if (context.uploadimagerect && context.uploadimagerect.hitest(x, y))
+        else if (context.uploaduploadrect && context.uploaduploadrect.hitest(x, y))
         {
                 
         }
-        else if (context.deleteimagerect && context.deleteimagerect.hitest(x, y))
+        else if (context.deleteuploadrect && context.deleteuploadrect.hitest(x, y))
         {
             showdialog("confirm", function(image)
             {
                 
             })     
         }
-        else if (context.downloadimagerect && context.downloadimagerect.hitest(x, y))
+        else if (context.downloaduploadrect && context.downloaduploadrect.hitest(x, y))
         {
             if (galleryobj.value().blob)
             {
@@ -4237,8 +4177,8 @@ var taplst =
             context.refresh()
             return true;
         }
-        else if (canvas.imagerect &&
-            canvas.imagerect.hitest(x, y))
+        else if (canvas.uploadrect &&
+            canvas.uploadrect.hitest(x, y))
         {
             galleryobj.rightctx.hide();
             galleryobj.rightcnv = _6cnv;
@@ -4409,9 +4349,9 @@ bossobj.draw = function()
 
     //Upload
     delete context.hollyrect;
-    delete context.downloadimagerect;
-    delete context.uploadimagerect;
-    delete context.deleteimagerect;
+    delete context.downloaduploadrect;
+    delete context.uploaduploadrect;
+    delete context.deleteuploadrect;
 
     //others
     delete context.slicerect;
@@ -4419,8 +4359,8 @@ bossobj.draw = function()
     delete context.canvas.thumbrect;
     delete context.copyidrect;
     delete context.gallerydeleterect;
-    delete context.downloadimagerect;
-    delete context.uploadimagerect;
+    delete context.downloaduploadrect;
+    delete context.uploaduploadrect;
     delete context.hollyyrect;
     
     if (!menuobj.value() && headcnv.height)
