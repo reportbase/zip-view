@@ -3507,7 +3507,7 @@ var keylst = [
                 key == "h")
             {
                 var k = _4cnv.timeobj.length();
-                var j = k*(-delta/5000);
+                var j = k*(-1/50);
                 _4cnv.timeobj.CURRENT += j;
                 bossobj.draw()
             }
@@ -3517,7 +3517,7 @@ var keylst = [
                 key == "tab")
             {
                 var k = _4cnv.timeobj.length();
-                var j = k*(delta/5000);
+                var j = k*(1/500);
                 _4cnv.timeobj.CURRENT += j;
                 bossobj.draw() 
             }
