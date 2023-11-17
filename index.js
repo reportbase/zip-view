@@ -6573,8 +6573,14 @@ galleryobj.init = function(obj)
                 var result = results[n];
                 result.func = function(n, x, y)
                 {
-                    var path = `${url.origin}/?id=${this.id}`;
-                    window.history.replaceState("", url.origin, path); 
+                    for (var n = 0; n < IMAGELSTSIZE; ++n)
+                    {
+                        thumbfittedlst[n] = document.createElement("canvas");
+                        thumbimglst[n] = new Image();
+                    }
+
+                    url.searchParams.set("id",this.id);
+                    window.history.replaceState("", url.origin, url); 
                     url = new URL(window.location.href);
                     url.path = this.id;
                     fetch(this.json)
