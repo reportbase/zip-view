@@ -4089,6 +4089,9 @@ var taplst =
         }
         else if (canvas.galleryeditrect && canvas.galleryeditrect.hitest(x, y))
         {
+            if (!url.searchParams.has('id'))
+                return;
+            var gallery_id = url.searchParams.get('id');
             var title = document.getElementById("gallery-add-title");
             var json = document.getElementById("gallery-add-json");
             showdialog("gallery-edit", function(image)
@@ -4097,6 +4100,7 @@ var taplst =
                 form.append('title', title.value);
                 form.append('json', json.value);
                 form.append('user_id', user.id);
+                form.append('gallery_id', gallery_id);
                 fetch(`https://gallery.reportbase5836.workers.dev`,
                 {
                     'method': 'PATCH',
