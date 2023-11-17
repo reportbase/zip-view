@@ -2757,36 +2757,6 @@ heightobj.set(50);
 
 var userobj = {}
 
-function publishgallery(json)
-{
-    var email = user.email;
-    if (!email)
-        email = "reportbase@gmail.com";
-
-    const form = new FormData();
-    form.append('json', json);
-    form.append('email', email);
-
-    fetch(`https://gallery.reportbase5836.workers.dev`,
-        {
-            'method': 'POST',
-            'body': form
-        })
-        .then(function(response)
-        {
-            if (response.ok)
-                return response.json()
-            throw Error(response.statusText);
-        })
-        .then(function(results)
-        {
-            var path = `${url.origin}/?id=${results.gallery_id}`;
-            window.history.replaceState("", url.origin, path);
-            galleryobj.init();
-        })
-        .catch(error => console.log(error));
-}
-
 async function loadzip(file)
 {
     const {entries} = await unzipit.unzip(file);
@@ -4091,10 +4061,32 @@ var taplst =
         }
         else if (canvas.addgalleryrect && canvas.addgalleryrect.hitest(x, y))
         {
-                showdialog("gallery", function(image)
+            var title = document.getElementById("gallery-title");
+            var path = document.getElementById("gallery-path");
+            title.value = "";
+            path.value = "";
+            showdialog("gallery", function(image)
+            {
+                const form = new FormData();
+                form.append('title', title.value);
+                form.append('path', path.value);
+                fetch(`https://gallery.reportbase5836.workers.dev`,
                 {
-                    
+                    'method': 'POST',
+                    'body': form
                 })
+                .then(function(response)
+                {
+                    if (response.ok)
+                        return response.json()
+                    throw Error(response.statusText);
+                })
+                .then(function(results)
+                {
+                
+                })
+                .catch(error => console.log(error));                
+            })
         }
         else if (canvas.editgalleryrect && canvas.editgalleryrect.hitest(x, y))
         {
@@ -6284,7 +6276,6 @@ async function loadjson(blob)
     {
         var text = await blob.text();
         var json = JSON.parse(text);
-        publishgallery(text);
         galleryobj.init(json)
     }
     catch (_)
