@@ -657,9 +657,9 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.homerect = new rectangle();
-        canvas.addgalleryrect = new rectangle();
-        canvas.editgalleryrect = new rectangle();        
-        canvas.deletegalleryrect = new rectangle();
+        canvas.galleryaddrect = new rectangle();
+        canvas.galleryeditrect = new rectangle();        
+        canvas.gallerydeleterect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
@@ -676,17 +676,17 @@ var footlst =
                     [
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.addgalleryrect),
+                            new panel.rectangle(canvas.galleryaddrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.editgalleryrect),
+                            new panel.rectangle(canvas.galleryeditrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.deletegalleryrect),
+                            new panel.rectangle(canvas.gallerydeleterect),
                             new panel.text(),
                         ]),
                     ])                            
@@ -4059,11 +4059,11 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             return true;
         }
-        else if (canvas.addgalleryrect && canvas.addgalleryrect.hitest(x, y))
+        else if (canvas.galleryaddrect && canvas.galleryaddrect.hitest(x, y))
         {
-            var title = document.getElementById("gallery-title");
-            var json = document.getElementById("gallery-json");
-            showdialog("gallery", function(image)
+            var title = document.getElementById("gallery-add-title");
+            var json = document.getElementById("gallery-add-json");
+            showdialog("gallery-add", function(image)
             {
                 const form = new FormData();
                 form.append('title', title.value);
@@ -4087,14 +4087,14 @@ var taplst =
                 .catch(error => console.log(error));                
             })
         }
-        else if (canvas.editgalleryrect && canvas.editgalleryrect.hitest(x, y))
+        else if (canvas.galleryeditrect && canvas.galleryeditrect.hitest(x, y))
         {
                 showdialog("gallery", function(image)
                 {
                     
                 })
         }
-        else if (canvas.deletegalleryrect && canvas.deletegalleryrect.hitest(x, y))
+        else if (canvas.gallerydeleterect && canvas.gallerydeleterect.hitest(x, y))
         {
                 showdialog("confirm", function(image)
                 {
@@ -4393,7 +4393,7 @@ bossobj.draw = function()
     delete context.stretchrect;
     delete context.canvas.thumbrect;
     delete context.copyidrect;
-    delete context.deletegalleryrect;
+    delete context.gallerydeleterect;
     delete context.downloadimagerect;
     delete context.uploadimagerect;
     delete context.hollyyrect;
