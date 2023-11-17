@@ -6383,6 +6383,27 @@ _3cnv.sliceobj.data =
         }
     },  
     {
+        title: "sydney",
+        func: function()
+        {
+            //todo
+        }
+    },
+    {
+        title: "pexels",
+        func: function()
+        {
+            //todo
+        }
+    },
+    {
+        title: "secret",
+        func: function()
+        {
+            //todo
+        }
+    },
+    {
         title: "users-delete",
         func: function()
         {        
@@ -6573,8 +6594,8 @@ galleryobj.init = function(obj)
     _9cnv.sliceobj.data = [];
     _2cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
-    var email = user.email ? user.email : "reportbase@gmail.com";
-    fetch(`https://gallery.reportbase5836.workers.dev/list/${email}`)
+    var email = "reportbase@gmail.com";
+    fetch(`https://gallery.reportbase5836.workers.dev/list/${user.email}`)
         .then(function(response)
         {
             if (response.ok)
@@ -6588,6 +6609,7 @@ galleryobj.init = function(obj)
                 var result = results[n];
                 result.func = function(n, x, y)
                 {
+                    //todo: edit, delete
                     for (var n = 0; n < IMAGELSTSIZE; ++n)
                     {
                         thumbfittedlst[n] = document.createElement("canvas");
@@ -6686,7 +6708,7 @@ if (url.searchParams.has("data"))
         {});
 }
 else if (url.searchParams.has("pexels"))
-{
+{//todo add to debug
     url.path = url.searchParams.get("pexels");
     fetch(`https://pexels.reportbase5836.workers.dev/?search=${url.path}`)
         .then((response) => jsonhandler(response))
@@ -6695,7 +6717,7 @@ else if (url.searchParams.has("pexels"))
         {});
 }
 else if (url.searchParams.has("sidney"))
-{
+{//todo add to debug
     url.path = "sidney";
     fetch(`https://sidney.reportbase5836.workers.dev`)
         .then((response) => jsonhandler(response))
