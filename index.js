@@ -3496,7 +3496,7 @@ var keylst = [
             context.refresh();
             var key = evt.key.toLowerCase();
 
-            if (key == "f" && canvas.ctrlKey && canvas.shiftKey)
+            if (key == "f")
             {
                 screenfull.toggle()
                 context.refresh();
@@ -3506,21 +3506,20 @@ var keylst = [
                 key == "arrowleft" ||
                 key == "h")
             {
-                var k = (context.canvas.timeobj.length() / rect.width) * 20
-                context.canvas.timeobj.rotate(k);
-                context.refresh();
-                evt.preventDefault();
+                var k = _4cnv.timeobj.length();
+                var j = k*(-delta/5000);
+                _4cnv.timeobj.CURRENT += j;
+                bossobj.draw()
             }
-            else if (key == "z")
-            {}
             else if (
                 key == "arrowright" ||
-                key == "l")
+                key == "l" ||
+                key == "tab")
             {
-                var k = (context.canvas.timeobj.length() / rect.width) * 20
-                context.canvas.timeobj.rotate(-k);
-                context.refresh();
-                evt.preventDefault();
+                var k = _4cnv.timeobj.length();
+                var j = k*(delta/5000);
+                _4cnv.timeobj.CURRENT += j;
+                bossobj.draw() 
             }
             else if (key == "/" || key == "\\")
             {
