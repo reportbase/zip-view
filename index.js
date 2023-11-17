@@ -3834,7 +3834,16 @@ var taplst =
             menuobj.show();
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
-
+        else if (
+            headcnvctx.closebossrect &&
+            headcnvctx.closebossrect.hitest(x, y))
+        {
+            menuobj.setindex(_8cnvctx);
+            menuobj.show();
+            var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+            headham.panel = headlst[k];
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        }
         else if (
             context.holly2rect &&
             context.holly2rect.hitest(x, y))
