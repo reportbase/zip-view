@@ -911,7 +911,7 @@ var headlst =
                         g ? new panel.zoom() : 0,
                         g ? new panel.fitwidth() : 0,
                         0,
-                        new panel.close(),
+                        new panel.closeboss(),
                         0,
                     ]),
                     0
