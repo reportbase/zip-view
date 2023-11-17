@@ -4089,10 +4089,31 @@ var taplst =
         }
         else if (canvas.galleryeditrect && canvas.galleryeditrect.hitest(x, y))
         {
-                showdialog("gallery", function(image)
+            var title = document.getElementById("gallery-add-title");
+            var json = document.getElementById("gallery-add-json");
+            showdialog("gallery-edit", function(image)
+            {
+                const form = new FormData();
+                form.append('title', title.value);
+                form.append('json', json.value);
+                form.append('user_id', user.id);
+                fetch(`https://gallery.reportbase5836.workers.dev`,
                 {
-                    
+                    'method': 'PATCH',
+                    'body': form
                 })
+                .then(function(response)
+                {
+                    if (response.ok)
+                        return response.json()
+                    throw Error(response.statusText);
+                })
+                .then(function(results)
+                {
+                     console.log(results);               
+                })
+                .catch(error => console.log(error));                
+            })
         }
         else if (canvas.gallerydeleterect && canvas.gallerydeleterect.hitest(x, y))
         {
