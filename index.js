@@ -882,6 +882,44 @@ var headlst =
             a.draw(context, rect, 0, 0);
             context.restore();        
     }
+},
+{
+    name: "BUTTON",
+    draw: function(context, rect, user, time)
+    {
+            var canvas = context.canvas;
+            context.clear();
+            context.save();
+            var ctx = menuobj.value();
+            var g = ctx == _8cnvctx;
+            delete context.zoomrect;
+            delete context.fitwidthrect;
+            delete context.fullrect;
+            delete context.leftmenurect;
+            delete context.rightmenurect;
+            var s = SAFARI ? -1: ALIEXTENT;
+            var e = rect.width>=320?(ALIEXTENT+10):-1;
+            var a = new panel.rows([BEXTENT, 0],
+                [
+                    new panel.cols(
+                    [5, ALIEXTENT, 0, s, e, ALIEXTENT, 0, ALIEXTENT, 5],
+                    [
+                        0,
+                        0,
+                        0,
+                        g ? new panel.fullscreen() : 0,
+                        g ? new panel.zoom() : 0,
+                        g ? new panel.fitwidth() : 0,
+                        0,
+                        new panel.close(),
+                        0,
+                    ]),
+                    0
+                ]);
+            
+            a.draw(context, rect, 0, 0);
+            context.restore();        
+    }
 }
 ]
 
@@ -2462,6 +2500,9 @@ var wheelst =
 
         if (ctrl)
         {
+            var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
+            headham.panel = headlst[k];
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);     
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
             displayobj.set(k);
             var j = buttonobj.length()/66;
@@ -2598,7 +2639,10 @@ var pinchlst =
 {
     name: "GALLERY",
     pinch: function(context, x, y, scale)
-    {
+{
+        var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
+        headham.panel = headlst[k];
+        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);     
         var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
         displayobj.set(k);
         if (!context.buttonanchor)
