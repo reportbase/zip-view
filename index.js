@@ -576,7 +576,7 @@ var footlst =
     }
 },
 {
-    name: "FOLDER",
+    name: "FOLDERS",
     draw: function(context, rect, user, time)
     {
         var canvas = context.canvas;
@@ -592,21 +592,20 @@ var footlst =
                     new panel.rectangle(canvas.closerect),
                 ]),
                 0,
-                _5cnv.sliceobj.length()?new panel.layers(
+                new panel.layers(
                 [
                     new panel.fill(FOOTBTNCOLOR),
-                    new panel.colsA([0,0.5,0],
+                    new panel.cols([0,0.5,0],
                     [
                         0,
                         new panel.layers(
                         [
-                            galleryobj.rightctx == _6cnvctx ? new panel.fill("rgba(0,0,255,0.8)"):0,
                             new panel.rectangle(canvas.uploadrect),
                             new panel.text(),
                         ]),
                         0
                     ])                           
-                ]):0
+                ])
             ]);
 
         var k = galleryobj.title?galleryobj.title:"Images";
@@ -620,6 +619,50 @@ var footlst =
         context.restore();
     }
 },
+{
+    name: "IMAGES",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save();     
+        canvas.uploadrect = new rectangle();
+        canvas.closerect = new rectangle();
+        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
+            [
+                new panel.layers(
+                [
+                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.text(),
+                    new panel.rectangle(canvas.closerect),
+                ]),
+                0,
+                new panel.layers(
+                [
+                    new panel.fill(FOOTBTNCOLOR),
+                    new panel.cols([0,0.5,0],
+                    [
+                        0,
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.uploadrect),
+                            new panel.text(),
+                        ]),
+                        0
+                    ])                           
+                ])
+            ]);
+
+        var k = galleryobj.title?galleryobj.title:"Images";
+        a.draw(context, rect, 
+               [
+                   `\u{25C0}   ${k}`,
+                   0,
+                   "Upload All   \u{25B6}", 
+                ], 0);
+        
+        context.restore();
+    }
+},    
 {
     name: "GALLERIES",
     draw: function(context, rect, user, time)
@@ -1188,14 +1231,6 @@ var bossdisplaylst =
         data.push("Height");
         data.push(`${photo.image.height}`);
         data.push(" ");
-        
-        var index = galleryobj.current();
-        var value = galleryobj.data[index];
-        if (value && value.folder)
-        {
-            data.push("Folder");
-            data.push(`\n${value.folder}\n`);
-        }
 
         var j = data.length*25;
         if (j > rect.height-HEADTOP-ALIEXTENT-ALIEXTENT-FOOTHEIGHT)
@@ -5108,7 +5143,7 @@ var eventlst =
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: "FOLDER",
+    footer: "FOLDERS",
     buttonheight: 150,
     buttonmargin: 10,
     hollyinit: 0,
@@ -5131,7 +5166,7 @@ var eventlst =
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: "FOLDER",
+    footer: "IMAGES",
     buttonheight: 70,
     buttonmargin: 15,
     hollyinit: 0,
