@@ -581,7 +581,6 @@ var footlst =
     {
         var canvas = context.canvas;
         context.save();     
-        canvas.uploadrect = new rectangle();
         canvas.closerect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
@@ -591,29 +590,13 @@ var footlst =
                     new panel.text(),
                     new panel.rectangle(canvas.closerect),
                 ]),
-                0,
-                new panel.layers(
-                [
-                    new panel.fill(FOOTBTNCOLOR),
-                    new panel.cols([0,0.5,0],
-                    [
-                        0,
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.uploadrect),
-                            new panel.text(),
-                        ]),
-                        0
-                    ])                           
-                ])
+                0
             ]);
 
-        var k = galleryobj.title?galleryobj.title:"Images";
         a.draw(context, rect, 
                [
-                   `\u{25C0}   ${k}`,
-                   0,
-                   "Upload All   \u{25B6}", 
+                   `\u{25C0}   Folders`,
+                   0 
                 ], 0);
         
         context.restore();
@@ -1431,7 +1414,6 @@ var displaylst =
         canvas.vscrollrect = new rectangle();
         canvas.hollyrect = new rectangle();
         canvas.gorect = new rectangle();
-        //context.holly2rect = new rectangle();
         context.folderect = new rectangle();
         if (!headcnv.height)
             return;        
@@ -1482,9 +1464,7 @@ var displaylst =
         var value = galleryobj.data[k];
         if (value && value.folder)
             data = value.folder.split("/");
-        //data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
         data.push(`\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`);
-        var st = `\u{25C0}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
         var a = new panel.rowsA([80, 40, 0, data.length*WRAPROWHEIGHT, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
@@ -1510,7 +1490,7 @@ var displaylst =
         a.draw(context, rect, 
             [
                 0,
-                st,
+                0,
                 0,
                 data,
                 0,
