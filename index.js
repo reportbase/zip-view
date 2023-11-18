@@ -6495,7 +6495,7 @@ _7cnv.sliceobj.data =
         headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         return false;
     }
-}
+},
 {
     title: "Debug   \u{25B6}",
     func: function()
