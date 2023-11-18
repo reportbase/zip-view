@@ -6390,17 +6390,19 @@ _3cnv.sliceobj.data =
         }
     },  
     {
-        title: "sydney",
+        title: "sidney",
         func: function()
         {
-            //todo
+            window.open("https://zip-view.pages.dev/?sidney");
+            return true;
         }
     },
     {
         title: "pexels",
         func: function()
         {
-            //todo
+            window.open("https://zip-view.pages.dev/?search=love");
+            return true;
         }
     },
     {
@@ -6408,6 +6410,7 @@ _3cnv.sliceobj.data =
         func: function()
         {
             //todo
+            return true;
         }
     },
     {
@@ -6728,7 +6731,7 @@ if (url.searchParams.has("data"))
         {});
 }
 else if (url.searchParams.has("pexels"))
-{//todo add to debug
+{
     url.path = url.searchParams.get("pexels");
     fetch(`https://pexels.reportbase5836.workers.dev/?search=${url.path}`)
         .then((response) => jsonhandler(response))
@@ -6737,7 +6740,7 @@ else if (url.searchParams.has("pexels"))
         {});
 }
 else if (url.searchParams.has("sidney"))
-{//todo add to debug
+{
     url.path = "sidney";
     fetch(`https://sidney.reportbase5836.workers.dev`)
         .then((response) => jsonhandler(response))
