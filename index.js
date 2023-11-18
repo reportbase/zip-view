@@ -4252,11 +4252,13 @@ var taplst =
         else if (canvas.uploadrect &&
             canvas.uploadrect.hitest(x, y))
         {
+            /*
             galleryobj.rightctx.hide();
             galleryobj.rightcnv = _6cnv;
             galleryobj.rightctx = _6cnvctx;
             menuobj.setindex(galleryobj.rightctx);
             menuobj.show();
+            */
             return true;
         }
         else if (canvas.hollyrect &&
@@ -6053,6 +6055,9 @@ function resize()
     buttonobj.reset()
     contextobj.reset();
     _4cnvctx.refresh();
+    var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+    headham.panel = headlst[k];
+    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
     headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
     headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
     if (menuobj.value() == _8cnvctx)
@@ -6674,8 +6679,8 @@ galleryobj.init = function(obj)
 
     galleryobj.leftcnv = _7cnv;
     galleryobj.leftctx = _7cnvctx;
-    galleryobj.rightcnv = _5cnv.sliceobj.length()?_5cnv:_6cnv;
-    galleryobj.rightctx = _5cnv.sliceobj.length()?_5cnvctx:_6cnvctx;
+    galleryobj.rightcnv = _6cnv;
+    galleryobj.rightctx = _6cnvctx;
 
     var image = new Image();
     image.onload = function()
