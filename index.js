@@ -3919,18 +3919,10 @@ var taplst =
             context.folderect &&
             context.folderect.hitest(x, y))
         {
-            if (x < rect.width/2-60 || x > rect.width/2+60)
-            {
-                var k = (x - context.folderect.x) / context.folderect.width;
-                var j = canvas.timeobj.length() / galleryobj.length();
-                canvas.timeobj.rotate(k < 0.5 ? j :-j);
-                menuobj.draw();    
-            }
-            else
-            {
-                menuobj.setindex(_5cnvctx);
-                menuobj.show();
-            }
+            var k = (x - context.folderect.x) / context.folderect.width;
+            var j = canvas.timeobj.length() / galleryobj.length();
+            canvas.timeobj.rotate(k < 0.5 ? j :-j);
+            menuobj.draw();    
         }
         else if (
             headcnvctx.fitwidthrect &&
@@ -6491,6 +6483,19 @@ _7cnv.sliceobj.data =
         return false;
     },
 },
+{
+    title: "Folders   \u{25B6}",
+    func: function()
+    {
+        menuobj.hide();
+        galleryobj.leftcnv = _5cnv;
+        galleryobj.leftctx = _5cnvctx;
+        menuobj.setindex(galleryobj.leftctx);
+        menuobj.show();
+        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        return false;
+    }
+}
 {
     title: "Debug   \u{25B6}",
     func: function()
