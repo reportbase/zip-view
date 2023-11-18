@@ -696,7 +696,7 @@ var footlst =
     }
 },
 {
-    name: "HELP",
+    name: "DEBUG",
     draw: function(context, rect, user, time)
     {
         var canvas = context.canvas;
@@ -713,7 +713,7 @@ var footlst =
             0
         ]);
         
-        a.draw(context, rect, `\u{25C0}   Help`, 0);
+        a.draw(context, rect, `\u{25C0}   Debug`, 0);
         context.restore();
     }
 },
