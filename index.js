@@ -597,14 +597,14 @@ var footlst =
     {
         var canvas = context.canvas;
         context.save();     
-        canvas.closerect = new rectangle();
+        canvas.homerect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
                     new panel.text(),
-                    new panel.rectangle(canvas.closerect),
+                    new panel.rectangle(canvas.homerect),
                 ]),
                 0
             ]);
@@ -772,7 +772,7 @@ var footlst =
                    0,
                    [
                        "",
-                       "Edit   \u{25B6}",
+                       "Logout",
                        "",
                    ], 
                 ], 0);
@@ -801,18 +801,15 @@ var footlst =
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.colsA([0,0],
+                    new panel.colsA([0,0,0],
                     [
+                        0,
                         new panel.layers(
                         [
                             new panel.rectangle(canvas.usersignuprect),
                             new panel.text(),
                         ]),
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.userloginrect),
-                            new panel.text(),
-                        ]),
+                        0,
                     ])                            
                 ])
             ]);
@@ -822,8 +819,9 @@ var footlst =
                    `\u{25C0}   ${url.host}`,
                    0,
                    [
-                       "Signup   \u{25B6}",
-                       "Login   \u{25B6}" 
+                       0,
+                       "Login   \u{25B6}",
+                       0,
                    ],
                 ],
                 0);
@@ -3275,6 +3273,8 @@ var presslst =
     name: "GALLERY",
     pressup: function(context, rect, x, y)
     {
+        if (y > HEADHEIGHT)
+            return;
         var h = headcnv.height ? 0 : HEADHEIGHT;
         headcnvctx.show(0, 0, window.innerWidth, h);
         headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
@@ -3291,6 +3291,8 @@ var presslst =
     name: "BOSS",
     pressup: function(context, rect, x, y)
     {
+        if (y > HEADHEIGHT)
+            return;
         var h = headcnv.height ? 0 : HEADHEIGHT;
         headcnvctx.show(0, 0, window.innerWidth, h);
         headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
@@ -6529,19 +6531,19 @@ _7cnv.sliceobj.data =
 _10cnv.sliceobj.data = 
 [
     {
-        title: function(){return `ID: ${user.id}`},
+        title: function(){return `ID: ${user.id?user.id:""}`},
         func: function(){copytext(user.id); return false;}
     },
     {
-        title: function(){return `Email: ${user.email}`},
+        title: function(){return `Email: ${user.email?user.email:""}`},
         func: function(){copytext(user.email); return false;}
     },
     {
-        title: function(){return `Name: ${user.name}`},
+        title: function(){return `Name: ${user.name?user.name:""}`},
         func: function(){copytext(user.name); return false;}
     },
     {
-        title: function(){return `Secret: ${user.secret}`},
+        title: function(){return `Secret: ${user.secret?user.secret:""}`},
         func: function(){copytext(user.secret); return false;}
     },
 ]
@@ -6745,7 +6747,6 @@ galleryobj.init = function(obj)
 }
 
 var user = {};
-user.email = "reportbase@gmail.com";
 
 if (url.searchParams.has("data"))
 {
