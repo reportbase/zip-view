@@ -3919,10 +3919,18 @@ var taplst =
             context.folderect &&
             context.folderect.hitest(x, y))
         {
-            var k = (x - context.folderect.x) / context.folderect.width;
-            var j = canvas.timeobj.length() / galleryobj.length();
-            canvas.timeobj.rotate(k < 0.5 ? j :-j);
-            menuobj.draw();           
+            if (x < rect.width/2-60 || x > rect.width/2+60)
+            {
+                var k = (x - context.folderect.x) / context.folderect.width;
+                var j = canvas.timeobj.length() / galleryobj.length();
+                canvas.timeobj.rotate(k < 0.5 ? j :-j);
+                menuobj.draw();    
+            }
+            else
+            {
+                menuobj.setindex(_5cnvctx);
+                menuobj.show();
+            }
         }
         else if (
             headcnvctx.fitwidthrect &&
@@ -4279,18 +4287,6 @@ var taplst =
             menuobj.show();
             return true;
         }
-            /*
-        else if (canvas.folderect &&
-            canvas.folderect.hitest(x, y))
-        {
-            galleryobj.rightctx.hide();
-            galleryobj.rightcnv = _5cnv;
-            galleryobj.rightctx = _5cnvctx;
-            menuobj.setindex(galleryobj.rightctx);
-            menuobj.show();
-            return true;
-        }
-            */
         else if (canvas.hollyrect &&
             canvas.hollyrect.hitest(x, y))
         {
@@ -5030,7 +5026,6 @@ menuobj.draw = function()
     delete canvas.vscrollrect;
     delete canvas.hollyrect;
     delete canvas.gorect;
-    //delete context.holly2rect;
     delete context.folderect;
 
     displayobj.value().draw(context, rect, 0, 0);
