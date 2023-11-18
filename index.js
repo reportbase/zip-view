@@ -1362,8 +1362,8 @@ var displaylst =
         var data = [];
         var hh = buttonobj.value();
         var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)).toFixed(0) : '000';
-        var st = `\u{25C0}   ${ww} x ${hh.toFixed(0)}   \u{25B6}`;
-        data.push(`\u{25C0}   ${templateobj.value()}   \u{25B6}`);
+        var st = `\u{25C0}    ${ww} x ${hh.toFixed(0)}    \u{25B6}`;
+        data.push(`\u{25C0}    ${templateobj.value()}    \u{25B6}`);
         var a = new panel.rowsA([HEADTOP, HEADBOT, 23, 0, (data.length*WRAPROWHEIGHT), 
                                  FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
@@ -1480,7 +1480,7 @@ var displaylst =
         if (value && value.folder)
             data = value.folder.split("/");
         //data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
-        data.push(`\u{25C0}   ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}   \u{25B6}`);
+        data.push(`\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`);
         var st = `\u{25C0}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
         var a = new panel.rowsA([80, 40, 0, data.length*WRAPROWHEIGHT, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
