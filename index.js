@@ -6398,7 +6398,7 @@ _3cnv.sliceobj.data =
         }
     },
     {
-        title: "pexels",
+        title: "search",
         func: function()
         {
             window.open("https://zip-view.pages.dev/?search=love");
@@ -6409,7 +6409,17 @@ _3cnv.sliceobj.data =
         title: "secret",
         func: function()
         {
-            //todo
+                /*
+            const res = await fetch("https://pokamax.com/apis/reseller/v1/orders", 
+            {
+                method: "get",
+                headers: new Headers({
+                  Authorization: 'Bearer mytoken',
+                  email: 'my@email.com'
+            })
+          });
+              */
+            
             return true;
         }
     },
@@ -6730,9 +6740,9 @@ if (url.searchParams.has("data"))
         .catch((error) =>
         {});
 }
-else if (url.searchParams.has("pexels"))
+else if (url.searchParams.has("search"))
 {
-    url.path = url.searchParams.get("pexels");
+    url.path = url.searchParams.get("search");
     fetch(`https://pexels.reportbase5836.workers.dev/?search=${url.path}`)
         .then((response) => jsonhandler(response))
         .then((obj) => galleryobj.init(obj))
