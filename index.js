@@ -884,7 +884,7 @@ var headlst =
                         ]),               
                 ]);
 
-            a.draw(context, rect, `\u{25C0}   ${bossdisplayobj.value().title}   \u{25B6}`, 0);
+            a.draw(context, rect, `\u{25C0}    ${bossdisplayobj.value().title}    \u{25B6}`, 0);
             context.restore();        
     }
 },
@@ -1202,9 +1202,9 @@ var bossdisplaylst =
         var canvas = context.canvas
         var data = [];
         context.hollyrect = new rectangle();
-        context.downloaduploadrect = new rectangle();
-        context.uploaduploadrect = new rectangle();
-        context.deleteuploadrect = new rectangle();
+        context.downloadimagerect = new rectangle();
+        context.uploadimagerect = new rectangle();
+        context.deleteimagerect = new rectangle();
         var data = [];
         
         var b = 360;
@@ -1262,19 +1262,19 @@ var bossdisplaylst =
                     new panel.layers(
                     [
                         new panel.fill(FOOTBTNCOLOR),
-                        new panel.rectangle(context.uploaduploadrect),
+                        new panel.rectangle(context.uploadimagerect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
                         new panel.fill(FOOTBTNCOLOR),
-                        new panel.rectangle(context.downloaduploadrect),
+                        new panel.rectangle(context.downloadimagerect),
                         new panel.shadow(new panel.text()),
                     ]),
                     new panel.layers(
                     [
                         new panel.fill(FOOTBTNCOLOR),
-                        new panel.rectangle(context.deleteuploadrect),
+                        new panel.rectangle(context.deleteimagerect),
                         new panel.shadow(new panel.text()),
                     ]),
                     0,
@@ -1315,8 +1315,8 @@ var displaylst =
         var hollyobj = canvas.hollyobj;
         canvas.buttonrect = new rectangle();
         canvas.templaterect = new rectangle();
-        context.button2rect = new rectangle();
-        context.template2rect = new rectangle();
+        context.buttonmenurect = new rectangle();
+        context.templatemenurect = new rectangle();
         if (!headcnv.height)
             return;
         var bh = rect.height * 0.4;
@@ -1373,28 +1373,31 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.expand(new panel.rectangle(context.button2rect), 10, 10),
+                    new panel.expand(new panel.rectangle(context.buttonmenurect), 10, 10),
                     new panel.shadow(new panel.text()),
                 ]),
                 0
             ]), 
+            0,
+            /*
             new panel.cols([0, RAINSTEP, 0],
             [
                 0,
                 new panel.layers(
                 [
-                    //new panel.expand(new panel.rectangle(context.button2rect), 10, 10),
+                    new panel.expand(new panel.rectangle(context.buttonmenurect), 10, 10),
                     new panel.shadow(new panel.text()),
                 ]),
                 0
             ]),
+            */
             0,
             new panel.cols([0, RAINSTEP, 0],
             [
                 0,
                 new panel.layers(
                 [
-                    new panel.expand(new panel.rectangle(context.template2rect), 10, 10),
+                    new panel.expand(new panel.rectangle(context.templatemenurect), 10, 10),
                     new panel.gridA(1, data.length, 1,
                         new panel.shadow(new panel.text())),
                 ]),
@@ -1428,8 +1431,8 @@ var displaylst =
         canvas.vscrollrect = new rectangle();
         canvas.hollyrect = new rectangle();
         canvas.gorect = new rectangle();
-        context.holly2rect = new rectangle();
-        context.time2rect = new rectangle();
+        //context.holly2rect = new rectangle();
+        context.folderect = new rectangle();
         if (!headcnv.height)
             return;        
         var bh = rect.height * 0.4;
@@ -1493,7 +1496,7 @@ var displaylst =
                     0,
                     new panel.layers(
                         [
-                            new panel.expand(new panel.rectangle(context.time2rect), 10, 10),
+                            new panel.expand(new panel.rectangle(context.folderect), 10, 10),
                             new panel.gridA(1, data.length, 1,
                                 new panel.shadow(new panel.text())),
                         ]),
@@ -3681,18 +3684,18 @@ var taplst =
         {
             _4cnvctx.movepage(1);
         }
-        else if (context.uploaduploadrect && context.uploaduploadrect.hitest(x, y))
+        else if (context.uploadimagerect && context.uploadimagerect.hitest(x, y))
         {
                 
         }
-        else if (context.deleteuploadrect && context.deleteuploadrect.hitest(x, y))
+        else if (context.deleteimagerect && context.deleteimagerect.hitest(x, y))
         {
             showdialog("confirm", function(image)
             {
                 
             })     
         }
-        else if (context.downloaduploadrect && context.downloaduploadrect.hitest(x, y))
+        else if (context.downloadimagerect && context.downloadimagerect.hitest(x, y))
         {
             if (galleryobj.value().blob)
             {
@@ -3879,6 +3882,7 @@ var taplst =
             headham.panel = headlst[k];
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
+            /*
         else if (
             context.holly2rect &&
             context.holly2rect.hitest(x, y))
@@ -3887,17 +3891,18 @@ var taplst =
             canvas.hollyobj.addperc(k < 0.5 ? -0.1 : 0.1);
             menuobj.draw();
         }
+            */
         else if (
-            context.button2rect &&
-            context.button2rect.hitest(x, y))
+            context.buttonmenurect &&
+            context.buttonmenurect.hitest(x, y))
         {
-            var k = (x - context.button2rect.x) / context.button2rect.width;
+            var k = (x - context.buttonmenurect.x) / context.buttonmenurect.width;
             buttonobj.addperc(k < 0.5 ? -0.025 : 0.025);
             menuobj.draw();
         }
         else if (
-            context.template2rect &&
-            context.template2rect.hitest(x, y))
+            context.templatemenurect &&
+            context.templatemenurect.hitest(x, y))
         {
              for (var n = 0; n < IMAGELSTSIZE; ++n)
             {
@@ -3905,16 +3910,16 @@ var taplst =
                 thumbimglst[n] = new Image();
             }      
             
-            var k = (x - context.template2rect.x) / context.template2rect.width;
+            var k = (x - context.templatemenurect.x) / context.templatemenurect.width;
             templateobj.add(k < 0.5 ? -1 : 1);
             buttonobj.reset();
             menuobj.draw();            
         }
         else if (
-            context.time2rect &&
-            context.time2rect.hitest(x, y))
+            context.folderect &&
+            context.folderect.hitest(x, y))
         {
-            var k = (x - context.time2rect.x) / context.time2rect.width;
+            var k = (x - context.folderect.x) / context.folderect.width;
             var j = canvas.timeobj.length() / galleryobj.length();
             canvas.timeobj.rotate(k < 0.5 ? j :-j);
             menuobj.draw();           
@@ -4274,6 +4279,7 @@ var taplst =
             menuobj.show();
             return true;
         }
+            /*
         else if (canvas.folderect &&
             canvas.folderect.hitest(x, y))
         {
@@ -4284,6 +4290,7 @@ var taplst =
             menuobj.show();
             return true;
         }
+            */
         else if (canvas.hollyrect &&
             canvas.hollyrect.hitest(x, y))
         {
@@ -4436,9 +4443,9 @@ bossobj.draw = function()
 
     //Upload
     delete context.hollyrect;
-    delete context.downloaduploadrect;
-    delete context.uploaduploadrect;
-    delete context.deleteuploadrect;
+    delete context.downloadimagerect;
+    delete context.uploadimagerect;
+    delete context.deleteimagerect;
 
     //others
     delete context.slicerect;
@@ -4446,8 +4453,8 @@ bossobj.draw = function()
     delete context.canvas.thumbrect;
     delete context.copyidrect;
     delete context.gallerydeleterect;
-    delete context.downloaduploadrect;
-    delete context.uploaduploadrect;
+    delete context.downloadimagerect;
+    delete context.uploadimagerect;
     delete context.hollyyrect;
     
     if (!menuobj.value() && headcnv.height)
@@ -5016,15 +5023,15 @@ menuobj.draw = function()
     //gallery
     delete canvas.buttonrect;
     delete canvas.templaterect;
-    delete context.button2rect;
-    delete context.template2rect;
+    delete context.buttonmenurect;
+    delete context.templatemenurect;
 
     //button
     delete canvas.vscrollrect;
     delete canvas.hollyrect;
     delete canvas.gorect;
-    delete context.holly2rect;
-    delete context.time2rect;
+    //delete context.holly2rect;
+    delete context.folderect;
 
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
