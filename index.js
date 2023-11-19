@@ -4109,8 +4109,18 @@ var taplst =
                         return response.json()
                     throw Error(response.statusText);
                 })
-                .then(function(results)
+                .then(function(id)
                 {
+                    url.path = id;
+                    fetch(`https://gallery.reportbase5836.workers.dev/${id}`)
+                        .then((response) => jsonhandler(response))
+                        .then(function(obj)
+                          {
+                                 fetch(obj.json)
+                                    .then((response) => jsonhandler(response))
+                                    .then((obj) => galleryobj.init(obj))
+                          })
+                    
                      console.log(results);               
                 })
                 .catch(error => console.log(error));                
