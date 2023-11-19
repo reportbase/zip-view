@@ -3297,14 +3297,14 @@ function gotoimage(n)
     var k = 1-(n/galleryobj.length())
     var j = k*sealobj.value()
     _8cnv.timeobj.set(j);
+    
+    if (buttonobj.value() > window.innerHeight)
+    {
+        var k = _8cnv.timeobj.length() / galleryobj.length() / 2;
+        _8cnv.timeobj.data += k;
+    }
+    
     menuobj.draw();
-
-    if (buttonobj.value() < window.innerHeight)
-        return true;
-    
-    var k = _8cnv.timeobj.length() / galleryobj.length() / 2;
-    _8cnv.timeobj.data += k;
-    
     return true;
 }
 
