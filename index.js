@@ -4797,7 +4797,6 @@ menuobj.show = function()
     var k = displaylst.findIndex(function(a){return a.name == canvas.display});
     displayobj.set(k);
     
-    canvas.hollyobj.set(canvas.hollyinit*window.innerHeight);
     if (canvas.width_ > window.innerWidth)
     {
         context.show(0, 0, window.innerWidth, window.innerHeight);
@@ -4994,7 +4993,6 @@ var eventlst =
     footer: "DEFAULT",
     buttonheight: 180,
     buttonmargin: 20,
-    hollyinit: 0,
     width: 640
 },
 { 
@@ -5018,7 +5016,6 @@ var eventlst =
     footer: "GALLERIES",
     buttonheight: 240,
     buttonmargin: 20,
-    hollyinit: 2,
     width: 640
 },
 { //3 debug
@@ -5041,7 +5038,6 @@ var eventlst =
     footer: "DEBUG",
     buttonheight: 90,
     buttonmargin: 10,
-    hollyinit: 0,
     width: 640
 },
 { //4
@@ -5064,7 +5060,6 @@ var eventlst =
     footer: "DEFAULT",
     buttonheight: 30,
     buttonmargin: 10,
-    hollyinit: 0,
     width: 640
 },
 { //5 folders
@@ -5087,7 +5082,6 @@ var eventlst =
     footer: "FOLDERS",
     buttonheight: 150,
     buttonmargin: 10,
-    hollyinit: 0,
     width: 480
 },
 { //6 images
@@ -5110,7 +5104,6 @@ var eventlst =
     footer: "IMAGES",
     buttonheight: 70,
     buttonmargin: 15,
-    hollyinit: 0,
     width: 480
 },
 { //7
@@ -5133,7 +5126,6 @@ var eventlst =
     footer: "HOME",
     buttonheight: 180,
     buttonmargin: 20,
-    hollyinit: 0,
     width: 640
 },
 { //8
@@ -5156,7 +5148,6 @@ var eventlst =
     footer: "DEFAULT",
     buttonheight: 320,
     buttonmargin: 10,
-    hollyinit: 0.5,
     width: 5160
 },
 { //9 help
@@ -5179,7 +5170,6 @@ var eventlst =
     footer: "HELP",
     buttonheight: 240,
     buttonmargin: 30,
-    hollyinit: 0,
     width: 640
 },
 { //10
@@ -5202,7 +5192,6 @@ var eventlst =
     footer: "ACCOUNT",
     buttonheight: 50,
     buttonmargin: 10,
-    hollyinit: 0,
     width: 640
 },
 { //11
@@ -5225,7 +5214,6 @@ var eventlst =
     footer: "DEFAULT",
     buttonheight: 90,
     buttonmargin: 10,
-    hollyinit: 0,
     width: 640
 },
 { //12
@@ -5248,7 +5236,6 @@ var eventlst =
     footer: "DEFAULT",
     buttonheight: 50,
     buttonmargin: 10,
-    hollyinit: 0,
     width: 640
 },
 { //13
@@ -5271,7 +5258,6 @@ var eventlst =
     footer: "DEFAULT",
     buttonheight: 50,
     buttonmargin: 10,
-    hollyinit: 0,
     width: 640
 },
 { //14
@@ -5294,7 +5280,6 @@ var eventlst =
     footer: "DEFAULT",
     buttonheight: 50,
     buttonmargin: 10,
-    hollyinit: 0,
     width: 640
 },
 { //15
@@ -5317,9 +5302,9 @@ var eventlst =
     footer: "DEFAULT",
     buttonheight: 50,
     buttonmargin: 10,
-    hollyinit: 0,
     width: 640
-}, ];
+}, 
+];
 
 var contextobj = new circular_array("", contextlst);
 
@@ -5349,9 +5334,6 @@ contextlst.forEach(function(context, n)
     canvas.buttonheight = obj.buttonheight;
     canvas.buttonmargin = obj.buttonmargin;
     canvas.display = obj.display;
-    
-    canvas.hollyinit = obj.hollyinit;
-    canvas.hollyobj.set(canvas.hollyinit*window.innerHeight);
 
     var k = footlst.findIndex(function(a){return a.name == obj.footer});
     canvas.footer = footlst[k];
