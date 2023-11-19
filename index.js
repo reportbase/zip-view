@@ -6940,14 +6940,14 @@ window.token = '';
 
 function handleCredentialResponse(response) 
 {
-    window.token = response.credential;
-    window.identity = parseJwt(response.credential);
-    window.isAuthenticated = true
-    return;
+    user = Object.assign(user, parseJwt(response.credential));
     fetch(`https://user.reportbase5836.workers.dev/${user.email}`)
         .then((response) => jsonhandler(response))
         .then(function(lst)
         {
-            
+            var k = lst[0];
+            user.id = k.id;
+            user.secret = k.secret;
+            console.log(user);
         }); 
 }        
