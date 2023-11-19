@@ -689,7 +689,7 @@ var footlst =
                         0,
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.galleryeditrect),
+                            new panel.rectangle(canvas.galleryaddrect),
                             new panel.text(),
                         ]),
                         0,
@@ -4094,7 +4094,7 @@ var taplst =
         {
             var title = document.getElementById("gallery-add-title");
             var json = document.getElementById("gallery-add-json");
-            showdialog("gallery-add", function(image)
+            showdialog("gallery-edit", function(image)
             {
                 const form = new FormData();
                 form.append('title', title.value);
