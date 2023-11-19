@@ -769,7 +769,7 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.closerect = new rectangle();
-        canvas.usersignuprect = new rectangle();
+        canvas.useraddrect = new rectangle();
         canvas.userloginrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
@@ -787,7 +787,7 @@ var footlst =
                     [
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.usersignuprect),
+                            new panel.rectangle(canvas.useraddrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
@@ -4089,7 +4089,7 @@ var taplst =
                 .catch(error => console.log(error));                
             })
         }
-        else if (canvas.usersignuprect && canvas.usersignuprect.hitest(x, y))
+        else if (canvas.useraddrect && canvas.useraddrect.hitest(x, y))
         {
             var name = document.getElementById("user-signup-name");
             var email = document.getElementById("user-signup-email");
@@ -4099,7 +4099,7 @@ var taplst =
             {
                 const form = new FormData();
                 form.append('name', name.value);
-                form.append('email', email.email);
+                form.append('email', email.value);
 
                 fetch(`https://user.reportbase5836.workers.dev`,
                 {
