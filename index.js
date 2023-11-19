@@ -6498,7 +6498,8 @@ galleryobj.init = function(obj)
         pad = pad2
     for (var n = 0; n < pad; ++n)
     {
-        var e = {id: "DARK.0000"};
+        var e = {};
+        Object.assign(e,galleryobj.data[n]);
         galleryobj.data.push(e);
     }
     
