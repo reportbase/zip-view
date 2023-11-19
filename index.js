@@ -3271,12 +3271,6 @@ var presslst =
     name: "GALLERY",
     pressup: function(context, rect, x, y)
     {
-        if (y > HEADHEIGHT)
-            return;
-        var h = headcnv.height ? 0 : HEADHEIGHT;
-        headcnvctx.show(0, 0, window.innerWidth, h);
-        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-        context.refresh()
     },
     press: function(context, rect, x, y) {}
 },
@@ -3289,12 +3283,6 @@ var presslst =
     name: "BOSS",
     pressup: function(context, rect, x, y)
     {
-        if (y > HEADHEIGHT)
-            return;
-        var h = headcnv.height ? 0 : HEADHEIGHT;
-        headcnvctx.show(0, 0, window.innerWidth, h);
-        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-        context.refresh()
    },
     press: function(context, rect, x, y) {}
 }, 
@@ -3799,6 +3787,13 @@ var taplst =
             contextobj.reset();
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
+        else if (y > rect.height-60 && x > rect.width-60)//todo
+        {
+            var h = headcnv.height ? 0 : HEADHEIGHT;
+            headcnvctx.show(0, 0, window.innerWidth, h);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            context.refresh()
+        }
         else if (
             context.pagerect &&
             context.pagerect.hitest(x, y))
@@ -4008,6 +4003,13 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             menuobj.draw();
         }
+        else if (y > rect.height-60 && x > rect.width-60)//todo
+        {
+            var h = headcnv.height ? 0 : HEADHEIGHT;
+            headcnvctx.show(0, 0, window.innerWidth, h);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            context.refresh()
+        }
         else if (!galleryobj.noboss || canvas.shiftKey)
         {
             var visibles = canvas.visibles;
@@ -4103,23 +4105,19 @@ var taplst =
                     'method': 'POST',
                     'body': form
                 })
-                .then(function(response)
-                {
-                    if (response.ok)
-                        return response.json()
-                    throw Error(response.statusText);
-                })
+                .then((response) => jsonhandler(response))
                 .then(function(id)
                 {
                     url.path = id;
                     fetch(`https://gallery.reportbase5836.workers.dev/${id}`)
                         .then((response) => jsonhandler(response))
                         .then(function(obj)
-                          {
-                                 fetch(obj.json)
-                                    .then((response) => jsonhandler(response))
-                                    .then((obj) => galleryobj.init(obj))
-                          })
+                        {
+                            menuobj.hide()
+                            fetch(obj.json)
+                                .then((response) => jsonhandler(response))
+                                .then((obj) => galleryobj.init(obj))
+                        })
                     
                      console.log(results);               
                 })
