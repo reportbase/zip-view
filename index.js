@@ -1196,7 +1196,6 @@ var bossdisplaylst =
             return;
         var canvas = context.canvas
         var data = [];
-        context.hollyrect = new rectangle();
         context.downloadimagerect = new rectangle();
         context.uploadimagerect = new rectangle();
         context.deleteimagerect = new rectangle();
@@ -3299,7 +3298,8 @@ function gotoimage(n)
     _8cnv.timeobj.set(j);
     
     var k = buttonobj.value() / galleryobj.length() / 2;
-    _8cnv.timeobj.data += k;
+    var j= k*sealobj.value();
+    _8cnv.timeobj.data += j;
     
     menuobj.draw();
     return true;
