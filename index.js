@@ -783,15 +783,18 @@ var footlst =
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.colsA([0,0,0],
+                    new panel.colsA([0,0],
                     [
-                        0,
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.usersignuprect),
+                            new panel.text(),
+                        ]),
                         new panel.layers(
                         [
                             new panel.rectangle(canvas.userloginrect),
                             new panel.text(),
                         ]),
-                        0,
                     ])                            
                 ])
             ]);
@@ -801,10 +804,9 @@ var footlst =
                    `\u{25C0}   ${url.host}`,
                    0,
                    [
-                       0,
+                       "Signup   \u{25B6}",
                        "Login   \u{25B6}",
-                       0,
-                   ],
+                    ],
                 ],
                 0);
         context.restore();
@@ -1871,8 +1873,7 @@ panel.open = function()
     this.draw = function(context, rect, user, time)
     {
         context.save();
-        context.canvas.usersignuprect = new rectangle();
-
+        
         var Panel = function()
         {
             this.draw = function(context, rect, user, time)
@@ -1893,7 +1894,6 @@ panel.open = function()
 
         var a = new panel.layers(
             [
-                new panel.rectangle(context.canvas.usersignuprect),
                 new panel.shrink(new panel.circle(SCROLLNAB, SEARCHFRAME, 4), 15, 15),
                 new panel.shrink(new Panel(), 20, 34),
             ]);
