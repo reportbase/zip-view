@@ -6945,8 +6945,28 @@ function handleCredentialResponse(response)
         .then((response) => jsonhandler(response))
         .then(function(lst)
         {
-            var k = lst[0];
-            user.id = k.id;
-            user.secret = k.secret;
+            if (lst.length == 0)
+            {
+                const form = new FormData();
+                form.append('name', user.name);
+                form.append('email', user.email);
+                fetch(`https://user.reportbase5836.workers.dev`,
+                {
+                    'method': 'POST',
+                    'body': form
+                })
+              .then(response => response.json())
+                .then(function(obj)
+                      {
+                          console.log(obj);
+                      })
+                .catch(err => console.error(err));
+            }
+            else
+            {
+                var k = lst[0];
+                user.id = k.id;
+                user.secret = k.secret;
+            }
         }); 
 }        
