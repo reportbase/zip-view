@@ -804,7 +804,7 @@ var footlst =
                         0,
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.usersignuprect),
+                            new panel.rectangle(canvas.userloginrect),
                             new panel.text(),
                         ]),
                         0,
