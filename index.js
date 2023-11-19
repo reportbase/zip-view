@@ -6499,7 +6499,7 @@ galleryobj.init = function(obj)
     for (var n = 0; n < pad; ++n)
     {
         var e = {};
-        Object.assign(e,galleryobj.data[n]);
+        Object.assign(e,galleryobj.data[galleryobj.data.length-1]);
         galleryobj.data.push(e);
     }
     
