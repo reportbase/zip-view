@@ -3297,7 +3297,7 @@ function gotoimage(n)
     var j = k*sealobj.value()
     _8cnv.timeobj.set(j);
     
-    var k = sealobj.value() / n / 2;
+    var k = sealobj.value() / galleryobj.length() / 2;
     _8cnv.timeobj.data += k;
     
     menuobj.draw();
