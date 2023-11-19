@@ -3298,11 +3298,8 @@ function gotoimage(n)
     var j = k*sealobj.value()
     _8cnv.timeobj.set(j);
     
-    if (buttonobj.value() > window.innerHeight)
-    {
-        var k = _8cnv.timeobj.length() / galleryobj.length() / 2;
-        _8cnv.timeobj.data += k;
-    }
+    var k = buttonobj.value() / galleryobj.length() / 2;
+    _8cnv.timeobj.data += k;
     
     menuobj.draw();
     return true;
