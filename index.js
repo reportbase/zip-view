@@ -3787,7 +3787,8 @@ var taplst =
             contextobj.reset();
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
-        else if (y > rect.height-60 && x > rect.width-60)//todo
+        else if ((y > rect.height-60 && x > rect.width-60) ||
+                 (y > rect.height-60 && x < 60))
         {
             var h = headcnv.height ? 0 : HEADHEIGHT;
             headcnvctx.show(0, 0, window.innerWidth, h);
@@ -3993,7 +3994,8 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             menuobj.draw();
         }
-        else if (y > rect.height-60 && x > rect.width-60)//todo
+        else if ((y > rect.height-60 && x > rect.width-60) ||
+                 (y > rect.height-60 && x < 60))
         {
             var h = headcnv.height ? 0 : HEADHEIGHT;
             headcnvctx.show(0, 0, window.innerWidth, h);
