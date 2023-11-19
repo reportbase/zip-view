@@ -6948,6 +6948,5 @@ function handleCredentialResponse(response)
             var k = lst[0];
             user.id = k.id;
             user.secret = k.secret;
-            console.log(user);
         }); 
 }        
