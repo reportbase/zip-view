@@ -3302,7 +3302,7 @@ function gotoimage(n)
     if (buttonobj.value() < window.innerHeight)
         return true;
     
-    var k = canvas.timeobj.length() / galleryobj.length() / 2;
+    var k = _8cnv.timeobj.length() / galleryobj.length() / 2;
     _8cnv.timeobj.data += k;
     
     return true;
