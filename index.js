@@ -670,8 +670,6 @@ var footlst =
         context.save();     
         canvas.homerect = new rectangle();
         canvas.galleryaddrect = new rectangle();
-        canvas.galleryeditrect = new rectangle();        
-        canvas.gallerydeleterect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
@@ -4117,45 +4115,6 @@ var taplst =
                 })
                 .catch(error => console.log(error));                
             })
-        }
-        else if (canvas.galleryeditrect && canvas.galleryeditrect.hitest(x, y))
-        {
-            if (!url.searchParams.has('id'))
-                return;
-            var gallery_id = url.searchParams.get('id');
-            var title = document.getElementById("gallery-add-title");
-            var json = document.getElementById("gallery-add-json");
-            showdialog("gallery-edit", function(image)
-            {
-                const form = new FormData();
-                form.append('title', title.value);
-                form.append('json', json.value);
-                form.append('user_id', user.id);
-                form.append('gallery_id', gallery_id);
-                fetch(`https://gallery.reportbase5836.workers.dev`,
-                {
-                    'method': 'PATCH',
-                    'body': form
-                })
-                .then(function(response)
-                {
-                    if (response.ok)
-                        return response.json()
-                    throw Error(response.statusText);
-                })
-                .then(function(results)
-                {
-                     console.log(results);               
-                })
-                .catch(error => console.log(error));                
-            })
-        }
-        else if (canvas.gallerydeleterect && canvas.gallerydeleterect.hitest(x, y))
-        {
-                showdialog("confirm", function(image)
-                {
-                    
-                })   
         }
         else if (canvas.usersignuprect && canvas.usersignuprect.hitest(x, y))
         {
