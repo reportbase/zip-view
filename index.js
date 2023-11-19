@@ -6943,4 +6943,11 @@ function handleCredentialResponse(response)
     window.token = response.credential;
     window.identity = parseJwt(response.credential);
     window.isAuthenticated = true
+    return;
+    fetch(`https://user.reportbase5836.workers.dev/${user.email}`)
+        .then((response) => jsonhandler(response))
+        .then(function(lst)
+        {
+            
+        }); 
 }        
