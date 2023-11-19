@@ -4094,7 +4094,7 @@ var taplst =
                 .then((response) => jsonhandler(response))
                 .then(function(id)
                 {
-                    window.open(`https://zip-view.pages.dev/?${id}`, "_self");               
+                    window.open(`https://zip-view.pages.dev/?id=${id}`, "_self");               
                 })
                 .catch(error => console.log(error));                
             })
