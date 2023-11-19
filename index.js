@@ -3299,7 +3299,7 @@ function gotoimage(n)
     
     var k = sealobj.value() / galleryobj.length() / 2;
     _8cnv.timeobj.CURRENT += k;
-    _8cnv.hollyobj.set(0);
+    _8cnv.hollyobj.CURRENT = 0;
     
     menuobj.draw();
     return true;
