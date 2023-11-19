@@ -4559,64 +4559,6 @@ var buttonlst = [
     }
 },
 {
-    name: "SETUP",
-    draw: function(context, rect, user, time)
-    {
-        /*
-        var canvas = context.canvas;
-        context.save()
-        var clr = FILLBAR;
-        if (user.tap)
-            clr = MENUTAP;
-
-        var e = context.canvas.hollyobj.berp();
-            var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
-                [
-                    0,
-                    new panel.layers(
-                        [
-                            new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
-                            new panel.fill("green"),
-                            new panel.rowsA([0, 50, 10],
-                                [
-                                    new panel.shrink(
-                                        new panel.multitext(e,new panel.text()), 20, 0),
-                                    new panel.colsA([0,60,60,0],
-                                    [
-                                            0,
-                                         new panel.text(),
-                                         new panel.text(),
-                                            0,
-                                    ]),
-                                    0,
-                                ])
-                        ]),
-                    0,
-                ]);
-    
-            var k = typeof(user.title) == "function" ? user.title() : user.title;
-            var d = "\n";
-            if (!k)
-            {
-                k = user.folder;
-                d = "/";
-            }
-    
-            a.draw(context, rect, 
-                    [
-                       k ? k.split(d) : "",
-                       [
-                           0,
-                           "Title",
-                           "Delete",
-                           0,
-                        ]
-                    ], time);
-        */
-        context.restore();
-    }
-},
-{
     name: "MENU",
     draw: function(context, rect, user, time)
     {
@@ -6966,3 +6908,55 @@ galleryobj.leftright = function(context, delta)
         menuobj.draw();
     }, TIMEMAIN);
 }
+
+window.onGoogleLibraryLoad = () => 
+{
+    google.accounts.id.initialize({
+      client_id:'866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
+      callback: handleCredentialResponse,
+      auto_select: "true",
+});
+
+google.accounts.id.prompt((notification) => 
+{
+    if (notification.isNotDisplayed()) 
+    {
+      var e = notification.getNotDisplayedReason();
+         console.log(e)
+    }
+    else if (notification.isSkippedMoment()) 
+    {
+      var e = notification.getSkippedReason();
+         console.log(e);
+    }
+    else if (notification.isDismissedMoment()) 
+    {
+      var e = notification.getDismissedReason();
+         console.log(e);
+    }
+  });
+}
+
+let b64DecodeUnicode = str =>
+  decodeURIComponent(
+    Array.prototype.map.call(atob(str), c =>
+      '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+    ).join(''))
+
+let parseJwt = token =>
+  JSON.parse(
+    b64DecodeUnicode(
+      token.split('.')[1].replace('-', '+').replace('_', '/')
+    )
+  )  
+
+window.isAuthenticated = false;
+window.identity = {};
+window.token = '';
+
+function handleCredentialResponse(response) 
+{
+    window.token = response.credential;
+    window.identity = parseJwt(response.credential);
+    window.isAuthenticated = true
+}        
