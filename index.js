@@ -3675,10 +3675,6 @@ var taplst =
         }
         else if (context.deleteimagerect && context.deleteimagerect.hitest(x, y))
         {
-            showdialog("confirm", function(image)
-            {
-                
-            })     
         }
         else if (context.downloadimagerect && context.downloadimagerect.hitest(x, y))
         {
@@ -3874,16 +3870,6 @@ var taplst =
             headham.panel = headlst[k];
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
-            /*
-        else if (
-            context.holly2rect &&
-            context.holly2rect.hitest(x, y))
-        {
-            var k = (x - context.holly2rect.x) / context.holly2rect.width;
-            canvas.hollyobj.addperc(k < 0.5 ? -0.1 : 0.1);
-            menuobj.draw();
-        }
-            */
         else if (
             context.buttonmenurect &&
             context.buttonmenurect.hitest(x, y))
@@ -4008,7 +3994,7 @@ var taplst =
             var h = headcnv.height ? 0 : HEADHEIGHT;
             headcnvctx.show(0, 0, window.innerWidth, h);
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-            context.refresh()
+            menuobj.draw();
         }
         else if (!galleryobj.noboss || canvas.shiftKey)
         {
@@ -4108,18 +4094,7 @@ var taplst =
                 .then((response) => jsonhandler(response))
                 .then(function(id)
                 {
-                    url.path = id;
-                    fetch(`https://gallery.reportbase5836.workers.dev/${id}`)
-                        .then((response) => jsonhandler(response))
-                        .then(function(obj)
-                        {
-                            menuobj.hide()
-                            fetch(obj.json)
-                                .then((response) => jsonhandler(response))
-                                .then((obj) => galleryobj.init(obj))
-                        })
-                    
-                     console.log(results);               
+                    window.open('https://zip-view.pages.dev/?${id}`, "_self");               
                 })
                 .catch(error => console.log(error));                
             })
