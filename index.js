@@ -3574,7 +3574,7 @@ var keylst = [
                 var h = headcnv.height ? 0 : HEADHEIGHT;
                 headcnvctx.show(0, 0, window.innerWidth, h);
                 headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-                context.refresh()
+                evt.preventDefault();
             }
             else if (
                 key == "arrowup" ||
