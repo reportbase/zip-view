@@ -769,8 +769,8 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.closerect = new rectangle();
-        canvas.useraddrect = new rectangle();
-        canvas.userloginrect = new rectangle();
+        canvas.loginrect = new rectangle();
+        canvas.logoutrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
@@ -787,12 +787,12 @@ var footlst =
                     [
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.useraddrect),
+                            new panel.rectangle(canvas.loginrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.userloginrect),
+                            new panel.rectangle(canvas.logoutrect),
                             new panel.text(),
                         ]),
                     ])                            
@@ -804,8 +804,8 @@ var footlst =
                    `\u{25C0}   ${url.host}`,
                    0,
                    [
-                       "Signup   \u{25B6}",
                        "Login   \u{25B6}",
+                       "Logout   \u{25B6}",
                     ],
                 ],
                 0);
@@ -4089,8 +4089,26 @@ var taplst =
                 .catch(error => console.log(error));                
             })
         }
-        else if (canvas.useraddrect && canvas.useraddrect.hitest(x, y))
+        else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
         {
+            google.accounts.id.prompt((notification) => 
+            {
+                if (notification.isNotDisplayed()) 
+                {
+                  var e = notification.getNotDisplayedReason();
+                }
+                else if (notification.isSkippedMoment()) 
+                {
+                  var e = notification.getSkippedReason();
+                }
+                else if (notification.isDismissedMoment()) 
+                {
+                  var e = notification.getDismissedReason();
+                }
+              });
+            }
+
+            /*
             var name = document.getElementById("user-signup-name");
             var email = document.getElementById("user-signup-email");
             name.value = user.name?user.name:"";
@@ -4113,10 +4131,10 @@ var taplst =
                       })
                 .catch(err => console.error(err));  
             });
-                
+            */    
             return true;
         }
-        else if (canvas.userloginrect && canvas.userloginrect.hitest(x, y))
+        else if (canvas.logoutrect && canvas.logoutrect.hitest(x, y))
         {
             var email = document.getElementById("user-signup-email");
             email.value = user.email ? user.email : "";
@@ -6900,26 +6918,6 @@ window.onGoogleLibraryLoad = () =>
       callback: handleCredentialResponse,
       auto_select: "true",
 });
-
-google.accounts.id.prompt((notification) => 
-{
-    if (notification.isNotDisplayed()) 
-    {
-      var e = notification.getNotDisplayedReason();
-         console.log(e)
-    }
-    else if (notification.isSkippedMoment()) 
-    {
-      var e = notification.getSkippedReason();
-         console.log(e);
-    }
-    else if (notification.isDismissedMoment()) 
-    {
-      var e = notification.getDismissedReason();
-         console.log(e);
-    }
-  });
-}
 
 let b64DecodeUnicode = str =>
   decodeURIComponent(
