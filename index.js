@@ -792,8 +792,8 @@ var footlst =
         a.draw(context, rect, 
                [
                    `\u{25C0}   ${url.host}`,
-                   0,
-                   ${email}   \u{25B6}`,
+                    0,
+                    `${email}   \u{25B6}`,
                 ],
                 0);
         context.restore();
