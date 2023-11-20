@@ -6903,7 +6903,7 @@ let parseJwt = token =>
     )
   )  
 
-function handleRevokedSession() 
+function handleRevokedSession(e) 
 {
       
 }
@@ -6926,11 +6926,12 @@ function handleCredentialResponse(response)
                     'method': 'POST',
                     'body': form
                 })
-              .then(response => response.json())
-                .then(function(obj)
-                      {
-                          console.log(obj);
-                      })
+                .then(response => response.json())
+                .then(function(k)
+                {
+                    user.id = k.id;
+                    user.secret = k.secret;
+                })
                 .catch(err => console.error(err));
             }
             else
