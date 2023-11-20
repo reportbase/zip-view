@@ -3795,6 +3795,7 @@ var taplst =
         
         if (headcnvctx.leftmenurect && headcnvctx.leftmenurect.hitest(x, y))
         {
+            setupmenus();
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.rightctx.hide()
             if (menuobj.value() == galleryobj.leftctx)
@@ -3819,6 +3820,7 @@ var taplst =
             headcnvctx.rightmenurect &&
             headcnvctx.rightmenurect.hitest(x, y))
         {
+            setupmenus();
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.leftctx.hide()
             if (menuobj.value() == galleryobj.rightctx)
@@ -6182,258 +6184,224 @@ async function loadjson(blob)
     }
 }
 
-_3cnv.sliceobj.data = 
-[
-    {
-        title: "Delete Image",
-        func: function()
+function setupmenus()
+{
+    _3cnv.sliceobj.data = 
+    [
         {
-            var id = galleryobj.value().id;
-            fetch(`https://ipfs-view.pages.dev/image/${id}`,
-                {
-                    method: 'delete'
-                })
-                .then(res =>
-                {
-                    location.reload();
-                    return res.json()
-                })
-                .then(data => console.log(data))
-                .catch(error =>
-                {
-                    console.log("error:", error);
-                });
-            return true;
-        }
-      },
-
-     {
-        title: "Delete All",
-        func: function()
-        {
-                fetch(`https://images.reportbase5836.workers.dev`,
-                {
-                    'method': 'DELETE',
-                    'body': JSON.stringify(galleryobj)
-                })
-                .then(response => response.json())
-                .then(response => console.log(response))
-                .catch(err => console.error(err));
-            return true;
-       }
-    },
-
-    {
-        title: "Insert All",
-        func: function()
-        {
-                fetch(`https://images.reportbase5836.workers.dev`,
-                {
-                    'method': 'POST',
-                    'body': JSON.stringify(galleryobj)
-                })
-                .then(response => response.json())
-                .then(response => console.log(response))
-                .catch(err => console.error(err));     
-            return true;
-        }
-    },
-
-    {
-        title: "users-list",
-        func: function()
-        {        
-            fetch(`https://user.reportbase5836.workers.dev/list`)
-              .then(function(response)
-              {
-                for (let [key, value] of response.headers)
-                    console.log(`${key} = ${value}`);
-                  return response.json();
-              })
-              .then(function(obj)
-                    {
-                        console.log(obj);
-                    });  
-            return true;
-        }
-    },  
-    {
-        title: "sidney",
-        func: function()
-        {
-            window.open("https://zip-view.pages.dev/?sidney");
-            return true;
-        }
-    },
-    {
-        title: "search",
-        func: function()
-        {
-            window.open("https://zip-view.pages.dev/?search=love");
-            return true;
-        }
-    },
-    {
-        title: "secret",
-        func: function()
-        {
-                /*
-            const res = await fetch("https://pokamax.com/apis/reseller/v1/orders", 
+            title: "Delete Image",
+            func: function()
             {
-                method: "get",
-                headers: new Headers({
-                  Authorization: 'Bearer mytoken',
-                  email: 'my@email.com'
-            })
-          });
-              */
-            
+                var id = galleryobj.value().id;
+                fetch(`https://ipfs-view.pages.dev/image/${id}`,
+                    {
+                        method: 'delete'
+                    })
+                    .then(res =>
+                    {
+                        location.reload();
+                        return res.json()
+                    })
+                    .then(data => console.log(data))
+                    .catch(error =>
+                    {
+                        console.log("error:", error);
+                    });
+                return true;
+            }
+          },
+    
+         {
+            title: "Delete All",
+            func: function()
+            {
+                    fetch(`https://images.reportbase5836.workers.dev`,
+                    {
+                        'method': 'DELETE',
+                        'body': JSON.stringify(galleryobj)
+                    })
+                    .then(response => response.json())
+                    .then(response => console.log(response))
+                    .catch(err => console.error(err));
+                return true;
+           }
+        },
+    
+        {
+            title: "Insert All",
+            func: function()
+            {
+                    fetch(`https://images.reportbase5836.workers.dev`,
+                    {
+                        'method': 'POST',
+                        'body': JSON.stringify(galleryobj)
+                    })
+                    .then(response => response.json())
+                    .then(response => console.log(response))
+                    .catch(err => console.error(err));     
+                return true;
+            }
+        },
+    
+        {
+            title: "users-list",
+            func: function()
+            {        
+                fetch(`https://user.reportbase5836.workers.dev/list`)
+                  .then(function(response)
+                  {
+                    for (let [key, value] of response.headers)
+                        console.log(`${key} = ${value}`);
+                      return response.json();
+                  })
+                  .then(function(obj)
+                        {
+                            console.log(obj);
+                        });  
+                return true;
+            }
+        },  
+        {
+            title: "sidney",
+            func: function()
+            {
+                window.open("https://zip-view.pages.dev/?sidney");
+                return true;
+            }
+        },
+        {
+            title: "search",
+            func: function()
+            {
+                window.open("https://zip-view.pages.dev/?search=love");
+                return true;
+            }
+        },
+        {
+            title: "secret",
+            func: function()
+            {
+                    /*
+                const res = await fetch("https://pokamax.com/apis/reseller/v1/orders", 
+                {
+                    method: "get",
+                    headers: new Headers({
+                      Authorization: 'Bearer mytoken',
+                      email: 'my@email.com'
+                })
+              });
+                  */
+                
+                return true;
+            }
+        },
+        {
+            title: "users-delete",
+            func: function()
+            {        
+                    fetch(`https://user.reportbase5836.workers.dev/reportbase@gmail.com`,
+                    {
+                        'method': 'DELETE'
+                    })
+                  .then(response => response.json())
+                    .then(function(obj)
+                          {
+                              console.log(obj);
+                          })
+                    .catch(err => console.error(err));  
+            }
+        },
+    ];
+
+    _7cnv.sliceobj.data = 
+    [
+    {
+        title: `Open   \u{25B6}\n*.zip, *.cbz, *.json, *.png,\n*.jpg, *.avif, *.webp, *.gif`,
+        func: function()
+        {
             return true;
         }
-    },
+    },   
     {
-        title: "users-delete",
+        title: "Developer\nTom Brinkman\n\nEmail\nimages@zip-view.com",
+        func: function() 
+        {
+            return true;
+        }
+    },     
+    {
+        title: "https://zip-view.com\nImage Viewer\nDrag and drop images (*.jpg, *.png, *.webp, *.avif) and zip file image galleries (*.zip, *.cbz) from the desktop or load them from the cloud.",
+        func: function() 
+        {
+            return true;
+        }
+    },     
+    {
+        title: `Images   \u{25B6}`,
         func: function()
-        {        
-                fetch(`https://user.reportbase5836.workers.dev/reportbase@gmail.com`,
-                {
-                    'method': 'DELETE'
-                })
-              .then(response => response.json())
-                .then(function(obj)
-                      {
-                          console.log(obj);
-                      })
-                .catch(err => console.error(err));  
+        {
         }
     },
-];
+    {
+        title: `Account   \u{25B6}`,
+        func: function()
+        {
+            menuobj.hide();
+            galleryobj.leftcnv = _10cnv;
+            galleryobj.leftctx = _10cnvctx;
+            menuobj.setindex(galleryobj.leftctx);
+            menuobj.show();
+            return false;
+        },
+    },
+    {
+        title: "Folders   \u{25B6}",
+        func: function()
+        {
+            menuobj.hide();
+            galleryobj.leftcnv = _5cnv;
+            galleryobj.leftctx = _5cnvctx;
+            menuobj.setindex(galleryobj.leftctx);
+            menuobj.show();
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            return false;
+        }
+    },
+    {
+        title: "Debug   \u{25B6}",
+        func: function()
+        {
+            menuobj.hide();
+            galleryobj.leftcnv = _3cnv;
+            galleryobj.leftctx = _3cnvctx;
+            menuobj.setindex(galleryobj.leftctx);
+            menuobj.show();
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            return false;
+        }
+    }
+    ];
+    
+    _10cnv.sliceobj.data = 
+    [
+        {
+            title: function(){return `ID: ${login.id?login.id:""}`},
+            func: function(){copytext(login.id); return false;}
+        },
+        {
+            title: function(){return `Email: ${login.email?login.email:""}`},
+            func: function(){copytext(login.email); return false;}
+        },
+        {
+            title: function(){return `Name: ${login.name?login.name:""}`},
+            func: function(){copytext(login.name); return false;}
+        },
+        {
+            title: function(){return `Secret: ${login.secret?login.secret:""}`},
+            func: function(){copytext(login.secret); return false;}
+        },
+    ]
 
-_7cnv.sliceobj.data = 
-[
-{
-    title: `Open   \u{25B6}\n*.zip, *.cbz, *.json, *.png,\n*.jpg, *.avif, *.webp, *.gif`,
-    func: function()
-    {
-        return true;
-    }
-},   
-{
-    title: "Developer\nTom Brinkman\n\nEmail\nimages@zip-view.com",
-    func: function() 
-    {
-        return true;
-    }
-},     
-{
-    title: "https://zip-view.com\nImage Viewer\nDrag and drop images (*.jpg, *.png, *.webp, *.avif) and zip file image galleries (*.zip, *.cbz) from the desktop or load them from the cloud.",
-    func: function() 
-    {
-        return true;
-    }
-},     
-{
-    title: `Images   \u{25B6}`,
-    func: function()
-    {
-    }
-},
-{
-    title: `Account   \u{25B6}`,
-    func: function()
-    {
-        menuobj.hide();
-        galleryobj.leftcnv = _10cnv;
-        galleryobj.leftctx = _10cnvctx;
-        menuobj.setindex(galleryobj.leftctx);
-        menuobj.show();
-        return false;
-    },
-},
-{
-    title: "Folders   \u{25B6}",
-    func: function()
-    {
-        menuobj.hide();
-        galleryobj.leftcnv = _5cnv;
-        galleryobj.leftctx = _5cnvctx;
-        menuobj.setindex(galleryobj.leftctx);
-        menuobj.show();
-        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-        return false;
-    }
-},
-{
-    title: "Debug   \u{25B6}",
-    func: function()
-    {
-        menuobj.hide();
-        galleryobj.leftcnv = _3cnv;
-        galleryobj.leftctx = _3cnvctx;
-        menuobj.setindex(galleryobj.leftctx);
-        menuobj.show();
-        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-        return false;
-    }
-}
-];
-
-_10cnv.sliceobj.data = 
-[
-    {
-        title: function(){return `ID: ${login.id?login.id:""}`},
-        func: function(){copytext(login.id); return false;}
-    },
-    {
-        title: function(){return `Email: ${login.email?login.email:""}`},
-        func: function(){copytext(login.email); return false;}
-    },
-    {
-        title: function(){return `Name: ${login.name?login.name:""}`},
-        func: function(){copytext(login.name); return false;}
-    },
-    {
-        title: function(){return `Secret: ${login.secret?login.secret:""}`},
-        func: function(){copytext(login.secret); return false;}
-    },
-]
-
-//galleryobj init
-galleryobj.init = function(obj)
-{
-    if (obj)
-        Object.assign(galleryobj, obj);
-    
-    if (url.searchParams.has('length'))
-    {
-        var length = Number(url.searchParams.get('length'));
-        galleryobj.data.length = length;    
-    }
-    
-    if (!galleryobj.length())
-        return;
-    
-    var length = galleryobj.length();
-    var pad = padlst[length-1];
-    var pad2 = Number(url.searchParams.get('pad'));
-    if (pad2)
-        pad = pad2
-    for (var n = 0; n < pad; ++n)
-    {
-        var e = {};
-        Object.assign(e,galleryobj.data[galleryobj.data.length-1]);
-        galleryobj.data.push(e);
-    }
-    
-    delete photo.image;
-    
-    setfavicon();
-    stretchobj.makerange("40-90", stretchobj.length());  
-    stretchobj.set(90);
-    slicewidthobj.set(SLICEWIDTH);
-    headcnv.style.pointerEvents = "none";
-    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-    headham.panel = headham.panel;
 
     _5cnv.sliceobj.data = [];
     var j = 0;
@@ -6496,14 +6464,8 @@ galleryobj.init = function(obj)
     _9cnv.sliceobj.data = [];
     _2cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
-    var email = "reportbase@gmail.com";
-    fetch(`https://gallery.reportbase5836.workers.dev/list/${login.email}`)
-        .then(function(response)
-        {
-            if (response.ok)
-                return response.json()
-            throw Error(response.statusText);
-        })
+    fetch(`https://gallery.reportbase5836.workers.dev/list/${login.id}`)
+        .then((response) => jsonhandler(response))
         .then(function(results)
         {
             for (var n = 0; n < results.length; ++n)
@@ -6511,7 +6473,6 @@ galleryobj.init = function(obj)
                 var result = results[n];
                 result.func = function(n, x, y)
                 {
-                    //todo: edit, delete
                     for (var n = 0; n < IMAGELSTSIZE; ++n)
                     {
                         thumbfittedlst[n] = document.createElement("canvas");
@@ -6563,7 +6524,45 @@ galleryobj.init = function(obj)
     galleryobj.leftcnv = _7cnv;
     galleryobj.leftctx = _7cnvctx;
     galleryobj.rightcnv = _6cnv;
-    galleryobj.rightctx = _6cnvctx;
+    galleryobj.rightctx = _6cnvctx;    
+}
+
+//galleryobj init
+galleryobj.init = function(obj)
+{
+    if (obj)
+        Object.assign(galleryobj, obj);
+    
+    if (url.searchParams.has('length'))
+    {
+        var length = Number(url.searchParams.get('length'));
+        galleryobj.data.length = length;    
+    }
+    
+    if (!galleryobj.length())
+        return;
+    
+    var length = galleryobj.length();
+    var pad = padlst[length-1];
+    var pad2 = Number(url.searchParams.get('pad'));
+    if (pad2)
+        pad = pad2
+    for (var n = 0; n < pad; ++n)
+    {
+        var e = {};
+        Object.assign(e,galleryobj.data[galleryobj.data.length-1]);
+        galleryobj.data.push(e);
+    }
+    
+    delete photo.image;
+    
+    setfavicon();
+    stretchobj.makerange("40-90", stretchobj.length());  
+    stretchobj.set(90);
+    slicewidthobj.set(SLICEWIDTH);
+    headcnv.style.pointerEvents = "none";
+    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+    headham.panel = headham.panel;
 
     var image = new Image();
     image.onload = function()
