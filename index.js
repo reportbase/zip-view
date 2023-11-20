@@ -3787,8 +3787,6 @@ var taplst =
         
         if (headcnvctx.leftmenurect && headcnvctx.leftmenurect.hitest(x, y))
         {
-            googlelogin();
-            setupmenus();
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.rightctx.hide()
             if (menuobj.value() == galleryobj.leftctx)
@@ -3801,6 +3799,9 @@ var taplst =
             }
             else
             {
+                if (!login.id)
+                    googlelogin();
+                setupmenus();
                 menuobj.setindex(galleryobj.leftctx);
             }
 
