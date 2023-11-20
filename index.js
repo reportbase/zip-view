@@ -4084,7 +4084,7 @@ var taplst =
                 .then((response) => jsonhandler(response))
                 .then(function(id)
                 {
-                    window.open(`https://zip-view.pages.dev/?id=${id}`, "_self");               
+                    //window.open(`https://zip-view.pages.dev/?id=${id}`, "_self");               
                 })
                 .catch(error => console.log(error));                
             })
@@ -4097,8 +4097,6 @@ var taplst =
               //auto_select: "true",
             });
 
-            //const parent = document.getElementById('google_btn');
-            //google.accounts.id.renderButton(parent, {theme: "filled_blue"});
             google.accounts.id.prompt((notification) => 
             {
                 if (notification.isNotDisplayed() || notification.isSkippedMoment()) 
