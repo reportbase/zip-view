@@ -4094,7 +4094,7 @@ var taplst =
            google.accounts.id.initialize({
               client_id:'866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
               callback: handleCredentialResponse,
-              auto_select: "true",
+              //auto_select: "true",
             });
 
             //const parent = document.getElementById('google_btn');
