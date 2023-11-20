@@ -783,11 +783,8 @@ var footlst =
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.layers(
-                    [
-                        new panel.rectangle(canvas.loginrect),
-                        new panel.text(),
-                    ]),                           
+                    new panel.rectangle(canvas.loginrect),
+                    new panel.text(),             
                 ])
             ]);
 
