@@ -4060,7 +4060,8 @@ var taplst =
                 .then((response) => jsonhandler(response))
                 .then(function(id)
                 {
-                    //window.open(`https://zip-view.pages.dev/?id=${id}`, "_self");               
+                    setupmenus();
+                    menuobj.draw()               
                 })
                 .catch(error => console.log(error));                
             })
