@@ -4111,7 +4111,7 @@ var taplst =
         }
         else if (canvas.logoutrect && canvas.logoutrect.hitest(x, y))
         {
-            GoogleAuth.signOut();
+            googleOneTap.logout();
             return true;
         }
         else if (canvas.usereditrect && canvas.usereditrect.hitest(x, y))
