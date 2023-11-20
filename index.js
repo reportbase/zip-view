@@ -4046,7 +4046,7 @@ var taplst =
         {
             var title = document.getElementById("gallery-add-title");
             var json = document.getElementById("gallery-add-json");
-            showdialog("gallery-edit", function(image)
+            showdialog("gallery-add", function(image)
             {
                 const form = new FormData();
                 form.append('title', title.value);
@@ -6127,6 +6127,8 @@ headobj.reset = function()
 {
     var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
     headham.panel = headlst[k];
+    var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+    displayobj.set(k);
     headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
     headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);   
 }
