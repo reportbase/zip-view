@@ -34,7 +34,7 @@ const RAINSTEP = 240;
 const HEADTOP = 80;
 const HEADBOT = 40;
 const FIXEDTIME = 2;
-const WRAPROWHEIGHT = 30;
+const WRAPROWHEIGHT = 40;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
 const FOOTHEIGHT = 80;
 const MAXEXTENT = 10000;
@@ -1356,8 +1356,7 @@ var displaylst =
                 [
                     new panel.fill("rgba(0,0,0,0.4)"),
                     new panel.expand(new panel.rectangle(context.templatemenurect), 10, 10),
-                    new panel.gridA(1, data.length, 1,
-                        new panel.text()),
+                    new panel.gridA(1, data.length, 1, new panel.text()),
                 ]),
                 0,
             ]),
