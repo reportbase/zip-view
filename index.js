@@ -4061,7 +4061,8 @@ var taplst =
                 .then(function(id)
                 {
                     setupmenus();
-                    menuobj.draw()               
+                    menuobj.draw();
+                    dialog.close();
                 })
                 .catch(error => console.log(error));                
             })
