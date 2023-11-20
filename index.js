@@ -2520,7 +2520,7 @@ var wheelst =
         }
         else
         {
-            if (Math.abs(delta) > 240)
+            if (Math.abs(delta) > 320)
             {
                 headcnvctx.show(0, 0, window.innerWidth, 0);
                 headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
@@ -3755,14 +3755,6 @@ var taplst =
             contextobj.reset();
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
-        else if ((y > rect.height-60 && x > rect.width-60) ||
-                 (y > rect.height-60 && x < 60))
-        {
-            var h = headcnv.height ? 0 : HEADHEIGHT;
-            headcnvctx.show(0, 0, window.innerWidth, h);
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-            context.refresh()
-        }
         else if (
             context.pagerect &&
             context.pagerect.hitest(x, y))
@@ -3966,17 +3958,7 @@ var taplst =
         }
         else if (!headcnv.height)
         {
-            headcnv.height = HEADHEIGHT;
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-            menuobj.draw();
-        }
-        else if ((y > rect.height-60 && x > rect.width-60) ||
-                 (y > rect.height-60 && x < 60))
-        {
-            var h = headcnv.height ? 0 : HEADHEIGHT;
-            headcnvctx.show(0, 0, window.innerWidth, h);
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-            menuobj.draw();
+            headobj.reset();
         }
         else if (!galleryobj.noboss || canvas.shiftKey)
         {
@@ -4185,18 +4167,6 @@ var taplst =
             var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
             canvas.hollyobj.setperc(k);
             context.refresh()
-            return true;
-        }
-        else if (canvas.uploadrect &&
-            canvas.uploadrect.hitest(x, y))
-        {
-            /*
-            galleryobj.rightctx.hide();
-            galleryobj.rightcnv = _6cnv;
-            galleryobj.rightctx = _6cnvctx;
-            menuobj.setindex(galleryobj.rightctx);
-            menuobj.show();
-            */
             return true;
         }
         else if (canvas.hollyrect &&
@@ -5921,7 +5891,6 @@ function resize()
     headham.panel = headlst[k];
     headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
     headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
     if (menuobj.value() == _8cnvctx)
     {
         menuobj.show();
@@ -6182,6 +6151,14 @@ async function loadjson(blob)
     catch (_)
     {
     }
+}
+
+headobj.reset = function()
+{
+    var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+    headham.panel = headlst[k];
+    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);   
 }
 
 function setupmenus()
@@ -6561,8 +6538,7 @@ galleryobj.init = function(obj)
     stretchobj.set(90);
     slicewidthobj.set(SLICEWIDTH);
     headcnv.style.pointerEvents = "none";
-    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-    headham.panel = headham.panel;
+    headobj.reset();
     setupmenus();
     
     var image = new Image();
@@ -6578,10 +6554,6 @@ galleryobj.init = function(obj)
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
         menuobj.show();
-        var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
-        headham.panel = headlst[k];
-        headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
     };    
    
     _8cnv.timeobj.set(0);
