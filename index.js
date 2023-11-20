@@ -4105,25 +4105,20 @@ var taplst =
 
             google.accounts.id.prompt((notification) => 
             {
-                showdialog("user-login", function(str)
-                {
-                            
-                });
-                
                 if (notification.isNotDisplayed()) 
                 {
-                    var e = notification.getNotDisplayedReason();
-                    console.log(e)
+                    showdialog("user-login", function(str)
+                    {
+                                
+                    });
                 }
                 else if (notification.isSkippedMoment()) 
                 {
                     var e = notification.getSkippedReason();
-                    console.log(e);
                 }
                 else if (notification.isDismissedMoment()) 
                 {
                     var e = notification.getDismissedReason();
-                    console.log(e);
                 }
             })
             
