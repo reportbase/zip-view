@@ -1317,7 +1317,8 @@ var displaylst =
                             [
                                 new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
                                 new panel.expand(new panel.rectangle(canvas.templaterect), 0, 20),
-                                new panel.shrink(new panel.currentH(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
+                                new panel.shrink(new panel.currentH(
+                                    new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
                             ]),
                         0,
                     ])
@@ -1340,33 +1341,23 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
+                    new panel.fill("rgba(0,0,0,0.4)"),
                     new panel.expand(new panel.rectangle(context.buttonmenurect), 10, 10),
-                    new panel.shadow(new panel.text()),
+                    new panel.text(),
                 ]),
                 0
             ]), 
             0,
-            /*
-            new panel.cols([0, RAINSTEP, 0],
-            [
-                0,
-                new panel.layers(
-                [
-                    new panel.expand(new panel.rectangle(context.buttonmenurect), 10, 10),
-                    new panel.shadow(new panel.text()),
-                ]),
-                0
-            ]),
-            */
             0,
             new panel.cols([0, RAINSTEP, 0],
             [
                 0,
                 new panel.layers(
                 [
+                    new panel.fill("rgba(0,0,0,0.4)"),
                     new panel.expand(new panel.rectangle(context.templatemenurect), 10, 10),
                     new panel.gridA(1, data.length, 1,
-                        new panel.shadow(new panel.text())),
+                        new panel.text()),
                 ]),
                 0,
             ]),
