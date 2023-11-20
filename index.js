@@ -6910,7 +6910,7 @@ function handleRevokedSession()
 
 function handleCredentialResponse(response) 
 {
-    globa.credential = response.credential;
+    global.credential = response.credential;
     user = Object.assign(user, parseJwt(response.credential));
     fetch(`https://user.reportbase5836.workers.dev/${user.email}`)
         .then((response) => jsonhandler(response))
