@@ -783,16 +783,11 @@ var footlst =
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.colsA([0,0,0],
+                    new panel.layers(
                     [
-                        0,
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.loginrect),
-                            new panel.text(),
-                        ]),
-                        0,
-                    ])                            
+                        new panel.rectangle(canvas.loginrect),
+                        new panel.text(),
+                    ]),                           
                 ])
             ]);
 
@@ -801,11 +796,7 @@ var footlst =
                [
                    `\u{25C0}   ${url.host}`,
                    0,
-                   [
-                       0,
-                       `${email}   \u{25B6}`,
-                       0,
-                    ],
+                   ${email}   \u{25B6}`,
                 ],
                 0);
         context.restore();
@@ -6930,6 +6921,7 @@ function handleCredentialResponse(response)
                 {
                     login.id = k.id;
                     login.secret = k.secret;
+                    menuobj.draw();
                 })
                 .catch(err => console.error(err));
             }
@@ -6938,6 +6930,7 @@ function handleCredentialResponse(response)
                 var k = lst[0];
                 login.id = k.id;
                 login.secret = k.secret;
+                menuobj.draw();
             }
         }); 
 }        
