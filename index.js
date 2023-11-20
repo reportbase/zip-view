@@ -4090,8 +4090,11 @@ var taplst =
             })
         }
         else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
-        {
-                
+        {  
+            google.accounts.id.prompt((notification) => 
+            {
+            
+            });                
             return true;
         }
         else if (canvas.logoutrect && canvas.logoutrect.hitest(x, y))
@@ -6861,26 +6864,7 @@ window.onGoogleLibraryLoad = () =>
       client_id:'866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
       callback: handleCredentialResponse,
       auto_select: "true",
-});
-
-google.accounts.id.prompt((notification) => 
-{
-    if (notification.isNotDisplayed()) 
-    {
-      var e = notification.getNotDisplayedReason();
-         console.log(e)
-    }
-    else if (notification.isSkippedMoment()) 
-    {
-      var e = notification.getSkippedReason();
-         console.log(e);
-    }
-    else if (notification.isDismissedMoment()) 
-    {
-      var e = notification.getDismissedReason();
-         console.log(e);
-    }
-  });
+    });
 }
 
 let b64DecodeUnicode = str =>
