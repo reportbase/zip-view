@@ -783,18 +783,15 @@ var footlst =
                 new panel.layers(
                 [
                     new panel.fill("rgba(0,0,0,0.8)"),
-                    new panel.colsA([0,0],
+                    new panel.colsA([0,0,0],
                     [
+                        0,
                         new panel.layers(
                         [
                             new panel.rectangle(canvas.loginrect),
                             new panel.text(),
                         ]),
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.logoutrect),
-                            new panel.text(),
-                        ]),
+                        0,
                     ])                            
                 ])
             ]);
@@ -804,8 +801,9 @@ var footlst =
                    `\u{25C0}   ${url.host}`,
                    0,
                    [
-                       "Login   \u{25B6}",
-                       "Logout   \u{25B6}",
+                       0,
+                       "${user.email?user.email:"Login"}   \u{25B6}",
+                       0,
                     ],
                 ],
                 0);
