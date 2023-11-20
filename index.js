@@ -4094,20 +4094,13 @@ var taplst =
             google.accounts.id.prompt((notification) => 
             {
                 if (notification.isNotDisplayed()) 
-                {
                   var e = notification.getNotDisplayedReason();
-                }
                 else if (notification.isSkippedMoment()) 
-                {
                   var e = notification.getSkippedReason();
-                }
                 else if (notification.isDismissedMoment()) 
-                {
                   var e = notification.getDismissedReason();
-                }
-              });
-            }
-
+            });
+            
             /*
             var name = document.getElementById("user-signup-name");
             var email = document.getElementById("user-signup-email");
