@@ -6563,7 +6563,8 @@ galleryobj.init = function(obj)
     headcnv.style.pointerEvents = "none";
     headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
     headham.panel = headham.panel;
-
+    setupmenus();
+    
     var image = new Image();
     image.onload = function()
     {
