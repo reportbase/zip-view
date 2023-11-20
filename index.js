@@ -1460,9 +1460,10 @@ var displaylst =
                     0,
                     new panel.layers(
                         [
+                            new panel.fill("rgba(0,0,0,0.4)"),
                             new panel.expand(new panel.rectangle(context.folderect), 10, 10),
                             new panel.gridA(1, data.length, 1,
-                                new panel.shadow(new panel.text())),
+                                new panel.text()),
                         ]),
                     0,
                 ]),
