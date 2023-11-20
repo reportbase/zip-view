@@ -2520,16 +2520,10 @@ var wheelst =
         }
         else
         {
-            //if (evt.type == context.lastswipe)
-            //    return;
-
-            if (Math.abs(delta) > 180 && type != context.lastswipe)
+            if (Math.abs(delta) > 240)
             {
-                var h = headcnv.height ? 0 : HEADHEIGHT;
-                headcnvctx.show(0, 0, window.innerWidth, h);
+                headcnvctx.show(0, 0, window.innerWidth, 0);
                 headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-                context.refresh()     
-                context.lastswipe = type;
             }
             
             clearInterval(context.canvas.leftright)
@@ -3302,11 +3296,8 @@ var swipelst = [
         if (evt.type == context.lastswipe)
             return;
 
-        var h = headcnv.height ? 0 : HEADHEIGHT;
-        headcnvctx.show(0, 0, window.innerWidth, h);
+        headcnvctx.show(0, 0, window.innerWidth, 0);
         headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-        context.refresh()     
-        context.lastswipe = evt.type;
         
         var k = evt.type == "swipeup" ? 1 : -1;
         menuobj.updown(context, k * context.canvas.speed);
@@ -4127,7 +4118,7 @@ var taplst =
         }
         else if (canvas.logoutrect && canvas.logoutrect.hitest(x, y))
         {
-            google.accounts.id.revoke(global.credential, handleRevokedSession);
+            google.accounts.id.revoke(login.credential, handleRevokedSession);
             return true;
         }
         else if (canvas.usereditrect && canvas.usereditrect.hitest(x, y))
@@ -6920,8 +6911,8 @@ function handleRevokedSession(e)
 
 function handleCredentialResponse(response) 
 {
-    global.credential = response.credential;
     login = Object.assign(login, parseJwt(response.credential));
+    login.credential = response.credential;
     fetch(`https://user.reportbase5836.workers.dev/${login.email}`)
         .then((response) => jsonhandler(response))
         .then(function(lst)
