@@ -6909,6 +6909,7 @@ function handleCredentialResponse(response)
                     login.id = k.id;
                     login.secret = k.secret;
                     menuobj.draw();
+                    setupmenus();
                 })
                 .catch(err => console.error(err));
             }
@@ -6918,6 +6919,7 @@ function handleCredentialResponse(response)
                 login.id = k.id;
                 login.secret = k.secret;
                 menuobj.draw();
+                setupmenus();
             }
         }); 
 }        
