@@ -805,7 +805,7 @@ var footlst =
                    0,
                    [
                        "Login   \u{25B6}",
-                       "Login   \u{25B6}",
+                       "Logout   \u{25B6}",
                     ],
                 ],
                 0);
@@ -4091,6 +4091,12 @@ var taplst =
         }
         else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
         {  
+           google.accounts.id.initialize({
+              client_id:'866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
+              callback: handleCredentialResponse,
+              auto_select: "true",
+            });
+
             google.accounts.id.prompt((notification) => 
             {
             
@@ -6860,11 +6866,6 @@ galleryobj.leftright = function(context, delta)
 
 window.onGoogleLibraryLoad = () => 
 {
-    google.accounts.id.initialize({
-      client_id:'866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-      callback: handleCredentialResponse,
-      auto_select: "true",
-    });
 }
 
 let b64DecodeUnicode = str =>
