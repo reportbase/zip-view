@@ -2520,6 +2520,18 @@ var wheelst =
         }
         else
         {
+            //if (evt.type == context.lastswipe)
+            //    return;
+
+            if (Math.abs(delta) > 180 && type != context.lastswipe)
+            {
+                var h = headcnv.height ? 0 : HEADHEIGHT;
+                headcnvctx.show(0, 0, window.innerWidth, h);
+                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+                context.refresh()     
+                context.lastswipe = type;
+            }
+            
             clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
             if (global.swipetimeout)
@@ -2542,10 +2554,10 @@ var wheelst =
     {
         if (ctrl)
             return;
-        if (delta < 5 && delta > 0)
-            return;
-        else if (delta > -5 && delta < 0)
-            return;
+        //if (delta < 5 && delta > 0)
+        //    return;
+        //else if (delta > -5 && delta < 0)
+        //    return;
         menuobj.updown(context, delta);
         context.refresh();
     },
@@ -2596,6 +2608,15 @@ var wheelst =
         }
         else
         {
+            if (Math.abs(delta) > 180 && type != context.lastswipe)
+            {
+                var h = headcnv.height ? 0 : HEADHEIGHT;
+                headcnvctx.show(0, 0, window.innerWidth, h);
+                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+                context.refresh()     
+                context.lastswipe = type;
+            }
+
             rowobj.addperc(delta/1000);
             contextobj.reset()
         }
@@ -4082,11 +4103,12 @@ var taplst =
         }
         else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
         {  
+            //https://developers.google.com/identity/gsi/web/reference/js-reference#ux_mode
            google.accounts.id.initialize(
             {
                 client_id:'866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
                 callback: handleCredentialResponse,
-                auto_select: context.canvas.shiftKey?0:1,
+                auto_select: 1,
             });
 
             google.accounts.id.renderButton(
@@ -4098,6 +4120,7 @@ var taplst =
             {
                 if (notification.isNotDisplayed()) 
                 {
+                    //todo: show wizard directly
                     showdialog("user-login", function(str)
                     {
                                 
