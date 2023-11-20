@@ -3787,6 +3787,7 @@ var taplst =
         
         if (headcnvctx.leftmenurect && headcnvctx.leftmenurect.hitest(x, y))
         {
+            googlelogin();
             setupmenus();
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.rightctx.hide()
@@ -4065,39 +4066,7 @@ var taplst =
         }
         else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
         {  
-            //https://developers.google.com/identity/gsi/web/reference/js-reference#ux_mode
-           google.accounts.id.initialize(
-            {
-                client_id:'866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-                callback: handleCredentialResponse,
-                auto_select: 1,
-            });
-
-            google.accounts.id.renderButton(
-                document.getElementById("googleLogin"),
-                { theme: "outline", size: "large" }  
-            );
-
-            google.accounts.id.prompt((notification) => 
-            {
-                if (notification.isNotDisplayed()) 
-                {
-                    //todo: show wizard directly
-                    showdialog("user-login", function(str)
-                    {
-                                
-                    });
-                }
-                else if (notification.isSkippedMoment()) 
-                {
-                    var e = notification.getSkippedReason();
-                }
-                else if (notification.isDismissedMoment()) 
-                {
-                    var e = notification.getDismissedReason();
-                }
-            })
-            
+            googlelogin();
             return true;
         }
         else if (canvas.logoutrect && canvas.logoutrect.hitest(x, y))
@@ -6879,6 +6848,41 @@ let parseJwt = token =>
 function handleRevokedSession(e) 
 {
       
+}
+
+function googlelogin()
+{
+    //https://developers.google.com/identity/gsi/web/reference/js-reference#ux_mode
+    google.accounts.id.initialize(
+    {
+        client_id:'866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
+        callback: handleCredentialResponse,
+        auto_select: 1,
+    });
+
+    google.accounts.id.renderButton(
+        document.getElementById("googleLogin"),
+        { theme: "outline", size: "large" }  
+    );
+
+    google.accounts.id.prompt((notification) => 
+    {
+        if (notification.isNotDisplayed()) 
+        {
+            showdialog("user-login", function(str)
+            {
+                        
+            });
+        }
+        else if (notification.isSkippedMoment()) 
+        {
+            var e = notification.getSkippedReason();
+        }
+        else if (notification.isDismissedMoment()) 
+        {
+            var e = notification.getDismissedReason();
+        }
+    })
 }
 
 function handleCredentialResponse(response) 
