@@ -795,14 +795,15 @@ var footlst =
                     ])                            
                 ])
             ]);
-        
+
+        var email = user.email?user.email:"Login";
         a.draw(context, rect, 
                [
                    `\u{25C0}   ${url.host}`,
                    0,
                    [
                        0,
-                       "${user.email?user.email:"Login"}   \u{25B6}",
+                       "${semail}   \u{25B6}",
                        0,
                     ],
                 ],
