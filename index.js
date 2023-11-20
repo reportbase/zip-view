@@ -805,7 +805,7 @@ var footlst =
                    0,
                    [
                        "Login   \u{25B6}",
-                       "Logout   \u{25B6}",
+                       "Login   \u{25B6}",
                     ],
                 ],
                 0);
@@ -4091,61 +4091,12 @@ var taplst =
         }
         else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
         {
-            google.accounts.id.prompt((notification) => 
-            {
-                if (notification.isNotDisplayed()) 
-                  var e = notification.getNotDisplayedReason();
-                else if (notification.isSkippedMoment()) 
-                  var e = notification.getSkippedReason();
-                else if (notification.isDismissedMoment()) 
-                  var e = notification.getDismissedReason();
-            });
-            
-            /*
-            var name = document.getElementById("user-signup-name");
-            var email = document.getElementById("user-signup-email");
-            name.value = user.name?user.name:"";
-            email.value = user.email?user.email:"";
-            showdialog("user-signup", function(str)
-            {
-                const form = new FormData();
-                form.append('name', name.value);
-                form.append('email', email.value);
-
-                fetch(`https://user.reportbase5836.workers.dev`,
-                {
-                    'method': 'POST',
-                    'body': form
-                })
-              .then(response => response.json())
-                .then(function(obj)
-                      {
-                          console.log(obj);
-                      })
-                .catch(err => console.error(err));  
-            });
-            */    
+                
             return true;
         }
         else if (canvas.logoutrect && canvas.logoutrect.hitest(x, y))
         {
-            var email = document.getElementById("user-signup-email");
-            email.value = user.email ? user.email : "";
-            showdialog("user-login", function(str)
-            {
-                 fetch(`https://user.reportbase5836.workers.dev/${user.email}`)
-                  .then(function(response)
-                  {
-                    for (let [key, value] of response.headers)
-                        console.log(`${key} = ${value}`);
-                      return response.json();
-                  })
-                  .then(function(lst)
-                {
-                    Object.assign(user, lst[0])
-                    dialog.close();
-                }); 
-            })
+            return true;
         }
         else if (canvas.usereditrect && canvas.usereditrect.hitest(x, y))
         {
@@ -6911,6 +6862,26 @@ window.onGoogleLibraryLoad = () =>
       callback: handleCredentialResponse,
       auto_select: "true",
 });
+
+google.accounts.id.prompt((notification) => 
+{
+    if (notification.isNotDisplayed()) 
+    {
+      var e = notification.getNotDisplayedReason();
+         console.log(e)
+    }
+    else if (notification.isSkippedMoment()) 
+    {
+      var e = notification.getSkippedReason();
+         console.log(e);
+    }
+    else if (notification.isDismissedMoment()) 
+    {
+      var e = notification.getDismissedReason();
+         console.log(e);
+    }
+  });
+}
 
 let b64DecodeUnicode = str =>
   decodeURIComponent(
