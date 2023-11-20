@@ -2608,15 +2608,6 @@ var wheelst =
         }
         else
         {
-            if (Math.abs(delta) > 180 && type != context.lastswipe)
-            {
-                var h = headcnv.height ? 0 : HEADHEIGHT;
-                headcnvctx.show(0, 0, window.innerWidth, h);
-                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-                context.refresh()     
-                context.lastswipe = type;
-            }
-
             rowobj.addperc(delta/1000);
             contextobj.reset()
         }
@@ -3297,13 +3288,6 @@ var swipelst = [
 
     swipeupdown: function(context, rect, x, y, evt)
     {
-        if (evt.type == context.lastswipe)
-            return;
-        var h = headcnv.height ? 0 : HEADHEIGHT;
-        headcnvctx.show(0, 0, window.innerWidth, h);
-        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-        context.refresh()     
-        context.lastswipe = evt.type;
     },
 },
 {
@@ -3419,7 +3403,7 @@ var keylst = [
                 menuobj.draw();
                 evt.preventDefault();
             }
-            else if (key == "\\" || key == "/")
+            else if (key == "\\" || key == "/" || key == "tab")
             {
                 var h = headcnv.height ? 0 : HEADHEIGHT;
                 headcnvctx.show(0, 0, window.innerWidth, h);
@@ -3444,7 +3428,6 @@ var keylst = [
                 evt.preventDefault();
             }
             else if (
-                (canvas.shiftKey && key == "tab") ||
                 key == "arrowleft" ||
                 key == "h")
             {
@@ -3452,7 +3435,6 @@ var keylst = [
                 galleryobj.leftright(context, -canvas.speed / 2)
             }
             else if (
-                (!canvas.shiftKey && key == "tab") ||
                 key == "arrowright" ||
                 key == "l")
             {
@@ -3580,15 +3562,14 @@ var keylst = [
             }
             else if (
                 key == "arrowright" ||
-                key == "l" ||
-                key == "tab")
+                key == "l")
             {
                 var k = _4cnv.timeobj.length();
                 var j = k*(-1/50);
                 _4cnv.timeobj.CURRENT += j;
                 bossobj.draw() 
             }
-            else if (key == "/" || key == "\\")
+            else if (key == "/" || key == "\\" || key == "tab")
             {
                 var h = headcnv.height ? 0 : HEADHEIGHT;
                 headcnvctx.show(0, 0, window.innerWidth, h);
@@ -3798,7 +3779,13 @@ var taplst =
             var k = (x - context.pagerect.x) / context.pagerect.width;
             context.movepage(k < 0.5 ? -1 : 1);
         }    
- 
+        else
+        {
+            var h = headcnv.height ? 0 : HEADHEIGHT;
+            headcnvctx.show(0, 0, window.innerWidth, h);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        }
+        
         _4cnvctx.refresh();
     }
 },
