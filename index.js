@@ -4106,15 +4106,6 @@ var taplst =
                     // try next provider if OneTap is not displayed or skipped
                 }
             })
-            .then(() => 
-            {
-                  // login success
-            })
-            .catch(e => 
-            {
-              // Handle error
-              showError(e);
-            });
             
             return true;
         }
