@@ -4091,17 +4091,39 @@ var taplst =
         }
         else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
         {  
-           google.accounts.id.initialize({
-              client_id:'866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
-              callback: handleCredentialResponse,
-              auto_select: "true",
+           google.accounts.id.initialize(
+            {
+                client_id:'866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
+                callback: handleCredentialResponse,
+                auto_select: "true",
             });
+
+            google.accounts.id.renderButton(
+                document.getElementById("googleLogin"),
+                { theme: "outline", size: "large" }  
+            );
 
             google.accounts.id.prompt((notification) => 
             {
-                if (notification.isNotDisplayed() || notification.isSkippedMoment()) 
+                showdialog("user-login", function(str)
                 {
-                    // try next provider if OneTap is not displayed or skipped
+                            
+                });
+                
+                if (notification.isNotDisplayed()) 
+                {
+                    var e = notification.getNotDisplayedReason();
+                    console.log(e)
+                }
+                else if (notification.isSkippedMoment()) 
+                {
+                    var e = notification.getSkippedReason();
+                    console.log(e);
+                }
+                else if (notification.isDismissedMoment()) 
+                {
+                    var e = notification.getDismissedReason();
+                    console.log(e);
                 }
             })
             
