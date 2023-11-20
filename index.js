@@ -3276,6 +3276,13 @@ var swipelst = [
 
     swipeupdown: function(context, rect, x, y, evt)
     {
+        if (evt.type == context.lastswipe)
+            return;
+        var h = headcnv.height ? 0 : HEADHEIGHT;
+        headcnvctx.show(0, 0, window.innerWidth, h);
+        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        context.refresh()     
+        context.lastswipe = evt.type;
     },
 },
 {
@@ -3287,8 +3294,14 @@ var swipelst = [
     },
     swipeupdown: function(context, rect, x, y, evt)
     {
-//        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-//        displayobj.set(k);
+        if (evt.type == context.lastswipe)
+            return;
+
+        var h = headcnv.height ? 0 : HEADHEIGHT;
+        headcnvctx.show(0, 0, window.innerWidth, h);
+        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        context.refresh()     
+        context.lastswipe = evt.type;
         
         var k = evt.type == "swipeup" ? 1 : -1;
         menuobj.updown(context, k * context.canvas.speed);
@@ -4073,7 +4086,7 @@ var taplst =
             {
                 client_id:'866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
                 callback: handleCredentialResponse,
-                auto_select: "true",
+                auto_select: context.canvas.shiftKey?0:1,
             });
 
             google.accounts.id.renderButton(
