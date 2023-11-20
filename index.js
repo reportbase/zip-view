@@ -803,7 +803,7 @@ var footlst =
                    0,
                    [
                        0,
-                       "${email}   \u{25B6}",
+                       `${email}   \u{25B6}`,
                        0,
                     ],
                 ],
