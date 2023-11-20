@@ -5988,6 +5988,15 @@ window.addEventListener("keyup", function(evt)
 
 window.addEventListener("keydown", function(evt)
 {
+    var key = evt.key.toLowerCase();
+    if (key == "escape")
+    {
+        var h = HEADHEIGHT;
+        headcnvctx.show(0, 0, window.innerWidth, h);
+        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        return;
+    }
+    
     if (dialog && dialog.open)
         return;
     var context = menuobj.value() ? menuobj.value() : _4cnvctx;
