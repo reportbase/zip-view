@@ -4097,14 +4097,21 @@ var taplst =
               auto_select: "true",
             });
 
+            //const parent = document.getElementById('google_btn');
+            //google.accounts.id.renderButton(parent, {theme: "filled_blue"});
             google.accounts.id.prompt((notification) => 
             {
+                if (notification.isNotDisplayed() || notification.isSkippedMoment()) 
+                {
+                    // try next provider if OneTap is not displayed or skipped
+                }
+            }); 
             
-            });                
             return true;
         }
         else if (canvas.logoutrect && canvas.logoutrect.hitest(x, y))
         {
+            GoogleAuth.signOut();
             return true;
         }
         else if (canvas.usereditrect && canvas.usereditrect.hitest(x, y))
