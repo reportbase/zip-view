@@ -796,7 +796,7 @@ var footlst =
                 ])
             ]);
 
-        var email = user.email?user.email:"Login";
+        var email = login.email?login.email:"Login";
         a.draw(context, rect, 
                [
                    `\u{25C0}   ${url.host}`,
@@ -4074,7 +4074,7 @@ var taplst =
                 const form = new FormData();
                 form.append('title', title.value);
                 form.append('json', json.value);
-                form.append('user_id', user.id);
+                form.append('user_id', login.id);
                 fetch(`https://gallery.reportbase5836.workers.dev`,
                 {
                     'method': 'POST',
@@ -4134,15 +4134,15 @@ var taplst =
             var email = document.getElementById("user-edit-email");
             var secret = document.getElementById("user-edit-secret");
             var id = document.getElementById("user-edit-id");
-            name.value = user.name?user.name:"";
-            email.value = user.email?user.email:"";
-            secret.value = user.secret?user.secret:"";
-            id.value = user.id?user.id:"";
+            name.value = login.name?login.name:"";
+            email.value = login.email?login.email:"";
+            secret.value = login.secret?login.secret:"";
+            id.value = login.id?login.id:"";
             showdialog("user-edit", function(str)
             {
                 const form = new FormData();
                 form.append('name', name.value);
-                form.append('email.old', user.email);
+                form.append('email.old', login.email);
                 form.append('email', email.value);
                 form.append('id', id.value);
                 form.append('secret', secret.value);
@@ -6379,20 +6379,20 @@ _7cnv.sliceobj.data =
 _10cnv.sliceobj.data = 
 [
     {
-        title: function(){return `ID: ${user.id?user.id:""}`},
-        func: function(){copytext(user.id); return false;}
+        title: function(){return `ID: ${login.id?login.id:""}`},
+        func: function(){copytext(login.id); return false;}
     },
     {
-        title: function(){return `Email: ${user.email?user.email:""}`},
-        func: function(){copytext(user.email); return false;}
+        title: function(){return `Email: ${login.email?login.email:""}`},
+        func: function(){copytext(login.email); return false;}
     },
     {
-        title: function(){return `Name: ${user.name?user.name:""}`},
-        func: function(){copytext(user.name); return false;}
+        title: function(){return `Name: ${login.name?login.name:""}`},
+        func: function(){copytext(login.name); return false;}
     },
     {
-        title: function(){return `Secret: ${user.secret?user.secret:""}`},
-        func: function(){copytext(user.secret); return false;}
+        title: function(){return `Secret: ${login.secret?login.secret:""}`},
+        func: function(){copytext(login.secret); return false;}
     },
 ]
 
@@ -6495,7 +6495,7 @@ galleryobj.init = function(obj)
     _2cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
     var email = "reportbase@gmail.com";
-    fetch(`https://gallery.reportbase5836.workers.dev/list/${user.email}`)
+    fetch(`https://gallery.reportbase5836.workers.dev/list/${login.email}`)
         .then(function(response)
         {
             if (response.ok)
@@ -6595,7 +6595,7 @@ galleryobj.init = function(obj)
         image.src = imagepath(j,"5760x5760");
 }
 
-var user = {};
+var login = {};
 
 if (url.searchParams.has("data"))
 {
@@ -6911,15 +6911,15 @@ function handleCredentialResponse(response)
 {
     global.credential = response.credential;
     user = Object.assign(user, parseJwt(response.credential));
-    fetch(`https://user.reportbase5836.workers.dev/${user.email}`)
+    fetch(`https://user.reportbase5836.workers.dev/${login.email}`)
         .then((response) => jsonhandler(response))
         .then(function(lst)
         {
             if (lst.length == 0)
             {
                 const form = new FormData();
-                form.append('name', user.name);
-                form.append('email', user.email);
+                form.append('name', login.name);
+                form.append('email', login.email);
                 fetch(`https://user.reportbase5836.workers.dev`,
                 {
                     'method': 'POST',
@@ -6928,16 +6928,16 @@ function handleCredentialResponse(response)
                 .then(response => response.json())
                 .then(function(k)
                 {
-                    user.id = k.id;
-                    user.secret = k.secret;
+                    login.id = k.id;
+                    login.secret = k.secret;
                 })
                 .catch(err => console.error(err));
             }
             else
             {
                 var k = lst[0];
-                user.id = k.id;
-                user.secret = k.secret;
+                login.id = k.id;
+                login.secret = k.secret;
             }
         }); 
 }        
