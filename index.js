@@ -6139,7 +6139,6 @@ headobj.reset = function()
 
 function setupmenus()
 {
-    contextobj.init();
     _3cnv.sliceobj.data = 
     [
         {
@@ -6485,6 +6484,8 @@ function setupmenus()
 //galleryobj init
 galleryobj.init = function(obj)
 {
+    contextobj.init();
+    
     if (obj)
         Object.assign(galleryobj, obj);
     
