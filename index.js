@@ -3949,7 +3949,7 @@ var taplst =
             context.canvas.hollyobj.setperc(k);
             menuobj.draw()
         }
-        else (headcnv.height && displayobj.value() == button)
+        else if (headcnv.height && displayobj.value() == button)
         {
             headobj.reset();
         }
