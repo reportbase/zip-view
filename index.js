@@ -4060,10 +4060,12 @@ var taplst =
                 .then((response) => jsonhandler(response))
                 .then(function(obj)
                 {
+                    var j = _2cnv.sliceobj.data[0];
                     var k = {};
+                    k = Object.assign(k, j);
                     k.title = obj.title;
                     k.json = obj.json;
-                    k.id = obj.id;
+                    k.id = obj.id;   
                     _2cnv.sliceobj.data.push(k);
                     menuobj.draw();
                     dialog.close();
