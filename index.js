@@ -2167,8 +2167,6 @@ CanvasRenderingContext2D.prototype.movepage = function(j)
     _4cnv.slidestop = 0;
     _4cnv.movingpage = j;
     galleryobj.rotate(j);
-    //_4cnvctx.refresh();
-    //_8cnvctx.refresh();
     headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
     delete photo.image;
     contextobj.reset();
@@ -3142,7 +3140,8 @@ var panlst =
                 var k = sealobj.value() / canvas.virtualwidth
                 k *= e;
                 canvas.timeobj.CURRENT = canvas.timeobj.ANCHOR - k;
-                context.refresh()
+                context.canvas.lastime = -0.0000000000101010101;
+                bossobj.draw();               
             }
         }
         else if (type == "panup" || type == "pandown")
