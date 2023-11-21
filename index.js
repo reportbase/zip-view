@@ -4058,10 +4058,10 @@ var taplst =
                     'body': form
                 })
                 .then((response) => jsonhandler(response))
-                .then(function(id)
+                .then(function(obj)
                 {
-                    setupmenus();
-                    contextobj.init();
+                    _2cnv.sliceobj.push(obj);
+                    canvas.lastcurrent = -1;
                     menuobj.draw();
                     dialog.close();
                 })
