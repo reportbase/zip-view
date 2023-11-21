@@ -4061,6 +4061,7 @@ var taplst =
                 .then(function(id)
                 {
                     setupmenus();
+                    contextobj.init();
                     menuobj.draw();
                     dialog.close();
                 })
@@ -6142,7 +6143,6 @@ headobj.reset = function()
 
 function setupmenus()
 {
-    contextobj.init();
     _3cnv.sliceobj.data = 
     [
         {
