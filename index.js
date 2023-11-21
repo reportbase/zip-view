@@ -2578,10 +2578,6 @@ var wheelst =
     {
         if (ctrl)
             return;
-        //if (delta < 5 && delta > 0)
-        //    return;
-        //else if (delta > -5 && delta < 0)
-        //    return;
         menuobj.updown(context, delta);
         context.refresh();
     },
@@ -3332,13 +3328,11 @@ var swipelst = [
         var k = evt.type == "swipeup" ? 1 : -1;
         menuobj.updown(context, k * context.canvas.speed);
         if (!global.swipetimeout)
-        {
             global.swipetimeout = setInterval(function()
             {
                 context.canvas.lastime = -0.0000000000101010101;
                 menuobj.draw();
             }, TIMEMAIN);
-        }
     },
 },
 {
@@ -3399,20 +3393,40 @@ var keylst = [
                 key == "arrowup" ||
                 key == "k")
             {
+                menuobj.updown(context, 120)
+                if (global.swipetimeout)
+                    return;            
+                global.swipetimeout = setInterval(function()
+                {
+                    context.canvas.lastime = -0.0000000000101010101;
+                    menuobj.draw();
+                }, TIMEMAIN);
+                /*
                 var j = 30/rect.height;
                 var k = (canvas.timeobj.length() / galleryobj.length()) * j;
                 canvas.timeobj.rotate(k);
                 menuobj.draw();
+                */
                 evt.preventDefault();
             }
             else if (
                 key == "arrowdown" ||
                 key == "j")
             {
+                menuobj.updown(context, -120)
+                if (global.swipetimeout)
+                    return;            
+                global.swipetimeout = setInterval(function()
+                {
+                    context.canvas.lastime = -0.0000000000101010101;
+                    menuobj.draw();
+                }, TIMEMAIN);
+                /*
                 var j = 30/rect.height;
                 var k = (canvas.timeobj.length() / galleryobj.length())*j;
                 canvas.timeobj.rotate(-k);
                 menuobj.draw();
+                */
                 evt.preventDefault();
             }
             else if (key == " ")
@@ -6494,7 +6508,7 @@ function setupmenus()
             galleryobj.leftcnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
             menuobj.setindex(_8cnvctx);
-            menuobj.show();//
+            menuobj.show();
         };
         
         _6cnv.sliceobj.data.push(j);
