@@ -4060,7 +4060,11 @@ var taplst =
                 .then((response) => jsonhandler(response))
                 .then(function(obj)
                 {
-                    _2cnv.sliceobj.push(obj);
+                    var k = {}
+                    k.title = obj.title;
+                    k.json = obj.json;
+                    k.id = obj.id;
+                    _2cnv.sliceobj.data.push(k);
                     canvas.lastcurrent = -1;
                     menuobj.draw();
                     dialog.close();
