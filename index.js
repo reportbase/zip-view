@@ -4067,6 +4067,8 @@ var taplst =
                     k.json = obj.json;
                     k.id = obj.id;   
                     _2cnv.sliceobj.data.push(k);
+                    var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
+                    _2cnv.rotated = [...a, ...a, ...a];
                     menuobj.draw();
                     dialog.close();
                 })
