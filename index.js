@@ -6461,6 +6461,7 @@ function setupmenus()
             _2cnv.rotated = [...a, ...a, ...a];
             var a = Array(_7cnv.sliceobj.length()).fill().map((_, index) => index);
             _7cnv.rotated = [...a, ...a, ...a];
+            menuobj.draw();
         })
         .catch(error => console.log(error));
     
