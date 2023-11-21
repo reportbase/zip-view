@@ -5165,98 +5165,103 @@ var eventlst =
 
 var contextobj = new circular_array("", contextlst);
 
-contextlst.forEach(function(context, n)
+contextobj.init = function()
 {
-    var obj = eventlst[n];
-    var canvas = context.canvas;
-    context.imageSmoothingEnabled = false;
-    context.imageSmoothingQuality = "high";
-    context.font = DEFAULTFONT;
-    context.fillText("  ", 0, 0);
-    canvas.autodirect = -1;
-    canvas.slideshow = 0;
-    canvas.slidereduce = 0;
-    canvas.slidestop = 0;
-    canvas.lastime = 0;
-    canvas.sliceobj = new circular_array("", []);
-    canvas.timeobj = new circular_array("", sealobj.value());
-    canvas.timeobj.set(sealobj.value() / 2);
-    canvas.hollyobj = new circular_array("TEXTSCROLL", window.innerHeight);
-    canvas.speed = obj.speed;
-    canvas.reduce = obj.reduce;
-    canvas.autodirect = -1;
-    canvas.hideontap = obj.hideontap;
-    canvas.width_ = obj.width;
-    canvas.footer = obj.footer;
-    canvas.buttonheight = obj.buttonheight;
-    canvas.buttonmargin = obj.buttonmargin;
-    canvas.display = obj.display;
-
-    var k = footlst.findIndex(function(a){return a.name == obj.footer});
-    canvas.footer = footlst[k];
-
-    var k = pinchlst.findIndex(function(a){return a.name == obj.pinch});
-    k = pinchlst[k];
-    canvas.pinch_ = k.pinch;
-    canvas.pinchstart_ = k.pinchstart;
-    canvas.pinchend_ = k.pinchend;
-
-    var k = droplst.findIndex(function(a){return a.name == obj.drop});
-    k = droplst[k];
-    canvas.drop = k.drop;
-
-    var k = keylst.findIndex(function(a){return a.name == obj.key});
-    k = keylst[k];  
-    canvas.keyup_ = k.keyup;
-    canvas.keydown_ = k.keydown;
-
-    var k = wheelst.findIndex(function(a){return a.name == obj.wheel});
-    k = wheelst[k];
-    canvas.wheelupdown_ = k.updown;
-    canvas.wheeleftright_ = k.leftright;
-
-    var k = mouselst.findIndex(function(a){return a.name == obj.mouse});
-    k = mouselst[k];
-    canvas.mouse = k;
-
-    var k = presslst.findIndex(function(a){
-        return a.name == obj.press});
-    k = presslst[k];
-    if (IFRAME)
+    contextlst.forEach(function(context, n)
     {
-        canvas.pressup_ = new panel.empty();
-        canvas.press_ = new panel.empty();
-    }
-    else
-    {
-        canvas.pressup_ = k.pressup;
-        canvas.press_ = k.press;
-    }
+        var obj = eventlst[n];
+        var canvas = context.canvas;
+        context.imageSmoothingEnabled = false;
+        context.imageSmoothingQuality = "high";
+        context.font = DEFAULTFONT;
+        context.fillText("  ", 0, 0);
+        canvas.autodirect = -1;
+        canvas.slideshow = 0;
+        canvas.slidereduce = 0;
+        canvas.slidestop = 0;
+        canvas.lastime = 0;
+        canvas.sliceobj = new circular_array("", []);
+        canvas.timeobj = new circular_array("", sealobj.value());
+        canvas.timeobj.set(sealobj.value() / 2);
+        canvas.hollyobj = new circular_array("TEXTSCROLL", window.innerHeight);
+        canvas.speed = obj.speed;
+        canvas.reduce = obj.reduce;
+        canvas.autodirect = -1;
+        canvas.hideontap = obj.hideontap;
+        canvas.width_ = obj.width;
+        canvas.footer = obj.footer;
+        canvas.buttonheight = obj.buttonheight;
+        canvas.buttonmargin = obj.buttonmargin;
+        canvas.display = obj.display;
+    
+        var k = footlst.findIndex(function(a){return a.name == obj.footer});
+        canvas.footer = footlst[k];
+    
+        var k = pinchlst.findIndex(function(a){return a.name == obj.pinch});
+        k = pinchlst[k];
+        canvas.pinch_ = k.pinch;
+        canvas.pinchstart_ = k.pinchstart;
+        canvas.pinchend_ = k.pinchend;
+    
+        var k = droplst.findIndex(function(a){return a.name == obj.drop});
+        k = droplst[k];
+        canvas.drop = k.drop;
+    
+        var k = keylst.findIndex(function(a){return a.name == obj.key});
+        k = keylst[k];  
+        canvas.keyup_ = k.keyup;
+        canvas.keydown_ = k.keydown;
+    
+        var k = wheelst.findIndex(function(a){return a.name == obj.wheel});
+        k = wheelst[k];
+        canvas.wheelupdown_ = k.updown;
+        canvas.wheeleftright_ = k.leftright;
+    
+        var k = mouselst.findIndex(function(a){return a.name == obj.mouse});
+        k = mouselst[k];
+        canvas.mouse = k;
+    
+        var k = presslst.findIndex(function(a){
+            return a.name == obj.press});
+        k = presslst[k];
+        if (IFRAME)
+        {
+            canvas.pressup_ = new panel.empty();
+            canvas.press_ = new panel.empty();
+        }
+        else
+        {
+            canvas.pressup_ = k.pressup;
+            canvas.press_ = k.press;
+        }
+    
+        var k = swipelst.findIndex(function(a){
+            return a.name == obj.swipe});
+        k = swipelst[k];
+        canvas.swipeleftright_ = k.swipeleftright;
+        canvas.swipeupdown_ = k.swipeupdown;
+    
+        var k = buttonlst.findIndex(function(a){
+            return a.name == obj.button});    
+        k = buttonlst[k];
+        canvas.draw = k.draw;
+    
+        var k = taplst.findIndex(function(a){
+            return a.name.toLowerCase() == obj.tap.toLowerCase()});  
+        k = taplst[k];
+        canvas.tap_ = k.tap;
+    
+        var k = panlst.findIndex(function(a) {return a.name == obj.pan});
+        k = panlst[k];   
+        context.canvas.panstart_ = k.panstart;
+        context.canvas.pan_ = k.pan;
+        context.canvas.panupdown_ = k.updown;
+        context.canvas.panleftright_ = k.leftright;
+        context.canvas.panend_ = k.panend;
+    });
+}
 
-    var k = swipelst.findIndex(function(a){
-        return a.name == obj.swipe});
-    k = swipelst[k];
-    canvas.swipeleftright_ = k.swipeleftright;
-    canvas.swipeupdown_ = k.swipeupdown;
-
-    var k = buttonlst.findIndex(function(a){
-        return a.name == obj.button});    
-    k = buttonlst[k];
-    canvas.draw = k.draw;
-
-    var k = taplst.findIndex(function(a){
-        return a.name.toLowerCase() == obj.tap.toLowerCase()});  
-    k = taplst[k];
-    canvas.tap_ = k.tap;
-
-    var k = panlst.findIndex(function(a) {return a.name == obj.pan});
-    k = panlst[k];   
-    context.canvas.panstart_ = k.panstart;
-    context.canvas.pan_ = k.pan;
-    context.canvas.panupdown_ = k.updown;
-    context.canvas.panleftright_ = k.leftright;
-    context.canvas.panend_ = k.panend;
-});
+contextobj.init();
 
 //contextobj reset
 contextobj.reset = function()
