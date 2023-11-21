@@ -4060,7 +4060,9 @@ var taplst =
                 .then((response) => jsonhandler(response))
                 .then(function(obj)
                 {
-                    var k = {}
+                    var k = {};
+                    k = Object.assign(k, _2cnv.sliceobj.data[
+                            _2cnv.sliceobj.data.length-1]);
                     k.title = obj.title;
                     k.json = obj.json;
                     k.id = obj.id;
