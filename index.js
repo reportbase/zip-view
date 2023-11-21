@@ -2817,6 +2817,7 @@ async function loadzip(file)
     }
 
     galleryobj.init(galleryobj)
+    buttonobj.fitwidth()();
 }
 
 async function loadimages(blobs)
@@ -6611,7 +6612,6 @@ galleryobj.init = function(obj)
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
         menuobj.show();
-        buttonobj.fit();
     };    
    
     _8cnv.timeobj.set(0);
