@@ -3784,7 +3784,8 @@ var taplst =
         global.timeauto = 0;
         var obj = canvas.hollyobj;
         context.refresh();
-        
+        var button = displaylst.findIndex(function(a){return a.name == "BUTTON"});
+                  
         if (headcnvctx.leftmenurect && headcnvctx.leftmenurect.hitest(x, y))
         {
             galleryobj.set(_8cnv.lastcurrent)
@@ -3947,6 +3948,10 @@ var taplst =
             var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
             context.canvas.hollyobj.setperc(k);
             menuobj.draw()
+        }
+        else (headcnv.height && displayobj.value() == button)
+        {
+            headobj.reset();
         }
         else if (menuobj.value() && menuobj.value() != _8cnvctx)
         {
@@ -4508,6 +4513,35 @@ var buttonlst = [
     }
 },
 {
+    name: "CURRENT",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save()
+        var clr = FILLBAR;
+        if (user.tap)
+            clr = MENUTAP;
+        else if (canvas.sliceobj.current() == time)
+            clr = MENUSELECT;
+
+        var e = context.canvas.hollyobj.berp();
+        var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
+            [
+                0,
+                new panel.layers(
+                    [
+                        new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                        new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
+                    ]),
+                0,
+            ]);
+
+        var title = typeof(user.title) == "function" ? user.title() : user.title;
+        a.draw(context, rect, title, time);
+        context.restore();
+    }
+},    
+{
     name: "GALLERY",
     draw: function(context, rect, user, time)
     {
@@ -4871,7 +4905,7 @@ var eventlst =
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "OPTION",
+    button: "CURRENT",
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
