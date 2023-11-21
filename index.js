@@ -4745,7 +4745,7 @@ menuobj.draw = function()
     
     var current = context.canvas.sliceobj.lerp(
         1 - context.canvas.timeobj.berp());
-    if (canvas.lastcurrent != current)
+    if (1)//canvas.lastcurrent != current)
     {
         canvas.lastcurrent = current;
         var size = Math.ceil(rect.height / canvas.buttonheight) + 4;
