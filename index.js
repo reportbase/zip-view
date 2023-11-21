@@ -4061,13 +4061,10 @@ var taplst =
                 .then(function(obj)
                 {
                     var k = {};
-                    k = Object.assign(k, _2cnv.sliceobj.data[
-                            _2cnv.sliceobj.data.length-1]);
                     k.title = obj.title;
                     k.json = obj.json;
                     k.id = obj.id;
                     _2cnv.sliceobj.data.push(k);
-                    canvas.lastcurrent = -1;
                     menuobj.draw();
                     dialog.close();
                 })
