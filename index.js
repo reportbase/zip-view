@@ -1397,8 +1397,8 @@ var displaylst =
         context.save();
         canvas.vscrollrect = new rectangle();
         canvas.hollyrect = new rectangle();
-        canvas.gorect = new rectangle();
         context.folderect = new rectangle();
+        context.cursorect = new rectangle();
         if (!headcnv.height)
             return;        
         var bh = rect.height * 0.4;
@@ -1451,7 +1451,8 @@ var displaylst =
         var data = [];
         data.push(`\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`);
         var w = Math.min(360, rect.width - 100);
-        var a = new panel.rowsA([80, 40, 0, folders.length*30, 
+        var a = new panel.rowsA([80, 40, 0, 
+                folders.length?folders.length*WRAPROWHEIGHT:-1, 
                 10, data.length*WRAPROWHEIGHT, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,
@@ -1476,7 +1477,7 @@ var displaylst =
                     new panel.layers(
                         [
                             new panel.rounded(NUBACK, 0, TRANSPARENT, 12, 12),
-                            new panel.expand(new panel.rectangle(context.folderect), 10, 10),
+                            new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
                             new panel.gridA(1, data.length, 1,
                                 new panel.text()),
                         ]),
@@ -3902,7 +3903,13 @@ var taplst =
             context.folderect &&
             context.folderect.hitest(x, y))
         {
-            var k = (x - context.folderect.x) / context.folderect.width;
+              
+        }
+        else if (
+            context.cursorect &&
+            context.cursorect.hitest(x, y))
+        {
+            var k = (x - context.cursorect.x) / context.cursorect.width;
             var j = canvas.timeobj.length() / galleryobj.length();
             canvas.timeobj.rotate(k < 0.5 ? j :-j);
             menuobj.draw();    
@@ -4892,7 +4899,7 @@ menuobj.draw = function()
     //button
     delete canvas.vscrollrect;
     delete canvas.hollyrect;
-    delete canvas.gorect;
+    delete context.cursorect;
     delete context.folderect;
 
     displayobj.value().draw(context, rect, 0, 0);
