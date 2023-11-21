@@ -6492,6 +6492,7 @@ function setupmenus()
         j.func = function()
         {
             gotoimage(this.index)
+            menuobj.hide();
         };
         
         _6cnv.sliceobj.data.push(j);
