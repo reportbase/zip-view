@@ -3905,7 +3905,6 @@ var taplst =
             context.folderect &&
             context.folderect.hitest(x, y))
         {
-            menuobj.hide();
             galleryobj.leftcnv = _5cnv;
             galleryobj.leftctx = _5cnvctx;
             menuobj.setindex(galleryobj.leftctx);
