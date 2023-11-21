@@ -3784,8 +3784,10 @@ var taplst =
         global.timeauto = 0;
         var obj = canvas.hollyobj;
         context.refresh();
-        var button = displaylst.findIndex(function(a){return a.name == "BUTTON"});
-                  
+        var k = displaylst.findIndex(function(a){
+            return a.name == "BUTTON"});
+        var button = displaylst[k] 
+        
         if (headcnvctx.leftmenurect && headcnvctx.leftmenurect.hitest(x, y))
         {
             galleryobj.set(_8cnv.lastcurrent)
