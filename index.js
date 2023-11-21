@@ -6489,7 +6489,11 @@ function setupmenus()
         var j = {};
         j.index = n;
         j.title = `${n+1}`;
-        j.func = function(){gotoimage(this.index)};
+        j.func = function()
+        {
+            gotoimage(this.index)
+        };
+        
         _6cnv.sliceobj.data.push(j);
     };
 
