@@ -1300,7 +1300,6 @@ var displaylst =
         if (!headcnv.height)
             return;
         var bh = rect.height * 0.4;
-        var bw = rect.width * 0.4;
         var a = new panel.cols([SCROLLMARGIN, SCROLLEXTENT, 0],
             [
                 0,
@@ -1320,10 +1319,10 @@ var displaylst =
 
         a.draw(context, rect, buttonobj, 0); 
 
-        var a = new panel.rows([0, rainstep(), SCROLLMARGIN],
+        var a = new panel.rows([0, SCROLLEXTENT, SCROLLMARGIN],
             [
                 0,
-                new panel.cols([0, bw, 0],
+                new panel.cols([0, rainstep(), 0],
                     [
                         0,
                         new panel.layers(
@@ -1406,7 +1405,6 @@ var displaylst =
         if (!headcnv.height)
             return;        
         var bh = rect.height * 0.4;
-        var bw = rect.width * 0.4;
         var a = new panel.cols([0, SCROLLEXTENT, SCROLLMARGIN],
             [
                 0,
@@ -1429,7 +1427,7 @@ var displaylst =
         var a = new panel.rows([0, SCROLLEXTENT, 6],
             [
                 0,
-                new panel.cols([0, bw, 0],
+                new panel.cols([0, rainstep(), 0],
                     [
                         0,
                         new panel.layers(
