@@ -6494,6 +6494,7 @@ function setupmenus()
             galleryobj.leftcnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
             menuobj.setindex(_8cnvctx);
+            menuobj.show();//
         };
         
         _6cnv.sliceobj.data.push(j);
