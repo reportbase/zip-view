@@ -5164,8 +5164,6 @@ var eventlst =
 ];
 
 var contextobj = new circular_array("", contextlst);
-contextobj.init = function()
-{
     contextlst.forEach(function(context, n)
     {
         var obj = eventlst[n];
@@ -5258,9 +5256,6 @@ contextobj.init = function()
         context.canvas.panleftright_ = k.leftright;
         context.canvas.panend_ = k.panend;
     });
-}
-
-contextobj.init();    
 
 //contextobj reset
 contextobj.reset = function()
