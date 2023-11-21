@@ -1441,19 +1441,34 @@ var displaylst =
 
         a.draw(context, rect, context.canvas.hollyobj, 0);
         
-        var data = [];
         var index = 1 - canvas.timeobj.berp();
         index *= galleryobj.length();
         var k = Math.floor(index);
         var value = galleryobj.data[k];
+        var folders = [];
         if (value && value.folder)
-            data = value.folder.split("/");
+            folders = value.folder.split("/");
+        var data = [];
         data.push(`\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`);
         var w = Math.min(360, rect.width - 100);
-        var a = new panel.rowsA([80, 40, 0, data.length*WRAPROWHEIGHT, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
+        var a = new panel.rowsA([80, 40, 0, folders.length*30, 
+                10, data.length*WRAPROWHEIGHT, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,
             0,
+            0,
+            new panel.cols([0, RAINSTEP, 0],
+            [
+                0,
+                new panel.layers(
+                    [
+                        new panel.rounded(NUBACK, 0, TRANSPARENT, 12, 12),
+                        new panel.expand(new panel.rectangle(context.folderect), 10, 10),
+                        new panel.gridA(1, folders.length, 1,
+                            new panel.text()),
+                    ]),
+                0,
+            ]),
             0,
             new panel.cols([0, RAINSTEP, 0],
                 [
@@ -1476,6 +1491,8 @@ var displaylst =
             [
                 0,
                 0,
+                0,
+                folders,
                 0,
                 data,
                 0,
