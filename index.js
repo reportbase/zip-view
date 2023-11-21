@@ -6142,6 +6142,7 @@ headobj.reset = function()
 
 function setupmenus()
 {
+    contextobj.init();
     _3cnv.sliceobj.data = 
     [
         {
