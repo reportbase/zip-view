@@ -1320,7 +1320,7 @@ var displaylst =
 
         a.draw(context, rect, buttonobj, 0); 
 
-        var a = new panel.rows([0, SCROLLEXTENT, SCROLLMARGIN],
+        var a = new panel.rows([0, rainsep(), SCROLLMARGIN],
             [
                 0,
                 new panel.cols([0, bw, 0],
@@ -1346,7 +1346,7 @@ var displaylst =
         var st = `\u{25C0}    ${ww} x ${hh.toFixed(0)}    \u{25B6}`;
         data.push(`\u{25C0}    ${templateobj.value()}    \u{25B6}`);
         var a = new panel.rowsA([HEADTOP, HEADBOT, 23, 0, (data.length*WRAPROWHEIGHT), 
-                                 FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
+                                 FOOTSEP, rainsep(), SCROLLMARGIN],
         [
             0,    
             new panel.cols([0, rainstep(), 0],
@@ -3907,7 +3907,12 @@ var taplst =
             context.folderect &&
             context.folderect.hitest(x, y))
         {
-              
+            menuobj.hide();
+            galleryobj.leftcnv = _5cnv;
+            galleryobj.leftctx = _5cnvctx;
+            menuobj.setindex(galleryobj.leftctx);
+            menuobj.show();
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
             context.cursorect &&
