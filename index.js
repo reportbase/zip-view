@@ -1426,7 +1426,7 @@ var displaylst =
 
         a.draw(context, rect, context.canvas.timeobj, 0);
         
-        var a = new panel.rows([0, SCROLLEXTENT, 6],
+        var a = new panel.rows([0, rainstep(), 6],
             [
                 0,
                 new panel.cols([0, bw, 0],
@@ -1457,7 +1457,7 @@ var displaylst =
         var w = Math.min(360, rect.width - 100);
         var a = new panel.rowsA([80, 40, 0, 
                 folders.length?folders.length*WRAPROWHEIGHT:-1, 
-                10, data.length*WRAPROWHEIGHT, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
+                10, data.length*WRAPROWHEIGHT, FOOTSEP, rainstep(), SCROLLMARGIN],
         [
             0,
             0,
