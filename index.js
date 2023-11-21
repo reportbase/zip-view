@@ -6487,8 +6487,9 @@ function setupmenus()
     {
         var k = galleryobj.data[n];
         var j = {};
+        j.index = n;
         j.title = `${n+1}`;
-        j.func = gotoimage;
+        j.func = function(){gotoimage(this.index)};
         _6cnv.sliceobj.data.push(j);
     };
 
