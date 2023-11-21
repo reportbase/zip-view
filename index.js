@@ -2956,7 +2956,7 @@ var panlst =
                 if (k == obj.anchor())
                     return;
                 obj.set(k);
-                context.refresh()
+                menuobj.draw();
             }
         }
         else if (type == "panup" || type == "pandown")
