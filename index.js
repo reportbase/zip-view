@@ -30,7 +30,7 @@ const BETHCIDTH = (window.innerWidth < 420 ? window.innerWidth/3 : 420/3)+20;
 const BETHWIDTH = (window.innerWidth < 420 ? window.innerWidth/3 : 420/3)-10;
 const BOSSMIN = 4;
 const FOOTSEP = 20;
-const RAINSTEP = 240;
+const rainstep = function(){return Math.min(420,window.innerWidth-60);}
 const HEADTOP = 80;
 const HEADBOT = 40;
 const FIXEDTIME = 2;
@@ -850,13 +850,14 @@ var headlst =
                             new panel.closeboss(), 
                             0
                         ]),
-                        new panel.cols([0,RAINSTEP,0],
+                        new panel.cols([0,rainstep(),0],
                         [
                                 0,
                                 new panel.layers(
                                 [
+                                    new panel.rounded(NUBACK, 0, TRANSPARENT, 12, 12),
                                     new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
-                                    new panel.shadow(new panel.text()),
+                                    new panel.shrink(new panel.text(),10,10),
                                 ]),
                                 0,
                         ]),               
@@ -982,14 +983,15 @@ var bossdisplaylst =
                     0,
                     0,
                     0,
-                    new panel.cols([0, RAINSTEP, 0],
+                    new panel.cols([0, rainstep(), 0],
                     [
                         0,
                         new panel.layers(
                         [
+                            new panel.rounded(NUBACK, 0, TRANSPARENT, 12, 12),
                             new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
                             new panel.gridA(1, data.length, 1,
-                                new panel.shadow(new panel.text())),
+                                new panel.shrink(new panel.text(),10,10)),
                         ]),
                         0,
                     ]),
@@ -1143,14 +1145,15 @@ var bossdisplaylst =
                     0,
                     0,
                     0,
-                    new panel.cols([0, RAINSTEP, 0],
+                    new panel.cols([0, rainstep(), 0],
                     [
                         0,
                         new panel.layers(
                         [
+                            new panel.rounded(NUBACK, 0, TRANSPARENT, 12, 12),
                             new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
                             new panel.gridA(1, data.length, 1,
-                                new panel.shadow(new panel.text())),
+                                new panel.shrink(new panel.text(),10,10)),
                         ]),
                         0,
                     ]),
@@ -1346,27 +1349,28 @@ var displaylst =
                                  FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,    
-            new panel.cols([0, RAINSTEP, 0],
+            new panel.cols([0, rainstep(), 0],
             [
                 0,
                 new panel.layers(
                 [
                     new panel.rounded(NUBACK, 0, TRANSPARENT, 12, 12),
                     new panel.expand(new panel.rectangle(context.buttonmenurect), 10, 10),
-                    new panel.text(),
+                    new panel.shrink(new panel.text(), 10, 10),
                 ]),
                 0
             ]), 
             0,
             0,
-            new panel.cols([0, RAINSTEP, 0],
+            new panel.cols([0, rainstep(), 0],
             [
                 0,
                 new panel.layers(
                 [
                     new panel.rounded(NUBACK, 0, TRANSPARENT, 12, 12),
                     new panel.expand(new panel.rectangle(context.templatemenurect), 10, 10),
-                    new panel.gridA(1, data.length, 1, new panel.text()),
+                    new panel.gridA(1, data.length, 1, 
+                            new panel.shrink(new panel.text(), 10, 10)),
                 ]),
                 0,
             ]),
@@ -1458,7 +1462,7 @@ var displaylst =
             0,
             0,
             0,
-            new panel.cols([0, RAINSTEP, 0],
+            new panel.cols([0, rainstep(), 0],
             [
                 0,
                 new panel.layers(
@@ -1466,12 +1470,12 @@ var displaylst =
                         new panel.rounded(NUBACK, 0, TRANSPARENT, 12, 12),
                         new panel.expand(new panel.rectangle(context.folderect), 10, 10),
                         new panel.gridA(1, folders.length, 1,
-                            new panel.text()),
+                            new panel.shrink(new panel.text(), 10, 10)),
                     ]),
                 0,
             ]),
             0,
-            new panel.cols([0, RAINSTEP, 0],
+            new panel.cols([0, rainstep(), 0],
                 [
                     0,
                     new panel.layers(
@@ -1479,7 +1483,7 @@ var displaylst =
                             new panel.rounded(NUBACK, 0, TRANSPARENT, 12, 12),
                             new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
                             new panel.gridA(1, data.length, 1,
-                                new panel.text()),
+                                new panel.shrink(new panel.text(), 10, 10)),
                         ]),
                     0,
                 ]),
