@@ -2817,7 +2817,6 @@ async function loadzip(file)
     }
 
     galleryobj.init(galleryobj)
-    buttonobj.fitwidth()();
 }
 
 async function loadimages(blobs)
