@@ -3847,7 +3847,6 @@ var taplst =
             headcnvctx.rightmenurect &&
             headcnvctx.rightmenurect.hitest(x, y))
         {
-            setupmenus();
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.leftctx.hide()
             if (menuobj.value() == galleryobj.rightctx)
@@ -6434,7 +6433,6 @@ function setupmenus()
         },
     ]
 
-
     _5cnv.sliceobj.data = [];
     var j = 0;
     var folder = "";
@@ -6492,7 +6490,10 @@ function setupmenus()
         j.func = function()
         {
             gotoimage(this.index)
-            menuobj.hide();
+            galleryobj.rightctx.hide();
+            galleryobj.leftcnv = _7cnv;
+            galleryobj.leftctx = _7cnvctx;
+            menuobj.setindex(_8cnvctx);
         };
         
         _6cnv.sliceobj.data.push(j);
