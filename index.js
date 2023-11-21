@@ -6470,6 +6470,7 @@ function setupmenus()
     {
         var cnv = lst[n];
         var a = Array(cnv.sliceobj.length()).fill().map((_, index) => index);
+        cnv.lastcurrent = -1;
         cnv.rotated = [...a, ...a, ...a];
     }
 
