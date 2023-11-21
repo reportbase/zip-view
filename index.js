@@ -68,7 +68,7 @@ const IMAGELSTSIZE = 32;
 const BOSS = 0;
 const GALLERY = 1;
 const MENU = 2;
-const TIMEMAIN = 4;
+const TIMEMAIN = 9;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 24;
@@ -4782,7 +4782,8 @@ menuobj.draw = function()
     else if (context == _8cnvctx)
     {
         canvas.buttonheight = buttonobj.value();
-        context.canvas.virtualheight = slices.length * canvas.buttonheight * beavobj.value()/100;
+        context.canvas.virtualheight = 
+            slices.length * canvas.buttonheight * beavobj.value()/100;
     }
 
     if (context != _8cnvctx)
