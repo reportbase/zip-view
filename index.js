@@ -654,6 +654,8 @@ var footlst =
         context.save();     
         canvas.homerect = new rectangle();
         canvas.galleryaddrect = new rectangle();
+        canvas.galleryeditrect = new rectangle();
+        canvas.gallerydeleterect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
@@ -668,13 +670,21 @@ var footlst =
                     new panel.fill(FOOTBTNCOLOR),
                     new panel.colsA([0,0,0],
                     [
-                        0,
                         new panel.layers(
                         [
                             new panel.rectangle(canvas.galleryaddrect),
                             new panel.text(),
                         ]),
-                        0,
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.galleryeditrect),
+                            new panel.text(),
+                        ]),
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.gallerydeleterect),
+                            new panel.text(),
+                        ]),
                     ])                            
                 ])
             ]);
@@ -684,10 +694,10 @@ var footlst =
                    `\u{25C0}   Galleries`,
                    0,
                    [
-                       0,
                        `Add   \u{25B6}`,
-                       0
-                   ], 
+                       `Edit   \u{25B6}`,
+                       `Delete   \u{25B6}`,
+                    ], 
                 ]);
         
         context.restore();    
@@ -4539,7 +4549,7 @@ var buttonlst = [
             ]);
 
         var title = typeof(user.title) == "function" ? user.title() : user.title;
-        a.draw(context, rect, title, time);
+        a.draw(context, rect, title?title.split("\n"):"", time);
         context.restore();
     }
 },    
@@ -5981,15 +5991,6 @@ window.addEventListener("keyup", function(evt)
 
 window.addEventListener("keydown", function(evt)
 {
-    var key = evt.key.toLowerCase();
-    if (key == "escape")
-    {
-        var h = HEADHEIGHT;
-        headcnvctx.show(0, 0, window.innerWidth, h);
-        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-        return;
-    }
-    
     if (dialog && dialog.open)
         return;
     var context = menuobj.value() ? menuobj.value() : _4cnvctx;
