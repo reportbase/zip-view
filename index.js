@@ -3374,7 +3374,7 @@ var keylst = [
                 key == "arrowup" ||
                 key == "k")
             {
-                menuobj.updown(context, -40)
+                menuobj.updown(context, -120)
                 if (global.swipetimeout)
                     return;            
                 global.swipetimeout = setInterval(function()
@@ -3388,7 +3388,7 @@ var keylst = [
                 key == "arrowdown" ||
                 key == "j")
             {
-                menuobj.updown(context, 40)
+                menuobj.updown(context, 120)
                 if (global.swipetimeout)
                     return;            
                 global.swipetimeout = setInterval(function()
@@ -3400,7 +3400,7 @@ var keylst = [
             }
             else if (key == " ")
             {
-                menuobj.updown(context, canvas.shiftKey?-120:120)
+                menuobj.updown(context, canvas.shiftKey?-360:360)
                 if (global.swipetimeout)
                     return;            
                 global.swipetimeout = setInterval(function()
