@@ -3507,13 +3507,11 @@ var keylst = [
                 (canvas.shiftKey && key == " ") ||
                 key == "j")
             {
-                menuobj.updown(context, -120)
+                menuobj.updown(context, -60)
                 if (global.swipetimeout)
                     return;            
-                global.swipetimeout = setInterval(function()
-                {
-                    menuobj.draw();
-                }, GALLERYMAIN);
+                global.swipetimeout = setInterval(function(){
+                    menuobj.draw();}, GALLERYMAIN);
                 evt.preventDefault();
             }
             else if (
@@ -3521,16 +3519,13 @@ var keylst = [
                 key == "arrowdown" ||
                 key == "enter" ||
                 key == " " ||
-                key == "s" ||
                 key == "k")
             {
-                menuobj.updown(context, 120)
+                menuobj.updown(context, 60)
                 if (global.swipetimeout)
                     return;            
-                global.swipetimeout = setInterval(function()
-                {
-                    menuobj.draw();
-                }, GALLERYMAIN);
+                global.swipetimeout = setInterval(function(){
+                    menuobj.draw();}, GALLERYMAIN);
                 evt.preventDefault();
              }
             else if (key == "arrowleft")
@@ -5038,7 +5033,7 @@ var eventlst =
     footer: "FOLDERS",
     buttonheight: 150,
     buttonmargin: 10,
-    width: 480
+    width: 640
 },
 { //6 images
     hideontap: 1,
@@ -5060,7 +5055,7 @@ var eventlst =
     footer: "IMAGES",
     buttonheight: 70,
     buttonmargin: 15,
-    width: 480
+    width: 640
 },
 { //7
     hideontap: 1,
