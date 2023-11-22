@@ -68,7 +68,9 @@ const IMAGELSTSIZE = 32;
 const BOSS = 0;
 const GALLERY = 1;
 const MENU = 2;
-const TIMEMAIN = 4;//todo
+const TIMEMAIN = 4;
+const BOSSMAIN = 4;
+const GALLERYMAIN = 16;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 24;
@@ -2205,9 +2207,8 @@ CanvasRenderingContext2D.prototype.refresh = function()
     global.swipetimeout = setInterval(function()
     {
         context.canvas.lastime = -0.0000000000101010101;
-        menuobj.draw();
         bossobj.draw()
-    }, TIMEMAIN);
+    }, BOSSMAIN);
 };
 
 CanvasRenderingContext2D.prototype.show = function(x, y, width, height)
@@ -2562,7 +2563,7 @@ var wheelst =
             {
                 context.canvas.lastime = -0.0000000000101010101;
                 menuobj.draw();
-            }, TIMEMAIN);
+            }, GALLERYMAIN);
         }
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
@@ -3331,7 +3332,7 @@ var swipelst = [
             {
                 context.canvas.lastime = -0.0000000000101010101;
                 menuobj.draw();
-            }, TIMEMAIN);
+            }, GALLERYMAIN);
     },
 },
 {
@@ -3399,13 +3400,7 @@ var keylst = [
                 {
                     context.canvas.lastime = -0.0000000000101010101;
                     menuobj.draw();
-                }, TIMEMAIN);
-                /*
-                var j = 30/rect.height;
-                var k = (canvas.timeobj.length() / galleryobj.length()) * j;
-                canvas.timeobj.rotate(k);
-                menuobj.draw();
-                */
+                }, GALLERYMAIN);
                 evt.preventDefault();
             }
             else if (
@@ -3419,13 +3414,7 @@ var keylst = [
                 {
                     context.canvas.lastime = -0.0000000000101010101;
                     menuobj.draw();
-                }, TIMEMAIN);
-                /*
-                var j = 30/rect.height;
-                var k = (canvas.timeobj.length() / galleryobj.length())*j;
-                canvas.timeobj.rotate(-k);
-                menuobj.draw();
-                */
+                }, GALLERYMAIN);
                 evt.preventDefault();
             }
             else if (key == "\\" || key == "/" || key == "tab" || key == " ")
@@ -6925,7 +6914,7 @@ galleryobj.leftright = function(context, delta)
         }
 
         menuobj.draw();
-    }, TIMEMAIN);
+    }, GALLERYMAIN);
 }
 
 window.onGoogleLibraryLoad = () => 
