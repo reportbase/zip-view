@@ -2537,12 +2537,12 @@ var wheelst =
                 displayobj.set(k);
             }
         
-            var j = buttonobj.length()/60;
+            var j = buttonobj.length()/20;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
             context.elst.push(e);
-            if (!(context.elst.length % 4))
+            if (!(context.elst.length % 5))
             {
                 buttonobj.add(e);
                 menuobj.draw();
