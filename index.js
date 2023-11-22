@@ -2533,9 +2533,7 @@ var wheelst =
             
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
             if (displaylst[k] != displayobj.value()) 
-            {
                 displayobj.set(k);
-            }
         
             var j = buttonobj.length()/20;
             context.canvas.pinching = 1;
@@ -6884,13 +6882,12 @@ function selectid(id)
     }
 }
 
-//todo: to slow
 galleryobj.leftright = function(context, delta)
 {
     if (context.pinching)
         return;
-    if (!delta)
-        return;
+    if (delta < 40)
+        delta = 40;
 
     if (delta != context.canvas.leftrighttype)
     {
