@@ -2542,11 +2542,12 @@ var wheelst =
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
             context.elst.push(e);
-            if (context.elst.length % 10)
-                return;
-            buttonobj.add(e);
-            context.canvas.lastime = -0.0000000000101010101;
-            menuobj.draw();
+            if (!(context.elst.length % 4))
+            {
+                buttonobj.add(e);
+                menuobj.draw();
+            }
+            
             context.canvas.pinching = 0;
         }
         else if (canvas.buttonrect &&
