@@ -6869,6 +6869,7 @@ function selectid(id)
     }
 }
 
+//todo: to slow
 galleryobj.leftright = function(context, delta)
 {
     if (context.pinching)
