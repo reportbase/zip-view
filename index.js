@@ -6525,55 +6525,59 @@ function setupmenus()
     _9cnv.sliceobj.data = [];
     _2cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
-    fetch(`https://gallery.reportbase5836.workers.dev/list/${login.id}`)
-        .then((response) => jsonhandler(response))
-        .then(function(results)
-        {
-            for (var n = 0; n < results.length; ++n)
+
+    if (login.id)
+    {
+        fetch(`https://gallery.reportbase5836.workers.dev/list/${login.id}`)
+            .then((response) => jsonhandler(response))
+            .then(function(results)
             {
-                var result = results[n];
-                result.func = function(n, x, y)
+                for (var n = 0; n < results.length; ++n)
                 {
-                    for (var n = 0; n < IMAGELSTSIZE; ++n)
+                    var result = results[n];
+                    result.func = function(n, x, y)
                     {
-                        thumbfittedlst[n] = document.createElement("canvas");
-                        thumbimglst[n] = new Image();
+                        for (var n = 0; n < IMAGELSTSIZE; ++n)
+                        {
+                            thumbfittedlst[n] = document.createElement("canvas");
+                            thumbimglst[n] = new Image();
+                        }
+    
+                        url.searchParams.set("id",this.id);
+                        window.history.replaceState("", url.origin, url); 
+                        url = new URL(window.location.href);
+                        url.path = this.id;
+                        fetch(this.json)
+                            .then((response) => jsonhandler(response))
+                            .then((obj) => galleryobj.init(obj))
+                        return true;
                     }
-
-                    url.searchParams.set("id",this.id);
-                    window.history.replaceState("", url.origin, url); 
-                    url = new URL(window.location.href);
-                    url.path = this.id;
-                    fetch(this.json)
-                        .then((response) => jsonhandler(response))
-                        .then((obj) => galleryobj.init(obj))
-                    return true;
                 }
-            }
-
-            _2cnv.sliceobj.data = results
-            _7cnv.sliceobj.data.push(
-            {
-                title: `Galleries   \u{25B6}`,
-                func: function(n, x, y)
+    
+                _2cnv.sliceobj.data = results
+                _7cnv.sliceobj.data.push(
                 {
-                    menuobj.hide();
-                    galleryobj.leftcnv = _2cnv;
-                    galleryobj.leftctx = _2cnvctx;
-                    menuobj.setindex(galleryobj.leftctx);
-                    menuobj.show();
-                    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-                    return false;
-                }
-            });
-
-            var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
-            _2cnv.rotated = [...a, ...a, ...a];
-            var a = Array(_7cnv.sliceobj.length()).fill().map((_, index) => index);
-            _7cnv.rotated = [...a, ...a, ...a];
-            menuobj.draw();
-        })
-        .catch(error => console.log(error));
+                    title: `Galleries   \u{25B6}`,
+                    func: function(n, x, y)
+                    {
+                        menuobj.hide();
+                        galleryobj.leftcnv = _2cnv;
+                        galleryobj.leftctx = _2cnvctx;
+                        menuobj.setindex(galleryobj.leftctx);
+                        menuobj.show();
+                        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+                        return false;
+                    }
+                });
+    
+                var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
+                _2cnv.rotated = [...a, ...a, ...a];
+                var a = Array(_7cnv.sliceobj.length()).fill().map((_, index) => index);
+                _7cnv.rotated = [...a, ...a, ...a];
+                menuobj.draw();
+            })
+            .catch(error => console.log(error));
+    }
     
     var lst = [_2cnv, _3cnv, _5cnv, _6cnv, _7cnv, _8cnv, _9cnv, _10cnv, _11cnv];
     for (var n = 0; n < lst.length; n++)
