@@ -6984,7 +6984,6 @@ function googlelogin()
 
 window.onGoogleLibraryLoad = () =>
 {
-    googlelogin();
 }
 
 function handleCredentialResponse(response) 
@@ -7011,6 +7010,7 @@ function handleCredentialResponse(response)
                     login.id = k.id;
                     login.secret = k.secret;
                     menuobj.draw();
+                    dialog.close();
                     setupmenus();
                 })
                 .catch(err => console.error(err));
@@ -7021,6 +7021,7 @@ function handleCredentialResponse(response)
                 login.id = k.id;
                 login.secret = k.secret;
                 menuobj.draw();
+                dialog.close();
                 setupmenus();
             }
         }); 
