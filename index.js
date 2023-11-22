@@ -6954,7 +6954,7 @@ function googlelogin()
         client_id:'866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
         callback: handleCredentialResponse,
         auto_select: "true",
-        //login_hint: "reportbase@gmail.com"
+        login_hint: "reportbase@gmail.com"
     });
 
     google.accounts.id.renderButton(
