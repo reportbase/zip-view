@@ -2537,13 +2537,13 @@ var wheelst =
                 displayobj.set(k);
             }
         
-            const j = buttonobj.length()/60;
+            var j = buttonobj.length()/60;
             context.canvas.pinching = 1;
-            const k = delta < 0 ? 1 : -1;
-            const e = k*j;
+            var k = delta < 0 ? 1 : -1;
+            var e = k*j;
+            context.elst.push(e);
             if (context.elst.length % 10)
                 return;
-            context.elst.push(e);
             buttonobj.add(e);
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
