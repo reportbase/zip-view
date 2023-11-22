@@ -2970,7 +2970,7 @@ var panlst =
                 var e = canvas.starty - y;
                 var k = sealobj.value() / canvas.virtualheight
                 k *= e;
-                canvas.timeobj.rotateanchored(Math.floor(k));
+                canvas.timeobj.rotateanchored(Math.ceil(k));
             }
             
             menuobj.draw()
