@@ -2578,12 +2578,12 @@ var wheelst =
         if (ctrl)
             return;
         menuobj.updown(context, delta);
-        context.refresh();
+        menuobj.draw();
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, trackpad)
     {
         context.canvas.hollyobj.addperc(delta / 1000);
-        menuobj.draw()
+        menuobj.draw();
     },
 },
 {
@@ -2617,7 +2617,7 @@ var wheelst =
         {
             var hollyobj = context.canvas.hollyobj;
             hollyobj.addperc(delta/500);
-            context.refresh();
+            bossobj.draw();
         }
         else if (context.stretchrect &&
             context.stretchrect.hitest(x, y))
@@ -2638,7 +2638,7 @@ var wheelst =
         {
             var hollyobj = context.canvas.hollyobj;
             hollyobj.addperc(delta/500);
-            context.refresh();
+            bossobj.draw();
         }
         else
         {
@@ -3029,7 +3029,6 @@ var panlst =
         delete canvas.ishollyrect;
         delete canvas.isbeavrect;
         delete canvas.issealrect;
-        context.refresh();
     }
 },
 {
@@ -3048,7 +3047,7 @@ var panlst =
             if (k == hollyobj.anchor())
                 return;
             hollyobj.set(k);
-            context.refresh()
+            menuobj.draw();
         }
         else if (type == "panup" || type == "pandown")
         {
@@ -3058,14 +3057,14 @@ var panlst =
                 var obj = canvas.timeobj;
                 var k = (y - canvas.hollyrect.y) / canvas.hollyrect.height;
                 obj.setperc(1 - k);
-                context.refresh()
+                menuobj.draw();
             }
             else if (canvas.isvscrollrect)
             {
                 var obj = canvas.hollyobj;
                 var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
                 obj.setperc(k);
-                context.refresh()
+                menuobj.draw();
             }
             else
             {
@@ -3073,7 +3072,7 @@ var panlst =
                 var jvalue = sealobj.value() / canvas.virtualheight
                 jvalue *= e;
                 canvas.timeobj.rotateanchored(jvalue);
-                context.refresh()
+                menuobj.draw();
             }
         }
     },
@@ -3096,7 +3095,6 @@ var panlst =
         delete canvas.timeobj.offset;
         var obj = context.canvas.hollyobj;
         delete obj.offset;
-        context.refresh();
     }
 },
 {
@@ -3116,7 +3114,7 @@ var panlst =
             if (y != canvas.lasty)
                 contextobj.reset()
             else
-                context.refresh();
+                bossobj.draw();
             canvas.lasty = y;
         }
         else if (type == "panleft" || type == "panright")
@@ -3125,7 +3123,7 @@ var panlst =
             {
                 var k = (x - context.timerect.x) / context.timerect.width;
                 canvas.timeobj.setperc(1 - k);
-                context.refresh();
+                bossobj.draw()
             }
             else if (context.hollyrect &&
                 context.hollyrect.hitest(x, y))
@@ -3133,7 +3131,7 @@ var panlst =
                 var obj = context.canvas.hollyobj;
                 var k = (x - context.hollyrect.x) / context.hollyrect.width;
                 obj.setperc(1 - k);
-                context.refresh();
+                bossobj.draw()
             }
             else
             {
@@ -3147,7 +3145,6 @@ var panlst =
         }
         else if (type == "panup" || type == "pandown")
         {
-            context.refresh()
             if (context.iszoomrect)
             {
                 var k = (y - context.zoomrect.y) / context.zoomrect.height;
@@ -3160,7 +3157,6 @@ var panlst =
                 var j = Math.floor(Math.lerp(0,galleryobj.length()-1,k));
                 galleryobj.set(j);
                 context.pangallery = 1;
-                context.refresh();
             }
             else if (context.isstretchrect)
             {
@@ -3182,6 +3178,8 @@ var panlst =
                 rowobj.set(k);
                 contextobj.reset();
             }
+
+            bossobj.draw()
         }
     },
     panstart: function(context, rect, x, y)
@@ -3221,7 +3219,6 @@ var panlst =
         if (context.pangallery)
             contextobj.reset();
         delete context.pangallery; 
-        context.refresh();
     }
 }, ];
 
@@ -3434,7 +3431,7 @@ var keylst = [
                 var h = headcnv.height ? 0 : HEADHEIGHT;
                 headcnvctx.show(0, 0, window.innerWidth, h);
                 headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-                context.refresh()
+                menuobj.draw()
                 evt.preventDefault();
             }
             else if (key == "-" || key == "[")
@@ -3508,7 +3505,7 @@ var keylst = [
                 key == "j")
             {
                 menuobj.updown(context, -canvas.speed);
-                context.refresh();
+                menuobj.draw();
             }
             else if (
                 key == "pagedown" ||
@@ -3519,7 +3516,7 @@ var keylst = [
                 key == "k")
             {
                 menuobj.updown(context, canvas.speed);
-                context.refresh();
+                menuobj.draw();
             }
             else if (key == "arrowleft")
             {
@@ -3539,7 +3536,6 @@ var keylst = [
         {
             var canvas = _4cnv;
             var context = _4cnvctx;
-            context.refresh();
             var key = evt.key.toLowerCase();
             if (
                 (canvas.ctrlKey && key == "arrowleft") ||
@@ -3567,14 +3563,12 @@ var keylst = [
             var rect = context.rect();
             canvas.ctrlKey = evt.ctrlKey;
             canvas.shiftKey = evt.shiftKey;
-
-            context.refresh();
             var key = evt.key.toLowerCase();
 
             if (key == "f")
             {
                 screenfull.toggle()
-                context.refresh();
+                bossobj.draw();
                 evt.preventDefault();
             }
             else if (
@@ -3629,12 +3623,12 @@ var keylst = [
             else if (key == "[")
             {
                 stretchobj.add(-1);
-                context.refresh();
+                bossobj.draw();
             }
             else if (key == "]")
             {
                 stretchobj.add(1);
-                context.refresh();
+                bossobj.draw();
             }
         }
     },
@@ -4199,7 +4193,7 @@ var taplst =
         {
             var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
             canvas.hollyobj.setperc(k);
-            context.refresh()
+            menuobj.draw();
             return true;
         }
         else if (canvas.hollyrect &&
@@ -4207,7 +4201,7 @@ var taplst =
         {
             var k = (y - canvas.hollyrect.y) / canvas.hollyrect.height;
             context.canvas.timeobj.setperc(1 - k);
-            context.refresh()
+            menuobj.draw();
             return true;
         }
         else
@@ -4235,7 +4229,7 @@ var taplst =
             setTimeout(function()
             {
                 delete slice.tap;
-                context.refresh();
+                menuobj.draw();
                 if (!slice.func(n, x, y))
                     return;
                 
@@ -5954,7 +5948,6 @@ function resize()
 {
     buttonobj.reset()
     contextobj.reset();
-    _4cnvctx.refresh();
     var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
     headham.panel = headlst[k];
     headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
