@@ -4010,7 +4010,7 @@ var taplst =
             headobj.reset();
             menuobj.draw();
         }
-        else if (canvas.shiftKey)
+        else if (!galleryobj.noboss)
         {
             var visibles = canvas.visibles;
             var k;
