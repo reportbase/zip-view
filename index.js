@@ -4810,6 +4810,11 @@ menuobj.draw = function()
     }
 
     var delayinterval = sealobj.value() / slices.length / 1000;
+    if (canvas.id == "_2")
+    {
+        context.canvas.virtualheight = slices.length * canvas.buttonheight;
+    }
+    
     context.canvas.virtualheight = slices.length * canvas.buttonheight;
     
     context.clear();
