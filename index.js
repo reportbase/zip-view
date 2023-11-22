@@ -6886,8 +6886,8 @@ galleryobj.leftright = function(context, delta)
 {
     if (context.pinching)
         return;
-    if (delta < 40)
-        delta = 40;
+    if (Math.abs(delta) < 10)
+        delta = delta<0?-10:10;
 
     if (delta != context.canvas.leftrighttype)
     {
