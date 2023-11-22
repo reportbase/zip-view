@@ -3998,6 +3998,7 @@ var taplst =
         else if (headcnv.height && displayobj.value() == button)
         {
             headobj.reset();
+            menuobj.draw();
         }
         else if (menuobj.value() && menuobj.value() != _8cnvctx)
         {
@@ -4012,6 +4013,7 @@ var taplst =
         else if (!headcnv.height)
         {
             headobj.reset();
+            menuobj.draw();
         }
         else if (canvas.shiftKey)
         {
@@ -6219,7 +6221,6 @@ headobj.reset = function()
     headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
     headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);  
     menuobj.draw();
-    _4cnvctx.refresh();
 }
 
 function setupmenus()
