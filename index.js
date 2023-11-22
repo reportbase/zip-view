@@ -2706,7 +2706,6 @@ var pinchlst =
         setTimeout(function()
         {
             delete context.scaleanchor;
-            delete context.buttonheight;
             context.canvas.pinching = 0;
          }, 40);
     },
