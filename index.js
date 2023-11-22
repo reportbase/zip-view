@@ -2504,7 +2504,6 @@ _4ham.get('pinch').set({enable: true});
 _8ham.get('pinch').set({enable: true});
 
 var galleryobj = new circular_array("", 0);
-var elst = [];
 
 var wheelst = 
 [
@@ -2522,6 +2521,9 @@ var wheelst =
 
         if (ctrl)
         {
+            if (!context.elst)
+                context.elst = [];
+            
             var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
             if (headham.panel != headlst[k])
             {
@@ -2538,8 +2540,11 @@ var wheelst =
             var j = buttonobj.length()/60;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
-            elst.push(k*j);
-            buttonobj.add(k*j);
+            var e = k*j;
+            if (k.length % 5)
+                return;
+            context.elst.push(e);
+            buttonobj.add(e);
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
             context.canvas.pinching = 0;
