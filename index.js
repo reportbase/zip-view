@@ -6982,6 +6982,8 @@ function googlelogin()
     })
 }
 
+googlelogin();
+
 function handleCredentialResponse(response) 
 {
     login = Object.assign(login, parseJwt(response.credential));
