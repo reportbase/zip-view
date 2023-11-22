@@ -3831,7 +3831,6 @@ var taplst =
             {
                 if (!login.id)
                     googlelogin();
-                setupmenus();
                 menuobj.setindex(galleryobj.leftctx);
             }
 
@@ -7010,7 +7009,6 @@ function handleCredentialResponse(response)
                     login.secret = k.secret;
                     menuobj.draw();
                     dialog.close();
-                    setupmenus();
                 })
                 .catch(err => console.error(err));
             }
@@ -7021,7 +7019,6 @@ function handleCredentialResponse(response)
                 login.secret = k.secret;
                 menuobj.draw();
                 dialog.close();
-                setupmenus();
             }
         }); 
 }        
