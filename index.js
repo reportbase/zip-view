@@ -4005,7 +4005,7 @@ var taplst =
         {
             headobj.reset();
         }
-        else if (!galleryobj.noboss || canvas.shiftKey)
+        else if (canvas.shiftKey)
         {
             var visibles = canvas.visibles;
             var k;
@@ -6209,7 +6209,9 @@ headobj.reset = function()
     var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
     displayobj.set(k);
     headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);   
+    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);  
+    menuobj.draw();
+    _4cnvctx.refresh();
 }
 
 function setupmenus()
