@@ -4135,7 +4135,6 @@ var taplst =
                 form.append('email', email.value);
                 form.append('id', id.value);
                 form.append('secret', secret.value);
-                //todo not working
                 fetch(`https://user.reportbase5836.workers.dev`,
                 {
                     'method': 'PATCH',
