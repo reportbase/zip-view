@@ -3731,7 +3731,7 @@ var taplst =
                 context.canvas.selectrect.hitest(x, y) >= 0)
             {
                 galleryobj.notransparent = galleryobj.notransparent ? 1 : 0;
-                context.refresh();
+                bossobj.draw();
             }
             else
             {
@@ -3744,24 +3744,25 @@ var taplst =
         {
             var k = (x - context.timerect.x) / context.timerect.width;
             context.canvas.timeobj.setperc(k);
-            context.refresh();
+            bossobj.draw();
         }
         else if (context.zoomrect && context.zoomrect.hitest(x, y))
         {
             var k = (y - context.zoomrect.y) / context.zoomrect.height;
             zoomobj.setperc(k);
-            contextobj.reset();
+            bossobj.draw();
         }
         else if (context.stretchrect && context.stretchrect.hitest(x, y))
         {
             var k = (y - context.stretchrect.y) / context.stretchrect.height;
             stretchobj.setperc(k);
-            context.refresh();
+            bossobj.draw();
         }
         else if (!headcnv.height)
         {
             headcnv.height = HEADHEIGHT;
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            bossobj.draw();
         }
         else if (
             headcnvctx.closebossrect &&
