@@ -2880,6 +2880,7 @@ var droplst =
     },
 }, ];
 
+var elst = [];
 var panlst = 
 [
 {
@@ -2968,9 +2969,10 @@ var panlst =
             else
             {
                 var e = canvas.starty - y;
+                elst.push(e);
                 var k = sealobj.value() / canvas.virtualheight
                 k *= e;
-                canvas.timeobj.rotateanchored(Math.ceil(k));
+                canvas.timeobj.rotateanchored(k);
             }
             
             menuobj.draw()
