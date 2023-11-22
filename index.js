@@ -2549,10 +2549,6 @@ var wheelst =
         }
         else
         {
-            //inc
-            if (delta > -2 && delta < 2)
-                return;
-            
             if (Math.abs(delta) > 320)
             {
                 headcnvctx.show(0, 0, window.innerWidth, 0);
