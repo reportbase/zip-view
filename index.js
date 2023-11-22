@@ -2585,7 +2585,13 @@ var wheelst =
         if (ctrl)
             return;
         menuobj.updown(context, delta);
-        menuobj.draw();
+        if (global.swipetimeout)
+            return;            
+        global.swipetimeout = setInterval(function()
+        {
+            context.canvas.lastime = -0.0000000000101010101;
+            menuobj.draw();
+        }, GALLERYMAIN);
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, trackpad)
     {
