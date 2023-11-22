@@ -6982,7 +6982,10 @@ function googlelogin()
     })
 }
 
-googlelogin();
+window.onGoogleLibraryLoad = () =>
+{
+    googlelogin();
+}
 
 function handleCredentialResponse(response) 
 {
