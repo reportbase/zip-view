@@ -6886,8 +6886,8 @@ galleryobj.leftright = function(context, delta)
 {
     if (context.pinching)
         return;
-    if (Math.abs(delta) < 10)
-        delta = delta<0?-10:10;
+    if (!delta)
+        return;
 
     if (delta != context.canvas.leftrighttype)
     {
@@ -6901,12 +6901,13 @@ galleryobj.leftright = function(context, delta)
     var w = thumbfittedlst[index].width;
     var h = thumbfittedlst[index].height;
     if (w != window.innerWidth)
-        context.canvas.startleftright = (window.innerWidth / w) * Math.abs(delta / 2);
+        context.canvas.startleftright = (window.innerWidth / w) * Math.abs(delta);
     else
-        context.canvas.startleftright = (window.innerHeight / h) * Math.abs(delta / 2);
+        context.canvas.startleftright = (window.innerHeight / h) * Math.abs(delta);
     var e = context.canvas.startleftright / 40;
     var obj = context.canvas.hollyobj;
     clearInterval(context.canvas.leftrightime);
+    menuobj.draw();
     context.canvas.leftrightime = setInterval(function()
     {
         obj.add(delta < 0 ? -context.canvas.startleftright :
