@@ -2550,7 +2550,7 @@ var wheelst =
         else
         {
             //inc
-            if (delta > -25 && delta < 25)
+            if (delta > -1 && delta < 1)
                 return;
             
             if (Math.abs(delta) > 320)
