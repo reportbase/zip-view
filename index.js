@@ -4810,15 +4810,10 @@ menuobj.draw = function()
     }
 
     var delayinterval = sealobj.value() / slices.length / 1000;
-    if (canvas.id == "_2")
-    {
-        context.canvas.virtualheight = slices.length * canvas.buttonheight;
-    }
-    
     context.canvas.virtualheight = slices.length * canvas.buttonheight;
     
     context.clear();
-    if (context.canvas.virtualheight < window.innerHeight)
+    if (context.canvas.virtualheight < window.innerHeight && slices.length)
     {
         canvas.buttonheight = window.innerHeight / slices.length;
         context.canvas.virtualheight = slices.length * canvas.buttonheight;
@@ -4838,7 +4833,7 @@ menuobj.draw = function()
     
     var current = context.canvas.sliceobj.lerp(
         1 - context.canvas.timeobj.berp());
-    if (canvas.lastcurrent != current)
+    if (canvas.lastcurrent != current || !canvas.normal)
     {
         canvas.lastcurrent = current;
         var size = Math.ceil(rect.height / canvas.buttonheight) + 4;
