@@ -2534,13 +2534,6 @@ var wheelst =
             menuobj.draw();
             context.canvas.pinching = 0;
         }
-        else if (canvas.shiftKey)
-        {
-            var k = delta < 0 ? 1 : -1;
-            var j = canvas.timeobj.length() / galleryobj.length();
-            canvas.timeobj.rotate(k*j);
-            menuobj.draw();               
-        }
         else if (canvas.buttonrect &&
             canvas.buttonrect.hitest(x, y))
         {
@@ -2958,17 +2951,8 @@ var panlst =
         {
             if (canvas.isvscrollrect)
             {
-                if (canvas.shiftKey)
-                {
-                    var k = type == "panup" ? 1 : -1;
-                    var j = canvas.timeobj.length() / galleryobj.length();
-                    canvas.timeobj.rotate(k*j);
-                }
-                else
-                {
-                    var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
-                    canvas.timeobj.setperc(1-k);
-                }
+                var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
+                canvas.timeobj.setperc(1-k);
             }
             else if (canvas.isbeavrect)
             {
