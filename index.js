@@ -3507,8 +3507,14 @@ var keylst = [
                 (canvas.shiftKey && key == " ") ||
                 key == "j")
             {
-                menuobj.updown(context, -canvas.speed);
-                menuobj.draw();
+                menuobj.updown(context, -120)
+                if (global.swipetimeout)
+                    return;            
+                global.swipetimeout = setInterval(function()
+                {
+                    menuobj.draw();
+                }, GALLERYMAIN);
+                evt.preventDefault();
             }
             else if (
                 key == "pagedown" ||
@@ -3518,9 +3524,15 @@ var keylst = [
                 key == "s" ||
                 key == "k")
             {
-                menuobj.updown(context, canvas.speed);
-                menuobj.draw();
-            }
+                menuobj.updown(context, 120)
+                if (global.swipetimeout)
+                    return;            
+                global.swipetimeout = setInterval(function()
+                {
+                    menuobj.draw();
+                }, GALLERYMAIN);
+                evt.preventDefault();
+             }
             else if (key == "arrowleft")
             {
                 context.canvas.hollyobj.addperc(-60 / 1000);
