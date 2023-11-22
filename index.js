@@ -3397,7 +3397,7 @@ var keylst = [
                 key == "arrowup" ||
                 key == "k")
             {
-                menuobj.updown(context, 40)
+                menuobj.updown(context, -40)
                 if (global.swipetimeout)
                     return;            
                 global.swipetimeout = setInterval(function()
@@ -3411,7 +3411,7 @@ var keylst = [
                 key == "arrowdown" ||
                 key == "j")
             {
-                menuobj.updown(context, -40)
+                menuobj.updown(context, 40)
                 if (global.swipetimeout)
                     return;            
                 global.swipetimeout = setInterval(function()
@@ -3421,7 +3421,19 @@ var keylst = [
                 }, GALLERYMAIN);
                 evt.preventDefault();
             }
-            else if (key == "\\" || key == "/" || key == "tab" || key == " ")
+            else if (key == " ")
+            {
+                menuobj.updown(context, canvas.shiftKey?-120:120)
+                if (global.swipetimeout)
+                    return;            
+                global.swipetimeout = setInterval(function()
+                {
+                    context.canvas.lastime = -0.0000000000101010101;
+                    menuobj.draw();
+                }, GALLERYMAIN);
+                evt.preventDefault();
+            }                
+            else if (key == "\\" || key == "/" || key == "tab")
             {
                 var h = headcnv.height ? 0 : HEADHEIGHT;
                 headcnvctx.show(0, 0, window.innerWidth, h);
