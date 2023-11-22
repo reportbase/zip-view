@@ -2504,6 +2504,7 @@ _4ham.get('pinch').set({enable: true});
 _8ham.get('pinch').set({enable: true});
 
 var galleryobj = new circular_array("", 0);
+var elst = [];
 
 var wheelst = 
 [
@@ -2522,13 +2523,22 @@ var wheelst =
         if (ctrl)
         {
             var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
-            headham.panel = headlst[k];
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);     
+            if (headham.panel != headlst[k])
+            {
+                headham.panel = headlst[k];
+                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);     
+            }
+            
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
-            displayobj.set(k);
-            var j = buttonobj.length()/66;
+            if (displaylst[k] != displayobj.value()) 
+            {
+                displayobj.set(k);
+            }
+        
+            var j = buttonobj.length()/60;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
+            elst.push(k*j);
             buttonobj.add(k*j);
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
@@ -2880,7 +2890,6 @@ var droplst =
     },
 }, ];
 
-var elst = [];
 var panlst = 
 [
 {
@@ -2969,7 +2978,6 @@ var panlst =
             else
             {
                 var e = canvas.starty - y;
-                elst.push(e);
                 var k = sealobj.value() / canvas.virtualheight
                 k *= e;
                 canvas.timeobj.rotateanchored(k);
