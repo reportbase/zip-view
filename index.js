@@ -6953,7 +6953,7 @@ function googlelogin()
     {
         client_id:'866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
         callback: handleCredentialResponse,
-        auto_select: 1,
+        auto_select: "true",
     });
 
     google.accounts.id.renderButton(
