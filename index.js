@@ -2537,11 +2537,11 @@ var wheelst =
                 displayobj.set(k);
             }
         
-            var j = buttonobj.length()/60;
+            const j = buttonobj.length()/60;
             context.canvas.pinching = 1;
-            var k = delta < 0 ? 1 : -1;
-            var e = k*j;
-            if (k.length % 5)
+            const k = delta < 0 ? 1 : -1;
+            const e = k*j;
+            if (context.elst.length % 10)
                 return;
             context.elst.push(e);
             buttonobj.add(e);
