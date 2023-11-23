@@ -6581,7 +6581,7 @@ function setupmenus()
             menuobj.hide()
             menuobj.setindex(_8cnvctx);
             menuobj.show();
-            gotoimage(n);
+            gotoimage(n+1);
             return true;
         }
     };
