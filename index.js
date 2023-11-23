@@ -4019,11 +4019,10 @@ var taplst =
         {
             menuobj.hide();
             menuobj.setindex(_8cnvctx);
-            menuobj.show();
             galleryobj.leftnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
-            headcnv.height = HEADHEIGHT;
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            menuobj.show();
         }
         else if (!headcnv.height)
         {
@@ -6598,12 +6597,13 @@ function setupmenus()
         j.title = `${n+1}`;
         j.func = function()
         {
-            gotoimage(this.index)
+            gotoimage(this.index+1)
             galleryobj.rightctx.hide();
             galleryobj.leftcnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
             menuobj.setindex(_8cnvctx);
             menuobj.show();
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         };
         
         _6cnv.sliceobj.data.push(j);
