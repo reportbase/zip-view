@@ -4122,8 +4122,7 @@ var taplst =
                 const form = new FormData();
                 form.append('title', title.value);
                 form.append('json', json.value);
-                form.append('user_id', login.id);
-                fetch(`https://gallery.reportbase5836.workers.dev`,
+                fetch(`https://gallery.reportbase5836.workers.dev/${login.id}`,
                 {
                     'method': 'PATCH',
                     'body': form
