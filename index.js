@@ -674,7 +674,7 @@ var footlst =
                     [
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.galleryaddrect),
+                            new panel.rectangle(canvas.galleryopenrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
