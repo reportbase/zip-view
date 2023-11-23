@@ -6433,7 +6433,7 @@ function setupmenus()
                         {
                              _2cnv.sliceobj.set(n);
                             menuobj.draw();
-                            return true;
+                            return false;
                         }
                     }
         
