@@ -4127,6 +4127,19 @@ var taplst =
                 .then((response) => jsonhandler(response))
                 .then((obj) => galleryobj.init(obj))
         }
+        else if (canvas.gallerydeleterect && canvas.gallerydeleterect.hitest(x, y))
+        {
+            var gallery = _2cnv.sliceobj.value();
+            fetch(`https://gallery.reportbase5836.workers.dev/${gallery.id}`,
+            {
+                'method': 'DELETE'
+            })
+            .then((response) => jsonhandler(response))
+            .then(function(obj)
+            {
+               console.log(obj);
+            })
+        }    
         else if (canvas.galleryaddrect && canvas.galleryaddrect.hitest(x, y))
         {
             var title = document.getElementById("gallery-add-title");
