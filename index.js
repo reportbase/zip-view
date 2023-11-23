@@ -2795,6 +2795,7 @@ async function loadzip(file)
     keys.sort();
     var count = 0;
     galleryobj.title = "";
+    var lst = [];
     for (var n = 0; n < keys.length; ++n)
     {
         var key = keys[n];
@@ -2802,7 +2803,7 @@ async function loadzip(file)
             continue;
         if (!key.isimage())
             continue;
-        count += 1;
+        lst.push(key);
     }
 
     if (!count)
@@ -2812,9 +2813,9 @@ async function loadzip(file)
     galleryobj.width = 0;
     galleryobj.height = 0;
     galleryobj.set(0);
-    for (var n = 0; n < keys.length; ++n)
+    for (var n = 0; n < lst.length; ++n)
     {
-        var key = keys[n];
+        var key = lst[n];
         var k = Array.from(key);
         if (SAFARI && k.charAt(0) == '_')
             continue;
