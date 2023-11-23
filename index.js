@@ -669,7 +669,7 @@ var footlst =
                 new panel.layers(
                 [
                     new panel.fill(FOOTBTNCOLOR),
-                    new panel.colsA([0,0,0],
+                    1?0:new panel.colsA([0,0,0],
                     [
                         new panel.layers(
                         [
@@ -6391,8 +6391,21 @@ function setupmenus()
         func: function()
         {
         }
-    },
-    {
+   },
+   {
+        title: `Galleries   \u{25B6}`,
+        func: function(n, x, y)
+        {
+            menuobj.hide();
+            galleryobj.leftcnv = _2cnv;
+            galleryobj.leftctx = _2cnvctx;
+            menuobj.setindex(galleryobj.leftctx);
+            menuobj.show();
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            return false;
+        }
+     },
+     {
         title: `Account   \u{25B6}`,
         func: function()
         {
@@ -6553,21 +6566,6 @@ function setupmenus()
                 }
     
                 _2cnv.sliceobj.data = results
-                _7cnv.sliceobj.data.push(
-                {
-                    title: `Galleries   \u{25B6}`,
-                    func: function(n, x, y)
-                    {
-                        menuobj.hide();
-                        galleryobj.leftcnv = _2cnv;
-                        galleryobj.leftctx = _2cnvctx;
-                        menuobj.setindex(galleryobj.leftctx);
-                        menuobj.show();
-                        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-                        return false;
-                    }
-                });
-    
                 var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
                 _2cnv.rotated = [...a, ...a, ...a];
                 var a = Array(_7cnv.sliceobj.length()).fill().map((_, index) => index);
