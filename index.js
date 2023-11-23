@@ -6557,30 +6557,6 @@ function setupmenus()
         },
     ]
 
-   function bsearch(array, key) 
-   {
-
-  let low = 0;
-  let high = array.length - 1;
-
-  while (low <= high) {
-    const mid = Math.floor((low + high) / 2);
-    const item = array[mid];
-
-    if (item.folder < key) {
-      low = mid + 1;
-    } else if (item.folder >= key) {
-      if (mid === 0 || array[mid - 1].folder !== key) {
-        return mid; 
-      }
-      high = mid - 1;
-    }
-  }
-
-  return -1; 
-}
-
-
     _5cnv.sliceobj.data = [];
     var j = 0;
     var folder = "";
@@ -6595,17 +6571,17 @@ function setupmenus()
         
         var j = _5cnv.sliceobj.data.findIndex(function(a){
             return a.folder == k.folder;});
-        
         if (j == -1)
             _5cnv.sliceobj.data.push(k);
         
         k.func = function()
         {
-            var j = bsearch(galleryobj.data, this.folder);
+            var folder = this.folder;
+            var n = galleryobj.data.findIndex(function(a){return a.folder = folder;}); 
             menuobj.hide()
             menuobj.setindex(_8cnvctx);
             menuobj.show();
-            gotoimage(j);
+            gotoimage(n);
             return true;
         }
     };
