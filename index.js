@@ -6557,7 +6557,7 @@ function setupmenus()
         },
     ]
 
-   function bSearch(array, key) 
+   function bsearch(array, key) 
    {
 
   let low = 0;
