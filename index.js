@@ -30,7 +30,6 @@ const BETHCIDTH = (window.innerWidth < 420 ? window.innerWidth/3 : 420/3)+20;
 const BETHWIDTH = (window.innerWidth < 420 ? window.innerWidth/3 : 420/3)-10;
 const BOSSMIN = 4;
 const FOOTSEP = 20;
-const rainstep = function(){return Math.min(420,window.innerWidth-60);}
 const HEADTOP = 80;
 const HEADBOT = 40;
 const FIXEDTIME = 2;
@@ -833,6 +832,8 @@ var headlst =
             var w = k ? k.canvas.width : 0;
             var b = window.innerWidth == w;
             context.save();
+            const rainstep = Math.min(420,window.innerWidth-60);
+
             var a = new panel.rows([BEXTENT, 0],
                 [
                     new panel.cols([5, 
@@ -852,7 +853,7 @@ var headlst =
                             new panel.closeboss(), 
                             0
                         ]),
-                        new panel.cols([0,rainstep(),0],
+                        new panel.cols([0,rainstep,0],
                         [
                                 0,
                                 new panel.layers(
@@ -977,7 +978,8 @@ var bossdisplaylst =
             var index = galleryobj.current();
             //data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
             data.push(`\u{25C0}   ${index} of ${galleryobj.length()}   \u{25B6}`);
-            
+            const rainstep = Math.min(420,window.innerWidth-60);
+        
             var a = new panel.rowsA([HEADTOP, HEADBOT, 0, 
                                  (data.length*WRAPROWHEIGHT), 
                                  20],
@@ -985,7 +987,7 @@ var bossdisplaylst =
                     0,
                     0,
                     0,
-                    new panel.cols([0, rainstep(), 0],
+                    new panel.cols([0, rainstep, 0],
                     [
                         0,
                         new panel.layers(
@@ -1139,7 +1141,8 @@ var bossdisplaylst =
             var data = [];
             var index = galleryobj.current();
             data.push(`\u{25C0}   ${index} of ${galleryobj.length()}   \u{25B6}`);
-            
+            const rainstep = Math.min(420,window.innerWidth-60);
+        
             var a = new panel.rowsA([HEADTOP, HEADBOT, 0, 
                                  (data.length*WRAPROWHEIGHT), 
                                  20],
@@ -1147,7 +1150,7 @@ var bossdisplaylst =
                     0,
                     0,
                     0,
-                    new panel.cols([0, rainstep(), 0],
+                    new panel.cols([0, rainstep, 0],
                     [
                         0,
                         new panel.layers(
@@ -1320,11 +1323,11 @@ var displaylst =
             ]);
 
         a.draw(context, rect, buttonobj, 0); 
-
+        const rainstep = Math.min(420,window.innerWidth-60);
         var a = new panel.rows([0, SCROLLEXTENT, SCROLLMARGIN],
             [
                 0,
-                new panel.cols([0, rainstep(), 0],
+                new panel.cols([0, rainstep, 0],
                     [
                         0,
                         new panel.layers(
@@ -1350,7 +1353,7 @@ var displaylst =
                                  FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,    
-            new panel.cols([0, rainstep(), 0],
+            new panel.cols([0, rainstep, 0],
             [
                 0,
                 new panel.layers(
@@ -1363,7 +1366,7 @@ var displaylst =
             ]), 
             0,
             0,
-            new panel.cols([0, rainstep(), 0],
+            new panel.cols([0, rainstep, 0],
             [
                 0,
                 new panel.layers(
@@ -1407,6 +1410,7 @@ var displaylst =
         if (!headcnv.height)
             return;        
         var bh = rect.height * 0.4;
+        const rainstep = Math.min(420,window.innerWidth-60);
         var a = new panel.cols([0, SCROLLEXTENT, SCROLLMARGIN],
             [
                 0,
@@ -1429,7 +1433,7 @@ var displaylst =
         var a = new panel.rows([0, SCROLLEXTENT, 6],
             [
                 0,
-                new panel.cols([0, rainstep(), 0],
+                new panel.cols([0, rainstep, 0],
                     [
                         0,
                         new panel.layers(
@@ -1462,7 +1466,7 @@ var displaylst =
             0,
             0,
             0,
-            new panel.cols([0, rainstep(), 0],
+            new panel.cols([0, rainstep, 0],
             [
                 0,
                 new panel.layers(
@@ -1475,7 +1479,7 @@ var displaylst =
                 0,
             ]),
             0,
-            new panel.cols([0, rainstep(), 0],
+            new panel.cols([0, rainstep, 0],
                 [
                     0,
                     new panel.layers(
