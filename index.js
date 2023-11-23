@@ -2793,7 +2793,6 @@ async function loadzip(file)
     const {entries} = await unzipit.unzip(file);
     let keys = Object.keys(entries);
     keys.sort();
-    var count = 0;
     galleryobj.title = "";
     var lst = [];
     for (var n = 0; n < keys.length; ++n)
@@ -2806,7 +2805,7 @@ async function loadzip(file)
         lst.push(key);
     }
 
-    if (!count)
+    if (!lst.length)
         return;
 
     galleryobj.data = [];
