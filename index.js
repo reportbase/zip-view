@@ -6557,24 +6557,28 @@ function setupmenus()
         },
     ]
 
-    function bsearch(array, key) 
-    {
-      let low = 0;
-      let high = array.length - 1;
-      while (low <= high) 
-      {
-        const mid = Math.floor((low + high) / 2);
-        const item = array[mid];     
-        if (item.folder < key) 
-          low = mid + 1;
-        else if (item.folder > key) 
-          high = mid - 1;  
-        else
-          return mid; 
+   function bSearch(array, key) 
+   {
+
+  let low = 0;
+  let high = array.length - 1;
+
+  while (low <= high) {
+    const mid = Math.floor((low + high) / 2);
+    const item = array[mid];
+
+    if (item.folder < key) {
+      low = mid + 1;
+    } else if (item.folder >= key) {
+      if (mid === 0 || array[mid - 1].folder !== key) {
+        return mid; 
       }
-      
-      return -1;
+      high = mid - 1;
     }
+  }
+
+  return -1; 
+}
 
 
     _5cnv.sliceobj.data = [];
@@ -6598,14 +6602,10 @@ function setupmenus()
         k.func = function()
         {
             var j = bsearch(galleryobj.data, this.folder);
-            var n = j
-            for (; n >= 0; n--)
-                 if (galleryobj.data[n].folder != this.folder)
-                     break;
             menuobj.hide()
             menuobj.setindex(_8cnvctx);
             menuobj.show();
-            gotoimage(n);
+            gotoimage(j);
             return true;
         }
     };
