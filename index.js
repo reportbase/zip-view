@@ -4137,8 +4137,11 @@ var taplst =
             .then((response) => jsonhandler(response))
             .then(function(obj)
             {
-               console.log(obj);
+                _2cnv.sliceobj.slice(_2cnv.sliceobj.current(),1);
+                menuobj.draw();
             })
+                _2cnv.sliceobj.slice(_2cnv.sliceobj.current(),1);
+                menuobj.draw();
         }    
         else if (canvas.galleryaddrect && canvas.galleryaddrect.hitest(x, y))
         {
