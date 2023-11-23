@@ -2580,7 +2580,11 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        galleryobj.leftright(context, context.canvas.speed / 2);//delta);
+        var j = delta < 0 ? -1 : 1;
+        if (SAFARI)
+            galleryobj.leftright(context, j * (context.canvas.speed / 2));
+        else
+            galleryobj.leftright(context, delta);
     },
 },
 {
