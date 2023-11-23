@@ -656,7 +656,7 @@ var footlst =
         canvas.homerect = new rectangle();
         canvas.galleryopenrect = new rectangle();
         canvas.galleryaddrect = new rectangle();
-        canvas.galleryeditrect = new rectangle();
+        canvas.gallerypatchrect = new rectangle();
         canvas.gallerydeleterect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
@@ -684,7 +684,7 @@ var footlst =
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.galleryeditrect),
+                            new panel.rectangle(canvas.gallerypatchrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
@@ -4110,6 +4110,34 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             return true;
         }
+        else if (canvas.gallerypatchrect && canvas.gallerypatchrect.hitest(x, y))
+        {
+            var gallery = _2cnv.sliceobj.value();
+            var title = document.getElementById("gallery-add-title");
+            var json = document.getElementById("gallery-add-json");
+            title.value = gallery.title;
+            json.value = gallery.json;
+            showdialog("gallery-add", function(image)
+            {
+                const form = new FormData();
+                form.append('title', title.value);
+                form.append('json', json.value);
+                form.append('user_id', login.id);
+                fetch(`https://gallery.reportbase5836.workers.dev`,
+                {
+                    'method': 'PATCH',
+                    'body': form
+                })
+                .then((response) => jsonhandler(response))
+                .then(function(obj)
+                {
+                     var gallery = _2cnv.sliceobj.value();
+                     k.title = obj.title;
+                     k.json = obj.json;
+                     menuobj.draw();
+                })
+            })
+        }
         else if (canvas.galleryopenrect && canvas.galleryopenrect.hitest(x, y))
         {
            for (var n = 0; n < IMAGELSTSIZE; ++n)
@@ -4142,8 +4170,6 @@ var taplst =
                     _2cnv.sliceobj.data.splice(_2cnv.sliceobj.current(),1);
                     menuobj.draw();
                 })
-                    _2cnv.sliceobj.data.splice(_2cnv.sliceobj.current(),1);
-                    menuobj.draw();
             });
         }    
         else if (canvas.galleryaddrect && canvas.galleryaddrect.hitest(x, y))
