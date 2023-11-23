@@ -6577,7 +6577,7 @@ function setupmenus()
         k.func = function()
         {
             var folder = this.folder;
-            var n = galleryobj.data.findIndex(function(a){return a.folder = folder;}); 
+            var n = galleryobj.data.findIndex(function(a){return a.folder == folder;}); 
             menuobj.hide()
             menuobj.setindex(_8cnvctx);
             menuobj.show();
