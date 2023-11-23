@@ -654,6 +654,7 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.homerect = new rectangle();
+        canvas.galleryopenrect = new rectangle();
         canvas.galleryaddrect = new rectangle();
         canvas.galleryeditrect = new rectangle();
         canvas.gallerydeleterect = new rectangle();
@@ -669,8 +670,13 @@ var footlst =
                 new panel.layers(
                 [
                     new panel.fill(FOOTBTNCOLOR),
-                    1?0:new panel.colsA([0,0,0],
+                    1?0:new panel.colsA([0,0,0,0],
                     [
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.galleryaddrect),
+                            new panel.text(),
+                        ]),
                         new panel.layers(
                         [
                             new panel.rectangle(canvas.galleryaddrect),
@@ -695,9 +701,10 @@ var footlst =
                    `\u{25C0}   Galleries`,
                    0,
                    [
-                       `Add   \u{25B6}`,
-                       `Edit   \u{25B6}`,
-                       `Delete   \u{25B6}`,
+                       `Open`,
+                       `Add \u{25B6}`,
+                       `Edit \u{25B6}`,
+                       `Delete`,
                     ], 
                 ]);
         
@@ -3848,8 +3855,6 @@ var taplst =
             }
             else
             {
-                if (!login.id)
-                    googlelogin();
                 menuobj.setindex(galleryobj.leftctx);
             }
 
@@ -6397,12 +6402,48 @@ function setupmenus()
         title: `Galleries   \u{25B6}`,
         func: function(n, x, y)
         {
-            menuobj.hide();
-            galleryobj.leftcnv = _2cnv;
-            galleryobj.leftctx = _2cnvctx;
-            menuobj.setindex(galleryobj.leftctx);
-            menuobj.show();
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+           if (!login.id)
+               return;
+    
+           fetch(`https://gallery.reportbase5836.workers.dev/list/${login.id}`)
+                .then((response) => jsonhandler(response))
+                .then(function(results)
+                {
+                    for (var n = 0; n < results.length; ++n)
+                    {
+                        var result = results[n];
+                        result.func = function(n, x, y)
+                        {
+                            for (var n = 0; n < IMAGELSTSIZE; ++n)
+                            {
+                                thumbfittedlst[n] = document.createElement("canvas");
+                                thumbimglst[n] = new Image();
+                            }
+        
+                            url.searchParams.set("id",this.id);
+                            window.history.replaceState("", url.origin, url); 
+                            url = new URL(window.location.href);
+                            url.path = this.id;
+                            fetch(this.json)
+                                .then((response) => jsonhandler(response))
+                                .then((obj) => galleryobj.init(obj))
+                            return true;
+                        }
+                    }
+        
+                    _2cnv.sliceobj.data = results
+                    var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
+                    _2cnv.rotated = [...a, ...a, ...a];
+                    var a = Array(_7cnv.sliceobj.length()).fill().map((_, index) => index);
+                    _7cnv.rotated = [...a, ...a, ...a];
+
+                    menuobj.hide();
+                    galleryobj.leftcnv = _2cnv;
+                    galleryobj.leftctx = _2cnvctx;
+                    menuobj.setindex(galleryobj.leftctx);
+                    menuobj.show();
+                    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+                })
             return false;
         }
      },
@@ -6538,44 +6579,6 @@ function setupmenus()
     _2cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
 
-    if (login.id)
-    {
-        fetch(`https://gallery.reportbase5836.workers.dev/list/${login.id}`)
-            .then((response) => jsonhandler(response))
-            .then(function(results)
-            {
-                for (var n = 0; n < results.length; ++n)
-                {
-                    var result = results[n];
-                    result.func = function(n, x, y)
-                    {
-                        for (var n = 0; n < IMAGELSTSIZE; ++n)
-                        {
-                            thumbfittedlst[n] = document.createElement("canvas");
-                            thumbimglst[n] = new Image();
-                        }
-    
-                        url.searchParams.set("id",this.id);
-                        window.history.replaceState("", url.origin, url); 
-                        url = new URL(window.location.href);
-                        url.path = this.id;
-                        fetch(this.json)
-                            .then((response) => jsonhandler(response))
-                            .then((obj) => galleryobj.init(obj))
-                        return true;
-                    }
-                }
-    
-                _2cnv.sliceobj.data = results
-                var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
-                _2cnv.rotated = [...a, ...a, ...a];
-                var a = Array(_7cnv.sliceobj.length()).fill().map((_, index) => index);
-                _7cnv.rotated = [...a, ...a, ...a];
-                menuobj.draw();
-            })
-            .catch(error => console.log(error));
-    }
-    
     var lst = [_2cnv, _3cnv, _5cnv, _6cnv, _7cnv, _8cnv, _9cnv, _10cnv, _11cnv];
     for (var n = 0; n < lst.length; n++)
     {
@@ -7032,7 +7035,6 @@ function handleCredentialResponse(response)
                 {
                     login.id = k.id;
                     login.secret = k.secret;
-                    setupmenus();
                     menuobj.draw();
                     dialog.close();
                 })
@@ -7043,7 +7045,6 @@ function handleCredentialResponse(response)
                 var k = lst[0];
                 login.id = k.id;
                 login.secret = k.secret;
-                setupmenus();
                 menuobj.draw();
                 dialog.close();
             }
