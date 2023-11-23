@@ -2824,9 +2824,9 @@ async function loadzip(file)
         var k = {}
         k.ext = key.ext();
         k.entry = entry;
-        var lst = key.split("/");
-        k.name = lst.pop();
-        k.folder = lst.join("/");
+        var e = key.split("/");
+        k.name = e.pop();
+        k.folder = e.join("/");
         galleryobj.data.push(k);
     }
 
