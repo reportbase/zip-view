@@ -4110,6 +4110,23 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             return true;
         }
+        else if (canvas.galleryopenrect && canvas.galleryopenrect.hitest(x, y))
+        {
+           for (var n = 0; n < IMAGELSTSIZE; ++n)
+            {
+                thumbfittedlst[n] = document.createElement("canvas");
+                thumbimglst[n] = new Image();
+            }
+
+            var gallery = _2cnv.sliceobj.value();
+            url.searchParams.set("id",gallery.id);
+            window.history.replaceState("", url.origin, url); 
+            url = new URL(window.location.href);
+            url.path = gallery.id;
+            fetch(this.json)
+                .then((response) => jsonhandler(response))
+                .then((obj) => galleryobj.init(obj))
+        }
         else if (canvas.galleryaddrect && canvas.galleryaddrect.hitest(x, y))
         {
             var title = document.getElementById("gallery-add-title");
@@ -6414,19 +6431,8 @@ function setupmenus()
                         var result = results[n];
                         result.func = function(n, x, y)
                         {
-                            for (var n = 0; n < IMAGELSTSIZE; ++n)
-                            {
-                                thumbfittedlst[n] = document.createElement("canvas");
-                                thumbimglst[n] = new Image();
-                            }
-        
-                            url.searchParams.set("id",this.id);
-                            window.history.replaceState("", url.origin, url); 
-                            url = new URL(window.location.href);
-                            url.path = this.id;
-                            fetch(this.json)
-                                .then((response) => jsonhandler(response))
-                                .then((obj) => galleryobj.init(obj))
+                             _2cnv.sliceobj.set(n);
+                            menuobj.draw();
                             return true;
                         }
                     }
