@@ -2583,14 +2583,15 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        if (!context.elst)
-            context.elst = [];
-        context.elst.push(delta);//todo: safari left right wheel broken
-        var j = delta < 0 ? -1 : 1;
         if (SAFARI)
-            galleryobj.leftright(context, j * (context.canvas.speed / 2));
+        {
+            context.canvas.hollyobj.addperc(delta / 1000);
+            menuobj.draw();
+        }
         else
+        {
             galleryobj.leftright(context, delta);
+        }
     },
 },
 {
