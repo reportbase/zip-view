@@ -2817,8 +2817,6 @@ async function loadzip(file)
     {
         var key = lst[n];
         var k = Array.from(key);
-        if (SAFARI && k.charAt(0) == '_')
-            continue;
         var entry = entries[key];
         if (entry.isDirectory)
             continue;
