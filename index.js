@@ -670,7 +670,7 @@ var footlst =
                 new panel.layers(
                 [
                     new panel.fill(FOOTBTNCOLOR),
-                    1?0:new panel.colsA([0,0,0,0],
+                    new panel.colsA([0,0,0,0],
                     [
                         new panel.layers(
                         [
