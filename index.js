@@ -4835,24 +4835,7 @@ menuobj.show = function()
         context.show(l, 0, w, window.innerHeight);
     }
 
-    function f()
-    {
-        context.canvas.lastime = -0.0000000000101010101;
-        menuobj.draw();
-    }
-
-    setTimeout(function()
-    {
-        f();
-    }, 100);
-    setTimeout(function()
-    {
-        f();
-    }, 500);
-    setTimeout(function()
-    {
-        f();
-    }, 1000);
+    menuobj.draw();    
 }
 
 //menuobj draw
