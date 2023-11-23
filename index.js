@@ -5965,6 +5965,8 @@ function resize()
         menuobj.hide();
         menuobj.setindex(_8cnvctx);
     }
+
+    menuobj.redraw();
 }
 
 window.addEventListener("focus", (evt) =>{});
