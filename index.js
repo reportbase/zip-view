@@ -2580,7 +2580,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        galleryobj.leftright(context, delta);
+        galleryobj.leftright(context, context.canvas.speed / 2);//delta);
     },
 },
 {
