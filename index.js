@@ -4139,10 +4139,10 @@ var taplst =
                 .then((response) => jsonhandler(response))
                 .then(function(obj)
                 {
-                    _2cnv.sliceobj.slice(_2cnv.sliceobj.current(),1);
+                    _2cnv.sliceobj.data.splice(_2cnv.sliceobj.current(),1);
                     menuobj.draw();
                 })
-                    _2cnv.sliceobj.slice(_2cnv.sliceobj.current(),1);
+                    _2cnv.sliceobj.data.splice(_2cnv.sliceobj.current(),1);
                     menuobj.draw();
             });
         }    
