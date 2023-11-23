@@ -6538,7 +6538,7 @@ function setupmenus()
     _2cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
 
-    if (0)//login.id)
+    if (login.id)
     {
         fetch(`https://gallery.reportbase5836.workers.dev/list/${login.id}`)
             .then((response) => jsonhandler(response))
