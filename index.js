@@ -6557,6 +6557,26 @@ function setupmenus()
         },
     ]
 
+    function bsearch(array, key) 
+    {
+      let low = 0;
+      let high = array.length - 1;
+      while (low <= high) 
+      {
+        const mid = Math.floor((low + high) / 2);
+        const item = array[mid];     
+        if (item.folder < key) 
+          low = mid + 1;
+        else if (item.folder > key) 
+          high = mid - 1;  
+        else
+          return mid; 
+      }
+      
+      return -1;
+    }
+
+
     _5cnv.sliceobj.data = [];
     var j = 0;
     var folder = "";
@@ -6569,34 +6589,19 @@ function setupmenus()
             continue;
         }
         
-        var j = _5cnv.sliceobj.data.findIndex(function(a)
-        {
-            return a.folder == k.folder;
-        });
+        var j = _5cnv.sliceobj.data.findIndex(function(a){
+            return a.folder == k.folder;});
         
         if (j == -1)
             _5cnv.sliceobj.data.push(k);
         
         k.func = function()
         {
-            if (!galleryobj.folders)
-            {
-                galleryobj.folders = {};
-                for (var m = galleryobj.length()-1; m >= 0; --m)
-                {
-                    var e = galleryobj.data[m];
-                    if (!e.folder)
-                        continue;
-                    galleryobj.folders[e.folder] = m;
-                }
-            }
-            
-            var n = galleryobj.folders[this.folder];
-            if (typeof n == "undefined")
-                return;
+            var j = bsearch(galleryobj.data, this.folder);
+            menuobj.hide()
             menuobj.setindex(_8cnvctx);
             menuobj.show();
-            gotoimage(n);
+            gotoimage(j);
             return true;
         }
     };
