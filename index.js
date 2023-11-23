@@ -4129,19 +4129,22 @@ var taplst =
         }
         else if (canvas.gallerydeleterect && canvas.gallerydeleterect.hitest(x, y))
         {
-            var gallery = _2cnv.sliceobj.value();
-            fetch(`https://gallery.reportbase5836.workers.dev/${gallery.id}`,
+            showdialog("confirm", function(image)
             {
-                'method': 'DELETE'
-            })
-            .then((response) => jsonhandler(response))
-            .then(function(obj)
-            {
-                _2cnv.sliceobj.slice(_2cnv.sliceobj.current(),1);
-                menuobj.draw();
-            })
-                _2cnv.sliceobj.slice(_2cnv.sliceobj.current(),1);
-                menuobj.draw();
+                var gallery = _2cnv.sliceobj.value();
+                fetch(`https://gallery.reportbase5836.workers.dev/${gallery.id}`,
+                {
+                    'method': 'DELETE'
+                })
+                .then((response) => jsonhandler(response))
+                .then(function(obj)
+                {
+                    _2cnv.sliceobj.slice(_2cnv.sliceobj.current(),1);
+                    menuobj.draw();
+                })
+                    _2cnv.sliceobj.slice(_2cnv.sliceobj.current(),1);
+                    menuobj.draw();
+            });
         }    
         else if (canvas.galleryaddrect && canvas.galleryaddrect.hitest(x, y))
         {
