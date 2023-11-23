@@ -6598,10 +6598,14 @@ function setupmenus()
         k.func = function()
         {
             var j = bsearch(galleryobj.data, this.folder);
+            var n = j
+            for (; n >= 0; n--)
+                 if (galleryobj.data[n].folder != this.folder)
+                     break;
             menuobj.hide()
             menuobj.setindex(_8cnvctx);
             menuobj.show();
-            gotoimage(j);
+            gotoimage(n+1);
             return true;
         }
     };
