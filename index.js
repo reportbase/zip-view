@@ -2583,7 +2583,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        if (SAFARI)
+        if (1)//SAFARI)
         {
             context.canvas.hollyobj.addperc(delta / 1000);
             menuobj.draw();
