@@ -5959,20 +5959,11 @@ function resize()
 {
     buttonobj.reset()
     contextobj.reset();
-    var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
-    headham.panel = headlst[k];
-    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-    if (menuobj.value() == _8cnvctx)
+    headobj.reset();
+    if (menuobj.value() != _8cnvctx)
     {
-        menuobj.show();
-    }
-    else if (menuobj.value() && menuobj.value() != _8cnvctx)
-    {
-        var k = menuobj.value();
+        menuobj.hide();
         menuobj.setindex(_8cnvctx);
-        menuobj.setindex(k);
-        menuobj.show();
     }
 }
 
@@ -6035,9 +6026,11 @@ window.addEventListener("keydown", function(evt)
     var key = evt.key.toLowerCase();
     if (key == "escape")
     {
-        if (!headcnv.height)
+        headobj.reset();
+        if (menuobj.value() != _8cnvctx)
         {
-            headobj.reset();
+            menuobj.hide();
+            menuobj.setindex(_8cnvctx);
         }
     }
     
@@ -6526,7 +6519,7 @@ function setupmenus()
     _2cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
 
-    if (login.id)
+    if (0)//login.id)
     {
         fetch(`https://gallery.reportbase5836.workers.dev/list/${login.id}`)
             .then((response) => jsonhandler(response))
