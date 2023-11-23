@@ -2357,8 +2357,8 @@ var makehammer = function(context, v, t)
         var y = evt.offsetY;
         var deltax = evt.deltaX;
         var deltay = evt.deltaY;
-        if (Math.abs(deltax) <= 1 && Math.abs(deltay) <= 1)
-            return;
+        //if (Math.abs(deltax) <= 1 && Math.abs(deltay) <= 1)
+        //    return;
         if (typeof(ham.panel.wheeleftright) == "function")
             ham.panel.wheeleftright(context, x, y, deltax, 
                     evt.ctrlKey, evt.shiftKey, evt.altKey, 
@@ -2525,9 +2525,6 @@ var wheelst =
 
         if (ctrl)
         {
-            if (!context.elst)
-                context.elst = [];
-            
             var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
             if (headham.panel != headlst[k])
             {
@@ -2543,7 +2540,6 @@ var wheelst =
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
-            context.elst.push(e);
             if (!(context.elst.length % 5))
             {
                 buttonobj.add(e);
@@ -2580,6 +2576,9 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
+        if (!context.elst)
+            context.elst = [];
+        context.elst.push(delta);//todo: safari left right wheel broken
         var j = delta < 0 ? -1 : 1;
         if (SAFARI)
             galleryobj.leftright(context, j * (context.canvas.speed / 2));
