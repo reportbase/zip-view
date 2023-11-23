@@ -3865,8 +3865,7 @@ var taplst =
         }
         else if (
             (headcnvctx.rightmenurect &&
-            headcnvctx.rightmenurect.hitest(x, y)) ||
-            (menuobj.value() && menuobj.value() != _8cnvctx))
+            headcnvctx.rightmenurect.hitest(x, y)))
         {
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.leftctx.hide()
@@ -4015,6 +4014,19 @@ var taplst =
         {
             headobj.reset();
             menuobj.draw();
+        }
+        else if (menuobj.value() && menuobj.value() != _8cnvctx)
+        {
+            galleryobj.set(_8cnv.lastcurrent)
+            galleryobj.leftctx.hide()
+            galleryobj.rightctx.hide();
+            galleryobj.leftcnv = _7cnv;
+            galleryobj.leftctx = _7cnvctx;
+            menuobj.setindex(_8cnvctx);
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            displayobj.set(k);
+            menuobj.show();
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (!headcnv.height)
         {
