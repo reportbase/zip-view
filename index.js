@@ -4123,7 +4123,7 @@ var taplst =
             window.history.replaceState("", url.origin, url); 
             url = new URL(window.location.href);
             url.path = gallery.id;
-            fetch(this.json)
+            fetch(gallery.json)
                 .then((response) => jsonhandler(response))
                 .then((obj) => galleryobj.init(obj))
         }
