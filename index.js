@@ -3870,14 +3870,19 @@ var taplst =
         {
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.leftctx.hide()
-            galleryobj.rightctx.hide();
             if (menuobj.value() == galleryobj.rightctx)
             {
+                galleryobj.leftctx.hide();
+                galleryobj.rightctx.hide();
                 galleryobj.leftcnv = _7cnv;
                 galleryobj.leftctx = _7cnvctx;
                 menuobj.setindex(_8cnvctx);
             }
-            
+            else
+            {
+                menuobj.setindex(galleryobj.rightctx);
+            }
+
             var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
             displayobj.set(k);
             menuobj.show();
