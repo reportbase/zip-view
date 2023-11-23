@@ -3864,8 +3864,9 @@ var taplst =
             headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         }
         else if (
-            headcnvctx.rightmenurect &&
-            headcnvctx.rightmenurect.hitest(x, y))
+            (headcnvctx.rightmenurect &&
+            headcnvctx.rightmenurect.hitest(x, y)) ||
+            (menuobj.value() && menuobj.value() != _8cnvctx))
         {
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.leftctx.hide()
@@ -4009,15 +4010,6 @@ var taplst =
         {
             headobj.reset();
             menuobj.draw();
-        }
-        else if (menuobj.value() && menuobj.value() != _8cnvctx)
-        {
-            menuobj.hide();
-            menuobj.setindex(_8cnvctx);
-            galleryobj.leftnv = _7cnv;
-            galleryobj.leftctx = _7cnvctx;
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-            menuobj.show();
         }
         else if (!headcnv.height)
         {
