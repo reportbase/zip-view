@@ -6888,7 +6888,7 @@ menuobj.updown = function(context, delta)
     var canvas = context.canvas;
     canvas.autodirect = delta < 0 ? 1 : -1;
     canvas.slideshow = (sealobj.value() / canvas.virtualheight) ;
-    canvas.slidereduce = canvas.slideshow / 10;
+    canvas.slidereduce = canvas.slideshow / 200;
 }
 
 function selectname(name)
