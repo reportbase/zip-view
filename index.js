@@ -2947,6 +2947,23 @@ async function loadimages(blobs)
     menuobj.draw();
 }
 
+function loadfiles(files)
+{
+    if (files.length == 1 && files[0].name)
+    {
+        if (files[0].name.isimage())
+            loadimages(files);
+        else if (files[0].name.iszip())
+            loadzip(files[0]);
+        else if (files[0].name.isjson())
+            loadjson(files[0]);
+    }
+    else
+    {
+        loadimages(files);
+    }
+}
+
 var droplst = 
 [
 {
@@ -2955,30 +2972,10 @@ var droplst =
     {
         if (menuobj.value() && menuobj.value() != _8cnvctx)
             return;
-        galleryobj.boss = 1;
-        var files = evt.dataTransfer.files;
-        delete galleryobj.datalength;
-        if (files.length == 1 && files[0].name)
-        {
-            if (files[0].name.isimage())
-            {
-                loadimages(files);
-            }
-            else if (files[0].name.iszip())
-            {
-                loadzip(files[0]);
-            }
-            else if (files[0].name.isjson())
-            {
-                loadjson(files[0]);
-            }
-        }
-        else
-        {
-            loadimages(files);
-        }
+        loadfiles(evt.dataTransfer.files);
     },
-}, ];
+}, 
+];
 
 var panlst = 
 [
@@ -6975,30 +6972,7 @@ function importdialog()
             menuobj.draw();
             galleryobj.leftnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
-            galleryobj.boss = 1;
-            var files = Array.from(input.files);
-            delete galleryobj.datalength;
-            if (files.length == 1 && files[0].name)
-            {
-                var name = files[0].name;
-                if (name.isimage())
-                {
-                    loadimages(files);
-                }
-                else if (name.iszip())
-                {
-                    loadzip(files[0]);
-                }
-                else if (name.isjson())
-                {
-                    var blob = files[0];
-                    loadjson(blob);
-                }
-            }
-            else
-            {
-                loadimages(files);
-            }
+            loadfiles(Array.from(input.files));
         };
 
         input.click();
