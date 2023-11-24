@@ -2586,8 +2586,16 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        context.canvas.hollyobj.addperc(delta / 2000);
-        menuobj.draw();
+        if (SAFARI)
+        {
+            context.canvas.hollyobj.addperc(delta / 2000);
+            menuobj.draw();
+        }
+        {
+        else
+        {
+            galleryobj.leftright(context, delta);
+        }
     },
 },
 {
@@ -6886,11 +6894,16 @@ function importdialog()
 //menuobj updown
 menuobj.updown = function(context, delta)
 {
-    var canvas = context.canvas;
+   var canvas = context.canvas;
     canvas.autodirect = delta < 0 ? 1 : -1;
-    canvas.slideshow = (sealobj.value() / canvas.virtualheight) * 4 ;
-    canvas.slidereduce = canvas.slideshow / 50;
-}
+    var f = Math.abs(delta) / 100;
+    var b = canvas.reduce/100;
+    var g = Math.lerp(0.01, 2160, b);
+    var lst = [1.5, 1.75, 2.0, 2.25, 2.5, 3.0, 3.5, 4.0];
+    var j = util.clamp(0, lst.length - 1, canvas.sliceobj.length());
+    var k = 5 * f;
+    canvas.slideshow = (sealobj.value() / canvas.virtualheight) * k * 1.5;
+    canvas.slidereduce = canvas.slideshow / g;}
 
 function selectname(name)
 {
