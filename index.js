@@ -6806,33 +6806,6 @@ galleryobj.init = function(obj)
 
 var login = {};
 
-function loadgallery(path)
-{
-    if (path.isimage())
-    {
-        url.path = path;
-        loadimages(path);
-    }
-    else if (path.isjson())
-    {
-        url.path = path;
-         fetch(path)
-            .then((response) => jsonhandler(response))
-            .then((obj) => galleryobj.init(obj))
-    }
-    else if (path.isarchive())
-    {
-          url.path = path;
-          loadzip(path);
-    }
-    else
-    {
-        url.path = undefined;
-        //tood: load json
-        //todo: load text file
-    }
-}
-
 if (url.searchParams.has("data"))
 {
     url.path = url.searchParams.get("data");
@@ -6863,12 +6836,17 @@ else if (url.searchParams.has("id"))
     url.path = url.searchParams.get("id");
     fetch(`https://gallery.reportbase5836.workers.dev/${url.path}`)
         .then((response) => jsonhandler(response))
-        .then((obj) => loadgallery(obj))        
-}
-else if (url.searchParams.has("path"))
-{
-    var path = url.searchParams.get("path");
-    loadgallery(path)
+        .then(function(obj)
+              {
+                 url.path = obj.json;
+                  if (url.path.isjson())
+                  {
+                     fetch(obj.json)
+                        .then((response) => jsonhandler(response))
+                        .then((obj) => galleryobj.init(obj))   
+                  }
+                  else if (
+              })        
 }
 else
 {
@@ -6877,6 +6855,7 @@ else
         .then((response) => jsonhandler(response))
         .then((obj) => galleryobj.init(obj))
 }
+
 function downloadtext(name, text)
 {
     var element = document.createElement('a');
