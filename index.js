@@ -2547,6 +2547,9 @@ var wheelst =
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
+            if (!context.elst)
+                context.elst = [];
+            context.elst.push(delta);
             if (!(context.elst.length % 5))
             {
                 buttonobj.add(e);
@@ -2583,15 +2586,8 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        if (1)//SAFARI)
-        {
-            context.canvas.hollyobj.addperc(delta / 1000);
-            menuobj.draw();
-        }
-        else
-        {
-            galleryobj.leftright(context, delta);
-        }
+        context.canvas.hollyobj.addperc(delta / 2000);
+        menuobj.draw();
     },
 },
 {
