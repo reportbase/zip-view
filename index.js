@@ -6090,12 +6090,20 @@ window.addEventListener("keydown", function(evt)
     var key = evt.key.toLowerCase();
     if (key == "escape")
     {
-        headobj.reset();
-        if (menuobj.value() != _8cnvctx)
+        if (dialog && dialog.open)
+        {
+            dialog.close();
+            return;
+        }
+        
+        if (menuobj.value() && menuobj.value() != _8cnvctx)
         {
             menuobj.hide();
             menuobj.setindex(_8cnvctx);
+            return;
         }
+    
+        headobj.reset();
     }
     
     if (dialog && dialog.open)
@@ -6428,6 +6436,7 @@ function setupmenus()
         title: `Open   \u{25B6}\n*.zip, *.cbz, *.json, *.png,\n*.jpg, *.avif, *.webp, *.gif`,
         func: function()
         {
+            importdialog();
             return true;
         }
     },   
@@ -6439,14 +6448,13 @@ function setupmenus()
         }
     },     
     {
-        title: "https://zip-view.com\nImage Viewer\nDrag and drop images (*.jpg, *.png, *.webp, *.avif) and zip file image galleries (*.zip, *.cbz) from the desktop or load them from the cloud.",
-        func: function() 
-        {
-            return true;
-        }
-    },     
-    {
         title: `Images   \u{25B6}`,
+        func: function()
+        {
+        }
+   },
+    {
+        title: `Users   \u{25B6}`,
         func: function()
         {
         }
