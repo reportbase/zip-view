@@ -6838,12 +6838,21 @@ else if (url.searchParams.has("id"))
         .then((response) => jsonhandler(response))
         .then(function(obj)
           {
-                 fetch(obj.json)
-                    .then(function(repsonse)
-                          {
-                                  console.log(response);
-                          })
-                    .then((obj) => galleryobj.init(obj))
+              var path = obj.json;
+                if (path.isimage())
+                {
+                    loadimages(path);
+                }
+                else if (path.isjson())
+                {
+                    fetch(path)
+                        .then((response) => jsonhandler(response))
+                        .then((obj) => galleryobj.init(obj))
+                }
+                else
+                {
+                    loadzip(path);
+                }
           })
 }
 else if (url.searchParams.has("path"))
