@@ -6838,14 +6838,23 @@ else if (url.searchParams.has("id"))
         .then((response) => jsonhandler(response))
         .then(function(obj)
               {
-                 url.path = obj.json;
-                  if (url.path.isjson())
+                  url.path = obj.json;
+                  let url2 = new URL(obj.json);
+                  if (obj.json.isjson())
                   {
                      fetch(obj.json)
                         .then((response) => jsonhandler(response))
                         .then((obj) => galleryobj.init(obj))   
                   }
-                  //todo: text file
+                  else if (url2.protocol == "https:")
+                  {
+                    //todo: parse text list
+                  }
+                  else
+                  {
+                        //todo: parse json
+                        //todo pare text list
+                  }
               })        
 }
 else
