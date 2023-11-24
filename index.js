@@ -1,3 +1,6 @@
+
+
+
 /* 
 Copyright 2017 Tom Brinkman
 https://zip-view.com 
@@ -6895,7 +6898,8 @@ menuobj.updown = function(context, delta)
 {
     var canvas = context.canvas;
     canvas.autodirect = delta < 0 ? 1 : -1;
-    var f = Math.abs(delta)/5;
+    var lerp = 7; Math.lerp(0,1000,delta/1000);
+    var f = Math.abs(delta)/lerp;
     canvas.slideshow = (sealobj.value() / canvas.virtualheight) * f;
     canvas.slidereduce = canvas.slideshow / 100;
 }
