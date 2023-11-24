@@ -4155,7 +4155,7 @@ var taplst =
             url = new URL(url.origin);
             var gallery = _2cnv.sliceobj.value();
             url.searchParams.set("id",gallery.id);
-            window.open(url.href,"_self)'
+            window.open(url.href,"_self")
         }
         else if (canvas.gallerydeleterect && canvas.gallerydeleterect.hitest(x, y))
         {
