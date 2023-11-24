@@ -6845,7 +6845,7 @@ else if (url.searchParams.has("id"))
                         .then((response) => jsonhandler(response))
                         .then((obj) => galleryobj.init(obj))   
                   }
-                  else if (
+                  //todo: text file
               })        
 }
 else
