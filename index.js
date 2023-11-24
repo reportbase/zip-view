@@ -566,7 +566,7 @@ var sealobj = new circular_array("SEAL", SEAL);
 sealobj.set(SEAL/2);
 
 var beavobj = new circular_array("BEAV", 100)
-beavobj.set(63.9);
+beavobj.set(63.7);
 
 var footlst = 
 [
