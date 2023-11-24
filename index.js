@@ -870,12 +870,11 @@ var footlst =
                 ])
             ]);
 
-        var email = login.email?login.email:"Login";
         a.draw(context, rect, 
                [
                    `\u{25C0}   ${url.host}`,
                     0,
-                    `${email}   \u{25B6}`,
+                    `Login   \u{25B6}`,
                 ],
                 0);
         context.restore();
@@ -6573,8 +6572,11 @@ function setupmenus()
         func: function(n, x, y)
         {
            if (!login.id)
+           {
+               googlelogin();
                return;
-    
+           }
+            
            fetch(`https://gallery.reportbase5836.workers.dev/list/${login.id}`)
                 .then((response) => jsonhandler(response))
                 .then(function(results)
