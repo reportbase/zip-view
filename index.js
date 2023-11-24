@@ -4939,7 +4939,7 @@ menuobj.draw = function()
             var y = j * context.canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-            y = Math.floor(y);
+            y = Math.round(y);
             if (y > 0 && y < lasty)
                 y = lasty;
             lasty = y;
