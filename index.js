@@ -648,6 +648,70 @@ var footlst =
     }
 },    
 {
+    name: "USERS",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save();     
+        canvas.homerect = new rectangle();
+        canvas.useropenrect = new rectangle();
+        canvas.useraddrect = new rectangle();
+        canvas.userpatchrect = new rectangle();
+        canvas.userdeleterect = new rectangle();
+        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
+            [
+                new panel.layers(
+                [
+                    new panel.fill(FOOTBTNCOLOR),
+                    new panel.rectangle(canvas.homerect),
+                    new panel.text(),
+                ]),
+                0,
+                new panel.layers(
+                [
+                    new panel.fill(FOOTBTNCOLOR),
+                    new panel.colsA([0,0,0,0],
+                    [
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.useropenrect),
+                            new panel.text(),
+                        ]),
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.useraddrect),
+                            new panel.text(),
+                        ]),
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.userpatchrect),
+                            new panel.text(),
+                        ]),
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.userdeleterect),
+                            new panel.text(),
+                        ]),
+                    ])                            
+                ])
+            ]);
+        
+        a.draw(context, rect, 
+               [
+                   `\u{25C0}   Users`,
+                   0,
+                   [
+                       `Open`,
+                       `Add \u{25B6}`,
+                       `Edit \u{25B6}`,
+                       `Delete`,
+                    ], 
+                ]);
+        
+        context.restore();    
+    }
+},
+{
     name: "GALLERIES",
     draw: function(context, rect, user, time)
     {
@@ -4984,8 +5048,8 @@ menuobj.draw = function()
 
 var eventlst = 
 [
-{ //1 unused
-    hideontap: 1,
+{ //1 users
+    hideontap: 0,
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
@@ -4994,15 +5058,15 @@ var eventlst =
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "OPTION",
+    button: "CURRENT",
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: "DEFAULT",
-    buttonheight: 180,
+    footer: "USERS",
+    buttonheight: 240,
     buttonmargin: 20,
     width: 640
 },
@@ -6454,6 +6518,31 @@ function setupmenus()
         title: `Users   \u{25B6}`,
         func: function()
         {
+           fetch(`https://user.reportbase5836.workers.dev/list`)
+                .then((response) => jsonhandler(response))
+                .then(function(results)
+                {
+                    for (var n = 0; n < results.length; ++n)
+                    {
+                        var result = results[n];
+                        result.func = function(n, x, y)
+                        {
+                             _1cnv.sliceobj.set(n);
+                            menuobj.draw();
+                            return false;
+                        }
+                    }
+        
+                    _1cnv.sliceobj.data = results
+                    var a = Array(_1cnv.sliceobj.length()).fill().map((_, index) => index);
+                 
+                    menuobj.hide();
+                    galleryobj.leftcnv = _1cnv;
+                    galleryobj.leftctx = _1cnvctx;
+                    menuobj.setindex(galleryobj.leftctx);
+                    menuobj.show();
+                    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+                })
         }
    },
    {
