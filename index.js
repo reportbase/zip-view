@@ -4152,14 +4152,10 @@ var taplst =
                 thumbimglst[n] = new Image();
             }
 
+            url = new URL(url.origin);
             var gallery = _2cnv.sliceobj.value();
             url.searchParams.set("id",gallery.id);
-            window.history.replaceState("", url.origin, url); 
-            url = new URL(window.location.href);
-            url.path = gallery.id;
-            fetch(gallery.json)
-                .then((response) => jsonhandler(response))
-                .then((obj) => galleryobj.init(obj))
+            window.open(url.href,"_self)'
         }
         else if (canvas.gallerydeleterect && canvas.gallerydeleterect.hitest(x, y))
         {
@@ -6100,6 +6096,7 @@ window.addEventListener("keydown", function(evt)
         {
             menuobj.hide();
             menuobj.setindex(_8cnvctx);
+            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             return;
         }
     
