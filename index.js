@@ -6895,7 +6895,7 @@ menuobj.updown = function(context, delta)
 {
     var canvas = context.canvas;
     canvas.autodirect = delta < 0 ? 1 : -1;
-    var f = Math.abs(delta) / 50;
+    var f = Math.abs(delta) / 100;
     var b = canvas.reduce/100;
     var g = Math.lerp(0.01, 2160, b);
     var lst = [1.5, 1.75, 2.0, 2.25, 2.5, 3.0, 3.5, 4.0];
