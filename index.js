@@ -641,7 +641,7 @@ var footlst =
                [
                    `\u{25C0}   ${k}`,
                    0,
-                   "Upload All   \u{25B6}", 
+                   "Upload   \u{25B6}", 
                 ], 0);
         
         context.restore();
@@ -6839,7 +6839,10 @@ else if (url.searchParams.has("id"))
         .then(function(obj)
           {
                  fetch(obj.json)
-                    .then((response) => jsonhandler(response))
+                    .then(function(repsonse)
+                          {
+                                  console.log(response);
+                          })
                     .then((obj) => galleryobj.init(obj))
           })
 }
