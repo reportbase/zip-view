@@ -6836,42 +6836,12 @@ else if (url.searchParams.has("id"))
     url.path = url.searchParams.get("id");
     fetch(`https://gallery.reportbase5836.workers.dev/${url.path}`)
         .then((response) => jsonhandler(response))
-        .then(function(obj)
-          {
-              var path = obj.json;
-                if (path.isimage())
-                {
-                    loadimages(path);
-                }
-                else if (path.isjson())
-                {
-                    fetch(path)
-                        .then((response) => jsonhandler(response))
-                        .then((obj) => galleryobj.init(obj))
-                }
-                else
-                {
-                    loadzip(path);
-                }
-          })
+        .then((obj) => loadpath(obj))        
 }
 else if (url.searchParams.has("path"))
 {
-    url.path = url.searchParams.get("path");
-    if (url.path.isimage())
-    {
-        loadimages(url.path);
-    }
-    else if (url.path.isjson())
-    {
-        fetch(url.path)
-            .then((response) => jsonhandler(response))
-            .then((obj) => galleryobj.init(obj))
-    }
-    else
-    {
-        loadzip(url.path);
-    }
+    var path = url.searchParams.get("path");
+    loadgallery(path)
 }
 else
 {
@@ -6879,6 +6849,33 @@ else
     fetch(url.path)
         .then((response) => jsonhandler(response))
         .then((obj) => galleryobj.init(obj))
+}
+
+function loadgallery(path)
+{
+    if (path.isimage())
+    {
+        url.path = path;
+        loadimages(path);
+    }
+    else if (path.isjson())
+    {
+        url.path = path;
+         fetch(path)
+            .then((response) => jsonhandler(response))
+            .then((obj) => galleryobj.init(obj))
+    }
+    else if (path.isarchive())
+    {
+          url.path = path;
+          loadzip(path);
+    }
+    else
+    {
+        url.path = undefined;
+        //tood: load json
+        //todo: load text file
+    }
 }
 
 function downloadtext(name, text)
