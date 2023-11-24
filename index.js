@@ -4639,6 +4639,37 @@ var buttonlst = [
     draw: function(context, rect, user, time) {}
 },
 {
+    name: "USER",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save()
+        var clr = FILLBAR;
+        if (user.tap)
+            clr = MENUTAP;
+        else if (user.enabled && user.enabled())
+            clr = MENUSELECT;
+        else if (canvas.sliceobj.current() == time)
+            clr = MENUSELECT;
+
+        var e = context.canvas.hollyobj.berp();
+        var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
+            [
+                0,
+                new panel.layers(
+                    [
+                        new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                        new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
+                    ]),
+                0,
+            ]);
+
+        var k = [user.name,user.email];
+        a.draw(context, rect, k, time);
+        context.restore();
+    }
+},    
+{
     name: "OPTION",
     draw: function(context, rect, user, time)
     {
@@ -5058,7 +5089,7 @@ var eventlst =
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "CURRENT",
+    button: "USER",
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
