@@ -566,7 +566,7 @@ var sealobj = new circular_array("SEAL", SEAL);
 sealobj.set(SEAL/2);
 
 var beavobj = new circular_array("BEAV", 100)
-beavobj.set(63.7);
+beavobj.set(64.2);
 
 var footlst = 
 [
@@ -4858,6 +4858,7 @@ menuobj.draw = function()
     const rect = context.rect();
     if (!rect.width || !rect.height)
         return;
+    
     if (context.canvas.slideshow > 0)
     {
         var k = canvas.autodirect;
@@ -4938,6 +4939,7 @@ menuobj.draw = function()
             var y = j * context.canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
+            y = Math.floor(y);
             if (y > 0 && y < lasty)
                 y = lasty;
             lasty = y;
