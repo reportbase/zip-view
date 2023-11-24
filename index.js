@@ -6535,7 +6535,8 @@ function setupmenus()
         
                     _1cnv.sliceobj.data = results
                     var a = Array(_1cnv.sliceobj.length()).fill().map((_, index) => index);
-                 
+                     _1cnv.rotated = [...a, ...a, ...a];
+                    
                     menuobj.hide();
                     galleryobj.leftcnv = _1cnv;
                     galleryobj.leftctx = _1cnvctx;
@@ -6570,9 +6571,6 @@ function setupmenus()
                     _2cnv.sliceobj.data = results
                     var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
                     _2cnv.rotated = [...a, ...a, ...a];
-                    var a = Array(_7cnv.sliceobj.length()).fill().map((_, index) => index);
-                    _7cnv.rotated = [...a, ...a, ...a];
-
                     menuobj.hide();
                     galleryobj.leftcnv = _2cnv;
                     galleryobj.leftctx = _2cnvctx;
