@@ -6883,11 +6883,12 @@ function importdialog()
     });
 }
 
+//menuobj updown
 menuobj.updown = function(context, delta)
 {
     var canvas = context.canvas;
     canvas.autodirect = delta < 0 ? 1 : -1;
-    canvas.slideshow = (sealobj.value() / canvas.virtualheight) ;
+    canvas.slideshow = (sealobj.value() / canvas.virtualheight) * 10 ;
     canvas.slidereduce = canvas.slideshow / 200;
 }
 
