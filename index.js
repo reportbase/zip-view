@@ -6900,7 +6900,7 @@ menuobj.updown = function(context, delta)
     canvas.autodirect = delta < 0 ? 1 : -1;
     var k = Math.abs(delta)/20;
     canvas.slideshow = (sealobj.value() / canvas.virtualheight) * k;
-    canvas.slidereduce = canvas.slideshow / 200;
+    canvas.slidereduce = canvas.slideshow / 1000;
 }
 
 function selectname(name)
