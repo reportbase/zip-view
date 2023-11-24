@@ -3343,7 +3343,7 @@ var swipelst = [
         headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         
         var k = evt.type == "swipeup" ? 1 : -1;
-        menuobj.updown(context, k * context.canvas.speed);
+        menuobj.updown(context, k * 180);
         if (!global.swipetimeout)
             global.swipetimeout = setInterval(function()
             {
