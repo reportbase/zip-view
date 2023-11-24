@@ -2586,7 +2586,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        if (SAFARI)
+        if (SAFARI || FIREFOX)
         {
             context.canvas.hollyobj.addperc(delta / 2000);
             menuobj.draw();
