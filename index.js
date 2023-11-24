@@ -61,7 +61,7 @@ const DEFAULTFONT = "17px archivo black";
 const MEDIUMFONT = "19px archivo black";
 const LARGEFONT = "21px archivo black";
 const HUGEFONT = "24px archivo black";
-const SLICEWIDTH = 36;
+const SLICEWIDTH = 16;
 const ZOOMAX = 92;
 const IMAGELSTSIZE = 32;
 const BOSS = 0;
@@ -3407,7 +3407,7 @@ var swipelst = [
         headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
         
         var k = evt.type == "swipeup" ? 1 : -1;
-        menuobj.updown(context, k * 180);
+        menuobj.updown(context, k * 90);
         if (!global.swipetimeout)
             global.swipetimeout = setInterval(function()
             {
