@@ -2591,7 +2591,6 @@ var wheelst =
             context.canvas.hollyobj.addperc(delta / 2000);
             menuobj.draw();
         }
-        {
         else
         {
             galleryobj.leftright(context, delta);
