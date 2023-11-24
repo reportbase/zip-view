@@ -6841,16 +6841,12 @@ else if (url.searchParams.has("id"))
                   {
                      fetch(obj.json)
                         .then((response) => jsonhandler(response))
-                        .then((obj) => galleryobj.init(obj))   
-                  }
-                  else if (url2.protocol == "https:")
-                  {
-                    //todo: parse text list
+                        .then((json) => galleryobj.init(json))   
                   }
                   else
                   {
-                        //todo: parse json
-                        //todo pare text list
+                      var json = JSON.parse(obj.json);
+                      galleryobj.init(json)
                   }
               })        
 }
