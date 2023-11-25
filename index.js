@@ -3860,16 +3860,12 @@ var taplst =
                         if (k < 0.2)
             {
                 menuobj.updown(context, 120)
-                if (!context.swipetimeout)
-                    context.swipetimeout = 
-                        setInterval(function(){menuobj.draw()}, GALLERYMAIN);
+                menuobj.draw();
             }
             else if (k > 0.8)
             {
                  menuobj.updown(context, -120)
-                if (!context.swipetimeout)
-                    context.swipetimeout = 
-                        setInterval(function(){menuobj.draw()}, GALLERYMAIN);           
+                menuobj.draw();
             }
             else
             {
