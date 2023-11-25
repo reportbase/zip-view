@@ -46,6 +46,7 @@ const FOOTBTNCOLOR = "rgba(0,0,0,0.6)";
 const OPTIONFILL = "white";
 const THUMBTRANSPARENT = "rgba(0,0,0,0.2)";
 const LIGHTHUMBFILLL = "rgba(255,125,0,0.25)";
+const HEAVYFILL = "rgba(0,0,0,0.75)";
 const THUMBFILL = "rgba(255,125,0,0.40)";
 const THUMBSTROKE = "rgba(255,255,255,0.4)";
 const SEARCHFRAME = "rgba(255,255,255,0.5)";
@@ -1293,7 +1294,7 @@ var displaylst =
                         0,
                         new panel.layers(
                             [
-                                new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
                                 new panel.expand(new panel.rectangle(canvas.buttonrect), 20, 0),
                                 new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
                             ]),
@@ -1312,7 +1313,7 @@ var displaylst =
                         0,
                         new panel.layers(
                             [
-                                new panel.rounded("rgba(0,0,0,0.75)", 0, TRANSPARENT, 8, 8),
+                                new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
                                 new panel.expand(new panel.rectangle(canvas.templaterect), 0, 20),
                                 new panel.shrink(new panel.currentH(
                                     new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
@@ -1338,7 +1339,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded("rgba(0,0,0,0.75)", 0, TRANSPARENT, 12, 12),
+                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
                     new panel.expand(new panel.rectangle(context.buttonmenurect), 10, 10),
                     new panel.shrink(new panel.text(), 10, 10),
                 ]),
@@ -1351,7 +1352,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(NUBACK, 0, TRANSPARENT, 12, 12),
+                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
                     new panel.expand(new panel.rectangle(context.templatemenurect), 10, 10),
                     new panel.gridA(1, data.length, 1, 
                             new panel.shrink(new panel.text(), 10, 10)),
@@ -1399,7 +1400,7 @@ var displaylst =
                         0,
                         new panel.layers(
                             [
-                                new panel.rounded("rgba(0,0,0,0.75)", 0, TRANSPARENT, 8, 8),
+                                new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
                                 new panel.expand(new panel.rectangle(canvas.vscrollrect), 20, 0),
                                 new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
                             ]),
@@ -1418,7 +1419,7 @@ var displaylst =
                         0,
                         new panel.layers(
                             [
-                                new panel.rounded("rgba(0,0,0,0.75)", 0, TRANSPARENT, 8, 8),
+                                new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
                                 new panel.expand(new panel.rectangle(canvas.hollyrect), 0, 20),
                                 new panel.shrink(new panel.currentH(
                                     new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
@@ -1451,7 +1452,7 @@ var displaylst =
                 0,
                 new panel.layers(
                     [
-                        new panel.rounded("rgba(0,0,0,0.75)", 0, TRANSPARENT, 12, 12),
+                        new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
                         new panel.expand(new panel.rectangle(context.folderect), 10, 10),
                         new panel.gridA(1, folders.length, 1,
                             new panel.shrink(new panel.text(), 10, 10)),
@@ -1464,7 +1465,7 @@ var displaylst =
                     0,
                     new panel.layers(
                         [
-                            new panel.rounded(NUBACK, 0, TRANSPARENT, 12, 12),
+                            new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
                             new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
                             new panel.gridA(1, data.length, 1,
                                 new panel.shrink(new panel.text(), 10, 10)),
@@ -4787,7 +4788,7 @@ menuobj.toggle = function(context)
         menuobj.show();
     }
 
-    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+    headobj.draw();
 }
 
 menuobj.hide = function()
@@ -5432,8 +5433,7 @@ contextobj.reset = function()
             getblobpath(photo.image, galleryobj.value())
         else
             photo.image.src = galleryobj.getpath(galleryobj.current());
-        
-        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        headobj.draw();
 
         photo.image.onerror =
             photo.image.onabort = function(e)
@@ -5445,12 +5445,11 @@ contextobj.reset = function()
         {
             var e = galleryobj.value();
             document.title = galleryobj.title?galleryobj.title:url.host;
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw();
             _4cnv.autodirect = -_4cnv.movingpage;
             _4cnv.movingpage = 0;
             contextobj.reset()
-
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw();
             bossobj.draw();
 
             var rotated = util.rotated_list(
@@ -6094,7 +6093,7 @@ window.addEventListener("keydown", function(evt)
         {
             menuobj.hide();
             menuobj.setindex(_8cnvctx);
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw();
             return;
         }
     
@@ -6292,7 +6291,7 @@ headobj.reset = function()
     var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
     displayobj.set(k);
     headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);  
+    headobj.draw();  
     menuobj.draw();
 }
 
@@ -6470,7 +6469,7 @@ function setupmenus()
                     galleryobj.leftctx = _1cnvctx;
                     menuobj.setindex(galleryobj.leftctx);
                     menuobj.show();
-                    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+                    headobj.draw();
                 })
         }
    },
@@ -6507,7 +6506,7 @@ function setupmenus()
                     galleryobj.leftctx = _2cnvctx;
                     menuobj.setindex(galleryobj.leftctx);
                     menuobj.show();
-                    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+                    headobj.draw();
                 })
             return false;
         }
@@ -6533,7 +6532,7 @@ function setupmenus()
             galleryobj.leftctx = _5cnvctx;
             menuobj.setindex(galleryobj.leftctx);
             menuobj.show();
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw();
             return false;
         }
     },
@@ -6546,7 +6545,7 @@ function setupmenus()
             galleryobj.leftctx = _3cnvctx;
             menuobj.setindex(galleryobj.leftctx);
             menuobj.show();
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw()
             return false;
         }
     }
@@ -6619,7 +6618,7 @@ function setupmenus()
             galleryobj.leftctx = _7cnvctx;
             menuobj.setindex(_8cnvctx);
             menuobj.show();
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw();
         };
         
         _6cnv.sliceobj.data.push(j);
