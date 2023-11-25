@@ -1034,6 +1034,10 @@ var headlst =
 ]
 
 var headobj = new circular_array("HEAD", headlst);
+headobj.draw = function()
+{
+	headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+}
 
 var positxobj = new circular_array("POSITIONX", 100);
 var posityobj = new circular_array("POSITIONY", 100);
@@ -1061,7 +1065,6 @@ var bossdisplaylst =
 
             var data = [];
             var index = galleryobj.current();
-            //data.push(`${canvas.timeobj.current().toFixed(FIXEDTIME)} of ${canvas.timeobj.length()}`);
             data.push(`\u{25C0}   ${index} of ${galleryobj.length()}   \u{25B6}`);
             const rainstep = Math.min(420,window.innerWidth-60);
         
@@ -2150,7 +2153,7 @@ CanvasRenderingContext2D.prototype.movepage = function(j)
     _4cnv.slidestop = 0;
     _4cnv.movingpage = j;
     galleryobj.rotate(j);
-    headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+    headobj.draw();
     delete photo.image;
     contextobj.reset();
 }
@@ -2506,7 +2509,7 @@ var wheelst =
             if (headham.panel != headlst[k])
             {
                 headham.panel = headlst[k];
-                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);     
+                headobj.draw();     
             }
             
             var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
@@ -2539,7 +2542,7 @@ var wheelst =
             if (Math.abs(delta) > 320 && headcnv.height)
             {
                 headcnvctx.show(0, 0, window.innerWidth, 0);
-                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+                headobj.draw();
             }
             
             menuobj.updown(context, delta)
@@ -2665,7 +2668,7 @@ var pinchlst =
 {
         var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
         headham.panel = headlst[k];
-        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);     
+        headobj.draw();     
         var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
         displayobj.set(k);
         if (!context.buttonanchor)
@@ -3179,7 +3182,7 @@ var panlst =
             canvas.thumbrect.hitest(x, y);
         movingx = new MovingAverage();
         movingy = new MovingAverage();
-        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        headobj.draw();
         context.isgalleryrect = context.galleryrect && context.galleryrect.hitest(x, y);
         context.istimerect = context.timerect && context.timerect.hitest(x, y);
         context.ishollyrect = context.hollyrect && context.hollyrect.hitest(x, y);
@@ -3305,7 +3308,7 @@ var swipelst = [
             return;
 
         headcnvctx.show(0, 0, window.innerWidth, 0);
-        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        headobj.draw();
         
         var k = evt.type == "swipeup" ? 1 : -1;
         menuobj.updown(context, k * 90);
@@ -3410,7 +3413,7 @@ var keylst = [
             {
                 var h = headcnv.height ? 0 : HEADHEIGHT;
                 headcnvctx.show(0, 0, window.innerWidth, h);
-                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+                headobj.draw();
                 menuobj.draw()
                 evt.preventDefault();
             }
@@ -3580,7 +3583,7 @@ var keylst = [
             {
                 var h = headcnv.height ? 0 : HEADHEIGHT;
                 headcnvctx.show(0, 0, window.innerWidth, h);
-                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+                headobj.draw();
                 evt.preventDefault();
             }
             else if (
@@ -3647,7 +3650,7 @@ var taplst =
     name: "BOSS",
     tap: function(context, rect, x, y, shift, ctrl)
     {
-        headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+        headobj.draw();
 
         if (headcnvctx.moveprev && headcnvctx.moveprev.hitest(x, y))
         {
@@ -3748,7 +3751,7 @@ var taplst =
         else if (!headcnv.height)
         {
             headcnv.height = HEADHEIGHT;
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw();
             bossobj.draw();
         }
         else if (
@@ -3759,7 +3762,7 @@ var taplst =
             menuobj.show();
             var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
             headham.panel = headlst[k];
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw();
         }
         else if (
             headcnvctx.bossdisplayrect &&
@@ -3770,7 +3773,7 @@ var taplst =
             var k = (x - headcnvctx.bossdisplayrect.x) / headcnvctx.bossdisplayrect.width;
             bossdisplayobj.rotate(k < 0.5 ? -1 : 1);
             contextobj.reset();
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw();
         }
         else if (
             context.pagerect &&
@@ -3783,7 +3786,7 @@ var taplst =
         {
             var h = headcnv.height ? 0 : HEADHEIGHT;
             headcnvctx.show(0, 0, window.innerWidth, h);
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw();
         }
         
         _4cnvctx.refresh();
@@ -3825,7 +3828,7 @@ var taplst =
             var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
             displayobj.set(k);
             menuobj.show();
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw();
         }
         else if (
             (headcnvctx.rightmenurect &&
@@ -3849,7 +3852,7 @@ var taplst =
             var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
             displayobj.set(k);
             menuobj.show();
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw();
         }
         else if (
             headcnvctx.closebossrect &&
@@ -3859,7 +3862,7 @@ var taplst =
             menuobj.show();
             var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
             headham.panel = headlst[k];
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw();
         }
         else if (
             context.buttonmenurect &&
@@ -3892,7 +3895,7 @@ var taplst =
             galleryobj.leftctx = _5cnvctx;
             menuobj.setindex(galleryobj.leftctx);
             menuobj.show();
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw();
         }
         else if (
             context.cursorect &&
@@ -3910,11 +3913,11 @@ var taplst =
             buttonobj.reset();
             templateobj.reset();
             _8cnv.fitflash = 1;
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw();
             setTimeout(function()
             {
                 _8cnv.fitflash = 0;
-                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+                headobj.draw();
             }, 400);
         
             menuobj.draw();
@@ -3990,7 +3993,7 @@ var taplst =
             var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
             displayobj.set(k);
             menuobj.show();
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw();
         }
         else if (!headcnv.height)
         {
