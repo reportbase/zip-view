@@ -2527,7 +2527,9 @@ var wheelst =
                 buttonobj.add(e);
                 menuobj.draw();
             }
-            
+
+
+            context.swipetimeout = 0;
             context.canvas.pinching = 0;
         }
         else if (canvas.buttonrect &&
@@ -4872,12 +4874,8 @@ menuobj.draw = function()
 {
     var context = this.value();
     if (!context)
-    {
-	clearInterval(context.swipetimeout)
-        context.swipetimeout = 0;
-        return;
-    }
-	
+    	return;
+    	
     var canvas = context.canvas;
     var time = canvas.timeobj.value() / 1000;
     var slices = context.canvas.sliceobj.data;
