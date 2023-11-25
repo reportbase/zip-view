@@ -2968,12 +2968,7 @@ var panlst =
             else if (canvas.isbuttonrect)
             {
                 var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
-                if (k < 0.2)
-                    galleryobj.leftright(-25);
-                else if (k > 0.8)
-                    galleryobj.leftright(25)
-                else
-                    buttonobj.setperc(k);
+                buttonobj.setperc(k);
             }
             else
             {
@@ -3651,13 +3646,6 @@ var taplst =
         {
             _4cnvctx.movepage(1);
         }
-        else if (context.uploadimagerect && context.uploadimagerect.hitest(x, y))
-        {
-                
-        }
-        else if (context.deleteimagerect && context.deleteimagerect.hitest(x, y))
-        {
-        }
         else if (context.downloadimagerect && context.downloadimagerect.hitest(x, y))
         {
             if (galleryobj.value().blob)
@@ -3943,7 +3931,12 @@ var taplst =
             canvas.buttonrect.hitest(x, y))
         {
             var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
-            buttonobj.setperc(k);
+            if (k < 0.2)
+                galleryobj.leftright(-25)
+            else
+                galleryobj.leftright(25)
+            else
+                buttonobj.setperc(k);
             menuobj.draw()              
         }
         else if (
