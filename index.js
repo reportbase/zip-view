@@ -1,4 +1,4 @@
-f/* 
+/* 
 Copyright 2017 Tom Brinkman
 https://zip-view.com 
 https://ipfs-view.com
