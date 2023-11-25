@@ -3777,13 +3777,16 @@ var taplst =
             context.pagerect.hitest(x, y))
         {
             var k = (x - context.pagerect.x) / context.pagerect.width;
-            context.movepage(k < 0.5 ? -1 : 1);
+	        if (k < 0.2)
+                bossobj.leftright(25);
+            else if (k > 0.8)
+                bossobj.leftright(-25);
+            else
+                context.movepage(k < 0.5 ? -1 : 1);
         }    
         else
         {
-            var h = headcnv.height ? 0 : HEADHEIGHT;
-            headcnvctx.show(0, 0, window.innerWidth, h);
-            headobj.draw();
+            
         }
         
         _4cnvctx.refresh();
