@@ -4872,7 +4872,12 @@ menuobj.draw = function()
 {
     var context = this.value();
     if (!context)
+    {
+	clearInterval(context.swipetimeout)
+        context.swipetimeout = 0;
         return;
+    }
+	
     var canvas = context.canvas;
     var time = canvas.timeobj.value() / 1000;
     var slices = context.canvas.sliceobj.data;
