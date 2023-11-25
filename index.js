@@ -6833,29 +6833,42 @@ else if (url.searchParams.has("sidney"))
 else if (url.searchParams.has("id"))
 {
     url.path = url.searchParams.get("id");
-    fetch(`https://gallery.reportbase5836.workers.dev/${url.path}`)
-        .then((response) => jsonhandler(response))
-        .then(function(obj)
-              {
-                  url.path = obj.json;
-                  let url2 = new URL(obj.json);
-                  if (obj.json.isjson())
-                  {
-                     fetch(obj.json)
-                        .then((response) => jsonhandler(response))
-                        .then((json) => galleryobj.init(json))   
-                  }
-                  else
-                  {
-                     fetch(obj.json)
-                        .then((response) => texthandler(response))
-                        .then(function(str)
-                          {
-                              var lst = str.split("\n");
-                              console.log(lst);
-                          }) 
-                  }
-              })        
+    //"http://144.202.71.85/data/X-Men";
+    //https://zip-view.pages.dev/res/files
+    var root = url.searchParams.get("root"); 
+
+	fetch(`https://gallery.reportbase5836.workers.dev/${url.path}`)
+		.then((response) => jsonhandler(response))
+		.then(function(obj)
+		{
+			  url.path = obj.json;
+			  let url2 = new URL(obj.json);
+			  if (obj.json.isjson())
+			  {
+				 fetch(obj.json)
+					.then((response) => jsonhandler(response))
+					.then((json) => galleryobj.init(json))   
+			  }
+			  else
+			  {
+				 fetch(obj.json)
+					.then((response) => texthandler(response))
+					.then(function(str)
+					{
+						var lst = str.split("\n");
+						var k = {}
+						k.data = [];
+						for (var n = 0; n < lst.length-1; ++n)
+						{
+							var e = {}
+							e.url = `${root}/${lst[n]}`;
+							k.data.push(e);
+						}
+						
+						galleryobj.init(k)
+					}) 
+			  }
+		  })        
 }
 else
 {
