@@ -1,4 +1,4 @@
-/* 
+f/* 
 Copyright 2017 Tom Brinkman
 https://zip-view.com 
 https://ipfs-view.com
@@ -944,7 +944,7 @@ var headlst =
                                 0,
                                 new panel.layers(
                                 [
-                                    new panel.rounded(NUBACK, 0, TRANSPARENT, 12, 12),
+                                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
                                     new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
                                     new panel.shrink(new panel.text(),10,10),
                                 ]),
@@ -1081,7 +1081,7 @@ var bossdisplaylst =
                         0,
                         new panel.layers(
                         [
-                            new panel.rounded(NUBACK, 0, TRANSPARENT, 12, 12),
+                            new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
                             new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
                             new panel.gridA(1, data.length, 1,
                                 new panel.shrink(new panel.text(),10,10)),
@@ -3557,19 +3557,13 @@ var keylst = [
                 key == "arrowleft" ||
                 key == "h")
             {
-                var k = _4cnv.timeobj.length();
-                var j = k*(1/50);
-                _4cnv.timeobj.CURRENT += j;
-                bossobj.draw()
+                bossobj.leftright(50);
             }
             else if (
                 key == "arrowright" ||
                 key == "l")
             {
-                var k = _4cnv.timeobj.length();
-                var j = k*(-1/50);
-                _4cnv.timeobj.CURRENT += j;
-                bossobj.draw() 
+                bossobj.leftright(-50);
             }
             else if (key == "/" || key == "\\" || key == "tab")
             {
@@ -3763,9 +3757,20 @@ var taplst =
             delete context.canvas.thumbrect;
             context.nostretchcolumn = 0;
             var k = (x - headcnvctx.bossdisplayrect.x) / headcnvctx.bossdisplayrect.width;
-            bossdisplayobj.rotate(k < 0.5 ? -1 : 1);
-            contextobj.reset();
-            headobj.draw();
+            if (k < 0.2)
+            {
+                bossobj.leftright(50);
+            }
+            else if (k > 0.8)
+            {
+                bossobj.leftright(-50);
+            }
+            else
+            {
+                bossdisplayobj.rotate(k < 0.5 ? -1 : 1);
+                contextobj.reset();
+                headobj.draw();
+            }
         }
         else if (
             context.pagerect &&
@@ -4320,6 +4325,14 @@ Number.prototype.pad = function(size)
 }
 
 var bossobj = new circular_array("", []);
+
+bossobj.leftright = function(e)
+{
+    var k = _4cnv.timeobj.length();
+    var j = k*(1/e);
+    _4cnv.timeobj.CURRENT += j;
+    bossobj.draw()
+}
 
 //bossobj draw
 bossobj.draw = function()
