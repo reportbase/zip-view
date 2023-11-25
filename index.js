@@ -1309,7 +1309,7 @@ var displaylst =
                         0,
                         new panel.layers(
                             [
-                                new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                new panel.rounded("rgba(0,0,0,0.75)", 0, TRANSPARENT, 8, 8),
                                 new panel.expand(new panel.rectangle(canvas.templaterect), 0, 20),
                                 new panel.shrink(new panel.currentH(
                                     new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
@@ -1335,7 +1335,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(NUBACK, 0, TRANSPARENT, 12, 12),
+                    new panel.rounded("rgba(0,0,0,0.75)", 0, TRANSPARENT, 12, 12),
                     new panel.expand(new panel.rectangle(context.buttonmenurect), 10, 10),
                     new panel.shrink(new panel.text(), 10, 10),
                 ]),
@@ -1396,7 +1396,7 @@ var displaylst =
                         0,
                         new panel.layers(
                             [
-                                new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                new panel.rounded("rgba(0,0,0,0.75)", 0, TRANSPARENT, 8, 8),
                                 new panel.expand(new panel.rectangle(canvas.vscrollrect), 20, 0),
                                 new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
                             ]),
@@ -1415,7 +1415,7 @@ var displaylst =
                         0,
                         new panel.layers(
                             [
-                                new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                                new panel.rounded("rgba(0,0,0,0.75)", 0, TRANSPARENT, 8, 8),
                                 new panel.expand(new panel.rectangle(canvas.hollyrect), 0, 20),
                                 new panel.shrink(new panel.currentH(
                                     new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
@@ -1448,7 +1448,7 @@ var displaylst =
                 0,
                 new panel.layers(
                     [
-                        new panel.rounded(NUBACK, 0, TRANSPARENT, 12, 12),
+                        new panel.rounded("rgba(0,0,0,0.75)", 0, TRANSPARENT, 12, 12),
                         new panel.expand(new panel.rectangle(context.folderect), 10, 10),
                         new panel.gridA(1, folders.length, 1,
                             new panel.shrink(new panel.text(), 10, 10)),
@@ -6713,24 +6713,25 @@ galleryobj.init = function(obj)
 	galleryobj.reset(obj);
 	return;
     }
-	
- 	fetch(obj.data)
-		.then((response) => texthandler(response))
-		.then(function(str)
-		{
-			var lst = str.split("\n");
-			var k = {}
-			obj.data = [];
-			for (var n = 0; n < lst.length-1; ++n)
-			{
-				var e = {}
-				e.url = `${obj.root}/${lst[n]}`;
-				obj.data.push(e);
-			}
 
-			galleryobj.reset(obj);
-		})
-		
+    fetch(obj.data)
+	.then((response) => texthandler(response))
+	.then(function(str)
+	{
+		var lst = str.split("\n");
+		var root = obj.root;
+		var k = {}
+		obj.data = [];
+		for (var n = 0; n < lst.length-1; ++n)
+		{
+			var e = {}
+			e.url = `${root}/${lst[n]}`;
+			obj.data.push(e);
+		}
+
+		galleryobj.reset(obj);
+	})
+	
 }
 
 if (url.searchParams.has("data"))
@@ -6859,7 +6860,6 @@ function MovingAverage()
 {
     const windowSize = 10;
     const values = [];
-
     this.update = function(value)
     {
         values.push(value);
@@ -6914,36 +6914,6 @@ menuobj.updown = function(context, delta)
     canvas.slidereduce = canvas.slideshow / 30;
 }
 
-function selectname(name)
-{
-    for (var m = 0; m < galleryobj.data.length; ++m)
-    {
-        var e = galleryobj.data[m];
-        if (!e.name || !e.name.wild(name))
-            continue;
-        gotoimage(m);
-        galleryobj.width = 0;
-        galleryobj.height = 0;
-        galleryobj.init();
-        break;
-    }
-}
-
-function selectid(id)
-{
-    for (var m = 0; m < galleryobj.data.length; ++m)
-    {
-        var e = galleryobj.data[m];
-        if (!e.id || e.id != id)
-            continue;
-        gotoimage(m);
-        galleryobj.width = 0;
-        galleryobj.height = 0;
-        galleryobj.init();
-        break;
-    }
-}
-
 galleryobj.leftright = function(context, delta)
 {
     if (context.pinching)
@@ -6986,10 +6956,6 @@ galleryobj.leftright = function(context, delta)
     }, GALLERYMAIN);
 }
 
-window.onGoogleLibraryLoad = () => 
-{
-}
-
 let b64DecodeUnicode = str =>
   decodeURIComponent(
     Array.prototype.map.call(atob(str), c =>
@@ -7000,13 +6966,7 @@ let parseJwt = token =>
   JSON.parse(
     b64DecodeUnicode(
       token.split('.')[1].replace('-', '+').replace('_', '/')
-    )
-  )  
-
-function handleRevokedSession(e) 
-{
-      
-}
+    ))  
 
 function googlelogin()
 {
