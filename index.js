@@ -3890,9 +3890,9 @@ var taplst =
             
             var k = (x - context.templatemenurect.x) / context.templatemenurect.width;
             if (k < 0.2)
-                galleryobj.leftright(-25)
+                galleryobj.leftright(context, -25)
             else if (k > 0.8)
-                galleryobj.leftright(25)
+                galleryobj.leftright(context, 25)
             else
             {
                 templateobj.add(k < 0.5 ? -1 : 1);
