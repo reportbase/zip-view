@@ -78,6 +78,12 @@ var panel = {};
 var global = {};
 let photo = {};
 let util = {};
+var login = {};
+
+var login = localStorage.getItem("login");
+if (login)
+    login = JSON.parse(login);
+
 photo.image = 0;
 util.random_color = function()
 {
@@ -852,7 +858,6 @@ var footlst =
         context.save();     
         canvas.closerect = new rectangle();
         canvas.loginrect = new rectangle();
-        canvas.logoutrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
@@ -870,11 +875,12 @@ var footlst =
                 ])
             ]);
 
+	var str = login.id ? "Logout" : "Login";
         a.draw(context, rect, 
                [
                    `\u{25C0}   ${url.host}`,
                     0,
-                    `Login   \u{25B6}`,
+                    `${str}   \u{25B6}`,
                 ],
                 0);
         context.restore();
@@ -4159,12 +4165,16 @@ var taplst =
         }
         else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
         {  
-            googlelogin();
-            return true;
-        }
-        else if (canvas.logoutrect && canvas.logoutrect.hitest(x, y))
-        {
-            google.accounts.id.revoke(login.credential, handleRevokedSession);
+    		if (login.id && login.credential)
+    		{
+    			localStorage.removeItem("login");
+    			google.accounts.id.revoke(login.credential, handleRevokedSession)
+    		}
+    		else
+    		{
+    			googlelogin();
+    		}
+            
             return true;
         }
         else if (canvas.usereditrect && canvas.usereditrect.hitest(x, y))
@@ -6719,8 +6729,6 @@ galleryobj.init = function(obj)
 		
 }
 
-var login = {};
-
 if (url.searchParams.has("data"))
 {
     url.path = url.searchParams.get("data");
@@ -6749,8 +6757,6 @@ else if (url.searchParams.has("sidney"))
 else if (url.searchParams.has("id"))
 {
     var id = url.searchParams.get("id");
-//https://zip-view.pages.dev/?id=8f69eb52-9962-4d1c-a4f9-d2b5d79aed01&root=https%3A%2F%2Fimages4.imagebam.com%2F72%2F1a%2F68&_8=2717.02682&t=1600x1600&b=1365
-//http://144.202.71.85/?id=ab352bd3-a7bf-451a-9278-766729741c0e&root=http://144.202.71.85/data/X-Men
 	fetch(`https://gallery.reportbase5836.workers.dev/${id}`)
 	.then((response) => jsonhandler(response))
 	.then(function(obj)
@@ -6760,6 +6766,14 @@ else if (url.searchParams.has("id"))
 			.then((response) => jsonhandler(response))
 			.then((json) => galleryobj.init(json))   
 	  })        
+}
+else if (url.searchParams.has("path"))
+{
+    var path = url.searchParams.get("path");
+  url.path = path;
+ fetch(path)
+	.then((response) => jsonhandler(response))
+	.then((json) => galleryobj.init(json))           
 }
 else
 {
@@ -7053,6 +7067,7 @@ function handleCredentialResponse(response)
                 {
                     login.id = k.id;
                     login.secret = k.secret;
+		            localStorage.setItem("login",JSON.stringify(login));	
                     menuobj.draw();
                     dialog.close();
                 })
@@ -7063,6 +7078,7 @@ function handleCredentialResponse(response)
                 var k = lst[0];
                 login.id = k.id;
                 login.secret = k.secret;
+                localStorage.setItem("login",JSON.stringify(login));
                 menuobj.draw();
                 dialog.close();
             }
