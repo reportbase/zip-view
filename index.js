@@ -3897,8 +3897,8 @@ var taplst =
             {
                 templateobj.add(k < 0.5 ? -1 : 1);
                 buttonobj.reset();
-            }
-            menuobj.draw();            
+                menuobj.draw();
+            }            
         }
         else if (
             context.folderect &&
