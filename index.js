@@ -79,10 +79,18 @@ var global = {};
 let photo = {};
 let util = {};
 var login = {};
+login.id = 0;
 
-var login = localStorage.getItem("login");
-if (login)
-    login = JSON.parse(login);
+try
+{
+	var k = localStorage.getItem("login");
+	if (k)
+	    login = JSON.parse(k);
+}
+catch(e)
+{
+
+}
 
 photo.image = 0;
 util.random_color = function()
