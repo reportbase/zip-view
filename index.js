@@ -2528,7 +2528,6 @@ var wheelst =
                 menuobj.draw();
             }
 
-
             context.swipetimeout = 0;
             context.canvas.pinching = 0;
         }
@@ -3861,11 +3860,17 @@ var taplst =
             {
                 menuobj.updown(context, 120)
                 menuobj.draw();
+                clearInterval(context.swipetimeout)
+                context.swipetimeout = setInterval(function(){
+                    menuobj.draw();}, MENUMAIN);
             }
             else if (k > 0.8)
             {
                  menuobj.updown(context, -120)
                 menuobj.draw();
+                 clearInterval(context.swipetimeout)
+                context.swipetimeout = setInterval(function(){
+                    menuobj.draw();}, MENUMAIN);           
             }
             else
             {
