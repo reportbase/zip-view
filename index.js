@@ -3990,9 +3990,21 @@ var taplst =
             }                
            
             var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
-            var j = Math.lerp(0,templateobj.length()-1,k);
-            templateobj.set(Math.round(j));
-            buttonobj.reset();
+            if (k < 0.2)
+            {
+                galleryobj.leftright(context, -25)
+            }
+            else if (k > 0.8)
+            {
+                galleryobj.leftright(context, 25)
+            }
+            else
+            {
+                var j = Math.lerp(0,templateobj.length()-1,k);
+                templateobj.set(Math.round(j));
+                buttonobj.reset();
+            }
+                
             menuobj.draw()
         }
         else if (canvas.hollyrect && canvas.hollyrect.hitest(x, y))
