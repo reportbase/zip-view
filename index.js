@@ -2188,8 +2188,8 @@ CanvasRenderingContext2D.prototype.savetime = function()
 CanvasRenderingContext2D.prototype.refresh = function()
 {
     var context = this;
-    clearInterval(global.swipetimeout);
-    global.swipetimeout = setInterval(function()
+    clearInterval(context.swipetimeout);
+    context.swipetimeout = setInterval(function()
     {
         context.canvas.lastime = -0.0000000000101010101;
         bossobj.draw()
@@ -2333,13 +2333,11 @@ var makehammer = function(context, v, t)
     ham.element.addEventListener("wheel", function(evt)
     {
         evt.preventDefault();
- var trackpad = evt.wheelDeltaY ? evt.wheelDeltaY === -3 * evt.deltaY : evt.deltaMode === 0
+        var trackpad = evt.wheelDeltaY ? evt.wheelDeltaY === -3 * evt.deltaY : evt.deltaMode === 0
         var x = evt.offsetX;
         var y = evt.offsetY;
         var deltax = evt.deltaX;
         var deltay = evt.deltaY;
-        //if (Math.abs(deltax) <= 1 && Math.abs(deltay) <= 1)
-        //    return;
         if (typeof(ham.panel.wheeleftright) == "function")
             ham.panel.wheeleftright(context, x, y, deltax, 
                     evt.ctrlKey, evt.shiftKey, evt.altKey, 
@@ -2548,12 +2546,9 @@ var wheelst =
             
             menuobj.updown(context, delta)
             menuobj.draw();
-            if (global.swipetimeout)
-                return;            
-            global.swipetimeout = setInterval(function()
-            {
-                menuobj.draw();
-            }, GALLERYMAIN);
+            if (!context.swipetimeout)
+                context.swipetimeout = setInterval(
+                    function(){menuobj.draw();}, GALLERYMAIN);
         }
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
@@ -2576,13 +2571,9 @@ var wheelst =
         if (ctrl)
             return;
         menuobj.updown(context, delta);
-        if (global.swipetimeout)
-            return;            
-        global.swipetimeout = setInterval(function()
-        {
-            context.canvas.lastime = -0.0000000000101010101;
-            menuobj.draw();
-        }, MENUMAIN);
+        if (!context.swipetimeout)
+            context.swipetimeout = setInterval(function(){
+                menuobj.draw();}, MENUMAIN);
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, trackpad)
     {
@@ -3313,8 +3304,9 @@ var swipelst = [
         
         var k = evt.type == "swipeup" ? 1 : -1;
         menuobj.updown(context, k * 90);
-        if (!global.swipetimeout)
-            global.swipetimeout = setInterval(function(){menuobj.draw();}, GALLERYMAIN);
+        if (!context.swipetimeout)
+            context.swipetimeout = setInterval(
+                function(){menuobj.draw();}, GALLERYMAIN);
     },
 },
 {
@@ -3324,8 +3316,9 @@ var swipelst = [
     {
         var k = evt.type == "swipeup" ? 1 : -1;
         menuobj.updown(context, k * context.canvas.speed);
-	if (!global.swipetimeout)
-            global.swipetimeout = setInterval(function(){menuobj.draw();}, MENUMAIN);
+	    if (!context.swipetimeout)
+            context.swipetimeout = setInterval(
+                function(){menuobj.draw();}, MENUMAIN);
     },
 }, ];
 
@@ -3378,8 +3371,8 @@ var keylst = [
                 key == "k")
             {
                 menuobj.updown(context, -120)
-                if (!global.swipetimeout)
-                    global.swipetimeout = 
+                if (!context.swipetimeout)
+                    context.swipetimeout = 
                         setInterval(function(){menuobj.draw()}, GALLERYMAIN);
                 evt.preventDefault();
             }
@@ -3388,16 +3381,16 @@ var keylst = [
                 key == "j")
             {
                 menuobj.updown(context, 120)
-                if (!global.swipetimeout)
-                    global.swipetimeout = 
+                if (!context.swipetimeout)
+                    context.swipetimeout = 
                         setInterval(function(){menuobj.draw();}, GALLERYMAIN);
                 evt.preventDefault();
             }
             else if (key == " ")
             {
                 menuobj.updown(context, canvas.shiftKey?-360:360)
-                if (!global.swipetimeout)
-                    global.swipetimeout = 
+                if (!context.swipetimeout)
+                    context.swipetimeout = 
                         setInterval(function(){menuobj.draw();}, GALLERYMAIN);
                 evt.preventDefault();
             }                
@@ -3480,10 +3473,9 @@ var keylst = [
                 key == "j")
             {
                 menuobj.updown(context, -60)
-                if (global.swipetimeout)
-                    return;            
-                global.swipetimeout = setInterval(function(){
-                    menuobj.draw();}, GALLERYMAIN);
+                if (!context.swipetimeout)
+                    context.swipetimeout = setInterval(function(){
+                        menuobj.draw();}, GALLERYMAIN);
                 evt.preventDefault();
             }
             else if (
@@ -3494,10 +3486,9 @@ var keylst = [
                 key == "k")
             {
                 menuobj.updown(context, 60)
-                if (global.swipetimeout)
-                    return;            
-                global.swipetimeout = setInterval(function(){
-                    menuobj.draw();}, GALLERYMAIN);
+                if (!context.swipetimeout)
+                    context.swipetimeout = setInterval(function(){
+                        menuobj.draw();}, GALLERYMAIN);
                 evt.preventDefault();
              }
             else if (key == "arrowleft")
@@ -4883,10 +4874,10 @@ menuobj.draw = function()
         context.canvas.timeobj.rotate(k * context.canvas.slideshow);
         context.canvas.slideshow -= context.canvas.slidereduce
     }
-    else if (global.swipetimeout)
+    else if (context.swipetimeout)
     {
-        clearInterval(global.swipetimeout)
-        global.swipetimeout = 0;
+        clearInterval(context.swipetimeout)
+        context.swipetimeout = 0;
         context.canvas.slideshow = 0;
     }
 
@@ -5434,6 +5425,7 @@ contextobj.init = function()
         context.canvas.panupdown_ = k.updown;
         context.canvas.panleftright_ = k.leftright;
         context.canvas.panend_ = k.panend;
+        context.swipetimeout = 0;
     });
 }
 
