@@ -3855,8 +3855,25 @@ var taplst =
             context.buttonmenurect.hitest(x, y))
         {
             var k = (x - context.buttonmenurect.x) / context.buttonmenurect.width;
-            buttonobj.addperc(k < 0.5 ? -0.025 : 0.025);
-            menuobj.draw();
+                        if (k < 0.2)
+            {
+                menuobj.updown(context, 120)
+                if (!context.swipetimeout)
+                    context.swipetimeout = 
+                        setInterval(function(){menuobj.draw()}, GALLERYMAIN);
+            }
+            else if (k > 0.8)
+            {
+                 menuobj.updown(context, -120)
+                if (!context.swipetimeout)
+                    context.swipetimeout = 
+                        setInterval(function(){menuobj.draw()}, GALLERYMAIN);           
+            }
+            else
+            {
+                buttonobj.addperc(k < 0.5 ? -0.025 : 0.025);
+                menuobj.draw();
+            }
         }
         else if (
             context.templatemenurect &&
@@ -3924,22 +3941,7 @@ var taplst =
             canvas.buttonrect.hitest(x, y))
         {
             var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
-            if (k < 0.2)
-            {
-                menuobj.updown(context, 120)
-                if (!context.swipetimeout)
-                    context.swipetimeout = 
-                        setInterval(function(){menuobj.draw()}, GALLERYMAIN);
-            }
-            else if (k > 0.8)
-            {
-                 menuobj.updown(context, -120)
-                if (!context.swipetimeout)
-                    context.swipetimeout = 
-                        setInterval(function(){menuobj.draw()}, GALLERYMAIN);           
-            }
-            else
-                buttonobj.setperc(k);
+            buttonobj.setperc(k);
             menuobj.draw()              
         }
         else if (
