@@ -46,7 +46,7 @@ const FOOTBTNCOLOR = "rgba(0,0,0,0.6)";
 const OPTIONFILL = "white";
 const THUMBTRANSPARENT = "rgba(0,0,0,0.2)";
 const LIGHTHUMBFILLL = "rgba(255,125,0,0.25)";
-const HEAVYFILL = "rgba(0,0,0,0.75)";
+const HEAVYFILL = "rgba(0,0,0,0.65)";
 const THUMBFILL = "rgba(255,125,0,0.40)";
 const THUMBSTROKE = "rgba(255,255,255,0.4)";
 const SEARCHFRAME = "rgba(255,255,255,0.5)";
@@ -2968,7 +2968,12 @@ var panlst =
             else if (canvas.isbuttonrect)
             {
                 var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
-                buttonobj.setperc(k);
+                if (k < 0.2)
+                    galleryobj.leftright(-25);
+                else if (k > 0.8)
+                    galleryobj.leftright(25)
+                else
+                    buttonobj.setperc(k);
             }
             else
             {
@@ -3301,7 +3306,7 @@ var swipelst = [
     swipeleftright: function(context, rect, x, y, evt)
     {
         var k = evt.type == "swipeleft" ? 1 : -1;
-        galleryobj.leftright(context, k * context.canvas.speed);
+        galleryobj.leftright(context, k * 50);
     },
     swipeupdown: function(context, rect, x, y, evt)
     {
