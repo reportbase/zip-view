@@ -3931,12 +3931,14 @@ var taplst =
             canvas.buttonrect.hitest(x, y))
         {
             var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
+            /*
             if (k < 0.2)
                 galleryobj.leftright(-25)
             else if (k > 0.8)
                 galleryobj.leftright(25)
             else
-                buttonobj.setperc(k);
+            */
+            buttonobj.setperc(k);
             menuobj.draw()              
         }
         else if (
@@ -3983,7 +3985,12 @@ var taplst =
         else if (canvas.hollyrect && canvas.hollyrect.hitest(x, y))
         {
             var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
-            context.canvas.hollyobj.setperc(k);
+            if (k < 0.2)
+                galleryobj.leftright(-25)
+            else if (k > 0.8)
+                galleryobj.leftright(25)
+            else
+                context.canvas.hollyobj.setperc(k);
             menuobj.draw()
         }
         else if (headcnv.height && displayobj.value() == button)
