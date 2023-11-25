@@ -6847,8 +6847,13 @@ else if (url.searchParams.has("id"))
                   }
                   else
                   {
-                      var lst = obj.json.split("\n");
-                      console.log(lst);
+                     fetch(obj.json)
+                        .then((response) => texthandler(response))
+                        .then(function(str)
+                          {
+                              var lst = str.split("\n");
+                              console.log(lst);
+                          }) 
                   }
               })        
 }
