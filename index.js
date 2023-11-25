@@ -3378,12 +3378,8 @@ var keylst = [
                 key == "k")
             {
                 menuobj.updown(context, -120)
-                if (global.swipetimeout)
-                    return;            
-                global.swipetimeout = setInterval(function()
-                {
-                    menuobj.draw();
-                }, GALLERYMAIN);
+                if (!global.swipetimeout)
+                    global.swipetimeout = setInterval(function({menuobj.draw();}, GALLERYMAIN);
                 evt.preventDefault();
             }
             else if (
@@ -3391,23 +3387,15 @@ var keylst = [
                 key == "j")
             {
                 menuobj.updown(context, 120)
-                if (global.swipetimeout)
-                    return;            
-                global.swipetimeout = setInterval(function()
-                {
-                    menuobj.draw();
-                }, GALLERYMAIN);
+                if (!global.swipetimeout)
+                    global.swipetimeout = setInterval(function({menuobj.draw();}, GALLERYMAIN);
                 evt.preventDefault();
             }
             else if (key == " ")
             {
                 menuobj.updown(context, canvas.shiftKey?-360:360)
-                if (global.swipetimeout)
-                    return;            
-                global.swipetimeout = setInterval(function()
-                {
-                    menuobj.draw();
-                }, GALLERYMAIN);
+                if (!global.swipetimeout)
+                    global.swipetimeout = setInterval(function({menuobj.draw();}, GALLERYMAIN);
                 evt.preventDefault();
             }                
             else if (key == "\\" || key == "/" || key == "tab")
@@ -3438,15 +3426,15 @@ var keylst = [
                 key == "arrowleft" ||
                 key == "h")
             {
+                galleryobj.leftright(context, -25)
                 evt.preventDefault();
-                galleryobj.leftright(context, -canvas.speed / 2)
             }
             else if (
                 key == "arrowright" ||
                 key == "l")
             {
                 evt.preventDefault();
-                galleryobj.leftright(context, canvas.speed / 2)
+                galleryobj.leftright(context, 25)
             }
             else if (key == "w")
             {
@@ -3902,10 +3890,21 @@ var taplst =
             context.cursorect &&
             context.cursorect.hitest(x, y))
         {
-            var k = (x - context.cursorect.x) / context.cursorect.width;
-            var j = canvas.timeobj.length() / galleryobj.length();
-            canvas.timeobj.rotate(k < 0.5 ? j :-j);
-            menuobj.draw();    
+		    var k = (x - context.cursorect.x) / context.cursorect.width;
+            if (k < 0.2)
+            {
+                galleryobj.leftright(context, -25)
+            }
+            else if (k > 0.8)
+            {
+                galleryobj.leftright(context, 25)
+            }
+            else
+            {
+                var j = canvas.timeobj.length() / galleryobj.length();
+                canvas.timeobj.rotate(k < 0.5 ? j :-j);
+                menuobj.draw();
+            }  
         }
         else if (
             headcnvctx.fitwidthrect &&
