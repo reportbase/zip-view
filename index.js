@@ -3889,8 +3889,15 @@ var taplst =
             }      
             
             var k = (x - context.templatemenurect.x) / context.templatemenurect.width;
-            templateobj.add(k < 0.5 ? -1 : 1);
-            buttonobj.reset();
+            if (k < 0.2)
+                galleryobj.leftright(-25)
+            else if (k > 0.8)
+                galleryobj.leftright(25)
+            else
+            {
+                templateobj.add(k < 0.5 ? -1 : 1);
+                buttonobj.reset();
+            }
             menuobj.draw();            
         }
         else if (
