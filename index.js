@@ -1246,115 +1246,7 @@ var bossdisplaylst =
                 ]);
             context.restore();   
     }
-},
-    
-{
-    name: "STORAGE",
-    title: "Storage",
-    draw: function(context, rect, user, time)
-    {
-        if (!photo.image || !photo.image.width)
-            return;
-        var canvas = context.canvas
-        var data = [];
-        context.downloadimagerect = new rectangle();
-        context.uploadimagerect = new rectangle();
-        context.deleteimagerect = new rectangle();
-        var data = [];
-        
-        var b = 360;
-        if (b > rect.width-40)
-            b = rect.width-40;
-
-        data.push("Image");
-        data.push(`${galleryobj.current()+1} of ${galleryobj.length()}`);
-        data.push(" ");
-        
-        data.push("ID");
-        data.push(galleryobj.value().id?galleryobj.value().id:"Undefined");
-        data.push(" ");
-        
-        var mp = (photo.image.width * photo.image.height) / 1000000;
-        data.push("Size");
-        data.push(`${mp.toFixed(2)} MP`);
-        data.push(" ");
-        
-        data.push("Width");
-        data.push(`${photo.image.width}`);
-        data.push(" ");
-
-        data.push("Height");
-        data.push(`${photo.image.height}`);
-        data.push(" ");
-
-        var j = data.length*25;
-        if (j > rect.height-HEADTOP-ALIEXTENT-ALIEXTENT-FOOTHEIGHT)
-            j = rect.height-HEADTOP-ALIEXTENT-ALIEXTENT-FOOTHEIGHT;
-        
-        var a = new panel.layers(
-        [
-            0,
-            new panel.rowsA([HEADTOP,ALIEXTENT,j,0,ALIEXTENT,FOOTHEIGHT],
-            [
-                0,
-                0,
-                new panel.cols([0,b,0],
-                [
-                    0,
-                    new panel.layers(
-                    [
-                        new panel.rectangle(context.hollyrect),
-                        //new panel.rectangle(context.copyidrect),
-                        new panel.multitext(0, new panel.shadow(new panel.text())),
-                    ]),
-                    0,
-                ]),
-                0,
-                0,
-                new panel.colsA([0,BETHWIDTH,BETHCIDTH,BETHWIDTH,0],
-                [
-                    0,
-                    new panel.layers(
-                    [
-                        new panel.fill(FOOTBTNCOLOR),
-                        new panel.rectangle(context.uploadimagerect),
-                        new panel.shadow(new panel.text()),
-                    ]),
-                    new panel.layers(
-                    [
-                        new panel.fill(FOOTBTNCOLOR),
-                        new panel.rectangle(context.downloadimagerect),
-                        new panel.shadow(new panel.text()),
-                    ]),
-                    new panel.layers(
-                    [
-                        new panel.fill(FOOTBTNCOLOR),
-                        new panel.rectangle(context.deleteimagerect),
-                        new panel.shadow(new panel.text()),
-                    ]),
-                    0,
-                ]),
-            ])
-        ])
-        
-        a.draw(context, rect, 
-        [
-           0,
-           0,
-           data,
-           0,
-           0,
-           [
-               0,
-               "Upload",
-               "Download",
-               "Delete",
-               0
-            ]
-        ], 0)        
-    }
-},    
-
+}
 ];
 
 var bossdisplayobj = new circular_array("", bossdisplaylst);
@@ -2629,20 +2521,18 @@ var wheelst =
         }
         else
         {
-            if (Math.abs(delta) > 320)
+            if (Math.abs(delta) > 320 && headcnv.height)
             {
                 headcnvctx.show(0, 0, window.innerWidth, 0);
                 headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
             }
             
-            clearInterval(context.canvas.leftright)
             menuobj.updown(context, delta)
             menuobj.draw();
             if (global.swipetimeout)
                 return;            
             global.swipetimeout = setInterval(function()
             {
-                context.canvas.lastime = -0.0000000000101010101;
                 menuobj.draw();
             }, GALLERYMAIN);
         }
@@ -6833,8 +6723,8 @@ else if (url.searchParams.has("sidney"))
 else if (url.searchParams.has("id"))
 {
     url.path = url.searchParams.get("id");
-    //"http://144.202.71.85/data/X-Men";
-    //https://zip-view.pages.dev/res/files
+//https://zip-view.pages.dev/?id=8f69eb52-9962-4d1c-a4f9-d2b5d79aed01&root=https%3A%2F%2Fimages4.imagebam.com%2F72%2F1a%2F68&_8=2717.02682&t=1600x1600&b=1365
+//http://144.202.71.85/?id=ab352bd3-a7bf-451a-9278-766729741c0e&root=http://144.202.71.85/data/X-Men
     var root = url.searchParams.get("root"); 
 
 	fetch(`https://gallery.reportbase5836.workers.dev/${url.path}`)
