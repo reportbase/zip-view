@@ -6628,12 +6628,8 @@ function setupmenus()
     galleryobj.rightctx = _6cnvctx;    
 }
 
-//galleryobj init
-galleryobj.init = function(obj)
-{
-    if (obj)
-        Object.assign(galleryobj, obj);
-    
+galleryobj.reset = function(obj)
+{ 
     if (url.searchParams.has('length'))
     {
         var length = Number(url.searchParams.get('length'));
@@ -6693,6 +6689,36 @@ galleryobj.init = function(obj)
         image.src = imagepath(j,"5760x5760");
 }
 
+//galleryobj init
+galleryobj.init = function(obj)
+{
+    if (obj)
+        Object.assign(galleryobj, obj);
+    if (Array.isArray(obj.data))
+    {
+	galleryobj.reset(obj);
+	return;
+    }
+	
+ 	fetch(obj.data)
+		.then((response) => texthandler(response))
+		.then(function(str)
+		{
+			var lst = str.split("\n");
+			var k = {}
+			obj.data = [];
+			for (var n = 0; n < lst.length-1; ++n)
+			{
+				var e = {}
+				e.url = `${obj.root}/${lst[n]}`;
+				obj.data.push(e);
+			}
+
+			galleryobj.reset(obj);
+		}
+		
+}
+
 var login = {};
 
 if (url.searchParams.has("data"))
@@ -6722,43 +6748,18 @@ else if (url.searchParams.has("sidney"))
 }
 else if (url.searchParams.has("id"))
 {
-    url.path = url.searchParams.get("id");
+    var id = url.searchParams.get("id");
 //https://zip-view.pages.dev/?id=8f69eb52-9962-4d1c-a4f9-d2b5d79aed01&root=https%3A%2F%2Fimages4.imagebam.com%2F72%2F1a%2F68&_8=2717.02682&t=1600x1600&b=1365
 //http://144.202.71.85/?id=ab352bd3-a7bf-451a-9278-766729741c0e&root=http://144.202.71.85/data/X-Men
-    var root = url.searchParams.get("root"); 
-
-	fetch(`https://gallery.reportbase5836.workers.dev/${url.path}`)
-		.then((response) => jsonhandler(response))
-		.then(function(obj)
-		{
-			  url.path = obj.json;
-			  let url2 = new URL(obj.json);
-			  if (obj.json.isjson())
-			  {
-				 fetch(obj.json)
-					.then((response) => jsonhandler(response))
-					.then((json) => galleryobj.init(json))   
-			  }
-			  else
-			  {
-				 fetch(obj.json)
-					.then((response) => texthandler(response))
-					.then(function(str)
-					{
-						var lst = str.split("\n");
-						var k = {}
-						k.data = [];
-						for (var n = 0; n < lst.length-1; ++n)
-						{
-							var e = {}
-							e.url = `${root}/${lst[n]}`;
-							k.data.push(e);
-						}
-						
-						galleryobj.init(k)
-					}) 
-			  }
-		  })        
+	fetch(`https://gallery.reportbase5836.workers.dev/${id}`)
+	.then((response) => jsonhandler(response))
+	.then(function(obj)
+	{
+		  url.path = obj.title;
+		 fetch(obj.json)
+			.then((response) => jsonhandler(response))
+			.then((json) => galleryobj.init(json))   
+	  })        
 }
 else
 {
