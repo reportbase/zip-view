@@ -6715,7 +6715,7 @@ galleryobj.init = function(obj)
 			}
 
 			galleryobj.reset(obj);
-		}
+		})
 		
 }
 
