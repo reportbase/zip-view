@@ -6847,8 +6847,8 @@ else if (url.searchParams.has("id"))
                   }
                   else
                   {
-                      var json = JSON.parse(obj.json);
-                      galleryobj.init(json)
+                      var lst = obj.json.split("\n");
+                      console.log(lst);
                   }
               })        
 }
