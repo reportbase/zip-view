@@ -3379,7 +3379,8 @@ var keylst = [
             {
                 menuobj.updown(context, -120)
                 if (!global.swipetimeout)
-                    global.swipetimeout = setInterval(function({menuobj.draw();}, GALLERYMAIN);
+                    global.swipetimeout = 
+                        setInterval(function(){menuobj.draw()}, GALLERYMAIN);
                 evt.preventDefault();
             }
             else if (
@@ -3388,14 +3389,16 @@ var keylst = [
             {
                 menuobj.updown(context, 120)
                 if (!global.swipetimeout)
-                    global.swipetimeout = setInterval(function({menuobj.draw();}, GALLERYMAIN);
+                    global.swipetimeout = 
+                        setInterval(function(){menuobj.draw();}, GALLERYMAIN);
                 evt.preventDefault();
             }
             else if (key == " ")
             {
                 menuobj.updown(context, canvas.shiftKey?-360:360)
                 if (!global.swipetimeout)
-                    global.swipetimeout = setInterval(function({menuobj.draw();}, GALLERYMAIN);
+                    global.swipetimeout = 
+                        setInterval(function(){menuobj.draw();}, GALLERYMAIN);
                 evt.preventDefault();
             }                
             else if (key == "\\" || key == "/" || key == "tab")
