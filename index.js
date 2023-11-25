@@ -69,6 +69,7 @@ const GALLERY = 1;
 const MENU = 2;
 const TIMEMAIN = 4;
 const BOSSMAIN = 4;
+const MENUMAIN = 4;
 const GALLERYMAIN = 18;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
@@ -2577,7 +2578,7 @@ var wheelst =
         {
             context.canvas.lastime = -0.0000000000101010101;
             menuobj.draw();
-        }, GALLERYMAIN);
+        }, MENUMAIN);
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, trackpad)
     {
@@ -3309,11 +3310,7 @@ var swipelst = [
         var k = evt.type == "swipeup" ? 1 : -1;
         menuobj.updown(context, k * 90);
         if (!global.swipetimeout)
-            global.swipetimeout = setInterval(function()
-            {
-                context.canvas.lastime = -0.0000000000101010101;
-                menuobj.draw();
-            }, GALLERYMAIN);
+            global.swipetimeout = setInterval(function(){menuobj.draw();}, GALLERYMAIN);
     },
 },
 {
@@ -3323,6 +3320,8 @@ var swipelst = [
     {
         var k = evt.type == "swipeup" ? 1 : -1;
         menuobj.updown(context, k * context.canvas.speed);
+	if (!global.swipetimeout)
+            global.swipetimeout = setInterval(function(){menuobj.draw();}, MENUMAIN);
     },
 }, ];
 
@@ -3379,7 +3378,6 @@ var keylst = [
                     return;            
                 global.swipetimeout = setInterval(function()
                 {
-                    context.canvas.lastime = -0.0000000000101010101;
                     menuobj.draw();
                 }, GALLERYMAIN);
                 evt.preventDefault();
@@ -3393,7 +3391,6 @@ var keylst = [
                     return;            
                 global.swipetimeout = setInterval(function()
                 {
-                    context.canvas.lastime = -0.0000000000101010101;
                     menuobj.draw();
                 }, GALLERYMAIN);
                 evt.preventDefault();
@@ -3405,7 +3402,6 @@ var keylst = [
                     return;            
                 global.swipetimeout = setInterval(function()
                 {
-                    context.canvas.lastime = -0.0000000000101010101;
                     menuobj.draw();
                 }, GALLERYMAIN);
                 evt.preventDefault();
