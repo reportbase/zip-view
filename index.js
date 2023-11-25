@@ -3743,11 +3743,13 @@ var taplst =
             var k = (x - headcnvctx.bossdisplayrect.x) / headcnvctx.bossdisplayrect.width;
             if (k < 0.2)
             {
-                bossobj.leftright(50);
+                rowobj.addperc(-0.05);
+                contextobj.reset()
             }
             else if (k > 0.8)
             {
-                bossobj.leftright(-50);
+                rowobj.addperc(0.05);
+                contextobj.reset()
             }
             else
             {
@@ -3922,14 +3924,22 @@ var taplst =
             canvas.buttonrect.hitest(x, y))
         {
             var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
-            /*
             if (k < 0.2)
-                galleryobj.leftright(-25)
+            {
+                menuobj.updown(context, 120)
+                if (!context.swipetimeout)
+                    context.swipetimeout = 
+                        setInterval(function(){menuobj.draw()}, GALLERYMAIN);
+            }
             else if (k > 0.8)
-                galleryobj.leftright(25)
+            {
+                 menuobj.updown(context, -120)
+                if (!context.swipetimeout)
+                    context.swipetimeout = 
+                        setInterval(function(){menuobj.draw()}, GALLERYMAIN);           
+            }
             else
-            */
-            buttonobj.setperc(k);
+                buttonobj.setperc(k);
             menuobj.draw()              
         }
         else if (
