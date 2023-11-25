@@ -3933,7 +3933,7 @@ var taplst =
             var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
             if (k < 0.2)
                 galleryobj.leftright(-25)
-            else
+            else if (k > 0.8)
                 galleryobj.leftright(25)
             else
                 buttonobj.setperc(k);
