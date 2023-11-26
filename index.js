@@ -4067,7 +4067,7 @@ var taplst =
                 galleryobj.set(n);
                 var k = headlst.findIndex(function(a){return a.name == "BOSS"});
                 headham.panel = headlst[k];
-                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+                headobj.draw();
                 delete photo.image;
                 menuobj.hide();
                 contextobj.reset();
@@ -4099,7 +4099,7 @@ var taplst =
                 menuobj.show();
             }
 
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw();
             return true;
         }
         else if (
@@ -4119,7 +4119,7 @@ var taplst =
                 menuobj.show();
             }
 
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+            headobj.draw();
             return true;
         }
         else if (canvas.gallerypatchrect && canvas.gallerypatchrect.hitest(x, y))
@@ -4268,8 +4268,8 @@ var taplst =
             menuobj.show();
             galleryobj.leftnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
-            headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
-           return false;
+            headobj.draw();
+            return false;
         }
         else if (canvas.homerect && canvas.homerect.hitest(x, y))
         {
@@ -4332,7 +4332,7 @@ var taplst =
                 menuobj.show();
                 galleryobj.leftnv = _7cnv;
                 galleryobj.leftctx = _7cnvctx;
-                headham.panel.draw(headcnvctx, headcnvctx.rect(), 0);
+                headobj.draw();
             }, 200);
         }
     },
@@ -6664,14 +6664,15 @@ function setupmenus()
         j.func = function()
         {
             gotoimage(this.index+1)
-            galleryobj.set(this.index);
+            //galleryobj.set(this.index);
             //galleryobj.rightctx.hide();
             //galleryobj.leftcnv = _7cnv;
             //galleryobj.leftctx = _7cnvctx;
             //menuobj.setindex(_8cnvctx);
             //menuobj.show();
-            menuobj.draw();
-            headobj.draw();
+            //menuobj.draw();
+            //headobj.draw();
+            return true;
         };
         
         _6cnv.sliceobj.data.push(j);
