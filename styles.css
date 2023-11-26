@@ -87,17 +87,17 @@ textarea
 button
 {
   text-align: center;
-  background-color: white;
-  border: 13;
-  color: white;
   font-size: 24px;
+  font: copperplate;
+  font-weight: bold;
+  border: 13;
   border-radius: 33px;
-  border-color: black;
   border-width: 3px;
+  border-color: black;
+  background-color: white;
+  color: white;
   color: brown;
   margin-top: 30px;
   margin-left: 270px;
-  font: copperplate;
   width: 25%;
-  font-weight: bold;
 }
