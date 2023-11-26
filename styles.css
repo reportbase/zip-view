@@ -84,22 +84,13 @@ textarea
   font-weight: bold;
 }
 
-button
-{
-  height: 33px;
-  width: 50%; 
-  padding: 12px; 
-  font-size: 1em; 
-  font-weight: bold; 
-  border-radius: 20px;
-  border-width: 1px;
-  outline: solid;
-  border: 0px solid #99B; 
-  </style>
-
-<div class="container">
-  <div class="vertical-center">
-    <button>Centered Button</button>
-  </div>
-</div>
+.button {
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
 }
