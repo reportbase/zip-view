@@ -2501,7 +2501,7 @@ var wheelst =
 [
 {
     name: "DEFAULT",
-    wheel: function(context),
+    wheel: function(context, x, y) {},
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad) {},
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad) {},
 },
