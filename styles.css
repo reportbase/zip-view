@@ -86,12 +86,13 @@ textarea
 
 button
 {
-outline: none;
-  border-radius: 0px;
-  border-width: 2px;
-  border-color: rgb(slategray;
-  border-color: slategray;
-  color: black;
-  text-align: center;
-  font-weight: bold;
+  height: 54px;
+  width: 100%; 
+  padding: 12px; 
+  font-size: 1em; 
+  font-weight: bold; 
+  border-radius: 20px;
+  border-width: 1px;
+  outline: solid;
+  border: 0px solid #99B; 
 }
