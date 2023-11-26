@@ -64,7 +64,8 @@ const LARGEFONT = "21px archivo black";
 const HUGEFONT = "24px archivo black";
 const SLICEWIDTH = 16;
 const ZOOMAX = 92;
-const IMAGELSTSIZE = 18;
+const IMAGELSTSIZE = 10;
+const ROTATEANCHORSIAE = 3;
 const BOSS = 0;
 const GALLERY = 1;
 const MENU = 2;
@@ -4942,7 +4943,7 @@ menuobj.draw = function()
     if (canvas.lastcurrent != current || !canvas.normal)
     {
         canvas.lastcurrent = current;
-        var size = Math.ceil(rect.height / canvas.buttonheight) + 4;
+        var size = Math.ceil(rect.height / canvas.buttonheight) + ROTATEANCHORSIAE;
         canvas.normal = util.rotated_list(canvas.rotated, slices.length, current, size);
     }
 
