@@ -2623,6 +2623,12 @@ var wheelst =
         }
         else
         {
+            if (Math.abs(delta) > 200 && headcnv.height)
+            {
+                headcnvctx.show(0, 0, window.innerWidth, 0);
+                headobj.draw();
+            }
+
             rowobj.addperc(delta/1000);
             contextobj.reset()
         }
