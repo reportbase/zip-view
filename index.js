@@ -5077,7 +5077,7 @@ menuobj.draw = function()
     context.canvas.footer.draw(context, rect, 0, 0);
 
     var now = Date.now();
-    if (context.savetime && (now - context.savetime) > 500)
+    if (now - context.savetime > 500)
     {
 	context.savetime = now
 	clearInterval(context.saveinterval)
