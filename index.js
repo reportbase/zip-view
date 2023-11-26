@@ -6965,8 +6965,7 @@ menuobj.updown = function(context, delta, divider)
     canvas.autodirect = delta < 0 ? 1 : -1;
     var k = Math.abs(delta)/20;
     canvas.slideshow = (sealobj.value() / canvas.virtualheight) * k;
-    var j = Math.min(260,delta);
-    canvas.slidereduce = canvas.slideshow / j;
+    canvas.slidereduce = canvas.slideshow / divider;
 }
 
 galleryobj.leftright = function(context, delta)
