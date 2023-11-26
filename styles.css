@@ -86,7 +86,6 @@ textarea
 
 button
 {
-  text-align: center
   height: 33px;
   width: 50%; 
   padding: 12px; 
@@ -96,4 +95,11 @@ button
   border-width: 1px;
   outline: solid;
   border: 0px solid #99B; 
+  </style>
+
+<div class="container">
+  <div class="vertical-center">
+    <button>Centered Button</button>
+  </div>
+</div>
 }
