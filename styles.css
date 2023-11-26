@@ -19,7 +19,9 @@ dialog
   background-color: dimgray;
   border-radius: 33px;
   border-width: 6px; 
-  border-color: #999999; 
+  border-color: #999999;
+  padding: 20px 20px 20px 20px; 
+
 }
 
 dialog::backdrop 
