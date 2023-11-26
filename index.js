@@ -2522,7 +2522,7 @@ var wheelst =
             var e = k*j;
             if (!context.elst)
                 context.elst = [];
-            context.elst.push(delta);
+            context.elst.push(delta);//todo
             if (!(context.elst.length % 5))
             {
                 buttonobj.add(e);
@@ -2903,7 +2903,7 @@ var panlst =
         var obj = canvas.hollyobj;
         if (!context.elst)
     	    context.elst = [];
-        context.elst.push(delta);
+        context.elst.push({x,y});
         if (context.elst.length % 5)
             return;
         
