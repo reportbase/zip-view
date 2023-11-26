@@ -3629,7 +3629,6 @@ var taplst =
     tap: function(context, rect, x, y, shift, ctrl)
     {
         headobj.draw();
-
         if (headcnvctx.moveprev && headcnvctx.moveprev.hitest(x, y))
         {
             _4cnvctx.movepage(-1);
@@ -3882,8 +3881,6 @@ var taplst =
             context.templatemenurect &&
             context.templatemenurect.hitest(x, y))
         {
-
-	    //todo - broken
             var k = (x - context.templatemenurect.x) / context.templatemenurect.width;
             if (k < 0.2)
                 galleryobj.leftright(context, -25)
@@ -3891,11 +3888,12 @@ var taplst =
                 galleryobj.leftright(context, 25)
             else
             {
-	            for (var n = 0; n < IMAGELSTSIZE; ++n)
-	            {
-	                thumbfittedlst[n] = document.createElement("canvas");
-	                thumbimglst[n] = new Image();
-	            }      
+    		    for (var n = 0; n < IMAGELSTSIZE; ++n)
+    		    {
+        			thumbfittedlst[n] = document.createElement("canvas");
+        			thumbimglst[n] = new Image();
+    		    }
+		    
                 templateobj.add(k < 0.5 ? -1 : 1);
                 buttonobj.reset();
                 menuobj.draw();
@@ -3915,7 +3913,7 @@ var taplst =
             context.cursorect &&
             context.cursorect.hitest(x, y))
         {
-		    var k = (x - context.cursorect.x) / context.cursorect.width;
+	        var k = (x - context.cursorect.x) / context.cursorect.width;
             if (k < 0.2)
             {
                 galleryobj.leftright(context, -25)
@@ -4317,7 +4315,7 @@ var taplst =
             if (!slice.func)
                 return;
             slice.tap = 1;
-            context.refresh();
+	    menuobj.draw();
                 
             setTimeout(function()
             {
