@@ -21,7 +21,7 @@ dialog
   border-radius: 10px;
   max-height: 80vh;
   border-width: 2px; 
-  border-color: darkred; 
+  border-color: lightsteelblue; 
   overflow-y: scroll;
 }
 
@@ -56,7 +56,7 @@ input
   outline: none;
   border-radius: 0px;
   border-width: 2px;
-  border-color: darkred;
+  border-color: lightsteelblue;
   color: black;
   text-align: center;
   font-weight: bold;
