@@ -2599,43 +2599,44 @@ var wheelst =
         context.elst.push({x,y});
         if (context.elst.length % 2)
             return;
+        var e = delta<0?-1:1;
         if (ctrl)
         {
             var isthumb = context.canvas.thumbrect &&
                 context.canvas.thumbrect.hitest(x, y);
             if (isthumb)
             {
-                heightobj.addperc(type == "wheelup" ? 0.02 : -0.02);
+                heightobj.addperc(e*0.02);
                 bossobj.draw();
             }
             else
             {
-                zoomobj.addperc(type == "wheelup" ? 0.025 : -0.025);
+                zoomobj.addperc(e*0.02);
                 contextobj.reset()
             }
         }
         else if (context.zoomrect &&
             context.zoomrect.hitest(x, y))
         {
-            zoomobj.addperc(delta/500);
+            zoomobj.addperc(e*0.02);
             contextobj.reset()
         }
         else if (0 && context.hollyrect &&
             context.hollyrect.hitest(x, y))
         {
             var hollyobj = context.canvas.hollyobj;
-            hollyobj.addperc(delta/500);
+            hollyobj.addperc(e*0.02);
             bossobj.draw();
         }
         else if (context.stretchrect &&
             context.stretchrect.hitest(x, y))
         {
-            stretchobj.addperc(delta/500);
+            stretchobj.addperc(e*0.02);
             bossobj.draw();
         }
         else
         {
-            rowobj.addperc(0.01);
+            rowobj.addperc(e*0.02);
             contextobj.reset()
         }
     },
