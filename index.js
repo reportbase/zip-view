@@ -5077,9 +5077,10 @@ menuobj.draw = function()
     context.canvas.footer.draw(context, rect, 0, 0);
 
     var now = Date.now();
-    if (!context.savetime || (now - context.savetime > 500))
-    {
-    	context.savetime = now
+     if (!context.swipetimeout &&
+            (now - context.savetime > 500))
+     {
+    	
     	clearTimeout(context.saveinterval)
     	context.saveinterval = setTimeout(function()
     	{
@@ -5479,7 +5480,8 @@ contextobj.init = function()
         canvas.buttonheight = obj.buttonheight;
         canvas.buttonmargin = obj.buttonmargin;
         canvas.display = obj.display;
-    
+        context.savetime = Date.now();
+
         var k = footlst.findIndex(function(a){return a.name == obj.footer});
         canvas.footer = footlst[k];
     
