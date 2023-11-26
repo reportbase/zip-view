@@ -21,7 +21,7 @@ dialog
   border-radius: 10px;
   max-height: 80vh;
   border-width: 2px; 
-  border-color: slategray; 
+  border-color: dimgray; 
   overflow-y: scroll;
 }
 
