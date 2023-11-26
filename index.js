@@ -828,6 +828,7 @@ var footlst =
         context.save();     
         canvas.homerect = new rectangle();
         canvas.usereditrect = new rectangle();
+        canvas.loginrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
@@ -840,15 +841,18 @@ var footlst =
                 new panel.layers(
                 [
                     new panel.fill(FOOTBTNCOLOR),
-                    new panel.colsA([0,0,0],
+                    new panel.colsA([0,0],
                     [
-                        0,
                         new panel.layers(
                         [
                             new panel.rectangle(canvas.usereditrect),
                             new panel.text(),
                         ]),
-                        0,
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.loginrect),
+                            new panel.text(),
+                        ])
                     ])                            
                 ])
             ]);
@@ -858,9 +862,8 @@ var footlst =
                    `\u{25C0}   Account`,
                    0,
                    [
-                       "",
+                       login.id?"Logout":"Login",
                        "Edit",
-                       "",
                    ], 
                 ], 0);
         
@@ -4298,6 +4301,7 @@ var taplst =
     		{
     			localStorage.removeItem("login");
     			google.accounts.id.revoke(login.credential, handleRevokedSession)
+			    menuobj.draw();
     		}
     		else
     		{
@@ -6648,6 +6652,12 @@ function setupmenus()
         title: `Account   \u{25B6}`,
         func: function()
         {
+            if (!login.id)
+            {
+               googlelogin();
+               return;
+            }
+ 
             menuobj.hide();
             galleryobj.leftcnv = _10cnv;
             galleryobj.leftctx = _10cnvctx;
