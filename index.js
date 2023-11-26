@@ -2176,37 +2176,6 @@ CanvasRenderingContext2D.prototype.hide = function()
     this.canvas.height = 0;
 };
 
-CanvasRenderingContext2D.prototype.savetime = function()
-{
-    var canvas = this.canvas;
-    clearTimeout(this.savetimeout);
-    this.savetimeout = setTimeout(function()
-        {
-            var e = url.searchParams.get('_8');
-            if (e != _8cnv.timeobj.current().toFixed(5))
-            {
-                var k = _8cnv.timeobj.current();
-                if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
-                url.searchParams.set('_8', k.toFixed(5));
-                window.history.replaceState("", url.origin, url);
-            }
-
-            var e = url.searchParams.get('t');
-            if (e != templateobj.value())
-            {
-                url.searchParams.set("t",templateobj.value());
-                window.history.replaceState("", url.origin, url);
-            }
-
-            var e = url.searchParams.get('b');
-            if (e != buttonobj.value())
-            {
-                url.searchParams.set("b",buttonobj.value());
-                window.history.replaceState("", url.origin, url);
-            }
-      }, 400)
-}
-
 CanvasRenderingContext2D.prototype.refresh = function()
 {
     var context = this;
@@ -3471,9 +3440,6 @@ var keylst =
             }
             else if (key == "e")
             {
-                menuobj.hide();
-                menuobj.toggle(_8cnvctx);
-                menuobj.show();
                 evt.preventDefault();
             }                
             else if (key == " ")
@@ -4299,7 +4265,9 @@ var taplst =
         {  
     		if (login.id && login.credential)
     		{
-    			localStorage.removeItem("login");
+                login = {};
+                login.id = 0;
+                localStorage.removeItem("login");
     			google.accounts.id.revoke(login.credential, function(){})
 			    menuobj.draw();
     		}
@@ -5068,11 +5036,6 @@ menuobj.draw = function()
             var y = j * context.canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-            //y = Math.round(y);
-            //if (y > 0 && y < lasty)
-            //    y = lasty;
-            //lasty = y;
-
             var x = rect.width / 2;
             var j = {slice,x,y,n};
             slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight);
@@ -5112,7 +5075,37 @@ menuobj.draw = function()
 
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
-    context.savetime();
+
+    clearTimeout(context.savetimeout);
+    context.savetimeout = setTimeout(function()
+    {
+        menuobj.hide();
+        menuobj.toggle(_8cnvctx);
+        menuobj.show();
+        
+        var e = url.searchParams.get('_8');
+        if (e != _8cnv.timeobj.current().toFixed(5))
+        {
+            var k = _8cnv.timeobj.current();
+            if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
+                url.searchParams.set('_8', k.toFixed(5));
+            window.history.replaceState("", url.origin, url);
+        }
+        
+        var e = url.searchParams.get('t');
+        if (e != templateobj.value())
+        {
+            url.searchParams.set("t",templateobj.value());
+            window.history.replaceState("", url.origin, url);
+        }
+        
+        var e = url.searchParams.get('b');
+        if (e != buttonobj.value())
+        {
+            url.searchParams.set("b",buttonobj.value());
+            window.history.replaceState("", url.origin, url);
+        }
+    }, 400)
 }
 
 var eventlst = 
