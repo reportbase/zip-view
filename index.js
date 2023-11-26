@@ -2506,7 +2506,7 @@ var wheelst =
 
         if (ctrl)
         {
-            if (context.elst.length % 5)
+            if (context.elst.length % 6)
                 return;
 
 	        var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
@@ -2532,14 +2532,14 @@ var wheelst =
         else if (canvas.buttonrect &&
             canvas.buttonrect.hitest(x, y))
         {
-            if (delta > 5 && context.elst.length % 5)
+            if (delta > 3 && context.elst.length % 5)
                 return;
             buttonobj.addperc(-1 * delta * 0.001);
             menuobj.draw();
         }
         else
         {
-            if (delta > 5 && context.elst.length % 2)
+            if (delta > 3 && context.elst.length % 2)
                 return;
             if (Math.abs(delta) > 200 && headcnv.height)
             {
@@ -2551,13 +2551,13 @@ var wheelst =
             menuobj.draw();
             if (!context.swipetimeout)
                 context.swipetimeout = setInterval(
-                    function(){menuobj.draw();}, GALLERYMAIN*3);
+                    function(){menuobj.draw();}, GALLERYMAIN);
         }
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         context.elst.push({x,y});
-        if (delta > 5 && context.elst.length % 5)
+        if (delta > 3 && context.elst.length % 5)
             return;
         if (SAFARI || FIREFOX)
         {
@@ -2673,7 +2673,10 @@ var pinchlst =
 {
     name: "GALLERY",
     pinch: function(context, x, y, scale)
-{
+    {
+	    context.elst.push({x,y});
+        if (context.elst.length % 2)
+            return;
         var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
         headham.panel = headlst[k];
         headobj.draw();     
@@ -2718,6 +2721,9 @@ var pinchlst =
     name: "BOSS",
     pinch: function(context, x, y, scale)
     {
+	    context.elst.push({x,y});
+        if (context.elst.length % 2)
+            return;
         if (!context.buttonachor)
             context.buttonachor = zoomobj.value();
         if (!context.scaleanchor)
