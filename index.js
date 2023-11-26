@@ -3434,6 +3434,7 @@ var keylst =
                 {
                     var k = canvas.timeobj.length() / galleryobj.length();
                     canvas.timeobj.rotate(k);
+                    menuobj.draw();
                 }
                 else
                 {
@@ -3453,6 +3454,7 @@ var keylst =
                 {
                     var k = canvas.timeobj.length() / galleryobj.length();
                     canvas.timeobj.rotate(-k);
+                    menuobj.draw();
                 }
                 else
                 {
@@ -3467,6 +3469,7 @@ var keylst =
             else if (key == "e")
             {
                 menuobj.hide();
+                menuobj.set(_8cnvctx);
                 menuobj.show();
                 menuobj.draw();
                 evt.preventDefault();
