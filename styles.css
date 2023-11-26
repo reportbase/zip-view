@@ -92,5 +92,6 @@ button
   text-align: center;
   font-size: 24px;
   border-radius: 4px;
-  border-color: lightsteelblue; 
+  border-color: lightsteelblue;
+  color: lightsteelblue;
 }
