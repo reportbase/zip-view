@@ -3430,7 +3430,7 @@ var keylst =
                 key == "arrowup" ||
                 key == "k")
             {
-                if (key == canvas.ctrlKey)
+                if (canvas.ctrlKey)
                 {
                     var k = canvas.timeobj.length() / galleryobj.length();
                     canvas.timeobj.rotate(k);
@@ -3449,7 +3449,7 @@ var keylst =
                 key == "arrowdown" ||
                 key == "j")
             {
-                 if (key == canvas.ctrlKey)
+                 if (canvas.ctrlKey)
                 {
                     var k = canvas.timeobj.length() / galleryobj.length();
                     canvas.timeobj.rotate(-k);
@@ -3464,6 +3464,13 @@ var keylst =
                 
                 evt.preventDefault();
             }
+            else if (key == "e")
+            {
+                menuobj.hide();
+                menuobj.show();
+                menuobj.draw();
+                evt.preventDefault();
+            }                
             else if (key == " ")
             {
                 menuobj.updown(context, canvas.shiftKey?-360:360, 30)
@@ -3847,10 +3854,6 @@ var taplst =
             else
                 context.movepage(k < 0.5 ? -1 : 1);
         }    
-        else
-        {
-            
-        }
         
         _4cnvctx.refresh();
     }
@@ -4081,7 +4084,7 @@ var taplst =
                 buttonobj.reset();
             }
 
-	    menuobj.draw()
+	        menuobj.draw()
         }
         else if (canvas.hollyrect && canvas.hollyrect.hitest(x, y))
         {
