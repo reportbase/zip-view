@@ -5084,32 +5084,32 @@ menuobj.draw = function()
     	clearTimeout(context.saveinterval)
     	context.saveinterval = setTimeout(function()
     	{
-    	        menuobj.hide();
-    	        menuobj.toggle(_8cnvctx);
-    	        menuobj.show();
-    	        
-    	        var e = url.searchParams.get('_8');
-    	        if (e != _8cnv.timeobj.current().toFixed(5))
-    	        {
-    	            var k = _8cnv.timeobj.current();
-    	            if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
-    	                url.searchParams.set('_8', k.toFixed(5));
-    	            window.history.replaceState("", url.origin, url);
-    	        }
-    	        
-    	        var e = url.searchParams.get('t');
-    	        if (e != templateobj.value())
-    	        {
-    	            url.searchParams.set("t",templateobj.value());
-    	            window.history.replaceState("", url.origin, url);
-    	        }
-    	        
-    	        var e = url.searchParams.get('b');
-    	        if (e != buttonobj.value())
-    	        {
-    	            url.searchParams.set("b",buttonobj.value());
-    	            window.history.replaceState("", url.origin, url);
-    	        }
+        	menuobj.hide();
+        	menuobj.toggle(_8cnvctx);
+        	menuobj.show();
+        	
+        	var e = url.searchParams.get('_8');
+        	if (e != _8cnv.timeobj.current().toFixed(5))
+        	{
+        	    var k = _8cnv.timeobj.current();
+        	    if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
+        		url.searchParams.set('_8', k.toFixed(5));
+        	    window.history.replaceState("", url.origin, url);
+        	}
+        	
+        	var e = url.searchParams.get('t');
+        	if (e != templateobj.value())
+        	{
+        	    url.searchParams.set("t",templateobj.value());
+        	    window.history.replaceState("", url.origin, url);
+        	}
+        	
+        	var e = url.searchParams.get('b');
+        	if (e != buttonobj.value())
+        	{
+        	    url.searchParams.set("b",buttonobj.value());
+        	    window.history.replaceState("", url.origin, url);
+        	}
     	}, 500);
     }
 }
