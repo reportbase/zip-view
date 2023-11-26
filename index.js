@@ -3469,9 +3469,8 @@ var keylst =
             else if (key == "e")
             {
                 menuobj.hide();
-                menuobj.set(_8cnvctx);
+                menuobj.toggle(_8cnvctx);
                 menuobj.show();
-                menuobj.draw();
                 evt.preventDefault();
             }                
             else if (key == " ")
