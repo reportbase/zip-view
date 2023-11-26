@@ -2184,8 +2184,20 @@ CanvasRenderingContext2D.prototype.savetime = function()
             {
                 var k = _8cnv.timeobj.current();
                 if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
-                    url.searchParams.set('_8', k.toFixed(5));
+                url.searchParams.set('_8', k.toFixed(5));
+                window.history.replaceState("", url.origin, url);
+            }
+
+            var e = url.searchParams.get('t');
+            if (e != templateobj.value())
+            {
                 url.searchParams.set("t",templateobj.value());
+                window.history.replaceState("", url.origin, url);
+            }
+
+            var e = url.searchParams.get('b');
+            if (e != buttonobj.value())
+            {
                 url.searchParams.set("b",buttonobj.value());
                 window.history.replaceState("", url.origin, url);
             }
@@ -2538,7 +2550,6 @@ var wheelst =
             var e = k*j;
             buttonobj.add(e);
             menuobj.draw();
-            context.savetime();
             context.swipetimeout = 0;
             context.canvas.pinching = 0;
         }
@@ -2548,7 +2559,6 @@ var wheelst =
             if (delta > 3 && context.elst.length % 5)
                 return;
             buttonobj.addperc(-1 * delta * 0.001);
-            context.savetime();
             menuobj.draw();
         }
         else
@@ -2718,7 +2728,6 @@ var pinchlst =
                 continue;
             buttonobj.setcurrent(n);
             menuobj.draw();
-            context.savetime();
             break;
         }
     },
@@ -2972,7 +2981,6 @@ var panlst =
                 var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
                 templateobj.setperc(k);
                 buttonobj.reset();
-		        context.savetime();    
                 menuobj.draw();
             }
             else
@@ -3005,7 +3013,6 @@ var panlst =
             {
                 var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
                 buttonobj.setperc(k);
-                context.savetime();
             }
             else
             {
@@ -3459,7 +3466,6 @@ var keylst = [
                 var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
                 displayobj.set(k);
                 buttonobj.addperc(-1.0 / 100);
-                context.savetime();
                 menuobj.draw()
                 evt.preventDefault();
             }
@@ -3468,7 +3474,6 @@ var keylst = [
                 var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
                 displayobj.set(k);
                 buttonobj.addperc(1.0 / 100);
-                context.savetime();
                 menuobj.draw()
                 evt.preventDefault();
             }
@@ -3927,7 +3932,6 @@ var taplst =
             else
             {
                 buttonobj.addperc(k < 0.5 ? -0.025 : 0.025);
-                context.savetime();
                 menuobj.draw();
             }
         }
@@ -3949,7 +3953,6 @@ var taplst =
     		    }
 		    
                 templateobj.add(k < 0.5 ? -1 : 1);
-                context.savetime();
                 buttonobj.reset();
                 menuobj.draw();
             }            
@@ -4006,7 +4009,6 @@ var taplst =
         {
             var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
             buttonobj.setperc(k);
-            context.savetime();
             menuobj.draw()              
         }
         else if (
@@ -4057,12 +4059,10 @@ var taplst =
             {
                 var j = Math.lerp(0,templateobj.length()-1,k);
                 templateobj.set(Math.round(j));
-                context.savetime();
                 buttonobj.reset();
             }
 
-			context.savetime();	
-            menuobj.draw()
+	    menuobj.draw()
         }
         else if (canvas.hollyrect && canvas.hollyrect.hitest(x, y))
         {
