@@ -2635,7 +2635,7 @@ var wheelst =
         }
         else
         {
-            rowobj.addperc(delta/1000);
+            rowobj.addperc(0.01);
             contextobj.reset()
         }
     },
@@ -2920,7 +2920,7 @@ var panlst =
         if (canvas.pinching)
             return;
        context.elst.push({x,y});
-        if (context.elst.length % 5)
+        if (context.elst.length % 2)
             return;
         
         if (type == "panleft" || type == "panright")
@@ -3043,7 +3043,7 @@ var panlst =
     {
         var canvas = context.canvas;
         context.elst.push({x,y});
-        if (context.elst.length % 5)
+        if (context.elst.length % 2)
             return;
         var hollyobj = context.canvas.hollyobj;
         if (hollyobj && (type == "panleft" || type == "panright"))
@@ -3111,7 +3111,7 @@ var panlst =
     {
         var canvas = context.canvas;
         context.elst.push({x,y});
-        if (context.elst.length % 5)
+        if (context.elst.length % 2)
             return;
         if (canvas.pinching)
             return;
