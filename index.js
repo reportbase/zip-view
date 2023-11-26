@@ -5154,7 +5154,7 @@ var eventlst =
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "MENU",
+    button: "CURRENT",
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
@@ -6664,11 +6664,13 @@ function setupmenus()
         j.func = function()
         {
             gotoimage(this.index+1)
-            galleryobj.rightctx.hide();
-            galleryobj.leftcnv = _7cnv;
-            galleryobj.leftctx = _7cnvctx;
-            menuobj.setindex(_8cnvctx);
-            menuobj.show();
+            galleryobj.set(this.index);
+            //galleryobj.rightctx.hide();
+            //galleryobj.leftcnv = _7cnv;
+            //galleryobj.leftctx = _7cnvctx;
+            //menuobj.setindex(_8cnvctx);
+            //menuobj.show();
+            menuobj.draw();
             headobj.draw();
         };
         
