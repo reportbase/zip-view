@@ -2551,8 +2551,8 @@ var wheelst =
         }
         else
         {
-            if (delta > 3 && context.elst.length % 2)
-                return;
+            //if (delta > 3 && context.elst.length % 2)
+            //    return;
             if (Math.abs(delta) > 200 && headcnv.height)
             {
                 headcnvctx.show(0, 0, window.innerWidth, 0);
