@@ -2503,12 +2503,13 @@ var wheelst =
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
         context.elst.push({x,y});
-        if (context.elst.length % 5)
-            return;
 
         if (ctrl)
         {
-            var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
+            if (context.elst.length % 5)
+                return;
+
+	        var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
             if (headham.panel != headlst[k])
             {
                 headham.panel = headlst[k];
@@ -2531,11 +2532,15 @@ var wheelst =
         else if (canvas.buttonrect &&
             canvas.buttonrect.hitest(x, y))
         {
+            if (context.elst.length % 5)
+                return;
             buttonobj.addperc(-1 * delta * 0.001);
             menuobj.draw();
         }
         else
         {
+            if (context.elst.length % 2)
+                return;
             if (Math.abs(delta) > 200 && headcnv.height)
             {
                 headcnvctx.show(0, 0, window.innerWidth, 0);
@@ -2570,7 +2575,7 @@ var wheelst =
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         context.elst.push({x,y});
-        if (context.elst.length % 5)
+        if (context.elst.length % 2)
             return;
         menuobj.updown(context, delta, 30);
         if (!context.swipetimeout)
@@ -2580,7 +2585,7 @@ var wheelst =
     leftright: function(context, x, y, delta, ctrl, shift, alt, trackpad)
     {
         context.elst.push({x,y});
-        if (context.elst.length % 5)
+        if (context.elst.length % 2)
             return;
         context.canvas.hollyobj.addperc(delta / 1000);
         menuobj.draw();
@@ -2592,7 +2597,7 @@ var wheelst =
     {
         var canvas = context.canvas;
         context.elst.push({x,y});
-        if (context.elst.length % 5)
+        if (context.elst.length % 2)
             return;
         if (ctrl)
         {
@@ -2637,7 +2642,7 @@ var wheelst =
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     { 
         context.elst.push({x,y});
-        if (context.elst.length % 5)
+        if (context.elst.length % 2)
             return;
         if (context.hollyrect &&
             context.hollyrect.hitest(x, y))
