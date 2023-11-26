@@ -2539,7 +2539,7 @@ var wheelst =
         }
         else
         {
-            if (Math.abs(delta) > 320 && headcnv.height)
+            if (Math.abs(delta) > 200 && headcnv.height)
             {
                 headcnvctx.show(0, 0, window.innerWidth, 0);
                 headobj.draw();
