@@ -352,6 +352,12 @@ panel.yoll = function()
             context.canvas.tap_(context, rect, x, y, shift, ctrl);
     };
 
+    this.wheel = function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
+    {
+        if (context.canvas.wheel_)
+            context.canvas.wheel_(context, x, y);
+    };
+
     this.wheeleftright = function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         if (context.canvas.wheeleftright_)
@@ -2339,6 +2345,8 @@ var makehammer = function(context, v, t)
         var y = evt.offsetY;
         var deltax = evt.deltaX;
         var deltay = evt.deltaY;
+        if (typeof(ham.panel.wheel) == "function")
+            ham.panel.wheel(context, x, y); 
         if (typeof(ham.panel.wheeleftright) == "function")
             ham.panel.wheeleftright(context, x, y, deltax, 
                     evt.ctrlKey, evt.shiftKey, evt.altKey, 
@@ -2493,16 +2501,20 @@ var wheelst =
 [
 {
     name: "DEFAULT",
+    wheel: function(context),
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad) {},
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad) {},
 },
 {
     name: "GALLERY",
+    wheel: function(context, x, y)
+    {
+        context.elst.push({x,y});
+    },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
-        context.elst.push({x,y});
 
         if (ctrl)
         {
@@ -2556,7 +2568,6 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        context.elst.push({x,y});
         if (delta > 3 && context.elst.length % 3)
             return;
         if (SAFARI || FIREFOX)
@@ -2572,9 +2583,12 @@ var wheelst =
 },
 {
     name: "MENU",
-    updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
+    wheel: function(context, x, y)
     {
         context.elst.push({x,y});
+    },
+    updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
+    {
         if (context.elst.length % 2)
             return;
         menuobj.updown(context, delta, 30);
@@ -2593,10 +2607,13 @@ var wheelst =
 },
 {
     name: "BOSS",
+    wheel: function(context, x, y)
+    {
+        context.elst.push({x,y});
+    },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         var canvas = context.canvas;
-        context.elst.push({x,y});
         if (context.elst.length % 2)
             return;
         var e = delta/500;
@@ -2643,7 +2660,6 @@ var wheelst =
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     { 
         var e = delta/500;
-        context.elst.push({x,y});
         if (context.elst.length % 2)
             return;
         if (context.hollyrect &&
@@ -5448,6 +5464,7 @@ contextobj.init = function()
         k = wheelst[k];
         canvas.wheelupdown_ = k.updown;
         canvas.wheeleftright_ = k.leftright;
+        canvas.wheel_ = k.wheel;
     
         var k = mouselst.findIndex(function(a){return a.name == obj.mouse});
         k = mouselst[k];
