@@ -4300,7 +4300,7 @@ var taplst =
     		if (login.id && login.credential)
     		{
     			localStorage.removeItem("login");
-    			google.accounts.id.revoke(login.credential, handleRevokedSession)
+    			google.accounts.id.revoke(login.credential, function(){})
 			    menuobj.draw();
     		}
     		else
