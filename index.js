@@ -2568,8 +2568,8 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        if (delta > 3 && context.elst.length % 3)
-            return;
+        //if (delta > 3 && context.elst.length % 3)
+        //    return;
         if (SAFARI || FIREFOX)
         {
             context.canvas.hollyobj.addperc(delta / 2000);
