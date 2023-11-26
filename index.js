@@ -657,7 +657,7 @@ var footlst =
                [
                    `\u{25C0}   ${k}`,
                    0,
-                   "Upload   \u{25B6}", 
+                   "Upload", 
                 ], 0);
         
         context.restore();
@@ -718,8 +718,8 @@ var footlst =
                    0,
                    [
                        `Open`,
-                       `Add \u{25B6}`,
-                       `Edit \u{25B6}`,
+                       `Add`,
+                       `Edit`,
                        `Delete`,
                     ], 
                 ]);
@@ -782,8 +782,8 @@ var footlst =
                    0,
                    [
                        `Open`,
-                       `Add \u{25B6}`,
-                       `Edit \u{25B6}`,
+                       `Add`,
+                       `Edit`,
                        `Delete`,
                     ], 
                 ]);
@@ -6965,7 +6965,7 @@ menuobj.updown = function(context, delta)
     canvas.autodirect = delta < 0 ? 1 : -1;
     var k = Math.abs(delta)/20;
     canvas.slideshow = (sealobj.value() / canvas.virtualheight) * k;
-    canvas.slidereduce = canvas.slideshow / 30;
+    canvas.slidereduce = canvas.slideshow / 100;
 }
 
 galleryobj.leftright = function(context, delta)
