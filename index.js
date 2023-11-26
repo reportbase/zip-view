@@ -2545,7 +2545,7 @@ var wheelst =
                 headobj.draw();
             }
             
-            menuobj.updown(context, delta)
+            menuobj.updown(context, delta, 60)
             menuobj.draw();
             if (!context.swipetimeout)
                 context.swipetimeout = setInterval(
@@ -2571,7 +2571,7 @@ var wheelst =
     {
         if (ctrl)
             return;
-        menuobj.updown(context, delta);
+        menuobj.updown(context, delta, 30);
         if (!context.swipetimeout)
             context.swipetimeout = setInterval(function(){
                 menuobj.draw();}, MENUMAIN);
@@ -3304,7 +3304,7 @@ var swipelst = [
         headobj.draw();
         
         var k = evt.type == "swipeup" ? 1 : -1;
-        menuobj.updown(context, k * 90);
+        menuobj.updown(context, k * 90, 30);
         if (!context.swipetimeout)
             context.swipetimeout = setInterval(
                 function(){menuobj.draw();}, GALLERYMAIN);
@@ -3316,7 +3316,7 @@ var swipelst = [
     swipeupdown: function(context, rect, x, y, evt)
     {
         var k = evt.type == "swipeup" ? 1 : -1;
-        menuobj.updown(context, k * context.canvas.speed);
+        menuobj.updown(context, k * 50, 30);
 	    if (!context.swipetimeout)
             context.swipetimeout = setInterval(
                 function(){menuobj.draw();}, MENUMAIN);
@@ -3371,7 +3371,7 @@ var keylst = [
                 key == "arrowup" ||
                 key == "k")
             {
-                menuobj.updown(context, -120)
+                menuobj.updown(context, -120, 30)
                 if (!context.swipetimeout)
                     context.swipetimeout = 
                         setInterval(function(){menuobj.draw()}, GALLERYMAIN);
@@ -3381,7 +3381,7 @@ var keylst = [
                 key == "arrowdown" ||
                 key == "j")
             {
-                menuobj.updown(context, 120)
+                menuobj.updown(context, 120, 30)
                 if (!context.swipetimeout)
                     context.swipetimeout = 
                         setInterval(function(){menuobj.draw();}, GALLERYMAIN);
@@ -3389,7 +3389,7 @@ var keylst = [
             }
             else if (key == " ")
             {
-                menuobj.updown(context, canvas.shiftKey?-360:360)
+                menuobj.updown(context, canvas.shiftKey?-360:360, 30)
                 if (!context.swipetimeout)
                     context.swipetimeout = 
                         setInterval(function(){menuobj.draw();}, GALLERYMAIN);
@@ -3473,7 +3473,7 @@ var keylst = [
                 (canvas.shiftKey && key == " ") ||
                 key == "j")
             {
-                menuobj.updown(context, -60)
+                menuobj.updown(context, -60, 30)
                 if (!context.swipetimeout)
                     context.swipetimeout = setInterval(function(){
                         menuobj.draw();}, GALLERYMAIN);
@@ -3486,7 +3486,7 @@ var keylst = [
                 key == " " ||
                 key == "k")
             {
-                menuobj.updown(context, 60)
+                menuobj.updown(context, 60, 30)
                 if (!context.swipetimeout)
                     context.swipetimeout = setInterval(function(){
                         menuobj.draw();}, GALLERYMAIN);
@@ -3857,7 +3857,7 @@ var taplst =
             var k = (x - context.buttonmenurect.x) / context.buttonmenurect.width;
                         if (k < 0.2)
             {
-                menuobj.updown(context, 120)
+                menuobj.updown(context, 120, 30)
                 menuobj.draw();
                 clearInterval(context.swipetimeout)
                 context.swipetimeout = setInterval(function(){
@@ -3865,7 +3865,7 @@ var taplst =
             }
             else if (k > 0.8)
             {
-                 menuobj.updown(context, -120)
+                 menuobj.updown(context, -120, 30)
                 menuobj.draw();
                  clearInterval(context.swipetimeout)
                 context.swipetimeout = setInterval(function(){
@@ -6959,13 +6959,13 @@ function importdialog()
 }
 
 //menuobj updown
-menuobj.updown = function(context, delta)
+menuobj.updown = function(context, delta, divider)
 {
     var canvas = context.canvas;
     canvas.autodirect = delta < 0 ? 1 : -1;
     var k = Math.abs(delta)/20;
     canvas.slideshow = (sealobj.value() / canvas.virtualheight) * k;
-    canvas.slidereduce = canvas.slideshow / 100;
+    canvas.slidereduce = canvas.slideshow / divider;
 }
 
 galleryobj.leftright = function(context, delta)
