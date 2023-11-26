@@ -852,7 +852,7 @@ var footlst =
                    0,
                    [
                        "",
-                       "Logout",
+                       "Edit",
                        "",
                    ], 
                 ], 0);
@@ -885,12 +885,12 @@ var footlst =
                 ])
             ]);
 
-	var str = login.id ? "Logout" : "Login";
+	    var str = login.id ? "Logout" : "Login";
         a.draw(context, rect, 
                [
                    `\u{25C0}   ${url.host}`,
                     0,
-                    `${str}   \u{25B6}`,
+                    `${str}`,
                 ],
                 0);
         context.restore();
