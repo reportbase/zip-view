@@ -2506,7 +2506,7 @@ var wheelst =
 
         if (ctrl)
         {
-            if (delta > 5 && context.elst.length % 5)
+            if (context.elst.length % 5)
                 return;
 
 	        var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
@@ -2520,7 +2520,7 @@ var wheelst =
             if (displaylst[k] != displayobj.value()) 
                 displayobj.set(k);
         
-            var j = buttonobj.length()/20;
+            var j = buttonobj.length()/40;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
@@ -2551,7 +2551,7 @@ var wheelst =
             menuobj.draw();
             if (!context.swipetimeout)
                 context.swipetimeout = setInterval(
-                    function(){menuobj.draw();}, GALLERYMAIN);
+                    function(){menuobj.draw();}, GALLERYMAIN*3);
         }
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
