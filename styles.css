@@ -84,8 +84,11 @@ textarea
   font-weight: bold;
 }
 
-button 
+button:hover
+background-color: #04AA6D; /* Green */
+  color: white;
 {
+  transition-duration: 0.4s;
   text-align: center;
   background-color: white;
   border: 10;
@@ -96,13 +99,4 @@ button
   color: lightsteelblue;
   margin-top: 33px;
   margin-left: 322px;
-}
-
-.button {
-  transition-duration: 0.4s;
-}
-
-.button:hover {
-  background-color: #04AA6D; /* Green */
-  color: white;
 }
