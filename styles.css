@@ -22,7 +22,6 @@ dialog
   max-height: 80vh;
   border-width: 6px; 
   border-color: #999999; 
-  overflow-y: scroll;
 }
 
 dialog::backdrop 
