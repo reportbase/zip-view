@@ -5076,10 +5076,10 @@ menuobj.draw = function()
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
 
-    //todo: don't call very much
-    clearTimeout(context.savetimeout);
-    context.savetimeout = setTimeout(function()
+    var now = Date.now();
+    if (context.savetime && (now - context.savetime) > 1000)
     {
+        context.savetime = now
         menuobj.hide();
         menuobj.toggle(_8cnvctx);
         menuobj.show();
@@ -5106,7 +5106,7 @@ menuobj.draw = function()
             url.searchParams.set("b",buttonobj.value());
             window.history.replaceState("", url.origin, url);
         }
-    }, 400)
+    }
 }
 
 var eventlst = 
