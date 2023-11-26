@@ -23,6 +23,7 @@ dialog
   border-width: 6px; 
   border-color: #b3b3b3; 
   overflow-y: scroll;
+  border-image: linear-gradient (to right, darkblue, darkorchid) 1;
 }
 
 dialog::backdrop 
