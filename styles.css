@@ -19,7 +19,6 @@ dialog
   background-color: dimgray;
   padding: 20px 20px 20px 20px; 
   border-radius: 33px;
-  max-height: 80vh;
   border-width: 6px; 
   border-color: #999999; 
 }
