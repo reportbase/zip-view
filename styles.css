@@ -85,8 +85,8 @@ textarea
 }
 
 .button {
-  background-color: #04AA6D; /* Green */
-  border: none;
+  background-color: steelblue
+  border: 10;
   color: white;
   text-align: center;
   text-decoration: none;
