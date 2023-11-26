@@ -6363,7 +6363,7 @@ var padlst =
     0,0,0,0,0,0,0,0,0,0,//240
     0,0,0,0,0,0,0,0,0,4,//250
     3,2,1,0,0,0,0,0,0,0,//260
-    7,0,0,0,0,0,0,0,0,0,//270
+    8,0,0,0,0,0,0,0,0,0,//270
     0,0,0,0,0,0,0,0,0,0,//280
     0,0,0,0,0,0,0,0,0,0,//290
     0,0,0,0,0,0,0,0,0,0,//300
@@ -6694,19 +6694,19 @@ function setupmenus()
     _10cnv.sliceobj.data = 
     [
         {
-            title: function(){return `ID: ${login.id?login.id:""}`},
+            title: function(){return `User ID: ${login.id?login.id:""}`},
             func: function(){copytext(login.id); return false;}
         },
         {
-            title: function(){return `Email: ${login.email?login.email:""}`},
+            title: function(){return `User Email: ${login.email?login.email:""}`},
             func: function(){copytext(login.email); return false;}
         },
         {
-            title: function(){return `Name: ${login.name?login.name:""}`},
+            title: function(){return `User Name: ${login.name?login.name:""}`},
             func: function(){copytext(login.name); return false;}
         },
         {
-            title: function(){return `Secret: ${login.secret?login.secret:""}`},
+            title: function(){return `User Secret: ${login.secret?login.secret:""}`},
             func: function(){copytext(login.secret); return false;}
         },
     ]
