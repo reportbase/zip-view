@@ -97,3 +97,12 @@ button
   margin-top: 33px;
   margin-left: 322px;
 }
+
+.button {
+  transition-duration: 0.4s;
+}
+
+.button:hover {
+  background-color: #04AA6D; /* Green */
+  color: white;
+}
