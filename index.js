@@ -42,7 +42,7 @@ const MENUSELECT = "rgba(255,175,0,0.4)";
 const MENUTAP = "rgba(255,125,0,0.7)";
 const SCROLLNAB = "rgba(0,0,0,0.3)";
 const MENUCOLOR = "rgba(0,0,0,0.5)";
-const FOOTBTNCOLOR = "rgba(0,0,0,0.6)";
+const FOOTBTNCOLOR = "rgba(0,0,0,0.75)";
 const OPTIONFILL = "white";
 const THUMBTRANSPARENT = "rgba(0,0,0,0.2)";
 const LIGHTHUMBFILLL = "rgba(255,125,0,0.25)";
@@ -603,7 +603,7 @@ var footlst =
             [
                 new panel.layers(
                 [
-                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.fill(FOOTBTNCOLOR),
                     new panel.text(),
                     new panel.rectangle(canvas.homerect),
                 ]),
@@ -631,7 +631,7 @@ var footlst =
             [
                 new panel.layers(
                 [
-                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.fill(FOOTBTNCOLOR),
                     new panel.text(),
                     new panel.rectangle(canvas.closerect),
                 ]),
@@ -825,14 +825,14 @@ var footlst =
             [
                 new panel.layers(
                 [
-                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.fill(FOOTBTNCOLOR),
                     new panel.text(),
                     new panel.rectangle(canvas.homerect),
                 ]),
                 0,
                 new panel.layers(
                 [
-                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.fill(FOOTBTNCOLOR),
                     new panel.colsA([0,0,0],
                     [
                         0,
@@ -872,14 +872,14 @@ var footlst =
             [
                 new panel.layers(
                 [
-                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.fill(FOOTBTNCOLOR),
                     new panel.text(),
                     new panel.rectangle(canvas.closerect),
                 ]),
                 0,
                 new panel.layers(
                 [
-                    new panel.fill("rgba(0,0,0,0.8)"),
+                    new panel.fillFOOTBTNCOLOR),
                     new panel.rectangle(canvas.loginrect),
                     new panel.text(),             
                 ])
