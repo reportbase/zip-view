@@ -85,8 +85,6 @@ textarea
 }
 
 button:hover
-background-color: #04AA6D; /* Green */
-  color: white;
 {
   transition-duration: 0.4s;
   text-align: center;
