@@ -2901,6 +2901,11 @@ var panlst =
 
         var canvas = context.canvas;
         var obj = canvas.hollyobj;
+        if (!context.elst)
+    	    context.elst = [];
+        context.elst.push(delta);
+        if (context.elst.length % 5)
+            return;
         
         if (type == "panleft" || type == "panright")
         {
