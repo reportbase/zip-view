@@ -85,7 +85,6 @@ textarea
 }
 
 button
-  <style>
   .pushable {
     background: hsl(340deg 100% 32%);
     border-radius: 12px;
@@ -107,4 +106,3 @@ button
   .pushable:active .front {
     transform: translateY(-2px);
   }
-</style>
