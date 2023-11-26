@@ -2506,7 +2506,7 @@ var wheelst =
 
         if (ctrl)
         {
-            if (context.elst.length % 5)
+            if (delta > 5 && context.elst.length % 5)
                 return;
 
 	        var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
@@ -2532,14 +2532,14 @@ var wheelst =
         else if (canvas.buttonrect &&
             canvas.buttonrect.hitest(x, y))
         {
-            if (context.elst.length % 5)
+            if (delta > 5 && context.elst.length % 5)
                 return;
             buttonobj.addperc(-1 * delta * 0.001);
             menuobj.draw();
         }
         else
         {
-            if (context.elst.length % 2)
+            if (delta > 5 && context.elst.length % 2)
                 return;
             if (Math.abs(delta) > 200 && headcnv.height)
             {
@@ -2557,7 +2557,7 @@ var wheelst =
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         context.elst.push({x,y});
-        if (context.elst.length % 5)
+        if (delta > 5 && context.elst.length % 5)
             return;
         if (SAFARI || FIREFOX)
         {
