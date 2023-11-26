@@ -86,8 +86,6 @@ textarea
 
 button
 {
-  transition-duration: 0.4s;
-  button:hover;
   text-align: center;
   background-color: white;
   border: 10;
