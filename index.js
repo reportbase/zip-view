@@ -2599,50 +2599,50 @@ var wheelst =
         context.elst.push({x,y});
         if (context.elst.length % 2)
             return;
-        var e = delta<0?-1:1;
+        var e = delta/500;
         if (ctrl)
         {
             var isthumb = context.canvas.thumbrect &&
                 context.canvas.thumbrect.hitest(x, y);
             if (isthumb)
             {
-                heightobj.addperc(e*0.01);
+                heightobj.addperc(e);
                 bossobj.draw();
             }
             else
             {
-                zoomobj.addperc(e*0.01);
+                zoomobj.addperc(e);
                 contextobj.reset()
             }
         }
         else if (context.zoomrect &&
             context.zoomrect.hitest(x, y))
         {
-            zoomobj.addperc(e*0.01);
+            zoomobj.addperc(e);
             contextobj.reset()
         }
         else if (0 && context.hollyrect &&
             context.hollyrect.hitest(x, y))
         {
             var hollyobj = context.canvas.hollyobj;
-            hollyobj.addperc(e*0.01);
+            hollyobj.addperc(e);
             bossobj.draw();
         }
         else if (context.stretchrect &&
             context.stretchrect.hitest(x, y))
         {
-            stretchobj.addperc(e*0.01);
+            stretchobj.addperc(e);
             bossobj.draw();
         }
         else
         {
-            rowobj.addperc(e*0.002);
+            rowobj.addperc(e);
             contextobj.reset()
         }
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     { 
-        var e = delta<0?-1:1;
+        var e = delta/500;
         context.elst.push({x,y});
         if (context.elst.length % 2)
             return;
@@ -2650,13 +2650,13 @@ var wheelst =
             context.hollyrect.hitest(x, y))
         {
             var hollyobj = context.canvas.hollyobj;
-            hollyobj.addperc(e*0.01);
+            hollyobj.addperc(e);
             bossobj.draw();
         }
         else
         {
             var k = _4cnv.timeobj.length();
-            var j = k*(e*0.001);
+            var j = k*e;
             _4cnv.timeobj.CURRENT += j;
             bossobj.draw()
         }
