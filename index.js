@@ -2502,6 +2502,9 @@ var wheelst =
     {
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
+        context.elst.push({x,y});
+        if (context.elst.length % 5)
+            return;
 
         if (ctrl)
         {
@@ -2520,15 +2523,8 @@ var wheelst =
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
-            if (!context.elst)
-                context.elst = [];
-            context.elst.push(delta);//todo
-            if (!(context.elst.length % 5))
-            {
-                buttonobj.add(e);
-                menuobj.draw();
-            }
-
+            buttonobj.add(e);
+            menuobj.draw();
             context.swipetimeout = 0;
             context.canvas.pinching = 0;
         }
@@ -2555,6 +2551,9 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
+        context.elst.push({x,y});
+        if (context.elst.length % 5)
+            return;
         if (SAFARI || FIREFOX)
         {
             context.canvas.hollyobj.addperc(delta / 2000);
@@ -2570,7 +2569,8 @@ var wheelst =
     name: "MENU",
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        if (ctrl)
+        context.elst.push({x,y});
+        if (context.elst.length % 5)
             return;
         menuobj.updown(context, delta, 30);
         if (!context.swipetimeout)
@@ -2579,6 +2579,9 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, trackpad)
     {
+        context.elst.push({x,y});
+        if (context.elst.length % 5)
+            return;
         context.canvas.hollyobj.addperc(delta / 1000);
         menuobj.draw();
     },
@@ -2588,6 +2591,9 @@ var wheelst =
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         var canvas = context.canvas;
+        context.elst.push({x,y});
+        if (context.elst.length % 5)
+            return;
         if (ctrl)
         {
             var isthumb = context.canvas.thumbrect &&
@@ -2630,6 +2636,9 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     { 
+        context.elst.push({x,y});
+        if (context.elst.length % 5)
+            return;
         if (context.hollyrect &&
             context.hollyrect.hitest(x, y))
         {
@@ -2896,14 +2905,10 @@ var panlst =
     pan: function(context, rect, x, y, type)
     {
         var canvas = context.canvas;
+        var obj = canvas.hollyobj;
         if (canvas.pinching)
             return;
-
-        var canvas = context.canvas;
-        var obj = canvas.hollyobj;
-        if (!context.elst)
-    	    context.elst = [];
-        context.elst.push({x,y});
+       context.elst.push({x,y});
         if (context.elst.length % 5)
             return;
         
@@ -3025,6 +3030,10 @@ var panlst =
 
     pan: function(context, rect, x, y, type)
     {
+        var canvas = context.canvas;
+        context.elst.push({x,y});
+        if (context.elst.length % 5)
+            return;
         var hollyobj = context.canvas.hollyobj;
         if (hollyobj && (type == "panleft" || type == "panright"))
         {
@@ -3038,7 +3047,6 @@ var panlst =
         }
         else if (type == "panup" || type == "pandown")
         {
-            var canvas = context.canvas;
             if (canvas.ishollyrect)
             {
                 var obj = canvas.timeobj;
@@ -3091,6 +3099,9 @@ var panlst =
     pan: function(context, rect, x, y, type)
     {
         var canvas = context.canvas;
+        context.elst.push({x,y});
+        if (context.elst.length % 5)
+            return;
         if (canvas.pinching)
             return;
         if (context.canvas.isthumb)
@@ -5382,6 +5393,7 @@ contextobj.init = function()
         context.imageSmoothingQuality = "high";
         context.font = DEFAULTFONT;
         context.fillText("  ", 0, 0);
+        context.elst = []
         canvas.autodirect = -1;
         canvas.slideshow = 0;
         canvas.slidereduce = 0;
