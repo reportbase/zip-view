@@ -3384,7 +3384,8 @@ var swipelst = [
 var swipeobj = new circular_array("SWIPE", swipelst);
 swipeobj.set(3);
 
-var keylst = [
+var keylst = 
+[
     {
         name: "DEFAULT",
         keyup: function(evt) {},
@@ -3429,20 +3430,38 @@ var keylst = [
                 key == "arrowup" ||
                 key == "k")
             {
-                menuobj.updown(context, -120, 30)
-                if (!context.swipetimeout)
-                    context.swipetimeout = 
-                        setInterval(function(){menuobj.draw()}, GALLERYMAIN);
+                if (key == canvas.ctrlKey)
+                {
+                    var k = canvas.timeobj.length() / galleryobj.length();
+                    canvas.timeobj.rotate(k);
+                }
+                else
+                {
+                    menuobj.updown(context, -120, 30)
+                    if (!context.swipetimeout)
+                        context.swipetimeout = 
+                            setInterval(function(){menuobj.draw()}, GALLERYMAIN);
+                }
+                
                 evt.preventDefault();
             }
             else if (
                 key == "arrowdown" ||
                 key == "j")
             {
-                menuobj.updown(context, 120, 30)
-                if (!context.swipetimeout)
-                    context.swipetimeout = 
-                        setInterval(function(){menuobj.draw();}, GALLERYMAIN);
+                 if (key == canvas.ctrlKey)
+                {
+                    var k = canvas.timeobj.length() / galleryobj.length();
+                    canvas.timeobj.rotate(-k);
+                }
+                else
+                {
+                   menuobj.updown(context, 120, 30)
+                    if (!context.swipetimeout)
+                        context.swipetimeout = 
+                            setInterval(function(){menuobj.draw();}, GALLERYMAIN);
+                }
+                
                 evt.preventDefault();
             }
             else if (key == " ")
