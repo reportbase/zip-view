@@ -5150,9 +5150,11 @@ menuobj.draw = function()
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
 
-	clearTimeout(context.saveinterval)
+    if (context.saveinterval)
+        return;
 	context.saveinterval = setTimeout(function()
 	{
+        context.saveinterval = 0;
         if (menuobj.value() == _8cnvctx)
         {
             var k = displayobj.current();    
