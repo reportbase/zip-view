@@ -64,7 +64,7 @@ const LARGEFONT = "21px archivo black";
 const HUGEFONT = "24px archivo black";
 const SLICEWIDTH = 16;
 const ZOOMAX = 92;
-const IMAGELSTSIZE = 10;
+const IMAGELSTSIZE = 32;
 const ROTATEANCHORSIAE = 3;
 const BOSS = 0;
 const GALLERY = 1;
@@ -5052,7 +5052,7 @@ menuobj.draw = function()
         context.canvas.timeobj.rotate(k * context.canvas.slideshow);
 	    if (!canvas.keypress)
             context.canvas.slideshow -= context.canvas.slidereduce
-    }
+    }g
     else if (context.swipetimeout)
     {
         clearInterval(context.swipetimeout)
