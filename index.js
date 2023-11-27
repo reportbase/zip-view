@@ -3371,7 +3371,6 @@ var keylst =
             var canvas = context.canvas;
             canvas.shiftKey = 0;
             canvas.ctrlKey = 0;
-            canvas.keypress = 0;
         },
         keydown: function(evt)
         {
@@ -3409,8 +3408,7 @@ var keylst =
                 }
                 else
                 {
-				    canvas.keypress = 1;
-                    menuobj.updown(context, -120, 30)
+	            menuobj.updown(context, -120, 30)
                     if (!context.swipetimeout)
                         context.swipetimeout = 
                             setInterval(function(){menuobj.draw()}, GALLERYMAIN);
@@ -3430,8 +3428,7 @@ var keylst =
                 }
                 else
                 {
-                    canvas.keypress = 1;
-                   menuobj.updown(context, 120, 30)
+                    menuobj.updown(context, 120, 30)
                     if (!context.swipetimeout)
                         context.swipetimeout = 
                             setInterval(function(){menuobj.draw();}, GALLERYMAIN);
@@ -3656,7 +3653,6 @@ var keylst =
             }
         }
     },
-
 ];
 
 CanvasRenderingContext2D.prototype.hithumb = function(x, y)
