@@ -4124,7 +4124,7 @@ var taplst =
             menuobj.show();
             headobj.draw();
         }
-        else if (!headcnv.height)
+        else if (headcnv.height)
         {
             headobj.reset();
             menuobj.draw();
