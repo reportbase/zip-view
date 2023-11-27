@@ -6786,7 +6786,7 @@ function setupmenus()
         {
             galleryobj.set(this.index);
             //gotoimage(this.index+1)
-            return true;
+            return false;
         };
         
         _6cnv.sliceobj.data.push(j);
