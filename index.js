@@ -5150,7 +5150,7 @@ menuobj.draw = function()
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
 
-    if (context.saveinterval)
+    if (context.saveinterval || context.swipetimeout)
         return;
 	context.saveinterval = setTimeout(function()
 	{
