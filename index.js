@@ -2589,15 +2589,8 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        if (1)//SAFARI || FIREFOX)
-        {
-            context.canvas.hollyobj.addperc(delta / 2000);
-            menuobj.draw();
-        }
-        else
-        {
-            galleryobj.leftright(context, delta);
-        }
+        context.canvas.hollyobj.addperc(delta / 2000);
+        menuobj.draw();
     },
 },
 {
@@ -5044,8 +5037,8 @@ menuobj.draw = function()
         clearInterval(context.swipetimeout)
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
-        //reseturl()
-        //resetview()
+        reseturl()
+        resetview()
     }
 
     var delayinterval = sealobj.value() / slices.length / 1000;
