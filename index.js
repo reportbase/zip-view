@@ -5060,6 +5060,7 @@ menuobj.draw = function()
         clearInterval(context.swipetimeout)
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
+        reseturl()
     }
 
     var delayinterval = sealobj.value() / slices.length / 1000;
@@ -5168,17 +5169,14 @@ menuobj.draw = function()
 
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
+}
 
-    if (context != _8cnvctx)
-        return;
-        
-    if (context.drawtimeout)
-        clearInterval(context.drawtimeout);
-	if (context.canvas.slideshow > 0)
-        return;
-    context.drawtimeoutcount++;//todo broken
+function reseturl()
+{
+    var context = _8cnvctx;
+    clearInterval(context.drawtimeout);
     context.drawtimeout = setTimeout(function()
-	{
+    {
         context.drawtimeout = 0;
         if (menuobj.value() == _8cnvctx)
         {
@@ -5190,28 +5188,28 @@ menuobj.draw = function()
             menuobj.draw();
         }
         
-		var e = url.searchParams.get('_8');
-		if (e != _8cnv.timeobj.current().toFixed(5))
-		{
-		    var k = _8cnv.timeobj.current();
-		    if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
-			url.searchParams.set('_8', k.toFixed(5));
-		    window.history.replaceState("", url.origin, url);
-		}
-		
-		var e = url.searchParams.get('t');
-		if (e != templateobj.value())
-		{
-		    url.searchParams.set("t",templateobj.value());
-		    window.history.replaceState("", url.origin, url);
-		}
-		
-		var e = url.searchParams.get('b');
-		if (e != buttonobj.value())
-		{
-		    url.searchParams.set("b",buttonobj.value());
-		    window.history.replaceState("", url.origin, url);
-		}
+        var e = url.searchParams.get('_8');
+        if (e != _8cnv.timeobj.current().toFixed(5))
+        {
+            var k = _8cnv.timeobj.current();
+            if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
+            url.searchParams.set('_8', k.toFixed(5));
+            window.history.replaceState("", url.origin, url);
+        }
+        
+        var e = url.searchParams.get('t');
+        if (e != templateobj.value())
+        {
+            url.searchParams.set("t",templateobj.value());
+            window.history.replaceState("", url.origin, url);
+        }
+        
+        var e = url.searchParams.get('b');
+        if (e != buttonobj.value())
+        {
+            url.searchParams.set("b",buttonobj.value());
+            window.history.replaceState("", url.origin, url);
+        }
     }, 1000);
 }
 
