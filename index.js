@@ -5158,6 +5158,9 @@ menuobj.draw = function()
     if (context.canvas.slideshow)
         return;
     context.drawtimeoutcount++;
+    if (context.drawtimeoutcount%5)
+        return;
+    context.drawtimeoutcountactual++;
 	context.drawtimeout = setTimeout(function()
 	{
         context.drawtimeout = 0;
@@ -5563,6 +5566,7 @@ contextobj.init = function()
         canvas.buttonmargin = obj.buttonmargin;
         canvas.display = obj.display;
         context.drawtimeoutcount = 0;
+        context.drawtimeoutcountactual = 0;
 
         var k = footlst.findIndex(function(a){return a.name == obj.footer});
         canvas.footer = footlst[k];
