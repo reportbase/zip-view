@@ -7132,6 +7132,7 @@ menuobj.updown = function(context, delta, divider)
     canvas.slidereduce = canvas.slideshow / divider;
 }
 
+galleryobj leftright
 galleryobj.leftright = function(context, delta)
 {
     if (context.pinching)
@@ -7151,24 +7152,20 @@ galleryobj.leftright = function(context, delta)
     var w = thumbfittedlst[index].width;
     var h = thumbfittedlst[index].height;
     if (w != window.innerWidth)
-        context.canvas.startleftright = (window.innerWidth / w) * delta;
+        context.canvas.startleftright = (window.innerWidth / w) * Math.abs(delta);//todo: ugly
     else
-        context.canvas.startleftright = (window.innerHeight / h) * delta;
+        context.canvas.startleftright = (window.innerHeight / h) * Math.abs(delta);
     var e = context.canvas.startleftright / 40;
     var obj = context.canvas.hollyobj;
     clearInterval(context.canvas.leftrightime);
     menuobj.draw();
     context.canvas.leftrightime = setInterval(function()
     {
-        obj.add(context.canvas.startleftright);
+	    var j = delta < 0 ? -1 : 1;
+        obj.add(j*context.canvas.startleftright);
         context.canvas.startleftright -= e;
-        if (context.canvas.startleftright <= 0)
-        {
+        if (context.canvas.startleftright < 0)
             clearInterval(context.canvas.leftrightime);
-            context.canvas.leftrightime = 0;
-            return;
-        }
-
         menuobj.draw();
     }, GALLERYMAIN);
 }
