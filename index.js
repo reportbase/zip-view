@@ -3391,14 +3391,14 @@ var keylst =
             var canvas = context.canvas;
             canvas.shiftKey = 0;
             canvas.ctrlKey = 0;
-		    canvas.keypressed = 0;
+	        canvas.keypressed = 0;
         },
         keydown: function(evt)
         {
-            if (context.keypressed)
-                return;
             var context = menuobj.value()
             var canvas = context.canvas;
+            if (canvas.keypressed)
+                return;
             var key = evt.key.toLowerCase();
             var keycode = evt.keyCode || evt.which;
             canvas.shiftKey = evt.shiftKey;
