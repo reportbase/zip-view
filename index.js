@@ -7164,6 +7164,46 @@ galleryobj.leftright = function(context, delta)
         return;
     if (!delta)
         return;
+
+    if (delta != context.canvas.leftrighttype)
+    {
+        clearInterval(context.canvas.leftrightime);
+        context.canvas.leftrightime = 0;
+        context.canvas.leftrighttype = delta;
+    }
+
+    var j = context.canvas.centered;
+    var index = j % IMAGELSTSIZE;
+    var w = thumbfittedlst[index].width;
+    var h = thumbfittedlst[index].height;
+    if (w != window.innerWidth)
+        context.canvas.startleftright = (window.innerWidth / w) * Math.abs(delta);
+    else
+        context.canvas.startleftright = (window.innerHeight / h) * Math.abs(delta);
+    var e = context.canvas.startleftright / 40;
+    var obj = context.canvas.hollyobj;
+    clearInterval(context.canvas.leftrightime);
+    menuobj.draw();
+    context.canvas.leftrightime = setInterval(function()
+    {
+        obj.add(delta < 0 ? -context.canvas.startleftright :
+            context.canvas.startleftright);
+        context.canvas.startleftright -= e;
+        if (context.canvas.startleftright < 0)
+        {
+            clearInterval(context.canvas.leftrightime);
+            context.canvas.leftrightime = 0;
+            return;
+        }
+
+        menuobj.draw();
+    }, GALLERYMAIN);
+
+/*	
+    if (context.pinching)
+        return;
+    if (!delta)
+        return;
     if (context.canvas.leftrightime)
         return;
     
@@ -7186,6 +7226,7 @@ galleryobj.leftright = function(context, delta)
 	    
         menuobj.draw();
     }, 40);
+    */
 }
 
 let b64DecodeUnicode = str =>
