@@ -634,7 +634,7 @@ var footlst =
         context.save();     
         canvas.uploadrect = new rectangle();
 	    canvas.openrect = new rectangle();
-	    canvas.copyrect = new rectangle();
+	    canvas.metarect = new rectangle();
         canvas.closerect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
@@ -662,7 +662,7 @@ var footlst =
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.copyrect),
+                            new panel.rectangle(canvas.metarect),
                             new panel.text(),
                         ]),
                     ])                           
@@ -1887,41 +1887,6 @@ panel.fullscreen = function()
     }
 };
 
-panel.open = function()
-{
-    this.draw = function(context, rect, user, time)
-    {
-        context.save();
-        
-        var Panel = function()
-        {
-            this.draw = function(context, rect, user, time)
-            {
-                context.save();
-                var w = rect.width;
-                var h = rect.height;
-                var a = new panel.arrow(ARROWFILL, 180);
-                a.draw(context, rect, user, time);
-                var a = new panel.fill(ARROWFILL);
-                var r = new rectangle(rect.x + rect.width / 2 - 3, rect.y - rect.height / 2 + 1, 6, 10);
-                a.draw(context, r, user, time);
-                var r = new rectangle(rect.x, rect.y + rect.height + 3, rect.width, 3);
-                a.draw(context, r, user, time);
-                context.restore();
-            }
-        };
-
-        var a = new panel.layers(
-            [
-                new panel.shrink(new panel.circle(SCROLLNAB, SEARCHFRAME, 4), 15, 15),
-                new panel.shrink(new Panel(), 20, 34),
-            ]);
-
-        a.draw(context, rect, user, time);
-        context.restore();
-    }
-};
-
 panel.fitwidth = function()
 {
     this.draw = function(context, rect, user, time)
@@ -2001,13 +1966,13 @@ panel.copy = function()
     this.draw = function(context, rect, user, time)
     {
         context.save();
-        user.copyrect = new rectangle()
+        user.metarect = new rectangle()
         context.fillStyle = "white";
         context.strokeStyle = "white";
 
         var a = new panel.layers(
             [
-                new panel.rectangle(user.copyrect),
+                new panel.rectangle(user.metarect),
                 _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.arrow(ARROWFILL, 270), 20, 30),
@@ -4186,7 +4151,7 @@ var taplst =
             var n = visibles[k].n;
             var slice = canvas.sliceobj.data[n];
             y -= slice.rect.y;
-            if (slice.copyrect && slice.copyrect.hitest(x, y))
+            if (slice.metarect && slice.metarect.hitest(x, y))
             {
                 console.log(slice);
             }
@@ -4194,7 +4159,7 @@ var taplst =
             {
                 console.log(slice);
             }
-            else if (slice.uploadrect && slice.uploadrect.hitest(x, y))
+            else if (slice.downloadrect && slice.downloadrect.hitest(x, y))
             {
                 console.log(slice);
             }
