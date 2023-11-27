@@ -949,7 +949,7 @@ var headlst =
                     new panel.cols([5, 
                                     ALIEXTENT, 0, 
                                     ALIEXTENT, 
-                                    window.innerWidth >= 320 ? ALIEXTENT : -1, 
+                                    window.innerWidth >= 320 ? (ALIEXTENT+10) : -1, 
                                     ALIEXTENT, 
                                     0, 
                                     ALIEXTENT, 
@@ -995,7 +995,7 @@ var headlst =
             delete context.leftmenurect;
             delete context.rightmenurect;
             var s = SAFARI ? -1: ALIEXTENT;
-            var e = rect.width>=320?ALIEXTENT:-1;
+            var e = rect.width>=320?(ALIEXTENT+10):-1;
             var a = new panel.rows([BEXTENT, 0],
                 [
                     new panel.cols(
@@ -4903,7 +4903,7 @@ var buttonlst =
             var a = new panel.rows([0,BEXTENT,8],
             [
                 0,
-                new panel.cols([0,ALIEXTENT,ALIEXTENT,ALIEXTENT,0],
+                new panel.cols([0,ALIEXTENT,ALIEXTENT+10,ALIEXTENT,0],
                 [
                     0,
                     new panel.copy(),
@@ -5150,8 +5150,9 @@ menuobj.draw = function()
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
 
-    if (context.saveinterval)
+    if (context.swipetimeout)
         return;
+        
     clearInterval(context.saveinterval);
 	context.saveinterval = setTimeout(function()
 	{
