@@ -5135,6 +5135,9 @@ menuobj.draw = function()
         }
     }
 
+    if (context != _8cnvctx)
+        return;
+    
     //gallery
     delete canvas.buttonrect;
     delete canvas.templaterect;
@@ -5149,13 +5152,15 @@ menuobj.draw = function()
 
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
-    
-    clearInterval(context.saveinterval);
+
+    if (context.drawtimeout)
+        clearInterval(context.drawtimeout);
     if (context.canvas.slideshow)
         return;
-	context.saveinterval = setTimeout(function()
+    context.drawtimeoutcount++;
+	context.drawtimeout = setTimeout(function()
 	{
-        context.saveinterval = 0;
+        context.drawtimeout = 0;
         if (menuobj.value() == _8cnvctx)
         {
             var k = displayobj.current();    
@@ -5557,7 +5562,7 @@ contextobj.init = function()
         canvas.buttonheight = obj.buttonheight;
         canvas.buttonmargin = obj.buttonmargin;
         canvas.display = obj.display;
-        context.savetime = Date.now();
+        context.drawtimeoutcount = 0;
 
         var k = footlst.findIndex(function(a){return a.name == obj.footer});
         canvas.footer = footlst[k];
