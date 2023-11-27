@@ -1979,13 +1979,13 @@ panel.download = function()
     this.draw = function(context, rect, user, time)
     {
         context.save();
-        context.downloadrect = new rectangle()
+        user.downloadrect = new rectangle()
         context.fillStyle = "white";
         context.strokeStyle = "white";
 
         var a = new panel.layers(
             [
-                new panel.rectangle(context.downloadrect),
+                new panel.rectangle(user.downloadrect),
                 _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.arrow(ARROWFILL, 270), 20, 30),
@@ -2001,13 +2001,13 @@ panel.copy = function()
     this.draw = function(context, rect, user, time)
     {
         context.save();
-        context.copyrect = new rectangle()
+        user.copyrect = new rectangle()
         context.fillStyle = "white";
         context.strokeStyle = "white";
 
         var a = new panel.layers(
             [
-                new panel.rectangle(context.copyrect),
+                new panel.rectangle(user.copyrect),
                 _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.arrow(ARROWFILL, 270), 20, 30),
@@ -2023,13 +2023,13 @@ panel.upload = function()
     this.draw = function(context, rect, user, time)
     {
         context.save();
-        context.uploadrect = new rectangle()
+        user.uploadrect = new rectangle()
         context.fillStyle = "white";
         context.strokeStyle = "white";
 
         var a = new panel.layers(
             [
-                new panel.rectangle(context.uploadrect),
+                new panel.rectangle(user.uploadrect),
                 _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.arrow(ARROWFILL, 270), 20, 30),
@@ -4185,19 +4185,34 @@ var taplst =
                 return;
             var n = visibles[k].n;
             var slice = canvas.sliceobj.data[n];
-            slice.tap = 1;
-            menuobj.draw();
-            setTimeout(function()
+            if (slice.copyrect && slice.copyrect.hitest(x, y))
             {
-                slice.tap = 0;
-                galleryobj.set(n);
-                var k = headlst.findIndex(function(a){return a.name == "BOSS"});
-                headham.panel = headlst[k];
-                headobj.draw();
-                delete photo.image;
-                menuobj.hide();
-                contextobj.reset();
-            }, 200);
+                console.log(slice);
+            }
+            else if (slice.uploadrect && slice.uploadrect.hitest(x, y))
+            {
+                console.log(slice);
+            }
+            else if (slice.uploadrect && slice.uploadrect.hitest(x, y))
+            {
+                console.log(slice);
+            }
+            else
+            {
+                slice.tap = 1;
+                menuobj.draw();
+                setTimeout(function()
+                {
+                    slice.tap = 0;
+                    galleryobj.set(n);
+                    var k = headlst.findIndex(function(a){return a.name == "BOSS"});
+                    headham.panel = headlst[k];
+                    headobj.draw();
+                    delete photo.image;
+                    menuobj.hide();
+                    contextobj.reset();
+                }, 200);
+            }
         }
     },
 },
