@@ -4146,7 +4146,8 @@ var taplst =
                 {
                     slice.tap = 0;
                     galleryobj.set(n);
-                    var k = headlst.findIndex(function(a){return a.name == "BOSS"});
+                    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+		            var k = headlst.findIndex(function(a){return a.name == "BOSS"});
                     headham.panel = headlst[k];
                     headobj.draw();
                     delete photo.image;
