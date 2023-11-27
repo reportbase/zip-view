@@ -3479,6 +3479,12 @@ var keylst =
             }
             else if (key == "e")
             {
+                var k = displayobj.current();    
+                menuobj.hide();
+                menuobj.toggle(_8cnvctx);
+                menuobj.show();
+                displayobj.set(k);
+                menuobj.draw();
                 evt.preventDefault();
             }                
             else if (key == " ")
@@ -5170,7 +5176,7 @@ menuobj.draw = function()
         clearInterval(context.drawtimeout);
 	if (context.canvas.slideshow > 0)
         return;
-    context.drawtimeoutcount++;
+    context.drawtimeoutcount++;//todo broken
     context.drawtimeout = setTimeout(function()
 	{
         context.drawtimeout = 0;
