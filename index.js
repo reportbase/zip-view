@@ -46,7 +46,7 @@ const FOOTBTNCOLOR = "rgba(0,0,0,0.75)";
 const OPTIONFILL = "white";
 const THUMBTRANSPARENT = "rgba(0,0,0,0.2)";
 const LIGHTHUMBFILLL = "rgba(255,125,0,0.25)";
-const HEAVYFILL = "rgba(0,0,0,0.65)";
+const HEAVYFILL = "rgba(0,0,0,0.25)";
 const THUMBFILL = "rgba(255,125,0,0.40)";
 const THUMBSTROKE = "rgba(255,255,255,0.4)";
 const SEARCHFRAME = "rgba(255,255,255,0.5)";
@@ -949,7 +949,7 @@ var headlst =
                     new panel.cols([5, 
                                     ALIEXTENT, 0, 
                                     ALIEXTENT, 
-                                    window.innerWidth >= 320 ? (ALIEXTENT + 10) : -1, 
+                                    window.innerWidth >= 320 ? ALIEXTENT : -1, 
                                     ALIEXTENT, 
                                     0, 
                                     ALIEXTENT, 
@@ -995,7 +995,7 @@ var headlst =
             delete context.leftmenurect;
             delete context.rightmenurect;
             var s = SAFARI ? -1: ALIEXTENT;
-            var e = rect.width>=320?(ALIEXTENT+10):-1;
+            var e = rect.width>=320?ALIEXTENT:-1;
             var a = new panel.rows([BEXTENT, 0],
                 [
                     new panel.cols(
@@ -2597,8 +2597,6 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        //if (delta > 3 && context.elst.length % 3)
-        //    return;
         if (SAFARI || FIREFOX)
         {
             context.canvas.hollyobj.addperc(delta / 2000);
@@ -4902,7 +4900,7 @@ var buttonlst =
                     0, yyy, ww, hhh);
             }
 
-            var a = new panel.rows([0,80,10],
+            var a = new panel.rows([0,BEXTENT,8],
             [
                 0,
                 new panel.cols([0,ALIEXTENT,ALIEXTENT,ALIEXTENT,0],
@@ -7153,19 +7151,18 @@ galleryobj.leftright = function(context, delta)
     var w = thumbfittedlst[index].width;
     var h = thumbfittedlst[index].height;
     if (w != window.innerWidth)
-        context.canvas.startleftright = (window.innerWidth / w) * Math.abs(delta);
+        context.canvas.startleftright = (window.innerWidth / w) * delta;
     else
-        context.canvas.startleftright = (window.innerHeight / h) * Math.abs(delta);
+        context.canvas.startleftright = (window.innerHeight / h) * delta;
     var e = context.canvas.startleftright / 40;
     var obj = context.canvas.hollyobj;
     clearInterval(context.canvas.leftrightime);
     menuobj.draw();
     context.canvas.leftrightime = setInterval(function()
     {
-        obj.add(delta < 0 ? -context.canvas.startleftright :
-            context.canvas.startleftright);
+        obj.add(context.canvas.startleftright);
         context.canvas.startleftright -= e;
-        if (context.canvas.startleftright < 0)
+        if (context.canvas.startleftright <= 0)
         {
             clearInterval(context.canvas.leftrightime);
             context.canvas.leftrightime = 0;
