@@ -4088,7 +4088,7 @@ var taplst =
             headobj.reset();
             menuobj.draw();
         }
-        else if (!galleryobj.noboss)
+        else if (!canvas.shiftKey && !galleryobj.noboss)
         {
             var visibles = canvas.visibles;
             var k;
@@ -4840,6 +4840,43 @@ var buttonlst = [
                     0, yyy, ww, hhh);
             }
 
+            const rainstep = Math.min(420,window.innerWidth-60);
+            var a = new panel.rows([0,40,40,40],
+            [
+                0,
+                new panel.colsA([0,rainstep,0],
+                [
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
+                        new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
+                        new panel.shrink(new panel.text(),10,10),
+                    ]),
+                    0,
+                ]),
+                new panel.cols([0,rainstep,0],
+                [
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
+                        new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
+                        new panel.shrink(new panel.text(),10,10),
+                    ]),
+                    0,
+                ]),
+                0
+            ]);
+
+            a.draw(context, rect, 
+            [
+                0
+                user.id,
+                "3400 x 1200",
+                0,
+            ], 0);
+            
             if (user.tap)
             {
                 var a = new panel.fill("rgba(0,0,0,0.5)");
