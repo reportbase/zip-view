@@ -4850,7 +4850,7 @@ var buttonlst = [
 	                new panel.zoom(),
 	                new panel.next(),
                     0,
-                ],
+                ]),
                 0,
             ]);    
             
