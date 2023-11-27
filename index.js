@@ -1974,6 +1974,72 @@ panel.rightmenu = function()
     }
 };
 
+panel.download = function()
+{
+    this.draw = function(context, rect, user, time)
+    {
+        context.save();
+        context.downloadrect = new rectangle()
+        context.fillStyle = "white";
+        context.strokeStyle = "white";
+
+        var a = new panel.layers(
+            [
+                new panel.rectangle(context.downloadrect),
+                _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+                new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.arrow(ARROWFILL, 270), 20, 30),
+            ]);
+
+        a.draw(context, rect, user, time);
+        context.restore();
+    }
+};
+
+panel.copy = function()
+{
+    this.draw = function(context, rect, user, time)
+    {
+        context.save();
+        context.copyrect = new rectangle()
+        context.fillStyle = "white";
+        context.strokeStyle = "white";
+
+        var a = new panel.layers(
+            [
+                new panel.rectangle(context.copyrect),
+                _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+                new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.arrow(ARROWFILL, 270), 20, 30),
+            ]);
+
+        a.draw(context, rect, user, time);
+        context.restore();
+    }
+};
+
+panel.upload = function()
+{
+    this.draw = function(context, rect, user, time)
+    {
+        context.save();
+        context.uploadrect = new rectangle()
+        context.fillStyle = "white";
+        context.strokeStyle = "white";
+
+        var a = new panel.layers(
+            [
+                new panel.rectangle(context.uploadrect),
+                _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+                new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.arrow(ARROWFILL, 270), 20, 30),
+            ]);
+
+        a.draw(context, rect, user, time);
+        context.restore();
+    }
+};
+
 panel.previous = function()
 {
     this.draw = function(context, rect, user, time)
@@ -4649,7 +4715,8 @@ bossobj.reset = function()
     context.refresh();
 }
 
-var buttonlst = [
+var buttonlst = 
+[
 {
     name: "DEFAULT",
     draw: function(context, rect, user, time) {}
@@ -4860,9 +4927,9 @@ var buttonlst = [
                 new panel.cols([0,ALIEXTENT,ALIEXTENT,ALIEXTENT,0],
                 [
                     0,
-                    new panel.previous(),
-	                new panel.zoom(),
-	                new panel.next(),
+                    new panel.copy(),
+	            new panel.download(),
+	            new panel.upload(),
                     0,
                 ]),
                 0,
