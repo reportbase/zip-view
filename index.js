@@ -2580,9 +2580,7 @@ var wheelst =
         }
         else
         {
-            //if (delta > 3 && context.elst.length % 2)
-            //    return;
-            if (Math.abs(delta) > 200 && headcnv.height)
+            if (Math.abs(delta) > 240 && headcnv.height)
             {
                 headcnvctx.show(0, 0, window.innerWidth, 0);
                 headobj.draw();
@@ -6529,7 +6527,7 @@ headobj.reset = function()
     headham.panel = headlst[k];
     var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
     displayobj.set(k);
-    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+    headcnvctx.show(0, 0, window.innerWidth, 0);
     headobj.draw();  
     menuobj.draw();
 }
@@ -6952,28 +6950,27 @@ galleryobj.init = function(obj)
         Object.assign(galleryobj, obj);
     if (Array.isArray(obj.data))
     {
-	galleryobj.reset(obj);
-	return;
+	    galleryobj.reset(obj);
+	    return;
     }
 
     fetch(obj.data)
-	.then((response) => texthandler(response))
-	.then(function(str)
-	{
-		var lst = str.split("\n");
-		var root = obj.root;
-		var k = {}
-		obj.data = [];
-		for (var n = 0; n < lst.length-1; ++n)
-		{
-			var e = {}
-			e.url = `${root}/${lst[n]}`;
-			obj.data.push(e);
-		}
-
-		galleryobj.reset(obj);
-	})
-	
+    	.then((response) => texthandler(response))
+    	.then(function(str)
+    	{
+    		var lst = str.split("\n");
+    		var root = obj.root;
+    		var k = {}
+    		obj.data = [];
+    		for (var n = 0; n < lst.length-1; ++n)
+    		{
+    			var e = {}
+    			e.url = `${root}/${lst[n]}`;
+    			obj.data.push(e);
+    		}
+    
+    		galleryobj.reset(obj);
+    	})	
 }
 
 if (url.searchParams.has("data"))
