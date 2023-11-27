@@ -2550,7 +2550,7 @@ var wheelst =
             if (context.elst.length % 3)
                 return;
 
-	        var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
+		    var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
             if (headham.panel != headlst[k])
             {
                 headham.panel = headlst[k];
@@ -2573,15 +2573,12 @@ var wheelst =
         else if (canvas.buttonrect &&
             canvas.buttonrect.hitest(x, y))
         {
-            if (delta > 3 && context.elst.length % 5)
-                return;
             buttonobj.addperc(-1 * delta * 0.001);
             menuobj.draw();
         }
         else
         {
-return;
-    menuobj.updown(context, delta, 60)
+            menuobj.updown(context, delta, 60)
             menuobj.draw();
             if (!context.swipetimeout)
                 context.swipetimeout = setInterval(
@@ -2591,7 +2588,7 @@ return;
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         context.canvas.hollyobj.addperc(delta / 2000);
-        menuobj.draw();
+        menuobj.draw(1);
     },
 },
 {
@@ -5015,7 +5012,7 @@ menuobj.show = function()
 }
 
 //menuobj draw
-menuobj.draw = function()
+menuobj.draw = function(nosave)
 {
     var context = this.value();
     if (!context)
@@ -5040,8 +5037,11 @@ menuobj.draw = function()
         clearInterval(context.swipetimeout)
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
-        reseturl()
-        resetview()
+        if (!nosave)
+        {
+            reseturl()
+            resetview()
+        }
     }
 
     var delayinterval = sealobj.value() / slices.length / 1000;
