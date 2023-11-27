@@ -4126,11 +4126,6 @@ var taplst =
             menuobj.show();
             headobj.draw();
         }
-        else if (!headcnv.height)
-        {
-            headobj.reset();
-            menuobj.draw();
-        }
         else if (!canvas.shiftKey && !galleryobj.noboss)
         {
             var visibles = canvas.visibles;
@@ -4151,18 +4146,6 @@ var taplst =
             y -= slice.rect.y;
             if (slice.metarect && slice.metarect.hitest(x, y))
             {
-                console.log(slice);
-            }
-            else if (slice.uploadrect && slice.uploadrect.hitest(x, y))
-            {
-                console.log(slice);
-            }
-            else if (slice.downloadrect && slice.downloadrect.hitest(x, y))
-            {
-                console.log(slice);
-            }
-            else
-            {
                 slice.tap = 1;
                 menuobj.draw();
                 setTimeout(function()
@@ -4176,6 +4159,18 @@ var taplst =
                     menuobj.hide();
                     contextobj.reset();
                 }, 200);
+            }
+            else if (slice.uploadrect && slice.uploadrect.hitest(x, y))
+            {
+                console.log(slice);
+            }
+            else if (slice.downloadrect && slice.downloadrect.hitest(x, y))
+            {
+                console.log(slice);
+            }
+            else
+            { 
+                headobj.toggle();  
             }
 
             reseturl();
@@ -6520,6 +6515,17 @@ async function loadjson(blob)
     catch (_)
     {
     }
+}
+
+headobj.toggle = function()
+{
+    headcnvctx.show(0, 0, window.innerWidth, headcnv.height?0:HEADHEIGHT);
+    var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+    headham.panel = headlst[k];
+    var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+    displayobj.set(k);
+    headobj.draw();  
+    menuobj.draw();
 }
 
 headobj.reset = function()
