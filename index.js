@@ -2633,8 +2633,6 @@ var wheelst =
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         var canvas = context.canvas;
-        if (context.elst.length % 2)
-            return;
         var e = delta/500;
         if (ctrl)
         {
@@ -2679,8 +2677,6 @@ var wheelst =
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     { 
         var e = delta/500;
-        if (context.elst.length % 2)
-            return;
         if (context.hollyrect &&
             context.hollyrect.hitest(x, y))
         {
@@ -4120,7 +4116,7 @@ var taplst =
             menuobj.show();
             headobj.draw();
         }
-        else if (!canvas.shiftKey && !galleryobj.noboss)
+        else 
         {
             var visibles = canvas.visibles;
             var k;
@@ -4140,20 +4136,23 @@ var taplst =
             y -= slice.rect.y;
             if (slice.metarect && slice.metarect.hitest(x, y))
             {
-                slice.tap = 1;
-                menuobj.draw();
-                setTimeout(function()
-                {
-                    slice.tap = 0;
-                    galleryobj.set(n);
-                    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-		            var k = headlst.findIndex(function(a){return a.name == "BOSS"});
-                    headham.panel = headlst[k];
-                    headobj.draw();
-                    delete photo.image;
-                    menuobj.hide();
-                    contextobj.reset();
-                }, 200);
+                if (!galleryobj.noboss)
+		        {
+			        slice.tap = 1;
+	                menuobj.draw();
+	                setTimeout(function()
+	                {
+	                    slice.tap = 0;
+	                    galleryobj.set(n);
+	                    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+			            var k = headlst.findIndex(function(a){return a.name == "BOSS"});
+	                    headham.panel = headlst[k];
+	                    headobj.draw();
+	                    delete photo.image;
+	                    menuobj.hide();
+	                    contextobj.reset();
+	                }, 200);
+		        }
             }
             else if (slice.uploadrect && slice.uploadrect.hitest(x, y))
             {
