@@ -633,6 +633,8 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.uploadrect = new rectangle();
+	    canvas.openrect = new rectangle();
+	    canvas.copyrect = new rectangle();
         canvas.closerect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
@@ -646,15 +648,23 @@ var footlst =
                 new panel.layers(
                 [
                     new panel.fill(FOOTBTNCOLOR),
-                    new panel.cols([0,0.5,0],
+                    new panel.colsA([0,0,0],
                     [
-                        0,
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.openrect),
+                            new panel.text(),
+                        ]),
                         new panel.layers(
                         [
                             new panel.rectangle(canvas.uploadrect),
                             new panel.text(),
                         ]),
-                        0
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.copyrect),
+                            new panel.text(),
+                        ]),
                     ])                           
                 ])
             ]);
@@ -663,8 +673,12 @@ var footlst =
         a.draw(context, rect, 
                [
                    `\u{25C0}   ${k}`,
-                   0,
-                   "Upload", 
+                    0,
+		            [
+                        "Open",
+                        "Upload", 
+                        "Copy"
+                    ],
                 ], 0);
         
         context.restore();
@@ -6770,15 +6784,8 @@ function setupmenus()
         j.title = `${n+1}`;
         j.func = function()
         {
-            gotoimage(this.index+1)
-            //galleryobj.set(this.index);
-            //galleryobj.rightctx.hide();
-            //galleryobj.leftcnv = _7cnv;
-            //galleryobj.leftctx = _7cnvctx;
-            //menuobj.setindex(_8cnvctx);
-            //menuobj.show();
-            //menuobj.draw();
-            //headobj.draw();
+            galleryobj.set(this.index);
+            //gotoimage(this.index+1)
             return true;
         };
         
