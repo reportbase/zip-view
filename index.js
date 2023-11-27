@@ -3371,7 +3371,7 @@ var keylst =
             var canvas = context.canvas;
             canvas.shiftKey = 0;
             canvas.ctrlKey = 0;
-            canvas.keydown = 0;
+            canvas.keypress = 0;
         },
         keydown: function(evt)
         {
@@ -3382,8 +3382,7 @@ var keylst =
             canvas.shiftKey = evt.shiftKey;
             canvas.ctrlKey = evt.ctrlKey;
             canvas.slideshow = 0;
-            canvas.keydown = 1;
-
+           
             clearInterval(context.canvas.leftright);
             if (key == "pageup" || key == "backspace" ||
                 (canvas.shiftKey && key == "enter"))
@@ -3410,6 +3409,7 @@ var keylst =
                 }
                 else
                 {
+				    canvas.keypress = 1;
                     menuobj.updown(context, -120, 30)
                     if (!context.swipetimeout)
                         context.swipetimeout = 
@@ -3430,6 +3430,7 @@ var keylst =
                 }
                 else
                 {
+                    canvas.keypress = 1;
                    menuobj.updown(context, 120, 30)
                     if (!context.swipetimeout)
                         context.swipetimeout = 
@@ -4960,7 +4961,8 @@ menuobj.draw = function()
     {
         var k = canvas.autodirect;
         context.canvas.timeobj.rotate(k * context.canvas.slideshow);
-        context.canvas.slideshow -= context.canvas.slidereduce
+	    if (!canvas.keypress)
+            context.canvas.slideshow -= context.canvas.slidereduce
     }
     else if (context.swipetimeout)
     {
