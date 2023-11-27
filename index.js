@@ -2580,12 +2580,6 @@ var wheelst =
         }
         else
         {
-            if (Math.abs(delta) > 240 && headcnv.height)
-            {
-                headcnvctx.show(0, 0, window.innerWidth, 0);
-                headobj.draw();
-            }
-            
             menuobj.updown(context, delta, 60)
             menuobj.draw();
             if (!context.swipetimeout)
