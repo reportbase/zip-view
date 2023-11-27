@@ -4900,21 +4900,36 @@ var buttonlst =
                     0, yyy, ww, hhh);
             }
 
-            var a = new panel.rows([0,BEXTENT,8],
-            [
-                0,
-                new panel.cols([0,ALIEXTENT,ALIEXTENT+10,ALIEXTENT,0],
+            delete user.copyrect;
+            delete user.uploadrect;
+            delete user.downloadrect;
+		    if (!headcnv.height)
+            {
+                var a = new panel.rows([8,BEXTENT,0,0BEXTENT,8],
                 [
                     0,
-                    new panel.copy(),
-	            new panel.download(),
-	            new panel.upload(),
+                    new panel.cols([5,ALIEXTENT,0,ALIEXTENT,5],
+                    [
+                        0,
+                        new panel.download(),
+                        0,
+    	                new panel.upload(),
+                        0,
+                    ]),
                     0,
-                ]),
-                0,
-            ]);    
-            
-            a.draw(context, rect, user, 0);
+                    new panel.cols([0,ALIEXTENT,ALIEXTENT+10,ALIEXTENT,0],
+                    [
+                        0,
+                        new panel.copy(),
+    	                new panel.download(),
+    	                new panel.upload(),
+                        0,
+                    ]),
+                    0,
+                ]);    
+                
+                a.draw(context, rect, user, 0);
+            }
             
             if (user.tap)
             {
