@@ -3412,6 +3412,7 @@ var keylst =
             var canvas = context.canvas;
             canvas.shiftKey = 0;
             canvas.ctrlKey = 0;
+		reseturl()	
         },
         keydown: function(evt)
         {
