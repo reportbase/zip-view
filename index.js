@@ -5093,10 +5093,13 @@ menuobj.draw = function()
 	clearTimeout(context.saveinterval)
 	context.saveinterval = setTimeout(function()
 	{
-        menuobj.hide();
-        menuobj.toggle(_8cnvctx);
-        menuobj.show();
-		
+        if (menuobj.value() == _8cnvctx)
+        {
+            menuobj.hide();
+            menuobj.toggle(_8cnvctx);
+            menuobj.show();
+        }
+        
 		var e = url.searchParams.get('_8');
 		if (e != _8cnv.timeobj.current().toFixed(5))
 		{
