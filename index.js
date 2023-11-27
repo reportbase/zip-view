@@ -4840,59 +4840,21 @@ var buttonlst = [
                     0, yyy, ww, hhh);
             }
 
-            const rainstep = Math.min(420,window.innerWidth-60);
-            var a = new panel.rowsA([0,40,10,40,10,40,10],
+            var a = new panel.rows([0,80,10],
             [
                 0,
-                new panel.cols([0,rainstep,0],
+                new panel.cols([0,ALIEXTENT,ALIEXTENT,ALIEXTENT,0],
                 [
                     0,
-                    new panel.layers(
-                    [
-                        new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                        new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
-                        new panel.shrink(new panel.text(),10,10),
-                    ]),
+                    new panel.previous(),
+	                new panel.zoom(),
+	                new panel.next(),
                     0,
-                ]),
-		0,
-                new panel.cols([0,rainstep,0],
-                [
-                    0,
-                    new panel.layers(
-                    [
-                        new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                        new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
-                        new panel.shrink(new panel.text(),10,10),
-                    ]),
-                    0,
-                ]),
-		0,
-		new panel.cols([0,rainstep,0],
-                [
-                    0,
-                    new panel.layers(
-                    [
-                        new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                        new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
-                        new panel.shrink(new panel.text(),10,10),
-                    ]),
-                    0,
-                ]),    
+                ],
                 0,
-		 
-            ]);
-
-            a.draw(context, rect, 
-            [
-                0,
-                user.id,
-		0,
-                "3400 x 1200",
-		0,
-		"Download",
-                0,
-            ], 0);
+            ]);    
+            
+            a.draw(context, rect, 0, 0);
             
             if (user.tap)
             {
