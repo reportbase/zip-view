@@ -5157,6 +5157,8 @@ menuobj.draw = function()
     }
     
     clearInterval(context.saveinterval);
+    if (context.canvas.slideshow)
+        return;
 	context.saveinterval = setTimeout(function()
 	{
         context.saveinterval = 0;
