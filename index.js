@@ -5044,8 +5044,8 @@ menuobj.draw = function()
         clearInterval(context.swipetimeout)
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
-        reseturl()
-        resetview()
+        //reseturl()
+        //resetview()
     }
 
     var delayinterval = sealobj.value() / slices.length / 1000;
