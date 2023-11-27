@@ -1218,7 +1218,7 @@ var bossdisplaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                        new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
                         new panel.expand(new panel.rectangle(context.zoomrect), 10, 1),
                         new panel.shrink(new panel.currentV(new panel.rounded("white", 
                                 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
@@ -1231,7 +1231,7 @@ var bossdisplaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.rounded(NUBACK, 0, TRANSPARENT, 8, 8),
+                        new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
                         new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
                         new panel.shrink(new panel.currentV(new panel.rounded("white", 0, 
                                 TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
@@ -6784,9 +6784,8 @@ function setupmenus()
         j.title = `${n+1}`;
         j.func = function()
         {
-            galleryobj.set(this.index);
-            //gotoimage(this.index+1)
-            return false;
+            gotoimage(this.index+1)
+            return true;
         };
         
         _6cnv.sliceobj.data.push(j);
