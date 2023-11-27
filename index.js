@@ -7132,7 +7132,7 @@ menuobj.updown = function(context, delta, divider)
     canvas.slidereduce = canvas.slideshow / divider;
 }
 
-galleryobj leftright
+//galleryobj leftright
 galleryobj.leftright = function(context, delta)
 {
     if (context.pinching)
