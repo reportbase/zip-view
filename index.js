@@ -7165,8 +7165,6 @@ galleryobj.leftright = function(context, delta)
     if (!delta)
         return;
 
-    if (canvas.context.keypressed)
-        return;
     var e = delta / 10000;
     var obj = context.canvas.hollyobj;
     obj.addperc(e);
