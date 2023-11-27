@@ -4124,7 +4124,7 @@ var taplst =
             menuobj.show();
             headobj.draw();
         }
-        else if (headcnv.height)
+        else if (!headcnv.height)
         {
             headobj.reset();
             menuobj.draw();
@@ -6527,7 +6527,7 @@ headobj.reset = function()
     headham.panel = headlst[k];
     var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
     displayobj.set(k);
-    headcnvctx.show(0, 0, window.innerWidth, 0);
+    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
     headobj.draw();  
     menuobj.draw();
 }
@@ -6912,7 +6912,13 @@ galleryobj.reset = function(obj)
     stretchobj.set(90);
     slicewidthobj.set(SLICEWIDTH);
     headcnv.style.pointerEvents = "none";
-    headobj.reset();
+    var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+    headham.panel = headlst[k];
+    var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+    displayobj.set(k);
+    headcnvctx.show(0, 0, window.innerWidth, 0);
+    headobj.draw();  
+    menuobj.draw();
     setupmenus();
     
     var image = new Image();
