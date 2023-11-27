@@ -5174,13 +5174,14 @@ menuobj.draw = function()
 	clearTimeout(context.saveinterval)
 	context.saveinterval = setTimeout(function()
 	{
-        var k = displayobj.current();    
         if (menuobj.value() == _8cnvctx)
         {
+            var k = displayobj.current();    
             menuobj.hide();
             menuobj.toggle(_8cnvctx);
-            displayobj.set(k);
             menuobj.show();
+            displayobj.set(k);
+            menuobj.draw();
         }
         
 		var e = url.searchParams.get('_8');
