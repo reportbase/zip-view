@@ -4841,10 +4841,10 @@ var buttonlst = [
             }
 
             const rainstep = Math.min(420,window.innerWidth-60);
-            var a = new panel.rows([0,40,40,40],
+            var a = new panel.rowsA([0,40,40,40],
             [
                 0,
-                new panel.colsA([0,rainstep,0],
+                new panel.cols([0,rainstep,0],
                 [
                     0,
                     new panel.layers(
