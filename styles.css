@@ -21,7 +21,6 @@ dialog
   border-width: 6px; 
   border-color: #999999;
   padding: 20px 20px 20px 20px; 
-
 }
 
 dialog::backdrop 
@@ -96,7 +95,7 @@ button
   background-color: ghostwhite;
   color: white;
   color: brown;
-  margin-top: 0px;
+  margin-top: 20px;
   margin-left: 0px;
   width: 25%;
 }
