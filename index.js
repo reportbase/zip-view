@@ -830,42 +830,42 @@ var footlst =
         canvas.usereditrect = new rectangle();
         canvas.loginrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
+        [
+            new panel.layers(
             [
-                new panel.layers(
+                new panel.fill(FOOTBTNCOLOR),
+                new panel.text(),
+                new panel.rectangle(canvas.homerect),
+            ]),
+            0,
+            new panel.layers(
+            [
+                new panel.fill(FOOTBTNCOLOR),
+                new panel.colsA([0,0],
                 [
-                    new panel.fill(FOOTBTNCOLOR),
-                    new panel.text(),
-                    new panel.rectangle(canvas.homerect),
-                ]),
-                0,
-                new panel.layers(
-                [
-                    new panel.fill(FOOTBTNCOLOR),
-                    new panel.colsA([0,0],
+                    new panel.layers(
                     [
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.usereditrect),
-                            new panel.text(),
-                        ]),
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.loginrect),
-                            new panel.text(),
-                        ])
-                    ])                            
-                ])
-            ]);
+                        new panel.rectangle(canvas.usereditrect),
+                        new panel.text(),
+                    ]),
+                    new panel.layers(
+                    [
+                        new panel.rectangle(canvas.loginrect),
+                        new panel.text(),
+                    ])
+                ])                            
+            ])
+        ]);
         
         a.draw(context, rect, 
-               [
-                   `\u{25C0}   Account`,
-                   0,
-                   [
-                       login.id?"Logout":"Login",
-                       "Edit",
-                   ], 
-                ], 0);
+        [
+           `\u{25C0}   Account`,
+           0,
+           [
+               "Edit",
+               login.id?"Logout":"Login",
+           ], 
+        ], 0);
         
         context.restore();
     }
