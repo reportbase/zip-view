@@ -5052,7 +5052,7 @@ menuobj.draw = function()
         context.canvas.timeobj.rotate(k * context.canvas.slideshow);
 	    if (!canvas.keypress)
             context.canvas.slideshow -= context.canvas.slidereduce
-    }g
+    }
     else if (context.swipetimeout)
     {
         clearInterval(context.swipetimeout)
