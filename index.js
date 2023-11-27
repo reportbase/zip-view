@@ -7170,6 +7170,9 @@ galleryobj.leftright = function(context, delta)
     context.canvas.leftrightime = setInterval(function()
     {
 	    obj.addperc(e);
+        e = e * 0.95;
+        if (e < 0)
+            clearInterval(context.canvas.leftrightime);
         menuobj.draw();
     }, GALLERYMAIN);
 }
