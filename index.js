@@ -4871,7 +4871,7 @@ var buttonlst = [
 
             a.draw(context, rect, 
             [
-                0
+                0,
                 user.id,
                 "3400 x 1200",
                 0,
