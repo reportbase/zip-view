@@ -3395,6 +3395,8 @@ var keylst =
         },
         keydown: function(evt)
         {
+            if (context.keypressed)
+                return;
             var context = menuobj.value()
             var canvas = context.canvas;
             var key = evt.key.toLowerCase();
