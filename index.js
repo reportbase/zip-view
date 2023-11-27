@@ -5150,9 +5150,6 @@ menuobj.draw = function()
         }
     }
 
-    if (context != _8cnvctx)
-        return;
-    
     //gallery
     delete canvas.buttonrect;
     delete canvas.templaterect;
@@ -5168,6 +5165,9 @@ menuobj.draw = function()
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
 
+    if (context != _8cnvctx)
+        return;
+        
     if (context.drawtimeout)
         clearInterval(context.drawtimeout);
 	if (context.canvas.slideshow > 0)
