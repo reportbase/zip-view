@@ -2608,8 +2608,6 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        if (context.elst.length % 2)
-            return;
         menuobj.updown(context, delta, 30);
         if (!context.swipetimeout)
             context.swipetimeout = setInterval(function(){
@@ -2617,9 +2615,6 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, trackpad)
     {
-        context.elst.push({x,y});
-        if (context.elst.length % 2)
-            return;
         context.canvas.hollyobj.addperc(delta / 1000);
         menuobj.draw();
     },
@@ -2633,7 +2628,7 @@ var wheelst =
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         var canvas = context.canvas;
-        var e = delta/500;
+        var e = delta/200;
         if (ctrl)
         {
             var isthumb = context.canvas.thumbrect &&
