@@ -1268,7 +1268,7 @@ var bossdisplaylst =
                         0,
                         new panel.layers(
                         [
-                            new panel.rounded(NUBACK, 0, TRANSPARENT, 12, 12),
+                            new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
                             new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
                             new panel.gridA(1, data.length, 1,
                                 new panel.shrink(new panel.text(),10,10)),
@@ -5174,10 +5174,12 @@ menuobj.draw = function()
 	clearTimeout(context.saveinterval)
 	context.saveinterval = setTimeout(function()
 	{
+        var k = displayobj.current();    
         if (menuobj.value() == _8cnvctx)
         {
             menuobj.hide();
             menuobj.toggle(_8cnvctx);
+            displayobj.set(k);
             menuobj.show();
         }
         
