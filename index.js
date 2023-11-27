@@ -4950,7 +4950,7 @@ var buttonlst =
                 0,
             ]);    
             
-            a.draw(context, rect, 0, 0);
+            a.draw(context, rect, user, 0);
             
             if (user.tap)
             {
