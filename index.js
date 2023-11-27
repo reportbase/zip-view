@@ -3398,6 +3398,7 @@ var keylst =
             var canvas = context.canvas;
             canvas.shiftKey = 0;
             canvas.ctrlKey = 0;
+		    canvas.keypressed = 0;
         },
         keydown: function(evt)
         {
@@ -3408,6 +3409,7 @@ var keylst =
             canvas.shiftKey = evt.shiftKey;
             canvas.ctrlKey = evt.ctrlKey;
             canvas.slideshow = 0;
+            canvas.keypressed = 1;
            
             clearInterval(context.canvas.leftright);
             if (key == "pageup" || key == "backspace" ||
@@ -3435,7 +3437,7 @@ var keylst =
                 }
                 else
                 {
-	            menuobj.updown(context, -120, 30)
+	                menuobj.updown(context, -120, 30)
                     if (!context.swipetimeout)
                         context.swipetimeout = 
                             setInterval(function(){menuobj.draw()}, GALLERYMAIN);
@@ -7163,19 +7165,22 @@ galleryobj.leftright = function(context, delta)
     if (!delta)
         return;
 
+    if (canvas.context.keypressed)
+        return;
     var e = delta / 10000;
     var obj = context.canvas.hollyobj;
+    obj.addperc(e);
     menuobj.draw();
     clearInterval(context.canvas.leftrightime);
     context.canvas.leftrightime = setInterval(function()
     {
-	obj.addperc(e);
+	    obj.addperc(e);
         e = e * 0.95;
         if ((delta > 0 && e < 0) ||
 	   (delta < 0 && e > 0))
-	{
-            clearInterval(context.canvas.leftrightime);
-	}
+    	{
+                clearInterval(context.canvas.leftrightime);
+    	}
 	    
         menuobj.draw();
     }, GALLERYMAIN);
