@@ -2582,7 +2582,7 @@ var wheelst =
 
         if (ctrl)
         {
-            if (context.elst.length % 6)
+            if (context.elst.length % 3)
                 return;
 
 	        var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
@@ -2596,7 +2596,7 @@ var wheelst =
             if (displaylst[k] != displayobj.value()) 
                 displayobj.set(k);
         
-            var j = buttonobj.length()/40;
+            var j = buttonobj.length()/20;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
