@@ -4905,7 +4905,7 @@ var buttonlst =
             delete user.downloadrect;
 		    if (!headcnv.height)
             {
-                var a = new panel.rows([8,BEXTENT,0,0BEXTENT,8],
+                var a = new panel.rows([8,BEXTENT,0,BEXTENT,8],
                 [
                     0,
                     new panel.cols([5,ALIEXTENT,0,ALIEXTENT,5],
