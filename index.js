@@ -7176,7 +7176,7 @@ galleryobj.leftright = function(context, delta)
     {
 	    obj.addperc(e);
         if (!context.canvas.keypressed)
-            e = e * 0.99;
+            e = e * 0.93;
         if ((delta > 0 && e < 0) ||
 	   (delta < 0 && e > 0))
     	{
@@ -7185,7 +7185,7 @@ galleryobj.leftright = function(context, delta)
     	}
 	    
         menuobj.draw();
-    }, GALLERYMAIN);
+    }, 40);
 }
 
 let b64DecodeUnicode = str =>
