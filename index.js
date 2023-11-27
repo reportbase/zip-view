@@ -5153,11 +5153,12 @@ menuobj.draw = function()
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
 
-    if (context.canvas.slideshow > 0)
+    if (context.drawtimeout)
+        clearInterval(context.drawtimeout);
+	if (context.canvas.slideshow > 0)
         return;
     context.drawtimeoutcount++;
-    clearInterval(context.drawtimeout);
-	context.drawtimeout = setTimeout(function()
+    context.drawtimeout = setTimeout(function()
 	{
         context.drawtimeout = 0;
         if (menuobj.value() == _8cnvctx)
