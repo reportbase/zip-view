@@ -3075,6 +3075,7 @@ var panlst =
         delete canvas.ishollyrect;
         delete canvas.isbeavrect;
         delete canvas.issealrect;
+        reseturl();
     }
 },
 {
@@ -3412,7 +3413,7 @@ var keylst =
             var canvas = context.canvas;
             canvas.shiftKey = 0;
             canvas.ctrlKey = 0;
-		reseturl()	
+		    reseturl()	
         },
         keydown: function(evt)
         {
@@ -3480,12 +3481,7 @@ var keylst =
             }
             else if (key == "e")
             {
-                var k = displayobj.current();    
-                menuobj.hide();
-                menuobj.toggle(_8cnvctx);
-                menuobj.show();
-                displayobj.set(k);
-                menuobj.draw();
+                resetview();
                 evt.preventDefault();
             }                
             else if (key == " ")
@@ -4182,6 +4178,8 @@ var taplst =
                     contextobj.reset();
                 }, 200);
             }
+
+            reseturl();
         }
     },
 },
@@ -5062,6 +5060,7 @@ menuobj.draw = function()
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
         reseturl()
+        resetview()
     }
 
     var delayinterval = sealobj.value() / slices.length / 1000;
@@ -5172,46 +5171,44 @@ menuobj.draw = function()
     context.canvas.footer.draw(context, rect, 0, 0);
 }
 
+function resetview()
+{
+    if (menuobj.value() != _8cnvctx)
+        return;
+    var k = displayobj.current();    
+    menuobj.hide();
+    menuobj.toggle(_8cnvctx);
+    menuobj.show();
+    displayobj.set(k);
+    menuobj.draw();
+}
+
 function reseturl()
 {
     var context = _8cnvctx;
-    clearInterval(context.drawtimeout);
-    context.drawtimeout = setTimeout(function()
+    
+    var e = url.searchParams.get('_8');
+    if (e != _8cnv.timeobj.current().toFixed(5))
     {
-        context.drawtimeout = 0;
-        if (menuobj.value() == _8cnvctx)
-        {
-            var k = displayobj.current();    
-            menuobj.hide();
-            menuobj.toggle(_8cnvctx);
-            menuobj.show();
-            displayobj.set(k);
-            menuobj.draw();
-        }
-        
-        var e = url.searchParams.get('_8');
-        if (e != _8cnv.timeobj.current().toFixed(5))
-        {
-            var k = _8cnv.timeobj.current();
-            if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
-            url.searchParams.set('_8', k.toFixed(5));
-            window.history.replaceState("", url.origin, url);
-        }
-        
-        var e = url.searchParams.get('t');
-        if (e != templateobj.value())
-        {
-            url.searchParams.set("t",templateobj.value());
-            window.history.replaceState("", url.origin, url);
-        }
-        
-        var e = url.searchParams.get('b');
-        if (e != buttonobj.value())
-        {
-            url.searchParams.set("b",buttonobj.value());
-            window.history.replaceState("", url.origin, url);
-        }
-    }, 1000);
+        var k = _8cnv.timeobj.current();
+        if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
+        url.searchParams.set('_8', k.toFixed(5));
+        window.history.replaceState("", url.origin, url);
+    }
+    
+    var e = url.searchParams.get('t');
+    if (e != templateobj.value())
+    {
+        url.searchParams.set("t",templateobj.value());
+        window.history.replaceState("", url.origin, url);
+    }
+    
+    var e = url.searchParams.get('b');
+    if (e != buttonobj.value())
+    {
+        url.searchParams.set("b",buttonobj.value());
+        window.history.replaceState("", url.origin, url);
+    }
 }
 
 var eventlst = 
