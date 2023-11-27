@@ -7164,7 +7164,9 @@ galleryobj.leftright = function(context, delta)
         return;
     if (!delta)
         return;
-
+    if (context.canvas.leftrightime)
+        return;
+    
     var e = delta / 2500;
     var obj = context.canvas.hollyobj;
     obj.addperc(e);
@@ -7174,11 +7176,12 @@ galleryobj.leftright = function(context, delta)
     {
 	    obj.addperc(e);
         if (!context.canvas.keypressed)
-            e = e * 0.95;
+            e = e * 0.99;
         if ((delta > 0 && e < 0) ||
 	   (delta < 0 && e > 0))
     	{
                 clearInterval(context.canvas.leftrightime);
+		context.canvas.leftrightime = 0;
     	}
 	    
         menuobj.draw();
