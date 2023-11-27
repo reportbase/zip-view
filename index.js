@@ -4185,6 +4185,7 @@ var taplst =
                 return;
             var n = visibles[k].n;
             var slice = canvas.sliceobj.data[n];
+            y -= slice.rect.y;
             if (slice.copyrect && slice.copyrect.hitest(x, y))
             {
                 console.log(slice);
