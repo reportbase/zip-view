@@ -1960,7 +1960,7 @@ panel.download = function()
     }
 };
 
-panel.copy = function()
+panel.boss = function()
 {
     this.draw = function(context, rect, user, time)
     {
@@ -4361,8 +4361,7 @@ var taplst =
         {  
     		if (login.id && login.credential)
     		{
-                login = {};
-                login.id = 0;
+                login = {id: 0};
                 localStorage.removeItem("login");
     			google.accounts.id.revoke(login.credential, function(){})
 			    menuobj.draw();
@@ -4417,6 +4416,62 @@ var taplst =
             galleryobj.leftnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
             headobj.draw();
+            return false;
+        }
+        else if (canvas.useraddrect && canvas.useraddrect.hitest(x, y))
+        {
+            showdialog("user-login", function(str)
+            {
+                        
+            });
+
+            return false;
+        }
+        else if (canvas.useropenrect && canvas.useropenrect.hitest(x, y))
+        {
+            var user = _1cnv.sliceobj.value();            
+            const form = new FormData();
+            form.append('name', user.name);
+            form.append('email', user.email);
+            fetch(`https://user.reportbase5836.workers.dev`,
+            {
+                'method': 'POST',
+                'body': form
+            })
+            .then(response => response.json())
+            .then(function(k)
+            {
+                login = Object.assign(login, k);
+                localStorage.setItem("login",JSON.stringify(login));	
+                menuobj.draw();
+            })
+            
+            return false;
+        }
+        else if (canvas.userpatchrect && canvas.userpatchrect.hitest(x, y))
+        {
+            showdialog("user-login", function(str)
+            {
+                        
+            });
+
+            return false;
+        }
+        else if (canvas.userdeleterect && canvas.userdeleterect.hitest(x, y))
+        {
+            showdialog("confirm", function(str)
+            {
+                    fetch(`https://user.reportbase5836.workers.dev/reportbase@gmail.com`,
+                    {
+                        'method': 'DELETE'
+                    })
+                  .then(response => response.json())
+                    .then(function(obj)
+                          {
+                              console.log(obj);
+                          })
+            });
+
             return false;
         }
         else if (canvas.homerect && canvas.homerect.hitest(x, y))
@@ -4941,7 +4996,7 @@ var buttonlst =
             delete user.copyrect;
             delete user.uploadrect;
             delete user.downloadrect;
-		    if (!headcnv.height && user.more)
+	        if (!headcnv.height && user.more)
             {
                 var a = new panel.rows([8,BEXTENT,0,BEXTENT,8],
                 [
@@ -4958,7 +5013,7 @@ var buttonlst =
                     new panel.cols([0,ALIEXTENT,ALIEXTENT+10,ALIEXTENT,0],
                     [
                         0,
-                        new panel.copy(),
+                        new panel.boss(),
     	                new panel.download(),
     	                new panel.upload(),
                         0,
@@ -6641,25 +6696,6 @@ function setupmenus()
                 return true;
             }
         },
-    
-        {
-            title: "users-list",
-            func: function()
-            {        
-                fetch(`https://user.reportbase5836.workers.dev/list`)
-                  .then(function(response)
-                  {
-                    for (let [key, value] of response.headers)
-                        console.log(`${key} = ${value}`);
-                      return response.json();
-                  })
-                  .then(function(obj)
-                        {
-                            console.log(obj);
-                        });  
-                return true;
-            }
-        },  
         {
             title: "sidney",
             func: function()
@@ -6692,22 +6728,6 @@ function setupmenus()
                   */
                 
                 return true;
-            }
-        },
-        {
-            title: "users-delete",
-            func: function()
-            {        
-                    fetch(`https://user.reportbase5836.workers.dev/reportbase@gmail.com`,
-                    {
-                        'method': 'DELETE'
-                    })
-                  .then(response => response.json())
-                    .then(function(obj)
-                          {
-                              console.log(obj);
-                          })
-                    .catch(err => console.error(err));  
             }
         },
     ];
@@ -7289,7 +7309,6 @@ function handleCredentialResponse(response)
                     menuobj.draw();
                     dialog.close();
                 })
-                .catch(err => console.error(err));
             }
             else
             {
