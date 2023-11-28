@@ -3721,33 +3721,6 @@ var taplst =
         {
             _4cnvctx.movepage(1);
         }
-        else if (context.downloadimagerect && context.downloadimagerect.hitest(x, y))
-        {
-            if (galleryobj.value().blob)
-            {
-                const anchor = document.createElement('a');
-                anchor.href = URL.createObjectURL(galleryobj.value().blob);
-                anchor.download = galleryobj.value().name;
-                anchor.click();
-                URL.revokeObjectURL(anchor.href);
-                anchor.remove();
-            }
-            else
-            {
-                var id = galleryobj.value().id;
-                var path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
-                if (galleryobj.value().full)
-                    path = galleryobj.value().full;
-                else if (!id && galleryobj.value().url)
-                    path = galleryobj.value().url;
-                const anchor = document.createElement('a');
-                anchor.href = path;
-                anchor.download = id;
-                anchor.click();
-                URL.revokeObjectURL(anchor.href);
-                anchor.remove();
-            }
-        }
         else if (context.copyidrect && context.copyidrect.hitest(x, y))
         {
              copytext(galleryobj.value().id);   
@@ -4185,7 +4158,26 @@ var taplst =
             }
             else if (slice.downloadrect && slice.downloadrect.hitest(x, y))
             {
-                console.log(slice);
+                if (slice.blob)
+	            {
+	                const anchor = document.createElement('a');
+	                anchor.href = URL.createObjectURL(slice.blob);
+	                anchor.download = slice.name;
+	                anchor.click();
+	                URL.revokeObjectURL(anchor.href);
+	                anchor.remove();
+	            }
+	            else
+	            {
+	                var id = slice.id;
+	                var path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
+	                const anchor = document.createElement('a');
+	                anchor.href = path;
+	                anchor.download = id;
+	                anchor.click();
+	                URL.revokeObjectURL(anchor.href);
+	                anchor.remove();
+	            }	        
             }
             else
             { 
@@ -4573,7 +4565,6 @@ bossobj.draw = function()
 
     //Upload
     delete context.hollyrect;
-    delete context.downloadimagerect;
     delete context.uploadimagerect;
     delete context.deleteimagerect;
 
@@ -4583,9 +4574,8 @@ bossobj.draw = function()
     delete context.canvas.thumbrect;
     delete context.copyidrect;
     delete context.gallerydeleterect;
-    delete context.downloadimagerect;
     delete context.uploadimagerect;
-    delete context.hollyyrect;
+    delete context.hollyrect;
     
     if (!menuobj.value() && headcnv.height)
         bossdisplayobj.value().draw(context, rect, 0, 0);
