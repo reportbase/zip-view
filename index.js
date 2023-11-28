@@ -4181,10 +4181,16 @@ var taplst =
             }
             else
             { 
-                for (var n = 0; n < galleryobj.length(); ++n)
-                    galleryobj.data[n].more = 0;
-                slice.more = 1;
-                headobj.toggle();  
+		        if (slice.more)
+	    	    {
+                    headobj.toggle();
+                }
+                else
+                {
+                    for (var n = 0; n < galleryobj.length(); ++n)
+                        galleryobj.data[n].more = 0;
+                    slice.more = 1;
+                } 
             }
 
             reseturl();
