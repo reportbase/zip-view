@@ -2578,7 +2578,7 @@ var wheelst =
         }
         else
         {
-            if (Math.abs(delta) <= 1.4)
+            if (Math.abs(delta) <= 0.8)
                 return;
             menuobj.updown(context, delta, 60)
             menuobj.draw();
@@ -2589,8 +2589,8 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-    if (Math.abs(delta) <= 1.4)
-	return;
+            if (Math.abs(delta) <= 0.8)
+                return;
         context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw(1);
     },
