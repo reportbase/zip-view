@@ -2011,12 +2011,14 @@ panel.moveprev = function()
     {
         context.save();
         context.moveprev = new rectangle()
+        user.moveprev = new rectangle();
         context.fillStyle = "white";
         context.strokeStyle = "white";
 
         var a = new panel.layers(
             [
                 new panel.rectangle(context.moveprev),
+                new panel.rectangle(user.moveprev),
                 _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.arrow(ARROWFILL, 270), 20, 30),
@@ -2052,9 +2054,11 @@ panel.movenext = function()
     {
         context.save();
         context.movenext = new rectangle()
+        user.movenext = new rectangle();
         var a = new panel.layers(
             [
                 new panel.rectangle(context.movenext),
+                new panel.rectangle(user.movenext),
                 _4cnv.movingpage == 1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(_4cnv.movingpage == 1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.arrow(ARROWFILL, 90), 20, 30),
@@ -3892,16 +3896,6 @@ var taplst =
             menuobj.show();
             headobj.draw();
         }
-        else if (headcnvctx.moveprev && headcnvctx.moveprev.hitest(x, y))
-        {
-            var j = canvas.timeobj.length() / galleryobj.length();
-            canvas.timeobj.rotate(j);        
-        }
-        else if (headcnvctx.movenext && headcnvctx.movenext.hitest(x, y))
-        {
-            var j = canvas.timeobj.length() / galleryobj.length();
-            canvas.timeobj.rotate(-j);        
-        }
         else if (
             (headcnvctx.rightmenurect &&
             headcnvctx.rightmenurect.hitest(x, y)))
@@ -4163,6 +4157,18 @@ var taplst =
 	                }, 200);
 		        }
             }
+          	else if (slice.moveprev && slice.moveprev.hitest(x, y))
+    		{
+    		    var j = canvas.timeobj.length() / galleryobj.length();
+    		    canvas.timeobj.rotate(j);  
+                menuobj.draw();
+    		}
+    		else if (slice.movenext && slice.movenext.hitest(x, y))
+    		{
+    		    var j = canvas.timeobj.length() / galleryobj.length();
+    		    canvas.timeobj.rotate(-j);     
+                menuobj.draw();
+    		}
             else if (slice.uploadrect && slice.uploadrect.hitest(x, y))
             {
                 console.log(slice);
