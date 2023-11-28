@@ -81,8 +81,7 @@ var panel = {};
 var global = {};
 let photo = {};
 let util = {};
-var login = {};
-login.id = 0;
+var login = {id: 0};
 
 try
 {
@@ -4182,6 +4181,9 @@ var taplst =
             }
             else
             { 
+                for (var n = 0; n < galleryobj.length(); ++n)
+                    galleryobj.data[n].more = 0;
+                slice.more = 1;
                 headobj.toggle();  
             }
 
@@ -4910,7 +4912,7 @@ var buttonlst =
             delete user.copyrect;
             delete user.uploadrect;
             delete user.downloadrect;
-		    if (!headcnv.height)
+		    if (!headcnv.height && user.more)
             {
                 var a = new panel.rows([8,BEXTENT,0,BEXTENT,8],
                 [
