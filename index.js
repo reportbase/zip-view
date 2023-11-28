@@ -5192,7 +5192,7 @@ menuobj.draw = function(nosave)
         if (!nosave)
         {
             reseturl()
-            resetview()
+            //resetview()
         }
     }
 
@@ -5309,7 +5309,16 @@ function resetview()
     if (menuobj.value() != _8cnvctx)
         return;
     var k = displayobj.current();    
-    menuobj.hide();
+    //menuobj.hide();
+    
+    for (var n = 0; n < IMAGELSTSIZE; ++n)
+    {
+        thumbfittedlst[n] = document.createElement("canvas");
+        thumbimglst[n] = new Image();
+    }                
+
+    context.hide();
+    
     menuobj.toggle(_8cnvctx);
     menuobj.show();
     displayobj.set(k);
