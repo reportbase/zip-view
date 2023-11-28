@@ -6838,7 +6838,13 @@ function setupmenus()
         }
      },
      {
-        title: `Account   \u{25B6}`,//todo
+        title: function()
+        {
+            var str = `Account   \u{25B6}`
+            if (login.email)
+                str += `\n${login.email}`;
+            return str;
+        },
         func: function()
         {
             if (!login.id)
