@@ -63,16 +63,14 @@ const MEDIUMFONT = "19px archivo black";
 const LARGEFONT = "21px archivo black";
 const HUGEFONT = "24px archivo black";
 const SLICEWIDTH = 16;
-const ZOOMAX = 92;
-const IMAGELSTSIZE = 32;
+const IMAGELSTSIZE = 24;
 const ROTATEANCHORSIAE = 3;
 const BOSS = 0;
 const GALLERY = 1;
 const MENU = 2;
-const TIMEMAIN = 4;
 const BOSSMAIN = 4;
 const MENUMAIN = 4;
-const GALLERYMAIN = 18;
+const GALLERYMAIN = 12;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 24;
@@ -2810,7 +2808,8 @@ async function loadzip(file)
     const {entries} = await unzipit.unzip(file);
     let keys = Object.keys(entries);
     keys.sort();
-    galleryobj.title = "";
+    delete galleryobj.title;
+    galleryobj.lowmemory = 1;
     var lst = [];
     for (var n = 0; n < keys.length; ++n)
     {
@@ -2864,8 +2863,10 @@ async function loadimages(blobs)
         return;
 
     galleryobj.data = [];
-    galleryobj.width = 0;
-    galleryobj.height = 0;
+    delete galleryobj.title;
+    delete galleryobj.width;
+    delete galleryobj.height;
+    galleryobj.lowmemory = 1;
     galleryobj.set(0);
 
     for (var i = 0; i < blobs.length; i++)
@@ -5192,7 +5193,9 @@ menuobj.draw = function(nosave)
         if (!nosave)
         {
             reseturl()
-            //resetview()
+
+            if (!galleryobj.lowmemory)
+                resetview()
         }
     }
 
@@ -5327,30 +5330,33 @@ function resetview()
 
 function reseturl()
 {
-    var context = _8cnvctx;
-    
-    var e = url.searchParams.get('_8');
-    if (e != _8cnv.timeobj.current().toFixed(5))
+	var context = _8cnvctx;
+    clearTimeout(context.saveurltime)
+    context.saveurltime = setTimeout(function()
     {
-        var k = _8cnv.timeobj.current();
-        if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
-        url.searchParams.set('_8', k.toFixed(5));
-        window.history.replaceState("", url.origin, url);
-    }
-    
-    var e = url.searchParams.get('t');
-    if (e != templateobj.value())
-    {
-        url.searchParams.set("t",templateobj.value());
-        window.history.replaceState("", url.origin, url);
-    }
-    
-    var e = url.searchParams.get('b');
-    if (e != buttonobj.value())
-    {
-        url.searchParams.set("b",buttonobj.value());
-        window.history.replaceState("", url.origin, url);
-    }
+        var e = url.searchParams.get('_8');
+        if (e != _8cnv.timeobj.current().toFixed(5))
+        {
+            var k = _8cnv.timeobj.current();
+            if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
+            url.searchParams.set('_8', k.toFixed(5));
+            window.history.replaceState("", url.origin, url);
+        }
+        
+        var e = url.searchParams.get('t');
+        if (e != templateobj.value())
+        {
+            url.searchParams.set("t",templateobj.value());
+            window.history.replaceState("", url.origin, url);
+        }
+        
+        var e = url.searchParams.get('b');
+        if (e != buttonobj.value())
+        {
+            url.searchParams.set("b",buttonobj.value());
+            window.history.replaceState("", url.origin, url);
+        }
+    }, 400);
 }
 
 var eventlst = 
