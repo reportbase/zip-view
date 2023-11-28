@@ -5309,7 +5309,7 @@ function resetview()
     if (menuobj.value() != _8cnvctx)
         return;
     var k = displayobj.current();    
-    _8cnvctx.hide();
+    menuobj.hide();
     menuobj.toggle(_8cnvctx);
     menuobj.show();
     displayobj.set(k);
