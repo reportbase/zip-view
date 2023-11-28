@@ -3709,15 +3709,20 @@ var taplst =
     tap: function(context, rect, x, y, shift, ctrl)
     {
         headobj.draw();
-        if (headcnvctx.moveprev && headcnvctx.moveprev.hitest(x, y))
+        if (headcnv.height &&
+            headcnvctx.moveprev && 
+            headcnvctx.moveprev.hitest(x, y))
         {
             _4cnvctx.movepage(-1);
         }
-        else if (headcnvctx.movenext && headcnvctx.movenext.hitest(x, y))
+        else if (headcnv.height && 
+                 headcnvctx.movenext && 
+                 headcnvctx.movenext.hitest(x, y))
         {
             _4cnvctx.movepage(1);
         }
-        else if (context.copyidrect && context.copyidrect.hitest(x, y))
+        else if (context.copyidrect && 
+                 context.copyidrect.hitest(x, y))
         {
              copytext(galleryobj.value().id);   
         }
@@ -3764,7 +3769,7 @@ var taplst =
         {
             var k = (y - context.zoomrect.y) / context.zoomrect.height;
             zoomobj.setperc(k);
-            bossobj.draw();
+            contextobj.reset();
         }
         else if (context.stretchrect && context.stretchrect.hitest(x, y))
         {
@@ -4429,7 +4434,7 @@ var taplst =
             if (!slice.func)
                 return;
             slice.tap = 1;
-	    menuobj.draw();
+	        menuobj.draw();
                 
             setTimeout(function()
             {
