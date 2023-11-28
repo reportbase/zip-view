@@ -4144,12 +4144,17 @@ var taplst =
     		{
     		    var j = canvas.timeobj.length() / galleryobj.length();
     		    canvas.timeobj.rotate(j);  
-                menuobj.draw();
+                for (var n = 0; n < galleryobj.length(); ++n)
+                        galleryobj.data[n].more = 0;
+                slice.more = 1;                menuobj.draw();
     		}
     		else if (slice.movenext && slice.movenext.hitest(x, y))
     		{
     		    var j = canvas.timeobj.length() / galleryobj.length();
     		    canvas.timeobj.rotate(-j);     
+                for (var n = 0; n < galleryobj.length(); ++n)
+                        galleryobj.data[n].more = 0;
+                slice.more = 1;
                 menuobj.draw();
     		}
             else if (slice.uploadrect && slice.uploadrect.hitest(x, y))
