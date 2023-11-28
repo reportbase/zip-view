@@ -4120,10 +4120,10 @@ var taplst =
             var n = visibles[k].n;
             var nn = n+1;
             var np = n-1;
-            if (nn >= visibles.length)
+            if (nn >= galleryobj.length())
                 nn = 0;
             if (nn == -1)
-                nn = visibles.length-1;
+                nn = galleryobj.length()-1;
             var slicep = canvas.sliceobj.data[np];
             var slicen = canvas.sliceobj.data[nn];
             var slice = canvas.sliceobj.data[n];
