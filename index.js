@@ -2589,6 +2589,8 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
+    if (Math.abs(delta) <= 1.4)
+	return;
         context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw(1);
     },
