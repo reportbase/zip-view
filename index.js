@@ -956,9 +956,9 @@ var headlst =
                                     5],
                         [
                             0, 0, 0,
-                            new panel.previous(),
+                            new panel.moveprev(),
                             new panel.zoom(),
-                            new panel.next(),
+                            new panel.movenext(),
                             0, 
                             new panel.closeboss(), 
                             0
@@ -2005,7 +2005,7 @@ panel.upload = function()
     }
 };
 
-panel.previous = function()
+panel.moveprev = function()
 {
     this.draw = function(context, rect, user, time)
     {
@@ -2046,7 +2046,7 @@ panel.closeboss = function()
     }
 };
 
-panel.next = function()
+panel.movenext = function()
 {
     this.draw = function(context, rect, user, time)
     {
@@ -3892,6 +3892,16 @@ var taplst =
             menuobj.show();
             headobj.draw();
         }
+        else if (headcnvctx.moveprev && headcnvctx.moveprev.hitest(x, y))
+        {
+            var j = canvas.timeobj.length() / galleryobj.length();
+            canvas.timeobj.rotate(j);        
+        }
+        else if (headcnvctx.movenext && headcnvctx.movenext.hitest(x, y))
+        {
+            var j = canvas.timeobj.length() / galleryobj.length();
+            canvas.timeobj.rotate(-j);        
+        }
         else if (
             (headcnvctx.rightmenurect &&
             headcnvctx.rightmenurect.hitest(x, y)))
@@ -4901,9 +4911,9 @@ var buttonlst =
                     new panel.cols([5,ALIEXTENT,0,ALIEXTENT,5],
                     [
                         0,
-                        new panel.download(),
+                        new panel.moveprev(),
                         0,
-    	                new panel.upload(),
+    	                new panel.movenext(),
                         0,
                     ]),
                     0,
