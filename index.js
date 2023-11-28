@@ -5316,16 +5316,16 @@ function resetview()
     
     for (var n = 0; n < IMAGELSTSIZE; ++n)
     {
-        thumbfittedlst[n] = document.createElement("canvas");
-        thumbimglst[n] = new Image();
+        //thumbfittedlst[n] = document.createElement("canvas");
+        //thumbimglst[n] = new Image();
     }                
 
     context.hide();
     
-    menuobj.toggle(_8cnvctx);
+   // menuobj.toggle(_8cnvctx);
     menuobj.show();
     displayobj.set(k);
-    menuobj.draw();
+    //menuobj.draw();
 }
 
 function reseturl()
