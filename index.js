@@ -2627,7 +2627,7 @@ var wheelst =
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         var canvas = context.canvas;
-        var e = delta/200;
+        var e = delta/1000;
         if (ctrl)
         {
             var isthumb = context.canvas.thumbrect &&
@@ -2670,7 +2670,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     { 
-        var e = delta/500;
+        var e = delta/1000;
         if (context.hollyrect &&
             context.hollyrect.hitest(x, y))
         {
