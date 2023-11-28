@@ -5438,7 +5438,7 @@ var eventlst =
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "UNUSED",//GALLERIES
+    button: "GALLERIES",
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
