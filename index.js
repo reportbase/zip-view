@@ -7168,7 +7168,7 @@ galleryobj.leftright = function(context, delta)
     {
 	    obj.addperc(e);
         if (!context.canvas.keypressed)
-        e = e * 0.90;
+        e = e * 0.80;
         if ((delta > 0 && e < 0) ||
 	       (delta < 0 && e > 0))
     	{
