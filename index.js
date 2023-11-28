@@ -3753,6 +3753,7 @@ var taplst =
              copytext(galleryobj.value().id);   
         }
         else if (
+            headcnv.height &&
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
@@ -3809,6 +3810,7 @@ var taplst =
             bossobj.draw();
         }
         else if (
+            headcnv.height &&
             headcnvctx.closebossrect &&
             headcnvctx.closebossrect.hitest(x, y))
         {
@@ -3819,6 +3821,7 @@ var taplst =
             headobj.draw();
         }
         else if (
+            headcnv.height &&
             headcnvctx.bossdisplayrect &&
             headcnvctx.bossdisplayrect.hitest(x, y))
         {
@@ -3874,7 +3877,9 @@ var taplst =
             return a.name == "BUTTON"});
         var button = displaylst[k] 
         
-        if (headcnvctx.leftmenurect && headcnvctx.leftmenurect.hitest(x, y))
+        if (headcnv.height && 
+            headcnvctx.leftmenurect && 
+            headcnvctx.leftmenurect.hitest(x, y))
         {
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.rightctx.hide()
@@ -3897,6 +3902,7 @@ var taplst =
             headobj.draw();
         }
         else if (
+            headcnv.height &&
             (headcnvctx.rightmenurect &&
             headcnvctx.rightmenurect.hitest(x, y)))
         {
@@ -3921,6 +3927,7 @@ var taplst =
             headobj.draw();
         }
         else if (
+            headcnv.height &&
             headcnvctx.closebossrect &&
             headcnvctx.closebossrect.hitest(x, y))
         {
@@ -4014,6 +4021,7 @@ var taplst =
             menuobj.draw();
         }
         else if (
+            headcnv.height &&
             headcnvctx.fitwidthrect &&
             headcnvctx.fitwidthrect.hitest(x, y))
         {
@@ -4038,6 +4046,7 @@ var taplst =
             menuobj.draw()              
         }
         else if (
+            headcnv.height &&
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
@@ -4053,6 +4062,7 @@ var taplst =
             })
         }
         else if (
+            headcnv.height &&
             headcnvctx.fullrect &&
             headcnvctx.fullrect.hitest(x, y))
         {
