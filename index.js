@@ -834,7 +834,7 @@ var footlst =
     }
 },
 {
-    name: "ACCOUNT",
+    name: "USER",
     draw: function(context, rect, user, time)
     {
         var canvas = context.canvas;
@@ -4444,7 +4444,15 @@ var taplst =
         else if (canvas.useropenrect && canvas.useropenrect.hitest(x, y))
         {
             login = _1cnv.sliceobj.value();
-            loginbyemail()
+            loginbyemail(function()
+            {
+                menuobj.hide();
+                galleryobj.leftcnv = _10cnv;
+                galleryobj.leftctx = _10cnvctx;
+                menuobj.setindex(galleryobj.leftctx);
+                menuobj.show();
+            })
+		    
             return false;
         }
         else if (canvas.userpatchrect && canvas.userpatchrect.hitest(x, y))
@@ -5532,7 +5540,7 @@ var eventlst =
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: "ACCOUNT",
+    footer: "USER",
     buttonheight: 50,
     buttonmargin: 10,
     width: 640
@@ -6830,7 +6838,7 @@ function setupmenus()
         }
      },
      {
-        title: `Account   \u{25B6}`,
+        title: `Account   \u{25B6}`,//todo
         func: function()
         {
             if (!login.id)
@@ -7292,7 +7300,7 @@ window.onGoogleLibraryLoad = () =>
 {
 }
 
-function loginbyemail()
+function loginbyemail(func)
 {
     fetch(`https://user.reportbase5836.workers.dev/${login.email}`)
         .then((response) => jsonhandler(response))
@@ -7314,8 +7322,7 @@ function loginbyemail()
                     login.id = k.id;
                     login.secret = k.secret;
 		            localStorage.setItem("login",JSON.stringify(login));	
-                    menuobj.draw();
-                    dialog.close();
+                    func();
                 })
             }
             else
@@ -7334,5 +7341,9 @@ function handleCredentialResponse(response)
 {
     login = Object.assign(login, parseJwt(response.credential));
     login.credential = response.credential;
-    loginbyemail()
+    loginbyemail(function()
+    {
+        menuobj.draw();
+        dialog.close();   
+    })
 }     
