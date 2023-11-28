@@ -2627,11 +2627,11 @@ var wheelst =
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         var canvas = context.canvas;
-        var e = delta/1000;
         if (ctrl)
         {
             var isthumb = context.canvas.thumbrect &&
                 context.canvas.thumbrect.hitest(x, y);
+            var e = delta/200;
             if (isthumb)
             {
                 heightobj.addperc(e);
@@ -2646,24 +2646,20 @@ var wheelst =
         else if (context.zoomrect &&
             context.zoomrect.hitest(x, y))
         {
+            var e = delta/200;
             zoomobj.addperc(e);
             contextobj.reset()
-        }
-        else if (0 && context.hollyrect &&
-            context.hollyrect.hitest(x, y))
-        {
-            var hollyobj = context.canvas.hollyobj;
-            hollyobj.addperc(e);
-            bossobj.draw();
         }
         else if (context.stretchrect &&
             context.stretchrect.hitest(x, y))
         {
+            var e = delta/200;
             stretchobj.addperc(e);
             bossobj.draw();
         }
         else
         {
+            var e = delta/1000;
             rowobj.addperc(e);
             contextobj.reset()
         }
