@@ -4838,7 +4838,7 @@ var buttonlst =
     }
 },    
 {
-    name: "OPTION",
+    name: "OPTION",//todo folder
     draw: function(context, rect, user, time)
     {
         var canvas = context.canvas;
@@ -4891,13 +4891,13 @@ var buttonlst =
                 new panel.layers(
                 [
                     new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
-                    new panel.text()
+                    new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
                 ]),
                 0,
             ]);
 
         var k = typeof(user.title) == "function" ? user.title() : user.title;
-        a.draw(context, rect, k, time);
+        a.draw(context, rect, k.split("\n"), time);
         context.restore();
     }
 },
@@ -5533,7 +5533,7 @@ var eventlst =
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "MENU",
+    button: "MENU",//
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
