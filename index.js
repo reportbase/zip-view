@@ -4118,8 +4118,8 @@ var taplst =
             if (k == visibles.length)
                 return;
             var n = visibles[k].n;
-            var nn = k+1;
-            var np = k-1;
+            var nn = n+1;
+            var np = n-1;
             if (nn >= visibles.length)
                 nn = 0;
             if (nn == -1)
