@@ -7159,7 +7159,7 @@ galleryobj.leftright = function(context, delta)
     if (!delta)
         return;
     
-    var e = delta / 1000;
+    var e = delta / 500;
     var obj = context.canvas.hollyobj;
     obj.addperc(e);
     menuobj.draw();
