@@ -4838,7 +4838,7 @@ var buttonlst =
     }
 },    
 {
-    name: "OPTION",//todo folder
+    name: "OPTION",
     draw: function(context, rect, user, time)
     {
         var canvas = context.canvas;
@@ -4862,17 +4862,38 @@ var buttonlst =
             ]);
 
         var k = typeof(user.title) == "function" ? user.title() : user.title;
-        var d = "\n";
-        if (!k)
-        {
-            k = user.folder;
-            d = "/";
-        }
-
         a.draw(context, rect, k ? k.split(d) : "", time);
         context.restore();
     }
 },
+{
+    name: "FOLDERS",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save()
+        var clr = FILLBAR;
+        if (user.tap)
+            clr = MENUTAP;
+        else if (user.enabled && user.enabled())
+            clr = MENUSELECT;
+
+        var e = context.canvas.hollyobj.berp();
+        var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
+            [
+                0,
+                new panel.layers(
+                    [
+                        new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                        new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
+                    ]),
+                0,
+            ]);
+
+        a.draw(context, rect, user.folders ? user.folders.split("/") : "", time);
+        context.restore();
+    }
+},    
 {
     name: "MENU",
     draw: function(context, rect, user, time)
@@ -5288,7 +5309,7 @@ function resetview()
     if (menuobj.value() != _8cnvctx)
         return;
     var k = displayobj.current();    
-    menuobj.hide();
+    _8cnvctx.hide();
     menuobj.toggle(_8cnvctx);
     menuobj.show();
     displayobj.set(k);
@@ -5424,7 +5445,7 @@ var eventlst =
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "OPTION",
+    button: "FOLDERS",
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
