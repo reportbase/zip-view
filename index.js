@@ -4181,8 +4181,16 @@ var taplst =
             }
             else
             { 
-		        if (slice.more)
-	    	    {
+                if (headcnv.height)
+                {
+                    headobj.toggle();
+                    for (var n = 0; n < galleryobj.length(); ++n)
+                            galleryobj.data[n].more = 0;
+                    slice.more = 1;
+                    menuobj.draw()
+                }
+                else if (slice.more)
+                {
                     headobj.toggle();
                 }
                 else
