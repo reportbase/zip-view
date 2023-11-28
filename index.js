@@ -7331,8 +7331,7 @@ function loginbyemail(func)
                 login.id = k.id;
                 login.secret = k.secret;
                 localStorage.setItem("login",JSON.stringify(login));
-                menuobj.draw();
-                dialog.close();
+		        func();
             }
         }); 
 }
