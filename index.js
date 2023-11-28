@@ -4885,6 +4885,7 @@ var buttonlst =
         else if (user.enabled && user.enabled())
                 clr = MENUSELECT;
 
+        var e = context.canvas.hollyobj.berp();
         var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
             [
                 0,
