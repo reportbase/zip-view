@@ -4124,8 +4124,8 @@ var taplst =
                 nn = 0;
             if (nn == -1)
                 nn = visibles.length-1;
-            var slicep = visibles[np].n;
-            var slicen = visibles[nn].n;
+            var slicep = visibles[np];
+            var slicen = visibles[nn];
             var slice = canvas.sliceobj.data[n];
             y -= slice.rect.y;
             if (slice.metarect && slice.metarect.hitest(x, y))
