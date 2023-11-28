@@ -5523,7 +5523,7 @@ var eventlst =
     buttonmargin: 30,
     width: 640
 },
-{ //10
+{ //10 User
     hideontap: 1,
     speed: 60,
     reduce: 2.5,
@@ -6841,8 +6841,10 @@ function setupmenus()
         title: function()
         {
             var str = `Account   \u{25B6}`
-            if (login.email)
-                str += `\n${login.email}`;
+            if (login.name)
+                str += `\n${login.name}`;
+	        else if (login.email)
+		        str += `\n${login.email}`;
             return str;
         },
         func: function()
@@ -6892,19 +6894,19 @@ function setupmenus()
     _10cnv.sliceobj.data = 
     [
         {
-            title: function(){return `User ID: ${login.id?login.id:""}`},
+            title: function(){return `ID\n${login.id?login.id:""}`},
             func: function(){copytext(login.id); return false;}
         },
         {
-            title: function(){return `User Email: ${login.email?login.email:""}`},
+            title: function(){return `Email\n${login.email?login.email:""}`},
             func: function(){copytext(login.email); return false;}
         },
         {
-            title: function(){return `User Name: ${login.name?login.name:""}`},
+            title: function(){return `Name\n${login.name?login.name:""}`},
             func: function(){copytext(login.name); return false;}
         },
         {
-            title: function(){return `User Secret: ${login.secret?login.secret:""}`},
+            title: function(){return `Secret\n${login.secret?login.secret:""}`},
             func: function(){copytext(login.secret); return false;}
         },
     ]
