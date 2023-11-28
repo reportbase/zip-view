@@ -4421,30 +4421,30 @@ var taplst =
         {
             showdialog("user-login", function(str)
             {
-                        
+                var user = _1cnv.sliceobj.value();            
+                const form = new FormData();
+                form.append('name', user.name);
+                form.append('email', user.email);
+                fetch(`https://user.reportbase5836.workers.dev`,
+                {
+                    'method': 'POST',
+                    'body': form
+                })
+                .then(response => response.json())
+                .then(function(k)
+                {
+                    login = Object.assign(login, k);
+                    localStorage.setItem("login",JSON.stringify(login));	
+                    menuobj.draw();
+                })                  
             });
 
             return false;
         }
         else if (canvas.useropenrect && canvas.useropenrect.hitest(x, y))
         {
-            var user = _1cnv.sliceobj.value();            
-            const form = new FormData();
-            form.append('name', user.name);
-            form.append('email', user.email);
-            fetch(`https://user.reportbase5836.workers.dev`,
-            {
-                'method': 'POST',
-                'body': form
-            })
-            .then(response => response.json())
-            .then(function(k)
-            {
-                login = Object.assign(login, k);
-                localStorage.setItem("login",JSON.stringify(login));	
-                menuobj.draw();
-            })
-            
+            login = _1cnv.sliceobj.value();
+            loginbyemail()
             return false;
         }
         else if (canvas.userpatchrect && canvas.userpatchrect.hitest(x, y))
@@ -7292,10 +7292,8 @@ window.onGoogleLibraryLoad = () =>
 {
 }
 
-function handleCredentialResponse(response) 
+function loginbyemail()
 {
-    login = Object.assign(login, parseJwt(response.credential));
-    login.credential = response.credential;
     fetch(`https://user.reportbase5836.workers.dev/${login.email}`)
         .then((response) => jsonhandler(response))
         .then(function(lst)
@@ -7330,4 +7328,11 @@ function handleCredentialResponse(response)
                 dialog.close();
             }
         }); 
-}        
+}
+
+function handleCredentialResponse(response) 
+{
+    login = Object.assign(login, parseJwt(response.credential));
+    login.credential = response.credential;
+    loginbyemail()
+}     
