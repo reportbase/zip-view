@@ -7162,7 +7162,7 @@ galleryobj.leftright = function(context, delta)
     var e = delta / 1000;
     var obj = context.canvas.hollyobj;
     obj.addperc(e);
-    menuobj.draw();
+    menuobj.draw(1);
     clearInterval(context.canvas.leftrightime);
     context.canvas.leftrightime = setInterval(function()
     {
@@ -7176,7 +7176,7 @@ galleryobj.leftright = function(context, delta)
 		    context.canvas.leftrightime = 0;
     	}
 	    
-        menuobj.draw();
+        menuobj.draw(1);
     }, 40);
 }
 
