@@ -4354,7 +4354,6 @@ var taplst =
                     menuobj.draw();
                     dialog.close();
                 })
-                .catch(error => console.log(error));                
             })
         }
         else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
@@ -7134,9 +7133,9 @@ function showdialog(str, func)
     {
         if (event.target.id == `${str}-ok`)
         {
+            func();
             dialog.close();
-            menuobj.draw();
-            return func();
+            return true;
         }
         else
         {
