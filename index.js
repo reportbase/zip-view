@@ -2589,8 +2589,8 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-            if (Math.abs(delta) <= 0.8)
-                return;
+        if (Math.abs(delta) <= 0.8)
+            return;
         context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw(1);
     },
@@ -3345,7 +3345,8 @@ var swipelst = [
     swipeleftright: function(context, rect, x, y, evt)
     {
         var k = evt.type == "swipeleft" ? 1 : -1;
-        galleryobj.leftright(context, k * 50);
+        context.canvas.hollyobj.addperc((k*50) / 2000);
+        menuobj.draw(1);
     },
     swipeupdown: function(context, rect, x, y, evt)
     {
@@ -3501,15 +3502,17 @@ var keylst =
                 key == "arrowleft" ||
                 key == "h")
             {
-                galleryobj.leftright(context, -25)
+                context.canvas.hollyobj.addperc(-25 / 2000);
+                menuobj.draw(1);
                 evt.preventDefault();
             }
             else if (
                 key == "arrowright" ||
                 key == "l")
             {
+                context.canvas.hollyobj.addperc(25 / 2000);
+                menuobj.draw(1);
                 evt.preventDefault();
-                galleryobj.leftright(context, 25)
             }
             else if (key == "w")
             {
@@ -3955,10 +3958,12 @@ var taplst =
             context.templatemenurect.hitest(x, y))
         {
             var k = (x - context.templatemenurect.x) / context.templatemenurect.width;
+                            
+
             if (k < 0.2)
-                galleryobj.leftright(context, -25)
+                context.canvas.hollyobj.addperc(-25 / 2000);
             else if (k > 0.8)
-                galleryobj.leftright(context, 25)
+                context.canvas.hollyobj.addperc(25 / 2000);
             else
             {
     		    for (var n = 0; n < IMAGELSTSIZE; ++n)
@@ -3969,8 +3974,9 @@ var taplst =
 		    
                 templateobj.add(k < 0.5 ? -1 : 1);
                 buttonobj.reset();
-                menuobj.draw();
             }            
+            
+            menuobj.draw(1);
         }
         else if (
             context.folderect &&
@@ -3989,18 +3995,19 @@ var taplst =
 	        var k = (x - context.cursorect.x) / context.cursorect.width;
             if (k < 0.2)
             {
-                galleryobj.leftright(context, -25)
+                context.canvas.hollyobj.addperc(-25 / 2000);
             }
             else if (k > 0.8)
             {
-                galleryobj.leftright(context, 25)
+                context.canvas.hollyobj.addperc(25 / 2000);
             }
             else
             {
                 var j = canvas.timeobj.length() / galleryobj.length();
-                canvas.timeobj.rotate(k < 0.5 ? j :-j);
-                menuobj.draw();
+                canvas.timeobj.rotate(k < 0.5 ? j :-j);              
             }  
+
+            menuobj.draw();
         }
         else if (
             headcnvctx.fitwidthrect &&
@@ -4064,11 +4071,11 @@ var taplst =
             var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
             if (k < 0.2)
             {
-                galleryobj.leftright(context, -25)
+                context.canvas.hollyobj.addperc(-25 / 2000);
             }
             else if (k > 0.8)
             {
-                galleryobj.leftright(context, 25)
+                context.canvas.hollyobj.addperc(25 / 2000);
             }
             else
             {
@@ -4083,9 +4090,9 @@ var taplst =
         {
             var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
             if (k < 0.2)
-                galleryobj.leftright(-25)
+                context.canvas.hollyobj.addperc(-25 / 2000);
             else if (k > 0.8)
-                galleryobj.leftright(25)
+                context.canvas.hollyobj.addperc(25 / 2000);
             else
                 context.canvas.hollyobj.setperc(k);
             menuobj.draw()
@@ -7153,35 +7160,6 @@ menuobj.updown = function(context, delta, divider)
     var k = Math.abs(delta)/20;
     canvas.slideshow = (sealobj.value() / canvas.virtualheight) * k;
     canvas.slidereduce = canvas.slideshow / divider;
-}
-
-//galleryobj leftright
-galleryobj.leftright = function(context, delta)
-{
-    if (context.pinching)
-        return;
-    if (!delta)
-        return;
-    
-    var e = delta / 400;
-    var obj = context.canvas.hollyobj;
-    obj.addperc(e);
-    menuobj.draw(1);
-    clearInterval(context.canvas.leftrightime);
-    context.canvas.leftrightime = setInterval(function()
-    {
-	    obj.addperc(e);
-        if (!context.canvas.keypressed)
-        e = e * 0.50;
-        if ((delta > 0 && e < 0) ||
-	       (delta < 0 && e > 0))
-    	{
-            clearInterval(context.canvas.leftrightime);
-		    context.canvas.leftrightime = 0;
-    	}
-	    
-        menuobj.draw(1);
-    }, 40);
 }
 
 let b64DecodeUnicode = str =>
