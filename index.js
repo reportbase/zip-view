@@ -2809,7 +2809,6 @@ async function loadzip(file)
     let keys = Object.keys(entries);
     keys.sort();
     delete galleryobj.title;
-    galleryobj.lowmemory = 1;
     var lst = [];
     for (var n = 0; n < keys.length; ++n)
     {
@@ -2866,7 +2865,6 @@ async function loadimages(blobs)
     delete galleryobj.title;
     delete galleryobj.width;
     delete galleryobj.height;
-    galleryobj.lowmemory = 1;
     galleryobj.set(0);
 
     for (var i = 0; i < blobs.length; i++)
@@ -5193,9 +5191,7 @@ menuobj.draw = function(nosave)
         if (!nosave)
         {
             reseturl()
-
-            if (!galleryobj.lowmemory)
-                resetview()
+            resetview()
         }
     }
 
