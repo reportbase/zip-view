@@ -2578,6 +2578,7 @@ var wheelst =
         }
         else
         {
+            return;
             menuobj.updown(context, delta, 60)
             menuobj.draw();
             if (!context.swipetimeout)
@@ -2587,7 +2588,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        context.canvas.hollyobj.addperc(delta / 400);
+        context.canvas.hollyobj.addperc(delta / 1000);
         menuobj.draw(1);
     },
 },
