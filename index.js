@@ -5308,20 +5308,12 @@ function resetview()
     if (menuobj.value() != _8cnvctx)
         return;
     var k = displayobj.current();    
-    //menuobj.hide();
     
-    for (var n = 0; n < IMAGELSTSIZE; ++n)
-    {
-        //thumbfittedlst[n] = document.createElement("canvas");
-        //thumbimglst[n] = new Image();
-    }                
-
-    context.hide();
-    
-   // menuobj.toggle(_8cnvctx);
+    _8cnvctx.hide();
+    // menuobj.toggle(_8cnvctx);
     menuobj.show();
     displayobj.set(k);
-    //menuobj.draw();
+    menuobj.draw();
 }
 
 function reseturl()
