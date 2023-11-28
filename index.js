@@ -4118,6 +4118,14 @@ var taplst =
             if (k == visibles.length)
                 return;
             var n = visibles[k].n;
+            var nn = k+1;
+            var np = k-1;
+            if (nn >= visibles.length)
+                nn = 0;
+            if (nn == -1)
+                nn = visibles.length-1;
+            var slicep = visibles[np].n;
+            var slicen = visibles[nn].n;
             var slice = canvas.sliceobj.data[n];
             y -= slice.rect.y;
             if (slice.metarect && slice.metarect.hitest(x, y))
@@ -4146,7 +4154,8 @@ var taplst =
     		    canvas.timeobj.rotate(j);  
                 for (var n = 0; n < galleryobj.length(); ++n)
                         galleryobj.data[n].more = 0;
-                slice.more = 1;                menuobj.draw();
+                slicep.more = 1;                
+                menuobj.draw();
     		}
     		else if (slice.movenext && slice.movenext.hitest(x, y))
     		{
@@ -4154,7 +4163,7 @@ var taplst =
     		    canvas.timeobj.rotate(-j);     
                 for (var n = 0; n < galleryobj.length(); ++n)
                         galleryobj.data[n].more = 0;
-                slice.more = 1;
+                slicen.more = 1;
                 menuobj.draw();
     		}
             else if (slice.uploadrect && slice.uploadrect.hitest(x, y))
