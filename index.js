@@ -4819,7 +4819,13 @@ var buttonlst =
                 0,
             ]);
 
-        var k = [user.name,user.email];
+        var k = 
+	    [
+		    user.name,
+            user.email,
+            user.id,
+        ];
+        
         a.draw(context, rect, k, time);
         context.restore();
     }
@@ -4889,7 +4895,7 @@ var buttonlst =
     }
 },
 {
-    name: "CURRENT",
+    name: "GALLERIES",
     draw: function(context, rect, user, time)
     {
         var canvas = context.canvas;
@@ -4912,8 +4918,13 @@ var buttonlst =
                 0,
             ]);
 
-        var title = typeof(user.title) == "function" ? user.title() : user.title;
-        a.draw(context, rect, title?title.split("\n"):"", time);
+        var k = 
+        [
+            user.title,
+            user.id
+        ];
+        
+        a.draw(context, rect, k, time);
         context.restore();
     }
 },    
@@ -5339,7 +5350,7 @@ var eventlst =
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "CURRENT",
+    button: "GALLERIES",
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
@@ -5427,7 +5438,7 @@ var eventlst =
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "CURRENT",
+    button: "UNUSED",//GALLERIES
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
