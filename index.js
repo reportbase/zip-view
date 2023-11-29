@@ -1215,7 +1215,7 @@ var displaylst =
         canvas.hollyrect = new rectangle();
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
-	context.templatemenurect = new rectangle();
+	context.templaterect = new rectangle();
         if (!headcnv.height)
             return;        
         var bh = rect.height * 0.4;
@@ -1281,7 +1281,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                    new panel.expand(new panel.rectangle(context.templatemenurect), 10, 10),
+                    new panel.expand(new panel.rectangle(context.templaterect), 10, 10),
                     new panel.text(),
                 ]),
                 0,
@@ -3733,16 +3733,22 @@ var taplst =
             }
         }
         else if (
-            context.templatemenurect &&
-            context.templatemenurect.hitest(x, y))
+            context.templaterect &&
+            context.templaterect.hitest(x, y))
         {
-            var k = (x - context.templatemenurect.x) / context.templatemenurect.width;
+            var k = (x - context.templaterect.x) / context.templaterect.width;
             if (k > 0.35 && k < 0.65)
             {
                 //todo
             }
             else
             {
+        		for (var n = 0; n < IMAGELSTSIZE; ++n)
+        	    {
+        			thumbfittedlst[n] = document.createElement("canvas");
+        			thumbimglst[n] = new Image();
+        	    }
+	    
                 _9cnv.sliceobj.add(k < 0.5 ? -1 : 1);
                 buttonobj.reset();
             }            
@@ -5042,7 +5048,7 @@ menuobj.draw = function(nosave)
     //gallery
     delete canvas.buttonrect;
     delete context.buttonmenurect;
-    delete context.templatemenurect;
+    delete context.templaterect;
 
     //button
     delete canvas.timeobjrect;
