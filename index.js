@@ -1300,7 +1300,7 @@ var displaylst =
         var canvas = context.canvas;
         context.save();
         var hollyobj = canvas.hollyobj;
-        canvas.buttonrect = new rectangle();
+        canvas.vscrollrect = new rectangle();
         canvas.templaterect = new rectangle();
         context.buttonmenurect = new rectangle();
         context.templatemenurect = new rectangle();
@@ -2966,8 +2966,8 @@ var panlst =
         if (canvas.pinching)
             return;
        context.elst.push({x,y});
-        if (context.elst.length % 2)
-            return;
+        //if (context.elst.length % 2)
+          //  return;
         
         if (type == "panleft" || type == "panright")
         {
