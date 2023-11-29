@@ -1950,7 +1950,7 @@ panel.download = function()
                 new panel.rectangle(user.downloadrect),
                 _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                new panel.shrink(new panel.arrow(ARROWFILL, 270), 20, 30),
+                new panel.shrink(new panel.circle(ARROWFILL), 20, 30),
             ]);
 
         a.draw(context, rect, user, time);
@@ -1972,7 +1972,7 @@ panel.boss = function()
                 new panel.rectangle(user.metarect),
                 _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                new panel.shrink(new panel.arrow(ARROWFILL, 270), 20, 30),
+                new panel.shrink(new panel.fill(ARROWFILL), 20, 30),
             ]);
 
         a.draw(context, rect, user, time);
@@ -1994,7 +1994,7 @@ panel.upload = function()
                 new panel.rectangle(user.uploadrect),
                 _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                new panel.shrink(new panel.arrow(ARROWFILL, 270), 20, 30),
+                new panel.shrink(new panel.fill(ARROWFILL), 20, 30),
             ]);
 
         a.draw(context, rect, user, time);
