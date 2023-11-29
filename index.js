@@ -1301,8 +1301,7 @@ var displaylst =
         context.save();
         var hollyobj = canvas.hollyobj;
         canvas.timeobjrect = new rectangle();
-        canvas.templaterect = new rectangle();
-	canvas.hollyrect = new rectangle();
+        canvas.hollyrect = new rectangle();
         context.buttonmenurect = new rectangle();
         context.templatemenurect = new rectangle();
         if (!headcnv.height)
@@ -1339,8 +1338,7 @@ var displaylst =
                         new panel.layers(
                             [
                                 new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
-                                //new panel.expand(new panel.rectangle(canvas.templaterect), 0, 20),
-				new panel.expand(new panel.rectangle(canvas.hollyrect), 0, 20),		    
+                                new panel.expand(new panel.rectangle(canvas.hollyrect), 0, 20),		    
                                 new panel.shrink(new panel.currentH(
                                     new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
                             ]),
@@ -2989,19 +2987,6 @@ var panlst =
                 context.canvas.hollyobj.setperc(k);
                 menuobj.draw();
             }
-            else if (canvas.istemplaterect)
-            {
-                for (var n = 0; n < IMAGELSTSIZE; ++n)
-                {
-                    thumbfittedlst[n] = document.createElement("canvas");
-                    thumbimglst[n] = new Image();
-                }                
-          
-                var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
-                templateobj.setperc(k);
-                buttonobj.reset();
-                menuobj.draw();
-            }
             else
             {
                 var obj = context.canvas.hollyobj;
@@ -3057,7 +3042,6 @@ var panlst =
         canvas.startx = x;
         canvas.starty = y;
         canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
-        canvas.istemplaterect = canvas.templaterect && canvas.templaterect.hitest(x, y);
         canvas.isbuttonrect = canvas.buttonrect && canvas.buttonrect.hitest(x, y);
         canvas.istimeobjrect = canvas.timeobjrect && canvas.timeobjrect.hitest(x, y);
         canvas.ishollyrect = canvas.hollyrect && canvas.hollyrect.hitest(x, y);
@@ -3075,7 +3059,6 @@ var panlst =
         delete buttonobj.offset;
         delete context.canvas.isvbarect;
         delete context.canvas.hollyobj.offset;
-        delete canvas.istemplaterect;
         delete canvas.isbuttonrect;
         delete canvas.istimeobjrect;
         delete canvas.ishollyrect;
@@ -3969,12 +3952,10 @@ var taplst =
             context.templatemenurect.hitest(x, y))
         {
             var k = (x - context.templatemenurect.x) / context.templatemenurect.width;
-                            
-
-            if (k < 0.2)
-                context.canvas.hollyobj.addperc(-25 / 2000);
-            else if (k > 0.8)
-                context.canvas.hollyobj.addperc(25 / 2000);
+            if (k > 0.35 && k < 0.65)
+            {
+                //todo
+            }
             else
             {
     		    for (var n = 0; n < IMAGELSTSIZE; ++n)
@@ -4004,13 +3985,9 @@ var taplst =
             context.cursorect.hitest(x, y))
         {
 	        var k = (x - context.cursorect.x) / context.cursorect.width;
-            if (k < 0.2)
+            if (k > 0.35 && k < 0.65)
             {
-                context.canvas.hollyobj.addperc(-25 / 2000);
-            }
-            else if (k > 0.8)
-            {
-                context.canvas.hollyobj.addperc(25 / 2000);
+                //todo
             }
             else
             {
@@ -4073,32 +4050,6 @@ var taplst =
             var k = (y - canvas.timeobjrect.y) / canvas.timeobjrect.height;
             canvas.timeobj.setperc(1 - k);
             menuobj.draw()
-        }
-        else if (canvas.templaterect && canvas.templaterect.hitest(x, y))
-        {
-            for (var n = 0; n < IMAGELSTSIZE; ++n)
-            {
-                thumbfittedlst[n] = document.createElement("canvas");
-                thumbimglst[n] = new Image();
-            }                
-           
-            var k = (x - canvas.templaterect.x) / canvas.templaterect.width;
-            if (k < 0.2)
-            {
-                context.canvas.hollyobj.addperc(-25 / 2000);
-            }
-            else if (k > 0.8)
-            {
-                context.canvas.hollyobj.addperc(25 / 2000);
-            }
-            else
-            {
-                var j = Math.lerp(0,templateobj.length()-1,k);
-                templateobj.set(Math.round(j));
-                buttonobj.reset();
-            }
-
-	        menuobj.draw()
         }
         else if (canvas.hollyrect && canvas.hollyrect.hitest(x, y))
         {
@@ -5317,7 +5268,6 @@ menuobj.draw = function(nosave)
 
     //gallery
     delete canvas.buttonrect;
-    delete canvas.templaterect;
     delete context.buttonmenurect;
     delete context.templatemenurect;
 
