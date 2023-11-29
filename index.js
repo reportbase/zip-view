@@ -1994,8 +1994,8 @@ panel.upload = function()
                 new panel.rectangle(user.uploadrect),
                 _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                new panel.shrink(new panel.arrow(ARROWFILL, 0), 25, 20),
-                new panel.shrink(new panel.arrow(ARROWFILL, 180), 20, 25),
+                new panel.shrink(new panel.arrow(ARROWFILL, 0), 20, 20),
+                new panel.shrink(new panel.arrow(ARROWFILL, 45), 20, 20),
             ]);
 
         a.draw(context, rect, user, time);
