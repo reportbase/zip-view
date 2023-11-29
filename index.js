@@ -1972,7 +1972,7 @@ panel.boss = function()
                 new panel.rectangle(user.metarect),
                 //_4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                new panel.shrink(new panel.fill(ARROWFILL), 22, 32),
+                new panel.shrink(new panel.fill(ARROWFILL), 21, 31),
             ]);
 
         a.draw(context, rect, user, time);
@@ -1986,16 +1986,15 @@ panel.upload = function()
     {
         context.save();
         user.uploadrect = new rectangle()
-        context.fillStyle = "white";
-        context.strokeStyle = "white";
+        //context.fillStyle = "white";
+        //context.strokeStyle = "white";
 
         var a = new panel.layers(
         [
             new panel.rectangle(user.uploadrect),
-            //_4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
             new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-            new panel.sides(ARROWFILL, 13, 4), 
-	    ]);
+            new panel.sides(ARROWFILL, 12, 4), 
+	]);
 
         a.draw(context, rect, user, time);
         context.restore();
