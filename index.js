@@ -529,57 +529,7 @@ for (let n = 499; n >= 1; n = n - 1)
 panel.empty = function()
 {
     this.draw = function(context, rect, user, time) {}
-};
-    
-var templatelst = 
-[
-    "360x360",
-    "480x480",
-    "640x640",
-    "800x800",
-    "1080x1080",
-    "1280x1280",
-    "1600x1600",
-    "2160x2160",
-    "5760x5760"
-];
-
-var templateobj = new circular_array("", templatelst);
-templateobj.init = function()
-{
-    if (!url.searchParams.has("t"))
-        return;
-    
-    var t = url.searchParams.get("t");
-    var n = 0;
-    for (; n < templateobj.length(); ++n)
-        if (t == templateobj.data[n])
-            break;
-
-    if (n != templateobj.length())
-        templateobj.set(n);
-}
-
-templateobj.reset = function() 
-{
-    var hh = buttonobj.value();
-    var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
-    var n = 0;
-    for (; n < templatelst.length; ++n)
-        {
-            var j = templatelst[n].split("x")[0];
-            if (ww <= Number(j))
-                break;    
-        }
-
-    for (var m = 0; m < IMAGELSTSIZE; ++m)
-    {
-        thumbfittedlst[m] = document.createElement("canvas");
-        thumbimglst[m] = new Image();
-    }         
-    
-    templateobj.set(n);
-}
+};    
 
 var SEAL = 6283.183;
 var sealobj = new circular_array("SEAL", SEAL);
@@ -1318,7 +1268,7 @@ var displaylst =
         var data = [];
         data.push(`\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`);
         var w = Math.min(360, rect.width - 100);
-        var st = `\u{25C0}    ${templateobj.value()}    \u{25B6}`;
+        var st = `\u{25C0}    ${_9cnv.sliceobj.value()}    \u{25B6}`;
         
         var a = new panel.rowsA([HEADTOP, HEADBOT, 23, 0, 
                 folders.length?folders.length*WRAPROWHEIGHT:-1, 
@@ -3799,7 +3749,7 @@ var taplst =
         			thumbimglst[n] = new Image();
     		    }
 		    
-                templateobj.add(k < 0.5 ? -1 : 1);
+                _9cnv.sliceobj.add(k < 0.5 ? -1 : 1);
                 buttonobj.reset();
             }            
             
@@ -3838,7 +3788,6 @@ var taplst =
             headcnvctx.fitwidthrect.hitest(x, y))
         {
             buttonobj.reset();
-            templateobj.reset();
             _8cnv.fitflash = 1;
             headobj.draw();
             setTimeout(function()
@@ -5061,7 +5010,7 @@ menuobj.draw = function(nosave)
             if (slice.entry)
                 getblobpath(thumbimg, slice)
             else
-                thumbimg.src = imagepath(slice,templateobj.value());
+                thumbimg.src = imagepath(slice,_9cnv.sliceobj.value());
         }
         else
         {
@@ -5140,9 +5089,9 @@ function reseturl()
         }
         
         var e = url.searchParams.get('t');
-        if (e != templateobj.value())
+        if (e != _9cnv.sliceobj.value())
         {
-            url.searchParams.set("t",templateobj.value());
+            url.searchParams.set("t",_9cnv.sliceobj.value());
             window.history.replaceState("", url.origin, url);
         }
         
@@ -5157,7 +5106,7 @@ function reseturl()
 
 var eventlst = 
 [
-{ //1 users
+{   //1 users
     hideontap: 0,
     speed: 60,
     reduce: 2.5,
@@ -5179,8 +5128,7 @@ var eventlst =
     buttonmargin: 20,
     width: 640
 },
-{ 
-    //2 galleries
+{   //2 galleries
     hideontap: 0,
     speed: 60,
     reduce: 2.5,
@@ -5202,7 +5150,7 @@ var eventlst =
     buttonmargin: 20,
     width: 640
 },
-{ //3 debug
+{   //3 debug
     hideontap: 1,
     speed: 60,
     reduce: 2.5,
@@ -5224,7 +5172,7 @@ var eventlst =
     buttonmargin: 10,
     width: 640
 },
-{ //4
+{ //4 boss
     hideontap: 1,
     speed: 40,
     reduce: 2.5,
@@ -5290,7 +5238,7 @@ var eventlst =
     buttonmargin: 15,
     width: 640
 },
-{ //7
+{ //7 home
     hideontap: 1,
     speed: 60,
     reduce: 2.5,
@@ -5312,7 +5260,7 @@ var eventlst =
     buttonmargin: 20,
     width: 640
 },
-{ //8
+{   //8 gallery
     hideontap: 1,
     speed: 50,
     reduce: 2.5,
@@ -5334,7 +5282,7 @@ var eventlst =
     buttonmargin: 10,
     width: 5160
 },
-{ //9 help
+{   //9 template
     hideontap: 1,
     speed: 60,
     reduce: 2.5,
@@ -5356,7 +5304,7 @@ var eventlst =
     buttonmargin: 30,
     width: 640
 },
-{ //10 User
+{   //10 User
     hideontap: 1,
     speed: 60,
     reduce: 2.5,
@@ -5366,7 +5314,7 @@ var eventlst =
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "MENU",//
+    button: "MENU",
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
@@ -6791,7 +6739,30 @@ function setupmenus()
     };
 
     _8cnv.sliceobj.data = galleryobj.data;
-    _9cnv.sliceobj.data = [];
+
+    var templatelst = 
+    [
+        "360x360",
+        "480x480",
+        "640x640",
+        "800x800",
+        "1080x1080",
+        "1280x1280",
+        "1600x1600",
+        "2160x2160",
+        "5760x5760"
+    ];
+
+    _9cnv.sliceobj.data = templatelst;
+    
+    var t = url.searchParams.get("t");
+    var n = 0;
+    for (; n < _9cnv.sliceobj.data.length(); ++n)
+        if (t == _9cnv.sliceobj.data.data[n])
+            break;
+    if (n != _9cnv.sliceobj.data.length())
+        _9cnv.sliceobj.set(n);
+        
     _2cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
 
@@ -6856,8 +6827,6 @@ galleryobj.reset = function(obj)
         galleryobj.height = this.height;
         contextobj.reset();
         buttonobj.reset();
-        templateobj.reset();
-        templateobj.init();
         buttonobj.init()
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
