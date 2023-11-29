@@ -1410,6 +1410,7 @@ var displaylst =
         canvas.hollyrect = new rectangle();
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
+	context.templatemenurect = new rectangle();
         if (!headcnv.height)
             return;        
         var bh = rect.height * 0.4;
