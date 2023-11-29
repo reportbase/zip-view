@@ -1316,7 +1316,6 @@ var displaylst =
                         new panel.layers(
                             [
                                 new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
-                                //new panel.expand(new panel.rectangle(canvas.buttonrect), 20, 0),
                                 new panel.expand(new panel.rectangle(canvas.timeobjrect), 20, 0),
                                 new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
                             ]),
@@ -1325,7 +1324,6 @@ var displaylst =
                 0
             ]);
 
-        //a.draw(context, rect, buttonobj, 0);
         a.draw(context, rect, context.canvas.timeobj, 0);
         
         const rainstep = Math.min(420,window.innerWidth-60);
@@ -1346,8 +1344,7 @@ var displaylst =
                     ])
             ])
 
-        //a.draw(context, rect, templateobj, 0);
-	a.draw(context, rect, canvas.hollyobj, 0);
+        a.draw(context, rect, canvas.hollyobj, 0);
 
         var w = Math.min(360, rect.width - 100);
         var data = [];
@@ -1937,6 +1934,11 @@ panel.rightmenu = function()
         }
 
         context.restore();
+    }
+
+    this.hit = function(context, x, y)
+    {
+        console.log(context);
     }
 };
 
@@ -3889,6 +3891,8 @@ var taplst =
             (headcnvctx.rightmenurect &&
             headcnvctx.rightmenurect.hitest(x, y)))
         {
+            panel.rightmenu.hit();
+            
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.leftctx.hide()
             if (menuobj.value() == galleryobj.rightctx)
@@ -3925,21 +3929,9 @@ var taplst =
             context.buttonmenurect.hitest(x, y))
         {
             var k = (x - context.buttonmenurect.x) / context.buttonmenurect.width;
-                        if (k < 0.2)
+            if (k > 0.35 && k < 0.65)
             {
-                menuobj.updown(context, 120, 30)
-                menuobj.draw();
-                clearInterval(context.swipetimeout)
-                context.swipetimeout = setInterval(function(){
-                    menuobj.draw();}, MENUMAIN);
-            }
-            else if (k > 0.8)
-            {
-                 menuobj.updown(context, -120, 30)
-                menuobj.draw();
-                 clearInterval(context.swipetimeout)
-                context.swipetimeout = setInterval(function(){
-                    menuobj.draw();}, MENUMAIN);           
+                 //todo   
             }
             else
             {
