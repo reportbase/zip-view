@@ -1992,8 +1992,8 @@ panel.upload = function()
         var a = new panel.layers(
         [
             new panel.rectangle(user.uploadrect),
-            //_4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-            new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+            _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+            //new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
             new panel.sides(ARROWFILL, 13, 4), 
 		]);
 
@@ -6020,8 +6020,6 @@ panel.circle = function(color, scolor, width)
     {
         context.save();
         var radius = rect.height / 2;
-        if (radius <= 0)
-            return;
         context.beginPath();
         context.arc(rect.x + rect.width / 2, rect.y + rect.height / 2, radius, 0, 2 * Math.PI, false);
         context.fillStyle = color;
