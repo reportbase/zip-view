@@ -3910,7 +3910,6 @@ var taplst =
             headcnvctx.rightmenurect.hitest(x, y)))
         {
             headcnvctx.rightmenurect.func();
-            rightmenu();
         }
         else if (
             headcnv.height &&
