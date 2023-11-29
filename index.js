@@ -2569,10 +2569,10 @@ var wheelst =
 
         if (ctrl)
         {
-            if (context.elst.length % 3)
-                return;
+ //           if (context.elst.length % 3)
+ //               return;
 
-		    var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
+	        var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
             if (headham.panel != headlst[k])
             {
                 headham.panel = headlst[k];
