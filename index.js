@@ -1942,7 +1942,7 @@ panel.rightmenu = function()
             var e = new panel.fill(OPTIONFILL);
             var a = new panel.layers(
                 [
-                    new panel.rectangle(context.rightmenurect, func),
+                    new panel.rectangle(context.rightmenurect, rightmenu),
                     s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                     new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                     new panel.rows([0, rect.height * 0.20, 0],
@@ -5951,7 +5951,7 @@ var panvert = function(obj, y)
     }
 };
 
-panel.rectangle = function(r)
+panel.rectangle = function(r, func)
 {
     this.hit = function()
     {
@@ -5965,7 +5965,7 @@ panel.rectangle = function(r)
 		//    r = user;
 	//var f = r.func;
         Object.assign(r, rect);    
-        //r.func = func;
+        r.func = func;
     }
 }
 
