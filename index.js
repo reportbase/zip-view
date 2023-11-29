@@ -1994,7 +1994,7 @@ panel.upload = function()
             new panel.rectangle(user.uploadrect),
             _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
             new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-            new panel.shrink(new panel.rotate(ARROWFILL, 45), 20, 28),
+            new panel.shrink(new panel.sides(ARROWFILL, 50, 4), 20, 28),
 		]);
 
         a.draw(context, rect, user, time);
@@ -2118,15 +2118,24 @@ panel.stroke = function(color, width)
     }
 }
 
-panel.rotate = function(color, degrees)
+panel.sides = function(color, radius, sides)
 {
     this.draw = function(context, rect, user, time)
     {
         context.save()
-        context.translate( rect.x+width/2, rect.y+height/2 );
-        context.rotate(degrees * Math.PI / 180.0);
-        var a = new panel.fill(color);
-	    a.draw(context, rect, user, time);
+	    context.translate(rect.x+rect.width/2, rect.y+rect.height/2);
+    	for (let i = 0; i < sides; i++) 
+    	{
+        	const rotation = ((Math.PI * 2) / sides) * i;
+        	if (i === 0) 
+              context.moveTo(radius * Math.cos(rotation), radius * Math.sin(rotation));
+            else
+              context.lineTo(radius * Math.cos(rotation), radius * Math.sin(rotation));
+        }
+  
+        context.closePath();
+        context.stroke();
+        context.resetTransform();
         context.restore();
     }
 }
