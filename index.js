@@ -1935,7 +1935,7 @@ panel.rightmenu = function()
         if (menuobj.value() == _8cnvctx ||
             menuobj.value() != galleryobj.leftctx)
         {
-		    context.rightmenurect = new rectangle();
+		    context.rightmenurect = new rectangle(rightmenu);
             var s = menuobj.value() == galleryobj.rightctx;
             var j = 5;
             var k = j / 2;
@@ -2189,16 +2189,23 @@ panel.arrow = function(color, degrees)
     };
 };
 
-function rectangle(x, y, w, h, user)
+function rectangle(x, y, w, h, func)
 {
-    this.x = x;
-    this.y = y;
-    this.width = w;
-    this.height = h;
-    this.right = x + w;
-    this.left = x;
-    this.top = y;
-    this.bottom = y + h;
+	if (arguments.length == 1)
+    {
+        this.func = func;
+    }
+    else
+    {
+        this.x = x;
+        this.y = y;
+        this.width = w;
+        this.height = h;
+        this.right = x + w;
+        this.left = x;
+        this.top = y;
+        this.bottom = y + h;
+    }
 }
 
 rectangle.prototype.hitest = function(x, y)
@@ -3909,6 +3916,7 @@ var taplst =
             (headcnvctx.rightmenurect &&
             headcnvctx.rightmenurect.hitest(x, y)))
         {
+            headcnvctx.rightmenurect.func();
             rightmenu();
         }
         else if (
@@ -5960,8 +5968,8 @@ panel.rectangle = function(r)
     
     this.draw = function(context, rect, user, time)
     {
-	    if (!r)
-		    r = user;
+	    //if (!r)
+		//    r = user;
         Object.assign(r, rect);    
     }
 }
