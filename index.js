@@ -1995,7 +1995,7 @@ panel.upload = function()
             //_4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
             new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
             new panel.sides(ARROWFILL, 13, 4), 
-	]);
+	    ]);
 
         a.draw(context, rect, user, time);
         context.restore();
@@ -6014,7 +6014,7 @@ panel.rectangle = function(r)
     }
 }
 
-panel.circle = function(color, scolor, width)
+panel.circle = function(color, scolor, width = 0)
 {
     this.draw = function(context, rect, user, time)
     {
