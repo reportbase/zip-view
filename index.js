@@ -1488,7 +1488,7 @@ var displaylst =
                     new panel.layers(
                         [
                             new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                            new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
+                            new panel.expand(new panel.rectangle(context.cursorect, rightmenu), 10, 10),
                             new panel.gridA(1, data.length, 1,
                                 new panel.shrink(new panel.text(), 10, 10)),
                         ]),
@@ -3978,7 +3978,7 @@ var taplst =
 	        var k = (x - context.cursorect.x) / context.cursorect.width;
             if (k > 0.35 && k < 0.65)
             {
-                rightmenu()
+                context.cursorect.func()
             }
             else
             {
@@ -5953,17 +5953,8 @@ var panvert = function(obj, y)
 
 panel.rectangle = function(r, func)
 {
-    this.hit = function()
-    {
-        if (func)
-            func();
-    }
-    
     this.draw = function(context, rect, user, time)
     {
-	    //if (!r)
-		//    r = user;
-	//var f = r.func;
         Object.assign(r, rect);    
         r.func = func;
     }
