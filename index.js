@@ -2118,11 +2118,12 @@ panel.stroke = function(color, width)
     }
 }
 
-panel.rotate = function(degrees)
+panel.rotate = function(panel, degrees)
 {
     this.draw = function(context, rect, user, time)
     {
         context.rotate(degrees * Math.PI / 180.0);
+	    panel.draw(context, rect, user, time);
     }
 }
 
