@@ -1904,6 +1904,29 @@ panel.fitwidth = function()
     }
 };
 
+function rightmenu()
+{
+    galleryobj.set(_8cnv.lastcurrent)
+    galleryobj.leftctx.hide()
+    if (menuobj.value() == galleryobj.rightctx)
+    {
+        galleryobj.leftctx.hide();
+        galleryobj.rightctx.hide();
+        galleryobj.leftcnv = _7cnv;
+        galleryobj.leftctx = _7cnvctx;
+        menuobj.setindex(_8cnvctx);
+    }
+    else
+    {
+        menuobj.setindex(galleryobj.rightctx);
+    }
+
+    var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+    displayobj.set(k);
+    menuobj.show();
+    headobj.draw();
+}
+
 panel.rightmenu = function()
 {
     this.draw = function(context, rect, user, time)
@@ -1912,18 +1935,14 @@ panel.rightmenu = function()
         if (menuobj.value() == _8cnvctx ||
             menuobj.value() != galleryobj.leftctx)
         {
-            context.rightmenurect = new rectangle(function()
-            {
-                console.log(this)
-            });
-            
+		    context.rightmenurect = new rectangle();
             var s = menuobj.value() == galleryobj.rightctx;
             var j = 5;
             var k = j / 2;
             var e = new panel.fill(OPTIONFILL);
             var a = new panel.layers(
                 [
-                    new panel.rectangle(context.rightmenurect),
+                    new panel.rectangle(context.rightmenurect, rightmenu),
                     s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                     new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                     new panel.rows([0, rect.height * 0.20, 0],
@@ -3891,26 +3910,6 @@ var taplst =
             headcnvctx.rightmenurect.hitest(x, y)))
         {
             headcnvctx.rightmenurect.hit();
-            
-            galleryobj.set(_8cnv.lastcurrent)
-            galleryobj.leftctx.hide()
-            if (menuobj.value() == galleryobj.rightctx)
-            {
-                galleryobj.leftctx.hide();
-                galleryobj.rightctx.hide();
-                galleryobj.leftcnv = _7cnv;
-                galleryobj.leftctx = _7cnvctx;
-                menuobj.setindex(_8cnvctx);
-            }
-            else
-            {
-                menuobj.setindex(galleryobj.rightctx);
-            }
-
-            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            displayobj.set(k);
-            menuobj.show();
-            headobj.draw();
         }
         else if (
             headcnv.height &&
@@ -3978,7 +3977,7 @@ var taplst =
 	        var k = (x - context.cursorect.x) / context.cursorect.width;
             if (k > 0.35 && k < 0.65)
             {
-                //todo
+                rightmenu()
             }
             else
             {
