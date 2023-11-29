@@ -2124,6 +2124,7 @@ panel.sides = function(color, radius, sides)
     {
         context.save()
 	    context.translate(rect.x+rect.width/2, rect.y+rect.height/2);
+        context.beginPath(),
     	for (let i = 0; i < sides; i++) 
     	{
         	const rotation = ((Math.PI * 2) / sides) * i;
@@ -2135,7 +2136,7 @@ panel.sides = function(color, radius, sides)
   
         context.closePath();
         context.fill();
-        context.resetTransform();
+        //context.resetTransform();
         context.restore();
     }
 }
