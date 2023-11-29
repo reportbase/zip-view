@@ -1935,14 +1935,14 @@ panel.rightmenu = function()
         if (menuobj.value() == _8cnvctx ||
             menuobj.value() != galleryobj.leftctx)
         {
-		    context.rightmenurect = new rectangle(rightmenu);
+		    context.rightmenurect = new rectangle();
             var s = menuobj.value() == galleryobj.rightctx;
             var j = 5;
             var k = j / 2;
             var e = new panel.fill(OPTIONFILL);
             var a = new panel.layers(
                 [
-                    new panel.rectangle(context.rightmenurect),
+                    new panel.rectangle(context.rightmenurect, func),
                     s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                     new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                     new panel.rows([0, rect.height * 0.20, 0],
@@ -2191,21 +2191,14 @@ panel.arrow = function(color, degrees)
 
 function rectangle(x, y, w, h, func)
 {
-	if (arguments.length == 1)
-    {
-        this.func = func;
-    }
-    else
-    {
-        this.x = x;
-        this.y = y;
-        this.width = w;
-        this.height = h;
-        this.right = x + w;
-        this.left = x;
-        this.top = y;
-        this.bottom = y + h;
-    }
+    this.x = x;
+    this.y = y;
+    this.width = w;
+    this.height = h;
+    this.right = x + w;
+    this.left = x;
+    this.top = y;
+    this.bottom = y + h;
 }
 
 rectangle.prototype.hitest = function(x, y)
@@ -5958,7 +5951,7 @@ var panvert = function(obj, y)
     }
 };
 
-panel.rectangle = function(r)
+panel.rectangle = function(r,f)
 {
     this.hit = function()
     {
@@ -5970,9 +5963,10 @@ panel.rectangle = function(r)
     {
 	    //if (!r)
 		//    r = user;
-	var f = r.func;
+	//var f = r.func;
         Object.assign(r, rect);    
-	r.func = f;
+        r.fucn = f;
+	//r.func = f;
     }
 }
 
