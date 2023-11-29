@@ -1990,13 +1990,12 @@ panel.upload = function()
         context.strokeStyle = "white";
 
         var a = new panel.layers(
-            [
-                new panel.rectangle(user.uploadrect),
-                _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                new panel.shrink(new panel.arrow(ARROWFILL, 0), 20, 28),
-		new panel.shrink(new panel.arrow(ARROWFILL, 180), 20, 28),
-            ]);
+        [
+            new panel.rectangle(user.uploadrect),
+            _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+            new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+            new panel.shrink(new panel.rotate(ARROWFILL, 45), 20, 28),
+		]);
 
         a.draw(context, rect, user, time);
         context.restore();
@@ -2119,13 +2118,15 @@ panel.stroke = function(color, width)
     }
 }
 
-panel.rotate = function(panel, degrees)
+panel.rotate = function(color, degrees)
 {
     this.draw = function(context, rect, user, time)
     {
         context.save()
+        context.translate( rect.x+width/2, rect.y+height/2 );
         context.rotate(degrees * Math.PI / 180.0);
-	    panel.draw(context, rect, user, time);
+        var a = new panel.fill(color);
+	    a.draw(context, rect, user, time);
         context.restore();
     }
 }
