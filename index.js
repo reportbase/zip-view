@@ -1942,7 +1942,7 @@ panel.rightmenu = function()
             var e = new panel.fill(OPTIONFILL);
             var a = new panel.layers(
                 [
-                    new panel.rectangle(context.rightmenurect, rightmenu),
+                    new panel.rectangle(context.rightmenurect),
                     s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                     new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                     new panel.rows([0, rect.height * 0.20, 0],
@@ -3909,7 +3909,7 @@ var taplst =
             (headcnvctx.rightmenurect &&
             headcnvctx.rightmenurect.hitest(x, y)))
         {
-            headcnvctx.rightmenurect.hit();
+            rightmenu();
         }
         else if (
             headcnv.height &&
