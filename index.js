@@ -1970,9 +1970,9 @@ panel.boss = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(user.metarect),
-                _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                new panel.shrink(new panel.fill(ARROWFILL), 20, 30),
+                //_4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+                new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.fill(ARROWFILL), 18, 28),
             ]);
 
         a.draw(context, rect, user, time);
@@ -6031,6 +6031,7 @@ panel.circle = function(color, scolor, width = 0)
             context.stroke();
         }
 
+        context.closePath();
         context.restore();
     };
 };
