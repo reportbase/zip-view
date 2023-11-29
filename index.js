@@ -1747,7 +1747,7 @@ function templatemenu()
     headobj.draw();
 }
 
-funciton leftmenu()
+function leftmenu()
 {
     galleryobj.set(_8cnv.lastcurrent)
     galleryobj.leftctx.hide()
