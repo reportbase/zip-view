@@ -1307,7 +1307,7 @@ var displaylst =
         if (!headcnv.height)
             return;
         var bh = rect.height * 0.4;
-        var a = new panel.cols([SCROLLMARGIN, SCROLLEXTENT, 0],
+        var a = new panel.cols([0, SCROLLEXTENT, SCROLLMARGIN],
             [
                 0,
                 new panel.rows([0, bh, 0],
@@ -1316,7 +1316,8 @@ var displaylst =
                         new panel.layers(
                             [
                                 new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.buttonrect), 20, 0),
+                                //new panel.expand(new panel.rectangle(canvas.buttonrect), 20, 0),
+                                new panel.expand(new panel.rectangle(canvas.vscrollrect), 20, 0),
                                 new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
                             ]),
                         0,
@@ -1324,7 +1325,9 @@ var displaylst =
                 0
             ]);
 
-        a.draw(context, rect, buttonobj, 0); 
+        //a.draw(context, rect, buttonobj, 0);
+        a.draw(context, rect, context.canvas.timeobj, 0);
+        
         const rainstep = Math.min(420,window.innerWidth-60);
         var a = new panel.rows([0, SCROLLEXTENT, SCROLLMARGIN],
             [
