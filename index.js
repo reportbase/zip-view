@@ -5972,7 +5972,7 @@ panel.rectangle = function(r)
 		//    r = user;
 	var f = r.func;
         Object.assign(r, rect);    
-	r.func = func;
+	r.func = f;
     }
 }
 
