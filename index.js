@@ -2569,8 +2569,8 @@ var wheelst =
 
         if (ctrl)
         {
- //           if (context.elst.length % 3)
- //               return;
+            if (context.elst.length % 3)
+                return;
 
 	        var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
             if (headham.panel != headlst[k])
@@ -2649,14 +2649,15 @@ var wheelst =
         {
             var isthumb = context.canvas.thumbrect &&
                 context.canvas.thumbrect.hitest(x, y);
-            var e = delta/200;
             if (isthumb)
             {
+            	var e = delta/200;
                 heightobj.addperc(e);
                 bossobj.draw();
             }
             else
             {
+                var e = delta/50;
                 zoomobj.addperc(e);
                 contextobj.reset()
             }
