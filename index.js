@@ -1972,7 +1972,7 @@ panel.boss = function()
                 new panel.rectangle(user.metarect),
                 //_4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                new panel.shrink(new panel.fill(ARROWFILL), 18, 28),
+                new panel.shrink(new panel.fill(ARROWFILL), 22, 32),
             ]);
 
         a.draw(context, rect, user, time);
@@ -2123,8 +2123,8 @@ panel.sides = function(color, radius, sides)
     this.draw = function(context, rect, user, time)
     {
         context.save()
-	    context.translate(rect.x+rect.width/2, rect.y+rect.height/2);
-        context.beginPath(),
+	context.translate(rect.x+rect.width/2, rect.y+rect.height/2);
+        context.beginPath()
     	for (let i = 0; i < sides; i++) 
     	{
         	const rotation = ((Math.PI * 2) / sides) * i;
