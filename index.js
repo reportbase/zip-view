@@ -1724,7 +1724,7 @@ panel.fitwidth = function()
     }
 };
 
-funciton templatemenu()
+function templatemenu()
 {
     galleryobj.set(_8cnv.lastcurrent)
     galleryobj.leftctx.hide()
