@@ -1986,9 +1986,8 @@ panel.upload = function()
     {
         context.save();
         user.uploadrect = new rectangle()
-        //context.fillStyle = "white";
-        //context.strokeStyle = "white";
-
+        context.fillStyle = "white";
+        
         var a = new panel.layers(
         [
             new panel.rectangle(user.uploadrect),
