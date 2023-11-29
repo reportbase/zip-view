@@ -1994,7 +1994,7 @@ panel.upload = function()
                 new panel.rectangle(user.uploadrect),
                 _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                new panel.shrink(new panel.rotate(new panel.fill(ARROWFILL),45), 20, 30),
+                new panel.shrink(new panel.rotate(new panel.fill(ARROWFILL), 45), 20, 30),
             ]);
 
         a.draw(context, rect, user, time);
@@ -2122,8 +2122,10 @@ panel.rotate = function(panel, degrees)
 {
     this.draw = function(context, rect, user, time)
     {
+        context.save()
         context.rotate(degrees * Math.PI / 180.0);
 	    panel.draw(context, rect, user, time);
+        context.restore();
     }
 }
 
