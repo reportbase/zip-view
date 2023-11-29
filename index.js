@@ -1300,8 +1300,9 @@ var displaylst =
         var canvas = context.canvas;
         context.save();
         var hollyobj = canvas.hollyobj;
-        canvas.vscrollrect = new rectangle();
+        canvas.timeobjrect = new rectangle();
         canvas.templaterect = new rectangle();
+	canvas.hollyrect = new rectangle();
         context.buttonmenurect = new rectangle();
         context.templatemenurect = new rectangle();
         if (!headcnv.height)
@@ -1317,8 +1318,8 @@ var displaylst =
                             [
                                 new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
                                 //new panel.expand(new panel.rectangle(canvas.buttonrect), 20, 0),
-                                new panel.expand(new panel.rectangle(canvas.vscrollrect), 20, 0),
-                                new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
+                                new panel.expand(new panel.rectangle(canvas.timeobjrect), 20, 0),
+                                new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
                             ]),
                         0,
                     ]),
@@ -1338,7 +1339,8 @@ var displaylst =
                         new panel.layers(
                             [
                                 new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.templaterect), 0, 20),
+                                //new panel.expand(new panel.rectangle(canvas.templaterect), 0, 20),
+				new panel.expand(new panel.rectangle(canvas.hollyrect), 0, 20),		    
                                 new panel.shrink(new panel.currentH(
                                     new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
                             ]),
@@ -1346,7 +1348,8 @@ var displaylst =
                     ])
             ])
 
-        a.draw(context, rect, templateobj, 0);
+        //a.draw(context, rect, templateobj, 0);
+	a.draw(context, rect, canvas.hollyobj, 0);
 
         var w = Math.min(360, rect.width - 100);
         var data = [];
@@ -1408,7 +1411,7 @@ var displaylst =
     {    
         var canvas = context.canvas;
         context.save();
-        canvas.vscrollrect = new rectangle();
+        canvas.timeobjrect = new rectangle();
         canvas.hollyrect = new rectangle();
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
@@ -1425,7 +1428,7 @@ var displaylst =
                         new panel.layers(
                             [
                                 new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.vscrollrect), 20, 0),
+                                new panel.expand(new panel.rectangle(canvas.timeobjrect), 20, 0),
                                 new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
                             ]),
                         0,
@@ -1522,7 +1525,7 @@ var displaylst =
     {
         var canvas = context.canvas;
         context.save();
-        canvas.vscrollrect = new rectangle();
+        canvas.timeobjrect = new rectangle();
         canvas.hollyrect = new rectangle();
         var kh = context.rect().width == window.innerWidth ? 90 : ALIEXTENT;
         var a = new panel.colsA([5, 9, 0, 9, 5],
@@ -3014,9 +3017,9 @@ var panlst =
         }
         else if (type == "panup" || type == "pandown")
         {
-            if (canvas.isvscrollrect)
+            if (canvas.istimeobjrect)
             {
-                var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
+                var k = (y - canvas.timeobjrect.y) / canvas.timeobjrect.height;
                 canvas.timeobj.setperc(1-k);
             }
             else if (canvas.isbeavrect)
@@ -3056,7 +3059,7 @@ var panlst =
         canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
         canvas.istemplaterect = canvas.templaterect && canvas.templaterect.hitest(x, y);
         canvas.isbuttonrect = canvas.buttonrect && canvas.buttonrect.hitest(x, y);
-        canvas.isvscrollrect = canvas.vscrollrect && canvas.vscrollrect.hitest(x, y);
+        canvas.istimeobjrect = canvas.timeobjrect && canvas.timeobjrect.hitest(x, y);
         canvas.ishollyrect = canvas.hollyrect && canvas.hollyrect.hitest(x, y);
         canvas.isbeavrect = canvas.beavrect && canvas.beavrect.hitest(x, y);
         canvas.issealrect = canvas.sealrect && canvas.sealrect.hitest(x, y);
@@ -3074,7 +3077,7 @@ var panlst =
         delete context.canvas.hollyobj.offset;
         delete canvas.istemplaterect;
         delete canvas.isbuttonrect;
-        delete canvas.isvscrollrect;
+        delete canvas.istimeobjrect;
         delete canvas.ishollyrect;
         delete canvas.isbeavrect;
         delete canvas.issealrect;
@@ -3112,10 +3115,10 @@ var panlst =
                 obj.setperc(1 - k);
                 menuobj.draw();
             }
-            else if (canvas.isvscrollrect)
+            else if (canvas.istimeobjrect)
             {
                 var obj = canvas.hollyobj;
-                var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
+                var k = (y - canvas.timeobjrect.y) / canvas.timeobjrect.height;
                 obj.setperc(k);
                 menuobj.draw();
             }
@@ -3138,7 +3141,7 @@ var panlst =
         canvas.starty = y;
         canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
         canvas.ishollyrect = canvas.hollyrect && canvas.hollyrect.hitest(x, y);
-        canvas.isvscrollrect = canvas.vscrollrect && canvas.vscrollrect.hitest(x, y);
+        canvas.istimeobjrect = canvas.timeobjrect && canvas.timeobjrect.hitest(x, y);
     },
     panend: function(context, rect, x, y)
     {
@@ -4065,9 +4068,9 @@ var taplst =
         {
             screenfull.toggle()
         }
-        else if (canvas.vscrollrect && canvas.vscrollrect.hitest(x, y))
+        else if (canvas.timeobjrect && canvas.timeobjrect.hitest(x, y))
         {
-            var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
+            var k = (y - canvas.timeobjrect.y) / canvas.timeobjrect.height;
             canvas.timeobj.setperc(1 - k);
             menuobj.draw()
         }
@@ -4515,10 +4518,10 @@ var taplst =
             menuobj.show();
             return false;
         }
-        else if (canvas.vscrollrect &&
-            canvas.vscrollrect.hitest(x, y))
+        else if (canvas.timeobjrect &&
+            canvas.timeobjrect.hitest(x, y))
         {
-            var k = (y - canvas.vscrollrect.y) / canvas.vscrollrect.height;
+            var k = (y - canvas.timeobjrect.y) / canvas.timeobjrect.height;
             canvas.hollyobj.setperc(k);
             menuobj.draw();
             return true;
@@ -5319,7 +5322,7 @@ menuobj.draw = function(nosave)
     delete context.templatemenurect;
 
     //button
-    delete canvas.vscrollrect;
+    delete canvas.timeobjrect;
     delete canvas.hollyrect;
     delete context.cursorect;
     delete context.folderect;
