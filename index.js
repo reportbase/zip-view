@@ -1516,7 +1516,7 @@ var displaylst =
             [
                 0,
                 st,
-                0
+                0,
                 0,
                 folders,
                 0,
