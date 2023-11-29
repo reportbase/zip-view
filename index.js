@@ -1215,7 +1215,7 @@ var displaylst =
         canvas.hollyrect = new rectangle();
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
-	context.templaterect = new rectangle();
+	    context.templaterect = new rectangle();
         if (!headcnv.height)
             return;        
         var bh = rect.height * 0.4;
@@ -1281,7 +1281,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                    new panel.expand(new panel.rectangle(context.templaterect), 10, 10),
+                    new panel.expand(new panel.rectangle(context.templaterect, templatemenu), 10, 10),
                     new panel.text(),
                 ]),
                 0,
@@ -1723,6 +1723,53 @@ panel.fitwidth = function()
         context.restore();
     }
 };
+
+funciton templatemenu()
+{
+    galleryobj.set(_8cnv.lastcurrent)
+    galleryobj.leftctx.hide()
+    if (menuobj.value() == galleryobj.rightctx)
+    {
+        galleryobj.leftctx.hide();
+        galleryobj.rightctx.hide();
+        galleryobj.leftcnv = _9cnv;
+        galleryobj.leftctx = _9cnvctx;
+        menuobj.setindex(_8cnvctx);
+    }
+    else
+    {
+        menuobj.setindex(_9cnvctx);
+    }
+
+    var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+    displayobj.set(k);
+    menuobj.show();
+    headobj.draw();
+}
+
+funciton leftmenu()
+{
+    galleryobj.set(_8cnv.lastcurrent)
+    galleryobj.leftctx.hide()
+    galleryobj.rightctx.hide()
+    if (menuobj.value() == galleryobj.leftctx)
+    {
+        galleryobj.leftctx.hide();
+        galleryobj.rightctx.hide();
+        galleryobj.leftcnv = _7cnv;
+        galleryobj.leftctx = _7cnvctx;
+        menuobj.setindex(_8cnvctx);
+    }
+    else
+    {
+        menuobj.setindex(galleryobj.leftctx);
+    }
+
+    var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+    displayobj.set(k);
+    menuobj.show();
+    headobj.draw();
+}
 
 function rightmenu()
 {
@@ -2414,8 +2461,7 @@ var wheelst =
         if (ctrl)
         {
             if (context.elst.length % 3)
-                return;
-            
+                return;         
             var j = buttonobj.length()/20;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
@@ -2424,12 +2470,6 @@ var wheelst =
             menuobj.draw();
             context.swipetimeout = 0;
             context.canvas.pinching = 0;
-        }
-        else if (canvas.buttonrect &&
-            canvas.buttonrect.hitest(x, y))
-        {
-            buttonobj.addperc(-1 * delta * 0.001);
-            menuobj.draw();
         }
         else
         {
@@ -2789,15 +2829,10 @@ var panlst =
         if (canvas.pinching)
             return;
        context.elst.push({x,y});
-        //if (context.elst.length % 2)
-          //  return;
         
         if (type == "panleft" || type == "panright")
         {
-            if (canvas.isbuttonrect)
-            {
-            }   
-            else if (canvas.issealrect)
+            if (canvas.issealrect)
             {
                 var k = (x - canvas.sealrect.x) / canvas.sealrect.width;
                 sealobj.setperc(k);
@@ -2835,11 +2870,6 @@ var panlst =
                 beavobj.setperc(1-k);
                 menuobj.draw();
             }
-            else if (canvas.isbuttonrect)
-            {
-                var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
-                buttonobj.setperc(k);
-            }
             else
             {
                 var e = canvas.starty - y;
@@ -2864,7 +2894,6 @@ var panlst =
         canvas.startx = x;
         canvas.starty = y;
         canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
-        canvas.isbuttonrect = canvas.buttonrect && canvas.buttonrect.hitest(x, y);
         canvas.istimeobjrect = canvas.timeobjrect && canvas.timeobjrect.hitest(x, y);
         canvas.ishollyrect = canvas.hollyrect && canvas.hollyrect.hitest(x, y);
         canvas.isbeavrect = canvas.beavrect && canvas.beavrect.hitest(x, y);
@@ -2881,7 +2910,6 @@ var panlst =
         delete buttonobj.offset;
         delete context.canvas.isvbarect;
         delete context.canvas.hollyobj.offset;
-        delete canvas.isbuttonrect;
         delete canvas.istimeobjrect;
         delete canvas.ishollyrect;
         delete canvas.isbeavrect;
@@ -3679,25 +3707,7 @@ var taplst =
             headcnvctx.leftmenurect && 
             headcnvctx.leftmenurect.hitest(x, y))
         {
-            galleryobj.set(_8cnv.lastcurrent)
-            galleryobj.rightctx.hide()
-            if (menuobj.value() == galleryobj.leftctx)
-            {
-                galleryobj.leftctx.hide();
-                galleryobj.rightctx.hide();
-                galleryobj.leftcnv = _7cnv;
-                galleryobj.leftctx = _7cnvctx;
-                menuobj.setindex(_8cnvctx);
-            }
-            else
-            {
-                menuobj.setindex(galleryobj.leftctx);
-            }
-
-            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            displayobj.set(k);
-            menuobj.show();
-            headobj.draw();
+	        headcnvctx.rightmenurect.func();
         }
         else if (
             headcnv.height &&
@@ -3718,28 +3728,13 @@ var taplst =
             headobj.draw();
         }
         else if (
-            context.buttonmenurect &&
-            context.buttonmenurect.hitest(x, y))
-        {
-            var k = (x - context.buttonmenurect.x) / context.buttonmenurect.width;
-            if (k > 0.35 && k < 0.65)
-            {
-                 //todo   
-            }
-            else
-            {
-                buttonobj.addperc(k < 0.5 ? -0.025 : 0.025);
-                menuobj.draw();
-            }
-        }
-        else if (
             context.templaterect &&
             context.templaterect.hitest(x, y))
         {
             var k = (x - context.templaterect.x) / context.templaterect.width;
             if (k > 0.35 && k < 0.65)
             {
-                //todo
+                context.templaterect.func();
             }
             else
             {
@@ -3797,14 +3792,6 @@ var taplst =
             }, 400);
         
             menuobj.draw();
-        }
-        else if (
-            canvas.buttonrect &&
-            canvas.buttonrect.hitest(x, y))
-        {
-            var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
-            buttonobj.setperc(k);
-            menuobj.draw()              
         }
         else if (
             headcnv.height &&
@@ -5046,8 +5033,6 @@ menuobj.draw = function(nosave)
     }
 
     //gallery
-    delete canvas.buttonrect;
-    delete context.buttonmenurect;
     delete context.templaterect;
 
     //button
@@ -5299,7 +5284,7 @@ var eventlst =
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: "HELP",
+    footer: "DEFAULT",
     buttonheight: 240,
     buttonmargin: 30,
     width: 640
@@ -6176,7 +6161,7 @@ panel.leftmenu = function()
             var s = menuobj.value() == galleryobj.leftctx;
             var a = new panel.layers(
                 [
-                    new panel.rectangle(context.leftmenurect),
+                    new panel.rectangle(context.leftmenurect, leftmenu),
                     s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                     new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                     new panel.cols([0, rect.height * 0.20, 0],
@@ -6641,6 +6626,14 @@ function setupmenus()
             menuobj.show();
             return false;
         },
+    },
+    {
+        title: "Templates   \u{25B6}",
+        func: function()
+        {
+            templatemenu();
+            return false;
+        }
     },
     {
         title: "Folders   \u{25B6}",
