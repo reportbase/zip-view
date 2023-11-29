@@ -6757,7 +6757,7 @@ function setupmenus()
     
     var t = url.searchParams.get("t");
     var n = 0;
-    for (; n < _9cnv.sliceobj.data.length(); ++n)
+    for (; n < _9cnv.sliceobj.data.length; ++n)
         if (t == _9cnv.sliceobj.data.data[n])
             break;
     if (n != _9cnv.sliceobj.data.length())
