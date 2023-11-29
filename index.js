@@ -5951,7 +5951,7 @@ var panvert = function(obj, y)
     }
 };
 
-panel.rectangle = function(func)
+panel.rectangle = function(rect, func)
 {
     this.hit = function()
     {
@@ -5959,7 +5959,7 @@ panel.rectangle = function(func)
             func();
     }
     
-    this.draw = function(context, rect, user, time)
+    this.draw = function(context, unused, user, time)
     {
         Object.assign(user, rect);
     }
