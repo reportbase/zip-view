@@ -3743,12 +3743,6 @@ var taplst =
             }
             else
             {
-    		    for (var n = 0; n < IMAGELSTSIZE; ++n)
-    		    {
-        			thumbfittedlst[n] = document.createElement("canvas");
-        			thumbimglst[n] = new Image();
-    		    }
-		    
                 _9cnv.sliceobj.add(k < 0.5 ? -1 : 1);
                 buttonobj.reset();
             }            
@@ -6819,6 +6813,12 @@ galleryobj.reset = function(obj)
     headobj.draw();  
     menuobj.draw();
     setupmenus();
+
+    for (var n = 0; n < IMAGELSTSIZE; ++n)
+    {
+        thumbfittedlst[n] = document.createElement("canvas");
+        thumbimglst[n] = new Image();
+    }
     
     var image = new Image();
     image.onload = function()
