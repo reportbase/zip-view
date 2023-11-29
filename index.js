@@ -1015,44 +1015,6 @@ var headlst =
             context.restore();        
     }
 },
-{
-    name: "BUTTON",
-    draw: function(context, rect, user, time)
-    {
-            var canvas = context.canvas;
-            context.clear();
-            context.save();
-            var ctx = menuobj.value();
-            var g = ctx == _8cnvctx;
-            delete context.zoomrect;
-            delete context.fitwidthrect;
-            delete context.fullrect;
-            delete context.leftmenurect;
-            delete context.rightmenurect;
-            var s = SAFARI ? -1: ALIEXTENT;
-            var e = rect.width>=320?(ALIEXTENT+10):-1;
-            var a = new panel.rows([BEXTENT, 0],
-                [
-                    new panel.cols(
-                    [5, ALIEXTENT, 0, s, e, ALIEXTENT, 0, ALIEXTENT, 5],
-                    [
-                        0,
-                        0,
-                        0,
-                        g ? new panel.fullscreen() : 0,
-                        g ? new panel.zoom() : 0,
-                        g ? new panel.fitwidth() : 0,
-                        0,
-                        new panel.closeboss(),
-                        0,
-                    ]),
-                    0
-                ]);
-            
-            a.draw(context, rect, 0, 0);
-            context.restore();        
-    }
-}
 ]
 
 var headobj = new circular_array("HEAD", headlst);
@@ -1293,113 +1255,6 @@ var bossdisplayobj = new circular_array("", bossdisplaylst);
 
 var displaylst = 
 [
-{
-    name: "BUTTON",
-    draw: function(context, rect, user, time)
-    {
-        var canvas = context.canvas;
-        context.save();
-        var hollyobj = canvas.hollyobj;
-        canvas.timeobjrect = new rectangle();
-        canvas.hollyrect = new rectangle();
-        context.buttonmenurect = new rectangle();
-        context.templatemenurect = new rectangle();
-        if (!headcnv.height)
-            return;
-        var bh = rect.height * 0.4;
-        var a = new panel.cols([0, SCROLLEXTENT, SCROLLMARGIN],
-            [
-                0,
-                new panel.rows([0, bh, 0],
-                    [
-                        0,
-                        new panel.layers(
-                            [
-                                new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.timeobjrect), 20, 0),
-                                new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
-                            ]),
-                        0,
-                    ]),
-                0
-            ]);
-
-        a.draw(context, rect, context.canvas.timeobj, 0);
-        
-        const rainstep = Math.min(420,window.innerWidth-60);
-        var a = new panel.rows([0, SCROLLEXTENT, SCROLLMARGIN],
-            [
-                0,
-                new panel.cols([0, rainstep, 0],
-                    [
-                        0,
-                        new panel.layers(
-                            [
-                                new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.hollyrect), 0, 20),		    
-                                new panel.shrink(new panel.currentH(
-                                    new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
-                            ]),
-                        0,
-                    ])
-            ])
-
-        a.draw(context, rect, canvas.hollyobj, 0);
-
-        var w = Math.min(360, rect.width - 100);
-        var data = [];
-        var hh = buttonobj.value();
-        var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)).toFixed(0) : '000';
-        var st = `\u{25C0}    ${ww} x ${hh.toFixed(0)}    \u{25B6}`;
-        data.push(`\u{25C0}    ${templateobj.value()}    \u{25B6}`);
-        var a = new panel.rowsA([HEADTOP, HEADBOT, 23, 0, (data.length*WRAPROWHEIGHT), 
-                                 FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
-        [
-            0,    
-            new panel.cols([0, rainstep, 0],
-            [
-                0,
-                new panel.layers(
-                [
-                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                    new panel.expand(new panel.rectangle(context.buttonmenurect), 10, 10),
-                    new panel.shrink(new panel.text(), 10, 10),
-                ]),
-                0
-            ]), 
-            0,
-            0,
-            new panel.cols([0, rainstep, 0],
-            [
-                0,
-                new panel.layers(
-                [
-                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                    new panel.expand(new panel.rectangle(context.templatemenurect), 10, 10),
-                    new panel.gridA(1, data.length, 1, 
-                            new panel.shrink(new panel.text(), 10, 10)),
-                ]),
-                0,
-            ]),
-            0,
-            0,
-            0,
-        ]);
-
-        a.draw(context, rect, 
-        [
-            0,
-            st,
-            "",
-            0,
-            data,
-            0,
-            0,
-            0
-        ], 0);      
-        context.restore();
-    }
-},
 {
     name: "GALLERY",
     draw: function(context, rect, user, time)
@@ -2610,18 +2465,6 @@ var wheelst =
         {
             if (context.elst.length % 3)
                 return;
-/*
-	        var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
-            if (headham.panel != headlst[k])
-            {
-                headham.panel = headlst[k];
-                headobj.draw();     
-            }
-            
-            var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
-            if (displaylst[k] != displayobj.value()) 
-                displayobj.set(k);
-*/
             
             var j = buttonobj.length()/20;
             context.canvas.pinching = 1;
@@ -2756,14 +2599,7 @@ var pinchlst =
     name: "GALLERY",
     pinch: function(context, x, y, scale)
     {
-	    context.elst.push({x,y});
-        if (context.elst.length % 2)
-            return;
-        //var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
-        //headham.panel = headlst[k];
-        //headobj.draw();     
-        //var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
-        //displayobj.set(k);
+	context.elst.push({x,y});
         if (!context.buttonanchor)
             context.buttonanchor = buttonobj.value();
         if (!context.scaleanchor)
@@ -3529,16 +3365,12 @@ var keylst =
             }
             else if (key == "-" || key == "[")
             {
-                var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
-                displayobj.set(k);
                 buttonobj.addperc(-1.0 / 100);
                 menuobj.draw()
                 evt.preventDefault();
             }
             else if (key == "+" || key == "]" || key == "=")
             {
-                var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
-                displayobj.set(k);
                 buttonobj.addperc(1.0 / 100);
                 menuobj.draw()
                 evt.preventDefault();
@@ -3892,9 +3724,6 @@ var taplst =
         global.timeauto = 0;
         var obj = canvas.hollyobj;
         context.refresh();
-        var k = displaylst.findIndex(function(a){
-            return a.name == "BUTTON"});
-        var button = displaylst[k] 
         
         if (headcnv.height && 
             headcnvctx.leftmenurect && 
@@ -4067,11 +3896,6 @@ var taplst =
             else
                 context.canvas.hollyobj.setperc(k);
             menuobj.draw()
-        }
-        else if (headcnv.height && displayobj.value() == button)
-        {
-            headobj.reset();
-            menuobj.draw();
         }
         else if (menuobj.value() && menuobj.value() != _8cnvctx)
         {
