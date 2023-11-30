@@ -1764,22 +1764,25 @@ function homemenu()
     headobj.draw();
 }
 
-function imagemenu(context)
+var rightmenu = function(context)
 {
-    galleryobj.leftctx.hide()
-    if (menuobj.value() == galleryobj.rightctx)
+    this.go = function()
     {
-        galleryobj.rightctx.hide();
-        galleryobj.rightctx = context;
-        menuobj.setindex(_8cnvctx);
+	    galleryobj.leftctx.hide()
+	    if (menuobj.value() == galleryobj.rightctx)
+	    {
+	        galleryobj.rightctx.hide();
+	        galleryobj.rightctx = context;
+	        menuobj.setindex(_8cnvctx);
+	    }
+	    else
+	    {
+	        menuobj.setindex(context);
+	    }
+	
+	    menuobj.show();
+	    headobj.draw();
     }
-    else
-    {
-        menuobj.setindex(context);
-    }
-
-    menuobj.show();
-    headobj.draw();
 }
 
 panel.imagemenu = function()
@@ -1797,7 +1800,7 @@ panel.imagemenu = function()
             var e = new panel.fill(OPTIONFILL);
             var a = new panel.layers(
                 [
-                    new panel.rectangle(context.imagemenurect, imagemenu),
+                    new panel.rectangle(context.imagemenurect, new rightmenu(_6cnvctx)),
                     s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                     new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                     new panel.rows([0, rect.height * 0.20, 0],
@@ -3702,7 +3705,7 @@ var taplst =
             (headcnvctx.imagemenurect &&
             headcnvctx.imagemenurect.hitest(x, y)))
         {
-            headcnvctx.imagemenurect.func(_6cnvctx);
+            headcnvctx.imagemenurect.go();
         }
         else if (
             headcnv.height &&
