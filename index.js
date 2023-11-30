@@ -4516,7 +4516,25 @@ var buttonlst =
             k.push(user.url.split("/").pop());
         if (user.id)
             k.push(user.id);
+      	var bad =
+    	[
+		    "url",
+	        "folder",
+	        "index",
+	        "func",
+	        "rect",
+	        "isvisible",
+        ];
+
         var j = Object.keys(user);
+        for (var n = 0; n < j.length; ++n)
+        {
+            var name = j[n];
+            if (name.findIndex(name) >= 0)
+                continue;
+            k.push(user[name]);
+        }
+	    
         a.draw(context, rect, k, time);
         context.restore();
     }
