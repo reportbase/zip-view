@@ -6641,9 +6641,9 @@ function setupmenus()
     ];
 
 	var lst = [];
-    for (var n = 0; n < _9cnv.sliceobj.data.length; ++n)
+    for (var n = 0; n < templatelst.length; ++n)
 	{
-		var j = _9cnv.sliceobj.data;
+		var j = templatelst[n];
 		var k = {};
 		k.index = n;
 		k.title = j;
