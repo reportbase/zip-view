@@ -1729,14 +1729,14 @@ function leftmenu(context)
 	if (galleryobj.rightctx)
         galleryobj.rightctx.hide()
     
-    if (menuobj.value() && menuobj.value() != _8cnvctx)
+    if (menuobj.value() == context)
     {
         galleryobj.leftctx.hide();
         menuobj.setindex(_8cnvctx);
     }
     else
     {
-    	galleryobj.leftctx = context;
+        galleryobj.leftctx = context;
         menuobj.setindex(context);
     }
 
@@ -4140,7 +4140,7 @@ var taplst =
         }
         else if (canvas.homerect && canvas.homerect.hitest(x, y))
         {
-		    leftmenu(_7cnvctx);
+	        leftmenu(_7cnvctx);
             return false;
         }
         else if (canvas.timeobjrect &&
