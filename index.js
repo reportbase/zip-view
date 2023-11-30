@@ -1912,11 +1912,7 @@ panel.rightmenu = function()
         if (menuobj.value() == _8cnvctx ||
             menuobj.value() != galleryobj.leftctx)
         {
-            context.rightmenurect = new rectangle(function()
-            {
-                console.log(this)
-            });
-            
+            context.rightmenurect = new rectangle();
             var s = menuobj.value() == galleryobj.rightctx;
             var j = 5;
             var k = j / 2;
@@ -1938,6 +1934,11 @@ panel.rightmenu = function()
         }
 
         context.restore();
+    }
+
+    this.hit = function(context, x, y)
+    {
+        console.log(context);
     }
 };
 
@@ -3890,7 +3891,7 @@ var taplst =
             (headcnvctx.rightmenurect &&
             headcnvctx.rightmenurect.hitest(x, y)))
         {
-            headcnvctx.rightmenurect.hit();
+            panel.rightmenu.hit();
             
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.leftctx.hide()
@@ -5953,17 +5954,11 @@ var panvert = function(obj, y)
 
 panel.rectangle = function(r)
 {
-    this.hit = function()
-    {
-        if (func)
-            func();
-    }
-    
     this.draw = function(context, rect, user, time)
     {
-	    if (!r)
-		    r = user;
-        Object.assign(r, rect);    
+        if (!r)
+            r = user;
+        Object.assign(r, rect);
     }
 }
 
