@@ -6640,8 +6640,22 @@ function setupmenus()
         "5760x5760"
     ];
 
-    _9cnv.sliceobj.data = templatelst;
-    //todo
+	var lst = [];
+    for (var n = 0; n < _9cnv.sliceobj.data.length; ++n)
+	{
+		var j = _9cnv.sliceobj.data;
+		var k = {};
+		k.index = n;
+		k.title = j;
+		k.func = function()
+		{
+			console.log(this.title, this.index);
+		}
+		
+		lst.push(k);
+	}
+	
+    _9cnv.sliceobj.data = lst;
     var t = url.searchParams.get("t");
     var n = 0;
     for (; n < _9cnv.sliceobj.data.length; ++n)
