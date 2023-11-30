@@ -4074,6 +4074,10 @@ var taplst =
         {
             menuobj.hide();
             menuobj.setindex(_8cnvctx);
+	    var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+	    headham.panel = headlst[k];
+	    var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+	    displayobj.set(k);
             headobj.draw();
             menuobj.draw();
             return false;
