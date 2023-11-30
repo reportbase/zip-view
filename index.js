@@ -782,6 +782,33 @@ var footlst =
     }
 },
 {
+    name: "TEMPLATE",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save();     
+        canvas.homerect = new rectangle();
+        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
+        [
+            new panel.layers(
+            [
+                new panel.fill(FOOTBTNCOLOR),
+                new panel.text(),
+                new panel.rectangle(canvas.homerect),
+            ]),
+            0   
+        ]);
+        
+        a.draw(context, rect, 
+        [
+           `\u{25C0}   Account`,
+           0 
+        ], 0);
+        
+        context.restore();
+    }
+},	
+{
     name: "USER",
     draw: function(context, rect, user, time)
     {
@@ -5227,7 +5254,7 @@ var eventlst =
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: "DEFAULT",
+    footer: "TEMPLATE",
     buttonheight: 120,
     buttonmargin: 30,
     width: 640
