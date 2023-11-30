@@ -3677,7 +3677,7 @@ var taplst =
             headcnvctx.homemenurect && 
             headcnvctx.homemenurect.hitest(x, y))
         {
-            leftmenu(_3cnvctx)
+            leftmenu(_7cnvctx)
         }
         else if (
             headcnv.height &&
@@ -3704,7 +3704,7 @@ var taplst =
             var k = (x - context.templaterect.x) / context.templaterect.width;
             if (k > 0.35 && k < 0.65)
             {
-                context.templaterect.func();
+                leftmenu(_9cnvctx);
             }
             else
             {
@@ -3801,15 +3801,6 @@ var taplst =
         }
         else if (menuobj.value() && menuobj.value() != _8cnvctx)
         {
-            galleryobj.set(_8cnv.lastcurrent)
-            galleryobj.leftctx.hide()
-            galleryobj.rightctx.hide();
-            galleryobj.leftctx = _7cnvctx;
-            menuobj.setindex(_8cnvctx);
-            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-            displayobj.set(k);
-            menuobj.show();
-            headobj.draw();
         }
         else 
         {
@@ -6506,11 +6497,7 @@ function setupmenus()
                     _2cnv.sliceobj.data = results
                     var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
                     _2cnv.rotated = [...a, ...a, ...a];
-                    menuobj.hide();
-                    galleryobj.leftctx = _2cnvctx;
-                    menuobj.setindex(galleryobj.leftctx);
-                    menuobj.show();
-                    headobj.draw();
+                    leftmenu(_2cnvctx)
                 })
             return false;
         }
@@ -6532,11 +6519,8 @@ function setupmenus()
                googlelogin();
                return;
             }
- 
-            menuobj.hide();
-            galleryobj.leftctx = _10cnvctx;
-            menuobj.setindex(galleryobj.leftctx);
-            menuobj.show();
+
+            leftmenu(_10cnvctx);
             return false;
         },
     },
@@ -6552,11 +6536,7 @@ function setupmenus()
         title: "Folders   \u{25B6}",
         func: function()
         {
-            menuobj.hide();
-            galleryobj.leftctx = _5cnvctx;
-            menuobj.setindex(galleryobj.leftctx);
-            menuobj.show();
-            headobj.draw();
+            leftmenu(_5cnvctx);
             return false;
         }
     },
@@ -6564,11 +6544,7 @@ function setupmenus()
         title: "Debug   \u{25B6}",
         func: function()
         {
-            menuobj.hide();
-            galleryobj.leftctx = _3cnvctx;
-            menuobj.setindex(galleryobj.leftctx);
-            menuobj.show();
-            headobj.draw()
+            leftmenu(_3cnvctx);
             return false;
         }
     }
@@ -6658,7 +6634,7 @@ function setupmenus()
     ];
 
     _9cnv.sliceobj.data = templatelst;
-    
+    //todo
     var t = url.searchParams.get("t");
     var n = 0;
     for (; n < _9cnv.sliceobj.data.length; ++n)
