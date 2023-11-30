@@ -6692,16 +6692,17 @@ function setupmenus()
         var j = {};
         j.index = n;
         j.cursor = `${n+1} of ${galleryobj.length()}`;
-        if (k.title)
-            j.title = k.title;
         if (k.url)
             j.name = k.url.split("/").pop();
+        if (k.title)
+            j.title = k.title;
         if (k.id)
             j.id = k.id;
         j.func = function()
         {
 	        galleryobj.set(this.index);
             gotoimage(this.index+1)
+            closerect();
             return true;
         };
         
