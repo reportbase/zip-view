@@ -1281,7 +1281,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                    new panel.expand(new panel.rectangle(context.templaterect, templatemenu), 10, 10),
+                    new panel.expand(new panel.rectangle(context.templaterect), 10, 10),
                     new panel.text(),
                 ]),
                 0,
