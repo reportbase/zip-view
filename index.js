@@ -1746,18 +1746,18 @@ function templatemenu()
     headobj.draw();
 }
 
-function homemenu()
+function leftmenu(context)
 {
-    galleryobj.leftctx.hide()
-    if (menuobj.value() == galleryobj.rightctx)
+    galleryobj.rightctx.hide()
+    if (menuobj.value() == galleryobj.leftctx)
     {
         galleryobj.rightctx.hide();
-        galleryobj.leftctx = _6cnvctx;
+        galleryobj.leftctx = context;
         menuobj.setindex(_8cnvctx);
     }
     else
     {
-        menuobj.setindex(_6cnvctx);
+        menuobj.setindex(context);
     }
 
     menuobj.show();
@@ -1769,13 +1769,13 @@ function rightmenu(context)
     galleryobj.leftctx.hide()
     if (menuobj.value() == galleryobj.rightctx)
     {
-	galleryobj.rightctx.hide();
-	galleryobj.rightctx = context;
-	menuobj.setindex(_8cnvctx);
+    	galleryobj.rightctx.hide();
+    	galleryobj.rightctx = context;
+    	menuobj.setindex(_8cnvctx);
     }
     else
     {
-	menuobj.setindex(context);
+	    menuobj.setindex(context);
     }
 
     menuobj.show();
@@ -3695,7 +3695,7 @@ var taplst =
             headcnvctx.homemenurect && 
             headcnvctx.homemenurect.hitest(x, y))
         {
-	        headcnvctx.homemenurect.func();
+            leftmenu(_7cnvctx)
         }
         else if (
             headcnv.height &&
@@ -3958,6 +3958,7 @@ var taplst =
         if (headcnvctx.homemenurect && 
             headcnvctx.homemenurect.hitest(x, y))
         {
+            /*
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.rightctx.hide()
             if (menuobj.value() == galleryobj.leftctx)
@@ -3975,12 +3976,14 @@ var taplst =
             }
 
             headobj.draw();
+            */
             return true;
         }
         else if (
             headcnvctx.imagemenurect &&
             headcnvctx.imagemenurect.hitest(x, y))
         {
+            /*
             galleryobj.leftctx.hide()
             if (menuobj.value() == galleryobj.rightctx)
             {
@@ -3995,6 +3998,7 @@ var taplst =
             }
 
             headobj.draw();
+            */
             return true;
         }
         else if (canvas.gallerypatchrect && canvas.gallerypatchrect.hitest(x, y))
@@ -6144,7 +6148,7 @@ panel.homemenu = function()
             var s = menuobj.value() == galleryobj.leftctx;
             var a = new panel.layers(
                 [
-                    new panel.rectangle(context.homemenurect, homemenu),
+                    new panel.rectangle(context.homemenurect),
                     s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                     new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                     new panel.cols([0, rect.height * 0.20, 0],
