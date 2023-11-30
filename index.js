@@ -1788,7 +1788,7 @@ panel.imagemenu = function()
     {
         context.save();
         if (menuobj.value() == _8cnvctx ||
-            menuobj.value() != galleryobj.leftctx)
+            menuobj.value() == galleryobj.rightctx)
         {
 		    context.imagemenurect = new rectangle();
             var s = menuobj.value() == galleryobj.rightctx;
@@ -6086,7 +6086,7 @@ panel.homemenu = function()
     {
         context.save()
         if (menuobj.value() == _8cnvctx ||
-            menuobj.value() != galleryobj.rightctx)
+            menuobj.value() == galleryobj.leftctx)
         {
             context.homemenurect = new rectangle()
             var j = 5;
