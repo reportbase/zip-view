@@ -529,7 +529,57 @@ for (let n = 499; n >= 1; n = n - 1)
 panel.empty = function()
 {
     this.draw = function(context, rect, user, time) {}
-};    
+};
+    
+var templatelst = 
+[
+    "360x360",
+    "480x480",
+    "640x640",
+    "800x800",
+    "1080x1080",
+    "1280x1280",
+    "1600x1600",
+    "2160x2160",
+    "5760x5760"
+];
+
+var templateobj = new circular_array("", templatelst);
+templateobj.init = function()
+{
+    if (!url.searchParams.has("t"))
+        return;
+    
+    var t = url.searchParams.get("t");
+    var n = 0;
+    for (; n < templateobj.length(); ++n)
+        if (t == templateobj.data[n])
+            break;
+
+    if (n != templateobj.length())
+        templateobj.set(n);
+}
+
+templateobj.reset = function() 
+{
+    var hh = buttonobj.value();
+    var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
+    var n = 0;
+    for (; n < templatelst.length; ++n)
+        {
+            var j = templatelst[n].split("x")[0];
+            if (ww <= Number(j))
+                break;    
+        }
+
+    for (var m = 0; m < IMAGELSTSIZE; ++m)
+    {
+        thumbfittedlst[m] = document.createElement("canvas");
+        thumbimglst[m] = new Image();
+    }         
+    
+    templateobj.set(n);
+}
 
 var SEAL = 6283.183;
 var sealobj = new circular_array("SEAL", SEAL);
@@ -965,6 +1015,44 @@ var headlst =
             context.restore();        
     }
 },
+{
+    name: "BUTTON",
+    draw: function(context, rect, user, time)
+    {
+            var canvas = context.canvas;
+            context.clear();
+            context.save();
+            var ctx = menuobj.value();
+            var g = ctx == _8cnvctx;
+            delete context.zoomrect;
+            delete context.fitwidthrect;
+            delete context.fullrect;
+            delete context.leftmenurect;
+            delete context.rightmenurect;
+            var s = SAFARI ? -1: ALIEXTENT;
+            var e = rect.width>=320?(ALIEXTENT+10):-1;
+            var a = new panel.rows([BEXTENT, 0],
+                [
+                    new panel.cols(
+                    [5, ALIEXTENT, 0, s, e, ALIEXTENT, 0, ALIEXTENT, 5],
+                    [
+                        0,
+                        0,
+                        0,
+                        g ? new panel.fullscreen() : 0,
+                        g ? new panel.zoom() : 0,
+                        g ? new panel.fitwidth() : 0,
+                        0,
+                        new panel.closeboss(),
+                        0,
+                    ]),
+                    0
+                ]);
+            
+            a.draw(context, rect, 0, 0);
+            context.restore();        
+    }
+}
 ]
 
 var headobj = new circular_array("HEAD", headlst);
@@ -1206,6 +1294,113 @@ var bossdisplayobj = new circular_array("", bossdisplaylst);
 var displaylst = 
 [
 {
+    name: "BUTTON",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save();
+        var hollyobj = canvas.hollyobj;
+        canvas.timeobjrect = new rectangle();
+        canvas.hollyrect = new rectangle();
+        context.buttonmenurect = new rectangle();
+        context.templatemenurect = new rectangle();
+        if (!headcnv.height)
+            return;
+        var bh = rect.height * 0.4;
+        var a = new panel.cols([0, SCROLLEXTENT, SCROLLMARGIN],
+            [
+                0,
+                new panel.rows([0, bh, 0],
+                    [
+                        0,
+                        new panel.layers(
+                            [
+                                new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
+                                new panel.expand(new panel.rectangle(canvas.timeobjrect), 20, 0),
+                                new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
+                            ]),
+                        0,
+                    ]),
+                0
+            ]);
+
+        a.draw(context, rect, context.canvas.timeobj, 0);
+        
+        const rainstep = Math.min(420,window.innerWidth-60);
+        var a = new panel.rows([0, SCROLLEXTENT, SCROLLMARGIN],
+            [
+                0,
+                new panel.cols([0, rainstep, 0],
+                    [
+                        0,
+                        new panel.layers(
+                            [
+                                new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
+                                new panel.expand(new panel.rectangle(canvas.hollyrect), 0, 20),		    
+                                new panel.shrink(new panel.currentH(
+                                    new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
+                            ]),
+                        0,
+                    ])
+            ])
+
+        a.draw(context, rect, canvas.hollyobj, 0);
+
+        var w = Math.min(360, rect.width - 100);
+        var data = [];
+        var hh = buttonobj.value();
+        var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)).toFixed(0) : '000';
+        var st = `\u{25C0}    ${ww} x ${hh.toFixed(0)}    \u{25B6}`;
+        data.push(`\u{25C0}    ${templateobj.value()}    \u{25B6}`);
+        var a = new panel.rowsA([HEADTOP, HEADBOT, 23, 0, (data.length*WRAPROWHEIGHT), 
+                                 FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
+        [
+            0,    
+            new panel.cols([0, rainstep, 0],
+            [
+                0,
+                new panel.layers(
+                [
+                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
+                    new panel.expand(new panel.rectangle(context.buttonmenurect), 10, 10),
+                    new panel.shrink(new panel.text(), 10, 10),
+                ]),
+                0
+            ]), 
+            0,
+            0,
+            new panel.cols([0, rainstep, 0],
+            [
+                0,
+                new panel.layers(
+                [
+                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
+                    new panel.expand(new panel.rectangle(context.templatemenurect), 10, 10),
+                    new panel.gridA(1, data.length, 1, 
+                            new panel.shrink(new panel.text(), 10, 10)),
+                ]),
+                0,
+            ]),
+            0,
+            0,
+            0,
+        ]);
+
+        a.draw(context, rect, 
+        [
+            0,
+            st,
+            "",
+            0,
+            data,
+            0,
+            0,
+            0
+        ], 0);      
+        context.restore();
+    }
+},
+{
     name: "GALLERY",
     draw: function(context, rect, user, time)
     {    
@@ -1215,7 +1410,6 @@ var displaylst =
         canvas.hollyrect = new rectangle();
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
-	context.templatemenurect = new rectangle();
         if (!headcnv.height)
             return;        
         var bh = rect.height * 0.4;
@@ -1268,7 +1462,7 @@ var displaylst =
         var data = [];
         data.push(`\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`);
         var w = Math.min(360, rect.width - 100);
-        var st = `\u{25C0}    ${_9cnv.sliceobj.value()}    \u{25B6}`;
+        var st = `\u{25C0}    ${templateobj.value()}    \u{25B6}`;
         
         var a = new panel.rowsA([HEADTOP, HEADBOT, 23, 0, 
                 folders.length?folders.length*WRAPROWHEIGHT:-1, 
@@ -1322,7 +1516,7 @@ var displaylst =
             [
                 0,
                 st,
-                0,
+                0
                 0,
                 folders,
                 0,
@@ -2415,6 +2609,18 @@ var wheelst =
         {
             if (context.elst.length % 3)
                 return;
+/*
+	        var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
+            if (headham.panel != headlst[k])
+            {
+                headham.panel = headlst[k];
+                headobj.draw();     
+            }
+            
+            var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
+            if (displaylst[k] != displayobj.value()) 
+                displayobj.set(k);
+*/
             
             var j = buttonobj.length()/20;
             context.canvas.pinching = 1;
@@ -2549,7 +2755,14 @@ var pinchlst =
     name: "GALLERY",
     pinch: function(context, x, y, scale)
     {
-	context.elst.push({x,y});
+	    context.elst.push({x,y});
+        if (context.elst.length % 2)
+            return;
+        //var k = headlst.findIndex(function(a){return a.name == "BUTTON"});
+        //headham.panel = headlst[k];
+        //headobj.draw();     
+        //var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
+        //displayobj.set(k);
         if (!context.buttonanchor)
             context.buttonanchor = buttonobj.value();
         if (!context.scaleanchor)
@@ -3315,12 +3528,16 @@ var keylst =
             }
             else if (key == "-" || key == "[")
             {
+                var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
+                displayobj.set(k);
                 buttonobj.addperc(-1.0 / 100);
                 menuobj.draw()
                 evt.preventDefault();
             }
             else if (key == "+" || key == "]" || key == "=")
             {
+                var k = displaylst.findIndex(function(a){return a.name == "BUTTON"});
+                displayobj.set(k);
                 buttonobj.addperc(1.0 / 100);
                 menuobj.draw()
                 evt.preventDefault();
@@ -3674,6 +3891,9 @@ var taplst =
         global.timeauto = 0;
         var obj = canvas.hollyobj;
         context.refresh();
+        var k = displaylst.findIndex(function(a){
+            return a.name == "BUTTON"});
+        var button = displaylst[k] 
         
         if (headcnv.height && 
             headcnvctx.leftmenurect && 
@@ -3749,7 +3969,7 @@ var taplst =
         			thumbimglst[n] = new Image();
     		    }
 		    
-                _9cnv.sliceobj.add(k < 0.5 ? -1 : 1);
+                templateobj.add(k < 0.5 ? -1 : 1);
                 buttonobj.reset();
             }            
             
@@ -3788,6 +4008,7 @@ var taplst =
             headcnvctx.fitwidthrect.hitest(x, y))
         {
             buttonobj.reset();
+            templateobj.reset();
             _8cnv.fitflash = 1;
             headobj.draw();
             setTimeout(function()
@@ -3845,6 +4066,11 @@ var taplst =
             else
                 context.canvas.hollyobj.setperc(k);
             menuobj.draw()
+        }
+        else if (headcnv.height && displayobj.value() == button)
+        {
+            headobj.reset();
+            menuobj.draw();
         }
         else if (menuobj.value() && menuobj.value() != _8cnvctx)
         {
@@ -5010,7 +5236,7 @@ menuobj.draw = function(nosave)
             if (slice.entry)
                 getblobpath(thumbimg, slice)
             else
-                thumbimg.src = imagepath(slice,_9cnv.sliceobj.value());
+                thumbimg.src = imagepath(slice,templateobj.value());
         }
         else
         {
@@ -5089,9 +5315,9 @@ function reseturl()
         }
         
         var e = url.searchParams.get('t');
-        if (e != _9cnv.sliceobj.value())
+        if (e != templateobj.value())
         {
-            url.searchParams.set("t",_9cnv.sliceobj.value());
+            url.searchParams.set("t",templateobj.value());
             window.history.replaceState("", url.origin, url);
         }
         
@@ -5106,7 +5332,7 @@ function reseturl()
 
 var eventlst = 
 [
-{   //1 users
+{ //1 users
     hideontap: 0,
     speed: 60,
     reduce: 2.5,
@@ -5128,7 +5354,8 @@ var eventlst =
     buttonmargin: 20,
     width: 640
 },
-{   //2 galleries
+{ 
+    //2 galleries
     hideontap: 0,
     speed: 60,
     reduce: 2.5,
@@ -5150,7 +5377,7 @@ var eventlst =
     buttonmargin: 20,
     width: 640
 },
-{   //3 debug
+{ //3 debug
     hideontap: 1,
     speed: 60,
     reduce: 2.5,
@@ -5172,7 +5399,7 @@ var eventlst =
     buttonmargin: 10,
     width: 640
 },
-{ //4 boss
+{ //4
     hideontap: 1,
     speed: 40,
     reduce: 2.5,
@@ -5238,7 +5465,7 @@ var eventlst =
     buttonmargin: 15,
     width: 640
 },
-{ //7 home
+{ //7
     hideontap: 1,
     speed: 60,
     reduce: 2.5,
@@ -5260,7 +5487,7 @@ var eventlst =
     buttonmargin: 20,
     width: 640
 },
-{   //8 gallery
+{ //8
     hideontap: 1,
     speed: 50,
     reduce: 2.5,
@@ -5282,7 +5509,7 @@ var eventlst =
     buttonmargin: 10,
     width: 5160
 },
-{   //9 template
+{ //9 help
     hideontap: 1,
     speed: 60,
     reduce: 2.5,
@@ -5304,7 +5531,7 @@ var eventlst =
     buttonmargin: 30,
     width: 640
 },
-{   //10 User
+{ //10 User
     hideontap: 1,
     speed: 60,
     reduce: 2.5,
@@ -5314,7 +5541,7 @@ var eventlst =
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "MENU",
+    button: "MENU",//
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
@@ -6739,30 +6966,7 @@ function setupmenus()
     };
 
     _8cnv.sliceobj.data = galleryobj.data;
-
-    var templatelst = 
-    [
-        "360x360",
-        "480x480",
-        "640x640",
-        "800x800",
-        "1080x1080",
-        "1280x1280",
-        "1600x1600",
-        "2160x2160",
-        "5760x5760"
-    ];
-
-    _9cnv.sliceobj.data = templatelst;
-    
-    var t = url.searchParams.get("t");
-    var n = 0;
-    for (; n < _9cnv.sliceobj.data.length; ++n)
-        if (t == _9cnv.sliceobj.data.data[n])
-            break;
-    if (n != _9cnv.sliceobj.data.length())
-        _9cnv.sliceobj.set(n);
-        
+    _9cnv.sliceobj.data = [];
     _2cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
 
@@ -6827,6 +7031,8 @@ galleryobj.reset = function(obj)
         galleryobj.height = this.height;
         contextobj.reset();
         buttonobj.reset();
+        templateobj.reset();
+        templateobj.init();
         buttonobj.init()
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
@@ -7154,3 +7360,4 @@ function handleCredentialResponse(response)
         dialog.close();   
     })
 }     
+	    
