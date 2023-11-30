@@ -801,7 +801,7 @@ var footlst =
         
         a.draw(context, rect, 
         [
-           `\u{25C0}   Account`,
+           `\u{25C0}   Templates`,
            0 
         ], 0);
         
