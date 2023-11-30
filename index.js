@@ -4516,6 +4516,7 @@ var buttonlst =
             k.push(user.url.split("/").pop());
         if (user.id)
             k.push(user.id);
+        /*
       	var bad =
     	[
 		    "url",
@@ -4534,7 +4535,7 @@ var buttonlst =
                 continue;
             k.push(user[name]);
         }
-	    
+	    */
         a.draw(context, rect, k, time);
         context.restore();
     }
