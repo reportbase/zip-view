@@ -6690,19 +6690,15 @@ function setupmenus()
     {
         var k = galleryobj.data[n];
         var j = {};
-        j.index = n;
-        j.cursor = `${n+1} of ${galleryobj.length()}`;
+        k.index = n;
+        k.cursor = `${n+1} of ${galleryobj.length()}`;
         if (k.url)
-            j.name = k.url.split("/").pop();
-        if (k.title)
-            j.title = k.title;
-        if (k.id)
-            j.id = k.id;
+            k.name = k.url.split("/").pop();
         j.func = function()
         {
 	        galleryobj.set(this.index);
             gotoimage(this.index+1)
-            closerect();
+            closemenu();
             return true;
         };
         
