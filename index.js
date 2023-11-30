@@ -1488,7 +1488,7 @@ var displaylst =
                     new panel.layers(
                         [
                             new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                            new panel.expand(new panel.rectangle(context.cursorect, rightmenu), 10, 10),
+                            new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
                             new panel.gridA(1, data.length, 1,
                                 new panel.shrink(new panel.text(), 10, 10)),
                         ]),
@@ -1904,29 +1904,6 @@ panel.fitwidth = function()
     }
 };
 
-function rightmenu()
-{
-    galleryobj.set(_8cnv.lastcurrent)
-    galleryobj.leftctx.hide()
-    if (menuobj.value() == galleryobj.rightctx)
-    {
-        galleryobj.leftctx.hide();
-        galleryobj.rightctx.hide();
-        galleryobj.leftcnv = _7cnv;
-        galleryobj.leftctx = _7cnvctx;
-        menuobj.setindex(_8cnvctx);
-    }
-    else
-    {
-        menuobj.setindex(galleryobj.rightctx);
-    }
-
-    var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-    displayobj.set(k);
-    menuobj.show();
-    headobj.draw();
-}
-
 panel.rightmenu = function()
 {
     this.draw = function(context, rect, user, time)
@@ -1935,14 +1912,18 @@ panel.rightmenu = function()
         if (menuobj.value() == _8cnvctx ||
             menuobj.value() != galleryobj.leftctx)
         {
-		    context.rightmenurect = new rectangle();
+            context.rightmenurect = new rectangle(function()
+            {
+                console.log(this)
+            });
+            
             var s = menuobj.value() == galleryobj.rightctx;
             var j = 5;
             var k = j / 2;
             var e = new panel.fill(OPTIONFILL);
             var a = new panel.layers(
                 [
-                    new panel.rectangle(context.rightmenurect, rightmenu),
+                    new panel.rectangle(context.rightmenurect),
                     s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                     new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                     new panel.rows([0, rect.height * 0.20, 0],
@@ -2189,7 +2170,7 @@ panel.arrow = function(color, degrees)
     };
 };
 
-function rectangle(x, y, w, h, func)
+function rectangle(x, y, w, h, user)
 {
     this.x = x;
     this.y = y;
@@ -3909,7 +3890,27 @@ var taplst =
             (headcnvctx.rightmenurect &&
             headcnvctx.rightmenurect.hitest(x, y)))
         {
-            headcnvctx.rightmenurect.func();
+            headcnvctx.rightmenurect.hit();
+            
+            galleryobj.set(_8cnv.lastcurrent)
+            galleryobj.leftctx.hide()
+            if (menuobj.value() == galleryobj.rightctx)
+            {
+                galleryobj.leftctx.hide();
+                galleryobj.rightctx.hide();
+                galleryobj.leftcnv = _7cnv;
+                galleryobj.leftctx = _7cnvctx;
+                menuobj.setindex(_8cnvctx);
+            }
+            else
+            {
+                menuobj.setindex(galleryobj.rightctx);
+            }
+
+            var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+            displayobj.set(k);
+            menuobj.show();
+            headobj.draw();
         }
         else if (
             headcnv.height &&
@@ -3977,7 +3978,7 @@ var taplst =
 	        var k = (x - context.cursorect.x) / context.cursorect.width;
             if (k > 0.35 && k < 0.65)
             {
-                context.cursorect.func()
+                //todo
             }
             else
             {
@@ -5950,12 +5951,19 @@ var panvert = function(obj, y)
     }
 };
 
-panel.rectangle = function(r, func)
+panel.rectangle = function(r)
 {
+    this.hit = function()
+    {
+        if (func)
+            func();
+    }
+    
     this.draw = function(context, rect, user, time)
     {
+	    if (!r)
+		    r = user;
         Object.assign(r, rect);    
-        r.func = func;
     }
 }
 
