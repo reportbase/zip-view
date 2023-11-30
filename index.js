@@ -4523,7 +4523,7 @@ var buttonlst =
             ]);
 
         var k = typeof(user.title) == "function" ? user.title() : user.title;
-        a.draw(context, rect, k ? k.split(d) : "", time);
+        a.draw(context, rect, k ? k.split("\n") : "", time);
         context.restore();
     }
 },
