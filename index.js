@@ -1749,10 +1749,10 @@ function templatemenu()
 function leftmenu(context)
 {
     galleryobj.rightctx.hide()
+	galleryobj.leftctx = context;
     if (menuobj.value() == galleryobj.leftctx)
     {
-        galleryobj.rightctx.hide();
-        galleryobj.leftctx = context;
+        galleryobj.leftctx.hide();
         menuobj.setindex(_8cnvctx);
     }
     else
@@ -1767,10 +1767,10 @@ function leftmenu(context)
 function rightmenu(context)
 {
     galleryobj.leftctx.hide()
+	galleryobj.rightctx = context;
     if (menuobj.value() == galleryobj.rightctx)
     {
     	galleryobj.rightctx.hide();
-    	galleryobj.rightctx = context;
     	menuobj.setindex(_8cnvctx);
     }
     else
