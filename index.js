@@ -4510,12 +4510,13 @@ var buttonlst =
                 0,
             ]);
 
-        var k = 
-	    [
-		    user.title,
-            user.name,
-            user.id,
-        ];
+        var k = [];
+        if (user.title)
+            k.push(user.title);
+        if (user.name)
+            k.push(user.name);
+        if (user.id)
+            k.push(user.id);
         
         a.draw(context, rect, k, time);
         context.restore();
@@ -6689,13 +6690,16 @@ function setupmenus()
         var k = galleryobj.data[n];
         var j = {};
         j.index = n;
-        j.title = `${n+1} of ${galleryobj.length()}`;
+        j.index = `${n+1} of ${galleryobj.length()}`;
+        if (k.title)
+            j.title = k.title;
         if (k.url)
             j.name = k.url.split("/").pop();
-        else if (k.id)
+        if (k.id)
             j.name = k.id;
         j.func = function()
         {
+	        galleryobj.set(this.index);
             gotoimage(this.index+1)
             return true;
         };
