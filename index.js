@@ -1800,7 +1800,7 @@ panel.imagemenu = function()
             var e = new panel.fill(OPTIONFILL);
             var a = new panel.layers(
                 [
-                    new panel.rectangle(context.imagemenurect, new rightmenu(_6cnvctx)),
+                    new panel.rectangle(context.imagemenurect, rightmenu(_6cnvctx)),
                     s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                     new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                     new panel.rows([0, rect.height * 0.20, 0],
