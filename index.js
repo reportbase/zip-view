@@ -1753,13 +1753,13 @@ function homemenu()
     if (menuobj.value() == galleryobj.rightctx)
     {
         galleryobj.rightctx.hide();
-        galleryobj.leftcnv = _7cnv;
-        galleryobj.leftctx = _7cnvctx;
+        galleryobj.leftcnv = _1cnv;
+        galleryobj.leftctx = _1cnvctx;
         menuobj.setindex(_8cnvctx);
     }
     else
     {
-        menuobj.setindex(galleryobj.rightctx);
+        menuobj.setindex(_1cnvctx);
     }
 
     menuobj.show();
