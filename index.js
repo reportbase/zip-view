@@ -6812,7 +6812,7 @@ galleryobj.reset = function(obj)
 	    var n = 0;
 	    for (; n < _9cnv.sliceobj.data.length; ++n)
 	        {
-	            var j = _9cnv.sliceobj.data[n].split("x")[0];
+	            var j = _9cnv.sliceobj.data[n].title.split("x")[0];
 	            if (ww <= Number(j))
 	                break;    
 	        }
