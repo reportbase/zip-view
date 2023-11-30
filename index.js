@@ -574,6 +574,34 @@ var footlst =
     }
 },
 {
+    name: "IMAGE",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save();     
+        canvas.closerect = new rectangle();
+        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
+            [
+                new panel.layers(
+                [
+                    new panel.fill(FOOTBTNCOLOR),
+                    new panel.text(),
+                    new panel.rectangle(canvas.closerect),
+                ]),
+                0
+            ]);
+
+        var k = "Image";
+        a.draw(context, rect, 
+               [
+                   `\u{25C0}   ${k}`,
+                    0,
+                ], 0);
+        
+        context.restore();
+    }
+},  	
+{
     name: "IMAGES",
     draw: function(context, rect, user, time)
     {
@@ -3871,6 +3899,7 @@ var taplst =
     		}
             else if (slice.uploadrect && slice.uploadrect.hitest(x, y))
             {
+                rightmenu(_11cnvctx);
                 console.log(slice);
             }
             else if (slice.downloadrect && slice.downloadrect.hitest(x, y))
@@ -4184,14 +4213,7 @@ var taplst =
                 menuobj.draw();
                 if (!slice.func(n, x, y))
                     return;
-                
-                galleryobj.leftctx.hide();
-                galleryobj.rightctx.hide();
-                menuobj.setindex(_8cnvctx);
-                menuobj.show();
-                galleryobj.leftnv = _7cnv;
-                galleryobj.leftctx = _7cnvctx;
-                headobj.draw();
+                closemenu();
             }, 200);
         }
     },
@@ -5307,7 +5329,7 @@ var eventlst =
     buttonmargin: 10,
     width: 640
 },
-{ //11
+{ //11 images
     hideontap: 1,
     speed: 60,
     reduce: 2.5,
@@ -5317,16 +5339,16 @@ var eventlst =
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "OPTION",
+    button: "IMAGES",
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: "DEFAULT",
-    buttonheight: 90,
-    buttonmargin: 10,
+    footer: "IMAGE",
+    buttonheight: 160,
+    buttonmargin: 15,
     width: 640
 },
 { //12
@@ -6767,10 +6789,11 @@ function setupmenus()
             break;
     if (n != _9cnv.sliceobj.data.length)
         _9cnv.sliceobj.set(n);
-    
-    _2cnv.sliceobj.data = [];
-    _11cnv.sliceobj.data = [];
 
+    //todo
+    _11cnv.sliceobj.data = _6cnv.sliceobj.data;
+
+    _2cnv.sliceobj.data = [];
     var lst = [_2cnv, _3cnv, _5cnv, _6cnv, _7cnv, _8cnv, _9cnv, _10cnv, _11cnv];
     for (var n = 0; n < lst.length; n++)
     {
