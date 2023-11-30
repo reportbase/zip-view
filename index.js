@@ -1724,31 +1724,11 @@ panel.fitwidth = function()
     }
 };
 
-function templatemenu()
-{
-    galleryobj.set(_8cnv.lastcurrent)
-    galleryobj.leftctx.hide()
-    if (menuobj.value() == galleryobj.rightctx)
-    {
-        galleryobj.leftctx.hide();
-        galleryobj.rightctx.hide();
-        galleryobj.leftctx = _9cnvctx;
-        menuobj.setindex(_8cnvctx);
-    }
-    else
-    {
-        menuobj.setindex(_9cnvctx);
-    }
-
-    var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-    displayobj.set(k);
-    menuobj.show();
-    headobj.draw();
-}
-
 function leftmenu(context)
 {
-    galleryobj.rightctx.hide()
+	if (galleryobj.rightctx)
+        galleryobj.rightctx.hide()
+    
     if (menuobj.value() && menuobj.value() != _8cnvctx)
     {
         galleryobj.leftctx.hide();
@@ -1766,8 +1746,10 @@ function leftmenu(context)
 
 function rightmenu(context)
 {
-    galleryobj.leftctx.hide()
-	if (menuobj.value() && menuobj.value() != _8cnvctx)
+	if (galleryobj.leftctx)
+        galleryobj.leftctx.hide()
+
+    if (menuobj.value() && menuobj.value() != _8cnvctx)
     {
     	galleryobj.rightctx.hide();
         menuobj.setindex(_8cnvctx);
@@ -6562,7 +6544,7 @@ function setupmenus()
         title: "Templates   \u{25B6}",
         func: function()
         {
-            templatemenu();
+            leftmenu(_9cnvctx);
             return false;
         }
     },
