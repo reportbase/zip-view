@@ -6806,7 +6806,7 @@ galleryobj.reset = function(obj)
         contextobj.reset();
         buttonobj.reset();
         buttonobj.init();
-    /*
+    
 	    var hh = buttonobj.value();
 	    var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
 	    var n = 0;
@@ -6818,7 +6818,7 @@ galleryobj.reset = function(obj)
 	        }
 	    
 	    _9cnv.sliceobj.set(n);
-	  */  
+	  
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
         menuobj.show();
