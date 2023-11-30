@@ -3702,7 +3702,7 @@ var taplst =
             (headcnvctx.imagemenurect &&
             headcnvctx.imagemenurect.hitest(x, y)))
         {
-            headcnvctx.imagemenurect.func(_6cnvctx);
+		    rightmenu(_6cnvctx)
         }
         else if (
             headcnv.height &&
