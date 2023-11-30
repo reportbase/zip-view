@@ -1734,6 +1734,12 @@ function leftmenu(context)
         galleryobj.leftctx.hide();
         menuobj.setindex(_8cnvctx);
     }
+    else if (menuobj.value() && menuobj.value() != _8cnvctx)
+    {
+	    galleryobj.leftctx.hide();
+        galleryobj.leftctx = context;
+        menuobj.setindex(context);
+    }
     else
     {
         galleryobj.leftctx = context;
