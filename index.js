@@ -6705,8 +6705,8 @@ function setupmenus()
     for (var n = 0; n < galleryobj.data.length; ++n)
     {
         var k = galleryobj.data[n];
-        k.index = n;
-        k.func = function()
+        galleryobj.data[n].index = n;
+        galleryobj.data[n].func = function()
         {
 	        galleryobj.set(this.index);
             gotoimage(this.index+1)
