@@ -6731,7 +6731,7 @@ function setupmenus()
 	}
 	
     _9cnv.sliceobj.data = lst;
-    /*
+    
     var t = url.searchParams.get("t");
     var n = 0;
     for (; n < _9cnv.sliceobj.data.length; ++n)
@@ -6739,8 +6739,7 @@ function setupmenus()
             break;
     if (n != _9cnv.sliceobj.data.length)
         _9cnv.sliceobj.set(n);
-    */
-
+    
     _2cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
 
@@ -6807,7 +6806,7 @@ galleryobj.reset = function(obj)
         contextobj.reset();
         buttonobj.reset();
         buttonobj.init();
-    
+    /*
 	    var hh = buttonobj.value();
 	    var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
 	    var n = 0;
@@ -6819,7 +6818,7 @@ galleryobj.reset = function(obj)
 	        }
 	    
 	    _9cnv.sliceobj.set(n);
-	    
+	  */  
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
         menuobj.show();
