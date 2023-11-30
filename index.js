@@ -1307,7 +1307,7 @@ var displaylst =
                     new panel.layers(
                         [
                             new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                            new panel.expand(new panel.rectangle(context.cursorect, rightmenu), 10, 10),
+                            new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
                             new panel.gridA(1, data.length, 1,
                                 new panel.shrink(new panel.text(), 10, 10)),
                         ]),
@@ -1796,17 +1796,17 @@ panel.imagemenu = function()
             var k = j / 2;
             var e = new panel.fill(OPTIONFILL);
             var a = new panel.layers(
+            [
+                new panel.rectangle(context.imagemenurect),
+                s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+                new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.rows([0, rect.height * 0.20, 0],
                 [
-                    new panel.rectangle(context.imagemenurect, rightmenu),
-                    s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                    new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                    new panel.rows([0, rect.height * 0.20, 0],
-                        [
-                            0,
-                            new panel.cols([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0, ]),
-                            0,
-                        ]),
-                ])
+                    0,
+                    new panel.cols([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0, ]),
+                    0,
+                ]),
+            ])
 
             a.draw(context, rect, user, time);
         }
@@ -1825,12 +1825,12 @@ panel.download = function()
         context.strokeStyle = "white";
 
         var a = new panel.layers(
-            [
-                new panel.rectangle(user.downloadrect),
-                _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                new panel.shrink(new panel.circle(ARROWFILL), 20, 30),
-            ]);
+        [
+            new panel.rectangle(user.downloadrect),
+            _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+            new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+            new panel.shrink(new panel.circle(ARROWFILL), 20, 30),
+        ]);
 
         a.draw(context, rect, user, time);
         context.restore();
@@ -3754,7 +3754,7 @@ var taplst =
 	        var k = (x - context.cursorect.x) / context.cursorect.width;
             if (k > 0.35 && k < 0.65)
             {
-                context.cursorect.func()
+                rightmenu(_6cnvctx)
             }
             else
             {
@@ -5707,12 +5707,11 @@ var panvert = function(obj, y)
     }
 };
 
-panel.rectangle = function(r, f)
+panel.rectangle = function(r)
 {
     this.draw = function(context, rect, user, time)
     {
         Object.assign(r, rect);    
-        r.func = f;
     }
 }
 
