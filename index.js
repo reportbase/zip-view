@@ -6735,7 +6735,6 @@ function setupmenus()
         {
 	        _6cnv.sliceobj.set(this.index);
             gotoimage(this.index+1)
-            closemenu();
             return true;
         };   
 
