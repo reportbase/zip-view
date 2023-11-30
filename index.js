@@ -6689,12 +6689,11 @@ function setupmenus()
     for (var n = 0; n < galleryobj.data.length; ++n)
     {
         var k = galleryobj.data[n];
-        var j = {};
         k.index = n;
         k.cursor = `${n+1} of ${galleryobj.length()}`;
         if (k.url)
             k.name = k.url.split("/").pop();
-        j.func = function()
+        k.func = function()
         {
 	        galleryobj.set(this.index);
             gotoimage(this.index+1)
@@ -6702,9 +6701,10 @@ function setupmenus()
             return true;
         };
         
-        _6cnv.sliceobj.data.push(j);
+        
     };
-
+	
+	_6cnv.sliceobj.data = galleryobj.data;
     _8cnv.sliceobj.data = galleryobj.data;
 
     var templatelst = 
