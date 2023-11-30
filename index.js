@@ -6705,17 +6705,20 @@ function setupmenus()
     for (var n = 0; n < galleryobj.data.length; ++n)
     {
         var k = galleryobj.data[n];
-        galleryobj.data[n].index = n;
-        galleryobj.data[n].func = function()
+        var j = {};
+        Object.assign(j,k);
+        j.index = n;
+        j.func = function()
         {
 	        galleryobj.set(this.index);
             gotoimage(this.index+1)
             closemenu();
             return true;
         };   
+
+        _6cnv.sliceobj.data.push(j);
     };
 	
-	_6cnv.sliceobj.data = galleryobj.data;
     _8cnv.sliceobj.data = galleryobj.data;
 
     var templatelst = 
