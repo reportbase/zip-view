@@ -1215,7 +1215,7 @@ var displaylst =
         canvas.hollyrect = new rectangle();
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
-	context.templaterect = new rectangle();
+	context.templatemenurect = new rectangle();
         if (!headcnv.height)
             return;        
         var bh = rect.height * 0.4;
@@ -1281,7 +1281,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                    new panel.expand(new panel.rectangle(context.templaterect), 10, 10),
+                    new panel.expand(new panel.rectangle(context.templatemenurect), 10, 10),
                     new panel.text(),
                 ]),
                 0,
@@ -3733,22 +3733,22 @@ var taplst =
             }
         }
         else if (
-            context.templaterect &&
-            context.templaterect.hitest(x, y))
+            context.templatemenurect &&
+            context.templatemenurect.hitest(x, y))
         {
-            var k = (x - context.templaterect.x) / context.templaterect.width;
+            var k = (x - context.templatemenurect.x) / context.templatemenurect.width;
             if (k > 0.35 && k < 0.65)
             {
                 //todo
             }
             else
             {
-        		for (var n = 0; n < IMAGELSTSIZE; ++n)
-        	    {
+    		    for (var n = 0; n < IMAGELSTSIZE; ++n)
+    		    {
         			thumbfittedlst[n] = document.createElement("canvas");
         			thumbimglst[n] = new Image();
-        	    }
-	    
+    		    }
+		    
                 _9cnv.sliceobj.add(k < 0.5 ? -1 : 1);
                 buttonobj.reset();
             }            
@@ -5048,7 +5048,7 @@ menuobj.draw = function(nosave)
     //gallery
     delete canvas.buttonrect;
     delete context.buttonmenurect;
-    delete context.templaterect;
+    delete context.templatemenurect;
 
     //button
     delete canvas.timeobjrect;
@@ -6758,9 +6758,9 @@ function setupmenus()
     var t = url.searchParams.get("t");
     var n = 0;
     for (; n < _9cnv.sliceobj.data.length; ++n)
-        if (t == _9cnv.sliceobj.data[n])
+        if (t == _9cnv.sliceobj.data.data[n])
             break;
-    if (n != _9cnv.sliceobj.data.length)
+    if (n != _9cnv.sliceobj.data.length())
         _9cnv.sliceobj.set(n);
         
     _2cnv.sliceobj.data = [];
@@ -6819,12 +6819,6 @@ galleryobj.reset = function(obj)
     headobj.draw();  
     menuobj.draw();
     setupmenus();
-
-    for (var n = 0; n < IMAGELSTSIZE; ++n)
-    {
-        thumbfittedlst[n] = document.createElement("canvas");
-        thumbimglst[n] = new Image();
-    }
     
     var image = new Image();
     image.onload = function()
