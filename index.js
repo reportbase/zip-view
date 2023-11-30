@@ -1268,7 +1268,7 @@ var displaylst =
         var data = [];
         data.push(`\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`);
         var w = Math.min(360, rect.width - 100);
-        var st = `\u{25C0}    ${_9cnv.sliceobj.value()}    \u{25B6}`;
+        var st = `\u{25C0}    ${_9cnv.sliceobj.value().title}    \u{25B6}`;
         
         var a = new panel.rowsA([HEADTOP, HEADBOT, 23, 0, 
                 folders.length?folders.length*WRAPROWHEIGHT:-1, 
@@ -3721,7 +3721,7 @@ var taplst =
         	    }
 	    
                 _9cnv.sliceobj.add(k < 0.5 ? -1 : 1);
-                buttonobj.reset();
+                menuobj.draw();
             }            
             
             menuobj.draw(1);
@@ -5200,7 +5200,7 @@ var eventlst =
     pinch: "MENU",
     display: "MENU",
     footer: "DEFAULT",
-    buttonheight: 240,
+    buttonheight: 120,
     buttonmargin: 30,
     width: 640
 },
@@ -6649,7 +6649,15 @@ function setupmenus()
 		k.title = j;
 		k.func = function()
 		{
-			console.log(this.title, this.index);
+            for (var n = 0; n < IMAGELSTSIZE; ++n)
+            {
+                thumbfittedlst[n] = document.createElement("canvas");
+                thumbimglst[n] = new Image();
+            }
+    
+            _9cnv.sliceobj.set(this.index);
+            menuobj.draw();            
+		    return true;
 		}
 		
 		lst.push(k);
