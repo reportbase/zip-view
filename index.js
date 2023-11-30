@@ -4511,6 +4511,7 @@ var buttonlst =
             ]);
 
         var k = [];
+        k.push(user.cursor);
         if (user.title)
             k.push(user.title);
         if (user.name)
@@ -6690,13 +6691,13 @@ function setupmenus()
         var k = galleryobj.data[n];
         var j = {};
         j.index = n;
-        j.index = `${n+1} of ${galleryobj.length()}`;
+        j.cursor = `${n+1} of ${galleryobj.length()}`;
         if (k.title)
             j.title = k.title;
         if (k.url)
             j.name = k.url.split("/").pop();
         if (k.id)
-            j.name = k.id;
+            j.id = k.id;
         j.func = function()
         {
 	        galleryobj.set(this.index);
