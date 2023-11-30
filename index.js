@@ -1749,7 +1749,6 @@ function templatemenu()
 function leftmenu(context)
 {
     galleryobj.rightctx.hide()
-	galleryobj.leftctx = context;
     if (menuobj.value() == galleryobj.leftctx)
     {
         galleryobj.leftctx.hide();
@@ -1757,6 +1756,7 @@ function leftmenu(context)
     }
     else
     {
+    	galleryobj.leftctx = context;
         menuobj.setindex(context);
     }
 
@@ -1767,15 +1767,15 @@ function leftmenu(context)
 function rightmenu(context)
 {
     galleryobj.leftctx.hide()
-	galleryobj.rightctx = context;
-    if (menuobj.value() == galleryobj.rightctx)
+	if (menuobj.value() == galleryobj.rightctx)
     {
     	galleryobj.rightctx.hide();
-    	menuobj.setindex(_8cnvctx);
+        menuobj.setindex(_8cnvctx);
     }
     else
     {
-	    menuobj.setindex(context);
+	    galleryobj.rightctx = context;
+    	menuobj.setindex(context);
     }
 
     menuobj.show();
