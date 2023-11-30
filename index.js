@@ -1307,7 +1307,7 @@ var displaylst =
                     new panel.layers(
                         [
                             new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                            new panel.expand(new panel.rectangle(context.cursorect, new rightmenu(_6cnvctx)), 10, 10),
+                            new panel.expand(new panel.rectangle(context.cursorect, rightmenu), 10, 10),
                             new panel.gridA(1, data.length, 1,
                                 new panel.shrink(new panel.text(), 10, 10)),
                         ]),
@@ -1764,25 +1764,22 @@ function homemenu()
     headobj.draw();
 }
 
-var rightmenu = function(context)
+function rightmenu(context)
 {
-    this.func = function()
+    galleryobj.leftctx.hide()
+    if (menuobj.value() == galleryobj.rightctx)
     {
-	    galleryobj.leftctx.hide()
-	    if (menuobj.value() == galleryobj.rightctx)
-	    {
-	        galleryobj.rightctx.hide();
-	        galleryobj.rightctx = context;
-	        menuobj.setindex(_8cnvctx);
-	    }
-	    else
-	    {
-	        menuobj.setindex(context);
-	    }
-	
-	    menuobj.show();
-	    headobj.draw();
+	galleryobj.rightctx.hide();
+	galleryobj.rightctx = context;
+	menuobj.setindex(_8cnvctx);
     }
+    else
+    {
+	menuobj.setindex(context);
+    }
+
+    menuobj.show();
+    headobj.draw();
 }
 
 panel.imagemenu = function()
@@ -1800,7 +1797,7 @@ panel.imagemenu = function()
             var e = new panel.fill(OPTIONFILL);
             var a = new panel.layers(
                 [
-                    new panel.rectangle(context.imagemenurect, rightmenu(_6cnvctx)),
+                    new panel.rectangle(context.imagemenurect, rightmenu),
                     s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                     new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                     new panel.rows([0, rect.height * 0.20, 0],
@@ -3705,7 +3702,7 @@ var taplst =
             (headcnvctx.imagemenurect &&
             headcnvctx.imagemenurect.hitest(x, y)))
         {
-            headcnvctx.imagemenurect.func();
+            headcnvctx.imagemenurect.func(_6cnvctx);
         }
         else if (
             headcnv.height &&
@@ -5715,7 +5712,7 @@ panel.rectangle = function(r, f)
     this.draw = function(context, rect, user, time)
     {
         Object.assign(r, rect);    
-        r.func = f.func;
+        r.func = f;
     }
 }
 
