@@ -4072,13 +4072,10 @@ var taplst =
         else if (canvas.closerect && 
                  canvas.closerect.hitest(x, y))
         {
-            galleryobj.leftctx.hide();
-            galleryobj.rightctx.hide();
+            menuobj.hide();
             menuobj.setindex(_8cnvctx);
-            menuobj.show();
-            galleryobj.leftnv = _7cnv;
-            galleryobj.leftctx = _7cnvctx;
             headobj.draw();
+            menuobj.draw();
             return false;
         }
         else if (canvas.useraddrect && canvas.useraddrect.hitest(x, y))
