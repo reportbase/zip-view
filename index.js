@@ -1749,7 +1749,7 @@ function templatemenu()
 function leftmenu(context)
 {
     galleryobj.rightctx.hide()
-    if (menuobj.value() == galleryobj.leftctx)
+    if (menuobj.value() && menuobj.value() != _8cnvctx)
     {
         galleryobj.leftctx.hide();
         menuobj.setindex(_8cnvctx);
@@ -1767,7 +1767,7 @@ function leftmenu(context)
 function rightmenu(context)
 {
     galleryobj.leftctx.hide()
-	if (menuobj.value() == galleryobj.rightctx)
+	if (menuobj.value() && menuobj.value() != _8cnvctx)
     {
     	galleryobj.rightctx.hide();
         menuobj.setindex(_8cnvctx);
