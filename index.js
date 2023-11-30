@@ -939,8 +939,8 @@ var headlst =
             delete context.zoomrect;
             delete context.fitwidthrect;
             delete context.fullrect;
-            delete context.leftmenurect;
-            delete context.rightmenurect;
+            delete context.homemenurect;
+            delete context.imagemenurect;
             var s = SAFARI ? -1: ALIEXTENT;
             var e = rect.width>=320?(ALIEXTENT+10):-1;
             var a = new panel.rows([BEXTENT, 0],
@@ -949,13 +949,13 @@ var headlst =
                     [5, ALIEXTENT, 0, s, e, ALIEXTENT, 0, ALIEXTENT, 5],
                     [
                         0,
-                        new panel.leftmenu(),
+                        new panel.homemenu(),
                         0,
                         g ? new panel.fullscreen() : 0,
                         g ? new panel.zoom() : 0,
                         g ? new panel.fitwidth() : 0,
                         0,
-                        new panel.rightmenu(),
+                        new panel.imagemenu(),
                         0,
                     ]),
                     0
@@ -1307,7 +1307,7 @@ var displaylst =
                     new panel.layers(
                         [
                             new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                            new panel.expand(new panel.rectangle(context.cursorect, rightmenu), 10, 10),
+                            new panel.expand(new panel.rectangle(context.cursorect, imagemenu), 10, 10),
                             new panel.gridA(1, data.length, 1,
                                 new panel.shrink(new panel.text(), 10, 10)),
                         ]),
@@ -1747,34 +1747,11 @@ function templatemenu()
     headobj.draw();
 }
 
-function leftmenu()
+function homemenu()
 {
-            galleryobj.set(_8cnv.lastcurrent)
-            galleryobj.rightctx.hide()
-            if (menuobj.value() == galleryobj.leftctx)
-            {
-                galleryobj.leftctx.hide();
-                galleryobj.rightctx.hide();
-                galleryobj.leftcnv = _7cnv;
-                galleryobj.leftctx = _7cnvctx;
-                menuobj.setindex(_8cnvctx);
-            }
-            else
-            {
-                menuobj.setindex(galleryobj.leftctx);
-            }
-
-            menuobj.show();
-            headobj.draw();
-}
-
-function rightmenu()
-{
-    galleryobj.set(_8cnv.lastcurrent)
     galleryobj.leftctx.hide()
     if (menuobj.value() == galleryobj.rightctx)
     {
-        galleryobj.leftctx.hide();
         galleryobj.rightctx.hide();
         galleryobj.leftcnv = _7cnv;
         galleryobj.leftctx = _7cnvctx;
@@ -1785,13 +1762,30 @@ function rightmenu()
         menuobj.setindex(galleryobj.rightctx);
     }
 
-    var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-    displayobj.set(k);
     menuobj.show();
     headobj.draw();
 }
 
-panel.rightmenu = function()
+function imagemenu()
+{
+    galleryobj.leftctx.hide()
+    if (menuobj.value() == galleryobj.rightctx)
+    {
+        galleryobj.rightctx.hide();
+        galleryobj.leftcnv = _7cnv;
+        galleryobj.leftctx = _7cnvctx;
+        menuobj.setindex(_8cnvctx);
+    }
+    else
+    {
+        menuobj.setindex(galleryobj.rightctx);
+    }
+
+    menuobj.show();
+    headobj.draw();
+}
+
+panel.imagemenu = function()
 {
     this.draw = function(context, rect, user, time)
     {
@@ -1799,14 +1793,14 @@ panel.rightmenu = function()
         if (menuobj.value() == _8cnvctx ||
             menuobj.value() != galleryobj.leftctx)
         {
-		    context.rightmenurect = new rectangle();
+		    context.imagemenurect = new rectangle();
             var s = menuobj.value() == galleryobj.rightctx;
             var j = 5;
             var k = j / 2;
             var e = new panel.fill(OPTIONFILL);
             var a = new panel.layers(
                 [
-                    new panel.rectangle(context.rightmenurect, rightmenu),
+                    new panel.rectangle(context.imagemenurect, imagemenu),
                     s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                     new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                     new panel.rows([0, rect.height * 0.20, 0],
@@ -3701,17 +3695,17 @@ var taplst =
         context.refresh();
         
         if (headcnv.height && 
-            headcnvctx.leftmenurect && 
-            headcnvctx.leftmenurect.hitest(x, y))
+            headcnvctx.homemenurect && 
+            headcnvctx.homemenurect.hitest(x, y))
         {
-	        headcnvctx.leftmenurect.func();
+	        headcnvctx.homemenurect.func();
         }
         else if (
             headcnv.height &&
-            (headcnvctx.rightmenurect &&
-            headcnvctx.rightmenurect.hitest(x, y)))
+            (headcnvctx.imagemenurect &&
+            headcnvctx.imagemenurect.hitest(x, y)))
         {
-            headcnvctx.rightmenurect.func();
+            headcnvctx.imagemenurect.func();
         }
         else if (
             headcnv.height &&
@@ -3966,8 +3960,8 @@ var taplst =
     tap: function(context, rect, x, y)
     {
         var canvas = context.canvas;   
-        if (headcnvctx.leftmenurect && 
-            headcnvctx.leftmenurect.hitest(x, y))
+        if (headcnvctx.homemenurect && 
+            headcnvctx.homemenurect.hitest(x, y))
         {
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.rightctx.hide()
@@ -3989,8 +3983,8 @@ var taplst =
             return true;
         }
         else if (
-            headcnvctx.rightmenurect &&
-            headcnvctx.rightmenurect.hitest(x, y))
+            headcnvctx.imagemenurect &&
+            headcnvctx.imagemenurect.hitest(x, y))
         {
             galleryobj.leftctx.hide()
             if (menuobj.value() == galleryobj.rightctx)
@@ -6143,7 +6137,7 @@ window.addEventListener("screenorientation", (evt) =>
     resize();
 });
 
-panel.leftmenu = function()
+panel.homemenu = function()
 {
     this.draw = function(context, rect, user, time)
     {
@@ -6151,14 +6145,14 @@ panel.leftmenu = function()
         if (menuobj.value() == _8cnvctx ||
             menuobj.value() != galleryobj.rightctx)
         {
-            context.leftmenurect = new rectangle()
+            context.homemenurect = new rectangle()
             var j = 5;
             var k = j / 2;
             var e = new panel.fill(OPTIONFILL);
             var s = menuobj.value() == galleryobj.leftctx;
             var a = new panel.layers(
                 [
-                    new panel.rectangle(context.leftmenurect, leftmenu),
+                    new panel.rectangle(context.homemenurect, homemenu),
                     s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                     new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                     new panel.cols([0, rect.height * 0.20, 0],
