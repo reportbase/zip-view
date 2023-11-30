@@ -3742,10 +3742,7 @@ var taplst =
             context.folderect &&
             context.folderect.hitest(x, y))
         {
-            galleryobj.leftctx = _5cnvctx;
-            menuobj.setindex(galleryobj.leftctx);
-            menuobj.show();
-            headobj.draw();
+		    leftmenu(_5cnvctx);
         }
         else if (
             context.cursorect &&
