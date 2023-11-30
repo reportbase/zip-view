@@ -4619,7 +4619,7 @@ var buttonlst =
                 0,
             ]);
 
-        a.draw(context, rect, user.folders ? user.folders.split("/") : "", time);
+        a.draw(context, rect, user.folder ? user.folder.split("/") : "", time);
         context.restore();
     }
 },    
