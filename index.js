@@ -6707,7 +6707,7 @@ function setupmenus()
     {
         var k = galleryobj.data[n];
         var j = {};
-        //Object.assign(j,k);
+        Object.assign(j,k);
         j.index = n;
         j.func = function()
         {
