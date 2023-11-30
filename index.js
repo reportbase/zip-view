@@ -3695,7 +3695,7 @@ var taplst =
             headcnvctx.homemenurect && 
             headcnvctx.homemenurect.hitest(x, y))
         {
-            leftmenu(_5cnvctx)
+            leftmenu(_3cnvctx)
         }
         else if (
             headcnv.height &&
@@ -6696,9 +6696,6 @@ function setupmenus()
         cnv.lastcurrent = -1;
         cnv.rotated = [...a, ...a, ...a];
     }
-
-    galleryobj.leftctx = _7cnvctx;
-    galleryobj.rightctx = _6cnvctx;    
 }
 
 galleryobj.reset = function(obj)
