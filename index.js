@@ -1732,7 +1732,6 @@ function templatemenu()
     {
         galleryobj.leftctx.hide();
         galleryobj.rightctx.hide();
-        galleryobj.leftcnv = _9cnv;
         galleryobj.leftctx = _9cnvctx;
         menuobj.setindex(_8cnvctx);
     }
@@ -1753,7 +1752,6 @@ function homemenu()
     if (menuobj.value() == galleryobj.rightctx)
     {
         galleryobj.rightctx.hide();
-        galleryobj.leftcnv = _6cnv;
         galleryobj.leftctx = _6cnvctx;
         menuobj.setindex(_8cnvctx);
     }
@@ -1766,19 +1764,18 @@ function homemenu()
     headobj.draw();
 }
 
-function imagemenu()
+function imagemenu(context)
 {
     galleryobj.leftctx.hide()
     if (menuobj.value() == galleryobj.rightctx)
     {
         galleryobj.rightctx.hide();
-        galleryobj.leftcnv = _7cnv;
-        galleryobj.leftctx = _7cnvctx;
+        galleryobj.rightctx = context;
         menuobj.setindex(_8cnvctx);
     }
     else
     {
-        menuobj.setindex(galleryobj.rightctx);
+        menuobj.setindex(context);
     }
 
     menuobj.show();
@@ -3705,7 +3702,7 @@ var taplst =
             (headcnvctx.imagemenurect &&
             headcnvctx.imagemenurect.hitest(x, y)))
         {
-            headcnvctx.imagemenurect.func();
+            headcnvctx.imagemenurect.func(_6cnvctx);
         }
         else if (
             headcnv.height &&
@@ -3745,7 +3742,6 @@ var taplst =
             context.folderect &&
             context.folderect.hitest(x, y))
         {
-            galleryobj.leftcnv = _5cnv;
             galleryobj.leftctx = _5cnvctx;
             menuobj.setindex(galleryobj.leftctx);
             menuobj.show();
@@ -3829,7 +3825,6 @@ var taplst =
             galleryobj.set(_8cnv.lastcurrent)
             galleryobj.leftctx.hide()
             galleryobj.rightctx.hide();
-            galleryobj.leftcnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
             menuobj.setindex(_8cnvctx);
             var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
@@ -4182,7 +4177,6 @@ var taplst =
             loginbyemail(function()
             {
                 menuobj.hide();
-                galleryobj.leftcnv = _10cnv;
                 galleryobj.leftctx = _10cnvctx;
                 menuobj.setindex(galleryobj.leftctx);
                 menuobj.show();
@@ -4220,7 +4214,6 @@ var taplst =
         {
             galleryobj.leftctx.hide();
             galleryobj.rightctx.hide();
-            galleryobj.leftcnv = _7cnv;
             galleryobj.leftctx = _7cnvctx;
             menuobj.setindex(galleryobj.leftctx);
             menuobj.show();
@@ -6546,7 +6539,6 @@ function setupmenus()
                      _1cnv.rotated = [...a, ...a, ...a];
                     
                     menuobj.hide();
-                    galleryobj.leftcnv = _1cnv;
                     galleryobj.leftctx = _1cnvctx;
                     menuobj.setindex(galleryobj.leftctx);
                     menuobj.show();
@@ -6583,7 +6575,6 @@ function setupmenus()
                     var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
                     _2cnv.rotated = [...a, ...a, ...a];
                     menuobj.hide();
-                    galleryobj.leftcnv = _2cnv;
                     galleryobj.leftctx = _2cnvctx;
                     menuobj.setindex(galleryobj.leftctx);
                     menuobj.show();
@@ -6611,7 +6602,6 @@ function setupmenus()
             }
  
             menuobj.hide();
-            galleryobj.leftcnv = _10cnv;
             galleryobj.leftctx = _10cnvctx;
             menuobj.setindex(galleryobj.leftctx);
             menuobj.show();
@@ -6631,7 +6621,6 @@ function setupmenus()
         func: function()
         {
             menuobj.hide();
-            galleryobj.leftcnv = _5cnv;
             galleryobj.leftctx = _5cnvctx;
             menuobj.setindex(galleryobj.leftctx);
             menuobj.show();
@@ -6644,7 +6633,6 @@ function setupmenus()
         func: function()
         {
             menuobj.hide();
-            galleryobj.leftcnv = _3cnv;
             galleryobj.leftctx = _3cnvctx;
             menuobj.setindex(galleryobj.leftctx);
             menuobj.show();
@@ -6759,9 +6747,7 @@ function setupmenus()
         cnv.rotated = [...a, ...a, ...a];
     }
 
-    galleryobj.leftcnv = _7cnv;
     galleryobj.leftctx = _7cnvctx;
-    galleryobj.rightcnv = _6cnv;
     galleryobj.rightctx = _6cnvctx;    
 }
 
