@@ -579,9 +579,6 @@ var footlst =
     {
         var canvas = context.canvas;
         context.save();     
-        canvas.uploadrect = new rectangle();
-	    canvas.openrect = new rectangle();
-	    canvas.metarect = new rectangle();
         canvas.closerect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
@@ -591,29 +588,7 @@ var footlst =
                     new panel.text(),
                     new panel.rectangle(canvas.closerect),
                 ]),
-                0,
-                new panel.layers(
-                [
-                    new panel.fill(FOOTBTNCOLOR),
-                    new panel.colsA([0,0,0],
-                    [
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.openrect),
-                            new panel.text(),
-                        ]),
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.uploadrect),
-                            new panel.text(),
-                        ]),
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.metarect),
-                            new panel.text(),
-                        ]),
-                    ])                           
-                ])
+                0
             ]);
 
         var k = galleryobj.title?galleryobj.title:"Images";
@@ -621,11 +596,6 @@ var footlst =
                [
                    `\u{25C0}   ${k}`,
                     0,
-		            [
-                        "Open",
-                        "Upload", 
-                        "Copy"
-                    ],
                 ], 0);
         
         context.restore();
@@ -4513,7 +4483,44 @@ var buttonlst =
         a.draw(context, rect, k, time);
         context.restore();
     }
-},      
+},   
+{
+    name: "IMAGES",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save()
+        var clr = FILLBAR;
+        if (user.tap)
+            clr = MENUTAP;
+        else if (user.enabled && user.enabled())
+            clr = MENUSELECT;
+        else if (canvas.sliceobj.current() == time)
+            clr = MENUSELECT;
+
+        var e = context.canvas.hollyobj.berp();
+        var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
+            [
+                0,
+                new panel.layers(
+                    [
+                        new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                        new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
+                    ]),
+                0,
+            ]);
+
+        var k = 
+	    [
+		    user.title,
+            user.name,
+            user.id,
+        ];
+        
+        a.draw(context, rect, k, time);
+        context.restore();
+    }
+},   	
 {
     name: "USER",
     draw: function(context, rect, user, time)
@@ -5181,7 +5188,7 @@ var eventlst =
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "GALLERIES",
+    button: "IMAGES",
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
@@ -5189,7 +5196,7 @@ var eventlst =
     pinch: "MENU",
     display: "MENU",
     footer: "IMAGES",
-    buttonheight: 70,
+    buttonheight: 160,
     buttonmargin: 15,
     width: 640
 },
@@ -6682,7 +6689,11 @@ function setupmenus()
         var k = galleryobj.data[n];
         var j = {};
         j.index = n;
-        j.title = `${n+1}`;
+        j.title = `${n+1} of ${galleryobj.length()}`;
+        if (k.url)
+            j.name = k.url.split("/").pop();
+        else if (k.id)
+            j.name = k.id;
         j.func = function()
         {
             gotoimage(this.index+1)
