@@ -4530,7 +4530,7 @@ var buttonlst =
         for (var n = 0; n < j.length; ++n)
         {
             var name = j[n];
-            if (name.findIndex(name) >= 0)
+            if (bad.findIndex(name) >= 0)
                 continue;
             k.push(user[name]);
         }
