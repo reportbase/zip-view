@@ -1766,7 +1766,7 @@ function homemenu()
 
 var rightmenu = function(context)
 {
-    this.go = function()
+    this.func = function()
     {
 	    galleryobj.leftctx.hide()
 	    if (menuobj.value() == galleryobj.rightctx)
@@ -3705,7 +3705,7 @@ var taplst =
             (headcnvctx.imagemenurect &&
             headcnvctx.imagemenurect.hitest(x, y)))
         {
-            headcnvctx.imagemenurect.go();
+            headcnvctx.imagemenurect.func();
         }
         else if (
             headcnv.height &&
@@ -5710,12 +5710,12 @@ var panvert = function(obj, y)
     }
 };
 
-panel.rectangle = function(r, func)
+panel.rectangle = function(r, f)
 {
     this.draw = function(context, rect, user, time)
     {
         Object.assign(r, rect);    
-        r.func = func;
+        r.func = f.func;
     }
 }
 
