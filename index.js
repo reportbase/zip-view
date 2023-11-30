@@ -6731,6 +6731,7 @@ function setupmenus()
 	}
 	
     _9cnv.sliceobj.data = lst;
+    /*
     var t = url.searchParams.get("t");
     var n = 0;
     for (; n < _9cnv.sliceobj.data.length; ++n)
@@ -6738,7 +6739,20 @@ function setupmenus()
             break;
     if (n != _9cnv.sliceobj.data.length)
         _9cnv.sliceobj.set(n);
-        
+    */
+    
+    var hh = buttonobj.value();
+    var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
+    var n = 0;
+    for (; n < _9cnv.sliceobj.data.length; ++n)
+        {
+            var j = _9cnv.sliceobj.data[n].split("x")[0];
+            if (ww <= Number(j))
+                break;    
+        }
+    
+    _9cnv.sliceobj.set(n);
+
     _2cnv.sliceobj.data = [];
     _11cnv.sliceobj.data = [];
 
