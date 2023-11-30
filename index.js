@@ -4511,14 +4511,11 @@ var buttonlst =
             ]);
 
         var k = [];
-        k.push(user.cursor);
-        if (user.title)
-            k.push(user.title);
-        if (user.name)
-            k.push(user.name);
-        if (user.id)
-            k.push(user.id);
-        
+        k.push(`${user.index+1} of ${galleryobj.length()}`);
+        if (user.url)
+            k.push(user.url.split("/").pop());
+        var j = Object.getOwnPropertyDescriptors(user); 
+        k = k.concat(j); 
         a.draw(context, rect, k, time);
         context.restore();
     }
@@ -6690,18 +6687,13 @@ function setupmenus()
     {
         var k = galleryobj.data[n];
         k.index = n;
-        k.cursor = `${n+1} of ${galleryobj.length()}`;
-        if (k.url)
-            k.name = k.url.split("/").pop();
         k.func = function()
         {
 	        galleryobj.set(this.index);
             gotoimage(this.index+1)
             closemenu();
             return true;
-        };
-        
-        
+        };   
     };
 	
 	_6cnv.sliceobj.data = galleryobj.data;
