@@ -4514,8 +4514,9 @@ var buttonlst =
         k.push(`${user.index+1} of ${galleryobj.length()}`);
         if (user.url)
             k.push(user.url.split("/").pop());
-        var j = Object.getOwnPropertyDescriptors(user); 
-        k = k.concat(j); 
+        if (user.id)
+            k.push(user.id);
+        var j = Object.keys(user);
         a.draw(context, rect, k, time);
         context.restore();
     }
