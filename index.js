@@ -3695,7 +3695,7 @@ var taplst =
             headcnvctx.homemenurect && 
             headcnvctx.homemenurect.hitest(x, y))
         {
-            leftmenu(_3cnvctx)
+            rightmenu(_3cnvctx)
         }
         else if (
             headcnv.height &&
