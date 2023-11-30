@@ -4072,14 +4072,7 @@ var taplst =
         else if (canvas.closerect && 
                  canvas.closerect.hitest(x, y))
         {
-            menuobj.hide();
-            menuobj.setindex(_8cnvctx);
-	    var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
-	    headham.panel = headlst[k];
-	    var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-	    displayobj.set(k);
-            headobj.draw();
-            menuobj.draw();
+            closemenu();
             return false;
         }
         else if (canvas.useraddrect && canvas.useraddrect.hitest(x, y))
@@ -4459,6 +4452,41 @@ var buttonlst =
     name: "DEFAULT",
     draw: function(context, rect, user, time) {}
 },
+{
+    name: "TEMPLATE",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save()
+        var clr = FILLBAR;
+        if (user.tap)
+            clr = MENUTAP;
+        else if (user.enabled && user.enabled())
+            clr = MENUSELECT;
+        else if (canvas.sliceobj.current() == time)
+            clr = MENUSELECT;
+
+        var e = context.canvas.hollyobj.berp();
+        var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
+            [
+                0,
+                new panel.layers(
+                    [
+                        new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                        new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
+                    ]),
+                0,
+            ]);
+
+        var k = 
+	    [
+		    user.title
+        ];
+        
+        a.draw(context, rect, k, time);
+        context.restore();
+    }
+},      
 {
     name: "USER",
     draw: function(context, rect, user, time)
@@ -5192,7 +5220,7 @@ var eventlst =
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "OPTION",
+    button: "TEMPLATE",
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
@@ -6312,6 +6340,18 @@ async function loadjson(blob)
     }
 }
 
+function closemenu()
+{
+    menuobj.hide();
+    menuobj.setindex(_8cnvctx);
+    var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+    headham.panel = headlst[k];
+    var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+    displayobj.set(k);
+    headobj.draw();
+    menuobj.draw();
+}
+
 headobj.toggle = function()
 {
     headcnvctx.show(0, 0, window.innerWidth, headcnv.height?0:HEADHEIGHT);
@@ -6656,7 +6696,7 @@ function setupmenus()
             }
     
             _9cnv.sliceobj.set(this.index);
-            menuobj.draw();            
+            closemenu();            
 		    return true;
 		}
 		
