@@ -3742,7 +3742,7 @@ var taplst =
             context.folderect &&
             context.folderect.hitest(x, y))
         {
-		    leftmenu(_5cnvctx);
+		    rightmenu(_5cnvctx);
         }
         else if (
             context.cursorect &&
