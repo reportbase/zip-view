@@ -3695,7 +3695,7 @@ var taplst =
             headcnvctx.homemenurect && 
             headcnvctx.homemenurect.hitest(x, y))
         {
-            leftmenu(_7cnvctx)
+            leftmenu(_3cnvctx)
         }
         else if (
             headcnv.height &&
@@ -3952,53 +3952,7 @@ var taplst =
     tap: function(context, rect, x, y)
     {
         var canvas = context.canvas;   
-        if (headcnvctx.homemenurect && 
-            headcnvctx.homemenurect.hitest(x, y))
-        {
-            /*
-            galleryobj.set(_8cnv.lastcurrent)
-            galleryobj.rightctx.hide()
-            if (menuobj.value() == galleryobj.leftctx)
-            {
-                galleryobj.leftctx.hide();
-                menuobj.setindex(_8cnvctx);
-                menuobj.draw();
-                galleryobj.leftnv = _7cnv;
-                galleryobj.leftctx = _7cnvctx;
-            }
-            else
-            {
-                menuobj.setindex(galleryobj.leftctx);
-                menuobj.show();
-            }
-
-            headobj.draw();
-            */
-            return true;
-        }
-        else if (
-            headcnvctx.imagemenurect &&
-            headcnvctx.imagemenurect.hitest(x, y))
-        {
-            /*
-            galleryobj.leftctx.hide()
-            if (menuobj.value() == galleryobj.rightctx)
-            {
-                galleryobj.rightctx.hide();
-                menuobj.setindex(_8cnvctx);
-                menuobj.draw();
-            }
-            else
-            {
-                menuobj.setindex(galleryobj.rightctx);
-                menuobj.show();
-            }
-
-            headobj.draw();
-            */
-            return true;
-        }
-        else if (canvas.gallerypatchrect && canvas.gallerypatchrect.hitest(x, y))
+        if (canvas.gallerypatchrect && canvas.gallerypatchrect.hitest(x, y))
         {
             var gallery = _2cnv.sliceobj.value();
             var title = document.getElementById("gallery-add-title");
@@ -4213,11 +4167,7 @@ var taplst =
         }
         else if (canvas.homerect && canvas.homerect.hitest(x, y))
         {
-            galleryobj.leftctx.hide();
-            galleryobj.rightctx.hide();
-            galleryobj.leftctx = _7cnvctx;
-            menuobj.setindex(galleryobj.leftctx);
-            menuobj.show();
+		    leftmenu(_7cnvctx);
             return false;
         }
         else if (canvas.timeobjrect &&
