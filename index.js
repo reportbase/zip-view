@@ -4220,6 +4220,11 @@ bossobj.draw = function()
     var context = _4cnvctx;
     var rect = context.rect();
 
+    if (!canvas.width)
+        return;
+	if (!canvas.height)
+        return;
+    
     if (canvas.lastime == canvas.timeobj.current())
         return;
     else
