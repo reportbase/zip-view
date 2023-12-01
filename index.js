@@ -6837,14 +6837,9 @@ galleryobj.reset = function(obj)
     setfavicon();
     stretchobj.makerange("40-90", stretchobj.length());  
     stretchobj.set(90);
-    slicewidthobj.set(SLICEWIDTH);
+    slicewidthobj.set(SLICEWIDTH);	
     headcnv.style.pointerEvents = "none";
-    var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
-    headham.panel = headlst[k];
-    var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-    displayobj.set(k);
-    headcnvctx.show(0, 0, window.innerWidth, 0);
-    headobj.draw();  
+    headobj.reset(); 
     menuobj.draw();
     setupmenus();
 
