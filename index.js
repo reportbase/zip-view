@@ -5510,12 +5510,12 @@ contextobj.init();
 //contextobj reset
 contextobj.reset = function()
 {
+	bossobj.reset();
     var context = _4cnvctx;
     if (photo.image &&
         photo.image.complete &&
         photo.image.naturalHeight)
     {
-        bossobj.reset();
     }
     else
     {
