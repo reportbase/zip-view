@@ -950,7 +950,7 @@ var headlst =
                                     5],
                         [
                             0, 0, 0,
-                            new panel.info(),
+                            0,//new panel.info(),
                             new panel.zoom(),
                             0,//new panel.info(),
                             0, 
