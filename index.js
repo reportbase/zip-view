@@ -580,6 +580,8 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.closerect = new rectangle();
+        canvas.downloadarect = new rectangle();
+        canvas.uploadrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
@@ -588,7 +590,24 @@ var footlst =
                     new panel.text(),
                     new panel.rectangle(canvas.closerect),
                 ]),
-                0
+                0,
+                new panel.layers(
+                [
+                    new panel.fill(FOOTBTNCOLOR),
+                    new panel.colsA([0,0],
+                    [
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.downloadrect),
+                            new panel.text(),
+                        ]),
+                        new panel.layers(
+                        [
+                            new panel.rectangle(canvas.uploadrect),
+                            new panel.text(),
+                        ])
+                    ])                            
+                ])
             ]);
 
         var k = "Image";
@@ -596,6 +615,10 @@ var footlst =
                [
                    `\u{25C0}   ${k}`,
                     0,
+                   [
+                        "Download",
+                       "Upload",
+                    ]
                 ], 0);
         
         context.restore();
@@ -3789,6 +3812,7 @@ var taplst =
         }
         else if (menuobj.value() && menuobj.value() != _8cnvctx)
         {
+            closemenu()
         }
         else 
         {
@@ -3854,35 +3878,10 @@ var taplst =
                 slicen.more = 1;
                 menuobj.draw();
     		}
-            else if (slice.uploadrect && slice.uploadrect.hitest(x, y))
-            {
-            }
             else if (slice.downloadrect && slice.downloadrect.hitest(x, y))
             {
                 rightmenu(_11cnvctx);
                 console.log(slice);
-                /*
-                if (slice.blob)
-	            {
-	                const anchor = document.createElement('a');
-	                anchor.href = URL.createObjectURL(slice.blob);
-	                anchor.download = slice.name;
-	                anchor.click();
-	                URL.revokeObjectURL(anchor.href);
-	                anchor.remove();
-	            }
-	            else
-	            {
-	                var id = slice.id;
-	                var path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
-	                const anchor = document.createElement('a');
-	                anchor.href = path;
-	                anchor.download = id;
-	                anchor.click();
-	                URL.revokeObjectURL(anchor.href);
-	                anchor.remove();
-	            }	        
-                */
             }
             else
             { 
@@ -3942,6 +3941,32 @@ var taplst =
                      menuobj.draw();
                 })
             })
+        }
+        else if (canvas.uploadrect && canvas.uploadrect.hitest(x, y))
+        {
+        }
+        else if (canvas.downloadrect && canvas.downloadrect.hitest(x, y))
+        {
+            if (slice.blob)
+            {
+                const anchor = document.createElement('a');
+                anchor.href = URL.createObjectURL(slice.blob);
+                anchor.download = slice.name;
+                anchor.click();
+                URL.revokeObjectURL(anchor.href);
+                anchor.remove();
+            }
+            else
+            {
+                var id = slice.id;
+                var path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
+                const anchor = document.createElement('a');
+                anchor.href = path;
+                anchor.download = id;
+                anchor.click();
+                URL.revokeObjectURL(anchor.href);
+                anchor.remove();
+            }	              
         }
         else if (canvas.galleryopenrect && canvas.galleryopenrect.hitest(x, y))
         {
