@@ -2537,7 +2537,7 @@ var wheelst =
         {
             var e = delta/200;
             zoomobj.addperc(e);
-            bossobj.init()
+            bossobj.reset()
 	        bossobj.draw();
         }
         else if (context.stretchrect &&
@@ -2551,7 +2551,7 @@ var wheelst =
         {
             var e = delta/1000;
             rowobj.addperc(e);
-            bossobj.init()
+            bossobj.reset()
 	        bossobj.draw();
         }
     },
