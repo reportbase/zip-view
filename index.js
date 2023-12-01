@@ -4417,6 +4417,7 @@ bossobj.reset = function()
     var a = Array(_4cnv.sliceobj.length()).fill().map((_, index) => index);
     _4cnv.rotated = [...a, ...a, ...a];
 
+    bossobj.draw();
     //context.refresh();
 }
 
