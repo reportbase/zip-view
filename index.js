@@ -1840,52 +1840,9 @@ panel.download = function()
         var a = new panel.layers(
         [
             new panel.rectangle(user.downloadrect),
-            _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
             new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
             new panel.shrink(new panel.circle(ARROWFILL), 20, 30),
         ]);
-
-        a.draw(context, rect, user, time);
-        context.restore();
-    }
-};
-
-panel.boss = function()
-{
-    this.draw = function(context, rect, user, time)
-    {
-        context.save();
-        user.metarect = new rectangle()
-        context.fillStyle = "white";
-        context.strokeStyle = "white";
-
-        var a = new panel.layers(
-            [
-                new panel.rectangle(user.metarect),
-                //_4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                new panel.shrink(new panel.fill(ARROWFILL), 21, 31),
-            ]);
-
-        a.draw(context, rect, user, time);
-        context.restore();
-    }
-};
-
-panel.upload = function()
-{
-    this.draw = function(context, rect, user, time)
-    {
-        context.save();
-        user.uploadrect = new rectangle()
-        context.fillStyle = "white";
-        
-        var a = new panel.layers(
-        [
-            new panel.rectangle(user.uploadrect),
-            new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-            new panel.sides(ARROWFILL, 12, 4), 
-	]);
 
         a.draw(context, rect, user, time);
         context.restore();
@@ -2463,7 +2420,7 @@ var wheelst =
         {
             if (context.elst.length % 3)
                 return;         
-            var j = buttonobj.length()/20;
+            var j = buttonobj.length()/40;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
@@ -3899,11 +3856,12 @@ var taplst =
     		}
             else if (slice.uploadrect && slice.uploadrect.hitest(x, y))
             {
-                rightmenu(_11cnvctx);
-                console.log(slice);
             }
             else if (slice.downloadrect && slice.downloadrect.hitest(x, y))
             {
+                rightmenu(_11cnvctx);
+                console.log(slice);
+                /*
                 if (slice.blob)
 	            {
 	                const anchor = document.createElement('a');
@@ -3924,6 +3882,7 @@ var taplst =
 	                URL.revokeObjectURL(anchor.href);
 	                anchor.remove();
 	            }	        
+                */
             }
             else
             { 
@@ -4812,13 +4771,11 @@ var buttonlst =
                         0,
                     ]),
                     0,
-                    new panel.cols([0,ALIEXTENT,ALIEXTENT+10,ALIEXTENT,0],
+                    new panel.cols([0,ALIEXTENT+10,0],
                     [
                         0,
-                        new panel.boss(),
-    	                new panel.download(),
-    	                new panel.upload(),
-                        0,
+                        new panel.download(),
+    	                0,
                     ]),
                     0,
                 ]);    
