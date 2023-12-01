@@ -1861,7 +1861,7 @@ panel.holly = function()
             new panel.expand(new panel.rectangle(user.hollyrect), 0, 20),
             new panel.shrink(new panel.currentH(
                 new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
-        ]),
+        ])
 
         a.draw(context, rect, _8cnv.hollyobj, time)
     }
