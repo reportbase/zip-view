@@ -952,7 +952,7 @@ var headlst =
                             0, 0, 0,
                             new panel.info(),
                             new panel.zoom(),
-                            new panel.info(),
+                            0,//new panel.info(),
                             0, 
                             new panel.closeboss(), 
                             0
