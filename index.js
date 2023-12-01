@@ -598,12 +598,12 @@ var footlst =
                     [
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.useraddrect),
+                            new panel.rectangle(canvas.downloadrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.userpatchrect),
+                            new panel.rectangle(canvas.uploadrect),
                             new panel.text(),
                         ]),
                     ])                            
@@ -612,7 +612,7 @@ var footlst =
         
         a.draw(context, rect, 
                [
-                   `\u{25C0}   Users`,
+                   `\u{25C0}   Image`,
                    0,
                    [
                        `Download`,
