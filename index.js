@@ -6823,7 +6823,6 @@ galleryobj.reset = function(obj)
     {
         galleryobj.width = this.width;
         galleryobj.height = this.height;
-        contextobj.reset();
         buttonobj.reset();
         buttonobj.init();
     
