@@ -3127,19 +3127,32 @@ var presslst =
     pressup: function(context, rect, x, y)
     {
     },
-    press: function(context, rect, x, y) {}
+    press: function(context, rect, x, y) 
+    {
+        headobj.toggle();    
+    }
 },
 {
     name: "MENU",
-    pressup: function(context, rect, x, y) {},
-    press: function(context, rect, x, y) {}
+    pressup: function(context, rect, x, y) 
+    {
+        
+    },
+    press: function(context, rect, x, y) 
+    {
+    }
 },
 {
     name: "BOSS",
     pressup: function(context, rect, x, y)
     {
-   },
-    press: function(context, rect, x, y) {}
+    },
+    press: function(context, rect, x, y) 
+    {
+        var h = headcnv.height ? 0 : HEADHEIGHT;
+        headcnvctx.show(0, 0, window.innerWidth, h);
+        headobj.draw();
+    }
 }, 
 ];
 
@@ -3226,7 +3239,7 @@ var keylst =
             var canvas = context.canvas;
             canvas.shiftKey = 0;
             canvas.ctrlKey = 0;
-	canvas.keypressed = 0;
+	        canvas.keypressed = 0;
         },
         keydown: function(evt)
         {
