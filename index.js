@@ -2537,7 +2537,8 @@ var wheelst =
         {
             var e = delta/200;
             zoomobj.addperc(e);
-            contextobj.reset()
+            bossobj.init()
+	        bossobj.draw();
         }
         else if (context.stretchrect &&
             context.stretchrect.hitest(x, y))
@@ -2550,7 +2551,8 @@ var wheelst =
         {
             var e = delta/1000;
             rowobj.addperc(e);
-            contextobj.reset()
+            bossobj.init()
+	        bossobj.draw();
         }
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
