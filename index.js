@@ -6534,7 +6534,7 @@ function setupmenus()
 	        _8cnvctx.canvas.slideshow = 0;
             delete photo.image;
             contextobj.reset();
-            return true;
+            return false;
         }
     },     
     {
