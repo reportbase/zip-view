@@ -3614,6 +3614,8 @@ var taplst =
             headcnvctx.closebossrect &&
             headcnvctx.closebossrect.hitest(x, y))
         {
+            _4cnv.width = 0;
+            _4cnv.height = 0;
             menuobj.setindex(_8cnvctx);
             menuobj.show();
             var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
@@ -4859,7 +4861,7 @@ menuobj.show = function()
     if (!context)
         return;
     var canvas = context.canvas;
-    _4cnv.height = 0;
+    //_4cnv.height = 0;
    
     var k = displaylst.findIndex(function(a){return a.name == canvas.display});
     displayobj.set(k);
@@ -6524,6 +6526,8 @@ function setupmenus()
         func: function() 
         {
             menuobj.hide();
+	        _4cnv.width = window.innerWidth;
+            _4cnv.height = window.innerHeight;
             galleryobj.set(_8cnv.centered);
             headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
             var k = headlst.findIndex(function(a){return a.name == "BOSS"});
