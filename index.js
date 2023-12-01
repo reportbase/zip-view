@@ -3672,7 +3672,6 @@ var taplst =
         clearInterval(global.timeauto);
         global.timeauto = 0;
         var obj = canvas.hollyobj;
-        context.refresh();
         
         if (headcnv.height && 
             headcnvctx.homemenurect && 
