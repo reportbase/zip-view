@@ -2829,30 +2829,15 @@ var panlst =
         
         if (type == "panleft" || type == "panright")
         {
-            if (canvas.issealrect)
-            {
-                var k = (x - canvas.sealrect.x) / canvas.sealrect.width;
-                sealobj.setperc(k);
-                menuobj.draw();
-            }
-            else if (canvas.ishollyrect)
-            {
-                var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
-                context.canvas.hollyobj.setperc(k);
-                menuobj.draw();
-            }
-            else
-            {
-                var obj = context.canvas.hollyobj;
-                var e = canvas.startx - x;
-                var k = panhorz(obj, e);
-                if (k == -1)
-                    return;
-                if (k == obj.anchor())
-                    return;
-                obj.set(k);
-                menuobj.draw();
-            }
+            var obj = context.canvas.hollyobj;
+            var e = canvas.startx - x;
+            var k = panhorz(obj, e);
+            if (k == -1)
+                return;
+            if (k == obj.anchor())
+                return;
+            obj.set(k);
+            menuobj.draw();
         }
         else if (type == "panup" || type == "pandown")
         {
@@ -2860,12 +2845,6 @@ var panlst =
             {
                 var k = (y - canvas.timeobjrect.y) / canvas.timeobjrect.height;
                 canvas.timeobj.setperc(1-k);
-            }
-            else if (canvas.isbeavrect)
-            {
-                var k = (y - canvas.beavrect.y) / canvas.beavrect.height;
-                beavobj.setperc(1-k);
-                menuobj.draw();
             }
             else
             {
@@ -2893,8 +2872,6 @@ var panlst =
         canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
         canvas.istimeobjrect = canvas.timeobjrect && canvas.timeobjrect.hitest(x, y);
         canvas.ishollyrect = canvas.hollyrect && canvas.hollyrect.hitest(x, y);
-        canvas.isbeavrect = canvas.beavrect && canvas.beavrect.hitest(x, y);
-        canvas.issealrect = canvas.sealrect && canvas.sealrect.hitest(x, y);
     },
     panend: function(context, rect, x, y)
     {
@@ -2909,8 +2886,6 @@ var panlst =
         delete context.canvas.hollyobj.offset;
         delete canvas.istimeobjrect;
         delete canvas.ishollyrect;
-        delete canvas.isbeavrect;
-        delete canvas.issealrect;
         reseturl();
     }
 },
