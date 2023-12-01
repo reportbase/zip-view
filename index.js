@@ -4809,7 +4809,7 @@ var buttonlst =
                         new panel.layers(
                             [
                                 new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.hollyrect), 0, 20),
+                                new panel.expand(new panel.rectangle(context.canvas.hollyrect), 0, 20),
                                 new panel.shrink(new panel.currentH(
                                     new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
                             ]),
