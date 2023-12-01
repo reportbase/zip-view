@@ -950,7 +950,7 @@ var headlst =
                                     5],
                         [
                             0, 0, 0,
-                            0,//new panel.info(),
+                            new panel.binfo(),
                             new panel.zoom(),
                             0,//new panel.info(),
                             0, 
@@ -1867,20 +1867,39 @@ panel.holly = function()
     }
 }
 
+panel.binfo = function()
+{
+    this.draw = function(context, rect, user, time)
+    {
+        context.save();
+        context.inforect = new rectangle();
+        context.fillStyle = "white";
+        context.strokeStyle = "white";
+
+        var a = new panel.layers(
+        [
+            new panel.rectangle(context.inforect),
+            new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+            new panel.shrink(new panel.circle(ARROWFILL), 20, 30),
+        ]);
+
+        a.draw(context, rect, user, time);
+        context.restore();
+    }
+};
+
 panel.info = function()
 {
     this.draw = function(context, rect, user, time)
     {
         context.save();
         user.inforect = new rectangle()
-	    context.inforect = new rectangle();
-        context.fillStyle = "white";
+	    context.fillStyle = "white";
         context.strokeStyle = "white";
 
         var a = new panel.layers(
         [
             new panel.rectangle(user.inforect),
-            new panel.rectangle(context.inforect),
             new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
             new panel.shrink(new panel.circle(ARROWFILL), 20, 30),
         ]);
