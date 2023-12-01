@@ -4781,9 +4781,10 @@ var buttonlst =
             delete user.copyrect;
             delete user.uploadrect;
             delete user.downloadrect;
+            const rainstep = Math.min(420,window.innerWidth-60);
 	        if (!headcnv.height && user.more)
             {
-                var a = new panel.rows([8,BEXTENT,0,BEXTENT,8],
+                var a = new panel.rows([8,BEXTENT,0,BEXTENT,20,8],
                 [
                     0,
                     new panel.cols([5,ALIEXTENT,0,ALIEXTENT,5],
@@ -4801,11 +4802,28 @@ var buttonlst =
                         new panel.download(),
     	                0,
                     ]),
+                      new panel.cols([0, rainstep, 0],
+                    [
+                        0,
+                        new panel.layers(
+                            [
+                                new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
+                                new panel.expand(new panel.rectangle(canvas.hollyrect), 0, 20),
+                                new panel.shrink(new panel.currentH(
+                                    new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
+                            ]),
+                        0,
+                    ]),
+                          
                     0,
                 ]);    
                 
                 a.draw(context, rect, user, 0);
             }
+                   
+
+            a.draw(context, rect, context.canvas.hollyobj, 0);
+
             
             if (user.tap)
             {
