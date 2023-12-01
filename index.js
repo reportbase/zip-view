@@ -6254,8 +6254,6 @@ let thumbimglst = [];
 
 async function getblobpath(img, slice)
 {
-	img.src = "https://i.imgur.com/56ITYQl.jpg";
-	return;//todo
     var blob = await slice.entry.blob(`image/${slice.ext}`);
     img.src = URL.createObjectURL(blob);
 }
@@ -6360,6 +6358,10 @@ galleryobj.getpath = function(index)
     else if (gallery.blob)
     {
         path = URL.createObjectURL(gallery.blob);
+    }
+    else 
+    {
+	    path = "https://i.imgur.com/56ITYQl.jpg";//todo
     }
     
     return path;
