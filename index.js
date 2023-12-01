@@ -6525,13 +6525,12 @@ function setupmenus()
         title: "Original Image",
         func: function() 
         {
+            menuobj.hide();
             galleryobj.set(_8cnv.centered);
             headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
             var k = headlst.findIndex(function(a){return a.name == "BOSS"});
             headham.panel = headlst[k];
-            headobj.draw();
             delete photo.image;
-            menuobj.hide();
             contextobj.reset();
             return true;
         }
