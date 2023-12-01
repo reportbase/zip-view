@@ -6525,6 +6525,9 @@ function setupmenus()
         title: "Original Image",
         func: function() 
         {
+	        clearInterval(_8cnvctx.swipetimeout)
+	        _8cnvctx.swipetimeout = 0;
+	        _8cnvctx.canvas.slideshow = 0;
             menuobj.hide();
 	        _4cnv.width = window.innerWidth;
             _4cnv.height = window.innerHeight;
@@ -6532,9 +6535,6 @@ function setupmenus()
             headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
             var k = headlst.findIndex(function(a){return a.name == "BOSS"});
             headham.panel = headlst[k];
-	        clearInterval(_8cnvctx.swipetimeout)
-	        _8cnvctx.swipetimeout = 0;
-	        _8cnvctx.canvas.slideshow = 0;
             delete photo.image;
             contextobj.reset();
             return false;
