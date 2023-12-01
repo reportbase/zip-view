@@ -1850,18 +1850,35 @@ panel.imagemenu = function()
     }
 };
 
-panel.download = function()
+panel.holly = function()
+{
+    this.draw = function(context, rect, user, time)
+    {
+        user.hollyrect = new rectangle();
+        var a = new panel.layers(
+        [
+            new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
+            new panel.expand(new panel.rectangle(user.hollyrect), 0, 20),
+            new panel.shrink(new panel.currentH(
+                new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
+        ]),
+
+        a.draw(context, rect, _8cnv.hollyobj, time)
+    }
+}
+
+panel.info = function()
 {
     this.draw = function(context, rect, user, time)
     {
         context.save();
-        user.downloadrect = new rectangle()
+        user.inforect = new rectangle()
         context.fillStyle = "white";
         context.strokeStyle = "white";
 
         var a = new panel.layers(
         [
-            new panel.rectangle(user.downloadrect),
+            new panel.rectangle(user.inforect),
             new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
             new panel.shrink(new panel.circle(ARROWFILL), 20, 30),
         ]);
@@ -3877,7 +3894,7 @@ var taplst =
                 slicen.more = 1;
                 menuobj.draw();
     		}
-            else if (slice.downloadrect && slice.downloadrect.hitest(x, y))
+            else if (slice.inforect && slice.inforect.hitest(x, y))
             {
                 rightmenu(_11cnvctx);
                 console.log(slice);
@@ -4778,9 +4795,8 @@ var buttonlst =
                     0, yyy, ww, hhh);
             }
 
-            delete user.copyrect;
             delete user.uploadrect;
-            delete user.downloadrect;
+            delete user.inforect;
             const rainstep = Math.min(420,window.innerWidth-60);
 	        
 	        if (!headcnv.height && user.more)
@@ -4800,26 +4816,20 @@ var buttonlst =
                     new panel.cols([0,ALIEXTENT+10,0],
                     [
                         0,
-                        new panel.download(),
+                        new panel.info(),
     	                0,
                     ]),
                     new panel.cols([0, rainstep, 0],
                     [
                         0,
-                        new panel.layers(
-                            [
-                                new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(context.canvas.hollyrect), 0, 20),
-                                new panel.shrink(new panel.currentH(
-                                    new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
-                            ]),
+                        new panel.holly(),
                         0,
                     ]),
                           
                     0,
                 ]);    
                 
-                a.draw(context, rect, context.canvas.hollyobj, 0);
+                a.draw(context, rect, user, 0);
             }
             
             if (user.tap)
