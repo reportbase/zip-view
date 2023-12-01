@@ -3831,27 +3831,7 @@ var taplst =
             var slicen = canvas.sliceobj.data[nn];
             var slice = canvas.sliceobj.data[n];
             y -= slice.rect.y;
-            if (slice.metarect && slice.metarect.hitest(x, y))
-            {
-                if (!galleryobj.noboss)
-		        {
-			        slice.tap = 1;
-	                menuobj.draw();
-	                setTimeout(function()
-	                {
-	                    slice.tap = 0;
-	                    galleryobj.set(n);
-	                    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-			            var k = headlst.findIndex(function(a){return a.name == "BOSS"});
-	                    headham.panel = headlst[k];
-	                    headobj.draw();
-	                    delete photo.image;
-	                    menuobj.hide();
-	                    contextobj.reset();
-	                }, 200);
-		        }
-            }
-          	else if (slice.moveprev && slice.moveprev.hitest(x, y))
+           	if (slice.moveprev && slice.moveprev.hitest(x, y))
     		{
     		    var j = canvas.timeobj.length() / galleryobj.length();
     		    canvas.timeobj.rotate(j);  
@@ -6538,6 +6518,21 @@ function setupmenus()
         title: "Developer\nTom Brinkman\n\nEmail\nimages@zip-view.com",
         func: function() 
         {
+            return true;
+        }
+    },     
+    {
+        title: "Original Image",
+        func: function() 
+        {
+            galleryobj.set(_8cnv.centered);
+            headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+            var k = headlst.findIndex(function(a){return a.name == "BOSS"});
+            headham.panel = headlst[k];
+            headobj.draw();
+            delete photo.image;
+            menuobj.hide();
+            contextobj.reset();
             return true;
         }
     },     
