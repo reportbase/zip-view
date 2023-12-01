@@ -6529,6 +6529,8 @@ function setupmenus()
 	        _8cnvctx.swipetimeout = 0;
 	        _8cnvctx.canvas.slideshow = 0;
             menuobj.hide();
+            _8cnv.width = 0;
+            _8cnv.height = 0;
 	        _4cnv.width = window.innerWidth;
             _4cnv.height = window.innerHeight;
             galleryobj.set(_8cnv.centered);
