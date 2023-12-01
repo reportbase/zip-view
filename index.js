@@ -5524,7 +5524,7 @@ contextobj.reset = function()
             getblobpath(photo.image, galleryobj.value())
         else
             photo.image.src = galleryobj.getpath(galleryobj.current());
-        headobj.draw();
+        //headobj.draw();
 
         photo.image.onerror =
             photo.image.onabort = function(e)
@@ -5536,10 +5536,10 @@ contextobj.reset = function()
         {
             var e = galleryobj.value();
             document.title = galleryobj.title?galleryobj.title:url.host;
-            headobj.draw();
+            //headobj.draw();
             _4cnv.autodirect = -_4cnv.movingpage;
             _4cnv.movingpage = 0;
-            contextobj.reset()
+            //contextobj.reset()
             headobj.draw();
             bossobj.draw();
 
@@ -6358,10 +6358,6 @@ galleryobj.getpath = function(index)
     else if (gallery.blob)
     {
         path = URL.createObjectURL(gallery.blob);
-    }
-    else 
-    {
-	    path = "https://i.imgur.com/56ITYQl.jpg";//todo
     }
     
     return path;
