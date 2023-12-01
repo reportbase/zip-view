@@ -3078,7 +3078,6 @@ var panlst =
         delete canvas.startx;
         delete canvas.starty;
         delete rowobj.offset;
-        delete photo.image;
         delete canvas.hollyobj.offset;
         if (context.pangallery)
             contextobj.reset();
@@ -4836,6 +4835,7 @@ menuobj.toggle = function(context)
     headobj.draw();
 }
 
+//menuobj hide
 menuobj.hide = function()
 {
     var context = this.value();
@@ -4861,8 +4861,7 @@ menuobj.show = function()
         return;
     var canvas = context.canvas;
     _4cnv.height = 0;
-    delete photo.image
-
+   
     var k = displaylst.findIndex(function(a){return a.name == canvas.display});
     displayobj.set(k);
     
@@ -6803,8 +6802,6 @@ galleryobj.reset = function(obj)
         Object.assign(e,galleryobj.data[galleryobj.data.length-1]);
         galleryobj.data.push(e);
     }
-    
-    delete photo.image;
     
     setfavicon();
     stretchobj.makerange("40-90", stretchobj.length());  
