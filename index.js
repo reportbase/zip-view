@@ -4782,9 +4782,10 @@ var buttonlst =
             delete user.uploadrect;
             delete user.downloadrect;
             const rainstep = Math.min(420,window.innerWidth-60);
+	        
 	        if (!headcnv.height && user.more)
             {
-                var a = new panel.rows([8,BEXTENT,0,BEXTENT,20,8],
+                var a = new panel.rows([8,BEXTENT,0,BEXTENT,SCROLLEXTENT,SCROLLMARGIN],
                 [
                     0,
                     new panel.cols([5,ALIEXTENT,0,ALIEXTENT,5],
@@ -4802,7 +4803,7 @@ var buttonlst =
                         new panel.download(),
     	                0,
                     ]),
-                      new panel.cols([0, rainstep, 0],
+                    new panel.cols([0, rainstep, 0],
                     [
                         0,
                         new panel.layers(
@@ -4818,12 +4819,8 @@ var buttonlst =
                     0,
                 ]);    
                 
-                a.draw(context, rect, user, 0);
+                a.draw(context, rect, context.canvas.hollyobj, 0);
             }
-                   
-
-            a.draw(context, rect, context.canvas.hollyobj, 0);
-
             
             if (user.tap)
             {
