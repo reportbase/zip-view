@@ -950,9 +950,9 @@ var headlst =
                                     5],
                         [
                             0, 0, 0,
-                            0,//new panel.moveprev(),
+                            new panel.info(),
                             new panel.zoom(),
-                            0,//todo new panel.movenext(),
+                            new panel.info(),
                             0, 
                             new panel.closeboss(), 
                             0
@@ -1873,12 +1873,14 @@ panel.info = function()
     {
         context.save();
         user.inforect = new rectangle()
+	    context.inforect = new rectangle();
         context.fillStyle = "white";
         context.strokeStyle = "white";
 
         var a = new panel.layers(
         [
             new panel.rectangle(user.inforect),
+            new panel.rectangle(context.inforect),
             new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
             new panel.shrink(new panel.circle(ARROWFILL), 20, 30),
         ]);
