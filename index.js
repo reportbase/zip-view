@@ -952,7 +952,7 @@ var headlst =
                             0, 0, 0,
                             new panel.binfo(),
                             new panel.zoom(),
-                            0,//new panel.info(),
+                            new panel.bownload(),
                             0, 
                             new panel.closeboss(), 
                             0
@@ -1866,6 +1866,27 @@ panel.holly = function()
         a.draw(context, rect, _8cnv.hollyobj, time)
     }
 }
+
+panel.bownload = function()
+{
+    this.draw = function(context, rect, user, time)
+    {
+        context.save();
+        context.bownloadrect = new rectangle();
+        context.fillStyle = "white";
+        context.strokeStyle = "white";
+
+        var a = new panel.layers(
+        [
+            new panel.rectangle(context.bownloadrect),
+            new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+            new panel.shrink(new panel.circle(ARROWFILL), 20, 30),
+        ]);
+
+        a.draw(context, rect, user, time);
+        context.restore();
+    }
+};
 
 panel.binfo = function()
 {
