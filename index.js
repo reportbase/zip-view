@@ -579,16 +579,16 @@ var footlst =
     {
         var canvas = context.canvas;
         context.save();     
-        canvas.closerect = new rectangle();
-        canvas.downloadarect = new rectangle();
+        canvas.homerect = new rectangle();
         canvas.uploadrect = new rectangle();
+        canvas.downloadrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
             [
                 new panel.layers(
                 [
                     new panel.fill(FOOTBTNCOLOR),
+                    new panel.rectangle(canvas.homerect),
                     new panel.text(),
-                    new panel.rectangle(canvas.closerect),
                 ]),
                 0,
                 new panel.layers(
@@ -598,32 +598,31 @@ var footlst =
                     [
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.downloadrect),
+                            new panel.rectangle(canvas.useraddrect),
                             new panel.text(),
                         ]),
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.uploadrect),
+                            new panel.rectangle(canvas.userpatchrect),
                             new panel.text(),
-                        ])
+                        ]),
                     ])                            
                 ])
             ]);
-
-        var k = "Image";
+        
         a.draw(context, rect, 
                [
-                   `\u{25C0}   ${k}`,
-                    0,
+                   `\u{25C0}   Users`,
+                   0,
                    [
-                        "Download",
-                       "Upload",
-                    ]
-                ], 0);
+                       `Download`,
+                       `Upload`,
+                    ], 
+                ]);
         
-        context.restore();
+        context.restore();    
     }
-},  	
+}, 	
 {
     name: "IMAGES",
     draw: function(context, rect, user, time)
