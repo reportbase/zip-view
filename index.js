@@ -3183,7 +3183,7 @@ pressobj.set(3);
 
 function gotoimage(n)
 {
-    n = util.clamp(0, n, n);
+    n = util.clamp(0, galleryobj.length()-1, n);
     var k = 1-(n/galleryobj.length())
     var j = k*sealobj.value()
     _8cnv.timeobj.set(j);
@@ -3629,14 +3629,15 @@ var taplst =
 		    var path = galleryobj.getpath(galleryobj.current());
             fetch(path)
         	    .then(response => response.blob())
-        	    .then(blob => {
-        	    let blobUrl = window.URL.createObjectURL(blob);
-        	    let a = document.createElement('a');
-        	    a.download = path.replace(/^.*[\\\/]/, '');
-        	    a.href = blobUrl;
-        	    document.body.appendChild(a);
-        	    a.click();
-        	    a.remove();
+        	    .then(blob => 
+                {
+            	    let blobUrl = window.URL.createObjectURL(blob);
+            	    let a = document.createElement('a');
+            	    a.download = path.replace(/^.*[\\\/]/, '');
+            	    a.href = blobUrl;
+            	    document.body.appendChild(a);
+            	    a.click();
+            	    a.remove();
         	  })
         }
         else if (context.timerect && context.timerect.hitest(x, y))
@@ -6802,6 +6803,7 @@ function setupmenus()
         j.func = function()
         {
 	        _6cnv.sliceobj.set(this.index);
+            galleryobj.set(n);
             gotoimage(this.index+1)
             return true;
         };   
