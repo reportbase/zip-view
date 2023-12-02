@@ -6813,8 +6813,7 @@ function setupmenus()
     if (n != _9cnv.sliceobj.data.length)
         _9cnv.sliceobj.set(n);
 
-    //todo
-    _11cnv.sliceobj.data = _6cnv.sliceobj.data;
+    _11cnv.sliceobj.data = [];
 
     _2cnv.sliceobj.data = [];
     var lst = [_2cnv, _3cnv, _5cnv, _6cnv, _7cnv, _8cnv, _9cnv, _10cnv, _11cnv];
@@ -7018,7 +7017,6 @@ async function download()
                 let a = document.createElement('a');
                 a.download = path.replace(/^.*[\\\/]/, '');
                 a.href = k;
-                document.body.appendChild(a);
                 a.click();
                 a.remove();
                 URL.revokeObjectURL(a.href);
