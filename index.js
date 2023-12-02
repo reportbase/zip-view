@@ -6292,18 +6292,6 @@ function wraptext(ctx, text, maxWidth)
 let thumbfittedlst = [];
 let thumbimglst = [];
 
-async function getblob(slice)
-{
-    var blob = await slice.entry.blob(`image/${slice.ext}`);
-    return URL.createObjectURL(blob);
-}
-
-async function getblobpath(img, slice)
-{
-    var blob = await slice.entry.blob(`image/${slice.ext}`);
-    img.src = URL.createObjectURL(blob);
-}
-
 function imagepath(user, template)
 {
     var src;
@@ -6999,18 +6987,29 @@ else
         .then((obj) => galleryobj.init(obj))
 }
 
-function download()
+  var blob = await slice.entry.blob(`image/${slice.ext}`);
+    return URL.createObjectURL(blob);
+}
+
+async function getblobpath(img, slice)
+{
+    var blob = await slice.entry.blob(`image/${slice.ext}`);
+    img.src = URL.createObjectURL(blob);
+}
+
+async function download()
 {
     var slice = galleryobj.value();
     if (slice.entry)
     {
-        var blob = getblob(slice)
-        const anchor = document.createElement('a');
-        anchor.href = blob;
-        anchor.download = slice.name;
-        anchor.click();
-        URL.revokeObjectURL(anchor.href);
-        anchor.remove();
+        var blob = await slice.entry.blob(`image/${slice.ext}`);
+        var k = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = k;
+        a.download = slice.name;
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(a.href);
     }
     else
     {
@@ -7019,13 +7018,14 @@ function download()
             .then(response => response.blob())
             .then(blob => 
             {
-                let blobUrl = window.URL.createObjectURL(blob);
+                let k = window.URL.createObjectURL(blob);
                 let a = document.createElement('a');
                 a.download = path.replace(/^.*[\\\/]/, '');
-                a.href = blobUrl;
+                a.href = k;
                 document.body.appendChild(a);
                 a.click();
                 a.remove();
+                URL.revokeObjectURL(a.href);
           })
     }
 }
