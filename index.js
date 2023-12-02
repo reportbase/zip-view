@@ -6179,6 +6179,7 @@ function resize()
     {
         _4cnv.width = window.innerWidth;
         _4cnv.height = window.innerHeight;
+	    contextobj.reset();
     }
 }
 
