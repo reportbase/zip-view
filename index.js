@@ -3646,14 +3646,18 @@ var taplst =
                  headcnvctx.downloadrect && 
                  headcnvctx.downloadrect.hitest(x, y))
         {
-            //todo blob
-            var path = galleryobj.getpath(galleryobj.current());;
-            const anchor = document.createElement('a');
-            anchor.href = path;
-            anchor.download = id;
-            anchor.click();
-            URL.revokeObjectURL(anchor.href);
-            anchor.remove();
+            var path = galleryobj.getpath(galleryobj.current());
+            fetch(path, {mode : 'no-cors',})
+        	    .then(response => response.blob())
+        	    .then(blob => {
+        	    let blobUrl = window.URL.createObjectURL(blob);
+        	    let a = document.createElement('a');
+        	    a.download = url.replace(/^.*[\\\/]/, '');
+        	    a.href = blobUrl;
+        	    document.body.appendChild(a);
+        	    a.click();
+        	    a.remove();
+        	  })
         }
         else if (headcnv.height && 
                  headcnvctx.binforect && 
