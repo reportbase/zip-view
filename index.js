@@ -3652,7 +3652,7 @@ var taplst =
         	    .then(blob => {
         	    let blobUrl = window.URL.createObjectURL(blob);
         	    let a = document.createElement('a');
-        	    a.download = url.replace(/^.*[\\\/]/, '');
+        	    a.download = path.replace(/^.*[\\\/]/, '');
         	    a.href = blobUrl;
         	    document.body.appendChild(a);
         	    a.click();
