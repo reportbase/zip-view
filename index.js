@@ -3989,14 +3989,18 @@ var taplst =
             }
             else
             {
-                var id = slice.id;
-                var path = `https://image.reportbase5836.workers.dev/image/${id}/blob`;
-                const anchor = document.createElement('a');
-                anchor.href = path;
-                anchor.download = id;
-                anchor.click();
-                URL.revokeObjectURL(anchor.href);
-                anchor.remove();
+                var path = galleryobj.getpath(galleryobj.current());
+                fetch(path)
+                    .then(response => response.blob())
+                    .then(blob => {
+                    let blobUrl = window.URL.createObjectURL(blob);
+                    let a = document.createElement('a');
+                    a.download = path.replace(/^.*[\\\/]/, '');
+                    a.href = blobUrl;
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                  })
             }	              
         }
         else if (canvas.galleryopenrect && canvas.galleryopenrect.hitest(x, y))
