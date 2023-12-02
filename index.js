@@ -3978,6 +3978,7 @@ var taplst =
         }
         else if (canvas.downloadrect && canvas.downloadrect.hitest(x, y))
         {
+            var slice = galleryobj.value();
             if (slice.blob)
             {
                 const anchor = document.createElement('a');
