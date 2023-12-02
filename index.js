@@ -1879,7 +1879,8 @@ panel.download = function()
         var a = new panel.layers(
         [
             new panel.rectangle(context.downloadrect),
-            new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+            new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? 
+		        TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
             new panel.shrink(new panel.fill(ARROWFILL), 21, 31),
         ]);
 
@@ -3646,6 +3647,7 @@ var taplst =
                  headcnvctx.downloadrect && 
                  headcnvctx.downloadrect.hitest(x, y))
         {
+		    var path = galleryobj.getpath(galleryobj.current());
             fetch(path)
         	    .then(response => response.blob())
         	    .then(blob => {
@@ -5607,8 +5609,7 @@ contextobj.reset = function()
         if (galleryobj.value().entry)
             getblobpath(photo.image, galleryobj.value())
         else
-            photo.image.src = galleryobj.getpath(galleryobj.current());
-    
+            photo.image.src = galleryobj.getpath(galleryobj.current());  
 
         photo.image.onerror =
             photo.image.onabort = function(e)
