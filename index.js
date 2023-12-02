@@ -6164,16 +6164,24 @@ function rotate(pointX, pointY, originX, originY, angle)
 
 function resize()
 {
-    buttonobj.reset()
-    contextobj.reset();
-    headobj.reset();
-    if (menuobj.value() != _8cnvctx)
+    if (menuobj.value())
     {
-        menuobj.hide();
-        menuobj.setindex(_8cnvctx);
+        buttonobj.reset()
+        contextobj.reset();
+        headobj.reset();
+        if (menuobj.value() != _8cnvctx)
+        {
+            menuobj.hide();
+            menuobj.setindex(_8cnvctx);
+        }
+    
+        menuobj.show();
     }
-
-    menuobj.show();
+    else
+    {
+        _4cnv.width = window.innerWidth;
+        _4cnv.height = window.innerheight;
+    }
 }
 
 window.addEventListener("focus", (evt) =>{});
