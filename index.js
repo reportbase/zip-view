@@ -3642,7 +3642,9 @@ var taplst =
                 contextobj.reset()
             }
         }
-        else if (context.downloadrect && context.downloadrect.hitest(x, y))
+        else if (headcnv.height && 
+                 headcnvctx.downloadrect && 
+                 headcnvctx.downloadrect.hitest(x, y))
         {
             //todo blob
             var path = galleryobj.getpath(galleryobj.current());;
@@ -3653,7 +3655,9 @@ var taplst =
             URL.revokeObjectURL(anchor.href);
             anchor.remove();
         }
-        else if (context.binforect && context.binforect.hitest(x, y))
+        else if (headcnv.height && 
+                 headcnvctx.binforect && 
+                 headcnvctx.binforect.hitest(x, y))
         {
             rightmenu(_11cnvctx);
         }
