@@ -3896,18 +3896,14 @@ var taplst =
     		{
     		    var j = canvas.timeobj.length() / galleryobj.length();
     		    canvas.timeobj.rotate(j);  
-                for (var n = 0; n < galleryobj.length(); ++n)
-                        galleryobj.data[n].more = 0;
-                slicep.more = 1;                
+                canvas.sliceobj.set(np);        
                 menuobj.draw();
     		}
     		else if (slice.movenext && slice.movenext.hitest(x, y))
     		{
     		    var j = canvas.timeobj.length() / galleryobj.length();
     		    canvas.timeobj.rotate(-j);     
-                for (var n = 0; n < galleryobj.length(); ++n)
-                        galleryobj.data[n].more = 0;
-                slicen.more = 1;
+                canvas.sliceobj.set(nn);
                 menuobj.draw();
     		}
             else if (slice.inforect && slice.inforect.hitest(x, y))
@@ -3919,20 +3915,16 @@ var taplst =
                 if (headcnv.height)
                 {
                     headobj.toggle();
-                    for (var n = 0; n < galleryobj.length(); ++n)
-                            galleryobj.data[n].more = 0;
-                    slice.more = 1;
+                    canvas.sliceobj.set(n);
                     menuobj.draw()
                 }
-                else if (slice.more)
+                else if (canvas.sliceobj.current() == n)
                 {
                     headobj.toggle();
                 }
                 else
                 {
-                    for (var n = 0; n < galleryobj.length(); ++n)
-                        galleryobj.data[n].more = 0;
-                    slice.more = 1;
+                    canvas.sliceobj.set(n);
                     menuobj.draw()
                 } 
             }
@@ -4826,7 +4818,7 @@ var buttonlst =
             delete user.inforect;
             const rainstep = Math.min(420,window.innerWidth-60);
 	        
-	        if (!headcnv.height && user.more)
+	        if (!headcnv.height && galleryobj.current() == time)
             {
                 var a = new panel.rows([8,BEXTENT,0,BEXTENT,SCROLLEXTENT,SCROLLMARGIN],
                 [
