@@ -950,7 +950,7 @@ var headlst =
                                     5],
                         [
                             0, 0, 0,
-                            new panel.binfo(),
+                            new panel.fullscreen(),
                             new panel.zoom(),
                             new panel.download(),
                             0, 
@@ -985,7 +985,7 @@ var headlst =
             var g = ctx == _8cnvctx;
             delete context.zoomrect;
             delete context.fitwidthrect;
-            delete context.fullrect;
+            delete context.fullscreenrect;
             delete context.homemenurect;
             delete context.imagemenurect;
             var s = SAFARI ? -1: ALIEXTENT;
@@ -1686,10 +1686,10 @@ panel.fullscreen = function()
     this.draw = function(context, rect, user, time)
     {
         context.save();
-        context.fullrect = new rectangle()
+        context.fullscreenrect = new rectangle()
         var a = new panel.layers(
             [
-                new panel.rectangle(context.fullrect),
+                new panel.rectangle(context.fullscreenrect),
                 screenfull.isFullscreen ?
                 new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(screenfull.isFullscreen ?
@@ -1882,27 +1882,6 @@ panel.download = function()
             new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? 
 		        TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
             new panel.shrink(new panel.fill(ARROWFILL), 21, 31),
-        ]);
-
-        a.draw(context, rect, user, time);
-        context.restore();
-    }
-};
-
-panel.binfo = function()
-{
-    this.draw = function(context, rect, user, time)
-    {
-        context.save();
-        context.binforect = new rectangle();
-        context.fillStyle = "white";
-        context.strokeStyle = "white";
-
-        var a = new panel.layers(
-        [
-            new panel.rectangle(context.binforect),
-            new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-            new panel.shrink(new panel.circle(ARROWFILL), 20, 30),
         ]);
 
         a.draw(context, rect, user, time);
@@ -3660,12 +3639,6 @@ var taplst =
         	    a.remove();
         	  })
         }
-        else if (headcnv.height && 
-                 headcnvctx.binforect && 
-                 headcnvctx.binforect.hitest(x, y))
-        {
-            rightmenu(_11cnvctx);
-        }
         else if (context.timerect && context.timerect.hitest(x, y))
         {
             var k = (x - context.timerect.x) / context.timerect.width;
@@ -3691,6 +3664,13 @@ var taplst =
             bossobj.draw();
         }
         else if (
+            headcnv.height &&
+            headcnvctx.fullscreenrect &&
+            headcnvctx.fullscreenrect.hitest(x, y))
+        {
+            screenfull.toggle()
+        }
+         else if (
             headcnv.height &&
             headcnvctx.closebossrect &&
             headcnvctx.closebossrect.hitest(x, y))
@@ -3860,8 +3840,8 @@ var taplst =
         }
         else if (
             headcnv.height &&
-            headcnvctx.fullrect &&
-            headcnvctx.fullrect.hitest(x, y))
+            headcnvctx.fullscreenrect &&
+            headcnvctx.fullscreenrect.hitest(x, y))
         {
             screenfull.toggle()
         }
