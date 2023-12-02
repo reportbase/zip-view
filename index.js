@@ -6987,10 +6987,6 @@ else
         .then((obj) => galleryobj.init(obj))
 }
 
-  var blob = await slice.entry.blob(`image/${slice.ext}`);
-    return URL.createObjectURL(blob);
-}
-
 async function getblobpath(img, slice)
 {
     var blob = await slice.entry.blob(`image/${slice.ext}`);
