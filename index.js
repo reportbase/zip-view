@@ -3646,8 +3646,7 @@ var taplst =
                  headcnvctx.downloadrect && 
                  headcnvctx.downloadrect.hitest(x, y))
         {
-            var path = galleryobj.getpath(galleryobj.current());
-            fetch(path, {mode : 'no-cors',})
+            fetch(path)
         	    .then(response => response.blob())
         	    .then(blob => {
         	    let blobUrl = window.URL.createObjectURL(blob);
