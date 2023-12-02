@@ -3888,6 +3888,7 @@ var taplst =
                 nn = 0;
             if (nn == -1)
                 nn = galleryobj.length()-1;
+            var slice = canvas.sliceobj.data[n];
             y -= slice.rect.y;
            	if (slice.moveprev && slice.moveprev.hitest(x, y))
     		{
