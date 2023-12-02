@@ -3634,19 +3634,33 @@ var taplst =
                  headcnvctx.downloadrect && 
                  headcnvctx.downloadrect.hitest(x, y))
         {
-		    var path = galleryobj.getpath(galleryobj.current());
-            fetch(path)
-        	    .then(response => response.blob())
-        	    .then(blob => 
-                {
-            	    let blobUrl = window.URL.createObjectURL(blob);
-            	    let a = document.createElement('a');
-            	    a.download = path.replace(/^.*[\\\/]/, '');
-            	    a.href = blobUrl;
-            	    document.body.appendChild(a);
-            	    a.click();
-            	    a.remove();
-        	  })
+            var slice = galleryobj.value();
+            if (slice.entry)
+            {
+                var blob = getblob(slice)
+                const anchor = document.createElement('a');
+                anchor.href = blob;
+                anchor.download = slice.name;
+                anchor.click();
+                URL.revokeObjectURL(anchor.href);
+                anchor.remove();
+            }
+            else
+            {
+    		    var path = galleryobj.getpath(galleryobj.current());
+                fetch(path)
+            	    .then(response => response.blob())
+            	    .then(blob => 
+                    {
+                	    let blobUrl = window.URL.createObjectURL(blob);
+                	    let a = document.createElement('a');
+                	    a.download = path.replace(/^.*[\\\/]/, '');
+                	    a.href = blobUrl;
+                	    document.body.appendChild(a);
+                	    a.click();
+                	    a.remove();
+            	  })
+            }
         }
         else if (context.timerect && context.timerect.hitest(x, y))
         {
