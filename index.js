@@ -1898,12 +1898,20 @@ panel.info = function()
 	    context.fillStyle = "white";
         context.strokeStyle = "white";
 
+        var j = 5;
+        var k = j / 2;
+        var e = new panel.fill(OPTIONFILL);
         var a = new panel.layers(
         [
             new panel.rectangle(user.inforect),
-            new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-            new panel.shrink(new panel.circle(ARROWFILL), 20, 30),
-        ]);
+            new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+            new panel.rows([0, rect.height * 0.20, 0],
+            [
+                0,
+                new panel.cols([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0, ]),
+                0,
+            ]),
+        ])
 
         a.draw(context, rect, user, time);
         context.restore();
@@ -5251,7 +5259,7 @@ var eventlst =
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "IMAGES",
+    button: "IMAGE",
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
