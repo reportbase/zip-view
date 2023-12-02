@@ -4535,7 +4535,7 @@ var buttonlst =
             clr = MENUTAP;
         else if (user.enabled && user.enabled())
             clr = MENUSELECT;
-        else if (canvas.sliceobj.current() == time)
+        else if (galleryobj.current() == time)
             clr = MENUSELECT;
 
         var e = context.canvas.hollyobj.berp();
@@ -4712,7 +4712,7 @@ var buttonlst =
         var clr = FILLBAR;
         if (user.tap)
             clr = MENUTAP;
-        else if (galleryobj.current() == time)
+        else if (cannvas.sliceobj.current() == time)
             clr = MENUSELECT;
 
         var e = context.canvas.hollyobj.berp();
