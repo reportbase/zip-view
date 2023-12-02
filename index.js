@@ -6793,24 +6793,19 @@ function setupmenus()
     if (_5cnv.sliceobj.length() == 1)
         _5cnv.sliceobj.data = [];
     
-    _6cnv.sliceobj.data = [];
     for (var n = 0; n < galleryobj.data.length; ++n)
     {
-        var k = galleryobj.data[n];
-        var j = {};
-        Object.assign(j,k);
+        var j = galleryobj.data[n];
         j.index = n;
         j.func = function()
         {
-	        _6cnv.sliceobj.set(this.index);
-            galleryobj.set(this.index);
+	        galleryobj.set(this.index);
             gotoimage(this.index+1)
             return true;
         };   
-
-        _6cnv.sliceobj.data.push(j);
     };
 	
+    _6cnv.sliceobj.data = galleryobj.data;
     _8cnv.sliceobj.data = galleryobj.data;
 
     var templatelst = 
