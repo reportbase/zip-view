@@ -6897,7 +6897,7 @@ galleryobj.reset = function(obj)
     stretchobj.set(90);
     slicewidthobj.set(SLICEWIDTH);	
     headcnv.style.pointerEvents = "none";
-    headobj.reset(); 
+    //headobj.reset(); 
     menuobj.draw();
     setupmenus();
 
