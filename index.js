@@ -952,7 +952,7 @@ var headlst =
                             0, 0, 0,
                             new panel.binfo(),
                             new panel.zoom(),
-                            new panel.bownload(),
+                            new panel.ownload(),
                             0, 
                             new panel.closeboss(), 
                             0
@@ -1867,20 +1867,20 @@ panel.holly = function()
     }
 }
 
-panel.bownload = function()
+panel.download = function()
 {
     this.draw = function(context, rect, user, time)
     {
         context.save();
-        context.bownloadrect = new rectangle();
+        context.downloadrect = new rectangle();
         context.fillStyle = "white";
         context.strokeStyle = "white";
 
         var a = new panel.layers(
         [
-            new panel.rectangle(context.bownloadrect),
+            new panel.rectangle(context.downloadrect),
             new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-            new panel.shrink(new panel.circle(ARROWFILL), 20, 30),
+            new panel.shrink(new panel.fill(ARROWFILL), 21, 31),
         ]);
 
         a.draw(context, rect, user, time);
@@ -1893,13 +1893,13 @@ panel.binfo = function()
     this.draw = function(context, rect, user, time)
     {
         context.save();
-        context.inforect = new rectangle();
+        context.binforect = new rectangle();
         context.fillStyle = "white";
         context.strokeStyle = "white";
 
         var a = new panel.layers(
         [
-            new panel.rectangle(context.inforect),
+            new panel.rectangle(context.binforect),
             new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
             new panel.shrink(new panel.circle(ARROWFILL), 20, 30),
         ]);
@@ -3642,6 +3642,21 @@ var taplst =
                 contextobj.reset()
             }
         }
+        else if (context.downloadrect && context.downloadrect.hitest(x, y))
+        {
+            //todo blob
+            var path = galleryobj.getpath(galleryobj.current());;
+            const anchor = document.createElement('a');
+            anchor.href = path;
+            anchor.download = id;
+            anchor.click();
+            URL.revokeObjectURL(anchor.href);
+            anchor.remove();
+        }
+        else if (context.binforect && context.binforect.hitest(x, y))
+        {
+            rightmenu(_11cnvctx);
+        }
         else if (context.timerect && context.timerect.hitest(x, y))
         {
             var k = (x - context.timerect.x) / context.timerect.width;
@@ -3909,7 +3924,6 @@ var taplst =
             else if (slice.inforect && slice.inforect.hitest(x, y))
             {
                 rightmenu(_11cnvctx);
-                console.log(slice);
             }
             else
             { 
@@ -5587,7 +5601,7 @@ contextobj.reset = function()
             getblobpath(photo.image, galleryobj.value())
         else
             photo.image.src = galleryobj.getpath(galleryobj.current());
-        //headobj.draw();
+    
 
         photo.image.onerror =
             photo.image.onabort = function(e)
@@ -5599,7 +5613,6 @@ contextobj.reset = function()
         {
             var e = galleryobj.value();
             document.title = galleryobj.title?galleryobj.title:url.host;
-            //headobj.draw();
             _4cnv.autodirect = -_4cnv.movingpage;
             _4cnv.movingpage = 0;
             bossobj.reset();
