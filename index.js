@@ -3917,7 +3917,7 @@ var taplst =
                     galleryobj.set(n);
                     menuobj.draw()
                 }
-                else if (canvas.sliceobj.current() == n)
+                else if (galleryobj.current() == n)
                 {
                     headobj.toggle();
                 }
