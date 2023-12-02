@@ -6473,13 +6473,25 @@ headobj.toggle = function()
 
 headobj.reset = function()
 {
-    var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
-    headham.panel = headlst[k];
-    var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
-    displayobj.set(k);
-    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-    headobj.draw();  
-    menuobj.draw();
+    if (menuobj.value())
+    {
+        var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+        headham.panel = headlst[k];
+        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+        displayobj.set(k);
+        headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+        headobj.draw();  
+        menuobj.draw();
+    }
+    else
+    {
+        var k = headlst.findIndex(function(a){return a.name == "BOSS"});
+        headham.panel = headlst[k];
+        var k = displaylst.findIndex(function(a){return a.name == "BOSS"});
+        displayobj.set(k);
+        headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+        headobj.draw();  
+    }
 }
 
 function setupmenus()
