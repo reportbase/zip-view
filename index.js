@@ -3979,10 +3979,11 @@ var taplst =
         else if (canvas.downloadrect && canvas.downloadrect.hitest(x, y))
         {
             var slice = galleryobj.value();
-            if (slice.blob)
+            if (slice.entry)
             {
+                var blob = getblob(slice)
                 const anchor = document.createElement('a');
-                anchor.href = URL.createObjectURL(slice.blob);
+                anchor.href = blob;
                 anchor.download = slice.name;
                 anchor.click();
                 URL.revokeObjectURL(anchor.href);
@@ -6328,6 +6329,12 @@ function wraptext(ctx, text, maxWidth)
 
 let thumbfittedlst = [];
 let thumbimglst = [];
+
+async function getblob(slice)
+{
+    var blob = await slice.entry.blob(`image/${slice.ext}`);
+    return URL.createObjectURL(blob);
+}
 
 async function getblobpath(img, slice)
 {
