@@ -3907,7 +3907,7 @@ var taplst =
     		}
             else if (slice.inforect && slice.inforect.hitest(x, y))
             {
-                rightmenu(_11cnvctx);
+                rightmenu(_6cnvctx)
             }
             else
             { 
@@ -5351,7 +5351,7 @@ var eventlst =
     buttonmargin: 10,
     width: 640
 },
-{ //11 images
+{ //11 unused
     hideontap: 1,
     speed: 60,
     reduce: 2.5,
