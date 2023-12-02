@@ -6803,8 +6803,8 @@ function setupmenus()
         j.func = function()
         {
 	        _6cnv.sliceobj.set(this.index);
-            galleryobj.set(n);
-            gotoimage(this.index+1)
+            galleryobj.set(this.index);
+            gotoimage(this.index)
             return true;
         };   
 
