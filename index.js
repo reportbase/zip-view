@@ -532,7 +532,7 @@ panel.empty = function()
 };    
 
 var SEALDIVISOR = 10000;
-var SEAL = (6283.183*SEALDIVISOR)/SEALDIVISOR;
+var SEAL = 62831.83
 var sealobj = new circular_array("SEAL", SEAL);
 sealobj.set(SEAL/2);
 
