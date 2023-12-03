@@ -1041,7 +1041,7 @@ var bossdisplaylst =
 
             var data = [];
             var index = galleryobj.current();
-            data.push(`\u{25C0}   ${index} of ${galleryobj.length()}   \u{25B6}`);
+            data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
             const rainstep = Math.min(420,window.innerWidth-60);
         
             var a = new panel.rowsA([HEADTOP, HEADBOT, 0, 
@@ -4708,8 +4708,7 @@ var buttonlst =
             var yyy = 0;
             if (user.rect.y < 0)
             {
-		        yyy = -user.rect.y;
-                hhh = user.rect.height + user.rect.y
+		        hhh = user.rect.height + user.rect.y
                 if (hhh > window.innerHeight)
                     hhh = window.innerHeight;
             }
