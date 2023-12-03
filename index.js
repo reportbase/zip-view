@@ -5020,6 +5020,7 @@ menuobj.draw = function()
                 context.canvas.draw(context, r, j.slice, j.n);
                 context.translate(0, -j.y);
             }
+	}
     }
 
     //gallery
