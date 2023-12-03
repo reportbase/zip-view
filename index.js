@@ -531,10 +531,6 @@ panel.empty = function()
     this.draw = function(context, rect, user, time) {}
 };    
 
-var SEAL = Math.PI*2;
-var sealobj = new circular_array("SEAL", SEAL);
-sealobj.set(SEAL/2);
-
 var beavobj = new circular_array("BEAV", 100)
 beavobj.set(64.2);
 
@@ -2881,7 +2877,7 @@ var panlst =
             else
             {
                 var e = canvas.starty - y;
-                var k = sealobj.value() / canvas.virtualheight
+                var k = Math.PI / canvas.virtualheight
                 k *= e;
                 canvas.timeobj.rotateanchored(k);
             }
@@ -2962,7 +2958,7 @@ var panlst =
             else
             {
                 var e = canvas.starty - y;
-                var jvalue = sealobj.value() / canvas.virtualheight
+                var jvalue = Math.PI / canvas.virtualheight
                 jvalue *= e;
                 canvas.timeobj.rotateanchored(jvalue);
                 menuobj.draw();
@@ -3032,7 +3028,7 @@ var panlst =
             else
             {
                 var e = canvas.startx-x;
-                var k = sealobj.value() / canvas.virtualwidth
+                var k = Math.PI / canvas.virtualwidth
                 k *= e;
                 canvas.timeobj.CURRENT = canvas.timeobj.ANCHOR - k;
                 context.canvas.lastime = -0.0000000000101010101;
@@ -3193,10 +3189,10 @@ function gotoimage(n)
 {
     n = util.clamp(0, galleryobj.length()-1, n);
     var k = 1-(n/galleryobj.length())
-    var j = k*sealobj.value()
+    var j = k*Math.PI
     _8cnv.timeobj.set(j);
     
-    var k = sealobj.value() / galleryobj.length() / 2;
+    var k = Math.PI / galleryobj.length() / 2;
     _8cnv.timeobj.CURRENT += k;
     _8cnv.hollyobj.CURRENT = 0;
     
@@ -3561,7 +3557,7 @@ CanvasRenderingContext2D.prototype.hithumb = function(x, y)
         var rect = this.canvas.thumbrect;
         var c = (x - rect.x);
         var b = c / rect.width;
-        var m = (1 - b) * sealobj.value();
+        var m = (1 - b) * Math.PI;
         this.canvas.timeobj.CURRENT = m;
     }
 
@@ -4260,7 +4256,7 @@ bossobj.draw = function()
     var virtualpinch = _4cnv.virtualwidth * (stretch.value() / 100);
     var colwidth = _4cnv.colwidth;
     var virtualeft = (virtualpinch - rect.width) / 2;
-    var j = (colwidth / (colwidth + _4cnv.virtualwidth)) * sealobj.value();
+    var j = (colwidth / (colwidth + _4cnv.virtualwidth)) * Math.PI;
     var time = canvas.timeobj.value() + j;
 
     var slices = _4cnv.sliceobj.data;
@@ -4953,7 +4949,7 @@ menuobj.draw = function(nosave)
         }
     }
 
-    var delayinterval = sealobj.value() / slices.length;
+    var delayinterval = Math.PI / slices.length;
     context.canvas.virtualheight = slices.length * canvas.buttonheight;
     
     context.clear();
@@ -5453,8 +5449,8 @@ contextobj.init = function()
         canvas.slidestop = 0;
         canvas.lastime = 0;
         canvas.sliceobj = new circular_array("", []);
-        canvas.timeobj = new circular_array("", sealobj.value());
-        canvas.timeobj.set(sealobj.value() / 2);
+        canvas.timeobj = new circular_array("", Math.PI);
+        canvas.timeobj.set(Math.PI / 2);
         canvas.hollyobj = new circular_array("TEXTSCROLL", window.innerHeight);
         canvas.speed = obj.speed;
         canvas.reduce = obj.reduce;
@@ -7146,7 +7142,7 @@ menuobj.updown = function(context, delta, divider)
     var canvas = context.canvas;
     canvas.autodirect = delta < 0 ? 1 : -1;
     var k = Math.abs(delta)/20;
-    canvas.slideshow = (sealobj.value() / canvas.virtualheight) * k;
+    canvas.slideshow = (Math.PI / canvas.virtualheight) * k;
     canvas.slidereduce = canvas.slideshow / divider;
 }
 
