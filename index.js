@@ -63,7 +63,6 @@ const MEDIUMFONT = "19px archivo black";
 const LARGEFONT = "21px archivo black";
 const HUGEFONT = "24px archivo black";
 const SLICEWIDTH = 16;
-const IMAGELSTSIZE = 12;//64;
 const ROTATEANCHORSIAE = 3;
 const BOSS = 0;
 const GALLERY = 1;
@@ -74,6 +73,7 @@ const GALLERYMAIN = 12;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 24;
+const IMAGELSTSIZE = 128;
 
 var panel = {};
 var global = {};
@@ -1363,10 +1363,7 @@ var displaylst =
         a.draw(context, rect, 
             [
                 0,
-		
-		//st,
-                canvas.timeobj.current().toFixed(4),// todo 
-                
+		st,
 		0,
                 0,
                 folders,
