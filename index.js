@@ -5013,8 +5013,9 @@ menuobj.draw = function()
                 galleryobj.height = thumbimg.height;
                 context.canvas.centered = n;
             }
-            
-            context.canvas.visibles.push({slice,rect.width/2,y,n});           
+
+		    var b = {slice,rect.width/2,y,n}
+            context.canvas.visibles.push(b);           
             context.canvas.draw(context, r, slice, n);
             context.translate(0, -y);
         }
