@@ -4998,12 +4998,15 @@ menuobj.draw = function()
             var y = j * context.canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-  
+            
             var btnh = buttonobj.value();
 	        delete slice.rect;
             slice.isvisible = y > -btnh && y < window.innerHeight;
             if (!slice.isvisible)
                 continue;
+            
+            var b = {slice,0,y,n}
+            context.canvas.visibles.push(b);          
             
             context.translate(0, y);
             slice.rect = new rectangle(0, y, rect.width, btnh);
@@ -5014,9 +5017,7 @@ menuobj.draw = function()
                 context.canvas.centered = n;
             }
 
-		    var b = {slice,rect.width/2,y,n}
-            context.canvas.visibles.push(b);           
-            context.canvas.draw(context, r, slice, n);
+	        context.canvas.draw(context, r, slice, n);
             context.translate(0, -y);
         }
     }
