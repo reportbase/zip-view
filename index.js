@@ -1433,7 +1433,7 @@ buttonobj.reset = function()
         return;
     var a = w / h;
     buttonobj.data = [];
-    var gheight = 100;
+    var gheight = 240;
     var dheight = Math.floor(window.innerWidth / a) - gheight;
     var bheight = h*2;
     var bwidth = bheight*a;
@@ -2782,6 +2782,12 @@ async function loadimages(blobs)
 
 function loadfiles(files)
 {
+	for (var n = 0; n < IMAGELSTSIZE; ++n)
+    {
+		thumbfittedlst[n] = document.createElement("canvas");
+		thumbimglst[n] = new Image();
+    }
+
     if (files.length == 1 && files[0].name)
     {
         if (files[0].name.isimage())
@@ -4980,7 +4986,7 @@ menuobj.draw = function()
             }
 
             if (slice.entry)
-                getblobpath(thumbimg, slice)
+                getblobpath(thumbimg, slice)	
             else
                 thumbimg.src = imagepath(slice,_9cnv.sliceobj.value());
         }
