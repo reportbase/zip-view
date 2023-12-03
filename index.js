@@ -4995,16 +4995,8 @@ menuobj.draw = function()
             y -= e;
             var x = rect.width / 2;
             var j = {slice,x,y,n};
-
-            var n = canvas.normal[m+1];
-            var t = time + (n * delayinterval);
-            var b = Math.tan(t);
-            var j = Math.berp(-1, 1, b);
-            var y2 = j * context.canvas.virtualheight;
-            var e = (canvas.virtualheight - rect.height) / 2;
-            y2 -= e;
             
-            var btnh = y2-y;
+            var btnh = buttonobj.value();
 	        slice.rect = new rectangle(0, j.y, rect.width, btnh);
             slice.isvisible = j.y > -btnh && j.y < window.innerHeight;
             if (!slice.isvisible)
