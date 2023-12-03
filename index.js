@@ -6829,7 +6829,7 @@ galleryobj.reset = function(obj)
     
     if (!galleryobj.length())
         return;
-    
+    /*
     var length = galleryobj.length();
     var pad = padlst[length-1];
     var pad2 = Number(url.searchParams.get('pad'));
@@ -6841,7 +6841,8 @@ galleryobj.reset = function(obj)
         Object.assign(e,galleryobj.data[galleryobj.data.length-1]);
         galleryobj.data.push(e);
     }
-    
+    */
+	
     setfavicon();
     stretchobj.makerange("40-90", stretchobj.length());  
     stretchobj.set(90);
