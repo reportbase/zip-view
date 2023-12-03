@@ -531,8 +531,8 @@ panel.empty = function()
     this.draw = function(context, rect, user, time) {}
 };    
 
-var SEALDIVISOR = 100;
-var SEAL = 628.3183
+var SEALDIVISOR = 1;
+var SEAL = 6.283183
 var sealobj = new circular_array("SEAL", SEAL);
 sealobj.set(SEAL/2);
 
