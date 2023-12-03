@@ -4988,6 +4988,7 @@ menuobj.draw = function(nosave)
     var r = new rectangle(0, 0, rect.width, canvas.buttonheight);
     var lasty = -10000000;
     var delay = 0;
+    context.redraw = 0;
     for (var m = 0; m < canvas.normal.length; ++m)
     {
         var n = canvas.normal[m];
@@ -5002,7 +5003,7 @@ menuobj.draw = function(nosave)
             thumbimg.onload = function()
             {
                 this.count = 0;
-             //   menuobj.draw();
+                context.redraw = 1;
             }
 
             if (slice.entry)
@@ -5054,6 +5055,12 @@ menuobj.draw = function(nosave)
 
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
+
+    if (context.redraw)
+    {
+        context.redraw = 0;
+        menuobj.redraw();
+    }
 }
 
 function resetview()
