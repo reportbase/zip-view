@@ -5004,7 +5004,7 @@ menuobj.draw = function()
             var e = (canvas.virtualheight - rect.height) / 2;
             y2 -= e;
             
-            var btnh = y2-y1;
+            var btnh = y2-y;
 	        slice.rect = new rectangle(0, j.y, rect.width, btnh);
             slice.isvisible = j.y > -btnh && j.y < window.innerHeight;
             if (!slice.isvisible)
