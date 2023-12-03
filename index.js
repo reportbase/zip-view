@@ -4919,7 +4919,7 @@ menuobj.show = function()
 }
 
 //menuobj draw
-menuobj.draw = function(nosave)
+menuobj.draw = function(only)
 {
     var context = this.value();
     if (!context)
@@ -4944,11 +4944,8 @@ menuobj.draw = function(nosave)
         clearInterval(context.swipetimeout)
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
-        if (!nosave)
-        {
-            reseturl()
-            resetview()
-        }
+        reseturl()
+        resetview()
     }
 
     var delayinterval = Math.PI / slices.length;
@@ -4975,7 +4972,11 @@ menuobj.draw = function(nosave)
     
     var current = context.canvas.sliceobj.lerp(
         1 - context.canvas.timeobj.berp());
-    if (canvas.lastcurrent != current || !canvas.normal)
+    if (only)
+    {
+        canvas.normal = only;
+    }
+    else if (canvas.lastcurrent != current || !canvas.normal)
     {
         canvas.lastcurrent = current;
         var size = Math.ceil(rect.height / canvas.buttonheight) + ROTATEANCHORSIAE;
@@ -4988,7 +4989,6 @@ menuobj.draw = function(nosave)
     var r = new rectangle(0, 0, rect.width, canvas.buttonheight);
     var lasty = -10000000;
     var delay = 0;
-    context.redraw = 0;
     for (var m = 0; m < canvas.normal.length; ++m)
     {
         var n = canvas.normal[m];
@@ -5003,7 +5003,7 @@ menuobj.draw = function(nosave)
             thumbimg.onload = function()
             {
                 this.count = 0;
-                context.redraw = 1;
+		        menuobj.draw([n]);
             }
 
             if (slice.entry)
@@ -5055,12 +5055,6 @@ menuobj.draw = function(nosave)
 
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
-
-    if (context.redraw)
-    {
-        context.redraw = 0;
-        menuobj.redraw();
-    }
 }
 
 function resetview()
