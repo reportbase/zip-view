@@ -531,7 +531,7 @@ panel.empty = function()
     this.draw = function(context, rect, user, time) {}
 };    
 
-var SEALDIVSOR = 1000;
+var SEALDIVISOR = 1000;
 var SEAL = (6283.183*SEALDIVISOR)/SEALDIVISOR;
 var sealobj = new circular_array("SEAL", SEAL);
 sealobj.set(SEAL/2);
@@ -6974,10 +6974,10 @@ else if (url.searchParams.has("id"))
 else if (url.searchParams.has("path"))
 {
     var path = url.searchParams.get("path");
-  url.path = path;
- fetch(path)
-	.then((response) => jsonhandler(response))
-	.then((json) => galleryobj.init(json))           
+    url.path = path;
+     fetch(path)
+	    .then((response) => jsonhandler(response))
+	    .then((json) => galleryobj.init(json))           
 }
 else
 {
