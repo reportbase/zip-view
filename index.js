@@ -4985,7 +4985,9 @@ menuobj.draw = function()
         var e = (canvas.virtualheight - rect.height) / 2;
         y2 -= e;
 
-        btnh = Math.min(btnh,y-y2)
+        if (y > y2)
+            continue;
+        btnh = Math.min(btnh,y2-y)
     }
     
     for (var m = 0; m < canvas.normal.length; ++m)
