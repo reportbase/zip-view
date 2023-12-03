@@ -531,7 +531,7 @@ panel.empty = function()
     this.draw = function(context, rect, user, time) {}
 };    
 
-var SEALDIVISOR = 1000;
+var SEALDIVISOR = 10000;
 var SEAL = (6283.183*SEALDIVISOR)/SEALDIVISOR;
 var sealobj = new circular_array("SEAL", SEAL);
 sealobj.set(SEAL/2);
@@ -4954,7 +4954,7 @@ menuobj.draw = function(nosave)
         }
     }
 
-    var delayinterval = sealobj.value() / slices.length / 1000;
+    var delayinterval = sealobj.value() / slices.length / SEALDIVISOR;
     context.canvas.virtualheight = slices.length * canvas.buttonheight;
     
     context.clear();
