@@ -607,7 +607,7 @@ var footlst =
         
         a.draw(context, rect, 
                [
-                   `\u{25C0}   Image`,
+                   `\u{25C0}   Images`,
                    0,
                    [
                        `Download`,
@@ -1433,7 +1433,7 @@ buttonobj.reset = function()
         return;
     var a = w / h;
     buttonobj.data = [];
-    var gheight = window.innerHeight/2;
+    var gheight = 0;
     if (h < gheight)
         gheight = h;
     var dheight = Math.floor(window.innerWidth / a) - gheight;
