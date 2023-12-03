@@ -1434,12 +1434,8 @@ buttonobj.reset = function()
     var a = w / h;
     buttonobj.data = [];
     var gheight = 100;
-    if (h < gheight)
-        gheight = h;
     var dheight = Math.floor(window.innerWidth / a) - gheight;
-    if (dheight < 0)
-        dheight = 0;
-    var bheight = h*6;
+    var bheight = 600;
     var bwidth = bheight*a;
     while (bheight*bwidth > 4000*3000)
     {
