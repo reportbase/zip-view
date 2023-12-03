@@ -531,7 +531,8 @@ panel.empty = function()
     this.draw = function(context, rect, user, time) {}
 };    
 
-var SEAL = 6283.183;
+var SEALDIVSOR = 1000;
+var SEAL = (6283.183*SEALDIVISOR)/SEALDIVISOR;
 var sealobj = new circular_array("SEAL", SEAL);
 sealobj.set(SEAL/2);
 
@@ -4261,7 +4262,7 @@ bossobj.draw = function()
     var colwidth = _4cnv.colwidth;
     var virtualeft = (virtualpinch - rect.width) / 2;
     var j = (colwidth / (colwidth + _4cnv.virtualwidth)) * sealobj.value();
-    var time = (canvas.timeobj.value() + j) / 1000;
+    var time = (canvas.timeobj.value() + j) / SEALDIVISOR;
 
     var slices = _4cnv.sliceobj.data;
     var slice = slices[0];
@@ -4928,7 +4929,7 @@ menuobj.draw = function(nosave)
     	return;
     	
     var canvas = context.canvas;
-    var time = canvas.timeobj.value() / 1000;
+    var time = canvas.timeobj.value() / SEALDIVISOR;
     var slices = context.canvas.sliceobj.data;
     const rect = context.rect();
     if (!rect.width || !rect.height)
