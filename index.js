@@ -4952,7 +4952,8 @@ menuobj.draw = function(nosave)
     for (var len = 0; len < 100; ++len)
     {
         var j = Math.PI / len;
-        var b = Math.tan(j);
+	var t = time + ((len-1) * j);
+        var b = Math.tan(t);
         lst.push(b);
     }
 
