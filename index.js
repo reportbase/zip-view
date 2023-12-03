@@ -6967,13 +6967,14 @@ function showdialog(str, func)
 {
     var button = document.getElementById(`${str}-ok`);
     dialog = document.getElementById(str);
-    dialog.addEventListener("click", function(event)
+    dialog.addEventListener("click", function(evt)
     {
-        if (event.target.id == `${str}-ok`)
+        evt.preventDefault();
+        if (evt.target.id == `${str}-ok`)
         {
             func();
             dialog.close();
-            return true;
+            return false;
         }
         else
         {
