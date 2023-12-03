@@ -1363,7 +1363,7 @@ var displaylst =
         a.draw(context, rect, 
             [
                 0,
-                st,
+                Math.pi.toFixed(4),// st,
                 0,
                 0,
                 folders,
