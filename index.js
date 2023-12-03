@@ -1433,7 +1433,7 @@ buttonobj.reset = function()
         return;
     var a = w / h;
     buttonobj.data = [];
-    var gheight = 0;
+    var gheight = 100;
     if (h < gheight)
         gheight = h;
     var dheight = Math.floor(window.innerWidth / a) - gheight;
@@ -4966,6 +4966,28 @@ menuobj.draw = function()
     var r = new rectangle(0, 0, rect.width, canvas.buttonheight);
     var lasty = -10000000;
     var delay = 0;
+    var btnh = 100000;
+    for (var m = 0; m < canvas.normal.length-1; ++m)
+    {
+        var n = canvas.normal[m];
+        var t = time + (n * delayinterval);
+        var b = Math.tan(t);
+        var j = Math.berp(-1, 1, b);
+        var y = j * context.canvas.virtualheight;
+        var e = (canvas.virtualheight - rect.height) / 2;
+        y -= e;
+
+        var n = canvas.normal[m+1];
+        var t = time + (n * delayinterval);
+        var b = Math.tan(t);
+        var j = Math.berp(-1, 1, b);
+        var y2 = j * context.canvas.virtualheight;
+        var e = (canvas.virtualheight - rect.height) / 2;
+        y2 -= e;
+
+        btnh = Math.min(btnh,y-y2)
+    }
+    
     for (var m = 0; m < canvas.normal.length; ++m)
     {
         var n = canvas.normal[m];
@@ -4998,8 +5020,7 @@ menuobj.draw = function()
             y -= e;
             var x = rect.width / 2;
             var j = {slice,x,y,n};
-	        var btnh = canvas.buttonheight;
-            slice.rect = new rectangle(0, j.y, rect.width, btnh);
+	        slice.rect = new rectangle(0, j.y, rect.width, btnh);
             slice.isvisible = j.y > -btnh && j.y < window.innerHeight;
             if (!slice.isvisible)
                 continue;
