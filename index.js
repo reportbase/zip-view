@@ -3171,8 +3171,8 @@ pressobj.set(3);
 
 function gotoimage(n)
 {
-    n = util.clamp(0, galleryobj.length()-1, n);
-    var k = 1-(n/galleryobj.length())
+    var e = Math.berp(0, galleryobj.length()-1, n);
+    var k = 1-e;
     var j = k*Math.PI
     _8cnv.timeobj.set(j);
     
