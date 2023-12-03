@@ -4998,28 +4998,23 @@ menuobj.draw = function()
             y -= e;
             var x = rect.width / 2;
             var j = {slice,x,y,n};
-		    j.y -= 50
-	        var btnh = canvas.buttonheight+100;
+	        var btnh = canvas.buttonheight;
             slice.rect = new rectangle(0, j.y, rect.width, btnh);
             slice.isvisible = j.y > -btnh && j.y < window.innerHeight;
-            if (slice.isvisible)
+            if (!slice.isvisible)
+                continue;
+            
+            if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
             {
-                if (slice.isvisible)
-                {
-                    if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
-                    {
-                        galleryobj.width = thumbimg.width;
-                        galleryobj.height = thumbimg.height;
-                        context.canvas.centered = j.n;
-                    }
-                    
-                    context.canvas.visibles.push(j);
-                }
-                
-                context.translate(0, j.y);
-                context.canvas.draw(context, r, j.slice, j.n);
-                context.translate(0, -j.y);
+                galleryobj.width = thumbimg.width;
+                galleryobj.height = thumbimg.height;
+                context.canvas.centered = j.n;
             }
+            
+            context.canvas.visibles.push(j);           
+            context.translate(0, j.y);
+            context.canvas.draw(context, r, j.slice, j.n);
+            context.translate(0, -j.y);
         }
     }
 
@@ -6304,41 +6299,6 @@ function imagepath(user, template)
     return src;
 }
 
-var padlst = 
-[
-    3,2,1,0,0,0,0,0,0,0,//00
-    0,0,0,0,0,0,0,0,0,0,//10
-    0,0,0,0,0,0,0,0,0,0,//20
-    0,0,0,9,8,7,6,5,4,3,//30
-    2,1,0,0,0,0,0,0,0,0,//40
-    0,0,0,0,0,0,0,0,0,0,//50
-    0,0,0,0,9,8,7,6,5,4,//60
-    3,2,1,0,0,0,0,0,0,0,//70
-    0,0,0,0,0,0,0,0,0,0,//80
-    0,0,0,0,0,0,0,0,0,0,//90
-    0,0,0,0,0,0,0,0,0,0,//100
-    0,0,0,0,0,0,0,0,0,0,//110
-    0,0,0,0,0,2,0,0,0,0,//120
-    0,0,0,0,0,0,0,0,0,0,//130
-    0,0,0,0,0,0,0,0,0,0,//140
-    0,0,0,0,0,0,0,0,0,0,//150
-    0,0,0,0,0,0,0,0,0,0,//160
-    0,0,0,0,0,0,0,0,0,0,//170
-    0,0,0,0,0,0,0,0,0,0,//180
-    0,0,0,0,0,0,0,0,0,0,//190
-    0,0,0,0,0,0,0,0,0,0,//200
-    0,0,0,0,0,0,0,0,0,0,//210
-    0,0,0,0,0,0,0,0,0,0,//220
-    0,0,0,0,0,0,0,0,0,0,//230
-    0,0,0,0,0,0,0,0,0,0,//240
-    0,0,0,0,0,0,0,0,0,4,//250
-    3,2,1,0,0,0,0,0,0,0,//260
-    8,7,6,5,4,3,2,1,0,0,//270
-    0,0,0,0,0,0,0,0,0,0,//280
-    0,0,0,0,0,0,0,0,0,0,//290
-    0,0,0,0,0,0,0,0,0,0,//300
-];
-
 galleryobj.getpath = function(index)
 {
     var gallery = this.data[index];
@@ -6814,26 +6774,12 @@ galleryobj.reset = function(obj)
     
     if (!galleryobj.length())
         return;
-    /*
-    var length = galleryobj.length();
-    var pad = padlst[length-1];
-    var pad2 = Number(url.searchParams.get('pad'));
-    if (pad2)
-        pad = pad2
-    for (var n = 0; n < pad; ++n)
-    {
-        var e = {};
-        Object.assign(e,galleryobj.data[galleryobj.data.length-1]);
-        galleryobj.data.push(e);
-    }
-    */
 	
     setfavicon();
     stretchobj.makerange("40-90", stretchobj.length());  
     stretchobj.set(90);
     slicewidthobj.set(SLICEWIDTH);	
     headcnv.style.pointerEvents = "none";
-    //headobj.reset(); 
     menuobj.draw();
     setupmenus();
 
@@ -6861,8 +6807,7 @@ galleryobj.reset = function(obj)
 	                break;    
 	        }
 	    
-	    _9cnv.sliceobj.set(n);
-	  
+	    _9cnv.sliceobj.set(n);	  
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
         menuobj.show();
