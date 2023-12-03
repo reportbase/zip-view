@@ -5007,8 +5007,7 @@ menuobj.draw = function()
             else
                 thumbimg.src = imagepath(slice,_9cnv.sliceobj.value());
         }
-            
-        //else
+        else
         {
             var t = time + (n * delayinterval);
             var b = Math.tan(t);
