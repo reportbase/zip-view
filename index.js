@@ -4702,17 +4702,16 @@ var buttonlst =
             var yyy = 0;
             if (user.rect.y < 0)
             {
-		    //todo
-                //yyy = -user.rect.y;
-                //hhh = user.rect.height + user.rect.y
-                //if (hhh > window.innerHeight)
-                //    hhh = window.innerHeight;
+		        yyy = -user.rect.y;
+                hhh = user.rect.height + user.rect.y
+                if (hhh > window.innerHeight)
+                    hhh = window.innerHeight;
             }
             else
             {
-                //var j = user.rect.height - user.rect.y;
-                //if (j > window.innerHeight)
-                //    hhh = window.innerHeight - user.rect.y;
+                var j = user.rect.height - user.rect.y;
+                if (j > window.innerHeight)
+                    hhh = window.innerHeight - user.rect.y;
             }
 
             if (thumbfitted.view != view)
