@@ -63,7 +63,7 @@ const MEDIUMFONT = "19px archivo black";
 const LARGEFONT = "21px archivo black";
 const HUGEFONT = "24px archivo black";
 const SLICEWIDTH = 16;
-const IMAGELSTSIZE = 18;
+const IMAGELSTSIZE = 64;
 const ROTATEANCHORSIAE = 3;
 const BOSS = 0;
 const GALLERY = 1;
@@ -5007,7 +5007,8 @@ menuobj.draw = function()
             else
                 thumbimg.src = imagepath(slice,_9cnv.sliceobj.value());
         }
-        else
+            
+        //else
         {
             var t = time + (n * delayinterval);
             var b = Math.tan(t);
