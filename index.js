@@ -5005,7 +5005,7 @@ menuobj.draw = function()
             if (!slice.isvisible)
                 continue;
             
-            var b = {slice,0,y,n}
+            var b = {slice,y,n};
             context.canvas.visibles.push(b);          
             
             context.translate(0, y);
