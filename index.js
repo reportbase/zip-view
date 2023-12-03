@@ -4998,8 +4998,8 @@ menuobj.draw = function()
             var y = j * context.canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-            slice.rect = new rectangle(0, y, rect.width, btnh);
             var btnh = buttonobj.value();
+            slice.rect = new rectangle(0, y, rect.width, btnh);
 	        slice.isvisible = y > -btnh && y < window.innerHeight;
             if (!slice.isvisible)
                 continue;
