@@ -83,13 +83,12 @@ var login = {id: 0};
 
 try
 {
-	var k = localStorage.getItem("login");
-	if (k)
-	    login = JSON.parse(k);
+    var k = localStorage.getItem("login");
+    if (k)
+        login = JSON.parse(k);
 }
 catch(e)
 {
-
 }
 
 photo.image = 0;
