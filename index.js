@@ -1363,8 +1363,11 @@ var displaylst =
         a.draw(context, rect, 
             [
                 0,
-                Math.pi.toFixed(4),// st,
-                0,
+		
+		//st,
+                canvas.timeobj.current().toFixed(4),// todo 
+                
+		0,
                 0,
                 folders,
                 0,
