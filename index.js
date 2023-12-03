@@ -3176,8 +3176,8 @@ function gotoimage(n)
     var j = k*Math.PI
     _8cnv.timeobj.set(j);
     
-    var k = Math.PI / galleryobj.length() / 2;
-    _8cnv.timeobj.CURRENT += k;
+    //var k = Math.PI / galleryobj.length() / 2;
+    //_8cnv.timeobj.CURRENT += k;
     _8cnv.hollyobj.CURRENT = 0;
     
     menuobj.draw();
