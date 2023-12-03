@@ -4919,7 +4919,7 @@ menuobj.show = function()
 }
 
 //menuobj draw
-menuobj.draw = function(only)
+menuobj.draw = function()
 {
     var context = this.value();
     if (!context)
@@ -4972,11 +4972,7 @@ menuobj.draw = function(only)
     
     var current = context.canvas.sliceobj.lerp(
         1 - context.canvas.timeobj.berp());
-    if (only)
-    {
-        canvas.normal = only;
-    }
-    else if (canvas.lastcurrent != current || !canvas.normal)
+    if (canvas.lastcurrent != current || !canvas.normal)
     {
         canvas.lastcurrent = current;
         var size = Math.ceil(rect.height / canvas.buttonheight) + ROTATEANCHORSIAE;
@@ -5003,7 +4999,7 @@ menuobj.draw = function(only)
             thumbimg.onload = function()
             {
                 this.count = 0;
-		        menuobj.draw([n]);
+		        menuobj.draw();
             }
 
             if (slice.entry)
