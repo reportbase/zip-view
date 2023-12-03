@@ -4998,25 +4998,28 @@ menuobj.draw = function()
             var y = j * context.canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-            var btnh = buttonobj.value();
-            slice.rect = new rectangle(0, y, rect.width, btnh);
-	        slice.isvisible = y > -btnh && y < window.innerHeight;
-            if (!slice.isvisible)
-                continue;
-            
-            var b = {slice,y,n};
-            context.canvas.visibles.push(b);          
-            if (slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
+            var x = rect.width / 2;
+            var j = {slice,x,y,n};
+            slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight+200);
+            slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
+            if (slice.isvisible)
             {
-                galleryobj.width = thumbimg.width;
-                galleryobj.height = thumbimg.height;
-                context.canvas.centered = n;
+                if (slice.isvisible)
+                {
+                    if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
+                    {
+                        galleryobj.width = thumbimg.width;
+                        galleryobj.height = thumbimg.height;
+                        context.canvas.centered = j.n;
+                    }
+                    
+                    context.canvas.visibles.push(j);
+                }
+                
+                context.translate(0, j.y);
+                context.canvas.draw(context, r, j.slice, j.n);
+                context.translate(0, -j.y);
             }
-
-	        context.translate(0, y);
-            context.canvas.draw(context, r, slice, n);
-            context.translate(0, -y);
-        }
     }
 
     //gallery
