@@ -4948,15 +4948,6 @@ menuobj.draw = function(nosave)
         }
     }
 
-    var lst = [];
-    for (var len = 0; len < 100; ++len)
-    {
-        var j = Math.PI / len;
-	var t = time + ((len-1) * j);
-        var b = Math.tan(t);
-        lst.push(b);
-    }
-
     var delayinterval = Math.PI / slices.length;
     context.canvas.virtualheight = slices.length * canvas.buttonheight;
     
@@ -5019,13 +5010,16 @@ menuobj.draw = function(nosave)
         else
         {
             var t = time + (n * delayinterval);
-            var bos = Math.tan(t);
-            var j = Math.berp(-1, 1, bos);
+            var b = Math.tan(t);
+            var j = Math.berp(-1, 1, b);
             var y = j * context.canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
             var x = rect.width / 2;
             var j = {slice,x,y,n};
+	        slice.t = t;
+            slice.b = b;
+            slice.y = y;
             slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight);
             slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
             if (slice.isvisible)
