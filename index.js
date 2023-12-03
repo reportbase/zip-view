@@ -4938,7 +4938,7 @@ menuobj.draw = function()
     {
         canvas.buttonheight = buttonobj.value();
         context.canvas.virtualheight = 
-            slices.length * canvas.buttonheight;// * beavobj.value()/100;
+            slices.length * canvas.buttonheight * beavobj.value()/100;
     }
 
     if (context != _8cnvctx)
@@ -4963,7 +4963,7 @@ menuobj.draw = function()
     var lasty = -10000000;
     var delay = 0;
     
-    for (var m = 0; m < canvas.normal.length-1; ++m)
+    for (var m = 0; m < canvas.normal.length; ++m)
     {
         var n = canvas.normal[m];
         var slice = slices[n];
