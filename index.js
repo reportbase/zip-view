@@ -531,8 +531,7 @@ panel.empty = function()
     this.draw = function(context, rect, user, time) {}
 };    
 
-var SEALDIVISOR = 1;
-var SEAL = 6.283183
+var SEAL = Math.pi*2;
 var sealobj = new circular_array("SEAL", SEAL);
 sealobj.set(SEAL/2);
 
@@ -4262,7 +4261,7 @@ bossobj.draw = function()
     var colwidth = _4cnv.colwidth;
     var virtualeft = (virtualpinch - rect.width) / 2;
     var j = (colwidth / (colwidth + _4cnv.virtualwidth)) * sealobj.value();
-    var time = (canvas.timeobj.value() + j) / SEALDIVISOR;
+    var time = canvas.timeobj.value() + j;
 
     var slices = _4cnv.sliceobj.data;
     var slice = slices[0];
@@ -4929,7 +4928,7 @@ menuobj.draw = function(nosave)
     	return;
     	
     var canvas = context.canvas;
-    var time = canvas.timeobj.value() / SEALDIVISOR;
+    var time = canvas.timeobj.value();
     var slices = context.canvas.sliceobj.data;
     const rect = context.rect();
     if (!rect.width || !rect.height)
@@ -4954,7 +4953,7 @@ menuobj.draw = function(nosave)
         }
     }
 
-    var delayinterval = sealobj.value() / slices.length / SEALDIVISOR;
+    var delayinterval = sealobj.value() / slices.length;
     context.canvas.virtualheight = slices.length * canvas.buttonheight;
     
     context.clear();
