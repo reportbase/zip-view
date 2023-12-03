@@ -1210,34 +1210,35 @@ var bossdisplaylst =
             var a = new panel.rowsA([HEADTOP, HEADBOT, 0, 
                                  (data.length*WRAPROWHEIGHT), 
                                  20],
+            [
+                0,
+                0,
+                0,
+                new panel.cols([0, rainstep, 0],
                 [
                     0,
-                    0,
-                    0,
-                    new panel.cols([0, rainstep, 0],
+                    new panel.layers(
                     [
-                        0,
-                        new panel.layers(
-                        [
-                            new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                            new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
-                            new panel.gridA(1, data.length, 1,
-                                new panel.shrink(new panel.text(),10,10)),
-                        ]),
-                        0,
+                        new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
+                        new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
+                        new panel.gridA(1, data.length, 1,
+                            new panel.shrink(new panel.text(),10,10)),
                     ]),
                     0,
-                ]);
+                ]),
+                0,
+            ]);
         
             if (headcnv.height)
             a.draw(context, rect,
-                [
-                    0,
-                    0,
-                    0,
-                    data,
-                    0,
-                ]);
+            [
+                0,
+                0,
+                0,
+                data,
+                0,
+            ]);
+        
             context.restore();   
     }
 }
@@ -1263,40 +1264,40 @@ var displaylst =
         var bh = rect.height * 0.4;
         const rainstep = Math.min(420,window.innerWidth-60);
         var a = new panel.cols([0, SCROLLEXTENT, SCROLLMARGIN],
+        [
+            0,
+            new panel.rows([0, bh, 0],
             [
                 0,
-                new panel.rows([0, bh, 0],
-                    [
-                        0,
-                        new panel.layers(
-                            [
-                                new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.timeobjrect), 20, 0),
-                                new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
-                            ]),
-                        0,
-                    ]),
-                0
-            ]);
+                new panel.layers(
+                [
+                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
+                    new panel.expand(new panel.rectangle(canvas.timeobjrect), 20, 0),
+                    new panel.shrink(new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 1), 3, 3),
+                ]),
+                0,
+            ]),
+            0
+        ]);
 
         a.draw(context, rect, context.canvas.timeobj, 0);
         
         var a = new panel.rows([0, SCROLLEXTENT, 6],
+        [
+            0,
+            new panel.cols([0, rainstep, 0],
             [
                 0,
-                new panel.cols([0, rainstep, 0],
-                    [
-                        0,
-                        new panel.layers(
-                            [
-                                new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
-                                new panel.expand(new panel.rectangle(canvas.hollyrect), 0, 20),
-                                new panel.shrink(new panel.currentH(
-                                    new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
-                            ]),
-                        0,
-                    ])
+                new panel.layers(
+                [
+                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
+                    new panel.expand(new panel.rectangle(canvas.hollyrect), 0, 20),
+                    new panel.shrink(new panel.currentH(
+                        new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
+                ]),
+                0,
             ])
+        ])
 
         a.draw(context, rect, context.canvas.hollyobj, 0);
         
@@ -1334,45 +1335,45 @@ var displaylst =
             [
                 0,
                 new panel.layers(
-                    [
-                        new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                        new panel.expand(new panel.rectangle(context.folderect), 10, 10),
-                        new panel.gridA(1, folders.length, 1,
-                            new panel.shrink(new panel.text(), 10, 10)),
-                    ]),
+                [
+                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
+                    new panel.expand(new panel.rectangle(context.folderect), 10, 10),
+                    new panel.gridA(1, folders.length, 1,
+                        new panel.shrink(new panel.text(), 10, 10)),
+                ]),
                 0,
             ]),
             0,
             new panel.cols([0, rainstep, 0],
+            [
+                0,
+                new panel.layers(
                 [
-                    0,
-                    new panel.layers(
-                        [
-                            new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                            new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
-                            new panel.gridA(1, data.length, 1,
-                                new panel.shrink(new panel.text(), 10, 10)),
-                        ]),
-                    0,
+                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
+                    new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
+                    new panel.gridA(1, data.length, 1,
+                        new panel.shrink(new panel.text(), 10, 10)),
                 ]),
+                0,
+            ]),
             0,
             0,
             0
         ]);
             
         a.draw(context, rect, 
-            [
-                0,
-		st,
-		0,
-                0,
-                folders,
-                0,
-                data,
-                0,
-                0,
-                
-            ], 0);
+        [
+            0,
+    		st,
+    		0,
+            0,
+            folders,
+            0,
+            data,
+            0,
+            0,    
+        ], 0);
+        
         context.restore();     
     }
 },
@@ -1386,31 +1387,31 @@ var displaylst =
         canvas.hollyrect = new rectangle();
         var kh = context.rect().width == window.innerWidth ? 90 : ALIEXTENT;
         var a = new panel.colsA([5, 9, 0, 9, 5],
-            [
-                0,
-                0,
-                0,
-                new panel.rows([kh, 0, kh],
-                    [
-                        0,
-                        new panel.layers(
-                            [
-                                new panel.expand(new panel.rectangle(canvas.hollyrect), 10, 0),
-                                new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1),
-                            ]),
-                        0,
-                    ]),
-                0,
-            ]);
+	    [
+    		0,
+    		0,
+    		0,
+    		new panel.rows([kh, 0, kh],
+    		    [
+    			0,
+    			new panel.layers(
+    			    [
+    				new panel.expand(new panel.rectangle(canvas.hollyrect), 10, 0),
+    				new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1),
+    			    ]),
+    			0,
+    		    ]),
+    		0,
+	    ]);
 
         a.draw(context, rect,
-            [
-                0,
-                0,
-                0,
-                canvas.timeobj,
-                0,
-            ]);
+        [
+            0,
+            0,
+            0,
+            canvas.timeobj,
+            0,
+        ]);
 
         context.restore();    
     }
