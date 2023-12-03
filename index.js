@@ -4574,10 +4574,10 @@ var buttonlst =
             ]);
 
         var k = 
-	    [
-		    user.name,
-            user.email,
-            user.id,
+	    [    
+    		user.name,
+    		user.email,
+    		user.id,
         ];
         
         a.draw(context, rect, k, time);
@@ -4947,6 +4947,15 @@ menuobj.draw = function(nosave)
             reseturl()
             resetview()
         }
+    }
+
+    var lst = [];
+    for (var len = 0; len < 100; ++len)
+    {
+        var j = Math.PI / len;
+        var t = time + (len * j);
+        var b = Math.tan(t);
+        lst.push(b);
     }
 
     var delayinterval = Math.PI / slices.length;
