@@ -5020,9 +5020,6 @@ menuobj.draw = function(nosave)
             y -= e;
             var x = rect.width / 2;
             var j = {slice,x,y,n};
-	        slice.t = t;
-            slice.b = b;
-            slice.y = y;
             slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight);
             slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
             if (slice.isvisible)
