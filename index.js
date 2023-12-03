@@ -5002,7 +5002,7 @@ menuobj.draw = function(nosave)
             thumbimg.onload = function()
             {
                 this.count = 0;
-                menuobj.draw();
+             //   menuobj.draw();
             }
 
             if (slice.entry)
