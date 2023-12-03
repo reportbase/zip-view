@@ -5001,24 +5001,25 @@ menuobj.draw = function()
             y -= e;
             var x = rect.width / 2;
             var j = {slice,x,y,n};
-            
+
             var btnh = buttonobj.value();
-	        slice.rect = new rectangle(0, j.y, rect.width, btnh);
-            slice.isvisible = j.y > -btnh && j.y < window.innerHeight;
+	        delete slice.rect;
+            slice.isvisible = y > -btnh && y < window.innerHeight;
             if (!slice.isvisible)
                 continue;
             
-            if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
+            slice.rect = new rectangle(0, y, rect.width, btnh);
+            if (slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
             {
                 galleryobj.width = thumbimg.width;
                 galleryobj.height = thumbimg.height;
-                context.canvas.centered = j.n;
+                context.canvas.centered = n;
             }
             
             context.canvas.visibles.push(j);           
-            context.translate(0, j.y);
-            context.canvas.draw(context, r, j.slice, j.n);
-            context.translate(0, -j.y);
+            context.translate(0, y);
+            context.canvas.draw(context, r, slice, n);
+            context.translate(0, -y);
         }
     }
 
