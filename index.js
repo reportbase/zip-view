@@ -578,21 +578,21 @@ var footlst =
         context.save();     
         canvas.homerect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
-            [
-                new panel.layers(
-                [
-                    new panel.fill(FOOTBTNCOLOR),
-                    new panel.text(),
-                    new panel.rectangle(canvas.homerect),
-                ]),
-                0
-            ]);
+		[
+			new panel.layers(
+			[
+				new panel.fill(FOOTBTNCOLOR),
+				new panel.text(),
+				new panel.rectangle(canvas.homerect),
+			]),
+			0
+		]);
 
         a.draw(context, rect, 
-               [
-                   `\u{25C0}   Folders`,
-                   0 
-                ], 0);
+	   	[
+		   `\u{25C0}   Folders`,
+		   0 
+		], 0);
         
         context.restore();
     }
@@ -607,42 +607,42 @@ var footlst =
         canvas.uploadrect = new rectangle();
         canvas.downloadrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
-            [
-                new panel.layers(
-                [
-                    new panel.fill(FOOTBTNCOLOR),
-                    new panel.rectangle(canvas.homerect),
-                    new panel.text(),
-                ]),
-                0,
-                new panel.layers(
-                [
-                    new panel.fill(FOOTBTNCOLOR),
-                    new panel.colsA([0,0],
-                    [
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.downloadrect),
-                            new panel.text(),
-                        ]),
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.uploadrect),
-                            new panel.text(),
-                        ]),
-                    ])                            
-                ])
-            ]);
+		[
+			new panel.layers(
+			[
+				new panel.fill(FOOTBTNCOLOR),
+				new panel.rectangle(canvas.homerect),
+				new panel.text(),
+			]),
+			0,
+			new panel.layers(
+			[
+				new panel.fill(FOOTBTNCOLOR),
+				new panel.colsA([0,0],
+				[
+					new panel.layers(
+					[
+						new panel.rectangle(canvas.downloadrect),
+						new panel.text(),
+					]),
+					new panel.layers(
+					[
+						new panel.rectangle(canvas.uploadrect),
+						new panel.text(),
+					]),
+				])                            
+			])
+		]);
         
         a.draw(context, rect, 
-               [
-                   `\u{25C0}   Images`,
-                   0,
-                   [
-                       `Download`,
-                       `Upload`,
-                    ], 
-                ]);
+	   	[
+		   `\u{25C0}   Images`,
+		   0,
+		   [
+			   `Download`,
+			   `Upload`,
+			], 
+		]);
         
         context.restore();    
     }
@@ -655,22 +655,22 @@ var footlst =
         context.save();     
         canvas.closerect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
-            [
-                new panel.layers(
-                [
-                    new panel.fill(FOOTBTNCOLOR),
-                    new panel.text(),
-                    new panel.rectangle(canvas.closerect),
-                ]),
-                0
-            ]);
+		[
+			new panel.layers(
+			[
+				new panel.fill(FOOTBTNCOLOR),
+				new panel.text(),
+				new panel.rectangle(canvas.closerect),
+			]),
+			0
+		]);
 
         var k = galleryobj.title?galleryobj.title:"Images";
         a.draw(context, rect, 
-               [
-                   `\u{25C0}   ${k}`,
-                    0,
-                ], 0);
+	   	[
+		   `\u{25C0}   ${k}`,
+			0,
+		], 0);
         
         context.restore();
     }
@@ -687,54 +687,54 @@ var footlst =
         canvas.userpatchrect = new rectangle();
         canvas.userdeleterect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
-            [
-                new panel.layers(
-                [
-                    new panel.fill(FOOTBTNCOLOR),
-                    new panel.rectangle(canvas.homerect),
-                    new panel.text(),
-                ]),
-                0,
-                new panel.layers(
-                [
-                    new panel.fill(FOOTBTNCOLOR),
-                    new panel.colsA([0,0,0,0],
-                    [
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.useropenrect),
-                            new panel.text(),
-                        ]),
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.useraddrect),
-                            new panel.text(),
-                        ]),
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.userpatchrect),
-                            new panel.text(),
-                        ]),
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.userdeleterect),
-                            new panel.text(),
-                        ]),
-                    ])                            
-                ])
-            ]);
+		[
+			new panel.layers(
+			[
+				new panel.fill(FOOTBTNCOLOR),
+				new panel.rectangle(canvas.homerect),
+				new panel.text(),
+			]),
+			0,
+			new panel.layers(
+			[
+				new panel.fill(FOOTBTNCOLOR),
+				new panel.colsA([0,0,0,0],
+				[
+					new panel.layers(
+					[
+						new panel.rectangle(canvas.useropenrect),
+						new panel.text(),
+					]),
+					new panel.layers(
+					[
+						new panel.rectangle(canvas.useraddrect),
+						new panel.text(),
+					]),
+					new panel.layers(
+					[
+						new panel.rectangle(canvas.userpatchrect),
+						new panel.text(),
+					]),
+					new panel.layers(
+					[
+						new panel.rectangle(canvas.userdeleterect),
+						new panel.text(),
+					]),
+				])                            
+			])
+		]);
         
         a.draw(context, rect, 
-               [
-                   `\u{25C0}   Users`,
-                   0,
-                   [
-                       `Open`,
-                       `Add`,
-                       `Edit`,
-                       `Delete`,
-                    ], 
-                ]);
+	   	[
+		   `\u{25C0}   Users`,
+		   0,
+		   [
+			   `Open`,
+			   `Add`,
+			   `Edit`,
+			   `Delete`,
+			], 
+		]);
         
         context.restore();    
     }
@@ -751,54 +751,54 @@ var footlst =
         canvas.gallerypatchrect = new rectangle();
         canvas.gallerydeleterect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
-            [
-                new panel.layers(
-                [
-                    new panel.fill(FOOTBTNCOLOR),
-                    new panel.rectangle(canvas.homerect),
-                    new panel.text(),
-                ]),
-                0,
-                new panel.layers(
-                [
-                    new panel.fill(FOOTBTNCOLOR),
-                    new panel.colsA([0,0,0,0],
-                    [
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.galleryopenrect),
-                            new panel.text(),
-                        ]),
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.galleryaddrect),
-                            new panel.text(),
-                        ]),
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.gallerypatchrect),
-                            new panel.text(),
-                        ]),
-                        new panel.layers(
-                        [
-                            new panel.rectangle(canvas.gallerydeleterect),
-                            new panel.text(),
-                        ]),
-                    ])                            
-                ])
-            ]);
+		[
+			new panel.layers(
+			[
+				new panel.fill(FOOTBTNCOLOR),
+				new panel.rectangle(canvas.homerect),
+				new panel.text(),
+			]),
+			0,
+			new panel.layers(
+			[
+				new panel.fill(FOOTBTNCOLOR),
+				new panel.colsA([0,0,0,0],
+				[
+					new panel.layers(
+					[
+						new panel.rectangle(canvas.galleryopenrect),
+						new panel.text(),
+					]),
+					new panel.layers(
+					[
+						new panel.rectangle(canvas.galleryaddrect),
+						new panel.text(),
+					]),
+					new panel.layers(
+					[
+						new panel.rectangle(canvas.gallerypatchrect),
+						new panel.text(),
+					]),
+					new panel.layers(
+					[
+						new panel.rectangle(canvas.gallerydeleterect),
+						new panel.text(),
+					]),
+				])                            
+			])
+		]);
         
         a.draw(context, rect, 
-               [
-                   `\u{25C0}   Galleries`,
-                   0,
-                   [
-                       `Open`,
-                       `Add`,
-                       `Edit`,
-                       `Delete`,
-                    ], 
-                ]);
+	   	[
+		   `\u{25C0}   Galleries`,
+		   0,
+		   [
+			   `Open`,
+			   `Add`,
+			   `Edit`,
+			   `Delete`,
+			], 
+		]);
         
         context.restore();    
     }
@@ -911,30 +911,30 @@ var footlst =
         canvas.closerect = new rectangle();
         canvas.loginrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
-            [
-                new panel.layers(
-                [
-                    new panel.fill(FOOTBTNCOLOR),
-                    new panel.text(),
-                    new panel.rectangle(canvas.closerect),
-                ]),
-                0,
-                new panel.layers(
-                [
-                    new panel.fill(FOOTBTNCOLOR),
-                    new panel.rectangle(canvas.loginrect),
-                    new panel.text(),             
-                ])
-            ]);
+		[
+			new panel.layers(
+			[
+				new panel.fill(FOOTBTNCOLOR),
+				new panel.text(),
+				new panel.rectangle(canvas.closerect),
+			]),
+			0,
+			new panel.layers(
+			[
+				new panel.fill(FOOTBTNCOLOR),
+				new panel.rectangle(canvas.loginrect),
+				new panel.text(),             
+			])
+		]);
 
 	    var str = login.id ? "Logout" : "Login";
         a.draw(context, rect, 
-               [
-                   `\u{25C0}   ${url.host}`,
-                    0,
-                    `${str}`,
-                ],
-                0);
+	   	[
+		   `\u{25C0}   ${url.host}`,
+			0,
+			`${str}`,
+		], 0);
+		
         context.restore();
     }
 },
@@ -953,87 +953,86 @@ var headlst =
     name: "BOSS",
     draw: function(context, rect, user, time)
     {
-            context.clear();
-            context.bossdisplayrect = new rectangle();
-            var b = 0;
-            var k = menuobj.value();
-            var w = k ? k.canvas.width : 0;
-            var b = window.innerWidth == w;
-            context.save();
-            const rainstep = Math.min(420,window.innerWidth-60);
+		context.clear();
+		context.bossdisplayrect = new rectangle();
+		var b = 0;
+		var k = menuobj.value();
+		var w = k ? k.canvas.width : 0;
+		var b = window.innerWidth == w;
+		context.save();
+		const rainstep = Math.min(420,window.innerWidth-60);
 
-            var a = new panel.rows([BEXTENT, 0],
-                [
-                    new panel.cols([5, 
-                                    ALIEXTENT, 0, 
-                                    ALIEXTENT, 
-                                    window.innerWidth >= 320 ? (ALIEXTENT+10) : -1, 
-                                    ALIEXTENT, 
-                                    0, 
-                                    ALIEXTENT, 
-                                    5],
-                        [
-                            0, 0, 0,
-                            new panel.fullscreen(),
-                            new panel.zoom(),
-                            new panel.download(),
+		var a = new panel.rows([BEXTENT, 0],
+        [
+            new panel.cols([5, 
+                            ALIEXTENT, 0, 
+                            ALIEXTENT, 
+                            window.innerWidth >= 320 ? (ALIEXTENT+10) : -1, 
+                            ALIEXTENT, 
                             0, 
-                            new panel.closeboss(), 
-                            0
-                        ]),
-                        new panel.cols([0,rainstep,0],
+                            ALIEXTENT, 
+                            5],
+                [
+                    0, 0, 0,
+                    new panel.fullscreen(),
+                    new panel.zoom(),
+                    new panel.download(),
+                    0, 
+                    new panel.closeboss(), 
+                    0
+                ]),
+                new panel.cols([0,rainstep,0],
+                [
+                        0,
+                        new panel.layers(
                         [
-                                0,
-                                new panel.layers(
-                                [
-                                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                                    new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
-                                    new panel.shrink(new panel.text(),10,10),
-                                ]),
-                                0,
-                        ]),               
-                ]);
+                            new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
+                            new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
+                            new panel.shrink(new panel.text(),10,10),
+                        ]),
+                        0,
+                ]),               
+        ]);
 
-            a.draw(context, rect, `\u{25C0}    ${bossdisplayobj.value().title}    \u{25B6}`, 0);
-            context.restore();        
+		a.draw(context, rect, `\u{25C0}    ${bossdisplayobj.value().title}    \u{25B6}`, 0);
+		context.restore();        
     }
 },
 {
     name: "GALLERY",
     draw: function(context, rect, user, time)
     {
-            var canvas = context.canvas;
-            context.clear();
-            context.save();
-            var ctx = menuobj.value();
-            var g = ctx == _8cnvctx;
-            delete context.zoomrect;
-            delete context.fitwidthrect;
-            delete context.fullscreenrect;
-            delete context.homemenurect;
-            delete context.imagemenurect;
-            var s = SAFARI ? -1: ALIEXTENT;
-            var e = rect.width>=320?(ALIEXTENT+10):-1;
-            var a = new panel.rows([BEXTENT, 0],
-                [
-                    new panel.cols(
-                    [5, ALIEXTENT, 0, s, e, ALIEXTENT, 0, ALIEXTENT, 5],
-                    [
-                        0,
-                        new panel.homemenu(),
-                        0,
-                        g ? new panel.fullscreen() : 0,
-                        g ? new panel.zoom() : 0,
-                        g ? new panel.fitwidth() : 0,
-                        0,
-                        new panel.imagemenu(),
-                        0,
-                    ]),
-                    0
-                ]);
-            
-            a.draw(context, rect, 0, 0);
-            context.restore();        
+        var canvas = context.canvas;
+        context.clear();
+        context.save();
+        var ctx = menuobj.value();
+        var g = ctx == _8cnvctx;
+        delete context.zoomrect;
+        delete context.fitwidthrect;
+        delete context.fullscreenrect;
+        delete context.homemenurect;
+        delete context.imagemenurect;
+        var s = SAFARI ? -1: ALIEXTENT;
+        var e = rect.width>=320?(ALIEXTENT+10):-1;
+        var a = new panel.rows([BEXTENT, 0],
+        [
+            new panel.cols([5, ALIEXTENT, 0, s, e, ALIEXTENT, 0, ALIEXTENT, 5],
+            [
+                0,
+                new panel.homemenu(),
+                0,
+                g ? new panel.fullscreen() : 0,
+                g ? new panel.zoom() : 0,
+                g ? new panel.fitwidth() : 0,
+                0,
+                new panel.imagemenu(),
+                0,
+            ]),
+            0
+        ]);
+        
+        a.draw(context, rect, 0, 0);
+        context.restore();        
     }
 },
 ]
@@ -1056,121 +1055,121 @@ var bossdisplaylst =
     title: "Thumbnail",
     draw: function(context, r, user, time)
     {
-            var canvas = context.canvas;
-            context.pagerect = new rectangle();
-            
-            if (
-                !photo.image ||
-                !photo.image.complete ||
-                !photo.image.naturalHeight)
-                return;
-
-            var w = Math.min(320, r.width - 100);
-            var j = window.innerWidth - r.width >= 180;
-
-            var data = [];
-            var index = galleryobj.current();
-            data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
-            const rainstep = Math.min(420,window.innerWidth-60);
+        var canvas = context.canvas;
+        context.pagerect = new rectangle();
         
-            var a = new panel.rowsA([HEADTOP, HEADBOT, 0, 
-                                 (data.length*WRAPROWHEIGHT), 
-                                 20],
+        if (
+            !photo.image ||
+            !photo.image.complete ||
+            !photo.image.naturalHeight)
+            return;
+
+        var w = Math.min(320, r.width - 100);
+        var j = window.innerWidth - r.width >= 180;
+
+        var data = [];
+        var index = galleryobj.current();
+        data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
+        const rainstep = Math.min(420,window.innerWidth-60);
+    
+        var a = new panel.rowsA([HEADTOP, HEADBOT, 0, 
+                             (data.length*WRAPROWHEIGHT), 
+                             20],
+        [
+            0,
+            0,
+            0,
+            new panel.cols([0, rainstep, 0],
+            [
+                0,
+                new panel.layers(
                 [
-                    0,
-                    0,
-                    0,
-                    new panel.cols([0, rainstep, 0],
-                    [
-                        0,
-                        new panel.layers(
-                        [
-                            new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                            new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
-                            new panel.gridA(1, data.length, 1,
-                                new panel.shrink(new panel.text(),10,10)),
-                        ]),
-                        0,
-                    ]),
-                    0,
-                ]);
-        
-            if (headcnv.height)
-            a.draw(context, rect,
-                [
-                    0,
-                    0,
-                    0,
-                    data,
-                    0,
-                ]);
+                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
+                    new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
+                    new panel.gridA(1, data.length, 1,
+                        new panel.shrink(new panel.text(),10,10)),
+                ]),
+                0,
+            ]),
+            0,
+        ]);
+    
+        if (headcnv.height)
+        a.draw(context, rect,
+        [
+            0,
+            0,
+            0,
+            data,
+            0,
+        ]);
 
-            var he = heightobj;
-            var b = Math.berp(0, he.length() - 1, he.current());
-            var height = Math.lerp(90, rect.height - 180, b);
-            if (height > 320)
-                height = 320;
-            var width = Math.lerp(90, rect.width - 80, b);
-            var r = calculateAspectRatioFit(photo.image.width, photo.image.height, width, height);
-            var h = r.height;
-            var w = r.width;
-            var x = Math.floor(Math.nub(positxobj.value(), positxobj.length(), w, rect.width));
-            var y = Math.floor(Math.nub(posityobj.value(), posityobj.length(), h, rect.height));
-            if (!headcnv.height)
-                return;
-            canvas.thumbrect = new rectangle(x, y, w, h);
-            var r = canvas.thumbrect;
-            context.save();
-            context.shadowOffsetX = 0;
-            context.shadowOffsetY = 0;
-            var blackfill = new panel.fill(THUMBTRANSPARENT);
-            blackfill.draw(context, canvas.thumbrect, 0, 0);
-        
-            var whitestroke = new panel.stroke(THUMBSTROKE, THUMBORDER);
-            whitestroke.draw(context, r, 0, 0);
-            var region = new Path2D();
-            region.rect(x, y, w, h);
-            context.clip(region);
+        var he = heightobj;
+        var b = Math.berp(0, he.length() - 1, he.current());
+        var height = Math.lerp(90, rect.height - 180, b);
+        if (height > 320)
+            height = 320;
+        var width = Math.lerp(90, rect.width - 80, b);
+        var r = calculateAspectRatioFit(photo.image.width, photo.image.height, width, height);
+        var h = r.height;
+        var w = r.width;
+        var x = Math.floor(Math.nub(positxobj.value(), positxobj.length(), w, rect.width));
+        var y = Math.floor(Math.nub(posityobj.value(), posityobj.length(), h, rect.height));
+        if (!headcnv.height)
+            return;
+        canvas.thumbrect = new rectangle(x, y, w, h);
+        var r = canvas.thumbrect;
+        context.save();
+        context.shadowOffsetX = 0;
+        context.shadowOffsetY = 0;
+        var blackfill = new panel.fill(THUMBTRANSPARENT);
+        blackfill.draw(context, canvas.thumbrect, 0, 0);
+    
+        var whitestroke = new panel.stroke(THUMBSTROKE, THUMBORDER);
+        whitestroke.draw(context, r, 0, 0);
+        var region = new Path2D();
+        region.rect(x, y, w, h);
+        context.clip(region);
 
-            var ww = Math.max(30, (rect.width / canvas.virtualwidth) * w);
-            var stretch = stretchobj.value();
-            if (stretch < 50)
-                stretch = (50 - stretchobj.value()) / 100;
-            else
-                stretch = (stretchobj.value() - 50) / 100;
-            stretch = 1 - stretch;
-            ww *= stretch;
+        var ww = Math.max(30, (rect.width / canvas.virtualwidth) * w);
+        var stretch = stretchobj.value();
+        if (stretch < 50)
+            stretch = (50 - stretchobj.value()) / 100;
+        else
+            stretch = (stretchobj.value() - 50) / 100;
+        stretch = 1 - stretch;
+        ww *= stretch;
 
-            var b = Math.berp(0, photo.image.height, canvas.imageheight);
-            var hh = Math.lerp(0, h, b);
-            var b = Math.berp(0, photo.image.height, _4cnv.nuby);
-            var yy = y + Math.lerp(0, h, b);
-            var jj = canvas.timeobj.berp();
-            var bb = w * (1 - jj);
-            var xx = x + bb - ww / 2;
-            context.lineWidth = THUMBORDER;
-            var r = new rectangle(xx, yy, ww, hh);
-            canvas.selectrect = []
+        var b = Math.berp(0, photo.image.height, canvas.imageheight);
+        var hh = Math.lerp(0, h, b);
+        var b = Math.berp(0, photo.image.height, _4cnv.nuby);
+        var yy = y + Math.lerp(0, h, b);
+        var jj = canvas.timeobj.berp();
+        var bb = w * (1 - jj);
+        var xx = x + bb - ww / 2;
+        context.lineWidth = THUMBORDER;
+        var r = new rectangle(xx, yy, ww, hh);
+        canvas.selectrect = []
+        canvas.selectrect.push(r);
+        var blackfill = new panel.fill("rgba(0,0,0,0.2)");
+        blackfill.draw(context, r, 0, 0);
+        whitestroke.draw(context, r, 0, 0);
+        if (xx > x) //leftside
+        {
+            var r = new rectangle(xx - w, yy, ww, hh);
             canvas.selectrect.push(r);
-            var blackfill = new panel.fill("rgba(0,0,0,0.2)");
             blackfill.draw(context, r, 0, 0);
             whitestroke.draw(context, r, 0, 0);
-            if (xx > x) //leftside
-            {
-                var r = new rectangle(xx - w, yy, ww, hh);
-                canvas.selectrect.push(r);
-                blackfill.draw(context, r, 0, 0);
-                whitestroke.draw(context, r, 0, 0);
-            }
-            else if (xx < x) //right side
-            {
-                var r = new rectangle(w + xx, yy, ww, hh);
-                canvas.selectrect.push(r);
-                blackfill.draw(context, r, 0, 0);
-                whitestroke.draw(context, r, 0, 0);
-            }
+        }
+        else if (xx < x) //right side
+        {
+            var r = new rectangle(w + xx, yy, ww, hh);
+            canvas.selectrect.push(r);
+            blackfill.draw(context, r, 0, 0);
+            whitestroke.draw(context, r, 0, 0);
+        }
 
-            context.restore();
+        context.restore();
     }
 },
 {
@@ -4471,15 +4470,15 @@ var buttonlst =
 
         var e = context.canvas.hollyobj.berp();
         var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
+        [
+            0,
+            new panel.layers(
             [
-                0,
-                new panel.layers(
-                    [
-                        new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
-                        new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
-                    ]),
-                0,
-            ]);
+                new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
+            ]),
+            0,
+        ]);
 
         var k = 
 	    [
@@ -4506,15 +4505,15 @@ var buttonlst =
 
         var e = context.canvas.hollyobj.berp();
         var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
+        [
+            0,
+            new panel.layers(
             [
-                0,
-                new panel.layers(
-                    [
-                        new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
-                        new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
-                    ]),
-                0,
-            ]);
+                new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
+            ]),
+            0,
+        ]);
 
         var k = [];
         k.push(`${user.index+1} of ${galleryobj.length()}`);
@@ -4562,15 +4561,15 @@ var buttonlst =
 
         var e = context.canvas.hollyobj.berp();
         var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
+        [
+            0,
+            new panel.layers(
             [
-                0,
-                new panel.layers(
-                    [
-                        new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
-                        new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
-                    ]),
-                0,
-            ]);
+                new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
+            ]),
+            0,
+        ]);
 
         var k = 
 	    [    
@@ -4597,15 +4596,15 @@ var buttonlst =
 
         var e = context.canvas.hollyobj.berp();
         var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
+        [
+            0,
+            new panel.layers(
             [
-                0,
-                new panel.layers(
-                    [
-                        new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
-                        new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
-                    ]),
-                0,
-            ]);
+                new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
+            ]),
+            0,
+        ]);
 
         var k = typeof(user.title) == "function" ? user.title() : user.title;
         a.draw(context, rect, k ? k.split("\n") : "", time);
@@ -4626,15 +4625,15 @@ var buttonlst =
 
         var e = context.canvas.hollyobj.berp();
         var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
+        [
+            0,
+            new panel.layers(
             [
-                0,
-                new panel.layers(
-                    [
-                        new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
-                        new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
-                    ]),
-                0,
-            ]);
+                new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
+            ]),
+            0,
+        ]);
 
         a.draw(context, rect, user.folder ? user.folder.split("/") : "", time);
         context.restore();
@@ -4723,6 +4722,7 @@ var buttonlst =
             var hhh = hh;
             var yyy = 0;
 
+            //todo
             if (user.rect.y < 0)
             {
 		        yyy = -user.rect.y;
