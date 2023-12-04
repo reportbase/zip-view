@@ -5004,23 +5004,19 @@ menuobj.draw = function()
             slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
             if (slice.isvisible)
             {
-                if (slice.isvisible)
-                {
-                    if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
-                    {
-                        galleryobj.width = thumbimg.width;
-                        galleryobj.height = thumbimg.height;
-                        context.canvas.centered = j.n;
-                    }
-                    
-                    context.canvas.visibles.push(j);
-                }
-                
+        	    if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
+        	    {
+            		galleryobj.width = thumbimg.width;
+            		galleryobj.height = thumbimg.height;
+            		context.canvas.centered = j.n;
+        	    }
+        	    
+        	    context.canvas.visibles.push(j);             
                 context.translate(0, j.y);
                 context.canvas.draw(context, r, j.slice, j.n);
                 context.translate(0, -j.y);
             }
-	}
+	    }
     }
 
     //gallery
