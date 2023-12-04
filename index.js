@@ -79,7 +79,7 @@ function setjson(key, value)
 {
     try
     {
-        localStorage.setItem(key, JSON.stringify(valu));
+        localStorage.setItem(key, JSON.stringify(value));
     }
     catch(e)
     {
