@@ -4725,7 +4725,7 @@ var buttonlst =
                 yyy = -user.rect.y;
             else
                 yyy = user.rect.y;
-		    hhh = user.rect.height;
+		    //hhh = user.rect.height;
 
    /*
    	        if (user.rect.y < 0)
