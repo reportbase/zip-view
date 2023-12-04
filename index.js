@@ -4726,16 +4726,12 @@ var buttonlst =
             if (user.rect.y < 0)
             {
 		        yyy = -user.rect.y;
-		        //hhh = user.rect.y + user.rect.height;
-                hhh = Math.min(window.innerHeight,user.rect.height);
-                //if (yyy + hhh > window.innerHeight)
-                    //hhh = window.innerHeight;
+		        hhh = Math.min(window.innerHeight,user.rect.height);
             }
             else
             {
-                var j = user.rect.y + user.rect.height;
-                if (j > window.innerHeight)
-                    hhh = window.innerHeight - user.rect.y;
+                yyy = user.rect.y;
+                hhh = Math.min(window.innerHeight-user.rect.y,user.rect.height);
             }
 
             if (thumbfitted.view != view)
