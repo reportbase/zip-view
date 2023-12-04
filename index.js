@@ -4722,17 +4722,16 @@ var buttonlst =
             var hhh = hh;
             var yyy = 0;
 
-            //todo 0 index
-            if (user.rect.y < 0)
+		    if (user.rect.y < 0)
             {
 		        yyy = -user.rect.y;
 		        hhh = Math.min(window.innerHeight,user.rect.height);
-           }
+            }
             else
             {
-                yyy = user.rect.y;
                 hhh = Math.min(window.innerHeight-user.rect.y,user.rect.height);
             }
+            //todo 0 index
 
             if (thumbfitted.view != view)
                 thumbfitted.view = view;
