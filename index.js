@@ -4650,7 +4650,7 @@ var buttonlst =
         if (user.tap)
             clr = MENUTAP;
         else if (user.enabled && user.enabled())
-                clr = MENUSELECT;
+            clr = MENUSELECT;
 
         var e = context.canvas.hollyobj.berp();
         var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
@@ -4722,6 +4722,13 @@ var buttonlst =
             var hhh = hh;
             var yyy = 0;
 	        if (user.rect.y < 0)
+                yyy = -user.rect.y;
+            else
+                yyy = user.rect.y;
+		    hhh = user.rect.height;
+
+   /*
+   	        if (user.rect.y < 0)
             {
 		        yyy = -user.rect.y;
 		        hhh = user.rect.y + user.rect.height;
@@ -4734,7 +4741,7 @@ var buttonlst =
                 if (j > window.innerHeight)
                     hhh = window.innerHeight - user.rect.y;
             }
-		
+    */
             if (thumbfitted.view != view)
                 thumbfitted.view = view;
 
