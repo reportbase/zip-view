@@ -5065,8 +5065,7 @@ function reseturl()
 
 var eventlst = 
 [
-{   //1 users
-    hideontap: 0,
+{ // _1cnvctx users
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
@@ -5087,8 +5086,7 @@ var eventlst =
     buttonmargin: 20,
     width: 640
 },
-{   //2 galleries
-    hideontap: 0,
+{ // _2cnvctx galleries
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
@@ -5109,8 +5107,7 @@ var eventlst =
     buttonmargin: 20,
     width: 640
 },
-{   //3 debug
-    hideontap: 1,
+{ // _3cnvctx debug
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
@@ -5131,8 +5128,7 @@ var eventlst =
     buttonmargin: 10,
     width: 640
 },
-{ //4 boss
-    hideontap: 1,
+{ // _4cnvctx boss
     speed: 40,
     reduce: 2.5,
     updownmax: 60,
@@ -5153,8 +5149,7 @@ var eventlst =
     buttonmargin: 10,
     width: 640
 },
-{ //5 folders
-    hideontap: 1,
+{ // _5cnvctx folders
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
@@ -5175,8 +5170,7 @@ var eventlst =
     buttonmargin: 10,
     width: 640
 },
-{ //6 images
-    hideontap: 1,
+{ // _6cnvctx images
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
@@ -5197,8 +5191,7 @@ var eventlst =
     buttonmargin: 15,
     width: 640
 },
-{ //7 home
-    hideontap: 1,
+{ // _7cnvctx home
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
@@ -5219,8 +5212,7 @@ var eventlst =
     buttonmargin: 20,
     width: 640
 },
-{   //8 gallery
-    hideontap: 1,
+{ // _8cnvctx gallery
     speed: 50,
     reduce: 2.5,
     updownmax: 60,
@@ -5241,8 +5233,7 @@ var eventlst =
     buttonmargin: 10,
     width: 5160
 },
-{   //9 template
-    hideontap: 1,
+{ // _9cnvctx template
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
@@ -5263,8 +5254,7 @@ var eventlst =
     buttonmargin: 30,
     width: 640
 },
-{   //10 User
-    hideontap: 1,
+{ // _10cnvctx User
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
@@ -5285,8 +5275,7 @@ var eventlst =
     buttonmargin: 10,
     width: 640
 },
-{ //11 unused
-    hideontap: 1,
+{ // _11cnvctx unused
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
@@ -5307,8 +5296,7 @@ var eventlst =
     buttonmargin: 15,
     width: 640
 },
-{ //12
-    hideontap: 1,
+{ // _12cnvctx
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
@@ -5329,8 +5317,7 @@ var eventlst =
     buttonmargin: 10,
     width: 640
 },
-{ //13
-    hideontap: 1,
+{ // _13cnvctx
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
@@ -5351,8 +5338,7 @@ var eventlst =
     buttonmargin: 10,
     width: 640
 },
-{ //14
-    hideontap: 1,
+{ // _14cnvctx
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
@@ -5373,8 +5359,7 @@ var eventlst =
     buttonmargin: 10,
     width: 640
 },
-{ //15
-    hideontap: 1,
+{ // _15cnvctx
     speed: 60,
     reduce: 2,
     updownmax: 60,
@@ -5422,7 +5407,6 @@ contextobj.init = function()
         canvas.speed = obj.speed;
         canvas.reduce = obj.reduce;
         canvas.autodirect = -1;
-        canvas.hideontap = obj.hideontap;
         canvas.width_ = obj.width;
         canvas.footer = obj.footer;
         canvas.buttonheight = obj.buttonheight;
