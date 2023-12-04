@@ -4725,13 +4725,14 @@ var buttonlst =
             //todo
             if (user.rect.y < 0)
             {
-		        //yyy = -user.rect.y;
+		        yyy = -user.rect.y;
 		        //hhh = Math.min(window.innerHeight,user.rect.height);
+                hhh = user.rect.height;
             }
             else
             {
-                //yyy = user.rect.y;
-                //hhh = Math.min(window.innerHeight-user.rect.y,user.rect.height);
+                yyy = user.rect.y;
+                hhh = Math.min(window.innerHeight-user.rect.y,user.rect.height);
             }
 
             if (thumbfitted.view != view)
