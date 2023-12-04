@@ -6901,9 +6901,18 @@ else if (url.searchParams.has("path"))
 {
     var path = url.searchParams.get("path");
     url.path = path;
-     fetch(path)
-	    .then((response) => jsonhandler(response))
-	    .then((json) => galleryobj.init(json))           
+    if (path.isjson())
+    {
+         fetch(path)
+	        .then((response) => jsonhandler(response))
+	        .then((json) => galleryobj.init(json))        
+    }
+    else
+    {
+        var json = {};
+        json.data = path;
+        galleryobj.init(json)
+    }
 }
 else
 {
