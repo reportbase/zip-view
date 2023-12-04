@@ -6844,7 +6844,7 @@ galleryobj.init = function(obj)
     	{
     		var lst = str.split("\n");
     		var k = {}
-    		obj.data = [];
+    		galleryobj.data = [];
     		for (var n = 0; n < lst.length-1; ++n)
     		{
     			var e = {}
@@ -6852,10 +6852,10 @@ galleryobj.init = function(obj)
     				e.url = `${root}/${lst[n]}`;
                 else
                     e.url = lst[n];
-    			obj.data.push(e);
+    			galleryobj.data.push(e);
     		}
     
-    		galleryobj.reset(obj);
+    		galleryobj.reset();
     	})	
 }
 
