@@ -4654,15 +4654,15 @@ var buttonlst =
 
         var e = context.canvas.hollyobj.berp();
         var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
+        [
+            0,
+            new panel.layers(
             [
-                0,
-                new panel.layers(
-                [
-                    new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
-                    new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
-                ]),
-                0,
-            ]);
+                new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
+            ]),
+            0,
+        ]);
 
         var k = typeof(user.title) == "function" ? user.title() : user.title;
         a.draw(context, rect, k.split("\n"), time);
@@ -4683,15 +4683,16 @@ var buttonlst =
 
         var e = context.canvas.hollyobj.berp();
         var a = new panel.cols([BUTTONMARGIN, 0, BUTTONMARGIN],
+        [
+            0,
+            new panel.layers(
             [
-                0,
-                new panel.layers(
-                    [
-                        new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
-                        new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
-                    ]),
-                0,
-            ]);
+                new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                new panel.shrink(new panel.multitext(e, 
+                    new panel.text()), 20, 20),
+            ]),
+            0,
+        ]);
 
         var k = 
         [
@@ -4721,14 +4722,8 @@ var buttonlst =
             var ww = Math.floor(rect.width);
             var hhh = hh;
             var yyy = 0;
-	        if (user.rect.y < 0)
-                yyy = -user.rect.y;
-            else
-                yyy = user.rect.y;
-		    //hhh = user.rect.height;
 
-   /*
-   	        if (user.rect.y < 0)
+            if (user.rect.y < 0)
             {
 		        yyy = -user.rect.y;
 		        hhh = user.rect.y + user.rect.height;
@@ -4741,7 +4736,7 @@ var buttonlst =
                 if (j > window.innerHeight)
                     hhh = window.innerHeight - user.rect.y;
             }
-    */
+
             if (thumbfitted.view != view)
                 thumbfitted.view = view;
 
