@@ -5000,7 +5000,7 @@ menuobj.draw = function()
             y -= e;
             var x = rect.width / 2;
             var j = {slice,x,y,n};
-            slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight+200);
+            slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight);
             slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
             if (slice.isvisible)
             {
