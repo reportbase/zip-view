@@ -6843,13 +6843,15 @@ galleryobj.init = function(obj)
     	.then(function(str)
     	{
     		var lst = str.split("\n");
-    		var root = obj.root;
     		var k = {}
     		obj.data = [];
     		for (var n = 0; n < lst.length-1; ++n)
     		{
     			var e = {}
-    			e.url = `${root}/${lst[n]}`;
+			    if (obj.root)
+    				e.url = `${root}/${lst[n]}`;
+                else
+                    e.url = lst[n];
     			obj.data.push(e);
     		}
     
