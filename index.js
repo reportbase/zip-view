@@ -2927,7 +2927,7 @@ var panlst =
         delete context.canvas.hollyobj.offset;
         delete canvas.istimeobjrect;
         delete canvas.ishollyrect;
-        local..set()();
+        local.set();
     }
 },
 {
@@ -3922,7 +3922,7 @@ var taplst =
                 } 
             }
 
-            local..set()();
+            local.set();
         }
     },
 },
@@ -4944,7 +4944,7 @@ menuobj.draw = function()
         clearInterval(context.swipetimeout)
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
-        local..set()()
+        local.set()
         resetview()
     }
 
