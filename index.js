@@ -4680,7 +4680,7 @@ var buttonlst =
         var clr = FILLBAR;
         if (user.tap)
             clr = MENUTAP;
-        else if (cannvas.sliceobj.current() == time)
+        else if (canvas.sliceobj.current() == time)
             clr = MENUSELECT;
 
         var e = context.canvas.hollyobj.berp();
