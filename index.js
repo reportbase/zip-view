@@ -6865,7 +6865,7 @@ function loadgallery(path)
             .then((response) => jsonhandler(response))
             .then((json) => galleryobj.init(json)) 
     }
-    else (path.istext())
+    else if (path.istext())//not require text
     {
         var json = {};
         json.data = path;
