@@ -6903,7 +6903,7 @@ local.set = function()
     global.localtimout = setTimeout(function()
     {
         local.button = buttonobj.value();//"t"
-        local.template = _9cnv.sliceobj.value();//"b
+        local.template = _9cnv.sliceobj.value().title;//"b
     	local._8 = _8cnv.timeobj.current()//"_8"
         setjson(url.path, local);
     }, 400);
