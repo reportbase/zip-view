@@ -3027,13 +3027,6 @@ var panlst =
                 zoomobj.setperc(k);
                 contextobj.reset()
             }
-            else if (context.isgalleryrect)
-            {
-                var k = (y - context.galleryrect.y) / context.galleryrect.height;
-                var j = Math.floor(Math.lerp(0,galleryobj.length()-1,k));
-                galleryobj.set(j);
-                context.pangallery = 1;
-            }
             else if (context.isstretchrect)
             {
                 var k = (y - context.stretchrect.y) / context.stretchrect.height;
@@ -3071,7 +3064,6 @@ var panlst =
         movingx = new MovingAverage();
         movingy = new MovingAverage();
         headobj.draw();
-        context.isgalleryrect = context.galleryrect && context.galleryrect.hitest(x, y);
         context.istimerect = context.timerect && context.timerect.hitest(x, y);
         context.ishollyrect = context.hollyrect && context.hollyrect.hitest(x, y);
         context.iszoomrect = context.zoomrect && context.zoomrect.hitest(x, y);
@@ -3091,9 +3083,6 @@ var panlst =
         delete canvas.starty;
         delete rowobj.offset;
         delete canvas.hollyobj.offset;
-        if (context.pangallery)
-            contextobj.reset();
-        delete context.pangallery; 
     }
 }, ];
 
