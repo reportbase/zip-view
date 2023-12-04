@@ -1511,15 +1511,12 @@ String.prototype.ext = function()
     return this.replace(/^.*\./, '');
 }
 
-String.prototype.isext = function(str)
+String.prototype.istext = function()
 {
     var ext = this.ext();
     ext = ext.toLowerCase();
-    var lst = [str];
-    var k = lst.findIndex(function(a)
-    {
-        return a == ext;
-    })
+    var lst = ['txt'];
+    var k = lst.findIndex(function(a){return a == ext;})
     return k >= 0;
 }
 
@@ -1528,10 +1525,7 @@ String.prototype.isjson = function()
     var ext = this.ext();
     ext = ext.toLowerCase();
     var lst = ['json'];
-    var k = lst.findIndex(function(a)
-    {
-        return a == ext;
-    })
+    var k = lst.findIndex(function(a){return a == ext;})
     return k >= 0;
 }
 
@@ -1540,10 +1534,7 @@ String.prototype.iszip = function()
     var ext = this.ext();
     ext = ext.toLowerCase();
     var lst = ['zip', 'cbz'];
-    var k = lst.findIndex(function(a)
-    {
-        return a == ext;
-    })
+    var k = lst.findIndex(function(a){return a == ext;})
     return k >= 0;
 }
 
@@ -1552,10 +1543,7 @@ String.prototype.isimage = function()
     var ext = this.ext();
     ext = ext.toLowerCase();
     var lst = ['png', 'jpg', 'jpeg', 'webp', 'avif', 'gif'];
-    var k = lst.findIndex(function(a)
-    {
-        return a == ext;
-    })
+    var k = lst.findIndex(function(a){return a == ext;})
     return k >= 0;
 }
 
@@ -6852,27 +6840,14 @@ else if (url.searchParams.has("id"))
 	.then((response) => jsonhandler(response))
 	.then(function(obj)
 	{
-		 fetch(obj.json)
-			.then((response) => jsonhandler(response))
-			.then((json) => galleryobj.init(json))   
-	  })        
+        loadgallery(obj.json);
+	})        
 }
 else if (url.searchParams.has("path"))
 {
     var path = url.searchParams.get("path");
     url.path = path;
-    if (path.isjson())
-    {
-         fetch(path)
-	        .then((response) => jsonhandler(response))
-	        .then((json) => galleryobj.init(json))        
-    }
-    else
-    {
-        var json = {};
-        json.data = path;
-        galleryobj.init(json)
-    }
+    loadgallery(path);
 }
 else
 {
@@ -6880,6 +6855,26 @@ else
     fetch(url.path)
         .then((response) => jsonhandler(response))
         .then((obj) => galleryobj.init(obj))
+}
+
+function loadgallery(path)
+{
+    if (path.isjson())
+    {
+        fetch(path)
+            .then((response) => jsonhandler(response))
+            .then((json) => galleryobj.init(json)) 
+    }
+    else (path.istext())
+    {
+        var json = {};
+        json.data = path;
+        galleryobj.init(json)
+    }
+    else
+    {
+        //todo
+    }
 }
 
 var local = {}
