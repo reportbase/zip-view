@@ -2927,7 +2927,7 @@ var panlst =
         delete context.canvas.hollyobj.offset;
         delete canvas.istimeobjrect;
         delete canvas.ishollyrect;
-        reseturl();
+        local..set()();
     }
 },
 {
@@ -3922,7 +3922,7 @@ var taplst =
                 } 
             }
 
-            reseturl();
+            local..set()();
         }
     },
 },
@@ -4944,7 +4944,7 @@ menuobj.draw = function()
         clearInterval(context.swipetimeout)
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
-        reseturl()
+        local..set()()
         resetview()
     }
 
@@ -5059,43 +5059,6 @@ function resetview()
     menuobj.show();
     displayobj.set(k);
     menuobj.draw();
-}
-
-function reseturl()
-{
-    local.button = buttonobj.value();
-    local.template = _9cnv.sliceobj.value();
-	local._8 = _8cnv.timeobj.current()
-    setjson(url.path, local);
-    return;
-    
-	var context = _8cnvctx;
-    clearTimeout(context.saveurltime)
-    context.saveurltime = setTimeout(function()
-    {
-        var e = url.searchParams.get('_8');
-        if (e != _8cnv.timeobj.current().toFixed(5))
-        {
-            var k = ;
-            if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
-            url.searchParams.set('_8', k.toFixed(5));
-            window.history.replaceState("", url.origin, url);
-        }
-        
-        var e = url.searchParams.get('t');
-        if (e != _9cnv.sliceobj.value())
-        {
-            url.searchParams.set("t",_9cnv.sliceobj.value());
-            window.history.replaceState("", url.origin, url);
-        }
-        
-        var e = url.searchParams.get('b');
-        if (e != buttonobj.value())
-        {
-            url.searchParams.set("b",buttonobj.value());
-            window.history.replaceState("", url.origin, url);
-        }
-    }, 400);
 }
 
 var eventlst = 
@@ -6923,12 +6886,28 @@ else
 }
 
 var local = {}
-local._8 = 0;
-local.template = "";
-local.button = "";
-var k = getjson(url.path);
-if (k)
-    local = k;
+local.init = function()
+{
+    local._8 = 0;
+    local.template = "";
+    local.button = "";
+    var k = getjson(url.path);
+    if (k)
+        local = k;
+}
+
+local.init();
+local.set = function()
+{
+    clearTimeout(global.localtimout)
+    global.localtimout = setTimeout(function()
+    {
+        local.button = buttonobj.value();//"t"
+        local.template = _9cnv.sliceobj.value();//"b
+    	local._8 = _8cnv.timeobj.current()//"_8"
+        setjson(url.path, local);
+    }, 400);
+}
 
 async function getblobpath(img, slice)
 {
