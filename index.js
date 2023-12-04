@@ -4722,13 +4722,12 @@ var buttonlst =
             var hhh = hh;
             var yyy = 0;
 
-            //todo
+            //todo 0 index
             if (user.rect.y < 0)
             {
 		        yyy = -user.rect.y;
-		        //hhh = Math.min(window.innerHeight,user.rect.height);
-                hhh = user.rect.height;
-            }
+		        hhh = Math.min(window.innerHeight,user.rect.height);
+           }
             else
             {
                 yyy = user.rect.y;
