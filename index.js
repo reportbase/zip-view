@@ -2486,9 +2486,9 @@ var wheelst =
 
         if (ctrl)
         {
-            if (context.elst.length % 3)
+            if (context.elst.length % 2)
                 return;         
-            var j = buttonobj.length()/40;
+            var j = buttonobj.length()/ALIEXTENT;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
