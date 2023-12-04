@@ -4730,7 +4730,7 @@ var buttonlst =
             }
             else
             {
-                yyy = user.rect.y;
+                //yyy = user.rect.y;
                 hhh = Math.min(window.innerHeight-user.rect.y,user.rect.height);
             }
 
