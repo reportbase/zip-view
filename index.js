@@ -6872,7 +6872,7 @@ function loadgallery(path)
     {
     	var lst = path.split("\n");
     	galleryobj.data = [];
-    	for (var n = 0; n < path.length; ++n)
+    	for (var n = 0; n < lst.length; ++n)
     	{
     		var e = {}
         	e.url = lst[n];
