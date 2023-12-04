@@ -6851,10 +6851,7 @@ else if (url.searchParams.has("path"))
 }
 else
 {
-    url.path = "res/home.json";
-    fetch(url.path)
-        .then((response) => jsonhandler(response))
-        .then((obj) => galleryobj.init(obj))
+	loadgallery("res/max.json");
 }
 
 function loadgallery(path)
