@@ -6902,10 +6902,11 @@ local.set = function()
     clearTimeout(global.localtimout)
     global.localtimout = setTimeout(function()
     {
-        local.button = buttonobj.value();//"t"
-        local.template = _9cnv.sliceobj.value().title;//"b
-    	local._8 = _8cnv.timeobj.current()//"_8"
-        setjson(url.path, local);
+	    var k = {};
+        k.button = buttonobj.value();//"t"
+        k.template = _9cnv.sliceobj.value().title;//"b
+    	k._8 = _8cnv.timeobj.current()//"_8"
+        setjson(url.path, k);
     }, 400);
 }
 
