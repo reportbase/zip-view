@@ -6870,7 +6870,16 @@ function loadgallery(path)
     }
     else
     {
-        //todo
+    	var lst = path.split("\n");
+    	galleryobj.data = [];
+    	for (var n = 0; n < path.length; ++n)
+    	{
+    		var e = {}
+        	e.url = lst[n];
+        	galleryobj.data.push(e);
+    	}
+    
+    	galleryobj.reset();	    
     }
 }
 
