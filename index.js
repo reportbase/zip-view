@@ -73,7 +73,7 @@ const GALLERYMAIN = 12;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 24;
-const IMAGELSTSIZE = 128;
+const IMAGELSTSIZE = 32;
 
 var panel = {};
 var global = {};
