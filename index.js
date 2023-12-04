@@ -102,7 +102,8 @@ function getjson(key)
     try
     {
         var k = localStorage.getItem(key);
-        return JSON.parse(k);
+        if (k)
+            return JSON.parse(k);
     }
     catch(e)
     {
@@ -5062,8 +5063,12 @@ function resetview()
 
 function reseturl()
 {
-	return;//todo
-	
+    local.button = buttonobj.value();
+    local.template = _9cnv.sliceobj.value();
+	local._8 = _8cnv.timeobj.current()
+    setjson(url.path, local);
+    return;
+    
 	var context = _8cnvctx;
     clearTimeout(context.saveurltime)
     context.saveurltime = setTimeout(function()
@@ -5071,7 +5076,7 @@ function reseturl()
         var e = url.searchParams.get('_8');
         if (e != _8cnv.timeobj.current().toFixed(5))
         {
-            var k = _8cnv.timeobj.current();
+            var k = ;
             if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
             url.searchParams.set('_8', k.toFixed(5));
             window.history.replaceState("", url.origin, url);
@@ -6862,19 +6867,11 @@ galleryobj.init = function(obj)
     	})	
 }
 
-if (url.searchParams.has("data"))
+if (url.searchParams.has("search"))
 {
-    url.path = url.searchParams.get("data");
-    fetch(`data/${url.path}/index.json`)
-        .then(response => jsonhandler(response))
-        .then((obj) => galleryobj.init(obj))
-        .catch((error) =>
-        {});
-}
-else if (url.searchParams.has("search"))
-{
-    url.path = url.searchParams.get("search");
-    fetch(`https://pexels.reportbase5836.workers.dev/?search=${url.path}`)
+    url.path = "search";
+    var path = url.searchParams.get("search");
+    fetch(`https://pexels.reportbase5836.workers.dev/?search=${path}`)
         .then((response) => jsonhandler(response))
         .then((obj) => galleryobj.init(obj))
         .catch((error) =>
@@ -6890,11 +6887,11 @@ else if (url.searchParams.has("sidney"))
 else if (url.searchParams.has("id"))
 {
     var id = url.searchParams.get("id");
+	url.path = id;
 	fetch(`https://gallery.reportbase5836.workers.dev/${id}`)
 	.then((response) => jsonhandler(response))
 	.then(function(obj)
 	{
-		  url.path = obj.title;
 		 fetch(obj.json)
 			.then((response) => jsonhandler(response))
 			.then((json) => galleryobj.init(json))   
@@ -6924,6 +6921,14 @@ else
         .then((response) => jsonhandler(response))
         .then((obj) => galleryobj.init(obj))
 }
+
+var local = {}
+local._8 = 0;
+local.template = "";
+local.button = "";
+var k = getjson(url.path);
+if (k)
+    local = k;
 
 async function getblobpath(img, slice)
 {
