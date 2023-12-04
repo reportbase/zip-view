@@ -75,21 +75,49 @@ const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 24;
 const IMAGELSTSIZE = 32;
 
+function setjson(key, value)
+{
+    try
+    {
+        localStorage.setItem(key, JSON.stringify(valu));
+    }
+    catch(e)
+    {
+    }
+}
+
+function removejson(key)
+{
+    try
+    {
+        localStorage.removeItem(key);
+    }
+    catch(e)
+    {
+    }
+}
+
+function getjson(key)
+{
+    try
+    {
+        var k = localStorage.getItem(key);
+        return JSON.parse(k);
+    }
+    catch(e)
+    {
+    }
+}
+
 var panel = {};
 var global = {};
 let photo = {};
 let util = {};
-var login = {id: 0};
 
-try
-{
-    var k = localStorage.getItem("login");
-    if (k)
-        login = JSON.parse(k);
-}
-catch(e)
-{
-}
+var login = {id: 0};
+var k = getjson("login");
+if (k)
+    login = k;
 
 photo.image = 0;
 util.random_color = function()
@@ -4003,8 +4031,8 @@ var taplst =
     		if (login.id && login.credential)
     		{
                 login = {id: 0};
-                localStorage.removeItem("login");
-    			google.accounts.id.revoke(login.credential, function(){})
+                removejson("login");
+                google.accounts.id.revoke(login.credential, function(){})
 			    menuobj.draw();
     		}
     		else
@@ -4070,7 +4098,7 @@ var taplst =
                 .then(function(k)
                 {
                     login = Object.assign(login, k);
-                    localStorage.setItem("login",JSON.stringify(login));	
+                    setjson("login", login);	
                     menuobj.draw();
                 })                  
             });
@@ -5034,6 +5062,8 @@ function resetview()
 
 function reseturl()
 {
+	return;//todo
+	
 	var context = _8cnvctx;
     clearTimeout(context.saveurltime)
     context.saveurltime = setTimeout(function()
@@ -7133,7 +7163,7 @@ function loginbyemail(func)
                 {
                     login.id = k.id;
                     login.secret = k.secret;
-		            localStorage.setItem("login",JSON.stringify(login));	
+		            setjson("login", login);	
                     func();
                 })
             }
@@ -7142,7 +7172,7 @@ function loginbyemail(func)
                 var k = lst[0];
                 login.id = k.id;
                 login.secret = k.secret;
-                localStorage.setItem("login",JSON.stringify(login));
+                setjson("login", login);
 		        func();
             }
         }); 
