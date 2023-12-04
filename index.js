@@ -1434,10 +1434,7 @@ var buttonobj = new circular_array("", []);
 
 buttonobj.init = function()
 {
-    if (!url.searchParams.has("b"))
-        return;
-    
-    var b = Number(url.searchParams.get("b"));
+    var b = Number(local.button);
     var n = 1;
     for (; n < buttonobj.length(); ++n)
     {
@@ -6715,7 +6712,7 @@ function setupmenus()
 	
     _9cnv.sliceobj.data = lst;
     
-    var t = url.searchParams.get("t");
+    var t = local.template;
     var n = 0;
     for (; n < _9cnv.sliceobj.data.length; ++n)
         if (t == _9cnv.sliceobj.data[n])
@@ -6786,7 +6783,7 @@ galleryobj.reset = function(obj)
     };    
    
     _8cnv.timeobj.set(0);
-    var k = Number(url.searchParams.get('_8'));
+    var k = Number(local._8);
     if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
         _8cnv.timeobj.set(k);
     var berp = _8cnv.timeobj.berp();
@@ -6903,8 +6900,8 @@ local.set = function()
     global.localtimout = setTimeout(function()
     {
 	    var k = {};
-        k.button = buttonobj.value();//"t"
-        k.template = _9cnv.sliceobj.value().title;//"b
+        k.button = buttonobj.value();
+        k.template = _9cnv.sliceobj.value().title;
     	k._8 = _8cnv.timeobj.current()//"_8"
         setjson(url.path, k);
     }, 400);
