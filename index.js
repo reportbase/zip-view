@@ -1324,7 +1324,7 @@ var displaylst =
         var st = `\u{25C0}    ${_9cnv.sliceobj.value().title}    \u{25B6}`;
         
         var a = new panel.rowsA([HEADTOP, HEADBOT, 8, HEADBOT, 0, 
-                HEADBOT,0,folders.length?folders.length*WRAPROWHEIGHT:-1, 
+                HEADBOT,8,folders.length?folders.length*WRAPROWHEIGHT:-1, 
                 10, data.length*WRAPROWHEIGHT, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,
