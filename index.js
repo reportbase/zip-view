@@ -4876,12 +4876,7 @@ window.history.pushState(null, null, window.location.href);
 window.onpopstate = function () 
 {
     window.history.go(1);
-};
-
-const beforeUnloadHandler = (event) => 
-{
-    event.preventDefault();
-    event.returnValue = true;
+    window.history.pushState(null, null, window.location.href);
 };
 
 //menuobj show
