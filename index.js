@@ -4970,7 +4970,7 @@ menuobj.draw = function(noclear)
             slices.length * canvas.buttonheight * beavobj.value()/100;
     }
 
-    if (!noclear && context != _8cnvctx)
+    if (context != _8cnvctx)
     {
         var a = new panel.fill(FILLMENU);
         a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
