@@ -6858,7 +6858,6 @@ else
 
 function loadgallery(path)
 {
-    path = path.clean();
     if (path.isjson())
     {
         fetch(path)
