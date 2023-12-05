@@ -6797,23 +6797,31 @@ galleryobj.init = function(obj)
     	.then((response) => texthandler(response))
     	.then(function(str)
     	{
-    		var lst = str.split("\n");
-    		var k = {}
-    		galleryobj.data = [];
-    		for (var n = 0; n < lst.length-1; ++n)
-    		{
-                var k = lst[n].clean();
-                if (!k.length)
-                    continue;
-    			var e = {}
-			    if (obj.root)
-    				e.url = `${root}/${lst[n]}`;
-                else
-                    e.url = k;
-    			galleryobj.data.push(e);
-    		}
-    
-    		galleryobj.reset();
+            try
+            {
+                var json = JSON.stringify(str);
+                galleryobj.init(json);
+            }
+            catch(e)
+            {
+        		var lst = str.split("\n");
+        		var k = {}
+        		galleryobj.data = [];
+        		for (var n = 0; n < lst.length-1; ++n)
+        		{
+                    var k = lst[n].clean();
+                    if (!k.length)
+                        continue;
+        			var e = {}
+    			    if (obj.root)
+        				e.url = `${root}/${lst[n]}`;
+                    else
+                        e.url = k;
+        			galleryobj.data.push(e);
+        		}
+        
+        		galleryobj.reset();
+            }
     	})	
 }
 
@@ -6858,6 +6866,7 @@ else
 
 function loadgallery(path)
 {
+    path = path.clean();
     if (path.isjson())
     {
         fetch(path)
@@ -6872,19 +6881,27 @@ function loadgallery(path)
     }
     else
     {
-    	var lst = path.split("\n");
-    	galleryobj.data = [];
-    	for (var n = 0; n < lst.length; ++n)
-    	{
-             var k = lst[n].clean();
-             if (!k.length)
-                 continue;
-    		var e = {}
-        	e.url = k;
-        	galleryobj.data.push(e);
-    	}
-    
-    	galleryobj.reset();	    
+        try
+        {
+            var json = JSON.stringify(path);
+            galleryobj.init(json);
+        }
+        catch(e)
+        {
+        	var lst = path.split("\n");
+        	galleryobj.data = [];
+        	for (var n = 0; n < lst.length; ++n)
+        	{
+                 var k = lst[n].clean();
+                 if (!k.length)
+                     continue;
+        		var e = {}
+            	e.url = k;
+            	galleryobj.data.push(e);
+        	}
+        
+        	galleryobj.reset();	  
+        }
     }
 }
 
