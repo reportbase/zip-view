@@ -120,6 +120,11 @@ var k = getjson("login");
 if (k)
     login = k;
 
+addEventListener('beforeunload',(event) =>
+{
+    console.log(this);
+});
+
 photo.image = 0;
 util.random_color = function()
 {
