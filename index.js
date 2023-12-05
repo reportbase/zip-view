@@ -124,7 +124,7 @@ addEventListener('beforeunload',(evt) =>
 {
     local.set()
 	//evt.preventDefault();
-    evt.returnValue = ' ';
+    //evt.returnValue = ' ';
 });
 
 photo.image = 0;
