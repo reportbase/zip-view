@@ -1287,8 +1287,6 @@ var displaylst =
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
 	    context.templaterect = new rectangle();
-        context.homerect = new rectangle();
-	    context.galleryrect = new rectangle();
         if (!headcnv.height)
             return;        
         var bh = rect.height * 0.4;
@@ -1325,8 +1323,8 @@ var displaylst =
         var w = Math.min(360, rect.width - 100);
         var st = `\u{25C0}    ${_9cnv.sliceobj.value().title}    \u{25B6}`;
         
-        var a = new panel.rowsA([HEADTOP, HEADBOT, 8, HEADBOT, 0, 
-                HEADBOT,8,
+        var a = new panel.rowsA([HEADTOP, HEADBOT,  
+                0,
                 folders.length?folders.length*WRAPROWHEIGHT:-1, 
                 folders.length?8:-1, 
                 data.length*WRAPROWHEIGHT, 
@@ -1345,30 +1343,6 @@ var displaylst =
                 0,
             ]),
 	        0,
-            new panel.cols([0, rainstep, 0],
-            [
-                0,
-                new panel.layers(
-                [
-                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                    new panel.expand(new panel.rectangle(context.homerect), 10, 10),
-                    new panel.text(),
-                ]),
-                0,
-            ]),
-            0,
-            new panel.cols([0, rainstep, 0],
-            [
-                0,
-                new panel.layers(
-                [
-                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                    new panel.expand(new panel.rectangle(context.galleryrect), 10, 10),
-                    new panel.text(),
-                ]),
-                0,
-            ]),
-            0,
             new panel.cols([0, rainstep, 0],
             [
                 0,
@@ -1404,15 +1378,12 @@ var displaylst =
             0,
     		st,
             0,
-    		user.id?user.title:"Login",
-            0,
-            "Gallery",
-            0,
             folders,
             0,
             data,
             0,
-            0,    
+            0,
+            0,
         ], 0);
         
         context.restore();     
