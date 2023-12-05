@@ -2156,8 +2156,8 @@ CanvasRenderingContext2D.prototype.show = function(x, y, width, height)
 {
     if (this.canvas.style.left != x + "px")
         this.canvas.style.left = x + "px";
-    if (this.canvas.style.top != y + "px");
-    this.canvas.style.top = y + "px";
+    if (this.canvas.style.top != y + "px")
+        this.canvas.style.top = y + "px";
     if (this.canvas.width != width)
         this.canvas.width = width;
     if (this.canvas.height != height)
@@ -4876,7 +4876,7 @@ window.onpopstate = function ()
 {
 	if (dialog && dialog.open)
     {
-        dalog.close()
+        dialog.close()
         window.history.go(1);
         window.history.pushState(null, null, window.location.href);
     }
