@@ -3730,7 +3730,32 @@ var taplst =
             (headcnvctx.imagemenurect &&
             headcnvctx.imagemenurect.hitest(x, y)))
         {
-		    rightmenu(_2cnvctx)
+           if (!login.id)
+           {
+               googlelogin();
+               return;
+           }
+            
+           fetch(`https://gallery.reportbase5836.workers.dev/list/${login.id}`)
+                .then((response) => jsonhandler(response))
+                .then(function(results)
+                {
+                    for (var n = 0; n < results.length; ++n)
+                    {
+                        var result = results[n];
+                        result.func = function(n, x, y)
+                        {
+                             _2cnv.sliceobj.set(n);
+                            menuobj.draw();
+                            return false;
+                        }
+                    }
+        
+                    _2cnv.sliceobj.data = results
+                    var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
+                    _2cnv.rotated = [...a, ...a, ...a];
+                    rightmenu(_2cnvctx)
+                })
         }
         else if (
             headcnv.height &&
@@ -6543,43 +6568,8 @@ function setupmenus()
                     headobj.draw();
                 })
         }
-   },
-        /*
-   {
-        title: `Galleries   \u{25B6}`,
-        func: function(n, x, y)
-        {
-           if (!login.id)
-           {
-               googlelogin();
-               return;
-           }
-            
-           fetch(`https://gallery.reportbase5836.workers.dev/list/${login.id}`)
-                .then((response) => jsonhandler(response))
-                .then(function(results)
-                {
-                    for (var n = 0; n < results.length; ++n)
-                    {
-                        var result = results[n];
-                        result.func = function(n, x, y)
-                        {
-                             _2cnv.sliceobj.set(n);
-                            menuobj.draw();
-                            return false;
-                        }
-                    }
-        
-                    _2cnv.sliceobj.data = results
-                    var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
-                    _2cnv.rotated = [...a, ...a, ...a];
-                    leftmenu(_2cnvctx)
-                })
-            return false;
-        }
-     },
-     */
-     {
+    },
+    {
         title: function()
         {
             var str = `Account   \u{25B6}`
