@@ -4872,9 +4872,17 @@ menuobj.hide = function()
     this.setindex(0);
 }
 
-function disableBack() { window.history.forward(); }
-setTimeout(disableBack(), 0);
-window.onunload = function () { null };
+window.history.pushState(null, null, window.location.href);
+window.onpopstate = function () 
+{
+    window.history.go(1);
+};
+
+const beforeUnloadHandler = (event) => 
+{
+    event.preventDefault();
+    event.returnValue = true;
+};
 
 //menuobj show
 menuobj.show = function()
