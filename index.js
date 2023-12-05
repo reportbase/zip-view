@@ -6803,11 +6803,14 @@ galleryobj.init = function(obj)
     		galleryobj.data = [];
     		for (var n = 0; n < lst.length-1; ++n)
     		{
+                var k = lst[n].clean():
+                if (!k.length)
+                    continue;
     			var e = {}
 			    if (obj.root)
     				e.url = `${root}/${lst[n]}`;
                 else
-                    e.url = lst[n];
+                    e.url = k;
     			galleryobj.data.push(e);
     		}
     
@@ -6874,8 +6877,11 @@ function loadgallery(path)
     	galleryobj.data = [];
     	for (var n = 0; n < lst.length; ++n)
     	{
+             var k = lst[n].clean():
+             if (!k.length)
+                 continue;
     		var e = {}
-        	e.url = lst[n];
+        	e.url = k;
         	galleryobj.data.push(e);
     	}
     
