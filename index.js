@@ -1891,7 +1891,7 @@ panel.info = function()
         [
             new panel.rectangle(user.inforect),
             new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-            new panel.shrink(new panel.circle(MENUTAP), CIRCLEOUT+5, CIRCLEOUT+5),
+            new panel.shrink(new panel.circle("white"), CIRCLEOUT+8, CIRCLEOUT+8),
         ])
 
         a.draw(context, rect, user, time);
