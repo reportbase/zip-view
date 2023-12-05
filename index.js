@@ -2494,7 +2494,7 @@ var wheelst =
         if (Math.abs(delta) <= 0.8)
             return;
         context.canvas.hollyobj.addperc(delta / 2000);
-        menuobj.draw(1);
+        menuobj.draw();
     },
 },
 {
@@ -3196,7 +3196,7 @@ var swipelst = [
     {
         var k = evt.type == "swipeleft" ? 1 : -1;
         context.canvas.hollyobj.addperc((k*50) / 2000);
-        menuobj.draw(1);
+        menuobj.draw();
     },
     swipeupdown: function(context, rect, x, y, evt)
     {
@@ -3349,7 +3349,7 @@ var keylst =
                 key == "h")
             {
                 context.canvas.hollyobj.addperc(-25 / 2000);
-                menuobj.draw(1);
+                menuobj.draw();
                 evt.preventDefault();
             }
             else if (
@@ -3357,7 +3357,7 @@ var keylst =
                 key == "l")
             {
                 context.canvas.hollyobj.addperc(25 / 2000);
-                menuobj.draw(1);
+                menuobj.draw();
                 evt.preventDefault();
             }
             else if (key == "w")
@@ -3753,7 +3753,7 @@ var taplst =
                 menuobj.draw();
             }            
             
-            menuobj.draw(1);
+            menuobj.draw();
         }
         else if (
             context.folderect &&
