@@ -110,6 +110,22 @@ function getjson(key)
     }
 }
 
+window.addEventListener("pagehide", (evt) => 
+{
+    local.set()
+}, false,);
+
+document.addEventListener('visibilitychange', function() 
+{
+    if (document.visibilityState == 'hidden') 
+    { 
+        local.set()
+    }
+    else if (document.visibilityState == 'visible') 
+    {
+    }
+}
+                          
 var panel = {};
 var global = {};
 let photo = {};
@@ -119,13 +135,6 @@ var login = {id: 0};
 var k = getjson("login");
 if (k)
     login = k;
-
-addEventListener('beforeunload',(evt) =>
-{
-    local.set()
-	evt.preventDefault();
-    evt.returnValue = ' ';
-});
 
 photo.image = 0;
 util.random_color = function()
