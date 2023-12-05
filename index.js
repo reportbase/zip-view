@@ -576,14 +576,14 @@ var footlst =
     {
         var canvas = context.canvas;
         context.save();     
-        canvas.homerect = new rectangle();
+        canvas.closerect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
 		[
 			new panel.layers(
 			[
 				new panel.fill(FOOTBTNCOLOR),
 				new panel.text(),
-				new panel.rectangle(canvas.homerect),
+				new panel.rectangle(canvas.closerect),
 			]),
 			0
 		]);
@@ -745,7 +745,7 @@ var footlst =
     {
         var canvas = context.canvas;
         context.save();     
-        canvas.homerect = new rectangle();
+        canvas.closerect = new rectangle();
         canvas.galleryopenrect = new rectangle();
         canvas.galleryaddrect = new rectangle();
         canvas.gallerypatchrect = new rectangle();
@@ -755,7 +755,7 @@ var footlst =
 			new panel.layers(
 			[
 				new panel.fill(FOOTBTNCOLOR),
-				new panel.rectangle(canvas.homerect),
+				new panel.rectangle(canvas.closerect),
 				new panel.text(),
 			]),
 			0,
@@ -831,14 +831,14 @@ var footlst =
     {
         var canvas = context.canvas;
         context.save();     
-        canvas.homerect = new rectangle();
+        canvas.closerect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
         [
             new panel.layers(
             [
                 new panel.fill(FOOTBTNCOLOR),
                 new panel.text(),
-                new panel.rectangle(canvas.homerect),
+                new panel.rectangle(canvas.closerect),
             ]),
             0   
         ]);
@@ -938,7 +938,6 @@ var footlst =
         context.restore();
     }
 },
-
 ]
 
 var headlst = 
@@ -4875,9 +4874,15 @@ menuobj.hide = function()
 window.history.pushState(null, null, window.location.href);
 window.onpopstate = function () 
 {
-	if ((dialog && dialog.open) ||
-        (menuobj.value() && menuobj.value() != _8cnvctx))
+	if (dialog && dialog.open)
     {
+        dalog.close()
+        window.history.go(1);
+        window.history.pushState(null, null, window.location.href);
+    }
+    else if (menuobj.value() && menuobj.value() != _8cnvctx))
+    {
+        closemenu();
         window.history.go(1);
         window.history.pushState(null, null, window.location.href);
     }
