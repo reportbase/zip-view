@@ -603,7 +603,7 @@ var footlst =
     {
         var canvas = context.canvas;
         context.save();     
-        canvas.homerect = new rectangle();
+        canvas.closerect = new rectangle();
         canvas.uploadrect = new rectangle();
         canvas.downloadrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
@@ -611,7 +611,7 @@ var footlst =
 			new panel.layers(
 			[
 				new panel.fill(FOOTBTNCOLOR),
-				new panel.rectangle(canvas.homerect),
+				new panel.rectangle(canvas.closerect),
 				new panel.text(),
 			]),
 			0,
@@ -1887,19 +1887,11 @@ panel.info = function()
 	    context.fillStyle = "white";
         context.strokeStyle = "white";
 
-        var j = 5;
-        var k = j / 2;
-        var e = new panel.fill(OPTIONFILL);
         var a = new panel.layers(
         [
             new panel.rectangle(user.inforect),
             new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-            new panel.rows([0, rect.height * 0.20, 0],
-            [
-                0,
-                new panel.cols([0, j, k, j, k, j, 0], [0, e, 0, e, 0, e, 0, ]),
-                0,
-            ]),
+            new panel.shrink(new panel.circle(MENUTAP), CIRCLEOUT+5, CIRCLEOUT+5),
         ])
 
         a.draw(context, rect, user, time);
@@ -3728,7 +3720,7 @@ var taplst =
             (headcnvctx.imagemenurect &&
             headcnvctx.imagemenurect.hitest(x, y)))
         {
-		    rightmenu(_6cnvctx)
+		    rightmenu(_2cnvctx)
         }
         else if (
             headcnv.height &&
