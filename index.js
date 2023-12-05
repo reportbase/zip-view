@@ -4875,8 +4875,12 @@ menuobj.hide = function()
 window.history.pushState(null, null, window.location.href);
 window.onpopstate = function () 
 {
-    window.history.go(1);
-    window.history.pushState(null, null, window.location.href);
+	if ((dialog && dialog.open) ||
+        menuobj.value() && menuobj.value() != _8cnvctx)
+    {
+        window.history.go(1);
+        window.history.pushState(null, null, window.location.href);
+    }
 };
 
 //menuobj show
@@ -4936,8 +4940,9 @@ menuobj.draw = function()
         clearInterval(context.swipetimeout)
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
-        local.set()
-        resetview()
+        
+        //local.set()
+        //todo resetview()
     }
 
     var delayinterval = Math.PI / slices.length;
