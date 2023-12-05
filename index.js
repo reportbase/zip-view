@@ -4710,7 +4710,8 @@ var buttonlst =
             var hhh = hh;
             var yyy = 0;
 
-            if (galleryobj.length() > 4 && 
+            if (0 &&
+		galleryobj.length() > 4 && 
                 time < galleryobj.length()-1)
             {
     		    if (user.rect.y < 0)
