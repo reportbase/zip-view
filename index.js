@@ -1288,6 +1288,7 @@ var displaylst =
         context.cursorect = new rectangle();
 	    context.templaterect = new rectangle();
         context.homerect = new rectangle();
+	    context.galleryrect = new rectangle();
         if (!headcnv.height)
             return;        
         var bh = rect.height * 0.4;
@@ -1350,7 +1351,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                    //new panel.expand(new panel.rectangle(context.home), 10, 10),
+                    new panel.expand(new panel.rectangle(context.homerect), 10, 10),
                     new panel.text(),
                 ]),
                 0,
@@ -1362,7 +1363,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                    //new panel.expand(new panel.rectangle(context.templaterect), 10, 10),
+                    new panel.expand(new panel.rectangle(context.galleryrect), 10, 10),
                     new panel.text(),
                 ]),
                 0,
@@ -3874,6 +3875,11 @@ var taplst =
         else if (context.homerect && context.homerect.hitest(x, y))
         {
 	        leftmenu(_7cnvctx);
+            return false;
+        }       
+        else if (context.galleryrect && context.galleryrect.hitest(x, y))
+        {
+	        leftmenu(_2cnvctx);
             return false;
         }
         else if (menuobj.value() && menuobj.value() != _8cnvctx)
