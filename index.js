@@ -1287,6 +1287,7 @@ var displaylst =
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
 	    context.templaterect = new rectangle();
+        context.homerect = new rectangle();
         if (!headcnv.height)
             return;        
         var bh = rect.height * 0.4;
@@ -1349,7 +1350,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
-                    //new panel.expand(new panel.rectangle(context.templaterect), 10, 10),
+                    //new panel.expand(new panel.rectangle(context.home), 10, 10),
                     new panel.text(),
                 ]),
                 0,
@@ -3870,6 +3871,11 @@ var taplst =
                 context.canvas.hollyobj.setperc(k);
             menuobj.draw()
         }
+        else if (context.homerect && context.homerect.hitest(x, y))
+        {
+	        leftmenu(_7cnvctx);
+            return false;
+        }
         else if (menuobj.value() && menuobj.value() != _8cnvctx)
         {
             closemenu()
@@ -3980,7 +3986,7 @@ var taplst =
         }
         else if (canvas.galleryopenrect && canvas.galleryopenrect.hitest(x, y))
         {
-           for (var n = 0; n < IMAGELSTSIZE; ++n)
+            for (var n = 0; n < IMAGELSTSIZE; ++n)
             {
                 thumbfittedlst[n] = document.createElement("canvas");
                 thumbimglst[n] = new Image();
@@ -4079,12 +4085,11 @@ var taplst =
                     'method': 'PATCH',
                     'body': form
                 })
-              .then(response => response.json())
+                .then(response => response.json())
                 .then(function(obj)
-                      {
-                          console.log(obj);
-                      })
-                .catch(err => console.error(err));        
+                {
+                    console.log(obj);
+                })        
             });
                 
             return true;              
@@ -4145,15 +4150,15 @@ var taplst =
         {
             showdialog("confirm", function(str)
             {
-                    fetch(`https://user.reportbase5836.workers.dev/reportbase@gmail.com`,
-                    {
-                        'method': 'DELETE'
-                    })
-                  .then(response => response.json())
-                    .then(function(obj)
-                          {
-                              console.log(obj);
-                          })
+                fetch(`https://user.reportbase5836.workers.dev/reportbase@gmail.com`,
+                {
+                    'method': 'DELETE'
+                })
+                .then(response => response.json())
+                .then(function(obj)
+                {
+                    console.log(obj);
+                })
             });
 
             return false;
@@ -4739,20 +4744,15 @@ var buttonlst =
             var hhh = hh;
             var yyy = 0;
 
-            if (1)//todo
-		        //galleryobj.length() > 4 && 
-                //time < galleryobj.length()-1)
+            if (user.rect.y < 0)
             {
-    		    if (user.rect.y < 0)
-                {
-    		        yyy = -user.rect.y;
-    		        hhh = user.rect.height+user.rect.y;
-                }
+                yyy = -user.rect.y;
+                hhh = user.rect.height+user.rect.y;
+            }
 
-                if (user.rect.y+user.rect.height > window.innerHeight)
-                {
-                    hhh = window.innerHeight-user.rect.y;
-                }
+            if (user.rect.y+user.rect.height > window.innerHeight)
+            {
+                hhh = window.innerHeight-user.rect.y;
             }
 
             if (thumbfitted.view != view)
@@ -4910,8 +4910,7 @@ menuobj.show = function()
     if (!context)
         return;
     var canvas = context.canvas;
-    //_4cnv.height = 0;
-   
+    
     var k = displaylst.findIndex(function(a){return a.name == canvas.display});
     displayobj.set(k);
     
