@@ -1323,7 +1323,7 @@ var displaylst =
         var w = Math.min(360, rect.width - 100);
         var st = `\u{25C0}    ${_9cnv.sliceobj.value().title}    \u{25B6}`;
         
-        var a = new panel.rowsA([HEADTOP, HEADBOT, 23, 0, 
+        var a = new panel.rowsA([HEADTOP, HEADBOT, HEADBOT, 0, 
                 folders.length?folders.length*WRAPROWHEIGHT:-1, 
                 10, data.length*WRAPROWHEIGHT, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
@@ -1339,7 +1339,17 @@ var displaylst =
                 ]),
                 0,
             ]),
-            0,
+            new panel.cols([0, rainstep, 0],
+            [
+                0,
+                new panel.layers(
+                [
+                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
+                    //new panel.expand(new panel.rectangle(context.templaterect), 10, 10),
+                    new panel.text(),
+                ]),
+                0,
+            ]),
             0,
             new panel.cols([0, rainstep, 0],
             [
@@ -1375,7 +1385,7 @@ var displaylst =
         [
             0,
     		st,
-    		0,
+    		"Login",
             0,
             folders,
             0,
@@ -4710,18 +4720,18 @@ var buttonlst =
             var hhh = hh;
             var yyy = 0;
 
-            if (0 &&
-		galleryobj.length() > 4 && 
-                time < galleryobj.length()-1)
+            if (1)//todo
+		        //galleryobj.length() > 4 && 
+                //time < galleryobj.length()-1)
             {
     		    if (user.rect.y < 0)
                 {
     		        yyy = -user.rect.y;
-    		        hhh = Math.min(window.innerHeight,user.rect.height);
+    		        hhh = user.rect.height+user.rect.y;
                 }
                 else
                 {
-                    hhh = Math.min(window.innerHeight-user.rect.y,user.rect.height);
+                    //hhh = Math.min(window.innerHeight-user.rect.y,user.rect.height);
                 }
             }
 
@@ -6516,6 +6526,7 @@ function setupmenus()
                 })
         }
    },
+        /*
    {
         title: `Galleries   \u{25B6}`,
         func: function(n, x, y)
@@ -6549,6 +6560,7 @@ function setupmenus()
             return false;
         }
      },
+     */
      {
         title: function()
         {
@@ -6571,6 +6583,7 @@ function setupmenus()
             return false;
         },
     },
+        /*
     {
         title: "Templates   \u{25B6}",
         func: function()
@@ -6587,6 +6600,7 @@ function setupmenus()
             return false;
         }
     },
+    */
     {
         title: "Debug   \u{25B6}",
         func: function()
