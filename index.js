@@ -124,7 +124,7 @@ document.addEventListener('visibilitychange', function()
     else if (document.visibilityState == 'visible') 
     {
     }
-}
+});
                           
 var panel = {};
 var global = {};
