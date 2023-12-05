@@ -1323,8 +1323,8 @@ var displaylst =
         var w = Math.min(360, rect.width - 100);
         var st = `\u{25C0}    ${_9cnv.sliceobj.value().title}    \u{25B6}`;
         
-        var a = new panel.rowsA([HEADTOP, HEADBOT, HEADBOT, 0, 
-                folders.length?folders.length*WRAPROWHEIGHT:-1, 
+        var a = new panel.rowsA([HEADTOP, HEADBOT, 8, HEADBOT, 0, 
+                HEADBOT,0,folders.length?folders.length*WRAPROWHEIGHT:-1, 
                 10, data.length*WRAPROWHEIGHT, FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,
@@ -1339,6 +1339,19 @@ var displaylst =
                 ]),
                 0,
             ]),
+	        0,
+            new panel.cols([0, rainstep, 0],
+            [
+                0,
+                new panel.layers(
+                [
+                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
+                    //new panel.expand(new panel.rectangle(context.templaterect), 10, 10),
+                    new panel.text(),
+                ]),
+                0,
+            ]),
+            0,
             new panel.cols([0, rainstep, 0],
             [
                 0,
@@ -1385,7 +1398,10 @@ var displaylst =
         [
             0,
     		st,
-    		"Login",
+            0,
+    		user.id?user.title:"Login",
+            0,
+            "Gallery",
             0,
             folders,
             0,
