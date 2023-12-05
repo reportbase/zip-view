@@ -4876,7 +4876,7 @@ window.history.pushState(null, null, window.location.href);
 window.onpopstate = function () 
 {
 	if ((dialog && dialog.open) ||
-        menuobj.value() && menuobj.value() != _8cnvctx)
+        (menuobj.value() && menuobj.value() != _8cnvctx))
     {
         window.history.go(1);
         window.history.pushState(null, null, window.location.href);
@@ -4941,8 +4941,8 @@ menuobj.draw = function()
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
         
-        //local.set()
-        //todo resetview()
+        local.set()
+        resetview()
     }
 
     var delayinterval = Math.PI / slices.length;
