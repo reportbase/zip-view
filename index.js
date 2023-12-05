@@ -4916,11 +4916,11 @@ menuobj.show = function()
         context.show(l, 0, w, window.innerHeight);
     }
 
-    menuobj.draw();    
+    menuobj.draw(1);    
 }
 
 //menuobj draw
-menuobj.draw = function()
+menuobj.draw = function(noclear)
 {
     var context = this.value();
     if (!context)
@@ -4945,15 +4945,19 @@ menuobj.draw = function()
         clearInterval(context.swipetimeout)
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
-        
-        local.set()
-        resetview()
+
+	    if (!noclear)
+        {
+            local.set()
+            resetview()
+        }
     }
 
     var delayinterval = Math.PI / slices.length;
     context.canvas.virtualheight = slices.length * canvas.buttonheight;
-    
-    //context.clear();
+
+    if (!noclear)
+        context.clear();
     if (context.canvas.virtualheight < window.innerHeight && slices.length)
     {
         canvas.buttonheight = window.innerHeight / slices.length;
@@ -4966,7 +4970,7 @@ menuobj.draw = function()
             slices.length * canvas.buttonheight * beavobj.value()/100;
     }
 
-    if (context != _8cnvctx)
+    if (!noclear && context != _8cnvctx)
     {
         var a = new panel.fill(FILLMENU);
         a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
