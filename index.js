@@ -6876,7 +6876,7 @@ function loadgallery(path)
     	galleryobj.data = [];
     	for (var n = 0; n < lst.length; ++n)
     	{
-             var k = lst[n].clean():
+             var k = lst[n].clean();
              if (!k.length)
                  continue;
     		var e = {}
