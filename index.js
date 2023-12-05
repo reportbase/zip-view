@@ -122,8 +122,9 @@ if (k)
 
 addEventListener('beforeunload',(evt) =>
 {
-	evt.preventDefault();
-    evt.returnValue = 'thank you';
+    local.set()
+	//evt.preventDefault();
+    evt.returnValue = ' ';
 });
 
 photo.image = 0;
@@ -2910,7 +2911,6 @@ var panlst =
         delete context.canvas.hollyobj.offset;
         delete canvas.istimeobjrect;
         delete canvas.ishollyrect;
-        local.set();
     }
 },
 {
@@ -3914,8 +3914,6 @@ var taplst =
                     menuobj.draw()
                 } 
             }
-
-            local.set();
         }
     },
 },
@@ -4954,7 +4952,6 @@ menuobj.draw = function(noclear)
 
 	    if (!noclear)
         {
-            local.set()
             resetview()
         }
     }
