@@ -120,9 +120,10 @@ var k = getjson("login");
 if (k)
     login = k;
 
-addEventListener('beforeunload',(event) =>
+addEventListener('beforeunload',(evt) =>
 {
-    console.log(this);
+	evt.preventDefault();
+    evt.returnValue = 'thank you';
 });
 
 photo.image = 0;
