@@ -4748,9 +4748,10 @@ var buttonlst =
     		        yyy = -user.rect.y;
     		        hhh = user.rect.height+user.rect.y;
                 }
-                else
+
+                if (user.reect.y+user.rect.height > window.innerHeight)
                 {
-                    //hhh = Math.min(window.innerHeight-user.rect.y,user.rect.height);
+                    hhh = window.innerHeight-user.rect.y;
                 }
             }
 
