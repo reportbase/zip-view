@@ -4880,7 +4880,7 @@ window.onpopstate = function ()
         window.history.go(1);
         window.history.pushState(null, null, window.location.href);
     }
-    else if (menuobj.value() && menuobj.value() != _8cnvctx))
+    else if (menuobj.value() && menuobj.value() != _8cnvctx)
     {
         closemenu();
         window.history.go(1);
