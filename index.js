@@ -6709,7 +6709,6 @@ function setupmenus()
         _9cnv.sliceobj.set(n);
 
     _11cnv.sliceobj.data = [];
-
     _2cnv.sliceobj.data = [];
     var lst = [_2cnv, _3cnv, _5cnv, _6cnv, _7cnv, _8cnv, _9cnv, _10cnv, _11cnv];
     for (var n = 0; n < lst.length; n++)
@@ -6803,7 +6802,7 @@ galleryobj.init = function(obj)
     		galleryobj.data = [];
     		for (var n = 0; n < lst.length-1; ++n)
     		{
-                var k = lst[n].clean():
+                var k = lst[n].clean();
                 if (!k.length)
                     continue;
     			var e = {}
