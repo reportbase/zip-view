@@ -110,11 +110,6 @@ function getjson(key)
     }
 }
 
-window.addEventListener("pagehide", (evt) => 
-{
-    local.set()
-}, false,);
-
 document.addEventListener('visibilitychange', function() 
 {
     if (document.visibilityState == 'hidden') 
@@ -2920,6 +2915,7 @@ var panlst =
         delete context.canvas.hollyobj.offset;
         delete canvas.istimeobjrect;
         delete canvas.ishollyrect;
+	local.set()    
     }
 },
 {
@@ -4929,6 +4925,7 @@ menuobj.show = function()
         context.show(l, 0, w, window.innerHeight);
     }
 
+    local.set()	
     menuobj.draw(1);    
 }
 
@@ -4959,10 +4956,9 @@ menuobj.draw = function(noclear)
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
 
-	    if (!noclear)
-        {
+	if (!noclear)
             resetview()
-        }
+	local.set()	
     }
 
     var delayinterval = Math.PI / slices.length;
