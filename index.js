@@ -757,7 +757,6 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.closerect = new rectangle();
-        canvas.galleryopenrect = new rectangle();
         canvas.galleryaddrect = new rectangle();
         canvas.gallerypatchrect = new rectangle();
         canvas.gallerydeleterect = new rectangle();
@@ -773,13 +772,8 @@ var footlst =
 			new panel.layers(
 			[
 				new panel.fill(FOOTBTNCOLOR),
-				new panel.colsA([0,0,0,0],
+				new panel.colsA([0,0,0],
 				[
-					new panel.layers(
-					[
-						new panel.rectangle(canvas.galleryopenrect),
-						new panel.text(),
-					]),
 					new panel.layers(
 					[
 						new panel.rectangle(canvas.galleryaddrect),
@@ -804,7 +798,6 @@ var footlst =
 		   `\u{25C0}   Galleries`,
 		   0,
 		   [
-			   `Open`,
 			   `Add`,
 			   `Edit`,
 			   `Delete`,
@@ -1021,7 +1014,7 @@ var headlst =
         delete context.fitwidthrect;
         delete context.fullscreenrect;
         delete context.homemenurect;
-        delete context.imagemenurect;
+        delete context.gallerymenurect;
         var s = SAFARI ? -1: ALIEXTENT;
         var e = rect.width>=320?(ALIEXTENT+10):-1;
         var a = new panel.rows([BEXTENT, 0],
@@ -1824,14 +1817,14 @@ panel.imagemenu = function()
         if (menuobj.value() == _8cnvctx ||
             menuobj.value() == galleryobj.rightctx)
         {
-		    context.imagemenurect = new rectangle();
+		    context.gallerymenurect = new rectangle();
             var s = menuobj.value() == galleryobj.rightctx;
             var j = 5;
             var k = j / 2;
             var e = new panel.fill(OPTIONFILL);
             var a = new panel.layers(
             [
-                new panel.rectangle(context.imagemenurect),
+                new panel.rectangle(context.gallerymenurect),
                 s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.rows([0, rect.height * 0.20, 0],
@@ -3727,8 +3720,8 @@ var taplst =
         }
         else if (
             headcnv.height &&
-            (headcnvctx.imagemenurect &&
-            headcnvctx.imagemenurect.hitest(x, y)))
+            (headcnvctx.gallerymenurect &&
+            headcnvctx.gallerymenurect.hitest(x, y)))
         {
             if (menuobj.value() == _2cnvctx)
             {
@@ -3751,8 +3744,25 @@ var taplst =
                         var result = results[n];
                         result.func = function(n, x, y)
                         {
-                             _2cnv.sliceobj.set(n);
-                            menuobj.draw();
+                            if (n == _2cnv.sliceobj.current())
+                            {
+                                for (var n = 0; n < IMAGELSTSIZE; ++n)
+                                {
+                                    thumbfittedlst[n] = document.createElement("canvas");
+                                    thumbimglst[n] = new Image();
+                                }
+                    
+                                url = new URL(url.origin);
+                                var gallery = _2cnv.sliceobj.value();
+                                url.searchParams.set("id",gallery.id);
+                                window.open(url.href,"_self")
+                            }
+                            else
+                            {
+                                _2cnv.sliceobj.set(n);
+                                menuobj.draw();
+                            }
+                            
                             return false;
                         }
                     }
@@ -3991,19 +4001,6 @@ var taplst =
         else if (canvas.downloadrect && canvas.downloadrect.hitest(x, y))
         {
             download();             
-        }
-        else if (canvas.galleryopenrect && canvas.galleryopenrect.hitest(x, y))
-        {
-            for (var n = 0; n < IMAGELSTSIZE; ++n)
-            {
-                thumbfittedlst[n] = document.createElement("canvas");
-                thumbimglst[n] = new Image();
-            }
-
-            url = new URL(url.origin);
-            var gallery = _2cnv.sliceobj.value();
-            url.searchParams.set("id",gallery.id);
-            window.open(url.href,"_self")
         }
         else if (canvas.gallerydeleterect && canvas.gallerydeleterect.hitest(x, y))
         {
