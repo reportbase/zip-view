@@ -4039,9 +4039,9 @@ var taplst =
                 const form = new FormData();
                 form.append('title', title.value);
                 form.append('json', json.value);
+                id.value = id.value.replace(/\s+/g,'');
                 form.append('gallery_id', id.value);
-		        id = id.replace(/\s+/g,'');
-                form.append('user_id', login.id);
+		        form.append('user_id', login.id);
                 fetch(`https://gallery.reportbase5836.workers.dev`,
                 {
                     'method': 'POST',
