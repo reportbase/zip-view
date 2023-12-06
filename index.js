@@ -1396,6 +1396,8 @@ var displaylst =
     name: "MENU",
     draw: function(context, rect, user, time)
     {
+        return;
+        
         var canvas = context.canvas;
         context.save();
         canvas.hollyrect = new rectangle();
@@ -1413,7 +1415,6 @@ var displaylst =
     		0,
 	    ]);
 
-        rect.y -= 45;
         a.draw(context, rect, canvas.timeobj, 0);
         context.restore();    
     }
@@ -4993,9 +4994,9 @@ menuobj.draw = function(noclear)
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
 
-	if (!noclear)
+	    if (!noclear)
             resetview()
-	local.set()	
+	    local.set()	
     }
 
     var delayinterval = Math.PI / slices.length;
