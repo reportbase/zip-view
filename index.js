@@ -6117,7 +6117,7 @@ panel.currentV = function(panel, extent, rev)
 //Math.nub(0,100,100,1000) = 0
 Math.nub = function(n, size, nubextent, extent)
 {
-    var b = n/(size-1);
+    var b = n/size;//Math.berp
     var e = b * nubextent;
     var f = b * extent;
     return f - e;
