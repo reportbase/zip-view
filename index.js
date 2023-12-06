@@ -795,8 +795,7 @@ var footlst =
         
         a.draw(context, rect, 
 	   	[
-		   _2cnv.timeobj.current().toFixed(4),
-			//`\u{25C0}   Galleries`,
+		   `\u{25C0}   Galleries`,
 		   0,
 		   [
 			   `Add`,
