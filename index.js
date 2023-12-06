@@ -1396,8 +1396,6 @@ var displaylst =
     name: "MENU",
     draw: function(context, rect, user, time)
     {
-        return;
-        
         var canvas = context.canvas;
         context.save();
         canvas.hollyrect = new rectangle();
@@ -1406,11 +1404,16 @@ var displaylst =
     		0,
     		0,
     		0,
-            new panel.layers(
+            new panel.rows([120,0,120],
             [
-                new panel.expand(new panel.rectangle(canvas.hollyrect), 10, 0),
-                new panel.currentV(
-                    new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1)
+                0,
+                new panel.layers(
+                [
+                    new panel.expand(new panel.rectangle(canvas.hollyrect), 10, 0),
+                    new panel.currentV(
+                        new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1)
+                ]),
+                0,
             ]),
     		0,
 	    ]);
