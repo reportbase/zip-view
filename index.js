@@ -1407,11 +1407,13 @@ var displaylst =
             new panel.layers(
             [
                 new panel.expand(new panel.rectangle(canvas.hollyrect), 10, 0),
-                new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 0)
+                new panel.currentV(
+                    new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1)
             ]),
     		0,
 	    ]);
 
+        rect.y -= 45;
         a.draw(context, rect, canvas.timeobj, 0);
         context.restore();    
     }
