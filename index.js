@@ -4011,9 +4011,11 @@ var taplst =
         }
         else if (canvas.gallerydeleterect && canvas.gallerydeleterect.hitest(x, y))
         {
+			var gallery = _2cnv.sliceobj.value();
+            var label = document.getElementById("confirm-label");
+			label.value = `Confirm delete '${gallery.title}'?`
             showdialog("confirm", function(image)
             {
-                var gallery = _2cnv.sliceobj.value();
                 fetch(`https://gallery.reportbase5836.workers.dev/${gallery.id}`,
                 {
                     'method': 'DELETE'
