@@ -3552,6 +3552,38 @@ CanvasRenderingContext2D.prototype.hithumb = function(x, y)
     }
 }
 
+var gallerymenufunc = function(n, x, y)
+{
+    if (n == _2cnv.sliceobj.current())
+    {
+        for (var n = 0; n < IMAGELSTSIZE; ++n)
+        {
+            thumbfittedlst[n] = document.createElement("canvas");
+            thumbimglst[n] = new Image();
+        }
+
+        url = new URL(url.origin);
+        var gallery = _2cnv.sliceobj.value();
+        url.searchParams.set("id",gallery.id);
+        window.open(url.href,"_self")
+    }
+    else
+    {
+        _2cnv.sliceobj.set(n);
+        menuobj.draw();
+    }
+    
+    return false;
+}
+
+var gallerysampleslst = 
+[
+    {id: "sample001", title: "Sample 001", func: gallerymenufunc},
+    {id: "sample002", title: "Sample 002", func: gallerymenufunc},
+    {id: "sample003", title: "Sample 003", func: gallerymenufunc},
+    {id: "sample004", title: "Sample 004", func: gallerymenufunc},
+];
+
 var taplst = 
 [
 {
@@ -3738,49 +3770,18 @@ var taplst =
             fetch(`https://gallery.reportbase5836.workers.dev/list/${login.id}`)
                 .then((response) => jsonhandler(response))
                 .then(function(results)
-                {
-			        var func = function(n, x, y)
-                        {
-                            if (n == _2cnv.sliceobj.current())
-                            {
-                                for (var n = 0; n < IMAGELSTSIZE; ++n)
-                                {
-                                    thumbfittedlst[n] = document.createElement("canvas");
-                                    thumbimglst[n] = new Image();
-                                }
-                    
-                                url = new URL(url.origin);
-                                var gallery = _2cnv.sliceobj.value();
-                                url.searchParams.set("id",gallery.id);
-                                window.open(url.href,"_self")
-                            }
-                            else
-                            {
-                                _2cnv.sliceobj.set(n);
-                                menuobj.draw();
-                            }
-                            
-                            return false;
-                        }
-                    
+                {               
                     for (var n = 0; n < results.length; ++n)
                     {
                         var result = results[n];
-                        result.func = func
+                        result.func = gallerymenufunc
                     }
         
                     _2cnv.sliceobj.data = results
-                    var j = 4-results.length;
-                    var lst = 
-                    [
-                        {id: "sample001", title: "Sample 001", func: func},
-                        {id: "sample002", title: "Sample 002", func: func},
-                        {id: "sample003", title: "Sample 003", func: func},
-                        {id: "sample004", title: "Sample 004", func: func},
-                    ];
+                    var j = gallerysampleslst.length-results.length;
                     
                     for (var n = 0; n < j; ++n)
-                        _2cnv.sliceobj.data.push(lst[n]);
+                        _2cnv.sliceobj.data.push(gallerysampleslst[n]);
                     
                     var id = url.searchParams.get("id");
                     var k = _2cnv.sliceobj.data.findIndex(
@@ -3796,11 +3797,12 @@ var taplst =
             headcnvctx.closebossrect &&
             headcnvctx.closebossrect.hitest(x, y))
         {
-            menuobj.setindex(_8cnvctx);
-            menuobj.show();
-            var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
-            headham.panel = headlst[k];
-            headobj.draw();
+            closemenu();
+            //menuobj.setindex(_8cnvctx);
+            //menuobj.show();
+            //var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+            //headham.panel = headlst[k];
+            //headobj.draw();
         }
         else if (
             context.templaterect &&
