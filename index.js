@@ -1398,7 +1398,6 @@ var displaylst =
     {
         var canvas = context.canvas;
         context.save();
-        canvas.timeobjrect = new rectangle();
         canvas.hollyrect = new rectangle();
         var a = new panel.cols([5, 9, 0, 9, 5],
 	    [
@@ -1408,8 +1407,8 @@ var displaylst =
             new panel.layers(
             [
                 new panel.expand(new panel.rectangle(canvas.hollyrect), 10, 0),
-                new panel.currentV(new panel.rounded("white", 
-                    0, TRANSPARENT, 5, 5), 90, 1)
+                //new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1)
+                new panel.currentV(new panel.fill("white"), 90, 1)
             ]),
     		0,
 	    ]);
