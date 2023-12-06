@@ -6101,10 +6101,11 @@ panel.currentV = function(panel, extent, rev)
     this.draw = function(context, rect, user, time)
     {
         context.save();
-        var k = rev ? user.length() - user.current() : user.current();
-        var nub = Math.nub(k, user.length(), extent, rect.height);
+        var len = user.length();
+        var k = rev ? len - user.current() : user.current();
+        var nub = Math.nub(k, len, extent, rect.height);
         var r = new rectangle(rect.x, rect.y + nub, rect.width, extent);
-        panel.draw(context, r, 0, time);
+        panel.draw(context, r, user, time);
         context.restore();
     };
 };
