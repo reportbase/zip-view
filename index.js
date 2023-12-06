@@ -1400,34 +1400,21 @@ var displaylst =
         context.save();
         canvas.timeobjrect = new rectangle();
         canvas.hollyrect = new rectangle();
-        var kh = context.rect().width == window.innerWidth ? 90 : ALIEXTENT;
-        var a = new panel.colsA([5, 9, 0, 9, 5],
+        var a = new panel.cols([5, 9, 0, 9, 5],
 	    [
     		0,
     		0,
     		0,
-    		new panel.rows([kh, 0, kh],
-    		    [
-    			0,
-    			new panel.layers(
-    			    [
-    				new panel.expand(new panel.rectangle(canvas.hollyrect), 10, 0),
-    				new panel.currentV(new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1),
-    			    ]),
-    			0,
-    		    ]),
+            new panel.layers(
+            [
+                new panel.expand(new panel.rectangle(canvas.hollyrect), 10, 0),
+                new panel.currentV(new panel.rounded("white", 
+                    0, TRANSPARENT, 5, 5), 90, 1)
+            ]),
     		0,
 	    ]);
 
-        a.draw(context, rect,
-        [
-            0,
-            0,
-            0,
-            canvas.timeobj,
-            0,
-        ]);
-
+        a.draw(context, rect, canvas.timeobj, 0);
         context.restore();    
     }
 },
@@ -3798,11 +3785,6 @@ var taplst =
             headcnvctx.closebossrect.hitest(x, y))
         {
             closemenu();
-            //menuobj.setindex(_8cnvctx);
-            //menuobj.show();
-            //var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
-            //headham.panel = headlst[k];
-            //headobj.draw();
         }
         else if (
             context.templaterect &&
