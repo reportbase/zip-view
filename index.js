@@ -3975,13 +3975,17 @@ var taplst =
         if (canvas.gallerypatchrect && canvas.gallerypatchrect.hitest(x, y))
         {
             var gallery = _2cnv.sliceobj.value();
-            var title = document.getElementById("gallery-add-title");
-            var json = document.getElementById("gallery-add-json");
+		    var id = document.getElementById("gallery-patch-id");
+            var title = document.getElementById("gallery-patch-title");
+            var json = document.getElementById("gallery-patch-json");
+            id.value = id.title;
             title.value = gallery.title;
             json.value = gallery.json;
-            showdialog("gallery-add", function(image)
+            showdialog("gallery-patch", function(image)
             {
                 const form = new FormData();
+                form.append('user_id', login.id);
+                form.append('gallery_id', id.value);
                 form.append('title', title.value);
                 form.append('json', json.value);
                 fetch(`https://gallery.reportbase5836.workers.dev/${login.id}`,
@@ -4025,13 +4029,16 @@ var taplst =
         }    
         else if (canvas.galleryaddrect && canvas.galleryaddrect.hitest(x, y))
         {
+            var id = document.getElementById("gallery-add-id");
             var title = document.getElementById("gallery-add-title");
             var json = document.getElementById("gallery-add-json");
+            id.value = Math.floor(Date.now() / 1000).toString(36);
             showdialog("gallery-add", function(image)
             {
                 const form = new FormData();
                 form.append('title', title.value);
                 form.append('json', json.value);
+                form.append('gallery_id', id.value);
                 form.append('user_id', login.id);
                 fetch(`https://gallery.reportbase5836.workers.dev`,
                 {
