@@ -3567,6 +3567,31 @@ var gallerymenufunc = function(n, x, y)
     return false;
 }
 
+function gallerymenu()
+{            
+    fetch(`https://gallery.reportbase5836.workers.dev/list/${login.id}`)
+        .then((response) => jsonhandler(response))
+        .then(function(results)
+        {               
+            for (var n = 0; n < results.length; ++n)
+            {
+                var result = results[n];
+                result.func = gallerymenufunc
+            }
+
+            _2cnv.sliceobj.data = results
+            
+            var id = url.searchParams.get("id");
+            var k = _2cnv.sliceobj.data.findIndex(
+                function(a){return a.id == id;});
+            _2cnv.sliceobj.CURRENT = k;
+            
+            var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
+            _2cnv.rotated = [...a, ...a, ...a];
+            rightmenu(_2cnvctx)
+        })
+}
+
 var gallerysampleslst = 
 [
     {id: "sample001", title: "Sample 001", func: gallerymenufunc},
@@ -3757,31 +3782,8 @@ var taplst =
                googlelogin();
                return;
             }
-            
-            fetch(`https://gallery.reportbase5836.workers.dev/list/${login.id}`)
-                .then((response) => jsonhandler(response))
-                .then(function(results)
-                {               
-                    for (var n = 0; n < results.length; ++n)
-                    {
-                        var result = results[n];
-                        result.func = gallerymenufunc
-                    }
-        
-                    _2cnv.sliceobj.data = results
-                    var j = gallerysampleslst.length-results.length;
-                    
-                    for (var n = 0; n < j; ++n)
-                        _2cnv.sliceobj.data.push(gallerysampleslst[n]);
-                    
-                    var id = url.searchParams.get("id");
-                    var k = _2cnv.sliceobj.data.findIndex(
-                        function(a){return a.id == id;});
-                    _2cnv.sliceobj.CURRENT = k;
-                    var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
-                    _2cnv.rotated = [...a, ...a, ...a];
-                    rightmenu(_2cnvctx)
-                })
+
+            gallerymenu()
         }
         else if (
             headcnv.height &&
@@ -3897,11 +3899,6 @@ var taplst =
 	        leftmenu(_7cnvctx);
             return false;
         }       
-        else if (context.galleryrect && context.galleryrect.hitest(x, y))
-        {
-	        leftmenu(_2cnvctx);
-            return false;
-        }
         else if (menuobj.value() && menuobj.value() != _8cnvctx)
         {
             closemenu()
