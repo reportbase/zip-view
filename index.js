@@ -3739,10 +3739,7 @@ var taplst =
                 .then((response) => jsonhandler(response))
                 .then(function(results)
                 {
-                    for (var n = 0; n < results.length; ++n)
-                    {
-                        var result = results[n];
-                        result.func = function(n, x, y)
+			        var func = function(n, x, y)
                         {
                             if (n == _2cnv.sliceobj.current())
                             {
@@ -3765,16 +3762,21 @@ var taplst =
                             
                             return false;
                         }
+                    
+                    for (var n = 0; n < results.length; ++n)
+                    {
+                        var result = results[n];
+                        result.func = func
                     }
         
                     _2cnv.sliceobj.data = results
                     var j = 4-results.length;
                     var lst = 
                     [
-                        {id: "sample001", title: "Sample 001"},
-                        {id: "sample002", title: "Sample 002"},
-                        {id: "sample003", title: "Sample 003"},
-                        {id: "sample004", title: "Sample 004"},
+                        {id: "sample001", title: "Sample 001", func: func},
+                        {id: "sample002", title: "Sample 002", func: func},
+                        {id: "sample003", title: "Sample 003", func: func},
+                        {id: "sample004", title: "Sample 004", func: func},
                     ];
                     
                     for (var n = 0; n < j; ++n)
