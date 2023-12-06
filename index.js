@@ -4013,7 +4013,7 @@ var taplst =
         {
 			var gallery = _2cnv.sliceobj.value();
             var label = document.getElementById("confirm-label");
-			label.value = `Confirm delete '${gallery.title}'?`
+			label.innerHTML = `Confirm delete '${gallery.title}'?`
             showdialog("confirm", function(image)
             {
                 fetch(`https://gallery.reportbase5836.workers.dev/${gallery.id}`,
