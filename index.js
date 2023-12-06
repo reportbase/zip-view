@@ -1405,7 +1405,7 @@ var displaylst =
     		0,
     		0,
     		0,
-            new panel.rows([120,0,120],
+            new panel.rows([ALIEXTENT,0,ALIEXTENT],
             [
                 0,
                 new panel.layers(
@@ -6105,7 +6105,7 @@ panel.currentV = function(panel, extent, rev)
         var len = user.length();
 	    var current = user.current();
         var k = rev ? len - current : current;
-        var nub = Math.nubf(k, len, extent, rect.height);
+        var nub = Math.nub(k, len, extent, rect.height);
 	    var y = rect.y
         var r = new rectangle(rect.x, y + nub, rect.width, extent);
         panel.draw(context, r, user, time);
@@ -6117,15 +6117,7 @@ panel.currentV = function(panel, extent, rev)
 //Math.nub(0,100,100,1000) = 0
 Math.nub = function(n, size, nubextent, extent)
 {
-    var b = Math.berp(0, size - 1, n);
-    var e = b * nubextent;
-    var f = b * extent;
-    return f - e;
-};
-
-Math.nubf = function(n, size, nubextent, extent)
-{
-    var b = n/size;
+    var b = n/(size-1);
     var e = b * nubextent;
     var f = b * extent;
     return f - e;
