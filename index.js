@@ -4019,10 +4019,7 @@ var taplst =
 			label.innerHTML = `Confirm delete '${gallery.title}'?`
             showdialog("confirm", function(image)
             {
-                fetch(`https://gallery.reportbase5836.workers.dev/${gallery.id}`,
-                {
-                    'method': 'DELETE'
-                })
+                fetch(`https://gallery.reportbase5836.workers.dev/delete/${gallery.id}`)
                 .then((response) => jsonhandler(response))
                 .then(function(obj)
                 {
@@ -4043,6 +4040,7 @@ var taplst =
                 form.append('title', title.value);
                 form.append('json', json.value);
                 form.append('gallery_id', id.value);
+		        id = id.replace(/\s+/g,'');
                 form.append('user_id', login.id);
                 fetch(`https://gallery.reportbase5836.workers.dev`,
                 {
