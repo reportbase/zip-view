@@ -3730,13 +3730,19 @@ var taplst =
             (headcnvctx.imagemenurect &&
             headcnvctx.imagemenurect.hitest(x, y)))
         {
-           if (!login.id)
-           {
+            if (menuobj.value() == _2cnvctx)
+            {
+                closemenu();
+                return;
+            }
+            
+            if (!login.id)
+            {
                googlelogin();
                return;
-           }
+            }
             
-           fetch(`https://gallery.reportbase5836.workers.dev/list/${login.id}`)
+            fetch(`https://gallery.reportbase5836.workers.dev/list/${login.id}`)
                 .then((response) => jsonhandler(response))
                 .then(function(results)
                 {
