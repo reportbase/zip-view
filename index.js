@@ -6103,11 +6103,12 @@ panel.currentV = function(panel, extent, rev)
     {
         context.save();
         var len = user.length();
-	    var current = user.current();
+	var current = user.current();
         var k = rev ? len - current : current;
         var nub = Math.nub(k, len, extent, rect.height);
-        var r = new rectangle(rect.x, rect.y + nub, rect.width, extent);
-	    clst.push(r);
+	var y = rect.y
+        var r = new rectangle(rect.x, y + nub, rect.width, extent);
+	clst.push({nub, y, r});
         panel.draw(context, r, user, time);
         context.restore();
     };
