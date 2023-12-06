@@ -74,7 +74,7 @@ textarea
   font-family: rubik;
   padding: 15px;
   outline: none;
-  border-radius: 50px;
+  border-radius: 25px;
   border-width: 4px;
   border-color: black;
   color: brown;
@@ -83,25 +83,6 @@ textarea
   box-sizing: border-box; 
   width: 100%; 
   font-size: 1.2em; 
-}
-
-atextarea 
-{
-  height: 100%;
-  resize: none;
-  background-color: white;
-  border-style: inset; 
-  border-radius: 0px;
-  border-width: 0px;
-  font-family: rubik;
-  outline: none; 
-  box-sizing: border-box; 
-  width: 100%; 
-  padding: 10px; 
-  font-size: 1em; 
-  color: black;
-  text-align: left;
-  font-weight: bold;
 }
 
 button
