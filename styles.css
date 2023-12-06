@@ -12,7 +12,7 @@ hr
 {
   height:2px;
   border-width:0;
-  color:gray;
+  color:white;
   background-color:gray
 }
 
@@ -42,12 +42,12 @@ label
   display: block;
   font-weight: bold; 
   text-align: left;
-  font-size: 1em;
   font-family: rubik;
   width: 100%; 
   border-radius: 5px;
   height: 34px;
   line-height: 34px;
+  font-size: 1.2em; 
 }
 
 input
@@ -109,6 +109,7 @@ button
   margin-top: 20px;
   margin-left: 0px;
   width: 25%;
+  height: 44px;
 }
 
 .button
