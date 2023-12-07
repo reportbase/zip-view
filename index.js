@@ -3573,7 +3573,7 @@ function showgallery()
         .then((response) => jsonhandler(response))
         .then(function(results)
         {            
-            if (results.length < 4)
+            if (0)//results.length < 4)
             {
                 //todo
             }
