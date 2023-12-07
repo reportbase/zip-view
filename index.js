@@ -3599,14 +3599,6 @@ function showgallery()
         })
 }
 
-var gallerysampleslst = 
-[
-    {id: "sample001", title: "Sample 001", func: gallerymenufunc},
-    {id: "sample002", title: "Sample 002", func: gallerymenufunc},
-    {id: "sample003", title: "Sample 003", func: gallerymenufunc},
-    {id: "sample004", title: "Sample 004", func: gallerymenufunc},
-];
-
 var taplst = 
 [
 {
