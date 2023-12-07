@@ -693,7 +693,6 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.homerect = new rectangle();
-        canvas.useropenrect = new rectangle();
         canvas.useraddrect = new rectangle();
         canvas.userpatchrect = new rectangle();
         canvas.userdeleterect = new rectangle();
@@ -709,13 +708,8 @@ var footlst =
 			new panel.layers(
 			[
 				new panel.fill(FOOTBTNCOLOR),
-				new panel.colsA([0,0,0,0],
+				new panel.colsA([0,0,0],
 				[
-					new panel.layers(
-					[
-						new panel.rectangle(canvas.useropenrect),
-						new panel.text(),
-					]),
 					new panel.layers(
 					[
 						new panel.rectangle(canvas.useraddrect),
@@ -740,7 +734,6 @@ var footlst =
 		   `\u{25C0}   Users`,
 		   0,
 		   [
-			   `Open`,
 			   `Add`,
 			   `Edit`,
 			   `Delete`,
@@ -899,7 +892,7 @@ var footlst =
            0,
            [
                "Edit",
-               login.email?login.email:"Login",
+               login.id?"Logout":"Login",
            ], 
         ], 0);
         
@@ -931,12 +924,12 @@ var footlst =
 			])
 		]);
 
-	    var str = login.id ? "Logout" : "Login";
+	    var str = login.email ? login.email : "Login";
         a.draw(context, rect, 
 	   	[
 		   `\u{25C0}   ${url.host}`,
 			0,
-			`${str}`,
+			str,
 		], 0);
 		
         context.restore();
@@ -4139,6 +4132,7 @@ var taplst =
 
             return false;
         }
+            /*
         else if (canvas.useropenrect && canvas.useropenrect.hitest(x, y))
         {
             login = _1cnv.sliceobj.value();
@@ -4152,6 +4146,7 @@ var taplst =
 		    
             return false;
         }
+        */
         else if (canvas.userpatchrect && canvas.userpatchrect.hitest(x, y))
         {
             showdialog("user-login", function(str)
