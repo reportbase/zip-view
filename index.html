@@ -74,39 +74,17 @@
     <div class=centered><button id="confirm-ok">Confirm</button></div>
 </dialog>
 
-<dialog id="user-update" style="max-width: 80%; width: 720px;">
-      <label>Name</label>
-      <input id="user-update-name"></input>
-      <label>Email</label>
-      <input id="user-update-email"></input>
+<dialog id="secret" style="max-width: 80%; width: 720px;">
       <label>Secret</label>
-      <input id="user-update-secret"></input>
-      <div class=centered><button id="user-update-ok">Update</button></div>
+      <input id="secret-update" readonly></input>
+      <label>Scripts</label>
+      <textarea id="secret-scripts" rows=6></input>
+      <div class=centered><button id="secret-ok">Update</button></div>
 </dialog>
 
 <dialog id="user-login" style="max-width: 70%; width: 360px;">
       <div class=centered><div id="googleLogin" class="g-signin2" dat-a-longtitle="true"></div>
       <div class=centered><button style="width:50%" id="user-login-ok">Close</button></div>
-</dialog>
-
-<dialog id="user-edit" style="max-width: 80%; width: 720px;">
-      <label>ID</label>
-      <input id="user-edit-id"></input>
-      <label>Name</label>
-      <input id="user-edit-name"></input>
-      <label>Email</label>
-      <input id="user-edit-email" readonly></input>
-      <label>Secret</label>
-      <input id="user-edit-secret" readonly></input>
-      <div class=centered><button id="user-edit-ok">OK</button></div>
-</dialog>
-
-<dialog id="user-signup" style="max-width: 80%; width: 720px;">
-      <label>Name</label>
-      <input id="user-signup-name" readonly></input>
-      <label>Email</label>
-      <input id="user-signup-email" readonly></input>
-      <div class=centered><button id="user-signup-ok">Signup</button></div>
 </dialog>
 
 </body>
