@@ -856,7 +856,6 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.homerect = new rectangle();
-        canvas.usereditrect = new rectangle();
         canvas.loginrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
         [
@@ -870,30 +869,19 @@ var footlst =
             new panel.layers(
             [
                 new panel.fill(FOOTBTNCOLOR),
-                new panel.colsA([0,0],
+                new panel.layers(
                 [
-                    new panel.layers(
-                    [
-                        new panel.rectangle(canvas.usereditrect),
-                        new panel.text(),
-                    ]),
-                    new panel.layers(
-                    [
-                        new panel.rectangle(canvas.loginrect),
-                        new panel.text(),
-                    ])
+                    new panel.rectangle(canvas.loginrect),
+                    new panel.text(),
                 ])                            
             ])
         ]);
         
         a.draw(context, rect, 
         [
-           `\u{25C0}   Account`,
-           0,
-           [
-               "Edit",
-               login.id?"Logout":"Login",
-           ], 
+            `\u{25C0}   Account`,
+            0,
+            login.email?login.email:"Login",
         ], 0);
         
         context.restore();
@@ -4070,38 +4058,6 @@ var taplst =
             
             return true;
         }
-        else if (canvas.usereditrect && canvas.usereditrect.hitest(x, y))
-        {
-            var name = document.getElementById("user-edit-name");
-            var email = document.getElementById("user-edit-email");
-            var secret = document.getElementById("user-edit-secret");
-            var id = document.getElementById("user-edit-id");
-            name.value = login.name?login.name:"";
-            email.value = login.email?login.email:"";
-            secret.value = login.secret?login.secret:"";
-            id.value = login.id?login.id:"";
-            showdialog("user-edit", function(str)
-            {
-                const form = new FormData();
-                form.append('name', name.value);
-                form.append('email.old', login.email);
-                form.append('email', email.value);
-                form.append('id', id.value);
-                form.append('secret', secret.value);
-                fetch(`https://user.reportbase5836.workers.dev`,
-                {
-                    'method': 'PATCH',
-                    'body': form
-                })
-                .then(response => response.json())
-                .then(function(obj)
-                {
-                    console.log(obj);
-                })        
-            });
-                
-            return true;              
-        }
         else if (canvas.closerect && 
                  canvas.closerect.hitest(x, y))
         {
@@ -6622,19 +6578,19 @@ function setupmenus()
     [
         {
             title: function(){return `ID\n${login.id?login.id:""}`},
-            func: function(){copytext(login.id); return false;}
+            func: showuser
         },
         {
             title: function(){return `Email\n${login.email?login.email:""}`},
-            func: function(){copytext(login.email); return false;}
+            func: showuser
         },
         {
             title: function(){return `Name\n${login.name?login.name:""}`},
-            func: function(){copytext(login.name); return false;}
+            func: showuser
         },
         {
             title: function(){return `Secret\n${login.secret?login.secret:""}`},
-            func: function(){copytext(login.secret); return false;}
+            func: showuser
         },
     ]
 
@@ -6803,6 +6759,37 @@ galleryobj.reset = function(obj)
         getblobpath(image, j)
     else
         image.src = imagepath(j,"5760x5760");
+}
+
+function showuser()
+{
+    var name = document.getElementById("user-edit-name");
+    var email = document.getElementById("user-edit-email");
+    var secret = document.getElementById("user-edit-secret");
+    var id = document.getElementById("user-edit-id");
+    name.value = login.name?login.name:"";
+    email.value = login.email?login.email:"";
+    secret.value = login.secret?login.secret:"";
+    id.value = login.id?login.id:"";
+    showdialog("user-edit", function(str)
+    {
+        const form = new FormData();
+        form.append('name', name.value);
+        form.append('email.old', login.email);
+        form.append('email', email.value);
+        form.append('id', id.value);
+        form.append('secret', secret.value);
+        fetch(`https://user.reportbase5836.workers.dev`,
+        {
+            'method': 'PATCH',
+            'body': form
+        })
+        .then(response => response.json())
+        .then(function(obj)
+        {
+            console.log(obj);
+        })        
+    });
 }
 
 //galleryobj init
