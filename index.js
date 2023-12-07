@@ -1780,12 +1780,12 @@ function leftmenu(context)
     headobj.draw();
 }
 
-function rightmenu(context)
+function rightmenu(context, force)
 {
 	if (galleryobj.leftctx)
         galleryobj.leftctx.hide()
 
-    if (menuobj.value() && menuobj.value() != _8cnvctx)
+    if (!force && menuobj.value() && menuobj.value() != _8cnvctx)
     {
     	galleryobj.rightctx.hide();
         menuobj.setindex(_8cnvctx);
@@ -3588,7 +3588,7 @@ function showgallery()
             
             var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
             _2cnv.rotated = [...a, ...a, ...a];
-            rightmenu(_2cnvctx)
+            rightmenu(_2cnvctx, true)
         })
 }
 
