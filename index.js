@@ -4124,7 +4124,7 @@ var taplst =
                 fetch(`https://user.reportbase5836.workers.dev/delete/${user.email}`)
                 .then(function(response)
                 {
-                    //todo
+                    showusers();
                 })
             });
             
@@ -6536,32 +6536,7 @@ function setupmenus()
             title: `Users   \u{25B6}`,
             func: function()
             {
-               fetch(`https://user.reportbase5836.workers.dev/list`)
-                    .then((response) => jsonhandler(response))
-                    .then(function(results)
-                    {
-                        //todo
-                        for (var n = 0; n < results.length; ++n)
-                        {
-                            var result = results[n];
-                            result.func = function(n, x, y)
-                            {
-                                 _1cnv.sliceobj.set(n);
-                                menuobj.draw();
-                                return false;
-                            }
-                        }
-            
-                        _1cnv.sliceobj.data = results
-                        var a = Array(_1cnv.sliceobj.length()).fill().map((_, index) => index);
-                         _1cnv.rotated = [...a, ...a, ...a];
-                        
-                        menuobj.hide();
-                        galleryobj.leftctx = _1cnvctx;
-                        menuobj.setindex(galleryobj.leftctx);
-                        menuobj.show();
-                        headobj.draw();
-                    })
+                showusers();
             }
         })
     
@@ -6699,6 +6674,35 @@ function setupmenus()
         cnv.lastcurrent = -1;
         cnv.rotated = [...a, ...a, ...a];
     }
+}
+
+function showusers()
+{
+      fetch(`https://user.reportbase5836.workers.dev/list`)
+        .then((response) => jsonhandler(response))
+        .then(function(results)
+        {
+        	for (var n = 0; n < results.length; ++n)
+        	{
+        	    var result = results[n];
+        	    result.func = function(n, x, y)
+        	    {
+        		     _1cnv.sliceobj.set(n);
+        		    menuobj.draw();
+        		    return false;
+        	    }
+        	}
+        	
+        	_1cnv.sliceobj.data = results
+        	var a = Array(_1cnv.sliceobj.length()).fill().map((_, index) => index);
+        	 _1cnv.rotated = [...a, ...a, ...a];
+        	
+        	menuobj.hide();
+        	galleryobj.leftctx = _1cnvctx;
+        	menuobj.setindex(galleryobj.leftctx);
+        	menuobj.show();
+        	headobj.draw();
+        }
 }
 
 galleryobj.reset = function(obj)
