@@ -4114,19 +4114,20 @@ var taplst =
         }
         else if (canvas.userdeleterect && canvas.userdeleterect.hitest(x, y))
         {
-            showdialog("confirm", function(str)
+            var label = document.getElementById("confirm-label");
+            var input = document.getElementById("confirm-input");
+			label.innerHTML = `Confirm delete '${login.email}'?`
+            showdialog("confirm", function(image)
             {
-                fetch(`https://user.reportbase5836.workers.dev/reportbase@gmail.com`,
+                if (input.value != gallery.email)
+                    return true;
+                fetch(`https://user.reportbase5836.workers.dev/delete/${user.email}`)
+                .then(function(response)
                 {
-                    'method': 'DELETE'
-                })
-                .then(response => response.json())
-                .then(function(obj)
-                {
-                    console.log(obj);
+                    //todo
                 })
             });
-
+            
             return false;
         }
         else if (canvas.homerect && canvas.homerect.hitest(x, y))
@@ -6539,6 +6540,7 @@ function setupmenus()
                     .then((response) => jsonhandler(response))
                     .then(function(results)
                     {
+                        //todo
                         for (var n = 0; n < results.length; ++n)
                         {
                             var result = results[n];
