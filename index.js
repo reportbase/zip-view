@@ -6694,20 +6694,12 @@ function showusers()
         	    var result = results[n];
         	    result.func = function(n, x, y)
         	    {
-                    if (_1cnv.sliceobj.current() == n)
-                    {
-                        google.accounts.id.revoke(login.credential, function(){})
-                        login = _1cnv.sliceobj.value();
-                        setjson("login", login);	
-            		    menuobj.draw();
-                    }
-                    else
-                    {
-            		    _1cnv.sliceobj.set(n);
-            		    menuobj.draw();
-            		    return false;
-                    }
-        	    }
+                    _1cnv.sliceobj.set(n);
+                    google.accounts.id.revoke(login.credential, function(){})
+                    login = _1cnv.sliceobj.value();
+                    setjson("login", login);	
+                    menuobj.draw();
+                }
         	}
         	
         	_1cnv.sliceobj.data = results
