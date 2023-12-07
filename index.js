@@ -4015,7 +4015,7 @@ var taplst =
             showdialog("confirm", function(image)
             {
                 if (input.value != gallery.title)
-                    return;
+                    return true;
                 fetch(`https://gallery.reportbase5836.workers.dev/delete/${gallery.id}`)
                 .then(function(response)
                 {
@@ -7010,7 +7010,8 @@ function showdialog(str, func)
         evt.preventDefault();
         if (evt.target.id == `${str}-ok`)
         {
-            func();
+            if (func())
+                return;
             dialog.close();
             return false;
         }
