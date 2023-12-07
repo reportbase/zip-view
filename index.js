@@ -899,7 +899,7 @@ var footlst =
            0,
            [
                "Edit",
-               login.id?"Logout":"Login",
+               login.email?login.email:"Login",
            ], 
         ], 0);
         
@@ -6519,7 +6519,7 @@ function setupmenus()
     _7cnv.sliceobj.data = 
     [
     {
-        title: `Open   \u{25B6}\n*.zip, *.cbz, *.json, *.png,\n*.jpg, *.avif, *.webp, *.gif`,
+        title: `File Explorer   \u{25B6}\nOpen images and image archives.`,
         func: function()
         {
             importdialog();
@@ -6555,37 +6555,6 @@ function setupmenus()
         }
     },     
     {
-        title: `Users   \u{25B6}`,
-        func: function()
-        {
-           fetch(`https://user.reportbase5836.workers.dev/list`)
-                .then((response) => jsonhandler(response))
-                .then(function(results)
-                {
-                    for (var n = 0; n < results.length; ++n)
-                    {
-                        var result = results[n];
-                        result.func = function(n, x, y)
-                        {
-                             _1cnv.sliceobj.set(n);
-                            menuobj.draw();
-                            return false;
-                        }
-                    }
-        
-                    _1cnv.sliceobj.data = results
-                    var a = Array(_1cnv.sliceobj.length()).fill().map((_, index) => index);
-                     _1cnv.rotated = [...a, ...a, ...a];
-                    
-                    menuobj.hide();
-                    galleryobj.leftctx = _1cnvctx;
-                    menuobj.setindex(galleryobj.leftctx);
-                    menuobj.show();
-                    headobj.draw();
-                })
-        }
-    },
-    {
         title: function()
         {
             var str = `Account   \u{25B6}`
@@ -6606,34 +6575,53 @@ function setupmenus()
             leftmenu(_10cnvctx);
             return false;
         },
-    },
-        /*
-    {
-        title: "Templates   \u{25B6}",
-        func: function()
-        {
-            leftmenu(_9cnvctx);
-            return false;
-        }
-    },
-    {
-        title: "Folders   \u{25B6}",
-        func: function()
-        {
-            leftmenu(_5cnvctx);
-            return false;
-        }
-    },
-    */
-    {
-        title: "Debug   \u{25B6}",
-        func: function()
-        {
-            leftmenu(_3cnvctx);
-            return false;
-        }
     }
-    ];
+    ]
+
+    if (1)
+        _7cnv.sliceobj.data.push(
+        {
+            title: `Users   \u{25B6}`,
+            func: function()
+            {
+               fetch(`https://user.reportbase5836.workers.dev/list`)
+                    .then((response) => jsonhandler(response))
+                    .then(function(results)
+                    {
+                        for (var n = 0; n < results.length; ++n)
+                        {
+                            var result = results[n];
+                            result.func = function(n, x, y)
+                            {
+                                 _1cnv.sliceobj.set(n);
+                                menuobj.draw();
+                                return false;
+                            }
+                        }
+            
+                        _1cnv.sliceobj.data = results
+                        var a = Array(_1cnv.sliceobj.length()).fill().map((_, index) => index);
+                         _1cnv.rotated = [...a, ...a, ...a];
+                        
+                        menuobj.hide();
+                        galleryobj.leftctx = _1cnvctx;
+                        menuobj.setindex(galleryobj.leftctx);
+                        menuobj.show();
+                        headobj.draw();
+                    })
+            }
+        })
+    
+    if (0)
+        _7cnv.sliceobj.data.push(
+        {
+            title: "Debug   \u{25B6}",
+            func: function()
+            {
+                leftmenu(_3cnvctx);
+                return false;
+            }
+        })
     
     _10cnv.sliceobj.data = 
     [
