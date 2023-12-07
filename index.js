@@ -3567,7 +3567,7 @@ var gallerymenufunc = function(n, x, y)
     return false;
 }
 
-function gallerymenu()
+function showgallery()
 {            
     fetch(`https://gallery.reportbase5836.workers.dev/list/${login.id}`)
         .then((response) => jsonhandler(response))
@@ -3783,7 +3783,7 @@ var taplst =
                return;
             }
 
-            gallerymenu()
+            showgallery()
         }
         else if (
             headcnv.height &&
