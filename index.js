@@ -1785,6 +1785,7 @@ function rightmenu(context, force)
 	if (galleryobj.leftctx)
         galleryobj.leftctx.hide()
 
+    context.clear();
     if (!force && menuobj.value() && menuobj.value() != _8cnvctx)
     {
     	galleryobj.rightctx.hide();
