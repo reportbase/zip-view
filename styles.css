@@ -1,20 +1,8 @@
-/* 
-https://codepen.io/
-*/
-
 @import url('https://fonts.googleapis.com/css?family=Rubik:500');
 
 * {margin: 0; padding: 0}
 html, body {height: 100%; margin: 0; background-color: rgb(50,50,50)}
 canvas {outline: none; position: absolute; }
-
-hr
-{
-  height:2px;
-  border-width:0;
-  color:white;
-  background-color:gray
-}
 
 dialog
 {
