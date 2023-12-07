@@ -6702,7 +6702,7 @@ function showusers()
         	menuobj.setindex(galleryobj.leftctx);
         	menuobj.show();
         	headobj.draw();
-        }
+        })
 }
 
 galleryobj.reset = function(obj)
