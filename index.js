@@ -881,7 +881,7 @@ var footlst =
         [
             `\u{25C0}   Account`,
             0,
-            login.email?login.email:"Login",
+            "Copy Secret",
         ], 0);
         
         context.restore();
@@ -4042,7 +4042,12 @@ var taplst =
                 })
             })
         }
-        else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
+        else if (canvas.copysecretrect && canvas.copysecretrect.hitest(x, y))
+        {  
+            //todo: show help
+		    copysecret(login.secret);
+	    }
+	    else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
         {  
     		if (login.id && login.credential)
     		{
