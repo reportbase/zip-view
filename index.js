@@ -856,7 +856,7 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.homerect = new rectangle();
-        canvas.loginrect = new rectangle();
+        canvas.showsecretrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
         [
             new panel.layers(
@@ -871,7 +871,7 @@ var footlst =
                 new panel.fill(FOOTBTNCOLOR),
                 new panel.layers(
                 [
-                    new panel.rectangle(canvas.loginrect),
+                    new panel.rectangle(canvas.showsecretrect),
                     new panel.text(),
                 ])                            
             ])
@@ -881,7 +881,7 @@ var footlst =
         [
             `\u{25C0}   Account`,
             0,
-            "Secret",
+            "Secret   \u{25B6}",
         ], 0);
         
         context.restore();
@@ -4042,10 +4042,9 @@ var taplst =
                 })
             })
         }
-        else if (canvas.copysecretrect && canvas.copysecretrect.hitest(x, y))
+        else if (canvas.showsecretrect && canvas.showsecretrect.hitest(x, y))
         {  
-            //todo: show help
-		    copysecret(login.secret);
+            showsecret();
 	    }
 	    else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
         {  
