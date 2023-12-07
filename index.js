@@ -3949,7 +3949,7 @@ var taplst =
                 form.append('gallery_id', id.value);
                 form.append('title', title.value);
                 form.append('json', json.value);
-                fetch(`https://gallery.reportbase5836.workers.dev/${login.id}`,
+                fetch(`https://gallery.reportbase5836.workers.dev`,
                 {
                     'method': 'PATCH',
                     'body': form
