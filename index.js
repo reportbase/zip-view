@@ -4121,7 +4121,7 @@ var taplst =
             {
                 if (input.value != login.email)
                     return true;
-                fetch(`https://user.reportbase5836.workers.dev/delete/${user.email}`)
+                fetch(`https://user.reportbase5836.workers.dev/delete/${login.email}`)
                 .then(function(response)
                 {
                     showusers();
