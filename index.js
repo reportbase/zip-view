@@ -3596,7 +3596,7 @@ var taplst =
         else if (context.copyidrect && 
                  context.copyidrect.hitest(x, y))
         {
-             copytext(galleryobj.value().id);   
+            showsecret()   
         }
         else if (
             headcnv.height &&
@@ -6580,7 +6580,7 @@ function setupmenus()
             title: function(){return `Secret\n${login.secret?login.secret:""}`},
             func: 
             {
-                copytext(login.secret);
+                showsecret();
             }
         },
     ]
@@ -6688,6 +6688,17 @@ function setupmenus()
         cnv.lastcurrent = -1;
         cnv.rotated = [...a, ...a, ...a];
     }
+}
+
+function showsecret()
+{
+    copytext(login.secret);
+    var secret = document.getElementById("secret-update");
+    secret.value = login.secret;
+    showdialog("secret", function(image)
+    {
+        
+    })	
 }
 
 function showusers()
