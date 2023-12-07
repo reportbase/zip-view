@@ -11,7 +11,7 @@ dialog
   position: absolute; 
   left: 50%; 
   top: 50%; 
-  font-family: archivo+black;
+  font-family: archivo;
   transform: translate(-50%, -50%); 
   background-color: rgba(0,0,0,0.25);
   border-radius: 12px;
@@ -31,7 +31,7 @@ label
   display: block;
   font-weight: bold; 
   text-align: left;
-  font-family: archivo+black;
+  font-family: archivo;
   width: 100%; 
   border-radius: 5px;
   height: 44px;
@@ -47,7 +47,7 @@ input
   background-color: rgba(0,0,0,0.75);
   height: 44px;
   resize: none;
-  font-family: archivo+black;
+  font-family: archivo;
   padding: 15px;
   outline: none;
   border-radius: 12px;
@@ -69,7 +69,7 @@ textarea
   background-color: rgba(0,0,0,0.75);
   height: 100%;
   resize: none;
-  font-family: archivo+black;
+  font-family: archivo;
   padding: 15px;
   outline: none;
   border-radius: 12px;
@@ -85,7 +85,7 @@ textarea
 
 button
 {
-  font-family: archivo+black;
+  font-family: archivo;
   text-align: center;
   font-size: 1.1em;
   font: copperplate;
