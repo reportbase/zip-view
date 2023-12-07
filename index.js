@@ -3573,29 +3573,22 @@ function showgallery()
         .then((response) => jsonhandler(response))
         .then(function(results)
         {            
-            if (0)//results.length < 4)
+            for (var n = 0; n < results.length; ++n)
             {
-                //todo
+                var result = results[n];
+                result.func = gallerymenufunc
             }
-            else
-            {
-                for (var n = 0; n < results.length; ++n)
-                {
-                    var result = results[n];
-                    result.func = gallerymenufunc
-                }
-    
-                _2cnv.sliceobj.data = results
-                
-                var id = url.searchParams.get("id");
-                var k = _2cnv.sliceobj.data.findIndex(
-                    function(a){return a.id == id;});
-                _2cnv.sliceobj.CURRENT = k;
-                
-                var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
-                _2cnv.rotated = [...a, ...a, ...a];
-                rightmenu(_2cnvctx)
-            }
+
+            _2cnv.sliceobj.data = results
+            
+            var id = url.searchParams.get("id");
+            var k = _2cnv.sliceobj.data.findIndex(
+                function(a){return a.id == id;});
+            _2cnv.sliceobj.CURRENT = k;
+            
+            var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
+            _2cnv.rotated = [...a, ...a, ...a];
+            rightmenu(_2cnvctx)
         })
 }
 
@@ -4037,7 +4030,6 @@ var taplst =
                 const form = new FormData();
                 form.append('title', title.value);
                 form.append('json', json.value);
-                id.value = id.value.replace(/\s+/g,'');
                 form.append('gallery_id', id.value);
 		        form.append('user_id', login.id);
                 fetch(`https://gallery.reportbase5836.workers.dev`,
