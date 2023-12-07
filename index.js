@@ -6514,7 +6514,7 @@ function setupmenus()
     _7cnv.sliceobj.data = 
     [
     {
-        title: `File Explorer   \u{25B6}\nOpen images and image archives.`,
+        title: `File Explorer   \u{25B6}\nOpen images and image archives`,
         func: function()
         {
             importdialog();
@@ -6522,7 +6522,7 @@ function setupmenus()
         }
     },   
     {
-        title: "Developer\nTom Brinkman\n\nEmail\nimages@zip-view.com",
+        title: "Developer\nTom Brinkman\nimages@zip-view.com",
         func: function() 
         {
             return true;
@@ -6555,7 +6555,7 @@ function setupmenus()
             var str = `Account   \u{25B6}`
             if (login.name)
                 str += `\n${login.name}`;
-	        else if (login.email)
+	        if (login.email)
 		        str += `\n${login.email}`;
             return str;
         },
