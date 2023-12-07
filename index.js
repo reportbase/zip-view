@@ -7124,7 +7124,7 @@ function googlelogin()
             theme: "outline",
 	        logo_alignment: "center",
             size: "large",
-            type: "standard",
+            type: "icon",//"standard",
             shape: "circle",
         }  
     );
