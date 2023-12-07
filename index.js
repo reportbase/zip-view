@@ -4038,6 +4038,8 @@ var taplst =
             var title = document.getElementById("gallery-add-title");
             var json = document.getElementById("gallery-add-json");
             id.value = Math.floor(Date.now() / 1000).toString(36);
+            title.value = "";
+            json.value = "";
             showdialog("gallery-add", function(image)
             {
                 const form = new FormData();
