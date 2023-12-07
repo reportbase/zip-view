@@ -7120,7 +7120,12 @@ function googlelogin()
 
     google.accounts.id.renderButton(
         document.getElementById("googleLogin"),
-        { theme: "outline", size: "large" }  
+        { 
+            theme: "filled_black",//outline 
+            size: "large",
+            type: "standard",
+            shape: "circle",
+        }  
     );
 
     google.accounts.id.prompt((notification) => 
