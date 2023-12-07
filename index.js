@@ -3934,7 +3934,7 @@ var taplst =
 		    var id = document.getElementById("gallery-patch-id");
             var title = document.getElementById("gallery-patch-title");
             var json = document.getElementById("gallery-patch-json");
-            id.value = id.title;
+            id.value = gallery.id;
             title.value = gallery.title;
             json.value = gallery.json;
             showdialog("gallery-patch", function(image)
