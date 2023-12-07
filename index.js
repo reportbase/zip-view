@@ -4004,16 +4004,29 @@ var taplst =
         else if (canvas.gallerydeleterect && canvas.gallerydeleterect.hitest(x, y))
         {
 			var gallery = _2cnv.sliceobj.value();
+            if (gallery.title == "Sample 001" ||
+                gallery.title == "Sample 002" ||
+                gallery.title == "Sample 003" ||
+                gallery.title == "Sample 004")
+                return;
             var label = document.getElementById("confirm-label");
+            var input = document.getElementById("confirm-input");
 			label.innerHTML = `Confirm delete '${gallery.title}'?`
             showdialog("confirm", function(image)
             {
+                if (input.value != gallery.title)
+                    return;
                 fetch(`https://gallery.reportbase5836.workers.dev/delete/${gallery.id}`)
-                .then((response) => jsonhandler(response))
+                //.then((response) => jsonhandler(response))
+                .then(function(response)
+                {
+                    if (response.ok)
+                        return response.json()
+                    throw Error(response.statusText);
+                })
                 .then(function(obj)
                 {
-                    _2cnv.sliceobj.data.splice(_2cnv.sliceobj.current(),1);
-                    menuobj.draw();
+                    showgallery();
                 })
             });
         }    
