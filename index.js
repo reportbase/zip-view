@@ -3931,7 +3931,7 @@ var taplst =
         if (canvas.gallerypatchrect && canvas.gallerypatchrect.hitest(x, y))
         {
             var gallery = _2cnv.sliceobj.value();
-		    var id = document.getElementById("gallery-patch-id");
+			var id = document.getElementById("gallery-patch-id");
             var title = document.getElementById("gallery-patch-title");
             var json = document.getElementById("gallery-patch-json");
             id.value = gallery.id;
@@ -3939,6 +3939,11 @@ var taplst =
             json.value = gallery.json;
             showdialog("gallery-patch", function(image)
             {
+                if (gallery.title == "Sample 001" ||
+                    gallery.title == "Sample 002" ||
+                    gallery.title == "Sample 003" ||
+                    gallery.title == "Sample 004")
+                    return;
                 const form = new FormData();
                 form.append('user_id', login.id);
                 form.append('gallery_id', id.value);
@@ -3949,13 +3954,9 @@ var taplst =
                     'method': 'PATCH',
                     'body': form
                 })
-                .then((response) => jsonhandler(response))
-                .then(function(obj)
+                .then(function(response)
                 {
-                     var gallery = _2cnv.sliceobj.value();
-                     k.title = obj.title;
-                     k.json = obj.json;
-                     menuobj.draw();
+                    showgallery();
                 })
             })
         }
