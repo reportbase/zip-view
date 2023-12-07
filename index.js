@@ -4017,14 +4017,7 @@ var taplst =
                 if (input.value != gallery.title)
                     return;
                 fetch(`https://gallery.reportbase5836.workers.dev/delete/${gallery.id}`)
-                //.then((response) => jsonhandler(response))
                 .then(function(response)
-                {
-                    if (response.ok)
-                        return response.json()
-                    throw Error(response.statusText);
-                })
-                .then(function(obj)
                 {
                     showgallery();
                 })
