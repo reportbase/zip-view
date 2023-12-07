@@ -6566,19 +6566,19 @@ function setupmenus()
         },
         {
             title: function(){return `Email\n${login.email?login.email:""}`},
-            func: 
+            func: function()
             {
             }
         },
         {
             title: function(){return `Name\n${login.name?login.name:""}`},
-            func: 
+            func: function()
             {
             }
         },
         {
             title: function(){return `Secret\n${login.secret?login.secret:""}`},
-            func: 
+            func: function()
             {
                 showsecret();
             }
