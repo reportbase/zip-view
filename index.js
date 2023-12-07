@@ -6711,9 +6711,19 @@ function showusers()
         	    var result = results[n];
         	    result.func = function(n, x, y)
         	    {
-        		     _1cnv.sliceobj.set(n);
-        		    menuobj.draw();
-        		    return false;
+                    if (_1cnv.sliceobj.current() == n)
+                    {
+                        google.accounts.id.revoke(login.credential, function(){})
+                        login = _1cnv.sliceobj.value();
+                        setjson("login", login);	
+            		    menuobj.draw();
+                    }
+                    else
+                    {
+            		    _1cnv.sliceobj.set(n);
+            		    menuobj.draw();
+            		    return false;
+                    }
         	    }
         	}
         	
@@ -6766,11 +6776,11 @@ galleryobj.reset = function(obj)
 	    var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
 	    var n = 0;
 	    for (; n < _9cnv.sliceobj.data.length; ++n)
-	        {
-	            var j = _9cnv.sliceobj.data[n].title.split("x")[0];
-	            if (ww <= Number(j))
-	                break;    
-	        }
+        {
+            var j = _9cnv.sliceobj.data[n].title.split("x")[0];
+            if (ww <= Number(j))
+                break;    
+        }
 	    
 	    _9cnv.sliceobj.set(n);	  
         menuobj.set(_8cnvctx);
