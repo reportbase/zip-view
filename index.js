@@ -3945,7 +3945,8 @@ var taplst =
                     gallery.title == "Sample 004")
                     return;
                 const form = new FormData();
-                form.append('title', title.value);
+                form.append('id', id.value);
+		form.append('title', title.value);
                 form.append('json', json.value);
                 fetch(`https://gallery.reportbase5836.workers.dev`,
                 {
