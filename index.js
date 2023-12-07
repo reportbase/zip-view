@@ -4119,7 +4119,7 @@ var taplst =
 			label.innerHTML = `Confirm delete '${login.email}'?`
             showdialog("confirm", function(image)
             {
-                if (input.value != gallery.email)
+                if (input.value != login.email)
                     return true;
                 fetch(`https://user.reportbase5836.workers.dev/delete/${user.email}`)
                 .then(function(response)
