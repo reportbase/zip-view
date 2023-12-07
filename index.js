@@ -881,7 +881,7 @@ var footlst =
         [
             `\u{25C0}   Account`,
             0,
-            "Copy Secret",
+            "Secret",
         ], 0);
         
         context.restore();
@@ -6560,19 +6560,28 @@ function setupmenus()
     [
         {
             title: function(){return `ID\n${login.id?login.id:""}`},
-            func: showuser
+            func: function()
+            {
+            }
         },
         {
             title: function(){return `Email\n${login.email?login.email:""}`},
-            func: showuser
+            func: 
+            {
+            }
         },
         {
             title: function(){return `Name\n${login.name?login.name:""}`},
-            func: showuser
+            func: 
+            {
+            }
         },
         {
             title: function(){return `Secret\n${login.secret?login.secret:""}`},
-            func: showuser
+            func: 
+            {
+                copytext(login.secret);
+            }
         },
     ]
 
@@ -6770,37 +6779,6 @@ galleryobj.reset = function(obj)
         getblobpath(image, j)
     else
         image.src = imagepath(j,"5760x5760");
-}
-
-function showuser()
-{
-    var name = document.getElementById("user-edit-name");
-    var email = document.getElementById("user-edit-email");
-    var secret = document.getElementById("user-edit-secret");
-    var id = document.getElementById("user-edit-id");
-    name.value = login.name?login.name:"";
-    email.value = login.email?login.email:"";
-    secret.value = login.secret?login.secret:"";
-    id.value = login.id?login.id:"";
-    showdialog("user-edit", function(str)
-    {
-        const form = new FormData();
-        form.append('name', name.value);
-        form.append('email.old', login.email);
-        form.append('email', email.value);
-        form.append('id', id.value);
-        form.append('secret', secret.value);
-        fetch(`https://user.reportbase5836.workers.dev`,
-        {
-            'method': 'PATCH',
-            'body': form
-        })
-        .then(response => response.json())
-        .then(function(obj)
-        {
-            console.log(obj);
-        })        
-    });
 }
 
 //galleryobj init
