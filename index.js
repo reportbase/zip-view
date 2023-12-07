@@ -7121,7 +7121,8 @@ function googlelogin()
     google.accounts.id.renderButton(
         document.getElementById("googleLogin"),
         { 
-            theme: "filled_black",//outline 
+            theme: "outline",
+	        logo_alignment: "center",
             size: "large",
             type: "standard",
             shape: "circle",
