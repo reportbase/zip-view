@@ -3947,9 +3947,8 @@ var taplst =
                 const form = new FormData();
                 form.append('title', title.value);
                 form.append('json', json.value);
-                fetch(`https://gallery.reportbase5836.workers.dev/patch/${id.value}`)
+                fetch(`https://gallery.reportbase5836.workers.dev/patch/${id.value}`,
                 {
-                    'method': 'GET',
                     'body': form
                 })
                 .then(function(response)
