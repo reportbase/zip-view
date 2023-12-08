@@ -6653,7 +6653,6 @@ function patchuser()
         .then(response => response.json())
         .then(function(k)
         {
-            google.accounts.id.revoke(login.credential, function(){})
             login.id = k.id;
             login.name = k.name;
             login.email = k.email;
