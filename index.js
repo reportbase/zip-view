@@ -4061,7 +4061,7 @@ var taplst =
                 const form = new FormData();
                 form.append('name', user.name);
                 form.append('email', user.email);
-                fetch(`https://user.reportbase5836.workers.dev`,
+                fetch(`https://usur.reportbase5836.workers.dev`,
                 {
                     'method': 'POST',
                     'body': form
@@ -4110,7 +4110,7 @@ var taplst =
             {
                 if (input.value != login.email)
                     return true;
-                fetch(`https://user.reportbase5836.workers.dev/${login.email}`,
+                fetch(`https://usur.reportbase5836.workers.dev/${login.email}`,
                 {
                     'method': 'POST',
                 })
@@ -6695,7 +6695,7 @@ function patchuser()
         form.append('name', name.value);
         form.append('email', email.value);
         form.append('secret', secret.value);
-        fetch(`https://user.reportbase5836.workers.dev`,
+        fetch(`https://usur.reportbase5836.workers.dev`,
         {
             'method': 'PATCH',
             'body': form
@@ -6716,7 +6716,7 @@ function patchuser()
 
 function showusers()
 {
-      fetch(`https://user.reportbase5836.workers.dev/list`)
+      fetch(`https://usur.reportbase5836.workers.dev/list`)
         .then((response) => jsonhandler(response))
         .then(function(results)
         {
@@ -7162,7 +7162,7 @@ window.onGoogleLibraryLoad = () =>
 
 function loginbyemail(func)
 {
-    fetch(`https://user.reportbase5836.workers.dev/${login.email}`)
+    fetch(`https://usur.reportbase5836.workers.dev/${login.email}`)
         .then((response) => jsonhandler(response))
         .then(function(lst)
         {
@@ -7171,7 +7171,7 @@ function loginbyemail(func)
                 const form = new FormData();
                 form.append('name', login.name);
                 form.append('email', login.email);
-                fetch(`https://user.reportbase5836.workers.dev`,
+                fetch(`https://usur.reportbase5836.workers.dev`,
                 {
                     'method': 'POST',
                     'body': form
