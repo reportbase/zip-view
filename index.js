@@ -839,7 +839,7 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.homerect = new rectangle();
-        canvas.showsecretrect = new rectangle();
+        canvas.showuserrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
         [
             new panel.layers(
@@ -854,7 +854,7 @@ var footlst =
                 new panel.fill(FOOTBTNCOLOR),
                 new panel.layers(
                 [
-                    new panel.rectangle(canvas.showsecretrect),
+                    new panel.rectangle(canvas.showuserrect),
                     new panel.text(),
                 ])                            
             ])
@@ -864,7 +864,7 @@ var footlst =
         [
             `\u{25C0}   Account`,
             0,
-            "Secret   \u{25B6}",
+            "Edit   \u{25B6}",
         ], 0);
         
         context.restore();
@@ -3579,7 +3579,7 @@ var taplst =
         else if (context.copyidrect && 
                  context.copyidrect.hitest(x, y))
         {
-            showsecret()   
+            showuser()   
         }
         else if (
             headcnv.height &&
@@ -4025,9 +4025,9 @@ var taplst =
                 })
             })
         }
-        else if (canvas.showsecretrect && canvas.showsecretrect.hitest(x, y))
+        else if (canvas.showuserrect && canvas.showuserrect.hitest(x, y))
         {  
-            showsecret();
+            showuser();
 	    }
 	    else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
         {  
@@ -6565,7 +6565,7 @@ function setupmenus()
             title: function(){return `Secret\n${login.secret?login.secret:""}`},
             func: function()
             {
-                showsecret();
+                showuser();
             }
         },
     ]
@@ -6675,14 +6675,18 @@ function setupmenus()
     }
 }
 
-function showsecret()
+function showuser()
 {
     copytext(login.secret);
-    var secret = document.getElementById("secret-update");
+    var secret = document.getElementById("user-secret");
+    var name = document.getElementById("user-name");
+    var email = document.getElementById("user-email");
     secret.value = login.secret;
-    showdialog("secret", function(image)
+	name.value = login.name;
+    email.value = login.email;
+    showdialog("user", function(image)
     {
-        
+        //todo save changes
     })	
 }
 
