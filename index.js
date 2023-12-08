@@ -942,9 +942,9 @@ var headlst =
                             5],
                 [
                     0, 0, 0,
-                    0,//new panel.moveprev(),
+                    new panel.moveprev(),
                     new panel.zoom(),
-                    0,//new panel.movenext(),
+                    new panel.movenext(),
                     0, 
                     new panel.closeboss(), 
                     0
@@ -1866,17 +1866,34 @@ panel.moveprev = function()
     {
         context.save();
         context.moveprev = new rectangle()
-        user.moveprev = new rectangle();
         context.fillStyle = "white";
         context.strokeStyle = "white";
 
         var a = new panel.layers(
             [
                 new panel.rectangle(context.moveprev),
-                new panel.rectangle(user.moveprev),
                 _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.arrow(ARROWFILL, 270), 20, 30),
+            ]);
+
+        a.draw(context, rect, user, time);
+        context.restore();
+    }
+};
+
+panel.movenext = function()
+{
+    this.draw = function(context, rect, user, time)
+    {
+        context.save();
+        context.movenext = new rectangle()
+        var a = new panel.layers(
+            [
+                new panel.rectangle(context.movenext),
+                _4cnv.movingpage == 1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+                new panel.shrink(new panel.circle(_4cnv.movingpage == 1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.arrow(ARROWFILL, 90), 20, 30),
             ]);
 
         a.draw(context, rect, user, time);
@@ -1899,27 +1916,6 @@ panel.closeboss = function()
             ]);
 
         a.draw(context, rect, 'X', time);
-        context.restore();
-    }
-};
-
-panel.movenext = function()
-{
-    this.draw = function(context, rect, user, time)
-    {
-        context.save();
-        context.movenext = new rectangle()
-        user.movenext = new rectangle();
-        var a = new panel.layers(
-            [
-                new panel.rectangle(context.movenext),
-                new panel.rectangle(user.movenext),
-                _4cnv.movingpage == 1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(_4cnv.movingpage == 1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                new panel.shrink(new panel.arrow(ARROWFILL, 90), 20, 30),
-            ]);
-
-        a.draw(context, rect, user, time);
         context.restore();
     }
 };
