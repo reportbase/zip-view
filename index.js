@@ -6685,12 +6685,27 @@ function showuser()
     var secret = document.getElementById("user-secret");
     var name = document.getElementById("user-name");
     var email = document.getElementById("user-email");
-    secret.value = login.secret;
 	name.value = login.name;
     email.value = login.email;
+    secret.value = login.secret;
     showdialog("user", function(image)
     {
-        //todo save changes
+        const form = new FormData();
+        form.append('name', login.name);
+        form.append('email', login.email);
+        fetch(`https://user.reportbase5836.workers.dev`,
+        {
+            'method': 'POST',
+            'body': form
+        })
+        .then(response => response.json())
+        .then(function(k)
+        {
+            login.id = k.id;
+            login.secret = k.secret;
+            setjson("login", login);	
+            menuobj.draw();
+        })        
     })	
 }
 
