@@ -3585,11 +3585,11 @@ var taplst =
             headcnvctx.zoomrect.hitest(x, y))
         {
             var input = document.getElementById("goto-input");
-            input.value = galleryobj.current().toFixed(0);
+            input.value = galleryobj.current()+1;
             showdialog("goto", function(image)
             {
                 var image = input.value.clean();
-                image = Math.floor(image);
+                image = Math.floor(image)-1;
                 image = util.clamp(0, galleryobj.length()-1, image);
                 galleryobj.set(image);
                 delete photo.image;
