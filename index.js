@@ -694,8 +694,6 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.homerect = new rectangle();
-        canvas.useraddrect = new rectangle();
-        canvas.userpatchrect = new rectangle();
         canvas.userdeleterect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
 		[
@@ -4051,54 +4049,6 @@ var taplst =
                  canvas.closerect.hitest(x, y))
         {
             closemenu();
-            return false;
-        }
-        else if (canvas.useraddrect && canvas.useraddrect.hitest(x, y))
-        {
-            showdialog("user-login", function(str)
-            {
-                var user = _1cnv.sliceobj.value();            
-                const form = new FormData();
-                form.append('name', user.name);
-                form.append('email', user.email);
-                fetch(`https://usur.reportbase5836.workers.dev`,
-                {
-                    'method': 'POST',
-                    'body': form
-                })
-                .then(response => response.json())
-                .then(function(k)
-                {
-                    login = Object.assign(login, k);
-                    setjson("login", login);	
-                    menuobj.draw();
-                })                  
-            });
-
-            return false;
-        }
-            /*
-        else if (canvas.useropenrect && canvas.useropenrect.hitest(x, y))
-        {
-            login = _1cnv.sliceobj.value();
-            loginbyemail(function()
-            {
-                menuobj.hide();
-                galleryobj.leftctx = _10cnvctx;
-                menuobj.setindex(galleryobj.leftctx);
-                menuobj.show();
-            })
-		    
-            return false;
-        }
-        */
-        else if (canvas.userpatchrect && canvas.userpatchrect.hitest(x, y))
-        {
-            showdialog("user-login", function(str)
-            {
-                        
-            });
-
             return false;
         }
         else if (canvas.userdeleterect && canvas.userdeleterect.hitest(x, y))
