@@ -4770,17 +4770,19 @@ var buttonlst =
                     new panel.cols([5,ALIEXTENT,0,ALIEXTENT,5],
                     [
                         0,
-                        new panel.moveprev(),
                         0,
-    	                new panel.movenext(),
+                        0,
+    	                0,
                         0,
                     ]),
                     0,
-                    new panel.cols([0,ALIEXTENT+10,0],
+                    new panel.cols([0,ALIEXTENT,ALIEXTENT+10,ALIEXTENT,0],
                     [
+                        0,
                         0,
                         new panel.info(),
     	                0,
+                        0,
                     ]),
                     new panel.cols([0, rainstep, 0],
                     [
