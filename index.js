@@ -942,11 +942,11 @@ var headlst =
                             5],
                 [
                     0, 0, 0,
-                    new panel.fullscreen(),
+                    new panel.moveprev(),
                     new panel.zoom(),
                     new panel.download(),
                     0, 
-                    new panel.closeboss(), 
+                    new panel.movenext(), 
                     0
                 ]),
                 new panel.cols([0,rainstep,0],
@@ -1048,7 +1048,7 @@ var bossdisplaylst =
             0,
             0,
             0,
-            new panel.cols([0, rainstep, 0],
+            1?0:new panel.cols([0, rainstep, 0],
             [
                 0,
                 new panel.layers(
@@ -1303,12 +1303,12 @@ var displaylst =
             new panel.cols([0, rainstep, 0],
             [
                 0,
-                new panel.layers(
+                galleryobj.templates?new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.templaterect), 10, 10),
                     new panel.text(),
-                ]),
+                ]):0,
                 0,
             ]),
 	        0,
