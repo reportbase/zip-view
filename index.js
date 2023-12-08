@@ -3821,7 +3821,9 @@ var taplst =
             showdialog("goto", function(image)
             {
                 var image = input.value.clean();
-                gotoimage(image);
+                var e = Math.berp(0, galleryobj.length(), image);
+                var j = (1-e)*Math.PI
+                _8cnv.timeobj.set(j);
                 menuobj.draw();
             })
         }
