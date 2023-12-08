@@ -33,7 +33,7 @@ const FOOTSEP = 20;
 const HEADTOP = 80;
 const HEADBOT = 40;
 const FIXEDTIME = 2;
-const WRAPROWHEIGHT = 40;
+const WRAPROWHEIGHT = 32;
 const ROUNDEDLINEWIDTH = 4;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
 const FOOTHEIGHT = 80;
@@ -954,7 +954,7 @@ var headlst =
                         0,
                         new panel.layers(
                         [
-                            new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
+                            new shrink(new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12), 0, 2),
                             new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
                             new panel.shrink(new panel.text(),10,10),
                         ]),
@@ -1294,7 +1294,7 @@ var displaylst =
         var a = new panel.rowsA([HEADTOP, HEADBOT,  
                 0,
                 folders.length?folders.length*WRAPROWHEIGHT:-1, 
-                folders.length?8:-1, 
+                folders.length?12:-1, 
                 data.length*WRAPROWHEIGHT, 
                 FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
@@ -1329,7 +1329,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
+                    new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
                     new panel.gridA(1, data.length, 1,
                         new panel.shrink(new panel.text(), 10, 10)),
