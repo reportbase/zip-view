@@ -942,9 +942,9 @@ var headlst =
                             5],
                 [
                     0, 0, 0,
-                    new panel.moveprev(),
+                    0,//new panel.moveprev(),
                     new panel.zoom(),
-                    new panel.movenext(),
+                    0,//new panel.movenext(),
                     0, 
                     new panel.closeboss(), 
                     0
