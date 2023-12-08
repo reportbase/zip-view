@@ -59,6 +59,7 @@ input
   box-sizing: border-box; 
   width: 100%; 
   font-size: 1.1em; 
+  autocomplete: "off"; 
 }
 
 textarea
@@ -81,6 +82,7 @@ textarea
   box-sizing: border-box; 
   width: 100%; 
   font-size: 1.1em; 
+  autocomplete: "off";
 }
 
 button
