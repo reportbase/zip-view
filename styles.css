@@ -54,7 +54,7 @@ input
   border-width: 2px;
   border-color: white;
   color: white;
-  text-align: center;
+  text-align: left;
   font-weight: bold;
   box-sizing: border-box; 
   width: 100%; 
@@ -76,7 +76,7 @@ textarea
   border-width: 2px;
   border-color: white;
   color: white;
-  text-align: center;
+  text-align: left;
   font-weight: bold;
   box-sizing: border-box; 
   width: 100%; 
