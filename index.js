@@ -3577,7 +3577,7 @@ var taplst =
         else if (context.copyidrect && 
                  context.copyidrect.hitest(x, y))
         {
-            showuser()   
+            patchuser()   
         }
         else if (
             headcnv.height &&
@@ -4029,7 +4029,7 @@ var taplst =
         }
         else if (canvas.showuserrect && canvas.showuserrect.hitest(x, y))
         {  
-            showuser();
+            patchuser();
 	    }
 	    else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
         {  
@@ -6569,7 +6569,7 @@ function setupmenus()
             title: function(){return `Secret\n${login.secret?login.secret:""}`},
             func: function()
             {
-                showuser();
+                patchuser();
             }
         },
     ]
@@ -6679,7 +6679,7 @@ function setupmenus()
     }
 }
 
-function showuser()
+function patchuser()
 {
     copytext(login.secret);
     var secret = document.getElementById("user-secret");
@@ -6691,18 +6691,21 @@ function showuser()
     showdialog("user", function(image)
     {
         const form = new FormData();
+        form.append('id', login.id);
         form.append('name', name.value);
         form.append('email', email.value);
+        form.append('secret', secret.value);
         fetch(`https://user.reportbase5836.workers.dev`,
         {
-            'method': 'POST',
+            'method': 'PATCH',
             'body': form
         })
         .then(response => response.json())
         .then(function(k)
         {
+            google.accounts.id.revoke(login.credential, function(){})
             login.id = k.id;
-            login.name = k.value;
+            login.name = k.name;
             login.email = k.email;
             login.secret = k.secret;
             setjson("login", login);	
@@ -7115,13 +7118,11 @@ let parseJwt = token =>
 
 function googlelogin()
 {
-    //https://developers.google.com/identity/gsi/web/reference/js-reference#ux_mode
     google.accounts.id.initialize(
     {
         client_id:'866271378749-uupeiu6kqu3huchf701akl91p0tdaijr.apps.googleusercontent.com',
         callback: handleCredentialResponse,
         auto_select: "true",
-        //login_hint: "reportbase@gmail.com"
     });
 
     google.accounts.id.renderButton(
