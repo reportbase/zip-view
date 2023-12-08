@@ -1048,7 +1048,7 @@ var bossdisplaylst =
             0,
             0,
             0,
-            1?0:new panel.cols([0, rainstep, 0],
+            new panel.cols([0, rainstep, 0],
             [
                 0,
                 new panel.layers(
