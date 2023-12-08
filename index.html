@@ -44,15 +44,15 @@
 <body ondragstart="return false;" ondrop="return false"; oncontextmenu='return false;'>
 
 <dialog id="goto" style="max-width: 80%; width: 360px;">
-    <input id="goto-input"></input>
+    <input id="goto-input" autocomplete="off"></input>
     <div class=centered><button id="goto-ok">Goto</button></div>
 </dialog>
                                                        
 <dialog id="gallery-add" style="max-width: 80%; width: 720px;">
       <label>ID</label>
-      <input id="gallery-add-id"></input>
+      <input id="gallery-add-id" autocomplete="off"></input>
       <label>Title</label>
-      <input id="gallery-add-title"></input>
+      <input id="gallery-add-title" autocomplete="off"></input>
       <label>Path(s)</label>
       <textarea rows=6 id="gallery-add-json"></textarea>
       <div class=centered><button id="gallery-add-ok">Ok</button></div>
@@ -60,9 +60,9 @@
 
 <dialog id="gallery-patch" style="max-width: 80%; width: 720px;">
     <label>ID</label>
-    <input id="gallery-patch-id"></input>
+    <input id="gallery-patch-id" autocomplete="off"></input>
     <label>Title</label>
-    <input id="gallery-patch-title"></input>
+    <input id="gallery-patch-title" autocomplete="off"></input>
     <label>Paths(s)</label>
     <textarea rows=6 id="gallery-patch-json" rows=6></textarea>
     <div class=centered><button id="gallery-patch-ok">Ok</button></div>
@@ -70,17 +70,17 @@
       
 <dialog id="confirm" style="max-width: 80%; width: 720px;">
     <label id="confirm-label">Confirm</label>
-    <input id="confirm-input" autofocus></input>
+    <input id="confirm-input" autofocus autocomplete="off"></input>
     <div class=centered><button id="confirm-ok">Confirm</button></div>
 </dialog>
 
 <dialog id="user" style="max-width: 80%; width: 720px;">
       <label>Name</label>
-      <input id="user-name"></input>
+      <input id="user-name" autocomplete="off"></input>
       <label>Email</label>
-      <input id="user-email"></input>
+      <input id="user-email" autocomplete="off"></input>
       <label>Secret</label>
-      <input id="user-secret" readonly></input>
+      <input id="user-secret" readonly autocomplete="off"></input>
       <div class=centered><button id="user-ok">Update</button></div>
 </dialog>
 
