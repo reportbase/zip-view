@@ -33,7 +33,7 @@ const FOOTSEP = 20;
 const HEADTOP = 80;
 const HEADBOT = 40;
 const FIXEDTIME = 2;
-const WRAPROWHEIGHT = 32;
+const WRAPROWHEIGHT = 36;
 const ROUNDEDLINEWIDTH = 4;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
 const FOOTHEIGHT = 80;
@@ -930,7 +930,7 @@ var headlst =
 		context.save();
 		const rainstep = Math.min(420,window.innerWidth-60);
 
-		var a = new panel.rows([BEXTENT, 0],
+		var a = new panel.rows([BEXTENT, 0, 5],
         [
             new panel.cols([5, 
                             ALIEXTENT, 0, 
@@ -954,12 +954,13 @@ var headlst =
                         0,
                         new panel.layers(
                         [
-                            new shrink(new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12), 0, 2),
+                            new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12), 
                             new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
                             new panel.shrink(new panel.text(),10,10),
                         ]),
                         0,
-                ]),               
+                ]),        
+		0,
         ]);
 
 		a.draw(context, rect, `\u{25C0}    ${bossdisplayobj.value().title}    \u{25B6}`, 0);
@@ -1295,7 +1296,7 @@ var displaylst =
                 0,
                 folders.length?folders.length*WRAPROWHEIGHT:-1, 
                 folders.length?12:-1, 
-                data.length*WRAPROWHEIGHT, 
+                HEADBOT, 
                 FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,
@@ -3932,6 +3933,8 @@ var taplst =
         if (canvas.gallerypatchrect && canvas.gallerypatchrect.hitest(x, y))
         {
             var gallery = _2cnv.sliceobj.value();
+            if (!gallery)
+                return;
 			var id = document.getElementById("gallery-patch-id");
             var title = document.getElementById("gallery-patch-title");
             var json = document.getElementById("gallery-patch-json");
