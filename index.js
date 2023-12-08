@@ -41,13 +41,13 @@ const MAXEXTENT = 10000;
 const MAXIMAGESIZE = MAXEXTENT*MAXEXTENT;
 const MENUSELECT = "rgba(255,175,0,0.4)";
 const MENUTAP = "rgba(255,125,0,0.7)";
-const SCROLLNAB = "rgba(0,0,0,0.3)";
+const SCROLLNAB = "rgba(0,0,0,0.4)";
 const MENUCOLOR = "rgba(0,0,0,0.5)";
 const FOOTBTNCOLOR = "rgba(0,0,0,0.75)";
 const OPTIONFILL = "white";
 const THUMBTRANSPARENT = "rgba(0,0,0,0.2)";
 const LIGHTHUMBFILLL = "rgba(255,125,0,0.25)";
-const HEAVYFILL = "rgba(0,0,0,0.5)";
+const HEAVYFILL = "rgba(0,0,0,0.4)";
 const THUMBFILL = "rgba(255,125,0,0.40)";
 const THUMBSTROKE = "rgba(255,255,255,0.4)";
 const SEARCHFRAME = "rgba(255,255,255,0.5)";
@@ -1296,7 +1296,7 @@ var displaylst =
                 0,
                 folders.length?folders.length*WRAPROWHEIGHT:-1, 
                 folders.length?12:-1, 
-                HEADBOT, 
+                50, 
                 FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,
