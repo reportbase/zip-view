@@ -34,6 +34,7 @@ const HEADTOP = 80;
 const HEADBOT = 40;
 const FIXEDTIME = 2;
 const WRAPROWHEIGHT = 40;
+const ROUNDEDLINEWIDTH = 8;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
 const FOOTHEIGHT = 80;
 const MAXEXTENT = 10000;
@@ -46,7 +47,7 @@ const FOOTBTNCOLOR = "rgba(0,0,0,0.75)";
 const OPTIONFILL = "white";
 const THUMBTRANSPARENT = "rgba(0,0,0,0.2)";
 const LIGHTHUMBFILLL = "rgba(255,125,0,0.25)";
-const HEAVYFILL = "rgba(0,0,0,0.25)";
+const HEAVYFILL = "rgba(0,0,0,0.5)";
 const THUMBFILL = "rgba(255,125,0,0.40)";
 const THUMBSTROKE = "rgba(255,255,255,0.4)";
 const SEARCHFRAME = "rgba(255,255,255,0.5)";
@@ -953,7 +954,7 @@ var headlst =
                         0,
                         new panel.layers(
                         [
-                            new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
+                            new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                             new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
                             new panel.shrink(new panel.text(),10,10),
                         ]),
@@ -1051,7 +1052,7 @@ var bossdisplaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
+                    new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
                     new panel.gridA(1, data.length, 1,
                         new panel.shrink(new panel.text(),10,10)),
@@ -1164,7 +1165,7 @@ var bossdisplaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
+                        new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 8, 8),
                         new panel.expand(new panel.rectangle(context.zoomrect), 10, 1),
                         new panel.shrink(new panel.currentV(new panel.rounded("white", 
                                 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
@@ -1214,7 +1215,7 @@ var bossdisplaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
+                        new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                         new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
                         new panel.gridA(1, data.length, 1,
                             new panel.shrink(new panel.text(),10,10)),
@@ -1267,7 +1268,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
+                    new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 8, 8),
                     new panel.expand(new panel.rectangle(canvas.hollyrect), 0, 20),
                     new panel.shrink(new panel.currentH(
                     new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
@@ -1303,7 +1304,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
+                    new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.templaterect), 10, 10),
                     new panel.text(),
                 ]),
@@ -1315,7 +1316,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 12, 12),
+                    new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.folderect), 10, 10),
                     new panel.gridA(1, folders.length, 1,
                         new panel.shrink(new panel.text(), 10, 10)),
@@ -1805,7 +1806,7 @@ panel.holly = function()
         user.hollyrect = new rectangle();
         var a = new panel.layers(
         [
-            new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
+            new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 8, 8),
             new panel.expand(new panel.rectangle(user.hollyrect), 0, 20),
             new panel.shrink(new panel.currentH(
                 new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
