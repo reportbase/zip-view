@@ -944,9 +944,9 @@ var headlst =
                     0, 0, 0,
                     new panel.moveprev(),
                     new panel.zoom(),
-                    new panel.download(),
+                    new panel.movenext(),
                     0, 
-                    new panel.movenext(), 
+                    new panel.closeboss(), 
                     0
                 ]),
                 new panel.cols([0,rainstep,0],
