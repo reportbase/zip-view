@@ -3534,7 +3534,7 @@ var gallerymenufunc = function(n, x, y)
 
 function showgallery()
 {            
-    fetch(`https://gallery.reportbase5836.workers.dev/list/${login.id}`)
+    fetch(`https://gullery.reportbase5836.workers.dev/list/${login.id}`)
         .then((response) => jsonhandler(response))
         .then(function(results)
         {            
@@ -3946,9 +3946,9 @@ var taplst =
                     return;
                 const form = new FormData();
                 form.append('id', id.value);
-		form.append('title', title.value);
+		        form.append('title', title.value);
                 form.append('json', json.value);
-                fetch(`https://gallery.reportbase5836.workers.dev`,
+                fetch(`https://gullery.reportbase5836.workers.dev`,
                 {
                     'method': 'PATCH',
                     'body': form
@@ -3981,7 +3981,7 @@ var taplst =
             {
                 if (input.value != gallery.title)
                     return true;
-                fetch(`https://gallery.reportbase5836.workers.dev/delete/${gallery.id}`)
+                fetch(`https://gullery.reportbase5836.workers.dev/delete/${gallery.id}`)
                 .then(function(response)
                 {
                     showgallery();
@@ -4003,7 +4003,7 @@ var taplst =
                 form.append('json', json.value);
                 form.append('gallery_id', id.value);
 		        form.append('user_id', login.id);
-                fetch(`https://gallery.reportbase5836.workers.dev`,
+                fetch(`https://gullery.reportbase5836.workers.dev`,
                 {
                     'method': 'POST',
                     'body': form
@@ -6832,7 +6832,7 @@ else if (url.searchParams.has("id"))
 {
     var id = url.searchParams.get("id");
 	url.path = id;
-	fetch(`https://gallery.reportbase5836.workers.dev/${id}`)
+	fetch(`https://gullery.reportbase5836.workers.dev/${id}`)
 	.then((response) => jsonhandler(response))
 	.then(function(obj)
 	{
