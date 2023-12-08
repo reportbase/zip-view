@@ -6691,8 +6691,8 @@ function showuser()
     showdialog("user", function(image)
     {
         const form = new FormData();
-        form.append('name', login.name);
-        form.append('email', login.email);
+        form.append('name', name.value);
+        form.append('email', email.value);
         fetch(`https://user.reportbase5836.workers.dev`,
         {
             'method': 'POST',
@@ -6702,6 +6702,8 @@ function showuser()
         .then(function(k)
         {
             login.id = k.id;
+            login.name = k.value;
+            login.email = k.email;
             login.secret = k.secret;
             setjson("login", login);	
             menuobj.draw();
