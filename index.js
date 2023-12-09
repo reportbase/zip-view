@@ -3255,12 +3255,14 @@ var keylst =
             {
                 var k = canvas.timeobj.length() / galleryobj.length();
                 canvas.timeobj.rotate(k);
+                galleryobj.rotate(-1);
                 menuobj.draw();
             }
             else if (key == "pagedown" || key == "enter")
             {
                 var k = canvas.timeobj.length() / galleryobj.length();
                 canvas.timeobj.rotate(-k);
+                galleryobj.rotate(1);
                 menuobj.draw();
             }
             else if (
