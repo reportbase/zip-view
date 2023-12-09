@@ -6709,7 +6709,6 @@ galleryobj.reset = function(obj)
     headcnv.style.pointerEvents = "none";
     menuobj.draw();
     setupmenus();
-//todo: setup 1 2 or 3 items
 	
     for (var n = 0; n < IMAGELSTSIZE; ++n)
     {
@@ -6744,8 +6743,15 @@ galleryobj.reset = function(obj)
     _8cnv.timeobj.set(0);
     var k = Number(local._8);
     if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
+    {
         _8cnv.timeobj.set(k);
-    var lst = [2.2311,0.98456,1.70591];//todo
+    }
+    else if (galleryobj.length() <= 3)
+    {
+        var lst = [1.70591,0.98456,2.2311];
+        var k = lst.length - galleryobj.length()
+        _8cnv.timeobj.set(lst[k]);
+    }
     
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
