@@ -6796,8 +6796,9 @@ galleryobj.init = function(obj)
     	.then((response) => texthandler(response))
     	.then(function(str)
     	{
-            var origin = obj.data.split("/").pop().join("/");
-            loadtext(str, origin);
+            var k = obj.data.split("/");
+            k.pop();
+            loadtext(str, k.join("/"));
     	})	
 }
 
@@ -6831,8 +6832,9 @@ else if (url.searchParams.has("path"))
 {
     var path = url.searchParams.get("path");
     url.path = path;
-    var origin = path.split("/").pop().join("/");
-    loadgallery(path, origin);
+    var k = path.split("/");
+    k.pop();
+    loadgallery(path, k.join("/"));
 }
 else
 {
