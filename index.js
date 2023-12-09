@@ -1853,6 +1853,28 @@ panel.info = function()
     }
 };
 
+panel.movepruv = function()
+{
+    this.draw = function(context, rect, user, time)
+    {
+        context.save();
+        user.moveprev = new rectangle()
+        context.fillStyle = "white";
+        context.strokeStyle = "white";
+
+        var a = new panel.layers(
+            [
+                new panel.rectangle(user.moveprev),
+                _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+                new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.arrow(ARROWFILL, 270), 20, 30),
+            ]);
+
+        a.draw(context, rect, user, time);
+        context.restore();
+    }
+};
+
 panel.moveprev = function()
 {
     this.draw = function(context, rect, user, time)
@@ -1884,6 +1906,25 @@ panel.movenext = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.movenext),
+                _4cnv.movingpage == 1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+                new panel.shrink(new panel.circle(_4cnv.movingpage == 1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.arrow(ARROWFILL, 90), 20, 30),
+            ]);
+
+        a.draw(context, rect, user, time);
+        context.restore();
+    }
+};
+
+panel.movenuxt = function()
+{
+    this.draw = function(context, rect, user, time)
+    {
+        context.save();
+        user.movenext = new rectangle()
+        var a = new panel.layers(
+            [
+                new panel.rectangle(user.movenext),
                 _4cnv.movingpage == 1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(_4cnv.movingpage == 1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.arrow(ARROWFILL, 90), 20, 30),
@@ -4702,7 +4743,7 @@ var buttonlst =
             delete user.inforect;
             const rainstep = Math.min(420,window.innerWidth-60);
 	        
-	        if (!headcnv.height && context.centered == time)//galleryobj.current() == time)
+	        if (!headcnv.height && galleryobj.current() == time)
             {
                 var a = new panel.rows([8,BEXTENT,0,BEXTENT,SCROLLEXTENT,SCROLLMARGIN],
                 [
@@ -4712,9 +4753,9 @@ var buttonlst =
                     new panel.cols([0,ALIEXTENT,ALIEXTENT+10,ALIEXTENT,0],
                     [
                         0,
-                        0,
+                        new panel.movepruv,
                         new panel.info(),
-    	                0,
+    	                new panel.movenuxt,
                         0,
                     ]),
                     new panel.cols([0, rainstep, 0],
