@@ -2836,6 +2836,8 @@ var panlst =
         if (canvas.pinching)
             return;
        context.elst.push({x,y});
+            if (context.elst.length % 2)
+                return;        	    
         
         if (type == "panleft" || type == "panright")
         {
