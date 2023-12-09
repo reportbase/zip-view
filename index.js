@@ -1,9 +1,3 @@
-/* 
-Copyright 2017 Tom Brinkman
-https://zip-view.com 
-https://ipfs-view.com
-*/
-
 function ios()
 {
     return 
@@ -74,7 +68,7 @@ const GALLERYMAIN = 12;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 24;
-const IMAGELSTSIZE = 32;
+const IMAGELSTSIZE = 24;
 
 function setjson(key, value)
 {
@@ -552,6 +546,9 @@ _8cnvctx.font = DEFAULTFONT;
 _8cnv.width = 100;
 _8cnv.height = 100;
 _8cnvctx.fillText(" ", 0, 0);
+
+showdialog("goto");
+dialog.close();//todo
 
 let canvaslst = [];
 for (var n = 0; n < 6; ++n)
@@ -1177,7 +1174,7 @@ var bossdisplaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.rounded(HEAVYFILL, 0, TRANSPARENT, 8, 8),
+                        new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 8, 8),
                         new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
                         new panel.shrink(new panel.currentV(new panel.rounded("white", 0, 
                                 TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
@@ -5358,8 +5355,8 @@ contextobj.init = function()
         canvas.buttonheight = obj.buttonheight;
         canvas.buttonmargin = obj.buttonmargin;
         canvas.display = obj.display;
-        context.drawtimeoutcount = 0;
-        context.drawtimeoutcountactual = 0;
+        //context.drawtimeoutcount = 0;
+        //context.drawtimeoutcountactual = 0;
 
         var k = footlst.findIndex(function(a){return a.name == obj.footer});
         canvas.footer = footlst[k];
