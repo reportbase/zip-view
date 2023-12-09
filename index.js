@@ -3874,12 +3874,7 @@ var taplst =
         else if (canvas.hollyrect && canvas.hollyrect.hitest(x, y))
         {
             var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
-            if (k < 0.2)
-                context.canvas.hollyobj.addperc(-25 / 2000);
-            else if (k > 0.8)
-                context.canvas.hollyobj.addperc(25 / 2000);
-            else
-                context.canvas.hollyobj.setperc(k);
+            context.canvas.hollyobj.setperc(k);
             menuobj.draw()
         }
         else if (context.homerect && context.homerect.hitest(x, y))
@@ -3935,21 +3930,9 @@ var taplst =
             }
             else
             { 
-                if (headcnv.height)
-                {
-                    headobj.toggle();
-                    galleryobj.set(n);
-                    menuobj.draw()
-                }
-                else if (galleryobj.current() == n)
-                {
-                    headobj.toggle();
-                }
-                else
-                {
-                    galleryobj.set(n);
-                    menuobj.draw()
-                } 
+                headobj.toggle();
+                galleryobj.set(n);
+                menuobj.draw()
             }
         }
     },
