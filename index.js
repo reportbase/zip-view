@@ -6745,6 +6745,8 @@ galleryobj.reset = function(obj)
     var k = Number(local._8);
     if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
         _8cnv.timeobj.set(k);
+    var lst = [2.2311,0.98456,1.70591];//todo
+    
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
     var j = galleryobj.data[current];
