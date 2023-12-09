@@ -6796,7 +6796,8 @@ galleryobj.init = function(obj)
     	.then((response) => texthandler(response))
     	.then(function(str)
     	{
-            loadtext(str);
+            var origin = obj.data.split("/").pop().join("/");
+            loadtext(str, origin);
     	})	
 }
 
@@ -6806,9 +6807,7 @@ if (url.searchParams.has("search"))
     var path = url.searchParams.get("search");
     fetch(`https://pexels.reportbase5836.workers.dev/?search=${path}`)
         .then((response) => jsonhandler(response))
-        .then((obj) => galleryobj.init(obj))
-        .catch((error) =>
-        {});
+        .then((obj) => galleryobj.init(obj));
 }
 else if (url.searchParams.has("sidney"))
 {
@@ -6832,29 +6831,15 @@ else if (url.searchParams.has("path"))
 {
     var path = url.searchParams.get("path");
     url.path = path;
-    loadgallery(path);
+    var origin = path.split("/").pop().join("/");
+    loadgallery(path, origin);
 }
-    /*
-else if (url.searchParams.has("txt"))
-{
-    var path = url.searchParams.get("txt");
-    var json = {};
-    json.data = path;
-    galleryobj.init(json)
-}
-else if (url.searchParams.has("zip"))
-{
-    var path = url.searchParams.get("zip");
-    url.path = path;
-	loadzip(path);
-}
-    */
 else
 {
 	loadgallery("res/max.json");
 }
 
-function loadgallery(path)
+function loadgallery(path, origin)
 {
     if (path.isjson())
     {
@@ -6874,11 +6859,11 @@ function loadgallery(path)
     }
     else
     {
-        loadtext(path);	  
+        loadtext(path, origin);	  
     }
 }
 
-function loadtext(str)
+function loadtext(str, origin)
 {
 	var lst = str.split("\n");
     var k = {}
@@ -6892,7 +6877,7 @@ function loadtext(str)
         if (line.substring(0,4) == "http")
             json.url = line;
         else
-            json.url = `${url.origin}/${line}`;
+            json.url = `${origin}/${line}`;
         galleryobj.data.push(json);
     }
 
