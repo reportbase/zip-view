@@ -4702,19 +4702,12 @@ var buttonlst =
             delete user.inforect;
             const rainstep = Math.min(420,window.innerWidth-60);
 	        
-	        if (!headcnv.height && galleryobj.current() == time)
+	        if (!headcnv.height && context.centered == time)//galleryobj.current() == time)
             {
                 var a = new panel.rows([8,BEXTENT,0,BEXTENT,SCROLLEXTENT,SCROLLMARGIN],
                 [
                     0,
-                    new panel.cols([5,ALIEXTENT,0,ALIEXTENT,5],
-                    [
-                        0,
-                        0,
-                        0,
-    	                0,
-                        0,
-                    ]),
+                    0,
                     0,
                     new panel.cols([0,ALIEXTENT,ALIEXTENT+10,ALIEXTENT,0],
                     [
@@ -4919,7 +4912,7 @@ menuobj.draw = function(noclear)
 
     context.canvas.visibles = [];
     var ctx = context;
-    context.canvas.centered = 0;
+    context.centered = 0;
     var r = new rectangle(0, 0, rect.width, canvas.buttonheight);
     var lasty = -10000000;
     var delay = 0;
@@ -4964,7 +4957,7 @@ menuobj.draw = function(noclear)
         	    {
             		galleryobj.width = thumbimg.width;
             		galleryobj.height = thumbimg.height;
-            		context.canvas.centered = j.n;
+            		context.centered = j.n;
         	    }
         	    
         	    context.canvas.visibles.push(j);             
@@ -6431,7 +6424,7 @@ function setupmenus()
             _8cnv.height = 0;
 	        _4cnv.width = window.innerWidth;
             _4cnv.height = window.innerHeight;
-            galleryobj.set(_8cnv.centered);
+            galleryobj.set(_8cnvctx.centered);
             headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
             var k = headlst.findIndex(function(a){return a.name == "BOSS"});
             headham.panel = headlst[k];
