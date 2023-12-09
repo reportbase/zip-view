@@ -6742,17 +6742,17 @@ galleryobj.reset = function(obj)
    
     _8cnv.timeobj.set(0);
     var k = Number(local._8);
-    if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
-    {
-        _8cnv.timeobj.set(k);
-    }
-    else if (galleryobj.length() <= 3)
+    if (galleryobj.length() <= 3)
     {
         var lst = [1.70591,0.98456,2.2311];
         var k = lst.length - galleryobj.length()
         _8cnv.timeobj.set(lst[k]);
     }
-    
+    else if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
+    {
+        _8cnv.timeobj.set(k);
+    }
+	
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
     var j = galleryobj.data[current];
