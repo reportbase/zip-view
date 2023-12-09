@@ -547,9 +547,6 @@ _8cnv.width = 100;
 _8cnv.height = 100;
 _8cnvctx.fillText(" ", 0, 0);
 
-showdialog("goto");
-dialog.close();//todo
-
 let canvaslst = [];
 for (var n = 0; n < 6; ++n)
     canvaslst[n] = document.createElement("canvas");
