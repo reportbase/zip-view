@@ -6878,10 +6878,9 @@ function loadgallery(path)
     }
 }
 
-function loadtext(path)
+function loadtext(str)
 {
-	var origin = url.origin;
-    var lst = str.split("\n");
+	var lst = str.split("\n");
     var k = {}
     galleryobj.data = [];
     for (var n = 0; n < lst.length; ++n)
@@ -6893,7 +6892,7 @@ function loadtext(path)
         if (line.substring(0,4) == "http")
             json.url = line;
         else
-            json.url = `${origin}/${line}`;
+            json.url = `${url.origin}/${line}`;
         galleryobj.data.push(json);
     }
 
