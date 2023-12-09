@@ -6841,6 +6841,7 @@ else if (url.searchParams.has("text"))
 }
 else if (url.searchParams.has("zip"))
 {
+    var path = url.searchParams.get("zip");
     url.path = path;
 	loadzip(path);
 }
