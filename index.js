@@ -1030,8 +1030,9 @@ var bossdisplaylst =
 
         var data = [];
         var index = galleryobj.current();
-        data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
-        const rainstep = Math.min(420,window.innerWidth-60);
+        //data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
+        data.push(`${index+1} of ${galleryobj.length()}`);
+        const rainstep = Math.min(320,window.innerWidth-60);
     
         var a = new panel.rowsA([HEADTOP, HEADBOT, 0, 
                              (data.length*WRAPROWHEIGHT), 
@@ -3684,12 +3685,7 @@ var taplst =
             context.pagerect.hitest(x, y))
         {
             var k = (x - context.pagerect.x) / context.pagerect.width;
-	        if (k < 0.2)
-                bossobj.leftright(25);
-            else if (k > 0.8)
-                bossobj.leftright(-25);
-            else
-                context.movepage(k < 0.5 ? -1 : 1);
+	    //context.movepage(k < 0.5 ? -1 : 1);
         }    
         
         _4cnvctx.refresh();
@@ -6713,7 +6709,8 @@ galleryobj.reset = function(obj)
     headcnv.style.pointerEvents = "none";
     menuobj.draw();
     setupmenus();
-
+//todo: setup 1 2 or 3 items
+	
     for (var n = 0; n < IMAGELSTSIZE; ++n)
     {
         thumbfittedlst[n] = document.createElement("canvas");
