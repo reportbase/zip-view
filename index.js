@@ -6850,9 +6850,10 @@ else if (url.searchParams.has("path"))
     url.path = path;
     loadgallery(path);
 }
-else if (url.searchParams.has("text"))
+    /*
+else if (url.searchParams.has("txt"))
 {
-    var path = url.searchParams.get("text");
+    var path = url.searchParams.get("txt");
     var json = {};
     json.data = path;
     galleryobj.init(json)
@@ -6863,6 +6864,7 @@ else if (url.searchParams.has("zip"))
     url.path = path;
 	loadzip(path);
 }
+    */
 else
 {
 	loadgallery("res/max.json");
