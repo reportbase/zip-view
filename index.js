@@ -6832,6 +6832,18 @@ else if (url.searchParams.has("path"))
     url.path = path;
     loadgallery(path);
 }
+else if (url.searchParams.has("text"))
+{
+    var path = url.searchParams.get("text");
+    var json = {};
+    json.data = path;
+    galleryobj.init(json)
+}
+else if (url.searchParams.has("zip"))
+{
+    url.path = path;
+	loadzip(path);
+}
 else
 {
 	loadgallery("res/max.json");
@@ -6849,7 +6861,7 @@ function loadgallery(path)
     {
         loadzip(path);
     }
-    else if (path.istext())//not require text
+    else if (path.istext())
     {
         var json = {};
         json.data = path;
@@ -6857,20 +6869,25 @@ function loadgallery(path)
     }
     else
     {
-        var lst = path.split("\n");
-        galleryobj.data = [];
-        for (var n = 0; n < lst.length; ++n)
-        {
-             var k = lst[n].clean();
-             if (!k.length)
-                 continue;
-            var e = {}
-            e.url = k;
-            galleryobj.data.push(e);
-        }
-    
-        galleryobj.reset();	  
+        loadtext(path);	  
     }
+}
+
+function loadtext(path)
+{
+    var lst = path.split("\n");
+    galleryobj.data = [];
+    for (var n = 0; n < lst.length; ++n)
+    {
+         var k = lst[n].clean();
+         if (!k.length)
+             continue;
+        var e = {}
+        e.url = k;
+        galleryobj.data.push(e);
+    }
+
+    galleryobj.reset();
 }
 
 var local = {}
