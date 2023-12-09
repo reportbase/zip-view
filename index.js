@@ -6796,23 +6796,7 @@ galleryobj.init = function(obj)
     	.then((response) => texthandler(response))
     	.then(function(str)
     	{
-            var lst = str.split("\n");
-            var k = {}
-            galleryobj.data = [];
-            for (var n = 0; n < lst.length-1; ++n)
-            {
-                var k = lst[n].clean();
-                if (!k.length)
-                    continue;
-                var e = {}
-                if (obj.root)
-                    e.url = `${root}/${lst[n]}`;
-                else
-                    e.url = k;
-                galleryobj.data.push(e);
-            }
-    
-            galleryobj.reset();
+            loadtext(str);
     	})	
 }
 
@@ -6896,16 +6880,21 @@ function loadgallery(path)
 
 function loadtext(path)
 {
-    var lst = path.split("\n");
+	var root = url.searchParams.get("root");
+    var lst = str.split("\n");
+    var k = {}
     galleryobj.data = [];
     for (var n = 0; n < lst.length; ++n)
     {
-         var k = lst[n].clean();
-         if (!k.length)
-             continue;
-        var e = {}
-        e.url = k;
-        galleryobj.data.push(e);
+        var line = lst[n].clean();
+        if (!line.length)
+            continue;
+        var json = {}
+        if (root)
+            json.url = `${root}/${line}`;
+        else
+            json.url = line;
+        galleryobj.data.push(json);
     }
 
     galleryobj.reset();
