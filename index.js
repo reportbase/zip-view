@@ -6674,17 +6674,24 @@ function showusers()
         	    var result = results[n];
         	    result.func = function(n, x, y)
         	    {
-                    _1cnv.sliceobj.set(n);
-                    google.accounts.id.revoke(login.credential, function(){})
-                    login = _1cnv.sliceobj.value();
-                    setjson("login", login);	
-                    menuobj.draw();
+                    if (_1cnv.sliceobj.current() == n)
+                    {
+                        google.accounts.id.revoke(login.credential, function(){})
+                        login = _1cnv.sliceobj.value();
+                        setjson("login", login);	
+                        leftmenu(_10cnvctx);
+                    }
+                    else
+                    {
+                        _1cnv.sliceobj.set(n);
+                        menuobj.draw();
+                    }
                 }
         	}
         	
         	_1cnv.sliceobj.data = results
         	var a = Array(_1cnv.sliceobj.length()).fill().map((_, index) => index);
-        	 _1cnv.rotated = [...a, ...a, ...a];
+        	_1cnv.rotated = [...a, ...a, ...a];
         	
         	menuobj.hide();
         	galleryobj.leftctx = _1cnvctx;
