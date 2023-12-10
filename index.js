@@ -6716,16 +6716,6 @@ function showusers()
 
 galleryobj.reset = function(obj)
 { 
-    obj.data = obj.data.concat(obj.data,obj.data,obj.data,obj.data);	
-    if (url.searchParams.has('length'))
-    {
-        var length = Number(url.searchParams.get('length'));
-        galleryobj.data.length = length;    
-    }
-    
-    if (!galleryobj.length())
-        return;
-	
     setfavicon();
     stretchobj.makerange("40-90", stretchobj.length());  
     stretchobj.set(90);
@@ -6776,7 +6766,16 @@ galleryobj.reset = function(obj)
     {
         _8cnv.timeobj.set(k);
     }
-	
+
+    //todo
+    obj.data = obj.data.concat(obj.data,obj.data,obj.data,obj.data);	
+    if (url.searchParams.has('length'))
+    {
+        var length = Number(url.searchParams.get('length'));
+        galleryobj.data.length = length;    
+    }
+    
+    
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
     var j = galleryobj.data[current];
