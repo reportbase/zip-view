@@ -3831,6 +3831,7 @@ var taplst =
             context.cursorect &&
             context.cursorect.hitest(x, y))
         {
+            var k = x < rect.width/2;
             var j = canvas.timeobj.length() / galleryobj.length();
             canvas.timeobj.rotate(k < 0.5 ? j :-j);              
             menuobj.draw();
