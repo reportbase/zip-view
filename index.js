@@ -4922,7 +4922,7 @@ menuobj.draw = function(noclear)
     else if (context == _8cnvctx)
     {
         canvas.buttonheight = buttonobj.value();
-        context.canvas.virtualheight = len * canvas.buttonheight;// * beavobj.value()/100;
+        context.canvas.virtualheight = len * canvas.buttonheight * beavobj.value()/100;
     }
 
     if (context != _8cnvctx)
