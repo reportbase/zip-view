@@ -2467,7 +2467,7 @@ var wheelst =
     {
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
-	if (context.elst.length()%2)
+	if (context.elst.length%2)
 		return;
         if (ctrl)
         {
