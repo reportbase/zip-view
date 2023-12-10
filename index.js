@@ -2471,7 +2471,7 @@ var wheelst =
 		return;
         if (ctrl)
         {
-            var j = buttonobj.length()/10;
+            var j = buttonobj.length()/90;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
