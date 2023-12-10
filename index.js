@@ -6853,7 +6853,7 @@ function loadgallery(path, origin)
             .then((response) => jsonhandler(response))
             .then((json) => galleryobj.init(json)) 
     }
-    else if (path.iszip())
+    else if (1)//todo path.iszip())
     {
         loadzip(path);
     }
