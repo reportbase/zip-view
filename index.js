@@ -4909,9 +4909,6 @@ menuobj.draw = function(noclear)
     }
 
     var len = slices.length;
-    if (url.searchParams.has('length'))//todo
-        len = Number(url.searchParams.get('length'));
-	
     var delayinterval = Math.PI / len;
     context.canvas.virtualheight = len * canvas.buttonheight;
 
