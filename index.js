@@ -621,7 +621,7 @@ var footlst =
 				new panel.text(),
 			]),
 			0,
-			new panel.layers(
+			1?0:new panel.layers(
 			[
 				new panel.fill(FOOTBTNCOLOR),
 				new panel.colsA([0,0],
@@ -1028,10 +1028,16 @@ var bossdisplaylst =
         var w = Math.min(320, r.width - 100);
         var j = window.innerWidth - r.width >= 180;
 
-        var data = [];
         var index = galleryobj.current();
-        //data.push(`\u{25C0}   ${index+1} of ${galleryobj.length()}   \u{25B6}`);
-        data.push(`${index+1} of ${galleryobj.length()}`);
+        var data = 
+        [
+            `${index+1} of ${galleryobj.length()}`,
+            `${photo.image.width} x ${photo.image.height}`,
+            galleryobj.value().name
+        ];
+
+        var str = data[context.infobj.current()];
+        
         const rainstep = Math.min(320,window.innerWidth-60);
     
         var a = new panel.rowsA([HEADTOP, HEADBOT, 0, 
@@ -1048,8 +1054,7 @@ var bossdisplaylst =
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
-                    new panel.gridA(1, data.length, 1,
-                        new panel.shrink(new panel.text(),10,10)),
+                    new panel.shrink(new panel.text(),10,10),
                 ]),
                 0,
             ]),
@@ -3741,8 +3746,7 @@ var taplst =
             context.pagerect &&
             context.pagerect.hitest(x, y))
         {
-            var k = (x - context.pagerect.x) / context.pagerect.width;
-	    //context.movepage(k < 0.5 ? -1 : 1);
+            context.infobj.rotate(x<window.innerHeight/2?-1:1);
         }    
         
         _4cnvctx.refresh();
@@ -5371,6 +5375,7 @@ contextobj.init = function()
         canvas.slidereduce = 0;
         canvas.slidestop = 0;
         canvas.lastime = 0;
+        context.infobj = new circular_array("", 0);
         canvas.sliceobj = new circular_array("", []);
         canvas.timeobj = new circular_array("", Math.PI);
         canvas.timeobj.set(Math.PI / 2);
@@ -5383,9 +5388,7 @@ contextobj.init = function()
         canvas.buttonheight = obj.buttonheight;
         canvas.buttonmargin = obj.buttonmargin;
         canvas.display = obj.display;
-        //context.drawtimeoutcount = 0;
-        //context.drawtimeoutcountactual = 0;
-
+ 
         var k = footlst.findIndex(function(a){return a.name == obj.footer});
         canvas.footer = footlst[k];
     
