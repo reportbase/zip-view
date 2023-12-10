@@ -6853,7 +6853,7 @@ function loadgallery(path, origin)
             .then((response) => jsonhandler(response))
             .then((json) => galleryobj.init(json)) 
     }
-    else if (1)//todo path.iszip())
+    else if (path.iszip())
     {
         loadzip(path);
     }
@@ -6865,7 +6865,10 @@ function loadgallery(path, origin)
     }
     else
     {
-        loadtext(path, origin);	  
+	    if (path.substring(0,4) == "http")   
+             loadzip(path);
+        else
+            loadtext(path, origin);	  
     }
 }
 
