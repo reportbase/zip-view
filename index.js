@@ -1281,6 +1281,7 @@ var displaylst =
         var folders = [];
         if (value && value.folder)
             folders = value.folder.split("/");
+        
         var data = [];
         data.push(`\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`);
         var w = Math.min(360, rect.width - 100);
@@ -1310,8 +1311,7 @@ var displaylst =
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.folderect), 10, 10),
-                    new panel.gridA(1, folders.length, 1,
-                        new panel.shrink(new panel.text(), 10, 10)),
+			        new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
                 ]),
                 0,
             ]),
@@ -1335,8 +1335,7 @@ var displaylst =
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
-                    new panel.gridA(1, data.length, 1,
-                        new panel.shrink(new panel.text(), 10, 10)),
+                    new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
                 ]),
                 0,
             ]),
@@ -4413,8 +4412,6 @@ bossobj.reset = function()
 
     var a = Array(_4cnv.sliceobj.length()).fill().map((_, index) => index);
     _4cnv.rotated = [...a, ...a, ...a];
-
-    //bossobj.draw();
     context.refresh();
 }
 
