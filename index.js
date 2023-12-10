@@ -6716,6 +6716,7 @@ function showusers()
 
 galleryobj.reset = function(obj)
 { 
+    obj.data = obj.data.concat(obj.data,obj.data,obj.data,obj.data);	
     if (url.searchParams.has('length'))
     {
         var length = Number(url.searchParams.get('length'));
