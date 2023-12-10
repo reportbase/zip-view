@@ -1283,16 +1283,21 @@ var displaylst =
         var data = [];
         data.push(`\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`);
         var w = Math.min(360, rect.width - 100);
-        var bt = `\u{25C0}    ${_9cnv.sliceobj.value().title}    \u{25B6}`;
         
-        var a = new panel.rowsA([HEADTOP, HEADBOT,  
-                0,
-                folders.length?folders.length*WRAPROWHEIGHT:-1, 
-                folders.length?12:-1, 
-                WRAPROWHEIGHT, 
-                12,                 
-                WRAPROWHEIGHT,                  
-                FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
+        var a = new panel.rowsA(
+        [
+            HEADTOP, 
+            HEADBOT,  
+            0,
+            folders.length?folders.length*WRAPROWHEIGHT:-1, 
+            folders.length?12:-1, 
+            WRAPROWHEIGHT, 
+            12,                 
+            WRAPROWHEIGHT,                  
+            FOOTSEP, 
+            SCROLLEXTENT, 
+            SCROLLMARGIN
+        ],
         [
             0,
             0,
@@ -1341,7 +1346,7 @@ var displaylst =
         a.draw(context, rect, 
         [
             0,
-    		st,
+    		0,
             0,
             folders,
             0,
