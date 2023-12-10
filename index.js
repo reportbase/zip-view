@@ -6768,7 +6768,7 @@ galleryobj.reset = function(obj)
     }
 
     //todo
-    obj.data = obj.data.concat(obj.data,obj.data,obj.data,obj.data);	
+    galleryobj.data = galleryobj.data.concat(galleryobj.data,galleryobj.data,galleryobj.data,galleryobj.data);	
     if (url.searchParams.has('length'))
     {
         var length = Number(url.searchParams.get('length'));
