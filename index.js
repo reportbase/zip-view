@@ -1339,9 +1339,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                    new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
-                    new panel.gridA(1, data.length, 1,
-                        new panel.shrink(new panel.text(), 10, 10)),
+                    new panel.shrink(new panel.text(), 10, 10),
                 ]),
                 0,
             ]),
@@ -4982,9 +4980,14 @@ menuobj.draw = function(noclear)
             }
 
             if (slice.entry)
+            {
                 getblobpath(thumbimg, slice)	
+            }
             else
+            {
                 thumbimg.src = imagepath(slice,_9cnv.sliceobj.value());
+                slice.name = thumbimg.src.split("/").slice(-1)[0];
+            }
         }
         else
         {
