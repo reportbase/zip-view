@@ -3307,11 +3307,6 @@ var keylst =
                 
                 evt.preventDefault();
             }
-            else if (key == "e")
-            {
-                resetview();
-                evt.preventDefault();
-            }                
             else if (key == " ")
             {
                 menuobj.updown(context, canvas.shiftKey?-360:360, 30)
