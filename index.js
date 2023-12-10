@@ -2459,8 +2459,8 @@ var wheelst =
 
         if (ctrl)
         {
-            if (context.elst.length % 2)
-                return;         
+ //           if (context.elst.length % 2)
+   //             return;         
             var j = buttonobj.length()/ALIEXTENT;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
@@ -2836,8 +2836,8 @@ var panlst =
         if (canvas.pinching)
             return;
        context.elst.push({x,y});
-            if (context.elst.length % 2)
-                return;        	    
+ //           if (context.elst.length % 2)
+   //             return;        	    
         
         if (type == "panleft" || type == "panright")
         {
