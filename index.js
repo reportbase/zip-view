@@ -3370,7 +3370,7 @@ var keylst =
             {
                 var str = galleryobj.data[0].name;
 		        for (var n = 1; n < galleryobj.length(); ++n)
-                    str += `\n${galleryobj.data[0].name}`;
+                    str += `\n${galleryobj.data[n].name}`;
                 copytext(str);
             }
         }
