@@ -3831,17 +3831,8 @@ var taplst =
             context.cursorect &&
             context.cursorect.hitest(x, y))
         {
-	        var k = (x - context.cursorect.x) / context.cursorect.width;
-            if (k > 0.35 && k < 0.65)
-            {
-                rightmenu(_6cnvctx)
-            }
-            else
-            {
-                var j = canvas.timeobj.length() / galleryobj.length();
-                canvas.timeobj.rotate(k < 0.5 ? j :-j);              
-            }  
-
+            var j = canvas.timeobj.length() / galleryobj.length();
+            canvas.timeobj.rotate(k < 0.5 ? j :-j);              
             menuobj.draw();
         }
         else if (
