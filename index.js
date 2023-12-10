@@ -2473,7 +2473,7 @@ var wheelst =
 
         if (ctrl)
         {
-            var j = buttonobj.length()/30;
+            var j = buttonobj.length()/20;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
@@ -3824,8 +3824,8 @@ var taplst =
 		    leftmenu(_5cnvctx);
         }
         else if (
-            context.imagerct &&
-            context.imagerct.hitest(x, y))
+            context.imagerect &&
+            context.imagerect.hitest(x, y))
         {
 	        rightmenu(_6cnvctx)
             menuobj.draw();
