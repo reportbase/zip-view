@@ -566,7 +566,7 @@ panel.empty = function()
 };    
 
 var beavobj = new circular_array("BEAV", 100)
-beavobj.set(74.2);
+beavobj.set(100);//64.2);
 
 var footlst = 
 [
