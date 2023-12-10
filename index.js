@@ -4908,21 +4908,22 @@ menuobj.draw = function(noclear)
 	    local.set()	
     }
 
-    var delayinterval = Math.PI / slices.length;
-    context.canvas.virtualheight = slices.length * canvas.buttonheight;
+    var len = slices.length % 24;
+    var delayinterval = Math.PI / len;
+    context.canvas.virtualheight = len * canvas.buttonheight;
 
     if (!noclear)
         context.clear();
-    if (context.canvas.virtualheight < window.innerHeight && slices.length)
+    if (context.canvas.virtualheight < window.innerHeight && len)
     {
-        canvas.buttonheight = window.innerHeight / slices.length;
-        context.canvas.virtualheight = slices.length * canvas.buttonheight;
+        canvas.buttonheight = window.innerHeight / len;
+        context.canvas.virtualheight = len * canvas.buttonheight;
     }
     else if (context == _8cnvctx)
     {
         canvas.buttonheight = buttonobj.value();
         context.canvas.virtualheight = 
-            slices.length * canvas.buttonheight * beavobj.value()/100;
+            len * canvas.buttonheight * beavobj.value()/100;
     }
 
     if (context != _8cnvctx)
@@ -4971,7 +4972,8 @@ menuobj.draw = function(noclear)
         }
         else
         {
-            var t = time + (n * delayinterval);
+            var f = n % 24;
+            var t = time + (f * delayinterval);
             var b = Math.tan(t);
             var j = Math.berp(-1, 1, b);
             var y = j * context.canvas.virtualheight;
