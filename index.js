@@ -4938,7 +4938,7 @@ menuobj.draw = function(noclear)
     {
         canvas.lastcurrent = current;
         var size = Math.ceil(rect.height / canvas.buttonheight) + ROTATEANCHORSIAE;
-        canvas.normal = util.rotated_list(canvas.rotated, slices.length, current, size);
+        canvas.normal = util.rotated_list(canvas.rotated, len, current, size);
     }
 
     context.canvas.visibles = [];
