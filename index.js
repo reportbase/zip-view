@@ -1037,11 +1037,10 @@ var bossdisplaylst =
         ];
 
         var str = data[context.infobj.current()];
-        
         const rainstep = Math.min(320,window.innerWidth-60);
     
         var a = new panel.rowsA([HEADTOP, HEADBOT, 0, 
-                             (data.length*WRAPROWHEIGHT), 
+                             WRAPROWHEIGHT, 
                              20],
         [
             0,
@@ -1067,7 +1066,7 @@ var bossdisplaylst =
             0,
             0,
             0,
-            data,
+            str,
             0,
         ]);
 
