@@ -1753,8 +1753,10 @@ function leftmenu(context)
 
 function rightmenu(context, force)
 {
-    galleryobj.leftctx.hide()
-    galleryobj.rightctx.hide()
+	if (galleryobj.leftctx)
+        galleryobj.leftctx.hide()
+    if (galleryobj.rightctx)
+        galleryobj.rightctx.hide()
     
     context.clear();
     if (!force && menuobj.value() && menuobj.value() != _8cnvctx)
@@ -2471,9 +2473,7 @@ var wheelst =
 
         if (ctrl)
         {
- //           if (context.elst.length % 2)
-   //             return;         
-            var j = buttonobj.length()/ALIEXTENT;
+            var j = buttonobj.length()/30;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
