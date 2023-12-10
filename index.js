@@ -4908,7 +4908,8 @@ menuobj.draw = function(noclear)
 	    local.set()	
     }
 
-    var len = slices.length;
+    //var len = slices.length;
+    var len = Math.min(slices.length, 24);
     var delayinterval = Math.PI / len;
     context.canvas.virtualheight = len * canvas.buttonheight;
 
@@ -4972,7 +4973,9 @@ menuobj.draw = function(noclear)
         }
         else
         {
-            var t = time + (n * delayinterval);
+            var g = n % 24;
+            //var t = time + (n * delayinterval);
+            var t = time + (g * delayinterval);
             var b = Math.tan(t);
             var j = Math.berp(-1, 1, b);
             var y = j * context.canvas.virtualheight;
