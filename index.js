@@ -2631,8 +2631,8 @@ var pinchlst =
     pinch: function(context, x, y, scale)
     {
 	    context.elst.push({x,y});
-        if (context.elst.length % 2)
-            return;
+  //      if (context.elst.length % 2)
+   //         return;
         if (!context.buttonachor)
             context.buttonachor = zoomobj.value();
         if (!context.scaleanchor)
@@ -3370,6 +3370,13 @@ var keylst =
             {
                 evt.preventDefault();
                 screenfull.toggle();
+            }
+            else if (key == "e")
+            {
+                var str = galleryobj.data[0].name;
+		        for (var n = 1; n < galleryobj.length(); ++n)
+                    str += `\n${galleryobj.data[0].name}`;
+                copytext(str);
             }
         }
     },
