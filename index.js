@@ -1290,6 +1290,8 @@ var displaylst =
                 folders.length?folders.length*WRAPROWHEIGHT:-1, 
                 folders.length?12:-1, 
                 WRAPROWHEIGHT, 
+                12,                 
+                WRAPROWHEIGHT,                  
                 FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,
@@ -1331,6 +1333,19 @@ var displaylst =
                 0,
             ]),
             0,
+            new panel.cols([0, rainstep, 0],
+            [
+                0,
+                new panel.layers(
+                [
+                    new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
+                    new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
+                    new panel.gridA(1, data.length, 1,
+                        new panel.shrink(new panel.text(), 10, 10)),
+                ]),
+                0,
+            ]),
+            0,
             0,
             0
         ]);
@@ -1343,6 +1358,8 @@ var displaylst =
             folders,
             0,
             data,
+            0,
+            value.name
             0,
             0,
             0,
