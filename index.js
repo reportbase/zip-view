@@ -1335,7 +1335,7 @@ var displaylst =
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
-                    new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
+                    new panel.shrink(new panel.multitext(1, new panel.text()), 20, 20),
                 ]),
                 0,
             ]),
