@@ -1357,7 +1357,7 @@ var displaylst =
             0,
             data,
             0,
-            "aaa.jpg",
+            value.name,
             0,
             0,
             0,
