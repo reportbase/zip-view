@@ -2467,7 +2467,8 @@ var wheelst =
     {
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
-
+	if (context.elst.length()%2)
+		return;
         if (ctrl)
         {
             var j = buttonobj.length()/20;
