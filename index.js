@@ -2467,10 +2467,10 @@ var wheelst =
     {
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
-	if (!(context.elst.length%3))
-		return;
         if (ctrl)
         {
+            if (!(context.elst.length%3))
+                return;
             var j = buttonobj.length()/90;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
@@ -2482,8 +2482,8 @@ var wheelst =
         }
         else
         {
-            if (Math.abs(delta) <= 0.8)
-                return;
+            //if (Math.abs(delta) <= 0.8)
+            //    return;
             menuobj.updown(context, delta, 60)
             menuobj.draw();
             if (!context.swipetimeout)
