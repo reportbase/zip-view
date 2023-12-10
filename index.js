@@ -1283,7 +1283,7 @@ var displaylst =
         var data = [];
         data.push(`\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`);
         var w = Math.min(360, rect.width - 100);
-        var st = `\u{25C0}    ${_9cnv.sliceobj.value().title}    \u{25B6}`;
+        var bt = `\u{25C0}    ${_9cnv.sliceobj.value().title}    \u{25B6}`;
         
         var a = new panel.rowsA([HEADTOP, HEADBOT,  
                 0,
@@ -1295,17 +1295,7 @@ var displaylst =
                 FOOTSEP, SCROLLEXTENT, SCROLLMARGIN],
         [
             0,
-            new panel.cols([0, rainstep, 0],
-            [
-                0,
-                galleryobj.templates?new panel.layers(
-                [
-                    new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                    new panel.expand(new panel.rectangle(context.templaterect), 10, 10),
-                    new panel.text(),
-                ]):0,
-                0,
-            ]),
+            0,
 	        0,
             new panel.cols([0, rainstep, 0],
             [
@@ -1326,20 +1316,20 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                    new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
-                    new panel.gridA(1, data.length, 1,
-                        new panel.shrink(new panel.text(), 10, 10)),
+                    new panel.shrink(new panel.text(), 10, 10),
                 ]),
                 0,
             ]),
-            0,
+	        0,
             new panel.cols([0, rainstep, 0],
             [
                 0,
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                    new panel.shrink(new panel.text(), 10, 10),
+                    new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
+                    new panel.gridA(1, data.length, 1,
+                        new panel.shrink(new panel.text(), 10, 10)),
                 ]),
                 0,
             ]),
@@ -1355,9 +1345,9 @@ var displaylst =
             0,
             folders,
             0,
-            data,
-            0,
             value.name,
+            0,
+            data,
             0,
             0,
             0,
