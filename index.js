@@ -1280,10 +1280,8 @@ var displaylst =
         var value = galleryobj.data[k];
         var folders = [];
         if (value && value.folder)
-            folders = value.folder.split("/");
-        
-        var data = [];
-        data.push(`\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`);
+            folders = value.folder.split("/");       
+        var data = `\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
         
         var a = new panel.rowsA(
@@ -1291,7 +1289,7 @@ var displaylst =
             HEADTOP, 
             HEADBOT,  
             0,
-            folders.length?folders.length*WRAPROWHEIGHT:-1, 
+            folders.length?folders.length*50:-1, 
             folders.length?12:-1, 
             WRAPROWHEIGHT, 
             12,                 
@@ -1335,7 +1333,7 @@ var displaylst =
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
-                    new panel.shrink(new panel.multitext(1, new panel.text()), 20, 20),
+                    new panel.shrink(new panel.text(), 10, 10),
                 ]),
                 0,
             ]),
