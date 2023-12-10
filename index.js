@@ -6133,25 +6133,10 @@ window.addEventListener("keydown", function(evt)
     if (key == "escape")
     {
         if (dialog && dialog.open)
-        {
             dialog.close();
-        }
-        else if (menuobj.value() && menuobj.value() != _8cnvctx)
-        {
-            menuobj.hide();
-            menuobj.setindex(_8cnvctx);
-            headobj.draw();
-        }
-	    else
-	    {
-		    headobj.reset();
-		    headobj.draw();
-        }
     }
-    
-    if (dialog && dialog.open)
-        return;
-    var context = menuobj.value() ? menuobj.value() : _4cnvctx;
+ 
+	var context = menuobj.value() ? menuobj.value() : _4cnvctx;
     return context.canvas.keydown_(evt);
 }, false);
 
