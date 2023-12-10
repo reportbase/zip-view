@@ -6134,18 +6134,18 @@ window.addEventListener("keydown", function(evt)
         if (dialog && dialog.open)
         {
             dialog.close();
-            return;
         }
-        
-        if (menuobj.value() && menuobj.value() != _8cnvctx)
+        else if (menuobj.value() && menuobj.value() != _8cnvctx)
         {
             menuobj.hide();
             menuobj.setindex(_8cnvctx);
             headobj.draw();
-            return;
         }
-    
-        headobj.reset();
+	    else
+	    {
+		    headobj.reset();
+		    headobj.draw();
+        }
     }
     
     if (dialog && dialog.open)
