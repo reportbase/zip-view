@@ -3824,8 +3824,8 @@ var taplst =
 		    leftmenu(_5cnvctx);
         }
         else if (
-            context.imageect &&
-            context.imageect.hitest(x, y))
+            context.imagerct &&
+            context.imagerct.hitest(x, y))
         {
 	        rightmenu(_6cnvctx)
             menuobj.draw();
