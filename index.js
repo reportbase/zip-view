@@ -4922,8 +4922,7 @@ menuobj.draw = function(noclear)
     else if (context == _8cnvctx)
     {
         canvas.buttonheight = buttonobj.value();
-        context.canvas.virtualheight = 
-            len * canvas.buttonheight * beavobj.value()/100;
+        context.canvas.virtualheight = len * canvas.buttonheight;// * beavobj.value()/100;
     }
 
     if (context != _8cnvctx)
@@ -4973,7 +4972,7 @@ menuobj.draw = function(noclear)
         else
         {
             var t = time + (n * delayinterval);
-            var b = Math.tan(2*t);
+            var b = Math.tan(t/2);
             var j = Math.berp(-1, 1, b);
             var y = j * context.canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
