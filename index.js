@@ -4909,6 +4909,9 @@ menuobj.draw = function(noclear)
     }
 
     var len = slices.length;
+    if (url.searchParams.has('length'))//todo
+        len = Number(url.searchParams.get('length'));
+	
     var delayinterval = Math.PI / len;
     context.canvas.virtualheight = len * canvas.buttonheight;
 
@@ -6766,15 +6769,6 @@ galleryobj.reset = function(obj)
     {
         _8cnv.timeobj.set(k);
     }
-
-    //todo
-    galleryobj.data = galleryobj.data.concat(galleryobj.data,galleryobj.data,galleryobj.data,galleryobj.data);	
-    if (url.searchParams.has('length'))
-    {
-        var length = Number(url.searchParams.get('length'));
-        galleryobj.data.length = length;    
-    }
-    
     
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
