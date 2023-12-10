@@ -3745,7 +3745,7 @@ var taplst =
             context.pagerect &&
             context.pagerect.hitest(x, y))
         {
-            context.infobj.rotate(x<window.innerHeight/2?-1:1);
+            context.infobj.rotate(x<window.innerWidth/2?-1:1);
         }    
         
         _4cnvctx.refresh();
@@ -5374,7 +5374,7 @@ contextobj.init = function()
         canvas.slidereduce = 0;
         canvas.slidestop = 0;
         canvas.lastime = 0;
-        context.infobj = new circular_array("", 0);
+        context.infobj = new circular_array("", 3);
         canvas.sliceobj = new circular_array("", []);
         canvas.timeobj = new circular_array("", Math.PI);
         canvas.timeobj.set(Math.PI / 2);
