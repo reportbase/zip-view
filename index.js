@@ -1248,6 +1248,7 @@ var displaylst =
         canvas.hollyrect = new rectangle();
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
+        context.imagerect = new rectangle();
 	    context.templaterect = new rectangle();
         if (!headcnv.height)
             return;        
@@ -1321,6 +1322,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
+                    new panel.expand(new panel.rectangle(context.imagerect), 10, 10),
                     new panel.shrink(new panel.text(), 10, 10),
                 ]),
                 0,
@@ -1751,9 +1753,9 @@ function leftmenu(context)
 
 function rightmenu(context, force)
 {
-	if (galleryobj.leftctx)
-        galleryobj.leftctx.hide()
-
+    galleryobj.leftctx.hide()
+    galleryobj.rightctx.hide()
+    
     context.clear();
     if (!force && menuobj.value() && menuobj.value() != _8cnvctx)
     {
@@ -3820,6 +3822,13 @@ var taplst =
             context.folderect.hitest(x, y))
         {
 		    leftmenu(_5cnvctx);
+        }
+        else if (
+            context.imageect &&
+            context.imageect.hitest(x, y))
+        {
+	        rightmenu(_6cnvctx)
+            menuobj.draw();
         }
         else if (
             context.cursorect &&
