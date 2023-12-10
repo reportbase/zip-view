@@ -1208,18 +1208,7 @@ var bossdisplaylst =
                 0,
                 0,
                 0,
-                new panel.cols([0, rainstep, 0],
-                [
-                    0,
-                    new panel.layers(
-                    [
-                        new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                        new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
-                        new panel.gridA(1, data.length, 1,
-                            new panel.shrink(new panel.text(),10,10)),
-                    ]),
-                    0,
-                ]),
+                0,
                 0,
             ]);
         
