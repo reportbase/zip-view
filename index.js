@@ -4974,7 +4974,7 @@ menuobj.draw = function(noclear)
             else
             {
                 thumbimg.src = imagepath(slice,_9cnv.sliceobj.value());
-		        if (slice.name && slice.name.isimage())
+		        if (thumbimg.src.isimage())
                     slice.name = thumbimg.src.split("/").slice(-1)[0];
             }
         }
