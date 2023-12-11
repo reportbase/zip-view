@@ -1245,6 +1245,7 @@ var displaylst =
         context.cursorect = new rectangle();
         context.imagerect = new rectangle();
 	    context.templaterect = new rectangle();
+        context.buttonrect = new rectangle();
         if (!headcnv.height)
             return;        
         var bh = rect.height * 0.4;
@@ -1278,7 +1279,8 @@ var displaylst =
             folders = value.folder.split("/");       
         var data = `\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`;
         var w = Math.min(360, rect.width - 100);
-        
+        var bt = `\u{25C0}    ${(buttonobj.berp()*100).toFixed(2)}%    \u{25B6}`;
+
         var a = new panel.rowsA(
         [
             HEADTOP, 
@@ -1295,7 +1297,17 @@ var displaylst =
         ],
         [
             0,
-            0,
+            new panel.cols([0, rainstep, 0],
+            [
+                0,
+                new panel.layers(
+                [
+                    new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
+                    new panel.expand(new panel.rectangle(context.buttonrect), 10, 10),
+		            new panel.shrink(new panel.multitext(1, new panel.text()), 20, 0),
+                ]),
+                0,
+            ]),
 	        0,
             new panel.cols([0, rainstep, 0],
             [
@@ -1340,7 +1352,7 @@ var displaylst =
         a.draw(context, rect, 
         [
             0,
-    		0,
+    		bt,
             0,
             folders,
             0,
