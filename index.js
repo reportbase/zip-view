@@ -6146,7 +6146,10 @@ window.addEventListener("keydown", function(evt)
         if (dialog && dialog.open)
             dialog.close();
     }
- 
+    
+    if (dialog && dialog.open)
+        return;
+    
 	var context = menuobj.value() ? menuobj.value() : _4cnvctx;
     return context.canvas.keydown_(evt);
 }, false);
