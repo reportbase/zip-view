@@ -2766,7 +2766,7 @@ async function loadimages(blobs)
         if (name.isimage())
         {
             var k = {}
-            k.name = name;
+            k.name = blob.name;
             k.blob = blob;
             galleryobj.data.push(k);
         }
