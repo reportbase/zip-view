@@ -1192,6 +1192,7 @@ var bossdisplaylst =
             a.draw(context, rect,
             [
                 0,
+		0,
                 zoomobj,
                 0,
                 stretchobj,
