@@ -6785,9 +6785,11 @@ galleryobj.reset = function(obj)
         _8cnv.timeobj.set(k);
     }
 
-    //var e = (galleryobj.length()%24)*24+8;
-    //var f = e - galleryobj.data.length;
-    //todo galleryobj.data.length = e;
+    if (galleryobj.length()%24 <= 7)
+    {
+        var e = Math.floor(galleryobj.length()/24)*24+8;
+        galleryobj.data.length = e;
+    }
     
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
