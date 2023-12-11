@@ -3830,8 +3830,8 @@ var taplst =
             menuobj.draw();
         }
         else if (
-            context.buttonect &&
-            context.buttonect.hitest(x, y))
+            context.buttonrect &&
+            context.buttonrect.hitest(x, y))
         {
             var k = x < rect.width/2;
             buttonobj.addperc(k ? -0.05 : 0.05);              
