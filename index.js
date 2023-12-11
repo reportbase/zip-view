@@ -2487,8 +2487,8 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        if (Math.abs(delta) <= 0.8)
-            return;
+        //if (Math.abs(delta) <= 0.8)
+            //return;
         context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw();
     },
@@ -2575,7 +2575,7 @@ var wheelst =
         {
             var k = _4cnv.timeobj.length();
             var j = k*e;
-            _4cnv.timeobj.CURRENT += j;
+            _4cnv.timeobj.CURRENT -= j;
             bossobj.draw()
         }
     },
