@@ -6789,6 +6789,15 @@ galleryobj.reset = function(obj)
     if (b >= 1 && b <= 7)
     {
         var e = Math.floor(galleryobj.length()/24)*24+8;
+        var k = e-galleryobj.data.length;
+        var b = galleryobj.data.length-1;
+        var url = galleryobj.data[b].url;
+        for (var n = 0; n < k; ++n)
+        {
+            var c = {url:url};
+            galleryobj.data.push(c)    
+        }
+        
         galleryobj.data.length = e;
     }
     
