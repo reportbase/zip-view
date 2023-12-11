@@ -6785,7 +6785,8 @@ galleryobj.reset = function(obj)
         _8cnv.timeobj.set(k);
     }
 
-    if (galleryobj.length()%24 <= 7)
+    var b = galleryobj.length()%24;
+    if (b >= 1 && b <= 7)
     {
         var e = Math.floor(galleryobj.length()/24)*24+8;
         galleryobj.data.length = e;
