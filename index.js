@@ -1156,9 +1156,10 @@ var bossdisplaylst =
                 return;
 
             var bh = rect.height * 0.4;
-            var a = new panel.colsA([SCROLLMARGIN, SCROLLEXTENT, 0, SCROLLEXTENT, SCROLLMARGIN],
+            var a = new panel.rowsa([HEADHEIGHT, 12, SCROLLEXTENT, 12, SCROLLEXTENT, 0],
             [
                 0,
+		        0,
                 new panel.rows([0,bh,0],
                 [
                     0,
@@ -1166,7 +1167,7 @@ var bossdisplaylst =
                     [
                         new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 8, 8),
                         new panel.expand(new panel.rectangle(context.zoomrect), 10, 1),
-                        new panel.shrink(new panel.currentV(new panel.rounded("white", 
+                        new panel.shrink(new panel.currentH(new panel.rounded("white", 
                                 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
                     ]),
                     0,
@@ -1179,7 +1180,7 @@ var bossdisplaylst =
                     [
                         new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 8, 8),
                         new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
-                        new panel.shrink(new panel.currentV(new panel.rounded("white", 0, 
+                        new panel.shrink(new panel.currentH(new panel.rounded("white", 0, 
                                 TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
                     ]),
                     0,
