@@ -1156,7 +1156,7 @@ var bossdisplaylst =
                 return;
 
             var bh = rect.height * 0.4;
-            var a = new panel.rowsa([HEADHEIGHT, 12, SCROLLEXTENT, 12, SCROLLEXTENT, 0],
+            var a = new panel.rowsA([HEADHEIGHT, 12, SCROLLEXTENT, 12, SCROLLEXTENT, 0],
             [
                 0,
 		        0,
