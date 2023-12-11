@@ -3830,6 +3830,14 @@ var taplst =
             menuobj.draw();
         }
         else if (
+            context.buttonect &&
+            context.buttonect.hitest(x, y))
+        {
+            var k = x < rect.width/2;
+            buttonobj.addperc(k ? -0.05 : 0.05);              
+            menuobj.draw();
+        }
+        else if (
             context.cursorect &&
             context.cursorect.hitest(x, y))
         {
