@@ -1173,7 +1173,7 @@ var bossdisplaylst =
                     0,
                 ]),
                 0,
-                new panel.rows([0, rainstep, 0],
+                new panel.cols([0, rainstep, 0],
                 [
                     0,
                     new panel.layers(
@@ -2539,21 +2539,6 @@ var wheelst =
                 contextobj.reset()
             }
         }
-        else if (context.zoomrect &&
-            context.zoomrect.hitest(x, y))
-        {
-            var e = delta/200;
-            zoomobj.addperc(e);
-            bossobj.reset()
-	        bossobj.draw();
-        }
-        else if (context.stretchrect &&
-            context.stretchrect.hitest(x, y))
-        {
-            var e = delta/200;
-            stretchobj.addperc(e);
-            bossobj.draw();
-        }
         else
         {
             var e = delta/1000;
@@ -2570,6 +2555,21 @@ var wheelst =
         {
             var hollyobj = context.canvas.hollyobj;
             hollyobj.addperc(e);
+            bossobj.draw();
+        }
+        else if (context.zoomrect &&
+            context.zoomrect.hitest(x, y))
+        {
+            var e = delta/200;
+            zoomobj.addperc(e);
+            bossobj.reset()
+	        bossobj.draw();
+        }
+        else if (context.stretchrect &&
+            context.stretchrect.hitest(x, y))
+        {
+            var e = delta/200;
+            stretchobj.addperc(e);
             bossobj.draw();
         }
         else
@@ -2840,9 +2840,9 @@ var panlst =
         var obj = canvas.hollyobj;
         if (canvas.pinching)
             return;
-       context.elst.push({x,y});
- //           if (context.elst.length % 2)
-   //             return;        	    
+        context.elst.push({x,y});
+        if (context.elst.length % 2)
+            return;        	    
         
         if (type == "panleft" || type == "panright")
         {
@@ -3014,18 +3014,6 @@ var panlst =
                 obj.setperc(1 - k);
                 bossobj.draw()
             }
-            else
-            {
-                var e = canvas.startx-x;
-                var k = Math.PI / canvas.virtualwidth
-                k *= e;
-                canvas.timeobj.CURRENT = canvas.timeobj.ANCHOR - k;
-                context.canvas.lastime = -0.0000000000101010101;
-                bossobj.draw();               
-            }
-        }
-        else if (type == "panup" || type == "pandown")
-        {
             if (context.iszoomrect)
             {
                 var k = (x - context.zoomrect.x) / context.zoomrect.width;
@@ -3040,19 +3028,27 @@ var panlst =
             }
             else
             {
-                var a = photo.image.width/photo.image.height;
-                var h = canvas.virtualwidth / a;
-                var j = rect.height/h;
-                var e = canvas.starty - y;
-                var k = panvert(rowobj, e*j);
-                if (k == -1)
-                    return;
-                if (k == rowobj.anchor())
-                    return;
-                rowobj.set(k);
-                contextobj.reset();
+                var e = canvas.startx-x;
+                var k = Math.PI / canvas.virtualwidth
+                k *= e;
+                canvas.timeobj.CURRENT = canvas.timeobj.ANCHOR - k;
+                context.canvas.lastime = -0.0000000000101010101;
+                bossobj.draw();               
             }
-
+        }
+        else if (type == "panup" || type == "pandown")
+        {
+            var a = photo.image.width/photo.image.height;
+            var h = canvas.virtualwidth / a;
+            var j = rect.height/h;
+            var e = canvas.starty - y;
+            var k = panvert(rowobj, e*j);
+            if (k == -1)
+                return;
+            if (k == rowobj.anchor())
+                return;
+            rowobj.set(k);
+            contextobj.reset();
             bossobj.draw()
         }
     },
@@ -3064,8 +3060,7 @@ var panlst =
         canvas.starty = y;
         rowobj.setanchor(rowobj.current());
         canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
-        canvas.isthumb = canvas.thumbrect &&
-            canvas.thumbrect.hitest(x, y);
+        canvas.isthumb = canvas.thumbrect && canvas.thumbrect.hitest(x, y);
         movingx = new MovingAverage();
         movingy = new MovingAverage();
         headobj.draw();
@@ -3089,7 +3084,8 @@ var panlst =
         delete rowobj.offset;
         delete canvas.hollyobj.offset;
     }
-}, ];
+}, 
+];
 
 var mouselst = [
 {
