@@ -3811,6 +3811,8 @@ var taplst =
             context.folderect &&
             context.folderect.hitest(x, y))
         {
+            if (_5cnv.sliceobj.length() <= 1)
+                return;
 		    leftmenu(_5cnvctx);
         }
         else if (
