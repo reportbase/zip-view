@@ -1029,11 +1029,12 @@ var bossdisplaylst =
         var j = window.innerWidth - r.width >= 180;
 
         var index = galleryobj.current();
+	    var value = galleryobj.value();
         var data = 
         [
             `${index+1} of ${galleryobj.length()}`,
             `${photo.image.width} x ${photo.image.height}`,
-            galleryobj.value().name
+            value.blob?value.blob.name:value.name,
         ];
 
         var str = data[context.infobj.current()];
@@ -2810,8 +2811,8 @@ var droplst =
     name: "DEFAULT",
     drop: function(context, evt)
     {
-        if (menuobj.value() && menuobj.value() != _8cnvctx)
-            return;
+        closemenu()
+        closeboss()
         loadfiles(evt.dataTransfer.files);
     },
 }, 
@@ -3702,13 +3703,7 @@ var taplst =
             headcnvctx.closebossrect &&
             headcnvctx.closebossrect.hitest(x, y))
         {
-            _4cnv.width = 0;
-            _4cnv.height = 0;
-            menuobj.setindex(_8cnvctx);
-            menuobj.show();
-            var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
-            headham.panel = headlst[k];
-            headobj.draw();
+            closeboss();
         }
         else if (
             headcnv.height &&
@@ -6295,6 +6290,17 @@ function closemenu()
     //menuobj.draw();
 }
 
+function closeboss()
+{
+    _4cnv.width = 0;
+    _4cnv.height = 0;
+    menuobj.setindex(_8cnvctx);
+    menuobj.show();
+    var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+    headham.panel = headlst[k];
+    headobj.draw();
+}
+
 headobj.toggle = function()
 {
     headcnvctx.show(0, 0, window.innerWidth, headcnv.height?0:HEADHEIGHT);
@@ -6437,7 +6443,7 @@ function setupmenus()
         }
     },     
     {
-        title: "Original Image",
+        title: "Full Image\nThumbnail Image View",
         func: function() 
         {
 	        clearInterval(_8cnvctx.swipetimeout)
