@@ -6788,13 +6788,8 @@ galleryobj.reset = function(obj)
     var b = galleryobj.length()%24;
     if (b >= 1 && b <= 7)
     {
-        var e = Math.floor(galleryobj.length()/24)*24+8;
-        var k = e-galleryobj.data.length;
-        var b = galleryobj.data.length-1;
-        for (var n = 0; n < k; ++n)
-        {
-            galleryobj.data.push(galleryobj.data[b])    
-        }
+        galleryobj.data.length = 
+		Math.floor(galleryobj.length()/24)*24+8;
     }
     
     var berp = _8cnv.timeobj.berp();
