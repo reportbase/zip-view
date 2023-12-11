@@ -2528,7 +2528,7 @@ var wheelst =
                 context.canvas.thumbrect.hitest(x, y);
             if (isthumb)
             {
-            	var e = delta/200;
+            	var e = -delta/100;
                 heightobj.addperc(e);
                 bossobj.draw();
             }
@@ -2635,9 +2635,6 @@ var pinchlst =
     name: "BOSS",
     pinch: function(context, x, y, scale)
     {
-	    context.elst.push({x,y});
-  //      if (context.elst.length % 2)
-   //         return;
         if (!context.buttonachor)
             context.buttonachor = zoomobj.value();
         if (!context.scaleanchor)
@@ -2648,7 +2645,7 @@ var pinchlst =
         var n = 1;
         for (; n < zoomobj.length(); ++n)
         {
-            var b = zoomobj.data[n - 1];
+            var b = zoomobj.data[n-1];
             var b2 = zoomobj.data[n];
             if (j < b || j > b2)
                 continue;
@@ -2682,7 +2679,8 @@ var pinchlst =
     pinch: function(context, x, y, scale) {},
     pinchstart: function(context, rect, x, y) {},
     pinchend: function(context) {},
-}, ];
+}, 
+];
 
 var rowobj = new circular_array("ROW", window.innerHeight);
 rowobj.set(Math.floor((50 / 100) * window.innerHeight));
