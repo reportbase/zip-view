@@ -1282,7 +1282,7 @@ var displaylst =
             HEADTOP, 
             HEADBOT,  
             0,
-            folders.length?folders.length*60:-1, 
+            folders.length?folders.length*WRAPROWHEIGHT:-1, 
             folders.length?12:-1, 
             WRAPROWHEIGHT, 
             12,                 
@@ -6554,8 +6554,8 @@ function setupmenus()
         }
     };
 
-    if (_5cnv.sliceobj.length() == 1)
-        _5cnv.sliceobj.data = [];
+    //if (_5cnv.sliceobj.length() == 1)
+      //  _5cnv.sliceobj.data = [];
     
     for (var n = 0; n < galleryobj.data.length; ++n)
     {
