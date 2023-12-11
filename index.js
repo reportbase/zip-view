@@ -5005,7 +5005,11 @@ menuobj.draw = function(noclear)
             var j = {slice,x,y,n};
             slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight);
             slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
-            if (slice.isvisible)
+	        if (!slice.url && !slice.id)
+            {
+                console.log(slice.rect);
+            }
+            else if (slice.isvisible)
             {
         	    if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
         	    {
