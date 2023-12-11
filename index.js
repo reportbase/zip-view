@@ -4467,8 +4467,7 @@ var buttonlst =
 
         var k = [];
         k.push(`${user.index+1} of ${galleryobj.length()}`);
-        if (user.url)
-            k.push(user.url.split("/").pop());
+        k.push(user.name);
         if (user.id)
             k.push(user.id);
         /*
@@ -5475,7 +5474,7 @@ contextobj.reset = function()
         photo.image.onload = function()
         {
             var e = galleryobj.value();
-            document.title = galleryobj.title?galleryobj.title:url.host;
+            document.title = galleryobj.title?galleryobj.title:url.host.proper();
             _4cnv.autodirect = -_4cnv.movingpage;
             _4cnv.movingpage = 0;
             bossobj.reset();
@@ -6329,19 +6328,15 @@ function setupmenus()
             {
                 var id = galleryobj.value().id;
                 fetch(`https://ipfs-view.pages.dev/image/${id}`,
-                    {
-                        method: 'delete'
-                    })
-                    .then(res =>
-                    {
-                        location.reload();
-                        return res.json()
-                    })
-                    .then(data => console.log(data))
-                    .catch(error =>
-                    {
-                        console.log("error:", error);
-                    });
+                {
+                    method: 'delete'
+                })
+                .then(res =>
+                {
+                    location.reload();
+                    return res.json()
+                })
+                .then(data => console.log(data))
                 return true;
             }
           },
