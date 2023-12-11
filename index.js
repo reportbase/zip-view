@@ -6,7 +6,7 @@ function ios()
         'iPhone',
         'iPod'
     ].includes(navigator.platform) ||
-        (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+	        (navigator.userAgent.includes("Mac") && "ontouchend" in document)
 }
 
 let url = new URL(window.location.href);
@@ -1342,7 +1342,7 @@ var displaylst =
             0,
             folders,
             0,
-            value.name,
+            value.blob?value.blob.name:value.name,
             0,
             data,
             0,
