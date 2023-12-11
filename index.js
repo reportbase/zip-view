@@ -4981,7 +4981,13 @@ menuobj.draw = function(noclear)
                 this.count = 0;
 		        menuobj.draw();
             }
-
+            
+            thumbimg.onerror = function()
+            {
+                this.count = 0;
+		        menuobj.draw();
+            }
+            
             if (slice.entry)
             {
                 getblobpath(thumbimg, slice)	
@@ -5005,11 +5011,7 @@ menuobj.draw = function(noclear)
             var j = {slice,x,y,n};
             slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight);
             slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
-	        if (!slice.url && !slice.id)
-            {
-                console.log(slice.rect);
-            }
-            else if (slice.isvisible)
+	        if (slice.isvisible)
             {
         	    if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
         	    {
