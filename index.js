@@ -1148,19 +1148,19 @@ var bossdisplaylst =
             context.pagerect = new rectangle();
             context.zoomrect = new rectangle();
             context.stretchrect = new rectangle();
-            
+            const rainstep = Math.min(420,window.innerWidth-60);
+        
             if (
                 !photo.image ||
                 !photo.image.complete ||
                 !photo.image.naturalHeight)
                 return;
 
-            var bh = rect.height * 0.4;
             var a = new panel.rowsA([HEADHEIGHT, 12, SCROLLEXTENT, 12, SCROLLEXTENT, 0],
             [
                 0,
 		        0,
-                new panel.rows([0,bh,0],
+                new panel.cols([0,rainstep,0],
                 [
                     0,
                     new panel.layers(
@@ -1173,7 +1173,7 @@ var bossdisplaylst =
                     0,
                 ]),
                 0,
-                new panel.rows([0, bh, 0],
+                new panel.rows([0, rainstep, 0],
                 [
                     0,
                     new panel.layers(
@@ -1192,7 +1192,7 @@ var bossdisplaylst =
             a.draw(context, rect,
             [
                 0,
-		0,
+		        0,
                 zoomobj,
                 0,
                 stretchobj,
@@ -1202,7 +1202,6 @@ var bossdisplaylst =
             var data = [];
             var index = galleryobj.current();
             data.push(`\u{25C0}   ${index} of ${galleryobj.length()}   \u{25B6}`);
-            const rainstep = Math.min(420,window.innerWidth-60);
         
             var a = new panel.rowsA([HEADTOP, HEADBOT, 0, 
                                  (data.length*WRAPROWHEIGHT), 
@@ -3029,13 +3028,13 @@ var panlst =
         {
             if (context.iszoomrect)
             {
-                var k = (y - context.zoomrect.y) / context.zoomrect.height;
+                var k = (x - context.zoomrect.x) / context.zoomrect.width;
                 zoomobj.setperc(k);
                 contextobj.reset()
             }
             else if (context.isstretchrect)
             {
-                var k = (y - context.stretchrect.y) / context.stretchrect.height;
+                var k = (x - context.stretchrect.x) / context.stretchrect.width;
                 stretchobj.setperc(k);
                 contextobj.reset()
             }
@@ -3677,13 +3676,13 @@ var taplst =
         }
         else if (context.zoomrect && context.zoomrect.hitest(x, y))
         {
-            var k = (y - context.zoomrect.y) / context.zoomrect.height;
+            var k = (x - context.zoomrect.x) / context.zoomrect.width;
             zoomobj.setperc(k);
             contextobj.reset();
         }
         else if (context.stretchrect && context.stretchrect.hitest(x, y))
         {
-            var k = (y - context.stretchrect.y) / context.stretchrect.height;
+            var k = (x - context.stretchrect.x) / context.stretchrect.width;
             stretchobj.setperc(k);
             bossobj.draw();
         }
