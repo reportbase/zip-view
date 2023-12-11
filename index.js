@@ -3372,8 +3372,14 @@ var keylst =
             else if (key == "e")
             {
                 var str = galleryobj.data[0].name;
-		        for (var n = 1; n < galleryobj.length(); ++n)
-                    str += `\n${galleryobj.data[n].name}`;
+        		for (var n = 1; n < galleryobj.length(); ++n)
+        		{
+        			var k = galleryobj.data[n];
+                    var name = k.name;
+                    if (k.blob)
+                        name = k.blob.name;
+                    str += `\n${name}`;
+        		}
                 copytext(str);
             }
         }
