@@ -1282,7 +1282,7 @@ var displaylst =
             HEADTOP, 
             HEADBOT,  
             0,
-            folders.length?folders.length*50:-1, 
+            folders.length?folders.length*60:-1, 
             folders.length?12:-1, 
             WRAPROWHEIGHT, 
             12,                 
