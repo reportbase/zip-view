@@ -6791,14 +6791,10 @@ galleryobj.reset = function(obj)
         var e = Math.floor(galleryobj.length()/24)*24+8;
         var k = e-galleryobj.data.length;
         var b = galleryobj.data.length-1;
-        var url = galleryobj.data[b].url;
         for (var n = 0; n < k; ++n)
         {
-            var c = {url:url};
-            galleryobj.data.push(c)    
+            galleryobj.data.push(galleryobj.data[b])    
         }
-        
-        galleryobj.data.length = e;
     }
     
     var berp = _8cnv.timeobj.berp();
