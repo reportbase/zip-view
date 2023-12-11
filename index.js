@@ -3371,13 +3371,12 @@ var keylst =
             }
             else if (key == "e")
             {
-                var str = galleryobj.data[0].name;
+                var k = galleryobj.data[0];
+                var str = k.blob?k.blob.name:k.name;
         		for (var n = 1; n < galleryobj.length(); ++n)
         		{
         			var k = galleryobj.data[n];
-                    var name = k.name;
-                    if (k.blob)
-                        name = k.blob.name;
+                    var name = k.blob ? k.blob.name : k.name;
                     str += `\n${name}`;
         		}
                 copytext(str);
