@@ -4982,21 +4982,19 @@ menuobj.draw = function(noclear)
 		        menuobj.draw();
             }
             
-            thumbimg.onerror = function()
-            {
-                this.count = 0;
-		        menuobj.draw();
-            }
-            
             if (slice.entry)
             {
                 getblobpath(thumbimg, slice)	
             }
             else
             {
-                thumbimg.src = imagepath(slice,_9cnv.sliceobj.value());
-		        if (thumbimg.src.isimage())
-                    slice.name = thumbimg.src.split("/").slice(-1)[0];
+                var path = imagepath(slice,_9cnv.sliceobj.value());
+                if (path)
+                {
+                    thumbimg.src = path;
+    		        if (thumbimg.src.isimage())
+                        slice.name = thumbimg.src.split("/").slice(-1)[0];
+                }
             }
         }
         else
