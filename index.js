@@ -6800,7 +6800,7 @@ galleryobj.reset = function(obj)
         galleryobj.data.length = 
 		    Math.floor(galleryobj.length()/24)*24+8;
         var size = galleryobj.data.length - olen;
-        for (var n = 0; n < olen; ++n)
+        for (var n = 0; n < size; ++n)
         {
             galleryobj.data.push(galleryobj.data[0]);
         }
