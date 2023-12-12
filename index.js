@@ -6802,7 +6802,9 @@ galleryobj.reset = function(obj)
         var size = a - b;
         for (var n = 0; n < size; ++n)
         {
-            galleryobj.data.push(galleryobj.data[0]);
+		    var k = {};
+            Object.assign(k, galleryobj.data[0]);
+            galleryobj.data.push(k);
         }
     }
     
