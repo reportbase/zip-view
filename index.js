@@ -2943,7 +2943,8 @@ var panlst =
             {
                 var obj = canvas.timeobj;
                 var k = (y - canvas.hollyrect.y) / canvas.hollyrect.height;
-                obj.setperc(k);
+                var j = obj.length()*k;
+                obj.set(j);
                 menuobj.draw();
             }
             else
@@ -6060,7 +6061,6 @@ function resize()
     {
         buttonobj.reset()
         contextobj.reset();
-        //headobj.reset();
         if (menuobj.value() != _8cnvctx)
         {
             menuobj.hide();
@@ -6068,13 +6068,14 @@ function resize()
         }
     
         menuobj.show();
+        headobj.draw();
     }
     else
     {
         _4cnv.width = window.innerWidth;
         _4cnv.height = window.innerHeight;
 	    contextobj.reset();
-        //headobj.reset();
+        headobj.draw();
     }
 }
 
