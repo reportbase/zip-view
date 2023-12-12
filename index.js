@@ -6796,12 +6796,13 @@ galleryobj.reset = function(obj)
     var b = galleryobj.length()%24;
     if (b >= 1 && b <= 7)
     {
+        var olen = galleryobj.data.length;
         galleryobj.data.length = 
 		    Math.floor(galleryobj.length()/24)*24+8;
-        for (var n = 0; n < galleryobj.length(); ++n)
+        var size = galleryobj.data.length - olen;
+        for (var n = 0; n < olen; ++n)
         {
-            if (!galleryobj.data[n])
-                galleryobj.data.push(galleryobj.data[0]);
+            galleryobj.data.push(galleryobj.data[0]);
         }
     }
     
