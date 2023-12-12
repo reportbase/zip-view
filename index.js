@@ -2777,7 +2777,6 @@ async function loadimages(blobs)
         if (name.isimage())
         {
             var k = {}
-//            k.name = blob.name;
             k.blob = blob;
             galleryobj.data.push(k);
         }
@@ -2788,7 +2787,7 @@ async function loadimages(blobs)
         }
     }
 
-    galleryobj.init(galleryobj)
+    galleryobj.init()
     menuobj.draw();
 }
 
