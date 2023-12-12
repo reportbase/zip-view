@@ -2787,7 +2787,7 @@ async function loadimages(blobs)
         }
     }
 
-    galleryobj.init()
+    galleryobj.init(galleryobj)
     menuobj.draw();
 }
 
@@ -6810,12 +6810,12 @@ galleryobj.init = function(obj)
     var b = galleryobj.data.length%24;
     if (b >= 1 && b <= 7)
     {
-	var b = galleryobj.data.length;
-	var m = Math.floor(galleryobj.data.length/24);
-	var a = m*24+8;
-	var size = a - b;
-	for (var n = 0; n < size; ++n)
-	    galleryobj.data.push(galleryobj.data[0]);
+	    var b = galleryobj.data.length;
+	    var m = Math.floor(galleryobj.data.length/24);
+	    var a = m*24+8;
+	    var size = a - b;
+	    for (var n = 0; n < size; ++n)
+	        galleryobj.data.push(galleryobj.data[0]);
     }
 
     if (Array.isArray(obj.data))
