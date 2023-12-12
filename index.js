@@ -3718,22 +3718,9 @@ var taplst =
             delete context.canvas.thumbrect;
             context.nostretchcolumn = 0;
             var k = (x - headcnvctx.bossdisplayrect.x) / headcnvctx.bossdisplayrect.width;
-            if (k < 0.2)
-            {
-                rowobj.addperc(-0.05);
-                contextobj.reset()
-            }
-            else if (k > 0.8)
-            {
-                rowobj.addperc(0.05);
-                contextobj.reset()
-            }
-            else
-            {
-                bossdisplayobj.rotate(k < 0.5 ? -1 : 1);
-                contextobj.reset();
-                headobj.draw();
-            }
+            bossdisplayobj.rotate(k < 0.5 ? -1 : 1);
+            contextobj.reset();
+            headobj.draw();
         }
         else if (
             context.pagerect &&
