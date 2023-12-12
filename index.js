@@ -2943,7 +2943,7 @@ var panlst =
             {
                 var obj = canvas.timeobj;
                 var k = (y - canvas.hollyrect.y) / canvas.hollyrect.height;
-                obj.setperc(1 - k);
+                obj.setperc(k);
                 menuobj.draw();
             }
             else
