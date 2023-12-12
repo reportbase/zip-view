@@ -1441,7 +1441,7 @@ buttonobj.reset = function()
     
     for (var n = Math.floor(dheight); n <= Math.floor(bheight); ++n)
         buttonobj.data.push(n);
-    buttonobj.set(dheight);
+    buttonobj.set(0);
 }
 
 function calculateAspectRatioFit(imgwidth, imgheight, rectwidth, rectheight)
