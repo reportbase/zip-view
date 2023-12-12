@@ -2489,8 +2489,6 @@ var wheelst =
         }
         else
         {
-            //if (Math.abs(delta) <= 0.8)
-            //    return;
             menuobj.updown(context, delta, 60)
             menuobj.draw();
             if (!context.swipetimeout)
@@ -2501,8 +2499,6 @@ var wheelst =
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         delta = Math.floor(delta);
-        //if (Math.abs(delta) <= 0.8)
-            //return;
         context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw();
     },
@@ -7108,7 +7104,7 @@ menuobj.updown = function(context, delta, divider)
 {
     var canvas = context.canvas;
     canvas.autodirect = delta < 0 ? 1 : -1;
-    var k = Math.abs(delta)/20;
+    var k = delta/10;
     canvas.slideshow = (Math.PI / canvas.virtualheight) * k;
     canvas.slidereduce = canvas.slideshow / divider;
 }
