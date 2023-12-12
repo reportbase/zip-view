@@ -6809,7 +6809,7 @@ galleryobj.init = function(obj)
         Object.assign(galleryobj, obj);
 
     var b = galleryobj.data.length%24;
-    if (b >= 1 && b <= 8)
+    if (galleryobj.data.length > 24 && b >= 1 && b <= 8)
     {
 	    var b = galleryobj.data.length;
 	    var m = Math.floor(galleryobj.data.length/24);
