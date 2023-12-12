@@ -3166,12 +3166,8 @@ function gotoimage(n)
     var e = Math.berp(0, galleryobj.length()-1, n);
     var k = 1-e;
     var j = k*Math.PI
-    _8cnv.timeobj.set(j);
-    
-    //var k = Math.PI / galleryobj.length() / 2;
-    //_8cnv.timeobj.CURRENT += k;
+    _8cnv.timeobj.set(j);    
     _8cnv.hollyobj.CURRENT = 0;
-    
     menuobj.draw();
     return true;
 }
@@ -6575,9 +6571,6 @@ function setupmenus()
         }
     };
 
-    //if (_5cnv.sliceobj.length() == 1)
-      //  _5cnv.sliceobj.data = [];
-    
     for (var n = 0; n < galleryobj.data.length; ++n)
     {
         var j = galleryobj.data[n];
@@ -6586,7 +6579,9 @@ function setupmenus()
         {
 	        galleryobj.set(this.index);
             gotoimage(this.index+1)
-            return true;
+      	    var k = Math.PI / galleryobj.length() / 2;
+    		_8cnv.timeobj.CURRENT += k;
+          return true;
         };   
     };
 	
