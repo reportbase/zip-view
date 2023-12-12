@@ -4918,21 +4918,24 @@ menuobj.draw = function(noclear)
 	    local.set()	
     }
 
+	var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
     var len = slices.length;
     var delayinterval = Math.PI / len;
-    context.canvas.virtualheight = len * canvas.buttonheight;
+    context.canvas.virtualheight = len * buttonheight;
 
     if (!noclear)
         context.clear();
     if (context.canvas.virtualheight < window.innerHeight && len)
     {
-        canvas.buttonheight = window.innerHeight / len;
-        context.canvas.virtualheight = len * canvas.buttonheight;
+        buttonheight = Math.floor(window.innerHeight / len);
+        buttonheight = buttonheight-buttonheight%2;
+        context.canvas.virtualheight = len * buttonheight;
     }
     else if (context == _8cnvctx)
     {
-        canvas.buttonheight = buttonobj.value();
-        context.canvas.virtualheight = len * canvas.buttonheight * beavobj.value()/100;
+        buttonheight = buttonobj.value();
+        buttonheight = buttonheight-buttonheight%2;
+        canvas.virtualheight = len * buttonheight * beavobj.value()/100;
     }
 
     if (context != _8cnvctx)
@@ -4940,20 +4943,23 @@ menuobj.draw = function(noclear)
         var a = new panel.fill(FILLMENU);
         a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
     }
+
+    canvas.virtualheight = Math.floor(canvas.virtualheight)
+    canvas.virtualheight = canvas.virtualheight - canvas.virtualheight%2;
     
     var current = context.canvas.sliceobj.lerp(
         1 - context.canvas.timeobj.berp());
     if (canvas.lastcurrent != current || !canvas.normal)
     {
         canvas.lastcurrent = current;
-        var size = Math.ceil(rect.height / canvas.buttonheight) + ROTATEANCHORSIAE;
+        var size = Math.ceil(rect.height / buttonheight) + ROTATEANCHORSIAE;
         canvas.normal = util.rotated_list(canvas.rotated, len, current, size);
     }
 
     context.canvas.visibles = [];
     var ctx = context;
     context.centered = 0;
-    var r = new rectangle(0, 0, rect.width, canvas.buttonheight);
+    var r = new rectangle(0, 0, rect.width, buttonheight);
     var lasty = -10000000;
     var delay = 0;
     
@@ -5005,8 +5011,8 @@ menuobj.draw = function(noclear)
             y = Math.round(y);
             var x = rect.width / 2;
             var j = {slice,x,y,n};
-            slice.rect = new rectangle(0, j.y, rect.width, canvas.buttonheight);
-            slice.isvisible = j.y > -canvas.buttonheight && j.y < window.innerHeight;
+            slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
+            slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
 	        if (slice.isvisible)
             {
         	    if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
