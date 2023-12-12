@@ -6057,6 +6057,7 @@ function rotate(pointX, pointY, originX, originY, angle)
 
 function resize()
 {
+	headcnv.width = window.innerWidth;
     if (menuobj.value())
     {
         buttonobj.reset()
