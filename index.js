@@ -6797,8 +6797,8 @@ galleryobj.reset = function(obj)
     if (b >= 1 && b <= 7)
     {
         var olen = galleryobj.data.length;
-        galleryobj.data.length = 
-		    Math.floor(galleryobj.length()/24)*24+8;
+        var m = Math.floor(galleryobj.length()/24);
+        galleryobj.data.length = m*24+8;
         var size = galleryobj.data.length - olen;
         for (var n = 0; n < size; ++n)
         {
