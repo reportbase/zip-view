@@ -3367,7 +3367,7 @@ var keylst =
             }
             else if (key == "z")
             {
-                var k = Math.PI / galleryobj.length() / 2;
+                var k = Math.PI / galleryobj.length() / 4;
     		    _8cnv.timeobj.CURRENT += k;
                 menuobj.draw();
             }
