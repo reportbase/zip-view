@@ -4972,13 +4972,18 @@ menuobj.draw = function(noclear)
         var view = Math.floor(n / IMAGELSTSIZE);
         var thumbimg = thumbimglst[index];
         var thumbfitted = thumbfittedlst[index];
-        if (context == _8cnvctx && thumbimg.view != view)
+        if (context == _8cnvctx && 
+            thumbimg.view != view &&
+            !thumbimg.failed) 
         {
             thumbimg.view = view;
+            thumbimg.slice = slice;
+            thumbimg.failed = 1;
             thumbimg.onload = function()
             {
+                this.failed = 0;
                 this.count = 0;
-		        menuobj.draw();
+                xmenuobj.draw();
             }
             
             if (slice.entry)
