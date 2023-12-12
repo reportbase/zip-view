@@ -6835,7 +6835,15 @@ galleryobj.init = function(obj)
     	})	
 }
 
-if (url.searchParams.has("search"))
+if (url.searchParams.has("path"))
+{
+    var path = url.searchParams.get("path");
+    url.path = path;
+    var k = path.split("/");
+    k.pop();
+    loadgallery(path, k.join("/"));
+}
+else if (url.searchParams.has("search"))
 {
     url.path = "search";
     var path = url.searchParams.get("search");
@@ -6860,14 +6868,6 @@ else if (url.searchParams.has("id"))
 	{
         loadgallery(obj.json);
 	})        
-}
-else if (url.searchParams.has("path"))
-{
-    var path = url.searchParams.get("path");
-    url.path = path;
-    var k = path.split("/");
-    k.pop();
-    loadgallery(path, k.join("/"));
 }
 else
 {
