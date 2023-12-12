@@ -6069,7 +6069,7 @@ function resize()
     {
         buttonobj.reset()
         contextobj.reset();
-        headobj.reset();
+        //headobj.reset();
         if (menuobj.value() != _8cnvctx)
         {
             menuobj.hide();
