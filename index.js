@@ -6796,11 +6796,11 @@ galleryobj.init = function(obj)
         Object.assign(galleryobj, obj);
 
     var b = galleryobj.data.length%24;
-    if (b >= 1 && b <= 7)
+    if (b >= 1 && b <= 8)
     {
 	    var b = galleryobj.data.length;
 	    var m = Math.floor(galleryobj.data.length/24);
-	    var a = m*24+8;
+	    var a = m*24+9;
 	    var size = a - b;
 	    for (var n = 0; n < size; ++n)
 	        galleryobj.data.push(galleryobj.data[0]);
