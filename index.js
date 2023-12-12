@@ -6797,7 +6797,12 @@ galleryobj.reset = function(obj)
     if (b >= 1 && b <= 7)
     {
         galleryobj.data.length = 
-		Math.floor(galleryobj.length()/24)*24+8;
+		    Math.floor(galleryobj.length()/24)*24+8;
+        for (var n = 0; n < galleryobj.length(); ++n)
+        {
+            if (!galleryobj.data[n])
+                galleryobj.data.push({});
+        }
     }
     
     var berp = _8cnv.timeobj.berp();
