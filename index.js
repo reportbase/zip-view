@@ -1386,7 +1386,7 @@ var displaylst =
                 [
                     new panel.expand(new panel.rectangle(canvas.hollyrect), 10, 0),
                     new panel.currentV(
-                        new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1)
+                        new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 0)
                 ]),
                 0,
             ]),
@@ -3975,13 +3975,6 @@ var taplst =
                     showgallery();
                 })
             })
-        }
-        else if (canvas.uploadrect && canvas.uploadrect.hitest(x, y))
-        {
-        }
-        else if (canvas.downloadrect && canvas.downloadrect.hitest(x, y))
-        {
-            download();             
         }
         else if (canvas.gallerydeleterect && canvas.gallerydeleterect.hitest(x, y))
         {
