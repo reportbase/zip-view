@@ -3291,7 +3291,7 @@ var keylst =
                 }
                 else
                 {
-	                menuobj.updown(context, -120, 30)
+	                menuobj.updown(context, -120, 60)
                     if (!context.swipetimeout)
                         context.swipetimeout = 
                             setInterval(function(){menuobj.draw()}, GALLERYMAIN);
@@ -3311,7 +3311,7 @@ var keylst =
                 }
                 else
                 {
-                    menuobj.updown(context, 120, 30)
+                    menuobj.updown(context, 120, 60)
                     if (!context.swipetimeout)
                         context.swipetimeout = 
                             setInterval(function(){menuobj.draw();}, GALLERYMAIN);
@@ -7104,7 +7104,7 @@ menuobj.updown = function(context, delta, divider)
 {
     var canvas = context.canvas;
     canvas.autodirect = delta < 0 ? 1 : -1;
-    var k = Math.abs(delta)/10;
+    var k = Math.abs(delta)/20;
     canvas.slideshow = (Math.PI / canvas.virtualheight) * k;
     canvas.slidereduce = canvas.slideshow / divider;
 }
