@@ -109,7 +109,7 @@ document.addEventListener('visibilitychange', function()
 {
     if (document.visibilityState == 'hidden') 
     { 
-        local.set()
+        //local.set()
     }
     else if (document.visibilityState == 'visible') 
     {
