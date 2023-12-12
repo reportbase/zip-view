@@ -6801,7 +6801,7 @@ galleryobj.reset = function(obj)
         for (var n = 0; n < galleryobj.length(); ++n)
         {
             if (!galleryobj.data[n])
-                galleryobj.data.push({});
+                galleryobj.data.push(galleryobj.data[0]);
         }
     }
     
