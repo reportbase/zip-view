@@ -1762,11 +1762,10 @@ function rightmenu(context, force)
     if (galleryobj.rightctx)
         galleryobj.rightctx.hide()
     
-    context.clear();
+    //context.clear();
     if (!force && menuobj.value() && menuobj.value() != _8cnvctx)
     {
-    	galleryobj.rightctx.hide();
-        menuobj.setindex(_8cnvctx);
+    	menuobj.setindex(_8cnvctx);
     }
     else
     {
