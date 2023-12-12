@@ -2471,7 +2471,7 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-	    delta = math.floor(delta);
+	    delta = Math.floor(delta);
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
         if (ctrl)
@@ -2500,7 +2500,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        delta = math.floor(delta);
+        delta = Math.floor(delta);
         //if (Math.abs(delta) <= 0.8)
             //return;
         context.canvas.hollyobj.addperc(delta / 2000);
@@ -2515,7 +2515,7 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        delta = math.floor(delta);
+        delta = Math.floor(delta);
         menuobj.updown(context, delta, 30);
         if (!context.swipetimeout)
             context.swipetimeout = setInterval(function(){
@@ -2523,7 +2523,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, trackpad)
     {
-        delta = math.floor(delta);
+        delta = Math.floor(delta);
         context.canvas.hollyobj.addperc(delta / 1000);
         menuobj.draw();
     },
@@ -2532,12 +2532,12 @@ var wheelst =
     name: "BOSS",
     wheel: function(context, x, y)
     {
-        delta = math.floor(delta);
+        delta = Math.floor(delta);
         context.elst.push({x,y});
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        delta = math.floor(delta);
+        delta = Math.floor(delta);
         var canvas = context.canvas;
         if (ctrl)
         {
@@ -2566,7 +2566,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     { 
-        delta = math.floor(delta);
+        delta = Math.floor(delta);
         var e = delta/1000;
         if (context.hollyrect &&
             context.hollyrect.hitest(x, y))
