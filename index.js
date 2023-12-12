@@ -4983,7 +4983,7 @@ menuobj.draw = function(noclear)
             {
                 this.failed = 0;
                 this.count = 0;
-                xmenuobj.draw();
+                menuobj.draw();
             }
             
             if (slice.entry)
