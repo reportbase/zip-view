@@ -1439,7 +1439,7 @@ buttonobj.reset = function()
         bwidth = bheight*a;
     }
     
-    for (var n = Math.floor(gheight); n <= Math.floor(bheight); ++n)
+    for (var n = Math.floor(dheight); n <= Math.floor(bheight); ++n)
         buttonobj.data.push(n);
     buttonobj.set(dheight);
 }
