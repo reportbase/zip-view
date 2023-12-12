@@ -3365,6 +3365,12 @@ var keylst =
                 evt.preventDefault();
                 screenfull.toggle();
             }
+            else if (key == "z")
+            {
+                var k = Math.PI / galleryobj.length() / 2;
+    		    _8cnv.timeobj.CURRENT += k;
+                menuobj.draw();
+            }
             else if (key == "e")
             {
                 var k = galleryobj.data[0];
@@ -6394,6 +6400,7 @@ function setupmenus()
                 return true;
             }
         },
+	    
         {
             title: "sidney",
             func: function()
@@ -6402,6 +6409,7 @@ function setupmenus()
                 return true;
             }
         },
+	    
         {
             title: "search",
             func: function()
@@ -6410,6 +6418,7 @@ function setupmenus()
                 return true;
             }
         },
+	    
         {
             title: "secret",
             func: function()
@@ -6579,8 +6588,6 @@ function setupmenus()
         {
 	        galleryobj.set(this.index);
             gotoimage(this.index+1)
-      	    var k = Math.PI / galleryobj.length() / 2;
-    		_8cnv.timeobj.CURRENT += k;
           return true;
         };   
     };
