@@ -1379,8 +1379,7 @@ var displaylst =
     		0,
     		0,
     		0,
-            //new panel.rows([ALIEXTENT,0,ALIEXTENT],
-            new panel.rows([-1,0,-1],
+            new panel.rows([ALIEXTENT,0,ALIEXTENT],
             [
                 0,
                 new panel.layers(
