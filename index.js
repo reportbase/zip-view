@@ -1379,7 +1379,8 @@ var displaylst =
     		0,
     		0,
     		0,
-            new panel.rows([ALIEXTENT,0,ALIEXTENT],
+            //new panel.rows([ALIEXTENT,0,ALIEXTENT],
+            new panel.rows([-1,0,-1],
             [
                 0,
                 new panel.layers(
@@ -2898,7 +2899,6 @@ var panlst =
         canvas.startx = x;
         canvas.starty = y;
         canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
-        canvas.istimeobjrect = canvas.timeobjrect && canvas.timeobjrect.hitest(x, y);
         canvas.ishollyrect = canvas.hollyrect && canvas.hollyrect.hitest(x, y);
     },
     panend: function(context, rect, x, y)
@@ -2912,9 +2912,8 @@ var panlst =
         delete buttonobj.offset;
         delete context.canvas.isvbarect;
         delete context.canvas.hollyobj.offset;
-        delete canvas.istimeobjrect;
         delete canvas.ishollyrect;
-	local.set()    
+	    local.set()    
     }
 },
 {
@@ -2948,13 +2947,6 @@ var panlst =
                 obj.setperc(1 - k);
                 menuobj.draw();
             }
-            else if (canvas.istimeobjrect)
-            {
-                var obj = canvas.hollyobj;
-                var k = (y - canvas.timeobjrect.y) / canvas.timeobjrect.height;
-                obj.setperc(k);
-                menuobj.draw();
-            }
             else
             {
                 var e = canvas.starty - y;
@@ -2974,8 +2966,7 @@ var panlst =
         canvas.starty = y;
         canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
         canvas.ishollyrect = canvas.hollyrect && canvas.hollyrect.hitest(x, y);
-        canvas.istimeobjrect = canvas.timeobjrect && canvas.timeobjrect.hitest(x, y);
-    },
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           },
     panend: function(context, rect, x, y)
     {
         var canvas = context.canvas;
@@ -3363,7 +3354,7 @@ var keylst =
                 menuobj.draw();
                 evt.preventDefault();
             }
-            else if (key == "w")
+            else if (key == "0")
             {
                 evt.preventDefault();
                 buttonobj.fitwidth();
