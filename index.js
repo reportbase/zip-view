@@ -4099,7 +4099,7 @@ var taplst =
             canvas.hollyrect.hitest(x, y))
         {
             var k = (y - canvas.hollyrect.y) / canvas.hollyrect.height;
-            context.canvas.timeobj.setperc(1 - k);
+            context.canvas.timeobj.setperc(k);
             menuobj.draw();
             return true;
         }
