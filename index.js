@@ -3367,9 +3367,14 @@ var keylst =
             }
             else if (key == "z")
             {
-                var k = Math.PI / galleryobj.length() / 4;
-    		    _8cnv.timeobj.CURRENT += k;
+		var k = canvas.timeobj.length() / galleryobj.length() / 2;
+                canvas.timeobj.rotate(k);
+                galleryobj.rotate(-1);
                 menuobj.draw();
+		    
+                //var k = Math.PI / galleryobj.length() / 4;
+    		//    _8cnv.timeobj.CURRENT += k;
+                //menuobj.draw();
             }
             else if (key == "e")
             {
