@@ -6868,7 +6868,7 @@ galleryobj.init = function(obj)
 	    var size = a - b;
 	    for (var n = 0; n < size; ++n)
         {
-            var k = galleryobj.data[0]
+            var k = {}
             k.url = "res/pad.jpg"
 	        galleryobj.data.push(k);
         }
