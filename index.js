@@ -1338,9 +1338,6 @@ var displaylst =
             return;        
         var bh = rect.height * 0.4;
         const rainstep = Math.min(420,window.innerWidth-60);
-        var hide = menuobj.value() && menuobj.value() != _8cnvctx;
-	    if (hide)
-		    return;
         var a = new panel.rows([0, SCROLLEXTENT, 6],
         [
             0,
@@ -4955,7 +4952,7 @@ menuobj.show = function()
     }
 
     local.set()	
-    menuobj.draw(1);    
+    menuobj.draw();    
 }
 
 //menuobj draw
