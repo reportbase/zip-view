@@ -5032,7 +5032,7 @@ menuobj.draw = function(noclear)
             {
                 this.failed = 0;
                 this.count = 0;
-                menuobj.draw();
+//                menuobj.draw();
             }
             
             if (slice.entry)
