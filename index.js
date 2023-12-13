@@ -1820,14 +1820,15 @@ function leftmenu(context)
 	    galleryobj.leftctx.hide();
         galleryobj.leftctx = context;
         menuobj.setindex(context);
+        menuobj.show();
     }
     else
     {
         galleryobj.leftctx = context;
         menuobj.setindex(context);
+        menuobj.show();
     }
 
-   // menuobj.show();
     headobj.draw();
 }
 
