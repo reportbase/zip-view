@@ -6380,8 +6380,8 @@ function closemenu()
     var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
     displayobj.set(k);
     headobj.draw();
-	//menuobj.show();
-    //menuobj.draw();
+    //menuobj.show();
+    menuobj.draw();
 }
 
 function closeboss()
