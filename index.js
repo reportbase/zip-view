@@ -4919,10 +4919,8 @@ menuobj.show = function()
         return;
     var canvas = context.canvas;
 
+	//todo: hide when menu is showing
     var display = canvas.display;
-    if (context != _8cnvctx)
-        display = "DEFAULT"
-    
     var k = displaylst.findIndex(function(a){return a.name == display});
     displayobj.set(k);
     
