@@ -1832,6 +1832,10 @@ function leftmenu(context)
 
 function rightmenu(context, force)
 {
+    var k = displaylst.findIndex(function(a){return a.name == "DEFAULT"});
+    displayobj.set(k);
+    menuobj.draw();
+   
 	if (galleryobj.leftctx)
         galleryobj.leftctx.hide()
     if (galleryobj.rightctx)
