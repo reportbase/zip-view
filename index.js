@@ -1304,6 +1304,7 @@ var displaylst =
     name: "GALLERY",
     draw: function(context, rect, user, time)
     {    
+        //todo dont draw wnen menu open
         var canvas = context.canvas;
         context.save();
         canvas.timeobjrect = new rectangle();
@@ -5032,7 +5033,8 @@ menuobj.draw = function(noclear)
             {
                 this.failed = 0;
                 this.count = 0;
-//                menuobj.draw();
+                menuobj.draw();
+		        //todo broken when = IMAGELSTSIZE
             }
             
             if (slice.entry)
