@@ -3450,8 +3450,8 @@ var keylst =
             {
                 var e = Math.PI/galleryobj.length()/2;
                 var j = Math.PI*(buttonobj.value()/canvas.virtualheight/2);
-		        var k = e-j;
-		        _8cnv.timeobj.CURRENT -= k;
+		        var k = j-e;
+		        _8cnv.timeobj.CURRENT += k;
                 menuobj.draw();
             }
             else if (key == "e")
