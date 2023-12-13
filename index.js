@@ -6867,7 +6867,11 @@ galleryobj.init = function(obj)
 	    var a = m*24+9;
 	    var size = a - b;
 	    for (var n = 0; n < size; ++n)
-	        galleryobj.data.push(galleryobj.data[0]);
+        {
+            var k = galleryobj.data[0]
+            k.url = "res/pad.jpg"
+	        galleryobj.data.push(k);
+        }
     }
 
     if (Array.isArray(obj.data))
