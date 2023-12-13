@@ -3367,9 +3367,9 @@ var keylst =
             }
             else if (key == "z")
             {
-		var k = canvas.timeobj.length() / galleryobj.length() / 2;
-                canvas.timeobj.rotate(k);
-                galleryobj.rotate(-1);
+		        var j = buttonobj.value() / window.innerHeight;
+                var e = window.innerHeight / canvas.virtualheight / 2;
+                canvas.timeobj.rotate(e);
                 menuobj.draw();
 		    
                 //var k = Math.PI / galleryobj.length() / 4;
