@@ -4973,8 +4973,7 @@ menuobj.draw = function(nodisplay)
     var delayinterval = Math.PI / len;
     context.canvas.virtualheight = len * buttonheight;
 
-    if (!noclear)
-        context.clear();
+    context.clear();
     if (context.canvas.virtualheight < window.innerHeight && len)
     {
         buttonheight = Math.floor(window.innerHeight / len);
