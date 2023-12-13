@@ -48,7 +48,7 @@ const SEARCHFRAME = "rgba(255,255,255,0.5)";
 const TRANSPARENT = "rgba(0,0,0,0)";
 const FILLBAR = "rgba(0,0,0,0.3)";
 const NUBAR = "rgba(255,255,255,0.8)";
-const FILLMENU = "rgba(0,0,0,0.6)";
+const FILLMENU = "rgba(0,0,0,0.75)";
 const ARROWFILL = "white";
 const SCROLLEXTENT = 16;
 const SCROLLMARGIN = 6;
@@ -4919,8 +4919,7 @@ menuobj.show = function()
         return;
     var canvas = context.canvas;
 
-	//todo: hide when menu is showing
-    var display = canvas.display;
+	var display = canvas.display;
     var k = displaylst.findIndex(function(a){return a.name == display});
     displayobj.set(k);
     
