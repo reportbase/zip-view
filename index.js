@@ -1827,7 +1827,7 @@ function leftmenu(context)
         menuobj.setindex(context);
     }
 
-    menuobj.show();
+   // menuobj.show();
     headobj.draw();
 }
 
