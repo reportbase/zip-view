@@ -1351,8 +1351,9 @@ var displaylst =
             folders = value.folder.split("/");       
         var data = `\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`;
         var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
-        var bt = `\u{25C0}    ${buttonobj.value()} x ${w.toFixed(0)}    \u{25B6}`;
-
+        if (!w)
+            w = buttonobj.value();
+	    var bt = `\u{25C0}    ${buttonobj.value()} x ${w.toFixed(0)}    \u{25B6}`;
         var a = new panel.rowsA(
         [
             HEADTOP, 
@@ -1845,14 +1846,15 @@ function rightmenu(context, force)
     if (!force && menuobj.value() && menuobj.value() != _8cnvctx)
     {
     	menuobj.setindex(_8cnvctx);
+        menuobj.draw();
     }
     else
     {
 	    galleryobj.rightctx = context;
     	menuobj.setindex(context);
+        menuobj.show();
     }
 
-    menuobj.show();
     headobj.draw();
 }
 
