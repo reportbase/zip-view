@@ -1278,8 +1278,8 @@ var displaylst =
         if (value && value.folder)
             folders = value.folder.split("/");       
         var data = `\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`;
-        var w = Math.min(360, rect.width - 100);
-        var bt = `\u{25C0}    ${(buttonobj.berp()*100).toFixed(2)}%    \u{25B6}`;
+        var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
+        var bt = `\u{25C0}    ${buttonobj.value()}x${w}    \u{25B6}`;
 
         var a = new panel.rowsA(
         [
