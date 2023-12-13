@@ -5032,7 +5032,7 @@ menuobj.draw = function(nodisplay)
             {
                 this.failed = 0;
                 this.count = 0;
-                menuobj.draw();
+                menuobj.draw(nodisplay);
 		        //todo broken when = IMAGELSTSIZE
             }
             
