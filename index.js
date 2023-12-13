@@ -3451,7 +3451,7 @@ var keylst =
 		    //todo
                 var k = (buttonobj.value() - window.innerHeight) / canvas.virtualheight / 2;
                 var e = k*Math.PI;
-                _8cnv.timeobj.CURRENT += e;
+                _8cnv.timeobj.CURRENT -= e;
                 menuobj.draw();
             }
             else if (key == "e")
