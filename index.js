@@ -1802,6 +1802,10 @@ panel.fitwidth = function()
 
 function leftmenu(context)
 {
+    var k = displaylst.findIndex(function(a){return a.name == "DEFAULT"});
+    displayobj.set(k);
+    menuobj.draw();
+    
 	if (galleryobj.rightctx)
         galleryobj.rightctx.hide()
     
@@ -4914,13 +4918,6 @@ window.onpopstate = function ()
 //menuobj show
 menuobj.show = function()
 {
-    if (this.value() == _8cnvctx)
-    {
-        var k = displaylst.findIndex(function(a){return a.name == "DEFAULT"});
-        displayobj.set(k);
-        menuobj.draw();
-    }
-    
     var context = this.value();
     if (!context)
         return;
