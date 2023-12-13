@@ -3367,7 +3367,7 @@ var keylst =
             }
             else if (key == "z")
             {
-                var k = buttonobj.value() / window.innerHeight;
+                var k = buttonobj.value() / window.innerHeight / 2;
                 var j = Math.PI / galleryobj.length();
                 var e = k*j;
     		    _8cnv.timeobj.CURRENT += e;
