@@ -3367,11 +3367,10 @@ var keylst =
             }
             else if (key == "z")
             {
-		        var index = 1 - canvas.timeobj.berp();
-                index *= galleryobj.length();
-                var j = Math.floor(index);
-                var k = j*(Math.PI / galleryobj.length());
-    		    _8cnv.timeobj.CURRENT = k;
+                var k = buttonobj.value() / window.innerHeight;
+                var j = Math.Pi / galleryobj.length();
+                var e = k*j;
+    		    _8cnv.timeobj.CURRENT += e;
                 menuobj.draw();
             }
             else if (key == "e")
