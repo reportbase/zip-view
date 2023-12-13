@@ -3448,10 +3448,10 @@ var keylst =
             }
             else if (key == "z")
             {
-		    //todo
-                var k = (buttonobj.value() - window.innerHeight) / canvas.virtualheight / 2;
-                var e = k*Math.PI;
-                _8cnv.timeobj.CURRENT -= e;
+		        var k = window.innerHeight / canvas.virtualheight;
+		        var j = buttonobj.value() / canvas.virtualheight;
+                var e = (j-k)*Math.PI;
+                _8cnv.timeobj.CURRENT += e;
                 menuobj.draw();
             }
             else if (key == "e")
