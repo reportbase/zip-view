@@ -1301,6 +1301,12 @@ var bossdisplayobj = new circular_array("", bossdisplaylst);
 var displaylst = 
 [
 {
+    name: "DEFAULT",
+    draw: function(context, rect, user, time)
+    {
+    }
+},
+{
     name: "GALLERY",
     draw: function(context, rect, user, time)
     {    
@@ -4912,8 +4918,12 @@ menuobj.show = function()
     if (!context)
         return;
     var canvas = context.canvas;
+
+    var display = canvas.display;
+    if (context != _8cnvctx)
+        display = "DEFAULT"
     
-    var k = displaylst.findIndex(function(a){return a.name == canvas.display});
+    var k = displaylst.findIndex(function(a){return a.name == display});
     displayobj.set(k);
     
     if (canvas.width_ > window.innerWidth)
@@ -4934,11 +4944,11 @@ menuobj.show = function()
     }
 
     local.set()	
-    menuobj.draw(1);    
+    menuobj.draw();    
 }
 
 //menuobj draw
-menuobj.draw = function(nodisplay)
+menuobj.draw = function()
 {
     var context = this.value();
     if (!context)
@@ -5031,7 +5041,7 @@ menuobj.draw = function(nodisplay)
             {
                 this.failed = 0;
                 this.count = 0;
-                menuobj.draw(nodisplay);
+                menuobj.draw();
 		        //todo broken when = IMAGELSTSIZE
             }
             
@@ -5089,11 +5099,8 @@ menuobj.draw = function(nodisplay)
     delete context.cursorect;
     delete context.folderect;
 
-    if (!nodisplay)
-    {
-        displayobj.value().draw(context, rect, 0, 0);
-        context.canvas.footer.draw(context, rect, 0, 0);
-    }
+    displayobj.value().draw(context, rect, 0, 0);
+    context.canvas.footer.draw(context, rect, 0, 0);
 }
 
 function resetview()
