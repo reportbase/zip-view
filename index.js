@@ -1846,7 +1846,7 @@ function rightmenu(context, force)
     if (!force && menuobj.value() && menuobj.value() != _8cnvctx)
     {
     	menuobj.setindex(_8cnvctx);
-        menuobj.draw();
+        //menuobj.draw();
     }
     else
     {
