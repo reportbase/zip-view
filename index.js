@@ -3449,7 +3449,7 @@ var keylst =
             else if (key == "z")
             {
 		    //todo
-                var k = (buttonobj.value() - window.innerHeight) / canvas.virtualheight;
+                var k = (buttonobj.value() - window.innerHeight) / canvas.virtualheight / 2;
                 var e = k*Math.PI;
                 _8cnv.timeobj.CURRENT += e;
                 menuobj.draw();
