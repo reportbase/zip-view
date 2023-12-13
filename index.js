@@ -3449,11 +3449,6 @@ var keylst =
             else if (key == "z")
             {
                 buttonobj.reset();
-                var index = 1 - canvas.timeobj.berp();
-                index *= galleryobj.length();
-                index = Math.floor(index);
-                gotoimage(index+1);
-                
                 var e = Math.PI/galleryobj.length()/2;
                 var j = Math.PI*(buttonobj.value()/canvas.virtualheight/2);
 		        var k = j-e;
