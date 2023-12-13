@@ -62,9 +62,9 @@ const ROTATEANCHORSIAE = 3;
 const BOSS = 0;
 const GALLERY = 1;
 const MENU = 2;
-const BOSSMAIN = 4;
-const MENUMAIN = 4;
-const GALLERYMAIN = 4;
+const BOSSMAIN = 8;
+const MENUMAIN = 8;
+const GALLERYMAIN = 8;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 24;
@@ -72,44 +72,23 @@ const IMAGELSTSIZE = 24;
 
 function setjson(key, value)
 {
-    try
-    {
-        localStorage.setItem(key, JSON.stringify(value));
-    }
-    catch(e)
-    {
-    }
+    try {localStorage.setItem(key, JSON.stringify(value));} catch(e) {}
 }
 
 function removejson(key)
 {
-    try
-    {
-        localStorage.removeItem(key);
-    }
-    catch(e)
-    {
-    }
+    try {localStorage.removeItem(key);} catch(e) {}
 }
 
 function getjson(key)
 {
-    try
-    {
-        var k = localStorage.getItem(key);
-        if (k)
-            return JSON.parse(k);
-    }
-    catch(e)
-    {
-    }
+    try {var k = localStorage.getItem(key); if (k) return JSON.parse(k);} catch(e){}
 }
 
 document.addEventListener('visibilitychange', function() 
 {
     if (document.visibilityState == 'hidden') 
     { 
-        //local.set()
     }
     else if (document.visibilityState == 'visible') 
     {
