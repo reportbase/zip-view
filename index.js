@@ -1366,7 +1366,7 @@ var displaylst =
             folders = value.folder.split("/");       
         var data = `\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`;
         var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
-        var bt = `\u{25C0}    ${buttonobj.value()} x ${w}    \u{25B6}`;
+        var bt = `\u{25C0}    ${buttonobj.value()} x ${w.toFixed(0)}    \u{25B6}`;
 
         var a = new panel.rowsA(
         [
