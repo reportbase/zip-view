@@ -3367,14 +3367,12 @@ var keylst =
             }
             else if (key == "z")
             {
-		        var j = buttonobj.value() / window.innerHeight;
-                var e = window.innerHeight / canvas.virtualheight / 2;
-                canvas.timeobj.rotate(e);
+		        var index = 1 - canvas.timeobj.berp();
+                index *= galleryobj.length();
+                var j = Math.floor(index);
+                var k = j*(Math.PI / galleryobj.length());
+    		    _8cnv.timeobj.CURRENT = k;
                 menuobj.draw();
-		    
-                //var k = Math.PI / galleryobj.length() / 4;
-    		//    _8cnv.timeobj.CURRENT += k;
-                //menuobj.draw();
             }
             else if (key == "e")
             {
