@@ -3450,7 +3450,7 @@ var keylst =
             {
 		    //todo
                 var k = (buttonobj.value() - window.innerHeight) / canvas.virtualheight;
-                var e = k*Math.pi;
+                var e = k*Math.PI;
                 _8cnv.timeobj.CURRENT += e;
                 menuobj.draw();
             }
