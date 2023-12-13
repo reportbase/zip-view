@@ -1304,7 +1304,6 @@ var displaylst =
     name: "GALLERY",
     draw: function(context, rect, user, time)
     {    
-        //todo dont draw wnen menu open
         var canvas = context.canvas;
         context.save();
         canvas.timeobjrect = new rectangle();
@@ -3432,6 +3431,7 @@ var keylst =
             }
             else if (key == "z")
             {
+		    //todo
                 var j = Math.PI / galleryobj.length();
                 var k = buttonobj.value() / canvas.virtualheight;
                 var e = (k-j)*j
@@ -4934,11 +4934,11 @@ menuobj.show = function()
     }
 
     local.set()	
-    menuobj.draw();    
+    menuobj.draw(1);    
 }
 
 //menuobj draw
-menuobj.draw = function(noclear)
+menuobj.draw = function(nodisplay)
 {
     var context = this.value();
     if (!context)
@@ -4964,8 +4964,7 @@ menuobj.draw = function(noclear)
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
 
-	    if (!noclear)
-            resetview()
+	    resetview()
 	    local.set()	
     }
 
@@ -5091,8 +5090,11 @@ menuobj.draw = function(noclear)
     delete context.cursorect;
     delete context.folderect;
 
-    displayobj.value().draw(context, rect, 0, 0);
-    context.canvas.footer.draw(context, rect, 0, 0);
+    if (!nodisplay)
+    {
+        displayobj.value().draw(context, rect, 0, 0);
+        context.canvas.footer.draw(context, rect, 0, 0);
+    }
 }
 
 function resetview()
