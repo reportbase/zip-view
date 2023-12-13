@@ -1173,6 +1173,94 @@ var bossdisplaylst =
                     0,
                 ]),
                 0,
+                1?0:new panel.cols([0, rainstep, 0],
+                [
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 8, 8),
+                        new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
+                        new panel.shrink(new panel.currentH(new panel.rounded("white", 0, 
+                                TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
+                    ]),
+                    0,
+                ]),
+                0
+            ]);
+
+            if (headcnv.height)
+            a.draw(context, rect,
+            [
+                0,
+		        0,
+                zoomobj,
+                0,
+                stretchobj,
+                0,
+            ]);
+
+            var data = [];
+            var index = galleryobj.current();
+            data.push(`\u{25C0}   ${index} of ${galleryobj.length()}   \u{25B6}`);
+        
+            var a = new panel.rowsA([HEADTOP, HEADBOT, 0, 
+                                 (data.length*WRAPROWHEIGHT), 
+                                 20],
+            [
+                0,
+                0,
+                0,
+                0,
+                0,
+            ]);
+        
+            if (headcnv.height)
+            a.draw(context, rect,
+            [
+                0,
+                0,
+                0,
+                data,
+                0,
+            ]);
+        
+            context.restore();   
+    }
+},
+{
+    name: "STRETCH",
+    title: "Stretch",
+    draw: function(context, rect, user, time)
+    {
+            var canvas = context.canvas;
+            context.pagerect = new rectangle();
+            context.zoomrect = new rectangle();
+            context.stretchrect = new rectangle();
+            const rainstep = Math.min(420,window.innerWidth-60);
+        
+            if (
+                !photo.image ||
+                !photo.image.complete ||
+                !photo.image.naturalHeight)
+                return;
+
+            var a = new panel.rowsA([HEADHEIGHT, 12, SCROLLEXTENT, 12, SCROLLEXTENT, 0],
+            [
+                0,
+		        0,
+                1?0:new panel.cols([0,rainstep,0],
+                [
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 8, 8),
+                        new panel.expand(new panel.rectangle(context.zoomrect), 10, 1),
+                        new panel.shrink(new panel.currentH(new panel.rounded("white", 
+                                0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
+                    ]),
+                    0,
+                ]),
+                0,
                 new panel.cols([0, rainstep, 0],
                 [
                     0,
@@ -1226,7 +1314,7 @@ var bossdisplaylst =
         
             context.restore();   
     }
-}
+}	
 ];
 
 var bossdisplayobj = new circular_array("", bossdisplaylst);
@@ -3212,7 +3300,7 @@ var swipelst = [
     swipeupdown: function(context, rect, x, y, evt)
     {
         var k = evt.type == "swipeup" ? 1 : -1;
-        menuobj.updown(context, k * 50, 50);
+        menuobj.updown(context, k * 25, 25);
 	    if (!context.swipetimeout)
             context.swipetimeout = setInterval(
                 function(){menuobj.draw();}, MENUMAIN);
