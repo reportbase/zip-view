@@ -3449,9 +3449,8 @@ var keylst =
             else if (key == "z")
             {
 		    //todo
-                var j = Math.PI / galleryobj.length();
-                var k = buttonobj.value() / canvas.virtualheight;
-                var e = (k-j)*j
+                var k = (buttonobj.value() = window.innerHeight) / canvas.virtualheight;
+                var e = k*Math.pi;
                 _8cnv.timeobj.CURRENT += j;
                 menuobj.draw();
             }
