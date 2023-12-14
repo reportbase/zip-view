@@ -6919,9 +6919,9 @@ if (url.path)
         loadgallery(obj.json);
 	})        
 }
-else if (url.searchParams.has("path"))
+else if (url.searchParams.has("url"))
 {
-    var path = url.searchParams.get("path");
+    var path = url.searchParams.get("url");
     url.path = path;
     var k = path.split("/");
     k.pop();
