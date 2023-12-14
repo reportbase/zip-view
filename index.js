@@ -2895,6 +2895,9 @@ function loadfiles(files)
     {
         loadimages(files);
     }
+
+    buttonobj.reset();
+    menuobj.draw();    
 }
 
 var droplst = 
@@ -2905,8 +2908,7 @@ var droplst =
     {
         closemenu()
         closeboss()
-	buttonobj.reset();
-        loadfiles(evt.dataTransfer.files);
+	loadfiles(evt.dataTransfer.files);
     },
 }, 
 ];
