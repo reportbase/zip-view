@@ -2536,7 +2536,6 @@ _4ham.get('pinch').set({enable: true});
 _8ham.get('pinch').set({enable: true});
 
 var galleryobj = new circular_array("", 0);
-var deltalst = new MovingAverage();
 var deltalst2 = [];
 var wheelst = 
 [
@@ -2554,7 +2553,6 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-	delta = deltalst.update(delta);    
 	deltalst2.push(delta);
 	//delta = Math.floor(delta);
         var canvas = context.canvas;
@@ -2583,7 +2581,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        delta = Math.floor(delta);
+        //delta = Math.floor(delta);
         context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw();
     },
@@ -4987,8 +4985,7 @@ menuobj.draw = function()
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
 
-        deltalst.values = [];
-	    resetview()
+           resetview()
 	    local.set()	
     }
 
