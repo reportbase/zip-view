@@ -3462,6 +3462,8 @@ var keylst =
         		for (var n = 1; n < galleryobj.length(); ++n)
         		{
         			var k = galleryobj.data[n];
+                    if (k.pad)
+                        continue;
                     var name = k.blob ? k.blob.name : k.name;
                     str += `\n${name}`;
         		}
@@ -6888,6 +6890,7 @@ galleryobj.init = function(obj)
         {
             var k = {}
             k.url = "res/pad.jpg"
+            k.pad = 1;
 	        galleryobj.data.push(k);
         }
     }
