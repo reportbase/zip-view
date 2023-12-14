@@ -6908,9 +6908,9 @@ galleryobj.init = function(obj)
     	})	
 }
 
-if (url.path)
+if (url.pathname.length > 1)
 {
-    var id = url.path;
+    var id = url.path.split("/")[1];
 	url.path = id;
 	fetch(`https://gullery.reportbase5836.workers.dev/${id}`)
 	.then((response) => jsonhandler(response))
