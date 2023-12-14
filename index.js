@@ -4987,6 +4987,7 @@ menuobj.draw = function()
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
 
+        deltalst.values = [];
 	    resetview()
 	    local.set()	
     }
