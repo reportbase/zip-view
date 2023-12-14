@@ -6111,7 +6111,7 @@ panel.currentV = function(panel, extent, rev)
         context.save();
         var len = user.length();
 	    var current = user.current();
-        var k = rev ? len - current : current;
+        var k = rev ? current : len - current;
         var nub = Math.nub(k, len, extent, rect.height);
 	    var y = rect.y
         var r = new rectangle(rect.x, y + nub, rect.width, extent);
@@ -6883,7 +6883,9 @@ galleryobj.init = function(obj)
         Object.assign(galleryobj, obj);
 
     var b = galleryobj.data.length%24;
-    if (galleryobj.data.length > 24 && b >= 1 && b <= 8)
+    if (Array.isArray(galleryobj.data) && 
+        galleryobj.data.length > 24 && 
+        b >= 1 && b <= 8)
     {
 	    var b = galleryobj.data.length;
 	    var m = Math.floor(galleryobj.data.length/24);
@@ -6917,6 +6919,17 @@ galleryobj.init = function(obj)
 if (url.pathname.length > 1)
 {
     var id = url.pathname.split("/")[1];
+	url.path = id;
+	fetch(`https://gullery.reportbase5836.workers.dev/${id}`)
+	.then((response) => jsonhandler(response))
+	.then(function(obj)
+	{
+        loadgallery(obj.json);
+	})        
+}
+else if (url.searchParams.has("id"))
+{
+    var id = url.searchParams.get("id");
 	url.path = id;
 	fetch(`https://gullery.reportbase5836.workers.dev/${id}`)
 	.then((response) => jsonhandler(response))
