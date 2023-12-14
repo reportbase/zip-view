@@ -589,8 +589,7 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.closerect = new rectangle();
-        canvas.uploadrect = new rectangle();
-        canvas.downloadrect = new rectangle();
+        canvas.homeresetrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
 		[
 			new panel.layers(
@@ -608,7 +607,7 @@ var footlst =
 					0,
 					new panel.layers(
 					[
-						new panel.rectangle(canvas.downloadrect),
+						new panel.rectangle(canvas.homeresetrect),
 						new panel.text(),
 					]),
 					0
@@ -3749,13 +3748,6 @@ var taplst =
                 contextobj.reset()
             }
         }
-        else if (headcnv.height && 
-                 headcnvctx.downloadrect && 
-                 headcnvctx.downloadrect.hitest(x, y))
-        {
-	        canvas.timeobj.set(0);
-		menuobj.draw()
-        }
         else if (context.timerect && context.timerect.hitest(x, y))
         {
             var k = (x - context.timerect.x) / context.timerect.width;
@@ -4088,6 +4080,12 @@ var taplst =
                 })
             });
         }    
+        else if (canvas.homeresetrect && 
+                 canvas.homeresetrect.hitest(x, y))
+        {
+	        canvas.timeobj.set(0);
+		menuobj.draw()
+        }
         else if (canvas.galleryaddrect && canvas.galleryaddrect.hitest(x, y))
         {
             var id = document.getElementById("gallery-add-id");
@@ -6109,10 +6107,10 @@ panel.currentV = function(panel, extent, rev)
     {
         context.save();
         var len = user.length();
-	    var current = user.current();
+	var current = user.current();
         var k = rev ? len - current : current;
         var nub = Math.nub(k, len, extent, rect.height);
-	    var y = rect.y
+	var y = rect.y
         var r = new rectangle(rect.x, y + nub, rect.width, extent);
         panel.draw(context, r, user, time);
         context.restore();
