@@ -6908,7 +6908,18 @@ galleryobj.init = function(obj)
     	})	
 }
 
-if (url.searchParams.has("path"))
+if (url.path)
+{
+    var id = url.path;
+	url.path = id;
+	fetch(`https://gullery.reportbase5836.workers.dev/${id}`)
+	.then((response) => jsonhandler(response))
+	.then(function(obj)
+	{
+        loadgallery(obj.json);
+	})        
+}
+else if (url.searchParams.has("path"))
 {
     var path = url.searchParams.get("path");
     url.path = path;
@@ -6930,17 +6941,6 @@ else if (url.searchParams.has("sidney"))
     fetch(`https://sidney.reportbase5836.workers.dev`)
         .then((response) => jsonhandler(response))
         .then((obj) => galleryobj.init(obj))
-}
-else if (url.searchParams.has("id"))
-{
-    var id = url.searchParams.get("id");
-	url.path = id;
-	fetch(`https://gullery.reportbase5836.workers.dev/${id}`)
-	.then((response) => jsonhandler(response))
-	.then(function(obj)
-	{
-        loadgallery(obj.json);
-	})        
 }
 else
 {
