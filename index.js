@@ -2536,7 +2536,8 @@ _4ham.get('pinch').set({enable: true});
 _8ham.get('pinch').set({enable: true});
 
 var galleryobj = new circular_array("", 0);
-var deltalst = []
+var deltalst = new MovingAverage();
+var deltalst2 = [];
 var wheelst = 
 [
 {
@@ -2553,14 +2554,15 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-	deltalst.push(delta);
-	delta = Math.floor(delta);
+	delta = deltalst.update(delta);    
+	deltalst2.push(delta);
+	//delta = Math.floor(delta);
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
         if (ctrl)
         {
-            //if (!(context.elst.length%3))
-            //    return;
+            if (!(context.elst.length%3))
+                return;
             var j = buttonobj.length()/90;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
@@ -2934,8 +2936,8 @@ var panlst =
         if (canvas.pinching)
             return;
         context.elst.push({x,y});
-        if (context.elst.length % 2)
-            return;        	    
+        //if (context.elst.length % 2)
+        //    return;        	    
         
         if (type == "panleft" || type == "panright")
         {
@@ -3006,8 +3008,8 @@ var panlst =
     {
         var canvas = context.canvas;
         context.elst.push({x,y});
-        if (context.elst.length % 2)
-            return;
+        //if (context.elst.length % 2)
+        //    return;
         var hollyobj = context.canvas.hollyobj;
         if (hollyobj && (type == "panleft" || type == "panright"))
         {
@@ -3067,8 +3069,8 @@ var panlst =
     {
         var canvas = context.canvas;
         context.elst.push({x,y});
-        if (context.elst.length % 2)
-            return;
+        //if (context.elst.length % 2)
+        //    return;
         if (canvas.pinching)
             return;
         if (context.canvas.isthumb)
