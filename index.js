@@ -3435,6 +3435,7 @@ var keylst =
             {
                 evt.preventDefault();
                 buttonobj.reset();
+		        menuobj.draw();    
             }
             else if (key == "x")
             {
