@@ -2536,7 +2536,6 @@ _4ham.get('pinch').set({enable: true});
 _8ham.get('pinch').set({enable: true});
 
 var galleryobj = new circular_array("", 0);
-var deltalst2 = [];
 var wheelst = 
 [
 {
@@ -2553,7 +2552,6 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-	deltalst2.push(delta);
 	//delta = Math.floor(delta);
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
