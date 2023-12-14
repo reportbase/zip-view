@@ -3027,7 +3027,7 @@ var panlst =
                 var obj = canvas.timeobj;
                 var k = (y - canvas.hollyrect.y) / canvas.hollyrect.height;
                 var j = obj.length()*k;
-                obj.set(1-j);
+                obj.set(j);
                 menuobj.draw();
             }
             else
@@ -4192,7 +4192,7 @@ var taplst =
             var obj = canvas.timeobj;
             var k = (y - canvas.hollyrect.y) / canvas.hollyrect.height;
             var j = obj.length()*k;
-            obj.set(1-j);
+            obj.set(j);
             menuobj.draw();
             return true;
         }
@@ -6111,7 +6111,7 @@ panel.currentV = function(panel, extent, rev)
         context.save();
         var len = user.length();
 	    var current = user.current();
-        var k = rev ? len - current : current;
+        var k = rev ? current : len - current;
         var nub = Math.nub(k, len, extent, rect.height);
 	    var y = rect.y
         var r = new rectangle(rect.x, y + nub, rect.width, extent);
