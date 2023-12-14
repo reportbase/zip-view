@@ -2536,7 +2536,7 @@ _4ham.get('pinch').set({enable: true});
 _8ham.get('pinch').set({enable: true});
 
 var galleryobj = new circular_array("", 0);
-
+var deltalst = []
 var wheelst = 
 [
 {
@@ -2553,13 +2553,14 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-	    delta = Math.floor(delta);
+	deltalst.push(delta);
+	delta = Math.floor(delta);
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
         if (ctrl)
         {
-            if (!(context.elst.length%3))
-                return;
+            //if (!(context.elst.length%3))
+            //    return;
             var j = buttonobj.length()/90;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
