@@ -600,33 +600,30 @@ var footlst =
 				new panel.text(),
 			]),
 			0,
-			1?0:new panel.layers(
+			new panel.layers(
 			[
 				new panel.fill(FOOTBTNCOLOR),
-				new panel.colsA([0,0],
+				new panel.colsA([0,0,0],
 				[
+					0,
 					new panel.layers(
 					[
 						new panel.rectangle(canvas.downloadrect),
 						new panel.text(),
 					]),
-					new panel.layers(
-					[
-						new panel.rectangle(canvas.uploadrect),
-						new panel.text(),
-					]),
+					0
 				])                            
 			])
 		]);
         
         a.draw(context, rect, 
 	   	[
-		   `\u{25C0}   Images`,
-		   0,
-		   [
+		    `\u{25C0}   Images`,
+		    0,
+		    [
 			   `Download`,
 			   `Upload`,
-			], 
+		    ], 
 		]);
         
         context.restore();    
