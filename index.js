@@ -6910,7 +6910,7 @@ galleryobj.init = function(obj)
 
 if (url.pathname.length > 1)
 {
-    var id = url.path.split("/")[1];
+    var id = url.pathname.split("/")[1];
 	url.path = id;
 	fetch(`https://gullery.reportbase5836.workers.dev/${id}`)
 	.then((response) => jsonhandler(response))
@@ -6919,9 +6919,9 @@ if (url.pathname.length > 1)
         loadgallery(obj.json);
 	})        
 }
-else if (url.searchParams.has("url"))
+else if (url.searchParams.has("path"))
 {
-    var path = url.searchParams.get("url");
+    var path = url.searchParams.get("path");
     url.path = path;
     var k = path.split("/");
     k.pop();
