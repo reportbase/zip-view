@@ -2905,7 +2905,7 @@ var droplst =
     {
         closemenu()
         closeboss()
-	buttonobj.set(0);
+	buttonobj.reset();
         loadfiles(evt.dataTransfer.files);
     },
 }, 
@@ -3434,8 +3434,7 @@ var keylst =
             else if (key == "0")
             {
                 evt.preventDefault();
-                buttonobj.set(0);
-                menuojb.draw()
+                buttonobj.reset();
             }
             else if (key == "x")
             {
