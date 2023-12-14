@@ -6110,7 +6110,7 @@ panel.currentV = function(panel, extent, rev)
         context.save();
         var len = user.length();
 	    var current = user.current();
-        var k = rev ? current : len - current;
+        var k = rev ? len - current : current;
         var nub = Math.nub(k, len, extent, rect.height);
 	    var y = rect.y
         var r = new rectangle(rect.x, y + nub, rect.width, extent);
