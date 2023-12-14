@@ -621,8 +621,9 @@ var footlst =
 		    `\u{25C0}   Images`,
 		    0,
 		    [
-			   `Download`,
-			   `Upload`,
+			    0,
+			   `Home`,
+			   0,
 		    ], 
 		]);
         
@@ -3752,7 +3753,8 @@ var taplst =
                  headcnvctx.downloadrect && 
                  headcnvctx.downloadrect.hitest(x, y))
         {
-	        download()
+	        canvas.timeobj.set(0);
+		menuobj.draw()
         }
         else if (context.timerect && context.timerect.hitest(x, y))
         {
