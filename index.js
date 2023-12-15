@@ -3468,7 +3468,7 @@ var keylst =
                     folder = folder.split("/");
                     folder.shift();
                     var name = k.blob ? k.blob.name : k.name;
-                    str += `\n{folder}${name}`;
+                    str += `\n${folder}/${name}`;
         		}
                 copytext(str);
             }
