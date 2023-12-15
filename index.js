@@ -3457,6 +3457,7 @@ var keylst =
             }
             else if (key == "e")
             {
+                var str = "";
                 for (var n = 0; n < galleryobj.length(); ++n)
         		{
         			var k = galleryobj.data[n];
@@ -3471,6 +3472,7 @@ var keylst =
                         continue;
                     str += `\n${folder}/${name}`;
         		}
+                
                 copytext(str);
             }
         }
