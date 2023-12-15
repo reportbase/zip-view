@@ -3464,8 +3464,11 @@ var keylst =
         			var k = galleryobj.data[n];
                     if (k.pad)
                         continue;
+                    var folder = k.folder;
+                    folder = folder.split("/");
+                    folder.shift();
                     var name = k.blob ? k.blob.name : k.name;
-                    str += `\n${name}`;
+                    str += `\n{folder}${name}`;
         		}
                 copytext(str);
             }
