@@ -3463,14 +3463,21 @@ var keylst =
         			var k = galleryobj.data[n];
                     if (k.pad)
                         continue;
-                    var folder = k.folder;
-                    folder = folder.split("/");
-                    folder.shift();
-		            folder = folder.join("/");
                     var name = k.blob ? k.blob.name : k.name;
                     if (!name.isimage())
                         continue;
-                    str += `\n${folder}/${name}`;
+                    var folder = k.folder;
+                    if (folder)
+                    {
+                        folder = folder.split("/");
+                        folder.shift();
+    		            folder = folder.join("/");
+                        str += `\n${folder}/${name}`;
+                    }
+                    else
+                    {
+                        str += name;
+                    }
         		}
                 
                 copytext(str);
