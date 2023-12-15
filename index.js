@@ -3469,6 +3469,8 @@ var keylst =
                     folder.shift();
 		            folder = folder.join("/");
                     var name = k.blob ? k.blob.name : k.name;
+                    if (!name.isimage())
+                        continue;
                     str += `\n${folder}/${name}`;
         		}
                 copytext(str);
