@@ -3457,9 +3457,7 @@ var keylst =
             }
             else if (key == "e")
             {
-                var k = galleryobj.data[0];
-                var str = k.blob?k.blob.name:k.name;
-        		for (var n = 1; n < galleryobj.length(); ++n)
+                for (var n = 0; n < galleryobj.length(); ++n)
         		{
         			var k = galleryobj.data[n];
                     if (k.pad)
