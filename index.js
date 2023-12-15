@@ -3459,8 +3459,8 @@ var keylst =
             {
                 var str = "";
                 for (var n = 0; n < galleryobj.length(); ++n)
-        		{
-        			var k = galleryobj.data[n];
+        	    {
+        	        var k = galleryobj.data[n];
                     if (k.pad)
                         continue;
                     var name = k.blob ? k.blob.name : k.name;
@@ -3476,7 +3476,7 @@ var keylst =
                     }
                     else
                     {
-                        str += name;
+                        str += name + "\n";
                     }
         		}
                 
