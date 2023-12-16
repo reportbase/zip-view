@@ -2575,7 +2575,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        context.canvas.hollyobj.addperc(-delta / 2000);
+        context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw();
     },
 },
@@ -7240,7 +7240,7 @@ function importdialog()
 menuobj.updown = function(context, delta, divider)
 {
     var canvas = context.canvas;
-    canvas.autodirect = delta > 0 ? 1 : -1;
+    canvas.autodirect = delta > 0 ? -1 : 1;
     var k = Math.abs(delta)/20;
     canvas.slideshow = (Math.PI / canvas.virtualheight) * k;
     canvas.slidereduce = canvas.slideshow / divider;
