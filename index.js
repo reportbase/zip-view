@@ -2934,8 +2934,6 @@ var panlst =
         if (canvas.pinching)
             return;
         context.elst.push({x,y});
-        //if (context.elst.length % 2)
-        //    return;        	    
         
         if (type == "panleft" || type == "panright")
         {
@@ -3026,7 +3024,7 @@ var panlst =
                 var obj = canvas.timeobj;
                 var k = (y - canvas.hollyrect.y) / canvas.hollyrect.height;
                 var j = obj.length()*k;
-                obj.set(j);
+                obj.set(1-j);
                 menuobj.draw();
             }
             else
@@ -4206,7 +4204,7 @@ var taplst =
             var obj = canvas.timeobj;
             var k = (y - canvas.hollyrect.y) / canvas.hollyrect.height;
             var j = obj.length()*k;
-            obj.set(j);
+            obj.set(1-j);
             menuobj.draw();
             return true;
         }
