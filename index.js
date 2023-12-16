@@ -2549,7 +2549,6 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-	//delta = Math.floor(delta);
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
         if (ctrl)
@@ -2576,7 +2575,6 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        //delta = Math.floor(delta);
         context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw();
     },
@@ -2589,7 +2587,6 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        delta = Math.floor(delta);
         menuobj.updown(context, delta, 30);
         if (!context.swipetimeout)
             context.swipetimeout = setInterval(function(){
@@ -2610,7 +2607,6 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        delta = Math.floor(delta);
         var canvas = context.canvas;
         if (ctrl)
         {
@@ -3024,7 +3020,7 @@ var panlst =
                 var obj = canvas.timeobj;
                 var k = (y - canvas.hollyrect.y) / canvas.hollyrect.height;
                 var j = obj.length()*k;
-                obj.set(1-j);
+                obj.set(j);
                 menuobj.draw();
             }
             else
@@ -4204,7 +4200,7 @@ var taplst =
             var obj = canvas.timeobj;
             var k = (y - canvas.hollyrect.y) / canvas.hollyrect.height;
             var j = obj.length()*k;
-            obj.set(1-j);
+            obj.set(j);
             menuobj.draw();
             return true;
         }
@@ -6122,7 +6118,7 @@ panel.currentV = function(panel, extent, rev)
         context.save();
         var len = user.length();
 	var current = user.current();
-        var k = rev ? current : len - current;
+        var k = rev ? len - current : current;
         var nub = Math.nub(k, len, extent, rect.height);
 	var y = rect.y
         var r = new rectangle(rect.x, y + nub, rect.width, extent);
@@ -7213,7 +7209,7 @@ menuobj.updown = function(context, delta, divider)
 {
     var canvas = context.canvas;
     canvas.autodirect = delta < 0 ? 1 : -1;
-    var k = Math.abs(delta)/20;
+    var k = -delta/20;
     canvas.slideshow = (Math.PI / canvas.virtualheight) * k;
     canvas.slidereduce = canvas.slideshow / divider;
 }
