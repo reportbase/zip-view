@@ -1350,7 +1350,7 @@ var displaylst =
         var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
         if (!w)
             w = buttonobj.value();
-	    var bt = `\u{25C0}    ${buttonobj.value()} x ${w.toFixed(0)}    \u{25B6}`;
+	var bt = `\u{25C0}    ${w.toFixed(0)} x ${buttonobj.value()}    \u{25B6}`;
         var a = new panel.rowsA(
         [
             HEADTOP, 
