@@ -5618,7 +5618,6 @@ contextobj.reset = function()
         photo.image.onload = function()
         {
             var e = galleryobj.value();
-            document.title = galleryobj.title?galleryobj.title:url.path;
             _4cnv.autodirect = -_4cnv.movingpage;
             _4cnv.movingpage = 0;
             bossobj.reset();
@@ -6867,7 +6866,8 @@ galleryobj.reset = function(obj)
     headcnv.style.pointerEvents = "none";
     menuobj.draw();
     setupmenus();
-	
+	document.title = galleryobj.title?galleryobj.title:url.path;
+            
     for (var n = 0; n < IMAGELSTSIZE; ++n)
     {
         thumbfittedlst[n] = document.createElement("canvas");
