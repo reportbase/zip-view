@@ -4874,9 +4874,10 @@ var buttonlst =
 
             var lst = 
             [
-                `${time+1} x ${galleryobj.length},
-                user.name`
+                `${time+1} x ${galleryobj.length}`,
+                user.name
             ];
+            
             a.draw(context, rect, lst, 0);
 	    }
     }
