@@ -4756,7 +4756,7 @@ var buttonlst =
 
         if (thumbimg &&
             thumbimg.complete &&
-            thumbimg.naturalHeightthumbimg)
+            thumbimg.naturalHeight)
         {
             var obj = _8cnv.hollyobj;
             var b = thumbimg.width / thumbimg.height;
