@@ -6968,7 +6968,7 @@ galleryobj.init = function(obj)
             k.pop();
             loadtext(str, k.join("/"));
         })
-        .then(function()
+        .then(function(error)
         {
             console.log(error)
         })
