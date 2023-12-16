@@ -6960,21 +6960,18 @@ galleryobj.init = function(obj)
 	    return;
     }
 
-    try
-    {
-        fetch(obj.data)
-        	.then((response) => texthandler(response))
-        	.then(function(str)
-        	{
-                var k = obj.data.split("/");
-                k.pop();
-                loadtext(str, k.join("/"));
-        	})
-    }
-    catch(error)
-    {
-        console.log(error);
-    }
+    fetch(obj.data)
+        .then((response) => texthandler(response))
+        .then(function(str)
+        {
+            var k = obj.data.split("/");
+            k.pop();
+            loadtext(str, k.join("/"));
+        })
+        .then(function()
+        {
+            console.log(error)
+        })
 }
 
 if (url.pathname.length > 1)
