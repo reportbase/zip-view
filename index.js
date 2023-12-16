@@ -1314,7 +1314,7 @@ var displaylst =
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
         context.imagerect = new rectangle();
-	    context.templaterect = new rectangle();
+	context.templaterect = new rectangle();
         context.buttonrect = new rectangle();
         if (!headcnv.height)
             return;        
@@ -4857,6 +4857,11 @@ var buttonlst =
                 a.draw(context, rect, 0, 0);
             }
         }
+        else
+        {
+            var a = new panel.shrink(new panel.rounded("rgba(100,100,100)", 0, 0, 12, 12), 20, 20);
+            a.draw(context, rect, 0, 0);
+	    }
     }
 },
 {
@@ -4998,7 +5003,7 @@ menuobj.draw = function()
 	    local.set()	
     }
 
-	var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
+    var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
     var len = slices.length;
     var delayinterval = Math.PI / len;
     context.canvas.virtualheight = len * buttonheight;
@@ -5066,9 +5071,6 @@ menuobj.draw = function()
             thumbimg.view != view &&
             !thumbimg.failed) 
         {
-            var a = new panel.shrink(new panel.rounded("rgba(100,100,100)", 0, 0, 12, 12), 20, 20);
-            a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
-		    
             thumbimg.view = view;
             thumbimg.slice = slice;
             thumbimg.failed = 1;
