@@ -2575,7 +2575,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        context.canvas.hollyobj.addperc(delta / 2000);
+        context.canvas.hollyobj.addperc(-delta / 2000);
         menuobj.draw();
     },
 },
@@ -5066,6 +5066,9 @@ menuobj.draw = function()
             thumbimg.view != view &&
             !thumbimg.failed) 
         {
+            var a = new panel.shrink(new panel.rounded("rgba(100,100,100)", 0, 0, 12, 12), 20, 20);
+            a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
+		    
             thumbimg.view = view;
             thumbimg.slice = slice;
             thumbimg.failed = 1;
