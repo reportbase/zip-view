@@ -4884,9 +4884,9 @@ var buttonlst =
 
             var lst = 
             [
-				url.path,
-                `${time+1} x ${galleryobj.length()}`,
-                user.name
+			        url.path,
+                    user.name,
+                    `${time+1} of ${galleryobj.length()}`
             ];
             
             a.draw(context, rect, lst, 0);
@@ -6875,6 +6875,17 @@ galleryobj.reset = function(obj)
     }
     
     var image = new Image();
+    image.onerror = function()
+    {
+        galleryobj.width = 1080;
+        galleryobj.height = 1080;
+        buttonobj.reset();
+        buttonobj.init();
+	    menuobj.set(_8cnvctx);
+        menuobj.toggle(_8cnvctx);
+        menuobj.show();
+    }
+            
     image.onload = function()
     {
         galleryobj.width = this.width;
@@ -6914,10 +6925,10 @@ galleryobj.reset = function(obj)
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
     var j = galleryobj.data[current];
-    if (j.entry)
+    if (0)//todo j.entry)
         getblobpath(image, j)
     else
-        image.src = imagepath(j,"5760x5760");
+        image.src = "aaa";//imagepath(j,"5760x5760");
 }
 
 //galleryobj init
