@@ -5050,6 +5050,18 @@ menuobj.draw = function()
         var view = Math.floor(n / IMAGELSTSIZE);
         var thumbimg = thumbimglst[index];
         var thumbfitted = thumbfittedlst[index];
+        var t = time + (n * delayinterval);
+        var b = Math.tan(t);
+        var j = Math.berp(-1, 1, b);
+        var y = j * context.canvas.virtualheight;
+        var e = (canvas.virtualheight - rect.height) / 2;
+        y -= e;
+        y = Math.round(y);
+        var x = rect.width / 2;
+        var j = {slice,x,y,n};
+        slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
+        slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
+        
         if (context == _8cnvctx && 
             thumbimg.view != view &&
             !thumbimg.failed) 
@@ -5082,17 +5094,6 @@ menuobj.draw = function()
         }
         else
         {
-            var t = time + (n * delayinterval);
-            var b = Math.tan(t);
-            var j = Math.berp(-1, 1, b);
-            var y = j * context.canvas.virtualheight;
-            var e = (canvas.virtualheight - rect.height) / 2;
-            y -= e;
-            y = Math.round(y);
-            var x = rect.width / 2;
-            var j = {slice,x,y,n};
-            slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
-            slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
 	        if (slice.isvisible)
             {
         	    if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
