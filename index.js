@@ -4099,7 +4099,7 @@ var taplst =
                  canvas.homeresetrect.hitest(x, y))
         {
 	        canvas.timeobj.set(0);
-		menuobj.draw()
+		    menuobj.draw()
         }
         else if (canvas.galleryaddrect && canvas.galleryaddrect.hitest(x, y))
         {
@@ -4131,7 +4131,7 @@ var taplst =
                     k.json = obj.json;
                     k.id = obj.gallery_id;   
                     _2cnv.sliceobj.data.push(k);
-                    _2cnv.sliceobj.set(0);
+                    _2cnv.timeobj.set(0);
                     var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
                     _2cnv.rotated = [...a, ...a, ...a];
                     menuobj.draw();
