@@ -6962,7 +6962,7 @@ galleryobj.init = function(obj)
 
     try
     {
-        fetch("aa")//obj.data)
+        fetch(obj.data)
         	.then((response) => texthandler(response))
         	.then(function(str)
         	{
