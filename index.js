@@ -4868,7 +4868,7 @@ var buttonlst =
                     0,
                     new panel.layers(
                     [
-                        new panel.rounded(FILLMENU, 0, 0, 12, 12),
+                        new panel.shrink(new panel.rounded(FILLMENU, 0, 0, 12, 12), 20, 20),
                         new panel.shrink(new panel.multitext(0, new panel.text()), 20, 20),
                     ]),
                     0,
@@ -4877,7 +4877,7 @@ var buttonlst =
 
             var lst = 
             [
-                `${time+1} x ${galleryobj.length}`,
+                `${time+1} x ${galleryobj.length()}`,
                 user.name
             ];
             
