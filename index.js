@@ -4563,6 +4563,7 @@ var buttonlst =
 		    k.push(user.name);
         if (user.id)
             k.push(user.id);
+		
         /*
       	var bad =
     	[
@@ -4583,6 +4584,7 @@ var buttonlst =
             k.push(user[name]);
         }
 	    */
+		
         a.draw(context, rect, k, time);
         context.restore();
     }
@@ -4863,7 +4865,7 @@ var buttonlst =
             var a = new panel.layers(
             [
                 new panel.shrink(new panel.rounded("rgba(100,100,100)", 0, 0, 20, 20), 20, 20),    
-                new panel.rows([40,120,0],
+                new panel.rows([40,160,0],
                 [
                     0,
 		            new panel.cols([20,0,20],
@@ -4882,6 +4884,7 @@ var buttonlst =
 
             var lst = 
             [
+				url.path,
                 `${time+1} x ${galleryobj.length()}`,
                 user.name
             ];
@@ -5615,7 +5618,7 @@ contextobj.reset = function()
         photo.image.onload = function()
         {
             var e = galleryobj.value();
-            document.title = galleryobj.title?galleryobj.title:url.host.proper();
+            document.title = galleryobj.title?galleryobj.title:url.path;
             _4cnv.autodirect = -_4cnv.movingpage;
             _4cnv.movingpage = 0;
             bossobj.reset();
