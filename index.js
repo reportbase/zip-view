@@ -2829,6 +2829,8 @@ async function loadzip(file)
     }
 
     galleryobj.init(galleryobj)
+	buttonobj.reset();
+	menuobj.draw();
 }
 
 async function loadimages(blobs)
@@ -2868,6 +2870,7 @@ async function loadimages(blobs)
     }
 
     galleryobj.init(galleryobj)
+	buttonobj.reset();
     menuobj.draw();
 }
 
@@ -2893,7 +2896,6 @@ function loadfiles(files)
         loadimages(files);
     }
 
-    buttonobj.reset();
     menuobj.draw();    
 }
 
@@ -6381,6 +6383,8 @@ async function loadjson(blob)
         var text = await blob.text();
         var json = JSON.parse(text);
         galleryobj.init(json)
+		buttonobj.reset();
+		menuobj.draw();
     }
     catch (_)
     {
