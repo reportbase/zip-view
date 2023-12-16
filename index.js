@@ -4872,7 +4872,7 @@ var buttonlst =
                         new panel.layers(
                         [
                             new panel.shrink(new panel.rounded(FILLMENU, 0, 0, 12, 12), 20, 20),
-                            new panel.shrink(new panel.multitext(0, new panel.text()), 20, 20),
+                            new panel.shrink(new panel.multitext(0, new panel.text()), 30, 30),
                         ]),
                         0,
                     ]),
