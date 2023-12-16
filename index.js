@@ -4861,15 +4861,19 @@ var buttonlst =
         }
         else
         {
-            var a = new panel.rows([40,120,0],
+            var a = new panel.layers(
             [
-                0,
-                new panel.layers(
+                new panel.fill("rgba(100,100,100)"),
+                new panel.rows([40,120,0],
                 [
-                    new panel.shrink(new panel.rounded("rgba(100,100,100)", 0, 0, 20, 20), 20, 20),
-                    new panel.shrink(new panel.multitext(0, new panel.text()), 20, 120),
-                ]),
-                0,
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.shrink(new panel.rounded(FILLMENU, 0, 0, 20, 20), 20, 20),
+                        new panel.shrink(new panel.multitext(0, new panel.text()), 20, 120),
+                    ]),
+                    0,
+                ])
             ]);
 
             var lst = 
