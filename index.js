@@ -6892,7 +6892,6 @@ galleryobj.reset = function(obj)
         galleryobj.height = this.height;
         buttonobj.reset();
         buttonobj.init();
-    
 	    var hh = buttonobj.value();
 	    var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
 	    var n = 0;
@@ -6925,10 +6924,10 @@ galleryobj.reset = function(obj)
     var berp = _8cnv.timeobj.berp();
     var current = galleryobj.lerp(1 - berp);
     var j = galleryobj.data[current];
-    if (0)//todo j.entry)
+    if (j.entry)
         getblobpath(image, j)
     else
-        image.src = "aaa";//imagepath(j,"5760x5760");
+        image.src = imagepath(j,"5760x5760");
 }
 
 //galleryobj init
@@ -6961,14 +6960,21 @@ galleryobj.init = function(obj)
 	    return;
     }
 
-    fetch(obj.data)
-    	.then((response) => texthandler(response))
-    	.then(function(str)
-    	{
-            var k = obj.data.split("/");
-            k.pop();
-            loadtext(str, k.join("/"));
-    	})	
+    try
+    {
+        fetch(obj.data)
+        	.then((response) => texthandler(response))
+        	.then(function(str)
+        	{
+                var k = obj.data.split("/");
+                k.pop();
+                loadtext(str, k.join("/"));
+        	})
+    }
+    catch(error)
+    {
+        console.log(error);
+    }
 }
 
 if (url.pathname.length > 1)
@@ -7041,10 +7047,7 @@ function loadgallery(path, origin)
     }
     else
     {
-	    if (path.substring(0,4) == "http")   
-             loadzip(path);
-        else
-            loadtext(path, origin);	  
+	    loadtext(path, origin);	  
     }
 }
 
