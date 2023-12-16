@@ -4861,8 +4861,23 @@ var buttonlst =
         }
         else
         {
-            var a = new panel.shrink(new panel.rounded("rgba(100,100,100)", 0, 0, 12, 12), 20, 20);
-            a.draw(context, rect, 0, 0);
+            var a = new panel.rows([40,120,0],
+            [
+                0,
+                new panel.layers(
+                [
+                    new panel.shrink(new panel.rounded("rgba(100,100,100)", 0, 0, 20, 20), 20, 20),
+                    new panel.shrink(new panel.multitext(0, new panel.text()), 20, 120),
+                ]),
+                0,
+            ]);
+
+            var lst = 
+            [
+                `${time+1} x ${galleryobj.length},
+                user.name`
+            ];
+            a.draw(context, rect, lst, 0);
 	    }
     }
 },
