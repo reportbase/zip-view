@@ -4982,7 +4982,7 @@ menuobj.draw = function()
     	return;
     	
     var canvas = context.canvas;
-    var time = 1-canvas.timeobj.value();
+    var time = canvas.timeobj.value();
     var slices = context.canvas.sliceobj.data;
     const rect = context.rect();
     if (!rect.width || !rect.height)
