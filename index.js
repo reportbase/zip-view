@@ -4982,7 +4982,7 @@ menuobj.draw = function()
     	return;
     	
     var canvas = context.canvas;
-    var time = canvas.timeobj.value();
+    var time = 1-canvas.timeobj.value();
     var slices = context.canvas.sliceobj.data;
     const rect = context.rect();
     if (!rect.width || !rect.height)
@@ -5000,8 +5000,7 @@ menuobj.draw = function()
         clearInterval(context.swipetimeout)
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
-
-           resetview()
+        resetview()
 	    local.set()	
     }
 
