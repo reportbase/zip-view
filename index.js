@@ -1790,9 +1790,10 @@ panel.fitwidth = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.fitwidthrect),
-                (_8cnv.fitflash || buttonobj.current() == 0) ? 
+                (_8cnv.fitflash ) ? 
 			new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(_8cnv.fitflash ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.circle((_8cnv.fitflash || buttonobj.current() == 0) ? 
+			TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.rounded(TRANSPARENT, 3, "white", 4, 4), 16, 30),
             ]);
 
