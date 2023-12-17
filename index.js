@@ -4887,13 +4887,14 @@ var buttonlst =
             ]);
 
             var name = user.name;
-            name = name.replace(/ /g,"_");
-            var lst = 
-            [
-			        url.path,
-                    name,
-                    `${time+1} of ${galleryobj.length()}`
-            ];
+            if (name)
+                name = name.replace(/ /g,"_");
+            var lst = [];
+            if (url.path)
+                lst.push(url.path)
+            if (name)
+                lst.push(name);
+            lst.push(`${time+1} of ${galleryobj.length()}`)
             
             a.draw(context, rect, lst, 0);
 	    }
@@ -6872,7 +6873,8 @@ galleryobj.reset = function(obj)
     headcnv.style.pointerEvents = "none";
     menuobj.draw();
     setupmenus();
-	document.title = galleryobj.title?galleryobj.title:url.path;
+	document.title = galleryobj.title?galleryobj.title:
+        url.path?url.path:url.host;
             
     for (var n = 0; n < IMAGELSTSIZE; ++n)
     {
