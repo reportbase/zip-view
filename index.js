@@ -4886,10 +4886,12 @@ var buttonlst =
                 ])
             ]);
 
+            var name = user.name;
+            name = name.replace(/ /g,"_");
             var lst = 
             [
 			        url.path,
-                    user.name,
+                    name,
                     `${time+1} of ${galleryobj.length()}`
             ];
             
