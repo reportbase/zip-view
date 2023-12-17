@@ -1510,7 +1510,9 @@ buttonobj.reset = function()
     
     for (var n = Math.floor(dheight); n <= Math.floor(bheight); ++n)
         buttonobj.data.push(n);
-    buttonobj.set(0);
+
+    var j = buttonobj.current() == 0 ? Math.floor(buttonobj.length()/2) : 0;
+    buttonobj.set(j);
 }
 
 function calculateAspectRatioFit(imgwidth, imgheight, rectwidth, rectheight)
@@ -1788,7 +1790,8 @@ panel.fitwidth = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.fitwidthrect),
-                _8cnv.fitflash ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+                (_8cnv.fitflash || buttonobj.current() == 0) ? 
+			new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(_8cnv.fitflash ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.rounded(TRANSPARENT, 3, "white", 4, 4), 16, 30),
             ]);
@@ -3921,7 +3924,7 @@ var taplst =
             headcnvctx.fitwidthrect &&
             headcnvctx.fitwidthrect.hitest(x, y))
         {
-            buttonobj.reset();
+		    buttonobj.reset();
             _8cnv.fitflash = 1;
             headobj.draw();
             setTimeout(function()
