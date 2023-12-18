@@ -6201,7 +6201,7 @@ function resize()
             menuobj.setindex(_8cnvctx);
         }
     
-        menuobj.draw();
+        menuobj.show();
         headobj.draw();
     }
     else
