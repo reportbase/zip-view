@@ -1,3 +1,5 @@
+//top
+
 function ios()
 {
     return 
@@ -3447,12 +3449,12 @@ var keylst =
             }
             else if (key == "z")
             {
-                buttonobj.reset();
-                var e = Math.PI/galleryobj.length()/2;
-                var j = Math.PI*(buttonobj.value()/canvas.virtualheight/2);
-		        var k = j-e;
-		        _8cnv.timeobj.CURRENT += k;
-                menuobj.draw();
+                var k = _8cnvctx.centered;
+                while (_8cnv.sliceobj.data[k].rect.y > 0)
+                {
+                    _8cnv.sliceobj.rotate(0.001)
+                    menuobj.draw();
+                }
             }
             else if (key == "e")
             {
