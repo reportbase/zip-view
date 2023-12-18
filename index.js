@@ -1339,27 +1339,7 @@ var displaylst =
                 0
             ]);
     
-            a.draw(context, rect, canvas.timeobj, 0);     
-
-         var a = new panel.cols([5, 9, 0, 9, 5],
-	    [
-    		0,
-    		0,
-    		0,
-            new panel.rows([ALIEXTENT,0,ALIEXTENT],
-            [
-                0,
-                new panel.layers(
-                [
-                    new panel.currentV(
-                        new panel.rounded("orange", 0, TRANSPARENT, 5, 5), 90, 1)
-                ]),
-                0,
-            ]),
-    		0,
-	    ]);
-
-        a.draw(context, rect, canvas.timeobj, 0);            
+        	a.draw(context, rect, canvas.timeobj, 0);            
             return;
     	}
 	    
@@ -3064,11 +3044,8 @@ var panlst =
         {
             if (canvas.istimerect)
             {
-                var obj = canvas.timeobj;
-                var k = (y - canvas.timerect.y) / canvas.timerect.height;
-                var j = obj.length()*(1-k);
-                obj.set(j);
-                menuobj.draw();
+                var k = y/window.innerHeight;
+                canvas.timeobj.setperc(1-k);
             }
             else
             {
@@ -3076,8 +3053,9 @@ var panlst =
                 var jvalue = Math.PI / canvas.virtualheight
                 jvalue *= e;
                 canvas.timeobj.rotateanchored(jvalue);
-                menuobj.draw();
             }
+                
+            menuobj.draw();
         }
     },
     panstart: function(context, rect, x, y)
