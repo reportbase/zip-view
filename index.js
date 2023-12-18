@@ -3624,8 +3624,10 @@ var keylst =
 
 function aligncenter()
 {
-    var k = _8cnv.timeobj.length() / galleryobj.length();
-    _8cnv.timeobj.set(k*_8cnvctx.centered);
+    var index = 1 - canvas.timeobj.berp();
+    index *= galleryobj.length();
+    var k = Math.floor(index);
+    _8cnv.timeobj.set(col);
     menuobj.draw();
 }
 
