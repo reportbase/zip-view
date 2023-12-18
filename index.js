@@ -3419,6 +3419,7 @@ var keylst =
             else if (
                 key == "arrowright" ||
                 key == "l")
+            {
                 if (canvas.ctrlKey)
                     context.canvas.hollyobj.set(context.canvas.hollyobj.length()-1);
                 else
