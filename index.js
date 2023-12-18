@@ -41,7 +41,7 @@ const FOOTBTNCOLOR = "rgba(0,0,0,0.75)";
 const OPTIONFILL = "white";
 const THUMBTRANSPARENT = "rgba(0,0,0,0.2)";
 const LIGHTHUMBFILLL = "rgba(255,125,0,0.25)";
-const HEAVYFILL = "rgba(0,0,0,0.4)";
+const HEAVYFILL = "rgba(0,0,0,0.75)";
 const THUMBFILL = "rgba(255,125,0,0.40)";
 const THUMBSTROKE = "rgba(255,255,255,0.4)";
 const SEARCHFRAME = "rgba(255,255,255,0.5)";
@@ -1314,7 +1314,7 @@ var displaylst =
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
         context.imagerect = new rectangle();
-	context.templaterect = new rectangle();
+	    context.templaterect = new rectangle();
         context.buttonrect = new rectangle();
         if (!headcnv.height)
             return;        
@@ -1350,7 +1350,7 @@ var displaylst =
         var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
         if (!w)
             w = buttonobj.value();
-	var bt = `\u{25C0}    ${w.toFixed(0)} x ${buttonobj.value()}    \u{25B6}`;
+	    var bt = `\u{25C0}    ${w.toFixed(0)} x ${buttonobj.value()}    \u{25B6}`;
         var a = new panel.rowsA(
         [
             HEADTOP, 
@@ -1558,7 +1558,7 @@ String.prototype.istext = function()
     var ext = this.ext();
     ext = ext.toLowerCase();
     var lst = ['txt'];
-    var k = lst.findIndex(function(a){return a == ext;})
+    var k = lst.findIndex(function(a){return a == ext.toLowerCase();})
     return k >= 0;
 }
 
@@ -1567,7 +1567,7 @@ String.prototype.isjson = function()
     var ext = this.ext();
     ext = ext.toLowerCase();
     var lst = ['json'];
-    var k = lst.findIndex(function(a){return a == ext;})
+    var k = lst.findIndex(function(a){return a == ext.toLowerCase();})
     return k >= 0;
 }
 
@@ -1576,7 +1576,7 @@ String.prototype.iszip = function()
     var ext = this.ext();
     ext = ext.toLowerCase();
     var lst = ['zip', 'cbz'];
-    var k = lst.findIndex(function(a){return a == ext;})
+    var k = lst.findIndex(function(a){return a == ext.toLowerCase();})
     return k >= 0;
 }
 
@@ -1585,7 +1585,7 @@ String.prototype.isimage = function()
     var ext = this.ext();
     ext = ext.toLowerCase();
     var lst = ['png', 'jpg', 'jpeg', 'webp', 'avif', 'gif'];
-    var k = lst.findIndex(function(a){return a == ext;})
+    var k = lst.findIndex(function(a){return a == ext.toLowerCase();})
     return k >= 0;
 }
 
