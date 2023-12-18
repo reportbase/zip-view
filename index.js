@@ -3453,7 +3453,7 @@ var keylst =
 		        var j = _8cnv.sliceobj.data[k].rect.y;
                 while (j > 0)
                 {
-                    _8cnv.sliceobj.rotate(0.001)
+                    _8cnv.timeobj.rotate(0.001)
                     menuobj.draw();
 			        j = _8cnv.sliceobj.data[k].rect.y;
                 }
