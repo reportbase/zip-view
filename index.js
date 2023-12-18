@@ -3681,7 +3681,11 @@ function alignbottom()
     }
     else
     {
-      
+        while ((slice.rect.y + buttonobj.value()) < window.innerHeight)
+        {
+            _8cnv.timeobj.rotate(0.001)
+            menuobj.draw();
+        }      
     }
 }
 
