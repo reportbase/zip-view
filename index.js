@@ -1319,11 +1319,11 @@ var displaylst =
         context.buttonrect = new rectangle();
         if (!headcnv.height)
     	{
-            var a = new panel.cols([0, 9, 5],
+            var a = new panel.cols([0, 15, 5],
             [
                 0,
                 new panel.currentV(
-                    new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1),
+                    new panel.rounded("rgba(255,255,255,0.6)", 5, "rgba(0,0,0,0.5)", 5, 5), 90, 1),
                 0,
             ]);
     
