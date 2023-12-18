@@ -1319,10 +1319,10 @@ var displaylst =
         canvas.timerect = new rectangle();
         if (!headcnv.height)
     	{
-		    var a = new panel.rows([5, 0, 5],
+		    var a = new panel.rows([-1, 0, -1],
             [
                 0,
-                new panel.cols([0, 15, 5],
+                new panel.cols([0, 15, -1],
                 [
                     0,
                     new panel.layers(
