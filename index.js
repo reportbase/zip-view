@@ -3439,7 +3439,8 @@ var keylst =
             }
             else if (key == "g")
             {
-                }
+                aligncenter();
+            }
             else if (key == "e")
             {
                 var str = "";
