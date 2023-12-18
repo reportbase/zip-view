@@ -1439,7 +1439,7 @@ var displaylst =
 	    [
     		0,
             new panel.currentV(
-                new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1)
+                new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1),
         	0,
 	    ]);
 
