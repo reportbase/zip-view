@@ -1434,7 +1434,16 @@ var displaylst =
             0,
             0,
         ], 0);
-        
+
+        var a = new panel.cols([0, 9, 5],
+	    [
+    		0,
+            new panel.currentV(
+                new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1)
+        	0,
+	    ]);
+
+        a.draw(context, rect, canvas.timeobj, 0);        
         context.restore();     
     }
 },
