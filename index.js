@@ -3920,8 +3920,10 @@ var taplst =
         else if (canvas.timerect &&
             canvas.timerect.hitest(x, y))
         {
+            var obj = canvas.timeobj;
             var k = (y - canvas.timerect.y) / canvas.timerect.height;
-            canvas.timeobj.setperc(1-k);
+            var j = obj.length()*(1-k);
+            obj.set(j);
             menuobj.draw();
             return true;
         }            
