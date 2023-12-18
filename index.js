@@ -4050,16 +4050,6 @@ var taplst =
         {
             closemenu()
         }
-        else if (canvas.timerect &&
-            canvas.timerect.hitest(x, y))
-        {
-            var obj = canvas.timeobj;
-            var k = (y - canvas.timerect.y) / canvas.timerect.height;
-            var j = obj.length()*k;
-            obj.set(j);
-            menuobj.draw();
-            return true;
-        }            
         else 
         {
             var visibles = canvas.visibles;
@@ -4177,6 +4167,16 @@ var taplst =
 	        canvas.timeobj.set(0);
 		    menuobj.draw()
         }
+        else if (canvas.timerect &&
+            canvas.timerect.hitest(x, y))
+        {
+            var obj = canvas.timeobj;
+            var k = (y - canvas.timerect.y) / canvas.timerect.height;
+            var j = obj.length()*k;
+            obj.set(j);
+            menuobj.draw();
+            return true;
+        }            
         else if (canvas.galleryaddrect && canvas.galleryaddrect.hitest(x, y))
         {
             var id = document.getElementById("gallery-add-id");
