@@ -1444,7 +1444,6 @@ var displaylst =
     {
         var canvas = context.canvas;
         context.save();
-        canvas.hollyrect = new rectangle();
         var a = new panel.cols([5, 9, 0, 9, 5],
 	    [
     		0,
@@ -1455,9 +1454,8 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.expand(new panel.rectangle(canvas.hollyrect), 10, 0),
                     new panel.currentV(
-                        new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 0)
+                        new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1)
                 ]),
                 0,
             ]),
@@ -3005,8 +3003,6 @@ var panlst =
     {
         var canvas = context.canvas;
         context.elst.push({x,y});
-        //if (context.elst.length % 2)
-        //    return;
         var hollyobj = context.canvas.hollyobj;
         if (hollyobj && (type == "panleft" || type == "panright"))
         {
@@ -3020,22 +3016,11 @@ var panlst =
         }
         else if (type == "panup" || type == "pandown")
         {
-            if (canvas.ishollyrect)
-            {
-                var obj = canvas.timeobj;
-                var k = (y - canvas.hollyrect.y) / canvas.hollyrect.height;
-                var j = obj.length()*k;
-                obj.set(j);
-                menuobj.draw();
-            }
-            else
-            {
-                var e = canvas.starty - y;
-                var jvalue = Math.PI / canvas.virtualheight
-                jvalue *= e;
-                canvas.timeobj.rotateanchored(jvalue);
-                menuobj.draw();
-            }
+        	var e = canvas.starty - y;
+        	var jvalue = Math.PI / canvas.virtualheight
+        	jvalue *= e;
+        	canvas.timeobj.rotateanchored(jvalue);
+        	menuobj.draw();
         }
     },
     panstart: function(context, rect, x, y)
@@ -4253,16 +4238,6 @@ var taplst =
         {
             var k = (y - canvas.timeobjrect.y) / canvas.timeobjrect.height;
             canvas.hollyobj.setperc(k);
-            menuobj.draw();
-            return true;
-        }
-        else if (canvas.hollyrect &&
-            canvas.hollyrect.hitest(x, y))
-        {
-            var obj = canvas.timeobj;
-            var k = (y - canvas.hollyrect.y) / canvas.hollyrect.height;
-            var j = obj.length()*k;
-            obj.set(j);
             menuobj.draw();
             return true;
         }
