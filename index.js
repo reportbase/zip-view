@@ -1328,10 +1328,10 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
-                        new panel.rounded("rgba(0,0,0,0.25)", 0, 0, 0, 0),
+                        //new panel.rounded("rgba(0,0,0,0.25)", 0, 0, 0, 0),
                         new panel.shrink(
                             new panel.currentV(
-                                new panel.rounded("rgba(255,255,255,0.6)", 0, 0, 0, 0), 90, 1), 2, 2),
+                                new panel.rounded("rgba(255,255,255,0.6)", 2, "rgba(0,0,0,0.5)", 5, 5), 90, 1), 2, 2),
                     ]),
                     0,
                 ]),
