@@ -1319,7 +1319,7 @@ var displaylst =
         canvas.timerect = new rectangle();
         if (!headcnv.height)
     	{
-		    var a = new panel.rows([-1, 0, -1],
+		    var a = new panel.rows([-1, 0, 5],
             [
                 0,
                 new panel.cols([0, 12, -1],
@@ -1331,14 +1331,35 @@ var displaylst =
                         //new panel.rounded("rgba(0,0,0,0.25)", 0, 0, 0, 0),
                         new panel.shrink(
                             new panel.currentV(
-                                new panel.rounded("rgba(255,255,255,0.6)", 2, "rgba(0,0,0,0.5)", 5, 5), 90, 1), 2, 2),
+                                new panel.rounded("rgba(255,255,255,0.7)", 0, 
+                                        "rgba(0,0,0,0.0)", 4, 4), 90, 1), 2, 2),
                     ]),
                     0,
                 ]),
                 0
             ]);
     
-            a.draw(context, rect, canvas.timeobj, 0);        
+            a.draw(context, rect, canvas.timeobj, 0);     
+
+         var a = new panel.cols([5, 9, 0, 9, 5],
+	    [
+    		0,
+    		0,
+    		0,
+            new panel.rows([ALIEXTENT,0,ALIEXTENT],
+            [
+                0,
+                new panel.layers(
+                [
+                    new panel.currentV(
+                        new panel.rounded("orange", 0, TRANSPARENT, 5, 5), 90, 1)
+                ]),
+                0,
+            ]),
+    		0,
+	    ]);
+
+        a.draw(context, rect, canvas.timeobj, 0);            
             return;
     	}
 	    
