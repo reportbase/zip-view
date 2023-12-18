@@ -1318,7 +1318,19 @@ var displaylst =
 	    context.templaterect = new rectangle();
         context.buttonrect = new rectangle();
         if (!headcnv.height)
-            return;        
+    	{
+            var a = new panel.cols([0, 9, 5],
+            [
+                0,
+                new panel.currentV(
+                    new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1),
+                0,
+            ]);
+    
+            a.draw(context, rect, canvas.timeobj, 0);        
+            return;
+    	}
+	    
         var bh = rect.height * 0.4;
         const rainstep = Math.min(420,window.innerWidth-60);
         var a = new panel.rows([0, SCROLLEXTENT, 6],
@@ -1435,15 +1447,6 @@ var displaylst =
             0,
         ], 0);
 
-        var a = new panel.cols([0, 9, 5],
-	    [
-    		0,
-            new panel.currentV(
-                new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1),
-        	0,
-	    ]);
-
-        a.draw(context, rect, canvas.timeobj, 0);        
         context.restore();     
     }
 },
