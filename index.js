@@ -3628,10 +3628,15 @@ var keylst =
     },
 ];
 
-function aligncenter()
+function aligncenter(b)
 {
-    var image = 1 - _8cnv.timeobj.berp();
-    image *= galleryobj.length();
+    var image = b;
+    if (!image)
+    {
+        image = 1 - _8cnv.timeobj.berp();
+        image *= galleryobj.length();
+    }
+    
  	var e = Math.berp(0, galleryobj.length(), Math.floor(image));
     var j = (1-e)*Math.PI
     var k = _8cnv.timeobj.length() / galleryobj.length() / 2;
@@ -6777,7 +6782,8 @@ function setupmenus()
         j.func = function()
         {
 	        galleryobj.set(this.index);
-            gotoimage(this.index+1)
+            aligncenter(this.index)
+            aligntop();
           return true;
         };   
     };
