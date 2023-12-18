@@ -3242,17 +3242,6 @@ var presslst =
 var pressobj = new circular_array("PRESS", presslst);
 pressobj.set(3);
 
-function gotoimage(n)
-{
-    var e = Math.berp(0, galleryobj.length()-1, n);
-    var k = 1-e;
-    var j = k*Math.PI
-    _8cnv.timeobj.set(j);    
-    _8cnv.hollyobj.CURRENT = 0;
-    menuobj.draw();
-    return true;
-}
-
 var swipelst = [
 {
     name: "BOSS",
@@ -3643,6 +3632,17 @@ function aligncenter(b)
     var e = j-k;
     _8cnv.timeobj.set(e);
     menuobj.draw();
+}
+
+function gotoimage(n)
+{
+    var e = Math.berp(0, galleryobj.length()-1, n);
+    var k = 1-e;
+    var j = k*Math.PI
+    _8cnv.timeobj.set(j);    
+    _8cnv.hollyobj.CURRENT = 0;
+    menuobj.draw();
+    return true;
 }
 
 function nextimage(j)
@@ -6783,7 +6783,7 @@ function setupmenus()
         {
 	        galleryobj.set(this.index);
             aligncenter(this.index)
-            aligntop();
+            //aligntop();
           return true;
         };   
     };
