@@ -12,7 +12,6 @@ function ios()
 let url = new URL(window.location.href);
 const NUBACK = "rgba(0,0,0,0.4)";
 const SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-const FIREFOX = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 const VIRTCONST = 0.8;
 const MAXVIRTUAL = 5760*3;
 const THUMBORDER = 5;
@@ -6194,15 +6193,15 @@ function resize()
 	headcnv.width = window.innerWidth;
     if (menuobj.value())
     {
-        buttonobj.reset()
-        contextobj.reset();
+        //buttonobj.reset()
+        //contextobj.reset();
         if (menuobj.value() != _8cnvctx)
         {
             menuobj.hide();
             menuobj.setindex(_8cnvctx);
         }
     
-        menuobj.show();
+        menuobj.draw();
         headobj.draw();
     }
     else
