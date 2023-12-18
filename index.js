@@ -3633,7 +3633,7 @@ function aligncenter()
     var k = 1 - _8cnv.timeobj.berp();
     k *= galleryobj.length();
     var j = _8cnv.timeobj.length() / galleryobj.length();	
-    var e = j*k;
+    var e = j*Math.floor(k);
     _8cnv.timeobj.set(e);
     menuobj.draw();
 }
