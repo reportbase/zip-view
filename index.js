@@ -3034,7 +3034,7 @@ var panlst =
             {
                 var obj = canvas.timeobj;
                 var k = (y - canvas.timerect.y) / canvas.timerect.height;
-                var j = obj.length()*k;
+                var j = obj.length()*(1-k);
                 obj.set(j);
                 menuobj.draw();
             }
