@@ -3630,7 +3630,7 @@ var keylst =
 
 function aligncenter()
 {
-    var m = 1 - _8cnv.timeobj.berp();
+    var image = 1 - _8cnv.timeobj.berp();
     image *= galleryobj.length();
  	var e = Math.berp(0, galleryobj.length(), image);
     var j = (1-image)*Math.PI
