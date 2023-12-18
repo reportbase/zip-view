@@ -1310,8 +1310,7 @@ var displaylst =
     {    
         var canvas = context.canvas;
         context.save();
-        canvas.timeobjrect = new rectangle();
-        canvas.hollyrect = new rectangle();
+        ]canvas.hollyrect = new rectangle();
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
         context.imagerect = new rectangle();
@@ -1320,19 +1319,19 @@ var displaylst =
         canvas.timerect = new rectangle();
         if (!headcnv.height)
     	{
-		    var a = new panel.rows([6, 0, 6],
+		    var a = new panel.rows([5, 0, 5],
             [
                 0,
-                new panel.cols([0, 15, 6],
+                new panel.cols([0, 15, 5],
                 [
                     0,
                     new panel.layers(
                     [
                         new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
-                        new panel.rounded("rgba(0,0,0,0.25)", 0, 0, 8, 8),
+                        new panel.rounded("rgba(0,0,0,0.25)", 0, 0, 6, 6),
                         new panel.shrink(
                             new panel.currentV(
-                                new panel.rounded("rgba(255,255,255,0.6)", 0, 0, 8, 8), 90, 1), 2, 2),
+                                new panel.rounded("rgba(255,255,255,0.6)", 0, 0, 4, 4), 90, 1), 2, 2),
                     ]),
                     0,
                 ]),
@@ -3919,6 +3918,14 @@ var taplst =
         {
             leftmenu(_7cnvctx)
         }
+        else if (canvas.timerect &&
+            canvas.timerect.hitest(x, y))
+        {
+            var k = (y - canvas.timerect.y) / canvas.timerect.height;
+            canvas.timeobj.setperc(1-k);
+            menuobj.draw();
+            return true;
+        }            
         else if (
             headcnv.height &&
             (headcnvctx.gallerymenurect &&
@@ -4040,12 +4047,6 @@ var taplst =
             headcnvctx.fullscreenrect.hitest(x, y))
         {
             screenfull.toggle()
-        }
-        else if (canvas.timeobjrect && canvas.timeobjrect.hitest(x, y))
-        {
-            var k = (y - canvas.timeobjrect.y) / canvas.timeobjrect.height;
-            canvas.timeobj.setperc(1 - k);
-            menuobj.draw()
         }
         else if (canvas.hollyrect && canvas.hollyrect.hitest(x, y))
         {
@@ -4279,14 +4280,6 @@ var taplst =
         {
 	        leftmenu(_7cnvctx);
             return false;
-        }
-        else if (canvas.timeobjrect &&
-            canvas.timeobjrect.hitest(x, y))
-        {
-            var k = (y - canvas.timeobjrect.y) / canvas.timeobjrect.height;
-            canvas.hollyobj.setperc(k);
-            menuobj.draw();
-            return true;
         }
         else
         {
@@ -5236,7 +5229,6 @@ menuobj.draw = function()
     delete context.templaterect;
 
     //button
-    delete canvas.timeobjrect;
     delete canvas.hollyrect;
     delete context.cursorect;
     delete context.folderect;
