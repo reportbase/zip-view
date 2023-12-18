@@ -3449,14 +3449,12 @@ var keylst =
             }
             else if (key == "z")
             {
-                var k = _8cnvctx.centered;
-		        var j = _8cnv.sliceobj.data[k].rect.y;
-                while (j > 0)
+                var slice = _8cnv.sliceobj.data[_8cnvctx.centered];
+		        while (slice.rect.y > 0)
                 {
                     _8cnv.timeobj.rotate(0.001)
                     menuobj.draw();
-			        j = _8cnv.sliceobj.data[k].rect.y;
-                }
+			    }
             }
             else if (key == "e")
             {
