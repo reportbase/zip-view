@@ -3624,7 +3624,7 @@ var keylst =
 
 function aligncenter()
 {
-    var index = 1 - canvas.timeobj.berp();
+    var index = 1 - _8cnv.timeobj.berp();
     index *= galleryobj.length();
     var k = Math.floor(index);
     _8cnv.timeobj.set(col);
