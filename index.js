@@ -3630,8 +3630,8 @@ var keylst =
 
 function aligncenter()
 {
-    var k = canvas.timeobj.length() / galleryobj.length();
-    canvas.timeobj.rotate(-k);
+    var k = _8cnv.timeobj.length() / galleryobj.length();
+    _8cnv.timeobj.rotate(-k);
     menuobj.draw();               
 }
 
