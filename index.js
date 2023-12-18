@@ -3335,17 +3335,11 @@ var keylst =
             if (key == "pageup" || key == "backspace" ||
                 (canvas.shiftKey && key == "enter"))
             {
-                var k = canvas.timeobj.length() / galleryobj.length();
-                canvas.timeobj.rotate(k);
-                galleryobj.rotate(-1);
-                menuobj.draw();
+		        nextimage(-1)
             }
             else if (key == "pagedown" || key == "enter")
             {
-                var k = canvas.timeobj.length() / galleryobj.length();
-                canvas.timeobj.rotate(-k);
-                galleryobj.rotate(1);
-                menuobj.draw();
+		        nextimage(1)
             }
             else if (
                 key == "arrowup" ||
@@ -3445,8 +3439,7 @@ var keylst =
             }
             else if (key == "g")
             {
-                aligncenter();
-            }
+                }
             else if (key == "e")
             {
                 var str = "";
@@ -3631,7 +3624,14 @@ var keylst =
 function aligncenter()
 {
     var k = _8cnv.timeobj.length() / galleryobj.length();
-    _8cnv.timeobj.rotate(-k);
+    _8cnv.timeobj.set(k*_8cnvctx.centered);
+    menuobj.draw();
+}
+
+function nextimage(j)
+{
+    var k = _8cnv.timeobj.length() / galleryobj.length();
+    _8cnv.timeobj.rotate(j*k);
     menuobj.draw();               
 }
 
@@ -6218,8 +6218,6 @@ function resize()
 	headcnv.width = window.innerWidth;
     if (menuobj.value())
     {
-        //buttonobj.reset()
-        //contextobj.reset();
         if (menuobj.value() != _8cnvctx)
         {
             menuobj.hide();
