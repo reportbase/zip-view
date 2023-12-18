@@ -3409,15 +3409,20 @@ var keylst =
                 key == "arrowleft" ||
                 key == "h")
             {
-                context.canvas.hollyobj.addperc(canvas.ctrlKey?0:(-25/1000));    
+                if (canvas.ctrlKey)
+                    context.canvas.hollyobj.set(0);
+                else
+                    context.canvas.hollyobj.addperc(-25/1000);    
                 menuobj.draw();
                 evt.preventDefault();
             }
             else if (
                 key == "arrowright" ||
                 key == "l")
-            {
-                context.canvas.hollyobj.addperc(canvas.ctrlKey?(context.canvas.hollyobj.length()-1):(25/1000));    
+                if (canvas.ctrlKey)
+                    context.canvas.hollyobj.set(context.canvas.hollyobj.length()-1);
+                else
+                    context.canvas.hollyobj.addperc(25/1000);    
                 menuobj.draw();
                 evt.preventDefault();
             }
