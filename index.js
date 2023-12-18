@@ -3630,11 +3630,16 @@ var keylst =
 
 function aligncenter()
 {
-    var k = 1 - _8cnv.timeobj.berp();
-    k *= galleryobj.length();
-    var j = _8cnv.timeobj.length() / galleryobj.length();	
-    var e = j*Math.floor(k);
-    _8cnv.timeobj.set(e);
+    //var k = 1 - _8cnv.timeobj.berp();
+    //k *= galleryobj.length();
+
+ 	var e = Math.berp(0, galleryobj.length(), 1);
+    var j = (1-e)*Math.PI
+    _8cnv.timeobj.set(j);
+	
+    //var j = _8cnv.timeobj.length() / galleryobj.length() / 2;	
+    //var e = j*Math.floor(k);
+    //_8cnv.timeobj.set(e);
     menuobj.draw();
 }
 
