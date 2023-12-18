@@ -3633,7 +3633,7 @@ function aligncenter()
     var image = 1 - _8cnv.timeobj.berp();
     image *= galleryobj.length();
  	var e = Math.berp(0, galleryobj.length(), image);
-    var j = (1-image)*Math.PI
+    var j = (1-e)*Math.PI
     var k = 0;//_8cnv.timeobj.length() / galleryobj.length() / 2;
     var e = j-k;
     _8cnv.timeobj.set(e);
