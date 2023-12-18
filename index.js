@@ -1456,7 +1456,8 @@ var displaylst =
     {
         var canvas = context.canvas;
         context.save();
-        var a = new panel.cols([5, 9, 0, 9, 5],
+        canvas.timerect = new rectangle();
+	    var a = new panel.cols([5, 9, 0, 9, 5],
 	    [
     		0,
     		0,
@@ -1466,6 +1467,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
+			        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
                     new panel.currentV(
                         new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1)
                 ]),
@@ -3028,11 +3030,22 @@ var panlst =
         }
         else if (type == "panup" || type == "pandown")
         {
-        	var e = canvas.starty - y;
-        	var jvalue = Math.PI / canvas.virtualheight
-        	jvalue *= e;
-        	canvas.timeobj.rotateanchored(jvalue);
-        	menuobj.draw();
+            if (canvas.istimerect)
+            {
+                var obj = canvas.timeobj;
+                var k = (y - canvas.timerect.y) / canvas.timerect.height;
+                var j = obj.length()*k;
+                obj.set(j);
+                menuobj.draw();
+            }
+            else
+            {
+                var e = canvas.starty - y;
+                var jvalue = Math.PI / canvas.virtualheight
+                jvalue *= e;
+                canvas.timeobj.rotateanchored(jvalue);
+                menuobj.draw();
+            }
         }
     },
     panstart: function(context, rect, x, y)
@@ -3043,7 +3056,7 @@ var panlst =
         global.timeauto = 0;
         canvas.starty = y;
         canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
-        canvas.ishollyrect = canvas.hollyrect && canvas.hollyrect.hitest(x, y);
+        canvas.istimerect = canvas.timerect && canvas.timerect.hitest(x, y);
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            },
     panend: function(context, rect, x, y)
     {
@@ -3051,7 +3064,7 @@ var panlst =
         delete canvas.starty;
         delete context.startt;
         delete canvas.timeobj.offset;
-        var obj = context.canvas.hollyobj;
+        var obj = context.canvas.timeobj;
         delete obj.offset;
     }
 },
@@ -4037,6 +4050,16 @@ var taplst =
         {
             closemenu()
         }
+        else if (canvas.timerect &&
+            canvas.timerect.hitest(x, y))
+        {
+            var obj = canvas.timeobj;
+            var k = (y - canvas.timerect.y) / canvas.timerect.height;
+            var j = obj.length()*k;
+            obj.set(j);
+            menuobj.draw();
+            return true;
+        }            
         else 
         {
             var visibles = canvas.visibles;
