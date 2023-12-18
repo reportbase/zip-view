@@ -1310,7 +1310,7 @@ var displaylst =
     {    
         var canvas = context.canvas;
         context.save();
-        ]canvas.hollyrect = new rectangle();
+        canvas.hollyrect = new rectangle();
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
         context.imagerect = new rectangle();
