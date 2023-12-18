@@ -1322,15 +1322,15 @@ var displaylst =
 		    var a = new panel.rows([6, 0, 6],
             [
                 0,
-                new panel.cols([0, 15, 10],
+                new panel.cols([0, 15, 6],
                 [
                     0,
                     new panel.layers(
                     [
-                        new panel.fill("rgba(0,0,0,0.35)"),
+                        new panel.rounded("rgba(255,255,255,0.35)", 0, 0, 8, 8),
                         new panel.shrink(
                             new panel.currentV(
-                                new panel.rounded("rgba(255,255,255,0.35)", 0, 0, 5, 5), 90, 1), 2, 2),
+                                new panel.rounded("rgba(255,255,255,0.35)", 0, 0, 8, 8), 90, 1), 2, 2),
                     ]),
                     0,
                 ]),
