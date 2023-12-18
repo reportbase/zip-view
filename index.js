@@ -1319,12 +1319,21 @@ var displaylst =
         context.buttonrect = new rectangle();
         if (!headcnv.height)
     	{
-            var a = new panel.cols([0, 15, 5],
+		    var a = new panel.rows([10, 0, 10],
             [
                 0,
-                new panel.currentV(
-                    new panel.rounded("rgba(255,255,255,0.6)", 5, "rgba(0,0,0,0.5)", 5, 5), 90, 1),
-                0,
+                new panel.cols([0, 15, 10],
+                [
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.fill("rgba(0,0,0,0.5)"),
+                        new panel.currentV(
+                            new panel.rounded("rgba(255,255,255,0.5)", 0, 0, 5, 5), 90, 1),
+                    ]),
+                    0,
+                ]),
+                0
             ]);
     
             a.draw(context, rect, canvas.timeobj, 0);        
@@ -4172,7 +4181,7 @@ var taplst =
         {
             var obj = canvas.timeobj;
             var k = (y - canvas.timerect.y) / canvas.timerect.height;
-            var j = obj.length()*k;
+            var j = obj.length()*(1-k);
             obj.set(j);
             menuobj.draw();
             return true;
