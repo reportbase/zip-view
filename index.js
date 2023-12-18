@@ -1322,16 +1322,16 @@ var displaylst =
 		    var a = new panel.rows([-1, 0, -1],
             [
                 0,
-                new panel.cols([0, 15, -1],
+                new panel.cols([0, 12, -1],
                 [
                     0,
                     new panel.layers(
                     [
                         new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
-                        new panel.rounded("rgba(0,0,0,0.25)", 0, 0, 6, 6),
+                        new panel.rounded("rgba(0,0,0,0.25)", 0, 0, 0, 0),
                         new panel.shrink(
                             new panel.currentV(
-                                new panel.rounded("rgba(255,255,255,0.6)", 0, 0, 4, 4), 90, 1), 2, 2),
+                                new panel.rounded("rgba(255,255,255,0.6)", 0, 0, 0, 0), 90, 1), 2, 2),
                     ]),
                     0,
                 ]),
@@ -2975,7 +2975,7 @@ var panlst =
         {
             if (canvas.istimerect)
             {
-                var k = (y - canvas.timerect.y) / canvas.timerect.height;
+                var k = y/window.innerHeight;
                 canvas.timeobj.setperc(1-k);
             }
             else
