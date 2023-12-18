@@ -3637,9 +3637,6 @@ function aligncenter()
     var k = _8cnv.timeobj.length() / galleryobj.length() / 2;
     var e = j-k;
     _8cnv.timeobj.set(e);
-	
-    //var e = j*Math.floor(k);
-    //_8cnv.timeobj.set(e);
     menuobj.draw();
 }
 
@@ -3673,6 +3670,19 @@ function aligntop()
 
 function alignbottom()
 {
+    var slice = _8cnv.sliceobj.data[_8cnvctx.centered];
+    if ((slice.rect.y + buttonobj.value()) > window.innerHeight)
+    {
+        while ((slice.rect.y + buttonobj.value()) > window.innerHeight)
+        {
+            _8cnv.timeobj.rotate(-0.001)
+            menuobj.draw();
+        }
+    }
+    else
+    {
+      
+    }
 }
 
 CanvasRenderingContext2D.prototype.hithumb = function(x, y)
