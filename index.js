@@ -3653,7 +3653,7 @@ function nextimage(j)
 function aligntop()
 {
     var slice = _8cnv.sliceobj.data[_8cnvctx.centered];
-    if (slice.y > 0)
+    if (slice.rect.y > 0)
     {
         while (slice.rect.y > 0)
         {
