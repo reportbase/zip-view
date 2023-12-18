@@ -3353,9 +3353,7 @@ var keylst =
             {
                 if (canvas.ctrlKey)
                 {
-                    var k = canvas.timeobj.length() / galleryobj.length();
-                    canvas.timeobj.rotate(k);
-                    menuobj.draw();
+                    aligntop();
                 }
                 else
                 {
@@ -3371,11 +3369,9 @@ var keylst =
                 key == "arrowdown" ||
                 key == "j")
             {
-                 if (canvas.ctrlKey)
+                if (canvas.ctrlKey)
                 {
-                    var k = canvas.timeobj.length() / galleryobj.length();
-                    canvas.timeobj.rotate(-k);
-                    menuobj.draw();
+                   alignbottom();
                 }
                 else
                 {
@@ -3419,7 +3415,7 @@ var keylst =
                 key == "arrowleft" ||
                 key == "h")
             {
-                context.canvas.hollyobj.addperc(-25 / 1000);
+                context.canvas.hollyobj.addperc(canvas.ctrlKey?0:(-25/1000));    
                 menuobj.draw();
                 evt.preventDefault();
             }
@@ -3427,7 +3423,7 @@ var keylst =
                 key == "arrowright" ||
                 key == "l")
             {
-                context.canvas.hollyobj.addperc(25 / 1000);
+                context.canvas.hollyobj.addperc(canvas.ctrlKey?(context.canvas.hollyobj.length()-1):(25/1000));    
                 menuobj.draw();
                 evt.preventDefault();
             }
@@ -3447,14 +3443,9 @@ var keylst =
                 evt.preventDefault();
                 screenfull.toggle();
             }
-            else if (key == "z")
+            else if (key == "g")
             {
-                var slice = _8cnv.sliceobj.data[_8cnvctx.centered];
-		        while (slice.rect.y > 0)
-                {
-                    _8cnv.timeobj.rotate(-0.001)
-                    menuobj.draw();
-			    }
+                aligncenter();
             }
             else if (key == "e")
             {
@@ -3636,6 +3627,38 @@ var keylst =
         }
     },
 ];
+
+function aligncenter()
+{
+    var k = canvas.timeobj.length() / galleryobj.length();
+    canvas.timeobj.rotate(-k);
+    menuobj.draw();               
+}
+
+function aligntop()
+{
+    var slice = _8cnv.sliceobj.data[_8cnvctx.centered];
+    if (slice.y > 0)
+    {
+        while (slice.rect.y > 0)
+        {
+            _8cnv.timeobj.rotate(-0.001)
+            menuobj.draw();
+        }
+    }
+    else
+    {
+        while (slice.rect.y < 0)
+        {
+            _8cnv.timeobj.rotate(0.001)
+            menuobj.draw();
+        }
+    }
+}
+
+function alignbottom()
+{
+}
 
 CanvasRenderingContext2D.prototype.hithumb = function(x, y)
 {
