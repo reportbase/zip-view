@@ -1327,10 +1327,10 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.rounded("rgba(255,255,255,0.35)", 0, 0, 8, 8),
+                        new panel.rounded("rgba(0,0,0,0.25)", 0, 0, 8, 8),
                         new panel.shrink(
                             new panel.currentV(
-                                new panel.rounded("rgba(255,255,255,0.35)", 0, 0, 8, 8), 90, 1), 2, 2),
+                                new panel.rounded("rgba(255,255,255,0.25)", 0, 0, 8, 8), 90, 1), 2, 2),
                     ]),
                     0,
                 ]),
@@ -2972,9 +2972,9 @@ var panlst =
         }
         else if (type == "panup" || type == "pandown")
         {
-            if (canvas.istimeobjrect)
+            if (canvas.istimerect)
             {
-                var k = (y - canvas.timeobjrect.y) / canvas.timeobjrect.height;
+                var k = (y - canvas.timerect.y) / canvas.timerect.height;
                 canvas.timeobj.setperc(1-k);
             }
             else
@@ -3001,7 +3001,7 @@ var panlst =
         canvas.startx = x;
         canvas.starty = y;
         canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
-        canvas.ishollyrect = canvas.hollyrect && canvas.hollyrect.hitest(x, y);
+        canvas.istimerect = canvas.timerect && canvas.timerect.hitest(x, y);
     },
     panend: function(context, rect, x, y)
     {
