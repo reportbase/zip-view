@@ -77,7 +77,7 @@ const GALLERYMAIN = 8;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 36;
-const IMAGELSTSIZE = 36;
+const IMAGELSTSIZE = 12;
 
 function setjson(key, value)
 {
