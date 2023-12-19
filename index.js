@@ -53,11 +53,19 @@ const FILLMENU = "rgba(0,0,0,0.75)";
 const ARROWFILL = "white";
 const SCROLLEXTENT = 16;
 const SCROLLMARGIN = 6;
-const SMALLFONT = "16px Archivo black";
-const DEFAULTFONT = "17px Archivo black";
-const MEDIUMFONT = "19px Archivo black";
-const LARGEFONT = "21px Archivo black";
-const HUGEFONT = "24px Archivo black";
+/*
+const SMALLFONT = "16px Archivo Black";
+const DEFAULTFONT = "17px Archivo Black";
+const MEDIUMFONT = "19px Archivo Black";
+const LARGEFONT = "21px Archivo Black";
+const HUGEFONT = "24px Archivo Black";
+*/
+const SMALLFONT = "16px Archivo";
+const DEFAULTFONT = "17px Archivo";
+const MEDIUMFONT = "19px Archivo";
+const LARGEFONT = "21px Archivo";
+const HUGEFONT = "24px Archivo";
+
 const SLICEWIDTH = 16;
 const ROTATEANCHORSIAE = 3;
 const BOSS = 0;
