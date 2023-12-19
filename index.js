@@ -1545,9 +1545,7 @@ buttonobj.reset = function()
     
     for (var n = Math.floor(dheight); n <= Math.floor(bheight); ++n)
         buttonobj.data.push(n);
-
-    var j = buttonobj.current() == 0 ? Math.floor(buttonobj.length()/2) : 0;
-    buttonobj.set(j);
+    buttonobj.set(0);
 }
 
 function calculateAspectRatioFit(imgwidth, imgheight, rectwidth, rectheight)
@@ -4033,13 +4031,16 @@ var taplst =
             headcnvctx.fitwidthrect &&
             headcnvctx.fitwidthrect.hitest(x, y))
         {
+            var j = buttonobj.current() == 0;
 		    buttonobj.reset();
             _8cnv.fitflash = 1;
             headobj.draw();
             setTimeout(function()
             {
                 _8cnv.fitflash = 0;
+                buttonobj.set(j ? Math.floor(buttonobj.length()/2) : 0);
                 headobj.draw();
+                menuobj.draw();
             }, 400);
         
             menuobj.draw();
