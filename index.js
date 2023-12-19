@@ -6820,8 +6820,7 @@ function setupmenus()
         {
 	        galleryobj.set(this.index);
             aligncenter(this.index)
-            aligntop();
-          return true;
+            return true;
         };   
     };
 	
