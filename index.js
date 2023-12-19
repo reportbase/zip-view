@@ -3465,6 +3465,11 @@ var keylst =
                 evt.preventDefault();
                 screenfull.toggle();
             }
+            else if (key == "i")
+            {
+                global.hideimages = global.hideimages ? 0 : 1;
+		        menuobj.draw();
+            }
             else if (key == "g")
             {
                 aligncenter();
@@ -4849,7 +4854,8 @@ var buttonlst =
 
         if (thumbimg &&
             thumbimg.complete &&
-            thumbimg.naturalHeight)
+            thumbimg.naturalHeight &&
+            !global.hideimages)
         {
             var obj = _8cnv.hollyobj;
             var b = thumbimg.width / thumbimg.height;
