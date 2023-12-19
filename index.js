@@ -1458,7 +1458,6 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                    new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
                     new panel.shrink(new panel.text(), 10, 10),
                 ]),
                 0,
