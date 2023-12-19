@@ -1381,8 +1381,7 @@ var displaylst =
         if (value && value.folder)
             folders = value.folder.split("/");       
         var data = `\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`;
-        var data = `\u{25C0}    ${canvas.timeobj.current().toFixed(8)}    \u{25B6}`;
-        
+        var time = canvas.timeobj.current().toFixed(8);
         var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
         if (!w)
             w = buttonobj.value();
@@ -1395,6 +1394,8 @@ var displaylst =
             folders.length?folders.length*50:-1, 
             folders.length?12:-1, 
             WRAPROWHEIGHT, 
+            12,                 
+            WRAPROWHEIGHT,                  
             12,                 
             WRAPROWHEIGHT,                  
             FOOTSEP, 
@@ -1450,6 +1451,18 @@ var displaylst =
                 ]),
                 0,
             ]),
+	        0,
+            new panel.cols([0, rainstep, 0],
+            [
+                0,
+                new panel.layers(
+                [
+                    new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
+                    new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
+                    new panel.shrink(new panel.text(), 10, 10),
+                ]),
+                0,
+            ]),
             0,
             0,
             0
@@ -1465,6 +1478,8 @@ var displaylst =
             value.blob?value.blob.name:value.name,
             0,
             data,
+            0,
+            time,
             0,
             0,
             0,
