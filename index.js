@@ -3216,7 +3216,8 @@ var mouselst = [
     enter: function(evt) {},
     up: function(evt) {},
     move: function(context, rect, x, y) {},
-}, ];
+}, 
+];
 
 var mouseobj = new circular_array("MOUSE", mouselst);
 
@@ -3234,6 +3235,8 @@ var presslst =
     },
     press: function(context, rect, x, y) 
     {
+        if (x >= rect.width-30)
+            return;
         headobj.toggle();    
     }
 },
@@ -3670,7 +3673,7 @@ function gotoimage(n)
 function nextimage(j)
 {
     var k = _8cnv.timeobj.length() / galleryobj.length();
-    _8cnv.timeobj.rotate(j*k);
+    _8cnv.timeobj.rotate(-j*k);
     menuobj.draw();               
 }
 
