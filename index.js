@@ -7049,12 +7049,8 @@ galleryobj.reset = function(obj)
         image.src = imagepath(j,"5760x5760");
 }
 
-//galleryobj init
-galleryobj.init = function(obj)
+function addpadding()
 {
-    if (obj)
-        Object.assign(galleryobj, obj);
-
     var b = galleryobj.data.length%24;
     if (Array.isArray(galleryobj.data) && 
         galleryobj.data.length > 24 && 
@@ -7072,6 +7068,13 @@ galleryobj.init = function(obj)
 	        galleryobj.data.push(k);
         }
     }
+
+//galleryobj init
+galleryobj.init = function(obj)
+{
+    if (obj)
+        Object.assign(galleryobj, obj);
+    addpadding();
 
     if (Array.isArray(obj.data))
     {
@@ -7185,6 +7188,7 @@ function loadtext(str, origin)
         galleryobj.data.push(json);
     }
 
+    addpadding();
     galleryobj.reset();
 }
 
