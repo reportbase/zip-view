@@ -1336,7 +1336,6 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
-                        //new panel.rounded("rgba(0,0,0,0.25)", 0, 0, 0, 0),
                         new panel.shrink(
                             new panel.currentV(
                                 new panel.rounded("rgba(255,255,255,0.7)", 0, 
@@ -1380,7 +1379,8 @@ var displaylst =
         if (value && value.folder)
             folders = value.folder.split("/");       
         var data = `\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`;
-        var data = canvas.timeobj.current().toFixed(8);
+        var data = `\u{25C0}    ${canvas.timeobj.current().toFixed(8)}    \u{25B6}`;
+        
         var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
         if (!w)
             w = buttonobj.value();
