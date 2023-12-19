@@ -60,11 +60,11 @@ const MEDIUMFONT = "19px Archivo Black";
 const LARGEFONT = "21px Archivo Black";
 const HUGEFONT = "24px Archivo Black";
 */
-const SMALLFONT = "17px kanit";
-const DEFAULTFONT = "18px kanit";
-const MEDIUMFONT = "19px kanit";
-const LARGEFONT = "20px kanit";
-const HUGEFONT = "22px kanit";
+const SMALLFONT = "16px Source Code Pro";
+const DEFAULTFONT = "17px Source Code Pro";
+const MEDIUMFONT = "18px Source Code Pro";
+const LARGEFONT = "19px Source Code Pro";
+const HUGEFONT = "20px Source Code Pro";
 
 const SLICEWIDTH = 16;
 const ROTATEANCHORSIAE = 3;
