@@ -2976,8 +2976,9 @@ var panlst =
         {
             if (canvas.istimerect)
             {
-                var k = (y - canvas.timerect.y) / canvas.timerect.height;
-                canvas.timeobj.setperc(1-k);
+	            var k = (y - canvas.timerect.y) / canvas.timerect.height;
+                var j = canvas.timeobj.length()*(1-k);
+                canvas.timeobj.set(j);
             }
             else
             {
@@ -3044,8 +3045,9 @@ var panlst =
         {
             if (canvas.istimerect)
             {
-                var k = (y - canvas.timerect.y) / canvas.timerect.height;
-                canvas.timeobj.setperc(1-k);
+	            var k = (y - canvas.timerect.y) / canvas.timerect.height;
+                var j = canvas.timeobj.length()*(1-k);
+                canvas.timeobj.set(j);
             }
             else
             {
