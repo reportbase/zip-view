@@ -1380,6 +1380,7 @@ var displaylst =
         if (value && value.folder)
             folders = value.folder.split("/");       
         var data = `\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`;
+        var data = canvas.timeobj.current().toFixed(8);
         var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
         if (!w)
             w = buttonobj.value();
@@ -3467,7 +3468,7 @@ var keylst =
             }
             else if (key == "i")
             {
-                //global.hideimages = global.hideimages ? 0 : 1;
+                global.hideimages = global.hideimages ? 0 : 1;
 		        menuobj.draw();
             }
             else if (key == "g")
