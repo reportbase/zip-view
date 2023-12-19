@@ -4859,7 +4859,8 @@ var buttonlst =
         if (thumbimg &&
             thumbimg.complete &&
             thumbimg.naturalHeight &&
-            !global.hideimages)
+            !global.hideimages &&
+           !user.pad)
         {
             var obj = _8cnv.hollyobj;
             var b = thumbimg.width / thumbimg.height;
