@@ -1508,6 +1508,8 @@ var buttonobj = new circular_array("", []);
 buttonobj.init = function()
 {
     var b = Number(local.button);
+    if (!b)
+        return;
     var n = 1;
     for (; n < buttonobj.length(); ++n)
     {
@@ -2861,8 +2863,8 @@ async function loadzip(file)
         galleryobj.data.push(k);
     }
 
+    local.button = 0;
     galleryobj.init(galleryobj)
-	buttonobj.reset();
 	menuobj.draw();
 }
 
@@ -2901,9 +2903,9 @@ async function loadimages(blobs)
             Object.assign(galleryobj, JSON.parse(text));
         }
     }
-
+    
+    local.button = 0;
     galleryobj.init(galleryobj)
-	buttonobj.reset();
     menuobj.draw();
 }
 
