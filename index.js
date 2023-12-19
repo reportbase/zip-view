@@ -1977,7 +1977,7 @@ panel.info = function()
         var a = new panel.layers(
         [
             new panel.rectangle(user.inforect),
-            new panel.shrink(new panel.circle(FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+            new panel.shrink(new panel.circle(SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
             new panel.shrink(new panel.circle("white"), CIRCLEOUT+8, CIRCLEOUT+8),
         ])
 
@@ -1994,13 +1994,13 @@ panel.movepruv = function()
         user.moveprev = new rectangle()
         context.fillStyle = "white";
         context.strokeStyle = "white";
-
+               
         var a = new panel.layers(
             [
                 new panel.rectangle(user.moveprev),
                 _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                new panel.shrink(new panel.arrow(ARROWFILL, 270), 20, 30),
+                new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.arrow( ARROWFILL, 270), 20, 30),
             ]);
 
         a.draw(context, rect, user, time);
@@ -2059,7 +2059,7 @@ panel.movenuxt = function()
             [
                 new panel.rectangle(user.movenext),
                 _4cnv.movingpage == 1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(_4cnv.movingpage == 1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.circle(_4cnv.movingpage == 1 ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.arrow(ARROWFILL, 90), 20, 30),
             ]);
 
