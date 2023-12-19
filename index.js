@@ -53,6 +53,7 @@ const FILLMENU = "rgba(0,0,0,0.75)";
 const ARROWFILL = "white";
 const SCROLLEXTENT = 16;
 const SCROLLMARGIN = 6;
+
 /*
 const SMALLFONT = "16px Archivo Black";
 const DEFAULTFONT = "17px Archivo Black";
@@ -60,6 +61,7 @@ const MEDIUMFONT = "19px Archivo Black";
 const LARGEFONT = "21px Archivo Black";
 const HUGEFONT = "24px Archivo Black";
 */
+
 const SMALLFONT = "bold 17px Source Code Pro";
 const DEFAULTFONT = "bold 18px Source Code Pro";
 const MEDIUMFONT = "bold 19px Source Code Pro";
@@ -77,7 +79,7 @@ const GALLERYMAIN = 8;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 36;
-const IMAGELSTSIZE = 12;
+const IMAGELSTSIZE = 24;
 
 function setjson(key, value)
 {
@@ -5203,14 +5205,14 @@ menuobj.draw = function()
         
         if (context == _8cnvctx && 
             thumbimg.view != view &&
-            !thumbimg.failed) 
+            !slice.failed) 
         {
             thumbimg.view = view;
             thumbimg.slice = slice;
-            thumbimg.failed = 1;
+            thumbimg.slice.failed = 1;
             thumbimg.onload = function()
             {
-                this.failed = 0;
+                this.slice.failed = 0;
                 this.count = 0;
                 menuobj.draw();
 		        //todo broken when = IMAGELSTSIZE
