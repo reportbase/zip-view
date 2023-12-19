@@ -7068,6 +7068,7 @@ function addpadding()
 	        galleryobj.data.push(k);
         }
     }
+}
 
 //galleryobj init
 galleryobj.init = function(obj)
