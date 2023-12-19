@@ -3467,7 +3467,7 @@ var keylst =
             }
             else if (key == "i")
             {
-                global.hideimages = global.hideimages ? 0 : 1;
+                //global.hideimages = global.hideimages ? 0 : 1;
 		        menuobj.draw();
             }
             else if (key == "g")
@@ -3655,16 +3655,16 @@ var keylst =
     },
 ];
 
-function aligncenter(b)
+function aligncenter(b=-1)
 {
-    var image = b;
-    if (!image)
+    if (b == -1)
     {
-        image = 1 - _8cnv.timeobj.berp();
-        image *= galleryobj.length();
+        b = 1 - _8cnv.timeobj.berp();
+        b *= galleryobj.length();
     }
     
- 	var e = Math.berp(0, galleryobj.length(), Math.floor(image));
+ 	var image = b;
+    var e = Math.berp(0, galleryobj.length(), Math.floor(image));
     var j = (1-e)*Math.PI
     var k = _8cnv.timeobj.length() / galleryobj.length() / 2;
     var e = j-k;
@@ -6820,7 +6820,7 @@ function setupmenus()
         {
 	        galleryobj.set(this.index);
             aligncenter(this.index)
-            //aligntop();
+            aligntop();
           return true;
         };   
     };
