@@ -3719,7 +3719,7 @@ function aligntop()
     {
         while (slice.rect.y > 0)
         {
-            _8cnv.timeobj.rotate(-0.001)
+            _8cnv.timeobj.rotate(-0.00001)
             menuobj.draw();
         }
     }
@@ -3727,7 +3727,7 @@ function aligntop()
     {
         while (slice.rect.y < 0)
         {
-            _8cnv.timeobj.rotate(0.001)
+            _8cnv.timeobj.rotate(0.00001)
             menuobj.draw();
         }
     }
