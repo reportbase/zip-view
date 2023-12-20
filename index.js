@@ -1329,7 +1329,7 @@ var displaylst =
 	    context.templaterect = new rectangle();
         context.buttonrect = new rectangle();
         canvas.timerect = new rectangle();
-        canvas.pirect = new rectangle();
+        context.pirect = new rectangle();
         if (!headcnv.height)
     	{
 		    var a = new panel.rows([-1, 0, 5],
@@ -3965,8 +3965,8 @@ var taplst =
             menuobj.draw();
             return true;
         }            
-        else if (canvas.pirect &&
-            canvas.pirect.hitest(x, y))
+        else if (context.pirect &&
+            context.pirect.hitest(x, y))
         {
             menuobj.updown(context, x<rect.width/2?120:-120, 60)
             if (!context.swipetimeout)
