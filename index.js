@@ -6819,6 +6819,7 @@ function setupmenus()
             var folder = this.folder;
             var n = galleryobj.data.findIndex(function(a){return a.folder == folder;}); 
             gotoimage(n+1);
+            aligntop();
             return true;
         }
     };
@@ -6833,6 +6834,7 @@ function setupmenus()
         {
 	        galleryobj.set(this.index);
             aligncenter(this.index)
+            aligntop();
             return true;
         };   
     };
