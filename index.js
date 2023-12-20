@@ -11,8 +11,10 @@ function ios()
 	        (navigator.userAgent.includes("Mac") && "ontouchend" in document)
 }
 
-let url = new URL(window.location.href);
+var url = new URL(window.location.href);
+const THEME = url.searchParams.get("theme");
 const NUBACK = "rgba(0,0,0,0.4)";
+const GALLNUB = THEME == "light" ? "rgba(0,0,0,0.75)" : "rgba(255,255,255,0.75)";
 const SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const VIRTCONST = 0.8;
 const MAXVIRTUAL = 5760*3;
@@ -1340,7 +1342,7 @@ var displaylst =
                         new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
                         new panel.shrink(
                             new panel.currentV(
-                                new panel.rounded("rgba(255,255,255,0.7)", 0, 
+                                new panel.rounded(GALLNUB, 0, 
                                         "rgba(0,0,0,0.0)", 4, 4), 90, 1), 2, 2),
                     ]),
                     0,
@@ -3780,8 +3782,7 @@ var gallerymenufunc = function(n, x, y)
 
         url = new URL(url.origin);
         var gallery = _2cnv.sliceobj.value();
-        url.searchParams.set("id",gallery.id);
-        window.open(url.href,"_self")
+        window.open(`url.href/${gallery.id}`,"_self")
     }
     else
     {
@@ -5616,7 +5617,7 @@ contextobj.init = function()
     {
         var obj = eventlst[n];
         var canvas = context.canvas;
-        context.imageSmoothingEnabled = true;
+        context.imageSmoothingEnabled = false;
         context.imageSmoothingQuality = "high";
         context.font = DEFAULTFONT;
         context.fillText("  ", 0, 0);
