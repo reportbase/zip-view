@@ -3714,57 +3714,24 @@ function nextimage(j)
 
 function aligntop() 
 {
+    aligncenter();
 	buttonobj.reset();
     var k = 1-(window.innerHeight/buttonobj.value());
     var j = Math.PI/galleryobj.length();
     var e = j * k;
     _8cnv.timeobj.rotate(e/2)
     menuobj.draw();
-	return;
-    
-    var slice = _8cnv.sliceobj.data[_8cnvctx.centered];
-    if (!slice.rect)
-        return;
-    var k = galleryobj.length()/Math.PI/100000;
-    if (slice.rect.y > 0)
-    {
-        while (slice.rect.y > 0)
-        {
-            _8cnv.timeobj.rotate(-k)
-            menuobj.draw();
-        }
-    }
-    else
-    {
-        while (slice.rect.y < 0)
-        {
-            _8cnv.timeobj.rotate(k)
-            menuobj.draw();
-        }
-    }
 }
 
 function alignbottom()
 {
-	return;
-    var slice = _8cnv.sliceobj.data[_8cnvctx.centered];
-    var k = galleryobj.length()/Math.PI/100000;	
-    if ((slice.rect.y + buttonobj.value()) > window.innerHeight)
-    {
-        while ((slice.rect.y + buttonobj.value()) > window.innerHeight)
-        {
-            _8cnv.timeobj.rotate(-k)
-            menuobj.draw();
-        }
-    }
-    else
-    {
-        while ((slice.rect.y + buttonobj.value()) < window.innerHeight)
-        {
-            _8cnv.timeobj.rotate(k)
-            menuobj.draw();
-        }      
-    }
+    aligncenter();
+	buttonobj.reset();
+    var k = 1-(window.innerHeight/buttonobj.value());
+    var j = Math.PI/galleryobj.length();
+    var e = j * k;
+    _8cnv.timeobj.rotate(-e/2)
+    menuobj.draw();
 }
 
 CanvasRenderingContext2D.prototype.hithumb = function(x, y)
