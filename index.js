@@ -4350,7 +4350,7 @@ var taplst =
                 if (!slice.func(n, x, y))
                     return;
                 closemenu();
-                aligntop();
+                //todo aligntop();
             }, 200);
         }
     },
