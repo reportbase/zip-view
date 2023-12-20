@@ -3488,8 +3488,7 @@ var keylst =
             }
             else if (key == "q")
             {
-                if (canvas.ctrlKey && canvas.shiftKey)
-                    global.hideimages = global.hideimages ? 0 : 1;
+                global.hideimages = global.hideimages ? 0 : 1;
 		        menuobj.draw();
             }
             else if (key == "g")
@@ -5259,11 +5258,7 @@ menuobj.draw = function()
             {
                 var path = imagepath(slice,_9cnv.sliceobj.value());
                 if (path)
-                {
                     thumbimg.src = path;
-    		        if (thumbimg.src.isimage())
-                        slice.name = thumbimg.src.split("/").slice(-1)[0];
-                }
             }
         }
         else
@@ -6860,6 +6855,8 @@ function setupmenus()
     {
         var j = galleryobj.data[n];
         j.index = n;
+    	if (j.url && j.url.isimage())
+            j.name = j.url.split("/").slice(-1)[0];
         j.func = function()
         {
 	        galleryobj.set(this.index);
