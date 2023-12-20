@@ -3714,6 +3714,7 @@ function nextimage(j)
 
 function aligntop() 
 {
+	buttonobj.reset();
     var k = 1-(window.innerHeight/buttonobj.value());
     var j = Math.PI/galleryobj.length();
     var e = j * k;
