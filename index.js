@@ -3715,11 +3715,12 @@ function nextimage(j)
 function aligntop()
 {
     var slice = _8cnv.sliceobj.data[_8cnvctx.centered];
+    var k = galleryobj.length()/Math.PI/100;
     if (slice.rect.y > 0)
     {
         while (slice.rect.y > 0)
         {
-            _8cnv.timeobj.rotate(-0.00001)
+            _8cnv.timeobj.rotate(-k)
             menuobj.draw();
         }
     }
@@ -3727,7 +3728,7 @@ function aligntop()
     {
         while (slice.rect.y < 0)
         {
-            _8cnv.timeobj.rotate(0.00001)
+            _8cnv.timeobj.rotate(k)
             menuobj.draw();
         }
     }
