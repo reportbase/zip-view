@@ -3714,7 +3714,7 @@ function nextimage(j)
 
 function aligntop() 
 {
-    var k = 1-xwindow.innerHeight/buttonobj.value();
+    var k = 1-(window.innerHeight/buttonobj.value());
     var j = Math.PI/galleryobj.length();
     var e = j * k;
     _8cnv.timeobj.rotate(e)
