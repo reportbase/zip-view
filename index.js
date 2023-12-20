@@ -3488,7 +3488,8 @@ var keylst =
             }
             else if (key == "i")
             {
-                global.hideimages = global.hideimages ? 0 : 1;
+                if (canvas.ctrlKey)
+                    global.hideimages = global.hideimages ? 0 : 1;
 		        menuobj.draw();
             }
             else if (key == "g")
@@ -7371,12 +7372,6 @@ function importdialog()
 
         input.onchange = function()
         {
-            galleryobj.rightctx.hide()
-            galleryobj.leftctx.hide();
-            menuobj.setindex(_8cnvctx);
-            menuobj.draw();
-            galleryobj.leftnv = _7cnv;
-            galleryobj.leftctx = _7cnvctx;
             loadfiles(Array.from(input.files));
         };
 
