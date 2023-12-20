@@ -4365,10 +4365,7 @@ var taplst =
                 if (!slice.func(n, x, y))
                     return;
                 closemenu();
-                setTimeout(function(a)
-                {
-                    aligntop();
-                }, 200);
+                aligntop();
             }, 200);
         }
     },
@@ -5236,6 +5233,12 @@ menuobj.draw = function()
         var j = {slice,x,y,n};
         slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
         slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
+        if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
+        {
+            galleryobj.width = thumbimg.width;
+            galleryobj.height = thumbimg.height;
+            context.centered = j.n;
+        }
         
         if (context == _8cnvctx && 
             thumbimg.view != view &&
@@ -5263,23 +5266,13 @@ menuobj.draw = function()
                     thumbimg.src = path;
             }
         }
-        else
+        else if (slice.isvisible)
         {
-	        if (slice.isvisible)
-            {
-        	    if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
-        	    {
-            		galleryobj.width = thumbimg.width;
-            		galleryobj.height = thumbimg.height;
-            		context.centered = j.n;
-        	    }
-        	    
-        	    context.canvas.visibles.push(j);             
-                context.translate(0, j.y);
-                context.canvas.draw(context, r, j.slice, j.n);
-                context.translate(0, -j.y);
-            }
-	    }
+            context.canvas.visibles.push(j);             
+            context.translate(0, j.y);
+            context.canvas.draw(context, r, j.slice, j.n);
+            context.translate(0, -j.y);
+        }
     }
 
     //gallery
