@@ -3717,7 +3717,7 @@ function aligntop()
     var k = 1-(window.innerHeight/buttonobj.value());
     var j = Math.PI/galleryobj.length();
     var e = j * k;
-    _8cnv.timeobj.rotate(e)
+    _8cnv.timeobj.rotate(e/2)
     menuobj.draw();
 	return;
     
