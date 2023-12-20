@@ -3488,7 +3488,7 @@ var keylst =
             }
             else if (key == "i")
             {
-                if (canvas.ctrlKey)
+                if (canvas.ctrlKey && canvas.shiftKey && key == "enter")
                     global.hideimages = global.hideimages ? 0 : 1;
 		        menuobj.draw();
             }
