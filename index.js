@@ -3714,6 +3714,8 @@ function nextimage(j)
 function aligntop()
 {
     var slice = _8cnv.sliceobj.data[_8cnvctx.centered];
+    if (!slice.rect)
+        return;
     var k = galleryobj.length()/Math.PI/100000;
     if (slice.rect.y > 0)
     {
