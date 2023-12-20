@@ -5616,7 +5616,7 @@ contextobj.init = function()
     {
         var obj = eventlst[n];
         var canvas = context.canvas;
-        context.imageSmoothingEnabled = true;
+        context.imageSmoothingEnabled = falae;
         context.imageSmoothingQuality = "high";
         context.font = DEFAULTFONT;
         context.fillText("  ", 0, 0);
