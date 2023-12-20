@@ -6827,6 +6827,7 @@ function setupmenus()
             menuobj.setindex(_8cnvctx);
             menuobj.show();
             gotoimage(n+1);
+            aligntop()
             return true;
         }
     };
@@ -6839,6 +6840,7 @@ function setupmenus()
         {
 	        galleryobj.set(this.index);
             aligncenter(this.index)
+            aligntop();
             return true;
         };   
     };
