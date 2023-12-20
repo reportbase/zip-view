@@ -5233,6 +5233,7 @@ menuobj.draw = function()
         var j = {slice,x,y,n};
         slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
         slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
+        //todo broken
         if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
         {
             galleryobj.width = thumbimg.width;
