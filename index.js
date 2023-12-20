@@ -3737,11 +3737,12 @@ function aligntop()
 function alignbottom()
 {
     var slice = _8cnv.sliceobj.data[_8cnvctx.centered];
+    var k = galleryobj.length()/Math.PI/100000;	
     if ((slice.rect.y + buttonobj.value()) > window.innerHeight)
     {
         while ((slice.rect.y + buttonobj.value()) > window.innerHeight)
         {
-            _8cnv.timeobj.rotate(-0.001)
+            _8cnv.timeobj.rotate(-k)
             menuobj.draw();
         }
     }
@@ -3749,7 +3750,7 @@ function alignbottom()
     {
         while ((slice.rect.y + buttonobj.value()) < window.innerHeight)
         {
-            _8cnv.timeobj.rotate(0.001)
+            _8cnv.timeobj.rotate(k)
             menuobj.draw();
         }      
     }
@@ -4363,7 +4364,10 @@ var taplst =
                 if (!slice.func(n, x, y))
                     return;
                 closemenu();
-                //todo aligntop();
+                setTimeout(function(a)
+                {
+                    aligntop();
+                }, 200);
             }, 200);
         }
     },
@@ -6562,7 +6566,6 @@ function closemenu()
     var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
     displayobj.set(k);
     headobj.draw();
-    //menuobj.show();
     menuobj.draw();
 }
 
