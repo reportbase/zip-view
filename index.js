@@ -3451,7 +3451,7 @@ var keylst =
                 if (canvas.ctrlKey)
                     context.canvas.hollyobj.set(0);
                 else
-                    context.canvas.hollyobj.addperc(-25/1000);    
+                    context.canvas.hollyobj.addperc(-25/250);    
                 menuobj.draw();
                 evt.preventDefault();
             }
@@ -3462,7 +3462,7 @@ var keylst =
                 if (canvas.ctrlKey)
                     context.canvas.hollyobj.set(context.canvas.hollyobj.length()-1);
                 else
-                    context.canvas.hollyobj.addperc(25/1000);    
+                    context.canvas.hollyobj.addperc(25/250);    
                 menuobj.draw();
                 evt.preventDefault();
             }
