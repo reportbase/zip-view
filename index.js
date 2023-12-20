@@ -30,7 +30,7 @@ const FOOTSEP = 20;
 const HEADTOP = 80;
 const HEADBOT = 40;
 const FIXEDTIME = 2;
-const WRAPROWHEIGHT = 30;
+const WRAPROWHEIGHT = 40;
 const ROUNDEDLINEWIDTH = 4;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
 const FOOTHEIGHT = 80;
@@ -55,6 +55,7 @@ const FILLMENU = "rgba(0,0,0,0.75)";
 const ARROWFILL = "white";
 const SCROLLEXTENT = 16;
 const SCROLLMARGIN = 6;
+const DISPLAYMARGIN = 12;
 
 /*
 const SMALLFONT = "16px Archivo Black";
@@ -1394,12 +1395,12 @@ var displaylst =
             HEADTOP, 
             HEADBOT,  
             0,
-            folders.length?folders.length*40:-1, 
-            folders.length?12:-1, 
+            folders.length?folders.length*WRAPROWHEIGHT:-1, 
+            folders.length?DISPLAYMARGIN:-1, 
             WRAPROWHEIGHT, 
-            12,                 
+            DISPLAYMARGIN,                 
             WRAPROWHEIGHT,                  
-            12,                 
+            DISPLAYMARGIN,                 
             WRAPROWHEIGHT,                  
             FOOTSEP, 
             SCROLLEXTENT, 
