@@ -3714,8 +3714,13 @@ function nextimage(j)
 
 function aligntop()
 {
-    
+    var k = buttonobj.value()/window.innerHeight/2;
+    var j = Math.PI/galleryobj.length();
+    var e = j * k;
+    _8cnv.timeobj.rotate(e)
+    menuobj.draw();
 	return;
+    
     var slice = _8cnv.sliceobj.data[_8cnvctx.centered];
     if (!slice.rect)
         return;
