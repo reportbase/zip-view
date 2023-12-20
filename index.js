@@ -3486,9 +3486,9 @@ var keylst =
                 evt.preventDefault();
                 screenfull.toggle();
             }
-            else if (key == "i")
+            else if (key == "q")
             {
-                if (canvas.ctrlKey && canvas.shiftKey && key == "enter")
+                if (canvas.ctrlKey && canvas.shiftKey)
                     global.hideimages = global.hideimages ? 0 : 1;
 		        menuobj.draw();
             }
