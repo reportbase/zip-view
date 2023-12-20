@@ -6576,6 +6576,17 @@ function closeboss()
     headobj.draw();
 }
 
+headobj.hide = function()
+{
+    headcnvctx.show(0, 0, window.innerWidth, 0);
+    var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+    headham.panel = headlst[k];
+    var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+    displayobj.set(k);
+    headobj.draw();  
+    menuobj.draw();
+}
+
 headobj.toggle = function()
 {
     headcnvctx.show(0, 0, window.innerWidth, headcnv.height?0:HEADHEIGHT);
@@ -7372,6 +7383,7 @@ function importdialog()
 
         input.onchange = function()
         {
+		    headobj.hide();
             loadfiles(Array.from(input.files));
         };
 
