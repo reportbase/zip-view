@@ -1329,6 +1329,7 @@ var displaylst =
 	    context.templaterect = new rectangle();
         context.buttonrect = new rectangle();
         canvas.timerect = new rectangle();
+        canvas.pirect = new rectangle();
         if (!headcnv.height)
     	{
 		    var a = new panel.rows([-1, 0, 5],
@@ -1383,7 +1384,7 @@ var displaylst =
         if (value && value.folder)
             folders = value.folder.split("/");       
         var data = `\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`;
-        var time = canvas.timeobj.current().toFixed(8);
+        var time = `\u{25C0}    ${canvas.timeobj.current().toFixed(8)}    \u{25B6}`;
         var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
         if (!w)
             w = buttonobj.value();
@@ -1460,6 +1461,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
+                    new panel.expand(new panel.rectangle(context.pirect), 10, 10),
                     new panel.shrink(new panel.text(), 10, 10),
                 ]),
                 0,
@@ -3961,6 +3963,15 @@ var taplst =
             var j = obj.length()*(1-k);
             obj.set(j);
             menuobj.draw();
+            return true;
+        }            
+        else if (canvas.pirect &&
+            canvas.pirect.hitest(x, y))
+        {
+            menuobj.updown(context, x<rect.width/2?120:-120, 60)
+            if (!context.swipetimeout)
+                context.swipetimeout = 
+                    setInterval(function(){menuobj.draw()}, GALLERYMAIN);
             return true;
         }            
         else if (
