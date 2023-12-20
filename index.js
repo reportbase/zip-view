@@ -3712,7 +3712,7 @@ function nextimage(j)
     menuobj.draw();               
 }
 
-function aligntop()
+function aligntop() 
 {
     var k = buttonobj.value()/window.innerHeight;
     var j = Math.PI/galleryobj.length();
