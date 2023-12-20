@@ -2607,9 +2607,9 @@ var wheelst =
         context.canvas.slideshow = 0;
         if (ctrl)
         {
-            if (!(context.elst.length%3))
+            if (!(context.elst.length%5))
                 return;
-            var j = buttonobj.length()/90;
+            var j = buttonobj.length()/30;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
