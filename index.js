@@ -4350,6 +4350,7 @@ var taplst =
                 if (!slice.func(n, x, y))
                     return;
                 closemenu();
+                aligntop();
             }, 200);
         }
     },
@@ -6823,11 +6824,7 @@ function setupmenus()
         {
             var folder = this.folder;
             var n = galleryobj.data.findIndex(function(a){return a.folder == folder;}); 
-            menuobj.hide()
-            menuobj.setindex(_8cnvctx);
-            menuobj.show();
             gotoimage(n+1);
-            aligntop()
             return true;
         }
     };
@@ -6840,7 +6837,6 @@ function setupmenus()
         {
 	        galleryobj.set(this.index);
             aligncenter(this.index)
-            aligntop();
             return true;
         };   
     };
