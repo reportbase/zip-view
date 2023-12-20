@@ -3713,6 +3713,7 @@ function nextimage(j)
 
 function aligntop()
 {
+	return;
     var slice = _8cnv.sliceobj.data[_8cnvctx.centered];
     if (!slice.rect)
         return;
@@ -3737,6 +3738,7 @@ function aligntop()
 
 function alignbottom()
 {
+	return;
     var slice = _8cnv.sliceobj.data[_8cnvctx.centered];
     var k = galleryobj.length()/Math.PI/100000;	
     if ((slice.rect.y + buttonobj.value()) > window.innerHeight)
