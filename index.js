@@ -30,7 +30,7 @@ const FOOTSEP = 20;
 const HEADTOP = 80;
 const HEADBOT = 40;
 const FIXEDTIME = 2;
-const WRAPROWHEIGHT = 34;
+const WRAPROWHEIGHT = 30;
 const ROUNDEDLINEWIDTH = 4;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
 const FOOTHEIGHT = 80;
@@ -1394,7 +1394,7 @@ var displaylst =
             HEADTOP, 
             HEADBOT,  
             0,
-            folders.length?folders.length*50:-1, 
+            folders.length?folders.length*40:-1, 
             folders.length?12:-1, 
             WRAPROWHEIGHT, 
             12,                 
