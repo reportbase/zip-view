@@ -5194,8 +5194,6 @@ menuobj.draw = function()
         var view = Math.floor(n / IMAGELSTSIZE);
         var thumbimg = thumbimglst[index];
         var thumbfitted = thumbfittedlst[index];
-	    if (time < 0.75)
-		    time = 0;
         var t = time + (n * delayinterval);
         var b = Math.tan(t);
         var j = Math.berp(-1, 1, b);
@@ -5226,8 +5224,7 @@ menuobj.draw = function()
                 this.slice.failed = 0;
                 this.count = 0;
                 menuobj.draw();
-		        //todo broken when = IMAGELSTSIZE
-            }
+	        }
             
             if (slice.entry)
             {
@@ -5245,6 +5242,12 @@ menuobj.draw = function()
             context.canvas.visibles.push(j);             
             context.translate(0, j.y);
             context.canvas.draw(context, r, j.slice, j.n);
+            if (j.n > 24)
+            {
+                var a = new panel.fill("rgba(0,0,0,0.5)");
+                a.draw(context. r, 0, 0);
+            }
+            
             context.translate(0, -j.y);
         }
     }
