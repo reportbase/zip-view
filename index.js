@@ -2597,7 +2597,7 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        context.deltalst.push({"index":0,"delta":delta});
+        //context.deltalst.push({"index":0,"delta":delta});
         if (Math.abs(delta) < 0.5)
             return;        
         var canvas = context.canvas;
@@ -2624,7 +2624,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        context.deltalst.push({"index":1,"delta":delta});
+        //context.deltalst.push({"index":1,"delta":delta});
         if (Math.abs(delta) < 0.5)
             return;
         context.canvas.hollyobj.addperc(delta / 2000);
