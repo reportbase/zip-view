@@ -7045,7 +7045,7 @@ function addpadding()
 	    var m = Math.floor(galleryobj.data.length/24);
 	    var a = m*24+9;
 	    galleryobj.padsize = a - b;
-        for (var n = 0; n < galleryobj.padsize; ++n, ++e)
+        for (var n = 0; n < galleryobj.padsize; ++n)
         {
             var k = galleryobj.data[n]
 	        galleryobj.data.push(k);
