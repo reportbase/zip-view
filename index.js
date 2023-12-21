@@ -1380,6 +1380,7 @@ var displaylst =
         if (!w)
             w = buttonobj.value();
 	    var bt = `\u{25C0}    ${w.toFixed(0)} x ${buttonobj.value()}    \u{25B6}`;
+        var text = new panel.text("white", "center", "middle", 0, 1);
         var a = new panel.rowsA(
         [
             HEADTOP, 
@@ -1405,7 +1406,7 @@ var displaylst =
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.buttonrect), 10, 10),
-		            new panel.shrink(new panel.text(), 20, 0),
+		            new panel.shrink(text, 20, 0),
                 ]),
                 0,
             ]),
@@ -1429,7 +1430,7 @@ var displaylst =
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.imagerect), 10, 10),
-                    new panel.shrink(new panel.text(), 10, 10),
+                    new panel.shrink(text, 10, 10),
                 ]),
                 0,
             ]),
@@ -1441,7 +1442,7 @@ var displaylst =
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
-                    new panel.shrink(new panel.text(), 10, 10),
+                    new panel.shrink(text, 10, 10),
                 ]),
                 0,
             ]),
@@ -1453,7 +1454,7 @@ var displaylst =
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.pirect), 10, 10),
-                    new panel.shrink(new panel.text(), 10, 10),
+                    new panel.shrink(text, 10, 10),
                 ]),
                 0,
             ]),
