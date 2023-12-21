@@ -1385,7 +1385,7 @@ var displaylst =
             HEADTOP, 
             HEADBOT,  
             0,
-            folders.length?folders.length*WRAPROWHEIGHT:-1, 
+            folders.length?folders.length*(WRAPROWHEIGHT-10):-1, 
             folders.length?DISPLAYMARGIN:-1, 
             WRAPROWHEIGHT, 
             DISPLAYMARGIN,                 
@@ -4925,38 +4925,7 @@ var buttonlst =
                     0, Math.floor(y) + yyy, ww, hhh,
                     0, yyy, ww, hhh);
             }
-
-            delete user.uploadrect;
-            delete user.inforect;
-            const rainstep = Math.min(420,window.innerWidth-60);
-	        
-	        if (!headcnv.height && galleryobj.current() == time)
-            {
-                var a = new panel.rows([8,BEXTENT,0,BEXTENT,SCROLLEXTENT,SCROLLMARGIN],
-                [
-                    0,
-                    0,
-                    0,
-                    new panel.cols([0,ALIEXTENT,ALIEXTENT+10,ALIEXTENT,0],
-                    [
-                        0,
-                        new panel.movepruv,
-                        new panel.info(),
-    	                new panel.movenuxt,
-                        0,
-                    ]),
-                    new panel.cols([0, rainstep, 0],
-                    [
-                        0,
-                        new panel.holly(),
-                        0,
-                    ]),
-                    0,
-                ]);    
-                
-                a.draw(context, rect, user, 0);
-            }
-            
+           
             if (user.tap)
             {
                 var a = new panel.fill("rgba(0,0,0,0.5)");
@@ -4977,7 +4946,7 @@ var buttonlst =
                         new panel.layers(
                         [
                             new panel.shrink(new panel.rounded(FILLMENU, 0, 0, 12, 12), 20, 0),
-                            new panel.shrink(new panel.multitext(0, new panel.text()), 20, 20),
+                            new panel.shrink(new panel.multitext(0, new panel.text()), 40, 40),
                         ]),
                         0,
                     ]),
@@ -4997,6 +4966,37 @@ var buttonlst =
             
             a.draw(context, rect, lst, 0);
 	    }
+    
+        delete user.uploadrect;
+        delete user.inforect;
+        const rainstep = Math.min(420,window.innerWidth-60);
+        
+        if (!headcnv.height && galleryobj.current() == time)
+        {
+            var a = new panel.rows([8,BEXTENT,0,BEXTENT,SCROLLEXTENT,SCROLLMARGIN],
+            [
+                0,
+                0,
+                0,
+                new panel.cols([0,ALIEXTENT,ALIEXTENT+10,ALIEXTENT,0],
+                [
+                    0,
+                    new panel.movepruv,
+                    new panel.info(),
+                    new panel.movenuxt,
+                    0,
+                ]),
+                new panel.cols([0, rainstep, 0],
+                [
+                    0,
+                    new panel.holly(),
+                    0,
+                ]),
+                0,
+            ]);    
+            
+            a.draw(context, rect, user, 0);
+        }
     }
 },
 {
