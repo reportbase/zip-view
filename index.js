@@ -1374,9 +1374,9 @@ var displaylst =
         var folders = [];
         if (value && value.folder)
             folders = value.folder.split("/");
-        var space = rect.width < 400 ? 1 : rect.widt < 600 ? 2 : 3;
+        var space = rect.width < 400 ? 2 : rect.widt < 600 ? 3 : 4;
         var data = `\u{25C0}${space}${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}${space}\u{25B6}`;
-        var time = `\u{25C0}${space}${canvas.timeobj.current().toFixed(8)}    \u{25B6}`;
+        var time = `\u{25C0}${space}${canvas.timeobj.current().toFixed(8)}${space}\u{25B6}`;
         var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
         if (!w)
             w = buttonobj.value();
