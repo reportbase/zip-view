@@ -2600,7 +2600,7 @@ var wheelst =
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         //context.deltalst.push({"index":0,"delta":delta});
-        if (Math.abs(delta) < 0.5)
+        if (Math.abs(delta) < 0.25)
             return;        
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
@@ -2619,16 +2619,16 @@ var wheelst =
         {
             menuobj.updown(context, delta, 60)
             menuobj.draw();
-            //if (!context.swipetimeout)
-            clearTimeout(context.swipetimeout);
+            clearInterval(context.swipetimeout);
                 context.swipetimeout = setInterval(
                     function(){menuobj.draw();}, GALLERYMAIN);
+	
         }
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         //context.deltalst.push({"index":1,"delta":delta});
-        if (Math.abs(delta) < 0.5)
+        if (Math.abs(delta) < 0.25)
             return;
         context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw();
