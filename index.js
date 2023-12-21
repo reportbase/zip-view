@@ -2618,7 +2618,7 @@ var wheelst =
         else
         {
 		    menuobj.updown(context, delta, 60)
-        //    menuobj.draw();
+        	menuobj.draw();
             if (!clearInterval(context.swipetimeout))
             {
                  context.swipetimeout = setInterval(
