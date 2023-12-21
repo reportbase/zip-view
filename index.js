@@ -2619,7 +2619,8 @@ var wheelst =
         {
             menuobj.updown(context, delta, 60)
             menuobj.draw();
-            if (!context.swipetimeout)
+            //if (!context.swipetimeout)
+            clearTimeout(context.swipetimeout);
                 context.swipetimeout = setInterval(
                     function(){menuobj.draw();}, GALLERYMAIN);
         }
