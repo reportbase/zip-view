@@ -5121,7 +5121,16 @@ menuobj.draw = function()
     	
     var canvas = context.canvas;
     var time = canvas.timeobj.value();
-    var slices = context.canvas.sliceobj.data;
+    var slices = canvas.sliceobj.data;
+    var len = slices.length;
+    if (context == _8cnvctx)
+    {
+
+    }
+    else
+    {
+    }
+    
     const rect = context.rect();
     if (!rect.width || !rect.height)
         return;
@@ -5143,7 +5152,6 @@ menuobj.draw = function()
     }
 
     var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
-    var len = slices.length;
     var delayinterval = Math.PI / len;
     context.canvas.virtualheight = len * buttonheight;
 
@@ -5242,9 +5250,9 @@ menuobj.draw = function()
             context.canvas.visibles.push(j);             
             context.translate(0, j.y);
             context.canvas.draw(context, r, j.slice, j.n);
-            if (j.n > 24)
+            if (j.n >= galleryobj.length() - galleryobj.padsize)
             {
-                var a = new panel.fill("rgba(0,0,0,0.5)");
+                var a = new panel.fill("rgba(0,0,0,0.80)");
                 a.draw(context, r, 0, 0);
             }
             
@@ -7052,6 +7060,7 @@ galleryobj.reset = function(obj)
 function addpadding()
 {
     var b = galleryobj.data.length%24;
+	galleryobj.padsize = 0;
     if (Array.isArray(galleryobj.data) && 
         galleryobj.data.length > 24 && 
         b >= 1 && b <= 8)
