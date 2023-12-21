@@ -2600,6 +2600,8 @@ var wheelst =
     {
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
+	    if (delta < 1)
+            return;
         if (ctrl)
         {
             //if (!(context.elst.length%5))
@@ -2624,6 +2626,8 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
+        if (delta < 1)
+            return;
         context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw();
     },
