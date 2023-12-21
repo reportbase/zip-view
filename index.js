@@ -56,29 +56,19 @@ const ARROWFILL = "white";
 const SCROLLEXTENT = 16;
 const SCROLLMARGIN = 6;
 const DISPLAYMARGIN = 12;
-
-/*
-const SMALLFONT = "16px Archivo Black";
-const DEFAULTFONT = "17px Archivo Black";
-const MEDIUMFONT = "19px Archivo Black";
-const LARGEFONT = "21px Archivo Black";
-const HUGEFONT = "24px Archivo Black";
-*/
-
 const SMALLFONT = "bold 17px Source Code Pro";
 const DEFAULTFONT = "bold 18px Source Code Pro";
 const MEDIUMFONT = "bold 19px Source Code Pro";
 const LARGEFONT = "bold 20px Source Code Pro";
 const HUGEFONT = "bold 22px Source Code Pro";
-
 const SLICEWIDTH = 16;
 const ROTATEANCHORSIAE = 3;
 const BOSS = 0;
 const GALLERY = 1;
 const MENU = 2;
-const BOSSMAIN = 8;
-const MENUMAIN = 8;
-const GALLERYMAIN = 8;
+const BOSSMAIN = 18;
+const MENUMAIN = 18;
+const GALLERYMAIN = 18;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 36;
