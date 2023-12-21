@@ -1373,13 +1373,14 @@ var displaylst =
         var value = galleryobj.data[k];
         var folders = [];
         if (value && value.folder)
-            folders = value.folder.split("/");       
-        var data = `\u{25C0}    ${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}    \u{25B6}`;
-        var time = `\u{25C0}    ${canvas.timeobj.current().toFixed(8)}    \u{25B6}`;
+            folders = value.folder.split("/");
+        var space = rect.width < 400 ? 1 : rect.widt < 600 ? 2 : 3;
+        var data = `\u{25C0}${space}${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}${space}\u{25B6}`;
+        var time = `\u{25C0}${space}${canvas.timeobj.current().toFixed(8)}    \u{25B6}`;
         var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
         if (!w)
             w = buttonobj.value();
-	    var bt = `\u{25C0}      ${w.toFixed(0)} x ${buttonobj.value()}      \u{25B6}`;
+	    var bt = `\u{25C0}${space}${w.toFixed(0)} x ${buttonobj.value()}${space}\u{25B6}`;
         var text = new panel.text("white", "center", "middle", 0, 1);
         var a = new panel.rowsA(
         [
