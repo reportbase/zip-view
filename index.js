@@ -2617,13 +2617,13 @@ var wheelst =
         }
         else
         {
-		context.swipetimeout = 1;
-            menuobj.updown(context, delta, 60)
-            menuobj.draw();
-            //clearInterval(context.swipetimeout);
-             //   context.swipetimeout = setInterval(
-               //     function(){menuobj.draw();}, GALLERYMAIN);
-	
+		    menuobj.updown(context, delta, 60)
+        //    menuobj.draw();
+            if (!clearInterval(context.swipetimeout))
+            {
+                 context.swipetimeout = setInterval(
+                   function(){menuobj.draw();}, GALLERYMAIN);
+            }
         }
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
