@@ -2594,15 +2594,13 @@ var wheelst =
     name: "GALLERY",
     wheel: function(context, x, y)
     {
-        context.elst.push({x,y});
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
+        context.deltalst.push({0,delta});
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
-	    if (delta < 1)
-            return;
-        if (ctrl)
+	    if (ctrl)
         {
             //if (!(context.elst.length%5))
             //    return;
@@ -2626,8 +2624,7 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        if (delta < 1)
-            return;
+        context.deltalst.push({1,delta});
         context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw();
     },
@@ -5604,6 +5601,7 @@ contextobj.init = function()
         canvas.slidereduce = 0;
         canvas.slidestop = 0;
         canvas.lastime = 0;
+        context.deltalst = [];
         context.infobj = new circular_array("", 3);
         canvas.sliceobj = new circular_array("", []);
         canvas.timeobj = new circular_array("", Math.PI);
@@ -5617,12 +5615,13 @@ contextobj.init = function()
         canvas.buttonheight = obj.buttonheight;
         canvas.buttonmargin = obj.buttonmargin;
         canvas.display = obj.display;
- 
+	    
         var k = footlst.findIndex(function(a){return a.name == obj.footer});
-        canvas.footer = footlst[k];
-    
+        canvas.footer = footlst[k]; 
+	    
         var k = pinchlst.findIndex(function(a){return a.name == obj.pinch});
         k = pinchlst[k];
+	    
         canvas.pinch_ = k.pinch;
         canvas.pinchstart_ = k.pinchstart;
         canvas.pinchend_ = k.pinchend;
@@ -5678,6 +5677,7 @@ contextobj.init = function()
     
         var k = panlst.findIndex(function(a) {return a.name == obj.pan});
         k = panlst[k];   
+	    
         context.canvas.panstart_ = k.panstart;
         context.canvas.pan_ = k.pan;
         context.canvas.panupdown_ = k.updown;
