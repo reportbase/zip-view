@@ -2597,15 +2597,13 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        if (Math.abs(delta) < 1)
-            return;        
         context.deltalst.push({"index":0,"delta":delta});
+        if (Math.abs(delta) < 0.5)
+            return;        
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
 	    if (ctrl)
         {
-            //if (!(context.elst.length%5))
-            //    return;
             var j = buttonobj.length()/120;
             context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
@@ -2626,9 +2624,9 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        if (Math.abs(delta) < 1)
-            return;
         context.deltalst.push({"index":1,"delta":delta});
+        if (Math.abs(delta) < 0.5)
+            return;
         context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw();
     },
