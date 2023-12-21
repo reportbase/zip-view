@@ -7047,11 +7047,11 @@ function addpadding()
 	    var a = m*24+9;
 	    var size = a - b;
         var e = 0;
-	    for (var n = 0; n < size; ++n)
+	    for (var n = 0; n < size; ++n, ++e)
         {
             var k = {}
-            k.url = galleryobj.data[e++].url;
-            k.id = galleryobj.data[e++].id;
+            k.url = galleryobj.data[e].url;//todo
+            k.id = galleryobj.data[e].id;
             k.pad = 1;
 	        galleryobj.data.push(k);
         }
