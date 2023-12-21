@@ -2597,6 +2597,8 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
+        if (delta < 1)
+            return;        
         context.deltalst.push({"index":0,"delta":delta});
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
@@ -2624,6 +2626,8 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
+        if (delta < 1)
+            return;
         context.deltalst.push({"index":1,"delta":delta});
         context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw();
