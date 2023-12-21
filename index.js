@@ -5195,6 +5195,8 @@ menuobj.draw = function()
         var thumbimg = thumbimglst[index];
         var thumbfitted = thumbfittedlst[index];
         var t = time + (n * delayinterval);
+	    if (t < 0.75)
+		    t = 0;
         var b = Math.tan(t);
         var j = Math.berp(-1, 1, b);
         var y = j * context.canvas.virtualheight;
