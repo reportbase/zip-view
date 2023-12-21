@@ -5245,7 +5245,7 @@ menuobj.draw = function()
             if (j.n > 24)
             {
                 var a = new panel.fill("rgba(0,0,0,0.5)");
-                a.draw(context. r, 0, 0);
+                a.draw(context, r, 0, 0);
             }
             
             context.translate(0, -j.y);
