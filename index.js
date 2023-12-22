@@ -3725,9 +3725,9 @@ function gotoimage(n)
     return true;
 }
 
-function aligntop() 
+function aligntop(n) 
 {
-    aligncenter();
+    aligncenter(n);
 	buttonobj.reset();
     var k = 1-(window.innerHeight/buttonobj.value());
     var j = Math.PI/galleryobj.length();
@@ -5262,22 +5262,29 @@ menuobj.draw = function()
     }
 
     var func = 0;
-    for (var m = 0; m < context.canvas.visibles.length; ++m)
+    if (galleryobj.padsize)
     {
-        var j = context.canvas.visibles[m];
-        if (j.n == 0 && j.slice.rect.y < 0)
+        for (var m = 0; m < context.canvas.visibles.length; ++m)
         {
-            func = 1;
+            var j = context.canvas.visibles[m];
+            if (j.n == 0 && j.slice.rect.y < 0)
+            {
+                func = 1;
+            }
+            else (0)
+            {
+                func = 2;
+            }
         }
     }
-
+    
     if (func == 1)
     {
-        aligntop();
+        aligntop(0);
     }
     else if (func == 2)
     {
-        alignbottom();
+        alignbottom(galleryobj.length()-galleryobj.padsize);
     }
     else
     {
