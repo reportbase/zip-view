@@ -667,6 +667,8 @@ var footlst =
         context.save();     
         canvas.homerect = new rectangle();
         canvas.userdeleterect = new rectangle();
+        canvas.useraddrect = new rectangle();
+        canvas.userpatchrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
 		[
 			new panel.layers(
@@ -679,11 +681,24 @@ var footlst =
 			new panel.layers(
 			[
 				new panel.fill(FOOTBTNCOLOR),
-                new panel.layers(
-                [
-                    new panel.rectangle(canvas.userdeleterect),
-                    new panel.text(),
-                ]),
+   			    new panel.colsA([0,0,0],
+				[
+					new panel.layers(
+					[
+						new panel.rectangle(canvas.useraddrect),
+						new panel.text(),
+					]),
+					new panel.layers(
+					[
+						new panel.rectangle(canvas.userpatchrect),
+						new panel.text(),
+					]),
+					new panel.layers(
+					[
+						new panel.rectangle(canvas.userdeleterect),
+						new panel.text(),
+					]),
+				])                 
 			])
 		]);
         
@@ -691,7 +706,11 @@ var footlst =
 	   	[
 		   `\u{25C0}   Users`,
 		   0,
-		  `Delete`
+            [
+                "Add",
+                "Edit",
+		        "Delete"
+            ]
 		]);
         
         context.restore();    
