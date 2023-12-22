@@ -4172,7 +4172,10 @@ var taplst =
                 })
                 .then(function(response)
                 {
-                    console.log(response);
+                    //gallery.id = id.value;
+                    gallery.title = title.value;
+                    gallery.value = id.value;
+                    menuobj.draw();
                 })
             })
         }
