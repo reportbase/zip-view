@@ -3396,13 +3396,13 @@ var keylst =
                 (canvas.shiftKey && key == "enter"))
             {
                 var k = _8cnv.timeobj.length() / galleryobj.length();
-                _8cnv.timeobj.rotate(-k);
+                _8cnv.timeobj.rotate(k);
                 menuobj.draw();               
             }
             else if (key == "pagedown" || key == "enter")
             {
                 var k = _8cnv.timeobj.length() / galleryobj.length();
-                _8cnv.timeobj.rotate(k);
+                _8cnv.timeobj.rotate(-k);
                 menuobj.draw();              
             }
             else if (
