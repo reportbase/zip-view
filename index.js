@@ -3028,17 +3028,6 @@ var panlst =
             }
             else
             {
-        var delayinterval = Math.PI / galleryobj.length();
-        var n = galleryobj.length() - 1;
-        var t = canvas.timeobj.current() + (n * delayinterval);
-        var b = Math.tan(t);
-        var j = Math.berp(-1, 1, b);
-        var y = j * context.canvas.virtualheight;
-        var e = (canvas.virtualheight - rect.height) / 2;
-        y -= e;
-        if (y + buttonobj.value() > 0)
-            return;
-
                 var e = canvas.starty - y;
                 var k = Math.PI / canvas.virtualheight
                 k *= e;
@@ -5428,7 +5417,7 @@ var eventlst =
     pinch: "MENU",
     display: "MENU",
     footer: "IMAGE",
-    buttonheight: 160,
+    buttonheight: 640,//todo
     buttonmargin: 15,
     width: 640
 },
