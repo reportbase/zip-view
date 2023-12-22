@@ -3411,6 +3411,8 @@ var keylst =
             {
                 if (canvas.ctrlKey)
                 {
+                    aligncenter()
+        		    buttonobj.reset();
                     aligntop();
                 }
                 else
@@ -3725,10 +3727,8 @@ function gotoimage(n)
     return true;
 }
 
-function aligntop(n) 
+function aligntop() 
 {
-    aligncenter(n);
-	buttonobj.reset();
     var k = 1-(window.innerHeight/buttonobj.value());
     var j = Math.PI/galleryobj.length();
     var e = j * k;
@@ -5280,7 +5280,9 @@ menuobj.draw = function()
     
     if (func == 1)
     {
-        aligntop(0);
+	    aligncenter(0);
+	    //buttonobj.reset();
+        aligntop();
     }
     else if (func == 2)
     {
@@ -6865,6 +6867,8 @@ function setupmenus()
             var folder = this.folder;
             var n = galleryobj.data.findIndex(function(a){return a.folder == folder;}); 
             gotoimage(n+1);
+		    aligncenter(n+1);
+		    buttonobj.reset();
             aligntop();
             return true;
         }
@@ -6880,6 +6884,7 @@ function setupmenus()
         {
 	        galleryobj.set(this.index);
             aligncenter(this.index)
+		    buttonobj.reset();
             aligntop();
             return true;
         };   
