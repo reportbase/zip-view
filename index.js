@@ -3028,6 +3028,17 @@ var panlst =
             }
             else
             {
+        var delayinterval = Math.PI / galleryobj.length();
+        var n = galleryobj.length() - 1;
+        var t = canvas.timeobj.current() + (n * delayinterval);
+        var b = Math.tan(t);
+        var j = Math.berp(-1, 1, b);
+        var y = j * context.canvas.virtualheight;
+        var e = (canvas.virtualheight - rect.height) / 2;
+        y -= e;
+        if (y > 0)
+            return;
+
                 var e = canvas.starty - y;
                 var k = Math.PI / canvas.virtualheight
                 k *= e;
@@ -5263,55 +5274,23 @@ menuobj.draw = function()
 	    }
     }
 
-    var func = 0;
-    if (galleryobj.padsize)
+    for (var m = 0; m < context.canvas.visibles.length; ++m)
     {
-        for (var m = 0; m < context.canvas.visibles.length; ++m)
+        var j = context.canvas.visibles[m];
+        context.translate(0, j.y);
+        context.canvas.draw(context, r, j.slice, j.n);
+        if (context == _8cnvctx &&
+    	    j.n >= galleryobj.length() - galleryobj.padsize)
         {
-            var j = context.canvas.visibles[m];
-            if (j.n == 0 && j.slice.rect.y > -5)
-            {
-                func = 1;
-            }
-            else if (0)
-            {
-                func = 2;
-            }
+    	    var a = new panel.fill("rgba(0,0,0,0.80)");
+    	    a.draw(context, r, 0, 0);
         }
+        
+        context.translate(0, -j.y);
     }
     
-    if (func == 1)
-    {
-	    aligncenter(0);
-		//menuobj.draw();
-	    //buttonobj.reset();
-        aligntop();
-   	    menuobj.draw();
-    }
-    else if (func == 2)
-    {
-        alignbottom(galleryobj.length()-galleryobj.padsize);
-    }
-    else
-    {
-        for (var m = 0; m < context.canvas.visibles.length; ++m)
-        {
-            var j = context.canvas.visibles[m];
-            context.translate(0, j.y);
-            context.canvas.draw(context, r, j.slice, j.n);
-            if (context == _8cnvctx &&
-                j.n >= galleryobj.length() - galleryobj.padsize)
-            {
-                var a = new panel.fill("rgba(0,0,0,0.80)");
-                a.draw(context, r, 0, 0);
-            }
-            
-            context.translate(0, -j.y);
-        }
-    
-        displayobj.value().draw(context, rect, 0, 0);
-        context.canvas.footer.draw(context, rect, 0, 0);
-    }
+    displayobj.value().draw(context, rect, 0, 0);
+    context.canvas.footer.draw(context, rect, 0, 0);
 }
 
 function resetview()
