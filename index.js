@@ -5264,7 +5264,7 @@ menuobj.draw = function()
     for (var m = 0; m < context.canvas.visibles.length; ++m)
     {
         var j = context.canvas.visibles[m];
-        if (j.n == 0 && j.rect.y < 0)
+        if (j.n == 0 && j.slice.rect.y < 0)
         {
             console.log(j);
         }
