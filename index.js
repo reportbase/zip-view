@@ -5125,7 +5125,6 @@ menuobj.draw = function()
     var len = slices.length;
     if (context == _8cnvctx)
     {
-
     }
     else
     {
@@ -5159,6 +5158,8 @@ menuobj.draw = function()
     if (context.canvas.virtualheight < window.innerHeight && len)
     {
         buttonheight = Math.floor(window.innerHeight / len);
+	    if (buttonheight > window.innerHeight/2)
+            buttonheight = window.innerHeight/2;
         buttonheight = buttonheight-buttonheight%2;
         context.canvas.virtualheight = len * buttonheight;
     }
