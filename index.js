@@ -3036,7 +3036,7 @@ var panlst =
         var y = j * context.canvas.virtualheight;
         var e = (canvas.virtualheight - rect.height) / 2;
         y -= e;
-        if (y > 0)
+        if (y + buttonobj.value() > 0)
             return;
 
                 var e = canvas.starty - y;
