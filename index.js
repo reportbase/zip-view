@@ -1849,6 +1849,7 @@ panel.fitwidth = function()
 
 function leftmenu(context)
 {
+    context.canvas.timeobj.set(2.259798334532977);
     var k = displaylst.findIndex(function(a){return a.name == "DEFAULT"});
     displayobj.set(k);
     menuobj.draw();
@@ -1880,6 +1881,7 @@ function leftmenu(context)
 
 function rightmenu(context, force)
 {
+    context.canvas.timeobj.set(2.259798334532977);
     var k = displaylst.findIndex(function(a){return a.name == "DEFAULT"});
     displayobj.set(k);
     menuobj.draw();
