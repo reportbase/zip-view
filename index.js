@@ -5125,6 +5125,8 @@ menuobj.draw = function()
     var len = slices.length;
     if (context == _8cnvctx)
     {
+        if (canvas.autodirect == -1 && galleryobj.padsize && time > 3.12)
+            return;
     }
     else
     {
@@ -5133,8 +5135,8 @@ menuobj.draw = function()
     const rect = context.rect();
     if (!rect.width || !rect.height)
         return;
-    
-    if (context.canvas.slideshow > 0)
+
+   if (context.canvas.slideshow > 0)
     {
         var k = canvas.autodirect;
         context.canvas.timeobj.rotate(k * context.canvas.slideshow);
@@ -5616,7 +5618,6 @@ contextobj.init = function()
         context.font = DEFAULTFONT;
         context.fillText("  ", 0, 0);
         context.elst = []
-        canvas.autodirect = -1;
         canvas.slideshow = 0;
         canvas.slidereduce = 0;
         canvas.slidestop = 0;
