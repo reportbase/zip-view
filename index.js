@@ -5126,10 +5126,7 @@ menuobj.draw = function()
     }
     else
     {
-        if (len == 1)
-            time = 3.27;
-        else if (len == 2)
-            time = 2.67;
+
     }
     
     const rect = context.rect();
