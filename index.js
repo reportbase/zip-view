@@ -3762,7 +3762,7 @@ var gallerymenufunc = function(n, x, y)
 
         url = new URL(url.origin);
         var gallery = _2cnv.sliceobj.value();
-        window.open(`url.href/${gallery.id}`,"_self")
+        window.open(`${url.href}/${gallery.id}`,"_self")
     }
     else
     {
