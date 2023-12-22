@@ -4161,11 +4161,6 @@ var taplst =
             json.value = gallery.json;
             showdialog("gallery-patch", function(image)
             {
-                if (gallery.title == "Sample 001" ||
-                    gallery.title == "Sample 002" ||
-                    gallery.title == "Sample 003" ||
-                    gallery.title == "Sample 004")
-                    return;
                 const form = new FormData();
                 form.append('id', id.value);
 		        form.append('title', title.value);
@@ -4177,7 +4172,7 @@ var taplst =
                 })
                 .then(function(response)
                 {
-                    showgallery();
+                    console.log(response);
                 })
             })
         }
