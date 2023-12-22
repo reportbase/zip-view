@@ -5159,7 +5159,7 @@ menuobj.draw = function()
 	    if (buttonheight > window.innerHeight/2)
             buttonheight = window.innerHeight/2;
         buttonheight = buttonheight-buttonheight%2;
-        context.canvas.virtualheight = 10;//todo len * buttonheight;
+        context.canvas.virtualheight = len * buttonheight;
     }
     else if (context == _8cnvctx)
     {
