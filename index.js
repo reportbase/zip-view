@@ -3397,8 +3397,6 @@ var keylst =
             {
                 var k = _8cnv.timeobj.length() / galleryobj.length();
                 _8cnv.timeobj.rotate(-k);
-                if (galleryobj.padsize && time > 3.11) 
-                    canvas.timeobj.set(3.11)
                 menuobj.draw();               
             }
             else if (key == "pagedown" || key == "enter")
@@ -5145,8 +5143,8 @@ menuobj.draw = function()
         if (canvas.autodirect == 1 && galleryobj.padsize && time > 3.11 ||
             canvas.autodirect == -1 && galleryobj.padsize && time < 0.77)
 	    {
-		    displayobj.value().draw(context, rect, 0, 0);
-            return;
+		    //displayobj.value().draw(context, rect, 0, 0);
+            //return;
         }
     }
     else
