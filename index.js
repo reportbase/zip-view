@@ -5138,18 +5138,6 @@ menuobj.draw = function()
     var time = canvas.timeobj.value();
     var slices = canvas.sliceobj.data;
     var len = slices.length;
-    if (context == _8cnvctx)
-    {
-        if (canvas.autodirect == 1 && galleryobj.padsize && time > 3.11 ||
-            canvas.autodirect == -1 && galleryobj.padsize && time < 0.77)
-	    {
-		    //displayobj.value().draw(context, rect, 0, 0);
-            //return;
-        }
-    }
-    else
-    {
-    }
     
     const rect = context.rect();
     if (!rect.width || !rect.height)
@@ -5272,7 +5260,8 @@ menuobj.draw = function()
             context.canvas.visibles.push(j);             
             context.translate(0, j.y);
             context.canvas.draw(context, r, j.slice, j.n);
-            if (j.n >= galleryobj.length() - galleryobj.padsize)
+            if (context == _8cnvctx &&
+		j.n >= galleryobj.length() - galleryobj.padsize)
             {
                 var a = new panel.fill("rgba(0,0,0,0.80)");
                 a.draw(context, r, 0, 0);
