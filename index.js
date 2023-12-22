@@ -5264,12 +5264,12 @@ menuobj.draw = function()
     }
 
     var func = 0;
-    if (!context.lockmenu && galleryobj.padsize)
+    if (galleryobj.padsize)
     {
         for (var m = 0; m < context.canvas.visibles.length; ++m)
         {
             var j = context.canvas.visibles[m];
-            if (j.n == 0 && j.slice.rect.y < 0)
+            if (j.n == 0 && j.slice.rect.y < -5)
             {
                 func = 1;
             }
@@ -5286,9 +5286,7 @@ menuobj.draw = function()
 		//menuobj.draw();
 	    //buttonobj.reset();
         aligntop();
-        context.lockmenu = 1;
-		menuobj.draw();
-        context.lockmenu = 0;
+   	    menuobj.draw();
     }
     else if (func == 2)
     {
