@@ -4250,8 +4250,9 @@ var taplst =
                     k.json = obj.json;
                     k.id = obj.gallery_id;   
                     _2cnv.sliceobj.data.push(k);
-                    var j = _2cnv.timeobj.length() / galleryobj.length();
-                    _2cnv.timeobj.set(Math.floor(j/2)); 
+                    var j = _2cnv.timeobj.length() - 1;
+                    _2cnv.sliceobj.set(j);
+                    _2cnv.timeobj.set(0)//todo
 			        var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
                     _2cnv.rotated = [...a, ...a, ...a];
                     menuobj.draw();
