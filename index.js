@@ -5257,18 +5257,23 @@ menuobj.draw = function()
         }
         else if (slice.isvisible)
         {
-            context.canvas.visibles.push(j);                        
-            context.translate(0, j.y);
-            context.canvas.draw(context, r, j.slice, j.n);
-            if (context == _8cnvctx &&
-		        j.n >= galleryobj.length() - galleryobj.padsize)
-            {
-                var a = new panel.fill("rgba(0,0,0,0.80)");
-                a.draw(context, r, 0, 0);
-            }
-            
-            context.translate(0, -j.y);
+            context.canvas.visibles.push(j);  
+	    }
+    }
+
+    for (var n = 0; n < context.canvas.visibles.length; ++n)
+    {
+        var j = context.canvas.visibles[n];
+        context.translate(0, j.y);
+        context.canvas.draw(context, r, j.slice, j.n);
+        if (context == _8cnvctx &&
+            j.n >= galleryobj.length() - galleryobj.padsize)
+        {
+            var a = new panel.fill("rgba(0,0,0,0.80)");
+            a.draw(context, r, 0, 0);
         }
+        
+        context.translate(0, -j.y);
     }
 
     displayobj.value().draw(context, rect, 0, 0);
