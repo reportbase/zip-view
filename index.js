@@ -5271,7 +5271,7 @@ menuobj.draw = function()
             {
                 func = 1;
             }
-            else (0)
+            else if (0)
             {
                 func = 2;
             }
