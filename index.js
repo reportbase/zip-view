@@ -4678,7 +4678,7 @@ var buttonlst =
         ]);
 
         var k = [];
-        k.push(`${user.index+1} of ${galleryobj.length()}`);
+        k.push(`${user.index} of ${galleryobj.length()}`);
     	if (user.blob && user.blob.name)
             k.push(user.blob.name);
     	else
@@ -5261,7 +5261,7 @@ menuobj.draw = function()
             context.translate(0, j.y);
             context.canvas.draw(context, r, j.slice, j.n);
             if (context == _8cnvctx &&
-		j.n >= galleryobj.length() - galleryobj.padsize)
+		        j.n >= galleryobj.length() - galleryobj.padsize)
             {
                 var a = new panel.fill("rgba(0,0,0,0.80)");
                 a.draw(context, r, 0, 0);
