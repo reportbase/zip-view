@@ -5326,7 +5326,7 @@ var eventlst =
     pinch: "MENU",
     display: "MENU",
     footer: "GALLERIES",
-    buttonheight: 240,
+    buttonheight: 180,
     buttonmargin: 20,
     width: 640
 },
