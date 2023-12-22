@@ -7074,7 +7074,9 @@ function addpadding()
         for (var n = 0; n < galleryobj.padsize; ++n)
         {
             var k = galleryobj.data[n]
-	        galleryobj.data.push(k);
+            var j = {};
+            Object.assign(j, k);
+	        galleryobj.data.push(j);
         }
     }
 }
