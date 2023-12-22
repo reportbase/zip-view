@@ -5264,7 +5264,7 @@ menuobj.draw = function()
     }
 
     var func = 0;
-    if (galleryobj.padsize)
+    if (!context.lockmenu && galleryobj.padsize)
     {
         for (var m = 0; m < context.canvas.visibles.length; ++m)
         {
@@ -5286,7 +5286,9 @@ menuobj.draw = function()
 		//menuobj.draw();
 	    //buttonobj.reset();
         aligntop();
+        context.lockmenu = 1;
 		menuobj.draw();
+        context.lockmenu = 0;
     }
     else if (func == 2)
     {
