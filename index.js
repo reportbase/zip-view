@@ -5220,7 +5220,18 @@ menuobj.draw = function()
         y -= e;
         y = Math.round(y);
         var x = rect.width / 2;
-        
+        var j = {slice,x,y,n};
+        slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
+        slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
+        if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
+        {
+        	galleryobj.width = thumbimg.width;
+        	galleryobj.height = thumbimg.height;
+        	context.centered = j.n;
+        }
+    
+        context.canvas.visibles.push(j);             
+            
         if (context == _8cnvctx && 
             thumbimg.view != view &&
             !slice.failed) 
@@ -5248,17 +5259,6 @@ menuobj.draw = function()
         }
         else if (slice.isvisible)
         {
-            var j = {slice,x,y,n};
-            slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
-            slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
-            if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
-            {
-                galleryobj.width = thumbimg.width;
-                galleryobj.height = thumbimg.height;
-                context.centered = j.n;
-            }
-
-            context.canvas.visibles.push(j);             
             context.translate(0, j.y);
             context.canvas.draw(context, r, j.slice, j.n);
             if (context == _8cnvctx &&
