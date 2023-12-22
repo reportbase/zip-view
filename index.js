@@ -4197,6 +4197,7 @@ var taplst =
                     var n = _2cnv.sliceobj.current()
                     _2cnv.sliceobj.data.splice(n,1);
 		            delete _2cnv.normal;
+                    _2cnv.sliceobj.set(0);
                     menuobj.draw();
                 })
             });
