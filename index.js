@@ -5417,7 +5417,7 @@ var eventlst =
     pinch: "MENU",
     display: "MENU",
     footer: "IMAGE",
-    buttonheight: 640,//todo
+    buttonheight: 180,
     buttonmargin: 15,
     width: 640
 },
