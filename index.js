@@ -4198,6 +4198,8 @@ var taplst =
                     _2cnv.sliceobj.data.splice(n,1);
 		            delete _2cnv.normal;
                     _2cnv.sliceobj.set(0);
+		            var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
+                    _2cnv.rotated = [...a, ...a, ...a];
                     menuobj.draw();
                 })
             });
