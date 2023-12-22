@@ -5230,8 +5230,6 @@ menuobj.draw = function()
         	context.centered = j.n;
         }
     
-        context.canvas.visibles.push(j);             
-            
         if (context == _8cnvctx && 
             thumbimg.view != view &&
             !slice.failed) 
@@ -5259,6 +5257,7 @@ menuobj.draw = function()
         }
         else if (slice.isvisible)
         {
+            context.canvas.visibles.push(j);                        
             context.translate(0, j.y);
             context.canvas.draw(context, r, j.slice, j.n);
             if (context == _8cnvctx &&
