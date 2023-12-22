@@ -3395,15 +3395,31 @@ var keylst =
             if (key == "pageup" || key == "backspace" ||
                 (canvas.shiftKey && key == "enter"))
             {
-                var k = _8cnv.timeobj.length() / galleryobj.length();
-                _8cnv.timeobj.rotate(k);
-                menuobj.draw();               
+        		if (canvas.ctrlKey)    
+        		{
+                    aligncenter(galleryobj.length()-1)
+                    aligntop();
+                }
+                else
+                {
+                    var k = _8cnv.timeobj.length() / galleryobj.length();
+                    _8cnv.timeobj.rotate(k);
+                	menuobj.draw();
+                }
             }
             else if (key == "pagedown" || key == "enter")
             {
-                var k = _8cnv.timeobj.length() / galleryobj.length();
-                _8cnv.timeobj.rotate(-k);
-                menuobj.draw();              
+        		if (canvas.ctrlKey)    
+        		{
+                    aligncenter(0)
+                    aligntop();
+                }
+                else
+                {
+                    var k = _8cnv.timeobj.length() / galleryobj.length();
+                    _8cnv.timeobj.rotate(-k);
+                    menuobj.draw();
+                }
             }
             else if (
                 key == "arrowup" ||
