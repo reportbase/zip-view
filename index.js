@@ -4184,11 +4184,6 @@ var taplst =
         else if (canvas.gallerydeleterect && canvas.gallerydeleterect.hitest(x, y))
         {
 			var gallery = _2cnv.sliceobj.value();
-            if (gallery.title == "Sample 001" ||
-                gallery.title == "Sample 002" ||
-                gallery.title == "Sample 003" ||
-                gallery.title == "Sample 004")
-                return;
             var label = document.getElementById("confirm-label");
             var input = document.getElementById("confirm-input");
 			label.innerHTML = `Confirm delete '${gallery.title}'?`
@@ -4199,7 +4194,9 @@ var taplst =
                 fetch(`https://gullery.reportbase5836.workers.dev/delete/${gallery.id}`)
                 .then(function(response)
                 {
-                    showgallery();
+                    var n = _2cnv.sliceobj.current()
+                    _2cnv.sliceobj.data.splice(n,1);
+                    menuobj.draw();
                 })
             });
         }    
