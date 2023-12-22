@@ -5261,9 +5261,18 @@ menuobj.draw = function()
 	    }
     }
 
-    for (var n = 0; n < context.canvas.visibles.length; ++n)
+    for (var m = 0; m < context.canvas.visibles.length; ++m)
     {
-        var j = context.canvas.visibles[n];
+        var j = context.canvas.visibles[m];
+        if (j.n == 0 && j.rect.y < 0)
+        {
+            console.log(j);
+        }
+    }
+    
+    for (var m = 0; m < context.canvas.visibles.length; ++m)
+    {
+        var j = context.canvas.visibles[m];
         context.translate(0, j.y);
         context.canvas.draw(context, r, j.slice, j.n);
         if (context == _8cnvctx &&
