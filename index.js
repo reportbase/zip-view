@@ -5125,7 +5125,7 @@ menuobj.draw = function()
     var len = slices.length;
     if (context == _8cnvctx)
     {
-        if (canvas.autodirect == -1 && galleryobj.padsize && time > 3.12)
+        if (canvas.autodirect == 1 && galleryobj.padsize && time > 3.11)
             return;
     }
     else
