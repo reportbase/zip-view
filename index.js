@@ -4251,7 +4251,7 @@ var taplst =
                     k.id = obj.gallery_id;   
                     _2cnv.sliceobj.data.push(k);
                     var j = _2cnv.timeobj.length() / galleryobj.length();
-                    _2cnv.timeobj.set(j/2); 
+                    _2cnv.timeobj.set(Math.floor(j/2)); 
 			        var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
                     _2cnv.rotated = [...a, ...a, ...a];
                     menuobj.draw();
