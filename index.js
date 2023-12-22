@@ -1429,7 +1429,7 @@ var displaylst =
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.imagerect), 10, 10),
-                    new panel.shrink(text, 10, 10),
+                    new panel.shrink(new panel.text(), 10, 10),
                 ]),
                 0,
             ]),
@@ -1835,10 +1835,10 @@ panel.fitwidth = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.fitwidthrect),
-                (_8cnv.fitflash || buttonobj.current() == 0) ? 
-			new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+                    (_8cnv.fitflash || buttonobj.current() == 0) ? 
+			    new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle((_8cnv.fitflash || buttonobj.current() == 0) ? 
-			TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+			        TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.rounded(TRANSPARENT, 3, "white", 4, 4), 16, 30),
             ]);
 
@@ -1922,9 +1922,9 @@ panel.gallerymenu = function()
             var e = new panel.fill(OPTIONFILL);
             var a = new panel.layers(
             [
-                new panel.rectangle(context.gallerymenurect),
+                new panel.rectangle(context.gallerymenurect),  
                 s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.circle(s ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.rows([0, rect.height * 0.20, 0],
                 [
                     0,
@@ -2035,7 +2035,7 @@ panel.moveprev = function()
             [
                 new panel.rectangle(context.moveprev),
                 _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.arrow(ARROWFILL, 270), 20, 30),
             ]);
 
@@ -2054,7 +2054,7 @@ panel.movenext = function()
             [
                 new panel.rectangle(context.movenext),
                 _4cnv.movingpage == 1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(_4cnv.movingpage == 1 ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.circle(_4cnv.movingpage == 1 ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.arrow(ARROWFILL, 90), 20, 30),
             ]);
 
@@ -5086,7 +5086,6 @@ menuobj.show = function()
     if (!context)
         return;
     var canvas = context.canvas;
-
 	var display = canvas.display;
     var k = displaylst.findIndex(function(a){return a.name == display});
     displayobj.set(k);
@@ -5126,6 +5125,8 @@ menuobj.draw = function()
     if (context == _8cnvctx)
     {
         if (canvas.autodirect == 1 && galleryobj.padsize && time > 3.11)
+            return;
+        if (canvas.autodirect == -1 && galleryobj.padsize && time < 0.77)
             return;
     }
     else
@@ -6353,7 +6354,7 @@ panel.homemenu = function()
                 [
                     new panel.rectangle(context.homemenurect),
                     s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                    new panel.shrink(new panel.circle(s ? TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                    new panel.shrink(new panel.circle(s ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                     new panel.cols([0, rect.height * 0.20, 0],
                         [
                             0,
