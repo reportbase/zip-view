@@ -3405,8 +3405,6 @@ var keylst =
             {
                 var k = _8cnv.timeobj.length() / galleryobj.length();
                 _8cnv.timeobj.rotate(k);
-                if (galleryobj.padsize && time < 0.77)
-                    canvas.timeobj.set(0.77)
                 menuobj.draw();              
             }
             else if (
@@ -4051,10 +4049,6 @@ var taplst =
             var k = x < rect.width/2;
             var j = canvas.timeobj.length() / galleryobj.length();
             canvas.timeobj.rotate(k ? j :-j);  
-            if (-k && galleryobj.padsize && time > 3.11) 
-                canvas.timeobj.set(3.11)
-            else if (k && galleryobj.padsize && time < 0.77)
-                canvas.timeobj.set(0.77)
             menuobj.draw();
         }
         else if (
@@ -6856,7 +6850,7 @@ function setupmenus()
         }
     };
 
-    for (var n = 0; n < galleryobj.data.length-galleryobj.padsize; ++n)
+    for (var n = 0; n < galleryobj.data.length; ++n)
     {
         var j = galleryobj.data[n];
         j.index = n;
