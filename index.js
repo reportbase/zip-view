@@ -3376,11 +3376,19 @@ var keylst =
             if (key == "pageup" || key == "backspace" ||
                 (canvas.shiftKey && key == "enter"))
             {
-		        nextimage(-1)
+                var k = _8cnv.timeobj.length() / galleryobj.length();
+                _8cnv.timeobj.rotate(-k);
+                if (galleryobj.padsize && time > 3.11) 
+                    canvas.timeobj.set(3.11)
+                menuobj.draw();               
             }
             else if (key == "pagedown" || key == "enter")
             {
-		        nextimage(1)
+                var k = _8cnv.timeobj.length() / galleryobj.length();
+                _8cnv.timeobj.rotate(k);
+                if (galleryobj.padsize && time < 0.77)
+                    canvas.timeobj.set(0.77)
+                menuobj.draw();              
             }
             else if (
                 key == "arrowup" ||
@@ -3700,13 +3708,6 @@ function gotoimage(n)
     _8cnv.hollyobj.CURRENT = 0;
     menuobj.draw();
     return true;
-}
-
-function nextimage(j)
-{
-    var k = _8cnv.timeobj.length() / galleryobj.length();
-    _8cnv.timeobj.rotate(-j*k);
-    menuobj.draw();               
 }
 
 function aligntop() 
@@ -4030,7 +4031,11 @@ var taplst =
         {
             var k = x < rect.width/2;
             var j = canvas.timeobj.length() / galleryobj.length();
-            canvas.timeobj.rotate(k ? j :-j);              
+            canvas.timeobj.rotate(k ? j :-j);  
+            if (-k && galleryobj.padsize && time > 3.11) 
+                canvas.timeobj.set(3.11)
+            else if (k && galleryobj.padsize && time < 0.77)
+                canvas.timeobj.set(0.77)
             menuobj.draw();
         }
         else if (
@@ -5124,10 +5129,12 @@ menuobj.draw = function()
     var len = slices.length;
     if (context == _8cnvctx)
     {
-        if (canvas.autodirect == 1 && galleryobj.padsize && time > 3.11)
+        if (canvas.autodirect == 1 && galleryobj.padsize && time > 3.11) ||
+            canvas.autodirect == -1 && galleryobj.padsize && time < 0.77)
+	    {
+		    displayobj.value().draw(context, rect, 0, 0);
             return;
-        if (canvas.autodirect == -1 && galleryobj.padsize && time < 0.77)
-            return;
+        }
     }
     else
     {
@@ -5263,14 +5270,6 @@ menuobj.draw = function()
             context.translate(0, -j.y);
         }
     }
-
-    //gallery
-    delete context.templaterect;
-
-    //button
-    delete canvas.hollyrect;
-    delete context.cursorect;
-    delete context.folderect;
 
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
@@ -6838,7 +6837,7 @@ function setupmenus()
         }
     };
 
-    for (var n = 0; n < galleryobj.data.length; ++n)
+    for (var n = 0; n < galleryobj.data.length-galleryobj.padsize; ++n)
     {
         var j = galleryobj.data[n];
         j.index = n;
