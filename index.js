@@ -1876,14 +1876,14 @@ function leftmenu(context)
     
     if (menuobj.value() == context)
     {
-        var k = displaylst.findIndex(function(a){return a.name == ("DEFAULT"});
+        var k = displaylst.findIndex(function(a){return a.name == "DEFAULT"});
         displayobj.set(k);
         galleryobj.leftctx.hide();
         menuobj.setindex(_8cnvctx);
     }
     else if (menuobj.value() && menuobj.value() != _8cnvctx)
     {
-        var k = displaylst.findIndex(function(a){return a.name == ("GALLERY"});
+        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
         displayobj.set(k);
 	    galleryobj.leftctx.hide();
         galleryobj.leftctx = context;
