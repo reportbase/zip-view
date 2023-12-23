@@ -3974,8 +3974,8 @@ var taplst =
             canvas.holly2rect.hitest(x, y))
         {
             var k = (x - canvas.holly2rect.x) / canvas.holly2rect.width;
-            var j = hollyobj.length()*k;
-            hollyobj.set(j);
+            var j = canvas.hollyobj.length()*k;
+            canvas.hollyobj.set(j);
             menuobj.draw();
             return true;
         }            
