@@ -1371,7 +1371,7 @@ var displaylst =
                         new panel.shrink(
                             new panel.currentV(
                                 new panel.rounded(GALLNUB, 0, 
-                                        "rgba(0,0,0,0.0)", 4, 4), 90, 1), 2, 2),
+                                        "rgba(0,0,0,0.0)", 4, 4), 90, 0), 2, 2),
                     ]),
                     0,
                     new panel.layers(
