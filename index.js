@@ -1363,9 +1363,8 @@ var displaylst =
 		    var a = new panel.rows([-1, 0, 5],
             [
                 0,
-                new panel.cols([0, 12, -1],
+                new panel.colsA([12, 0, 12],
                 [
-                    0,
                     new panel.layers(
                     [
                         new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
@@ -1375,11 +1374,19 @@ var displaylst =
                                         "rgba(0,0,0,0.0)", 4, 4), 90, 1), 2, 2),
                     ]),
                     0,
+                    new panel.layers(
+                    [
+                        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
+                        new panel.shrink(
+                            new panel.currentV(
+                                new panel.rounded(GALLNUB, 0, 
+                                        "rgba(0,0,0,0.0)", 4, 4), 90, 1), 2, 2),
+                    ]),
                 ]),
                 0
             ]);
     
-        	a.draw(context, rect, canvas.timeobj, 0);            
+        	a.draw(context, rect, [canvas.timeobj,canvas.timeobj], 0);            
             return;
     	}
 	    
