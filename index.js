@@ -614,7 +614,6 @@ var footlst =
 				new panel.rectangle(canvas.closerect),
 				new panel.text(),
 			]),
-			0,
 			new panel.layers(
 			[
 				new panel.fill(FOOTBTNCOLOR),
@@ -634,7 +633,6 @@ var footlst =
         a.draw(context, rect, 
 	   	[
 		    `\u{25C0}   Images`,
-		    0,
 		    [
 			    0,
 			   `Home`,
