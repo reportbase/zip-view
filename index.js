@@ -5512,7 +5512,7 @@ var eventlst =
     pinch: "GALLERY",
     display: "GALLERY",
     footer: "DEFAULT",
-    buttonheight: 720,
+    buttonheight: 1080,
     buttonmargin: 10,
     holly: 50,
     width: 5160
