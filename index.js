@@ -1391,10 +1391,7 @@ var displaylst =
         var space = rect.width < 400 ? " " : rect.widt < 600 ? "  " : "   ";
         var folders = [];
         if (value && value.folder)
-        {
             folders = value.folder.split("/");
-            folders[0] = `\u{25C0}${space}${folders[0]}${space}\u{25B6}`;
-        }
         
         var data = `\u{25C0}${space}${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}${space}\u{25B6}`;
         var time = `\u{25C0}${space}${canvas.timeobj.current().toFixed(8)}${space}\u{25B6}`;
@@ -1408,7 +1405,7 @@ var displaylst =
             HEADTOP, 
             HEADBOT,  
             0,
-            folders.length?folders.length*(WRAPROWHEIGHT-5):-1, 
+            folders.length?folders.length*50:-1, 
             folders.length?DISPLAYMARGIN:-1, 
             WRAPROWHEIGHT, 
             DISPLAYMARGIN,                 
