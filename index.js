@@ -1872,6 +1872,7 @@ function leftmenu(context)
     context.canvas.timeobj.set(2.259798334532977);
     var k = displaylst.findIndex(function(a){return a.name == "DEFAULT"});
     displayobj.set(k);
+	menuobj.draw()
 
 	if (galleryobj.rightctx)
         galleryobj.rightctx.hide()
@@ -1904,7 +1905,8 @@ function rightmenu(context, force)
     context.canvas.timeobj.set(2.259798334532977);
     var k = displaylst.findIndex(function(a){return a.name == "DEFAULT"});
     displayobj.set(k);
-   
+    menuobj.draw()
+    
 	if (galleryobj.leftctx)
         galleryobj.leftctx.hide()
     if (galleryobj.rightctx)
