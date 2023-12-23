@@ -3052,26 +3052,10 @@ var panlst =
         }
         else if (type == "panup" || type == "pandown")
         {
-            if (canvas.istimerect)
-            {
-	            var k = (y - canvas.timerect.y) / canvas.timerect.height;
-                var j = canvas.timeobj.length()*(1-k);
-                canvas.timeobj.set(j);
-            }
-            else if (canvas.isbuttonrect)
-            {
-	            var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
-                var j = canvas.buttonobj.length()*(1-k);
-                canvas.buttonobj.set(j);
-            }
-            else
-            {
-                var e = canvas.starty - y;
-                var k = Math.PI / canvas.virtualheight
-                k *= e;
-                canvas.timeobj.rotateanchored(k);
-            }
-            
+        	var e = canvas.starty - y;
+        	var k = Math.PI / canvas.virtualheight
+        	k *= e;
+        	canvas.timeobj.rotateanchored(k);    
             menuobj.draw()
         }
     },
@@ -3088,8 +3072,6 @@ var panlst =
         canvas.startx = x;
         canvas.starty = y;
         canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
-        canvas.istimerect = canvas.timerect && canvas.timerect.hitest(x, y);
-        canvas.isbuttonrect = context.buttonrect && context.buttonrect.hitest(x, y);
     },
     panend: function(context, rect, x, y)
     {
@@ -3984,6 +3966,15 @@ var taplst =
         {
             leftmenu(_7cnvctx)
         }
+        else if (context.buttonrect &&
+            context.buttonrect.hitest(x, y))
+        {
+            var k = (y - context.buttonrect.timerect.y) / context.buttonrect.height;
+            var j = buttonobj.length()*(1-k);
+            buttonobj.set(j);
+            menuobj.draw();
+            return true;
+        }            
         else if (canvas.timerect &&
             canvas.timerect.hitest(x, y))
         {
