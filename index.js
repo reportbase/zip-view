@@ -1892,7 +1892,7 @@ function leftmenu(context)
     }
     else
     {
-        var k = displaylst.findIndex(function(a){return a.name == ("DEFAULT"});
+        var k = displaylst.findIndex(function(a){return a.name == "DEFAULT"});
         displayobj.set(k);
         galleryobj.leftctx = context;
         menuobj.setindex(context);
