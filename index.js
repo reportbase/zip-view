@@ -564,6 +564,7 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.closerect = new rectangle();
+        canvas.homeresetrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
 		[
 			new panel.layers(
@@ -572,14 +573,27 @@ var footlst =
 				new panel.text(),
 				new panel.rectangle(canvas.closerect),
 			]),
-			0
+            new panel.colsA([0,0,0],
+            [
+                0,
+                new panel.layers(
+                [
+                    new panel.rectangle(canvas.homeresetrect),
+                    new panel.text(),
+                ]),
+                0
+            ])                            
 		]);
 
         a.draw(context, rect, 
 	   	[
 		   `\u{25C0}   Folders`,
-		   0 
-		], 0);
+	        [
+			    0,
+			   `Home`,
+			   0,
+		    ],
+        ], 0);
         
         context.restore();
     }
@@ -4049,23 +4063,7 @@ var taplst =
         {
             if (_5cnv.sliceobj.length() <= 1)
                 return;
-            var k = (x - context.folderect.x) / context.folderect.width;
-            if (k < 0.25 || k > 0.75)
-            {
-                _5cnv.sliceobj.rotate(k<0.25?-1:1);
-                var folder = _5cnv.sliceobj.value().folder;
-                var n = galleryobj.data.findIndex(function(a){return a.folder == folder;}); 
-                gotoimage(n+1);
-		        aligncenter(n+1);
-			    menuobj.draw();
-		        buttonobj.reset();
-                aligntop();
-			    menuobj.draw();
-            }
-            else
-            { 
-		        leftmenu(_5cnvctx);
-            }
+		    leftmenu(_5cnvctx);
         }
         else if (
             context.imagerect &&
