@@ -1870,20 +1870,21 @@ panel.fitwidth = function()
 function leftmenu(context)
 {
     context.canvas.timeobj.set(2.259798334532977);
-    var k = displaylst.findIndex(function(a){return a.name == "DEFAULT"});
-    displayobj.set(k);
-    menuobj.draw();
     
 	if (galleryobj.rightctx)
         galleryobj.rightctx.hide()
     
     if (menuobj.value() == context)
     {
+        var k = displaylst.findIndex(function(a){return a.name == ("DEFAULT"});
+        displayobj.set(k);
         galleryobj.leftctx.hide();
         menuobj.setindex(_8cnvctx);
     }
     else if (menuobj.value() && menuobj.value() != _8cnvctx)
     {
+        var k = displaylst.findIndex(function(a){return a.name == ("GALLERY"});
+        displayobj.set(k);
 	    galleryobj.leftctx.hide();
         galleryobj.leftctx = context;
         menuobj.setindex(context);
@@ -1891,6 +1892,8 @@ function leftmenu(context)
     }
     else
     {
+        var k = displaylst.findIndex(function(a){return a.name == ("DEFAULT"});
+        displayobj.set(k);
         galleryobj.leftctx = context;
         menuobj.setindex(context);
         menuobj.show();
@@ -1903,9 +1906,6 @@ function leftmenu(context)
 function rightmenu(context, force)
 {
     context.canvas.timeobj.set(2.259798334532977);
-    var k = displaylst.findIndex(function(a){return a.name == "DEFAULT"});
-    displayobj.set(k);
-    menuobj.draw();
    
 	if (galleryobj.leftctx)
         galleryobj.leftctx.hide()
@@ -1915,11 +1915,15 @@ function rightmenu(context, force)
     //context.clear();
     if (!force && menuobj.value() && menuobj.value() != _8cnvctx)
     {
-    	menuobj.setindex(_8cnvctx);
-        //menuobj.draw();
+        var k = displaylst.findIndex(function(a){return a.name == "DEFAULT"});
+        displayobj.set(k);
+   	    menuobj.setindex(_8cnvctx);
     }
     else
     {
+        var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+        displayobj.set(k);
+   	    menuobj.setindex(_8cnvctx);
 	    galleryobj.rightctx = context;
     	menuobj.setindex(context);
         menuobj.show();
