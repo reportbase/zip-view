@@ -4018,9 +4018,8 @@ var taplst =
         
                     _2cnv.sliceobj.data = results
                     
-                    var id = url.searchParams.get("id");
                     var k = _2cnv.sliceobj.data.findIndex(
-                        function(a){return a.id == id;});
+                        function(a){return a.id == url.path;});
                     _2cnv.sliceobj.CURRENT = k;
                     
                     var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
