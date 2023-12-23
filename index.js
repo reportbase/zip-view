@@ -1386,7 +1386,7 @@ var displaylst =
                 0
             ]);
     
-        	a.draw(context, rect, [canvas.buttonobj,0,canvas.timeobj], 0);            
+        	a.draw(context, rect, [buttonobj,0,canvas.timeobj], 0);            
             return;
     	}
 	    
