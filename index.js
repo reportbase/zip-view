@@ -4049,11 +4049,10 @@ var taplst =
         {
             if (_5cnv.sliceobj.length() <= 1)
                 return;
-            var k = rect.width*0.25;
-            if (x < k || x > rect.width-k)
+            var k = (x - context.folderect.x) / context.folderect.width;
+            if (k < 0.25 || k > 0.75)
             {
-                var j = x < k;
-                _5cnv.sliceobj.rotate(j?-1:1);
+                _5cnv.sliceobj.rotate(k<0.25?-1:1);
                 var folder = _5cnv.sliceobj.value().folder;
                 var n = galleryobj.data.findIndex(function(a){return a.folder == folder;}); 
                 gotoimage(n+1);
