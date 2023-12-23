@@ -573,16 +573,20 @@ var footlst =
 				new panel.text(),
 				new panel.rectangle(canvas.closerect),
 			]),
-            new panel.colsA([0,0,0],
-            [
-                0,
-                new panel.layers(
-                [
-                    new panel.rectangle(canvas.homeresetrect),
-                    new panel.text(),
-                ]),
-                0
-            ])                            
+			new panel.layers(
+			[
+				new panel.fill(FOOTBTNCOLOR),
+				new panel.colsA([0,0,0],
+				[
+					0,
+					new panel.layers(
+					[
+						new panel.rectangle(canvas.homeresetrect),
+						new panel.text(),
+					]),
+					0
+				])                            
+			])
 		]);
 
         a.draw(context, rect, 
