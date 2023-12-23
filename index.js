@@ -1198,7 +1198,7 @@ var bossdisplaylst =
 
             var data = [];
             var index = galleryobj.current();
-            data.push(`\u{25C0}   ${index} of ${galleryobj.length()}   \u{25B6}`);
+            data.push(`\u{25C0}   ${index}  of  ${galleryobj.length()}   \u{25B6}`);
         
             var a = new panel.rowsA([HEADTOP, HEADBOT, 0, 
                                  (data.length*WRAPROWHEIGHT), 
@@ -4044,14 +4044,19 @@ var taplst =
         {
             if (_5cnv.sliceobj.length() <= 1)
                 return;
-            var k = rect.width*0.20;
-            if (x < k)
+            var k = rect.width*0.25;
+            if (x < k || x > rect.width-k)
             {
-
-            }
-            else if (x > rect.width-k)
-            {
-
+                var j = x < k;
+                _5cnv.sliceobj.rotate(j?-1:1);
+                var folder = _5cnv.sliceobj.value().folder;
+                var n = galleryobj.data.findIndex(function(a){return a.folder == folder;}); 
+                gotoimage(n+1);
+		        aligncenter(n+1);
+			    menuobj.draw();
+		        buttonobj.reset();
+                aligntop();
+			    menuobj.draw();
             }
             else
             { 
