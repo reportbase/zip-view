@@ -1408,7 +1408,7 @@ var displaylst =
             HEADTOP, 
             HEADBOT,  
             0,
-            folders.length?folders.length*(WRAPROWHEIGHT-10):-1, 
+            folders.length?folders.length*(WRAPROWHEIGHT-5):-1, 
             folders.length?DISPLAYMARGIN:-1, 
             WRAPROWHEIGHT, 
             DISPLAYMARGIN,                 
@@ -1440,7 +1440,7 @@ var displaylst =
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.folderect), 10, 10),
-		            new panel.shrink(new panel.multitext(0, text), 20, 0),
+		            new panel.shrink(new panel.multitext(0, new panel.text()), 20, 0),
                 ]),
                 0,
             ]),
