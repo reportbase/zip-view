@@ -6884,6 +6884,7 @@ function setupmenus()
             var n = galleryobj.data.findIndex(function(a){return a.folder == folder;}); 
             gotoimage(n+1);
 		    aligncenter(n+1);
+            headobj.toggle();
 			menuobj.draw();
 		    buttonobj.reset();
             aligntop();
@@ -6900,6 +6901,7 @@ function setupmenus()
             j.name = j.url.split("/").slice(-1)[0];
         j.func = function()
         {
+            headobj.toggle();
 	        galleryobj.set(this.index);
             aligncenter(this.index)
 			menuobj.draw();
