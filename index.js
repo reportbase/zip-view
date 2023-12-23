@@ -1351,6 +1351,7 @@ var displaylst =
         var canvas = context.canvas;
         context.save();
         canvas.hollyrect = new rectangle();
+        canvas.holly2rect = new rectangle();
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
         context.imagerect = new rectangle();
@@ -1361,7 +1362,27 @@ var displaylst =
         context.pirect = new rectangle();
         if (!headcnv.height)
     	{
-		    var a = new panel.rows([-1, 0, 5],
+        
+            var a = new panel.rows([0,12],
+            [
+                0,
+                new panel.cols([1,0,1],
+                [
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.expand(new panel.rectangle(context.holly2rect), 0, 10),
+                        new panel.shrink(new panel.currentH(
+                                new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
+                    ]),
+                    0,
+                ]),
+                0,
+            ])
+
+            a.draw(context, rect, _8cnv.hollyobj, 0);
+            
+ 		    var a = new panel.rows([-1, 0, 5],
             [
                 0,
                 new panel.colsA([12, 0, 12],
@@ -1991,23 +2012,6 @@ panel.gallerymenu = function()
         context.restore();
     }
 };
-
-panel.holly = function()
-{
-    this.draw = function(context, rect, user, time)
-    {
-        user.hollyrect = new rectangle();
-        var a = new panel.layers(
-        [
-            new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 8, 8),
-            new panel.expand(new panel.rectangle(user.hollyrect), 0, 20),
-            new panel.shrink(new panel.currentH(
-                new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
-        ])
-
-        a.draw(context, rect, _8cnv.hollyobj, time)
-    }
-}
 
 panel.download = function()
 {
@@ -5054,12 +5058,7 @@ var buttonlst =
                     new panel.movenuxt,
                     0,
                 ]),
-                new panel.cols([0, rainstep, 0],
-                [
-                    0,
-                    new panel.holly(),
-                    0,
-                ]),
+                0,
                 0,
             ]);    
             
