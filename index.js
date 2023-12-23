@@ -5359,6 +5359,7 @@ var eventlst =
     footer: "USERS",
     buttonheight: 240,
     buttonmargin: 20,
+    holly: 0,
     width: 640
 },
 { // _2cnvctx galleries
@@ -5380,6 +5381,7 @@ var eventlst =
     footer: "GALLERIES",
     buttonheight: 180,
     buttonmargin: 20,
+    holly: 0,
     width: 640
 },
 { // _3cnvctx debug
@@ -5401,6 +5403,7 @@ var eventlst =
     footer: "DEBUG",
     buttonheight: 90,
     buttonmargin: 10,
+    holly: 0,
     width: 640
 },
 { // _4cnvctx boss
@@ -5422,6 +5425,7 @@ var eventlst =
     footer: "DEFAULT",
     buttonheight: 30,
     buttonmargin: 10,
+    holly: 0,
     width: 640
 },
 { // _5cnvctx folders
@@ -5443,6 +5447,7 @@ var eventlst =
     footer: "FOLDERS",
     buttonheight: 150,
     buttonmargin: 10,
+    holly: 0,
     width: 640
 },
 { // _6cnvctx images
@@ -5464,6 +5469,7 @@ var eventlst =
     footer: "IMAGE",
     buttonheight: 180,
     buttonmargin: 15,
+    holly: 0,
     width: 640
 },
 { // _7cnvctx home
@@ -5485,6 +5491,7 @@ var eventlst =
     footer: "HOME",
     buttonheight: 180,
     buttonmargin: 20,
+    holly: 0,
     width: 640
 },
 { // _8cnvctx gallery
@@ -5506,6 +5513,7 @@ var eventlst =
     footer: "DEFAULT",
     buttonheight: 320,
     buttonmargin: 10,
+    holly: 50,
     width: 5160
 },
 { // _9cnvctx template
@@ -5527,6 +5535,7 @@ var eventlst =
     footer: "TEMPLATE",
     buttonheight: 120,
     buttonmargin: 30,
+    holly: 0,
     width: 640
 },
 { // _10cnvctx User
@@ -5548,6 +5557,7 @@ var eventlst =
     footer: "USER",
     buttonheight: 50,
     buttonmargin: 10,
+    holly: 0,
     width: 640
 },
 { // _11cnvctx unused
@@ -5569,6 +5579,7 @@ var eventlst =
     footer: "IMAGE",
     buttonheight: 160,
     buttonmargin: 15,
+    holly: 0,
     width: 640
 },
 { // _12cnvctx
@@ -5590,6 +5601,7 @@ var eventlst =
     footer: "DEFAULT",
     buttonheight: 50,
     buttonmargin: 10,
+    holly: 0,
     width: 640
 },
 { // _13cnvctx
@@ -5611,6 +5623,7 @@ var eventlst =
     footer: "DEFAULT",
     buttonheight: 50,
     buttonmargin: 10,
+    holly: 0,
     width: 640
 },
 { // _14cnvctx
@@ -5632,6 +5645,7 @@ var eventlst =
     footer: "DEFAULT",
     buttonheight: 50,
     buttonmargin: 10,
+    holly: 0,
     width: 640
 },
 { // _15cnvctx
@@ -5653,6 +5667,7 @@ var eventlst =
     footer: "DEFAULT",
     buttonheight: 50,
     buttonmargin: 10,
+    holly: 0,
     width: 640
 }, 
 ];
@@ -5679,7 +5694,10 @@ contextobj.init = function()
         canvas.sliceobj = new circular_array("", []);
         canvas.timeobj = new circular_array("", Math.PI);
         canvas.timeobj.set(Math.PI / 2);
-        canvas.hollyobj = new circular_array("TEXTSCROLL", window.innerHeight);
+
+        canvas.hollyobj = new circular_array("TEXTSCROLL", obj.holly ? window.innerWidth:obj.buttonheight);
+	    canvas.hollyobj.set(obj.holly?(obj.buttonheight*(obj.holly/100)):0);
+	    
         canvas.speed = obj.speed;
         canvas.reduce = obj.reduce;
         canvas.autodirect = -1;
