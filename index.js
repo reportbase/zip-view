@@ -54,11 +54,11 @@ const ARROWFILL = "white";
 const SCROLLEXTENT = 16;
 const SCROLLMARGIN = 6;
 const DISPLAYMARGIN = 12;
-const SMALLFONT = "bold 17px Archivo";
-const DEFAULTFONT = "bold 18px Archivo";
-const MEDIUMFONT = "bold 19px Archivo";
-const LARGEFONT = "bold 20px Archivo";
-const HUGEFONT = "bold 22px Archivo";//Source Code Pro";
+const SMALLFONT = "bold 16px Archivo";
+const DEFAULTFONT = "bold 17px Archivo";
+const MEDIUMFONT = "bold 18px Archivo";
+const LARGEFONT = "bold 19px Archivo";
+const HUGEFONT = "bold 21px Archivo";//Source Code Pro";
 const SLICEWIDTH = 16;
 const ROTATEANCHORSIAE = 3;
 const BOSS = 0;
@@ -1897,6 +1897,7 @@ function leftmenu(context)
     }
 
     headobj.draw();
+    menuobj.draw()
 }
 
 function rightmenu(context, force)
@@ -1925,6 +1926,7 @@ function rightmenu(context, force)
     }
 
     headobj.draw();
+    menuobj.draw()
 }
 
 panel.gallerymenu = function()
