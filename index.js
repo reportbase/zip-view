@@ -1390,7 +1390,11 @@ var displaylst =
         var value = galleryobj.data[k];
         var folders = [];
         if (value && value.folder)
+        {
             folders = value.folder.split("/");
+            folders[0] = `\u{25C0}${space}${folders[0]}${space}\u{25B6}`;
+        }
+        
         var space = rect.width < 400 ? " " : rect.widt < 600 ? "  " : "   ";
         var data = `\u{25C0}${space}${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}${space}\u{25B6}`;
         var time = `\u{25C0}${space}${canvas.timeobj.current().toFixed(8)}${space}\u{25B6}`;
@@ -4043,7 +4047,19 @@ var taplst =
         {
             if (_5cnv.sliceobj.length() <= 1)
                 return;
-		    leftmenu(_5cnvctx);
+            var k = rect.width*0.20;
+            if (x < k)
+            {
+
+            }
+            else if (x > rect.width-k)
+            {
+
+            }
+            else
+            { 
+		        leftmenu(_5cnvctx);
+            }
         }
         else if (
             context.imagerect &&
