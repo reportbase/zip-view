@@ -1388,7 +1388,7 @@ var displaylst =
         index *= galleryobj.length();
         var k = Math.floor(index);
         var value = galleryobj.data[k];
-        var space = rect.width < 400 ? " " : rect.widt < 600 ? "  " : "   ";
+        var space = rect.width < 400 ? "  " : rect.widt < 600 ? "   " : "    ";
         var folders = [];
         if (value && value.folder)
             folders = value.folder.split("/");
