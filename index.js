@@ -1367,7 +1367,7 @@ var displaylst =
                 [
                     new panel.layers(
                     [
-                        new panel.expand(new panel.rectangle(canvas.buttonrect), 10, 0),
+                        new panel.expand(new panel.rectangle(context.buttonrect), 10, 0),
                         new panel.shrink(
                             new panel.currentV(
                                 new panel.rounded(GALLNUB, 0, 
@@ -3061,7 +3061,7 @@ var panlst =
             else if (canvas.isbuttonrect)
             {
 	            var k = (y - canvas.buttonrect.y) / canvas.buttonrect.height;
-                var j = canvas.timeobj.length()*(1-k);
+                var j = canvas.buttonobj.length()*(1-k);
                 canvas.buttonobj.set(j);
             }
             else
@@ -3089,7 +3089,7 @@ var panlst =
         canvas.starty = y;
         canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
         canvas.istimerect = canvas.timerect && canvas.timerect.hitest(x, y);
-        canvas.isbuttonrect = canvas.buttonrect && canvas.buttonrect.hitest(x, y);
+        canvas.isbuttonrect = context.buttonrect && context.buttonrect.hitest(x, y);
     },
     panend: function(context, rect, x, y)
     {
