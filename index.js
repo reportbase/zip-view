@@ -1356,6 +1356,7 @@ var displaylst =
         context.imagerect = new rectangle();
 	    context.templaterect = new rectangle();
         context.buttonrect = new rectangle();
+        context.button2rect = new rectangle();
         canvas.timerect = new rectangle();
         context.pirect = new rectangle();
         if (!headcnv.height)
@@ -1367,7 +1368,7 @@ var displaylst =
                 [
                     new panel.layers(
                     [
-                        new panel.expand(new panel.rectangle(context.buttonrect), 10, 0),
+                        new panel.expand(new panel.rectangle(context.button2rect), 10, 0),
                         new panel.shrink(
                             new panel.currentV(
                                 new panel.rounded(GALLNUB, 0, 
@@ -3302,7 +3303,7 @@ var presslst =
     },
     press: function(context, rect, x, y) 
     {
-        if (x >= rect.width-30)
+        if (x < 30 || x >= rect.width-30)
             return;
         headobj.toggle();    
     }
@@ -3966,10 +3967,10 @@ var taplst =
         {
             leftmenu(_7cnvctx)
         }
-        else if (context.buttonrect &&
-            context.buttonrect.hitest(x, y))
+        else if (context.button2rect &&
+            context.button2rect.hitest(x, y))
         {
-            var k = (y - context.buttonrect.timerect.y) / context.buttonrect.height;
+            var k = (y - context.button2rect.timerect.y) / context.button2rect.height;
             var j = buttonobj.length()*(1-k);
             buttonobj.set(j);
             menuobj.draw();
