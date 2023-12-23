@@ -5227,7 +5227,7 @@ menuobj.draw = function()
         buttonheight = buttonheight-buttonheight%2;
         context.canvas.virtualheight = len * buttonheight;
     }
-    else if (context == _8cnvctx)
+    else if (context == _8cnvctx && !galleryobj.padsize)
     {
         buttonheight = buttonobj.value();
         buttonheight = buttonheight-buttonheight%2;
@@ -5519,7 +5519,7 @@ var eventlst =
     pinch: "GALLERY",
     display: "GALLERY",
     footer: "DEFAULT",
-    buttonheight: 320,
+    buttonheight: 720,
     buttonmargin: 10,
     holly: 50,
     width: 5160
@@ -7160,6 +7160,7 @@ function addpadding()
 	    galleryobj.padsize = a - b;
         for (var n = 0; n < galleryobj.padsize; ++n)
         {
+            continue;//todo
             var k = galleryobj.data[n]
             var j = {};
             Object.assign(j, k);
