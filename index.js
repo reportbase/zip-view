@@ -4021,9 +4021,7 @@ var taplst =
                         function(a){return a.id == url.path;});
                     _2cnv.sliceobj.CURRENT = k;
                     var j = Math.PI/_2cnv.sliceobj.length();
-                    var b = j/2;
-                    var e = j*k;
-                    _2cnv.timeobj.set(e);
+                    _2cnv.timeobj.set(j*k);
                     
                     var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
                     _2cnv.rotated = [...a, ...a, ...a];
@@ -4307,9 +4305,10 @@ var taplst =
                     k.json = obj.json;
                     k.id = obj.gallery_id;   
                     _2cnv.sliceobj.data.push(k);
-                    var j = _2cnv.timeobj.length() - 1;
-                    _2cnv.sliceobj.set(j);
-                    _2cnv.timeobj.set(0)//todo
+                    var k = _2cnv.timeobj.length() - 1;
+                    _2cnv.sliceobj.set(k);
+                    var j = Math.PI/_2cnv.sliceobj.length();
+                    _2cnv.timeobj.set(k*j)
 			        var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
                     _2cnv.rotated = [...a, ...a, ...a];
                     menuobj.draw();
