@@ -1367,7 +1367,7 @@ var displaylst =
                 [
                     new panel.layers(
                     [
-                        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
+                        new panel.expand(new panel.rectangle(canvas.buttonrect), 10, 0),
                         new panel.shrink(
                             new panel.currentV(
                                 new panel.rounded(GALLNUB, 0, 
@@ -1376,7 +1376,7 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.expand(new panel.rectangle(canvas.buttonrect), 10, 0),
+                        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
                         new panel.shrink(
                             new panel.currentV(
                                 new panel.rounded(GALLNUB, 0, 
