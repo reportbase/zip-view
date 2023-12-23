@@ -4304,8 +4304,8 @@ var taplst =
                     k.title = obj.title;
                     k.json = obj.json;
                     k.id = obj.gallery_id;   
-                    var e = _2cnv.sliceobj.data.push(k);
-                    _2cnv.sliceobj.set(e-1);
+                    var e = _2cnv.sliceobj.data.unshift(k);
+                    _2cnv.sliceobj.set(0);
                     var j = Math.PI/_2cnv.sliceobj.length();
                     _2cnv.timeobj.set((e-1)*j)
 			        var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
