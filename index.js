@@ -5321,13 +5321,6 @@ menuobj.draw = function()
         var j = context.canvas.visibles[m];
         context.translate(0, j.y);
         context.canvas.draw(context, r, j.slice, j.n);
-        if (context == _8cnvctx &&
-    	    j.n >= galleryobj.length() - galleryobj.padsize)
-        {
-    	    var a = new panel.fill("rgba(0,0,0,0.80)");
-    	    a.draw(context, r, 0, 0);
-        }
-        
         context.translate(0, -j.y);
     }
     
