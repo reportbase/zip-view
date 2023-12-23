@@ -4307,7 +4307,7 @@ var taplst =
                     var e = _2cnv.sliceobj.data.unshift(k);
                     _2cnv.sliceobj.set(0);
                     var j = Math.PI/_2cnv.sliceobj.length();
-                    _2cnv.timeobj.set((e-1)*j)
+                    _2cnv.timeobj.set(0)
 			        var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
                     _2cnv.rotated = [...a, ...a, ...a];
                     menuobj.draw();
