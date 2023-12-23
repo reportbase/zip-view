@@ -3970,7 +3970,7 @@ var taplst =
         else if (context.button2rect &&
             context.button2rect.hitest(x, y))
         {
-            var k = (y - context.button2rect.timerect.y) / context.button2rect.height;
+            var k = (y - context.button2rect.y) / context.button2rect.height;
             var j = buttonobj.length()*(1-k);
             buttonobj.set(j);
             menuobj.draw();
