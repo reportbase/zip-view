@@ -3089,7 +3089,6 @@ var panlst =
         delete buttonobj.offset;
         delete context.canvas.isvbarect;
         delete context.canvas.hollyobj.offset;
-        delete canvas.ishollyrect;
 	    local.set()    
     }
 },
@@ -3971,6 +3970,15 @@ var taplst =
         {
             leftmenu(_7cnvctx)
         }
+        else if (canvas.holly2rect &&
+            canvas.holly2rect.hitest(x, y))
+        {
+            var k = (x - canvas.holly2rect.x) / canvas.holly2rect.width;
+            var j = hollyobj.length()*k;
+            hollyobj.set(j);
+            menuobj.draw();
+            return true;
+        }            
         else if (context.button2rect &&
             context.button2rect.hitest(x, y))
         {
