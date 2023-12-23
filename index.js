@@ -1371,7 +1371,7 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.expand(new panel.rectangle(context.holly2rect), 0, 10),
+                        new panel.expand(new panel.rectangle(canvas.holly2rect), 0, 10),
                         new panel.shrink(new panel.currentH(
                                 new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
                     ]),
