@@ -3399,6 +3399,7 @@ var keylst =
         		{
                     aligncenter(galleryobj.length()-1)
                     aligntop();
+                    menuobj.draw();
                 }
                 else
                 {
@@ -3413,6 +3414,7 @@ var keylst =
         		{
                     aligncenter(0)
                     aligntop();
+                    menuobj.draw();
                 }
                 else
                 {
