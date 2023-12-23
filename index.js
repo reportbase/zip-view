@@ -5696,7 +5696,7 @@ contextobj.init = function()
         canvas.timeobj.set(Math.PI / 2);
 
         canvas.hollyobj = new circular_array("TEXTSCROLL", obj.holly ? window.innerWidth:obj.buttonheight);
-	    canvas.hollyobj.set(obj.holly?(obj.buttonheight*(obj.holly/100)):0);
+	    canvas.hollyobj.set(obj.holly?(window.innerWidth*(obj.holly/100)):0);
 	    
         canvas.speed = obj.speed;
         canvas.reduce = obj.reduce;
