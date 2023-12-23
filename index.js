@@ -4022,7 +4022,7 @@ var taplst =
                     _2cnv.sliceobj.CURRENT = k;
                     var j = Math.PI/_2cnv.sliceobj.length();
                     var b = j/2;
-                    var e = j*k-b;
+                    var e = j*k+b;
                     _2cnv.timeobj.set(e);
                     
                     var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
