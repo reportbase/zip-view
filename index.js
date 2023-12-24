@@ -7214,6 +7214,12 @@ else if (url.searchParams.has("id"))
         loadgallery(obj.json);
 	})        
 }
+else if (url.searchParams.has("zip"))
+{
+    var path = url.searchParams.get("zip");
+    url.path = path;
+    loadzip(path);
+}
 else if (url.searchParams.has("path"))
 {
     var path = url.searchParams.get("path");
