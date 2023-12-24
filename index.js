@@ -5541,7 +5541,7 @@ var eventlst =
     pinch: "MENU",
     display: "MENU",
     footer: "USER",
-    buttonheight: 50,
+    buttonheight: 100,
     buttonmargin: 10,
     holly: 0,
     width: 640
