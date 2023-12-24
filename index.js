@@ -5215,7 +5215,7 @@ menuobj.draw = function()
     }
 
     if (galleryobj.padsize)
-        canvas.buttonheight = galleryobj.height;
+        canvas.buttonheight = galleryobj.height/3;
     var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
 
     var delayinterval = Math.PI / len;
