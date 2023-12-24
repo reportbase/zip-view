@@ -698,7 +698,7 @@ var footlst =
 				new panel.text(),
 			]),
 			0,
-			new panel.layers(
+			1?0:new panel.layers(
 			[
 				new panel.fill(FOOTBTNCOLOR),
    			    new panel.colsA([0,0,0],
@@ -859,7 +859,7 @@ var footlst =
                 new panel.rectangle(canvas.homerect),
             ]),
             0,
-            new panel.layers(
+            1?0:new panel.layers(
             [
                 new panel.fill(FOOTBTNCOLOR),
                 new panel.layers(
@@ -4362,23 +4362,6 @@ var taplst =
         }
         else if (canvas.userdeleterect && canvas.userdeleterect.hitest(x, y))
         {
-            var label = document.getElementById("confirm-label");
-            var input = document.getElementById("confirm-input");
-			label.innerHTML = `Confirm delete '${login.email}'?`
-            showdialog("confirm", function(image)
-            {
-                if (input.value != login.email)
-                    return true;
-                fetch(`https://usur.reportbase5836.workers.dev/${login.email}`,
-                {
-                    'method': 'POST',
-                })
-                .then(function(response)
-                {
-                    showusers();
-                })
-            });
-            
             return false;
         }
         else if (canvas.homerect && canvas.homerect.hitest(x, y))
@@ -6860,18 +6843,21 @@ function setupmenus()
             title: function(){return `ID\n${login.id?login.id:""}`},
             func: function()
             {
+                patchuser();
             }
         },
         {
             title: function(){return `Email\n${login.email?login.email:""}`},
             func: function()
             {
+                patchuser();
             }
         },
         {
             title: function(){return `Name\n${login.name?login.name:""}`},
             func: function()
             {
+                patchuser();
             }
         },
         {
@@ -6879,6 +6865,28 @@ function setupmenus()
             func: function()
             {
                 patchuser();
+            }
+        },
+        {
+            title: function(){return `Delete\n${login.name?login.name:""}`},
+            func: function()
+            {
+                var label = document.getElementById("confirm-label");
+                var input = document.getElementById("confirm-input");
+    			label.innerHTML = `Confirm delete '${login.email}'?`
+                showdialog("confirm", function(image)
+                {
+                    if (input.value != login.email)
+                        return true;
+                    fetch(`https://usur.reportbase5836.workers.dev/${login.email}`,
+                    {
+                        'method': 'POST',
+                    })
+                    .then(function(response)
+                    {
+                        showusers();
+                    })
+                });                
             }
         },
     ]
