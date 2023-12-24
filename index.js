@@ -3,7 +3,7 @@
 function ios()
 {
     return 
-    [
+f    [
         'iPad',
         'iPhone',
         'iPod'
@@ -5541,8 +5541,8 @@ var eventlst =
     pinch: "MENU",
     display: "MENU",
     footer: "USER",
-    buttonheight: 100,
-    buttonmargin: 10,
+    buttonheight: 120,
+    buttonmargin: 30,
     holly: 0,
     width: 640
 },
