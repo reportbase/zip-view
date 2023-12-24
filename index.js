@@ -5181,7 +5181,7 @@ menuobj.draw = function()
     if (!rect.width || !rect.height)
         return;
 
-   if (context.canvas.slideshow > 0)
+    if (context.canvas.slideshow > 0)
     {
         var k = canvas.autodirect;
         context.canvas.timeobj.rotate(k * context.canvas.slideshow);
@@ -5197,13 +5197,19 @@ menuobj.draw = function()
 	    local.set()	
     }
 
-    canvas.buttonheight = buttonobj.value();
     var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
     var delayinterval = Math.PI / len;
     context.canvas.virtualheight = len * buttonheight;
-    if (galleryobj.padsize)
-        context.canvas.virtualheight = len * buttonheight * beavobj.value()/100;
-
+    if (context == _8cnvctx)
+    {
+        canvas.buttonheight = buttonobj.value();
+        var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
+        var delayinterval = Math.PI / len;
+        context.canvas.virtualheight = len * buttonheight;
+        if (galleryobj.padsize)
+            context.canvas.virtualheight = len * buttonheight * beavobj.value()/100;
+    }
+    
     context.clear();
     if (context.canvas.virtualheight < window.innerHeight && len)
     {
