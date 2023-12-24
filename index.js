@@ -5201,7 +5201,7 @@ menuobj.draw = function()
     var delayinterval = Math.PI / len;
     context.canvas.virtualheight = len * buttonheight;
     if (galleryobj.padsize)
-        context.canvas.virtualheight *= 0.65;
+        context.canvas.virtualheight = len * buttonheight * beavobj.value()/100;
 
     context.clear();
     if (context.canvas.virtualheight < window.innerHeight && len)
