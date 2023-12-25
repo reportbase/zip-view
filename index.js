@@ -6778,6 +6778,7 @@ function setupmenus()
             return true;
         }
     },     
+	/*
     {
         title: "Full Image\nThumbnail Image View",
         func: function() 
@@ -6799,6 +6800,7 @@ function setupmenus()
             return false;
         }
     },     
+    */
     {
         title: function()
         {
