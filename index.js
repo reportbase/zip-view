@@ -2896,8 +2896,6 @@ var userobj = {}
 
 async function loadzip(file)
 {
-    if (file.name)
-        url.path = file.name;
     const {entries} = await unzipit.unzip(file);
     let keys = Object.keys(entries);
     keys.sort();
@@ -2938,6 +2936,7 @@ async function loadzip(file)
         galleryobj.data.push(k);
     }
 
+    globalobj.gohome = 1;
     local.button = 0;
     galleryobj.init(galleryobj)
 	menuobj.draw();
@@ -7142,6 +7141,14 @@ galleryobj.reset = function(obj)
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
         menuobj.show();
+
+        if (globalobj.gohome)
+        {
+            aligncenter(0);
+            aligntop();
+            menuobj.draw();
+            globalobj.gohome = 0;
+        }
     };    
    
     _8cnv.timeobj.set(0);
