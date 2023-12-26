@@ -6947,45 +6947,59 @@ function setupmenus()
 	
     _6cnv.sliceobj.data = galleryobj.data;
     _8cnv.sliceobj.data = galleryobj.data;
-            /*
-            title: "Backspace"
-            title: "Shift-Enter"
-            title: "Enter"
-            title: "Home"
-            "Page-Down"
-            "Ctrl+Enter"
-            "Arrow-Up (k)"
-            "Arrow-Down (j)"
-            "Arrow-Left (h)"
-            "Arrow-Rright (l)"
-            "Space"
-            "// (\)"
-            "-"
-            "+"
-            "e"
-            "g"
-            "f"
-            "0"
-            */
+           
     _9cnv.sliceobj.data = 
     [
         {
-            title: "Page-Up\nmove up"
+            title: "Backspace\nPrevious Image"
         },
         {
-            title: "ctrl+up\nmove up"
+            title: "Shift-Enter\nPrevious Image"
         },
         {
-            title: "ctrl+up\nmove up"
+            title: "Enter\nNext Image"
         },
         {
-            title: "ctrl+up\nmove up"
+            title: "Home\nFirst Image"
         },
         {
-            title: "ctrl+up\nmove up"
+            title: "Page+Down\nNext Image"
         },
         {
-            title: "ctrl+up\nmove up"
+            title: "Ctrl+Enter\nPrevious Image"
+        },
+        {
+            title: "Arrow-Up (k)\nMove Up"
+        },
+        {
+            title: "Arrow-Down (j)\nMovd Down"
+        },
+        {
+            title: "Arrow-Left (h)\nMove Left"
+        },
+        {
+            title: "Arrow-Rright (l)\nMove Right"
+        },
+        {
+            title: "Space\nMove Down"
+        },
+        {
+            title: ""// (\)\nToggle UI"
+        },
+        {
+            title: "-/+\nZoom In/Out"
+        },
+        {
+            title: "g\nCenter Image"
+        },
+        {
+            title: "f\nToggle Fullscreen"
+        },
+        {
+            title: "Ctrl+Enter\nPrevious Image"
+        },
+        {
+            title: "Ctrl+Enter\nPrevious Image"
         },
     ];
 
