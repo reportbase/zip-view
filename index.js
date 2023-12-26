@@ -4274,7 +4274,11 @@ var taplst =
         else if (canvas.homeresetrect && 
                  canvas.homeresetrect.hitest(x, y))
         {
-	        canvas.timeobj.set(0);
+            menuobj.set(_8cnvctx);
+            menuobj.toggle(_8cnvctx);
+            menuobj.show();
+            aligncenter(0)
+            aligntop();
 		    menuobj.draw()
         }
         else if (canvas.timerect &&
