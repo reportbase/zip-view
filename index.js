@@ -5021,31 +5021,6 @@ var buttonlst =
             
             a.draw(context, rect, lst, 0);
 	    }
-    
-        delete user.uploadrect;
-        delete user.inforect;
-        const rainstep = Math.min(420,window.innerWidth-60);
-        
-        if (!headcnv.height && galleryobj.current() == time)
-        {
-            var a = new panel.rows([SCROLLMARGIN,BEXTENT,0,BEXTENT,SCROLLMARGIN],
-            [
-                0,
-                0,
-		        0,
-                new panel.cols([0,ALIEXTENT,ALIEXTENT+10,ALIEXTENT,0],
-                [
-                    0,
-                    new panel.movepruv,
-                    new panel.info(),
-                    new panel.movenuxt,
-                    0,
-                ]),
-                0,
-            ]);    
-            
-            a.draw(context, rect, user, 0);
-        }
     }
 },
 {
