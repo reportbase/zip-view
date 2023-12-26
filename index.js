@@ -1475,7 +1475,18 @@ var displaylst =
         if (!w)
             w = buttonobj.value();
 	    var bt = `\u{25C0}${space}${w.toFixed(0)} x ${buttonobj.value()}${space}\u{25B6}`;
-        var name = `\u{25C0}${space}${value.blob?value.blob.name:value.name}${space}\u{25B6}`;
+
+        var str = value.blob?value.blob.name:value.name;
+        var n = 0;
+        do 
+        {
+            str = user.substr(str.length-n, str.length);
+            metrics = context.measureText(str);
+            n++;
+        }
+        while (n < str.length && metrics.width > rect.width-90);
+        
+        var name = `\u{25C0}${space}${str}${space}\u{25B6}`;
         var text = new panel.text("white", "center", "middle", 0, 1);
         var a = new panel.rowsA(
         [
@@ -6033,7 +6044,7 @@ panel.rotated_text = function()
 };
 
 panel.text = function(color = "white", align = "center", baseline = "middle",
-    reverse = 0, noclip = 0, font = DEFAULTFONT)
+    unused2 = 0, unused2 = 0, font = DEFAULTFONT)
 {
     this.draw = function(context, rect, user, time)
     {
@@ -6053,20 +6064,6 @@ panel.text = function(color = "white", align = "center", baseline = "middle",
 
         var metrics;
         var str = user;
-
-        if (!noclip)
-        {
-	        var n = 0;
-            var len = str.length;
-            do 
-            {
-                str = user.substr(0, n);
-                metrics = context.measureText(str);
-                n++;
-            }
-            while (n < len && metrics.width < rect.width);
-        }
-        
         var x = rect.x;
         if (align == "center")
             x = rect.x + rect.width / 2;
