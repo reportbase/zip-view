@@ -6849,7 +6849,7 @@ function setupmenus()
     
     _7cnv.sliceobj.data.push(
     {
-        title: "Help   \u{25B6}\Keyboard",
+        title: "Help   \u{25B6}\nKeyboard",
         func: function()
         {
             leftmenu(_9cnvctx);
