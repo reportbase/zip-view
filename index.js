@@ -2978,6 +2978,7 @@ async function loadimages(blobs)
         }
     }
     
+    global.gohome = 1;
     local.button = 0;
     galleryobj.init(galleryobj)
     menuobj.draw();
@@ -7140,14 +7141,17 @@ galleryobj.reset = function(obj)
 	    _9cnv.sliceobj.set(n);	  
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
-        menuobj.show();
-
+        
         if (global.gohome)
         {
             aligncenter(0);
             aligntop();
             menuobj.draw();
             globalobj.gohome = 0;
+        }
+        else
+        {
+            menuobj.show();
         }
     };    
    
