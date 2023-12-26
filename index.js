@@ -1361,8 +1361,7 @@ var displaylst =
         canvas.timerect = new rectangle();
         context.pirect = new rectangle();
         if (!headcnv.height)
-    	{
-        
+    	{        
             var a = new panel.rows([0,12],
             [
                 0,
@@ -3305,6 +3304,13 @@ var presslst =
     name: "GALLERY",
     pressup: function(context, rect, x, y)
     {
+        var index = 1 - context.canvas.timeobj.berp();
+        index *= galleryobj.length();
+        index = Math.floor(index);
+        galleryobj.data[index].bootkmarked = 
+            galleryobj.data[index].bootkmarked ?
+            context.canvas.timeobj.current() : 0;
+        menuobj.draw();
     },
     press: function(context, rect, x, y) 
     {    
