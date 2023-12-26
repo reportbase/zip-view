@@ -2936,7 +2936,7 @@ async function loadzip(file)
         galleryobj.data.push(k);
     }
 
-    globalobj.gohome = 1;
+    global.gohome = 1;
     local.button = 0;
     galleryobj.init(galleryobj)
 	menuobj.draw();
@@ -7142,7 +7142,7 @@ galleryobj.reset = function(obj)
         menuobj.toggle(_8cnvctx);
         menuobj.show();
 
-        if (globalobj.gohome)
+        if (global.gohome)
         {
             aligncenter(0);
             aligntop();
