@@ -6968,15 +6968,24 @@ function setupmenus()
 
     _9cnv.sliceobj.data = 
     [
-        "360x360",
-        "480x480",
-        "640x640",
-        "800x800",
-        "1080x1080",
-        "1280x1280",
-        "1600x1600",
-        "2160x2160",
-        "5760x5760"
+        {
+            title: "ctrl+up\nmove up"
+        },
+        {
+            title: "ctrl+up\nmove up"
+        },
+        {
+            title: "ctrl+up\nmove up"
+        },
+        {
+            title: "ctrl+up\nmove up"
+        },
+        {
+            title: "ctrl+up\nmove up"
+        },
+        {
+            title: "ctrl+up\nmove up"
+        },
     ];
 
     _11cnv.sliceobj.data = [];
