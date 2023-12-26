@@ -1481,7 +1481,7 @@ var displaylst =
         var n = 0;
         do 
         {
-            str = fstr.substr(n, fstr.length);
+            str = fstr.substr(n, fstr.length-n);
             metrics = context.measureText(str);
             n++;
         }
