@@ -4866,7 +4866,8 @@ var buttonlst =
             0,
         ]);
 
-        var k = typeof(user.title) == "function" ? user.title() : user.title;
+        var k = typeof(user.title) == "function" ? user.title() : 
+		(user.title ? user.title : user);
         a.draw(context, rect, k.split("\n"), time);
         context.restore();
     }
@@ -5518,7 +5519,7 @@ var eventlst =
     tap: "MENU",
     pan: "MENU",
     swipe: "MENU",
-    button: "OPTION",
+    button: "MENU",
     wheel: "MENU",
     drop: "DEFAULT",
     key: "MENU",
