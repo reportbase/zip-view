@@ -3004,6 +3004,8 @@ function loadfiles(files)
         loadimages(files);
     }
 
+    aligncenter();
+    aligntop(); 
     menuobj.draw();    
 }
 
@@ -3015,7 +3017,7 @@ var droplst =
     {
         closemenu()
         closeboss()
-	loadfiles(evt.dataTransfer.files);
+	    loadfiles(evt.dataTransfer.files);
     },
 }, 
 ];
