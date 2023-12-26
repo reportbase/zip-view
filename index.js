@@ -71,6 +71,7 @@ const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 36;
 const IMAGELSTSIZE = 24;
+const BOOKMARKED = "rgba(0,0,255,0.75)";
 
 function setjson(key, value)
 {
@@ -1495,7 +1496,8 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
+                    new panel.rounded(value.bookmarked?BOOKMARKED:HEAVYFILL, 
+                                      ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.imagerect), 10, 10),
                     new panel.shrink(new panel.text(), 20, 20),
                 ]),
@@ -4701,7 +4703,7 @@ var buttonlst =
         if (user.tap)
             clr = MENUTAP;
         else if (user.bookmarked)
-            clr = "rgba(0,0,255,0.75)";
+            clr = BOOKMARKED;
         else if (user.enabled && user.enabled())
             clr = MENUSELECT;
         else if (galleryobj.current() == time)
