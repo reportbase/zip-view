@@ -6042,13 +6042,9 @@ panel.text = function(color = "white", align = "center", baseline = "middle",
 
         if (rect.width < 0)
             return;
-        var n = user.length;
-        if (n <= 0)
+        if (user.length <= 0)
             return;
         
-        if (reverse)
-            user = user.split("").reverse().join("");
-
         context.save();
         context.textAlign = align;
         context.textBaseline = baseline;
@@ -6060,17 +6056,15 @@ panel.text = function(color = "white", align = "center", baseline = "middle",
 
         if (!noclip)
         {
+	        var n = 0;
+            var len = str.length;
             do 
             {
                 str = user.substr(0, n);
                 metrics = context.measureText(str);
-                n--;
+                n++;
             }
-            while (n >= 0 && metrics.width > rect.width);
-        }
-        else
-        {
-            str = user;
+            while (n < len && metrics.width > rect.width);
         }
         
         var x = rect.x;
@@ -6080,8 +6074,6 @@ panel.text = function(color = "white", align = "center", baseline = "middle",
             x = rect.x + rect.width - 1;
         var y = rect.y + rect.height / 2;
 
-        if (reverse)
-            str = str.split("").reverse().join("");
         context.fillText(str, x, y);
         context.restore();
     };
@@ -6977,20 +6969,21 @@ function setupmenus()
            
     var lst = 
     [
-        "Back+Space\nPrevious Image",
+        "Backspace\nPrevious Image",
         "Shift+Enter\nPrevious Image",
         "Enter\nNext Image",
         "Home\nFirst Image",
-        "Page+Down\nNext Image",
+        "Pagedown\nNext Image",
+        "Pageup\nPrevious Image",
         "Ctrl+Enter\nPrevious Image",
         "Arrow+Up (k)\nMove Up",
         "Arrow+Down (j)\nMovd Down",
         "Arrow+Left (h)\nMove Left",
         "Arrow+Right (l)\nMove Right",
         "Space\nMove Down",
-        "plus/minus\nZoom In/Out",
-        "g\nCenter Image",
-        "f\nFullscreen",
+        "Plus/Minus (+/-)\nZoom In/Out",
+        "G\nCenter Image",
+        "F\nFullscreen",
     ];
 
     for (var n = 0; n < lst.length; ++n)
