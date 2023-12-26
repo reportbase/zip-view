@@ -3307,10 +3307,7 @@ var presslst =
     {
     },
     press: function(context, rect, x, y) 
-    {
-        if (x < 30 || x >= rect.width-30)
-            return;
-        headobj.toggle();    
+    {    
     }
 },
 {
@@ -5029,20 +5026,13 @@ var buttonlst =
         delete user.inforect;
         const rainstep = Math.min(420,window.innerWidth-60);
         
-        if (0)//!headcnv.height && galleryobj.current() == time)
+        if (!headcnv.height && galleryobj.current() == time)
         {
             var a = new panel.rows([SCROLLMARGIN,BEXTENT,0,BEXTENT,SCROLLMARGIN],
             [
                 0,
-                new panel.cols([0,ALIEXTENT,ALIEXTENT+10,ALIEXTENT,0],
-                [
-                    0,
-                    new panel.movepruv,
-                    new panel.info(),
-                    new panel.movenuxt,
-                    0,
-                ]),
-				0,
+                0,
+		        0,
                 new panel.cols([0,ALIEXTENT,ALIEXTENT+10,ALIEXTENT,0],
                 [
                     0,
