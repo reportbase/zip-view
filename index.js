@@ -5034,7 +5034,7 @@ var buttonlst =
         delete user.inforect;
         const rainstep = Math.min(420,window.innerWidth-60);
         
-        if (!headcnv.height && galleryobj.current() == time)
+        if (0)//!headcnv.height && galleryobj.current() == time)
         {
             var a = new panel.rows([SCROLLMARGIN,BEXTENT,0,BEXTENT,SCROLLMARGIN],
             [
