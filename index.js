@@ -3309,7 +3309,7 @@ var presslst =
         index *= galleryobj.length();
         index = Math.floor(index);
 	    var k = galleryobj.data[index];    
-        k.bookmarked = k.bootkmarked ? timeobj.current() : 0;
+        k.bookmarked = k.bootkmarked ? 0 : timeobj.current();
         menuobj.draw();
     },
     press: function(context, rect, x, y) 
