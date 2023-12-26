@@ -1448,6 +1448,7 @@ var displaylst =
         if (!w)
             w = buttonobj.value();
 	    var bt = `\u{25C0}${space}${w.toFixed(0)} x ${buttonobj.value()}${space}\u{25B6}`;
+        var name = `\u{25C0}${space}${value.blob?value.blob.name:value.name}${space}\u{25B6}`;
         var text = new panel.text("white", "center", "middle", 0, 1);
         var a = new panel.rowsA(
         [
@@ -1539,7 +1540,7 @@ var displaylst =
             0,
             folders,
             0,
-            value.blob?value.blob.name:value.name,
+            name,
             0,
             data,
             0,
@@ -4086,8 +4087,20 @@ var taplst =
             context.imagerect &&
             context.imagerect.hitest(x, y))
         {
-	        rightmenu(_6cnvctx)
-            menuobj.draw();
+            var k = (x - context.imagerect.x) / context.imagerect.width;
+            if (k < 0.30)
+            {
+                //todo
+            }
+            else if (k > 0.70)
+            {
+                //todo
+            }
+            else
+            {
+	            rightmenu(_6cnvctx)
+                menuobj.draw();
+            }            
         }
         else if (
             context.buttonrect &&
