@@ -1485,7 +1485,7 @@ var displaylst =
             metrics = context.measureText(str);
             n++;
         }
-        while (n < fstr.length && metrics.width > rect.width-90);
+        while (n < fstr.length && metrics.width < rect.width-90);
         
         var name = `\u{25C0}${space}${str}${space}\u{25B6}`;
         var text = new panel.text("white", "center", "middle", 0, 1);
