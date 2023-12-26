@@ -4721,7 +4721,7 @@ var buttonlst =
         ]);
 
         var k = [];
-        k.push(`${user.index} of ${galleryobj.length()}`);
+        k.push(`${user.index+1} of ${galleryobj.length()}`);
     	if (user.blob && user.blob.name)
             k.push(user.blob.name);
     	else
@@ -5036,10 +5036,8 @@ var buttonlst =
         
         if (!headcnv.height && galleryobj.current() == time)
         {
-            var a = new panel.rows([8,BEXTENT,0,BEXTENT,SCROLLEXTENT,SCROLLMARGIN],
+            var a = new panel.rows([SCROLLMARGIN,BEXTENT,0,BEXTENT,SCROLLMARGIN],
             [
-                0,
-                0,
                 0,
                 new panel.cols([0,ALIEXTENT,ALIEXTENT+10,ALIEXTENT,0],
                 [
@@ -5049,7 +5047,15 @@ var buttonlst =
                     new panel.movenuxt,
                     0,
                 ]),
-                0,
+				0,
+                new panel.cols([0,ALIEXTENT,ALIEXTENT+10,ALIEXTENT,0],
+                [
+                    0,
+                    new panel.movepruv,
+                    new panel.info(),
+                    new panel.movenuxt,
+                    0,
+                ]),
                 0,
             ]);    
             
