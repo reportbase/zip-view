@@ -6044,7 +6044,7 @@ panel.rotated_text = function()
 };
 
 panel.text = function(color = "white", align = "center", baseline = "middle",
-    unused2 = 0, unused2 = 0, font = DEFAULTFONT)
+    unused1 = 0, unused2 = 0, font = DEFAULTFONT)
 {
     this.draw = function(context, rect, user, time)
     {
