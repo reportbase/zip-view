@@ -653,6 +653,33 @@ var footlst =
     }
 }, 	
 {
+    name: "KEYBOARD",
+    draw: function(context, rect, user, time)
+    {
+        var canvas = context.canvas;
+        context.save();     
+        canvas.homerect = new rectangle();
+        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
+		[
+			new panel.layers(
+			[
+				new panel.fill(FOOTBTNCOLOR),
+				new panel.text(),
+				new panel.rectangle(canvas.homerect),
+			]),
+			0
+		]);
+
+        a.draw(context, rect, 
+	   	[
+		   `\u{25C0}   Help - Keyboard`,
+			0,
+		], 0);
+        
+        context.restore();
+    }
+},  
+{
     name: "IMAGES",
     draw: function(context, rect, user, time)
     {
@@ -5508,7 +5535,7 @@ var eventlst =
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: "DEFAULT",
+    footer: "KEYBOARD",
     buttonheight: 120,
     buttonmargin: 30,
     holly: 0,
@@ -6950,20 +6977,20 @@ function setupmenus()
            
     var lst = 
     [
-        "Backspace\nPrevious Image",
-        "Shift-Enter\nPrevious Image",
+        "Back+Space\nPrevious Image",
+        "Shift+Enter\nPrevious Image",
         "Enter\nNext Image",
         "Home\nFirst Image",
         "Page+Down\nNext Image",
         "Ctrl+Enter\nPrevious Image",
-        "Arrow-Up (k)\nMove Up",
-        "Arrow-Down (j)\nMovd Down",
-        "Arrow-Left (h)\nMove Left",
-        "Arrow-Rright (l)\nMove Right",
+        "Arrow+Up (k)\nMove Up",
+        "Arrow+Down (j)\nMovd Down",
+        "Arrow+Left (h)\nMove Left",
+        "Arrow+Right (l)\nMove Right",
         "Space\nMove Down",
         "plus/minus\nZoom In/Out",
         "g\nCenter Image",
-        "f\nToggle Fullscreen",
+        "f\nFullscreen",
     ];
 
     for (var n = 0; n < lst.length; ++n)
