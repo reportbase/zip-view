@@ -3307,7 +3307,7 @@ var presslst =
         var index = 1 - context.canvas.timeobj.berp();
         index *= galleryobj.length();
         index = Math.floor(index);
-        galleryobj.data[index].bootkmarked = 
+        galleryobj.data[index].bookmarked = 
             galleryobj.data[index].bootkmarked ?
             context.canvas.timeobj.current() : 0;
         menuobj.draw();
@@ -4700,6 +4700,8 @@ var buttonlst =
         var clr = FILLBAR;
         if (user.tap)
             clr = MENUTAP;
+        else if (user.bookmarked)
+            clr = "rgba(0,0,255,0.75)");
         else if (user.enabled && user.enabled())
             clr = MENUSELECT;
         else if (galleryobj.current() == time)
