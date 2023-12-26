@@ -6984,22 +6984,13 @@ function setupmenus()
             title: "Space\nMove Down"
         },
         {
-            title: ""// (\)\nToggle UI"
-        },
-        {
-            title: "-/+\nZoom In/Out"
+            title: "plus/minous\nZoom In/Out"
         },
         {
             title: "g\nCenter Image"
         },
         {
             title: "f\nToggle Fullscreen"
-        },
-        {
-            title: "Ctrl+Enter\nPrevious Image"
-        },
-        {
-            title: "Ctrl+Enter\nPrevious Image"
         },
     ];
 
