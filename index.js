@@ -4064,7 +4064,6 @@ var taplst =
         			thumbimglst[n] = new Image();
         	    }
 	    
-                _9cnv.sliceobj.add(k < 0.5 ? -1 : 1);
                 menuobj.draw();
             }            
             
@@ -5298,7 +5297,7 @@ menuobj.draw = function()
             }
             else
             {
-                var path = imagepath(slice,_9cnv.sliceobj.value());
+                var path = imagepath(slice);
                 if (path)
                     thumbimg.src = path;
             }
@@ -7099,17 +7098,6 @@ galleryobj.reset = function(obj)
         galleryobj.height = this.height;
         buttonobj.reset();
         buttonobj.init();
-	    var hh = buttonobj.value();
-	    var ww = galleryobj.height ? (hh * (galleryobj.width/galleryobj.height)) : 0;
-	    var n = 0;
-	    for (; n < _9cnv.sliceobj.data.length; ++n)
-        {
-            var j = _9cnv.sliceobj.data[n].title.split("x")[0];
-            if (ww <= Number(j))
-                break;    
-        }
-	    
-	    _9cnv.sliceobj.set(n);	  
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
         
@@ -7320,8 +7308,7 @@ local.set = function()
     {
 	    var k = {};
         k.button = buttonobj.value();
-        k.template = _9cnv.sliceobj.value().title;
-    	k._8 = _8cnv.timeobj.current()//"_8"
+        k._8 = _8cnv.timeobj.current()//"_8"
         setjson(url.path, k);
     }, 400);
 }
