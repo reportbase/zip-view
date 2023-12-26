@@ -6064,7 +6064,7 @@ panel.text = function(color = "white", align = "center", baseline = "middle",
                 metrics = context.measureText(str);
                 n++;
             }
-            while (n < len && metrics.width > rect.width);
+            while (n < len && metrics.width < rect.width);
         }
         
         var x = rect.x;
