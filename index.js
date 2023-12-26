@@ -6971,10 +6971,12 @@ function setupmenus()
         var k = lst[n];
         var j = {}
         j.title = k;
-        f.func = function()
+        j.func = function()
         {
             return true;
         }
+
+	    lst[n] = j;
     }
     
 	_9cnv.sliceobj.data = lst
