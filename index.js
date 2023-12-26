@@ -6447,6 +6447,7 @@ window.addEventListener("keydown", function(evt)
     var key = evt.key.toLowerCase();
     if (key == "escape")
     {
+	    headobj.hide();
         if (dialog && dialog.open)
             dialog.close();
     }
@@ -6836,7 +6837,7 @@ function setupmenus()
             }
         })
     
-    if (0)
+    if (1)
         _7cnv.sliceobj.data.push(
         {
             title: "Debug   \u{25B6}",
@@ -6847,6 +6848,16 @@ function setupmenus()
             }
         })
     
+    _7cnv.sliceobj.data.push(
+    {
+        title: "Help   \u{25B6}\Keyboard",
+        func: function()
+        {
+            leftmenu(_9cnvctx);
+            return false;
+        }
+    })
+
     _10cnv.sliceobj.data = 
     [
         {
@@ -6955,7 +6966,7 @@ function setupmenus()
     _6cnv.sliceobj.data = galleryobj.data;
     _8cnv.sliceobj.data = galleryobj.data;
 
-    var templatelst = 
+    _9cnv.sliceobj.data = 
     [
         "360x360",
         "480x480",
@@ -6967,39 +6978,6 @@ function setupmenus()
         "2160x2160",
         "5760x5760"
     ];
-
-	var lst = [];
-    for (var n = 0; n < templatelst.length; ++n)
-	{
-		var j = templatelst[n];
-		var k = {};
-		k.index = n;
-		k.title = j;
-		k.func = function()
-		{
-            for (var n = 0; n < IMAGELSTSIZE; ++n)
-            {
-                thumbfittedlst[n] = document.createElement("canvas");
-                thumbimglst[n] = new Image();
-            }
-    
-            _9cnv.sliceobj.set(this.index);
-            closemenu();            
-		    return true;
-		}
-		
-		lst.push(k);
-	}
-	
-    _9cnv.sliceobj.data = lst;
-    
-    var t = local.template;
-    var n = 0;
-    for (; n < _9cnv.sliceobj.data.length; ++n)
-        if (t == _9cnv.sliceobj.data[n])
-            break;
-    if (n != _9cnv.sliceobj.data.length)
-        _9cnv.sliceobj.set(n);
 
     _11cnv.sliceobj.data = [];
     _2cnv.sliceobj.data = [];
