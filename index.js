@@ -2896,6 +2896,8 @@ var userobj = {}
 
 async function loadzip(file)
 {
+    if (file.name)
+        url.path = file.name;
     const {entries} = await unzipit.unzip(file);
     let keys = Object.keys(entries);
     keys.sort();
@@ -2935,7 +2937,7 @@ async function loadzip(file)
         k.folder = e.join("/");
         galleryobj.data.push(k);
     }
-//todo: aligntop
+
     local.button = 0;
     galleryobj.init(galleryobj)
 	menuobj.draw();
