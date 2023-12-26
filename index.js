@@ -3304,12 +3304,12 @@ var presslst =
     name: "GALLERY",
     pressup: function(context, rect, x, y)
     {
-        var index = 1 - context.canvas.timeobj.berp();
+	    var timeobj = context.canvas.timeobj;
+        var index = 1 - timeobj.berp();
         index *= galleryobj.length();
         index = Math.floor(index);
-        galleryobj.data[index].bookmarked = 
-            galleryobj.data[index].bootkmarked ?
-            context.canvas.timeobj.current() : 0;
+	    var k = galleryobj.data[index];    
+        k.bookmarked = k.bootkmarked ? timeobj.current() : 0;
         menuobj.draw();
     },
     press: function(context, rect, x, y) 
