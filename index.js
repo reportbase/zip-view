@@ -2935,7 +2935,7 @@ async function loadzip(file)
         k.folder = e.join("/");
         galleryobj.data.push(k);
     }
-
+//todo: aligntop
     local.button = 0;
     galleryobj.init(galleryobj)
 	menuobj.draw();
@@ -3004,8 +3004,6 @@ function loadfiles(files)
         loadimages(files);
     }
 
-    aligncenter();
-    aligntop(); 
     menuobj.draw();    
 }
 
