@@ -1517,7 +1517,7 @@ var displaylst =
                 0,
             ]),
 	        0,
-            1?0:new panel.cols([0, rainstep, 0],
+            new panel.cols([0, rainstep, 0],
             [
                 0,
                 new panel.layers(
@@ -3423,7 +3423,7 @@ var keylst =
             canvas.ctrlKey = evt.ctrlKey;
             canvas.slideshow = 0;
             canvas.keypressed = 1;
-           
+
             clearInterval(context.canvas.leftright);
             if (key == "pageup" || key == "backspace" ||
                 (canvas.shiftKey && key == "enter"))
@@ -3495,7 +3495,11 @@ var keylst =
                         setInterval(function(){menuobj.draw();}, GALLERYMAIN);
                 evt.preventDefault();
             }                
-            else if (key == "\\" || key == "/" || key == "tab")
+            else if (key == "tab")
+            {
+                //todo
+            }
+            else if (key == "\\" || key == "/")
             {
                 var h = headcnv.height ? 0 : HEADHEIGHT;
                 headcnvctx.show(0, 0, window.innerWidth, h);
@@ -3543,20 +3547,10 @@ var keylst =
                 buttonobj.reset();
 		        menuobj.draw();    
             }
-            else if (key == "x")
-            {
-                evt.preventDefault();
-                importdialog();
-            }
             else if (key == "f")
             {
                 evt.preventDefault();
                 screenfull.toggle();
-            }
-            else if (key == "q")
-            {
-                global.hideimages = global.hideimages ? 0 : 1;
-		        menuobj.draw();
             }
             else if (key == "g")
             {
@@ -6953,11 +6947,30 @@ function setupmenus()
 	
     _6cnv.sliceobj.data = galleryobj.data;
     _8cnv.sliceobj.data = galleryobj.data;
-
+            /*
+            title: "Backspace"
+            title: "Shift-Enter"
+            title: "Enter"
+            title: "Home"
+            "Page-Down"
+            "Ctrl+Enter"
+            "Arrow-Up (k)"
+            "Arrow-Down (j)"
+            "Arrow-Left (h)"
+            "Arrow-Rright (l)"
+            "Space"
+            "// (\)"
+            "-"
+            "+"
+            "e"
+            "g"
+            "f"
+            "0"
+            */
     _9cnv.sliceobj.data = 
     [
         {
-            title: "ctrl+up\nmove up"
+            title: "Page-Up\nmove up"
         },
         {
             title: "ctrl+up\nmove up"
