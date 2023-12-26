@@ -4274,9 +4274,7 @@ var taplst =
         else if (canvas.homeresetrect && 
                  canvas.homeresetrect.hitest(x, y))
         {
-            menuobj.set(_8cnvctx);
-            menuobj.toggle(_8cnvctx);
-            menuobj.show();
+            closemenu()
             aligncenter(0)
             aligntop();
 		    menuobj.draw()
