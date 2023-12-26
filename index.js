@@ -1477,7 +1477,7 @@ var displaylst =
 	    var bt = `\u{25C0}${space}${w.toFixed(0)} x ${buttonobj.value()}${space}\u{25B6}`;
 
         var str = value.blob?value.blob.name:value.name;
-	    var fstr = str;
+        var fstr = str;
         var n = 0;
         do 
         {
@@ -1485,7 +1485,7 @@ var displaylst =
             metrics = context.measureText(str);
             n++;
         }
-        while (n < fstr.length && metrics.width > 120);
+        while (n < fstr.length && metrics.width > 90);
         
         var name = `\u{25C0}${space}${str}${space}\u{25B6}`;
         var text = new panel.text("white", "center", "middle", 0, 1);
