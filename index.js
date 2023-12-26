@@ -6948,52 +6948,37 @@ function setupmenus()
     _6cnv.sliceobj.data = galleryobj.data;
     _8cnv.sliceobj.data = galleryobj.data;
            
-    _9cnv.sliceobj.data = 
+    var lst = 
     [
-        {
-            title: "Backspace\nPrevious Image"
-        },
-        {
-            title: "Shift-Enter\nPrevious Image"
-        },
-        {
-            title: "Enter\nNext Image"
-        },
-        {
-            title: "Home\nFirst Image"
-        },
-        {
-            title: "Page+Down\nNext Image"
-        },
-        {
-            title: "Ctrl+Enter\nPrevious Image"
-        },
-        {
-            title: "Arrow-Up (k)\nMove Up"
-        },
-        {
-            title: "Arrow-Down (j)\nMovd Down"
-        },
-        {
-            title: "Arrow-Left (h)\nMove Left"
-        },
-        {
-            title: "Arrow-Rright (l)\nMove Right"
-        },
-        {
-            title: "Space\nMove Down"
-        },
-        {
-            title: "plus/minous\nZoom In/Out"
-        },
-        {
-            title: "g\nCenter Image"
-        },
-        {
-            title: "f\nToggle Fullscreen"
-        },
+        "Backspace\nPrevious Image",
+        "Shift-Enter\nPrevious Image",
+        "Enter\nNext Image",
+        "Home\nFirst Image",
+        "Page+Down\nNext Image",
+        "Ctrl+Enter\nPrevious Image",
+        "Arrow-Up (k)\nMove Up",
+        "Arrow-Down (j)\nMovd Down",
+        "Arrow-Left (h)\nMove Left",
+        "Arrow-Rright (l)\nMove Right",
+        "Space\nMove Down",
+        "plus/minus\nZoom In/Out",
+        "g\nCenter Image",
+        "f\nToggle Fullscreen",
     ];
 
+    for (var n = 0; n < lst.length; ++n)
+    {
+        var k = lst[n];
+        var j = {}
+        j.title = k;
+        f.func = function()
+        {
+            return true;
+        }
+    }
+    
+	_9cnv.sliceobj.data = lst
+	
     _11cnv.sliceobj.data = [];
     _2cnv.sliceobj.data = [];
     var lst = [_2cnv, _3cnv, _5cnv, _6cnv, _7cnv, _8cnv, _9cnv, _10cnv, _11cnv];
