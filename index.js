@@ -4785,7 +4785,6 @@ var buttonlst =
         while (n < fstr.length && metrics.width > 90);
         k.push(name);
 
-        user.id = "3233.23223.23232.32223.3223";
         if (user.id)
         {
             var name = user.id;
@@ -4797,7 +4796,7 @@ var buttonlst =
                 metrics = context.measureText(name);
                 n++;
             }
-            while (n < fstr.length && metrics.width > 90);
+            while (n < fstr.length && metrics.width > 120);
             k.push(name);
         }
         
