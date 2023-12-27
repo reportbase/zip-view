@@ -1834,7 +1834,7 @@ panel.multitext = function(e, panel)
             var lines = wraptext(context, lst[n], rect.width);
             for (var m = 0; m < 1; m++)
             {
-                var str = lines[m];
+                var str = lines[m].clean();
                 panel.draw(context, rect, str, 0);
                 rect.y += MULTITEXTROWHEIGHT;
             }
