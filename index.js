@@ -7380,6 +7380,18 @@ local.set = function()
         k.button = buttonobj.value();
         k._8 = _8cnv.timeobj.current()
         k.holly = _8cnv.hollyobj.current();
+        k.bookmarks = [];
+        for (var n = 0; n < galleryobj.length(); ++n)
+        {
+            var b = galleryobj.data[n];
+            if (!b.bookmarked)
+                continue;
+            var e = {};
+            e.bookmarked = b.bookmarked;
+            e.name = b.name;
+            k.bookmarks.push(e);
+        }
+        
         setjson(url.path, k);
     }, 400);
 }
