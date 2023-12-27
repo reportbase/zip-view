@@ -1464,7 +1464,7 @@ var displaylst =
         index *= galleryobj.length();
         var k = Math.floor(index);
         var value = galleryobj.data[k];
-        var space = rect.width < 400 ? "  " : rect.widt < 600 ? "   " : "    ";
+        var space = rect.width < 400 ? " " : rect.widt < 600 ? "  " : "   ";
         var folders = [];
         if (value && value.folder)
             folders = value.folder.split("/");
@@ -4771,10 +4771,20 @@ var buttonlst =
         var n = user.index+1;
         var len = galleryobj.length()
         k.push(`${n} of ${len}`);
+        var name = user.name;
     	if (user.blob && user.blob.name)
-            k.push(user.blob.name);
-    	else
-		    k.push(user.name);
+            name = user.blob.name;
+    	var fstr = name;
+        var n = 0;
+        do 
+        {
+            name = fstr.substr(n, fstr.length-n);
+            metrics = context.measureText( =);
+            n++;
+        }
+        while (n < fstr.length && metrics.width > rect.width-80);
+        k.push(name);
+        
         if (user.id)
             k.push(user.id);
 		
