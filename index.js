@@ -5739,7 +5739,8 @@ contextobj.init = function()
         canvas.timeobj.set(Math.PI / 2);
 
         canvas.hollyobj = new circular_array("TEXTSCROLL", 100);
-	    canvas.hollyobj.set(obj.holly);
+        if (obj.holly)
+	        canvas.hollyobj.set(local.holly?local.holly:obj.holly);
 	    
         canvas.speed = obj.speed;
         canvas.reduce = obj.reduce;
@@ -7361,7 +7362,7 @@ local.set = function()
 	    var k = {};
         k.button = buttonobj.value();
         k._8 = _8cnv.timeobj.current()
-        k.holly = 
+        k.holly = _8cnv.hollyobj.current();
         setjson(url.path, k);
     }, 400);
 }
