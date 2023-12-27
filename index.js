@@ -6795,8 +6795,8 @@ function setupmenus()
         title: `Images   \u{25B6}\nShow all images`,
         func: function()
         {
-            rightmenu(_6cnvctx);
-            return true;
+		    leftmenu(_6cnvctx)
+        	return false;
         }
     },   
     {
