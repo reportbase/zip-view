@@ -4784,10 +4784,23 @@ var buttonlst =
         }
         while (n < fstr.length && metrics.width > 90);
         k.push(name);
-        
+
+        user.id = "3233.23223.23232.32223.3223";
         if (user.id)
-            k.push(user.id);
-		
+        {
+            var name = user.id;
+        	var fstr = user.id;
+            var n = 0;
+            do 
+            {
+                name = fstr.substr(n, fstr.length-n);
+                metrics = context.measureText(name);
+                n++;
+            }
+            while (n < fstr.length && metrics.width > 90);
+            k.push(name);
+        }
+        
         /*
       	var bad =
     	[
@@ -6458,6 +6471,7 @@ window.addEventListener("keydown", function(evt)
     var key = evt.key.toLowerCase();
     if (key == "escape")
     {
+        closemenu();
 	    headobj.hide();
         if (dialog && dialog.open)
             dialog.close();
