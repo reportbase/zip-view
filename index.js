@@ -7433,6 +7433,12 @@ function showdialog(str, func)
 {
     var button = document.getElementById(`${str}-ok`);
     dialog = document.getElementById(str);
+
+    dialog.addEventListener("keydown", function(evt)
+    {
+        console.log(evt);
+    })
+	
     dialog.addEventListener("click", function(evt)
     {
         evt.preventDefault();
