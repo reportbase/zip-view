@@ -5076,22 +5076,10 @@ var buttonlst =
             ]);
 
             var name = user.name;
-            if (name)
-                name = name.replace(/ /g,"_");
-            var fstr = name;
-            var n = 0;
-            do 
-            {
-                name = fstr.substr(n, fstr.length-n);
-                metrics = context.measureText(name);
-                n++;
-            }
-            while (n < fstr.length && metrics.width > 120);
-  
             var lst = [];
             if (url.path)
-                lst.push(url.path)
-            lst.push(name);
+                lst.push(cliptext(context, url.path, 90))
+            lst.push(cliptext(context, name, 90));
             lst.push(`${time+1} of ${galleryobj.length()}`)
             
             a.draw(context, rect, lst, 0);
