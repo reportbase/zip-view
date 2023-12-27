@@ -3185,7 +3185,7 @@ var panlst =
         canvas.starty = y;
         canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
         canvas.istimerect = canvas.timerect && canvas.timerect.hitest(x, y);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           },
+    },
     panend: function(context, rect, x, y)
     {
         var canvas = context.canvas;
