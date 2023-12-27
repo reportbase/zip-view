@@ -1397,9 +1397,8 @@ var displaylst =
         canvas.holly2rect = new rectangle();
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
-        context.imagerect = new rectangle();
-	    context.templaterect = new rectangle();
-        context.buttonrect = new rectangle();
+        context.bookmarkrect = new rectangle();
+	context.buttonrect = new rectangle();
         context.button2rect = new rectangle();
         canvas.timerect = new rectangle();
         context.pirect = new rectangle();
@@ -1542,7 +1541,7 @@ var displaylst =
                 [
                     new panel.rounded(value.bookmarked?BOOKMARKED:HEAVYFILL, 
                                       ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                    new panel.expand(new panel.rectangle(context.imagerect), 10, 10),
+                    new panel.expand(new panel.rectangle(context.bookmarkrect), 10, 10),
                     new panel.shrink(new panel.text(), 20, 20),
                 ]),
                 0,
@@ -4091,28 +4090,6 @@ var taplst =
             closemenu();
         }
         else if (
-            context.templaterect &&
-            context.templaterect.hitest(x, y))
-        {
-            var k = (x - context.templaterect.x) / context.templaterect.width;
-            if (k > 0.35 && k < 0.65)
-            {
-                leftmenu(_9cnvctx);
-            }
-            else
-            {
-        		for (var n = 0; n < IMAGELSTSIZE; ++n)
-        	    {
-        			thumbfittedlst[n] = document.createElement("canvas");
-        			thumbimglst[n] = new Image();
-        	    }
-	    
-                menuobj.draw();
-            }            
-            
-            menuobj.draw();
-        }
-        else if (
             context.folderect &&
             context.folderect.hitest(x, y))
         {
@@ -4121,11 +4098,11 @@ var taplst =
 		    leftmenu(_5cnvctx);
         }
         else if (
-            context.imagerect &&
-            context.imagerect.hitest(x, y))
+            context.bookmarkrect &&
+            context.bookmarkrect.hitest(x, y))
         {
-            var k = (x - context.imagerect.x) / context.imagerect.width;
-            if (k < 0.30)
+            var k = (x - context.bookmarkrect.x) / context.bookmarkrect.width;
+            if (k < 0.50)
             {
                 var index = 1 - canvas.timeobj.berp();
                 index *= galleryobj.length();
@@ -4140,7 +4117,7 @@ var taplst =
                 aligntop()
                 menuobj.draw();
             }
-            else if (k > 0.70)
+            else 
             {
                 var index = 1 - canvas.timeobj.berp();
                 index *= galleryobj.length();
@@ -4155,11 +4132,6 @@ var taplst =
                 aligntop()
                 menuobj.draw();
             }
-            else
-            {
-	            rightmenu(_6cnvctx)
-                menuobj.draw();
-            }            
         }
         else if (
             context.buttonrect &&
@@ -4590,8 +4562,8 @@ bossobj.draw = function()
 
     //Upload
     delete context.hollyrect;
-    delete context.uploadimagerect;
-    delete context.deleteimagerect;
+    delete context.uploadbookmarkrect;
+    delete context.deletebookmarkrect;
 
     //others
     delete context.slicerect;
@@ -4599,7 +4571,7 @@ bossobj.draw = function()
     delete context.canvas.thumbrect;
     delete context.copyidrect;
     delete context.gallerydeleterect;
-    delete context.uploadimagerect;
+    delete context.uploadbookmarkrect;
     delete context.hollyrect;
     
     if (!menuobj.value() && headcnv.height)
