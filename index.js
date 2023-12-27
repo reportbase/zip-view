@@ -4782,7 +4782,7 @@ var buttonlst =
             metrics = context.measureText(name);
             n++;
         }
-        while (n < fstr.length && metrics.width > rect.width-240);
+        while (n < fstr.length && metrics.width > 90);
         k.push(name);
         
         if (user.id)
