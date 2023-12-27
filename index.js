@@ -7438,7 +7438,7 @@ function showdialog(str, func)
     {
 	     if (evt.key == "Enter")
          {
-            evt.preventDefault();
+            //evt.preventDefault();
             if (func())
                 return;
             dialog.close();
