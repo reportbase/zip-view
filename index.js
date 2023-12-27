@@ -2729,7 +2729,6 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        //context.deltalst.push({"index":1,"delta":delta});
         if (Math.abs(delta) < 0.25)
             return;
         context.canvas.hollyobj.addperc(delta / 2000);
@@ -5739,8 +5738,8 @@ contextobj.init = function()
         canvas.timeobj = new circular_array("", Math.PI);
         canvas.timeobj.set(Math.PI / 2);
 
-        canvas.hollyobj = new circular_array("TEXTSCROLL", obj.holly ? window.innerWidth:obj.buttonheight);
-	    canvas.hollyobj.set(obj.holly?(window.innerWidth*(obj.holly/100)):0);
+        canvas.hollyobj = new circular_array("TEXTSCROLL", 100);
+	    canvas.hollyobj.set(obj.holly);
 	    
         canvas.speed = obj.speed;
         canvas.reduce = obj.reduce;
@@ -7361,7 +7360,8 @@ local.set = function()
     {
 	    var k = {};
         k.button = buttonobj.value();
-        k._8 = _8cnv.timeobj.current()//"_8"
+        k._8 = _8cnv.timeobj.current()
+        k.holly = 
         setjson(url.path, k);
     }, 400);
 }
