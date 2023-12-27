@@ -6478,6 +6478,15 @@ window.addEventListener("keydown", function(evt)
         if (dialog && dialog.open)
             dialog.close();
     }
+
+    if (dialog.blocked)
+    {
+        dialog.blocked = 0;
+        return;
+    }
+                        
+    if (dialog && dialog.open)
+        return;
     
 	var context = menuobj.value() ? menuobj.value() : _4cnvctx;
     return context.canvas.keydown_(evt);
@@ -7431,14 +7440,14 @@ function showdialog(str, func)
 
     dialog.addEventListener("keydown", function(evt)
     {
-	     if (evt.key == "Enter")
-         {
-            //evt.preventDefault();
+        if (evt.key == "Enter")
+        {
+            dialog.blocked = 1;
             if (func())
                 return;
             dialog.close();
             return true;
-         }
+        }
     })
 	
     dialog.addEventListener("click", function(evt)
