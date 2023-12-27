@@ -7436,7 +7436,14 @@ function showdialog(str, func)
 
     dialog.addEventListener("keydown", function(evt)
     {
-        console.log(evt);
+	     if (evt.key == "Enter")
+         {
+            evt.preventDefault();
+            if (func())
+                return;
+            dialog.close();
+            return false;
+         }
     })
 	
     dialog.addEventListener("click", function(evt)
