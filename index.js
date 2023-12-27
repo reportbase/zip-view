@@ -1364,10 +1364,11 @@ var bossdisplaylst =
 
 var bossdisplayobj = new circular_array("", bossdisplaylst);
 
-function cliptext(str, width)
+function cliptext(context, str, width)
 {
     var fstr = str;
     var n = 0;
+    var metrics;	
     do 
     {
         str = fstr.substr(n, fstr.length-n);
@@ -1488,7 +1489,7 @@ var displaylst =
         if (!w)
             w = buttonobj.value();
 	    var bt = `\u{25C0}${space}${w.toFixed(0)} x ${buttonobj.value()}${space}\u{25B6}`;
-        var str = cliptext(value.blob?value.blob.name:value.name,90);
+        var str = cliptext(context, value.blob?value.blob.name:value.name,90);
         var name = `\u{25C0}${space}${str}${space}\u{25B6}`;
         var text = new panel.text("white", "center", "middle", 0, 1);
         var a = new panel.rowsA(
@@ -4776,11 +4777,11 @@ var buttonlst =
         var name = user.name;
     	if (user.blob && user.blob.name)
             name = user.blob.name;
-        name = cliptext(name, 90);
+        name = cliptext(context, name, 90);
         k.push(name);
         if (user.id)
         {
-            var name = cliptext(user.id, 120);
+            var name = cliptext(context, user.id, 120);
             k.push(name);
         }
         
