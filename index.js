@@ -5078,8 +5078,8 @@ var buttonlst =
             var name = user.name;
             var lst = [];
             if (url.path)
-                lst.push(cliptext(context, url.path, 90))
-            lst.push(cliptext(context, name, 90));
+                lst.push(cliptext(context, url.path, 60))
+            lst.push(cliptext(context, name, 60));
             lst.push(`${time+1} of ${galleryobj.length()}`)
             
             a.draw(context, rect, lst, 0);
