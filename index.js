@@ -4768,7 +4768,9 @@ var buttonlst =
         ]);
 
         var k = [];
-        k.push(`${user.index+1} of ${galleryobj.length()}`);
+        var n = user.index+1;
+        var len = galleryobj.length()
+        k.push(`${n} of ${len}`);
     	if (user.blob && user.blob.name)
             k.push(user.blob.name);
     	else
