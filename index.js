@@ -1376,6 +1376,7 @@ function cliptext(context, str, width)
         n++;
     }
     while (n < fstr.length && metrics.width > width);
+    return str;
 }
 
 var displaylst = 
