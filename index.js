@@ -1539,7 +1539,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(value.bookmarked?BOOKMARKED:HEAVYFILL, 
+                    new panel.rounded(value.marked?BOOKMARKED:HEAVYFILL, 
                                       ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.bookmarkrect), 10, 10),
                     new panel.shrink(new panel.text(), 20, 20),
@@ -3354,7 +3354,7 @@ var presslst =
         index *= galleryobj.length();
         index = Math.floor(index);
 	    var k = galleryobj.data[index];    
-        k.bookmarked = k.bookmarked ? 0 : timeobj.current();
+        k.marked = k.marked ? 0 : timeobj.current();
         menuobj.draw();
 	    local.set();
     },
@@ -4109,7 +4109,7 @@ var taplst =
                 index *= galleryobj.length();
                 var n = Math.floor(index);
                 for (; n >= 0; --n)
-                    if (galleryobj.data[n].bookmarked)
+                    if (galleryobj.data[n].marked)
                         break;
                 if (n == -1)
                     return;
@@ -4124,7 +4124,7 @@ var taplst =
                 index *= galleryobj.length();
                 var n = Math.floor(index);
                 for (; n < galleryobj.length(); ++n)
-                    if (galleryobj.data[n].bookmarked)
+                    if (galleryobj.data[n].marked)
                         break;
                 if (n >= galleryobj.length())
                     return;
@@ -4747,7 +4747,7 @@ var buttonlst =
         var clr = FILLBAR;
         if (user.tap)
             clr = MENUTAP;
-        else if (user.bookmarked)
+        else if (user.marked)
             clr = BOOKMARKED;
         else if (user.enabled && user.enabled())
             clr = MENUSELECT;
@@ -7161,6 +7161,15 @@ galleryobj.reset = function(obj)
         {
             menuobj.show();
         }
+
+        for (var n = 0; n < local.marked.length; ++n)
+        {
+            var e = local.marked[n];
+            var j = galleryobj.data.findIndex(function(a){return a.name == e.name;})
+            if (j == -1)
+                continue;
+            galleryobj.data[j].marked = e.marked;
+        }
     };    
    
     _8cnv.timeobj.set(0);
@@ -7363,14 +7372,14 @@ local.set = function()
         k.button = buttonobj.value();
         k._8 = _8cnv.timeobj.current()
         k.holly = _8cnv.hollyobj.current();
-        k.bookmarks = [];
+        k.marks = [];
         for (var n = 0; n < galleryobj.length(); ++n)
         {
             var b = galleryobj.data[n];
-            if (!b.bookmarked)
+            if (!b.marked)
                 continue;
             var e = {};
-            e.bookmarked = b.bookmarked;
+            e.marked = b.marked;
             e.name = b.name;
             k.bookmarks.push(e);
         }
