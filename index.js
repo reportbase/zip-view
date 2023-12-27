@@ -6792,6 +6792,14 @@ function setupmenus()
         }
     },   
     {
+        title: `Images   \u{25B6}\nShow all images`,
+        func: function()
+        {
+            leftmenu(_6cnvctx);
+            return true;
+        }
+    },   
+    {
         title: "Developer\nTom Brinkman\nimages@zip-view.com",
         func: function() 
         {
