@@ -3355,7 +3355,7 @@ var presslst =
         index *= galleryobj.length();
         index = Math.floor(index);
 	    var k = galleryobj.data[index];    
-        k.bookmarked = k.bootkmarked ? 0 : timeobj.current();
+        k.bookmarked = k.bookmarked ? 0 : timeobj.current();
         menuobj.draw();
     },
     press: function(context, rect, x, y) 
@@ -4127,11 +4127,33 @@ var taplst =
             var k = (x - context.imagerect.x) / context.imagerect.width;
             if (k < 0.30)
             {
-                //todo
+                var index = 1 - timeobj.berp();
+                index *= galleryobj.length();
+                var n = index;
+                for (; n >= 0; --n)
+                    if (galleryobj.data[n].bookmarked)
+                        break;
+                if (n == -1)
+                    return;
+                gotoimage(n+1);
+                aligncenter()
+                aligntop()
+                menuobj.draw();
             }
             else if (k > 0.70)
             {
-                //todo
+                var index = 1 - timeobj.berp();
+                index *= galleryobj.length();
+                var n = index;
+                for (; n < galleryobj.length(); ++n)
+                    if (galleryobj.data[n].bookmarked)
+                        break;
+                if (n >= galleryobj.length())
+                    return;
+                gotoimage(n+1);
+                aligncenter()
+                aligntop()
+                menuobj.draw();
             }
             else
             {
