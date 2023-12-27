@@ -42,7 +42,7 @@ const FOOTBTNCOLOR = "rgba(0,0,0,0.75)";
 const OPTIONFILL = "white";
 const THUMBTRANSPARENT = "rgba(0,0,0,0.2)";
 const LIGHTHUMBFILLL = "rgba(255,125,0,0.25)";
-const HEAVYFILL = "rgba(0,0,0,0.65)";
+const HEAVYFILL = "rgba(0,0,0,0.6)";
 const THUMBFILL = "rgba(255,125,0,0.40)";
 const THUMBSTROKE = "rgba(255,255,255,0.4)";
 const SEARCHFRAME = "rgba(255,255,255,0.5)";
@@ -54,11 +54,11 @@ const ARROWFILL = "white";
 const SCROLLEXTENT = 16;
 const SCROLLMARGIN = 6;
 const DISPLAYMARGIN = 12;
-const SMALLFONT = "bold 16px Source Code Pro";//Archivo
-const DEFAULTFONT = "bold 17px Source Code Pro";
-const MEDIUMFONT = "bold 18px Source Code Pro";
-const LARGEFONT = "bold 19px Source Code Pro";
-const HUGEFONT = "bold 21px Source Code Pro";//";
+const SMALLFONT = "bold 16px Archivo";
+const DEFAULTFONT = "bold 17px Archivo";
+const MEDIUMFONT = "bold 18px Archivo";
+const LARGEFONT = "bold 19px Archivo";
+const HUGEFONT = "bold 21px Archivo";
 const SLICEWIDTH = 16;
 const ROTATEANCHORSIAE = 3;
 const BOSS = 0;
@@ -1464,7 +1464,7 @@ var displaylst =
         index *= galleryobj.length();
         var k = Math.floor(index);
         var value = galleryobj.data[k];
-        var space = rect.width < 400 ? " " : rect.widt < 600 ? "  " : "   ";
+        var space = rect.width < 400 ? "  " : rect.widt < 600 ? "   " : "    ";
         var folders = [];
         if (value && value.folder)
             folders = value.folder.split("/");
@@ -4782,7 +4782,7 @@ var buttonlst =
             metrics = context.measureText(name);
             n++;
         }
-        while (n < fstr.length && metrics.width > rect.width-80);
+        while (n < fstr.length && metrics.width > rect.width-160);
         k.push(name);
         
         if (user.id)
