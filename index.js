@@ -7357,6 +7357,8 @@ local.set = function()
     clearTimeout(global.localtimout)
     global.localtimout = setTimeout(function()
     {
+        if (!url.path)
+            return;
 	    var k = {};
         k.button = buttonobj.value();
         k._8 = _8cnv.timeobj.current()
