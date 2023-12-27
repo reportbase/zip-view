@@ -7381,7 +7381,7 @@ local.set = function()
             var e = {};
             e.marked = b.marked;
             e.name = b.name;
-            k.bookmarks.push(e);
+            k.marks.push(e);
         }
         
         setjson(url.path, k);
