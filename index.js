@@ -3471,18 +3471,12 @@ var keylst =
             if (key == "pageup" || key == "backspace" ||
                 (canvas.shiftKey && key == "enter"))
             {
-		        if (dialog && dialog.open)
-			        return;
-                
                 var k = _8cnv.timeobj.length() / galleryobj.length();
                 _8cnv.timeobj.rotate(k);
                 menuobj.draw();
             }
             else if (key == "pagedown" || key == "enter" || key == "home")
             {
-		        if (dialog && dialog.open)
-			        return;
-
 		        if (canvas.ctrlKey)    
         		{
                     aligncenter(0)
@@ -7448,7 +7442,7 @@ function showdialog(str, func)
             if (func())
                 return;
             dialog.close();
-            return false;
+            return true;
          }
     })
 	
