@@ -6475,7 +6475,7 @@ window.addEventListener("keydown", function(evt)
     var key = evt.key.toLowerCase();
     if (key == "escape")
     {
-        closemenu();
+	    closemenu();
 	    headobj.hide();
         if (dialog && dialog.open)
             dialog.close();
@@ -6633,6 +6633,8 @@ async function loadjson(blob)
 
 function closemenu()
 {
+    if (menuobj.value() == _8cnvctx)
+        return;
     menuobj.hide();
     menuobj.setindex(_8cnvctx);
     var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
