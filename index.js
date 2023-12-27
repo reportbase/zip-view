@@ -4127,7 +4127,7 @@ var taplst =
             var k = (x - context.imagerect.x) / context.imagerect.width;
             if (k < 0.30)
             {
-                var index = 1 - timeobj.berp();
+                var index = 1 - canvas.timeobj.berp();
                 index *= galleryobj.length();
                 var n = index;
                 for (; n >= 0; --n)
@@ -4142,7 +4142,7 @@ var taplst =
             }
             else if (k > 0.70)
             {
-                var index = 1 - timeobj.berp();
+                var index = 1 - canvas.timeobj.berp();
                 index *= galleryobj.length();
                 var n = index;
                 for (; n < galleryobj.length(); ++n)
