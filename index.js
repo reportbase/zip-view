@@ -4129,7 +4129,7 @@ var taplst =
             {
                 var index = 1 - canvas.timeobj.berp();
                 index *= galleryobj.length();
-                var n = index;
+                var n = Math.floor(index);
                 for (; n >= 0; --n)
                     if (galleryobj.data[n].bookmarked)
                         break;
@@ -4144,7 +4144,7 @@ var taplst =
             {
                 var index = 1 - canvas.timeobj.berp();
                 index *= galleryobj.length();
-                var n = index;
+                var n = Math.floor(index);
                 for (; n < galleryobj.length(); ++n)
                     if (galleryobj.data[n].bookmarked)
                         break;
