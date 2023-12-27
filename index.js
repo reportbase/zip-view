@@ -3356,6 +3356,7 @@ var presslst =
 	    var k = galleryobj.data[index];    
         k.bookmarked = k.bookmarked ? 0 : timeobj.current();
         menuobj.draw();
+	    local.set();
     },
     press: function(context, rect, x, y) 
     {    
