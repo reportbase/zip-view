@@ -4779,7 +4779,7 @@ var buttonlst =
         do 
         {
             name = fstr.substr(n, fstr.length-n);
-            metrics = context.measureText( =);
+            metrics = context.measureText(name);
             n++;
         }
         while (n < fstr.length && metrics.width > rect.width-80);
