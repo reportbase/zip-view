@@ -4788,7 +4788,7 @@ var buttonlst =
         if (user.id)
         {
             var name = user.id;
-        	var fstr = user.id;
+            var fstr = user.id;
             var n = 0;
             do 
             {
@@ -5092,11 +5092,20 @@ var buttonlst =
             var name = user.name;
             if (name)
                 name = name.replace(/ /g,"_");
+            var fstr = name;
+            var n = 0;
+            do 
+            {
+                name = fstr.substr(n, fstr.length-n);
+                metrics = context.measureText(name);
+                n++;
+            }
+            while (n < fstr.length && metrics.width > 120);
+  
             var lst = [];
             if (url.path)
                 lst.push(url.path)
-            if (name)
-                lst.push(name);
+            lst.push(name);
             lst.push(`${time+1} of ${galleryobj.length()}`)
             
             a.draw(context, rect, lst, 0);
