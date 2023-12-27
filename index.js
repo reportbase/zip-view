@@ -6792,7 +6792,7 @@ function setupmenus()
         }
     },   
     {
-        title: `Images   \u{25B6}\nShow all images`,
+        title: `Images   \u{25B6}\nShow image list`,
         func: function()
         {
 		    leftmenu(_6cnvctx)
