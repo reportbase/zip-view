@@ -4135,7 +4135,7 @@ var taplst =
                         break;
                 if (n == -1)
                     return;
-                gotoimage(n+1);
+                gotoimage(n);
                 aligncenter()
                 aligntop()
                 menuobj.draw();
@@ -4150,7 +4150,7 @@ var taplst =
                         break;
                 if (n >= galleryobj.length())
                     return;
-                gotoimage(n+1);
+                gotoimage(n);
                 aligncenter()
                 aligntop()
                 menuobj.draw();
