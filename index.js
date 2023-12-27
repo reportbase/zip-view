@@ -3349,6 +3349,7 @@ var presslst =
     name: "GALLERY",
     pressup: function(context, rect, x, y)
     {
+        headobj.show();
 	    var timeobj = context.canvas.timeobj;
         var index = 1 - timeobj.berp();
         index *= galleryobj.length();
@@ -5739,8 +5740,7 @@ contextobj.init = function()
         canvas.timeobj.set(Math.PI / 2);
 
         canvas.hollyobj = new circular_array("TEXTSCROLL", 100);
-        if (obj.holly)
-	        canvas.hollyobj.set(local.holly?local.holly:obj.holly);
+        canvas.hollyobj.set(obj.holly);
 	    
         canvas.speed = obj.speed;
         canvas.reduce = obj.reduce;
@@ -6667,6 +6667,17 @@ headobj.hide = function()
     menuobj.draw();
 }
 
+headobj.show = function()
+{
+    headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+    var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
+    headham.panel = headlst[k];
+    var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
+    displayobj.set(k);
+    headobj.draw();  
+    menuobj.draw();
+}
+
 headobj.toggle = function()
 {
     headcnvctx.show(0, 0, window.innerWidth, headcnv.height?0:HEADHEIGHT);
@@ -7346,11 +7357,13 @@ var local = {}
 local.init = function()
 {
     local._8 = 0;
-    local.template = "";
     local.button = "";
     var k = getjson(url.path);
     if (k)
+    {
         local = k;
+        _8cnv.hollyobj.set(local.holly);
+    }
 }
 
 local.init();
