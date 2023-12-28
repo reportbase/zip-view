@@ -1014,7 +1014,7 @@ var headlst =
         var ctx = menuobj.value();
         var g = ctx == _8cnvctx;
         delete context.zoomrect;
-        delete context.fitwidthrect;
+        delete context.homerect;
         delete context.fullscreenrect;
         delete context.homemenurect;
         delete context.gallerymenurect;
@@ -1398,7 +1398,7 @@ var displaylst =
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
         context.bookmarkrect = new rectangle();
-	context.buttonrect = new rectangle();
+	    context.buttonrect = new rectangle();
         context.button2rect = new rectangle();
         canvas.timerect = new rectangle();
         context.pirect = new rectangle();
@@ -1944,10 +1944,10 @@ panel.fitwidth = function()
     this.draw = function(context, rect, user, time)
     {
         context.save();
-        context.fitwidthrect = new rectangle()
+        context.homerect = new rectangle()
         var a = new panel.layers(
             [
-                new panel.rectangle(context.fitwidthrect),
+                new panel.rectangle(context.homerect),
                     (_8cnv.fitflash || buttonobj.current() == 0) ? 
 			    new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle((_8cnv.fitflash || buttonobj.current() == 0) ? 
@@ -4107,9 +4107,6 @@ var taplst =
             context.bookmarkrect.hitest(x, y))
         {
             var k = (x - context.bookmarkrect.x) / context.bookmarkrect.width;
-        	var index = 1 - canvas.timeobj.berp();
-        	index *= galleryobj.length();
-        	var n = Math.floor(index);
             if (k < 0.20 || k > 0.80)
             {
                 if (k < 0.20)
@@ -4146,9 +4143,6 @@ var taplst =
             context.cursorect.hitest(x, y))
         {
             var k = (x - context.cursorect.x) / context.cursorect.width;
-        	var index = 1 - canvas.timeobj.berp();
-        	index *= galleryobj.length();
-        	var n = Math.floor(index);
             if (k < 0.20 || k > 0.80)
             {
                 var k = k < 0.20;
@@ -4165,27 +4159,37 @@ var taplst =
             context.buttonrect &&
             context.buttonrect.hitest(x, y))
         {
-            var k = x < rect.width/2;
-            buttonobj.addperc(k ? -0.05 : 0.05);              
-            menuobj.draw();
+            var k = (x - context.buttonrect.x) / context.buttonrect.width;
+            if (k < 0.20 || k > 0.80)
+            {
+                var k = k < 0.20;
+                buttonobj.addperc(k ? -0.05 : 0.05);              
+                menuobj.draw();
+            }
+            else
+            {
+                var j = buttonobj.current() == 0;
+    		    buttonobj.reset();
+                _8cnv.fitflash = 1;
+                headobj.draw();
+                setTimeout(function()
+                {
+                    _8cnv.fitflash = 0;
+                    buttonobj.set(j ? Math.floor(buttonobj.length()/2) : 0);
+                    headobj.draw();
+                    menuobj.draw();
+                }, 400);
+            
+                menuobj.draw();
+            }            
         }
         else if (
             headcnv.height &&
-            headcnvctx.fitwidthrect &&
-            headcnvctx.fitwidthrect.hitest(x, y))
+            headcnvctx.homerect &&
+            headcnvctx.homerect.hitest(x, y))
         {
-            var j = buttonobj.current() == 0;
-		    buttonobj.reset();
-            _8cnv.fitflash = 1;
-            headobj.draw();
-            setTimeout(function()
-            {
-                _8cnv.fitflash = 0;
-                buttonobj.set(j ? Math.floor(buttonobj.length()/2) : 0);
-                headobj.draw();
-                menuobj.draw();
-            }, 400);
-        
+            aligncenter(0)
+            aligntop();
             menuobj.draw();
         }
         else if (
