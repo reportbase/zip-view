@@ -4103,36 +4103,32 @@ var taplst =
             context.bookmarkrect.hitest(x, y))
         {
             var k = (x - context.bookmarkrect.x) / context.bookmarkrect.width;
+        	var index = 1 - canvas.timeobj.berp();
+        	index *= galleryobj.length();
+        	var n = Math.floor(index);
             if (k < 0.50)
             {
-                var index = 1 - canvas.timeobj.berp();
-                index *= galleryobj.length();
-                var n = Math.floor(index);
+                --n;
                 for (; n >= 0; --n)
                     if (galleryobj.data[n].marked)
                         break;
-                if (n == -1)
-                    return;
-                gotoimage(n);
-                aligncenter()
-                aligntop()
-                menuobj.draw();
             }
             else 
             {
-                var index = 1 - canvas.timeobj.berp();
-                index *= galleryobj.length();
-                var n = Math.floor(index);
+                ++n;
                 for (; n < galleryobj.length(); ++n)
                     if (galleryobj.data[n].marked)
                         break;
-                if (n >= galleryobj.length())
-                    return;
-                gotoimage(n);
-                aligncenter()
-                aligntop()
-                menuobj.draw();
             }
+
+            if (n >= galleryobj.length())
+                return;
+            if (n == -1)
+                return;
+            gotoimage(n);
+            aligncenter()
+            aligntop()
+            menuobj.draw();
         }
         else if (
             context.buttonrect &&
