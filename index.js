@@ -1507,7 +1507,7 @@ var displaylst =
             DISPLAYMARGIN,                 
             WRAPROWHEIGHT,                  
             DISPLAYMARGIN,                 
-            WRAPROWHEIGHT,                  
+            1?-1:WRAPROWHEIGHT,                  
             FOOTSEP, 
             SCROLLEXTENT, 
             SCROLLMARGIN
@@ -4136,7 +4136,7 @@ var taplst =
                 {
                    for (var m = galleryobj.length()*2+n-1; m >= 0; --m)
                     {
-                        var b = _4cnv.rotated[m];
+                        var b = _8cnv.rotated[m];
                         if (!galleryobj.data[b].marked)
                             continue;
                         gotoimage(b);
@@ -4150,7 +4150,7 @@ var taplst =
                 {
                     for (var m = galleryobj.length()+n+1; m < galleryobj.length()*2; ++m)
                     {
-                        var b = _4cnv.rotated[m];
+                        var b = _8cnv.rotated[m];
                         if (!galleryobj.data[b].marked)
                             continue;
                         gotoimage(b);
