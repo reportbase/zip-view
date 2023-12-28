@@ -3553,7 +3553,7 @@ var keylst =
             }
             else if (key == " ")
             {
-                menuobj.updown(context, canvas.shiftKey?-360:360, 30)
+                menuobj.updown(context, canvas.shiftKey?-360:360, 120)
                 if (!context.swipetimeout)
                     context.swipetimeout = 
                         setInterval(function(){menuobj.draw();}, GALLERYMAIN);
