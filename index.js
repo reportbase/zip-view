@@ -3335,6 +3335,19 @@ var mouselst = [
 
 var mouseobj = new circular_array("MOUSE", mouselst);
 
+function bookmark(context)
+{
+    headobj.show();
+    var timeobj = context.canvas.timeobj;
+    var index = 1 - timeobj.berp();
+    index *= galleryobj.length();
+    index = Math.floor(index);
+    var k = galleryobj.data[index];    
+    k.marked = k.marked ? 0 : timeobj.current();
+    menuobj.draw();
+    local.set();
+}
+
 var presslst = 
 [
 {
@@ -3346,15 +3359,7 @@ var presslst =
     name: "GALLERY",
     pressup: function(context, rect, x, y)
     {
-        headobj.show();
-	    var timeobj = context.canvas.timeobj;
-        var index = 1 - timeobj.berp();
-        index *= galleryobj.length();
-        index = Math.floor(index);
-	    var k = galleryobj.data[index];    
-        k.marked = k.marked ? 0 : timeobj.current();
-        menuobj.draw();
-	    local.set();
+        bookmark(context)
     },
     press: function(context, rect, x, y) 
     {    
@@ -4105,29 +4110,37 @@ var taplst =
         	var index = 1 - canvas.timeobj.berp();
         	index *= galleryobj.length();
         	var n = Math.floor(index);
-            if (k < 0.50)
+            if (k < 0.35 || k > 0.35)
             {
-                --n;
-                for (; n >= 0; --n)
-                    if (galleryobj.data[n].marked)
-                        break;
+                if (k < 0.35)
+                {
+                    --n;
+                    for (; n >= 0; --n)
+                        if (galleryobj.data[n].marked)
+                            break;
+                }
+                else 
+                {
+                    ++n;
+                    for (; n < galleryobj.length(); ++n)
+                        if (galleryobj.data[n].marked)
+                            break;
+                }
+    
+                if (n >= galleryobj.length())
+                    return;
+                if (n == -1)
+                    return;
+                gotoimage(n);
+                aligncenter()
+                aligntop()
+                menuobj.draw();
             }
-            else 
+            else
             {
-                ++n;
-                for (; n < galleryobj.length(); ++n)
-                    if (galleryobj.data[n].marked)
-                        break;
+                bookmark(context);
             }
 
-            if (n >= galleryobj.length())
-                return;
-            if (n == -1)
-                return;
-            gotoimage(n);
-            aligncenter()
-            aligntop()
-            menuobj.draw();
         }
         else if (
             context.buttonrect &&
