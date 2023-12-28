@@ -2979,7 +2979,6 @@ async function loadzip(file)
         galleryobj.data.push(k);
     }
 
-    global.gohome = 1;
     local.button = 0;
     galleryobj.init(galleryobj)
 	menuobj.draw();
@@ -3021,7 +3020,6 @@ async function loadimages(blobs)
         }
     }
     
-    global.gohome = 1;
     local.button = 0;
     galleryobj.init(galleryobj)
     menuobj.draw();
@@ -7148,19 +7146,18 @@ galleryobj.reset = function(obj)
         menuobj.set(_8cnvctx);
         menuobj.toggle(_8cnvctx);
         
-        if (global.gohome)
+        if (local.marks)
+        {
+            menuobj.show();
+        }
+        else
         {
             aligncenter(0);
             aligntop();
             menuobj.draw();
-            globalobj.gohome = 0;
         }
-        else
-        {
-            menuobj.show();
-        }
-
-        if (Array.isArray(local.marks))
+ 
+        if (local.marks && Array.isArray(local.marks))
         for (var n = 0; n < local.marks.length; ++n)
         {
             var e = local.marks[n];
@@ -7325,7 +7322,6 @@ local.init = function()
 {
     local._8 = 0;
     local.button = "";
-    local.marks = []
     var k = getjson(url.path);
     if (k)
     {
