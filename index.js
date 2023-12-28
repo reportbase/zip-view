@@ -3095,14 +3095,23 @@ var panlst =
         
         if (type == "panleft" || type == "panright")
         {
-            var obj = context.canvas.hollyobj;
-            var e = canvas.startx - x;
-            var k = panhorz(obj, e);
-            if (k == -1)
-                return;
-            if (k == obj.anchor())
-                return;
-            obj.set(k);
+	        if (canvas.ishollyrect)
+	        {
+	            var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
+	            context.canvas.hollyobj.setperc(k);
+	        }
+            else
+            {
+                var obj = context.canvas.hollyobj;
+                var e = canvas.startx - x;
+                var k = panhorz(obj, e);
+                if (k == -1)
+                    return;
+                if (k == obj.anchor())
+                    return;
+                obj.set(k);
+            }
+            
             menuobj.draw();
         }
         else if (type == "panup" || type == "pandown")
@@ -3127,6 +3136,7 @@ var panlst =
         canvas.startx = x;
         canvas.starty = y;
         canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
+        canvas.ishollyrect = canvas.hollyrect && canvas.hollyrect.hitest(x, y);
     },
     panend: function(context, rect, x, y)
     {
