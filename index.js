@@ -4058,7 +4058,8 @@ var taplst =
         else if (context.pirect &&
             context.pirect.hitest(x, y))
         {
-            menuobj.updown(context, canvas.shiftKey?-180:180, 240)
+			var k = x < rect.width/2;
+            menuobj.updown(context, k?-120:120, 240)
             if (!context.swipetimeout)
                 context.swipetimeout = 
                     setInterval(function(){menuobj.draw();}, GALLERYMAIN);
@@ -4132,19 +4133,35 @@ var taplst =
                     for (; n >= 0; --n)
                         if (galleryobj.data[n].marked)
                             break;
-                }
+					if (n == -1)
+					{
+						n = galleryobj.length()-1;
+						for (; n >= 0; --n)
+                        	if (galleryobj.data[n].marked)
+                            	break;						
+					}
+	                
+					if (n == -1)
+	                    return;
+	            }
                 else 
                 {
                     ++n;
                     for (; n < galleryobj.length(); ++n)
                         if (galleryobj.data[n].marked)
                             break;
+					if (n == galleryobj.length())
+					{
+						n = 0;
+	                    for (; n < galleryobj.length(); ++n)
+	                        if (galleryobj.data[n].marked)
+	                            break;
+					}
+
+					if (n == galleryobj.length())
+						return;
                 }
     
-                if (n >= galleryobj.length())
-                    return;
-                if (n == -1)
-                    return;
                 gotoimage(n);
                 aligncenter()
                 aligntop()
