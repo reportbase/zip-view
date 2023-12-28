@@ -4110,9 +4110,9 @@ var taplst =
         	var index = 1 - canvas.timeobj.berp();
         	index *= galleryobj.length();
         	var n = Math.floor(index);
-            if (k < 0.35 || k > 0.65)
+            if (k < 0.20 || k > 0.80)
             {
-                if (k < 0.35)
+                if (k < 0.20)
                 {
                     --n;
                     for (; n >= 0; --n)
@@ -4140,7 +4140,26 @@ var taplst =
             {
                 bookmark(context);
             }
-
+        }
+        else if (
+            context.cursorect &&
+            context.cursorect.hitest(x, y))
+        {
+            var k = (x - context.cursorect.x) / context.cursorect.width;
+        	var index = 1 - canvas.timeobj.berp();
+        	index *= galleryobj.length();
+        	var n = Math.floor(index);
+            if (k < 0.20 || k > 0.80)
+            {
+                var k = k < 0.20;
+                var j = canvas.timeobj.length() / galleryobj.length();
+                canvas.timeobj.rotate(k ? j :-j);  
+                menuobj.draw();
+            }
+            else
+            {
+                rightmenu(_6cnvctx);
+            }
         }
         else if (
             context.buttonrect &&
@@ -4148,15 +4167,6 @@ var taplst =
         {
             var k = x < rect.width/2;
             buttonobj.addperc(k ? -0.05 : 0.05);              
-            menuobj.draw();
-        }
-        else if (
-            context.cursorect &&
-            context.cursorect.hitest(x, y))
-        {
-            var k = x < rect.width/2;
-            var j = canvas.timeobj.length() / galleryobj.length();
-            canvas.timeobj.rotate(k ? j :-j);  
             menuobj.draw();
         }
         else if (
