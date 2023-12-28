@@ -4135,6 +4135,7 @@ var taplst =
             {
                 if (k < 0.20)
                 {
+                    //todo
                    for (var m = galleryobj.length()*2+n-1; m >= 0; --m)
                     {
                         var b = _8cnv.rotated[m];
@@ -4149,6 +4150,7 @@ var taplst =
                 }
                 else 
                 {
+                    //todo
                     for (var m = galleryobj.length()+n+1; m < galleryobj.length()*2; ++m)
                     {
                         var b = _8cnv.rotated[m];
@@ -7031,13 +7033,13 @@ function setupmenus()
             j.name = j.url.split("/").slice(-1)[0];
         j.func = function()
         {
-            headobj.toggle();
-	        galleryobj.set(this.index);
+            galleryobj.set(this.index);
             aligncenter(this.index)
 			menuobj.draw();
 		    buttonobj.reset();
 	        aligntop();
 			menuobj.draw();
+            headobj.show();
             return true;
         };   
     };
