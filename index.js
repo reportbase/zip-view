@@ -1956,9 +1956,10 @@ panel.home = function()
         context.homerect = new rectangle()
         var a = new panel.layers(
             [
+                //todo
                 new panel.rectangle(context.homerect),
-                new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN),
-                new panel.shrink(new panel.rounded(TRANSPARENT, 3, "white", 4, 4), 16, 30),
+                new panel.shrink(new panel.circle(
+                    SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
             ]);
 
         a.draw(context, rect, user, time);
