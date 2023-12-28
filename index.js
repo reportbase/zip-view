@@ -3553,7 +3553,7 @@ var keylst =
             }
             else if (key == " ")
             {
-                menuobj.updown(context, canvas.shiftKey?-240:240, 180)
+                menuobj.updown(context, canvas.shiftKey?-180:180, 240)
                 if (!context.swipetimeout)
                     context.swipetimeout = 
                         setInterval(function(){menuobj.draw();}, GALLERYMAIN);
@@ -4058,10 +4058,10 @@ var taplst =
         else if (context.pirect &&
             context.pirect.hitest(x, y))
         {
-            menuobj.updown(context, x<rect.width/2?-120:120, 60)
+            menuobj.updown(context, canvas.shiftKey?-180:180, 240)
             if (!context.swipetimeout)
                 context.swipetimeout = 
-                    setInterval(function(){menuobj.draw()}, GALLERYMAIN);
+                    setInterval(function(){menuobj.draw();}, GALLERYMAIN);
             return true;
         }            
         else if (
