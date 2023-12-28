@@ -1489,7 +1489,7 @@ var displaylst =
         if (!w)
             w = buttonobj.value();
 	    var bt = `${w.toFixed(0)} x ${buttonobj.value()}`;
-        var name = cliptext(context, value.blob?value.blob.name:value.name,90);
+        var name = cliptext(context, (value.blob&&value.blob.name)?value.blob.name:value.name,90);
         var a = new panel.rowsA(
         [
             HEADTOP, 
