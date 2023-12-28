@@ -7160,6 +7160,7 @@ galleryobj.reset = function(obj)
             menuobj.show();
         }
 
+        if (Array.isArray(local.marks))
         for (var n = 0; n < local.marks.length; ++n)
         {
             var e = local.marks[n];
@@ -7192,37 +7193,12 @@ galleryobj.reset = function(obj)
         image.src = imagepath(j,"5760x5760");
 }
 
-function addpadding()
-{
-    var b = galleryobj.data.length%24;
-	galleryobj.padsize = 0;
-    if (Array.isArray(galleryobj.data) && 
-        galleryobj.data.length > 24 && 
-        b >= 1 && b <= 8)
-    {
-	    var b = galleryobj.data.length;
-	    var m = Math.floor(galleryobj.data.length/24);
-	    var a = m*24+9;
-	    galleryobj.padsize = a - b;
-        for (var n = 0; n < galleryobj.padsize; ++n)
-        {
-            continue;//todo
-            var k = galleryobj.data[n]
-            var j = {};
-            Object.assign(j, k);
-            j.pad = 1;
-	        galleryobj.data.push(j);
-        }
-    }
-}
-
 //galleryobj init
 galleryobj.init = function(obj)
 {
     if (obj)
         Object.assign(galleryobj, obj);
-    addpadding();
-
+  
     if (Array.isArray(obj.data))
     {
 	    galleryobj.reset(obj);
@@ -7341,7 +7317,6 @@ function loadtext(str, origin)
         galleryobj.data.push(json);
     }
 
-    addpadding();
     galleryobj.reset();
 }
 
@@ -7350,6 +7325,7 @@ local.init = function()
 {
     local._8 = 0;
     local.button = "";
+    local.marks = []
     var k = getjson(url.path);
     if (k)
     {
