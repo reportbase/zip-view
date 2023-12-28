@@ -3434,7 +3434,8 @@ var swipelst = [
             context.swipetimeout = setInterval(
                 function(){menuobj.draw();}, MENUMAIN);
     },
-}, ];
+}, 
+];
 
 var swipeobj = new circular_array("SWIPE", swipelst);
 swipeobj.set(3);
@@ -6439,6 +6440,7 @@ window.addEventListener("keyup", function(evt)
 
 window.addEventListener("keydown", function(evt)
 {
+    local.set();
     var key = evt.key.toLowerCase();
     if (key == "escape")
     {
