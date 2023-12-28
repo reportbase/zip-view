@@ -1483,15 +1483,13 @@ var displaylst =
         if (value && value.folder)
             folders = value.folder.split("/");
         
-        var data = `\u{25C0}${space}${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}${space}\u{25B6}`;
-        var time = `\u{25C0}${space}${canvas.timeobj.current().toFixed(8)}${space}\u{25B6}`;
+        var data = `${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}`;
+        var time = canvas.timeobj.current().toFixed(8);
         var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
         if (!w)
             w = buttonobj.value();
-	    var bt = `\u{25C0}${space}${w.toFixed(0)} x ${buttonobj.value()}${space}\u{25B6}`;
-        var str = cliptext(context, value.blob?value.blob.name:value.name,90);
-        var name = `\u{25C0}${space}${str}${space}\u{25B6}`;
-        var text = new panel.text("white", "center", "middle", 0, 1);
+	    var bt = `${w.toFixed(0)} x ${buttonobj.value()}`;
+        var name = cliptext(context, value.blob?value.blob.name:value.name,90);
         var a = new panel.rowsA(
         [
             HEADTOP, 
@@ -1517,7 +1515,7 @@ var displaylst =
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.buttonrect), 10, 10),
-		            new panel.shrink(text, 20, 0),
+                    new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
                 0,
             ]),
@@ -1529,7 +1527,7 @@ var displaylst =
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.folderect), 10, 10),
-		            new panel.shrink(new panel.multitext(0, new panel.text()), 20, 0),
+                    new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
                 0,
             ]),
@@ -1542,7 +1540,7 @@ var displaylst =
                     new panel.rounded(value.marked?BOOKMARKED:HEAVYFILL, 
                                       ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.bookmarkrect), 10, 10),
-                    new panel.shrink(new panel.text(), 20, 20),
+                    new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
                 0,
             ]),
@@ -1554,7 +1552,7 @@ var displaylst =
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
-                    new panel.shrink(text, 10, 10),
+                    new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
                 0,
             ]),
@@ -1566,7 +1564,7 @@ var displaylst =
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.pirect), 10, 10),
-                    new panel.shrink(text, 10, 10),
+                    new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
                 0,
             ]),
@@ -1574,19 +1572,19 @@ var displaylst =
             0,
             0
         ]);
-            
+     
         a.draw(context, rect, 
         [
             0,
-    		bt,
+    		[`\u{25C0}`,bt,`\u{25B6}`],
             0,
-            folders,
+            [`\u{25C0}`,folders,`\u{25B6}`],
             0,
-            name,
+            [`\u{25C0}`,name,`\u{25B6}`],
             0,
-            data,
+            [`\u{25C0}`,data,`\u{25B6}`],
             0,
-            time,
+            [`\u{25C0}`,time,`\u{25B6}`],
             0,
             0,
             0,
