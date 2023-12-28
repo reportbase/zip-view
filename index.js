@@ -1527,7 +1527,7 @@ var displaylst =
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.folderect), 10, 10),
-                    new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
+  			        new panel.shrink(new panel.multitext(0, new panel.text()), 20, 0),
                 ]),
                 0,
             ]),
