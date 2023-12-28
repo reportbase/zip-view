@@ -4110,7 +4110,7 @@ var taplst =
         	var index = 1 - canvas.timeobj.berp();
         	index *= galleryobj.length();
         	var n = Math.floor(index);
-            if (k < 0.35 || k > 0.35)
+            if (k < 0.35 || k > 0.65)
             {
                 if (k < 0.35)
                 {
