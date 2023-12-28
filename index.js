@@ -1029,7 +1029,7 @@ var headlst =
                 0,
                 g ? new panel.fullscreen() : 0,
                 g ? new panel.zoom() : 0,
-                g ? new panel.fitwidth() : 0,
+                g ? new panel.home() : 0,
                 0,
                 new panel.gallerymenu(),
                 0,
@@ -1948,7 +1948,7 @@ panel.fullscreen = function()
     }
 };
 
-panel.fitwidth = function()
+panel.home = function()
 {
     this.draw = function(context, rect, user, time)
     {
@@ -1957,10 +1957,7 @@ panel.fitwidth = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.homerect),
-                    (_8cnv.fitflash || buttonobj.current() == 0) ? 
-			    new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle((_8cnv.fitflash || buttonobj.current() == 0) ? 
-			        TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.rounded(TRANSPARENT, 3, "white", 4, 4), 16, 30),
             ]);
 
