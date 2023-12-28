@@ -1957,7 +1957,7 @@ panel.home = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.homerect),
-                new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+                new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN),
                 new panel.shrink(new panel.rounded(TRANSPARENT, 3, "white", 4, 4), 16, 30),
             ]);
 
