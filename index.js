@@ -4128,6 +4128,7 @@ var taplst =
         {
             var n = 1 - canvas.timeobj.berp();
             n *= galleryobj.length(); 
+	        n = Math.floor(n);
             var b = -1;
             var k = (x - context.bookmarkrect.x) / context.bookmarkrect.width;
             if (k < 0.20 || k > 0.80)
