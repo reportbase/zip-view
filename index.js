@@ -7162,9 +7162,9 @@ galleryobj.reset = function(obj)
             menuobj.show();
         }
 
-        for (var n = 0; n < local.marked.length; ++n)
+        for (var n = 0; n < local.marks.length; ++n)
         {
-            var e = local.marked[n];
+            var e = local.marks[n];
             var j = galleryobj.data.findIndex(function(a){return a.name == e.name;})
             if (j == -1)
                 continue;
