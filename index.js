@@ -1478,6 +1478,8 @@ var displaylst =
         index *= galleryobj.length();
         var k = Math.floor(index);
         var value = galleryobj.data[k];
+	    if (!value)
+            return;
         var space = rect.width < 400 ? "  " : rect.widt < 600 ? "   " : "    ";
         var folders = [];
         if (value && value.folder)
@@ -4124,6 +4126,9 @@ var taplst =
             context.bookmarkrect &&
             context.bookmarkrect.hitest(x, y))
         {
+            var n = 1 - canvas.timeobj.berp();
+            n *= galleryobj.length();
+   
             var k = (x - context.bookmarkrect.x) / context.bookmarkrect.width;
             if (k < 0.20 || k > 0.80)
             {
