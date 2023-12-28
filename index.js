@@ -4127,50 +4127,39 @@ var taplst =
             context.bookmarkrect.hitest(x, y))
         {
             var n = 1 - canvas.timeobj.berp();
-            n *= galleryobj.length();
-   
+            n *= galleryobj.length(); 
+            var b = -1;
             var k = (x - context.bookmarkrect.x) / context.bookmarkrect.width;
             if (k < 0.20 || k > 0.80)
             {
                 if (k < 0.20)
                 {
-                    --n;
-                    for (; n >= 0; --n)
-                        if (galleryobj.data[n].marked)
-                            break;
-					if (n == -1)
-					{
-						n = galleryobj.length()-1;
-						for (; n >= 0; --n)
-                        	if (galleryobj.data[n].marked)
-                            	break;						
-					}
-	                
-					if (n == -1)
-	                    return;
-	            }
+                   for (var m = galleryobj.length()*2+n-1; m >= 0; --m)
+                    {
+                        var b = _4cnv.rotated[m];
+                        if (!galleryobj.data[b].marked)
+                            continue;
+                        gotoimage(b);
+                        aligncenter()
+                        aligntop()
+                        menuobj.draw();
+                        break;
+                    }
+                }
                 else 
                 {
-                    ++n;
-                    for (; n < galleryobj.length(); ++n)
-                        if (galleryobj.data[n].marked)
-                            break;
-					if (n == galleryobj.length())
-					{
-						n = 0;
-	                    for (; n < galleryobj.length(); ++n)
-	                        if (galleryobj.data[n].marked)
-	                            break;
-					}
-
-					if (n == galleryobj.length())
-						return;
+                    for (var m = galleryobj.length()+n+1; m < galleryobj.length()*2; ++m)
+                    {
+                        var b = _4cnv.rotated[m];
+                        if (!galleryobj.data[b].marked)
+                            continue;
+                        gotoimage(b);
+                        aligncenter()
+                        aligntop()
+                        menuobj.draw();
+                        break;
+                    }
                 }
-    
-                gotoimage(n);
-                aligncenter()
-                aligntop()
-                menuobj.draw();
             }
             else
             {
@@ -7087,8 +7076,7 @@ function setupmenus()
 	    lst[n] = j;
     }
     
-	_9cnv.sliceobj.data = lst
-	
+	_9cnv.sliceobj.data = lst	
     _11cnv.sliceobj.data = [];
     _2cnv.sliceobj.data = [];
     var lst = [_2cnv, _3cnv, _5cnv, _6cnv, _7cnv, _8cnv, _9cnv, _10cnv, _11cnv];
