@@ -3042,10 +3042,8 @@ async function loadimages(blobs)
     
     local.button = 0;
     galleryobj.init(galleryobj)
-    setTimeout(function()
-    {
-        menuobj.draw();
-    }, 200);
+    context.swipetimeout = setInterval(
+           function(){menuobj.draw();}, GALLERYMAIN);
 }
 
 function loadfiles(files)
