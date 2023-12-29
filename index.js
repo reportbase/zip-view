@@ -7047,12 +7047,12 @@ function setupmenus()
             j.name = j.url.split("/").slice(-1)[0];
         j.func = function()
         {
-            buttonobj.reset();
+            headobj.hide();
 	        galleryobj.set(this.index);
+            buttonobj.reset();
             aligncenter(this.index)
 			aligntop();
 			menuobj.draw();
-            headobj.hide();
             return true;
         };   
     };
