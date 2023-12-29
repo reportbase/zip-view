@@ -1965,7 +1965,7 @@ panel.home = function()
 
 	    var a = new panel.layer(
         [
-            new panel.shrink(new panel.fill(ARROWFILL), 5, 5);
+            new panel.shrink(new panel.fill(ARROWFILL), 5, 5)
         ]);
         
         a.draw(context, rect, user, time);
