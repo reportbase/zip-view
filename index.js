@@ -7233,7 +7233,7 @@ galleryobj.reset = function(obj)
     if (j.entry)
         getblobpath(image, j)
     else
-        image.src = s(j,"5760x5760");
+        image.src = imagepath(j,"5760x5760");
 }
 
 //galleryobj init
