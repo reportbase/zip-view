@@ -2999,9 +2999,9 @@ async function loadzip(file)
         galleryobj.data.push(k);
     }
 
-        local.button = 0;
-        galleryobj.init(galleryobj)
-    	menuobj.draw();
+    local.button = 0;
+    galleryobj.init(galleryobj)
+    menuobj.draw();
 }
 
 async function loadimages(blobs)
@@ -4527,6 +4527,7 @@ bossobj.leftright = function(e)
 //bossobj draw
 bossobj.draw = function()
 {
+    return;
     if (!photo.image)
         return;
     if (!photo.image.complete)
@@ -5375,18 +5376,13 @@ menuobj.draw = function()
         }
         else if (slice.isvisible)
         {
+            context.translate(0, j.y);
+            context.canvas.draw(context, r, j.slice, j.n);
+            context.translate(0, -j.y);
             context.canvas.visibles.push(j);  
 	    }
     }
 
-    for (var m = 0; m < context.canvas.visibles.length; ++m)
-    {
-        var j = context.canvas.visibles[m];
-        context.translate(0, j.y);
-        context.canvas.draw(context, r, j.slice, j.n);
-        context.translate(0, -j.y);
-    }
-    
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
 }
@@ -5847,6 +5843,7 @@ contextobj.init();
 //contextobj reset
 contextobj.reset = function()
 {
+    return;
    var context = _4cnvctx;
     if (photo.image &&
         photo.image.complete &&
@@ -7236,7 +7233,7 @@ galleryobj.reset = function(obj)
     if (j.entry)
         getblobpath(image, j)
     else
-        image.src = imagepath(j,"5760x5760");
+        image.src = s(j,"5760x5760");
 }
 
 //galleryobj init
