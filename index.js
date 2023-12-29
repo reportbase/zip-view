@@ -1870,10 +1870,7 @@ panel.fullscreen = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.fullscreenrect),
-                //document.fullscreenEnabled ?
-                new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN),//: 0,
-                new panel.shrink(new panel.circle(document.fullscreenEnabled ?
-                    TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.circle(SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
             ]);
 
         a.draw(context, rect, user, time);
@@ -4253,6 +4250,7 @@ var taplst =
                 var e = Math.berp(0, galleryobj.length(), image);
                 var j = (1-e)*Math.PI
                 _8cnv.timeobj.set(j);
+                headobj.show();
                 menuobj.draw();
             })
         }
