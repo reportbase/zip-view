@@ -4254,6 +4254,7 @@ var taplst =
             aligncenter(0)
             aligntop();
             menuobj.draw();
+            headobj.draw();
         }
         else if (
             headcnv.height &&
