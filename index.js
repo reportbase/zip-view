@@ -623,31 +623,14 @@ var footlst =
 				new panel.text(),
 			]),
             0,
-			new panel.layers(
-			[
-				new panel.fill(FOOTBTNCOLOR),
-				new panel.colsA([0,0,0],
-				[
-					0,
-					new panel.layers(
-					[
-						new panel.rectangle(canvas.homeresetrect),
-						new panel.text(),
-					]),
-					0
-				])                            
-			])
+			0
 		]);
         
         a.draw(context, rect, 
 	   	[
 		    `\u{25C0}   Images`,
             0,
-		    [
-			    0,
-			   `Home`,
-			   0,
-		    ], 
+		    0, 
 		]);
         
         context.restore();    
@@ -7047,10 +7030,9 @@ function setupmenus()
             var folder = this.folder;
             var n = galleryobj.data.findIndex(function(a){return a.folder == folder;}); 
             gotoimage(n+1);
-		    aligncenter(n+1);
-            headobj.toggle();
-			menuobj.draw();
+            headobj.hide();
 		    buttonobj.reset();
+		    aligncenter(n+1);
             aligntop();
 			menuobj.draw();
             return true;
@@ -7065,11 +7047,10 @@ function setupmenus()
             j.name = j.url.split("/").slice(-1)[0];
         j.func = function()
         {
-            galleryobj.set(this.index);
+            buttonobj.reset();
+	        galleryobj.set(this.index);
             aligncenter(this.index)
-			menuobj.draw();
-		    buttonobj.reset();
-	        aligntop();
+			aligntop();
 			menuobj.draw();
             headobj.show();
             return true;
