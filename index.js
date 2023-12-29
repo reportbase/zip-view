@@ -3936,6 +3936,8 @@ var taplst =
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
+		    headobj.hide();
+            menuobj.draw();
             var input = document.getElementById("goto-input");
             input.value = galleryobj.current()+1;
             showdialog("goto", function(image)
