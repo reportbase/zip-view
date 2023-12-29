@@ -5325,6 +5325,12 @@ menuobj.draw = function()
     
     for (var m = 0; m < canvas.normal.length; ++m)
     {
+        var n = canvas.normal[m];
+        var slice = slices[n];
+        var index = n % IMAGELSTSIZE;
+        var view = Math.floor(n / IMAGELSTSIZE);
+        var thumbimg = thumbimglst[index];
+        var thumbfitted = thumbfittedlst[index];	    
         if (context == _8cnvctx && 
             thumbimg.view != view &&
             !slice.failed) 
@@ -5354,12 +5360,6 @@ menuobj.draw = function()
         }
         else
         {
-            var n = canvas.normal[m];
-            var slice = slices[n];
-            var index = n % IMAGELSTSIZE;
-            var view = Math.floor(n / IMAGELSTSIZE);
-            var thumbimg = thumbimglst[index];
-            var thumbfitted = thumbfittedlst[index];
             var t = time + (n * delayinterval);
             var b = Math.tan(t);
             var j = Math.berp(-1, 1, b);
