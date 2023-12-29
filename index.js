@@ -5341,8 +5341,7 @@ menuobj.draw = function()
             
             if (slice.entry)
             {
-                var blob = await slice.entry.blob(`image/${slice.ext}`);
-                thumbimg.src = URL.createObjectURL(blob);
+                getblobpath(thumbimg, slice);
             }
             else if (slice.blob)
             {
