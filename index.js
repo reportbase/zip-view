@@ -175,8 +175,9 @@ util.istouch = function()
         (navigator.msMaxTouchPoints > 0);
 }
 
-util.rotated_list = function(lst, size, start, width)
+util.rotated_list = function(lst, start, width)
 {
+	var size = lst.length/3;
     var v = lst[start]
     width = Math.min(size, width);
     start += size - width;
@@ -3593,7 +3594,6 @@ var keylst =
             }                
             else if (key == "tab")
             {
-                //todo
             }
             else if (key == "\\" || key == "/")
             {
@@ -4165,8 +4165,7 @@ var taplst =
             {
                 if (k < 0.20)
                 {
-                    //todo
-                   for (var m = galleryobj.length()*2+n-1; m >= 0; --m)
+                    for (var m = galleryobj.length()+n-1; m >= 0; --m)
                     {
                         var b = _8cnv.rotated[m];
                         if (!galleryobj.data[b].marked)
@@ -4180,8 +4179,8 @@ var taplst =
                 }
                 else 
                 {
-                    //todo
-                    for (var m = galleryobj.length()+n+1; m < galleryobj.length()*2; ++m)
+                    for (var m = galleryobj.length()+n+1; 
+			 m < galleryobj.length()*2; ++m)
                     {
                         var b = _8cnv.rotated[m];
                         if (!galleryobj.data[b].marked)
@@ -5350,7 +5349,7 @@ menuobj.draw = function()
     {
         canvas.lastcurrent = current;
         var size = Math.ceil(rect.height / buttonheight) + ROTATEANCHORSIAE;
-        canvas.normal = util.rotated_list(canvas.rotated, len, current, size);
+        canvas.normal = util.rotated_list(canvas.rotated, current, size);
     }
 
     context.canvas.visibles = [];
@@ -5916,7 +5915,7 @@ contextobj.reset = function()
             bossobj.draw();
 
             var rotated = util.rotated_list(
-                _8cnv.rotated, galleryobj.length(),
+                _8cnv.rotated, 
                 galleryobj.current() + 1, 9);
 
             for (var m = 0; m < rotated.length; ++m)
