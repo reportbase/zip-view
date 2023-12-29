@@ -1959,10 +1959,10 @@ panel.home = function()
                 new panel.rectangle(context.homerect),
                 new panel.shrink(new panel.circle(
                     SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                new panel.cols([10,0,10],
+                new panel.cols([13,0,13],
                 [
                     0,
-                    new panel.rows([10,30,0],
+                    new panel.rows([20,30,0],
                     [
                         0,
                         new panel.arrow( ARROWFILL, 0),
