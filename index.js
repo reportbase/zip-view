@@ -4168,7 +4168,7 @@ var taplst =
                     var lst = _8cnv.rotated.slice(index,galleryobj.length());
                     for (var m = lst.length-2; m >= 0; --m)
                     {
-                        var b = _8cnv.rotated[m];
+                        var b = lst[m];
                         if (!galleryobj.data[b].marked)
                             continue;
                         gotoimage(b);
@@ -4183,7 +4183,7 @@ var taplst =
                     var lst = _8cnv.rotated.slice(galleryobj.length()+index,galleryobj.length());
                     for (var m = 1; m < lst.length; ++m)
                     {
-                        var b = _8cnv.rotated[m];
+                        var b = lst[m];
                         if (!galleryobj.data[b].marked)
                             continue;
                         gotoimage(b);
