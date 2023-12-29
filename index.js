@@ -4234,10 +4234,10 @@ var taplst =
             headcnvctx.homerect &&
             headcnvctx.homerect.hitest(x, y))
         {
+            headobj.hide();
 		    buttonobj.reset();	
             aligncenter(0)
             aligntop();
-            headobj.hide();
             menuobj.draw();
         }
         else if (
