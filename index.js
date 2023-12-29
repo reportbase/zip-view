@@ -1870,8 +1870,8 @@ panel.fullscreen = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.fullscreenrect),
-                document.fullscreenEnabled ?
-                new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+                //document.fullscreenEnabled ?
+                //new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(document.fullscreenEnabled ?
                     TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
             ]);
