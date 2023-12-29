@@ -4165,7 +4165,7 @@ var taplst =
             {
                 if (k < 0.25)
                 {
-                    var lst = _8cnv.rotated.slice(index,galleryobj.length());
+                    var lst = _8cnv.rotated.slice(index,index+galleryobj.length());
                     for (var m = lst.length-2; m >= 0; --m)
                     {
                         var b = lst[m];
@@ -4180,7 +4180,7 @@ var taplst =
                 }
                 else 
                 {
-                    var lst = _8cnv.rotated.slice(galleryobj.length()+index,galleryobj.length());
+                    var lst = _8cnv.rotated.slice(galleryobj.length()+index,galleryobj.length()*2+index);
                     for (var m = 1; m < lst.length; ++m)
                     {
                         var b = lst[m];
