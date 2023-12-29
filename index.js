@@ -3042,6 +3042,10 @@ async function loadimages(blobs)
     
     local.button = 0;
     galleryobj.init(galleryobj)
+    menuobj.draw();    
+    menuobj.updown(_8cnvctx, -120, 60)
+    _8cnvctx.swipetimeout = 
+        setInterval(function(){menuobj.draw()}, GALLERYMAIN);
 }
 
 function loadfiles(files)
@@ -3065,11 +3069,6 @@ function loadfiles(files)
     {
         loadimages(files);
     }
-
-    menuobj.draw();    
-    menuobj.updown(_8cnvctx, -120, 60)
-    _8cnvctx.swipetimeout = 
-        setInterval(function(){menuobj.draw()}, GALLERYMAIN);
 }
 
 var droplst = 
