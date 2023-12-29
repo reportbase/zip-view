@@ -1962,7 +1962,7 @@ panel.home = function()
                 new panel.cols([13,0,13],
                 [
                     0,
-                    new panel.rows([20,20,0],
+                    new panel.rows([23,20,0],
                     [
                         0,
                         new panel.arrow( ARROWFILL, 0),
@@ -1972,7 +1972,7 @@ panel.home = function()
                 new panel.cols([20,0,20],
                 [
                     0,
-                    new panel.rows([0,20,25],
+                    new panel.rows([0,22,27],
                     [
                         0,
                         new panel.fill(ARROWFILL),
