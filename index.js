@@ -1959,8 +1959,24 @@ panel.home = function()
                 new panel.rectangle(context.homerect),
                 new panel.shrink(new panel.circle(
                     SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-		new panel.shrink(new panel.fill(ARROWFILL), 25, 25),
-		new panel.shrink(new panel.arrow( ARROWFILL, 0), 20, 30),
+                new panel.cols([0,30,0],
+                [
+                    0,
+                    new panel.rows([0,30],
+                    [
+                        0,
+                        new panel.fill(ARROWFILL)
+                    ])
+                ]),
+                new panel.cols([0,40,0],
+                [
+                    0,
+                    new panel.rows([30,0],
+                    [
+                        new panel.arrow( ARROWFILL, 0),
+                        0
+                    ])
+                ])
             ]);
 	    
         a.draw(context, rect, user, time);
