@@ -2671,6 +2671,14 @@ var makehammer = function(context, v, t)
     return ham;
 };
 
+function toggleFullScreen() 
+{
+  if (!document.fullscreenElement)
+    document.documentElement.requestFullscreen();
+  else if (document.exitFullscreen)
+    document.exitFullscreen();
+}
+
 var _1ham = makehammer(_1cnvctx, 0.5, 15);
 var _2ham = makehammer(_2cnvctx, 0.5, 15);
 var _3ham = makehammer(_3cnvctx, 0.5, 15);
@@ -3978,7 +3986,7 @@ var taplst =
             headcnvctx.fullscreenrect &&
             headcnvctx.fullscreenrect.hitest(x, y))
         {
-            screenfull.toggle()
+			toggleFullScreen()
         }
          else if (
             headcnv.height &&
@@ -4244,7 +4252,7 @@ var taplst =
             headcnvctx.fullscreenrect &&
             headcnvctx.fullscreenrect.hitest(x, y))
         {
-            screenfull.toggle()
+            toggleFullScreen()
         }
         else if (canvas.hollyrect && canvas.hollyrect.hitest(x, y))
         {
