@@ -3067,6 +3067,9 @@ function loadfiles(files)
     }
 
     menuobj.draw();    
+    menuobj.updown(_8cnvctx, -120, 60)
+    _8cnvctx.swipetimeout = 
+        setInterval(function(){menuobj.draw()}, GALLERYMAIN);
 }
 
 var droplst = 
