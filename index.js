@@ -3043,7 +3043,7 @@ async function loadimages(blobs)
     local.button = 0;
     galleryobj.init(galleryobj)
     menuobj.draw();    
-    menuobj.updown(_8cnvctx, -1, 1)
+    menuobj.updown(_8cnvctx, 1, 100)
     _8cnvctx.swipetimeout = 
         setInterval(function(){menuobj.draw()}, GALLERYMAIN);
 }
