@@ -7052,7 +7052,7 @@ function setupmenus()
             aligncenter(this.index)
 			aligntop();
 			menuobj.draw();
-            headobj.show();
+            headobj.hide();
             return true;
         };   
     };
