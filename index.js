@@ -4156,9 +4156,9 @@ var taplst =
             context.bookmarkrect &&
             context.bookmarkrect.hitest(x, y))
         {
-            var n = 1 - canvas.timeobj.berp();
-            n *= galleryobj.length(); 
-	        n = Math.floor(n);
+            var index = 1 - canvas.timeobj.berp();
+            index *= galleryobj.length(); 
+	        index = Math.floor(index);
             var b = -1;
             var k = (x - context.bookmarkrect.x) / context.bookmarkrect.width;
             if (k < 0.25 || k > 0.75)
