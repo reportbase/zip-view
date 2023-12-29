@@ -1019,7 +1019,7 @@ var headlst =
         delete context.homemenurect;
         delete context.gallerymenurect;
         var s = SAFARI ? -1: ALIEXTENT;
-        var e = rect.width>=360?ALIEXTENT+10:-1;
+        var e = (rect.width>=360 || SAFARI) ?ALIEXTENT+10:-1;
         var a = new panel.rows([BEXTENT, 0],
         [
             new panel.cols([5, ALIEXTENT, 0, s, e, ALIEXTENT, 0, ALIEXTENT, 5],
