@@ -4237,8 +4237,8 @@ var taplst =
 		    buttonobj.reset();	
             aligncenter(0)
             aligntop();
+            headobj.hide();
             menuobj.draw();
-            headobj.draw();
         }
         else if (
             headcnv.height &&
