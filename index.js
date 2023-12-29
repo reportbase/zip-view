@@ -5325,30 +5325,6 @@ menuobj.draw = function()
     
     for (var m = 0; m < canvas.normal.length; ++m)
     {
-        var n = canvas.normal[m];
-        var slice = slices[n];
-        var index = n % IMAGELSTSIZE;
-        var view = Math.floor(n / IMAGELSTSIZE);
-        var thumbimg = thumbimglst[index];
-        var thumbfitted = thumbfittedlst[index];
-        var t = time + (n * delayinterval);
-        var b = Math.tan(t);
-        var j = Math.berp(-1, 1, b);
-        var y = j * context.canvas.virtualheight;
-        var e = (canvas.virtualheight - rect.height) / 2;
-        y -= e;
-        y = Math.round(y);
-        var x = rect.width / 2;
-        var j = {slice,x,y,n};
-        slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
-        slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
-        if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
-        {
-        	galleryobj.width = thumbimg.width;
-        	galleryobj.height = thumbimg.height;
-        	context.centered = j.n;
-        }
-    
         if (context == _8cnvctx && 
             thumbimg.view != view &&
             !slice.failed) 
@@ -5365,22 +5341,52 @@ menuobj.draw = function()
             
             if (slice.entry)
             {
-                getblobpath(thumbimg, slice)	
+                var blob = await slice.entry.blob(`image/${slice.ext}`);
+                thumbimg.src = URL.createObjectURL(blob);
+            }
+            else if (slice.blob)
+            {
+                thumbimg.src = URL.createObjectURL(slice.blob);
             }
             else
             {
-                var path = imagepath(slice);
-                if (path)
-                    thumbimg.src = path;
+                thumbimg.src = slice.url;
             }
         }
-        else if (slice.isvisible)
+        else
         {
-            context.translate(0, j.y);
-            context.canvas.draw(context, r, j.slice, j.n);
-            context.translate(0, -j.y);
-            context.canvas.visibles.push(j);  
-	    }
+            var n = canvas.normal[m];
+            var slice = slices[n];
+            var index = n % IMAGELSTSIZE;
+            var view = Math.floor(n / IMAGELSTSIZE);
+            var thumbimg = thumbimglst[index];
+            var thumbfitted = thumbfittedlst[index];
+            var t = time + (n * delayinterval);
+            var b = Math.tan(t);
+            var j = Math.berp(-1, 1, b);
+            var y = j * context.canvas.virtualheight;
+            var e = (canvas.virtualheight - rect.height) / 2;
+            y -= e;
+            y = Math.round(y);
+            var x = rect.width / 2;
+            var j = {slice,x,y,n};
+            slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
+            slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
+            if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
+            {
+            	galleryobj.width = thumbimg.width;
+            	galleryobj.height = thumbimg.height;
+            	context.centered = j.n;
+            }
+    
+            if (slice.isvisible)
+            {
+                context.translate(0, j.y);
+                context.canvas.draw(context, r, j.slice, j.n);
+                context.translate(0, -j.y);
+                context.canvas.visibles.push(j);  
+    	    }
+        }
     }
 
     displayobj.value().draw(context, rect, 0, 0);
