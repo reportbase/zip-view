@@ -1962,8 +1962,6 @@ panel.home = function()
                 new panel.rectangle(context.homerect),
                 new panel.shrink(new panel.circle(
                     SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
-                index == 0 ? new panel.shrink(new panel.circle(MENUTAP, 
-                    TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 
                 new panel.cols([13,0,13],
                 [
