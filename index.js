@@ -4161,11 +4161,15 @@ var taplst =
 	        n = Math.floor(n);
             var b = -1;
             var k = (x - context.bookmarkrect.x) / context.bookmarkrect.width;
-            if (k < 0.20 || k > 0.80)
+            if (k < 0.25 || k > 0.75)
             {
-                if (k < 0.20)
+                if (k < 0.25)
                 {
-                    for (var m = galleryobj.length()+n-1; m >= 0; --m)
+                    var j = index+1;
+                    if (j == galleryobj.length())
+                        j = 0;
+                    var lst = _8cnv.rotated.slice(j,galleryobj.length());
+                    for (var m = lst.length-1; m >= 0; --m)
                     {
                         var b = _8cnv.rotated[m];
                         if (!galleryobj.data[b].marked)
@@ -4175,12 +4179,15 @@ var taplst =
                         aligntop()
                         menuobj.draw();
                         break;
-                    }
+                    } 
                 }
                 else 
                 {
-                    for (var m = galleryobj.length()+n+1; 
-			 m < galleryobj.length()*2; ++m)
+                    var j = index+1;
+                    if (j == galleryobj.length())
+                        j = 0;
+                    var lst = _8cnv.rotated.slice(j,galleryobj.length());
+                    for (var m = 0; m < lst.length; ++m)
                     {
                         var b = _8cnv.rotated[m];
                         if (!galleryobj.data[b].marked)
