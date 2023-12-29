@@ -1952,10 +1952,9 @@ panel.home = function()
 {
     this.draw = function(context, rect, user, time)
     {
-        var canvas = context.canvas;
         context.save();
         context.homerect = new rectangle()
-	    var index = 1 - canvas.timeobj.berp();
+	    var index = 1 - _8cnv.timeobj.berp();
 	    index *= galleryobj.length();
 	    index = Math.floor(index);
         var a = new panel.layers(
