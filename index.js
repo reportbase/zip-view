@@ -1495,7 +1495,7 @@ var displaylst =
         var name = value.name;    
     	if (value.blob && value.blob.name)
     		name = value.blob.name;
-        name = cliptext(context, name, 120);
+        name = cliptext(context, name, rainstep);
         var a = new panel.rowsA(
         [
             HEADTOP, 
@@ -4249,6 +4249,7 @@ var taplst =
             headcnvctx.homerect &&
             headcnvctx.homerect.hitest(x, y))
         {
+		    buttonobj.reset();	
             aligncenter(0)
             aligntop();
             menuobj.draw();
