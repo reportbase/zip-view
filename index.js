@@ -1956,13 +1956,20 @@ panel.home = function()
         context.homerect = new rectangle()
         var a = new panel.layers(
             [
-                //todo
                 new panel.rectangle(context.homerect),
                 new panel.shrink(new panel.circle(
                     SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
             ]);
-
+	    
         a.draw(context, rect, user, time);
+
+	    var a = new panel.layer(
+        [
+            new panel.shrink(new panel.fill(ARROWFILL), 5, 5);
+        ]);
+        
+        a.draw(context, rect, user, time);
+		    
         context.restore();
     }
 };
