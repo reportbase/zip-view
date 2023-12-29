@@ -3002,9 +3002,9 @@ async function loadzip(file)
         galleryobj.data.push(k);
     }
 
-    local.button = 0;
-    galleryobj.init(galleryobj)
-	menuobj.draw();
+        local.button = 0;
+        galleryobj.init(galleryobj)
+    	menuobj.draw();
 }
 
 async function loadimages(blobs)
@@ -4156,9 +4156,7 @@ var taplst =
                         var b = lst[m];
                         if (!galleryobj.data[b].marked)
                             continue;
-                        gotoimage(b);
-                        aligncenter()
-                        aligntop()
+                        _8cnv.timeobj.set(galleryobj.data[b].marked); 
                         menuobj.draw();
                         break;
                     } 
@@ -4171,9 +4169,7 @@ var taplst =
                         var b = lst[m];
                         if (!galleryobj.data[b].marked)
                             continue;
-                        gotoimage(b);
-                        aligncenter()
-                        aligntop()
+                        _8cnv.timeobj.set(galleryobj.data[b].marked); 
                         menuobj.draw();
                         break;
                     }
