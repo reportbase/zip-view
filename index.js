@@ -1963,20 +1963,20 @@ panel.home = function()
                 new panel.shrink(new panel.circle(
                     SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 
-                new panel.cols([14,0,14],
+                new panel.cols([15,0,15],
                 [
                     0,
-                    new panel.rows([24,20,0],
+                    new panel.rows([25,20,0],
                     [
                         0,
                         new panel.arrow( ARROWFILL, 0),
                         0
                     ])
                 ]),
-                new panel.cols([21,0,21],
+                new panel.cols([22,0,22],
                 [
                     0,
-                    new panel.rows([0,19,27],
+                    new panel.rows([0,18,27],
                     [
                         0,
                         new panel.fill(ARROWFILL),
