@@ -3947,7 +3947,7 @@ var taplst =
                 image = util.clamp(0, galleryobj.length()-1, image);
                 galleryobj.set(image);
                 delete photo.image;
-                contextobj.reset();
+                menuobj.draw();
             })
         }
         else if (context.canvas.thumbrect && 
