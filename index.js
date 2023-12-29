@@ -3042,7 +3042,10 @@ async function loadimages(blobs)
     
     local.button = 0;
     galleryobj.init(galleryobj)
-    menuobj.draw();
+    setTimeout(function()
+    {
+        menuobj.draw();
+    }, 200);
 }
 
 function loadfiles(files)
