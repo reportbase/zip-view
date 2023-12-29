@@ -3044,6 +3044,8 @@ async function loadimages(blobs)
     galleryobj.init(galleryobj)
     menuobj.draw();    
     menuobj.updown(_8cnvctx, 1, 100)
+    centeralign()
+    aligntop();
     _8cnvctx.swipetimeout = 
         setInterval(function(){menuobj.draw()}, GALLERYMAIN);
 }
