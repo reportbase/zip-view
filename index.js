@@ -4245,6 +4245,8 @@ var taplst =
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
+		    headobj.hide();
+            menuobj.draw();
             var index = 1 - _8cnv.timeobj.berp();
             index *= galleryobj.length();
             var input = document.getElementById("goto-input");
