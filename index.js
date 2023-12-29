@@ -1952,13 +1952,20 @@ panel.home = function()
 {
     this.draw = function(context, rect, user, time)
     {
+        var canvas = context.canvas.;
         context.save();
         context.homerect = new rectangle()
+	    var index = 1 - canvas.timeobj.berp();
+	    index *= galleryobj.length();
+	    index = Math.floor(index);
         var a = new panel.layers(
             [
                 new panel.rectangle(context.homerect),
                 new panel.shrink(new panel.circle(
                     SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                index == 0 ? new panel.shrink(new panel.circle(MENUTAP, 
+                    TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+                
                 new panel.cols([13,0,13],
                 [
                     0,
@@ -1972,7 +1979,7 @@ panel.home = function()
                 new panel.cols([20,0,20],
                 [
                     0,
-                    new panel.rows([0,22,27],
+                    new panel.rows([0,20,27],
                     [
                         0,
                         new panel.fill(ARROWFILL),
