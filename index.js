@@ -1886,9 +1886,9 @@ panel.fullscreen = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.fullscreenrect),
-                screenfull.isFullscreen ?
+                document.fullscreenEnabled ?
                 new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(screenfull.isFullscreen ?
+                new panel.shrink(new panel.circle(document.fullscreenEnabled ?
                     TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
             ]);
 
@@ -3622,7 +3622,7 @@ var keylst =
             else if (key == "f")
             {
                 evt.preventDefault();
-                screenfull.toggle();
+                toggleFullScreen();
             }
             else if (key == "g")
             {
@@ -3749,7 +3749,7 @@ var keylst =
 
             if (key == "f")
             {
-                screenfull.toggle()
+                toggleFullScreen()
                 bossobj.draw();
                 evt.preventDefault();
             }
