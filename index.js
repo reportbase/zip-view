@@ -3947,6 +3947,7 @@ var taplst =
                 image = util.clamp(0, galleryobj.length()-1, image);
                 galleryobj.set(image);
                 delete photo.image;
+		        headobj.show();
                 menuobj.draw();
             })
         }
@@ -4230,7 +4231,6 @@ var taplst =
             headcnvctx.homerect &&
             headcnvctx.homerect.hitest(x, y))
         {
-            headobj.hide();
 		    buttonobj.reset();	
             aligncenter(0)
             aligntop();
@@ -6485,7 +6485,7 @@ panel.homemenu = function()
             var a = new panel.layers(
                 [
                     new panel.rectangle(context.homemenurect),
-                    s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+                    //s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                     new panel.shrink(new panel.circle(s ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                     new panel.cols([0, rect.height * 0.20, 0],
                         [
@@ -7509,7 +7509,11 @@ function showdialog(str, func)
             var r = dialog.getBoundingClientRect();
             var rect = new rectangle(r.x,r.y,r.width,r.height);
             if (!rect.hitest(event.x, event.y) && !dialog.clickblocked)
+            {
+                headobj.show();
+                menuobj.draw();
                 dialog.close();
+            }
             return false;
         }
     });
