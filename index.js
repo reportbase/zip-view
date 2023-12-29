@@ -4200,28 +4200,9 @@ var taplst =
             context.buttonrect.hitest(x, y))
         {
             var k = (x - context.buttonrect.x) / context.buttonrect.width;
-            if (k < 0.20 || k > 0.80)
-            {
-                var k = k < 0.20;
-                buttonobj.addperc(k ? -0.05 : 0.05);              
-                menuobj.draw();
-            }
-            else
-            {
-                var j = buttonobj.current() == 0;
-    		    buttonobj.reset();
-                _8cnv.fitflash = 1;
-                headobj.draw();
-                setTimeout(function()
-                {
-                    _8cnv.fitflash = 0;
-                    buttonobj.set(j ? Math.floor(buttonobj.length()/2) : 0);
-                    headobj.draw();
-                    menuobj.draw();
-                }, 400);
-            
-                menuobj.draw();
-            }            
+            var k = k < 0.50;
+            buttonobj.addperc(k ? -0.05 : 0.05);              
+            menuobj.draw();
         }
         else if (
             headcnv.height &&
