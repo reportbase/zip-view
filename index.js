@@ -1495,7 +1495,7 @@ var displaylst =
         var name = value.name;    
     	if (value.blob && value.blob.name)
     		name = value.blob.name;
-        name = cliptext(context, name, rainstep*0.4);
+        name = cliptext(context, name, rainstep*0.25);
         var a = new panel.rowsA(
         [
             HEADTOP, 
