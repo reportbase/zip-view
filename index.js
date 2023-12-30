@@ -3856,6 +3856,7 @@ function aligntop(time)
     {
         var k = _8cnv.timeobj.length() / galleryobj.length();
         _8cnv.timeobj.rotate(k);
+        aligncenter();
         alignbottom();
     }
 }
@@ -3872,6 +3873,7 @@ function alignbottom(time)
     {
         var k = _8cnv.timeobj.length() / galleryobj.length();
         _8cnv.timeobj.rotate(-k);
+        aligncenter();
         aligntop();
     }
 }
