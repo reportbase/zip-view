@@ -1393,7 +1393,7 @@ var displaylst =
             var a = new panel.rows([0,12],
             [
                 0,
-                new panel.cols([-1,0,-1],
+                new panel.cols([30,0,30],
                 [
                     0,
                     new panel.layers(
