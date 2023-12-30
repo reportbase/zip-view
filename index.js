@@ -2720,6 +2720,13 @@ var wheelst =
     name: "GALLERY",
     wheel: function(context, x, y)
     {
+        context.canvas.pinching = 1;
+        clearTimeout(context.pinchingtime)
+        context.pinchingtime = setTimeout(function()
+        {
+            context.canvas.pinching = 0;
+            menuobj.draw()
+         }, 40);
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
@@ -2735,14 +2742,6 @@ var wheelst =
             var e = k*j;
             buttonobj.add(e);
             menuobj.draw();
-            context.swipetimeout = 0;
-            context.canvas.pinching = 1;
-            clearTimeout(context.pinchingtime)
-            context.pinchingtime = setTimeout(function()
-            {
-                context.canvas.pinching = 0;
-                menuobj.draw()
-             }, 40);
         }
         else
         {
