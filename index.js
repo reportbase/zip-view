@@ -3850,7 +3850,7 @@ function aligntop(ext)
     var j = Math.PI/galleryobj.length();
     var e = j * k;
     _8cnv.timeobj.rotate(e/2)
-    if (ext && current.toFixed(3) == _8cnv.timeobj.anchor().toFixed(3))
+    if (ext && current.toFixed(3) == _8cnv.timeobj.current().toFixed(3))
     {
         var k = _8cnv.timeobj.length() / galleryobj.length();
         _8cnv.timeobj.rotate(k);
@@ -3864,7 +3864,7 @@ function alignbottom(ext)
     var j = Math.PI/galleryobj.length();
     var e = j * k;
     _8cnv.timeobj.rotate(-e/2)
-    if (ext && current.toFixed(3) == _8cnv.timeobj.anchor().toFixed(3))
+    if (ext && current.toFixed(3) == _8cnv.timeobj.current().toFixed(3))
     {
         var k = _8cnv.timeobj.length() / galleryobj.length();
         _8cnv.timeobj.rotate(-k);
