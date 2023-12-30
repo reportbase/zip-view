@@ -2741,7 +2741,7 @@ var wheelst =
             {
                 context.canvas.pinching = 0;
                 menuobj.draw()
-            }, 40);
+            }, 1000);
         }
         else
         {
@@ -2759,11 +2759,18 @@ var wheelst =
             {
                 context.canvas.panning = 0;
                 menuobj.draw()
-            }, 40);
+            }, 1000);
         }
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
+        context.canvas.panning = 1;
+        clearTimeout(context.pinchingtime)
+        context.pinchingtime = setTimeout(function()
+        {
+            context.canvas.panning = 0;
+            menuobj.draw()
+        }, 1000);
         if (Math.abs(delta) < 0.25)
             return;
         context.canvas.hollyobj.addperc(delta / 2000);
@@ -3125,7 +3132,13 @@ var panlst =
         var obj = canvas.hollyobj;
         if (canvas.pinching)
             return;
-        //context.elst.push({x,y});
+        context.canvas.panning = 1;
+        clearTimeout(context.pinchingtime)
+        context.pinchingtime = setTimeout(function()
+        {
+            context.canvas.panning = 0;
+            menuobj.draw()
+        }, 1000);
         
         if (type == "panleft" || type == "panright")
         {
@@ -3160,7 +3173,6 @@ var panlst =
     panstart: function(context, rect, x, y)
     {
         var canvas = context.canvas;
-        canvas.panning = 1;
         movingx = new MovingAverage();
         movingy = new MovingAverage();
         delete canvas.slideshow;
@@ -3176,7 +3188,6 @@ var panlst =
     {
         var canvas = context.canvas;
         delete context.canvas.type;
-        delete context.canvas.panning;
         delete context.canvas.starty;
         delete context.startt;
         delete context.canvas.timeobj.offset;
