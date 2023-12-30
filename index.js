@@ -3000,7 +3000,7 @@ async function loadzip(file)
     }
 
     local.button = 0;
-    context.canvas.hollyobj.set(0);
+    _8cnv.hollyobj.set(0);
     galleryobj.init(galleryobj)
     menuobj.draw();
 }
@@ -3043,7 +3043,7 @@ async function loadimages(blobs)
     
     local.button = 0;
     galleryobj.init(galleryobj)
-    context.canvas.hollyobj.set(0);
+    _8cnv.hollyobj.set(0);
     menuobj.updown(_8cnvctx, 5, 100)
     _8cnvctx.swipetimeout = 
         setInterval(function(){menuobj.draw()}, GALLERYMAIN);
