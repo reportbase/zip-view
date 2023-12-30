@@ -1003,11 +1003,12 @@ var headlst =
         delete context.fullscreenrect;
         delete context.homemenurect;
         delete context.gallerymenurect;
-        var s = SAFARI ? -1: ALIEXTENT+10;
-        var e = (rect.width>=360 || SAFARI) ?ALIEXTENT+10:-1;
+	    var b = ALIEXTENT+10;
+        var s = SAFARI ? -1 : b;
+        var e = (rect.width>=360 || SAFARI) ? b:-1;
         var a = new panel.rows([BEXTENT, 0],
         [
-            new panel.cols([5, ALIEXTENT, 0, s, e, ALIEXTENT, 0, ALIEXTENT, 5],
+            new panel.cols([5, ALIEXTENT, 0, s, e, b, 0, ALIEXTENT, 5],
             [
                 0,
                 new panel.homemenu(),
