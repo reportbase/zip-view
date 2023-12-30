@@ -1490,7 +1490,7 @@ var displaylst =
             HEADBOT,  
             0,
             folders.length?folders.length*50:-1, 
-            folders.length?DISPLAYMARGIN:-1, 
+            (folders.length&&window.innerHeight>400)?DISPLAYMARGIN:-1, 
             WRAPROWHEIGHT, 
             DISPLAYMARGIN,                 
             WRAPROWHEIGHT,                  
