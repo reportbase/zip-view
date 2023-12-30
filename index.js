@@ -1397,7 +1397,8 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.expand(new panel.rectangle(canvas.holly2rect), 0, 10),
+                       (context.swipetimeout||canvas.panning)?new panel.fill(GALLFILL):0,
+                         new panel.expand(new panel.rectangle(canvas.holly2rect), 0, 10),
                         new panel.shrink(new panel.currentH(
                                 new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
                     ]),
@@ -1425,7 +1426,7 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
-                        context.swipetimeout?new panel.fill(GALLFILL):0,
+                        (context.swipetimeout||canvas.panning)?new panel.fill(GALLFILL):0,
                         new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
                         new panel.shrink(
                             new panel.currentV(
@@ -2893,6 +2894,7 @@ var pinchlst =
         {
             delete context.scaleanchor;
             context.canvas.pinching = 0;
+            menuobj.draw()
          }, 40);
     },
 },
@@ -3168,6 +3170,7 @@ var panlst =
         delete context.canvas.isvbarect;
         delete context.canvas.hollyobj.offset;
 	    local.set()    
+        menuobj.draw();
     }
 },
 {
