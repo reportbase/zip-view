@@ -1949,7 +1949,7 @@ panel.home = function()
                 new panel.shrink(new panel.circle(
                     SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 
-                new panel.cols([16,0,16],
+                new panel.cols([17,0,17],
                 [
                     0,
                     new panel.rows([26,19,0],
@@ -1959,7 +1959,7 @@ panel.home = function()
                         0
                     ])
                 ]),
-                new panel.cols([23,0,23],
+                new panel.cols([24,0,24],
                 [
                     0,
                     new panel.rows([0,17,27],
