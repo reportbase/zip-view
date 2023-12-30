@@ -3534,8 +3534,7 @@ var keylst =
                 if (canvas.ctrlKey)
                 {
                     aligncenter()
-					menuobj.draw();
-        		    buttonobj.reset();
+//        		    buttonobj.reset();
                     aligntop();
 					menuobj.draw();
                 }
@@ -4384,6 +4383,7 @@ var taplst =
         else if (canvas.homeresetrect && 
                  canvas.homeresetrect.hitest(x, y))
         {
+            buttonobj.reset();
             closemenu()
             aligncenter(0)
             aligntop();
