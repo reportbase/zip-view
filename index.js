@@ -3854,11 +3854,17 @@ function aligntop()
 
 function alignbottom()
 {
+	var current = _8cnv.current();
     aligncenter();
     var k = 1-(window.innerHeight/buttonobj.value());
     var j = Math.PI/galleryobj.length();
     var e = j * k;
     _8cnv.timeobj.rotate(-e/2)
+    if (current.toFixed(3) == _8cnv.current().toFixed(3))
+    {
+        var k = _8cnv.timeobj.length() / galleryobj.length();
+        _8cnv.timeobj.rotate(-k);
+    }
 }
 
 CanvasRenderingContext2D.prototype.hithumb = function(x, y)
