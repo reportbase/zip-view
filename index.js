@@ -3422,7 +3422,8 @@ var presslst =
 var pressobj = new circular_array("PRESS", presslst);
 pressobj.set(3);
 
-var swipelst = [
+var swipelst = 
+[
 {
     name: "BOSS",
     swipeleftright: function(context, rect, x, y, evt)
@@ -3450,7 +3451,7 @@ var swipelst = [
         headobj.draw();
         
         var k = evt.type == "swipeup" ? 1 : -1;
-        menuobj.updown(context, k * 90, 50);
+        menuobj.updown(context, k * 140, 80);
         if (!context.swipetimeout)
             context.swipetimeout = setInterval(
                 function(){menuobj.draw();}, GALLERYMAIN);
