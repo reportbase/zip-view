@@ -15,6 +15,7 @@ var url = new URL(window.location.href);
 const THEME = url.searchParams.get("theme");
 const NUBACK = "rgba(0,0,0,0.4)";
 const GALLNUB = THEME == "light" ? "rgba(0,0,0,0.75)" : "rgba(255,255,255,0.75)";
+const GALLFILL = THEME == "light" ? "rgba(255,255,255,0.75)" : "rgba(0,0,0,0.75)"; 
 const SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const VIRTCONST = 0.8;
 const MAXVIRTUAL = 5760*3;
@@ -1414,6 +1415,7 @@ var displaylst =
                 [
                     new panel.layers(
                     [
+                        context.canvas.pinching?new panel.fill(GALLFILL):0,
                         new panel.expand(new panel.rectangle(context.button2rect), 10, 0),
                         new panel.shrink(
                             new panel.currentV(
@@ -1423,6 +1425,7 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
+                        context.swipetimeout?new panel.fill(GALLFILL):0,
                         new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
                         new panel.shrink(
                             new panel.currentV(
@@ -2857,7 +2860,7 @@ var pinchlst =
     name: "GALLERY",
     pinch: function(context, x, y, scale)
     {
-	context.elst.push({x,y});
+	    context.elst.push({x,y});
         if (!context.buttonanchor)
             context.buttonanchor = buttonobj.value();
         if (!context.scaleanchor)
