@@ -3553,6 +3553,7 @@ var keylst =
             {
                 if (canvas.ctrlKey)
                 {
+                    aligncenter();
                     alignbottom();
                     menuobj.draw();
                 }
@@ -3859,7 +3860,6 @@ function aligntop()
 function alignbottom()
 {
 	var current = _8cnv.timeobj.current();
-    aligncenter();
     var k = 1-(window.innerHeight/buttonobj.value());
     var j = Math.PI/galleryobj.length();
     var e = j * k;
