@@ -1398,7 +1398,7 @@ var displaylst =
                     new panel.layers(
                     [
                        (context.swipetimeout||canvas.panning)?new panel.fill(GALLFILL):0,
-                         new panel.expand(new panel.rectangle(canvas.holly2rect), 0, 10),
+                         new panel.expand(new panel.rectangle(canvas.holly2rect), 0, 20),
                         new panel.shrink(new panel.currentH(
                                 new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
                     ]),
@@ -1417,7 +1417,7 @@ var displaylst =
                     new panel.layers(
                     [
                         context.canvas.pinching?new panel.fill(GALLFILL):0,
-                        new panel.expand(new panel.rectangle(context.button2rect), 10, 0),
+                        new panel.expand(new panel.rectangle(context.button2rect), 20, 0),
                         new panel.shrink(
                             new panel.currentV(
                                 new panel.rounded(GALLNUB, 0, 
@@ -1427,7 +1427,7 @@ var displaylst =
                     new panel.layers(
                     [
                         (context.swipetimeout||canvas.panning)?new panel.fill(GALLFILL):0,
-                        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
+                        new panel.expand(new panel.rectangle(canvas.timerect), 20, 0),
                         new panel.shrink(
                             new panel.currentV(
                                 new panel.rounded(GALLNUB, 0, 
@@ -2731,13 +2731,18 @@ var wheelst =
 	    if (ctrl)
         {
             var j = buttonobj.length()/120;
-            context.canvas.pinching = 1;
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
             buttonobj.add(e);
             menuobj.draw();
             context.swipetimeout = 0;
-            context.canvas.pinching = 0;
+            context.canvas.pinching = 1;
+            clearTimeout(context.pinchingtime)
+            context.pinchingtime = setTimeout(function()
+            {
+                context.canvas.pinching = 0;
+                menuobj.draw()
+             }, 40);
         }
         else
         {
@@ -2880,6 +2885,13 @@ var pinchlst =
             menuobj.draw();
             break;
         }
+
+        clearTimeout(context.pinchingtime)
+        context.pinchingtime = setTimeout(function()
+        {
+            context.canvas.pinching = 0;
+            menuobj.draw()
+         }, 40);
     },
     pinchstart: function(context, rect, x, y)
     {
@@ -2890,12 +2902,7 @@ var pinchlst =
     },
     pinchend: function(context)
     {
-        setTimeout(function()
-        {
-            delete context.scaleanchor;
-            context.canvas.pinching = 0;
-            menuobj.draw()
-         }, 40);
+        delete context.scaleanchor;
     },
 },
 {
