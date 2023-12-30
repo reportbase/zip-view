@@ -3569,10 +3569,8 @@ var keylst =
             }
             else if (key == " ")
             {
-                menuobj.updown(context, canvas.shiftKey?-180:180, 240)
-                if (!context.swipetimeout)
-                    context.swipetimeout = 
-                        setInterval(function(){menuobj.draw();}, GALLERYMAIN);
+                headobj.toggle();
+                menuobj.draw()
                 evt.preventDefault();
             }                
             else if (key == "tab")
