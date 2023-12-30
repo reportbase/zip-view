@@ -2720,13 +2720,6 @@ var wheelst =
     name: "GALLERY",
     wheel: function(context, x, y)
     {
-        context.canvas.pinching = 1;
-        clearTimeout(context.pinchingtime)
-        context.pinchingtime = setTimeout(function()
-        {
-            context.canvas.panning = 0;
-            menuobj.draw()
-         }, 40);
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
@@ -2742,6 +2735,13 @@ var wheelst =
             var e = k*j;
             buttonobj.add(e);
             menuobj.draw();
+            context.canvas.pinching = 1;
+            clearTimeout(context.pinchingtime)
+            context.pinchingtime = setTimeout(function()
+            {
+                context.canvas.pinching = 0;
+                menuobj.draw()
+            }, 40);
         }
         else
         {
@@ -2752,6 +2752,14 @@ var wheelst =
                  context.swipetimeout = setInterval(
                    function(){menuobj.draw();}, GALLERYMAIN);
             }
+
+            context.canvas.panning = 1;
+            clearTimeout(context.pinchingtime)
+            context.pinchingtime = setTimeout(function()
+            {
+                context.canvas.panning = 0;
+                menuobj.draw()
+            }, 40);
         }
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
@@ -2885,6 +2893,7 @@ var pinchlst =
             break;
         }
 
+        context.canvas.pinching = 1;
         clearTimeout(context.pinchingtime)
         context.pinchingtime = setTimeout(function()
         {
@@ -2897,7 +2906,6 @@ var pinchlst =
         delete context.scaleanchor;
         delete context.buttonanchor;
         context.canvas.slideshow = 0;
-        context.canvas.pinching = 1;
     },
     pinchend: function(context)
     {
