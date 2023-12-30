@@ -1397,7 +1397,7 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
-                       (context.swipetimeout||canvas.panning)?new panel.fill(GALLFILL):0,
+                       ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?new panel.fill(GALLFILL):0,
                          new panel.expand(new panel.rectangle(canvas.holly2rect), 0, 20),
                         new panel.shrink(new panel.currentH(
                                 new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
@@ -1426,7 +1426,7 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
-                        (context.swipetimeout||canvas.panning)?new panel.fill(GALLFILL):0,
+                        (context.swipetimeout||canvas.panning)&&!canvas.pinching?new panel.fill(GALLFILL):0,
                         new panel.expand(new panel.rectangle(canvas.timerect), 20, 0),
                         new panel.shrink(
                             new panel.currentV(
@@ -2723,7 +2723,6 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        //context.deltalst.push({"index":0,"delta":delta});
         if (Math.abs(delta) < 0.25)
             return;        
         var canvas = context.canvas;
@@ -2734,8 +2733,8 @@ var wheelst =
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
             buttonobj.add(e);
-            menuobj.draw();
             context.canvas.pinching = 1;
+            menuobj.draw();
             clearTimeout(context.wheeltime)
             context.wheeltime = setTimeout(function()
             {
