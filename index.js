@@ -3106,7 +3106,7 @@ var panlst =
         var obj = canvas.hollyobj;
         if (canvas.pinching)
             return;
-        context.elst.push({x,y});
+        //context.elst.push({x,y});
         
         if (type == "panleft" || type == "panright")
         {
