@@ -3854,7 +3854,7 @@ function aligntop()
 
 function alignbottom()
 {
-    //aligncenter();
+    aligncenter();
     var k = 1-(window.innerHeight/buttonobj.value());
     var j = Math.PI/galleryobj.length();
     var e = j * k;
