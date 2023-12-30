@@ -3533,8 +3533,9 @@ var keylst =
             {
                 if (canvas.ctrlKey)
                 {
+                    var time = _8cnv.timeobj.current();
                     aligncenter()
-                    aligntop(1);
+                    aligntop(time);
 					menuobj.draw();
                 }
                 else
@@ -3553,8 +3554,9 @@ var keylst =
             {
                 if (canvas.ctrlKey)
                 {
+                    var time = _8cnv.timeobj.current();
                     aligncenter();
-                    alignbottom(1);
+                    alignbottom(time);
                     menuobj.draw();
                 }
                 else
@@ -3843,39 +3845,33 @@ function gotoimage(n)
     return true;
 }
 
-function aligntop(ext) 
+function aligntop(time) 
 {
     var k = 1-(window.innerHeight/buttonobj.value());
     var j = Math.PI/galleryobj.length();
     var e = j * k;
     _8cnv.timeobj.rotate(e/2)
-    if (ext && 
-        _8cnv.currentop && 
-        _8cnv.currentop.toFixed(3) == _8cnv.timeobj.current().toFixed(3))
+    if (time && 
+        time.toFixed(3) == _8cnv.timeobj.current().toFixed(3))
     {
         var k = _8cnv.timeobj.length() / galleryobj.length();
         _8cnv.timeobj.rotate(k);
     }
-    
-    _8cnv.currentop = _8cnv.timeobj.current();
 }
 
-function alignbottom(ext)
+function alignbottom(time)
 {
 	var current = _8cnv.timeobj.current();
     var k = 1-(window.innerHeight/buttonobj.value());
     var j = Math.PI/galleryobj.length();
     var e = j * k;
     _8cnv.timeobj.rotate(-e/2)
-    if (ext && 
-        _8cnv.currentbottom && 
-        _8cnv.currentbottom.toFixed(3) == _8cnv.timeobj.current().toFixed(3))
+    if (time && 
+        time.toFixed(3) == _8cnv.timeobj.current().toFixed(3))
     {
         var k = _8cnv.timeobj.length() / galleryobj.length();
         _8cnv.timeobj.rotate(-k);
     }
-
-    _8cnv.currentbottom = _8cnv.timeobj.current();
 }
 
 CanvasRenderingContext2D.prototype.hithumb = function(x, y)
