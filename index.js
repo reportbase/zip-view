@@ -3534,7 +3534,6 @@ var keylst =
                 if (canvas.ctrlKey)
                 {
                     aligncenter()
-//        		    buttonobj.reset();
                     aligntop();
 					menuobj.draw();
                 }
