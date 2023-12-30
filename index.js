@@ -2736,8 +2736,8 @@ var wheelst =
             buttonobj.add(e);
             menuobj.draw();
             context.canvas.pinching = 1;
-            clearTimeout(context.pinchingtime)
-            context.pinchingtime = setTimeout(function()
+            clearTimeout(context.wheeltime)
+            context.wheeltime = setTimeout(function()
             {
                 context.canvas.pinching = 0;
                 menuobj.draw()
@@ -2754,8 +2754,8 @@ var wheelst =
             }
 
             context.canvas.panning = 1;
-            clearTimeout(context.pinchingtime)
-            context.pinchingtime = setTimeout(function()
+            clearTimeout(context.wheelpanningtime)
+            context.wheelpanningtime = setTimeout(function()
             {
                 context.canvas.panning = 0;
                 menuobj.draw()
@@ -2765,8 +2765,8 @@ var wheelst =
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         context.canvas.panning = 1;
-        clearTimeout(context.pinchingtime)
-        context.pinchingtime = setTimeout(function()
+        clearTimeout(context.wheelpanningtime)
+        context.wheelpanningtime = setTimeout(function()
         {
             context.canvas.panning = 0;
             menuobj.draw()
@@ -3133,8 +3133,8 @@ var panlst =
         if (canvas.pinching)
             return;
         context.canvas.panning = 1;
-        clearTimeout(context.pinchingtime)
-        context.pinchingtime = setTimeout(function()
+        clearTimeout(context.panningtime)
+        context.panningtime = setTimeout(function()
         {
             context.canvas.panning = 0;
             menuobj.draw()
