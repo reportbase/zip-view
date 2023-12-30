@@ -3555,7 +3555,8 @@ var keylst =
             {
                 if (canvas.ctrlKey)
                 {
-                   alignbottom();
+                    alignbottom();
+                    menuobj.draw();
                 }
                 else
                 {
@@ -3823,9 +3824,9 @@ function aligncenter(b=-1)
         b *= galleryobj.length();
     }
     
- 	var image = b;
+ 	var image = Math.floor(b);
     galleryobj.set(image);
-    var e = Math.berp(0, galleryobj.length(), Math.floor(image));
+    var e = Math.berp(0, galleryobj.length(), image);
     var j = (1-e)*Math.PI
     var k = _8cnv.timeobj.length() / galleryobj.length() / 2;
     var e = j-k;
@@ -3853,14 +3854,11 @@ function aligntop()
 
 function alignbottom()
 {
-    aligncenter();
-	menuobj.draw();
-	buttonobj.reset();
+    //aligncenter();
     var k = 1-(window.innerHeight/buttonobj.value());
     var j = Math.PI/galleryobj.length();
     var e = j * k;
     _8cnv.timeobj.rotate(-e/2)
-    menuobj.draw();
 }
 
 CanvasRenderingContext2D.prototype.hithumb = function(x, y)
