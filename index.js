@@ -3517,7 +3517,7 @@ var keylst =
 		        if (canvas.ctrlKey)    
         		{
                     aligncenter(0)
-                    aligntop(1);
+                    aligntop();
                     menuobj.draw();
                 }
                 else
@@ -3534,7 +3534,7 @@ var keylst =
                 if (canvas.ctrlKey)
                 {
                     aligncenter()
-                    aligntop();
+                    aligntop(1);
 					menuobj.draw();
                 }
                 else
@@ -3554,7 +3554,7 @@ var keylst =
                 if (canvas.ctrlKey)
                 {
                     aligncenter();
-                    alignbottom();
+                    alignbottom(1);
                     menuobj.draw();
                 }
                 else
@@ -3843,28 +3843,28 @@ function gotoimage(n)
     return true;
 }
 
-function aligntop(block) 
+function aligntop(ext) 
 {
     var current = _8cnv.timeobj.current();
     var k = 1-(window.innerHeight/buttonobj.value());
     var j = Math.PI/galleryobj.length();
     var e = j * k;
     _8cnv.timeobj.rotate(e/2)
-    if (!block && current.toFixed(3) == _8cnv.timeobj.anchor().toFixed(3))
+    if (ext && current.toFixed(3) == _8cnv.timeobj.anchor().toFixed(3))
     {
         var k = _8cnv.timeobj.length() / galleryobj.length();
         _8cnv.timeobj.rotate(k);
     }
 }
 
-function alignbottom(block)
+function alignbottom(ext)
 {
 	var current = _8cnv.timeobj.current();
     var k = 1-(window.innerHeight/buttonobj.value());
     var j = Math.PI/galleryobj.length();
     var e = j * k;
     _8cnv.timeobj.rotate(-e/2)
-    if (!block && current.toFixed(3) == _8cnv.timeobj.anchor().toFixed(3))
+    if (ext && current.toFixed(3) == _8cnv.timeobj.anchor().toFixed(3))
     {
         var k = _8cnv.timeobj.length() / galleryobj.length();
         _8cnv.timeobj.rotate(-k);
@@ -4385,7 +4385,7 @@ var taplst =
             buttonobj.reset();
             closemenu()
             aligncenter(0)
-            aligntop(1);
+            aligntop();
 		    menuobj.draw()
         }
         else if (canvas.timerect &&
