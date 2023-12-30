@@ -14,8 +14,8 @@ function ios()
 var url = new URL(window.location.href);
 const THEME = url.searchParams.get("theme");
 const NUBACK = "rgba(0,0,0,0.4)";
-const GALLNUB = THEME == "light" ? "rgba(0,0,0,0.75)" : "rgba(255,255,255,0.75)";
-const GALLFILL = THEME == "light" ? "rgba(255,255,255,0.75)" : "rgba(0,0,0,0.75)"; 
+const GALLNUB = THEME == "light" ? "rgba(0,0,0,0.5)" : "rgba(255,255,255,0.5)";
+const GALLFILL = THEME == "light" ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.5)"; 
 const SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const VIRTCONST = 0.8;
 const MAXVIRTUAL = 5760*3;
@@ -1418,7 +1418,7 @@ var displaylst =
                     new panel.layers(
                     [
                         context.canvas.pinching?new panel.fill(GALLFILL):0,
-                        new panel.expand(new panel.rectangle(context.button2rect), 20, 0),
+                        new panel.expand(new panel.rectangle(context.button2rect), 10, 0),
                         new panel.shrink(
                             new panel.currentV(
                                 new panel.rounded(GALLNUB, 0, 
@@ -1428,7 +1428,7 @@ var displaylst =
                     new panel.layers(
                     [
                         (context.swipetimeout||canvas.panning)&&!canvas.pinching?new panel.fill(GALLFILL):0,
-                        new panel.expand(new panel.rectangle(canvas.timerect), 20, 0),
+                        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
                         new panel.shrink(
                             new panel.currentV(
                                 new panel.rounded(GALLNUB, 0, 
