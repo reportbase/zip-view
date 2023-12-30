@@ -4201,8 +4201,11 @@ var taplst =
             context.buttonrect.hitest(x, y))
         {
             var k = (x - context.buttonrect.x) / context.buttonrect.width;
-            var k = k < 0.50;
-            buttonobj.addperc(k ? -0.05 : 0.05);              
+            var j = k < 0.25 || k > 0.75;
+            if (j)
+                buttonobj.addperc(k < 0.25 ? -0.05 : 0.05);  
+            else
+                buttonobj.reset();
             menuobj.draw();
         }
         else if (
