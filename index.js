@@ -2724,7 +2724,7 @@ var wheelst =
         clearTimeout(context.pinchingtime)
         context.pinchingtime = setTimeout(function()
         {
-            context.canvas.pinching = 0;
+            context.canvas.panning = 0;
             menuobj.draw()
          }, 40);
     },
