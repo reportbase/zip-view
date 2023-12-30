@@ -1003,7 +1003,7 @@ var headlst =
         delete context.fullscreenrect;
         delete context.homemenurect;
         delete context.gallerymenurect;
-        var s = SAFARI ? -1: ALIEXTENT;
+        var s = SAFARI ? -1: ALIEXTENT+10;
         var e = (rect.width>=360 || SAFARI) ?ALIEXTENT+10:-1;
         var a = new panel.rows([BEXTENT, 0],
         [
@@ -1013,8 +1013,8 @@ var headlst =
                 new panel.homemenu(),
                 0,
                 g ? new panel.fullscreen() : 0,
-                g ? new panel.zoom() : 0,
                 g ? new panel.home() : 0,
+                g ? new panel.zoom() : 0,
                 0,
                 new panel.gallerymenu(),
                 0,
@@ -6516,7 +6516,7 @@ panel.homemenu = function()
             var a = new panel.layers(
                 [
                     new panel.rectangle(context.homemenurect),
-                    //s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
+                    s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                     new panel.shrink(new panel.circle(s ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                     new panel.cols([0, rect.height * 0.20, 0],
                         [
