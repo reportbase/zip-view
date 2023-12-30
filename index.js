@@ -1392,7 +1392,7 @@ var displaylst =
             var a = new panel.rows([0,12],
             [
                 0,
-                new panel.cols([1,0,1],
+                new panel.cols([-1,0,-1],
                 [
                     0,
                     new panel.layers(
@@ -1409,7 +1409,7 @@ var displaylst =
 
             a.draw(context, rect, _8cnv.hollyobj, 0);
             
- 		    var a = new panel.rows([-1, 0, 5],
+ 		    var a = new panel.rows([-1,0,-1],
             [
                 0,
                 new panel.colsA([12, 0, 12],
