@@ -3116,7 +3116,7 @@ var panlst =
             else
             {
                 var obj = context.canvas.hollyobj;
-                var e = (canvas.startx - x)/4;
+                var e = (canvas.startx - x)/10;
                 var k = panhorz(obj, e);
                 if (k == -1)
                     return;
