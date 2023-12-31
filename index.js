@@ -1398,7 +1398,8 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
-                       ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?new panel.fill(GALLFILL):0,
+                       ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
+                            new panel.rounded(GALLFILL, 0, 0, 8, 8):0,    
                          new panel.expand(new panel.rectangle(canvas.holly2rect), 0, 20),
                         new panel.shrink(new panel.currentH(
                                 new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
@@ -1417,7 +1418,8 @@ var displaylst =
                 [
                     new panel.layers(
                     [
-                        context.canvas.pinching?new panel.fill(GALLFILL):0,
+                        context.canvas.pinching?
+                            new panel.rounded(GALLFILL, 0, 0, 8, 8):0,
                         new panel.expand(new panel.rectangle(context.button2rect), 10, 0),
                         new panel.shrink(
                             new panel.currentV(
@@ -1427,7 +1429,8 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
-                        (context.swipetimeout||canvas.panning)&&!canvas.pinching?new panel.fill(GALLFILL):0,
+                        (context.swipetimeout||canvas.panning)&&!canvas.pinching?
+                            new panel.rounded(GALLFILL, 0, 0, 8, 8):0,
                         new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
                         new panel.shrink(
                             new panel.currentV(
