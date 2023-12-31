@@ -1626,20 +1626,20 @@ var displaylst =
         var canvas = context.canvas;
         context.save();
         canvas.timerect = new rectangle();
-	    var a = new panel.cols([5, 9, 0, 9, 5],
+	    var a = new panel.cols([7, 9, 0, 9, 7],
 	    [
     		0,
     		0,
     		0,
-            new panel.rows([ALIEXTENT,0,ALIEXTENT],
+            new panel.rows([ALIEXTENT+10,0,ALIEXTENT+10],
             [
                 0,
                 new panel.layers(
                 [
                     new panel.rounded("white", 0, 0, 6, 6),
 			        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
-                    new panel.currentV(
-                        new panel.rounded("black", 0, 0, 4, 4), 90, 1)
+                    new pane.shrink(new panel.currentV(
+                        new panel.rounded("black", 0, 0, 4, 4), 90, 1),1,1),
                 ]),
                 0,
             ]),
