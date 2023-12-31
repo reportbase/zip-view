@@ -4135,7 +4135,14 @@ var taplst =
             var k = (y - context.button2rect.y) / context.button2rect.height;
             var j = buttonobj.length()*k;
             buttonobj.set(j);
+            context.canvas.pinching = 1;
             menuobj.draw();
+            clearTimeout(context.wheeltime)
+            context.wheeltime = setTimeout(function()
+            {
+                context.canvas.pinching = 0;
+                menuobj.draw()
+            }, 1000);
         }            
         else if (canvas.timerect &&
             canvas.timerect.hitest(x, y))
@@ -4288,14 +4295,7 @@ var taplst =
                 buttonobj.addperc(k < 0.25 ? -0.05 : 0.05);  
             else
                 buttonobj.reset();
-            context.canvas.pinching = 1;
             menuobj.draw();
-            clearTimeout(context.wheeltime)
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.pinching = 0;
-                menuobj.draw()
-            }, 1000);
         }
         else if (
             headcnv.height &&
@@ -4339,7 +4339,6 @@ var taplst =
         {
             var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
             context.canvas.hollyobj.setperc(k);
-            menuobj.draw()
             context.canvas.panning = 1;
             menuobj.draw()
             clearTimeout(context.wheelpanningtime)
