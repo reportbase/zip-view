@@ -4193,15 +4193,17 @@ var taplst =
         else if (context.aligntoprect &&
             context.aligntoprect.hitest(x, y))
         {
+            var time = _8cnv.timeobj.current();
             aligncenter();
-            aligntop();
+            aligntop(time);
             menuobj.draw();
         }
         else if (context.alignbottomrect &&
             context.alignbottomrect.hitest(x, y))
         {
-            aligncenter();
+            var time = _8cnv.timeobj.current();
             alignbottom();
+            aligntop(time);
             menuobj.draw();
         }
         else if (context.button2rect &&
