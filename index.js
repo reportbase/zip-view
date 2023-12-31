@@ -4202,7 +4202,7 @@ var taplst =
             context.alignbottomrect.hitest(x, y))
         {
             var time = _8cnv.timeobj.current();
-            alignbottom();
+            aligncenter();
             alignbottom(time);
             menuobj.draw();
         }
