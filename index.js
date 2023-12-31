@@ -2737,8 +2737,8 @@ var wheelst =
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
             buttonobj.add(e);
-            context.canvas.pinching = 1;
             menuobj.draw();
+            context.canvas.pinching = 1;
             clearTimeout(context.wheeltime)
             context.wheeltime = setTimeout(function()
             {
@@ -3623,13 +3623,27 @@ var keylst =
             else if (key == "-" || key == "[")
             {
                 buttonobj.addperc(-1.0 / 100);
-                menuobj.draw()
+                menuobj.draw()               
+                context.canvas.pinching = 1;
+                clearTimeout(context.wheeltime)
+                context.wheeltime = setTimeout(function()
+                {
+                    context.canvas.pinching = 0;
+                    menuobj.draw()
+                }, 1000);
                 evt.preventDefault();
             }
             else if (key == "+" || key == "]" || key == "=")
             {
                 buttonobj.addperc(1.0 / 100);
                 menuobj.draw()
+                context.canvas.pinching = 1;
+                clearTimeout(context.wheeltime)
+                context.wheeltime = setTimeout(function()
+                {
+                    context.canvas.pinching = 0;
+                    menuobj.draw()
+                }, 1000);
                 evt.preventDefault();
             }
             else if (
@@ -3641,6 +3655,13 @@ var keylst =
                 else
                     context.canvas.hollyobj.addperc(-25/250);    
                 menuobj.draw();
+                context.canvas.panning = 1;
+                clearTimeout(context.panningtime)
+                context.panningtime = setTimeout(function()
+                {
+                    context.canvas.panning = 0;
+                    menuobj.draw()
+                }, 1000);
                 evt.preventDefault();
             }
             else if (
@@ -3652,6 +3673,13 @@ var keylst =
                 else
                     context.canvas.hollyobj.addperc(25/250);    
                 menuobj.draw();
+                context.canvas.panning = 1;
+                clearTimeout(context.panningtime)
+                context.panningtime = setTimeout(function()
+                {
+                    context.canvas.panning = 0;
+                    menuobj.draw()
+                }, 1000);
                 evt.preventDefault();
             }
             else if (key == "0")
