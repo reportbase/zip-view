@@ -1399,7 +1399,7 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.rounded(GALLFILL, 0, 0, 24, 24),
-			            new panel.cols([80,0,80]),
+			            new panel.cols([80,0,80],
                         [
                             new panel.circle(GALLFILL, 0, 0),
                             0,
