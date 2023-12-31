@@ -7071,7 +7071,7 @@ function setupmenus()
         title: `Images   \u{25B6}\nShow image list`,
         func: function()
         {
-		    leftmenu(_6cnvctx)
+		    rightmenu(_6cnvctx)
         	return false;
         }
     },   
@@ -7142,7 +7142,7 @@ function setupmenus()
     if (1)
         _7cnv.sliceobj.data.push(
         {
-            title: "Debug   \u{25B6}",
+            title: "Options   \u{25B6}",
             func: function()
             {
                 leftmenu(_3cnvctx);
