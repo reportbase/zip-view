@@ -4210,40 +4210,9 @@ var taplst =
         else if (context.aligntoprect &&
             context.aligntoprect.hitest(x, y))
         {
-            if (buttonobj.value() < window.innerHeight)
-            {
-                aligncenter()
-                var k = _8cnv.timeobj.length() / galleryobj.length();
-                _8cnv.timeobj.rotate(k);
-                menuobj.draw();
-            }
-            else
-            {
-                var time = _8cnv.timeobj.current();
-                aligncenter()
-                aligntop(time);
-            }
-                
-            menuobj.draw();
-        }
-        else if (context.alignbottomrect &&
-            context.alignbottomrect.hitest(x, y))
-        {
-            if (buttonobj.value() < window.innerHeight)
-            {
-                aligncenter()
-                var k = _8cnv.timeobj.length() / galleryobj.length();
-                _8cnv.timeobj.rotate(-k);
-                menuobj.draw();
-            }
-            else
-            {
-                var time = _8cnv.timeobj.current();
-                aligncenter()
-                alignbottom(time);
-            }
-                
-            menuobj.draw();
+            headobj.toggle();
+            galleryobj.set(n);
+            menuobj.draw()
         }
         else if (context.button2rect &&
             context.button2rect.hitest(x, y))
@@ -4477,54 +4446,41 @@ var taplst =
         {
 
         }
-        else
+        else if (x < rect.width/2)
         {
-            var visibles = canvas.visibles;
-            var k;
-            for (k = 0; k < visibles.length; k++)
+            if (buttonobj.value() < window.innerHeight)
             {
-                var j = visibles[k];
-                if (!j.slice || !j.slice.rect)
-                    continue;
-                if (j.slice.rect.hitest(x, y))
-                    break;
-            }
-
-            if (k == visibles.length)
-                return;
-            var n = visibles[k].n;
-            var nn = n+1;
-            var np = n-1;
-            if (nn >= galleryobj.length())
-                nn = 0;
-            if (nn == -1)
-                nn = galleryobj.length()-1;
-            var slice = canvas.sliceobj.data[n];
-            y -= slice.rect.y;
-           	if (slice.moveprev && slice.moveprev.hitest(x, y))
-    		{
-    		    var j = canvas.timeobj.length() / galleryobj.length();
-    		    canvas.timeobj.rotate(j);  
-                galleryobj.set(np);        
+                aligncenter()
+                var k = _8cnv.timeobj.length() / galleryobj.length();
+                _8cnv.timeobj.rotate(k);
                 menuobj.draw();
-    		}
-    		else if (slice.movenext && slice.movenext.hitest(x, y))
-    		{
-    		    var j = canvas.timeobj.length() / galleryobj.length();
-    		    canvas.timeobj.rotate(-j);     
-                galleryobj.set(nn);
-                menuobj.draw();
-    		}
-            else if (slice.inforect && slice.inforect.hitest(x, y))
-            {
-                rightmenu(_6cnvctx)
             }
             else
-            { 
-                headobj.toggle();
-                galleryobj.set(n);
-                menuobj.draw()
+            {
+                var time = _8cnv.timeobj.current();
+                aligncenter()
+                aligntop(time);
             }
+                
+            menuobj.draw();
+        }
+        else
+        {
+            if (buttonobj.value() < window.innerHeight)
+            {
+                aligncenter()
+                var k = _8cnv.timeobj.length() / galleryobj.length();
+                _8cnv.timeobj.rotate(-k);
+                menuobj.draw();
+            }
+            else
+            {
+                var time = _8cnv.timeobj.current();
+                aligncenter()
+                alignbottom(time);
+            }
+                
+            menuobj.draw();
         }
     },
 },
