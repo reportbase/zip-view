@@ -1390,13 +1390,21 @@ var displaylst =
         context.pirect = new rectangle();
         if (!headcnv.height)
     	{        
-            var a = new panel.rows([0,60,20,12],
+            var a = new panel.rows([0,80,20,12],
             [
                 0,
                 new panel.cols([0,200,0],
                 [
                     0,
-                    new panel.rounded(GALLFILL, 0, 0, 12, 12),    
+                    new panel.layers(
+                    [
+                        new panel.rounded(GALLFILL, 0, 0, 24, 24),
+			            new panel.cols([80,0,80]),
+                        [
+                            new panel.circle(GALLFILL, 0, 0),
+                            0,
+                            new panel.circle(GALLFILL, 0, 0),
+                        ]),
                     0,
                 ]),
                 0,
