@@ -3577,8 +3577,15 @@ var keylst =
             {
 		        if (canvas.ctrlKey)    
         		{
-                    aligncenter(0)
-                    aligntop();
+                    if (buttonobj.value() < window.innerHeight)
+                    {
+                        aligncenter(0)
+                    }
+                    else
+                    {
+                        aligncenter(0)
+                        aligntop();
+                    }
                     menuobj.draw();
                 }
                 else
