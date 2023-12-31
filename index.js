@@ -1390,8 +1390,15 @@ var displaylst =
         context.pirect = new rectangle();
         if (!headcnv.height)
     	{        
-            var a = new panel.rows([0,12],
+            var a = new panel.rows([0,60,20,12],
             [
+                0,
+                new panel.cols([0,200,0],
+                [
+                    0,
+                    new panel.rounded(GALLFILL, 0, 0, 12, 12),    
+                    0,
+                ]),
                 0,
                 new panel.cols([30,0,30],
                 [
@@ -1399,7 +1406,7 @@ var displaylst =
                     new panel.layers(
                     [
                        ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
-                            new panel.rounded(GALLFILL, 0, 0, 8, 8):0,    
+                            new panel.rounded(GALLFILL, 0, 0, 4, 4):0,    
                          new panel.expand(new panel.rectangle(canvas.holly2rect), 0, 20),
                         new panel.shrink(new panel.currentH(
                                 new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
@@ -1419,7 +1426,7 @@ var displaylst =
                     new panel.layers(
                     [
                         context.canvas.pinching?
-                            new panel.rounded(GALLFILL, 0, 0, 8, 8):0,
+                            new panel.rounded(GALLFILL, 0, 0, 4, 4):0,
                         new panel.expand(new panel.rectangle(context.button2rect), 10, 0),
                         new panel.shrink(
                             new panel.currentV(
@@ -1430,7 +1437,7 @@ var displaylst =
                     new panel.layers(
                     [
                         (context.swipetimeout||canvas.panning)&&!canvas.pinching?
-                            new panel.rounded(GALLFILL, 0, 0, 8, 8):0,
+                            new panel.rounded(GALLFILL, 0, 0, 4, 4):0,
                         new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
                         new panel.shrink(
                             new panel.currentV(
@@ -4395,7 +4402,11 @@ var taplst =
         {
             closemenu()
         }
-        else 
+        else if (x < 30 || x > rect.width-30)
+        {
+
+        }
+        else
         {
             var visibles = canvas.visibles;
             var k;
