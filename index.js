@@ -4211,7 +4211,6 @@ var taplst =
             context.aligntoprect.hitest(x, y))
         {
             headobj.toggle();
-            galleryobj.set(n);
             menuobj.draw()
         }
         else if (context.button2rect &&
@@ -4442,9 +4441,14 @@ var taplst =
         {
             closemenu()
         }
-        else if (x < 30 || x > rect.width-30)
+        else if (x < 20 || x > rect.width-20)
         {
 
+        }
+        else if (headcnv.height)
+        {
+            headobj.hide();
+            menobj.draw();
         }
         else if (x < rect.width/2)
         {
