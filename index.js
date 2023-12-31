@@ -2436,7 +2436,7 @@ var makehammer = function(context, v, t)
     ham.get("swipe").set({direction: Hammer.DIRECTION_ALL});
     ham.get('swipe').set({velocity: 0.6}); //0.40
     ham.get('swipe').set({threshold: 20}); //10
-    ham.get('press').set({time: 400}); //251
+    ham.get('press').set({time: 320}); //251
 
     ham.on("pinch", function(evt)
     {
