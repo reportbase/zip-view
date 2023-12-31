@@ -1393,7 +1393,7 @@ var displaylst =
             var a = new panel.rows([0,60,20,12],
             [
                 0,
-                new panel.cols([0,150,0],
+                new panel.cols([0,180,0],
                 [
                     0,
                     new panel.layers(
@@ -1401,9 +1401,17 @@ var displaylst =
                         new panel.rounded(GALLFILL, 0, 0, 24, 24),
 			            new panel.cols([60,0,60],
                         [
-                            new panel.shrink(new panel.circle(GALLFILL, 0, 0),10,10),
+                            new panel.layers(
+                            [
+                                new panel.shrink(new panel.circle(GALLFILL, 0, 0),5,5),
+                                new panel.arrow( ARROWFILL, 0),
+                            ]),
                             0,
-                            new panel.shrink(new panel.circle(GALLFILL, 0, 0),10,10)
+                            new panel.layers(
+                            [
+                                new panel.shrink(new panel.circle(GALLFILL, 0, 0),5,5),
+                                new panel.arrow( ARROWFILL, 180),
+                            ]),
                         ]),
                     ]),
                     0,
