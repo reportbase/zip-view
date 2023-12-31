@@ -3545,13 +3545,12 @@ var keylst =
             {
                 var k = _8cnv.timeobj.length() / galleryobj.length();
                 _8cnv.timeobj.rotate(k);
-                menuobj.draw();
-                context.canvas.pinching = 1;
+                context.canvas.panning = 1;
                 menuobj.draw()
                 clearTimeout(context.wheeltime)
                 context.wheeltime = setTimeout(function()
                 {
-                    context.canvas.pinching = 0;
+                    context.canvas.panning = 0;
                     menuobj.draw()
                 }, 1000);
             }
@@ -3569,20 +3568,12 @@ var keylst =
                     _8cnv.timeobj.rotate(-k);
                     menuobj.draw();
                 }
-                context.canvas.pinching = 1;
+                context.canvas.panning = 1;
                 menuobj.draw()
                 clearTimeout(context.wheeltime)
                 context.wheeltime = setTimeout(function()
                 {
-                    context.canvas.pinching = 0;
-                    menuobj.draw()
-                }, 1000);
-                context.canvas.pinching = 1;
-                menuobj.draw()
-                clearTimeout(context.wheeltime)
-                context.wheeltime = setTimeout(function()
-                {
-                    context.canvas.pinching = 0;
+                    context.canvas.panning = 0;
                     menuobj.draw()
                 }, 1000);
             }
@@ -3605,12 +3596,12 @@ var keylst =
                             setInterval(function(){menuobj.draw()}, GALLERYMAIN);
                 }
                 
-                context.canvas.pinching = 1;
+                context.canvas.panning = 1;
                 menuobj.draw()
                 clearTimeout(context.wheeltime)
                 context.wheeltime = setTimeout(function()
                 {
-                    context.canvas.pinching = 0;
+                    context.canvas.panning = 0;
                     menuobj.draw()
                 }, 1000);
                 evt.preventDefault();
@@ -3634,12 +3625,12 @@ var keylst =
                             setInterval(function(){menuobj.draw();}, GALLERYMAIN);
                 }
                 
-                context.canvas.pinching = 1;
+                context.canvas.panning = 1;
                 menuobj.draw()
                 clearTimeout(context.wheeltime)
                 context.wheeltime = setTimeout(function()
                 {
-                    context.canvas.pinching = 0;
+                    context.canvas.panning = 0;
                     menuobj.draw()
                 }, 1000);
                 evt.preventDefault();
