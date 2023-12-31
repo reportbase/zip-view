@@ -3636,8 +3636,8 @@ var keylst =
             else if (key == "+" || key == "]" || key == "=")
             {
                 buttonobj.addperc(1.0 / 100);
-                menuobj.draw()
                 context.canvas.pinching = 1;
+                menuobj.draw()
                 clearTimeout(context.wheeltime)
                 context.wheeltime = setTimeout(function()
                 {
@@ -3654,8 +3654,8 @@ var keylst =
                     context.canvas.hollyobj.set(0);
                 else
                     context.canvas.hollyobj.addperc(-25/250);    
-                menuobj.draw();
                 context.canvas.panning = 1;
+                menuobj.draw();
                 clearTimeout(context.panningtime)
                 context.panningtime = setTimeout(function()
                 {
@@ -3672,8 +3672,8 @@ var keylst =
                     context.canvas.hollyobj.set(context.canvas.hollyobj.length()-1);
                 else
                     context.canvas.hollyobj.addperc(25/250);    
-                menuobj.draw();
                 context.canvas.panning = 1;
+                menuobj.draw();
                 clearTimeout(context.panningtime)
                 context.panningtime = setTimeout(function()
                 {
