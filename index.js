@@ -1636,9 +1636,10 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
+                    new panel.rounded("white", 0, 0, 6, 6),
 			        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
                     new panel.currentV(
-                        new panel.rounded("white", 0, TRANSPARENT, 5, 5), 90, 1)
+                        new panel.rounded("black", 0, 0, 4, 4), 90, 1)
                 ]),
                 0,
             ]),
@@ -3610,7 +3611,7 @@ var keylst =
                     {
                         aligncenter()
                         var k = _8cnv.timeobj.length() / galleryobj.length();
-                        _8cnv.timeobj.rotate(-k);
+                        _8cnv.timeobj.rotate(k);
                         menuobj.draw();
                     }
                     else
@@ -3650,7 +3651,7 @@ var keylst =
                     {
                         aligncenter()
                         var k = _8cnv.timeobj.length() / galleryobj.length();
-                        _8cnv.timeobj.rotate(k);
+                        _8cnv.timeobj.rotate(-k);
                         menuobj.draw();
                     }
                     else
