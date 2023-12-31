@@ -1416,7 +1416,10 @@ var displaylst =
                        ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
                             new panel.rounded(GALLFILL, 0, 0, 6, 6):0,    
                          new panel.expand(new panel.rectangle(canvas.holly2rect), 0, 20),
-                        new panel.shrink(new panel.currentH(new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
+                        new panel.shrink(new panel.currentH(
+                            new panel.rounded(
+                                ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
+                                GALLNUB:TRANSPARENT, 0, 0, 4, 4), 90, 0), 2, 2),
                     ]),
                     0,
                 ]),
@@ -1435,7 +1438,9 @@ var displaylst =
                         context.canvas.pinching?
                             new panel.rounded(GALLFILL, 0, 0, 6, 6):0,
                         new panel.expand(new panel.rectangle(context.button2rect), 10, 0),
-                        new panel.shrink(new panel.currentV(new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
+                        new panel.shrink(new panel.currentV(
+                            new panel.rounded(context.canvas.pinching?GALLNUB:TRANSPARENt, 
+                                0, 0, 4, 4), 90, 0), 2, 2),
                     ]),
                     0,
                     new panel.layers(
@@ -1443,7 +1448,9 @@ var displaylst =
                         (context.swipetimeout||canvas.panning)&&!canvas.pinching?
                             new panel.rounded(GALLFILL, 0, 0, 6, 6):0,
                         new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
-                        new panel.shrink(new panel.currentV(new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 1), 2, 2),
+                        new panel.shrink(new panel.currentV(
+                            new panel.rounded((context.swipetimeout||canvas.panning)&&!canvas.pinching?
+                                    GALLNUB:TRANSPARENT, 0, 0, 4, 4), 90, 1), 2, 2),
                     ]),
                 ]),
                 0
