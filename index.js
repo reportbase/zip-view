@@ -1327,6 +1327,7 @@ var bossdisplayobj = new circular_array("", bossdisplaylst);
 
 function cliptext(context, str, width)
 {
+	context.font = DEFAULTFONT;
     var fstr = str;
     var n = 0;
     var metrics;	
@@ -6288,6 +6289,7 @@ panel.rotated_text = function()
     }
 };
 
+//panel text
 panel.text = function(color = "white", align = "center", baseline = "middle",
     unused1 = 0, unused2 = 0, font = DEFAULTFONT)
 {
@@ -6305,7 +6307,7 @@ panel.text = function(color = "white", align = "center", baseline = "middle",
         context.textAlign = align;
         context.textBaseline = baseline;
         context.fillStyle = color;
-        context.font = DEFAULTFONT;//font;
+        context.font = font;
 
         var metrics;
         var str = user;
