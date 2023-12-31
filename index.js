@@ -2737,8 +2737,8 @@ var wheelst =
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
             buttonobj.add(e);
-            menuobj.draw();
             context.canvas.pinching = 1;
+            menuobj.draw();
             clearTimeout(context.wheeltime)
             context.wheeltime = setTimeout(function()
             {
@@ -2749,14 +2749,14 @@ var wheelst =
         else
         {
 		    menuobj.updown(context, delta, 60)
-        	menuobj.draw();
-            if (!clearInterval(context.swipetimeout))
+        	if (!clearInterval(context.swipetimeout))
             {
                  context.swipetimeout = setInterval(
                    function(){menuobj.draw();}, GALLERYMAIN);
             }
 
             context.canvas.panning = 1;
+            menuobj.draw()
             clearTimeout(context.wheelpanningtime)
             context.wheelpanningtime = setTimeout(function()
             {
@@ -2768,6 +2768,7 @@ var wheelst =
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         context.canvas.panning = 1;
+        menuobj.draw()
         clearTimeout(context.wheelpanningtime)
         context.wheelpanningtime = setTimeout(function()
         {
@@ -4127,7 +4128,6 @@ var taplst =
             var j = canvas.hollyobj.length()*k;
             canvas.hollyobj.set(j);
             menuobj.draw();
-            return true;
         }            
         else if (context.button2rect &&
             context.button2rect.hitest(x, y))
@@ -4136,7 +4136,6 @@ var taplst =
             var j = buttonobj.length()*k;
             buttonobj.set(j);
             menuobj.draw();
-            return true;
         }            
         else if (canvas.timerect &&
             canvas.timerect.hitest(x, y))
@@ -4146,7 +4145,14 @@ var taplst =
             var j = obj.length()*(1-k);
             obj.set(j);
             menuobj.draw();
-            return true;
+            context.canvas.panning = 1;
+            menuobj.draw()
+            clearTimeout(context.wheelpanningtime)
+            context.wheelpanningtime = setTimeout(function()
+            {
+                context.canvas.panning = 0;
+                menuobj.draw()
+            }, 1000);
         }            
         else if (context.pirect &&
             context.pirect.hitest(x, y))
@@ -4156,7 +4162,6 @@ var taplst =
             if (!context.swipetimeout)
                 context.swipetimeout = 
                     setInterval(function(){menuobj.draw();}, GALLERYMAIN);
-            return true;
         }            
         else if (
             headcnv.height &&
@@ -4283,7 +4288,14 @@ var taplst =
                 buttonobj.addperc(k < 0.25 ? -0.05 : 0.05);  
             else
                 buttonobj.reset();
+            context.canvas.pinching = 1;
             menuobj.draw();
+            clearTimeout(context.wheeltime)
+            context.wheeltime = setTimeout(function()
+            {
+                context.canvas.pinching = 0;
+                menuobj.draw()
+            }, 1000);
         }
         else if (
             headcnv.height &&
@@ -4328,6 +4340,14 @@ var taplst =
             var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
             context.canvas.hollyobj.setperc(k);
             menuobj.draw()
+            context.canvas.panning = 1;
+            menuobj.draw()
+            clearTimeout(context.wheelpanningtime)
+            context.wheelpanningtime = setTimeout(function()
+            {
+                context.canvas.panning = 0;
+                menuobj.draw()
+            }, 1000);
         }
         else if (context.homerect && context.homerect.hitest(x, y))
         {
