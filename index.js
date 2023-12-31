@@ -1405,6 +1405,7 @@ var displaylst =
                             0,
                             new panel.circle(GALLFILL, 0, 0),
                         ]),
+                    ]),
                     0,
                 ]),
                 0,
