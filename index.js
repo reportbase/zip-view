@@ -1403,14 +1403,14 @@ var displaylst =
                         [
                             new panel.layers(
                             [
-                                new panel.shrink(new panel.circle(GALLFILL, 0, 0),5,5),
-                                new panel.shrink(new panel.arrow( ARROWFILL, 0), 15, 15),
+                                new panel.shrink(new panel.circle(GALLFILL, 0, 0), 5, 5),
+                                new panel.shrink(new panel.arrow("rgba(255,255,255,0.7)", 0), 18, 18),
                             ]),
                             0,
                             new panel.layers(
                             [
-                                new panel.shrink(new panel.circle(GALLFILL, 0, 0),5,5),
-                                new panel.shrink(new panel.arrow( ARROWFILL, 180), 15, 15),
+                                new panel.shrink(new panel.circle(GALLFILL, 0, 0), 5, 5),
+                                new panel.shrink(new panel.arrow("rgba(255,255,255,0.7)", 180), 18, 18),
                             ]),
                         ]),
                     ]),
@@ -1423,10 +1423,9 @@ var displaylst =
                     new panel.layers(
                     [
                        ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
-                            new panel.rounded(GALLFILL, 0, 0, 4, 4):0,    
+                            new panel.rounded(GALLFILL, 0, 0, 8, 8):0,    
                          new panel.expand(new panel.rectangle(canvas.holly2rect), 0, 20),
-                        new panel.shrink(new panel.currentH(
-                                new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
+                        new panel.shrink(new panel.currentH(new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
                     ]),
                     0,
                 ]),
@@ -1443,23 +1442,17 @@ var displaylst =
                     new panel.layers(
                     [
                         context.canvas.pinching?
-                            new panel.rounded(GALLFILL, 0, 0, 4, 4):0,
+                            new panel.rounded(GALLFILL, 0, 0, 8, 8):0,
                         new panel.expand(new panel.rectangle(context.button2rect), 10, 0),
-                        new panel.shrink(
-                            new panel.currentV(
-                                new panel.rounded(GALLNUB, 0, 
-                                        "rgba(0,0,0,0.0)", 4, 4), 90, 0), 2, 2),
+                        new panel.shrink(new panel.currentV(new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
                     ]),
                     0,
                     new panel.layers(
                     [
                         (context.swipetimeout||canvas.panning)&&!canvas.pinching?
-                            new panel.rounded(GALLFILL, 0, 0, 4, 4):0,
+                            new panel.rounded(GALLFILL, 0, 0, 8, 8):0,
                         new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
-                        new panel.shrink(
-                            new panel.currentV(
-                                new panel.rounded(GALLNUB, 0, 
-                                        "rgba(0,0,0,0.0)", 4, 4), 90, 1), 2, 2),
+                        new panel.shrink(new panel.currentV(new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 1), 2, 2),
                     ]),
                 ]),
                 0
