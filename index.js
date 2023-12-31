@@ -4501,7 +4501,7 @@ var taplst =
             headobj.hide();
             menuobj.draw();
         }
-        else if (x < rect.width/2)
+        else if (0)//x < rect.width/2)
         {
             if (buttonobj.value() < window.innerHeight)
             {
