@@ -3431,8 +3431,8 @@ var presslst =
             buttonobj.portrait = 1;
             for (var n = 0; n < buttonobj.length()-1; ++n)
             {
-                var k1 = buttonobj.data[j];
-		        var k2 = buttonobj.data[j+1]
+                var k1 = buttonobj.data[n];
+		        var k2 = buttonobj.data[n+1]
                 if (window.innerHeight >= k1 &&
                     window.innerHeight < k2)
                     break;
