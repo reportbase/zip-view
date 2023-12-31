@@ -3623,8 +3623,8 @@ var keylst =
             else if (key == "-" || key == "[")
             {
                 buttonobj.addperc(-1.0 / 100);
-                menuobj.draw()               
                 context.canvas.pinching = 1;
+                menuobj.draw()               
                 clearTimeout(context.wheeltime)
                 context.wheeltime = setTimeout(function()
                 {
