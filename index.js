@@ -1639,7 +1639,7 @@ var displaylst =
                     new panel.rounded("white", 0, 0, 6, 6),
 			        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
                     new panel.shrink(new panel.currentV(
-                        new panel.rounded("black", 0, 0, 4, 4), 90, 1),1,3),
+                        new panel.rounded("black", 0, 0, 4, 4), 90, 1),2,3),
                 ]),
                 0,
             ]),
@@ -4215,17 +4215,39 @@ var taplst =
         else if (context.aligntoprect &&
             context.aligntoprect.hitest(x, y))
         {
-            var time = _8cnv.timeobj.current();
-            aligncenter();
-            aligntop(time);
+            if (buttonobj.value() < window.innerHeight)
+            {
+                aligncenter()
+                var k = _8cnv.timeobj.length() / galleryobj.length();
+                _8cnv.timeobj.rotate(k);
+                menuobj.draw();
+            }
+            else
+            {
+                var time = _8cnv.timeobj.current();
+                aligncenter()
+                aligntop(time);
+            }
+                
             menuobj.draw();
         }
         else if (context.alignbottomrect &&
             context.alignbottomrect.hitest(x, y))
         {
-            var time = _8cnv.timeobj.current();
-            aligncenter();
-            alignbottom(time);
+            if (buttonobj.value() < window.innerHeight)
+            {
+                aligncenter()
+                var k = _8cnv.timeobj.length() / galleryobj.length();
+                _8cnv.timeobj.rotate(k);
+                menuobj.draw();
+            }
+            else
+            {
+                var time = _8cnv.timeobj.current();
+                aligncenter()
+                alignbottom(time);
+            }
+                
             menuobj.draw();
         }
         else if (context.button2rect &&
