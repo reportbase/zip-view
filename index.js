@@ -1398,18 +1398,20 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.rounded(GALLFILL, 0, 0, 24, 24),
+                        //new panel.rounded(GALLFILL, 0, 0, 24, 24),
 			            new panel.cols([60,0,60],
                         [
                             new panel.layers(
                             [
-                                new panel.shrink(new panel.circle(GALLFILL, 0, 0), 5, 5),
+                                ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
+                                    new panel.shrink(new panel.circle(GALLFILL, 0, 0), 5, 5):0,
                                 new panel.shrink(new panel.arrow("rgba(255,255,255,0.7)", 0), 19, 19),
                             ]),
                             0,
                             new panel.layers(
                             [
-                                new panel.shrink(new panel.circle(GALLFILL, 0, 0), 5, 5),
+                                ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
+                                    new panel.shrink(new panel.circle(GALLFILL, 0, 0), 5, 5):0,
                                 new panel.shrink(new panel.arrow("rgba(255,255,255,0.7)", 180), 19, 19),
                             ]),
                         ]),
