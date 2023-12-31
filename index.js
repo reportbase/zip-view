@@ -1404,13 +1404,13 @@ var displaylst =
                             new panel.layers(
                             [
                                 new panel.shrink(new panel.circle(GALLFILL, 0, 0),5,5),
-                                new panel.shrink(new panel.arrow( ARROWFILL, 0), 15, 15);
+                                new panel.shrink(new panel.arrow( ARROWFILL, 0), 15, 15),
                             ]),
                             0,
                             new panel.layers(
                             [
                                 new panel.shrink(new panel.circle(GALLFILL, 0, 0),5,5),
-                                new panel.shrink(new panel.arrow( ARROWFILL, 180), 15, 15);
+                                new panel.shrink(new panel.arrow( ARROWFILL, 180), 15, 15),
                             ]),
                         ]),
                     ]),
