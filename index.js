@@ -4448,9 +4448,25 @@ var taplst =
         {
             closemenu()
         }
-        else if (x < 20 || x > rect.width-20)
+        else if (x < 30 && y < 30)
         {
-
+            buttonobj.set(0);
+            menuobj.draw()
+        }
+        else if (x > rect.width-30 && y < 30)
+        {
+            _8cnv.timeobj.set(Math.PI)
+            menuobj.draw();
+        }
+        else if (x > rect.width-30 && y > rect.height-30)
+        {
+            _8cnv.timeobj.set(0)
+            menuobj.draw();
+        }
+        else if (x < 30 && y > rect.height-30)
+        {
+            buttonobj.set(buttonobj.length()-1)
+            menuobj.draw();
         }
         else if (headcnv.height)
         {
