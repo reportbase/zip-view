@@ -4499,6 +4499,8 @@ var taplst =
         {
             var n = getvisible(x, y);
             aligncenter(n);
+            if (buttonobj.value() > window.innerHeight)
+                aligntop();
             menuobj.draw();
         }
     },
