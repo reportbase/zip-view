@@ -3422,7 +3422,25 @@ var presslst =
         var n = getvisible(x, y);
         aligncenter(n);
         buttonobj.reset();
- 	menuobj.draw();    
+        if (buttonobj.portrait)
+        {
+            buttonobj.portrait = 0;
+        }
+        else
+        {
+            buttonobj.portrait = 1;
+            for (var n = 0; n < buttonobj.length()-1; ++n)
+            {
+                var j = buttonobj.data[j];
+                if (window.innerHeight >= j &&
+                    window.innerHeight < j)
+                    break;
+                buttonobj.set(n);
+                break;
+            }
+        }
+     	    
+        menuobj.draw();
     },
     press: function(context, rect, x, y) 
     {    
