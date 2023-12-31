@@ -1401,9 +1401,7 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.rectangle(context.aligntoprect),
-                        ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
-                            new panel.shrink(new panel.circle(GALLFILL, 0, 0), 5, 5):0,
-                        new panel.shrink(new panel.arrow(GALLNUB, 0), 19, 19),
+                        new panel.shrink(new panel.circle(GALLFILL, 0, 0), 5, 5),
                     ]),
                     0,
                 ]),
@@ -1439,7 +1437,7 @@ var displaylst =
                             new panel.rounded(GALLFILL, 0, 0, 6, 6):0,
                         new panel.expand(new panel.rectangle(context.button2rect), 10, 0),
                         new panel.shrink(new panel.currentV(
-                            new panel.rounded(context.canvas.pinching?GALLNUB:TRANSPARENt, 
+                            new panel.rounded(context.canvas.pinching?GALLNUB:TRANSPARENT, 
                                 0, 0, 4, 4), 90, 0), 2, 2),
                     ]),
                     0,
