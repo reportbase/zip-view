@@ -3433,9 +3433,9 @@ var presslst =
             {
                 var k1 = buttonobj.data[n];
 		        var k2 = buttonobj.data[n+1]
-                if (window.innerHeight >= k1 &&
-                    window.innerHeight < k2)
-                    break;
+                if (window.innerHeight < k1 &&
+                    window.innerHeight >= k2)
+                    continue;
                 buttonobj.set(n);
                 break;
             }
