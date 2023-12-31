@@ -1392,7 +1392,7 @@ var displaylst =
         context.pirect = new rectangle();
         if (!headcnv.height)
     	{        
-            var a = new panel.rows([0,80,20,12],
+            var a = new panel.rows([0,80,20,12,2],
             [
                 0,
                 new panel.cols([0,80,0],
@@ -1435,8 +1435,9 @@ var displaylst =
  		    var a = new panel.rows([30,0,30],
             [
                 0,
-                new panel.colsA([12, 0, 12],
+                new panel.colsA([2, 12, 0, 12, 2],
                 [
+                    0,
                     new panel.layers(
                     [
                         context.canvas.pinching?
@@ -1456,6 +1457,7 @@ var displaylst =
                             new panel.rounded((context.swipetimeout||canvas.panning)&&!canvas.pinching?
                                     GALLNUB:TRANSPARENT, 0, 0, 4, 4), 90, 1), 2, 2),
                     ]),
+                    0,
                 ]),
                 0
             ]);
