@@ -4448,7 +4448,7 @@ var taplst =
         else if (headcnv.height)
         {
             headobj.hide();
-            menobj.draw();
+            menuobj.draw();
         }
         else if (x < rect.width/2)
         {
