@@ -1626,7 +1626,7 @@ var displaylst =
         var canvas = context.canvas;
         context.save();
         canvas.timerect = new rectangle();
-	    var a = new panel.cols([9, 9, 0, 13, 6],
+	    var a = new panel.cols([9, 9, 0, 11, 6],
 	    [
     		0,
     		0,
@@ -1639,7 +1639,7 @@ var displaylst =
                     new panel.rounded("white", 0, 0, 6, 6),
 			        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
                     new panel.shrink(new panel.currentV(
-                        new panel.rounded("black", 0, 0, 4, 4), 90, 1),3,3),
+                        new panel.rounded("black", 0, 0, 4, 4), 90, 1),1,3),
                 ]),
                 0,
             ]),
