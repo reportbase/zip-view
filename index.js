@@ -1384,6 +1384,8 @@ var displaylst =
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
         context.bookmarkrect = new rectangle();
+        context.aligntoprect = new rectangle();
+        context.alignbottomrect = new rectangle();
 	    context.buttonrect = new rectangle();
         context.button2rect = new rectangle();
         canvas.timerect = new rectangle();
@@ -1403,16 +1405,18 @@ var displaylst =
                         [
                             new panel.layers(
                             [
+                                new panel.rectangle(context.aligntoprect),
                                 ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
                                     new panel.shrink(new panel.circle(GALLFILL, 0, 0), 5, 5):0,
-                                new panel.shrink(new panel.arrow("rgba(255,255,255,0.7)", 0), 19, 19),
+                                new panel.shrink(new panel.arrow("rgba(255,255,255,0.5)", 0), 19, 19),
                             ]),
                             0,
                             new panel.layers(
                             [
+                                new panel.rectangle(context.alignbottomrect),
                                 ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
                                     new panel.shrink(new panel.circle(GALLFILL, 0, 0), 5, 5):0,
-                                new panel.shrink(new panel.arrow("rgba(255,255,255,0.7)", 180), 19, 19),
+                                new panel.shrink(new panel.arrow("rgba(255,255,255,0.5)", 180), 19, 19),
                             ]),
                         ]),
                     ]),
@@ -1425,7 +1429,7 @@ var displaylst =
                     new panel.layers(
                     [
                        ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
-                            new panel.rounded(GALLFILL, 0, 0, 8, 8):0,    
+                            new panel.rounded(GALLFILL, 0, 0, 6, 6):0,    
                          new panel.expand(new panel.rectangle(canvas.holly2rect), 0, 20),
                         new panel.shrink(new panel.currentH(new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
                     ]),
@@ -1444,7 +1448,7 @@ var displaylst =
                     new panel.layers(
                     [
                         context.canvas.pinching?
-                            new panel.rounded(GALLFILL, 0, 0, 8, 8):0,
+                            new panel.rounded(GALLFILL, 0, 0, 6, 6):0,
                         new panel.expand(new panel.rectangle(context.button2rect), 10, 0),
                         new panel.shrink(new panel.currentV(new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
                     ]),
@@ -1452,7 +1456,7 @@ var displaylst =
                     new panel.layers(
                     [
                         (context.swipetimeout||canvas.panning)&&!canvas.pinching?
-                            new panel.rounded(GALLFILL, 0, 0, 8, 8):0,
+                            new panel.rounded(GALLFILL, 0, 0, 6, 6):0,
                         new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
                         new panel.shrink(new panel.currentV(new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 1), 2, 2),
                     ]),
@@ -4186,6 +4190,20 @@ var taplst =
                 menuobj.draw()
             }, 1000);
         }            
+        else if (context.aligntoprect &&
+            context.aligntoprect.hitest(x, y))
+        {
+            aligncenter();
+            aligntop();
+            menuobj.draw();
+        }
+        else if (context.alignbottomrect &&
+            context.alignbottomrect.hitest(x, y))
+        {
+            aligncenter();
+            alignbottom();
+            menuobj.draw();
+        }
         else if (context.button2rect &&
             context.button2rect.hitest(x, y))
         {
