@@ -3450,9 +3450,7 @@ var presslst =
         var n = getvisible(x, y);
         aligncenter(n);
         buttonobj.reset();
-        if (buttonobj.value() > window.innerHeight)
-            aligntop();
-		menuobj.draw();    
+ 	menuobj.draw();    
     },
     press: function(context, rect, x, y) 
     {    
