@@ -892,8 +892,6 @@ var footlst =
 		]);
 
 	    var str = login.email ? login.email : "Login";
-        str = "abc def efg hij qrs tuv wxy 123 456 789 #!@ abc def efg hij qrs tuv wxy 123 456 789 #!@";
-        str = cliptext(context, str, rect.width*0.80);
         a.draw(context, rect, 
 	   	[
 		   `\u{25C0}   ${url.host}`,
@@ -1327,8 +1325,7 @@ var bossdisplayobj = new circular_array("", bossdisplaylst);
 
 function cliptext(context, str, width)
 {
-	context.font = DEFAULTFONT;
-    var fstr = str;
+   var fstr = str;
     var n = 0;
     var metrics;	
     do 
@@ -1484,7 +1481,6 @@ var displaylst =
         var name = value.name;    
     	if (value.blob && value.blob.name)
     		name = value.blob.name;
-        name = cliptext(context, name, rainstep*0.25);
         var a = new panel.rowsA(
         [
             HEADTOP, 
@@ -5015,13 +5011,9 @@ var buttonlst =
         var name = user.name;
     	if (user.blob && user.blob.name)
             name = user.blob.name;
-        name = cliptext(context, name, 90);
         k.push(name);
         if (user.id)
-        {
-            var name = cliptext(context, user.id, 120);
-            k.push(name);
-        }
+            k.push(user.id);
         
         /*
       	var bad =
@@ -5315,8 +5307,8 @@ var buttonlst =
             var name = user.name;
             var lst = [];
             if (url.path)
-                lst.push(cliptext(context, url.path, 60))
-            lst.push(cliptext(context, name, 60));
+                lst.push(url.path)
+            lst.push(name);
             lst.push(`${time+1} of ${galleryobj.length()}`)
             
             a.draw(context, rect, lst, 0);
@@ -6308,9 +6300,9 @@ panel.text = function(color = "white", align = "center", baseline = "middle",
         context.textBaseline = baseline;
         context.fillStyle = color;
         context.font = font;
-
+        
         var metrics;
-        var str = user;
+        var str = cliptext(context, user, rect.width);
         var x = rect.x;
         if (align == "center")
             x = rect.x + rect.width / 2;
