@@ -4127,7 +4127,14 @@ var taplst =
             var k = (x - canvas.holly2rect.x) / canvas.holly2rect.width;
             var j = canvas.hollyobj.length()*k;
             canvas.hollyobj.set(j);
+            context.canvas.panning = 1;
             menuobj.draw();
+            clearTimeout(context.wheeltime)
+            context.wheeltime = setTimeout(function()
+            {
+                context.canvas.panning = 0;
+                menuobj.draw()
+            }, 1000);
         }            
         else if (context.button2rect &&
             context.button2rect.hitest(x, y))
