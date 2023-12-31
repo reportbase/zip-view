@@ -3432,8 +3432,8 @@ var presslst =
             for (var n = 0; n < buttonobj.length()-1; ++n)
             {
                 var k1 = buttonobj.data[n];
-		        var k2 = buttonobj.data[n+1]
-                if (window.innerHeight < k1 &&
+		            var k2 = buttonobj.data[n+1]
+                if (window.innerHeight < k1 ||
                     window.innerHeight >= k2)
                     continue;
                 buttonobj.set(n);
