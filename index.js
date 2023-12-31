@@ -14,8 +14,8 @@ function ios()
 var url = new URL(window.location.href);
 const THEME = url.searchParams.get("theme");
 const NUBACK = "rgba(0,0,0,0.4)";
-const GALLNUB = THEME == "light" ? "rgba(0,0,0,0.5)" : "rgba(255,255,255,0.5)";
-const GALLFILL = THEME == "light" ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.5)"; 
+const GALLNUB = THEME == "light" ? "rgba(0,0,0,0.75)" : "rgba(255,255,255,0.75)";
+const GALLFILL = THEME == "light" ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)"; 
 const SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const VIRTCONST = 0.8;
 const MAXVIRTUAL = 5760*3;
@@ -1408,7 +1408,7 @@ var displaylst =
                                 new panel.rectangle(context.aligntoprect),
                                 ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
                                     new panel.shrink(new panel.circle(GALLFILL, 0, 0), 5, 5):0,
-                                new panel.shrink(new panel.arrow("rgba(255,255,255,0.5)", 0), 19, 19),
+                                new panel.shrink(new panel.arrow(GALLNUB, 0), 19, 19),
                             ]),
                             0,
                             new panel.layers(
@@ -1416,7 +1416,7 @@ var displaylst =
                                 new panel.rectangle(context.alignbottomrect),
                                 ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
                                     new panel.shrink(new panel.circle(GALLFILL, 0, 0), 5, 5):0,
-                                new panel.shrink(new panel.arrow("rgba(255,255,255,0.5)", 180), 19, 19),
+                                new panel.shrink(new panel.arrow(GALLNUB, 180), 19, 19),
                             ]),
                         ]),
                     ]),
@@ -3606,10 +3606,18 @@ var keylst =
             {
                 if (canvas.ctrlKey)
                 {
-                    var time = _8cnv.timeobj.current();
-                    aligncenter()
-                    aligntop(time);
-					menuobj.draw();
+                    if (buttonobj.value() < window.innerHeight)
+                    {
+                        aligncenter()
+                    }
+                    else
+                    {
+                        var time = _8cnv.timeobj.current();
+                        aligncenter()
+                        aligntop(time);
+                    }
+    					
+                    menuobj.draw();
                 }
                 else
                 {
@@ -3635,9 +3643,16 @@ var keylst =
             {
                 if (canvas.ctrlKey)
                 {
-                    var time = _8cnv.timeobj.current();
-                    aligncenter();
-                    alignbottom(time);
+                    if (buttonobj.value() < window.innerHeight)
+                    {
+                        aligncenter()
+                    }
+                    else
+                    {
+                        var time = _8cnv.timeobj.current();
+                        aligncenter();
+                        alignbottom(time);
+                    }
                     menuobj.draw();
                 }
                 else
