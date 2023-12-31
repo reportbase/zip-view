@@ -4451,22 +4451,50 @@ var taplst =
         else if (x < 30 && y < 30)
         {
             buttonobj.set(0);
-            menuobj.draw()
+            context.canvas.pinching = 1;
+            menuobj.draw();
+            clearTimeout(context.wheeltime)
+            context.wheeltime = setTimeout(function()
+            {
+                context.canvas.pinching = 0;
+                menuobj.draw()
+            }, 1000);
         }
         else if (x > rect.width-30 && y < 30)
         {
             _8cnv.timeobj.set(Math.PI)
+            context.canvas.panning = 1;
             menuobj.draw();
+            clearTimeout(context.wheeltime)
+            context.wheeltime = setTimeout(function()
+            {
+                context.canvas.panning = 0;
+                menuobj.draw()
+            }, 1000);
         }
         else if (x > rect.width-30 && y > rect.height-30)
         {
             _8cnv.timeobj.set(0)
+            context.canvas.panning = 1;
             menuobj.draw();
+            clearTimeout(context.wheeltime)
+            context.wheeltime = setTimeout(function()
+            {
+                context.canvas.panning = 0;
+                menuobj.draw()
+            }, 1000);
         }
         else if (x < 30 && y > rect.height-30)
         {
             buttonobj.set(buttonobj.length()-1)
+            context.canvas.pinching = 1;
             menuobj.draw();
+            clearTimeout(context.wheeltime)
+            context.wheeltime = setTimeout(function()
+            {
+                context.canvas.pinching = 0;
+                menuobj.draw()
+            }, 1000);
         }
         else if (headcnv.height)
         {
