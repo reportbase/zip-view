@@ -1404,9 +1404,9 @@ var displaylst =
                         new panel.circle(GALLFILL, 0, 0),
                         new panel.shrink(new panel.cols([0,0,0],
                             [
-                                new panel.Circle(GALLNUB),
-                                new panel.Circle(GALLNUB),
-                                new panel.Circle(GALLNUB),
+                                new panel.circle(GALLNUB),
+                                new panel.circle(GALLNUB),
+                                new panel.circle(GALLNUB),
                             ]), 5, 5),
                     ]),
                     0,
