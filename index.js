@@ -807,7 +807,7 @@ var footlst =
     }
 },
 {
-    name: "DEBUG",
+    name: "OPTIONS",
     draw: function(context, rect, user, time)
     {
         var canvas = context.canvas;
@@ -828,33 +828,6 @@ var footlst =
         context.restore();
     }
 },
-{
-    name: "TEMPLATE",
-    draw: function(context, rect, user, time)
-    {
-        var canvas = context.canvas;
-        context.save();     
-        canvas.closerect = new rectangle();
-        var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
-        [
-            new panel.layers(
-            [
-                new panel.fill(FOOTBTNCOLOR),
-                new panel.text(),
-                new panel.rectangle(canvas.closerect),
-            ]),
-            0   
-        ]);
-        
-        a.draw(context, rect, 
-        [
-           `\u{25C0}   Templates`,
-           0 
-        ], 0);
-        
-        context.restore();
-    }
-},	
 {
     name: "USER",
     draw: function(context, rect, user, time)
@@ -919,6 +892,8 @@ var footlst =
 		]);
 
 	    var str = login.email ? login.email : "Login";
+        str = "abc def efg hij qrs tuv wxy 123 456 789 #!@ abc def efg hij qrs tuv wxy 123 456 789 #!@";
+        str = cliptext(context, str, rect.width*0.80);
         a.draw(context, rect, 
 	   	[
 		   `\u{25C0}   ${url.host}`,
@@ -3681,15 +3656,12 @@ var keylst =
                 }, 1000);
                 evt.preventDefault();
             }
-            else if (key == " ")
+            else if (key == "tab" || key == " ")
             {
                 headobj.toggle();
                 menuobj.draw()
                 evt.preventDefault();
             }                
-            else if (key == "tab")
-            {
-            }
             else if (key == "\\" || key == "/")
             {
                 var h = headcnv.height ? 0 : HEADHEIGHT;
@@ -5686,7 +5658,7 @@ var eventlst =
     press: "MENU",
     pinch: "MENU",
     display: "MENU",
-    footer: "DEBUG",
+    footer: "OPTIONS",
     buttonheight: 90,
     buttonmargin: 10,
     holly: 0,
