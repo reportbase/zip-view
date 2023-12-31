@@ -1404,13 +1404,13 @@ var displaylst =
                             new panel.layers(
                             [
                                 new panel.shrink(new panel.circle(GALLFILL, 0, 0), 5, 5),
-                                new panel.shrink(new panel.arrow("rgba(255,255,255,0.7)", 0), 18, 18),
+                                new panel.shrink(new panel.arrow("rgba(255,255,255,0.7)", 0), 19, 19),
                             ]),
                             0,
                             new panel.layers(
                             [
                                 new panel.shrink(new panel.circle(GALLFILL, 0, 0), 5, 5),
-                                new panel.shrink(new panel.arrow("rgba(255,255,255,0.7)", 180), 18, 18),
+                                new panel.shrink(new panel.arrow("rgba(255,255,255,0.7)", 180), 19, 19),
                             ]),
                         ]),
                     ]),
