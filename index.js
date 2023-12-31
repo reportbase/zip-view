@@ -1401,7 +1401,7 @@ var displaylst =
                         new panel.rounded(GALLFILL, 0, 0, 24, 24),
 			            new panel.cols([80,0,80],
                         [
-                            new panel.shrink(new panel.circle(GALLFILL, 0, 0),10,10)
+                            new panel.shrink(new panel.circle(GALLFILL, 0, 0),10,10),
                             0,
                             new panel.shrink(new panel.circle(GALLFILL, 0, 0),10,10)
                         ]),
