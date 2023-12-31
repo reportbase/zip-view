@@ -3609,6 +3609,9 @@ var keylst =
                     if (buttonobj.value() < window.innerHeight)
                     {
                         aligncenter()
+                        var k = _8cnv.timeobj.length() / galleryobj.length();
+                        _8cnv.timeobj.rotate(-k);
+                        menuobj.draw();
                     }
                     else
                     {
@@ -3646,6 +3649,9 @@ var keylst =
                     if (buttonobj.value() < window.innerHeight)
                     {
                         aligncenter()
+                        var k = _8cnv.timeobj.length() / galleryobj.length();
+                        _8cnv.timeobj.rotate(k);
+                        menuobj.draw();
                     }
                     else
                     {
