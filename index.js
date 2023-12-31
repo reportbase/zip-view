@@ -1401,7 +1401,13 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.rectangle(context.aligntoprect),
-                        new panel.shrink(new panel.circle(GALLFILL, 0, 0), 5, 5),
+                        new panel.circle(GALLFILL, 0, 0),
+                        new panel.shrink(new panel.cols([0,0,0],
+                            [
+                                new panel.Circle(GALLNUB),
+                                new panel.Circle(GALLNUB),
+                                new panel.Circle(GALLNUB),
+                            ]), 5, 5),
                     ]),
                     0,
                 ]),
