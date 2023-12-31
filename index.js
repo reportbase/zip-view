@@ -4519,7 +4519,7 @@ var taplst =
                 
             menuobj.draw();
         }
-        else
+        else if (0)
         {
             if (buttonobj.value() < window.innerHeight)
             {
@@ -4535,6 +4535,32 @@ var taplst =
                 alignbottom(time);
             }
                 
+            menuobj.draw();
+        }
+        else
+        {
+           var k;
+            for (k = 0; k < visibles.length; k++)
+            {
+                var j = visibles[k];
+                if (!j.slice || !j.slice.rect)
+                    continue;
+                if (j.slice.rect.hitest(x, y))
+                    break;
+            }
+
+            if (k == visibles.length)
+                return;
+            var n = visibles[k].n;
+            var nn = n+1;
+            var np = n-1;
+            if (nn >= galleryobj.length())
+                nn = 0;
+            if (nn == -1)
+                nn = galleryobj.length()-1;
+            var slice = canvas.sliceobj.data[n];
+            y -= slice.rect.y;
+            aligncenter(n);
             menuobj.draw();
         }
     },
