@@ -1005,7 +1005,7 @@ var headlst =
         delete context.gallerymenurect;
 	    var b = ALIEXTENT+10;
         var s = SAFARI ? -1 : b;
-        var e = (rect.width>=360 || SAFARI) ? b:-1;
+        var e = rect.width>=360 ? b:-1;
         var a = new panel.rows([BEXTENT, 0],
         [
             new panel.cols([5, ALIEXTENT, 0, s, e, b, 0, ALIEXTENT, 5],
