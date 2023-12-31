@@ -1392,10 +1392,10 @@ var displaylst =
         context.pirect = new rectangle();
         if (!headcnv.height)
     	{        
-            var a = new panel.rows([0,60,20,12],
+            var a = new panel.rows([0,90,20,12],
             [
                 0,
-                new panel.cols([0,180,0],
+                new panel.cols([0,90,0],
                 [
                     0,
                     new panel.layers(
@@ -1407,7 +1407,7 @@ var displaylst =
                                 new panel.circle(GALLNUB),
                                 new panel.circle(GALLNUB),
                                 new panel.circle(GALLNUB),
-                            ]), 5, 5),
+                            ]), 30, 30),
                     ]),
                     0,
                 ]),
