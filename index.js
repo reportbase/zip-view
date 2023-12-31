@@ -4539,7 +4539,8 @@ var taplst =
         }
         else
         {
-           var k;
+            var visibles = canvas.visibles;
+            var k;
             for (k = 0; k < visibles.length; k++)
             {
                 var j = visibles[k];
