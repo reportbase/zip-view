@@ -3448,6 +3448,7 @@ var mouselst =
         {
             context.canvas.panning = 0;
             context.canvas.pinching = 0;
+	        context.canvas.aligntoptime = 0;	
             menuobj.draw();
         }
     },
