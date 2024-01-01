@@ -3483,6 +3483,9 @@ var presslst =
     name: "GALLERY",
     pressup: function(context, rect, x, y)
     {
+    },
+    press: function(context, rect, x, y) 
+    {    
         var n = getvisible(x, y);
         aligncenter(n);
         buttonobj.reset();
@@ -3502,10 +3505,7 @@ var presslst =
             }
         }
      	    
-        menuobj.draw();
-    },
-    press: function(context, rect, x, y) 
-    {    
+        menuobj.draw();    
     }
 },
 {
