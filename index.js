@@ -7456,7 +7456,7 @@ galleryobj.init = function(obj)
         0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 6,5,4,3,2,1,
     ];
 
-    var len = galleryobj.data[galleryobj.length-1];
+    var len = galleryobj.data[galleryobj.length()-1];
     for (var n = 0; n < len; ++n)
         galleryobj.data.push({})
     
