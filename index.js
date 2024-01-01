@@ -1365,10 +1365,10 @@ var displaylst =
         context.pirect = new rectangle();
         if (!headcnv.height)
     	{        
-            var a = new panel.rows([0,80,20,12,2],
+            var a = new panel.rows([0,60,20,12,2],
             [
                 0,
-                new panel.cols([0,80,0],
+                new panel.cols([0,60,0],
                 [
                     0,
                     new panel.layers(
@@ -1380,7 +1380,7 @@ var displaylst =
                                 new panel.shrink(new panel.circle(GALLNUB),15,15),
                                 new panel.shrink(new panel.circle(GALLNUB),15,15),
                                 new panel.shrink(new panel.circle(GALLNUB),15,15),
-                            ]), 20, 20),
+                            ]), 10, 10),
                     ]),
                     0,
                 ]),
@@ -3389,7 +3389,10 @@ var mouselst = [
     out: function(evt) {},
     enter: function(evt) {},
     up: function(evt) {},
-    move: function(context, rect, x, y) {},
+    move: function(context, rect, x, y) 
+    {
+	    
+    },
 }, 
 ];
 
