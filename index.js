@@ -7457,8 +7457,8 @@ galleryobj.init = function(obj)
     ];
 
     var len = lst[galleryobj.length()-1];
-    for (var n = 0; n < len; ++n)
-        galleryobj.data.push({})
+    //for (var n = 0; n < len; ++n)
+      //  galleryobj.data.push({})
     
     if (Array.isArray(obj.data))
     {
