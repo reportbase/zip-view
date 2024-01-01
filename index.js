@@ -3432,8 +3432,8 @@ var mouselst =
                 menuobj.draw()
             }, NUBDELAY);
         }
-        else if (canvas.aligntoprect &&
-            canvas.aligntoprect.hitest(x, y))
+        else if (context.aligntoprect &&
+            context.aligntoprect.hitest(x, y))
         {
             context.canvas.aligntoptime = 1;
             menuobj.draw();
