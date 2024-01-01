@@ -3394,6 +3394,7 @@ var mouselst = [
     up: function(evt) {},
     move: function(context, rect, x, y) 
     {
+	    var canvas = context.canvas;
         if (canvas.button2rect &&
             canvas.button2rect.hitest(x, y))
         {
