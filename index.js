@@ -34,6 +34,7 @@ const ROUNDEDLINEWIDTH = 4;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
 const FOOTHEIGHT = 80;
 const MAXEXTENT = 10000;
+const NUBDELAY = 1000;
 const MAXIMAGESIZE = MAXEXTENT*MAXEXTENT;
 const MENUSELECT = "rgba(255,175,0,0.4)";
 const MENUTAP = "rgba(255,125,0,0.7)";
@@ -73,6 +74,8 @@ const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 36;
 const IMAGELSTSIZE = 24;
 const BOOKMARKED = "rgba(0,0,255,0.75)";
+const EXPANDRECT = 3;
+const CORNEREXT = 20;
 
 function setjson(key, value)
 {
@@ -1380,19 +1383,19 @@ var displaylst =
                                 new panel.shrink(new panel.circle(GALLNUB),15,15),
                                 new panel.shrink(new panel.circle(GALLNUB),15,15),
                                 new panel.shrink(new panel.circle(GALLNUB),15,15),
-                            ]), 10, 10),
+                            ]), EXPANDRECT, EXPANDRECT),
                     ]),
                     0,
                 ]),
                 0,
-                new panel.cols([30,0,30],
+                new panel.cols([CORNEREXT,0,CORNEREXT],
                 [
                     0,
                     new panel.layers(
                     [
                        ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
                             new panel.rounded(GALLFILL, 0, 0, 6, 6):0,    
-                         new panel.expand(new panel.rectangle(canvas.holly2rect), 0, 20),
+                         new panel.expand(new panel.rectangle(canvas.holly2rect), 0, EXPANDRECT),
                         new panel.shrink(new panel.currentH(
                             new panel.rounded(
                                 ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
@@ -1405,7 +1408,7 @@ var displaylst =
 
             a.draw(context, rect, _8cnv.hollyobj, 0);
             
- 		    var a = new panel.rows([30,0,30],
+ 		    var a = new panel.rows([CORNEREXT,0,CORNEREXT],
             [
                 0,
                 new panel.colsA([2, 12, 0, 12, 2],
@@ -1415,7 +1418,7 @@ var displaylst =
                     [
                         context.canvas.pinching?
                             new panel.rounded(GALLFILL, 0, 0, 6, 6):0,
-                        new panel.expand(new panel.rectangle(context.button2rect), 10, 0),
+                        new panel.expand(new panel.rectangle(context.button2rect), EXPANDRECT, 0),
                         new panel.shrink(new panel.currentV(
                             new panel.rounded(context.canvas.pinching?GALLNUB:TRANSPARENT, 
                                 0, 0, 4, 4), 90, 0), 2, 2),
@@ -1425,7 +1428,7 @@ var displaylst =
                     [
                         (context.swipetimeout||canvas.panning)&&!canvas.pinching?
                             new panel.rounded(GALLFILL, 0, 0, 6, 6):0,
-                        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
+                        new panel.expand(new panel.rectangle(canvas.timerect), EXPANDRECT, 0),
                         new panel.shrink(new panel.currentV(
                             new panel.rounded((context.swipetimeout||canvas.panning)&&!canvas.pinching?
                                     GALLNUB:TRANSPARENT, 0, 0, 4, 4), 90, 1), 2, 2),
@@ -1450,7 +1453,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 8, 8),
-                    new panel.expand(new panel.rectangle(canvas.hollyrect), 0, 20),
+                    new panel.expand(new panel.rectangle(canvas.hollyrect), 0, EXPANDRECT),
                     new panel.shrink(new panel.currentH(
                     new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
                 ]),
@@ -1505,7 +1508,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                    new panel.expand(new panel.rectangle(context.buttonrect), 10, 10),
+                    new panel.expand(new panel.rectangle(context.buttonrect), EXPANDRECT, EXPANDRECT),
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
                 0,
@@ -1517,7 +1520,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                    new panel.expand(new panel.rectangle(context.folderect), 10, 10),
+                    new panel.expand(new panel.rectangle(context.folderect), EXPANDRECT, EXPANDRECT),
 			        new panel.colsA([0,0.6,0],
                     [
                         new panel.text(),
@@ -1535,7 +1538,7 @@ var displaylst =
                 [
                     new panel.rounded(value.marked?BOOKMARKED:HEAVYFILL, 
                                       ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                    new panel.expand(new panel.rectangle(context.bookmarkrect), 10, 10),
+                    new panel.expand(new panel.rectangle(context.bookmarkrect), EXPANDRECT, EXPANDRECT),
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
                 0,
@@ -1547,7 +1550,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                    new panel.expand(new panel.rectangle(context.cursorect), 10, 10),
+                    new panel.expand(new panel.rectangle(context.cursorect), EXPANDRECT, EXPANDRECT),
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
                 0,
@@ -1559,7 +1562,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                    new panel.expand(new panel.rectangle(context.pirect), 10, 10),
+                    new panel.expand(new panel.rectangle(context.pirect), EXPANDRECT, EXPANDRECT),
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
                 0,
@@ -2737,7 +2740,7 @@ var wheelst =
             {
                 context.canvas.pinching = 0;
                 menuobj.draw()
-            }, 1000);
+            }, NUBDELAY);
         }
         else
         {
@@ -2755,7 +2758,7 @@ var wheelst =
             {
                 context.canvas.panning = 0;
                 menuobj.draw()
-            }, 1000);
+            }, NUBDELAY);
         }
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
@@ -2767,7 +2770,7 @@ var wheelst =
         {
             context.canvas.panning = 0;
             menuobj.draw()
-        }, 1000);
+        }, NUBDELAY);
         if (Math.abs(delta) < 0.25)
             return;
         context.canvas.hollyobj.addperc(delta / 2000);
@@ -3135,7 +3138,7 @@ var panlst =
         {
             context.canvas.panning = 0;
             menuobj.draw()
-        }, 1000);
+        }, NUBDELAY);
         
         if (type == "panleft" || type == "panright")
         {
@@ -3567,7 +3570,7 @@ var keylst =
                 {
                     context.canvas.panning = 0;
                     menuobj.draw()
-                }, 1000);
+                }, NUBDELAY);
             }
             else if (key == "pagedown" || key == "enter" || key == "home")
             {
@@ -3591,7 +3594,7 @@ var keylst =
                 {
                     context.canvas.panning = 0;
                     menuobj.draw()
-                }, 1000);
+                }, NUBDELAY);
             }
             else if (
                 key == "arrowup" ||
@@ -3630,7 +3633,7 @@ var keylst =
                 {
                     context.canvas.panning = 0;
                     menuobj.draw()
-                }, 1000);
+                }, NUBDELAY);
                 evt.preventDefault();
             }
             else if (
@@ -3669,7 +3672,7 @@ var keylst =
                 {
                     context.canvas.panning = 0;
                     menuobj.draw()
-                }, 1000);
+                }, NUBDELAY);
                 evt.preventDefault();
             }
             else if (key == "tab" || key == " ")
@@ -3696,7 +3699,7 @@ var keylst =
                 {
                     context.canvas.pinching = 0;
                     menuobj.draw()
-                }, 1000);
+                }, NUBDELAY);
                 evt.preventDefault();
             }
             else if (key == "+" || key == "]" || key == "=")
@@ -3709,7 +3712,7 @@ var keylst =
                 {
                     context.canvas.pinching = 0;
                     menuobj.draw()
-                }, 1000);
+                }, NUBDELAY);
                 evt.preventDefault();
             }
             else if (
@@ -3727,7 +3730,7 @@ var keylst =
                 {
                     context.canvas.panning = 0;
                     menuobj.draw()
-                }, 1000);
+                }, NUBDELAY);
                 evt.preventDefault();
             }
             else if (
@@ -3745,7 +3748,7 @@ var keylst =
                 {
                     context.canvas.panning = 0;
                     menuobj.draw()
-                }, 1000);
+                }, NUBDELAY);
                 evt.preventDefault();
             }
             else if (key == "0")
@@ -4172,7 +4175,7 @@ var taplst =
             {
                 context.canvas.panning = 0;
                 menuobj.draw()
-            }, 1000);
+            }, NUBDELAY);
         }            
         else if (context.aligntoprect &&
             context.aligntoprect.hitest(x, y))
@@ -4193,7 +4196,7 @@ var taplst =
             {
                 context.canvas.pinching = 0;
                 menuobj.draw()
-            }, 1000);
+            }, NUBDELAY);
         }            
         else if (canvas.timerect &&
             canvas.timerect.hitest(x, y))
@@ -4210,7 +4213,7 @@ var taplst =
             {
                 context.canvas.panning = 0;
                 menuobj.draw()
-            }, 1000);
+            }, NUBDELAY);
         }            
         else if (context.pirect &&
             context.pirect.hitest(x, y))
@@ -4397,7 +4400,7 @@ var taplst =
             {
                 context.canvas.panning = 0;
                 menuobj.draw()
-            }, 1000);
+            }, NUBDELAY);
         }
         else if (context.homerect && context.homerect.hitest(x, y))
         {
@@ -4408,7 +4411,7 @@ var taplst =
         {
             closemenu()
         }
-        else if (x < 30 && y < 30)
+        else if (x < CORNEREXT && y < CORNER)
         {
             buttonobj.set(0);
             context.canvas.pinching = 1;
@@ -4418,9 +4421,9 @@ var taplst =
             {
                 context.canvas.pinching = 0;
                 menuobj.draw()
-            }, 1000);
+            }, NUBDELAY);
         }
-        else if (x > rect.width-30 && y < 30)
+        else if (x > rect.width-CORNEREXT && y < CORNEREXT)
         {
             _8cnv.timeobj.set(Math.PI)
             context.canvas.panning = 1;
@@ -4430,9 +4433,9 @@ var taplst =
             {
                 context.canvas.panning = 0;
                 menuobj.draw()
-            }, 1000);
+            }, NUBDELAY);
         }
-        else if (x > rect.width-30 && y > rect.height-30)
+        else if (x > rect.width-CORNEREXT && y > rect.height-CORNEREXT)
         {
             _8cnv.timeobj.set(0)
             context.canvas.panning = 1;
@@ -4442,9 +4445,9 @@ var taplst =
             {
                 context.canvas.panning = 0;
                 menuobj.draw()
-            }, 1000);
+            }, NUBDELAY);
         }
-        else if (x < 30 && y > rect.height-30)
+        else if (x < CORNEREXT && y > rect.height-CORNEREXT)
         {
             buttonobj.set(buttonobj.length()-1)
             context.canvas.pinching = 1;
@@ -4454,7 +4457,7 @@ var taplst =
             {
                 context.canvas.pinching = 0;
                 menuobj.draw()
-            }, 1000);
+            }, NUBDELAY);
         }
         else if (headcnv.height)
         {
