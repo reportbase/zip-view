@@ -7444,16 +7444,13 @@ galleryobj.reset = function(obj)
         image.src = imagepath(j,"5760x5760");
 }
 
+
 //galleryobj init
 galleryobj.init = function(obj)
 {
     if (obj)
         Object.assign(galleryobj, obj);
-	var k = galleryobj.length()%24;
-    var j = [0,6,5,4,3,2,1][k];
-    for (var n = 0; n < j; ++n)
-        galleryobj.data.insert(10,{});
-  
+	
     if (Array.isArray(obj.data))
     {
 	    galleryobj.reset(obj);
