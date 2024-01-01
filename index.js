@@ -3394,7 +3394,52 @@ var mouselst = [
     up: function(evt) {},
     move: function(context, rect, x, y) 
     {
-	    
+        if (canvas.button2rect &&
+            canvas.button2rect.hitest(x, y))
+        {
+            context.canvas.pinching = 1;
+            menuobj.draw();
+            clearTimeout(context.wheeltime)
+            context.wheeltime = setTimeout(function()
+            {
+                context.canvas.pinching = 0;
+                menuobj.draw()
+            }, NUBDELAY);
+        }
+        else if (canvas.timerect &&
+            canvas.timerect.hitest(x, y))
+        {
+           context.canvas.panning = 1;
+            menuobj.draw();
+            clearTimeout(context.wheeltime)
+            context.wheeltime = setTimeout(function()
+            {
+                context.canvas.panning = 0;
+                menuobj.draw()
+            }, NUBDELAY);
+        }
+        else if (canvas.holly2rect &&
+            canvas.holly2rect.hitest(x, y))
+        {
+            context.canvas.panning = 1;
+            menuobj.draw();
+            clearTimeout(context.wheeltime)
+            context.wheeltime = setTimeout(function()
+            {
+                context.canvas.panning = 0;
+                menuobj.draw()
+            }, NUBDELAY);
+        }
+        else if (canvas.aligntoprect &&
+            canvas.aligntoprect.hitest(x, y))
+        {
+        }
+        else
+        {
+            context.canvas.panning = 0;
+            context.canvas.pinching = 0;
+            menuobj.draw();
+        }
     },
 }, 
 ];
@@ -5590,7 +5635,7 @@ var eventlst =
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
-    mouse: "DEFAULT",
+    mouse: "GALLERY",
     thumb: "DEFAULT",
     tap: "MENU",
     pan: "MENU",
@@ -5612,7 +5657,7 @@ var eventlst =
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
-    mouse: "DEFAULT",
+    mouse: "GALLERY",
     thumb: "DEFAULT",
     tap: "MENU",
     pan: "MENU",
@@ -5634,7 +5679,7 @@ var eventlst =
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
-    mouse: "DEFAULT",
+    mouse: "GALLERY",
     thumb: "DEFAULT",
     tap: "MENU",
     pan: "MENU",
@@ -5678,7 +5723,7 @@ var eventlst =
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
-    mouse: "DEFAULT",
+    mouse: "GALLERY",
     thumb: "DEFAULT",
     tap: "MENU",
     pan: "MENU",
@@ -5700,7 +5745,7 @@ var eventlst =
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
-    mouse: "DEFAULT",
+    mouse: "GALLERY",
     thumb: "DEFAULT",
     tap: "MENU",
     pan: "MENU",
@@ -5722,7 +5767,7 @@ var eventlst =
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
-    mouse: "DEFAULT",
+    mouse: "GALLERY",
     thumb: "DEFAULT",
     tap: "MENU",
     pan: "MENU",
@@ -5766,7 +5811,7 @@ var eventlst =
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
-    mouse: "DEFAULT",
+    mouse: "GALLERY",
     thumb: "DEFAULT",
     tap: "MENU",
     pan: "MENU",
@@ -5788,7 +5833,7 @@ var eventlst =
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
-    mouse: "DEFAULT",
+    mouse: "GALLERY",
     thumb: "DEFAULT",
     tap: "MENU",
     pan: "MENU",
@@ -5810,7 +5855,7 @@ var eventlst =
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
-    mouse: "DEFAULT",
+    mouse: "GALLERY",
     thumb: "DEFAULT",
     tap: "MENU",
     pan: "MENU",
@@ -5832,7 +5877,7 @@ var eventlst =
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
-    mouse: "DEFAULT",
+    mouse: "GALLERY",
     thumb: "DEFAULT",
     tap: "MENU",
     pan: "MENU",
@@ -5854,7 +5899,7 @@ var eventlst =
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
-    mouse: "DEFAULT",
+    mouse: "GALLERY",
     thumb: "DEFAULT",
     tap: "MENU",
     pan: "MENU",
@@ -5876,7 +5921,7 @@ var eventlst =
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
-    mouse: "DEFAULT",
+    mouse: "GALLERY",
     thumb: "DEFAULT",
     tap: "MENU",
     pan: "MENU",
@@ -5898,7 +5943,7 @@ var eventlst =
     speed: 60,
     reduce: 2,
     updownmax: 60,
-    mouse: "DEFAULT",
+    mouse: "GALLERY",
     thumb: "DEFAULT",
     tap: "MENU",
     pan: "MENU",
