@@ -7456,12 +7456,12 @@ galleryobj.init = function(obj)
         0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 4,3,2,1,0,0,
     ];
 
-    var len = lst[galleryobj.length()-1];
-    for (var n = 0; n < len; ++n)
-        galleryobj.data.insert(10,{})
-    
     if (Array.isArray(obj.data))
     {
+	    var len = lst[galleryobj.length()-1];
+	    for (var n = 0; n < len; ++n)
+	        galleryobj.data.insert(10,{})
+    
 	    galleryobj.reset(obj);
 	    return;
     }
