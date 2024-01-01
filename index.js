@@ -3495,7 +3495,7 @@ var presslst =
             buttonobj.portrait = 2;
             for (var n = 0; n < buttonobj.length(); ++n)
             {
-                if (buttonobj.data[n] != Math.floor(window.innerHeight*1.5))
+                if (buttonobj.data[n] != Math.floor(window.innerHeight*3.0))
                     continue;
                 buttonobj.set(n);
                 break;
