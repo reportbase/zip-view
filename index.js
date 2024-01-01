@@ -1377,7 +1377,7 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.rectangle(context.aligntoprect),
-                        new panel.circle(GALLFILL, 0, 0),
+                        new panel.circle(context.canvas.aligntoptime?"rgb(150,0,0)":GALLFILL, 0, 0),
                         new panel.shrink(new panel.cols([0,0,0],
                             [
                                 new panel.shrink(new panel.circle(GALLNUB),15,15),
@@ -3435,6 +3435,14 @@ var mouselst =
         else if (canvas.aligntoprect &&
             canvas.aligntoprect.hitest(x, y))
         {
+            context.canvas.aligntoptime = 1;
+            menuobj.draw();
+            clearTimeout(context.wheeltime)
+            context.wheeltime = setTimeout(function()
+            {
+                c = 0;
+                menuobj.draw()
+            }, NUBDELAY);
         }
         else
         {
