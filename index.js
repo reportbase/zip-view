@@ -3761,33 +3761,6 @@ var keylst =
                 aligncenter();
 				menuobj.draw();
             }
-            else if (key == "e")
-            {
-                var str = "";
-                for (var n = 0; n < galleryobj.length(); ++n)
-        	    {
-        	        var k = galleryobj.data[n];
-                    if (k.pad)
-                        continue;
-                    var name = k.blob ? k.blob.name : k.name;
-                    if (!name.isimage())
-                        continue;
-                    var folder = k.folder;
-                    if (folder)
-                    {
-                        folder = folder.split("/");
-                        folder.shift();
-    		            folder = folder.join("/");
-                        str += `\n${folder}/${name}`;
-                    }
-                    else
-                    {
-                        str += name + "\n";
-                    }
-        		}
-                
-                copytext(str);
-            }
         }
     },
     {
@@ -6947,6 +6920,37 @@ function setupmenus()
     _3cnv.sliceobj.data = 
     [
         {
+            title: "Export File Names",
+            func: function()
+            {
+                var str = "";
+                for (var n = 0; n < galleryobj.length(); ++n)
+        	    {
+        	        var k = galleryobj.data[n];
+                    if (k.pad)
+                        continue;
+                    var name = k.blob ? k.blob.name : k.name;
+                    if (!name.isimage())
+                        continue;
+                    var folder = k.folder;
+                    if (folder)
+                    {
+                        folder = folder.split("/");
+                        folder.shift();
+    		            folder = folder.join("/");
+                        str += `\n${folder}/${name}`;
+                    }
+                    else
+                    {
+                        str += name + "\n";
+                    }
+        		}
+
+                
+                savefile("untitled.txt", str);
+            }
+        },
+        {
             title: "Delete Image",
             func: function()
             {
@@ -7664,7 +7668,7 @@ async function download()
     }
 }
 
-function downloadtext(name, text)
+function savefile(name, text)
 {
     var element = document.createElement('a');
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
