@@ -6920,6 +6920,18 @@ function setupmenus()
     _3cnv.sliceobj.data = 
     [
         {
+            title: "Export Galleries",
+            func: function()
+            {
+	    }
+	},
+        {
+            title: "Import Galleries",
+            func: function()
+            {
+	    }
+	},
+        {
             title: "Export File Names",
             func: function()
             {
