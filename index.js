@@ -7449,6 +7449,9 @@ galleryobj.init = function(obj)
 {
     if (obj)
         Object.assign(galleryobj, obj);
+	var k = 7-galleryobj.length()%24;
+    for (var n = 0; n < k; ++n)
+        galleryobj.data.insert(10,{});
   
     if (Array.isArray(obj.data))
     {
