@@ -3369,7 +3369,8 @@ var panlst =
 }, 
 ];
 
-var mouselst = [
+var mouselst = 
+[
 {
     name: "DEFAULT",
     down: function(evt) {},
@@ -3395,8 +3396,8 @@ var mouselst = [
     move: function(context, rect, x, y) 
     {
 	    var canvas = context.canvas;
-        if (canvas.button2rect &&
-            canvas.button2rect.hitest(x, y))
+        if (context.button2rect &&
+            context.button2rect.hitest(x, y))
         {
             context.canvas.pinching = 1;
             menuobj.draw();
@@ -3410,7 +3411,7 @@ var mouselst = [
         else if (canvas.timerect &&
             canvas.timerect.hitest(x, y))
         {
-           context.canvas.panning = 1;
+            context.canvas.panning = 1;
             menuobj.draw();
             clearTimeout(context.wheeltime)
             context.wheeltime = setTimeout(function()
