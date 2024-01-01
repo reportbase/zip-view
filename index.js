@@ -7453,14 +7453,15 @@ galleryobj.init = function(obj)
     
     if (Array.isArray(obj.data))
     {
-        var lst = 
+        var k = 
         [
     	    0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 7,6,5,4,3,2, 1,
         ];
 
-	    for (var n = 0; n < 1000; ++n)
-			lst = lst.concat(lst);
-		
+        var lst = []
+	    for (var n = 0; n < 100; ++n)
+			lst = lst.concat(k);
+        
 		var len = lst[galleryobj.length()-1];
 		for (var n = 0; n < len; ++n)
 			galleryobj.data.push({})
