@@ -1383,7 +1383,7 @@ var displaylst =
                                 new panel.shrink(new panel.circle(GALLNUB),15,15),
                                 new panel.shrink(new panel.circle(GALLNUB),15,15),
                                 new panel.shrink(new panel.circle(GALLNUB),15,15),
-                            ]), EXPANDRECT, EXPANDRECT),
+                            ]), 10, 10),
                     ]),
                     0,
                 ]),
