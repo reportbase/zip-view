@@ -7460,7 +7460,7 @@ galleryobj.init = function(obj)
     {
 	    var len = lst[galleryobj.length()-1];
 	    for (var n = 0; n < len; ++n)
-	        galleryobj.data.insert(10,{})
+	        galleryobj.data.push({})
     
 	    galleryobj.reset(obj);
 	    return;
