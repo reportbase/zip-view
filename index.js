@@ -3440,7 +3440,7 @@ var mouselst =
             clearTimeout(context.wheeltime)
             context.wheeltime = setTimeout(function()
             {
-                c = 0;
+                context.canvas.aligntoptime = 0;
                 menuobj.draw()
             }, NUBDELAY);
         }
