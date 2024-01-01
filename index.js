@@ -5572,7 +5572,8 @@ menuobj.draw = function()
         var thumbfitted = thumbfittedlst[index];	    
         if (context == _8cnvctx && 
             thumbimg.view != view &&
-            !slice.failed) 
+            !slice.failed &&
+            !slice.pad) 
         {
             thumbimg.view = view;
             thumbimg.slice = slice;
@@ -7546,7 +7547,7 @@ galleryobj.init = function(obj)
 		for (var n = 0; n < len; ++n)
         {
             var k = {};
-            k.url = "res/pad.jpg";
+            k.pad = 1;
 			galleryobj.data.push(k)
         }
         
