@@ -3486,9 +3486,20 @@ var presslst =
         var n = getvisible(x, y);
         aligncenter(n);
         buttonobj.reset();
-        if (buttonobj.portrait)
+        if (buttonobj.portrait == 2)
         {
             buttonobj.portrait = 0;
+        }
+        else if (buttonobj.portrait == 1)
+        {
+            buttonobj.portrait = 2;
+            for (var n = 0; n < buttonobj.length(); ++n)
+            {
+                if (Math.floor(buttonobj.data[n]*1.5) != window.innerHeight)
+                    continue;
+                buttonobj.set(n);
+                break;
+            }
         }
         else
         {
