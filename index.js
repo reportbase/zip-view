@@ -7544,7 +7544,11 @@ galleryobj.init = function(obj)
         
 		var len = lst[galleryobj.length()-1];
 		for (var n = 0; n < len; ++n)
-			galleryobj.data.push({})
+        {
+            var k = {};
+            k.url = "res/pad.jpg";
+			galleryobj.data.push(k)
+        }
         
         galleryobj.reset(obj);
         return;
