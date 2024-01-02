@@ -7481,7 +7481,16 @@ galleryobj.reset = function()
         thumbfittedlst[n] = document.createElement("canvas");
         thumbimglst[n] = new Image();
     }
-    
+
+    for (var n = 0; n < galleryobj.length(); ++n)
+    {
+        var obj = galleryobj.data[n];
+        obj.dindex = n % IMAGELSTSIZE;
+        obj.view = Math.floor(n / IMAGELSTSIZE);
+        obj.thumbimg = thumbimglst[obj.dindex];
+        obj.thumbfitted = thumbfittedlst[obj.dindex];	    
+    }
+        
     var image = new Image();
     image.onerror = function()
     {
