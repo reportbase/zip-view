@@ -12,6 +12,7 @@ function ios()
 }
 
 var url = new URL(window.location.href);
+const HIDE = url.searchParams.get("hide");
 const THEME = url.searchParams.get("theme");
 const NUBACK = "rgba(0,0,0,0.4)";
 const GALLNUB = THEME == "light" ? "black" : "white";
@@ -5283,7 +5284,8 @@ var buttonlst =
         if (thumbimg &&
             thumbimg.complete &&
             thumbimg.naturalHeight &&
-            !user.pad)
+            !user.pad &&
+            !HIDE)
         {
             var obj = _8cnv.hollyobj;
             var b = thumbimg.width / thumbimg.height;
