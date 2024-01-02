@@ -7024,7 +7024,7 @@ function setupmenus()
         		}
 
                 
-                savefile("untitled.txt", str);
+                savefile("files.txt", str);
             }
         },
         {
