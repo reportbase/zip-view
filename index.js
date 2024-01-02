@@ -5588,10 +5588,6 @@ menuobj.draw = function()
         var n = canvas.normal[m];
         var slice = slices[n];
         
-         var obj = galleryobj.data[n];
-        slice.dindex = n % IMAGELSTSIZE;
-        slice.view = Math.floor(n / IMAGELSTSIZE);
-        
         var thumbimg = thumbimglst[slice.dindex];
         var thumbfitted = thumbfittedlst[slice.dindex];	    
         if (context == _8cnvctx && 
