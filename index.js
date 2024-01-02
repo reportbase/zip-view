@@ -5618,10 +5618,6 @@ menuobj.draw = function()
             y -= e;
             y = Math.round(y);
             
-            if (y == slice.lasty)
-                break;
-            slice.lasty = y;
-            
             var x = rect.width / 2;
             var j = {slice,x,y,n};
             slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
