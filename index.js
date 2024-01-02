@@ -1368,7 +1368,7 @@ var displaylst =
         context.pirect = new rectangle();
         var index = 1 - canvas.timeobj.berp();
         index *= galleryobj.length();
-        var k = Math.floor(index)+1;
+        var k = Math.floor(index);
         var value = galleryobj.data[k];
 	    if (!value)
             return;
@@ -1418,7 +1418,7 @@ var displaylst =
             a.draw(context, rect, 
             [
                 0,
-                index.toFixed(0),
+                (index+1).toFixed(0),
                 0,
                 _8cnv.hollyobj, 
                 0,
