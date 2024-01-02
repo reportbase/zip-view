@@ -5616,7 +5616,7 @@ menuobj.draw = function()
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
             y = Math.round(y);
-            slice.ylst.push({y,buttonheight});
+            //slice.ylst.push({y,buttonheight});//todo
             
             var x = rect.width / 2;
             var j = {slice,x,y,n};
@@ -5631,10 +5631,10 @@ menuobj.draw = function()
     
             if (slice.isvisible)
             {
-                context.translate(0, j.y);
+                //context.translate(0, j.y);
                 var r = new rectangle(0, 0, rect.width, buttonheight);
-                context.canvas.draw(context, r, j.slice, j.n);
-                context.translate(0, -j.y);
+                context.canvas.draw(context, slice.rect, j.slice, j.n);
+                //context.translate(0, -j.y);
                 context.canvas.visibles.push(j);  
     	    }
         }
