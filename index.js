@@ -5579,7 +5579,8 @@ menuobj.draw = function()
     context.canvas.visibles = [];
     context.centered = 0;
     var r = new rectangle(0, 0, rect.width, buttonheight);
-    
+    var nexty;
+	
     for (var m = 0; m < canvas.normal.length; ++m)
     {
         var n = canvas.normal[m];
@@ -5601,17 +5602,11 @@ menuobj.draw = function()
 	        }
             
             if (slice.entry)
-            {
                 getblobpath(thumbimg, slice);
-            }
             else if (slice.blob)
-            {
                 thumbimg.src = URL.createObjectURL(slice.blob);
-            }
             else
-            {
                 thumbimg.src = slice.url;
-            }
         }
         else
         {
@@ -5622,12 +5617,20 @@ menuobj.draw = function()
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
             y = Math.round(y);
+            if (context == _8cnvctx)
+            {
+                if (typeof nexty != "undefined")
+                    y = nexty;
+            }
+
+            nexty = y + buttonheight + 1;
+            
             var x = rect.width / 2;
             var j = {slice,x,y,n};
             slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
             slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
             if (context == _8cnvctx &&
-		j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
+		        j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
             {
             	galleryobj.width = thumbimg.width;
             	galleryobj.height = thumbimg.height;
