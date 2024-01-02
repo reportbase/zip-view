@@ -7442,6 +7442,7 @@ function showusers()
         })
 }
 
+//galleryobj reset
 galleryobj.reset = function()
 { 
     setfavicon();
@@ -7487,8 +7488,9 @@ galleryobj.reset = function()
         }
         else
         {
-            aligncenter(0);
-            aligntop();
+            aligncenter(0)
+            if (buttonobj.value() > window.innerHeight)
+                aligntop();
             menuobj.draw();
         }
  
