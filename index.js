@@ -1366,9 +1366,15 @@ var displaylst =
         context.button2rect = new rectangle();
         canvas.timerect = new rectangle();
         context.pirect = new rectangle();
+        var index = 1 - canvas.timeobj.berp();
+        index *= galleryobj.length();
+        var k = Math.floor(index);
+        var value = galleryobj.data[k];
+	    if (!value)
+            return;
         if (!headcnv.height)
     	{        
-            var a = new panel.rows([0,60,20,12,2],
+            var a = new panel.rowsA([0,60,20,12,2],
             [
                 0,
                 new panel.cols([0,60,0],
@@ -1378,12 +1384,15 @@ var displaylst =
                     [
                         new panel.rectangle(context.aligntoprect),
                         new panel.circle(context.canvas.aligntoptime?"rgb(150,0,0)":GALLFILL, 0, 0),
+                        new panel.text(),
+                        /*
                         new panel.shrink(new panel.cols([0,0,0],
                             [
                                 new panel.shrink(new panel.circle(GALLNUB),15,15),
                                 new panel.shrink(new panel.circle(GALLNUB),15,15),
                                 new panel.shrink(new panel.circle(GALLNUB),15,15),
                             ]), 10, 10),
+                        */
                     ]),
                     0,
                 ]),
@@ -1406,7 +1415,14 @@ var displaylst =
                 0,
             ])
 
-            a.draw(context, rect, _8cnv.hollyobj, 0);
+            a.draw(context, rect, 
+            [
+                0,
+                index.toFixed(0),
+                0,
+                _8cnv.hollyobj, 
+                0,
+            ], 0);
             
  		    var a = new panel.rows([CORNEREXT,0,CORNEREXT],
             [
@@ -1463,12 +1479,6 @@ var displaylst =
 
         a.draw(context, rect, context.canvas.hollyobj, 0);
         
-        var index = 1 - canvas.timeobj.berp();
-        index *= galleryobj.length();
-        var k = Math.floor(index);
-        var value = galleryobj.data[k];
-	    if (!value)
-            return;
         var space = rect.width < 400 ? "  " : rect.widt < 600 ? "   " : "    ";
         var folders = [];
         if (value && value.folder)
