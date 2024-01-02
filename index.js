@@ -3499,7 +3499,6 @@ var presslst =
         var n = getvisible(x, y);
         aligncenter(n);
         buttonobj.reset();
-        context.canvas.hollyobj.set(0);
         if (buttonobj.portrait)
         {
             buttonobj.portrait = 0;
@@ -3515,7 +3514,14 @@ var presslst =
                 break;
             }
         }
-     	    
+        
+        context.canvas.hollyobj.set(0);
+     	if (buttonobj.value() < window.innerHeight)  
+        {
+            var k = Math.floor(context.canvas.hollyobj.length()/2);
+            context.canvas.hollyobj.set(k);
+        }
+        
         menuobj.draw();    
     }
 },
@@ -3632,6 +3638,13 @@ var keylst =
             {
                 var k = _8cnv.timeobj.length() / galleryobj.length();
                 _8cnv.timeobj.rotate(k);
+                context.canvas.hollyobj.set(0);
+             	if (buttonobj.value() < window.innerHeight)  
+                {
+                    var k = Math.floor(context.canvas.hollyobj.length()/2);
+                    context.canvas.hollyobj.set(k);
+                }
+
                 context.canvas.panning = 1;
                 menuobj.draw()
                 clearTimeout(context.wheeltime)
@@ -3655,6 +3668,12 @@ var keylst =
                     var k = _8cnv.timeobj.length() / galleryobj.length();
                     _8cnv.timeobj.rotate(-k);
                     menuobj.draw();
+                }
+                context.canvas.hollyobj.set(0);
+             	if (buttonobj.value() < window.innerHeight)  
+                {
+                    var k = Math.floor(context.canvas.hollyobj.length()/2);
+                    context.canvas.hollyobj.set(k);
                 }
                 context.canvas.panning = 1;
                 menuobj.draw()
