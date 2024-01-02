@@ -5617,8 +5617,10 @@ menuobj.draw = function()
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
             y = Math.round(y);
+            
             if (y == slice.lasty)
                 break;
+            slice.lasty = y;
             
             var x = rect.width / 2;
             var j = {slice,x,y,n};
