@@ -5622,7 +5622,7 @@ menuobj.draw = function()
                 if (typeof nexty != "undefined")
                     y = nexty;
                 var k = (y + buttonheight + 1) < window.innerHeight;
-                9f (k)
+                if (k)
                     nexty = k;
                 else
                     delete nexty;
