@@ -5616,10 +5616,13 @@ menuobj.draw = function()
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
             y = Math.round(y);
-            
-            if (typeof nexty != "undefined")
-                y = nexty;
-            nexty = y + buttonheight + 1;
+
+	        if (context == _8cnvctx)
+            {
+                if (typeof nexty != "undefined")
+                    y = nexty;
+                nexty = y + buttonheight + 1;
+            }
             
             var x = rect.width / 2;
             var j = {slice,x,y,n};
