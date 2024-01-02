@@ -5577,26 +5577,20 @@ menuobj.draw = function()
     }
 
     context.canvas.visibles = [];
-    var ctx = context;
     context.centered = 0;
     var r = new rectangle(0, 0, rect.width, buttonheight);
-    var lasty = -10000000;
-    var delay = 0;
     
     for (var m = 0; m < canvas.normal.length; ++m)
     {
         var n = canvas.normal[m];
         var slice = slices[n];
-        var index = n % IMAGELSTSIZE;
-        var view = Math.floor(n / IMAGELSTSIZE);
-        var thumbimg = thumbimglst[index];
-        var thumbfitted = thumbfittedlst[index];	    
+        var thumbimg = thumbimglst[slice.dindex];
         if (context == _8cnvctx && 
-            thumbimg.view != view &&
+            thumbimg.view != slice.view &&
             !slice.failed &&
             !slice.pad) 
         {
-            thumbimg.view = view;
+            thumbimg.view = slice.view;
             thumbimg.slice = slice;
             thumbimg.slice.failed = 1;
             thumbimg.onload = function()
@@ -7484,11 +7478,9 @@ galleryobj.reset = function()
 
     for (var n = 0; n < galleryobj.length(); ++n)
     {
-        var obj = galleryobj.data[n];
-        obj.dindex = n % IMAGELSTSIZE;
-        obj.view = Math.floor(n / IMAGELSTSIZE);
-        obj.thumbimg = thumbimglst[obj.dindex];
-        obj.thumbfitted = thumbfittedlst[obj.dindex];	    
+        var slice = galleryobj.data[n];
+        slice.dindex = n % IMAGELSTSIZE;
+        slice.view = Math.floor(n / IMAGELSTSIZE);
     }
         
     var image = new Image();
