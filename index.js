@@ -2736,8 +2736,9 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        if (Math.abs(delta) < 0.25)
-            return;        
+        delta = Math.max(delta,5);
+        //if (Math.abs(delta) < 0.25)
+        //    return;        
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
 	    if (ctrl)
