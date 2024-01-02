@@ -5579,17 +5579,14 @@ menuobj.draw = function()
     context.canvas.visibles = [];
     var ctx = context;
     context.centered = 0;
-    var r = new rectangle(0, 0, rect.width, buttonheight);
+    //var r = new rectangle(0, 0, rect.width, buttonheight);
     var lasty = -10000000;
-    var delay = 0;
     
     for (var m = 0; m < canvas.normal.length; ++m)
     {
         var n = canvas.normal[m];
-        var slice = slices[n];
-        
+        var slice = slices[n];      
         var thumbimg = thumbimglst[slice.dindex];
-        var thumbfitted = thumbfittedlst[slice.dindex];	    
         if (context == _8cnvctx && 
             thumbimg.view != slice.view &&
             !slice.failed &&
@@ -5606,17 +5603,11 @@ menuobj.draw = function()
 	        }
             
             if (slice.entry)
-            {
                 getblobpath(thumbimg, slice);
-            }
             else if (slice.blob)
-            {
                 thumbimg.src = URL.createObjectURL(slice.blob);
-            }
             else
-            {
                 thumbimg.src = slice.url;
-            }
         }
         else
         {
