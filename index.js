@@ -5615,7 +5615,7 @@ menuobj.draw = function()
             var y = j * context.canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-            //y = Math.round(y);
+            y = Math.round(y);
             
             var x = rect.width / 2;
             var j = {slice,x,y,n};
@@ -7477,7 +7477,6 @@ galleryobj.reset = function()
         var slice = galleryobj.data[n];
         slice.dindex = n % IMAGELSTSIZE;
         slice.view = Math.floor(n / IMAGELSTSIZE);
-        slice.ylst = [];
     }
         
     var image = new Image();
