@@ -2736,7 +2736,10 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        delta = Math.max(delta,5);
+        if (delta > 0)
+            delta = Math.max(delta,5);
+        else
+            delta = Math.min(delta,-5);
         //if (Math.abs(delta) < 0.25)
         //    return;        
         var canvas = context.canvas;
