@@ -3702,7 +3702,7 @@ var keylst =
                 }
                 else
                 {
-	                menuobj.updown(context, -120, 30)
+	                menuobj.updown(context, -90, 20)
                     if (!context.swipetimeout)
                         context.swipetimeout = 
                             setInterval(function(){menuobj.draw()}, GALLERYMAIN);
@@ -3741,7 +3741,7 @@ var keylst =
                 }
                 else
                 {
-                    menuobj.updown(context, 1200, 30)
+                    menuobj.updown(context, 90, 20)
                     if (!context.swipetimeout)
                         context.swipetimeout = 
                             setInterval(function(){menuobj.draw();}, GALLERYMAIN);
