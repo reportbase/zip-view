@@ -7442,7 +7442,7 @@ function showusers()
         })
 }
 
-galleryobj.reset = function(obj)
+galleryobj.reset = function()
 { 
     setfavicon();
     stretchobj.makerange("40-90", stretchobj.length());  
@@ -7525,6 +7525,25 @@ galleryobj.reset = function(obj)
         image.src = imagepath(j,"5760x5760");
 }
 
+function addpadding()
+{
+    var k = 
+    [
+        0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 7,6,5,4,3,2, 1,
+    ];
+
+    var lst = []
+    for (var n = 0; n < 100; ++n)
+        lst = lst.concat(k);
+    
+    var len = lst[galleryobj.length()-1];
+    for (var n = 0; n < len; ++n)
+    {
+        var k = {};
+        k.pad = 1;
+        galleryobj.data.push(k)
+    }
+}
 
 //galleryobj init
 galleryobj.init = function(obj)
@@ -7532,41 +7551,22 @@ galleryobj.init = function(obj)
     if (obj)
         Object.assign(galleryobj, obj);
     
-    if (Array.isArray(obj.data))
+    if (Array.isArray(galleryobj.data))
     {
-        var k = 
-        [
-    	    0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 0,0,0,0,0,0, 7,6,5,4,3,2, 1,
-        ];
-
-        var lst = []
-	    for (var n = 0; n < 100; ++n)
-			lst = lst.concat(k);
-        
-		var len = lst[galleryobj.length()-1];
-		for (var n = 0; n < len; ++n)
-        {
-            var k = {};
-            k.pad = 1;
-			galleryobj.data.push(k)
-        }
-        
-        galleryobj.reset(obj);
-        return;
+        addpadding();
+        galleryobj.reset();
     }
-
-    fetch(obj.data)
-        .then((response) => texthandler(response))
-        .then(function(str)
-        {
-            var k = obj.data.split("/");
-            k.pop();
-            loadtext(str, k.join("/"));
-        })
-        .then(function(error)
-        {
-            console.log(error)
-        })
+    else
+    {
+        fetch(obj.data)
+            .then((response) => texthandler(response))
+            .then(function(str)
+            {
+                var k = obj.data.split("/");
+                k.pop();
+                loadtext(str, k.join("/"));
+            })
+    }
 }
 
 if (url.pathname.length > 1)
@@ -7667,6 +7667,7 @@ function loadtext(str, origin)
         galleryobj.data.push(json);
     }
 
+    addpadding()
     galleryobj.reset();
 }
 
