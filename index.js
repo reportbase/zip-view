@@ -5619,11 +5619,11 @@ menuobj.draw = function()
             y = Math.round(y);
             if (context == _8cnvctx)
             {
-                if (typeof nexty != "undefined")
-                    y = nexty;
+                //if (typeof nexty != "undefined")
+                //    y = nexty;
             }
 
-            nexty = y + buttonheight + 1;
+            //nexty = y + buttonheight + 1;
             
             var x = rect.width / 2;
             var j = {slice,x,y,n};
