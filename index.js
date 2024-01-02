@@ -5587,16 +5587,19 @@ menuobj.draw = function()
     {
         var n = canvas.normal[m];
         var slice = slices[n];
-        var index = n % IMAGELSTSIZE;
-        var view = Math.floor(n / IMAGELSTSIZE);
-        var thumbimg = thumbimglst[index];
-        var thumbfitted = thumbfittedlst[index];	    
+        
+         var obj = galleryobj.data[n];
+        slice.dindex = n % IMAGELSTSIZE;
+        slice.view = Math.floor(n / IMAGELSTSIZE);
+        
+        var thumbimg = thumbimglst[slice.dindex];
+        var thumbfitted = thumbfittedlst[slice.dindex];	    
         if (context == _8cnvctx && 
-            thumbimg.view != view &&
+            thumbimg.view != slice.view &&
             !slice.failed &&
             !slice.pad) 
         {
-            thumbimg.view = view;
+            thumbimg.view = slice.view;
             thumbimg.slice = slice;
             thumbimg.slice.failed = 1;
             thumbimg.onload = function()
@@ -7487,8 +7490,6 @@ galleryobj.reset = function()
         var obj = galleryobj.data[n];
         obj.dindex = n % IMAGELSTSIZE;
         obj.view = Math.floor(n / IMAGELSTSIZE);
-        obj.thumbimg = thumbimglst[obj.dindex];
-        obj.thumbfitted = thumbfittedlst[obj.dindex];	    
     }
         
     var image = new Image();
