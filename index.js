@@ -2737,9 +2737,9 @@ var wheelst =
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         if (delta > 0)
-            delta = Math.max(delta,5);
+            delta = Math.max(delta,10);
         else
-            delta = Math.min(delta,-5);
+            delta = Math.min(delta,-10);
         //if (Math.abs(delta) < 0.25)
         //    return;        
         var canvas = context.canvas;
@@ -7910,7 +7910,7 @@ menuobj.updown = function(context, delta, divider)
 {
     var canvas = context.canvas;
     canvas.autodirect = delta > 0 ? -1 : 1;
-    var k = Math.abs(delta)/20;
+    var k = Math.abs(delta)/10;
     canvas.slideshow = (Math.PI / canvas.virtualheight) * k;
     canvas.slidereduce = canvas.slideshow / divider;
 }
