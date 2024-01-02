@@ -5536,6 +5536,7 @@ menuobj.draw = function()
     {
         canvas.buttonheight = buttonobj.value();
         var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
+        var delayinterval = Math.PI / len;
         context.canvas.virtualheight = len * buttonheight;
         if (galleryobj.padsize)
             context.canvas.virtualheight = len * buttonheight * beavobj.value()/100;
@@ -5578,19 +5579,24 @@ menuobj.draw = function()
     context.canvas.visibles = [];
     var ctx = context;
     context.centered = 0;
-    var nexty;
+    var r = new rectangle(0, 0, rect.width, buttonheight);
+    var lasty = -10000000;
+    var delay = 0;
     
     for (var m = 0; m < canvas.normal.length; ++m)
     {
         var n = canvas.normal[m];
-        var slice = slices[n];      
-        var thumbimg = thumbimglst[slice.dindex];
+        var slice = slices[n];
+        var index = n % IMAGELSTSIZE;
+        var view = Math.floor(n / IMAGELSTSIZE);
+        var thumbimg = thumbimglst[index];
+        var thumbfitted = thumbfittedlst[index];	    
         if (context == _8cnvctx && 
-            thumbimg.view != slice.view &&
+            thumbimg.view != view &&
             !slice.failed &&
             !slice.pad) 
         {
-            thumbimg.view = slice.view;
+            thumbimg.view = view;
             thumbimg.slice = slice;
             thumbimg.slice.failed = 1;
             thumbimg.onload = function()
@@ -5601,11 +5607,17 @@ menuobj.draw = function()
 	        }
             
             if (slice.entry)
+            {
                 getblobpath(thumbimg, slice);
+            }
             else if (slice.blob)
+            {
                 thumbimg.src = URL.createObjectURL(slice.blob);
+            }
             else
+            {
                 thumbimg.src = slice.url;
+            }
         }
         else
         {
@@ -5616,20 +5628,11 @@ menuobj.draw = function()
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
             y = Math.round(y);
-
-	        if (context == _8cnvctx)
-            {
-                //if (typeof nexty != "undefined")
-                  //  y = nexty;
-                //nexty = y + buttonheight + 1;
-            }
-            
             var x = rect.width / 2;
             var j = {slice,x,y,n};
             slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
             slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
-            if (context == _8cnvctx &&
-                j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
+            if (j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
             {
             	galleryobj.width = thumbimg.width;
             	galleryobj.height = thumbimg.height;
@@ -5639,8 +5642,7 @@ menuobj.draw = function()
             if (slice.isvisible)
             {
                 context.translate(0, j.y);
-                var r = new rectangle(0, 0, rect.width, buttonheight);
-                context.canvas.draw(context, slice.rect, j.slice, j.n);
+                context.canvas.draw(context, r, j.slice, j.n);
                 context.translate(0, -j.y);
                 context.canvas.visibles.push(j);  
     	    }
@@ -7482,9 +7484,11 @@ galleryobj.reset = function()
 
     for (var n = 0; n < galleryobj.length(); ++n)
     {
-        var slice = galleryobj.data[n];
-        slice.dindex = n % IMAGELSTSIZE;
-        slice.view = Math.floor(n / IMAGELSTSIZE);
+        var obj = galleryobj.data[n];
+        obj.dindex = n % IMAGELSTSIZE;
+        obj.view = Math.floor(n / IMAGELSTSIZE);
+        obj.thumbimg = thumbimglst[obj.dindex];
+        obj.thumbfitted = thumbfittedlst[obj.dindex];	    
     }
         
     var image = new Image();
