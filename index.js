@@ -5536,7 +5536,6 @@ menuobj.draw = function()
     {
         canvas.buttonheight = buttonobj.value();
         var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
-        var delayinterval = Math.PI / len;
         context.canvas.virtualheight = len * buttonheight;
         if (galleryobj.padsize)
             context.canvas.virtualheight = len * buttonheight * beavobj.value()/100;
@@ -5579,7 +5578,6 @@ menuobj.draw = function()
     context.canvas.visibles = [];
     var ctx = context;
     context.centered = 0;
-    //var r = new rectangle(0, 0, rect.width, buttonheight);
     var lasty = -10000000;
     
     for (var m = 0; m < canvas.normal.length; ++m)
@@ -5618,6 +5616,8 @@ menuobj.draw = function()
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
             y = Math.round(y);
+            slice.ylst.push({y,buttonheight});
+            
             var x = rect.width / 2;
             var j = {slice,x,y,n};
             slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
@@ -5632,6 +5632,7 @@ menuobj.draw = function()
             if (slice.isvisible)
             {
                 context.translate(0, j.y);
+                var r = new rectangle(0, 0, rect.width, buttonheight);
                 context.canvas.draw(context, r, j.slice, j.n);
                 context.translate(0, -j.y);
                 context.canvas.visibles.push(j);  
@@ -7474,9 +7475,10 @@ galleryobj.reset = function()
 
     for (var n = 0; n < galleryobj.length(); ++n)
     {
-        var obj = galleryobj.data[n];
-        obj.dindex = n % IMAGELSTSIZE;
-        obj.view = Math.floor(n / IMAGELSTSIZE);
+        var slice = galleryobj.data[n];
+        slice.dindex = n % IMAGELSTSIZE;
+        slice.view = Math.floor(n / IMAGELSTSIZE);
+        slice.ylst = [];
     }
         
     var image = new Image();
