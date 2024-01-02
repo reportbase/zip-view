@@ -5619,9 +5619,9 @@ menuobj.draw = function()
 
 	        if (context == _8cnvctx)
             {
-                if (typeof nexty != "undefined")
-                    y = nexty;
-                nexty = y + buttonheight + 1;
+                //if (typeof nexty != "undefined")
+                  //  y = nexty;
+                //nexty = y + buttonheight + 1;
             }
             
             var x = rect.width / 2;
