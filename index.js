@@ -5578,7 +5578,7 @@ menuobj.draw = function()
     context.canvas.visibles = [];
     var ctx = context;
     context.centered = 0;
-    var lasty;
+    var nexty;
     
     for (var m = 0; m < canvas.normal.length; ++m)
     {
@@ -5616,11 +5616,10 @@ menuobj.draw = function()
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
             y = Math.round(y);
+            
             if (typeof nexty != "undefined")
-            {
                 y = nexty;
-                nexty = y + buttonheight + 1;
-            }
+            nexty = y + buttonheight + 1;
             
             var x = rect.width / 2;
             var j = {slice,x,y,n};
