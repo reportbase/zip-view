@@ -1368,7 +1368,7 @@ var displaylst =
         context.pirect = new rectangle();
         var index = 1 - canvas.timeobj.berp();
         index *= galleryobj.length();
-        var k = Math.floor(index);
+        var k = Math.floor(index)+1;
         var value = galleryobj.data[k];
 	    if (!value)
             return;
@@ -3499,6 +3499,7 @@ var presslst =
         var n = getvisible(x, y);
         aligncenter(n);
         buttonobj.reset();
+        context.canvas.hollyobj.set(0);
         if (buttonobj.portrait)
         {
             buttonobj.portrait = 0;
