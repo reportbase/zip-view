@@ -5627,12 +5627,18 @@ menuobj.draw = function()
             	context.centered = j.n;
             }
 
-            if (slice.isvisible || slice.isnext)
+            if (slice.isvisible)
             {
         		context.translate(0, j.y);
         		context.canvas.draw(context, r, j.slice, j.n);
         		context.translate(0, -j.y);
                 context.canvas.visibles.push(j);  
+    	    }
+            else if (slice.isnext)
+            {
+        		context.translate(0, j.y);
+        		context.canvas.draw(context, r, j.slice, j.n);
+        		context.translate(0, -j.y);  
     	    }
         }
     }
