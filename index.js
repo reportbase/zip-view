@@ -3493,6 +3493,8 @@ var presslst =
         if (buttonobj.portrait)
         {
             buttonobj.portrait = 0;
+            if (buttonobj.value() > window.innerHeight)
+                aligntop();
         }
         else
         {
@@ -7000,6 +7002,19 @@ function setupmenus()
 	},
         {
             title: "Import Galleries",
+            func: function()
+            {
+	    }
+	},
+        {
+            title: "Export Users",
+            func: function()
+            {
+		var k =
+	    }
+	},
+        {
+            title: "Import Users",
             func: function()
             {
 	    }
