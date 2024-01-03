@@ -5313,11 +5313,14 @@ var buttonlst =
                     thumbimg.count = 1;
                 }
 
-                var x = Math.nub(obj.value(), obj.length(),
-                    ww, thumbfitted.width);
-                context.drawImage(thumbfitted,
-                    Math.floor(x), yyy, ww, hhh,
-                    0, yyy, ww, hhh); 
+                if (user.visible)
+                {
+                    var x = Math.nub(obj.value(), obj.length(),
+                        ww, thumbfitted.width);
+                    context.drawImage(thumbfitted,
+                        Math.floor(x), yyy, ww, hhh,
+                        0, yyy, ww, hhh); 
+                }
             }
             else
             {
@@ -5333,11 +5336,14 @@ var buttonlst =
                     thumbimg.count = 1;
                 }
 
-                var y = Math.nub(obj.value(), obj.length(),
-                    hh, thumbfitted.height);
-                context.drawImage(thumbfitted,
-                    0, Math.floor(y) + yyy, ww, hhh,
-                    0, yyy, ww, hhh);
+		        if (user.visible)
+                {
+                    var y = Math.nub(obj.value(), obj.length(),
+                        hh, thumbfitted.height);
+                    context.drawImage(thumbfitted,
+                        0, Math.floor(y) + yyy, ww, hhh,
+                        0, yyy, ww, hhh);
+                }
             }
            
             if (user.tap)
