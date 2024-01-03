@@ -2736,10 +2736,10 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        if (delta > 0)
-            delta = Math.max(delta,10);
-        else
-            delta = Math.min(delta,-10);
+        //if (delta > 0)
+        //    delta = Math.max(delta,10);
+        //else
+        //    delta = Math.min(delta,-10);
         //if (Math.abs(delta) < 0.25)
         //    return;        
         var canvas = context.canvas;
@@ -2788,8 +2788,8 @@ var wheelst =
             context.canvas.panning = 0;
             menuobj.draw()
         }, NUBDELAY);
-        if (Math.abs(delta) < 0.25)
-            return;
+       // if (Math.abs(delta) < 0.25)
+         //   return;
         context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw();
     },
