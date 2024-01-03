@@ -2728,12 +2728,6 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        //if (delta > 0)
-        //    delta = Math.max(delta,10);
-        //else
-        //    delta = Math.min(delta,-10);
-        if (Math.abs(delta) < 2)
-            return;        
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
 	    if (ctrl)
@@ -2753,6 +2747,8 @@ var wheelst =
         }
         else
         {
+            if (Math.abs(delta) < 2)
+                return;        
 		    menuobj.updown(context, delta, 60)
         	if (!clearInterval(context.swipetimeout))
             {
