@@ -1384,16 +1384,8 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.rectangle(context.aligntoprect),
-                        new panel.circle(context.canvas.aligntoptime?"rgb(150,0,0)":GALLFILL, 0, 0),
+                        new panel.circle(context.canvas.aligntoptime?"rgb(0,0,120)":GALLFILL, 0, 0),
                         new panel.text(),
-                        /*
-                        new panel.shrink(new panel.cols([0,0,0],
-                            [
-                                new panel.shrink(new panel.circle(GALLNUB),15,15),
-                                new panel.shrink(new panel.circle(GALLNUB),15,15),
-                                new panel.shrink(new panel.circle(GALLNUB),15,15),
-                            ]), 10, 10),
-                        */
                     ]),
                     0,
                 ]),
@@ -7337,7 +7329,7 @@ function setupmenus()
         "Pageup\nPrevious Image",
         "Ctrl+Enter\nPrevious Image",
         "Arrow+Up (k)\nMove Up",
-        "Arrow+Down (j)\nMovd Down",
+        "Arrow+Down (j)\nMove Down",
         "Arrow+Left (h)\nMove Left",
         "Arrow+Right (l)\nMove Right",
         "Space\nToggle UI",
