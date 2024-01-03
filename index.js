@@ -5624,7 +5624,6 @@ menuobj.draw = function()
 
             if (slice.isvisible || !context.canvas.slideshow)
             {
-                var j = context.canvas.visibles[n];
                 context.translate(0, j.y);
                 context.canvas.draw(context, r, j.slice, j.n);
                 context.translate(0, -j.y);
