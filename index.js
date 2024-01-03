@@ -2732,7 +2732,7 @@ var wheelst =
         context.canvas.slideshow = 0;
 	    if (ctrl)
         {
-            var j = buttonobj.length()/120;
+            var j = buttonobj.length()/40;
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
             buttonobj.add(e);
@@ -2776,8 +2776,6 @@ var wheelst =
             context.canvas.panning = 0;
             menuobj.draw()
         }, NUBDELAY);
-       // if (Math.abs(delta) < 0.25)
-         //   return;
         context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw();
     },
