@@ -2732,7 +2732,7 @@ var wheelst =
         context.canvas.slideshow = 0;
 	    if (ctrl)
         {
-            var j = buttonobj.length()/40;
+            var j = buttonobj.length()/60;
             var k = delta < 0 ? 1 : -1;
             var e = k*j;
             buttonobj.add(e);
