@@ -5313,7 +5313,7 @@ var buttonlst =
                     thumbimg.count = 1;
                 }
 
-                if (user.visible)
+                if (user.isvisible)
                 {
                     var x = Math.nub(obj.value(), obj.length(),
                         ww, thumbfitted.width);
@@ -5336,7 +5336,7 @@ var buttonlst =
                     thumbimg.count = 1;
                 }
 
-		        if (user.visible)
+		        if (user.isvisible)
                 {
                     var y = Math.nub(obj.value(), obj.length(),
                         hh, thumbfitted.height);
@@ -5618,6 +5618,7 @@ menuobj.draw = function()
             var j = {slice,x,y,n};
             slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
             slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
+            slice.isnext = j.y > window.innerHeight && j.y < window.innerHeight+buttonheight;
             if (context == _8cnvctx &&
 		        j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
             {
@@ -5626,7 +5627,7 @@ menuobj.draw = function()
             	context.centered = j.n;
             }
 
-            if (slice.isvisible)
+            if (slice.isvisible || slice.isnext)
             {
         		context.translate(0, j.y);
         		context.canvas.draw(context, r, j.slice, j.n);
