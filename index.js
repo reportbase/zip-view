@@ -2740,8 +2740,8 @@ var wheelst =
         //    delta = Math.max(delta,10);
         //else
         //    delta = Math.min(delta,-10);
-        //if (Math.abs(delta) < 0.25)
-        //    return;        
+        if (Math.abs(delta) < 1)
+            return;        
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
 	    if (ctrl)
