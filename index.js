@@ -5508,7 +5508,8 @@ menuobj.draw = function()
         var k = canvas.autodirect;
         context.canvas.timeobj.rotate(k * context.canvas.slideshow);
 	    if (!canvas.keypress)
-            context.canvas.slideshow -= context.canvas.slidereduce
+            context.canvas.slideshow -= context.canvas.slidereduce;
+        globalobj.noresize = 1;
     }
     else if (context.swipetimeout)
     {
@@ -5517,6 +5518,7 @@ menuobj.draw = function()
         context.canvas.slideshow = 0;
         resetview()
 	    local.set()	
+        globalobj.resize = 1;
     }
 
     var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
@@ -5620,29 +5622,21 @@ menuobj.draw = function()
             	context.centered = j.n;
             }
 
-            if (slice.isvisible)
+            if (slice.isvisible || !context.canvas.slideshow)
             {
+                var j = context.canvas.visibles[n];
+                context.translate(0, j.y);
+                context.canvas.draw(context, r, j.slice, j.n);
+                context.translate(0, -j.y);
                 context.canvas.visibles.push(j);  
     	    }
         }
     }
 
-    visiblelst.push(context.canvas.visibles);
-    
-    for (var n = 0; n < context.canvas.visibles.length; ++n)
-    {
-        
-        var j = context.canvas.visibles[n];
-        context.translate(0, j.y);
-        context.canvas.draw(context, r, j.slice, j.n);
-        context.translate(0, -j.y);
-    }
-    
     displayobj.value().draw(context, rect, 0, 0);
     context.canvas.footer.draw(context, rect, 0, 0);
 }
 
-var visiblelst = [];
 function resetview()
 {
     if (menuobj.value() != _8cnvctx)
