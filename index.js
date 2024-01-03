@@ -5301,10 +5301,8 @@ var buttonlst =
 
             if (b > b2)
             {
-		    
-                if (!context.canvas.slideshow &&
-		            (thumbfitted.height != hh ||
-                    thumbimg.count < 1))
+		            if (thumbfitted.height != hh ||
+                    thumbimg.count < 1)
                 {
                     var thumbfittedctx = thumbfitted.getContext("2d");
                     thumbfitted.height = hh;
@@ -5315,20 +5313,16 @@ var buttonlst =
                     thumbimg.count = 1;
                 }
 
-		        if (user.visible)
-                {
-                    var x = Math.nub(obj.value(), obj.length(),
-                        ww, thumbfitted.width);
-                    context.drawImage(thumbfitted,
-                        Math.floor(x), yyy, ww, hhh,
-                        0, yyy, ww, hhh); 
-                }
+                var x = Math.nub(obj.value(), obj.length(),
+                    ww, thumbfitted.width);
+                context.drawImage(thumbfitted,
+                    Math.floor(x), yyy, ww, hhh,
+                    0, yyy, ww, hhh); 
             }
             else
             {
-                if (!context.canvas.slideshow &&
-                    (thumbfitted.width != ww ||
-                    thumbimg.count < 1))
+                if (thumbfitted.width != ww ||
+                    thumbimg.count < 1)
                 {
                     var thumbfittedctx = thumbfitted.getContext("2d");
                     thumbfitted.width = ww
@@ -5339,14 +5333,11 @@ var buttonlst =
                     thumbimg.count = 1;
                 }
 
-                if (user.visible)
-                {
-                    var y = Math.nub(obj.value(), obj.length(),
-                        hh, thumbfitted.height);
-                    context.drawImage(thumbfitted,
-                        0, Math.floor(y) + yyy, ww, hhh,
-                        0, yyy, ww, hhh);
-                }
+                var y = Math.nub(obj.value(), obj.length(),
+                    hh, thumbfitted.height);
+                context.drawImage(thumbfitted,
+                    0, Math.floor(y) + yyy, ww, hhh,
+                    0, yyy, ww, hhh);
             }
            
             if (user.tap)
@@ -5629,11 +5620,11 @@ menuobj.draw = function()
             	context.centered = j.n;
             }
 
-            //if (slice.isvisible || context.canvas.slideshow == 0)
+            if (slice.isvisible)
             {
-		context.translate(0, j.y);
-		context.canvas.draw(context, r, j.slice, j.n);
-		context.translate(0, -j.y);
+        		context.translate(0, j.y);
+        		context.canvas.draw(context, r, j.slice, j.n);
+        		context.translate(0, -j.y);
                 context.canvas.visibles.push(j);  
     	    }
         }
