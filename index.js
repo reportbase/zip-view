@@ -7010,7 +7010,7 @@ function setupmenus()
             title: "Export Users",
             func: function()
             {
-		var k =
+		
 	    }
 	},
         {
