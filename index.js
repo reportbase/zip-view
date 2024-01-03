@@ -6998,21 +6998,47 @@ function setupmenus()
             title: "Export Galleries",
             func: function()
             {
-	    }
-	},
+                var data = _2cnv.sliceobj.data;
+                var k = [];
+                for (var n = 0; n < data.length; ++n)
+                {
+                    var j = data[n];
+                    var e = {};
+                    e.title = j.title;
+                    e.json = j.json;
+                    e.id = j.id;
+                    k.push(e);
+                }
+    
+                savefile("galleries.json", JSON.stringify(k));            
+	        }
+	    },
         {
             title: "Import Galleries",
             func: function()
             {
-	    }
-	},
+	        }
+	    },
         {
             title: "Export Users",
             func: function()
             {
-		
-	    }
-	},
+                var data = _1cnv.sliceobj.data;
+                var k = [];
+                for (var n = 0; n < data.length; ++n)
+                {
+                    var j = data[n];
+                    var e = {};
+                    e.name = j.name;
+                    e.email = j.email;
+                    e.id = j.id;
+                    e.secret = e.secret;
+                    k.push(e);
+                }
+    
+                savefile("users.json", JSON.stringify(k));            		
+	        }
+	    },
         {
             title: "Import Users",
             func: function()
@@ -7045,7 +7071,6 @@ function setupmenus()
                         str += name + "\n";
                     }
         		}
-
                 
                 savefile("files.txt", str);
             }
