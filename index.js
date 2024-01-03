@@ -5611,9 +5611,9 @@ menuobj.draw = function()
             var t = time + (n * delayinterval);
             var b = Math.tan(t);
             var j = Math.berp(-1, 1, b);
-            var y = j * context.canvas.virtualheight;
+            var y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
-            y -= e;
+            //y -= e;
             y = Math.floor(y);
             
             var x = rect.width / 2;
