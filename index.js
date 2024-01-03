@@ -5626,7 +5626,7 @@ menuobj.draw = function()
             	context.centered = j.n;
             }
 
-            if (0)//slice.isvisible)
+            if (1)//slice.isvisible)
             {
         		context.translate(0, j.y);
         		context.canvas.draw(context, r, j.slice, j.n);
