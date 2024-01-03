@@ -5641,8 +5641,11 @@ menuobj.draw = function()
         }
     }
 
+    visiblelst.push(context.canvas.visibles);
+    
     for (var n = 0; n < context.canvas.visibles.length; ++n)
     {
+        
         var j = context.canvas.visibles[n];
         context.translate(0, j.y);
         context.canvas.draw(context, r, j.slice, j.n);
@@ -5653,6 +5656,7 @@ menuobj.draw = function()
     context.canvas.footer.draw(context, rect, 0, 0);
 }
 
+var visiblelst = [];
 function resetview()
 {
     if (menuobj.value() != _8cnvctx)
