@@ -5714,7 +5714,7 @@ var eventlst =
     holly: 0,
     width: 640
 },
-{ // _3cnvctx debug
+{ // _3cnvctx options
     speed: 60,
     reduce: 2.5,
     updownmax: 60,
@@ -7166,29 +7166,6 @@ function setupmenus()
             return true;
         }
     },     
-	/*
-    {
-        title: "Full Image\nThumbnail Image View",
-        func: function() 
-        {
-	        clearInterval(_8cnvctx.swipetimeout)
-	        _8cnvctx.swipetimeout = 0;
-	        _8cnvctx.canvas.slideshow = 0;
-            menuobj.hide();
-            _8cnv.width = 0;
-            _8cnv.height = 0;
-	        _4cnv.width = window.innerWidth;
-            _4cnv.height = window.innerHeight;
-            galleryobj.set(_8cnvctx.centered);
-            headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-            var k = headlst.findIndex(function(a){return a.name == "BOSS"});
-            headham.panel = headlst[k];
-            delete photo.image;
-            contextobj.reset();
-            return false;
-        }
-    },     
-    */
     {
         title: function()
         {
