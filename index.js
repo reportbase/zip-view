@@ -1413,7 +1413,7 @@ var displaylst =
             [
                 0,
                 //(index+1).toFixed(0),
-                slice.rect.y,
+                slice.rect.y.toFixed(0),
                 0,
                 _8cnv.hollyobj, 
                 0,
