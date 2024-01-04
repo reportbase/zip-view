@@ -1379,7 +1379,7 @@ var displaylst =
             var a = new panel.rowsA([0,60,20,12,2],
             [
                 0,
-                new panel.cols([0,60,0],
+                new panel.cols([0,180,0],//todo 60
                 [
                     0,
                     new panel.layers(
@@ -1413,7 +1413,6 @@ var displaylst =
             [
                 0,
                 //(index+1).toFixed(0),
-                //slice.rect.y.toFixed(0),
 		`${k}: ${slice.rect.y}`,    
                 0,
                 _8cnv.hollyobj, 
