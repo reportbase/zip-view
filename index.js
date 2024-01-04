@@ -5624,12 +5624,12 @@ menuobj.draw = function()
             
             if (n > 0)
             {
-                var t = time + ((n-1) * delayinterval);
-                var b = Math.tan(t);
-                var j = Math.berp(-1, 1, b);
-                var yy = j * canvas.virtualheight;
-                var e = (canvas.virtualheight - rect.height) / 2;
-                yy -= e;
+                var tt = time + ((n-1) * delayinterval);
+                var bb = Math.tan(tt);
+                var jj = Math.berp(-1, 1, bb);
+                var yy = jj * canvas.virtualheight;
+                var ee = (canvas.virtualheight - rect.height) / 2;
+                yy -= ee;
                 var f = yy-y;
                 y += -f;
             }
