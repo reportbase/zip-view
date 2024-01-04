@@ -16,7 +16,7 @@ const HIDE = url.searchParams.get("hide");
 const THEME = url.searchParams.get("theme");
 var BEAVE = url.searchParams.get("beav");
 if (!BEAVE)
-	BEAVE = 63.7;
+	BEAVE = 0.64;
 const NUBACK = "rgba(0,0,0,0.4)";
 const GALLNUB = THEME == "light" ? "black" : "white";
 const GALLFILL = THEME == "light" ? "rgba(0,0,0,0.5)" : "rgba(0,0,0,0.5)"; 
