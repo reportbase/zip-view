@@ -1414,7 +1414,7 @@ var displaylst =
             [
                 0,
                 //(index+1).toFixed(0),
-		`${slice.rect.y+window.innerHeight} ${slice2.rect.y}`,    
+		`${slice.rect.y+buttonobj.value()} ${slice2.rect.y}`,    
                 0,
                 _8cnv.hollyobj, 
                 0,
