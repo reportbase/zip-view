@@ -5503,7 +5503,6 @@ menuobj.show = function()
 }
 
 //menuobj draw
-var np;
 menuobj.draw = function()
 {
     var context = this.value();
@@ -5585,6 +5584,7 @@ menuobj.draw = function()
     context.canvas.visibles = [];
     context.centered = 0;
     var r = new rectangle(0, 0, rect.width, buttonheight);
+	var np;
 	
     for (var m = 0; m < canvas.normal.length; ++m)
     {
