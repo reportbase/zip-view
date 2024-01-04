@@ -5614,7 +5614,7 @@ menuobj.draw = function()
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
 		    if (slicep.lasty)
-		        y = slicep.lasty + buttonheigiht;
+		        y = slicep.lasty + buttonheight;
             slice.lasty = y;
             
             var x = rect.width / 2;
