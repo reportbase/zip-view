@@ -5621,15 +5621,21 @@ menuobj.draw = function()
             var y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-            y = Math.floor(y);
             
-            if (0)//np)
+            if (n > 0)
             {
-                var f = y-np;
+                var t = time + ((n-1) * delayinterval);
+                var b = Math.tan(t);
+                var j = Math.berp(-1, 1, b);
+                var yy = j * canvas.virtualheight;
+                var e = (canvas.virtualheight - rect.height) / 2;
+                yy -= e;
+                var f = yy-y;
                 y += -f;
             }
             
-            np = y+buttonheight;
+            y = Math.floor(y);
+            
             var x = rect.width / 2;
             var j = {slice,x,y,n};
             slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
