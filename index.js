@@ -5503,6 +5503,7 @@ menuobj.show = function()
 }
 
 //menuobj draw
+var np;
 menuobj.draw = function()
 {
     var context = this.value();
@@ -5621,6 +5622,13 @@ menuobj.draw = function()
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
             y = Math.floor(y);
+            if (np)
+            {
+                var f = y-np;
+                y += -f;
+            }
+            
+            np = y+buttonheight;
             var x = rect.width / 2;
             var j = {slice,x,y,n};
             slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
