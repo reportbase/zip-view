@@ -2747,8 +2747,6 @@ var wheelst =
         }
         else
         {
-            if (Math.abs(delta) < 2)
-                return;        
 		    menuobj.updown(context, delta, 60)
         	if (!clearInterval(context.swipetimeout))
             {
@@ -5580,7 +5578,7 @@ menuobj.draw = function()
     context.canvas.visibles = [];
     context.centered = 0;
     var r = new rectangle(0, 0, rect.width, buttonheight);
-    var nexty;
+    var prevy;
 	
     for (var m = 0; m < canvas.normal.length; ++m)
     {
@@ -5618,6 +5616,9 @@ menuobj.draw = function()
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
             y = Math.floor(y);
+            if (yprev)
+                y = yprev;
+            yprev = y+buttonheight;
             
             var x = rect.width / 2;
             var j = {slice,x,y,n};
