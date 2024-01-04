@@ -7819,8 +7819,7 @@ function showdialog(str, func)
             if (!rect.hitest(event.x, event.y) && !dialog.clickblocked)
             {
                 dialog.close();
-                headobj.hide();
-                menuobj.draw();
+                closemenu();
             }
 		
             return false;
