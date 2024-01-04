@@ -14,7 +14,7 @@ function ios()
 var url = new URL(window.location.href);
 const HIDE = url.searchParams.get("hide");
 const THEME = url.searchParams.get("theme");
-const BEAV = 0.636;
+const BEAV = 1;//0.636;
 const NUBACK = "rgba(0,0,0,0.4)";
 const GALLNUB = THEME == "light" ? "black" : "white";
 const GALLFILL = THEME == "light" ? "rgba(0,0,0,0.5)" : "rgba(0,0,0,0.5)"; 
