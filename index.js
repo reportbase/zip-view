@@ -5621,7 +5621,7 @@ menuobj.draw = function()
             var y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-            y = Math.floor(y);
+            //y = Math.floor(y);
             
             var x = rect.width / 2;
             var j = {slice,x,y,n};
