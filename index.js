@@ -14,9 +14,7 @@ function ios()
 var url = new URL(window.location.href);
 const HIDE = url.searchParams.get("hide");
 const THEME = url.searchParams.get("theme");
-var BEAV = url.searchParams.get("beav");
-if (!BEAV)
-	BEAV = 0.635;
+const BEAV = 0.636;
 const NUBACK = "rgba(0,0,0,0.4)";
 const GALLNUB = THEME == "light" ? "black" : "white";
 const GALLFILL = THEME == "light" ? "rgba(0,0,0,0.5)" : "rgba(0,0,0,0.5)"; 
@@ -5619,7 +5617,9 @@ menuobj.draw = function()
             var y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-            //y = Math.floor(y);
+            if (slice.lasty - y < 1.5)
+                y = slice.lasty;
+            slice.lasy = y;
             
             var x = rect.width / 2;
             var j = {slice,x,y,n};
