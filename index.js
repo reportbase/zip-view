@@ -5581,7 +5581,7 @@ menuobj.draw = function()
     {
         var n = canvas.normal[m];
         var slice = slices[n];
-        var slicep = m>0?slices[m-1]:0;
+        var slicep = n>0?slices[n-1]:0;
         var thumbimg = thumbimglst[slice.dindex];
         if (context == _8cnvctx && 
             thumbimg.view != slice.view &&
