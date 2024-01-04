@@ -1409,12 +1409,14 @@ var displaylst =
                 ]),
                 0,
             ])
-
+var aa = slice.rect.y+buttonobj.value();
+var bb = slice2.rect.y;
+var cc = bb-aa;
             a.draw(context, rect, 
             [
                 0,
                 //(index+1).toFixed(0),
-		`${slice.rect.y+buttonobj.value()} ${slice2.rect.y}`,    
+		`${aa.toFixed(0)} ${bb.toFixed(0)} ${cc.toFixed(0)}`,    
                 0,
                 _8cnv.hollyobj, 
                 0,
