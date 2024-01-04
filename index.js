@@ -5526,14 +5526,7 @@ menuobj.draw = function()
     }
 
     var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
-    context.canvas.virtualheight = len * buttonheight;
-    if (0)//context == _8cnvctx)
-    {
-        canvas.buttonheight = buttonobj.value();
-        var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
-        context.canvas.virtualheight = len * buttonheight;
-    }
-    
+    context.canvas.virtualheight = len * buttonheight; 
     context.clear();
     if (context.canvas.virtualheight < window.innerHeight && len)
     {
@@ -5571,7 +5564,6 @@ menuobj.draw = function()
     context.canvas.visibles = [];
     context.centered = 0;
     var r = new rectangle(0, 0, rect.width, buttonheight);
-	var np;
 	
     for (var m = 0; m < canvas.normal.length; ++m)
     {
@@ -5608,7 +5600,7 @@ menuobj.draw = function()
             var y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-            y = Math.floor(y);
+            y = Math.round(y);
             
             var x = rect.width / 2;
             var j = {slice,x,y,n};
