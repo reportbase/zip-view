@@ -1413,7 +1413,8 @@ var displaylst =
             [
                 0,
                 //(index+1).toFixed(0),
-                slice.rect.y.toFixed(0),
+                //slice.rect.y.toFixed(0),
+		`${k}: ${slice.rect.y}`,    
                 0,
                 _8cnv.hollyobj, 
                 0,
