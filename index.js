@@ -14,6 +14,9 @@ function ios()
 var url = new URL(window.location.href);
 const HIDE = url.searchParams.get("hide");
 const THEME = url.searchParams.get("theme");
+var BEAVE = url.searchParams.get("beav");
+if (!BEAVE)
+	BEAVE = 63.7;
 const NUBACK = "rgba(0,0,0,0.4)";
 const GALLNUB = THEME == "light" ? "black" : "white";
 const GALLFILL = THEME == "light" ? "rgba(0,0,0,0.5)" : "rgba(0,0,0,0.5)"; 
@@ -552,9 +555,6 @@ panel.empty = function()
 {
     this.draw = function(context, rect, user, time) {}
 };    
-
-var beavobj = new circular_array("BEAV", 100)
-beavobj.set(63.7);
 
 var footlst = 
 [
@@ -5538,7 +5538,7 @@ menuobj.draw = function()
         var delayinterval = Math.PI / len;
         context.canvas.virtualheight = len * buttonheight;
         if (galleryobj.padsize)
-            context.canvas.virtualheight = len * buttonheight * beavobj.value()/100;
+            context.canvas.virtualheight = len * buttonheight * BEAV;
     }
     
     context.clear();
@@ -5554,7 +5554,7 @@ menuobj.draw = function()
     {
         buttonheight = buttonobj.value();
         buttonheight = buttonheight-buttonheight%2;
-        canvas.virtualheight = len * buttonheight * beavobj.value()/100;
+        canvas.virtualheight = len * buttonheight * BEAV;
     }
 
     if (context != _8cnvctx)
