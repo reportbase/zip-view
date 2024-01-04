@@ -4590,8 +4590,11 @@ var taplst =
             {
                 if (input.value != gallery.title)
                     return true;
-                fetch(`https://gullery.reportbase5836.workers.dev/delete/${gallery.id}`)
-                .then(function(response)
+                fetch(`https://gullery.reportbase5836.workers.dev/${gallery.id}`,
+                {
+                    method: 'delete'
+                })
+                .then(res =>
                 {
                     var n = _2cnv.sliceobj.current()
                     _2cnv.sliceobj.data.splice(n,1);
