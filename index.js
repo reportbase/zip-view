@@ -554,7 +554,7 @@ panel.empty = function()
 };    
 
 var beavobj = new circular_array("BEAV", 100)
-beavobj.set(64.2);
+beavobj.set(66.2);
 
 var footlst = 
 [
@@ -1377,10 +1377,10 @@ var displaylst =
             return;
         if (!headcnv.height)
     	{        
-            var a = new panel.rowsA([0,180,20,12,2],//60
+            var a = new panel.rowsA([0,360,20,12,2],//60
             [
                 0,
-                new panel.cols([0,180,0],//todo 60
+                new panel.cols([0,360,0],//todo 60
                 [
                     0,
                     new panel.layers(
