@@ -1417,7 +1417,7 @@ var cc = bb-aa;
             [
                 0,
                 //(index+1).toFixed(0),
-		`${tt} ${k} ${aa.toFixed(0)} ${bb.toFixed(0)} ${cc.toFixed(0)}`,    
+		`${tt} ${k} ${aa.toFixed(0)} ${bb.toFixed(0)} ${cc.toFixed(4)}`,    
                 0,
                 _8cnv.hollyobj, 
                 0,
