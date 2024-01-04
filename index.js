@@ -54,7 +54,7 @@ const SEARCHFRAME = "rgba(255,255,255,0.5)";
 const TRANSPARENT = "rgba(0,0,0,0)";
 const FILLBAR = "rgba(0,0,0,0.3)";
 const NUBAR = "rgba(255,255,255,0.8)";
-const FILLMENU = "white";//rgba(0,0,0,0.75)";
+const FILLMENU = rgba(0,0,0,0.75)";
 const ARROWFILL = "white";
 const SCROLLEXTENT = 16;
 const SCROLLMARGIN = 6;
@@ -5559,6 +5559,11 @@ menuobj.draw = function()
     if (context != _8cnvctx)
     {
         var a = new panel.fill(FILLMENU);
+        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
+    }
+    else 
+    {
+        var a = new panel.fill("white");
         a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
     }
 
