@@ -1376,7 +1376,7 @@ var displaylst =
             return;
         if (!headcnv.height)
     	{        
-            var a = new panel.rowsA([0,60,20,12,2],
+            var a = new panel.rowsA([0,180,20,12,2],//60
             [
                 0,
                 new panel.cols([0,180,0],//todo 60
