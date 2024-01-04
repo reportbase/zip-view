@@ -5526,13 +5526,11 @@ menuobj.draw = function()
     }
 
     var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
-    var delayinterval = Math.PI / len;
     context.canvas.virtualheight = len * buttonheight;
     if (context == _8cnvctx)
     {
         canvas.buttonheight = buttonobj.value();
         var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
-        var delayinterval = Math.PI / len;
         context.canvas.virtualheight = len * buttonheight;
         if (galleryobj.padsize)
             context.canvas.virtualheight = len * buttonheight * BEAV;
@@ -5606,8 +5604,8 @@ menuobj.draw = function()
         }
         else
         {
-            var t = time + (n * delayinterval);
-            var b = Math.tan(t);
+            var t = time + (n * (Math.PI / len));
+            var b = Math.sin(t);
             var j = Math.berp(-1, 1, b);
             var y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
