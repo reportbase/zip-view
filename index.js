@@ -5584,15 +5584,6 @@ menuobj.draw = function()
     context.canvas.visibles = [];
     context.centered = 0;
     var r = new rectangle(0, 0, rect.width, buttonheight);
-    var yprev;
-
-    var t = time + (0 * delayinterval);
-    var b = Math.tan(t);
-    var j = Math.berp(-1, 1, b);
-    var yy = j * canvas.virtualheight;
-    var e = (canvas.virtualheight - rect.height) / 2;
-    yy -= e;
-    yy = Math.floor(yy);
 	
     for (var m = 0; m < canvas.normal.length; ++m)
     {
@@ -5623,7 +5614,6 @@ menuobj.draw = function()
         }
         else
         {
-            /*
             var t = time + (n * delayinterval);
             var b = Math.tan(t);
             var j = Math.berp(-1, 1, b);
@@ -5631,8 +5621,6 @@ menuobj.draw = function()
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
             y = Math.floor(y);
-            */
-            var y = yy+n*buttonheight;
             var x = rect.width / 2;
             var j = {slice,x,y,n};
             slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
