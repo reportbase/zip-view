@@ -7792,6 +7792,8 @@ function showdialog(str, func)
     {
         if (evt.key == "Enter")
         {
+		    if (document.activeElement.rows)
+                return;
             dialog.blocked = 1;
             if (func())
                 return;
