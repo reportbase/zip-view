@@ -5611,7 +5611,7 @@ menuobj.draw = function()
             var j = Math.berp(-1, 1, b);
             var y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
-            y -= e;
+            //y -= e;
             y = Math.floor(y);
             
             var x = rect.width / 2;
