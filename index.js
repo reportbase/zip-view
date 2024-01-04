@@ -5600,10 +5600,10 @@ menuobj.draw = function()
             var y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-            y = Math.round(y);
-            if (slice.lasty)
-                y = Math.abs(y-slice.lasty) < 2 ? slice.lasty : y;
-            slice.lasty = y;
+            //y = Math.round(y);
+            //if (slice.lasty)
+            //    y = Math.abs(y-slice.lasty) < 2 ? slice.lasty : y;
+            //slice.lasty = y;
             
             var x = rect.width / 2;
             var j = {slice,x,y,n};
