@@ -7820,6 +7820,7 @@ function showdialog(str, func)
                 menuobj.draw();
                 dialog.close();
             }
+		
             return false;
         }
     });
