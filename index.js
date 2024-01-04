@@ -14,7 +14,7 @@ function ios()
 var url = new URL(window.location.href);
 const HIDE = url.searchParams.get("hide");
 const THEME = url.searchParams.get("theme");
-const BEAV = 1;//0.636;
+const BEAV = 0.636;
 const NUBACK = "rgba(0,0,0,0.4)";
 const GALLNUB = THEME == "light" ? "black" : "white";
 const GALLFILL = THEME == "light" ? "rgba(0,0,0,0.5)" : "rgba(0,0,0,0.5)"; 
@@ -5527,13 +5527,11 @@ menuobj.draw = function()
 
     var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
     context.canvas.virtualheight = len * buttonheight;
-    if (context == _8cnvctx)
+    if (0)//context == _8cnvctx)
     {
         canvas.buttonheight = buttonobj.value();
         var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
         context.canvas.virtualheight = len * buttonheight;
-        if (galleryobj.padsize)
-            context.canvas.virtualheight = len * buttonheight * BEAV;
     }
     
     context.clear();
@@ -5545,7 +5543,7 @@ menuobj.draw = function()
         buttonheight = buttonheight-buttonheight%2;
         context.canvas.virtualheight = len * buttonheight;
     }
-    else if (context == _8cnvctx && !galleryobj.padsize)
+    else if (context == _8cnvctx)
     {
         buttonheight = buttonobj.value();
         buttonheight = buttonheight-buttonheight%2;
@@ -5605,7 +5603,7 @@ menuobj.draw = function()
         else
         {
             var t = time + (n * (Math.PI / len));
-            var b = Math.sin(t);
+            var b = Math.tan(t);
             var j = Math.berp(-1, 1, b);
             var y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
