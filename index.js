@@ -7818,9 +7818,9 @@ function showdialog(str, func)
             var rect = new rectangle(r.x,r.y,r.width,r.height);
             if (!rect.hitest(event.x, event.y) && !dialog.clickblocked)
             {
+                dialog.close();
                 headobj.hide();
                 menuobj.draw();
-                dialog.close();
             }
 		
             return false;
