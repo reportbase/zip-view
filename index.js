@@ -5559,11 +5559,6 @@ menuobj.draw = function()
         var a = new panel.fill(FILLMENU);
         a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
     }
-    else 
-    {
-        var a = new panel.fill("white");
-        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
-    }
 
     canvas.virtualheight = Math.floor(canvas.virtualheight)
     canvas.virtualheight = canvas.virtualheight - canvas.virtualheight%2;
