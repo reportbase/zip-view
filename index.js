@@ -3,7 +3,7 @@
 function ios()
 {
     return 
-    [
+    [f
         'iPad',
         'iPhone',
         'iPod'
@@ -5632,7 +5632,7 @@ menuobj.draw = function()
                 yp -= e;
                 yp = Math.floor(y);
             
-                var f = y-pp;
+                var f = y-yp;
                 y += -f;
             }
             
