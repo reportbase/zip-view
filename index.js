@@ -5612,9 +5612,9 @@ menuobj.draw = function()
             var y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-            if (slice.lasty - y <= 2)
+            if (slice.lasty - y <= 1)
                 y = slice.lasty;
-            slice.lasy = y;
+            slice.lasy = Math.floor(y);
             
             var x = rect.width / 2;
             var j = {slice,x,y,n};
