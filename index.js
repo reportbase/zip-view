@@ -5617,7 +5617,7 @@ menuobj.draw = function()
             var y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-            if (slice.lasty - y < 1.5)
+            if (slice.lasty - y <= 2)
                 y = slice.lasty;
             slice.lasy = y;
             
