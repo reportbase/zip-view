@@ -1370,6 +1370,7 @@ var displaylst =
         var index = 1 - canvas.timeobj.berp();
         index *= galleryobj.length();
         var k = Math.floor(index);
+        var slice = canvas.sliceobj.data[k];
         var value = galleryobj.data[k];
 	    if (!value)
             return;
@@ -1411,7 +1412,8 @@ var displaylst =
             a.draw(context, rect, 
             [
                 0,
-                (index+1).toFixed(0),
+                //(index+1).toFixed(0),
+                slice.rect.y,
                 0,
                 _8cnv.hollyobj, 
                 0,
@@ -5616,9 +5618,6 @@ menuobj.draw = function()
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
             y = Math.floor(y);
-            if (yprev)
-                y = yprev;
-            yprev = y+buttonheight;
             
             var x = rect.width / 2;
             var j = {slice,x,y,n};
