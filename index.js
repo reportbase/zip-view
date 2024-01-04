@@ -5622,7 +5622,7 @@ menuobj.draw = function()
             y -= e;
             y = Math.floor(y);
 
-            if (n > 0)
+            if (0)//n > 0)
             {
                 var t = time + ((n-1) * delayinterval);
                 var b = Math.tan(t);
@@ -5630,7 +5630,7 @@ menuobj.draw = function()
                 var yp = j * canvas.virtualheight;
                 var e = (canvas.virtualheight - rect.height) / 2;
                 yp -= e;
-                yp = Math.floor(y);
+                yp = Math.floor(yp);
             
                 var f = y-yp;
                 y += -f;
