@@ -1409,6 +1409,7 @@ var displaylst =
                 ]),
                 0,
             ])
+var tt = _8cnv.timeobj.current().toFixed(2);
 var aa = slice.rect.y+buttonobj.value();
 var bb = slice2.rect.y;
 var cc = bb-aa;
@@ -1416,7 +1417,7 @@ var cc = bb-aa;
             [
                 0,
                 //(index+1).toFixed(0),
-		`${aa.toFixed(0)} ${bb.toFixed(0)} ${cc.toFixed(0)}`,    
+		`${tt} ${k} ${aa.toFixed(0)} ${bb.toFixed(0)} ${cc.toFixed(0)}`,    
                 0,
                 _8cnv.hollyobj, 
                 0,
