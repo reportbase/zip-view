@@ -1371,6 +1371,7 @@ var displaylst =
         index *= galleryobj.length();
         var k = Math.floor(index);
         var slice = canvas.sliceobj.data[k];
+        var slice2 = canvas.sliceobj.data[k+1];
         var value = galleryobj.data[k];
 	    if (!value)
             return;
@@ -1413,7 +1414,7 @@ var displaylst =
             [
                 0,
                 //(index+1).toFixed(0),
-		`${k}: ${slice.rect.y}`,    
+		`${slice.rect.y} ${slice2.rect.y}`,    
                 0,
                 _8cnv.hollyobj, 
                 0,
