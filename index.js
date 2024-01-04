@@ -5592,7 +5592,7 @@ menuobj.draw = function()
     var yy = j * canvas.virtualheight;
     var e = (canvas.virtualheight - rect.height) / 2;
     yy -= e;
-    yy = Math.floor(y);
+    yy = Math.floor(yy);
 	
     for (var m = 0; m < canvas.normal.length; ++m)
     {
