@@ -5581,7 +5581,6 @@ menuobj.draw = function()
     {
         var n = canvas.normal[m];
         var slice = slices[n];
-        var slicep = n>0?slices[n-1]:0;
         var thumbimg = thumbimglst[slice.dindex];
         if (context == _8cnvctx && 
             thumbimg.view != slice.view &&
@@ -5613,9 +5612,7 @@ menuobj.draw = function()
             var y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-		    if (slicep.lasty)
-		        y = slicep.lasty + buttonheight;
-            slice.lasty = y;
+            y = Math.floor(y);
             
             var x = rect.width / 2;
             var j = {slice,x,y,n};
