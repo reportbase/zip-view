@@ -5578,7 +5578,7 @@ menuobj.draw = function()
     context.canvas.visibles = [];
     context.centered = 0;
     var r = new rectangle(0, 0, rect.width, buttonheight);
-    var prevy;
+    var yprev;
 	
     for (var m = 0; m < canvas.normal.length; ++m)
     {
