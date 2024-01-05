@@ -3579,7 +3579,7 @@ var swipelst =
         headobj.draw();
         
         var k = evt.type == "swipeup" ? 1 : -1;
-        menuobj.updown(context, k * 120, 40);
+        menuobj.updown(context, k * 120, 120);
         if (!context.swipetimeout)
             context.swipetimeout = setInterval(
                 function(){menuobj.draw();}, GALLERYMAIN);
