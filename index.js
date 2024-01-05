@@ -984,7 +984,7 @@ var headlst =
         delete context.homerect;
         delete context.fullscreenrect;
         delete context.homemenurect;
-        delete context.gallerymenurect;
+        delete context.galleryrect;
 	    var b = ALIEXTENT+10;
         var s = SAFARI ? -1 : b;
         var e = rect.width>=360 ? b:-1;
@@ -2058,14 +2058,14 @@ panel.gallerymenu = function()
         if (menuobj.value() == _8cnvctx ||
             menuobj.value() == galleryobj.rightctx)
         {
-		    context.gallerymenurect = new rectangle();
+		    context.galleryrect = new rectangle();
             var s = menuobj.value() == galleryobj.rightctx;
             var j = 5;
             var k = j / 2;
             var e = new panel.fill(OPTIONFILL);
             var a = new panel.layers(
             [
-                new panel.rectangle(context.gallerymenurect),  
+                new panel.rectangle(context.galleryrect),  
                 s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
                 new panel.shrink(new panel.circle(s ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.rows([0, rect.height * 0.20, 0],
@@ -4301,8 +4301,8 @@ var taplst =
         }            
         else if (
             headcnv.height &&
-            (headcnvctx.gallerymenurect &&
-            headcnvctx.gallerymenurect.hitest(x, y)))
+            (headcnvctx.galleryrect &&
+            headcnvctx.galleryrect.hitest(x, y)))
         {
             if (menuobj.value() == _2cnvctx)
             {
@@ -4325,7 +4325,16 @@ var taplst =
                         var result = results[n];
                         result.func = gallerymenufunc
                     }
-        
+
+                    result.sort((a, b) => 
+                    {
+                        if(a.title < b.title) 
+                            return -1;
+                        if(a.title > b.title) 
+                            return 1; 
+                        return 0;
+                    });
+                                    
                     _2cnv.sliceobj.data = results
                     
                     var k = _2cnv.sliceobj.data.findIndex(
