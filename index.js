@@ -3485,6 +3485,7 @@ var presslst =
         var n = getvisible(x, y);
         aligncenter(n);
         buttonobj.reset();
+        /*
         if (buttonobj.portrait)
         {
             buttonobj.portrait = 0;
@@ -3511,6 +3512,7 @@ var presslst =
         }
         
         menuobj.draw();    
+        */
     }
 },
 {
