@@ -2741,7 +2741,9 @@ var wheelst =
         {
             var j = buttonobj.length()/60;
             var k = delta < 0 ? 1 : -1;
-            var e = k*j;
+            var e = Math.floor(k*j);
+            if (e <= 2)
+                return;
             buttonobj.add(e);
             context.canvas.pinching = 1;
             menuobj.draw();
