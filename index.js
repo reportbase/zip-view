@@ -825,7 +825,7 @@ var footlst =
             0
         ]);
         
-        a.draw(context, rect, `\u{25C0}   Debug`, 0);
+        a.draw(context, rect, `\u{25C0}   Options`, 0);
         context.restore();
     }
 },
