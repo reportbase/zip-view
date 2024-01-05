@@ -6024,7 +6024,7 @@ contextobj.init = function()
         canvas.hollyobj = new circular_array("TEXTSCROLL", 100);
         canvas.hollyobj.set(obj.holly);
 
-        canvas.backfill = obj.backfill;
+        context.backfill = obj.backfill;
         canvas.speed = obj.speed;
         canvas.reduce = obj.reduce;
         canvas.autodirect = -1;
