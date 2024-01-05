@@ -2743,7 +2743,7 @@ var wheelst =
             var k = delta < 0 ? 1 : -1;
             if (!context.count)
                 context.count = 0;
-            if (!(++context.count%3))
+            if ((++context.count%3))
                 return;
             buttonobj.add(j*k);
             context.canvas.pinching = 1;
