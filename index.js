@@ -6993,7 +6993,7 @@ function setupmenus()
                     var j = data[n];
                     var e = {};
                     e.id = j.id;
-                    e.title = j.title;
+                    e.name = j.name;
                     e.url = j.url;
                     e.folder = j.folder;
                     k.data.push(e);
