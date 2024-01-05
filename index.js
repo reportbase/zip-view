@@ -23,8 +23,9 @@ const HIDE = url.searchParams.get("hide");
 const THEME = url.param("theme");
 const BEAV = url.param("beav", 0.636);
 const NUBACK = "rgba(0,0,0,0.4)";
-const GALLNUB = THEME == "light" ? "black" : "white";
-const GALLFILL = THEME == "light" ? "rgba(0,0,0,0.5)" : "rgba(0,0,0,0.5)"; 
+const GALLNUB = url.param("gallnub","white");
+const GALLFILL = url.param("gallfill","rgba(0,0,0,0.5)"); 
+const BACKFILL = url.param("backfill","black");
 const SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const VIRTCONST = 0.8;
 const MAXVIRTUAL = 5760*3;
@@ -5538,7 +5539,6 @@ menuobj.draw = function()
 
     var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
     context.canvas.virtualheight = len * buttonheight; 
-    context.clear();
     if (context.canvas.virtualheight < window.innerHeight && len)
     {
         buttonheight = Math.floor(window.innerHeight / len);
@@ -5555,11 +5555,11 @@ menuobj.draw = function()
     }
 
     if (context != _8cnvctx)
-    {
-        var a = new panel.fill(FILLMENU);
-        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
-    }
-
+        context.clear();
+    
+    var a = new panel.fill(context.backfill);
+    a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
+    
     canvas.virtualheight = Math.floor(canvas.virtualheight)
     canvas.virtualheight = canvas.virtualheight - canvas.virtualheight%2;
     
@@ -5671,6 +5671,7 @@ var eventlst =
     buttonheight: 240,
     buttonmargin: 20,
     holly: 0,
+    backfill: FILLMENU,
     width: 640
 },
 { // _2cnvctx galleries
@@ -5693,6 +5694,7 @@ var eventlst =
     buttonheight: 180,
     buttonmargin: 20,
     holly: 0,
+    backfill: FILLMENU,
     width: 640
 },
 { // _3cnvctx options
@@ -5715,6 +5717,7 @@ var eventlst =
     buttonheight: 90,
     buttonmargin: 10,
     holly: 0,
+    backfill: FILLMENU,
     width: 640
 },
 { // _4cnvctx boss
@@ -5737,6 +5740,7 @@ var eventlst =
     buttonheight: 30,
     buttonmargin: 10,
     holly: 0,
+    backfill: FILLMENU,
     width: 640
 },
 { // _5cnvctx folders
@@ -5759,6 +5763,7 @@ var eventlst =
     buttonheight: 150,
     buttonmargin: 10,
     holly: 0,
+    backfill: FILLMENU,
     width: 640
 },
 { // _6cnvctx images
@@ -5781,6 +5786,7 @@ var eventlst =
     buttonheight: 180,
     buttonmargin: 15,
     holly: 0,
+    backfill: FILLMENU,
     width: 640
 },
 { // _7cnvctx home
@@ -5803,6 +5809,7 @@ var eventlst =
     buttonheight: 180,
     buttonmargin: 20,
     holly: 0,
+    backfill: FILLMENU,
     width: 640
 },
 { // _8cnvctx gallery
@@ -5825,6 +5832,7 @@ var eventlst =
     buttonheight: 1080,
     buttonmargin: 10,
     holly: 50,
+    backfill: BACKFILL,
     width: 5160
 },
 { // _9cnvctx template
@@ -5847,6 +5855,7 @@ var eventlst =
     buttonheight: 120,
     buttonmargin: 30,
     holly: 0,
+    backfill: FILLMENU,
     width: 640
 },
 { // _10cnvctx User
@@ -5869,6 +5878,7 @@ var eventlst =
     buttonheight: 120,
     buttonmargin: 30,
     holly: 0,
+    backfill: FILLMENU,
     width: 640
 },
 { // _11cnvctx unused
@@ -5891,6 +5901,7 @@ var eventlst =
     buttonheight: 160,
     buttonmargin: 15,
     holly: 0,
+    backfill: FILLMENU,
     width: 640
 },
 { // _12cnvctx
@@ -5913,6 +5924,7 @@ var eventlst =
     buttonheight: 50,
     buttonmargin: 10,
     holly: 0,
+    backfill: FILLMENU,
     width: 640
 },
 { // _13cnvctx
@@ -5935,6 +5947,7 @@ var eventlst =
     buttonheight: 50,
     buttonmargin: 10,
     holly: 0,
+    backfill: FILLMENU,
     width: 640
 },
 { // _14cnvctx
@@ -5957,6 +5970,7 @@ var eventlst =
     buttonheight: 50,
     buttonmargin: 10,
     holly: 0,
+    backfill: FILLMENU,
     width: 640
 },
 { // _15cnvctx
@@ -5979,6 +5993,7 @@ var eventlst =
     buttonheight: 50,
     buttonmargin: 10,
     holly: 0,
+    backfill: FILLMENU,
     width: 640
 }, 
 ];
@@ -6008,7 +6023,8 @@ contextobj.init = function()
 
         canvas.hollyobj = new circular_array("TEXTSCROLL", 100);
         canvas.hollyobj.set(obj.holly);
-	    
+
+        canvas.backfill = obj.backfill;
         canvas.speed = obj.speed;
         canvas.reduce = obj.reduce;
         canvas.autodirect = -1;
