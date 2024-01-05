@@ -2739,13 +2739,13 @@ var wheelst =
         context.canvas.slideshow = 0;
 	    if (ctrl)
         {
-            //var j = buttonobj.length()/60;
-		    var j = delta/190;
+	        var j = 10;
             var k = delta < 0 ? 1 : -1;
-            var e = Math.floor(k*j);
-            if (!e)
+            if (!context.count)
+                context.count = 0;
+            if (!(++context.count%3))
                 return;
-            buttonobj.add(e);
+            buttonobj.add(j*k);
             context.canvas.pinching = 1;
             menuobj.draw();
             clearTimeout(context.wheeltime)
