@@ -3510,9 +3510,9 @@ var presslst =
             var k = Math.floor(context.canvas.hollyobj.length()/2);
             context.canvas.hollyobj.set(k);
         }
+        */
         
         menuobj.draw();    
-        */
     }
 },
 {
