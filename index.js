@@ -12,9 +12,16 @@ function ios()
 }
 
 var url = new URL(window.location.href);
+url.param = function(key, def)
+{
+    if (url.searchParams.has(key))
+        return url.searchParams.get(key);
+    return def;
+}
+
 const HIDE = url.searchParams.get("hide");
-const THEME = url.searchParams.get("theme");
-const BEAV = 0.636;
+const THEME = url.param("theme");
+const BEAV = url.param("beav", 0.636);
 const NUBACK = "rgba(0,0,0,0.4)";
 const GALLNUB = THEME == "light" ? "black" : "white";
 const GALLFILL = THEME == "light" ? "rgba(0,0,0,0.5)" : "rgba(0,0,0,0.5)"; 
@@ -1382,7 +1389,7 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.rectangle(context.aligntoprect),
-                        new panel.circle(context.canvas.aligntoptime?"rgb(0,0,120)":GALLFILL, 0, 0),
+                        new panel.circle(context.canvas.aligntoptime?"black":GALLFILL, 0, 0),
                         new panel.text(),
                     ]),
                     0,
