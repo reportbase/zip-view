@@ -5322,9 +5322,7 @@ var buttonlst =
 
             if (b > b2)
             {
-		            if (thumbfitted.height != hh)
-                        //||
-                    //thumbimg.count < 1)
+		        if (thumbfitted.height != hh)
                 {
                     var thumbfittedctx = thumbfitted.getContext("2d");
                     thumbfitted.height = hh;
@@ -5347,8 +5345,6 @@ var buttonlst =
             else
             {
                 if (thumbfitted.width != ww)
-                    //||
-                    //thumbimg.count < 1)
                 {
                     var thumbfittedctx = thumbfitted.getContext("2d");
                     thumbfitted.width = ww
@@ -5380,7 +5376,7 @@ var buttonlst =
             var a = new panel.layers(
             [
                 new panel.shrink(new panel.rounded("rgba(100,100,100)", 0, 0, 20, 20), 20, 20),    
-                new panel.rows([40,Math.min(buttonobj.value()-120,160),0],
+                new panel.rows([40,Math.min(buttonobj.value()-600,160),0],
                 [
                     0,
 		            new panel.cols([20,0,20],
@@ -5389,7 +5385,7 @@ var buttonlst =
                         new panel.layers(
                         [
                             new panel.shrink(new panel.rounded(FILLMENU, 0, 0, 12, 12), 20, 0),
-                            new panel.shrink(new panel.multitext(0, new panel.text()), 40, 40),
+                            new panel.shrink(new panel.multitext(0, new panel.text()), 20, 20),
                         ]),
                         0,
                     ]),
@@ -7481,6 +7477,14 @@ function showusers()
         .then((response) => jsonhandler(response))
         .then(function(results)
         {
+            results.sort((a, b) => 
+            {
+                if (a.name < b.name) 
+                    return -1;
+                if (a.name > b.name) 
+                    return 1; 
+                return 0;
+            });
         	for (var n = 0; n < results.length; ++n)
         	{
         	    var result = results[n];
