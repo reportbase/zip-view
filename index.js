@@ -4326,7 +4326,7 @@ var taplst =
                         result.func = gallerymenufunc
                     }
 
-                    result.sort((a, b) => 
+                    results.sort((a, b) => 
                     {
                         if(a.title < b.title) 
                             return -1;
