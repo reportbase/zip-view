@@ -2739,7 +2739,7 @@ var wheelst =
         context.canvas.slideshow = 0;
 	    if (ctrl)
         {
-	        var j = 10;
+	        var j = 100;
             var k = delta < 0 ? 1 : -1;
             if (!context.count)
                 context.count = 0;
