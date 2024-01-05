@@ -2739,10 +2739,11 @@ var wheelst =
         context.canvas.slideshow = 0;
 	    if (ctrl)
         {
-            var j = buttonobj.length()/60;
+            //var j = buttonobj.length()/60;
+		    var j = delta/190;
             var k = delta < 0 ? 1 : -1;
             var e = Math.floor(k*j);
-            if (e <= 2)
+            if (!e)
                 return;
             buttonobj.add(e);
             context.canvas.pinching = 1;
