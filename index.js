@@ -1409,7 +1409,7 @@ var displaylst =
             [
                 0,
                 (index+1).toFixed(0),
-		0,
+		        0,
                 _8cnv.hollyobj, 
                 0,
             ], 0);
@@ -4240,7 +4240,7 @@ var taplst =
             {
                 context.canvas.panning = 0;
                 menuobj.draw()
-            }, NUBDELAY);
+            }, NUBDELAY*3);
         }            
         else if (context.aligntoprect &&
             context.aligntoprect.hitest(x, y))
@@ -4261,7 +4261,7 @@ var taplst =
             {
                 context.canvas.pinching = 0;
                 menuobj.draw()
-            }, NUBDELAY);
+            }, NUBDELAY*3);
         }            
         else if (canvas.timerect &&
             canvas.timerect.hitest(x, y))
@@ -4278,7 +4278,7 @@ var taplst =
             {
                 context.canvas.panning = 0;
                 menuobj.draw()
-            }, NUBDELAY);
+            }, NUBDELAY*3);
         }            
         else if (context.pirect &&
             context.pirect.hitest(x, y))
@@ -6981,6 +6981,27 @@ function setupmenus()
 {
     _3cnv.sliceobj.data = 
     [
+        {
+            title: "Export Gallery",
+            func: function()
+            {
+                var data = _8cnv.sliceobj.data;
+                var k = {};
+                k.data = [];
+                for (var n = 0; n < data.length; ++n)
+                {
+                    var j = data[n];
+                    var e = {};
+                    e.id = j.id;
+                    e.title = j.title;
+                    e.url = j.url;
+                    e.folder = j.folder;
+                    k.data.push(e);
+                }
+    
+                savefile("gallery.json", JSON.stringify(k));            
+	        }
+	    },
         {
             title: "Export Galleries",
             func: function()
