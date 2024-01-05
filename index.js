@@ -176,9 +176,11 @@ function sleep(milliseconds)
 {
     const date = Date.now();
     let currentDate = null;
-    do {
+    do 
+    {
         currentDate = Date.now();
-    } while (currentDate - date < milliseconds);
+    } 
+    while (currentDate - date < milliseconds);
 }
 
 util.istouch = function()
@@ -6690,6 +6692,7 @@ function rotate(pointX, pointY, originX, originY, angle)
 function resize()
 {
 	headcnv.width = window.innerWidth;
+    buttonobj.reset();
     if (menuobj.value())
     {
         if (menuobj.value() != _8cnvctx)
@@ -6705,7 +6708,7 @@ function resize()
     {
         _4cnv.width = window.innerWidth;
         _4cnv.height = window.innerHeight;
-	    contextobj.reset();
+	    //contextobj.reset();
         headobj.draw();
     }
 }
