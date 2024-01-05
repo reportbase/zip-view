@@ -5376,7 +5376,7 @@ var buttonlst =
             var a = new panel.layers(
             [
                 new panel.shrink(new panel.rounded("rgba(100,100,100)", 0, 0, 20, 20), 20, 20),    
-                new panel.rows([40,Math.min(buttonobj.value()-600,160),0],
+                new panel.rows([40,160,0],
                 [
                     0,
 		            new panel.cols([20,0,20],
