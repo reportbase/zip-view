@@ -1414,9 +1414,9 @@ var displaylst =
                         new panel.cols([0,0,0,0,0],
                         [
                             0,
-                            new panel.shrink(new panel.circle(),5,5),
-                            new panel.shrink(new panel.circle(),5,5),
-                            new panel.shrink(new panel.circle(),5,5),
+                            new panel.shrink(new panel.circle("white"),10,10),
+                            new panel.shrink(new panel.circle("white"),10,10),
+                            new panel.shrink(new panel.circle("white"),10,10),
                             0,
                         ])
                     ]),
