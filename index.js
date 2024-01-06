@@ -1547,7 +1547,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(value.marked?BOOKMARKED:HEAVYFILL, 
-                                      ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
+                        ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
                     new panel.expand(new panel.rectangle(context.bookmarkrect), EXPANDRECT, EXPANDRECT),
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
@@ -5386,18 +5386,16 @@ var buttonlst =
             var a = new panel.shrink(new panel.layers(
             [
                 new panel.rounded("rgba(100,100,100)", 0, 0, 20, 20),    
-                /*
                 new panel.shrink(panel.rows([g,0],
                 [
                     new panel.layers(
                     [
                         new panel.rounded(FILLMENU, 0, 0, 12, 12), 
-                        new panel.shrink(new panel.multitext(0, new panel.text()), 20, 20),
+                        //new panel.shrink(new panel.multitext(0, new panel.text()), 20, 20),
                     ]),
                     0,
                     0,
                 ]), 20, 20),
-                */
             ]), 20, 20);
 
             a.draw(context, rect, lst, 0);
