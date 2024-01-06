@@ -3507,8 +3507,8 @@ var presslst =
         if (buttonobj.portrait)
         {
             buttonobj.portrait = 0;
-            if (buttonobj.value() > window.innerHeight)
-                aligntop();
+            //if (buttonobj.value() > window.innerHeight)
+              //  aligntop();
         }
         else
         {
