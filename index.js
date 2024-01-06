@@ -44,7 +44,7 @@ const ROUNDEDLINEWIDTH = 4;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
 const FOOTHEIGHT = 80;
 const MAXEXTENT = 10000;
-const NUBDELAY = 1000;
+const NUBDELAY = 3000;
 const MAXIMAGESIZE = MAXEXTENT*MAXEXTENT;
 const MENUSELECT = "rgba(255,175,0,0.4)";
 const MENUTAP = "rgba(255,125,0,0.7)";
@@ -3014,7 +3014,7 @@ async function loadzip(file)
     if (!lst.length)
         return;
 
-    galleryobj.data = [];
+    galleryobj.dataT = [];
     galleryobj.width = 0;
     galleryobj.height = 0;
     galleryobj.set(0);
@@ -5376,26 +5376,6 @@ var buttonlst =
         }
         else
         {
-            var a = new panel.layers(
-            [
-                new panel.shrink(new panel.rounded("rgba(100,100,100)", 0, 0, 20, 20), 20, 20),    
-                new panel.rows([40,160,0],
-                [
-                    0,
-		            new panel.cols([20,0,20],
-                    [
-                        0,
-                        new panel.layers(
-                        [
-                            new panel.shrink(new panel.rounded(FILLMENU, 0, 0, 12, 12), 20, 0),
-                            new panel.shrink(new panel.multitext(0, new panel.text()), 20, 20),
-                        ]),
-                        0,
-                    ]),
-                    0,
-                ])
-            ]);
-
             var name = user.name;
             var lst = [];
             if (url.path)
@@ -5403,6 +5383,20 @@ var buttonlst =
             lst.push(name);
             lst.push(`${time+1} of ${galleryobj.length()}`)
             
+            var a = new panel.shrink(new panel.layers(
+            [
+                new panel.rounded("rgba(100,100,100)", 0, 0, 20, 20),    
+                new panel.shrink(panel.rows([lst.length*30,0],
+                [
+                    new panel.layers(
+                    [
+                        new panel.rounded(FILLMENU, 0, 0, 12, 12), 
+                        new panel.shrink(new panel.multitext(0, new panel.text()), 20, 20),
+                    ]),
+                    0,
+                ]), 20, 20),
+            ]), 20, 20);
+
             a.draw(context, rect, lst, 0);
 	    }
     }
