@@ -5376,6 +5376,7 @@ var buttonlst =
         }
         else
         {
+		return;//todo
             var name = user.name;
             var lst = [];
             if (url.path)
