@@ -86,7 +86,7 @@ const MULTITEXTROWHEIGHT = 36;
 const IMAGELSTSIZE = 24*3;
 const BOOKMARKED = "rgba(0,0,255,0.75)";
 const EXPANDRECT = 3;
-const CORNEREXT = 20;
+const CORNEREXT = 0.2;
 
 function setjson(key, value)
 {
