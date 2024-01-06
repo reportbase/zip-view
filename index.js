@@ -5376,24 +5376,26 @@ var buttonlst =
         }
         else
         {
-		return;//todo
-            var name = user.name;
+		    var name = user.name;
             var lst = [];
             if (url.path)
                 lst.push(url.path)
             lst.push(name);
             lst.push(`${time+1} of ${galleryobj.length()}`)
-            
+            var g = lst.length*30;
             var a = new panel.shrink(new panel.layers(
             [
                 new panel.rounded("rgba(100,100,100)", 0, 0, 20, 20),    
-                new panel.shrink(panel.rows([lst.length*30,0],
+                new panel.shrink(panel.rows([g,0],
                 [
+                    /*
                     new panel.layers(
                     [
                         new panel.rounded(FILLMENU, 0, 0, 12, 12), 
                         new panel.shrink(new panel.multitext(0, new panel.text()), 20, 20),
                     ]),
+                    */,
+                    0,
                     0,
                 ]), 20, 20),
             ]), 20, 20);
