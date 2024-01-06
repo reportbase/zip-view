@@ -1385,7 +1385,7 @@ var displaylst =
         var folders = [];
         if (value && value.folder)
             folders = value.folder.split("/");
-        var pdata = index.toFixed(index < 1000 ? FIXEDTIME : 0);
+        var pdata = index.toFixed(index < 100 ? 1 : 0);
         var data = `${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}`;
         var time = canvas.timeobj.current().toFixed(8);
         var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
@@ -1399,16 +1399,18 @@ var displaylst =
         
        if (!headcnv.height)
     	{        
-            var a = new panel.rowsA([0,60,20,12,2],
+            var a = new panel.rowsA([0,80,20,12,2],
             [
                 0,
-                new panel.cols([0,60,0],
+                new panel.cols([0,80,0],
                 [
                     0,
                     new panel.layers(
                     [
                         new panel.rectangle(context.aligntoprect),
-                        new panel.circle(context.canvas.aligntoptime?"black":GALLFILL, 0, 0),
+                        new panel.circle(
+                            context.canvas.aligntoptime?"black":GALLFILL, 
+                            context.canvas.aligntoptime?"rgba(255,255,255,0.5)":0,4),
                         new panel.text(),
                     ]),
                     0,
