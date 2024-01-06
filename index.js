@@ -3507,8 +3507,8 @@ var presslst =
         if (buttonobj.portrait)
         {
             buttonobj.portrait = 0;
-            //if (buttonobj.value() > window.innerHeight)
-              //  aligntop();
+            if (buttonobj.value() > window.innerHeight)
+                aligntop();
         }
         else
         {
@@ -3522,16 +3522,8 @@ var presslst =
             }
         }
         
-        /*
         context.canvas.hollyobj.set(0);
-     	if (buttonobj.value() < window.innerHeight)  
-        {
-            var k = Math.floor(context.canvas.hollyobj.length()/2);
-            context.canvas.hollyobj.set(k);
-        }
-        */
-        
-        menuobj.draw();    
+     	menuobj.draw();    
     }
 },
 {
