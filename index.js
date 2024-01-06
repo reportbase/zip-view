@@ -3503,7 +3503,7 @@ var presslst =
     {    
         var n = getvisible(x, y);
         aligncenter(n);
-        buttonobj.reset();
+        //buttonobj.reset();
         if (buttonobj.portrait)
         {
             buttonobj.portrait = 0;
