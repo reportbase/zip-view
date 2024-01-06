@@ -5118,17 +5118,14 @@ var buttonlst =
         }
         else
         {
-		    var name = user.name;
             var lst = [];
-            if (url.path)
-                lst.push(url.path)
-            lst.push(name);
+            lst.push(user.name);
             lst.push(`${time+1} of ${galleryobj.length()}`)
             var g = lst.length*40;
             var a = new panel.shrink(new panel.layers(
             [
                 new panel.rounded("rgba(100,100,100)", 0, 0, 20, 20),    
-                new panel.shrink(new panel.rows([g+20,0],
+                new panel.shrink(new panel.rows([g+40,0],
                 [
                     new panel.layers(
                     [
