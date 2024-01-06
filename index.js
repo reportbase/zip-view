@@ -1385,7 +1385,6 @@ var displaylst =
         var folders = [];
         if (value && value.folder)
             folders = value.folder.split("/");
-        var pdata = index.toFixed(index < 100 ? 1 : 0);
         var data = `${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}`;
         var time = canvas.timeobj.current().toFixed(8);
         var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
@@ -1399,10 +1398,10 @@ var displaylst =
         
        if (!headcnv.height)
     	{        
-            var a = new panel.rowsA([0,80,20,12,2],
+            var a = new panel.rowsA([0,60,20,12,2],
             [
                 0,
-                new panel.cols([0,80,0],
+                new panel.cols([0,60,0],
                 [
                     0,
                     new panel.layers(
@@ -1410,8 +1409,16 @@ var displaylst =
                         new panel.rectangle(context.aligntoprect),
                         new panel.circle(
                             context.canvas.aligntoptime?"black":GALLFILL, 
-                            context.canvas.aligntoptime?"rgba(255,255,255,0.5)":0,4),
-                        new panel.text(),
+                            context.canvas.aligntoptime?"rgba(255,255,255,0.5)":0,
+                            context.canvas.aligntoptime?"6:0),
+                        new panel.cols([0,0,0,0,0],
+                        [
+                            0,
+                            new panel.shrink(new panel.circle(),5,5),
+                            new panel.shrink(new panel.circle(),5,5),
+                            new panel.shrink(new panel.circle(),5,5),
+                            0,
+                        ])
                     ]),
                     0,
                 ]),
@@ -1436,7 +1443,7 @@ var displaylst =
             a.draw(context, rect, 
             [
                 0,
-                pdata,
+                "...",
 		        0,
                 _8cnv.hollyobj, 
                 0,
@@ -6362,8 +6369,11 @@ panel.rotated_text = function()
 };
 
 //panel text
-panel.text = function(color = "white", align = "center", baseline = "middle",
-    unused1 = 0, unused2 = 0, font = DEFAULTFONT)
+panel.text = function(color = "white", 
+    align = "center", 
+    baseline = "middle",
+    unused1 = 0, unused2 = 0, 
+    font = DEFAULTFONT)
 {
     this.draw = function(context, rect, user, time)
     {
