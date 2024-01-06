@@ -44,6 +44,8 @@ const ROUNDEDLINEWIDTH = 4;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
 const FOOTHEIGHT = 80;
 const MAXEXTENT = 10000;
+const NUBHEIGHT = 10;
+const NUBMARGIN = 2;
 const NUBDELAY = 3000;
 const MAXIMAGESIZE = MAXEXTENT*MAXEXTENT;
 const MENUSELECT = "rgba(255,175,0,0.4)";
@@ -1398,7 +1400,7 @@ var displaylst =
         
        if (!headcnv.height)
     	{        
-            var a = new panel.rowsA([0,60,20,12,2],
+            var a = new panel.rowsA([0,60,20,NUBHEIGHT,NUBMARGIN],
             [
                 0,
                 new panel.cols([0,60,0],
@@ -1449,7 +1451,7 @@ var displaylst =
  		    var a = new panel.rows([CORNEREXT,0,CORNEREXT],
             [
                 0,
-                new panel.colsA([2, 12, 0, 12, 2],
+                new panel.colsA([NUBMARGIN, NUBHEIGHT, 0, NUBHEIGHT, NUBMARGIN],
                 [
                     0,
                     new panel.layers(
