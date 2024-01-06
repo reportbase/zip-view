@@ -1410,7 +1410,7 @@ var displaylst =
                         new panel.circle(
                             context.canvas.aligntoptime?"black":GALLFILL, 
                             context.canvas.aligntoptime?"rgba(255,255,255,0.5)":0,
-                            context.canvas.aligntoptime?"6:0),
+                            context.canvas.aligntoptime?6:0),
                         new panel.cols([0,0,0,0,0],
                         [
                             0,
