@@ -1428,13 +1428,13 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
-                       ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
-                            new panel.rounded(GALLFILL, 0, 0, 6, 6):0,    
+                       //((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
+                         //   new panel.rounded(GALLFILL, 0, 0, 6, 6):0,    
                          new panel.expand(new panel.rectangle(canvas.holly2rect), 0, EXPANDRECT),
                         new panel.shrink(new panel.currentH(
                             new panel.rounded(
-                                ((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
-                                GALLNUB:TRANSPARENT, 0, 0, 4, 4), 90, 0), 2, 2),
+                                //((context.swipetimeout||canvas.panning)&&!canvas.pinching)?
+                                GALLNUB, "rgba(255,255,255,0.5)", 4, 4, 4), 90, 0), 2, 2),
                     ]),
                     0,
                 ]),
@@ -3422,7 +3422,7 @@ var mouselst =
         {
             context.canvas.pinching = 1;
             menuobj.draw();
-            clearTimeout(context.wheeltime)
+            clearTimeout(context.wheeltime);
             context.wheeltime = setTimeout(function()
             {
                 context.canvas.pinching = 0;
