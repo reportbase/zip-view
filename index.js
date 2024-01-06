@@ -3504,7 +3504,7 @@ var presslst =
         var n = getvisible(x, y);
         aligncenter(n);
         buttonobj.reset();
-        if (buttonobj.portrait)
+        if (buttonobj.portrait || buttonobj.value() >= window.innerHeight)
         {
             buttonobj.portrait = 0;
             if (buttonobj.value() > window.innerHeight)
