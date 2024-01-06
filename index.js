@@ -1381,7 +1381,23 @@ var displaylst =
         var value = galleryobj.data[k];
 	    if (!value)
             return;
-        if (!headcnv.height)
+         var space = rect.width < 400 ? "  " : rect.widt < 600 ? "   " : "    ";
+        var folders = [];
+        if (value && value.folder)
+            folders = value.folder.split("/");
+        var pdata = index.toFixed(index < 1000 ? FIXEDTIME : 0);
+        var data = `${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}`;
+        var time = canvas.timeobj.current().toFixed(8);
+        var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
+        if (!w)
+            w = buttonobj.value();
+	    var bt = `${w.toFixed(0)} x ${buttonobj.value()}`;
+    	
+        var name = value.name;    
+    	if (value.blob && value.blob.name)
+    		name = value.blob.name;
+        
+       if (!headcnv.height)
     	{        
             var a = new panel.rowsA([0,60,20,12,2],
             [
@@ -1418,7 +1434,7 @@ var displaylst =
             a.draw(context, rect, 
             [
                 0,
-                (index+1).toFixed(0),
+                pdata,
 		        0,
                 _8cnv.hollyobj, 
                 0,
@@ -1479,21 +1495,6 @@ var displaylst =
 
         a.draw(context, rect, context.canvas.hollyobj, 0);
         
-        var space = rect.width < 400 ? "  " : rect.widt < 600 ? "   " : "    ";
-        var folders = [];
-        if (value && value.folder)
-            folders = value.folder.split("/");
-        
-        var data = `${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}`;
-        var time = canvas.timeobj.current().toFixed(8);
-        var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
-        if (!w)
-            w = buttonobj.value();
-	    var bt = `${w.toFixed(0)} x ${buttonobj.value()}`;
-    	
-        var name = value.name;    
-    	if (value.blob && value.blob.name)
-    		name = value.blob.name;
         var a = new panel.rowsA(
         [
             HEADTOP, 
