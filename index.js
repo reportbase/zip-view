@@ -5029,6 +5029,121 @@ var buttonlst =
     draw: function(context, rect, user, time) {}
 },
 {
+    name: "GALLERY",
+    draw: function(context, rect, user, time)
+    {
+        var index = time % IMAGELSTSIZE;
+        var view = Math.floor(time / IMAGELSTSIZE);
+        var thumbimg = thumbimglst[index];
+        var thumbfitted = thumbfittedlst[index];
+
+        if (thumbimg &&
+            thumbimg.complete &&
+            thumbimg.naturalHeight &&
+            !user.pad &&
+            !HIDE)
+        {
+            var obj = _8cnv.hollyobj;
+            var b = thumbimg.width / thumbimg.height;
+            var b2 = rect.width / rect.height;
+            var hh = Math.floor(rect.height);
+            var ww = Math.floor(rect.width);
+            var hhh = hh;
+            var yyy = 0;
+
+            if (user.rect.y < 0)
+            {
+                yyy = -user.rect.y;
+                hhh = user.rect.height+user.rect.y;
+            }
+
+            if (user.rect.y+user.rect.height > window.innerHeight)
+            {
+                hhh = window.innerHeight-user.rect.y;
+            }
+
+            if (thumbfitted.view != view)
+                thumbfitted.view = view;
+
+            if (b > b2)
+            {
+		        if (thumbfitted.height != hh)
+                {
+                    var thumbfittedctx = thumbfitted.getContext("2d");
+                    thumbfitted.height = hh;
+                    thumbfitted.width = Math.floor(hh * b);
+                    thumbfittedctx.drawImage(
+                        thumbimg, 0, 0, thumbimg.width, thumbimg.height,
+                        0, 0, thumbfitted.width, thumbfitted.height);
+                    thumbimg.count = 1;
+                }
+
+                if (user.isvisible)
+                {
+                    var x = Math.nub(obj.value(), obj.length(),
+                        ww, thumbfitted.width);
+                    context.drawImage(thumbfitted,
+                        Math.floor(x), yyy, ww, hhh,
+                        0, yyy, ww, hhh); 
+                }
+            }
+            else
+            {
+                if (thumbfitted.width != ww)
+                {
+                    var thumbfittedctx = thumbfitted.getContext("2d");
+                    thumbfitted.width = ww
+                    thumbfitted.height = Math.floor(ww / b);
+                    thumbfittedctx.drawImage(
+                        thumbimg, 0, 0, thumbimg.width, thumbimg.height,
+                        0, 0, thumbfitted.width, thumbfitted.height);
+                    thumbimg.count = 1;
+                }
+
+		        if (user.isvisible)
+                {
+                    var y = Math.nub(obj.value(), obj.length(),
+                        hh, thumbfitted.height);
+                    context.drawImage(thumbfitted,
+                        0, Math.floor(y) + yyy, ww, hhh,
+                        0, yyy, ww, hhh);
+                }
+            }
+           
+            if (user.tap)
+            {
+                var a = new panel.fill("rgba(0,0,0,0.5)");
+                a.draw(context, rect, 0, 0);
+            }
+        }
+        else
+        {
+		    var name = user.name;
+            var lst = [];
+            if (url.path)
+                lst.push(url.path)
+            lst.push(name);
+            lst.push(`${time+1} of ${galleryobj.length()}`)
+            var g = lst.length*40;
+            var a = new panel.shrink(new panel.layers(
+            [
+                new panel.rounded("rgba(100,100,100)", 0, 0, 20, 20),    
+                new panel.shrink(new panel.rows([g+20,0],
+                [
+                    new panel.layers(
+                    [
+                        new panel.rounded(FILLMENU, 0, 0, 20, 20), 
+                        new panel.shrink(new panel.multitext(0, new panel.text()), 20, 10),
+                    ]),
+                    0,
+                ]), 20, 20),
+            ]), 20, 20);
+
+            a.draw(context, rect, lst, 0);
+	    }
+    }
+},	
+{
     name: "TEMPLATE",
     draw: function(context, rect, user, time)
     {
@@ -5286,121 +5401,6 @@ var buttonlst =
         context.restore();
     }
 },    
-{
-    name: "GALLERY",
-    draw: function(context, rect, user, time)
-    {
-        var index = time % IMAGELSTSIZE;
-        var view = Math.floor(time / IMAGELSTSIZE);
-        var thumbimg = thumbimglst[index];
-        var thumbfitted = thumbfittedlst[index];
-
-        if (thumbimg &&
-            thumbimg.complete &&
-            thumbimg.naturalHeight &&
-            !user.pad &&
-            !HIDE)
-        {
-            var obj = _8cnv.hollyobj;
-            var b = thumbimg.width / thumbimg.height;
-            var b2 = rect.width / rect.height;
-            var hh = Math.floor(rect.height);
-            var ww = Math.floor(rect.width);
-            var hhh = hh;
-            var yyy = 0;
-
-            if (user.rect.y < 0)
-            {
-                yyy = -user.rect.y;
-                hhh = user.rect.height+user.rect.y;
-            }
-
-            if (user.rect.y+user.rect.height > window.innerHeight)
-            {
-                hhh = window.innerHeight-user.rect.y;
-            }
-
-            if (thumbfitted.view != view)
-                thumbfitted.view = view;
-
-            if (b > b2)
-            {
-		        if (thumbfitted.height != hh)
-                {
-                    var thumbfittedctx = thumbfitted.getContext("2d");
-                    thumbfitted.height = hh;
-                    thumbfitted.width = Math.floor(hh * b);
-                    thumbfittedctx.drawImage(
-                        thumbimg, 0, 0, thumbimg.width, thumbimg.height,
-                        0, 0, thumbfitted.width, thumbfitted.height);
-                    thumbimg.count = 1;
-                }
-
-                if (user.isvisible)
-                {
-                    var x = Math.nub(obj.value(), obj.length(),
-                        ww, thumbfitted.width);
-                    context.drawImage(thumbfitted,
-                        Math.floor(x), yyy, ww, hhh,
-                        0, yyy, ww, hhh); 
-                }
-            }
-            else
-            {
-                if (thumbfitted.width != ww)
-                {
-                    var thumbfittedctx = thumbfitted.getContext("2d");
-                    thumbfitted.width = ww
-                    thumbfitted.height = Math.floor(ww / b);
-                    thumbfittedctx.drawImage(
-                        thumbimg, 0, 0, thumbimg.width, thumbimg.height,
-                        0, 0, thumbfitted.width, thumbfitted.height);
-                    thumbimg.count = 1;
-                }
-
-		        if (user.isvisible)
-                {
-                    var y = Math.nub(obj.value(), obj.length(),
-                        hh, thumbfitted.height);
-                    context.drawImage(thumbfitted,
-                        0, Math.floor(y) + yyy, ww, hhh,
-                        0, yyy, ww, hhh);
-                }
-            }
-           
-            if (user.tap)
-            {
-                var a = new panel.fill("rgba(0,0,0,0.5)");
-                a.draw(context, rect, 0, 0);
-            }
-        }
-        else
-        {
-		    var name = user.name;
-            var lst = [];
-            if (url.path)
-                lst.push(url.path)
-            lst.push(name);
-            lst.push(`${time+1} of ${galleryobj.length()}`)
-            var g = lst.length*40;
-            var a = new panel.shrink(new panel.layers(
-            [
-                new panel.rounded("rgba(100,100,100)", 0, 0, 20, 20),    
-                new panel.shrink(new panel.rows([g,0],
-                [
-                    new panel.layers(
-                    [
-                        new panel.rounded(FILLMENU, 0, 0, 20, 20), 
-                        new panel.shrink(new panel.multitext(0, new panel.text()), 20, 0),
-                    ]),
-                    0,
-                ]), 20, 20),
-            ]), 20, 20);
-
-            a.draw(context, rect, lst, 0);
-	    }
-    }
-},
 {
     name: "BOSS",
     draw: function(unused, rect, user, time) {}
