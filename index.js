@@ -4573,15 +4573,18 @@ var taplst =
                 return;
 			var id = document.getElementById("gallery-patch-id");
             var title = document.getElementById("gallery-patch-title");
+            var root = document.getElementById("gallery-patch-root");
             var json = document.getElementById("gallery-patch-json");
             id.value = gallery.id;
             title.value = gallery.title;
+            root.value = gallery.root;
             json.value = gallery.json;
             showdialog("gallery-patch", function(image)
             {
                 const form = new FormData();
                 form.append('id', id.value);
 		        form.append('title', title.value);
+                root.append('root', root.value);
                 form.append('json', json.value);
                 fetch(`https://gullery.reportbase5836.workers.dev`,
                 {
@@ -4592,7 +4595,8 @@ var taplst =
                 {
                     //gallery.id = id.value;
                     gallery.title = title.value;
-                    gallery.value = id.value;
+                    gallery.id = id.value;
+                    gallery.root = root.value;
                     menuobj.draw();
                 })
             })
@@ -4646,14 +4650,17 @@ var taplst =
         {
             var id = document.getElementById("gallery-add-id");
             var title = document.getElementById("gallery-add-title");
+            var root = document.getElementById("gallery-add-root");
             var json = document.getElementById("gallery-add-json");
             id.value = Math.floor(Date.now() / 1000).toString(36);
             title.value = "";
             json.value = "";
+            root.value = "";
             showdialog("gallery-add", function(image)
             {
                 const form = new FormData();
                 form.append('title', title.value);
+                form.append('root', root.value);
                 form.append('json', json.value);
                 form.append('gallery_id', id.value);
 		        form.append('user_id', login.id);
@@ -4670,6 +4677,7 @@ var taplst =
                     k = Object.assign(k, j);
                     k.title = obj.title;
                     k.json = obj.json;
+                    k.root = obj.root;
                     k.id = obj.gallery_id;   
                     var e = _2cnv.sliceobj.data.unshift(k);
                     _2cnv.sliceobj.set(0);
