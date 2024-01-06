@@ -5386,7 +5386,7 @@ var buttonlst =
             var a = new panel.shrink(new panel.layers(
             [
                 new panel.rounded("rgba(100,100,100)", 0, 0, 20, 20),    
-                new panel.shrink(panel.rows([g,0],
+                new panel.shrink(panel.rows([100,0],
                 [
                     new panel.layers(
                     [
@@ -5394,7 +5394,9 @@ var buttonlst =
                         //new panel.shrink(new panel.multitext(0, new panel.text()), 20, 20),
                     ]),
                     0,
+                    /*
                     0,
+                    0,*/
                 ]), 20, 20),
             ]), 20, 20);
 
