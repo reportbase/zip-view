@@ -5538,6 +5538,8 @@ menuobj.draw = function()
     {
         var n = canvas.normal[m];
 	    var slice = slices[n];
+        if (n >= thumbimglst.length)
+            return;
         var thumbimg = thumbimglst[n];
         if (context == _8cnvctx && 
             !thumbimg &&
