@@ -5547,7 +5547,7 @@ menuobj.draw = function()
             thumbimg.view != slice.view &&
             !slice.pad) 
         {
-            thumbimg.view = view;
+            thumbimg.view = slice.view;
             thumbimg.onload = function()
             {
                 menuobj.draw();
