@@ -5544,10 +5544,10 @@ menuobj.draw = function()
         var slice = slices[n];
         var thumbimg = thumbimglst[slice.dindex];
         if (context == _8cnvctx && 
-            thumbimg.url != slice.url &&
+            thumbimg.slice != slice &&
             !slice.pad) 
         {
-            thumbimg.url = slice.url;
+            thumbimg.slice = slice;
             thumbimg.onload = function()
             {
                 menuobj.draw();
