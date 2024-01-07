@@ -1413,14 +1413,15 @@ var displaylst =
                             context.canvas.aligntoptime?"black":GALLFILL, 
                             context.canvas.aligntoptime?"rgba(255,255,255,0.5)":0,
                             context.canvas.aligntoptime?6:0),
-                        new panel.cols([0,0,0,0,0],
-                        [
-                            0,
-                            new panel.shrink(new panel.circle("white"),25,25),
-                            new panel.shrink(new panel.circle("white"),25,25),
-                            new panel.shrink(new panel.circle("white"),25,25),
-                            0,
-                        ])
+                        1? new.panel.text():
+                            new panel.cols([0,0,0,0,0],
+                            [
+                                0,
+                                new panel.shrink(new panel.circle("white"),25,25),
+                                new panel.shrink(new panel.circle("white"),25,25),
+                                new panel.shrink(new panel.circle("white"),25,25),
+                                0,
+                            ])
                     ]),
                     0,
                 ]),
@@ -1442,7 +1443,7 @@ var displaylst =
             a.draw(context, rect, 
             [
                 0,
-                "...",
+                (index+1).toFixed(0),
 		        0,
                 _8cnv.hollyobj, 
                 0,
@@ -1456,16 +1457,15 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
-                            new panel.rounded(GALLFILL, 0, 0, 6, 6),
+                        new panel.rounded(GALLFILL, 0, 0, 6, 6),
                         new panel.expand(new panel.rectangle(context.button2rect), EXPANDRECT, EXPANDRECT),
                         new panel.shrink(new panel.currentV(
-                            new panel.rounded(GALLNUB, 
-                                0, 0, 4, 4), 90, 0), 2, 2),
+                            new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
                     ]),
                     0,
                     new panel.layers(
                     [
-                            new panel.rounded(GALLFILL, 0, 0, 6, 6),
+                        new panel.rounded(GALLFILL, 0, 0, 6, 6),
                         new panel.expand(new panel.rectangle(canvas.timerect), EXPANDRECT, EXPANDRECT),
                         new panel.shrink(new panel.currentV(
                             new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 1), 2, 2),
