@@ -5543,7 +5543,6 @@ menuobj.draw = function()
             !thumbimg &&
             !slice.pad) 
         {
-            thumbimg.n = n;
             thumbimg.onload = function()
             {
                 menuobj.draw();
