@@ -1413,7 +1413,8 @@ var displaylst =
                             context.canvas.aligntoptime?"black":GALLFILL, 
                             context.canvas.aligntoptime?"rgba(255,255,255,0.5)":0,
                             context.canvas.aligntoptime?6:0),
-                        1? new.panel.text():
+                        new.panel.text()
+                        /*
                             new panel.cols([0,0,0,0,0],
                             [
                                 0,
@@ -1422,6 +1423,7 @@ var displaylst =
                                 new panel.shrink(new panel.circle("white"),25,25),
                                 0,
                             ])
+                        */
                     ]),
                     0,
                 ]),
