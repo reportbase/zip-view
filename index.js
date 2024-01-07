@@ -5541,8 +5541,9 @@ menuobj.draw = function()
     for (var m = 0; m < canvas.normal.length; ++m)
     {
         var n = canvas.normal[m];
+	    var p = canvas.normal[0];
         var slice = slices[n];
-        var view = Math.floor(n/thumbimglst.length);
+        var view = Math.floor(p/thumbimglst.length);
         var index = n%thumbimglst.length;
         var thumbimg = thumbimglst[index];
         if (context == _8cnvctx && 
