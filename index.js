@@ -83,7 +83,6 @@ const GALLERYMAIN = 9;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 36;
-var IMAGELSTSIZE = 6;
 const BOOKMARKED = "rgba(0,0,255,0.75)";
 const EXPANDRECT = 5;
 const CORNEREXT = 0.2;
@@ -3099,12 +3098,6 @@ async function loadimages(blobs)
 
 function loadfiles(files)
 {
-	for (var n = 0; n < IMAGELSTSIZE; ++n)
-    {
-		thumbfittedlst[n] = document.createElement("canvas");
-		thumbimglst[n] = new Image();
-    }
-
     if (files.length == 1 && files[0].name)
     {
         if (files[0].name.isimage())
@@ -4088,12 +4081,6 @@ var gallerymenufunc = function(n, x, y)
 {
     if (n == _2cnv.sliceobj.current())
     {
-        for (var n = 0; n < IMAGELSTSIZE; ++n)
-        {
-            thumbfittedlst[n] = document.createElement("canvas");
-            thumbimglst[n] = new Image();
-        }
-
         url = new URL(url.origin);
         var gallery = _2cnv.sliceobj.value();
         window.open(`${url.href}${gallery.id}`,"_self")
@@ -4993,9 +4980,8 @@ var buttonlst =
     name: "GALLERY",
     draw: function(context, rect, user, time)
     {
-        var index = time % IMAGELSTSIZE;
-        var thumbimg = thumbimglst[index];
-        var thumbfitted = thumbfittedlst[index];
+        var thumbimg = user.thumbimg;
+        var thumbfitted = user.thumbfitted;
 
         if (thumbimg &&
             thumbimg.complete &&
@@ -5402,12 +5388,6 @@ menuobj.hide = function()
     var context = this.value();
     if (!context)
         return;
-    
-    for (var n = 0; n < IMAGELSTSIZE; ++n)
-    {
-        thumbfittedlst[n] = document.createElement("canvas");
-        thumbimglst[n] = new Image();
-    }                
 
     context.hide();
     _4cnv.height = window.innerHeight;
@@ -5538,24 +5518,23 @@ menuobj.draw = function()
     {
         var n = canvas.normal[m];
 	    var slice = slices[n];
-        if (n >= thumbimglst.length)
-            return;
-        var thumbimg = thumbimglst[n];
         if (context == _8cnvctx && 
-            !thumbimg.naturalHeight &&
+            !slice.thumbimg &&
             !slice.pad) 
         {
-            thumbimg.onload = function()
+            slice.thumbfitted = document.createElement("canvas");
+            slice.thumbimg = new Image();
+            slice.thumbimg.onload = function()
             {
                 menuobj.draw();
 	        }
             
             if (slice.entry)
-                getblobpath(thumbimg, slice);
+                getblobpath(slice.thumbimg, slice);
             else if (slice.blob)
-                thumbimg.src = URL.createObjectURL(slice.blob);
+                slice.thumbimg.src = URL.createObjectURL(slice.blob);
             else
-                thumbimg.src = slice.url;
+                slice.thumbimg.src = slice.url;
         }
         else
         {
@@ -6791,9 +6770,6 @@ function wraptext(ctx, text, maxWidth)
     return lineArray;
 }
 
-let thumbfittedlst = [];
-let thumbimglst = [];
-
 function imagepath(user, template)
 {
     var src;
@@ -7486,20 +7462,6 @@ galleryobj.reset = function()
     setupmenus();
 	document.title = galleryobj.title?galleryobj.title:
         url.path?url.path:url.host;
-            
-    IMAGELSTSIZE = galleryobj.length();
-    for (var n = 0; n < IMAGELSTSIZE; ++n)
-    {
-        thumbfittedlst[n] = document.createElement("canvas");
-        thumbimglst[n] = new Image();
-    }
-
-    for (var n = 0; n < galleryobj.length(); ++n)
-    {
-        var slice = galleryobj.data[n];
-        slice.dindex = n % IMAGELSTSIZE;
-        slice.view = Math.floor(n / IMAGELSTSIZE);
-    }
         
     var image = new Image();
     image.onerror = function()
