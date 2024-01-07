@@ -1409,7 +1409,7 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.rectangle(context.aligntoprect),
-                        new panel.rounded(GALLFILL, 0, 0, 9, 9),
+                        new panel.rounded(GALLFILL, 0, 0, 20, 20),
                         /*
                         new panel.circle(
                             context.canvas.aligntoptime?"black":GALLFILL, 
