@@ -4593,11 +4593,6 @@ var taplst =
                 })
                 .then(function(response)
                 {
-                    //gallery.id = id.value;
-                    gallery.title = title.value;
-                    gallery.id = id.value;
-                    gallery.root = root.value;
-                    menuobj.draw();
                 })
             })
         }
