@@ -4595,7 +4595,7 @@ var taplst =
                 {
                     gallery.title = title.value;
                     gallery.json = json.value;
-                    gallery.prefix = prefix.prefix;
+                    gallery.prefix = prefix.value;
                 })
             })
         }
