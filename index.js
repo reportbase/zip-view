@@ -7487,7 +7487,7 @@ galleryobj.reset = function()
 	document.title = galleryobj.title?galleryobj.title:
         url.path?url.path:url.host;
             
-    IMAGELSTSIZE = obj.data.length;
+    IMAGELSTSIZE = galleryobj.length();
     for (var n = 0; n < IMAGELSTSIZE; ++n)
     {
         thumbfittedlst[n] = document.createElement("canvas");
