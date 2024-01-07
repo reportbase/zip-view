@@ -1409,7 +1409,7 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.rectangle(context.aligntoprect),
-                        new panel.rounded(GALLFILL, 0, 0, 30, 30),
+                        new panel.rounded(GALLFILL, 0, 0, 16, 16),
                         /*
                         new panel.circle(
                             context.canvas.aligntoptime?"black":GALLFILL, 
@@ -6947,7 +6947,7 @@ headobj.toggle = function()
 
 function getfilenames()
 {
-    var str = "";
+    var lst = [];
     for (var n = 0; n < galleryobj.length(); ++n)
     {
         var k = galleryobj.data[n];
@@ -6962,14 +6962,16 @@ function getfilenames()
             folder = folder.split("/");
             folder.shift();
             folder = folder.join("/");
-            str += `\n${folder}/${name}`;
+            lst.push(`\n${folder}/${name}`);
         }
         else
         {
-            str += name + "\n";
+            lst.push(name);
         }
     }
 
+    lst.sort();
+    var str = lst.join("\n");
     return str;
 }
 
