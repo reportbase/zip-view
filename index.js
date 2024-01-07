@@ -5540,7 +5540,7 @@ menuobj.draw = function()
 	    var slice = slices[n];
         var thumbimg = thumbimglst[n];
         if (context == _8cnvctx && 
-            thumbimg.n != n &&
+            !thumbimg &&
             !slice.pad) 
         {
             thumbimg.n = n;
