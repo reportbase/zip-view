@@ -4980,13 +4980,14 @@ var buttonlst =
     name: "GALLERY",
     draw: function(context, rect, user, time)
     {
-        var thumbimg = user.thumbimg;
-        var thumbfitted = user.thumbfitted;
+        var slice = user;
+        var thumbimg = slice.thumbimg;
+        var thumbfitted = slice.thumbfitted;
 
         if (thumbimg &&
             thumbimg.complete &&
             thumbimg.naturalHeight &&
-            !user.pad &&
+            !slice.pad &&
             !HIDE)
         {
             var obj = _8cnv.hollyobj;
@@ -4997,15 +4998,15 @@ var buttonlst =
             var hhh = hh;
             var yyy = 0;
 
-            if (user.rect.y < 0)
+            if (slice.rect.y < 0)
             {
-                yyy = -user.rect.y;
-                hhh = user.rect.height+user.rect.y;
+                yyy = -slice.rect.y;
+                hhh = slice.rect.height+slice.rect.y;
             }
 
-            if (user.rect.y+user.rect.height > window.innerHeight)
+            if (slice.rect.y+slice.rect.height > window.innerHeight)
             {
-                hhh = window.innerHeight-user.rect.y;
+                hhh = window.innerHeight-slice.rect.y;
             }
 
             if (b > b2)
@@ -5020,7 +5021,7 @@ var buttonlst =
                         0, 0, thumbfitted.width, thumbfitted.height);
                 }
 
-                if (user.isvisible)
+                if (slice.isvisible)
                 {
                     var x = Math.nub(obj.value(), obj.length(),
                         ww, thumbfitted.width);
@@ -5041,7 +5042,7 @@ var buttonlst =
                         0, 0, thumbfitted.width, thumbfitted.height);
                 }
 
-		        if (user.isvisible)
+		        if (slice.isvisible)
                 {
                     var y = Math.nub(obj.value(), obj.length(),
                         hh, thumbfitted.height);
@@ -5051,7 +5052,7 @@ var buttonlst =
                 }
             }
            
-            if (user.tap)
+            if (slice.tap)
             {
                 var a = new panel.fill("rgba(0,0,0,0.5)");
                 a.draw(context, rect, 0, 0);
@@ -5060,7 +5061,7 @@ var buttonlst =
         else
         {
             var lst = [];
-            lst.push(user.name);
+            lst.push(slice.name);
             lst.push(`${time+1} of ${galleryobj.length()}`)
             var g = lst.length*40;
             var a = new panel.shrink(new panel.layers(
