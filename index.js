@@ -1403,16 +1403,19 @@ var displaylst =
             var a = new panel.rowsA([0,60,20,NUBHEIGHT,NUBMARGIN],
             [
                 0,
-                new panel.cols([0,60,0],
+                new panel.cols([0,120,0],
                 [
                     0,
                     new panel.layers(
                     [
                         new panel.rectangle(context.aligntoprect),
+                        new panel.rounded(GALLFILL, 0, 0, 9, 9),
+                        /*
                         new panel.circle(
                             context.canvas.aligntoptime?"black":GALLFILL, 
                             context.canvas.aligntoptime?"rgba(255,255,255,0.5)":0,
                             context.canvas.aligntoptime?6:0),
+                        */
                         new panel.text()
                         /*
                             new panel.cols([0,0,0,0,0],
@@ -1445,7 +1448,7 @@ var displaylst =
             a.draw(context, rect, 
             [
                 0,
-                (index+1).toFixed(0),
+                index.toFixed(2),
 		        0,
                 _8cnv.hollyobj, 
                 0,
