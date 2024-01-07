@@ -7660,7 +7660,7 @@ galleryobj.init = function(obj)
 }
 
 if (url.pathname.length > 1)
-{
+{ 
     var id = url.pathname.split("/")[1];
 	url.path = id;
 	fetch(`https://gullery.reportbase5836.workers.dev/${id}`)
