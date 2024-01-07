@@ -4593,6 +4593,9 @@ var taplst =
                 })
                 .then(function(response)
                 {
+                    gallery.title = reposne.title;
+                    gallery.json = reposne.json;
+                    gallery.root = reposne.root;
                 })
             })
         }
