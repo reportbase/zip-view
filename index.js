@@ -4584,7 +4584,7 @@ var taplst =
                 const form = new FormData();
                 form.append('id', id.value);
 		        form.append('title', title.value);
-                root.append('root', "aaa");//root.value);
+                root.append('root', root.value);
                 form.append('json', json.value);
                 fetch(`https://gullery.reportbase5836.workers.dev`,
                 {
