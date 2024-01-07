@@ -5543,11 +5543,12 @@ menuobj.draw = function()
         var n = canvas.normal[m];
         var slice = slices[n];
         var thumbimg = thumbimglst[slice.dindex];
+        var view = Math.floor(n / IMAGELSTSIZE);
         if (context == _8cnvctx && 
-            thumbimg.slice != slice &&
+            view != slice.view &&
             !slice.pad) 
         {
-            thumbimg.slice = slice;
+            thumbimg.view = view;
             thumbimg.onload = function()
             {
                 menuobj.draw();
