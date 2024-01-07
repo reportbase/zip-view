@@ -83,7 +83,7 @@ const GALLERYMAIN = 9;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 36;
-const IMAGELSTSIZE = 24*3;
+const IMAGELSTSIZE = 24;
 const BOOKMARKED = "rgba(0,0,255,0.75)";
 const EXPANDRECT = 5;
 const CORNEREXT = 0.2;
@@ -4497,54 +4497,6 @@ var taplst =
         else if (menuobj.value() && menuobj.value() != _8cnvctx)
         {
             closemenu()
-        }
-        else if (x < CORNEREXT*rect.width && y < CORNEREXT*rect.height)
-        {
-            buttonobj.set(0);
-            context.canvas.pinching = 1;
-            menuobj.draw();
-            clearTimeout(context.wheeltime)
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.pinching = 0;
-                menuobj.draw()
-            }, NUBDELAY);
-        }
-        else if (x > rect.width-CORNEREXT*rect.width && y < CORNEREXT*rect.height)
-        {
-            _8cnv.timeobj.set(Math.PI)
-            context.canvas.panning = 1;
-            menuobj.draw();
-            clearTimeout(context.wheeltime)
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.panning = 0;
-                menuobj.draw()
-            }, NUBDELAY);
-        }
-        else if (x > rect.width-CORNEREXT*rect.width && y > rect.height-CORNEREXT*rect.height)
-        {
-            _8cnv.timeobj.set(0)
-            context.canvas.panning = 1;
-            menuobj.draw();
-            clearTimeout(context.wheeltime)
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.panning = 0;
-                menuobj.draw()
-            }, NUBDELAY);
-        }
-        else if (x < CORNEREXT*rect.width && y > rect.height-CORNEREXT*rect.height)
-        {
-            buttonobj.set(buttonobj.length()-1)
-            context.canvas.pinching = 1;
-            menuobj.draw();
-            clearTimeout(context.wheeltime)
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.pinching = 0;
-                menuobj.draw()
-            }, NUBDELAY);
         }
         else if (headcnv.height)
         {
