@@ -7678,7 +7678,7 @@ else if (url.searchParams.has("id"))
 	.then((response) => jsonhandler(response))
 	.then(function(obj)
 	{
-        loadgallery(obj.json);
+        loadgallery(obj.json, obj.prefix);
 	})        
 }
 else if (url.searchParams.has("zip"))
@@ -7752,6 +7752,7 @@ function loadtext(str, origin)
         var json = {}
         if (line.substring(0,4) == "http")
             json.url = line;
+        else if (gal
         else
             json.url = `${origin}/${line}`;
         galleryobj.data.push(json);
