@@ -3025,7 +3025,7 @@ async function loadzip(file)
     if (!lst.length)
         return;
 
-    galleryobj.dataT = [];
+    galleryobj.data = [];
     galleryobj.width = 0;
     galleryobj.height = 0;
     galleryobj.set(0);
