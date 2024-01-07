@@ -5538,14 +5538,6 @@ menuobj.draw = function()
     context.centered = 0;
     var r = new rectangle(0, 0, rect.width, buttonheight);
 
-        var n = canvas.normal[m];
-        var slice = slices[n];
-        var thumbimg = thumbimglst[slice.dindex];
-        if (context == _8cnvctx && 
-            thumbimg.view != slice.view &&
-            !slice.failed &&
-            !slice.pad) 
-		
     for (var m = 0; m < canvas.normal.length; ++m)
     {
         var n = canvas.normal[m];
