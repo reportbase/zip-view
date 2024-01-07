@@ -4652,7 +4652,7 @@ var taplst =
             var json = document.getElementById("gallery-add-json");
             id.value = Math.floor(Date.now() / 1000).toString(36);
             title.value = "";
-            json.value = "";
+            json.value = getfilenames();
             prefix.value = "";
             showdialog("gallery-add", function(image)
             {
@@ -6988,6 +6988,34 @@ headobj.toggle = function()
     menuobj.draw();
 }
 
+function getfilenames()
+{
+    var str = "";
+    for (var n = 0; n < galleryobj.length(); ++n)
+    {
+        var k = galleryobj.data[n];
+        if (k.pad)
+            continue;
+        var name = k.blob ? k.blob.name : k.name;
+        if (!name.isimage())
+            continue;
+        var folder = k.folder;
+        if (folder)
+        {
+            folder = folder.split("/");
+            folder.shift();
+            folder = folder.join("/");
+            str += `\n${folder}/${name}`;
+        }
+        else
+        {
+            str += name + "\n";
+        }
+    }
+
+    return str;
+}
+
 headobj.reset = function()
 {
     if (menuobj.value())
@@ -7085,36 +7113,13 @@ function setupmenus()
             title: "Import Users",
             func: function()
             {
-	    }
-	},
+	        }
+	    },
         {
             title: "Export File Names",
             func: function()
             {
-                var str = "";
-                for (var n = 0; n < galleryobj.length(); ++n)
-        	    {
-        	        var k = galleryobj.data[n];
-                    if (k.pad)
-                        continue;
-                    var name = k.blob ? k.blob.name : k.name;
-                    if (!name.isimage())
-                        continue;
-                    var folder = k.folder;
-                    if (folder)
-                    {
-                        folder = folder.split("/");
-                        folder.shift();
-    		            folder = folder.join("/");
-                        str += `\n${folder}/${name}`;
-                    }
-                    else
-                    {
-                        str += name + "\n";
-                    }
-        		}
-                
-                savefile("files.txt", str);
+                savefile("files.txt", getfilenames());
             }
         },
         {
