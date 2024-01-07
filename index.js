@@ -7678,7 +7678,7 @@ else if (url.searchParams.has("id"))
 	.then((response) => jsonhandler(response))
 	.then(function(obj)
 	{
-        loadgallery(obj.json, obj.prefix);
+        loadgallery(obj.json, obj.prefix); 
 	})        
 }
 else if (url.searchParams.has("zip"))
