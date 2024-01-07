@@ -7667,7 +7667,7 @@ if (url.pathname.length > 1)
 	.then((response) => jsonhandler(response))
 	.then(function(obj)
 	{
-        loadgallery(obj.json);
+        loadgallery(obj.json, obj.prefix);
 	})        
 }
 else if (url.searchParams.has("id"))
