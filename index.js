@@ -85,7 +85,7 @@ const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 36;
 const IMAGELSTSIZE = 24*3;
 const BOOKMARKED = "rgba(0,0,255,0.75)";
-const EXPANDRECT = 3;
+const EXPANDRECT = 5;
 const CORNEREXT = 0.2;
 
 function setjson(key, value)
@@ -1431,7 +1431,7 @@ var displaylst =
                     new panel.layers(
                     [
                        new panel.rounded(GALLFILL, 0, 0, 6, 6),    
-                         new panel.expand(new panel.rectangle(canvas.holly2rect), 0, EXPANDRECT),
+                         new panel.expand(new panel.rectangle(canvas.holly2rect), EXPANDRECT, EXPANDRECT),
                         new panel.shrink(new panel.currentH(
                             new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
                     ]),
@@ -1457,7 +1457,7 @@ var displaylst =
                     new panel.layers(
                     [
                             new panel.rounded(GALLFILL, 0, 0, 6, 6),
-                        new panel.expand(new panel.rectangle(context.button2rect), EXPANDRECT, 0),
+                        new panel.expand(new panel.rectangle(context.button2rect), EXPANDRECT, EXPANDRECT),
                         new panel.shrink(new panel.currentV(
                             new panel.rounded(GALLNUB, 
                                 0, 0, 4, 4), 90, 0), 2, 2),
@@ -1466,7 +1466,7 @@ var displaylst =
                     new panel.layers(
                     [
                             new panel.rounded(GALLFILL, 0, 0, 6, 6),
-                        new panel.expand(new panel.rectangle(canvas.timerect), EXPANDRECT, 0),
+                        new panel.expand(new panel.rectangle(canvas.timerect), EXPANDRECT, EXPANDRECT),
                         new panel.shrink(new panel.currentV(
                             new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 1), 2, 2),
                     ]),
@@ -1490,7 +1490,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 8, 8),
-                    new panel.expand(new panel.rectangle(canvas.hollyrect), 0, EXPANDRECT),
+                    new panel.expand(new panel.rectangle(canvas.hollyrect), EXPANDRECT, EXPANDRECT),
                     new panel.shrink(new panel.currentH(
                     new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
                 ]),
@@ -4498,7 +4498,7 @@ var taplst =
         {
             closemenu()
         }
-        else if (x < CORNEREXT && y < CORNER)
+        else if (x < CORNEREXT*rect.width && y < CORNEREXT*rect.height)
         {
             buttonobj.set(0);
             context.canvas.pinching = 1;
@@ -4510,7 +4510,7 @@ var taplst =
                 menuobj.draw()
             }, NUBDELAY);
         }
-        else if (x > rect.width-CORNEREXT && y < CORNEREXT)
+        else if (x > rect.width-CORNEREXT*rect.width && y < CORNEREXT*rect.height)
         {
             _8cnv.timeobj.set(Math.PI)
             context.canvas.panning = 1;
@@ -4522,7 +4522,7 @@ var taplst =
                 menuobj.draw()
             }, NUBDELAY);
         }
-        else if (x > rect.width-CORNEREXT && y > rect.height-CORNEREXT)
+        else if (x > rect.width-CORNEREXT*rect.width && y > rect.height-CORNEREXT*rect.height)
         {
             _8cnv.timeobj.set(0)
             context.canvas.panning = 1;
@@ -4534,7 +4534,7 @@ var taplst =
                 menuobj.draw()
             }, NUBDELAY);
         }
-        else if (x < CORNEREXT && y > rect.height-CORNEREXT)
+        else if (x < CORNEREXT*rect.width && y > rect.height-CORNEREXT*rect.height)
         {
             buttonobj.set(buttonobj.length()-1)
             context.canvas.pinching = 1;
