@@ -7487,6 +7487,7 @@ galleryobj.reset = function()
 	document.title = galleryobj.title?galleryobj.title:
         url.path?url.path:url.host;
             
+    IMAGELSTSIZE = obj.data.length;
     for (var n = 0; n < IMAGELSTSIZE; ++n)
     {
         thumbfittedlst[n] = document.createElement("canvas");
@@ -7589,7 +7590,6 @@ function addpadding()
 //galleryobj init
 galleryobj.init = function(obj)
 {
-    IMAGELSTSIZE = obj.data.length;
     if (obj)
         Object.assign(galleryobj, obj);
     
