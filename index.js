@@ -8,7 +8,7 @@ function ios()
         'iPhone',
         'iPod'
     ].includes(navigator.platform) ||
-	(navigator.userAgent.includes("Mac") && "ontouchend" in document)f
+	(navigator.userAgent.includes("Mac") && "ontouchend" in document)
 }
 
 var url = new URL(window.location.href);
