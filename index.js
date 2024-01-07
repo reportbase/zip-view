@@ -8,7 +8,7 @@ function ios()
         'iPhone',
         'iPod'
     ].includes(navigator.platform) ||
-	(navigator.userAgent.includes("Mac") && "ontouchend" in document)
+	(navigator.userAgent.includes("Mac") && "ontouchend" in document)f
 }
 
 var url = new URL(window.location.href);
@@ -4584,7 +4584,7 @@ var taplst =
                 const form = new FormData();
                 form.append('id', id.value);
 		        form.append('title', title.value);
-                prefix.append('prefix', prefix.value);
+                form.append('prefix', prefix.value);
                 form.append('json', json.value);
                 fetch(`https://gullery.reportbase5836.workers.dev`,
                 {
