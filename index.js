@@ -1408,9 +1408,10 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.rectangle(context.aligntoprect),
-                        new panel.rounded(GALLFILL, 
+                        new panel.rounded(
+			                context.canvas.aligntoptime?"black":GALLFILL, 
                             context.canvas.aligntoptime?"rgba(255,255,255,0.5)":0, 
-                            5, 
+                            context.canvas.aligntoptime?8:0, 
                             20, 
                             20),
                         new panel.text()
