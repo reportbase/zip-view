@@ -83,7 +83,7 @@ const GALLERYMAIN = 9;
 const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 36;
-const IMAGELSTSIZE = 6;
+var IMAGELSTSIZE = 6;
 const BOOKMARKED = "rgba(0,0,255,0.75)";
 const EXPANDRECT = 5;
 const CORNEREXT = 0.2;
@@ -4994,7 +4994,6 @@ var buttonlst =
     draw: function(context, rect, user, time)
     {
         var index = time % IMAGELSTSIZE;
-        var view = Math.floor(time / IMAGELSTSIZE);
         var thumbimg = thumbimglst[index];
         var thumbfitted = thumbfittedlst[index];
 
@@ -5022,9 +5021,6 @@ var buttonlst =
             {
                 hhh = window.innerHeight-user.rect.y;
             }
-
-            if (thumbfitted.view != view)
-                thumbfitted.view = view;
 
             if (b > b2)
             {
@@ -5542,8 +5538,6 @@ menuobj.draw = function()
     {
         var n = canvas.normal[m];
 	    var slice = slices[n];
-        //var view = Math.floor(n/thumbimglst.length);
-        var index = n%thumbimglst.length;
         var thumbimg = thumbimglst[index];
         if (context == _8cnvctx && 
             thumbimg.n != n &&
@@ -7594,6 +7588,7 @@ function addpadding()
 //galleryobj init
 galleryobj.init = function(obj)
 {
+    IMAGELSTSIZE = obj.data.length;
     if (obj)
         Object.assign(galleryobj, obj);
     
