@@ -5542,7 +5542,8 @@ menuobj.draw = function()
             return;
         var thumbimg = thumbimglst[n];
         if (context == _8cnvctx && 
-            !thumbimg &&
+            !thumbimg.complete &&
+            !thumbimg.naturalHeight &&
             !slice.pad) 
         {
             thumbimg.onload = function()
