@@ -5018,7 +5018,6 @@ var buttonlst =
                     thumbfittedctx.drawImage(
                         thumbimg, 0, 0, thumbimg.width, thumbimg.height,
                         0, 0, thumbfitted.width, thumbfitted.height);
-                    thumbimg.count = 1;
                 }
 
                 if (user.isvisible)
@@ -5040,7 +5039,6 @@ var buttonlst =
                     thumbfittedctx.drawImage(
                         thumbimg, 0, 0, thumbimg.width, thumbimg.height,
                         0, 0, thumbfitted.width, thumbfitted.height);
-                    thumbimg.count = 1;
                 }
 
 		        if (user.isvisible)
@@ -5552,8 +5550,8 @@ menuobj.draw = function()
             if (context == _8cnvctx &&
 		        j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
             {
-            	galleryobj.width = thumbimg.width;
-            	galleryobj.height = thumbimg.height;
+            	galleryobj.width = slice.thumbimg.width;
+            	galleryobj.height = slice.thumbimg.height;
             	context.centered = j.n;
             }
 
@@ -6783,9 +6781,6 @@ function imagepath(user, template)
         ((user.id.charAt(0) == 'Q' && user.id.charAt(1) == 'm') ||
             (user.id.charAt(0) == 'b')))
     {
-        //thumbimg.src = `https://ipfs.io/ipfs/${user.id}`;
-        //thumbimg.src = `https://cloudflare-ipfs.com/ipfs/${user.id}`;
-        //thumbimg.src = `https://ipfs.filebase.io/ipfs/${user.id}`;
         src = `https://cloudflare-ipfs.com/ipfs/${user.folder}/${user.name}`;
     }
     else if (user.full)
