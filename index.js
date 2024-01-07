@@ -4593,9 +4593,9 @@ var taplst =
                 })
                 .then(function(response)
                 {
-                    gallery.title = reposne.title;
-                    gallery.json = reposne.json;
-                    gallery.root = reposne.root;
+                    gallery.title = response.title;
+                    gallery.json = response.json;
+                    gallery.root = response.root;
                 })
             })
         }
