@@ -1397,7 +1397,7 @@ var displaylst =
     	if (value.blob && value.blob.name)
     		name = value.blob.name;
         
-       if (!headcnv.height)
+        if (!headcnv.height)
     	{        
             var a = new panel.rowsA([0,60,20,NUBHEIGHT,NUBMARGIN],
             [
@@ -1408,24 +1408,12 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.rectangle(context.aligntoprect),
-                        new panel.rounded(GALLFILL, 0, 0, 16, 16),
-                        /*
-                        new panel.circle(
-                            context.canvas.aligntoptime?"black":GALLFILL, 
-                            context.canvas.aligntoptime?"rgba(255,255,255,0.5)":0,
-                            context.canvas.aligntoptime?6:0),
-                        */
+                        new panel.rounded(GALLFILL, 
+                            context.canvas.aligntoptime?"rgba(255,255,255,0.5)":0, 
+                            5, 
+                            20, 
+                            20),
                         new panel.text()
-                        /*
-                            new panel.cols([0,0,0,0,0],
-                            [
-                                0,
-                                new panel.shrink(new panel.circle("white"),25,25),
-                                new panel.shrink(new panel.circle("white"),25,25),
-                                new panel.shrink(new panel.circle("white"),25,25),
-                                0,
-                            ])
-                        */
                     ]),
                     0,
                 ]),
