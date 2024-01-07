@@ -5544,17 +5544,12 @@ menuobj.draw = function()
         var slice = slices[n];
         var thumbimg = thumbimglst[slice.dindex];
         if (context == _8cnvctx && 
-            thumbimg.view != slice.view &&
-            !slice.failed &&
+            thumbimg.url != slice.url &&
             !slice.pad) 
         {
-            thumbimg.view = slice.view;
-            thumbimg.slice = slice;
-            thumbimg.slice.failed = 1;
+            thumbimg.url = slice.url;
             thumbimg.onload = function()
             {
-                this.slice.failed = 0;
-                //this.count = 0;
                 menuobj.draw();
 	        }
             
