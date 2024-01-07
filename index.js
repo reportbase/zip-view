@@ -5534,7 +5534,7 @@ menuobj.draw = function()
             else
                 slice.thumbimg.src = slice.url;
         }
-        else
+        else if (slice.thumbimg)
         {
             var t = time + (n * (Math.PI / len));
             var b = Math.tan(t);
