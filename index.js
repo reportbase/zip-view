@@ -1,4 +1,4 @@
-	//top 
+//top 
 
 function ios()
 {
@@ -4483,19 +4483,13 @@ var taplst =
         {
             closemenu()
         }
-		/*
-        else if (headcnv.height)
-        {
-            headobj.hide();
-            menuobj.draw();
-        }
-	*/
         else
         {
             var n = getvisible(x, y);
             aligncenter(n);
             if (buttonobj.value() > window.innerHeight)
                 aligntop();
+            _8cnv.hollyobj.set(0);
             menuobj.draw();
         }
     },
