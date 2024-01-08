@@ -1373,12 +1373,6 @@ var displaylst =
         context.alignbottomrect = new rectangle();
 	    context.buttonrect = new rectangle();
         context.button2rect = new rectangle();
-        context.hollyprevrect = new rectangle();
-        context.hollynextrect = new rectangle();
-        context.buttonprevrect = new rectangle();
-        context.buttonnextrect = new rectangle();
-        context.timeprevrect = new rectangle();
-        context.timenextrect = new rectangle();
         canvas.timerect = new rectangle();
         context.pirect = new rectangle();
         var index = 1 - canvas.timeobj.berp();
@@ -1408,11 +1402,26 @@ var displaylst =
             var a = new panel.rowsA([0,48,20,NUBHEIGHT,NUBMARGIN],
             [
                 0,
-                0,
+                1?0:new panel.cols([0,144,0],
+                [
+                    0,
+                    new panel.layers(
+                    [
+                        new panel.rectangle(context.aligntoprect),
+                        new panel.rounded(
+			                context.canvas.aligntoptime?"rgba(0,0,0,0.75)":GALLFILL, 
+                            context.canvas.aligntoptime?6:0, 
+                            context.canvas.aligntoptime?"rgba(255,255,255,0.75)":0, 
+                            18, 
+                            18),
+                        new panel.text()
+                    ]),
+                    0,
+                ]),
                 0,
                 new panel.cols([CORNEREXT,0,CORNEREXT],
                 [
-                    new panel.rectangle(canvas.hollyprevrect),
+                    0,
                     new panel.layers(
                     [
                        new panel.rounded(GALLFILL, 0, 0, 6, 6),    
@@ -1420,7 +1429,7 @@ var displaylst =
                         new panel.shrink(new panel.currentH(
                             new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
                     ]),
-                    new panel.rectangle(canvas.hollynextrect),
+                    0,
                 ]),
                 0,
             ])
