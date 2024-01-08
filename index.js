@@ -2750,8 +2750,7 @@ var wheelst =
         context.canvas.slideshow = 0;
 	    if (ctrl)
         {
-	        var j = 100;
-            var k = delta/100;// < 0 ? 1 : -1;
+            var k = delta/300;
             buttonobj.addperc(k);
             menuobj.draw();
         }
