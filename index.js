@@ -4371,13 +4371,8 @@ var taplst =
 	        leftmenu(_7cnvctx);
             return false;
         }       
-        else if (menuobj.value() && 
-		 menuobj.value() != _8cnvctx)
-        {
-            closemenu()
-        }
         else if (canvas.middlerect && 
-		 canvas.middlerect.value() != _8cnvctx)
+		 canvas.middlerect.hitest(x, y))
         {
             var n = getvisible(x, y);
             aligncenter(n);
@@ -4385,6 +4380,11 @@ var taplst =
                 aligntop();
             _8cnv.hollyobj.set(0);
             menuobj.draw();
+        }
+        else if (menuobj.value() && 
+		 menuobj.value() != _8cnvctx)
+        {
+            closemenu()
         }
     },
 },
