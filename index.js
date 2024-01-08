@@ -4109,22 +4109,6 @@ var taplst =
         {
             leftmenu(_7cnvctx)
         }
-        else if (canvas.holly2rect &&
-            canvas.holly2rect.hitest(x, y))
-        {
-            var k = (x - canvas.holly2rect.x) / canvas.holly2rect.width;
-            var j = canvas.hollyobj.length()*k;
-            canvas.hollyobj.set(j);
-            menuobj.draw();
-        }            
-        else if (canvas.holly3rect &&
-            canvas.holly3rect.hitest(x, y))
-        {
-            var k = (x - canvas.holly3rect.x) / canvas.holly3rect.width;
-            var j = k < 0.5 ? -0.05 : 0.05;
-            canvas.hollyobj.addperc(j);
-            menuobj.draw();
-        }            
         else if (context.aligntoprect &&
             context.aligntoprect.hitest(x, y))
         {
@@ -4243,6 +4227,22 @@ var taplst =
                 return;
 		    leftmenu(_5cnvctx);
         }
+        else if (canvas.holly2rect &&
+            canvas.holly2rect.hitest(x, y))
+        {
+            var k = (x - canvas.holly2rect.x) / canvas.holly2rect.width;
+            var j = canvas.hollyobj.length()*k;
+            canvas.hollyobj.set(j);
+            menuobj.draw();
+        }            
+        else if (canvas.holly3rect &&
+            canvas.holly3rect.hitest(x, y))
+        {
+            var k = (x - canvas.holly3rect.x) / canvas.holly3rect.width;
+            var j = k < 0.5 ? -0.05 : 0.05;
+            canvas.hollyobj.addperc(j);
+            menuobj.draw();
+        }            
         else if (
             context.bookmarkrect &&
             context.bookmarkrect.hitest(x, y))
