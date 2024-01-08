@@ -1405,8 +1405,10 @@ var displaylst =
     	if (value.blob && value.blob.name)
     		name = value.blob.name;
         
-        if (!headcnv.height && Number(BARS))
+        if (!headcnv.height)
     	{        
+            if (!Number(BARS))
+                return;
             var a = new panel.rowsA([0,48,20,NUBHEIGHT,NUBMARGIN],
             [
                 0,
