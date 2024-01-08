@@ -1368,6 +1368,8 @@ var displaylst =
         canvas.holly2rect = new rectangle();
         canvas.hollymoverect = new rectangle();
         context.folderect = new rectangle();
+        context.topmoverect = new rectangle();
+        context.bottomoverect = new rectangle();
         context.cursorect = new rectangle();
         context.bookmarkrect = new rectangle();
         context.aligntoprect = new rectangle();
@@ -1413,7 +1415,7 @@ var displaylst =
                         0,
                         new panel.layers(
                         [
-                           new panel.rounded(GALLFILL, 0, 0, 6, 6),    
+                            new panel.rounded(GALLFILL, 0, 0, 6, 6),    
                             new panel.expand(new panel.rectangle(canvas.holly2rect), EXPANDRECT, EXPANDRECT),
                             new panel.shrink(new panel.currentH(
                                 new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
@@ -1434,7 +1436,7 @@ var displaylst =
             
  		    var a = new panel.rows([CORNEREXT,0,CORNEREXT],
             [
-                0,
+                new panel.rectangle(context.topmoverect),                      
                 new panel.colsA([NUBMARGIN, NUBHEIGHT, 0, NUBHEIGHT, NUBMARGIN],
                 [
                     0,
@@ -1453,9 +1455,9 @@ var displaylst =
                         new panel.shrink(new panel.currentV(
                             new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 1), 2, 2),
                     ]),
-                    0,
+                    0
                 ]),
-                0
+                new panel.rectangle(context.bottomoverect), 
             ]);
     
         	a.draw(context, rect, [0,buttonobj,0,canvas.timeobj,0], 0);            
