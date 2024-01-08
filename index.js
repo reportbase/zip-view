@@ -84,7 +84,7 @@ const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 36;
 const BOOKMARKED = "rgba(0,0,255,0.75)";
-const EXPANDRECT = 20;
+const EXPANDRECT = 60;
 const CORNEREXT = 0.2;
 
 function setjson(key, value)
@@ -1376,6 +1376,7 @@ var displaylst =
         context.alignbottomrect = new rectangle();
 	    context.buttonrect = new rectangle();
         context.button2rect = new rectangle();
+        canvas.middlerect = new rectangle();
         canvas.button3rect = new rectangle();
         canvas.timerect = new rectangle();
         canvas.time2rect = new rectangle();
@@ -1436,11 +1437,18 @@ var displaylst =
                 0,
             ], 0);
 
-            var a = new panel.colsA([NUBMARGIN+NUBHEIGHT, 0, NUBHEIGHT+NUBMARGIN],
+            var a = new panel.colsA([60, 30, 0, 30, 60],
                 [
-                    new panel.expand(new panel.rectangle(canvas.button3rect), EXPANDRECT, EXPANDRECT),
+                    new panel.rectangle(canvas.button3rect),
                     0,
-                    new panel.expand(new panel.rectangle(canvas.time2rect), EXPANDRECT, EXPANDRECT),
+                    new panel.rows([90,0,90],
+                    [
+                        0,
+                        new panel.rectangle(canvas.middlerect),
+                        0,
+                    ]),
+                    0,
+                    new panel.rectangle(canvas.time2rect),
                 ]);
 
             a.draw(context, rect, 0, 0);
@@ -4363,11 +4371,13 @@ var taplst =
 	        leftmenu(_7cnvctx);
             return false;
         }       
-        else if (menuobj.value() && menuobj.value() != _8cnvctx)
+        else if (menuobj.value() && 
+		 menuobj.value() != _8cnvctx)
         {
             closemenu()
         }
-        else
+        else if (canvas.middlerect.value() && 
+		 canvas.middlerect.value() != _8cnvctx)
         {
             var n = getvisible(x, y);
             aligncenter(n);
