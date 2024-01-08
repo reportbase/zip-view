@@ -46,6 +46,7 @@ const FOOTHEIGHT = 80;
 const MAXEXTENT = 10000;
 const NUBHEIGHT = 10;
 const NUBMARGIN = 2;
+const NUBEXTENT = 15;
 const NUBDELAY = 3000;
 const MAXIMAGESIZE = MAXEXTENT*MAXEXTENT;
 const MENUSELECT = "rgba(255,175,0,0.4)";
@@ -1419,7 +1420,7 @@ var displaylst =
                         new panel.layers(
                         [
                             new panel.rounded(GALLFILL, 0, 0, 6, 6),    
-                            new panel.expand(new panel.rectangle(canvas.holly2rect), EXPANDRECT, EXPANDRECT),
+                            new panel.rectangle(canvas.holly2rect), 
                             new panel.shrink(new panel.currentH(
                                 new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
                         ]),
@@ -1437,11 +1438,11 @@ var displaylst =
                 0,
             ], 0);
 
-            var a = new panel.colsA([NUBMARGIN+NUBHEIGHT, 30, 0, 30, NUBMARGIN+NUBHEIGHT],
+            var a = new panel.colsA([NUBEXTENT, 30, 0, 30, NUBEXTENT],
                 [
                     new panel.fill("red"),//new panel.rectangle(canvas.button3rect),
                     0,
-                    new panel.rows([0,NUBHEIGHT+NUBMARGIN],
+                    new panel.rows([0,NUBEXTENT],
                     [
                         new panel.fill("red"),//new panel.rectangle(canvas.middlerect),
                         0,
@@ -1461,7 +1462,7 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.rounded(GALLFILL, 0, 0, 6, 6),
-                        new panel.expand(new panel.rectangle(context.button2rect), EXPANDRECT, EXPANDRECT),
+                        new panel.rectangle(context.button2rect),
                         new panel.shrink(new panel.currentV(
                             new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
                     ]),
@@ -1469,7 +1470,7 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.rounded(GALLFILL, 0, 0, 6, 6),
-                        new panel.expand(new panel.rectangle(canvas.timerect), EXPANDRECT, EXPANDRECT),
+                        new panel.rectangle(canvas.timerect), ,
                         new panel.shrink(new panel.currentV(
                             new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 1), 2, 2),
                     ]),
@@ -6479,10 +6480,10 @@ panel.currentV = function(panel, extent, rev)
 
 //Math.nub(99,100,100,1000) = 900
 //Math.nub(0,100,100,1000) = 0
-Math.nub = function(n, size, nubextent, extent)
+Math.nub = function(n, size, nub, extent)
 {
     var b = n/size;//Math.berp
-    var e = b * nubextent;
+    var e = b * nub;
     var f = b * extent;
     return f - e;
 };
