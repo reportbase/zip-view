@@ -1366,6 +1366,7 @@ var displaylst =
         context.save();
         canvas.hollyrect = new rectangle();
         canvas.holly2rect = new rectangle();
+        canvas.hollymoverect = new rectangle();
         context.folderect = new rectangle();
         context.cursorect = new rectangle();
         context.bookmarkrect = new rectangle();
@@ -1402,34 +1403,23 @@ var displaylst =
             var a = new panel.rowsA([0,48,20,NUBHEIGHT,NUBMARGIN],
             [
                 0,
-                1?0:new panel.cols([0,144,0],
-                [
-                    0,
-                    new panel.layers(
-                    [
-                        new panel.rectangle(context.aligntoprect),
-                        new panel.rounded(
-			                context.canvas.aligntoptime?"rgba(0,0,0,0.75)":GALLFILL, 
-                            context.canvas.aligntoptime?6:0, 
-                            context.canvas.aligntoptime?"rgba(255,255,255,0.75)":0, 
-                            18, 
-                            18),
-                        new panel.text()
-                    ]),
-                    0,
-                ]),
                 0,
-                new panel.cols([CORNEREXT,0,CORNEREXT],
+                0,
+                new panel.layers(
                 [
-                    0,
-                    new panel.layers(
+                    new panel.expand(new panel.rectangle(canvas.hollymoverect), 0, EXPANDRECT),
+                    new panel.cols([CORNEREXT,0,CORNEREXT],
                     [
-                       new panel.rounded(GALLFILL, 0, 0, 6, 6),    
-                        new panel.expand(new panel.rectangle(canvas.holly2rect), EXPANDRECT, EXPANDRECT),
-                        new panel.shrink(new panel.currentH(
-                            new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
+                        0,
+                        new panel.layers(
+                        [
+                           new panel.rounded(GALLFILL, 0, 0, 6, 6),    
+                            new panel.expand(new panel.rectangle(canvas.holly2rect), EXPANDRECT, EXPANDRECT),
+                            new panel.shrink(new panel.currentH(
+                                new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
+                        ]),
+                        0,
                     ]),
-                    0,
                 ]),
                 0,
             ])
