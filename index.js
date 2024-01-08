@@ -1541,7 +1541,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                    new panel.expand(new panel.rectangle(context.folderect), EXPANDRECT, EXPANDRECT),
+                    new panel.rectangle(context.folderect), 
 			        new panel.colsA([0,0.6,0],
                     [
                         new panel.text(),
@@ -1559,7 +1559,7 @@ var displaylst =
                 [
                     new panel.rounded(value.marked?BOOKMARKED:HEAVYFILL, 
                         ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                    new panel.expand(new panel.rectangle(context.bookmarkrect), EXPANDRECT, EXPANDRECT),
+                    new panel.rectangle(context.bookmarkrect), 
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
                 0,
@@ -1571,7 +1571,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                    new panel.expand(new panel.rectangle(context.cursorect), EXPANDRECT, EXPANDRECT),
+                    new panel.rectangle(context.cursorect),
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
                 0,
@@ -1583,7 +1583,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                    new panel.expand(new panel.rectangle(context.pirect), EXPANDRECT, EXPANDRECT),
+                    new panel.rectangle(context.pirect),
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
                 0,
