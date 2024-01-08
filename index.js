@@ -4151,8 +4151,8 @@ var taplst =
             canvas.time2rect.hitest(x, y))
         { 
             var k = (y - canvas.time2rect.y) / canvas.time2rect.height;
-            var k = _8cnv.timeobj.length() / galleryobj.length();
-            _8cnv.timeobj.rotate(k<0.5?k:-k);
+            var j = _8cnv.timeobj.length() / galleryobj.length();
+            _8cnv.timeobj.rotate(k<0.5?j:-j);
             menuobj.draw();
         }            
         else if (context.pirect &&
