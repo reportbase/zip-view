@@ -4351,38 +4351,40 @@ var taplst =
         {
             var n = getvisible(x, y);
             aligncenter(n);
-            buttonobj.reset();
-            if (buttonobj.portrait || buttonobj.value() >= window.innerHeight)
+            if (context.centered == n)
             {
-                buttonobj.portrait = 0;
-                if (buttonobj.value() > window.innerHeight)
-                    aligntop();
+                buttonobj.reset();
+                if (buttonobj.portrait || buttonobj.value() >= window.innerHeight)
+                {
+                    buttonobj.portrait = 0;
+                    if (buttonobj.value() > window.innerHeight)
+                        aligntop();
+                }
+                else
+                {
+                    buttonobj.portrait = 1;
+                    for (var n = 0; n < buttonobj.length(); ++n)
+                    {
+                        if (buttonobj.data[n] != window.innerHeight)
+                            continue;
+                        buttonobj.set(n);
+                        break;
+                    }
+                }
+                
+                context.canvas.hollyobj.set(0);
+             	menuobj.draw();  
             }
             else
             {
-                buttonobj.portrait = 1;
-                for (var n = 0; n < buttonobj.length(); ++n)
-                {
-                    if (buttonobj.data[n] != window.innerHeight)
-                        continue;
-                    buttonobj.set(n);
-                    break;
-                }
+                if (buttonobj.value() > window.innerHeight)
+                    aligntop();
+                _8cnv.hollyobj.set(0);
+                menuobj.draw();
             }
-            
-            context.canvas.hollyobj.set(0);
-         	menuobj.draw();                
-            /*
-            var n = getvisible(x, y);
-            aligncenter(n);
-            if (buttonobj.value() > window.innerHeight)
-                aligntop();
-            _8cnv.hollyobj.set(0);
-            menuobj.draw();
-            */
         }
         else if (menuobj.value() && 
-		 menuobj.value() != _8cnvctx)
+		     menuobj.value() != _8cnvctx)
         {
             closemenu()
         }
@@ -5433,7 +5435,7 @@ menuobj.draw = function()
             slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
             slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
             if (context == _8cnvctx &&
-		j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
+		        j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
             {
             	galleryobj.width = slice.thumbimg?slice.thumbimg.width:0;
             	galleryobj.height = slice.thumbimg?slice.thumbimg.height:0;
