@@ -1,4 +1,4 @@
-//top 
+	//top 
 
 function ios()
 {
@@ -1504,7 +1504,7 @@ var displaylst =
             DISPLAYMARGIN,                 
             WRAPROWHEIGHT,                  
             DISPLAYMARGIN,                 
-            1?-1:WRAPROWHEIGHT,                  
+            WRAPROWHEIGHT,                  
             FOOTSEP, 
             SCROLLEXTENT, 
             SCROLLMARGIN
