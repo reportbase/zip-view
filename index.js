@@ -4373,7 +4373,7 @@ var taplst =
         {
             closemenu()
         }
-        else if (global.bars)
+        else if (!global.bars)
         {
             var j = _8cnv.timeobj.length() / galleryobj.length();
             _8cnv.timeobj.rotate(x<rect.width/2?j:-j);
