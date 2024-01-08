@@ -1399,7 +1399,7 @@ var displaylst =
         
         if (!headcnv.height)
     	{        
-            var a = new panel.rowsA([0,60,20,NUBHEIGHT,NUBMARGIN],
+            var a = new panel.rowsA([0,50,20,NUBHEIGHT,NUBMARGIN],
             [
                 0,
                 new panel.cols([0,120,0],
@@ -1409,11 +1409,11 @@ var displaylst =
                     [
                         new panel.rectangle(context.aligntoprect),
                         new panel.rounded(
-			                context.canvas.aligntoptime?"black":GALLFILL, 
-                            context.canvas.aligntoptime?"rgba(255,255,255,0.5)":0, 
+			                context.canvas.aligntoptime?"rgba(0,0,0,0.75)":GALLFILL, 
                             context.canvas.aligntoptime?8:0, 
-                            20, 
-                            20),
+                            context.canvas.aligntoptime?"rgba(255,255,255,0.75)":0, 
+                            25, 
+                            25),
                         new panel.text()
                     ]),
                     0,
@@ -1425,7 +1425,7 @@ var displaylst =
                     new panel.layers(
                     [
                        new panel.rounded(GALLFILL, 0, 0, 6, 6),    
-                         new panel.expand(new panel.rectangle(canvas.holly2rect), EXPANDRECT, EXPANDRECT),
+                        new panel.expand(new panel.rectangle(canvas.holly2rect), EXPANDRECT, EXPANDRECT),
                         new panel.shrink(new panel.currentH(
                             new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
                     ]),
