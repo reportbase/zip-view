@@ -1366,7 +1366,7 @@ var displaylst =
         context.save();
         canvas.hollyrect = new rectangle();
         canvas.holly2rect = new rectangle();
-        canvas.hollymoverect = new rectangle();
+        canvas.holly3rect = new rectangle();
         context.folderect = new rectangle();
         context.topmoverect = new rectangle();
         context.bottomoverect = new rectangle();
@@ -1409,7 +1409,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.expand(new panel.rectangle(canvas.hollymoverect), 0, EXPANDRECT),
+                    new panel.expand(new panel.rectangle(canvas.holly3rect), 0, EXPANDRECT),
                     new panel.cols([CORNEREXT,0,CORNEREXT],
                     [
                         0,
@@ -3565,7 +3565,7 @@ var swipelst =
         headobj.draw();
         
         var k = evt.type == "swipeup" ? 1 : -1;
-        menuobj.updown(context, k * 120, 120);
+        menuobj.updown(context, k * 160, 90);
         if (!context.swipetimeout)
             context.swipetimeout = setInterval(
                 function(){menuobj.draw();}, GALLERYMAIN);
@@ -3622,15 +3622,7 @@ var keylst =
             {
                 var k = _8cnv.timeobj.length() / galleryobj.length();
                 _8cnv.timeobj.rotate(k);
- 
-                context.canvas.panning = 1;
-                menuobj.draw()
-                clearTimeout(context.wheeltime)
-                context.wheeltime = setTimeout(function()
-                {
-                    context.canvas.panning = 0;
-                    menuobj.draw()
-                }, NUBDELAY);
+               	menuobj.draw()
             }
             else if (key == "pagedown" || key == "enter" || key == "home")
             {
@@ -3648,14 +3640,7 @@ var keylst =
                     menuobj.draw();
                 }
 
-                context.canvas.panning = 1;
                 menuobj.draw()
-                clearTimeout(context.wheeltime)
-                context.wheeltime = setTimeout(function()
-                {
-                    context.canvas.panning = 0;
-                    menuobj.draw()
-                }, NUBDELAY);
             }
             else if (
                 key == "arrowup" ||
@@ -4223,14 +4208,15 @@ var taplst =
             var k = (x - canvas.holly2rect.x) / canvas.holly2rect.width;
             var j = canvas.hollyobj.length()*k;
             canvas.hollyobj.set(j);
-            context.canvas.panning = 1;
             menuobj.draw();
-            clearTimeout(context.wheeltime)
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.panning = 0;
-                menuobj.draw()
-            }, NUBDELAY*3);
+        }            
+        else if (canvas.holly3rect &&
+            canvas.holly3rect.hitest(x, y))
+        {
+            var k = (x - canvas.holly3rect.x) / canvas.holly3rect.width;
+            var j = k < 0.5 ? -0.05 : 0.05;
+            canvas.hollyobj.setperc(j);
+            menuobj.draw();
         }            
         else if (context.aligntoprect &&
             context.aligntoprect.hitest(x, y))
