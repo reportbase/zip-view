@@ -1410,7 +1410,7 @@ var displaylst =
                         new panel.rectangle(context.aligntoprect),
                         new panel.rounded(
 			                context.canvas.aligntoptime?"rgba(0,0,0,0.75)":GALLFILL, 
-                            context.canvas.aligntoptime?8:0, 
+                            context.canvas.aligntoptime?6:0, 
                             context.canvas.aligntoptime?"rgba(255,255,255,0.75)":0, 
                             25, 
                             25),
