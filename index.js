@@ -22,7 +22,6 @@ url.param = function(key, def)
 const HIDE = url.searchParams.get("hide");
 const THEME = url.param("theme");
 const BEAV = url.param("beav", 0.636);
-const BARS = url.param("bars", 1);
 const NUBACK = "rgba(0,0,0,0.4)";
 const GALLNUB = url.param("gallnub","white");
 const GALLFILL = url.param("gallfill","rgba(0,0,0,0.4)"); 
@@ -118,6 +117,7 @@ var panel = {};
 var global = {};
 let photo = {};
 let util = {};
+global.bars = url.param("bars", 1);
 
 var login = {id: 0};
 var k = getjson("login");
@@ -1392,7 +1392,7 @@ var displaylst =
             return;
         if (!headcnv.height)
     	{        
-            if (!Number(BARS))
+            if (!Number(global.bars))
                 return;
             var a = new panel.rowsA([0,48,20,NUBHEIGHT,NUBMARGIN],
             [
@@ -3694,12 +3694,18 @@ var keylst =
                 }, NUBDELAY);
                 evt.preventDefault();
             }
-            else if (key == "tab" || key == " ")
+            else if (key == " ")
             {
                 headobj.toggle();
                 menuobj.draw()
                 evt.preventDefault();
             }                
+	        else if (key == "tab")
+            {
+                global.bars = global.bars?0:1;
+                menuobj.draw()
+                evt.preventDefault();
+            }
             else if (key == "\\" || key == "/")
             {
                 var h = headcnv.height ? 0 : HEADHEIGHT;
@@ -4366,6 +4372,12 @@ var taplst =
 		     menuobj.value() != _8cnvctx)
         {
             closemenu()
+        }
+        else if (global.bars)
+        {
+            var j = _8cnv.timeobj.length() / galleryobj.length();
+            _8cnv.timeobj.rotate(x<rect.width/2?j:-j);
+            menuobj.draw();           
         }
     },
 },
