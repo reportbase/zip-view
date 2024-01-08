@@ -22,6 +22,7 @@ url.param = function(key, def)
 const HIDE = url.searchParams.get("hide");
 const THEME = url.param("theme");
 const BEAV = url.param("beav", 0.636);
+const BARS = url.param("bars", 1);
 const NUBACK = "rgba(0,0,0,0.4)";
 const GALLNUB = url.param("gallnub","white");
 const GALLFILL = url.param("gallfill","rgba(0,0,0,0.4)"); 
@@ -1404,7 +1405,7 @@ var displaylst =
     	if (value.blob && value.blob.name)
     		name = value.blob.name;
         
-        if (!headcnv.height)
+        if (!headcnv.height && BARS)
     	{        
             var a = new panel.rowsA([0,48,20,NUBHEIGHT,NUBMARGIN],
             [
@@ -2753,17 +2754,10 @@ var wheelst =
             var k = delta < 0 ? 1 : -1;
             if (!context.count)
                 context.count = 0;
-            if ((++context.count%3))
+            if ((++context.count%6))
                 return;
             buttonobj.add(j*k);
-            context.canvas.pinching = 1;
             menuobj.draw();
-            clearTimeout(context.wheeltime)
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.pinching = 0;
-                menuobj.draw()
-            }, NUBDELAY);
         }
         else
         {
@@ -2774,26 +2768,11 @@ var wheelst =
                    function(){menuobj.draw();}, GALLERYMAIN);
             }
 
-            context.canvas.panning = 1;
             menuobj.draw()
-            clearTimeout(context.wheelpanningtime)
-            context.wheelpanningtime = setTimeout(function()
-            {
-                context.canvas.panning = 0;
-                menuobj.draw()
-            }, NUBDELAY);
         }
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        context.canvas.panning = 1;
-        menuobj.draw()
-        clearTimeout(context.wheelpanningtime)
-        context.wheelpanningtime = setTimeout(function()
-        {
-            context.canvas.panning = 0;
-            menuobj.draw()
-        }, NUBDELAY);
         context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw();
     },
