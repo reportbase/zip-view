@@ -5050,8 +5050,8 @@ var buttonlst =
         else
         {
             var lst = [];
-            lst.push(slice.name);
-            lst.push(`${time+1} of ${galleryobj.length()}`)
+            //lst.push(slice.name);
+            //lst.push(`${time+1} of ${galleryobj.length()}`)
             var g = lst.length*40;
             var a = new panel.shrink(new panel.layers(
             [
