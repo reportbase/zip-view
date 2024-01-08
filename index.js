@@ -1402,7 +1402,7 @@ var displaylst =
             var a = new panel.rowsA([0,48,20,NUBHEIGHT,NUBMARGIN],
             [
                 0,
-                new panel.cols([0,144,0],
+                1?0:new panel.cols([0,144,0],
                 [
                     0,
                     new panel.layers(
@@ -3488,6 +3488,10 @@ var presslst =
     },
     press: function(context, rect, x, y) 
     {    
+	headobj.toggle();
+        menuobj.draw()
+    	return;
+	    
         var n = getvisible(x, y);
         aligncenter(n);
         buttonobj.reset();
