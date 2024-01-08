@@ -2751,7 +2751,7 @@ var wheelst =
 	    if (ctrl)
         {
             var k = delta/300;
-            buttonobj.addperc(k);
+            buttonobj.addperc(-k);
             menuobj.draw();
         }
         else
