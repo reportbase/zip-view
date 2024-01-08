@@ -1438,9 +1438,9 @@ var displaylst =
 
             var a = new panel.colsA([NUBMARGIN+NUBHEIGHT, 0, NUBHEIGHT+NUBMARGIN],
                 [
-                    new panel.expand(new panel.rectangle(context.button3rect), EXPANDRECT, EXPANDRECT),
+                    new panel.expand(new panel.rectangle(canvas.button3rect), EXPANDRECT, EXPANDRECT),
                     0,
-                    new panel.expand(new panel.rectangle(context.time2rect), EXPANDRECT, EXPANDRECT),
+                    new panel.expand(new panel.rectangle(canvas.time2rect), EXPANDRECT, EXPANDRECT),
                 ]);
 
             a.draw(context, rect, 0, 0);
@@ -4081,118 +4081,6 @@ var taplst =
     name: "BOSS",
     tap: function(context, rect, x, y, shift, ctrl)
     {
-        headobj.draw();
-        if (headcnv.height &&
-            headcnvctx.moveprev && 
-            headcnvctx.moveprev.hitest(x, y))
-        {
-            _4cnvctx.movepage(-1);
-        }
-        else if (headcnv.height && 
-                 headcnvctx.movenext && 
-                 headcnvctx.movenext.hitest(x, y))
-        {
-            _4cnvctx.movepage(1);
-        }
-        else if (context.copyidrect && 
-                 context.copyidrect.hitest(x, y))
-        {
-            patchuser()   
-        }
-        else if (
-            headcnv.height &&
-            headcnvctx.zoomrect &&
-            headcnvctx.zoomrect.hitest(x, y))
-        {
-		    headobj.hide();
-            menuobj.draw();
-            var input = document.getElementById("goto-input");
-            input.value = galleryobj.current()+1;
-            showdialog("goto", function(image)
-            {
-                var image = input.value.clean();
-                image = Math.floor(image)-1;
-                image = util.clamp(0, galleryobj.length()-1, image);
-                galleryobj.set(image);
-                delete photo.image;
-		        headobj.show();
-                menuobj.draw();
-            })
-        }
-        else if (context.canvas.thumbrect && 
-                 context.canvas.thumbrect.hitest(x, y))
-        {
-            if (context.canvas.selectrect &&
-                context.canvas.selectrect.hitest(x, y) >= 0)
-            {
-                galleryobj.notransparent = galleryobj.notransparent ? 1 : 0;
-                bossobj.draw();
-            }
-            else
-            {
-                context.hithumb(x, y);
-                galleryobj.transparent = 1;
-                contextobj.reset()
-            }
-        }
-        else if (context.timerect && context.timerect.hitest(x, y))
-        {
-            var k = (x - context.timerect.x) / context.timerect.width;
-            context.canvas.timeobj.setperc(k);
-            bossobj.draw();
-        }
-        else if (context.zoomrect && context.zoomrect.hitest(x, y))
-        {
-            var k = (x - context.zoomrect.x) / context.zoomrect.width;
-            zoomobj.setperc(k);
-            contextobj.reset();
-        }
-        else if (context.stretchrect && context.stretchrect.hitest(x, y))
-        {
-            var k = (x - context.stretchrect.x) / context.stretchrect.width;
-            stretchobj.setperc(k);
-            bossobj.draw();
-        }
-        else if (!headcnv.height)
-        {
-            headcnv.height = HEADHEIGHT;
-            headobj.draw();
-            bossobj.draw();
-        }
-        else if (
-            headcnv.height &&
-            headcnvctx.fullscreenrect &&
-            headcnvctx.fullscreenrect.hitest(x, y))
-        {
-			toggleFullScreen()
-        }
-         else if (
-            headcnv.height &&
-            headcnvctx.closebossrect &&
-            headcnvctx.closebossrect.hitest(x, y))
-        {
-            closeboss();
-        }
-        else if (
-            headcnv.height &&
-            headcnvctx.bossdisplayrect &&
-            headcnvctx.bossdisplayrect.hitest(x, y))
-        {
-            delete context.canvas.thumbrect;
-            context.nostretchcolumn = 0;
-            var k = (x - headcnvctx.bossdisplayrect.x) / headcnvctx.bossdisplayrect.width;
-            bossdisplayobj.rotate(k < 0.5 ? -1 : 1);
-            contextobj.reset();
-            headobj.draw();
-        }
-        else if (
-            context.pagerect &&
-            context.pagerect.hitest(x, y))
-        {
-            context.infobj.rotate(x<window.innerWidth/2?-1:1);
-        }    
-        
-        _4cnvctx.refresh();
     }
 },
 {
@@ -4258,14 +4146,13 @@ var taplst =
             var j = obj.length()*(1-k);
             obj.set(j);
             menuobj.draw();
-            context.canvas.panning = 1;
-            menuobj.draw()
-            clearTimeout(context.wheelpanningtime)
-            context.wheelpanningtime = setTimeout(function()
-            {
-                context.canvas.panning = 0;
-                menuobj.draw()
-            }, NUBDELAY*3);
+        }            
+        else if (canvas.time2rect &&
+            canvas.time2rect.hitest(x, y))
+        {
+            var k = (y - canvas.time2rect.y) / canvas.time2rect.height;
+            canvas.timeobj.addperc(k < 0.5 ? 0.05: -9.05);
+            menuobj.draw();
         }            
         else if (context.pirect &&
             context.pirect.hitest(x, y))
