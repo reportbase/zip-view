@@ -1440,15 +1440,15 @@ var displaylst =
 
             var a = new panel.colsA([NUBEXTENT, 30, 0, 30, NUBEXTENT],
                 [
-                    new panel.fill("red"),//new panel.rectangle(canvas.button3rect),
+                    new panel.rectangle(canvas.button3rect),
                     0,
                     new panel.rows([0,NUBEXTENT],
                     [
-                        new panel.fill("red"),//new panel.rectangle(canvas.middlerect),
+                        new panel.rectangle(canvas.middlerect),
                         0,
                     ]),
                     0,
-                    new panel.fill("red"),//new panel.rectangle(canvas.time2rect),
+                    new panel.rectangle(canvas.time2rect),
                 ]);
 
             a.draw(context, rect, 0, 0);
