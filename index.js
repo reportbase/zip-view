@@ -1437,18 +1437,17 @@ var displaylst =
                 0,
             ], 0);
 
-            var a = new panel.colsA([60, 30, 0, 30, 60],
+            var a = new panel.colsA([NUBMARGIN+NUBHEIGHT, 30, 0, 30, NUBMARGIN+NUBHEIGHT],
                 [
-                    new panel.rectangle(canvas.button3rect),
+                    new panel.fill("red"),//new panel.rectangle(canvas.button3rect),
                     0,
-                    new panel.rows([90,0,90],
+                    new panel.rows([0,NUBHEIGHT+NUBMARGIN],
                     [
-                        0,
-                        new panel.rectangle(canvas.middlerect),
+                        new panel.fill("red"),//new panel.rectangle(canvas.middlerect),
                         0,
                     ]),
                     0,
-                    new panel.rectangle(canvas.time2rect),
+                    new panel.fill("red"),//new panel.rectangle(canvas.time2rect),
                 ]);
 
             a.draw(context, rect, 0, 0);
