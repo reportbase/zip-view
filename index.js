@@ -84,7 +84,7 @@ const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 36;
 const BOOKMARKED = "rgba(0,0,255,0.75)";
-const EXPANDRECT = 10;
+const EXPANDRECT = 20;
 const CORNEREXT = 0.2;
 
 function setjson(key, value)
@@ -4146,7 +4146,14 @@ var taplst =
             var j = obj.length()*(1-k);
             obj.set(j);
             menuobj.draw();
-        }            
+        } 
+        else if (canvas.button3rect &&
+            canvas.button3rect.hitest(x, y))
+        { 
+            var k = (y - canvas.button3rect.y) / canvas.v.height;
+            buttonobj.addperc(k<0.5?-0.05:0.05);
+            menuobj.draw();
+        }                
         else if (canvas.time2rect &&
             canvas.time2rect.hitest(x, y))
         { 
