@@ -4376,7 +4376,7 @@ var taplst =
         {
             closemenu()
         }
-        else if (canvas.middlerect.value() && 
+        else if (canvas.middlerect && 
 		 canvas.middlerect.value() != _8cnvctx)
         {
             var n = getvisible(x, y);
