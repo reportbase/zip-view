@@ -1399,10 +1399,10 @@ var displaylst =
         
         if (!headcnv.height)
     	{        
-            var a = new panel.rowsA([0,50,20,NUBHEIGHT,NUBMARGIN],
+            var a = new panel.rowsA([0,48,20,NUBHEIGHT,NUBMARGIN],
             [
                 0,
-                new panel.cols([0,120,0],
+                new panel.cols([0,144,0],
                 [
                     0,
                     new panel.layers(
@@ -1412,8 +1412,8 @@ var displaylst =
 			                context.canvas.aligntoptime?"rgba(0,0,0,0.75)":GALLFILL, 
                             context.canvas.aligntoptime?6:0, 
                             context.canvas.aligntoptime?"rgba(255,255,255,0.75)":0, 
-                            25, 
-                            25),
+                            18, 
+                            18),
                         new panel.text()
                     ]),
                     0,
