@@ -4149,9 +4149,10 @@ var taplst =
         }            
         else if (canvas.time2rect &&
             canvas.time2rect.hitest(x, y))
-        {
+        { 
             var k = (y - canvas.time2rect.y) / canvas.time2rect.height;
-            canvas.timeobj.addperc(k < 0.5 ? 0.05: -9.05);
+            var k = _8cnv.timeobj.length() / galleryobj.length();
+            _8cnv.timeobj.rotate(k<0.5?k:-k);
             menuobj.draw();
         }            
         else if (context.pirect &&
