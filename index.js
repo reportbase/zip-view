@@ -4150,7 +4150,7 @@ var taplst =
         else if (canvas.button3rect &&
             canvas.button3rect.hitest(x, y))
         { 
-            var k = (y - canvas.button3rect.y) / canvas.v.height;
+            var k = (y - canvas.button3rect.y) / canvas.button3rect.height;
             buttonobj.addperc(k<0.5?-0.05:0.05);
             menuobj.draw();
         }                
