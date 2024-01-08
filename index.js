@@ -4875,7 +4875,7 @@ var buttonlst =
 
             if (b > b2)
             {
-		        if (thumbfitted.height != hh)
+		        if (Math.abs(thumbfitted.height - hh) > 5)
                 {
                     var thumbfittedctx = thumbfitted.getContext("2d");
                     thumbfitted.height = hh;
@@ -4896,7 +4896,7 @@ var buttonlst =
             }
             else
             {
-                if (thumbfitted.width != ww)
+                if (Math.abs(thumbfitted.width - ww) > 5)
                 {
                     var thumbfittedctx = thumbfitted.getContext("2d");
                     thumbfitted.width = ww
