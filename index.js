@@ -1390,21 +1390,6 @@ var displaylst =
         var value = galleryobj.data[k];
 	    if (!value)
             return;
-         var space = rect.width < 400 ? "  " : rect.widt < 600 ? "   " : "    ";
-        var folders = [];
-        if (value && value.folder)
-            folders = value.folder.split("/");
-        var data = `${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}`;
-        var time = canvas.timeobj.current().toFixed(8);
-        var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
-        if (!w)
-            w = buttonobj.value();
-	    var bt = `${w.toFixed(0)} x ${buttonobj.value()}`;
-    	
-        var name = value.name;    
-    	if (value.blob && value.blob.name)
-    		name = value.blob.name;
-        
         if (!headcnv.height)
     	{        
             if (!Number(BARS))
@@ -1486,6 +1471,19 @@ var displaylst =
             return;
     	}
 	    
+        var space = rect.width < 400 ? "  " : rect.widt < 600 ? "   " : "    ";
+        var folders = [];
+        if (value && value.folder)
+            folders = value.folder.split("/");
+        var data = `${index.toFixed(FIXEDTIME)} of ${galleryobj.length()}`;
+        var time = canvas.timeobj.current().toFixed(8);
+        var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
+        if (!w)
+            w = buttonobj.value();
+	    var bt = `${w.toFixed(0)} x ${buttonobj.value()}`;    	
+        var name = value.name;    
+    	if (value.blob && value.blob.name)
+    		name = value.blob.name;
         var bh = rect.height * 0.4;
         const rainstep = Math.min(420,window.innerWidth-60);
         var a = new panel.rows([0, SCROLLEXTENT, 6],
