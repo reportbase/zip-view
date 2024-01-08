@@ -46,7 +46,7 @@ const FOOTHEIGHT = 80;
 const MAXEXTENT = 10000;
 const NUBHEIGHT = 10;
 const NUBMARGIN = 2;
-const NUBDELAY = 3000;
+const                                                                                                                                                                                                                                   = 3000;
 const MAXIMAGESIZE = MAXEXTENT*MAXEXTENT;
 const MENUSELECT = "rgba(255,175,0,0.4)";
 const MENUTAP = "rgba(255,125,0,0.7)";
@@ -2737,14 +2737,7 @@ var wheelst =
             if ((++context.count%3))
                 return;
             buttonobj.add(j*k);
-            context.canvas.pinching = 1;
             menuobj.draw();
-            clearTimeout(context.wheeltime)
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.pinching = 0;
-                menuobj.draw()
-            }, NUBDELAY);
         }
         else
         {
@@ -2755,28 +2748,13 @@ var wheelst =
                    function(){menuobj.draw();}, GALLERYMAIN);
             }
 
-            context.canvas.panning = 1;
             menuobj.draw()
-            clearTimeout(context.wheelpanningtime)
-            context.wheelpanningtime = setTimeout(function()
-            {
-                context.canvas.panning = 0;
-                menuobj.draw()
-            }, NUBDELAY);
         }
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
         context.canvas.panning = 1;
         menuobj.draw()
-        clearTimeout(context.wheelpanningtime)
-        context.wheelpanningtime = setTimeout(function()
-        {
-            context.canvas.panning = 0;
-            menuobj.draw()
-        }, NUBDELAY);
-        context.canvas.hollyobj.addperc(delta / 2000);
-        menuobj.draw();
     },
 },
 {
@@ -3128,13 +3106,6 @@ var panlst =
         var obj = canvas.hollyobj;
         if (canvas.pinching)
             return;
-        context.canvas.panning = 1;
-        clearTimeout(context.panningtime)
-        context.panningtime = setTimeout(function()
-        {
-            context.canvas.panning = 0;
-            menuobj.draw()
-        }, NUBDELAY);
         
         if (type == "panleft" || type == "panright")
         {
@@ -3397,48 +3368,24 @@ var mouselst =
         {
             context.canvas.pinching = 1;
             menuobj.draw();
-            clearTimeout(context.wheeltime);
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.pinching = 0;
-                menuobj.draw()
-            }, NUBDELAY);
         }
         else if (canvas.timerect &&
             canvas.timerect.hitest(x, y))
         {
             context.canvas.panning = 1;
             menuobj.draw();
-            clearTimeout(context.wheeltime)
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.panning = 0;
-                menuobj.draw()
-            }, NUBDELAY);
         }
         else if (canvas.holly2rect &&
             canvas.holly2rect.hitest(x, y))
         {
             context.canvas.panning = 1;
             menuobj.draw();
-            clearTimeout(context.wheeltime)
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.panning = 0;
-                menuobj.draw()
-            }, NUBDELAY);
         }
         else if (context.aligntoprect &&
             context.aligntoprect.hitest(x, y))
         {
             context.canvas.aligntoptime = 1;
             menuobj.draw();
-            clearTimeout(context.wheeltime)
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.aligntoptime = 0;
-                menuobj.draw()
-            }, NUBDELAY);
         }
         else
         {
@@ -3625,12 +3572,6 @@ var keylst =
  
                 context.canvas.panning = 1;
                 menuobj.draw()
-                clearTimeout(context.wheeltime)
-                context.wheeltime = setTimeout(function()
-                {
-                    context.canvas.panning = 0;
-                    menuobj.draw()
-                }, NUBDELAY);
             }
             else if (key == "pagedown" || key == "enter" || key == "home")
             {
@@ -3650,12 +3591,6 @@ var keylst =
 
                 context.canvas.panning = 1;
                 menuobj.draw()
-                clearTimeout(context.wheeltime)
-                context.wheeltime = setTimeout(function()
-                {
-                    context.canvas.panning = 0;
-                    menuobj.draw()
-                }, NUBDELAY);
             }
             else if (
                 key == "arrowup" ||
@@ -3689,13 +3624,6 @@ var keylst =
                 
                 context.canvas.panning = 1;
                 menuobj.draw()
-                clearTimeout(context.wheeltime)
-                context.wheeltime = setTimeout(function()
-                {
-                    context.canvas.panning = 0;
-                    menuobj.draw()
-                }, NUBDELAY);
-                evt.preventDefault();
             }
             else if (
                 key == "arrowdown" ||
@@ -3728,12 +3656,6 @@ var keylst =
                 
                 context.canvas.panning = 1;
                 menuobj.draw()
-                clearTimeout(context.wheeltime)
-                context.wheeltime = setTimeout(function()
-                {
-                    context.canvas.panning = 0;
-                    menuobj.draw()
-                }, NUBDELAY);
                 evt.preventDefault();
             }
             else if (key == "tab" || key == " ")
@@ -3753,27 +3675,13 @@ var keylst =
             else if (key == "-" || key == "[")
             {
                 buttonobj.addperc(-1.0 / 100);
-                context.canvas.pinching = 1;
-                menuobj.draw()               
-                clearTimeout(context.wheeltime)
-                context.wheeltime = setTimeout(function()
-                {
-                    context.canvas.pinching = 0;
-                    menuobj.draw()
-                }, NUBDELAY);
+                menuobj.draw()
                 evt.preventDefault();
             }
             else if (key == "+" || key == "]" || key == "=")
             {
                 buttonobj.addperc(1.0 / 100);
-                context.canvas.pinching = 1;
-                menuobj.draw()
-                clearTimeout(context.wheeltime)
-                context.wheeltime = setTimeout(function()
-                {
-                    context.canvas.pinching = 0;
-                    menuobj.draw()
-                }, NUBDELAY);
+                menuobj.draw() 
                 evt.preventDefault();
             }
             else if (
@@ -3784,14 +3692,7 @@ var keylst =
                     context.canvas.hollyobj.set(0);
                 else
                     context.canvas.hollyobj.addperc(-25/250);    
-                context.canvas.panning = 1;
                 menuobj.draw();
-                clearTimeout(context.panningtime)
-                context.panningtime = setTimeout(function()
-                {
-                    context.canvas.panning = 0;
-                    menuobj.draw()
-                }, NUBDELAY);
                 evt.preventDefault();
             }
             else if (
@@ -3802,14 +3703,7 @@ var keylst =
                     context.canvas.hollyobj.set(context.canvas.hollyobj.length()-1);
                 else
                     context.canvas.hollyobj.addperc(25/250);    
-                context.canvas.panning = 1;
                 menuobj.draw();
-                clearTimeout(context.panningtime)
-                context.panningtime = setTimeout(function()
-                {
-                    context.canvas.panning = 0;
-                    menuobj.draw()
-                }, NUBDELAY);
                 evt.preventDefault();
             }
             else if (key == "0")
@@ -4223,14 +4117,7 @@ var taplst =
             var k = (x - canvas.holly2rect.x) / canvas.holly2rect.width;
             var j = canvas.hollyobj.length()*k;
             canvas.hollyobj.set(j);
-            context.canvas.panning = 1;
             menuobj.draw();
-            clearTimeout(context.wheeltime)
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.panning = 0;
-                menuobj.draw()
-            }, NUBDELAY*3);
         }            
         else if (context.aligntoprect &&
             context.aligntoprect.hitest(x, y))
@@ -4244,14 +4131,7 @@ var taplst =
             var k = (y - context.button2rect.y) / context.button2rect.height;
             var j = buttonobj.length()*k;
             buttonobj.set(j);
-            context.canvas.pinching = 1;
             menuobj.draw();
-            clearTimeout(context.wheeltime)
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.pinching = 0;
-                menuobj.draw()
-            }, NUBDELAY*3);
         }            
         else if (canvas.timerect &&
             canvas.timerect.hitest(x, y))
@@ -4261,14 +4141,6 @@ var taplst =
             var j = obj.length()*(1-k);
             obj.set(j);
             menuobj.draw();
-            context.canvas.panning = 1;
-            menuobj.draw()
-            clearTimeout(context.wheelpanningtime)
-            context.wheelpanningtime = setTimeout(function()
-            {
-                context.canvas.panning = 0;
-                menuobj.draw()
-            }, NUBDELAY*3);
         }            
         else if (context.pirect &&
             context.pirect.hitest(x, y))
@@ -4457,14 +4329,7 @@ var taplst =
         {
             var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
             context.canvas.hollyobj.setperc(k);
-            context.canvas.panning = 1;
             menuobj.draw()
-            clearTimeout(context.wheelpanningtime)
-            context.wheelpanningtime = setTimeout(function()
-            {
-                context.canvas.panning = 0;
-                menuobj.draw()
-            }, NUBDELAY);
         }
         else if (context.homerect && context.homerect.hitest(x, y))
         {
