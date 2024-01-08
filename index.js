@@ -3499,33 +3499,8 @@ var presslst =
     },
     press: function(context, rect, x, y) 
     {    
-	headobj.toggle();
+	    headobj.toggle();
         menuobj.draw()
-    	return;
-	    
-        var n = getvisible(x, y);
-        aligncenter(n);
-        buttonobj.reset();
-        if (buttonobj.portrait || buttonobj.value() >= window.innerHeight)
-        {
-            buttonobj.portrait = 0;
-            if (buttonobj.value() > window.innerHeight)
-                aligntop();
-        }
-        else
-        {
-            buttonobj.portrait = 1;
-            for (var n = 0; n < buttonobj.length(); ++n)
-            {
-                if (buttonobj.data[n] != window.innerHeight)
-                    continue;
-                buttonobj.set(n);
-                break;
-            }
-        }
-        
-        context.canvas.hollyobj.set(0);
-     	menuobj.draw();    
     }
 },
 {
@@ -4376,10 +4351,35 @@ var taplst =
         {
             var n = getvisible(x, y);
             aligncenter(n);
+            buttonobj.reset();
+            if (buttonobj.portrait || buttonobj.value() >= window.innerHeight)
+            {
+                buttonobj.portrait = 0;
+                if (buttonobj.value() > window.innerHeight)
+                    aligntop();
+            }
+            else
+            {
+                buttonobj.portrait = 1;
+                for (var n = 0; n < buttonobj.length(); ++n)
+                {
+                    if (buttonobj.data[n] != window.innerHeight)
+                        continue;
+                    buttonobj.set(n);
+                    break;
+                }
+            }
+            
+            context.canvas.hollyobj.set(0);
+         	menuobj.draw();                
+            /*
+            var n = getvisible(x, y);
+            aligncenter(n);
             if (buttonobj.value() > window.innerHeight)
                 aligntop();
             _8cnv.hollyobj.set(0);
             menuobj.draw();
+            */
         }
         else if (menuobj.value() && 
 		 menuobj.value() != _8cnvctx)
