@@ -4215,7 +4215,7 @@ var taplst =
         {
             var k = (x - canvas.holly3rect.x) / canvas.holly3rect.width;
             var j = k < 0.5 ? -0.05 : 0.05;
-            canvas.hollyobj.setperc(j);
+            canvas.hollyobj.addperc(j);
             menuobj.draw();
         }            
         else if (context.aligntoprect &&
