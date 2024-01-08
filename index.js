@@ -84,7 +84,7 @@ const CIRCLEIN = 19;
 const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 36;
 const BOOKMARKED = "rgba(0,0,255,0.75)";
-const EXPANDRECT = 5;
+const EXPANDRECT = 10;
 const CORNEREXT = 0.2;
 
 function setjson(key, value)
@@ -1376,7 +1376,9 @@ var displaylst =
         context.alignbottomrect = new rectangle();
 	    context.buttonrect = new rectangle();
         context.button2rect = new rectangle();
+        canvas.button3rect = new rectangle();
         canvas.timerect = new rectangle();
+        canvas.time2rect = new rectangle();
         context.pirect = new rectangle();
         var index = 1 - canvas.timeobj.berp();
         index *= galleryobj.length();
@@ -1433,10 +1435,19 @@ var displaylst =
                 _8cnv.hollyobj, 
                 0,
             ], 0);
-            
+
+            var a = new panel.colsA([NUBMARGIN+NUBHEIGHT, 0, NUBHEIGHT+NUBMARGIN],
+                [
+                    new panel.expand(new panel.rectangle(context.button3rect), EXPANDRECT, EXPANDRECT),
+                    0,
+                    new panel.expand(new panel.rectangle(context.time2rect), EXPANDRECT, EXPANDRECT),
+                ]);
+
+            a.draw(context, rect, 0, 0);
+                                
  		    var a = new panel.rows([CORNEREXT,0,CORNEREXT],
             [
-                new panel.rectangle(context.topmoverect),                      
+                0,                      
                 new panel.colsA([NUBMARGIN, NUBHEIGHT, 0, NUBHEIGHT, NUBMARGIN],
                 [
                     0,
@@ -1457,7 +1468,7 @@ var displaylst =
                     ]),
                     0
                 ]),
-                new panel.rectangle(context.bottomoverect), 
+                0, 
             ]);
     
         	a.draw(context, rect, [0,buttonobj,0,canvas.timeobj,0], 0);            
