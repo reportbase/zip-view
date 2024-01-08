@@ -4483,11 +4483,13 @@ var taplst =
         {
             closemenu()
         }
+		/*
         else if (headcnv.height)
         {
             headobj.hide();
             menuobj.draw();
         }
+	*/
         else
         {
             var n = getvisible(x, y);
