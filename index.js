@@ -5539,11 +5539,10 @@ menuobj.draw = function()
             slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
             slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
             if (context == _8cnvctx &&
-		j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2) &&
-               (context == _8cnvctx && !slice.pad) || (context != _8cnvctx))
+		j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
             {
-            	galleryobj.width = slice.thumbimg.width;
-            	galleryobj.height = slice.thumbimg.height;
+            	galleryobj.width = slice.thumbimg?slice.thumbimg.width:0;
+            	galleryobj.height = slice.thumbimg?slice.thumbimg.height:0;
             	context.centered = j.n;
             }
 
