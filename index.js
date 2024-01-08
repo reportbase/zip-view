@@ -5524,7 +5524,8 @@ menuobj.draw = function()
             else
                 slice.thumbimg.src = slice.url;
         }
-        else if (slice.thumbimg || slice.pad)
+        else if ((context == _8cnvctx && (slice.thumbimg || slice.pad)) || 
+		 context != _8cnvctx)
         {
             var t = time + (n * (Math.PI / len));
             var b = Math.tan(t);
@@ -5538,8 +5539,8 @@ menuobj.draw = function()
             slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
             slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
             if (context == _8cnvctx &&
-		        j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2) &&
-               !slice.pad)
+		j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2) &&
+               (context == _8cnvctx && !slice.pad) || (context != _8cnvctx))
             {
             	galleryobj.width = slice.thumbimg.width;
             	galleryobj.height = slice.thumbimg.height;
