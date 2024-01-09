@@ -4889,8 +4889,7 @@ var buttonlst =
 
             if (b > b2)
             {
-                var k = Math.lerp(1,20,buttonobj.berp());
-		        if (Math.abs(thumbfitted.height - hh) > k)
+                        if (Math.abs(thumbfitted.height - hh) > 2)
                 {
                     if (!slice.isvisible && context.canvas.pinching)
                         return;
@@ -4913,8 +4912,7 @@ var buttonlst =
             }
             else
             {
-                var k = Math.lerp(1,20,buttonobj.berp());
-                if (Math.abs(thumbfitted.width - ww) > k)
+                if (Math.abs(thumbfitted.width - ww) > 2)
                 {
                     if (!slice.isvisible && context.canvas.pinching)
                         return;
