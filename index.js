@@ -4882,7 +4882,8 @@ var buttonlst =
 
             if (b > b2)
             {
-		        if (Math.abs(thumbfitted.height - hh) > 5)
+                var k = Math.lerp(5,100,buttonobj.berp());
+		        if (Math.abs(thumbfitted.height - hh) > k)
                 {
                     var thumbfittedctx = thumbfitted.getContext("2d");
                     thumbfitted.height = hh;
@@ -4903,7 +4904,8 @@ var buttonlst =
             }
             else
             {
-                if (Math.abs(thumbfitted.width - ww) > 5)
+                var k = Math.lerp(5,100,buttonobj.berp());
+                if (Math.abs(thumbfitted.width - ww) > k)
                 {
                     var thumbfittedctx = thumbfitted.getContext("2d");
                     thumbfitted.width = ww
