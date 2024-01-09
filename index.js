@@ -4378,7 +4378,16 @@ var taplst =
         else if (!global.bars)
         {
             var j = _8cnv.timeobj.length() / galleryobj.length();
-            _8cnv.timeobj.rotate(x<rect.width/2?j:-j);
+            if (window.innerWidth > window.innerHeight)
+            {
+                //todo
+                _8cnv.timeobj.rotate(x<rect.width/2?j:-j);
+            }
+            else
+            {
+                _8cnv.timeobj.rotate(y<rect.height/2?j:-j);
+            }
+            
             menuobj.draw();           
         }
     },
