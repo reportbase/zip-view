@@ -1468,19 +1468,7 @@ var displaylst =
                 0, 
             ]);
     
-        	a.draw(context, rect, [0,buttonobj,0,canvas.timeobj,0], 0);      
-            
-        	var a = new panel.cols([0, 40],
-    	    [
-    		    0,
-        	    new panel.rows([0, 40],
-        	    [
-        		    0,
-        		    new panel.rectangle(context.tabrect),
-        	    ])
-        	]);
-    
-            a.draw(context, rect, 0, 0);            
+        	a.draw(context, rect, [0,buttonobj,0,canvas.timeobj,0], 0);                
             return;
     	}
 	    
@@ -1622,18 +1610,7 @@ var displaylst =
             0,
             0,
         ], 0);
-                            
-    	var a = new panel.cols([0, 40],
-	    [
-		    0,
-    	    new panel.rows([0, 40],
-    	    [
-    		    0,
-    		    new panel.rectangle(context.tabrect),
-    	    ])
-    	]);
 
-        a.draw(context, rect, 0, 0);
         context.restore();     
     }
 },
@@ -4101,12 +4078,6 @@ var taplst =
             headobj.toggle();
             menuobj.draw()
         }
-        else if (context.tabrect &&
-            context.tabrect.hitest(x, y))
-        {
-            global.bars = global.bars?0:1;
-            menuobj.draw()
-        }
         else if (context.button2rect &&
             context.button2rect.hitest(x, y))
         {
@@ -4405,12 +4376,16 @@ var taplst =
         {
             closemenu()
         }
+        else if (x > rect.width-40 && y > rect.height-40)
+        {
+            global.bars = global.bars?0:1;
+            menuobj.draw()
+        }
         else if (!global.bars)
         {
             var j = _8cnv.timeobj.length() / galleryobj.length();
             if (window.innerWidth > window.innerHeight)
             {
-                //todo
                 _8cnv.timeobj.rotate(x<rect.width/2?j:-j);
             }
             else
