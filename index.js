@@ -1383,6 +1383,7 @@ var displaylst =
         canvas.timerect = new rectangle();
         canvas.time2rect = new rectangle();
         context.pirect = new rectangle();
+        context.tabrect = new rectangle();
         var index = 1 - canvas.timeobj.berp();
         index *= galleryobj.length();
         var k = Math.floor(index);
@@ -1426,7 +1427,7 @@ var displaylst =
                 0,
             ], 0);
 
-            var a = new panel.colsA([50, 10, 0, 10, 50],
+            var a = new panel.colsA([15, 10, 0, 10, 15],
                 [
                     new panel.rectangle(canvas.button3rect),
                     0,
@@ -1441,7 +1442,18 @@ var displaylst =
 
             a.draw(context, rect, 0, 0);
                                 
- 		    var a = new panel.rows([CORNEREXT,0,CORNEREXT],
+            var a = new panel.cols([0, 40],
+                [
+                    new panel.rows([[0, 40],
+                    [
+                        0,
+                        new panel.rectangle(context.tabrect),
+                    ])
+                ]);
+
+            a.draw(context, rect, 0, 0);
+
+            var a = new panel.rows([CORNEREXT,0,CORNEREXT],
             [
                 0,                      
                 new panel.colsA([NUBMARGIN, NUBHEIGHT, 0, NUBHEIGHT, NUBMARGIN],
@@ -4075,6 +4087,12 @@ var taplst =
             context.aligntoprect.hitest(x, y))
         {
             headobj.toggle();
+            menuobj.draw()
+        }
+        else if (context.tabrect &&
+            context.tabrect.hitest(x, y))
+        {
+            global.bars = global.bars?0:1;
             menuobj.draw()
         }
         else if (context.button2rect &&
