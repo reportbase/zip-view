@@ -1444,6 +1444,7 @@ var displaylst =
                                 
             var a = new panel.cols([0, 40],
                 [
+					0,
                     new panel.rows([0, 40],
                     [
                         0,
