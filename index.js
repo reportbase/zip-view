@@ -195,7 +195,7 @@ util.istouch = function()
 
 util.rotated_list = function(lst, start, width)
 {
-	var size = lst.length/3;
+        var size = lst.length/3;
     var v = lst[start]
     width = Math.min(size, width);
     start += size - width;
@@ -1442,7 +1442,7 @@ var displaylst =
 
             a.draw(context, rect, 0, 0);
     
-	var a = new panel.rows([CORNEREXT,0,CORNEREXT],
+	        var a = new panel.rows([CORNEREXT,0,CORNEREXT],
             [
                 0,                      
                 new panel.colsA([NUBMARGIN, NUBHEIGHT, 0, NUBHEIGHT, NUBMARGIN],
@@ -1469,7 +1469,7 @@ var displaylst =
             ]);
     
         	a.draw(context, rect, [0,buttonobj,0,canvas.timeobj,0], 0);      
-
+            
         	var a = new panel.cols([0, 40],
     	    [
     		    0,
