@@ -4072,6 +4072,11 @@ var taplst =
         {
             leftmenu(_7cnvctx)
         }
+        else if (x > rect.width-40 && y > rect.height-40)
+        {
+            global.bars = global.bars?0:1;
+            menuobj.draw()
+        }
         else if (context.aligntoprect &&
             context.aligntoprect.hitest(x, y))
         {
@@ -4335,7 +4340,7 @@ var taplst =
             return false;
         }       
         else if (canvas.middlerect && 
-		 canvas.middlerect.hitest(x, y))
+		     canvas.middlerect.hitest(x, y))
         {
             var n = getvisible(x, y);
             aligncenter(n);
@@ -4375,11 +4380,6 @@ var taplst =
 		     menuobj.value() != _8cnvctx)
         {
             closemenu()
-        }
-        else if (x > rect.width-40 && y > rect.height-40)
-        {
-            global.bars = global.bars?0:1;
-            menuobj.draw()
         }
         else if (!global.bars)
         {
