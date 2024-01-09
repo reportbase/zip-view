@@ -1392,7 +1392,7 @@ var displaylst =
             return;
         if (!headcnv.height)
     	{        
-            if (global.bars)
+            if (!global.bars)
                 return;
             var a = new panel.rowsA([0,48,20,NUBHEIGHT,NUBMARGIN],
             [
