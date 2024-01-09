@@ -1376,7 +1376,7 @@ var displaylst =
         context.bookmarkrect = new rectangle();
         context.aligntoprect = new rectangle();
         context.alignbottomrect = new rectangle();
-	    context.buttonrect = new rectangle();
+        context.buttonrect = new rectangle();
         context.button2rect = new rectangle();
         canvas.middlerect = new rectangle();
         canvas.button3rect = new rectangle();
@@ -1427,7 +1427,7 @@ var displaylst =
                 0,
             ], 0);
 
-            var a = new panel.colsA([15, 10, 0, 10, 15],
+            var a = new panel.colsA([40, 20, 0, 20, 40],
                 [
                     new panel.rectangle(canvas.button3rect),
                     0,
