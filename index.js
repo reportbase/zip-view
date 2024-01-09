@@ -1401,7 +1401,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.expand(new panel.rectangle(canvas.holly3rect), 0, EXPANDRECT),
+                    new panel.rectangle(canvas.holly3rect),
                     new panel.cols([CORNEREXT,0,CORNEREXT],
                     [
                         0,
@@ -2753,6 +2753,13 @@ var wheelst =
             var k = delta/300;
             buttonobj.addperc(-k);
             menuobj.draw();
+            context.canvas.pinching = 1;
+            clearTimeout(context.pinchingtime)
+            context.pinchingtime = setTimeout(function()
+            {
+                context.canvas.pinching = 0;
+                menuobj.draw()
+            }, 40);            
         }
         else
         {
@@ -4882,9 +4889,11 @@ var buttonlst =
 
             if (b > b2)
             {
-                var k = Math.lerp(5,100,buttonobj.berp());
+                var k = Math.lerp(1,20,buttonobj.berp());
 		        if (Math.abs(thumbfitted.height - hh) > k)
                 {
+                    if (!slice.isvisible && context.canvas.pinching)
+                        return;
                     var thumbfittedctx = thumbfitted.getContext("2d");
                     thumbfitted.height = hh;
                     thumbfitted.width = Math.floor(hh * b);
@@ -4904,9 +4913,11 @@ var buttonlst =
             }
             else
             {
-                var k = Math.lerp(5,100,buttonobj.berp());
+                var k = Math.lerp(1,20,buttonobj.berp());
                 if (Math.abs(thumbfitted.width - ww) > k)
                 {
+                    if (!slice.isvisible && context.canvas.pinching)
+                        return;
                     var thumbfittedctx = thumbfitted.getContext("2d");
                     thumbfitted.width = ww
                     thumbfitted.height = Math.floor(ww / b);
