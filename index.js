@@ -117,7 +117,7 @@ var panel = {};
 var global = {};
 let photo = {};
 let util = {};
-global.bars = url.param("bars", 1);
+global.bars = Number(url.param("bars", 1));
 
 var login = {id: 0};
 var k = getjson("login");
@@ -1392,7 +1392,7 @@ var displaylst =
             return;
         if (!headcnv.height)
     	{        
-            if (!Number(global.bars))
+            if (global.bars)
                 return;
             var a = new panel.rowsA([0,48,20,NUBHEIGHT,NUBMARGIN],
             [
