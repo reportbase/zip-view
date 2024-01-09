@@ -1441,20 +1441,8 @@ var displaylst =
                 ]);
 
             a.draw(context, rect, 0, 0);
-                                
-            var a = new panel.cols([0, 40],
-                [
-					0,
-                    new panel.rows([0, 40],
-                    [
-                        0,
-                        new panel.rectangle(context.tabrect),
-                    ])
-                ]);
-
-            a.draw(context, rect, 0, 0);
-
-            var a = new panel.rows([CORNEREXT,0,CORNEREXT],
+    
+	var a = new panel.rows([CORNEREXT,0,CORNEREXT],
             [
                 0,                      
                 new panel.colsA([NUBMARGIN, NUBHEIGHT, 0, NUBHEIGHT, NUBMARGIN],
@@ -1623,6 +1611,18 @@ var displaylst =
             0,
         ], 0);
 
+                            
+    	var a = new panel.cols([0, 40],
+	[
+				0,
+	    new panel.rows([0, 40],
+	    [
+		0,
+		new panel.rectangle(context.tabrect),
+	    ])
+	]);
+
+        a.draw(context, rect, 0, 0);
         context.restore();     
     }
 },
