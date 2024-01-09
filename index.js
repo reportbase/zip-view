@@ -1426,7 +1426,7 @@ var displaylst =
                 0,
             ], 0);
 
-            var a = new panel.colsA([NUBEXTENT, 30, 0, 30, NUBEXTENT],
+            var a = new panel.colsA([50, 10, 0, 10, 50],
                 [
                     new panel.rectangle(canvas.button3rect),
                     0,
