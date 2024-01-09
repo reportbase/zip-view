@@ -1468,7 +1468,19 @@ var displaylst =
                 0, 
             ]);
     
-        	a.draw(context, rect, [0,buttonobj,0,canvas.timeobj,0], 0);            
+        	a.draw(context, rect, [0,buttonobj,0,canvas.timeobj,0], 0);      
+
+        	var a = new panel.cols([0, 40],
+    	    [
+    		    0,
+        	    new panel.rows([0, 40],
+        	    [
+        		    0,
+        		    new panel.rectangle(context.tabrect),
+        	    ])
+        	]);
+    
+            a.draw(context, rect, 0, 0);            
             return;
     	}
 	    
@@ -1610,17 +1622,16 @@ var displaylst =
             0,
             0,
         ], 0);
-
                             
     	var a = new panel.cols([0, 40],
-	[
-				0,
-	    new panel.rows([0, 40],
 	    [
-		0,
-		new panel.rectangle(context.tabrect),
-	    ])
-	]);
+		    0,
+    	    new panel.rows([0, 40],
+    	    [
+    		    0,
+    		    new panel.rectangle(context.tabrect),
+    	    ])
+    	]);
 
         a.draw(context, rect, 0, 0);
         context.restore();     
