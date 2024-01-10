@@ -4448,10 +4448,12 @@ var taplst =
                 {
                     "method": "PATCH",
                     "body": form,
+		/*
                     "headers": 
 		            {
 			            "Authorization": "Bearer ABC"
                     }
+		*/
                 })
                 .then(function(response)
                 {
@@ -4530,10 +4532,12 @@ var taplst =
                 {
                     "method": "POST",
                     "body": form,
+		/*
                     "headers": 
                     {
                         "Authorization": "Bearer ABC"
                     }
+		*/
                 })
                 .then((response) => jsonhandler(response))
                 .then(function(obj)
