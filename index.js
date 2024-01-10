@@ -4450,8 +4450,8 @@ var taplst =
                     body: form,
                     headers: new Headers(
                     {
-                        Authorization: 'Bearer mytoken',
-                        email: 'my@email.com'
+                        Authorization: `Bearer ${login.secret}`,
+                        email: login.enail
                     }),
                 })
                 .then(function(response)
@@ -4531,8 +4531,8 @@ var taplst =
                     body: form,
                     headers: new Headers(
                     {
-                        Authorization: 'Bearer mytoken',
-                        email: 'my@email.com'
+                        Authorization: `Bearer ${login.secret}`,
+                        email: login.enail
                     }),
                 })
                 .then((response) => jsonhandler(response))
