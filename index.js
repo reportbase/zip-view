@@ -4132,7 +4132,7 @@ var taplst =
             canvas.time2rect.hitest(x, y))
         { 
 			var k = y < rect.height/2;
-            menuobj.updown(context, y?-120:120, 540)
+            menuobj.updown(context, k?-120:120, 540)
             if (!context.swipetimeout)
                 context.swipetimeout = 
                     setInterval(function(){menuobj.draw();}, GALLERYMAIN);
