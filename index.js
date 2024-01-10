@@ -6886,6 +6886,27 @@ function setupmenus()
     _3cnv.sliceobj.data = 
     [
         {
+            title: "Bearer",
+            func: function()
+            {
+                 fetch(`https://bearer.reportbase5836.workers.dev`,
+                    {
+                        'method': 'POST',
+                        'body': JSON.stringify(galleryobj),
+                          headers: 
+                          {
+                                'Authorization': "AAA",
+                                'X-Email': "hello"  
+                          }
+                    })
+                    .then(response => response.text())
+                    .then(function(response)
+                          {
+                              console.log(response);
+                          })         
+            }
+        },
+        {
             title: "Export Gallery",
             func: function()
             {
