@@ -4446,8 +4446,13 @@ var taplst =
                 form.append('json', json.value);
                 fetch(`https://gullery.reportbase5836.workers.dev`,
                 {
-                    'method': 'PATCH',
-                    'body': form
+                    method: 'PATCH',
+                    body: form,
+                    headers: new Headers(
+                    {
+                        Authorization: 'Bearer mytoken',
+                        email: 'my@email.com'
+                    }),
                 })
                 .then(function(response)
                 {
