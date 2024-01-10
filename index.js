@@ -725,7 +725,7 @@ var footlst =
 				new panel.text(),
 			]),
 			0,
-			1?0:new panel.layers(
+			new panel.layers(
 			[
 				new panel.fill(FOOTBTNCOLOR),
    			    new panel.colsA([0,0,0],
@@ -752,7 +752,7 @@ var footlst =
         a.draw(context, rect, 
 	   	[
 		   `\u{25C0}   Users`,
-		   0,
+		    0,
             [
                 "Add",
                 "Edit",
@@ -859,7 +859,7 @@ var footlst =
                 new panel.rectangle(canvas.homerect),
             ]),
             0,
-            1?0:new panel.layers(
+            new panel.layers(
             [
                 new panel.fill(FOOTBTNCOLOR),
                 new panel.layers(
