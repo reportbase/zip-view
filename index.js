@@ -1459,7 +1459,7 @@ var displaylst =
                     new panel.layers(
                     [
                         new panel.rounded(GALLFILL, 0, 0, 6, 6),
-                        new panel.rectangle(canvas.timerect), ,
+                        new panel.rectangle(canvas.timerect), 
                         new panel.shrink(new panel.currentV(
                             new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 1), 2, 2),
                     ]),
@@ -4131,10 +4131,18 @@ var taplst =
         else if (canvas.time2rect &&
             canvas.time2rect.hitest(x, y))
         { 
+			var k = y < rect.height/2;
+            menuobj.updown(context, y?-120:120, 540)
+            if (!context.swipetimeout)
+                context.swipetimeout = 
+                    setInterval(function(){menuobj.draw();}, GALLERYMAIN);
+            
+            /*
             var k = (y - canvas.time2rect.y) / canvas.time2rect.height;
             var j = _8cnv.timeobj.length() / galleryobj.length();
             _8cnv.timeobj.rotate(k<0.5?j:-j);
             menuobj.draw();
+            */
         }            
         else if (context.pirect &&
             context.pirect.hitest(x, y))
