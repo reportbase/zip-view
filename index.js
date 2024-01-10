@@ -4527,8 +4527,13 @@ var taplst =
 		        form.append('user_id', login.id);
                 fetch(`https://gullery.reportbase5836.workers.dev`,
                 {
-                    'method': 'POST',
-                    'body': form
+                    method: 'POST',
+                    body: form,
+                    headers: new Headers(
+                    {
+                        Authorization: 'Bearer mytoken',
+                        email: 'my@email.com'
+                    }),
                 })
                 .then((response) => jsonhandler(response))
                 .then(function(obj)
