@@ -4447,12 +4447,7 @@ var taplst =
                 fetch(`https://gullery.reportbase5836.workers.dev`,
                 {
                     method: 'PATCH',
-                    body: form,
-                    headers: new Headers(
-                    {
-                        Authorization: `Bearer ${login.secret}`,
-                        Email: login.enail
-                    }),
+                    body: form
                 })
                 .then(function(response)
                 {
