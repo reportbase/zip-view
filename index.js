@@ -1482,7 +1482,7 @@ var displaylst =
         if (!w)
             w = buttonobj.value();
 	    var bt = `${w.toFixed(0)} x ${buttonobj.value()}`;    	
-        var name = value.name;    
+        var name = value.name?value.name:value.url;    
     	if (value.blob && value.blob.name)
     		name = value.blob.name;
         var bh = rect.height * 0.4;
@@ -4126,7 +4126,7 @@ var taplst =
             context.pirect.hitest(x, y))
         {
 			var k = x < rect.width/2;
-            menuobj.updown(context, k?-120:120, 240)
+            menuobj.updown(context, k?-120:120, 960)
             if (!context.swipetimeout)
                 context.swipetimeout = 
                     setInterval(function(){menuobj.draw();}, GALLERYMAIN);
