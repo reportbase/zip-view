@@ -4446,9 +4446,12 @@ var taplst =
                 form.append('json', json.value);
                 fetch(`https://gullery.reportbase5836.workers.dev`,
                 {
-                    'method': 'PATCH',
-                    'body': form,
-                    'headers': {'Authorization': 'Bearer {ABCDE}'}
+                    method: 'PATCH',
+                    body: form,
+                    headers: 
+		            {
+			            Authorization: 'Bearer {ABCDE}'
+                    }
                 })
                 .then(function(response)
                 {
@@ -4525,9 +4528,12 @@ var taplst =
   
                 fetch(`https://gullery.reportbase5836.workers.dev`,
                 {
-                    'method': 'POST',
-                    'body': form,
-                    'headers': {'Authorization': 'Bearer {ABCDE}'}
+                    method: 'POST',
+                    body: form,
+                    headers: 
+                    {
+                        Authorization: 'Bearer {ABCDE}'
+                    }
                 })
                 .then((response) => jsonhandler(response))
                 .then(function(obj)
