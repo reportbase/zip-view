@@ -4446,14 +4446,8 @@ var taplst =
                 form.append('json', json.value);
                 fetch(`https://gullery.reportbase5836.workers.dev`,
                 {
-                    "method": "PATCH",
-                    "body": form,
-		/*
-                    "headers": 
-		            {
-			            "Authorization": "Bearer ABC"
-                    }
-		*/
+                    'method': 'PATCH',
+                    'body': form
                 })
                 .then(function(response)
                 {
@@ -4526,18 +4520,10 @@ var taplst =
                 form.append('json', json.value);
                 form.append('gallery_id', id.value);
 		        form.append('user_id', login.id);
-                fetch('https://reqbin.com/echo/get/json', {
-  
                 fetch(`https://gullery.reportbase5836.workers.dev`,
                 {
-                    "method": "POST",
-                    "body": form,
-		/*
-                    "headers": 
-                    {
-                        "Authorization": "Bearer ABC"
-                    }
-		*/
+                    'method': 'POST',
+                    'body': form
                 })
                 .then((response) => jsonhandler(response))
                 .then(function(obj)
