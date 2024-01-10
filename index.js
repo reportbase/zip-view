@@ -4529,12 +4529,10 @@ var taplst =
                 {
                     method: 'POST',
                     body: form,
-                    /*
                     headers: new Headers(
                     {
                         Authorization: `Bearer ${login.secret}`
-                    }),
-                    */
+                    })
                 })
                 .then((response) => jsonhandler(response))
                 .then(function(obj)
