@@ -7560,7 +7560,7 @@ function loadtext(str, origin)
         if (line.substring(0,4) == "http")
             json.url = line;
         else
-            json.url = `${origin}/${line}`;
+            json.url = `${origin}${line}`;
         galleryobj.data.push(json);
     }
 
