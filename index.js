@@ -4524,15 +4524,14 @@ var taplst =
                 form.append('prefix', prefix.value);
                 form.append('json', json.value);
                 form.append('gallery_id', id.value);
-		        form.append('user_id', login.id);
+		form.append('user_id', login.id);
                 fetch(`https://gullery.reportbase5836.workers.dev`,
                 {
                     method: 'POST',
                     body: form,
                     headers: new Headers(
                     {
-                        Authorization: `Bearer ${login.secret}`,
-                        Email: login.enail
+                        Authorization: `Bearer ${login.secret}`
                     }),
                 })
                 .then((response) => jsonhandler(response))
