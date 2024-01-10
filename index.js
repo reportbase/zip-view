@@ -1402,7 +1402,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rectangle(canvas.holly3rect),
+                    new panel.expand(new panel.rectangle(canvas.holly3rect), 0, 30),
                     new panel.cols([CORNEREXT,0,CORNEREXT],
                     [
                         0,
@@ -3622,7 +3622,14 @@ var keylst =
                 key == "arrowup" ||
                 key == "k")
             {
-                if (canvas.ctrlKey)
+                if (canvas.shiftKey)
+                {
+        		    menuobj.updown(context, -120, 960)
+                    if (!context.swipetimeout)
+                        context.swipetimeout = 
+                            setInterval(function(){menuobj.draw();}, GALLERYMAIN);
+                }
+                else if (canvas.ctrlKey)
                 {
                     if (buttonobj.value() < window.innerHeight)
                     {
@@ -3662,7 +3669,14 @@ var keylst =
                 key == "arrowdown" ||
                 key == "j")
             {
-                if (canvas.ctrlKey)
+                if (canvas.shiftKey)
+                {
+        		    menuobj.updown(context, 120, 960)
+                    if (!context.swipetimeout)
+                        context.swipetimeout = 
+                            setInterval(function(){menuobj.draw();}, GALLERYMAIN);
+                }
+                else if (canvas.ctrlKey)
                 {
                     if (buttonobj.value() < window.innerHeight)
                     {
