@@ -6891,8 +6891,7 @@ function setupmenus()
             {
                  fetch(`https://bearer.reportbase5836.workers.dev`,
                     {
-                        'method': 'POST',
-                        'body': JSON.stringify(galleryobj),
+                        'method': 'GET',
                           headers: 
                           {
                                 'Authorization': "AAA",
