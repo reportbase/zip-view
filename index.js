@@ -4512,15 +4512,10 @@ var taplst =
                 form.append('json', json.value);
                 form.append('gallery_id', id.value);
                 form.append('user_id', login.id);
-                fetch(`https://pacific.reportbase5836.workers.dev`,
+                fetch(`https://gellery.reportbase5836.workers.dev`,
                 {
                     method: 'POST',
-                    body: form,
-                    headers: 
-                    {
-                        'Authorization': `Bearer ${login.secret}`,
-                        'X-Email': login.email  
-                    }
+                    body: form
                 })
                 .then((response) => jsonhandler(response))
                 .then(function(obj)
@@ -6886,7 +6881,7 @@ function setupmenus()
             title: "Bearer",
             func: function()
             {
-                 fetch(`https://bearer.reportbase5836.workers.dev`,
+                 fetch(`https://pacific.reportbase5836.workers.dev`,
                     {
                         'method': 'GET',
                           headers: 
