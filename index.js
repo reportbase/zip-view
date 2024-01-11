@@ -3720,6 +3720,7 @@ var keylst =
             }                
 	        else if (key == "tab")
             {
+     		    headobj.hide();
                 global.bars = global.bars?0:1;
                 menuobj.draw()
                 evt.preventDefault();
@@ -4087,8 +4088,14 @@ var taplst =
         {
             leftmenu(_7cnvctx)
         }
+        else if (x < 40 && y > rect.height-40)
+        {
+	        headobj.toggle();
+            menuobj.draw()
+        }
         else if (x > rect.width-40 && y > rect.height-40)
         {
+            headobj.hide();
             global.bars = global.bars?0:1;
             menuobj.draw()
         }
