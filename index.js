@@ -4360,8 +4360,17 @@ var taplst =
         {
 	        leftmenu(_7cnvctx);
         }       
-        else if (canvas.middlerect && 
-		     canvas.middlerect.hitest(x, y))
+        else if (menuobj.value() && 
+		     menuobj.value() != _8cnvctx)
+        {
+            closemenu()
+        }
+        else if (headcnv.height)
+    	{	
+		    headobj.hide();
+            menuobj.draw();
+	    }
+        else 
         {
             var n = getvisible(x, y);
             aligncenter(n);
@@ -4397,21 +4406,6 @@ var taplst =
                 _8cnv.hollyobj.set(0);
                 menuobj.draw();
             }
-        }
-        else if (menuobj.value() && 
-		     menuobj.value() != _8cnvctx)
-        {
-            closemenu()
-        }
-        else
-        {
-	        headobj.hide();
-            var j = _8cnv.timeobj.length() / galleryobj.length();
-            if (window.innerWidth > window.innerHeight)
-                _8cnv.timeobj.rotate(x<rect.width/2?j:-j);
-            else
-               	_8cnv.timeobj.rotate(y<rect.height/2?j:-j);
-            menuobj.draw();           
         }
     },
 },
