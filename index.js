@@ -117,7 +117,7 @@ var panel = {};
 var global = {};
 let photo = {};
 let util = {};
-global.bars = Number(url.param("bars", 1));
+global.bars = Number(url.param("bars", 0));
 
 var login = {id: 0};
 var k = getjson("login");
@@ -1427,7 +1427,7 @@ var displaylst =
                 0,
             ], 0);
 
-            var a = new panel.colsA([40, 20, 0, 20, 40],
+            var a = new panel.colsA([30, 10, 0, 10, 30],
                 [
                     new panel.rectangle(canvas.button3rect),
                     0,
@@ -4131,18 +4131,10 @@ var taplst =
         else if (canvas.time2rect &&
             canvas.time2rect.hitest(x, y))
         { 
-			var k = y < rect.height/2;
-            menuobj.updown(context, k?-120:120, 540)
-            if (!context.swipetimeout)
-                context.swipetimeout = 
-                    setInterval(function(){menuobj.draw();}, GALLERYMAIN);
-            
-            /*
             var k = (y - canvas.time2rect.y) / canvas.time2rect.height;
             var j = _8cnv.timeobj.length() / galleryobj.length();
             _8cnv.timeobj.rotate(k<0.5?j:-j);
             menuobj.draw();
-            */
         }            
         else if (context.pirect &&
             context.pirect.hitest(x, y))
