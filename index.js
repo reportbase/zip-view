@@ -3024,6 +3024,9 @@ async function loadzip(file)
         var k = {}
         k.ext = key.ext();
         k.entry = entry;
+        var blob = await k.entry.blob(`image/${k.ext}`);
+        k.blob = URL.createObjectURL(blob);
+
         var e = key.split("/");
         k.name = e.pop();
         k.folder = e.join("/");
@@ -7631,8 +7634,9 @@ local.set = function()
 
 async function getblobpath(img, slice)
 {
-    var blob = await slice.entry.blob(`image/${slice.ext}`);
-    img.src = URL.createObjectURL(blob);
+    //var blob = await slice.entry.blob(`image/${slice.ext}`);
+    img.src = slice.blob;
+    //img.src = URL.createObjectURL(blob);
 }
 
 async function download()
