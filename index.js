@@ -4392,6 +4392,7 @@ var taplst =
             }
             else
             {
+                headobj.hide();
                 if (buttonobj.value() > window.innerHeight)
                     aligntop();
                 _8cnv.hollyobj.set(0);
@@ -4403,18 +4404,14 @@ var taplst =
         {
             closemenu()
         }
-        else if (!global.bars)
+        else
         {
+	
             var j = _8cnv.timeobj.length() / galleryobj.length();
             if (window.innerWidth > window.innerHeight)
-            {
                 _8cnv.timeobj.rotate(x<rect.width/2?j:-j);
-            }
             else
-            {
-                _8cnv.timeobj.rotate(y<rect.height/2?j:-j);
-            }
-            
+               	_8cnv.timeobj.rotate(y<rect.height/2?j:-j);
             menuobj.draw();           
         }
     },
