@@ -4160,7 +4160,7 @@ var taplst =
                return;
             }
 
-            fetch(`https://atlantic.reportbase5836.workers.dev/list/${login.id}`)
+            fetch(`https://atlanticc.reportbase5836.workers.dev/list/${login.id}`)
                 .then((response) => jsonhandler(response))
                 .then(function(results)
                 {            
@@ -4434,7 +4434,7 @@ var taplst =
 		        form.append('title', title.value);
                 form.append('prefix', prefix.value);
                 form.append('json', json.value);
-                fetch(`https://atlantic.reportbase5836.workers.dev`,
+                fetch(`https://atlanticc.reportbase5836.workers.dev`,
                 {
                     method: 'PATCH',
                     body: form
@@ -4457,7 +4457,7 @@ var taplst =
             {
                 if (input.value != gallery.title)
                     return true;
-                fetch(`https://atlantic.reportbase5836.workers.dev/${gallery.id}`,
+                fetch(`https://atlanticc.reportbase5836.workers.dev/${gallery.id}`,
                 {
                     method: 'delete'
                 })
@@ -4510,7 +4510,7 @@ var taplst =
                 form.append('json', json.value);
                 form.append('gallery_id', id.value);
                 form.append('user_id', login.id);
-                fetch(`https://atlantic.reportbase5836.workers.dev`,
+                fetch(`https://atlanticc.reportbase5836.workers.dev`,
                 {
                     method: 'POST',
                     body: form
@@ -7516,7 +7516,7 @@ if (url.pathname.length > 1)
 { 
     var id = url.pathname.split("/")[1];
 	url.path = id;
-	fetch(`https://atlantic.reportbase5836.workers.dev/${id}`)
+	fetch(`https://atlanticc.reportbase5836.workers.dev/${id}`)
 	.then((response) => jsonhandler(response))
 	.then(function(obj)
 	{
@@ -7527,7 +7527,7 @@ else if (url.searchParams.has("id"))
 {
     var id = url.searchParams.get("id");
 	url.path = id;
-	fetch(`https://atlantic.reportbase5836.workers.dev/${id}`)
+	fetch(`https://atlanticc.reportbase5836.workers.dev/${id}`)
 	.then((response) => jsonhandler(response))
 	.then(function(obj)
 	{
