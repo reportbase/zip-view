@@ -4381,7 +4381,7 @@ var taplst =
             if (context.centered == n)
             {
                 buttonobj.reset();
-                if (buttonobj.portrait || buttonobj.value() >= window.innerHeight)
+                if (buttonobj.portrait)// || buttonobj.value() >= window.innerHeight)
                 {
                     buttonobj.portrait = 0;
                     if (buttonobj.value() > window.innerHeight)
