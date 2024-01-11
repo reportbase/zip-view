@@ -4972,7 +4972,7 @@ var buttonlst =
             var lst = [];
             lst.push(slice.name);
             lst.push(`${time+1} of ${galleryobj.length()}`)
-            var g = lst.length*40;
+            var g = Math.min(buttonobj.value()-20*4,lst.length*40);
             var a = new panel.shrink(new panel.layers(
             [
                 new panel.rounded("rgba(100,100,100)", 0, 0, 20, 20),    
