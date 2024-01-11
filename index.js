@@ -6829,7 +6829,7 @@ function getfilenames()
         if (k.pad)
             continue;
         var name = k.blob ? k.blob.name : k.name;
-        if (!name.isimage())
+        if (!name || !name.isimage())
             continue;
         var folder = k.folder;
         if (folder)
