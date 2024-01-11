@@ -5455,9 +5455,9 @@ menuobj.draw = function()
             if (slice.oldy && Math.abs(y-slice.oldy) < 0.5)
             {
                 if (slice.oldy > y)
-                    y = (slice.oldy-y)/2;
+                    y += (slice.oldy-y)/2;
                 else
-                    y = (y - slice.oldy)/2;
+                    y += (y - slice.oldy)/2;
             }
             slice.oldy = y;
             
