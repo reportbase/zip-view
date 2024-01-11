@@ -5446,8 +5446,9 @@ menuobj.draw = function()
             else
                 slice.thumbimg.src = slice.url;
         }
-        else if ((context == _8cnvctx && (slice.thumbimg || slice.pad)) || 
-		 context != _8cnvctx)
+        else if ((context == _8cnvctx && 
+            (slice.thumbimg || slice.pad)) || 
+		     context != _8cnvctx)
         {
             var t = time + (n * (Math.PI / len));
             var b = Math.tan(t);
@@ -5455,7 +5456,7 @@ menuobj.draw = function()
             var y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-            if (slice.oldy && Math.abs(y-slice.oldy) < 1.0)
+            if (slice.oldy && Math.abs(y-slice.oldy) < 0.5)
            	    y = slice.oldy;
             slice.oldy = y;
             
