@@ -2745,7 +2745,7 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-	    if (delta < 0.25)
+	if (delta <= 1.0)
             return;
         
         var canvas = context.canvas;
