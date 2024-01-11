@@ -44,8 +44,8 @@ const ROUNDEDLINEWIDTH = 4;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
 const FOOTHEIGHT = 80;
 const MAXEXTENT = 10000;
-const NUBHEIGHT = 10;
-const NUBMARGIN = 2;
+const NUBHEIGHT = 16;
+const NUBMARGIN = 4;
 const NUBEXTENT = 15;
 const NUBDELAY = 3000;
 const MAXIMAGESIZE = MAXEXTENT*MAXEXTENT;
@@ -1402,7 +1402,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.expand(new panel.rectangle(canvas.holly3rect), 0, 30),
+                    new panel.expand(new panel.rectangle(canvas.holly3rect), 0, 10),
                     new panel.cols([CORNEREXT,0,CORNEREXT],
                     [
                         0,
@@ -1427,16 +1427,14 @@ var displaylst =
                 0,
             ], 0);
 
-            var a = new panel.colsA([30, 10, 0, 10, 30],
+            var a = new panel.colsA([30, 0, 30],
                 [
                     new panel.rectangle(canvas.button3rect),
-                    0,
                     new panel.rows([0,NUBEXTENT],
                     [
                         new panel.rectangle(canvas.middlerect),
                         0,
                     ]),
-                    0,
                     new panel.rectangle(canvas.time2rect),
                 ]);
 
