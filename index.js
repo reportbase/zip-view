@@ -5452,13 +5452,8 @@ menuobj.draw = function()
             var y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-            if (slice.oldy && Math.abs(y-slice.oldy) < 0.5)
-            {
-                if (slice.oldy > y)
-                    y += (slice.oldy-y)/2;
-                else
-                    y += (y - slice.oldy)/2;
-            }
+            if (slice.oldy && Math.abs(y-slice.oldy) < 0.2)
+           	y = slice.oldy;
             slice.oldy = y;
             
             var x = rect.width / 2;
