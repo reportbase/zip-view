@@ -2745,7 +2745,7 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-	if (delta <= 1.0)
+	if (Math.abs(delta) <= 1.0)
             return;
         
         var canvas = context.canvas;
@@ -5455,7 +5455,7 @@ menuobj.draw = function()
             var y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-            if (slice.oldy && Math.abs(y-slice.oldy) < 0.05)
+            if (slice.oldy && Math.abs(y-slice.oldy) < 1.0)
            	    y = slice.oldy;
             slice.oldy = y;
             
