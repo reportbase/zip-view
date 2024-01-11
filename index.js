@@ -4390,6 +4390,8 @@ var taplst =
                 else
                 {
                     buttonobj.portrait = 1;
+		            buttonobj.set(0);
+                    /*
                     for (var n = 0; n < buttonobj.length(); ++n)
                     {
                         if (buttonobj.data[n] != window.innerHeight)
@@ -4397,6 +4399,7 @@ var taplst =
                         buttonobj.set(n);
                         break;
                     }
+                    */
                 }
                 
                 context.canvas.hollyobj.set(0);
