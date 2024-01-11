@@ -5453,7 +5453,12 @@ menuobj.draw = function()
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
             if (slice.oldy && Math.abs(y-slice.oldy) < 0.5)
-                y = slice.oldy;
+            {
+                if (slice.oldy > y)
+                    y = (slice.oldy-y)/2;
+                else
+                    y = (y - slice.oldy)/2;
+            }
             slice.oldy = y;
             
             var x = rect.width / 2;
