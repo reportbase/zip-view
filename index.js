@@ -4359,7 +4359,6 @@ var taplst =
         else if (context.homerect && context.homerect.hitest(x, y))
         {
 	        leftmenu(_7cnvctx);
-            return false;
         }       
         else if (canvas.middlerect && 
 		     canvas.middlerect.hitest(x, y))
@@ -4406,7 +4405,7 @@ var taplst =
         }
         else
         {
-	
+	        headobj.hide();
             var j = _8cnv.timeobj.length() / galleryobj.length();
             if (window.innerWidth > window.innerHeight)
                 _8cnv.timeobj.rotate(x<rect.width/2?j:-j);
