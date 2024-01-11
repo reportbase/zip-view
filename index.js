@@ -7634,9 +7634,9 @@ local.set = function()
 
 async function getblobpath(img, slice)
 {
-    //var blob = await slice.entry.blob(`image/${slice.ext}`);
-    img.src = slice.blob;
-    //img.src = URL.createObjectURL(blob);
+    var blob = await slice.entry.blob(`image/${slice.ext}`);
+    //img.src = slice.blob;
+    img.src = URL.createObjectURL(blob);
 }
 
 async function download()
