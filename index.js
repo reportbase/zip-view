@@ -6878,6 +6878,17 @@ function setupmenus()
     _3cnv.sliceobj.data = 
     [
         {
+            title: "search",
+            func: function()
+            {
+            	        url.path = "search";
+                var path = url.searchParams.get("search");
+                fetch(`https://pexels.reportbase5836.workers.dev/?search=${path}`)
+                    .then((response) => jsonhandler(response))
+                    .then((obj) => galleryobj.init(obj));
+            }
+        },
+        {
             title: "Bearer",
             func: function()
             {
@@ -7522,35 +7533,6 @@ else if (url.searchParams.has("id"))
         loadgallery(obj.json, obj.prefix); 
 	})        
 }
-else if (url.searchParams.has("zip"))
-{
-    var path = url.searchParams.get("zip");
-    url.path = path;
-    loadzip(path);
-}
-else if (url.searchParams.has("path"))
-{
-    var path = url.searchParams.get("path");
-    url.path = path;
-    var k = path.split("/");
-    k.pop();
-    loadgallery(path, k.join("/"));
-}
-else if (url.searchParams.has("search"))
-{
-    url.path = "search";
-    var path = url.searchParams.get("search");
-    fetch(`https://pexels.reportbase5836.workers.dev/?search=${path}`)
-        .then((response) => jsonhandler(response))
-        .then((obj) => galleryobj.init(obj));
-}
-else if (url.searchParams.has("sidney"))
-{
-    url.path = "sidney";
-    fetch(`https://sidney.reportbase5836.workers.dev`)
-        .then((response) => jsonhandler(response))
-        .then((obj) => galleryobj.init(obj))
-}
 else
 {
 	loadgallery("res/max.json");
@@ -7566,6 +7548,7 @@ function loadgallery(path, origin)
     }
     else if (path.iszip())
     {
+        path = `${origin}${path}`
         loadzip(path);
     }
     else if (path.istext())
