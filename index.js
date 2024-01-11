@@ -4512,16 +4512,17 @@ var taplst =
                 form.append('json', json.value);
                 form.append('gallery_id', id.value);
                 form.append('user_id', login.id);
-                //fetch(`https://gellery.reportbase5836.workers.dev`,
-                fetch(`https://bearer.reportbase5836.workers.dev`,
+                fetch(`https://gellery.reportbase5836.workers.dev`,
                 {
                     method: 'POST',
                     body: form,
+                    /*
                     headers: 
                     {
                         'Authorization': `Bearer ${login.secret}`,
                         'X-Email': login.email  
                     }
+                    */
                 })
                 .then((response) => jsonhandler(response))
                 .then(function(obj)
