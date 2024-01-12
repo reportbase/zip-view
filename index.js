@@ -1374,7 +1374,6 @@ var displaylst =
         context.save();
         canvas.hollyrect = new rectangle();
         canvas.holly2rect = new rectangle();
-        canvas.holly3rect = new rectangle();
         context.folderect = new rectangle();
         context.topmoverect = new rectangle();
         context.bottomoverect = new rectangle();
@@ -1384,10 +1383,7 @@ var displaylst =
         context.alignbottomrect = new rectangle();
         context.buttonrect = new rectangle();
         context.button2rect = new rectangle();
-        canvas.middlerect = new rectangle();
-        canvas.button3rect = new rectangle();
         canvas.timerect = new rectangle();
-        canvas.time2rect = new rectangle();
         context.pirect = new rectangle();
         context.tabrect = new rectangle();
         var index = 1 - canvas.timeobj.berp();
@@ -1398,19 +1394,6 @@ var displaylst =
 	    if (!value)
             return;
 
-	    var a = new panel.colsA([15, 0, 15],
-	    [
-    		new panel.rectangle(canvas.button3rect),
-    		new panel.rows([0,NUBEXTENT],
-    		[
-    		    new panel.rectangle(canvas.middlerect),
-    		    0,
-    		]),
-    		new panel.rectangle(canvas.time2rect),
-	    ]);
-
-        a.draw(context, rect, 0, 0);
-    
         if (!headcnv.height)
     	{        
             var a = new panel.rowsA([0,48,20,NUBHEIGHT],
@@ -1420,7 +1403,6 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.expand(new panel.rectangle(canvas.holly3rect), 0, 10),
                     (global.bars||global.mousebars)?new panel.cols([CORNEREXT,0,CORNEREXT],
                     [
                         0,
@@ -4297,27 +4279,6 @@ var taplst =
 		    headobj.hide();
             menuobj.draw();
 	    }
-        else if (canvas.time2rect &&
-            canvas.time2rect.hitest(x, y))
-        { 
-            headobj.hide();
-            global.bars = global.bars?0:1;
-            menuobj.draw()
-        }            
-        else if (canvas.button3rect &&
-            canvas.button3rect.hitest(x, y))
-        { 
-            headobj.hide();
-            global.bars = global.bars?0:1;
-            menuobj.draw()
-        }                
-        else if (canvas.holly3rect &&
-            canvas.holly3rect.hitest(x, y))
-        {
-            headobj.hide();
-            global.bars = global.bars?0:1;
-            menuobj.draw()
-        }            
         else 
         {
             if (x < rect.width/3)
