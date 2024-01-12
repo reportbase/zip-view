@@ -2766,7 +2766,7 @@ var wheelst =
         }
         else
         {
-	       if (Math.abs(delta) < 2)
+	       if (Math.abs(delta) < 3.33)
 	            return;
 	 	menuobj.updown(context, delta, 60)
         	if (!clearInterval(context.swipetimeout))
