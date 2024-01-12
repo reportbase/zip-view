@@ -544,7 +544,7 @@ let _15cnvctx = _15cnv.getContext("2d", opts);
 let headcnv = document.getElementById("head");
 let headcnvctx = headcnv.getContext("2d", opts);
 
-var canvas = document.getElementById('myCanvas');
+var canvas = document.createElement("canvas");
 var offscreenCanvas = canvas.transferControlToOffscreen();
 var offscreenCtx = offscreenCanvas.getContext('2d');
                
