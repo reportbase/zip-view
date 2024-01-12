@@ -1,4 +1,4 @@
-//top 
+f//top 
 
 function ios()
 {
@@ -4387,7 +4387,7 @@ var taplst =
             {
                 var n = getvisible(x, y);
                 aligncenter(n);
-                if (0)//context.centered == n)
+                if (1)//context.centered == n)
                 {
                     buttonobj.reset();
                     if (buttonobj.portrait)
