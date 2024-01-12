@@ -2751,7 +2751,7 @@ var wheelst =
     {
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
-	    if (ctrl)
+	if (ctrl)
         {
             var k = delta/300;
             buttonobj.addperc(-k);
@@ -2766,7 +2766,7 @@ var wheelst =
         }
         else
         {
-	       if (Math.abs(delta) < 3)
+	       if (Math.abs(delta) < 2)
 	            return;
 	 	menuobj.updown(context, delta, 60)
         	if (!clearInterval(context.swipetimeout))
