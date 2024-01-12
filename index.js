@@ -1393,22 +1393,20 @@ var displaylst =
             return;
 
 	    var a = new panel.colsA([30, 0, 30],
-            [
-                new panel.rectangle(canvas.button3rect),
-                new panel.rows([0,NUBEXTENT],
-                [
-                    new panel.rectangle(canvas.middlerect),
-                    0,
-                ]),
-                new panel.rectangle(canvas.time2rect),
-            ]);
+	    [
+    		new panel.rectangle(canvas.button3rect),
+    		new panel.rows([0,NUBEXTENT],
+    		[
+    		    new panel.rectangle(canvas.middlerect),
+    		    0,
+    		]),
+    		new panel.rectangle(canvas.time2rect),
+	    ]);
 
         a.draw(context, rect, 0, 0);
     
         if (!headcnv.height)
     	{        
-            if (!global.bars)
-                return;
             var a = new panel.rowsA([0,48,20,NUBHEIGHT,NUBMARGIN],
             [
                 0,
@@ -1417,7 +1415,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.expand(new panel.rectangle(canvas.holly3rect), 0, 10),
-                    new panel.cols([CORNEREXT,0,CORNEREXT],
+                    global.bars?new panel.cols([CORNEREXT,0,CORNEREXT],
                     [
                         0,
                         new panel.layers(
@@ -1428,7 +1426,7 @@ var displaylst =
                                 new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
                         ]),
                         0,
-                    ]),
+                    ]):0,
                 ]),
                 0,
             ])
@@ -1441,7 +1439,10 @@ var displaylst =
                 0,
             ], 0);
 
-	    var a = new panel.rows([CORNEREXT,0,CORNEREXT],
+            if (!global.bars)
+                return;
+
+            var a = new panel.rows([CORNEREXT,0,CORNEREXT],
             [
                 0,                      
                 new panel.colsA([NUBMARGIN, NUBHEIGHT, 0, NUBHEIGHT, NUBMARGIN],
