@@ -5440,6 +5440,7 @@ menuobj.draw = function()
 
     if (context == _8cnvctx)
     {
+        /*
         if (context.lastlst)
         {
             var size = Math.min(context.lastlst.length, 
@@ -5459,6 +5460,7 @@ menuobj.draw = function()
         }
     
         context.lastlst = context.canvas.visibles;
+        */
         var a = new panel.fill(context.backfill);
         a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
 
