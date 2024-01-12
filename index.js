@@ -4350,7 +4350,7 @@ var taplst =
                 aligncenter(n);
                 buttonobj.reset();
                 
-                if (buttonobj.value()/window.innerHeight < 0.6)
+                if (buttonobj.value()/window.innerHeight > 0.6)
                 {
                     if (buttonobj.value() > window.innerHeight)
                     {
