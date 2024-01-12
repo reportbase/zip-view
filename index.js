@@ -5445,41 +5445,32 @@ menuobj.draw = function()
     {
         var lst = context.canvas.visibles.sort((a, b) => a.y-b.y);
         var y = lst[0].y;     
-        if (y > 0 && lst[0].n > 0)
-        {
-            var nn = lst[0].n-1;
-            var slice = slices[nn];
-            var yy = y - buttonheight;
-            context.translate(0, yy);
-            context.canvas.draw(context, r, slice, nn);
-            context.translate(0, -yy);
-        }
-        
         for (var n = 0; n < lst.length; ++n)
         {
             var j = lst[n];
             context.translate(0, y);
-            context.canvas.draw(context, r, j.slice, j.n);
+            //context.canvas.draw(context, r, j.slice, j.n);
             context.translate(0, -y);
             y += buttonheight+5;
-        }
+        }    
+    }
+        
+    for (var n = 0; n < context.canvas.visibles.length; ++n)
+    {
+        var j = context.canvas.visibles[n];
+        context.translate(0, j.y);
+        context.canvas.draw(context, r, j.slice, j.n);
+        context.translate(0, -j.y);
+    }
     
+    if (context == _8cnvctx && context.canvas.visibles.length)
+    {
         for (var n = 0; n < context.canvas.visibles2.length; ++n)
         {
             var j = context.canvas.visibles2[n];
             context.translate(0, y);
             context.canvas.draw(context, r, j.slice, j.n);
             context.translate(0, -y);
-        }
-    }
-    else
-    {
-        for (var n = 0; n < context.canvas.visibles.length; ++n)
-        {
-            var j = context.canvas.visibles[n];
-            context.translate(0, j.y);
-            context.canvas.draw(context, r, j.slice, j.n);
-            context.translate(0, -j.y);
         }
     }
     
