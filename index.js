@@ -5451,7 +5451,7 @@ menuobj.draw = function()
                 menuobj.draw();
 	        }
  
-            slice.thumbimg.onerror = function()
+            slice.thumbimg.onerror = function(err)
             {
                 menuobj.draw();
 	        }
