@@ -5446,7 +5446,10 @@ menuobj.draw = function()
         var y = lst[0].y;
         if (y > 0)
         {
-            console.log(1);
+            var n = canvas.normal[canvas.normal.length-1];
+            var slice = slices[n];
+            lst.unshift(slice);
+            y = slice.y;
         }
         
         for (var n = 0; n < lst.length; ++n)
