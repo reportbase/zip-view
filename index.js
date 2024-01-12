@@ -5444,13 +5444,11 @@ menuobj.draw = function()
         }
     }
 
-    if (context == _8cnvctx)
-    {
-  	    //offscreenCanvas.width = canvas.width;
-	    //offscreenCanvas.height = canvas.height;
         var a = new panel.fill(context.backfill);
         a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
      
+    if (context == _8cnvctx)
+    {
         for (var n = 0; n < context.canvas.visibles.length; ++n)
         {
             var j = context.canvas.visibles[n];
@@ -5458,8 +5456,6 @@ menuobj.draw = function()
             context.canvas.draw(context, r, j.slice, j.n);
             context.translate(0, -j.y);
         }
-
-        //context.drawImage(context, 0, 0);
 
         for (var n = 0; n < context.canvas.visibles2.length; ++n)
         {
@@ -5471,8 +5467,6 @@ menuobj.draw = function()
     }
     else
     {
-        var a = new panel.fill(context.backfill);
-        a.draw(offscreenCtx, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
         for (var n = 0; n < context.canvas.visibles.length; ++n)
         {
             var j = context.canvas.visibles[n];
