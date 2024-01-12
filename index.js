@@ -5467,6 +5467,8 @@ menuobj.draw = function()
     }
     else
     {
+        var a = new panel.fill(context.backfill);
+        a.draw(offscreenCtx, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
         for (var n = 0; n < context.canvas.visibles.length; ++n)
         {
             var j = context.canvas.visibles[n];
