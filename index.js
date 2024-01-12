@@ -5433,7 +5433,7 @@ menuobj.draw = function()
             	context.centered = j.n;
             }
 
-            if (slice.isvisible)
+            if (1)//slice.isvisible)
                 context.canvas.visibles.push(j);  
     	    if (context == _8cnvctx && !context.swipetimeout)
                 context.canvas.visibles2.push(j);
