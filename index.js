@@ -4387,9 +4387,9 @@ var taplst =
             {
                 var n = getvisible(x, y);
                 aligncenter(n);
-                buttonobj.reset();
                 if (context.centered == n)
                 {
+                    buttonobj.reset();
                     if (buttonobj.portrait)
                     {
                         buttonobj.portrait = 0;
