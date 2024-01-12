@@ -1421,7 +1421,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.expand(new panel.rectangle(canvas.holly3rect), 0, 10),
-                    global.bars?new panel.cols([CORNEREXT,0,CORNEREXT],
+                    (global.bars||global.mousebars)?new panel.cols([CORNEREXT,0,CORNEREXT],
                     [
                         0,
                         new panel.layers(
@@ -1443,7 +1443,7 @@ var displaylst =
                 _8cnv.hollyobj, 
             ], 0);
 
-            if (!global.bars)
+            if (!global.bars && !global.mousebars)
                 return;
 
             var a = new panel.rows([CORNEREXT,0,CORNEREXT],
@@ -3400,6 +3400,8 @@ var mouselst =
     up: function(evt) {},
     move: function(context, rect, x, y) 
     {
+        global.mousebars = x < 15 || x > rect.width-15 || y > rect.height-15;
+        menuobj.draw();
     },
 }, 
 ];
