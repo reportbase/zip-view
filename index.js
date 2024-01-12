@@ -1407,7 +1407,7 @@ var displaylst =
     
         if (!headcnv.height)
     	{        
-            var a = new panel.rowsA([0,48,20,NUBHEIGHT,NUBMARGIN],
+            var a = new panel.rowsA([0,48,20,NUBHEIGHT],
             [
                 0,
                 0,
@@ -1428,7 +1428,6 @@ var displaylst =
                         0,
                     ]):0,
                 ]),
-                0,
             ])
             a.draw(context, rect, 
             [
@@ -1445,9 +1444,8 @@ var displaylst =
             var a = new panel.rows([CORNEREXT,0,CORNEREXT],
             [
                 0,                      
-                new panel.colsA([NUBMARGIN, NUBHEIGHT, 0, NUBHEIGHT, NUBMARGIN],
+                new panel.colsA([NUBHEIGHT, 0, NUBHEIGHT],
                 [
-                    0,
                     new panel.layers(
                     [
                         new panel.rounded(GALLFILL, 0, 0, 6, 6),
@@ -1463,7 +1461,6 @@ var displaylst =
                         new panel.shrink(new panel.currentV(
                             new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 1), 2, 2),
                     ]),
-                    0
                 ]),
                 0, 
             ]);
