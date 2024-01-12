@@ -5431,7 +5431,7 @@ menuobj.draw = function()
             	context.centered = j.n;
             }
 
-            if (slice.isvisible || !context.swipetimeout)
+            if (slice.isvisible)// || !context.swipetimeout)
             {
                 context.canvas.visibles.push(j);  
     	    }
