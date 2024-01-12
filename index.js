@@ -4146,11 +4146,10 @@ var taplst =
         else if (canvas.button3rect &&
             canvas.button3rect.hitest(x, y))
         { 
+            /*
             headobj.hide();
             global.bars = global.bars?0:1;
             menuobj.draw()
-
-            /*
             var k = (y - canvas.button3rect.y) / canvas.button3rect.height;
             buttonobj.addperc(k<0.5?-0.05:0.05);
             menuobj.draw();
@@ -4159,9 +4158,6 @@ var taplst =
         else if (canvas.time2rect &&
             canvas.time2rect.hitest(x, y))
         { 
-            headobj.hide();
-            global.bars = global.bars?0:1;
-            menuobj.draw()
             /*
             var k = (y - canvas.time2rect.y) / canvas.time2rect.height;
             var j = _8cnv.timeobj.length() / galleryobj.length();
