@@ -5420,6 +5420,7 @@ menuobj.draw = function()
             var y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
+            var x = rect.width / 2;
             var j = {slice,x,y,n};
             slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
             slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
@@ -5441,8 +5442,8 @@ menuobj.draw = function()
 
     if (context == _8cnvctx)
     {
-  	offscreenCanvas.width = canvas.width;
-	offscreenCanvas.height = canvas.height;
+  	    offscreenCanvas.width = canvas.width;
+	    offscreenCanvas.height = canvas.height;
         var a = new panel.fill(context.backfill);
         a.draw(offscreenCtx, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
         
