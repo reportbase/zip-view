@@ -2749,7 +2749,7 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        if (delta < 3)
+        if (Math.abs(delta) < 3)
             return;
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
