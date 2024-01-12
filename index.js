@@ -5335,7 +5335,7 @@ menuobj.draw = function()
     {
         var k = canvas.autodirect;
         context.canvas.timeobj.rotate(k * context.canvas.slideshow);
-	if (!canvas.keypress)
+	    if (!canvas.keypress)
             context.canvas.slideshow -= context.canvas.slidereduce
     }
     else if (context.swipetimeout)
@@ -5425,11 +5425,6 @@ menuobj.draw = function()
             var j = {slice,x,y,n};
             slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
             slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
-            if (m == canvas.normal.length-1)
-            {
-                if (j.y < -buttonheight)
-                    slice.isvisible = 1;
-            }
             
             if (context == _8cnvctx &&
 		        j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
