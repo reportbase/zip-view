@@ -5446,7 +5446,7 @@ menuobj.draw = function()
         var y = lst[0].y;
         if (y > 0)
         {
-            console(1);
+            console.log(1);
         }
         
         for (var n = 0; n < lst.length; ++n)
