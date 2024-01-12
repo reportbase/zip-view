@@ -1428,15 +1428,15 @@ var displaylst =
             ], 0);
 
             var a = new panel.colsA([30, 0, 30],
+            [
+                new panel.rectangle(canvas.button3rect),
+                new panel.rows([0,NUBEXTENT],
                 [
-                    new panel.rectangle(canvas.button3rect),
-                    new panel.rows([0,NUBEXTENT],
-                    [
-                        new panel.rectangle(canvas.middlerect),
-                        0,
-                    ]),
-                    new panel.rectangle(canvas.time2rect),
-                ]);
+                    new panel.rectangle(canvas.middlerect),
+                    0,
+                ]),
+                new panel.rectangle(canvas.time2rect),
+            ]);
 
             a.draw(context, rect, 0, 0);
     
@@ -4089,9 +4089,22 @@ var taplst =
         {
             leftmenu(_7cnvctx)
         }
+        else if (x > rect.width-40 && y < 40)
+        {
+            headobj.hide();
+            global.bars = global.bars?0:1;
+            menuobj.draw()
+        }
+        else if (x < 40 && y < 40)
+        {
+            headobj.hide();
+            global.bars = global.bars?0:1;
+            menuobj.draw()
+        }
         else if (x < 40 && y > rect.height-40)
         {
-	        headobj.toggle();
+            headobj.hide();
+            global.bars = global.bars?0:1;
             menuobj.draw()
         }
         else if (x > rect.width-40 && y > rect.height-40)
@@ -4133,17 +4146,28 @@ var taplst =
         else if (canvas.button3rect &&
             canvas.button3rect.hitest(x, y))
         { 
+            headobj.hide();
+            global.bars = global.bars?0:1;
+            menuobj.draw()
+
+            /*
             var k = (y - canvas.button3rect.y) / canvas.button3rect.height;
             buttonobj.addperc(k<0.5?-0.05:0.05);
             menuobj.draw();
+            */
         }                
         else if (canvas.time2rect &&
             canvas.time2rect.hitest(x, y))
         { 
+            headobj.hide();
+            global.bars = global.bars?0:1;
+            menuobj.draw()
+            /*
             var k = (y - canvas.time2rect.y) / canvas.time2rect.height;
             var j = _8cnv.timeobj.length() / galleryobj.length();
             _8cnv.timeobj.rotate(k<0.5?j:-j);
             menuobj.draw();
+            */
         }            
         else if (context.pirect &&
             context.pirect.hitest(x, y))
