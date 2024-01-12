@@ -2746,9 +2746,6 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-	if (Math.abs(delta) <= 1.0)
-            return;
-        
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
 	    if (ctrl)
@@ -5445,16 +5442,6 @@ menuobj.draw = function()
             {
                 menuobj.draw();
 	        }
-
-            slice.thumbimg.onError = function()
-            {
-                menuobj.draw();
-	        }
- 
-            slice.thumbimg.onerror = function(err)
-            {
-                menuobj.draw();
-	        }
             
             if (slice.entry)
                 getblobpath(slice.thumbimg, slice);
@@ -5473,11 +5460,9 @@ menuobj.draw = function()
             var y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
-            if (slice.oldy && Math.abs(y-slice.oldy) < 0.5)
-           	    y = slice.oldy;
-            slice.oldy = y;
-            
+            y = Math.floor(y);
             var x = rect.width / 2;
+            x = Math.floor(x);
             var j = {slice,x,y,n};
             slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
             slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
