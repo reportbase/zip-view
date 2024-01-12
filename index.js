@@ -544,6 +544,9 @@ let _15cnvctx = _15cnv.getContext("2d", opts);
 let headcnv = document.getElementById("head");
 let headcnvctx = headcnv.getContext("2d", opts);
 
+var offscreenCanvas = _8cnv.transferControlToOffscreen();
+var offscreenCtx = offscreenCanvas.getContext('2d');
+               
 _8cnvctx.font = DEFAULTFONT;
 _8cnv.width = 100;
 _8cnv.height = 100;
@@ -5462,10 +5465,7 @@ menuobj.draw = function()
         context.lastlst = context.canvas.visibles;
         */
         var a = new panel.fill(context.backfill);
-        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
-
-        var offscreenCanvas = canvas.transferControlToOffscreen();
-        var offscreenCtx = offscreenCanvas.getContext('2d');
+        a.draw(offscreenCtx, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
         
         for (var n = 0; n < context.canvas.visibles.length; ++n)
         {
