@@ -5421,6 +5421,8 @@ menuobj.draw = function()
             var e = (canvas.virtualheight - rect.height) / 2;
             y -= e;
             var x = rect.width / 2;
+            y = Math.floor(y);
+            x = Math.floor(x);
             var j = {slice,x,y,n};
             slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
             slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
@@ -5442,20 +5444,20 @@ menuobj.draw = function()
 
     if (context == _8cnvctx)
     {
-  	    offscreenCanvas.width = canvas.width;
-	    offscreenCanvas.height = canvas.height;
-           var a = new panel.fill(context.backfill);
-        a.draw(offscreenCtx, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
+  	    //offscreenCanvas.width = canvas.width;
+	    //offscreenCanvas.height = canvas.height;
+        var a = new panel.fill(context.backfill);
+        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
      
         for (var n = 0; n < context.canvas.visibles.length; ++n)
         {
             var j = context.canvas.visibles[n];
-            offscreenCtx.translate(0, j.y);
-            context.canvas.draw(offscreenCtx, r, j.slice, j.n);
-            offscreenCtx.translate(0, -j.y);
+            context.translate(0, j.y);
+            context.canvas.draw(context, r, j.slice, j.n);
+            context.translate(0, -j.y);
         }
 
-        context.drawImage(offscreenCanvas, 0, 0);
+        //context.drawImage(context, 0, 0);
 
         for (var n = 0; n < context.canvas.visibles2.length; ++n)
         {
