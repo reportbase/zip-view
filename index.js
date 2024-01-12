@@ -544,7 +544,8 @@ let _15cnvctx = _15cnv.getContext("2d", opts);
 let headcnv = document.getElementById("head");
 let headcnvctx = headcnv.getContext("2d", opts);
 
-var offscreenCanvas = _8cnv.transferControlToOffscreen();
+var canvas = document.getElementById('myCanvas');
+var offscreenCanvas = canvas.transferControlToOffscreen();
 var offscreenCtx = offscreenCanvas.getContext('2d');
                
 _8cnvctx.font = DEFAULTFONT;
