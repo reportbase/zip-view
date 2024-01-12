@@ -5474,7 +5474,7 @@ menuobj.draw = function()
         {
             var j = context.canvas.visibles[n];
             offscreenCtx.translate(0, j.y);
-            offscreenCtx.canvas.draw(offscreenCtx, r, j.slice, j.n);
+            context.canvas.draw(offscreenCtx, r, j.slice, j.n);
             offscreenCtx.translate(0, -j.y);
         }
 
