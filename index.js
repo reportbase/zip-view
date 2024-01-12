@@ -4373,8 +4373,6 @@ var taplst =
 	    }
         else 
         {
-            var n = getvisible(x, y);
-            aligncenter(n);
             if (context.centered == n)
             {
                 buttonobj.reset();
@@ -4390,6 +4388,8 @@ var taplst =
                 }
                 else if (buttonobj.portrait)
                 {
+                    var n = getvisible(x, y);
+                    aligncenter(n);
                     buttonobj.portrait = 0;
                     if (buttonobj.value() > window.innerHeight)
                     {
@@ -4408,6 +4408,8 @@ var taplst =
                 }
                 else
                 {
+                    var n = getvisible(x, y);
+                    aligncenter(n);
                     buttonobj.portrait = 1;
 		            buttonobj.set(0);
                 }
