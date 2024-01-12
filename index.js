@@ -5440,6 +5440,7 @@ menuobj.draw = function()
 
     if (context.canvas.visibles.length)
     {
+        var lst = context.canvas.visibles.sort((a, b) => a.y-b.y);
         var e = [];
         for (var n = 0; n < context.canvas.visibles.length; ++n)
         {
