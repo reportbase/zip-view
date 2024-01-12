@@ -4378,7 +4378,17 @@ var taplst =
             if (context.centered == n)
             {
                 buttonobj.reset();
-                if (buttonobj.portrait)// || buttonobj.value() >= window.innerHeight)
+                if (x < rect.width/3)
+                {
+                    var k = _8cnv.timeobj.length() / galleryobj.length();
+                    _8cnv.timeobj.rotate(-k);
+                }
+                else if (x > rect.width*2/3)
+                {
+                    var k = _8cnv.timeobj.length() / galleryobj.length();
+                    _8cnv.timeobj.rotate(k);
+                }
+                else if (buttonobj.portrait)
                 {
                     buttonobj.portrait = 0;
                     if (buttonobj.value() > window.innerHeight)
