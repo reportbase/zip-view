@@ -5438,7 +5438,7 @@ menuobj.draw = function()
         }
     }
 
-    var y = context.canvas.visibles[0];
+    var y = context.canvas.visibles[0].y;
     for (var n = 0; n < context.canvas.visibles.length; ++n)
     {
         var j = context.canvas.visibles[n];
