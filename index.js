@@ -5434,12 +5434,12 @@ menuobj.draw = function()
 
             if (slice.isvisible)
                 context.canvas.visibles.push(j);  
-    	    if (!context.swipetimeout)
+    	    if (context == _8cnvctx && !context.swipetimeout)
                 context.canvas.visibles2.push(j);
         }
     }
 
-    if (context.canvas.visibles.length)
+    if (context == _8cnvctx && context.canvas.visibles.length)
     {
         var lst = context.canvas.visibles.sort((a, b) => a.y-b.y);
         var y = lst[0].y;
@@ -5455,6 +5455,16 @@ menuobj.draw = function()
         for (var n = 0; n < context.canvas.visibles2.length; ++n)
         {
             var j = context.canvas.visibles2[n];
+            context.translate(0, y);
+            context.canvas.draw(context, r, j.slice, j.n);
+            context.translate(0, -y);
+        }
+    }
+    else
+    {
+        for (var n = 0; n < context.canvas.visibles.length; ++n)
+        {
+            var j = context.canvas.visibles[n];
             context.translate(0, y);
             context.canvas.draw(context, r, j.slice, j.n);
             context.translate(0, -y);
