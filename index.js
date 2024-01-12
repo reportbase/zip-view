@@ -4373,59 +4373,59 @@ var taplst =
 	    }
         else 
         {
-            if (context.centered == n)
+            if (x < rect.width/3)
             {
-                if (x < rect.width/3)
-                {
-                    var k = _8cnv.timeobj.length() / galleryobj.length();
-                    _8cnv.timeobj.rotate(-k);
-                }
-                else if (x > rect.width*2/3)
-                {
-                    var k = _8cnv.timeobj.length() / galleryobj.length();
-                    _8cnv.timeobj.rotate(k);
-                }
-                else if (buttonobj.portrait)
-                {
-                    var n = getvisible(x, y);
-                    aligncenter(n);
-                    buttonobj.reset();
-                    buttonobj.portrait = 0;
-                    if (buttonobj.value() > window.innerHeight)
-                    {
-                        aligntop();
-                    }
-                    else
-                    {
-                        for (var n = 0; n < buttonobj.length(); ++n)
-                        {
-                            if (buttonobj.data[n] != window.innerHeight)
-                                continue;
-                            buttonobj.set(n);
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    var n = getvisible(x, y);
-                    aligncenter(n);
-                    buttonobj.reset();
-                    buttonobj.portrait = 1;
-		            buttonobj.set(0);
-                }
-                
-                context.canvas.hollyobj.set(0);
-             	menuobj.draw();  
+                var k = _8cnv.timeobj.length() / galleryobj.length();
+                _8cnv.timeobj.rotate(-k);
+            }
+            else if (x > rect.width*2/3)
+            {
+                var k = _8cnv.timeobj.length() / galleryobj.length();
+                _8cnv.timeobj.rotate(k);
             }
             else
             {
-                headobj.hide();
-                if (buttonobj.value() > window.innerHeight)
-                    aligntop();
-                _8cnv.hollyobj.set(0);
-                menuobj.draw();
+                var n = getvisible(x, y);
+                aligncenter(n);
+                buttonobj.reset();
+                if (context.centered == n)
+                {
+                    if (buttonobj.portrait)
+                    {
+                        buttonobj.portrait = 0;
+                        if (buttonobj.value() > window.innerHeight)
+                        {
+                            aligntop();
+                        }
+                        else
+                        {
+                            for (var n = 0; n < buttonobj.length(); ++n)
+                            {
+                                if (buttonobj.data[n] != window.innerHeight)
+                                    continue;
+                                buttonobj.set(n);
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        buttonobj.portrait = 1;
+    		            buttonobj.set(0);
+                    }
+                    
+                    context.canvas.hollyobj.set(0);
+                }
+                else
+                {
+                    headobj.hide();
+                    if (buttonobj.value() > window.innerHeight)
+                        aligntop();
+                    _8cnv.hollyobj.set(0);
+                }
             }
+
+            menuobj.draw();
         }
     },
 },
