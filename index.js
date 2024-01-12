@@ -5443,16 +5443,9 @@ menuobj.draw = function()
 
     if (context == _8cnvctx && context.canvas.visibles.length)
     {
-        var lst = context.canvas.visibles.sort((a, b) => a.y-b.y);
-        var y = lst[0].y;     
-        for (var n = 0; n < lst.length; ++n)
-        {
-            var j = lst[n];
-            context.translate(0, y);
-            //context.canvas.draw(context, r, j.slice, j.n);
-            context.translate(0, -y);
-            y += buttonheight+5;
-        }    
+        if (!context.lastlsts)
+            context.lastlsts = [];
+        context.lastlsts.push(context.canvas.visibles);
     }
         
     for (var n = 0; n < context.canvas.visibles.length; ++n)
