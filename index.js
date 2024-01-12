@@ -22,6 +22,7 @@ url.param = function(key, def)
 const HIDE = url.searchParams.get("hide");
 const THEME = url.param("theme");
 const BEAV = url.param("beav", 0.636);
+const ADMIN = url.param("beav", 0);
 const NUBACK = "rgba(0,0,0,0.4)";
 const GALLNUB = url.param("gallnub","white");
 const GALLFILL = url.param("gallfill","rgba(0,0,0,0.4)"); 
@@ -6869,13 +6870,13 @@ headobj.reset = function()
 
 function setupmenus()
 {
-    _3cnv.sliceobj.data = 
+    _3cnv.sliceobj.data =  
     [
         {
             title: "search",
             func: function()
             {
-            	        url.path = "search";
+            	url.path = "search";
                 var path = url.searchParams.get("search");
                 fetch(`https://pexels.reportbase5836.workers.dev/?search=${path}`)
                     .then((response) => jsonhandler(response))
@@ -7119,7 +7120,7 @@ function setupmenus()
     }
     ]
 
-    if (1)
+    if (ADMIN)
         _7cnv.sliceobj.data.push(
         {
             title: `Users   \u{25B6}`,
@@ -7129,7 +7130,7 @@ function setupmenus()
             }
         })
     
-    if (1)
+    if (ADMIN)
         _7cnv.sliceobj.data.push(
         {
             title: "Options   \u{25B6}",
@@ -7139,16 +7140,17 @@ function setupmenus()
                 return false;
             }
         })
-    
-    _7cnv.sliceobj.data.push(
-    {
-        title: "Help   \u{25B6}\nKeyboard",
-        func: function()
+
+    if (ADMIN)
+        _7cnv.sliceobj.data.push(
         {
-            leftmenu(_9cnvctx);
-            return false;
-        }
-    })
+            title: "Help   \u{25B6}\nKeyboard",
+            func: function()
+            {
+                leftmenu(_9cnvctx);
+                return false;
+            }
+        })
 
     _10cnv.sliceobj.data = 
     [
