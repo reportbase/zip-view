@@ -5444,7 +5444,18 @@ menuobj.draw = function()
     if (context == _8cnvctx && context.canvas.visibles.length)
     {
         var lst = context.canvas.visibles.sort((a, b) => a.y-b.y);
-        var y = lst[0].y;        
+        var y = lst[0].y;     
+        
+        if (y > 0 && lst.n > 0)
+        {
+            var nn = lst.n-1;
+            var slice = slices[nn];
+            var yy = y - buttonheight;
+            context.translate(0, yy);
+            context.canvas.draw(context, r, slice, nn);
+            context.translate(0, -yy);
+        }
+        
         for (var n = 0; n < lst.length; ++n)
         {
             var j = lst[n];
