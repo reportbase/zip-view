@@ -4350,8 +4350,9 @@ var taplst =
                 aligncenter(n);
                 buttonobj.reset();
                 
-                if (buttonobj.current())
+                if (context.taptoggle)
                 {
+                    context.taptoggle = 0;
                     if (buttonobj.value() > window.innerHeight)
                     {
                         aligntop();
@@ -4369,6 +4370,7 @@ var taplst =
                 }
                 else
                 {
+                    context.taptoggle = 1;
                     buttonobj.set(0);
                 }
                 
