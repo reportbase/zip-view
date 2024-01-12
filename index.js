@@ -5433,7 +5433,7 @@ menuobj.draw = function()
             	context.centered = j.n;
             }
 
-            if (1)//slice.isvisible)
+            if (slice.isvisible)
                 context.canvas.visibles.push(j);  
     	    if (context == _8cnvctx && !context.swipetimeout)
                 context.canvas.visibles2.push(j);
@@ -5444,6 +5444,11 @@ menuobj.draw = function()
     {
         var lst = context.canvas.visibles.sort((a, b) => a.y-b.y);
         var y = lst[0].y;
+        if (y > 0)
+        {
+            console(1);
+        }
+        
         for (var n = 0; n < lst.length; ++n)
         {
             var j = lst[n];
