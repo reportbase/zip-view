@@ -4387,8 +4387,11 @@ var taplst =
             {
                 var n = getvisible(x, y);
                 if (context.centered == n)
+		        {
                     aligncenter(n);
-                buttonobj.reset();
+                	buttonobj.reset();
+                }
+                
                 if (buttonobj.portrait)
                 {
                     buttonobj.portrait = 0;
@@ -4415,15 +4418,6 @@ var taplst =
                 
                 context.canvas.hollyobj.set(0);
             }
-            /*
-            else
-            {
-                headobj.hide();
-                if (buttonobj.value() > window.innerHeight)
-                    aligntop();
-                _8cnv.hollyobj.set(0);
-            }
-            */
             
             menuobj.draw();
         }
