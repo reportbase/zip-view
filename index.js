@@ -4375,7 +4375,6 @@ var taplst =
         {
             if (context.centered == n)
             {
-                buttonobj.reset();
                 if (x < rect.width/3)
                 {
                     var k = _8cnv.timeobj.length() / galleryobj.length();
@@ -4390,6 +4389,7 @@ var taplst =
                 {
                     var n = getvisible(x, y);
                     aligncenter(n);
+                    buttonobj.reset();
                     buttonobj.portrait = 0;
                     if (buttonobj.value() > window.innerHeight)
                     {
@@ -4410,6 +4410,7 @@ var taplst =
                 {
                     var n = getvisible(x, y);
                     aligncenter(n);
+                    buttonobj.reset();
                     buttonobj.portrait = 1;
 		            buttonobj.set(0);
                 }
