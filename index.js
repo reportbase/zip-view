@@ -5447,7 +5447,7 @@ menuobj.draw = function()
         var y = lst[0].y;     
         if (y > 0 && lst[0].n > 0)
         {
-            var nn = lst.n-1;
+            var nn = lst[0].n-1;
             var slice = slices[nn];
             var yy = y - buttonheight;
             context.translate(0, yy);
