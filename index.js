@@ -4385,21 +4385,24 @@ var taplst =
                 {
                     buttonobj.portrait = 0;
                     if (buttonobj.value() > window.innerHeight)
+                    {
                         aligntop();
+                    }
+                    else
+                    {
+                        for (var n = 0; n < buttonobj.length(); ++n)
+                        {
+                            if (buttonobj.data[n] != window.innerHeight)
+                                continue;
+                            buttonobj.set(n);
+                            break;
+                        }
+                    }
                 }
                 else
                 {
                     buttonobj.portrait = 1;
 		            buttonobj.set(0);
-                    /*
-                    for (var n = 0; n < buttonobj.length(); ++n)
-                    {
-                        if (buttonobj.data[n] != window.innerHeight)
-                            continue;
-                        buttonobj.set(n);
-                        break;
-                    }
-                    */
                 }
                 
                 context.canvas.hollyobj.set(0);
