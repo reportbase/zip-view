@@ -4376,12 +4376,12 @@ var taplst =
             if (x < rect.width/3)
             {
                 var k = _8cnv.timeobj.length() / galleryobj.length();
-                _8cnv.timeobj.rotate(-k);
+                _8cnv.timeobj.rotate(k);
             }
             else if (x > rect.width*2/3)
             {
                 var k = _8cnv.timeobj.length() / galleryobj.length();
-                _8cnv.timeobj.rotate(k);
+                _8cnv.timeobj.rotate(-k);
             }
             else
             {
