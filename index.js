@@ -4311,7 +4311,7 @@ var taplst =
             headcnvctx.homerect &&
             headcnvctx.homerect.hitest(x, y))
         {
-		    buttonobj.reset();	
+	        buttonobj.reset();	
             aligncenter(0)
             aligntop();
             menuobj.draw();
@@ -4386,45 +4386,43 @@ var taplst =
             else
             {
                 var n = getvisible(x, y);
-                aligncenter(n);
-                if (1)//context.centered == n)
+                if (context.centered == n)
+                    aligncenter(n);
+                buttonobj.reset();
+                if (buttonobj.portrait)
                 {
-                    buttonobj.reset();
-                    if (buttonobj.portrait)
+                    buttonobj.portrait = 0;
+                    if (buttonobj.value() > window.innerHeight)
                     {
-                        buttonobj.portrait = 0;
-                        if (buttonobj.value() > window.innerHeight)
-                        {
-                            aligntop();
-                        }
-                        else
-                        {
-                            for (var n = 0; n < buttonobj.length(); ++n)
-                            {
-                                if (buttonobj.data[n] != window.innerHeight)
-                                    continue;
-                                buttonobj.set(n);
-                                break;
-                            }
-                        }
+                        aligntop();
                     }
                     else
                     {
-                        buttonobj.portrait = 1;
-    		            buttonobj.set(0);
+                        for (var n = 0; n < buttonobj.length(); ++n)
+                        {
+                            if (buttonobj.data[n] != window.innerHeight)
+                                continue;
+                            buttonobj.set(n);
+                            break;
+                        }
                     }
-                    
-                    context.canvas.hollyobj.set(0);
                 }
                 else
                 {
-                    headobj.hide();
-                    if (buttonobj.value() > window.innerHeight)
-                        aligntop();
-                    _8cnv.hollyobj.set(0);
+                    buttonobj.portrait = 1;
+                    buttonobj.set(0);
                 }
+                
+                context.canvas.hollyobj.set(0);
             }
-
+            else
+            {
+                headobj.hide();
+                if (buttonobj.value() > window.innerHeight)
+                    aligntop();
+                _8cnv.hollyobj.set(0);
+            }
+            
             menuobj.draw();
         }
     },
