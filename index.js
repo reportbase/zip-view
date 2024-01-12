@@ -5445,6 +5445,16 @@ menuobj.draw = function()
             {
                 menuobj.draw();
 	        }
+
+            slice.thumbimg.onError = function()
+            {
+                menuobj.draw();
+	        }
+ 
+            slice.thumbimg.onerror = function()
+            {
+                menuobj.draw();
+	        }
             
             if (slice.entry)
                 getblobpath(slice.thumbimg, slice);
