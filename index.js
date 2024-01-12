@@ -5464,14 +5464,19 @@ menuobj.draw = function()
         var a = new panel.fill(context.backfill);
         a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
 
+        var offscreenCanvas = canvas.transferControlToOffscreen();
+        var offscreenCtx = offscreenCanvas.getContext('2d');
+        
         for (var n = 0; n < context.canvas.visibles.length; ++n)
         {
             var j = context.canvas.visibles[n];
-            context.translate(0, j.y);
-            context.canvas.draw(context, r, j.slice, j.n);
-            context.translate(0, -j.y);
+            offscreenCtx.translate(0, j.y);
+            offscreenCtx.canvas.draw(context, r, j.slice, j.n);
+            offscreenCtx.translate(0, -j.y);
         }
-        
+
+        context.drawImage(offscreenCanvas, 0, 0);
+
         for (var n = 0; n < context.canvas.visibles2.length; ++n)
         {
             var j = context.canvas.visibles2[n];
