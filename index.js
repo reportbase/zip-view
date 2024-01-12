@@ -5438,12 +5438,14 @@ menuobj.draw = function()
         }
     }
 
+    var y = context.canvas.visibles[0];
     for (var n = 0; n < context.canvas.visibles.length; ++n)
     {
         var j = context.canvas.visibles[n];
-        context.translate(0, j.y);
+        context.translate(0, y);
         context.canvas.draw(context, r, j.slice, j.n);
-        context.translate(0, -j.y);
+        context.translate(0, -y);
+        y += buttonheight+5;
     }
     
     displayobj.value().draw(context, rect, 0, 0);
