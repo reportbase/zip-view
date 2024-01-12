@@ -5441,19 +5441,12 @@ menuobj.draw = function()
         }
     }
 
-    for (var n = 0; n < context.canvas.visibles.length; ++n)
-    {
-        var j = context.canvas.visibles[n];
-        context.translate(0, j.y);
-        context.canvas.draw(context, r, j.slice, j.n);
-        context.translate(0, -j.y);
-    }
-    
     if (context == _8cnvctx && context.canvas.visibles.length)
     {
         if (context.lastlst)
         {
-            var size = Math.min(context.lastlst.length, context.canvas.visibles.length);
+            var size = Math.min(context.lastlst.length, 
+                                context.canvas.visibles.length);
             var n = 0;
             for (; n < size; ++n)
             {
@@ -5476,6 +5469,16 @@ menuobj.draw = function()
             context.translate(0, y);
             context.canvas.draw(context, r, j.slice, j.n);
             context.translate(0, -y);
+        }
+    }
+    else
+    {
+        for (var n = 0; n < context.canvas.visibles.length; ++n)
+        {
+            var j = context.canvas.visibles[n];
+            context.translate(0, j.y);
+            context.canvas.draw(context, r, j.slice, j.n);
+            context.translate(0, -j.y);
         }
     }
     
