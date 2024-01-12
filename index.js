@@ -4114,20 +4114,6 @@ var taplst =
             global.bars = global.bars?0:1;
             menuobj.draw()
         }
-        else if (canvas.time2rect &&
-            canvas.time2rect.hitest(x, y))
-        { 
-            headobj.hide();
-            global.bars = global.bars?0:1;
-            menuobj.draw()
-        }            
-        else if (canvas.button3rect &&
-            canvas.button3rect.hitest(x, y))
-        { 
-            headobj.hide();
-            global.bars = global.bars?0:1;
-            menuobj.draw()
-        }                
         else if (context.aligntoprect &&
             context.aligntoprect.hitest(x, y))
         {
@@ -4384,6 +4370,20 @@ var taplst =
 		    headobj.hide();
             menuobj.draw();
 	    }
+        else if (canvas.time2rect &&
+            canvas.time2rect.hitest(x, y))
+        { 
+            headobj.hide();
+            global.bars = global.bars?0:1;
+            menuobj.draw()
+        }            
+        else if (canvas.button3rect &&
+            canvas.button3rect.hitest(x, y))
+        { 
+            headobj.hide();
+            global.bars = global.bars?0:1;
+            menuobj.draw()
+        }                
         else 
         {
             if (x < rect.width/3)
