@@ -5441,13 +5441,6 @@ menuobj.draw = function()
         }
     }
 
-    if (context == _8cnvctx && context.canvas.visibles.length)
-    {
-        if (!context.lastlsts)
-            context.lastlsts = [];
-        context.lastlsts.push(context.canvas.visibles);
-    }
-        
     for (var n = 0; n < context.canvas.visibles.length; ++n)
     {
         var j = context.canvas.visibles[n];
@@ -5458,6 +5451,25 @@ menuobj.draw = function()
     
     if (context == _8cnvctx && context.canvas.visibles.length)
     {
+        if (context.lastlst)
+        {
+            var size = Math.min(context.lastlst.length, context.canvas.visibles.length);
+            var n = 0;
+            for (; n < size; ++n)
+            {
+                var a = context.lastlst[n];
+                var b = context.canvas.visibles[n];
+                if (a.y != b.y)
+                    break;
+            }
+
+            var k = context.lastlst.length == context.canvas.visibles.length;
+            if (n == size && k)
+                return;
+        }
+    
+        context.lastlst = context.canvas.visibles;
+        
         for (var n = 0; n < context.canvas.visibles2.length; ++n)
         {
             var j = context.canvas.visibles2[n];
