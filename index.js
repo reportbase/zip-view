@@ -2749,8 +2749,6 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
-        if (Math.abs(delta) < 3)
-            return;
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
 	    if (ctrl)
@@ -2768,7 +2766,9 @@ var wheelst =
         }
         else
         {
-		    menuobj.updown(context, delta, 60)
+	       if (Math.abs(delta) < 3)
+	            return;
+	 	menuobj.updown(context, delta, 60)
         	if (!clearInterval(context.swipetimeout))
             {
                  context.swipetimeout = setInterval(
