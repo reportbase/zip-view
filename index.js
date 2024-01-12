@@ -5444,25 +5444,6 @@ menuobj.draw = function()
 
     if (context == _8cnvctx)
     {
-        if (context.lastlst)
-        {
-            var size = Math.min(context.lastlst.length, 
-                                context.canvas.visibles.length);
-            var n = 0;
-            for (; n < size; ++n)
-            {
-                var a = context.lastlst[n];
-                var b = context.canvas.visibles[n];
-                if (a.y != b.y)
-                    break;
-            }
-
-            var k = context.lastlst.length == context.canvas.visibles.length;
-            if (n == size && k)
-                return;
-        }
-    
-        context.lastlst = context.canvas.visibles;
   	offscreenCanvas.width = canvas.width;
 	offscreenCanvas.height = canvas.height;
         var a = new panel.fill(context.backfill);
