@@ -5441,7 +5441,7 @@ menuobj.draw = function()
         }
     }
 
-    if (context == _8cnvctx && context.canvas.visibles.length)
+    if (context == _8cnvctx)
     {
         if (context.lastlst)
         {
@@ -5462,6 +5462,14 @@ menuobj.draw = function()
         }
     
         context.lastlst = context.canvas.visibles;
+
+        for (var n = 0; n < context.canvas.visibles.length; ++n)
+        {
+            var j = context.canvas.visibles[n];
+            context.translate(0, j.y);
+            context.canvas.draw(context, r, j.slice, j.n);
+            context.translate(0, -j.y);
+        }
         
         for (var n = 0; n < context.canvas.visibles2.length; ++n)
         {
