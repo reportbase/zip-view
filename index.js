@@ -5465,9 +5465,9 @@ menuobj.draw = function()
         for (var n = 0; n < context.canvas.visibles.length; ++n)
         {
             var j = context.canvas.visibles[n];
-            context.translate(0, y);
+            context.translate(0, j.y);
             context.canvas.draw(context, r, j.slice, j.n);
-            context.translate(0, -y);
+            context.translate(0, -j.y);
         }
     }
     
