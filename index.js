@@ -195,7 +195,7 @@ util.istouch = function()
 
 util.rotated_list = function(lst, start, width)
 {
-        var size = lst.length/3;
+    var size = lst.length/3;
     var v = lst[start]
     width = Math.min(size, width);
     start += size - width;
@@ -3395,62 +3395,6 @@ var mouselst =
     up: function(evt) {},
     move: function(context, rect, x, y) 
     {
-	    var canvas = context.canvas;
-        if (context.button2rect &&
-            context.button2rect.hitest(x, y))
-        {
-            context.canvas.pinching = 1;
-            menuobj.draw();
-            clearTimeout(context.wheeltime);
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.pinching = 0;
-                menuobj.draw()
-            }, NUBDELAY);
-        }
-        else if (canvas.timerect &&
-            canvas.timerect.hitest(x, y))
-        {
-            context.canvas.panning = 1;
-            menuobj.draw();
-            clearTimeout(context.wheeltime)
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.panning = 0;
-                menuobj.draw()
-            }, NUBDELAY);
-        }
-        else if (canvas.holly2rect &&
-            canvas.holly2rect.hitest(x, y))
-        {
-            context.canvas.panning = 1;
-            menuobj.draw();
-            clearTimeout(context.wheeltime)
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.panning = 0;
-                menuobj.draw()
-            }, NUBDELAY);
-        }
-        else if (context.aligntoprect &&
-            context.aligntoprect.hitest(x, y))
-        {
-            context.canvas.aligntoptime = 1;
-            menuobj.draw();
-            clearTimeout(context.wheeltime)
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.aligntoptime = 0;
-                menuobj.draw()
-            }, NUBDELAY);
-        }
-        else
-        {
-            context.canvas.panning = 0;
-            context.canvas.pinching = 0;
-	        context.canvas.aligntoptime = 0;	
-            menuobj.draw();
-        }
     },
 }, 
 ];
@@ -4225,14 +4169,6 @@ var taplst =
             canvas.hollyobj.set(j);
             menuobj.draw();
         }            
-        else if (canvas.holly3rect &&
-            canvas.holly3rect.hitest(x, y))
-        {
-            var k = (x - canvas.holly3rect.x) / canvas.holly3rect.width;
-            var j = k < 0.5 ? -0.05 : 0.05;
-            canvas.hollyobj.addperc(j);
-            menuobj.draw();
-        }            
         else if (
             context.bookmarkrect &&
             context.bookmarkrect.hitest(x, y))
@@ -4384,6 +4320,13 @@ var taplst =
             global.bars = global.bars?0:1;
             menuobj.draw()
         }                
+        else if (canvas.holly3rect &&
+            canvas.holly3rect.hitest(x, y))
+        {
+            headobj.hide();
+            global.bars = global.bars?0:1;
+            menuobj.draw()
+        }            
         else 
         {
             if (x < rect.width/3)
