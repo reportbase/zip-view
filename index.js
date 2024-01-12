@@ -4047,18 +4047,6 @@ var taplst =
             global.bars = global.bars?0:1;
             menuobj.draw()
         }
-        else if (x < 40 && y < 40)
-        {
-            headobj.hide();
-            global.bars = global.bars?0:1;
-            menuobj.draw()
-        }
-        else if (x < 40 && y > rect.height-40)
-        {
-            headobj.hide();
-            global.bars = global.bars?0:1;
-            menuobj.draw()
-        }
         else if (x > rect.width-40 && y > rect.height-40)
         {
             headobj.hide();
