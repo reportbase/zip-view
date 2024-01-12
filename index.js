@@ -4415,6 +4415,7 @@ var taplst =
                 
                 context.canvas.hollyobj.set(0);
             }
+            /*
             else
             {
                 headobj.hide();
@@ -4422,6 +4423,7 @@ var taplst =
                     aligntop();
                 _8cnv.hollyobj.set(0);
             }
+            */
             
             menuobj.draw();
         }
