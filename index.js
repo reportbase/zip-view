@@ -1398,7 +1398,7 @@ var displaylst =
 	    if (!value)
             return;
 
-	    var a = new panel.colsA([30, 0, 30],
+	    var a = new panel.colsA([15, 0, 15],
 	    [
     		new panel.rectangle(canvas.button3rect),
     		new panel.rows([0,NUBEXTENT],
@@ -4074,21 +4074,16 @@ var taplst =
         else if (context.button2rect &&
             context.button2rect.hitest(x, y))
         {
+            global.bars = 1;
             var k = (y - context.button2rect.y) / context.button2rect.height;
             var j = buttonobj.length()*k;
             buttonobj.set(j);
-            context.canvas.pinching = 1;
             menuobj.draw();
-            clearTimeout(context.wheeltime)
-            context.wheeltime = setTimeout(function()
-            {
-                context.canvas.pinching = 0;
-                menuobj.draw()
-            }, NUBDELAY*3);
         }            
         else if (canvas.timerect &&
             canvas.timerect.hitest(x, y))
         {
+            global.bars = 1;
             var obj = canvas.timeobj;
             var k = (y - canvas.timerect.y) / canvas.timerect.height;
             var j = obj.length()*(1-k);
@@ -4171,6 +4166,7 @@ var taplst =
         else if (canvas.holly2rect &&
             canvas.holly2rect.hitest(x, y))
         {
+            global.bars = 1;
             var k = (x - canvas.holly2rect.x) / canvas.holly2rect.width;
             var j = canvas.hollyobj.length()*k;
             canvas.hollyobj.set(j);
@@ -6608,10 +6604,12 @@ window.addEventListener("keydown", function(evt)
     var key = evt.key.toLowerCase();
     if (key == "escape")
     {
+        global.bars = 0;
 	    closemenu();
 	    headobj.hide();
         if (dialog && dialog.open)
             dialog.close();
+        menuobj.hide();
     }
 
     if (dialog.blocked)
