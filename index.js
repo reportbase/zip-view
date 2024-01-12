@@ -5445,8 +5445,7 @@ menuobj.draw = function()
     {
         var lst = context.canvas.visibles.sort((a, b) => a.y-b.y);
         var y = lst[0].y;     
-        
-        if (y > 0 && lst.n > 0)
+        if (y > 0 && lst[0].n > 0)
         {
             var nn = lst.n-1;
             var slice = slices[nn];
