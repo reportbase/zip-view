@@ -6605,11 +6605,10 @@ window.addEventListener("keydown", function(evt)
     if (key == "escape")
     {
         global.bars = 0;
-	    closemenu();
-	    headobj.hide();
+	headobj.hide();
         if (dialog && dialog.open)
             dialog.close();
-        menuobj.hide();
+        menuobj.draw();
     }
 
     if (dialog.blocked)
