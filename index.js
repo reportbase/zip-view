@@ -5367,9 +5367,6 @@ menuobj.draw = function()
     if (context != _8cnvctx)
         context.clear();
     
-    var a = new panel.fill(context.backfill);
-    a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
-    
     canvas.virtualheight = Math.floor(canvas.virtualheight)
     canvas.virtualheight = canvas.virtualheight - canvas.virtualheight%2;
     
@@ -5462,6 +5459,8 @@ menuobj.draw = function()
         }
     
         context.lastlst = context.canvas.visibles;
+        var a = new panel.fill(context.backfill);
+        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
 
         for (var n = 0; n < context.canvas.visibles.length; ++n)
         {
