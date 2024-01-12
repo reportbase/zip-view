@@ -5438,20 +5438,23 @@ menuobj.draw = function()
         }
     }
 
-    var e = [];
-    for (var n = 0; n < context.canvas.visibles.length; ++n)
+    if (context.canvas.visibles.length)
     {
-        e.push(context.canvas.visibles[n].y);
-    }
-    
-    var y = context.canvas.visibles[0].y;
-    for (var n = 0; n < context.canvas.visibles.length; ++n)
-    {
-        var j = context.canvas.visibles[n];
-        context.translate(0, y);
-        context.canvas.draw(context, r, j.slice, j.n);
-        context.translate(0, -y);
-        y += buttonheight+5;
+        var e = [];
+        for (var n = 0; n < context.canvas.visibles.length; ++n)
+        {
+            e.push(context.canvas.visibles[n].y);
+        }
+        
+        var y = context.canvas.visibles[0].y;
+        for (var n = 0; n < context.canvas.visibles.length; ++n)
+        {
+            var j = context.canvas.visibles[n];
+            context.translate(0, y);
+            context.canvas.draw(context, r, j.slice, j.n);
+            context.translate(0, -y);
+            y += buttonheight+5;
+        }
     }
     
     displayobj.value().draw(context, rect, 0, 0);
