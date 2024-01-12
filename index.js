@@ -5382,6 +5382,7 @@ menuobj.draw = function()
     }
 
     context.canvas.visibles = [];
+    context.canvas.visibles2 = [];
     context.centered = 0;
     var r = new rectangle(0, 0, rect.width, buttonheight);
 
@@ -5431,10 +5432,10 @@ menuobj.draw = function()
             	context.centered = j.n;
             }
 
-            if (slice.isvisible)// || !context.swipetimeout)
-            {
+            if (slice.isvisible)
                 context.canvas.visibles.push(j);  
-    	    }
+    	    if (!context.swipetimeout)
+                context.canvas.visibles2.push(j);
         }
     }
 
@@ -5449,6 +5450,14 @@ menuobj.draw = function()
             context.canvas.draw(context, r, j.slice, j.n);
             context.translate(0, -y);
             y += buttonheight+5;
+        }
+    
+        for (var n = 0; n < context.canvas.visibles2.length; ++n)
+        {
+            var j = context.canvas.visibles2[n];
+            context.translate(0, y);
+            context.canvas.draw(context, r, j.slice, j.n);
+            context.translate(0, -y);
         }
     }
     
