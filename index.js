@@ -23,6 +23,7 @@ const HIDE = url.searchParams.get("hide");
 const THEME = url.param("theme");
 const BEAV = url.param("beav", 0.636);
 const ADMIN = url.param("beav", 0);
+const DELTA = url.param("delta", 2.5);
 const NUBACK = "rgba(0,0,0,0.4)";
 const GALLNUB = url.param("gallnub","white");
 const GALLFILL = url.param("gallfill","rgba(0,0,0,0.4)"); 
@@ -2766,7 +2767,7 @@ var wheelst =
         }
         else
         {
-	       if (Math.abs(delta) < 3.33)
+	       if (Math.abs(delta) < DELTA)
 	            return;
 	 	menuobj.updown(context, delta, 60)
         	if (!clearInterval(context.swipetimeout))
@@ -4349,9 +4350,8 @@ var taplst =
                 aligncenter(n);
                 buttonobj.reset();
                 
-                if (buttonobj.portrait)
+                if (buttonobj.value() < window.innerHeight*0.67)
                 {
-                    buttonobj.portrait = 0;
                     if (buttonobj.value() > window.innerHeight)
                     {
                         aligntop();
@@ -4369,7 +4369,6 @@ var taplst =
                 }
                 else
                 {
-                    buttonobj.portrait = 1;
                     buttonobj.set(0);
                 }
                 
