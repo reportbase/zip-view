@@ -52,7 +52,7 @@ const NUBMARGIN = 4;
 const NUBEXTENT = 15;
 const NUBDELAY = 3000;
 const MAXIMAGESIZE = MAXEXTENT*MAXEXTENT;
-const MENUSELECT = "rgba(255,175,0,0.75)";
+const MENUSELECT = "rgba(0,0,80,0.85)";
 const MENUTAP = "rgba(255,125,0,0.75)";
 const SCROLLNAB = "rgba(0,0,0,0.65)";
 const FOOTBTNCOLOR = "rgba(0,0,0,0.25)";
@@ -2779,6 +2779,8 @@ var wheelst =
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
+       if (Math.abs(delta) < DELTA)
+            return;
         menuobj.updown(context, delta, 30);
         if (!context.swipetimeout)
             context.swipetimeout = setInterval(function(){
@@ -2786,6 +2788,8 @@ var wheelst =
     },
     leftright: function(context, x, y, delta, ctrl, shift, alt, trackpad)
     {
+       if (Math.abs(delta) < DELTA)
+            return;
         delta = Math.floor(delta);
         context.canvas.hollyobj.addperc(delta / 1000);
         menuobj.draw();
