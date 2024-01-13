@@ -52,8 +52,8 @@ const NUBMARGIN = 4;
 const NUBEXTENT = 15;
 const NUBDELAY = 3000;
 const MAXIMAGESIZE = MAXEXTENT*MAXEXTENT;
-const MENUSELECT = "rgba(255,175,0,0.4)";
-const MENUTAP = "rgba(255,125,0,0.7)";
+const MENUSELECT = "rgba(255,175,0,0.75)";
+const MENUTAP = "rgba(255,125,0,0.75)";
 const SCROLLNAB = "rgba(0,0,0,0.65)";
 const FOOTBTNCOLOR = "rgba(0,0,0,0.25)";
 const OPTIONFILL = "white";
@@ -62,13 +62,14 @@ const LIGHTHUMBFILLL = "rgba(255,125,0,0.25)";
 const HEAVYFILL = "rgba(0,0,0,0.6)";
 const THUMBFILL = "rgba(255,125,0,0.40)";
 const THUMBSTROKE = "rgba(255,255,255,0.4)";
-const SEARCHFRAME = "rgba(255,255,255,0.5)";
+const SEARCHFRAME = "rgba(255,255,255,0.75)";
 const TRANSPARENT = "rgba(0,0,0,0)";
 const FILLBAR = "rgba(0,0,0,0.75)";
 const NUBAR = "rgba(255,255,255,0.8)";
 const FILLMENU = "rgba(0,0,0,0.75)";
 const ARROWFILL = "white";
 const SCROLLEXTENT = 16;
+const SEARCHBORDER = 8;
 const SCROLLMARGIN = 6;
 const DISPLAYMARGIN = 12;
 const SMALLFONT = "bold 16px Archivo";
@@ -4937,7 +4938,7 @@ var buttonlst =
             0,
             new panel.layers(
             [
-                new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                new panel.rounded(clr, SEARCHBORDER, SEARCHFRAME, 8, ROUND),
                 new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
             ]),
             0,
@@ -4974,7 +4975,7 @@ var buttonlst =
             0,
             new panel.layers(
             [
-                new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                new panel.rounded(clr, SEARCHBORDER, SEARCHFRAME, 8, 8),
                 new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
             ]),
             0,
@@ -5036,7 +5037,7 @@ var buttonlst =
             0,
             new panel.layers(
             [
-                new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                new panel.rounded(clr, SEARCHBORDER, SEARCHFRAME, 8, 8),
                 new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
             ]),
             0,
@@ -5071,7 +5072,7 @@ var buttonlst =
             0,
             new panel.layers(
             [
-                new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                new panel.rounded(clr, SEARCHBORDER, SEARCHFRAME, 8, 8),
                 new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
             ]),
             0,
@@ -5100,7 +5101,7 @@ var buttonlst =
             0,
             new panel.layers(
             [
-                new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                new panel.rounded(clr, SEARCHBORDER, SEARCHFRAME, 8, 8),
                 new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
             ]),
             0,
@@ -5128,7 +5129,7 @@ var buttonlst =
             0,
             new panel.layers(
             [
-                new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                new panel.rounded(clr, SEARCHBORDER, SEARCHFRAME, 8, 8),
                 new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
             ]),
             0,
@@ -5158,7 +5159,7 @@ var buttonlst =
             0,
             new panel.layers(
             [
-                new panel.rounded(clr, 4, SEARCHFRAME, 8, 8),
+                new panel.rounded(clr, SEARCHBORDER, SEARCHFRAME, 8, 8),
                 new panel.shrink(new panel.multitext(e, 
                     new panel.text()), 20, 20),
             ]),
