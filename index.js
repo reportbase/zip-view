@@ -5398,6 +5398,7 @@ menuobj.draw = function()
     if (context == _8cnvctx && visibles.length)
     {
         visibles.sort((a, b) => a.y-b.y);
+	    /*
         var n = 0;
         for (; n < visibles.length; ++n)
         {
@@ -5407,7 +5408,7 @@ menuobj.draw = function()
             if (slice.py && y != py)
                 break;
         }
-
+		*/
         if (1)//n < visibles.length)
         {
             for (var n = 0; n < visibles.length; ++n)
