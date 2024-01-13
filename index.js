@@ -5407,8 +5407,12 @@ menuobj.draw = function()
             if (y != py)
                 break;
         }
-		
-        if (1)//n < visibles.length)
+
+        if (!context.count)
+            context.count = [];
+        if (n == visibles.length)
+            context.count.push(1);
+        if (1)//)
         {
 	    var a = new panel.fill(context.backfill);
 	    a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
