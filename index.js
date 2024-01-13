@@ -5320,8 +5320,15 @@ menuobj.draw = function()
         canvas.virtualheight = len * buttonheight * BEAV;
     }
 
-    if (context != _8cnvctx)
+    if (context == _8cnvctx)
+    {
         context.clear();
+    }
+    else
+    {
+        var a = new panel.fill(context.backfill);
+        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
+    }
     
     canvas.virtualheight = Math.floor(canvas.virtualheight)
     canvas.virtualheight = canvas.virtualheight - canvas.virtualheight%2;
@@ -5391,9 +5398,6 @@ menuobj.draw = function()
                 context.canvas.visibles2.push(slice);
         }
     }
-
-    var a = new panel.fill(context.backfill);
-    a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
     
     var visibles = context.canvas.visibles;
     if (context == _8cnvctx && visibles.length)
