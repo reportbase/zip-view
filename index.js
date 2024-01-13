@@ -1563,7 +1563,7 @@ var displaylst =
                 0,
             ]),
 	        0,
-            new panel.cols([0, rainstep, 0],
+            1?0:new panel.cols([0, rainstep, 0],
             [
                 0,
                 new panel.layers(
@@ -3420,6 +3420,8 @@ var presslst =
     },
     press: function(context, rect, x, y) 
     {
+        if (menuobj.value() != _8cnvctx)
+            return;
 	    global.bars = 0;
 	    headobj.toggle();
         menuobj.draw()
@@ -3442,9 +3444,6 @@ var presslst =
     },
     press: function(context, rect, x, y) 
     {
-        var h = headcnv.height ? 0 : HEADHEIGHT;
-        headcnvctx.show(0, 0, window.innerWidth, h);
-        headobj.draw();
     }
 }, 
 ];
