@@ -4327,8 +4327,12 @@ var taplst =
                 
                 context.canvas.hollyobj.set(0);
             }
-            
+
             menuobj.draw();
+            setTimeout(function()
+            {
+                menuobj.draw();
+            }, 100);
         }
     },
 },
@@ -5323,7 +5327,7 @@ menuobj.draw = function()
 
     if (context == _8cnvctx)
     {
-        var a = new panel.fill("red");//context.backfill);
+        var a = new panel.fill(context.backfill);
         a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
     }
     else
