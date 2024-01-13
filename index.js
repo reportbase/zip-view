@@ -5403,7 +5403,7 @@ menuobj.draw = function()
             context.translate(0, y);//slice.y);
             context.canvas.draw(context, r, slice, slice.index);
             context.translate(0, -y);//-slice.y);
-            y += buttonheight + 5;
+            y += buttonheight;
         }
 
         for (var n = 0; n < context.canvas.visibles2.length; ++n)
