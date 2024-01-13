@@ -3386,7 +3386,8 @@ var mouselst =
     move: function(context, rect, x, y) 
     {
         global.mousebars = x < 15 || x > rect.width-15 || y > rect.height-15;
-        menuobj.draw();
+        if (x < 30 || x > rect.width-30)
+	    menuobj.draw();
     },
 }, 
 ];
