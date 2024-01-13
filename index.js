@@ -5416,13 +5416,13 @@ menuobj.draw = function()
             context.nodraws = 0;
             context.draws= 0;
         }
+        
         if (n == visibles.length)
-        {
             context.nodraws++;
-        }
-        else 
-        {
+        else
             context.draws++;
+        
+        {     
 	        var a = new panel.fill(context.backfill);
 	        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
 	     
