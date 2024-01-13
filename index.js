@@ -1515,7 +1515,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                    new panel.rectangle(context.buttonrect), ),
+                    new panel.rectangle(context.buttonrect), 
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
                 0,
@@ -5395,58 +5395,31 @@ menuobj.draw = function()
     var visibles = context.canvas.visibles;
     if (context == _8cnvctx && visibles.length)
     {
-        visibles.sort((a, b) => a.y-b.y);
-	    
-        var n = 0;
-        for (; n < visibles.length; ++n)
+    	var a = new panel.fill(context.backfill);
+    	a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
+         
+        //visibles.sort((a, b) => a.y-b.y);
+	    for (var n = 0; n < visibles.length; ++n)
         {
-            var slice = visibles[n];
-	        if (typeof slice.py == "undefined")
-                continue;
-            var y = slice.y.toFixed(PRECIS);
-            var py = slice.py.toFixed(PRECIS);
-            if (y != py)
-                break;
+        	var slice = visibles[n];
+        		var y = slice.y;
+        	if (slice.py)
+        	    y = (slice.py+slice.y)/2;
+        	y = y.toFixed(PRECIS);
+        	context.translate(0, y);
+        	context.canvas.draw(context, r, slice, slice.index);
+        	context.translate(0, -y);
         }
-
-        if (!context.nodraws)
+    
+        var visibles2 = context.canvas.visibles2;
+        for (var n = 0; n < visibles2.length; ++n)
         {
-            context.nodraws = 0;
-            context.draws= 0;
+        	var slice = visibles2[n];
+        	context.translate(0, slice.y);
+        	context.canvas.draw(context, r, slice, slice.index);
+        	context.translate(0, -slice.y);
         }
-        
-        if (n == visibles.length)
-            context.nodraws++;
-        else
-            context.draws++;
-
-        if (1)
-        {     
-	        var a = new panel.fill(context.backfill);
-	        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
-	     
-            for (var n = 0; n < visibles.length; ++n)
-            {
-                var slice = visibles[n];
-		        var y = slice.y;
-                if (slice.py)
-                    y = (slice.py+slice.y)/2;
-                y = y.toFixed(PRECIS);
-                context.translate(0, y);
-                context.canvas.draw(context, r, slice, slice.index);
-                context.translate(0, -y);
-            }
-        
-            var visibles2 = context.canvas.visibles2;
-            for (var n = 0; n < visibles2.length; ++n)
-            {
-                var slice = visibles2[n];
-                context.translate(0, slice.y);
-                context.canvas.draw(context, r, slice, slice.index);
-                context.translate(0, -slice.y);
-            }
-        }
-     }
+    }
     else
     {
 	    var a = new panel.fill(context.backfill);
