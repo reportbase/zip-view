@@ -5392,9 +5392,9 @@ menuobj.draw = function()
     var a = new panel.fill(context.backfill);
     a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
      
-    if (context == _8cnvctx)
+    var visibles = context.canvas.visibles;
+    if (context == _8cnvctx && visibles.length)
     {
-        var visibles = context.canvas.visibles;
         visibles.sort((a, b) => a.y-b.y);
         var y = visibles[0].y;
         for (var n = 0; n < visibles.length; ++n)
