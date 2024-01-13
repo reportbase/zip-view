@@ -5398,18 +5398,18 @@ menuobj.draw = function()
     if (context == _8cnvctx && visibles.length)
     {
         visibles.sort((a, b) => a.y-b.y);
-	    /*
+	    
         var n = 0;
         for (; n < visibles.length; ++n)
         {
             var slice = visibles[n];
             var y = slice.y.toFixed(5);
             var py = slice.py.toFixed(5);
-            if (slice.py && y != py)
+            if (py && y != py)
                 break;
         }
-		*/
-        if (1)//n < visibles.length)
+		
+        if (n < visibles.length)
         {
             for (var n = 0; n < visibles.length; ++n)
             {
