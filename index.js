@@ -5408,7 +5408,7 @@ menuobj.draw = function()
                 break;
         }
 		
-        if (n < visibles.length)
+        if (1)//n < visibles.length)
         {
 	    var a = new panel.fill(context.backfill);
 	    a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
@@ -5416,9 +5416,10 @@ menuobj.draw = function()
             for (var n = 0; n < visibles.length; ++n)
             {
                 var slice = visibles[n];
-                context.translate(0, slice.y);
+		        var y = slice.y.toFixed(5);
+                context.translate(0, y);
                 context.canvas.draw(context, r, slice, slice.index);
-                context.translate(0, -slice.y);
+                context.translate(0, -y);
             }
         
             var visibles2 = context.canvas.visibles2;
