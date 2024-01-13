@@ -5402,8 +5402,9 @@ menuobj.draw = function()
         for (var n = 0; n < visibles.length; ++n)
         {
             var j = visibles[n];
+            var slice = j.slice;
             context.translate(0, j.y);
-            context.canvas.draw(context, r, j.slice, j.n);
+            context.canvas.draw(context, r, slice, slice.index);
             context.translate(0, -j.y);
         }
 
