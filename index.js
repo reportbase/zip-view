@@ -4497,15 +4497,15 @@ var taplst =
             var k;
             for (k = 0; k < visibles.length; k++)
             {
-                var j = visibles[k];
-                if (j.slice.rect.hitest(x, y))
+                var slice = visibles[k];
+                if (slice.rect.hitest(x, y))
                     break;
             }
 
             if (k == visibles.length)
                 return;
 
-            var n = visibles[k].n;
+            var n = visibles[k].index;
             var slice = canvas.sliceobj.data[n];
             if (!slice.func)
                 return;
@@ -4533,16 +4533,16 @@ function getvisible(x, y)
     var k;
     for (k = 0; k < visibles.length; k++)
     {
-        var j = visibles[k];
-        if (!j.slice || !j.slice.rect)
+        var slice = visibles[k];
+        if (!slice || !slice.rect)
             continue;
-        if (j.slice.rect.hitest(x, y))
+        if (slice.rect.hitest(x, y))
             break;
     }
 
     if (k == visibles.length)
         return;
-    return visibles[k].n;
+    return visibles[k].index;
 }
             
 Number.prototype.inrange = function(a, b)
@@ -5367,15 +5367,12 @@ menuobj.draw = function()
             var t = time + (n * (Math.PI / len));
             var b = Math.tan(t);
             var j = Math.berp(-1, 1, b);
-            var y = j * canvas.virtualheight;
+            slice.y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
-            y -= e;
-            //var x = rect.width / 2;
-            y = Math.floor(y);
-            //x = Math.floor(x);
-            var j = {slice,y};
-            slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
-            slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
+            slice.y -= e;
+            slice.y = Math.floor(slice.y);
+            slice.rect = new rectangle(0, slice.y, rect.width, buttonheight);
+            slice.isvisible = slice.y > -buttonheight && slice.y < window.innerHeight;
             
             if (context == _8cnvctx &&
 		        j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
@@ -5386,9 +5383,9 @@ menuobj.draw = function()
             }
 
             if (slice.isvisible)
-                context.canvas.visibles.push(j);  
+                context.canvas.visibles.push(slice);  
     	    if (context == _8cnvctx && !context.swipetimeout)
-                context.canvas.visibles2.push(j);
+                context.canvas.visibles2.push(slice);
         }
     }
 
@@ -5401,19 +5398,18 @@ menuobj.draw = function()
         visibles.sort((a, b) => a.y-b.y);
         for (var n = 0; n < visibles.length; ++n)
         {
-            var j = visibles[n];
-            var slice = j.slice;
-            context.translate(0, j.y);
+            var slice = visibles[n];
+            context.translate(0, slice.y);
             context.canvas.draw(context, r, slice, slice.index);
-            context.translate(0, -j.y);
+            context.translate(0, -slice.y);
         }
 
         for (var n = 0; n < context.canvas.visibles2.length; ++n)
         {
-            var j = context.canvas.visibles2[n];
-            context.translate(0, y);
-            context.canvas.draw(context, r, j.slice, j.n);
-            context.translate(0, -y);
+            var slice = context.canvas.visibles2[n];
+            context.translate(0, slice.y);
+            context.canvas.draw(context, r, slice, slice.index);
+            context.translate(0, -slice.y);
         }
     }
     else
