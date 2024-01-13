@@ -5396,12 +5396,14 @@ menuobj.draw = function()
     {
         var visibles = context.canvas.visibles;
         visibles.sort((a, b) => a.y-b.y);
+        var y = visibles[0].y;
         for (var n = 0; n < visibles.length; ++n)
         {
             var slice = visibles[n];
-            context.translate(0, slice.y);
+            context.translate(0, y);//slice.y);
             context.canvas.draw(context, r, slice, slice.index);
-            context.translate(0, -slice.y);
+            context.translate(0, -y);//-slice.y);
+            y += buttonheight + 5;
         }
 
         for (var n = 0; n < context.canvas.visibles2.length; ++n)
