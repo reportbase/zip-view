@@ -5371,6 +5371,7 @@ menuobj.draw = function()
             var e = (canvas.virtualheight - rect.height) / 2;
             slice.y -= e;
             slice.y = Math.floor(slice.y);
+            slice.index = n;
             slice.rect = new rectangle(0, slice.y, rect.width, buttonheight);
             slice.isvisible = slice.y > -buttonheight && slice.y < window.innerHeight;
             
