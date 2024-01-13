@@ -5375,7 +5375,7 @@ menuobj.draw = function()
             slice.isvisible = slice.y > -buttonheight && slice.y < window.innerHeight;
             
             if (context == _8cnvctx &&
-		        j.slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
+		        slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
             {
             	galleryobj.width = slice.thumbimg?slice.thumbimg.width:0;
             	galleryobj.height = slice.thumbimg?slice.thumbimg.height:0;
