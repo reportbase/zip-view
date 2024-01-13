@@ -5288,7 +5288,7 @@ menuobj.draw = function()
     const rect = context.rect();
     if (!rect.width || !rect.height)
         return;
-
+    var resetview = 0;
     if (context.canvas.slideshow > 0)
     {
         var k = canvas.autodirect;
@@ -5298,10 +5298,11 @@ menuobj.draw = function()
     }
     else if (context.swipetimeout)
     {
+        resetview = 1;
         clearInterval(context.swipetimeout)
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
-        //resetview()
+        resetview()
 	    local.set()	
     }
 
@@ -5421,7 +5422,8 @@ menuobj.draw = function()
             context.nodraws++;
         else
             context.draws++;
-        
+
+        if (resetview || n == visibles.length)
         {     
 	        var a = new panel.fill(context.backfill);
 	        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
