@@ -5372,6 +5372,7 @@ menuobj.draw = function()
             slice.y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             slice.y -= e;
+            slice.y = slice.y.toFixed(5);
 		    slice.index = n;
             slice.rect = new rectangle(0, slice.y, rect.width, buttonheight);
             slice.isvisible = slice.y > -buttonheight && slice.y < window.innerHeight;
@@ -5398,23 +5399,34 @@ menuobj.draw = function()
     if (context == _8cnvctx && visibles.length)
     {
         visibles.sort((a, b) => a.y-b.y);
-        for (var n = 0; n < visibles.length; ++n)
+        var n = 0;
+        for (; n < visibles.length; ++n)
         {
             var slice = visibles[n];
-            context.translate(0, slice.y);
-            context.canvas.draw(context, r, slice, slice.index);
-            context.translate(0, -slice.y);
+            if (slice.py && slice.y != slice.py)
+                break;
         }
 
-        var visibles2 = context.canvas.visibles2;
-        for (var n = 0; n < visibles2.length; ++n)
+        if (n < visibles.length)
         {
-            var slice = visibles2[n];
-            context.translate(0, slice.y);
-            context.canvas.draw(context, r, slice, slice.index);
-            context.translate(0, -slice.y);
+            for (var n = 0; n < visibles.length; ++n)
+            {
+                var slice = visibles[n];
+                context.translate(0, slice.y);
+                context.canvas.draw(context, r, slice, slice.index);
+                context.translate(0, -slice.y);
+            }
+        
+            var visibles2 = context.canvas.visibles2;
+            for (var n = 0; n < visibles2.length; ++n)
+            {
+                var slice = visibles2[n];
+                context.translate(0, slice.y);
+                context.canvas.draw(context, r, slice, slice.index);
+                context.translate(0, -slice.y);
+            }
         }
-    }
+     }
     else
     {
         var visibles = context.canvas.visibles;
