@@ -5372,8 +5372,7 @@ menuobj.draw = function()
             slice.y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             slice.y -= e;
-            slice.y = slice.y.toFixed(5);
-		    slice.index = n;
+            slice.index = n;
             slice.rect = new rectangle(0, slice.y, rect.width, buttonheight);
             slice.isvisible = slice.y > -buttonheight && slice.y < window.innerHeight;
             
@@ -5403,11 +5402,13 @@ menuobj.draw = function()
         for (; n < visibles.length; ++n)
         {
             var slice = visibles[n];
-            if (slice.py && slice.y != slice.py)
+            var y = slice.y.toFixed(5);
+            var py = slice.py.toFixed(5);
+            if (slice.py && y != py)
                 break;
         }
 
-        if (n < visibles.length)
+        if (1)//n < visibles.length)
         {
             for (var n = 0; n < visibles.length; ++n)
             {
