@@ -2449,7 +2449,7 @@ var makehammer = function(context, v, t)
     ham.get("swipe").set({direction: Hammer.DIRECTION_ALL});
     ham.get('swipe').set({velocity: 0.6}); //0.40
     ham.get('swipe').set({threshold: 20}); //10
-    ham.get('press').set({time: 320}); //251
+    ham.get('press').set({time: 440}); //251
 
     ham.on("pinch", function(evt)
     {
@@ -5392,12 +5392,12 @@ menuobj.draw = function()
         }
     }
 
+    var a = new panel.fill(context.backfill);
+    a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
+    
     var visibles = context.canvas.visibles;
     if (context == _8cnvctx && visibles.length)
     {
-    	var a = new panel.fill(context.backfill);
-    	a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
-         
         //visibles.sort((a, b) => a.y-b.y);
 	    for (var n = 0; n < visibles.length; ++n)
         {
@@ -5422,9 +5422,6 @@ menuobj.draw = function()
     }
     else
     {
-	    var a = new panel.fill(context.backfill);
-	    a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
-     
         var visibles = context.canvas.visibles;
         for (var n = 0; n < visibles.length; ++n)
         {
