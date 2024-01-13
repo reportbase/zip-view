@@ -5288,7 +5288,6 @@ menuobj.draw = function()
     const rect = context.rect();
     if (!rect.width || !rect.height)
         return;
-    var resetview = 0;
     if (context.canvas.slideshow > 0)
     {
         var k = canvas.autodirect;
@@ -5298,12 +5297,11 @@ menuobj.draw = function()
     }
     else if (context.swipetimeout)
     {
-        resetview = 1;
         clearInterval(context.swipetimeout)
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
         resetview()
-	    local.set()	
+        local.set()	
     }
 
     var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
