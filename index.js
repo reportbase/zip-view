@@ -5391,9 +5391,6 @@ menuobj.draw = function()
         }
     }
 
-    var a = new panel.fill(context.backfill);
-    a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
-     
     var visibles = context.canvas.visibles;
     if (context == _8cnvctx && visibles.length)
     {
@@ -5413,6 +5410,9 @@ menuobj.draw = function()
 		
         if (n < visibles.length)
         {
+	    var a = new panel.fill(context.backfill);
+	    a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
+	     
             for (var n = 0; n < visibles.length; ++n)
             {
                 var slice = visibles[n];
@@ -5433,6 +5433,9 @@ menuobj.draw = function()
      }
     else
     {
+	    var a = new panel.fill(context.backfill);
+	    a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
+     
         var visibles = context.canvas.visibles;
         for (var n = 0; n < visibles.length; ++n)
         {
