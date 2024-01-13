@@ -5353,7 +5353,7 @@ menuobj.draw = function()
             slice.thumbimg.onload = function()
             {
                 menuobj.draw();
-	        }
+	}
             
             if (slice.entry)
                 getblobpath(slice.thumbimg, slice);
@@ -5416,7 +5416,7 @@ menuobj.draw = function()
         }
         if (n == visibles.length)
         {
-            context.nodrawws++;
+            context.nodraws++;
         }
         else 
         {
