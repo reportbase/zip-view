@@ -5373,7 +5373,7 @@ menuobj.draw = function()
             var x = rect.width / 2;
             y = Math.floor(y);
             x = Math.floor(x);
-            var j = {slice,x,y,n};
+            var j = {slice,x,y};
             slice.rect = new rectangle(0, j.y, rect.width, buttonheight);
             slice.isvisible = j.y > -buttonheight && j.y < window.innerHeight;
             
@@ -5382,7 +5382,7 @@ menuobj.draw = function()
             {
             	galleryobj.width = slice.thumbimg?slice.thumbimg.width:0;
             	galleryobj.height = slice.thumbimg?slice.thumbimg.height:0;
-            	context.centered = j.n;
+            	context.centered = slice.index;
             }
 
             if (slice.isvisible)
@@ -5397,10 +5397,11 @@ menuobj.draw = function()
      
     if (context == _8cnvctx)
     {
-        var lst = context.canvas.visibles.sort((a, b) => a.y-b.y);
-        for (var n = 0; n < lst.length; ++n)
+        var visibles = context.canvas.visibles;
+        visibles.sort((a, b) => a.y-b.y);
+        for (var n = 0; n < visibles.length; ++n)
         {
-            var j = lst[n];
+            var j = visibles[n];
             context.translate(0, j.y);
             context.canvas.draw(context, r, j.slice, j.n);
             context.translate(0, -j.y);
