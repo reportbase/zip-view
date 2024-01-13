@@ -3416,7 +3416,8 @@ var presslst =
     {
     },
     press: function(context, rect, x, y) 
-    {    
+    {
+	    global.bars = 0;
 	    headobj.toggle();
         menuobj.draw()
     }
@@ -5367,11 +5368,11 @@ menuobj.draw = function()
             var t = time + (n * (Math.PI / len));
             var b = Math.tan(t);
             var j = Math.berp(-1, 1, b);
+            slice.py = slice.y;
             slice.y = j * canvas.virtualheight;
             var e = (canvas.virtualheight - rect.height) / 2;
             slice.y -= e;
-            slice.y = Math.floor(slice.y);
-            slice.index = n;
+		    slice.index = n;
             slice.rect = new rectangle(0, slice.y, rect.width, buttonheight);
             slice.isvisible = slice.y > -buttonheight && slice.y < window.innerHeight;
             
