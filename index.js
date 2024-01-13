@@ -24,6 +24,7 @@ const THEME = url.param("theme");
 const BEAV = url.param("beav", 0.65);
 const ADMIN = url.param("admin", 0);
 const DELTA = url.param("delta", 2.5);
+const PRECIC = url.param("precis", 3);
 const NUBACK = "rgba(0,0,0,0.4)";
 const GALLNUB = url.param("gallnub","white");
 const GALLFILL = url.param("gallfill","rgba(0,0,0,0.4)"); 
@@ -5402,16 +5403,16 @@ menuobj.draw = function()
             var slice = visibles[n];
 	        if (typeof slice.py == "undefined")
                 continue;
-            var y = slice.y.toFixed(5);
-            var py = slice.py.toFixed(5);
+            var y = slice.y.toFixed(PRECIS);
+            var py = slice.py.toFixed(PRECIS);
             if (y != py)
                 break;
         }
 
         if (!context.count)
-            context.count = [];
+            context.count = 0;
         if (n == visibles.length)
-            context.count.push(1);
+            context.count++;
         if (1)//)
         {
 	    var a = new panel.fill(context.backfill);
@@ -5420,7 +5421,7 @@ menuobj.draw = function()
             for (var n = 0; n < visibles.length; ++n)
             {
                 var slice = visibles[n];
-		        var y = slice.y.toFixed(5);
+		        var y = slice.y.toFixed(PRECIS);
                 context.translate(0, y);
                 context.canvas.draw(context, r, slice, slice.index);
                 context.translate(0, -y);
