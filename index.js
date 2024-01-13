@@ -1515,7 +1515,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
-                    new panel.expand(new panel.rectangle(context.buttonrect), EXPANDRECT, EXPANDRECT),
+                    new panel.rectangle(context.buttonrect), ),
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
                 0,
