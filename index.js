@@ -5299,7 +5299,7 @@ menuobj.draw = function()
         clearInterval(context.swipetimeout)
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
-        resetview()
+        //resetview()
 	    local.set()	
     }
 
@@ -5413,10 +5413,10 @@ menuobj.draw = function()
             context.count = 0;
         if (n == visibles.length)
             context.count++;
-        if (1)//)
+        else 
         {
-	    var a = new panel.fill(context.backfill);
-	    a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
+	        var a = new panel.fill(context.backfill);
+	        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
 	     
             for (var n = 0; n < visibles.length; ++n)
             {
