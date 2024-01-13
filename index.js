@@ -5392,14 +5392,15 @@ menuobj.draw = function()
         }
     }
 
-        var a = new panel.fill(context.backfill);
-        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
+    var a = new panel.fill(context.backfill);
+    a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
      
     if (context == _8cnvctx)
     {
-        for (var n = 0; n < context.canvas.visibles.length; ++n)
+        var lst = context.canvas.visibles.sort((a, b) => a.y-b.y);
+        for (var n = 0; n < lst.length; ++n)
         {
-            var j = context.canvas.visibles[n];
+            var j = lst[n];
             context.translate(0, j.y);
             context.canvas.draw(context, r, j.slice, j.n);
             context.translate(0, -j.y);
