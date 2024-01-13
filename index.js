@@ -5409,7 +5409,7 @@ menuobj.draw = function()
                 break;
         }
 
-        if (!context.count)
+        if (!context.nodraws)
         {
             context.nodraws = 0;
             context.draws= 0;
