@@ -5433,7 +5433,7 @@ menuobj.draw = function()
                 var slice = visibles[n];
 		        var y = slice.y;
                 if (slice.py)
-                    y = (slice.py+slice.y)/2)
+                    y = (slice.py+slice.y)/2;
                 y = y.toFixed(PRECIS);
                 context.translate(0, y);
                 context.canvas.draw(context, r, slice, slice.index);
