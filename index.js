@@ -5410,11 +5410,17 @@ menuobj.draw = function()
         }
 
         if (!context.count)
-            context.count = 0;
+        {
+            context.nodraws = 0;
+            context.draws= 0;
+        }
         if (n == visibles.length)
-            context.count++;
+        {
+            context.nodrawws++;
+        }
         else 
         {
+            context.draws++;
 	        var a = new panel.fill(context.backfill);
 	        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
 	     
