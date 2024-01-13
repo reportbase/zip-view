@@ -3390,9 +3390,10 @@ var mouselst =
     up: function(evt) {},
     move: function(context, rect, x, y) 
     {
+        var k = global.mousebars; 
         global.mousebars = x < 15 || x > rect.width-15 || y > rect.height-15;
-        if (x < 30 || x > rect.width-30)
-	    menuobj.draw();
+        if (k || global.mousebars)
+	        menuobj.draw();
     },
 }, 
 ];
@@ -4032,6 +4033,7 @@ var taplst =
         {
             leftmenu(_7cnvctx)
         }
+            /*
         else if (x > rect.width-40 && y < 40)
         {
             headobj.hide();
@@ -4044,6 +4046,7 @@ var taplst =
             global.bars = global.bars?0:1;
             menuobj.draw()
         }
+            */
         else if (context.aligntoprect &&
             context.aligntoprect.hitest(x, y))
         {
