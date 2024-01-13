@@ -5356,7 +5356,7 @@ menuobj.draw = function()
             slice.thumbimg.onload = function()
             {
                 menuobj.draw();
-	}
+	        }
             
             if (slice.entry)
                 getblobpath(slice.thumbimg, slice);
@@ -5423,7 +5423,7 @@ menuobj.draw = function()
         else
             context.draws++;
 
-        if (resetview || n == visibles.length)
+        if (1)
         {     
 	        var a = new panel.fill(context.backfill);
 	        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
@@ -5431,7 +5431,10 @@ menuobj.draw = function()
             for (var n = 0; n < visibles.length; ++n)
             {
                 var slice = visibles[n];
-		        var y = slice.y.toFixed(PRECIS);
+		        var y = slice.y;
+                if (slice.py)
+                    y = (slice.py+slice.y)/2)
+                y = y.toFixed(PRECIS);
                 context.translate(0, y);
                 context.canvas.draw(context, r, slice, slice.index);
                 context.translate(0, -y);
