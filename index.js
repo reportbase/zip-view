@@ -5404,9 +5404,10 @@ menuobj.draw = function()
             context.translate(0, -slice.y);
         }
 
-        for (var n = 0; n < context.canvas.visibles2.length; ++n)
+        var visibles2 = context.canvas.visibles2;
+        for (var n = 0; n < visibles2.length; ++n)
         {
-            var slice = context.canvas.visibles2[n];
+            var slice = visibles2[n];
             context.translate(0, slice.y);
             context.canvas.draw(context, r, slice, slice.index);
             context.translate(0, -slice.y);
@@ -5414,12 +5415,13 @@ menuobj.draw = function()
     }
     else
     {
-        for (var n = 0; n < context.canvas.visibles.length; ++n)
+        var visibles = context.canvas.visibles;
+        for (var n = 0; n < visibles.length; ++n)
         {
-            var j = context.canvas.visibles[n];
-            context.translate(0, j.y);
-            context.canvas.draw(context, r, j.slice, j.n);
-            context.translate(0, -j.y);
+            var slice = visibles[n];
+            context.translate(0, slice.y);
+            context.canvas.draw(context, r, slice, slice.index);
+            context.translate(0, -slice.y);
         }
     }
     
