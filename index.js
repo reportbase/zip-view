@@ -5300,8 +5300,8 @@ menuobj.draw = function()
         clearInterval(context.swipetimeout)
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
-        resetview()
-        local.set()	
+        resetview();
+        local.set();
     }
 
     var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
@@ -5323,8 +5323,8 @@ menuobj.draw = function()
 
     if (context == _8cnvctx)
     {
-        //var a = new panel.fill(context.backfill);
-        //a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
+        var a = new panel.fill("red");//context.backfill);
+        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
     }
     else
     {
