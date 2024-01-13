@@ -5403,9 +5403,11 @@ menuobj.draw = function()
         for (; n < visibles.length; ++n)
         {
             var slice = visibles[n];
+	        if (typeof slice.py == "udefined")
+                continue;
             var y = slice.y.toFixed(5);
             var py = slice.py.toFixed(5);
-            if (py && y != py)
+            if (y != py)
                 break;
         }
 		
