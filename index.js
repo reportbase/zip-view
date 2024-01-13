@@ -4332,7 +4332,7 @@ var taplst =
             setTimeout(function()
             {
                 menuobj.draw();
-            }, 100);
+            }, 30);
         }
     },
 },
