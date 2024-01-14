@@ -4171,7 +4171,7 @@ var taplst =
                         function(a){return a.id == url.path;});
                     _2cnv.sliceobj.set(k);
                     var j = Math.PI/_2cnv.sliceobj.length();
-                    _2cnv.timeobj.set(j*k+j);
+                    _2cnv.timeobj.set(j*k);
                     
                     var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
                     _2cnv.rotated = [...a, ...a, ...a];
