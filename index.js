@@ -4335,24 +4335,16 @@ var taplst =
         {
             if (canvas.shiftKey)
             {
-                if (x < rect.width/3)
-                {
-                    var k = _8cnv.timeobj.length() / galleryobj.length();
-                    _8cnv.timeobj.rotate(k);
-                }
-                else if (x > rect.width*2/3)
-                {
-                    var k = _8cnv.timeobj.length() / galleryobj.length();
-                    _8cnv.timeobj.rotate(-k);
-                }
+                var k = _8cnv.timeobj.length() / galleryobj.length();
+                _8cnv.timeobj.rotate(x < rect.width/2 ? k : -k);
             }
             else
             {
-		        if (x < 60)
-                    x = 60;
-                else if (x > rect.width-60)
-                    x = rect.width-60;
-                context.canvas.hollyobj.setperc((x-60)/(rect.width-120));
+		        if (x < ALIEXTENT)
+                    x = ALIEXTENT;
+                else if (x > rect.width-ALIEXTENT)
+                    x = rect.width-ALIEXTENT;
+                context.canvas.hollyobj.setperc((x-ALIEXTENT)/(rect.width-ALIEXTENT*2));
             }
     
             menuobj.draw();
