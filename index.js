@@ -4310,12 +4310,13 @@ var taplst =
                 }
                 else
                 {
+			        var current = buttonobj.current();
                     var n = getvisible(x, y);
                     aligncenter(n);
                     buttonobj.reset();
                     
                     //if (context.taptoggle)
-                    if (buttonobj.current() == 0)
+                    if (current == 0)
                     {
                         //context.taptoggle = 0;
                         if (buttonobj.value() > window.innerHeight)
