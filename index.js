@@ -5119,7 +5119,7 @@ var buttonlst =
 
         var lst = user.title?user.title.split("/n"):[];
         lst.push(user.id)
-        a.draw(context, rect, lslt, time);
+        a.draw(context, rect, lst, time);
         context.restore();
     }
 },    
