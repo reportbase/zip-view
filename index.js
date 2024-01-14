@@ -4035,6 +4035,7 @@ var taplst =
 	    if (y < ALIEXTENT && global.headmouse)
         {
             global.headmouse = 0;
+            return;
         }
         
         clearInterval(context.canvas.leftright)
