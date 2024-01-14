@@ -4921,12 +4921,8 @@ var buttonlst =
             0,
         ]);
 
-        var k = 
-	    [
-		    user.title
-        ];
-        
-        a.draw(context, rect, k, time);
+        var lst = user.title.split("/n");
+        a.draw(context, rect, lst, time);
         context.restore();
     }
 },   
@@ -4967,29 +4963,7 @@ var buttonlst =
             name = user.blob.name;
         k.push(name);
         if (user.id)
-            k.push(user.id);
-        
-        /*
-      	var bad =
-    	[
-		    "url",
-	        "folder",
-	        "index",
-	        "func",
-	        "rect",
-	        "isvisible",
-        ];
-
-        var j = Object.keys(user);
-        for (var n = 0; n < j.length; ++n)
-        {
-            var name = j[n];
-            if (bad.findIndex(function(a){return a == name}) >= 0)
-                continue;
-            k.push(user[name]);
-        }
-	    */
-		
+ 		
         a.draw(context, rect, k, time);
         context.restore();
     }
@@ -5143,13 +5117,9 @@ var buttonlst =
             0,
         ]);
 
-        var k = 
-        [
-            user.title,
-            user.id
-        ];
-        
-        a.draw(context, rect, k, time);
+        var lst = user.title.split("/n"),
+        lst.push(user.id)
+        a.draw(context, rect, lslt, time);
         context.restore();
     }
 },    
