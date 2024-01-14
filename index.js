@@ -3437,7 +3437,8 @@ var presslst =
         if (menuobj.value() != _8cnvctx)
             return;
 	    global.bars = 0;
-	    headobj.toggle();
+        buttonobj.reset();
+		headobj.toggle();
         menuobj.draw()
     }
 },
@@ -4333,14 +4334,20 @@ var taplst =
 	    }
         else 
         {
-            if (canvas.shiftKey)
+            var n = getvisible(x, y);
+            var slice = galleryobj.data[n];
+            galleryobj.width = slice.thumbimg.width; 
+            galleryobj.height = slice.thumbimg.height;
+            var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
+                            
+            if (w == window.innerWidth || canvas.shiftKey)
             {
                 var k = _8cnv.timeobj.length() / galleryobj.length();
                 _8cnv.timeobj.rotate(x < rect.width/2 ? k : -k);
             }
             else
             {
-		        if (x < ALIEXTENT)
+                if (x < ALIEXTENT)
                     x = ALIEXTENT;
                 else if (x > rect.width-ALIEXTENT)
                     x = rect.width-ALIEXTENT;
