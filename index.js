@@ -4344,12 +4344,12 @@ var taplst =
                 {
                     context.canvas.hollyobj.setperc(x/rect.width);
                     var k = Math.floor(buttonobj.defaultindex*1.5);
-                    buttonobj.set(k)
+                    buttonobj.set(buttonobj.length()-1)
                 }
                 else
                 {
                     var k = Math.floor(buttonobj.defaultindex*0.5);
-                    buttonobj.set(k)
+                    buttonobj.set(0)
                 }
 
                 menuobj.draw();
