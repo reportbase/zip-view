@@ -3395,7 +3395,7 @@ var mouselst =
     up: function(evt) {},
     move: function(context, rect, x, y) 
     {
-        if (y < ALIEXTENt)
+        if (y < ALIEXTENT)
         {
             if (global.mousebars)
             {
