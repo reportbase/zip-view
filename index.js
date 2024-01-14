@@ -4361,7 +4361,6 @@ var taplst =
             }
     
             menuobj.draw();
-            setTimeout(function(){menuobj.draw();}, 10);
         }
     },
 },
@@ -5244,6 +5243,17 @@ menuobj.draw = function()
     const rect = context.rect();
     if (!rect.width || !rect.height)
         return;
+    
+    if (context == _8cnvctx)
+    {
+        var a = new panel.fill(context.backfill);
+        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
+    }
+    else
+    {
+        context.clear();
+    }
+
     if (context.canvas.slideshow > 0)
     {
         var k = canvas.autodirect;
@@ -5275,16 +5285,6 @@ menuobj.draw = function()
         buttonheight = buttonobj.value();
         buttonheight = buttonheight-buttonheight%2;
         canvas.virtualheight = len * buttonheight * BEAV;
-    }
-
-    if (context == _8cnvctx)
-    {
-        var a = new panel.fill(context.backfill);
-        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
-    }
-    else
-    {
-        context.clear();
     }
     
     canvas.virtualheight = Math.floor(canvas.virtualheight)
@@ -5360,7 +5360,7 @@ menuobj.draw = function()
     var visibles = context.canvas.visibles;
     if (context == _8cnvctx && visibles.length)
     {
-        //visibles.sort((a, b) => a.y-b.y);
+        visibles.sort((a, b) => a.y-b.y);
 	    for (var n = 0; n < visibles.length; ++n)
         {
         	var slice = visibles[n];
@@ -6801,37 +6801,6 @@ function setupmenus()
 {
     _3cnv.sliceobj.data =  
     [
-        {
-            title: "search",
-            func: function()
-            {
-            	url.path = "search";
-                var path = url.searchParams.get("search");
-                fetch(`https://pexels.reportbase5836.workers.dev/?search=${path}`)
-                    .then((response) => jsonhandler(response))
-                    .then((obj) => galleryobj.init(obj));
-            }
-        },
-        {
-            title: "Bearer",
-            func: function()
-            {
-                 fetch(`https://pacific.reportbase5836.workers.dev`,
-                    {
-                        'method': 'GET',
-                          headers: 
-                          {
-                                'Authorization': "AAA",
-                                'X-Email': "hello"  
-                          }
-                    })
-                    .then(response => response.text())
-                    .then(function(response)
-                          {
-                              console.log(response);
-                          })         
-            }
-        },
         {
             title: "Export Gallery",
             func: function()
