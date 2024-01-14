@@ -3395,7 +3395,7 @@ var mouselst =
     up: function(evt) {},
     move: function(context, rect, x, y) 
     {
-        if (y < HEADHEIGHT)
+        if (y < ALIEXTENt)
         {
             if (global.mousebars)
             {
@@ -6790,6 +6790,7 @@ headobj.hide = function()
     if (!headcnv.height)
         return;
     headcnvctx.show(0, 0, window.innerWidth, 0);
+    headobj.draw();	
     var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
     headham.panel = headlst[k];
     var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
