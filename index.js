@@ -803,13 +803,15 @@ var footlst =
 					]),
 					new panel.layers(
 					[
-                        canvas.gallerypatchtoggle?new panel.shrink(new panel.rounded("red", 0, 0, 8, 0),10,10):0,
+                        canvas.gallerypatchtoggle?
+                            new panel.shrink(new panel.rounded("red", 0, 0, 8, 0),10,10):0,
 						new panel.rectangle(canvas.gallerypatchrect),
 						new panel.text(),
 					]),
 					new panel.layers(
 					[
-						canvas.gallerydeletetoggle?new panel.shrink(new panel.rounded("red", 0, 0, 8, 0),10,10):0,
+						canvas.gallerydeletetoggle?
+                            new panel.shrink(new panel.rounded("red", 0, 0, 8, 0),10,10):0,
 						new panel.rectangle(canvas.gallerydeleterect),
 						new panel.text(),
 					]),
@@ -4141,6 +4143,7 @@ var taplst =
                             else
                             {
                                 url = new URL(url.origin);
+                                _2cnv.sliceobj.set(n);
                                 var gallery = _2cnv.sliceobj.value();
                                 window.open(`${url.href}${gallery.id}`,"_self")
                             }
