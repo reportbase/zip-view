@@ -3402,6 +3402,8 @@ var mouselst =
                 global.mousebars = 0;
                 menuobj.draw();
             }
+            if (menuobj.value() != _8cnvctx)
+                return;
             if (headcnv.height && !global.headmouse)
                 return;
             if (global.headmouse)
@@ -4029,6 +4031,12 @@ var taplst =
     name: "GALLERY",
     tap: function(context, rect, x, y)
     {
+        if (y < ALIEXTENT)
+        {
+            headobj.show();
+            menuobj.draw();
+        }
+        
         clearInterval(context.canvas.leftright)
         var canvas = context.canvas;
         canvas.slideshow = 0;
