@@ -4921,7 +4921,7 @@ var buttonlst =
             0,
         ]);
 
-        var lst = user.title.split("/n");
+        var lst = user.title.split("\n");
         a.draw(context, rect, lst, time);
         context.restore();
     }
