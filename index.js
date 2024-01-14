@@ -3395,10 +3395,32 @@ var mouselst =
     up: function(evt) {},
     move: function(context, rect, x, y) 
     {
-        var k = global.mousebars; 
-        global.mousebars = x < 15 || x > rect.width-15 || y > rect.height-15;
-        if (k || global.mousebars)
-	        menuobj.draw();
+        if (y < HEADHEIGHT)
+        {
+            if (global.mousebars)
+            {
+                global.mousebars = 0;
+                menuobj.draw();
+            }
+            if (headcnv.height && !global.headmouse)
+                return;
+            if (global.headmouse)
+                return;
+            global.headmouse = 1;
+            headobj.show()
+        }
+        else
+        {
+            if (global.headmouse)
+            {
+                global.headmouse = 0;
+                headobj.hide();
+            }
+            var k = global.mousebars; 
+            global.mousebars = x < 15 || x > rect.width-15 || y > rect.height-15;
+            if (k || global.mousebars)
+    	        menuobj.draw();
+        }
     },
 }, 
 ];
@@ -6765,6 +6787,8 @@ function closeboss()
 
 headobj.hide = function()
 {
+    if (!headcnv.height)
+        return;
     headcnvctx.show(0, 0, window.innerWidth, 0);
     var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
     headham.panel = headlst[k];
@@ -6776,6 +6800,8 @@ headobj.hide = function()
 
 headobj.show = function()
 {
+    if (headcnv.height)
+        return;
     headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
     var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
     headham.panel = headlst[k];
