@@ -1685,6 +1685,7 @@ buttonobj.reset = function()
         buttonobj.data.push(n);
     
     buttonobj.set(eheight-dheight);
+    buttonobj.defaultindex = buttonobj.current()
 }
 
 function calculateAspectRatioFit(imgwidth, imgheight, rectwidth, rectheight)
@@ -4336,17 +4337,19 @@ var taplst =
             {
                 var n = getvisible(x, y);
                 var slice = galleryobj.data[n];
-                var w = (slice.thumbimg.width / slice.thumbimg.height) * buttonobj.value();
+                galleryobj.width = slice.thumbimg.width; 
+                galleryobj.height = slice.thumbimg.height;
+                var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
                 if (w <= window.innerWidth)
                 {
                     context.canvas.hollyobj.setperc(x/rect.width);
-                    var k = Math.floor(buttonobj.length()*0.75);
+                    var k = Math.floor(buttonobj.defaultindex*1.5);
                     buttonobj.set(k)
                 }
                 else
                 {
-                    var k = Math.floor(buttonobj.length()*0.25);
-                    buttonobj.set(0)
+                    var k = Math.floor(buttonobj.defaultindex*0.5);
+                    buttonobj.set(k)
                 }
 
                 menuobj.draw();
