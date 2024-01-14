@@ -4335,11 +4335,11 @@ var taplst =
         {
             if (canvas.shiftKey)
             {
-		        if (x < 40)
-                    x = 40;
-                else if (x > rect.width-40)
-                    x = rect.width-40;
-                context.canvas.hollyobj.setperc((x-60)/(rect.width-80));
+		        if (x < 60)
+                    x = 60;
+                else if (x > rect.width-60)
+                    x = rect.width-60;
+                context.canvas.hollyobj.setperc((x-60)/(rect.width-120));
                 menuobj.draw();
             }
             else
