@@ -42,8 +42,9 @@ const FOOTSEP = 20;
 const HEADTOP = 80;
 const HEADBOT = 40;
 const FIXEDTIME = 2;
+const BUTTONRADIUS = 16;
 const WRAPROWHEIGHT = 40;
-const ROUNDEDLINEWIDTH = 4;
+const BUTTONBORDER = 4;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
 const FOOTHEIGHT = 80;
 const MAXEXTENT = 10000;
@@ -62,14 +63,14 @@ const LIGHTHUMBFILLL = "rgba(255,125,0,0.25)";
 const HEAVYFILL = "rgba(0,0,0,0.6)";
 const THUMBFILL = "rgba(255,125,0,0.40)";
 const THUMBSTROKE = "rgba(255,255,255,0.4)";
-const SEARCHFRAME = "rgba(255,255,255,0.75)";
+const BUTTONFILL = "rgba(255,255,255,0.75)";
 const TRANSPARENT = "rgba(0,0,0,0)";
 const FILLBAR = "rgba(0,0,0,0.75)";
 const NUBAR = "rgba(255,255,255,0.8)";
 const FILLMENU = "rgba(0,0,0,0.75)";
 const ARROWFILL = "white";
 const SCROLLEXTENT = 16;
-const SEARCHBORDER = 6;
+const BUTTONBORDER = 6;
 const SCROLLMARGIN = 6;
 const DISPLAYMARGIN = 12;
 const SMALLFONT = "bold 16px Archivo";
@@ -971,7 +972,7 @@ var headlst =
                         0,
                         new panel.layers(
                         [
-                            new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12), 
+                            new panel.rounded(HEAVYFILL, BUTTONBORDER, BUTTONFILL, BUTTONRADIUS, BUTTONRADIUS), 
                             new panel.expand(new panel.rectangle(context.bossdisplayrect), 10, 10),
                             new panel.shrink(new panel.text(),10,10),
                         ]),
@@ -1078,7 +1079,7 @@ var bossdisplaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
+                    new panel.rounded(HEAVYFILL, BUTTONBORDER, BUTTONFILL, 12, 12),
                     new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
                     new panel.shrink(new panel.text(),10,10),
                 ]),
@@ -1191,7 +1192,7 @@ var bossdisplaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 8, 8),
+                        new panel.rounded(HEAVYFILL, BUTTONBORDER, BUTTONFILL, 8, 8),
                         new panel.expand(new panel.rectangle(context.zoomrect), 10, 1),
                         new panel.shrink(new panel.currentH(new panel.rounded("white", 
                                 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
@@ -1204,7 +1205,7 @@ var bossdisplaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 8, 8),
+                        new panel.rounded(HEAVYFILL, BUTTONBORDER, BUTTONFILL, 8, 8),
                         new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
                         new panel.shrink(new panel.currentH(new panel.rounded("white", 0, 
                                 TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
@@ -1279,7 +1280,7 @@ var bossdisplaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 8, 8),
+                        new panel.rounded(HEAVYFILL, BUTTONBORDER, BUTTONFILL, 8, 8),
                         new panel.expand(new panel.rectangle(context.zoomrect), 10, 1),
                         new panel.shrink(new panel.currentH(new panel.rounded("white", 
                                 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3),
@@ -1292,7 +1293,7 @@ var bossdisplaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 8, 8),
+                        new panel.rounded(HEAVYFILL, BUTTONBORDER, BUTTONFILL, 8, 8),
                         new panel.expand(new panel.rectangle(context.stretchrect), 10, 0),
                         new panel.shrink(new panel.currentH(new panel.rounded("white", 0, 
                                 TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
@@ -1481,7 +1482,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 8, 8),
+                    new panel.rounded(HEAVYFILL, BUTTONBORDER, BUTTONFILL, 8, 8),
                     new panel.expand(new panel.rectangle(canvas.hollyrect), EXPANDRECT, EXPANDRECT),
                     new panel.shrink(new panel.currentH(
                     new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
@@ -1515,7 +1516,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
+                    new panel.rounded(HEAVYFILL, BUTTONBORDER, BUTTONFILL, 12, 12),
                     new panel.rectangle(context.buttonrect), 
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
@@ -1527,7 +1528,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
+                    new panel.rounded(HEAVYFILL, BUTTONBORDER, BUTTONFILL, 12, 12),
                     new panel.rectangle(context.folderect), 
 			        new panel.colsA([0,0.6,0],
                     [
@@ -1545,7 +1546,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(value.marked?BOOKMARKED:HEAVYFILL, 
-                        ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
+                        BUTTONBORDER, BUTTONFILL, 12, 12),
                     new panel.rectangle(context.bookmarkrect), 
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
@@ -1557,7 +1558,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
+                    new panel.rounded(HEAVYFILL, BUTTONBORDER, BUTTONFILL, 12, 12),
                     new panel.rectangle(context.cursorect),
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
@@ -1569,7 +1570,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, ROUNDEDLINEWIDTH, SEARCHFRAME, 12, 12),
+                    new panel.rounded(HEAVYFILL, BUTTONBORDER, BUTTONFILL, 12, 12),
                     new panel.rectangle(context.pirect),
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
@@ -1885,7 +1886,7 @@ panel.fullscreen = function()
         var a = new panel.layers(
             [
                 new panel.rectangle(context.fullscreenrect),
-                new panel.shrink(new panel.circle(SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.circle(SCROLLNAB, BUTTONFILL, 4), CIRCLEOUT, CIRCLEOUT),
             ]);
 
         a.draw(context, rect, user, time);
@@ -1957,7 +1958,7 @@ panel.home = function()
             [
                 new panel.rectangle(context.homerect),
                 new panel.shrink(new panel.circle(
-                    SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                    SCROLLNAB, BUTTONFILL, 4), CIRCLEOUT, CIRCLEOUT),
                 
                 new panel.cols([18,0,18],
                 [
@@ -2068,7 +2069,7 @@ panel.gallerymenu = function()
             [
                 new panel.rectangle(context.galleryrect),  
                 s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(s ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.circle(s ? TRANSPARENT : SCROLLNAB, BUTTONFILL, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.rows([0, rect.height * 0.20, 0],
                 [
                     0,
@@ -2097,7 +2098,7 @@ panel.download = function()
         [
             new panel.rectangle(context.downloadrect),
             new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? 
-		        TRANSPARENT : FILLBAR, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+		        TRANSPARENT : FILLBAR, BUTTONFILL, 4), CIRCLEOUT, CIRCLEOUT),
             new panel.shrink(new panel.fill(ARROWFILL), 21, 31),
         ]);
 
@@ -2118,7 +2119,7 @@ panel.info = function()
         var a = new panel.layers(
         [
             new panel.rectangle(user.inforect),
-            new panel.shrink(new panel.circle(SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+            new panel.shrink(new panel.circle(SCROLLNAB, BUTTONFILL, 4), CIRCLEOUT, CIRCLEOUT),
             new panel.shrink(new panel.circle("white"), CIRCLEOUT+8, CIRCLEOUT+8),
         ])
 
@@ -2140,7 +2141,7 @@ panel.movepruv = function()
             [
                 new panel.rectangle(user.moveprev),
                 _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : SCROLLNAB, BUTTONFILL, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.arrow( ARROWFILL, 270), 20, 30),
             ]);
 
@@ -2162,7 +2163,7 @@ panel.moveprev = function()
             [
                 new panel.rectangle(context.moveprev),
                 _4cnv.movingpage == -1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.circle(_4cnv.movingpage == -1 ? TRANSPARENT : SCROLLNAB, BUTTONFILL, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.arrow(ARROWFILL, 270), 20, 30),
             ]);
 
@@ -2181,7 +2182,7 @@ panel.movenext = function()
             [
                 new panel.rectangle(context.movenext),
                 _4cnv.movingpage == 1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(_4cnv.movingpage == 1 ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.circle(_4cnv.movingpage == 1 ? TRANSPARENT : SCROLLNAB, BUTTONFILL, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.arrow(ARROWFILL, 90), 20, 30),
             ]);
 
@@ -2200,7 +2201,7 @@ panel.movenuxt = function()
             [
                 new panel.rectangle(user.movenext),
                 _4cnv.movingpage == 1 ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                new panel.shrink(new panel.circle(_4cnv.movingpage == 1 ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.circle(_4cnv.movingpage == 1 ? TRANSPARENT : SCROLLNAB, BUTTONFILL, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new panel.arrow(ARROWFILL, 90), 20, 30),
             ]);
 
@@ -2219,7 +2220,7 @@ panel.closeboss = function()
             [
                 new panel.rectangle(context.closebossrect),
                 new panel.shrink(new panel.circle("rgba(255,0,0,0.8)", TRANSPARENT, 4), CIRCLEIN, CIRCLEIN),
-                new panel.shrink(new panel.circle(TRANSPARENT, SEARCHFRAME, 5), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.circle(TRANSPARENT, BUTTONFILL, 5), CIRCLEOUT, CIRCLEOUT),
                 new panel.text("white", "center", "middle", 0, 0, DEFAULTFONT),
             ]);
 
@@ -2259,7 +2260,7 @@ panel.zoom = function()
             [
                 new panel.rectangle(context.zoomrect),
                 //s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), 16, 16) : 0,
-                new panel.shrink(new panel.circle(SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                new panel.shrink(new panel.circle(SCROLLNAB, BUTTONFILL, 4), CIRCLEOUT, CIRCLEOUT),
                 new panel.shrink(new Panel(), 15, 20),
             ]);
 
@@ -4950,7 +4951,7 @@ var buttonlst =
             0,
             new panel.layers(
             [
-                new panel.rounded(clr, SEARCHBORDER, SEARCHFRAME, 8, ROUND),
+                new panel.rounded(clr, BUTTONBORDER, BUTTONFILL, BUTTONRADIUS, BUTTONRADIUS),
                 new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
             ]),
             0,
@@ -4987,7 +4988,7 @@ var buttonlst =
             0,
             new panel.layers(
             [
-                new panel.rounded(clr, SEARCHBORDER, SEARCHFRAME, 8, 8),
+                new panel.rounded(clr, BUTTONBORDER, BUTTONFILL, BUTTONRADIUS, BUTTONRADIUS),
                 new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
             ]),
             0,
@@ -5049,7 +5050,7 @@ var buttonlst =
             0,
             new panel.layers(
             [
-                new panel.rounded(clr, SEARCHBORDER, SEARCHFRAME, 8, 8),
+                new panel.rounded(clr, BUTTONBORDER, BUTTONFILL, BUTTONRADIUS, BUTTONRADIUS),
                 new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
             ]),
             0,
@@ -5084,7 +5085,7 @@ var buttonlst =
             0,
             new panel.layers(
             [
-                new panel.rounded(clr, SEARCHBORDER, SEARCHFRAME, 8, 8),
+                new panel.rounded(clr, BUTTONBORDER, BUTTONFILL, BUTTONRADIUS, BUTTONRADIUS),
                 new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
             ]),
             0,
@@ -5113,7 +5114,7 @@ var buttonlst =
             0,
             new panel.layers(
             [
-                new panel.rounded(clr, SEARCHBORDER, SEARCHFRAME, 8, 8),
+                new panel.rounded(clr, BUTTONBORDER, BUTTONFILL, BUTTONRADIUS, BUTTONRADIUS),
                 new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
             ]),
             0,
@@ -5141,7 +5142,7 @@ var buttonlst =
             0,
             new panel.layers(
             [
-                new panel.rounded(clr, SEARCHBORDER, SEARCHFRAME, 8, 8),
+                new panel.rounded(clr, BUTTONBORDER, BUTTONFILL, BUTTONRADIUS, BUTTONRADIUS),
                 new panel.shrink(new panel.multitext(e, new panel.text()), 20, 20),
             ]),
             0,
@@ -5171,7 +5172,7 @@ var buttonlst =
             0,
             new panel.layers(
             [
-                new panel.rounded(clr, SEARCHBORDER, SEARCHFRAME, 8, 8),
+                new panel.rounded(clr, BUTTONBORDER, BUTTONFILL, BUTTONRADIUS, BUTTONRADIUS),
                 new panel.shrink(new panel.multitext(e, 
                     new panel.text()), 20, 20),
             ]),
@@ -6554,7 +6555,7 @@ panel.homemenu = function()
                 [
                     new panel.rectangle(context.homemenurect),
                     s ? new panel.shrink(new panel.circle(MENUTAP, TRANSPARENT, 4), CIRCLEIN, CIRCLEIN) : 0,
-                    new panel.shrink(new panel.circle(s ? TRANSPARENT : SCROLLNAB, SEARCHFRAME, 4), CIRCLEOUT, CIRCLEOUT),
+                    new panel.shrink(new panel.circle(s ? TRANSPARENT : SCROLLNAB, BUTTONFILL, 4), CIRCLEOUT, CIRCLEOUT),
                     new panel.cols([0, rect.height * 0.20, 0],
                         [
                             0,
