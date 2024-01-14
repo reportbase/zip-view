@@ -1683,8 +1683,8 @@ buttonobj.reset = function()
     
     for (var n = Math.floor(dheight); n <= Math.floor(bheight); ++n)
         buttonobj.data.push(n);
-    buttonobj.full = eheight-dheight;
-    buttonobj.set(buttonobj.full);
+    
+    buttonobj.set(eheight-dheight);
 }
 
 function calculateAspectRatioFit(imgwidth, imgheight, rectwidth, rectheight)
@@ -4334,7 +4334,10 @@ var taplst =
         {
             if (canvas.shiftKey)
             {
-                if (buttonobj.current() < buttonobj.full)
+                var n = getvisible(x, y);
+                var slice = galleryobj.data[n];
+                var w = (slice.thumbimg.width / slice.thumbimg.height) * buttonobj.value();
+                if (w <= window.innerWidth)
                 {
                     context.canvas.hollyobj.setperc(x/rect.width);
                     var k = Math.floor(buttonobj.length()*0.75);
@@ -4367,10 +4370,8 @@ var taplst =
                     aligncenter(n);
                     buttonobj.reset();
                     
-                    //if (context.taptoggle)
                     if (current == 0)
                     {
-                        //context.taptoggle = 0;
                         if (buttonobj.value() > window.innerHeight)
                         {
                             aligntop();
@@ -4388,7 +4389,6 @@ var taplst =
                     }
                     else
                     {
-                        //context.taptoggle = 1;
                         buttonobj.set(0);
                     }
                     
