@@ -803,7 +803,7 @@ var footlst =
 					]),
 					new panel.layers(
 					[
-                        canvas.gallerpatchtoggle?new panel.rounded("red", 0, 0, 8, 0):0,
+                        canvas.gallerypatchtoggle?new panel.rounded("red", 0, 0, 8, 0):0,
 						new panel.rectangle(canvas.gallerypatchrect),
 						new panel.text(),
 					]),
