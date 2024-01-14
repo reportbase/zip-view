@@ -1683,7 +1683,8 @@ buttonobj.reset = function()
     
     for (var n = Math.floor(dheight); n <= Math.floor(bheight); ++n)
         buttonobj.data.push(n);
-    buttonobj.set(eheight-dheight);
+    buttonobj.full = eheight-dheight;
+    buttonobj.set(buttonobj.full);
 }
 
 function calculateAspectRatioFit(imgwidth, imgheight, rectwidth, rectheight)
@@ -4313,14 +4314,7 @@ var taplst =
         {
             var k = (x - canvas.hollyrect.x) / canvas.hollyrect.width;
             context.canvas.hollyobj.setperc(k);
-            context.canvas.panning = 1;
             menuobj.draw()
-            clearTimeout(context.wheelpanningtime)
-            context.wheelpanningtime = setTimeout(function()
-            {
-                context.canvas.panning = 0;
-                menuobj.draw()
-            }, NUBDELAY);
         }
         else if (context.homerect && context.homerect.hitest(x, y))
         {
@@ -4340,6 +4334,19 @@ var taplst =
         {
             if (canvas.shiftKey)
             {
+                if (buttonobj.current() < buttonobj.full)
+                {
+                    context.canvas.hollyobj.setperc(x/rect.width);
+                    var k = Math.floor(buttonobj.length()*0.75);
+                    buttonobj.set(k)
+                }
+                else
+                {
+                    var k = Math.floor(buttonobj.length()*0.25);
+                    buttonobj.set(k)
+                }
+
+                menuobj.draw();
             }
             else
             {
