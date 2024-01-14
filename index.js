@@ -803,13 +803,13 @@ var footlst =
 					]),
 					new panel.layers(
 					[
-                        canvas.gallerypatchtoggle?new panel.rounded("red", 0, 0, 8, 0):0,
+                        canvas.gallerypatchtoggle?new panel.shrink(new panel.rounded("red", 0, 0, 8, 0),10,10):0,
 						new panel.rectangle(canvas.gallerypatchrect),
 						new panel.text(),
 					]),
 					new panel.layers(
 					[
-						canvas.gallerydeletetoggle?new panel.rounded("red", 0, 0, 8, 0):0,
+						canvas.gallerydeletetoggle?new panel.shrink(new panel.rounded("red", 0, 0, 8, 0),10,10):0,
 						new panel.rectangle(canvas.gallerydeleterect),
 						new panel.text(),
 					]),
@@ -4359,6 +4359,7 @@ var taplst =
         var canvas = context.canvas;   
         if (canvas.gallerypatchrect && canvas.gallerypatchrect.hitest(x, y))
         {
+            canvas.gallerydeletetoggle = 0;
             canvas.gallerypatchtoggle = canvas.gallerypatchtoggle?0:1;
             menuobj.draw();
             return;
@@ -4395,6 +4396,7 @@ var taplst =
         }
         else if (canvas.gallerydeleterect && canvas.gallerydeleterect.hitest(x, y))
         {
+            canvas.gallerypatchtoggle = 0;
             canvas.gallerydeletetoggle = canvas.gallerydeletetoggle?0:1;
             menuobj.draw();
             return;
