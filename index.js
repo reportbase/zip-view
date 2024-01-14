@@ -4081,6 +4081,7 @@ var taplst =
                         var result = results[n];
                         result.func = function(n, x, y)
                         {
+                            _2cnv.sliceobj.set(n);
                             if (_2cnv.gallerypatchtoggle)
                             {
                                 var gallery = _2cnv.sliceobj.value();
@@ -4144,7 +4145,6 @@ var taplst =
                             else
                             {
                                 url = new URL(url.origin);
-                                _2cnv.sliceobj.set(n);
                                 var gallery = _2cnv.sliceobj.value();
                                 window.open(`${url.href}${gallery.id}`,"_self")
                             }
