@@ -4032,6 +4032,12 @@ var taplst =
     name: "GALLERY",
     tap: function(context, rect, x, y)
     {
+	    if (y < ALIEXTENT && headcnv.height != HEADHEIGHT)
+        {
+            headobj.show();
+            global.headmouse = 0;
+        }
+        
         clearInterval(context.canvas.leftright)
         var canvas = context.canvas;
         canvas.slideshow = 0;
@@ -6807,6 +6813,7 @@ headobj.show = function()
     if (headcnv.height)
         return;
     headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+    headobj.draw();
     var k = headlst.findIndex(function(a){return a.name == "GALLERY"});
     headham.panel = headlst[k];
     var k = displaylst.findIndex(function(a){return a.name == "GALLERY"});
