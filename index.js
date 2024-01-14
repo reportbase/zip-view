@@ -4335,15 +4335,6 @@ var taplst =
         {
             if (canvas.shiftKey)
             {
-		        if (x < 60)
-                    x = 60;
-                else if (x > rect.width-60)
-                    x = rect.width-60;
-                context.canvas.hollyobj.setperc((x-60)/(rect.width-120));
-                menuobj.draw();
-            }
-            else
-            {
                 if (x < rect.width/3)
                 {
                     var k = _8cnv.timeobj.length() / galleryobj.length();
@@ -4354,41 +4345,18 @@ var taplst =
                     var k = _8cnv.timeobj.length() / galleryobj.length();
                     _8cnv.timeobj.rotate(-k);
                 }
-                else
-                {
-			        var current = buttonobj.current();
-                    var n = getvisible(x, y);
-                    aligncenter(n);
-                    buttonobj.reset();
-                    
-                    if (current == 0)
-                    {
-                        if (buttonobj.value() > window.innerHeight)
-                        {
-                            aligntop();
-                        }
-                        else
-                        {
-                            for (var n = 0; n < buttonobj.length(); ++n)
-                            {
-                                if (buttonobj.data[n] != window.innerHeight)
-                                    continue;
-                                buttonobj.set(n);
-                                break;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        buttonobj.set(0);
-                    }
-                    
-                    context.canvas.hollyobj.set(0);
-                }
-    
-                menuobj.draw();
-                setTimeout(function(){menuobj.draw();}, 30);
             }
+            else
+            {
+		        if (x < 60)
+                    x = 60;
+                else if (x > rect.width-60)
+                    x = rect.width-60;
+                context.canvas.hollyobj.setperc((x-60)/(rect.width-120));
+            }
+    
+            menuobj.draw();
+            setTimeout(function(){menuobj.draw();}, 30);
         }
     },
 },
