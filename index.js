@@ -4032,11 +4032,9 @@ var taplst =
     name: "GALLERY",
     tap: function(context, rect, x, y)
     {
-	    if (y < ALIEXTENT && headcnv.height != HEADHEIGHT)
+	    if (y < ALIEXTENT && global.headmouse)
         {
             global.headmouse = 0;
-            headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
-            headobj.draw();
         }
         
         clearInterval(context.canvas.leftright)
