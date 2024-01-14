@@ -4355,7 +4355,7 @@ var taplst =
             }
     
             menuobj.draw();
-            setTimeout(function(){menuobj.draw();}, 30);
+            setTimeout(function(){menuobj.draw();}, 10);
         }
     },
 },
