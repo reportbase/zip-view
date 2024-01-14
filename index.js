@@ -3993,23 +3993,6 @@ CanvasRenderingContext2D.prototype.hithumb = function(x, y)
     }
 }
 
-var gallerymenufunc = function(n, x, y)
-{
-    if (n == _2cnv.sliceobj.current())
-    {
-        url = new URL(url.origin);
-        var gallery = _2cnv.sliceobj.value();
-        window.open(`${url.href}${gallery.id}`,"_self")
-    }
-    else
-    {
-        _2cnv.sliceobj.set(n);
-        menuobj.draw();
-    }
-    
-    return false;
-}
-
 var taplst = 
 [
 {
@@ -4036,20 +4019,6 @@ var taplst =
         {
             leftmenu(_7cnvctx)
         }
-            /*
-        else if (x > rect.width-40 && y < 40)
-        {
-            headobj.hide();
-            global.bars = global.bars?0:1;
-            menuobj.draw()
-        }
-        else if (x > rect.width-40 && y > rect.height-40)
-        {
-            headobj.hide();
-            global.bars = global.bars?0:1;
-            menuobj.draw()
-        }
-            */
         else if (context.aligntoprect &&
             context.aligntoprect.hitest(x, y))
         {
@@ -4108,7 +4077,76 @@ var taplst =
                     for (var n = 0; n < results.length; ++n)
                     {
                         var result = results[n];
-                        result.func = gallerymenufunc
+                        result.func = function(n, x, y)
+                        {
+                            if (_2cnv.gallerypatchtoggle)
+                            {
+                                var gallery = _2cnv.sliceobj.value();
+                                if (!gallery)
+                                    return;
+                    			var id = document.getElementById("gallery-patch-id");
+                                var title = document.getElementById("gallery-patch-title");
+                                var prefix = document.getElementById("gallery-patch-prefix");
+                                var json = document.getElementById("gallery-patch-json");
+                                id.value = gallery.id;
+                                title.value = gallery.title;
+                                prefix.value = gallery.prefix;
+                                json.value = gallery.json;
+                                showdialog("gallery-patch", function(image)
+                                {
+                                    const form = new FormData();
+                                    form.append('id', id.value);
+                    		        form.append('title', title.value);
+                                    form.append('prefix', prefix.value);
+                                    form.append('json', json.value);
+                                    fetch(`https://atlanticc.reportbase5836.workers.dev`,
+                                    {
+                                        method: 'PATCH',
+                                        body: form
+                                    })
+                                    .then(function(response)
+                                    {
+                                        gallery.title = title.value;
+                                        gallery.json = json.value;
+                                        gallery.prefix = prefix.value;
+                                    })
+                                })
+                            }
+                            else if (_2cnv.gallerydeletetoggle)
+                            {
+                    			var gallery = _2cnv.sliceobj.value();
+                                var label = document.getElementById("confirm-label");
+                                var input = document.getElementById("confirm-input");
+                    			label.innerHTML = `Confirm delete '${gallery.title}'?`
+                                showdialog("confirm", function(image)
+                                {
+                                    if (input.value != gallery.title)
+                                        return true;
+                                    fetch(`https://atlanticc.reportbase5836.workers.dev/${gallery.id}`,
+                                    {
+                                        method: 'delete'
+                                    })
+                                    .then(res =>
+                                    {
+                                        var n = _2cnv.sliceobj.current()
+                                        _2cnv.sliceobj.data.splice(n,1);
+                    		            delete _2cnv.normal;
+                                        _2cnv.sliceobj.set(0);
+                    		            var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
+                                        _2cnv.rotated = [...a, ...a, ...a];
+                                        menuobj.draw();
+                                    })
+                                });
+                            }
+                            else
+                            {
+                                url = new URL(url.origin);
+                                var gallery = _2cnv.sliceobj.value();
+                                window.open(`${url.href}${gallery.id}`,"_self")
+                            }
+                            
+                            return false;
+                        }
                     }
 
                     results.sort((a, b) => 
@@ -4362,67 +4400,12 @@ var taplst =
             canvas.gallerydeletetoggle = 0;
             canvas.gallerypatchtoggle = canvas.gallerypatchtoggle?0:1;
             menuobj.draw();
-            return;
-            var gallery = _2cnv.sliceobj.value();
-            if (!gallery)
-                return;
-			var id = document.getElementById("gallery-patch-id");
-            var title = document.getElementById("gallery-patch-title");
-            var prefix = document.getElementById("gallery-patch-prefix");
-            var json = document.getElementById("gallery-patch-json");
-            id.value = gallery.id;
-            title.value = gallery.title;
-            prefix.value = gallery.prefix;
-            json.value = gallery.json;
-            showdialog("gallery-patch", function(image)
-            {
-                const form = new FormData();
-                form.append('id', id.value);
-		        form.append('title', title.value);
-                form.append('prefix', prefix.value);
-                form.append('json', json.value);
-                fetch(`https://atlanticc.reportbase5836.workers.dev`,
-                {
-                    method: 'PATCH',
-                    body: form
-                })
-                .then(function(response)
-                {
-                    gallery.title = title.value;
-                    gallery.json = json.value;
-                    gallery.prefix = prefix.value;
-                })
-            })
         }
         else if (canvas.gallerydeleterect && canvas.gallerydeleterect.hitest(x, y))
         {
             canvas.gallerypatchtoggle = 0;
             canvas.gallerydeletetoggle = canvas.gallerydeletetoggle?0:1;
             menuobj.draw();
-            return;
-			var gallery = _2cnv.sliceobj.value();
-            var label = document.getElementById("confirm-label");
-            var input = document.getElementById("confirm-input");
-			label.innerHTML = `Confirm delete '${gallery.title}'?`
-            showdialog("confirm", function(image)
-            {
-                if (input.value != gallery.title)
-                    return true;
-                fetch(`https://atlanticc.reportbase5836.workers.dev/${gallery.id}`,
-                {
-                    method: 'delete'
-                })
-                .then(res =>
-                {
-                    var n = _2cnv.sliceobj.current()
-                    _2cnv.sliceobj.data.splice(n,1);
-		            delete _2cnv.normal;
-                    _2cnv.sliceobj.set(0);
-		            var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
-                    _2cnv.rotated = [...a, ...a, ...a];
-                    menuobj.draw();
-                })
-            });
         }    
         else if (canvas.homeresetrect && 
                  canvas.homeresetrect.hitest(x, y))
