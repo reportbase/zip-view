@@ -4170,8 +4170,9 @@ var taplst =
                     var k = _2cnv.sliceobj.data.findIndex(
                         function(a){return a.id == url.path;});
                     _2cnv.sliceobj.set(k);
-                    var j = Math.PI/_2cnv.sliceobj.length();
-                    _2cnv.timeobj.set(j*k);
+                    var j = Math.PI-(Math.PI/_2cnv.sliceobj.length());
+                    var e = j*k;
+                    _2cnv.timeobj.set(e);
                     
                     var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
                     _2cnv.rotated = [...a, ...a, ...a];
