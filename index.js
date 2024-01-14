@@ -4173,7 +4173,7 @@ var taplst =
                     var j = (Math.PI/_2cnv.sliceobj.length());
                     var e = j*k;
                     var f = Math.PI-e;
-                    var g = k/2;
+                    var g = j/2;
                     var h = f-g;
                     _2cnv.timeobj.set(h);
                     
