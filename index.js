@@ -7663,10 +7663,10 @@ function showdialog(str, func)
         if (evt.key == "Enter")
         {
 		    if (document.activeElement.rows)
-                return;
+                return true;
             dialog.blocked = 1;
             if (func())
-                return;
+                return true;
             dialog.close();
             return true;
         }
