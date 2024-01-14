@@ -5117,7 +5117,7 @@ var buttonlst =
             0,
         ]);
 
-        var lst = user.title?user.title.split("/n"):[];
+        var lst = user.title?user.title.split("\n"):[];
         lst.push(user.id)
         a.draw(context, rect, lst, time);
         context.restore();
