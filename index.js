@@ -4111,6 +4111,7 @@ var taplst =
                                         gallery.title = title.value;
                                         gallery.json = json.value;
                                         gallery.prefix = prefix.value;
+                                        menuobj.draw();
                                     })
                                 })
                             }
@@ -7677,9 +7678,9 @@ function showdialog(str, func)
         if (evt.target.id == `${str}-ok`)
         {
             if (func())
-                return;
+                return true; 
             dialog.close();
-            return false;
+            return true;
         }
         else
         {
