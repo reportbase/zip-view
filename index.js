@@ -4340,7 +4340,7 @@ var taplst =
             galleryobj.height = slice.thumbimg.height;
             var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
             var k = Math.abs(w-window.innerWidth);                
-            if (w < 5 || canvas.shiftKey)
+            if (k < 5 || canvas.shiftKey)
             {
                 var k = _8cnv.timeobj.length() / galleryobj.length();
                 _8cnv.timeobj.rotate(x < rect.width/2 ? k : -k);
