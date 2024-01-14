@@ -5119,6 +5119,7 @@ var buttonlst =
 
         var lst = user.title?user.title.split("\n"):[];
         lst.push(user.id)
+        lst.push(user.time.toFixed(5))
         a.draw(context, rect, lst, time);
         context.restore();
     }
@@ -5326,8 +5327,8 @@ menuobj.draw = function()
             (slice.thumbimg || slice.pad)) || 
 		     context != _8cnvctx)
         {
-            var t = time + (n * (Math.PI / len));
-            var b = Math.tan(t);
+            slice.time = time + (n * (Math.PI / len));
+            var b = Math.tan(slice.time);
             var j = Math.berp(-1, 1, b);
             slice.py = slice.y;
             slice.y = j * canvas.virtualheight;
