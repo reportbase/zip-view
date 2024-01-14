@@ -4034,8 +4034,9 @@ var taplst =
     {
 	    if (y < ALIEXTENT && headcnv.height != HEADHEIGHT)
         {
-            headobj.show();
             global.headmouse = 0;
+            headcnvctx.show(0, 0, window.innerWidth, HEADHEIGHT);
+            headobj.draw();
         }
         
         clearInterval(context.canvas.leftright)
