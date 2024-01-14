@@ -3395,35 +3395,10 @@ var mouselst =
     up: function(evt) {},
     move: function(context, rect, x, y) 
     {
-        if (y < ALIEXTENT)
-        {
-            if (global.mousebars)
-            {
-                global.mousebars = 0;
-                menuobj.draw();
-            }
-            
-            if (menuobj.value() != _8cnvctx)
-                return;
-            if (headcnv.height && !global.headmouse)
-                return;
-            if (global.headmouse)
-                return;
-            global.headmouse = 1;
-            headobj.show()
-        }
-        else
-        {
-            if (global.headmouse)
-            {
-                global.headmouse = 0;
-                headobj.hide();
-            }
-            var k = global.mousebars; 
-            global.mousebars = x < 15 || x > rect.width-15 || y > rect.height-15;
-            if (k || global.mousebars)
-    	        menuobj.draw();
-        }
+        var k = global.mousebars; 
+        global.mousebars = x < 15 || x > rect.width-15 || y > rect.height-15;
+        if (k || global.mousebars)
+            menuobj.draw();
     },
 }, 
 ];
@@ -4032,12 +4007,6 @@ var taplst =
     name: "GALLERY",
     tap: function(context, rect, x, y)
     {
-	    if (y < ALIEXTENT && global.headmouse)
-        {
-            global.headmouse = 0;
-            return;
-        }
-        
         clearInterval(context.canvas.leftright)
         var canvas = context.canvas;
         canvas.slideshow = 0;
