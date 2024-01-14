@@ -5235,25 +5235,19 @@ menuobj.draw = function()
     if (!context)
     	return;
     	
-    var canvas = context.canvas;
+    const canvas = context.canvas;
     var time = canvas.timeobj.value();
-    var slices = canvas.sliceobj.data;
-    var len = slices.length;
-    
+    const slices = canvas.sliceobj.data;
+    const len = slices.length;
     const rect = context.rect();
-    if (!rect.width || !rect.height)
-        return;
     
+    context.clear();
     if (context == _8cnvctx)
     {
         var a = new panel.fill(context.backfill);
         a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
     }
-    else
-    {
-        context.clear();
-    }
-
+    
     if (context.canvas.slideshow > 0)
     {
         var k = canvas.autodirect;
