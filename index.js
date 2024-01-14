@@ -4335,8 +4335,10 @@ var taplst =
         else 
         {
             var n = getvisible(x, y);
+            if (n == -1)
+                return;
             var slice = galleryobj.data[n];
-            galleryobj.width = slice.thumbimg.width; 
+		    galleryobj.width = slice.thumbimg.width; 
             galleryobj.height = slice.thumbimg.height;
             var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
             var k = Math.abs(w-window.innerWidth);                
@@ -4525,7 +4527,7 @@ function getvisible(x, y)
     }
 
     if (k == visibles.length)
-        return;
+        return -1;
     return visibles[k].index;
 }
             
