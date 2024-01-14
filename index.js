@@ -4335,27 +4335,11 @@ var taplst =
         {
             if (canvas.shiftKey)
             {
-                context.canvas.hollyobj.setperc(x/rect.width);
-                menuobj.draw();
-                return;
-                
-                var n = getvisible(x, y);
-                var slice = galleryobj.data[n];
-                galleryobj.width = slice.thumbimg.width; 
-                galleryobj.height = slice.thumbimg.height;
-                var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
-                if (w <= window.innerWidth)
-                {
-                    context.canvas.hollyobj.setperc(x/rect.width);
-                    var k = Math.floor(buttonobj.defaultindex*1.5);
-                    buttonobj.set(buttonobj.length()-1)
-                }
-                else
-                {
-                    var k = Math.floor(buttonobj.defaultindex*0.5);
-                    buttonobj.set(0)
-                }
-
+		        if (x < 40)
+                    x = 40;
+                else if (x > rect.width-40)
+                    x = rect.width-40;
+                context.canvas.hollyobj.setperc((x-60)/(rect.width-80));
                 menuobj.draw();
             }
             else
