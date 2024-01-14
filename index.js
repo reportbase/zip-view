@@ -798,16 +798,18 @@ var footlst =
 				[
 					new panel.layers(
 					[
-						new panel.rectangle(canvas.galleryaddrect),
+                        new panel.rectangle(canvas.galleryaddrect),
 						new panel.text(),
 					]),
 					new panel.layers(
 					[
+                        canvas.gallerpatchtoggle?new panel.rounded("red", 0, 0, 8, 0):0,
 						new panel.rectangle(canvas.gallerypatchrect),
 						new panel.text(),
 					]),
 					new panel.layers(
 					[
+						canvas.gallerydeletetoggle?new panel.rounded("red", 0, 0, 8, 0):0,
 						new panel.rectangle(canvas.gallerydeleterect),
 						new panel.text(),
 					]),
@@ -4357,6 +4359,9 @@ var taplst =
         var canvas = context.canvas;   
         if (canvas.gallerypatchrect && canvas.gallerypatchrect.hitest(x, y))
         {
+            canvas.gallerypatchtoggle = canvas.gallerypatchtoggle?0:1;
+            menuobj.draw();
+            return;
             var gallery = _2cnv.sliceobj.value();
             if (!gallery)
                 return;
@@ -4390,6 +4395,9 @@ var taplst =
         }
         else if (canvas.gallerydeleterect && canvas.gallerydeleterect.hitest(x, y))
         {
+            canvas.gallerydeletetoggle = canvas.gallerydeletetoggle?0:1;
+            menuobj.draw();
+            return;
 			var gallery = _2cnv.sliceobj.value();
             var label = document.getElementById("confirm-label");
             var input = document.getElementById("confirm-input");
