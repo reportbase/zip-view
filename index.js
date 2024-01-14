@@ -4892,7 +4892,7 @@ var buttonlst =
             ]), 20, 20);
 
             a.draw(context, rect, lst, 0);
-	    }
+	}
     }
 },	
 {
@@ -4954,17 +4954,17 @@ var buttonlst =
             0,
         ]);
 
-        var k = [];
+        var lst = [];
         var n = user.index+1;
         var len = galleryobj.length()
-        k.push(`${n} of ${len}`);
+        lst.push(`${n} of ${len}`);
         var name = user.name;
     	if (user.blob && user.blob.name)
             name = user.blob.name;
-        k.push(name);
+        lst.push(name);
         if (user.id)
- 		
-        a.draw(context, rect, k, time);
+ 		    lst.push(user.id);
+        a.draw(context, rect, lst, time);
         context.restore();
     }
 },   	
@@ -5117,7 +5117,7 @@ var buttonlst =
             0,
         ]);
 
-        var lst = user.title.split("/n"),
+        var lst = user.title?user.title.split("/n"):[];
         lst.push(user.id)
         a.draw(context, rect, lslt, time);
         context.restore();
