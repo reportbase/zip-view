@@ -4346,7 +4346,7 @@ var taplst =
                 else
                 {
                     var k = Math.floor(buttonobj.length()*0.25);
-                    buttonobj.set(k)
+                    buttonobj.set(0)
                 }
 
                 menuobj.draw();
