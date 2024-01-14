@@ -4335,6 +4335,10 @@ var taplst =
         {
             if (canvas.shiftKey)
             {
+                context.canvas.hollyobj.setperc(x/rect.width);
+                menuobj.draw();
+                return;
+                
                 var n = getvisible(x, y);
                 var slice = galleryobj.data[n];
                 galleryobj.width = slice.thumbimg.width; 
