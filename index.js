@@ -4173,7 +4173,9 @@ var taplst =
                     var j = (Math.PI/_2cnv.sliceobj.length());
                     var e = j*k;
                     var f = Math.PI-e;
-                    _2cnv.timeobj.set(f);
+                    var g = k/2;
+                    var h = f-g;
+                    _2cnv.timeobj.set(h);
                     
                     var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
                     _2cnv.rotated = [...a, ...a, ...a];
