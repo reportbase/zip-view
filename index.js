@@ -70,6 +70,7 @@ const FILLMENU = "rgba(0,0,0,0.75)";
 const ARROWFILL = "white";
 const SCROLLEXTENT = 16;
 const BUTTONBORDER = 6;
+const BUTTONSMALLBORDER = 4;
 const SCROLLMARGIN = 6;
 const DISPLAYMARGIN = 12;
 const SMALLFONT = "bold 16px Archivo";
@@ -1481,7 +1482,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, BUTTONBORDER, BUTTONFILL, 8, 8),
+                    new panel.rounded(HEAVYFILL, BUTTONSMALLBORDER, BUTTONFILL, 8, 8),
                     new panel.expand(new panel.rectangle(canvas.hollyrect), EXPANDRECT, EXPANDRECT),
                     new panel.shrink(new panel.currentH(
                     new panel.rounded("white", 0, TRANSPARENT, 5, 5), ALIEXTENT, 0), 3, 3)
@@ -1515,7 +1516,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, BUTTONBORDER, BUTTONFILL, 12, 12),
+                    new panel.rounded(HEAVYFILL, BUTTONSMALLBORDER, BUTTONFILL, 12, 12),
                     new panel.rectangle(context.buttonrect), 
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
@@ -1527,7 +1528,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, BUTTONBORDER, BUTTONFILL, 12, 12),
+                    new panel.rounded(HEAVYFILL, BUTTONSMALLBORDER, BUTTONFILL, 12, 12),
                     new panel.rectangle(context.folderect), 
 			        new panel.colsA([0,0.6,0],
                     [
@@ -1545,7 +1546,7 @@ var displaylst =
                 new panel.layers(
                 [
                     new panel.rounded(value.marked?BOOKMARKED:HEAVYFILL, 
-                        BUTTONBORDER, BUTTONFILL, 12, 12),
+                        BUTTONSMALLBORDER, BUTTONFILL, 12, 12),
                     new panel.rectangle(context.bookmarkrect), 
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
@@ -1557,7 +1558,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, BUTTONBORDER, BUTTONFILL, 12, 12),
+                    new panel.rounded(HEAVYFILL, BUTTONSMALLBORDER, BUTTONFILL, 12, 12),
                     new panel.rectangle(context.cursorect),
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
@@ -1569,7 +1570,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, BUTTONBORDER, BUTTONFILL, 12, 12),
+                    new panel.rounded(HEAVYFILL, BUTTONSMALLBORDER, BUTTONFILL, 12, 12),
                     new panel.rectangle(context.pirect),
                     new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
                 ]),
@@ -1583,7 +1584,7 @@ var displaylst =
         a.draw(context, rect, 
         [
             0,
-    		[`\u{25C0}`,bt,`\u{25B6}`],
+    	    [`\u{25C0}`,bt,`\u{25B6}`],
             0,
             [`\u{25C0}`,folders,`\u{25B6}`],
             0,
