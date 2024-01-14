@@ -5123,10 +5123,6 @@ var buttonlst =
 
         var lst = user.title?user.title.split("\n"):[];
         lst.push(user.id)
-        lst.push(user.time.toFixed(5))
-        lst.push(user.base.toFixed(5))
-        lst.push("sssss")
-        lst.push("ddddd")
         a.draw(context, rect, lst, time);
         context.restore();
     }
