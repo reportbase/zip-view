@@ -4235,21 +4235,20 @@ var taplst =
             }
             else
             {
-                var savetime = _8cnv.timeobj.current();
-                var saveheight = _8cnv.virtualheight;
+                var n = getvisible(x,y).index;
+                var saveslice = _8cnv.visibles[n].rect;
                 var savezoom = buttonobj.current();
 		        var zoom = Math.floor(buttonobj.length()*0.85);
 		        if (context.oldzoom)
 			        zoom = context.oldzoom; 	
                 buttonobj.set(savezoom < 5 ? zoom : 0);
-                if (buttonobj.current() == 0)
+                if (buttonobj.current() == 0 && 
+                   savezoom > Math.floor(buttonobj.length()*0.25) )
                     context.oldzoom = savezoom;
                 
                 if (buttonobj.current())
                 {
-			        var e = galleryobj.length() * buttonobj.value();
-                    var d = (e - saveheight) / saveheight; 
-                    _8cnv.timeobj.addperc(-d);//FIXME
+                    var h = Math.PI/_8cnv.virtualheight;
                 }
                 
                 if (x < ALIEXTENT)
@@ -4258,6 +4257,10 @@ var taplst =
                     x = rect.width-ALIEXTENT;
                context.canvas.hollyobj.setperc(
                     (x-ALIEXTENT)/(rect.width-ALIEXTENT*2));
+                menuobj.draw();
+                var n = getvisible(x,y).index;
+                var newrect = _8cnv.visibles[n];
+                console.log(n);
             }
     
             menuobj.draw();
@@ -4420,6 +4423,7 @@ var tapobj = new circular_array("TAP", taplst);
 function getvisible(x, y)
 {
     var visibles = _8cnv.visibles;
+    
     var k;
     for (k = 0; k < visibles.length; k++)
     {
@@ -4430,8 +4434,6 @@ function getvisible(x, y)
             break;
     }
 
-    if (k == visibles.length)
-        return -1;
     return visibles[k].index;
 }
             
