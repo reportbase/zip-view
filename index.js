@@ -4247,7 +4247,8 @@ var taplst =
                 
                 if (buttonobj.current())
                 {
-                    var d = (saveheight - _8cnv.virtualheight) / _8cnv.virtualheight; 
+			        var e = galleryobj.length() * buttonobj.value();
+                    var d = (e - saveheight) / saveheight; 
                     _8cnv.timeobj.addperc(-d);//FIXME
                 }
                 
