@@ -3642,6 +3642,7 @@ var keylst =
             {
                 evt.preventDefault();
                 buttonobj.reset();
+                setpinching(context);
 		        menuobj.draw();    
             }
             else if (key == "f")
