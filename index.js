@@ -3337,7 +3337,6 @@ var presslst =
         if (menuobj.value() != _8cnvctx)
             return;
 	    global.bars = 0;
-        buttonobj.reset();
 		headobj.toggle();
         menuobj.draw()
     }
@@ -4229,21 +4228,15 @@ var taplst =
 	    }
         else 
         {
-            var n = getvisible(x, y);
-            if (n == -1)
-                return;
-            var slice = galleryobj.data[n];
-		    galleryobj.width = slice.thumbimg.width; 
-            galleryobj.height = slice.thumbimg.height;
-            var w = (galleryobj.width / galleryobj.height) * buttonobj.value();
-            var k = Math.abs(w-window.innerWidth);                
-            if (k < 5 || canvas.shiftKey)
+            if (buttonobj.current() < 5)
             {
                 var k = _8cnv.timeobj.length() / galleryobj.length();
                 _8cnv.timeobj.rotate(x < rect.width/2 ? k : -k);
             }
             else
             {
+                buttonobj.set(buttonobj.current() < 5 ? 
+                    Math.floor(buttonobj.length()*0.75)  : 0);
                 if (x < ALIEXTENT)
                     x = ALIEXTENT;
                 else if (x > rect.width-ALIEXTENT)
