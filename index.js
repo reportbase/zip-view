@@ -4248,7 +4248,7 @@ var taplst =
                 if (buttonobj.current())
                 {
                     var d = (saveheight - _8cnv.virtualheight) / _8cnv.virtualheight; 
-                    canvas.timeobj.addperc(-g);//FIXME
+                    _8cnv.timeobj.addperc(-d);//FIXME
                 }
                 
                 if (x < ALIEXTENT)
