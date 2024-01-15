@@ -4235,6 +4235,7 @@ var taplst =
             }
             else
             {
+                var saveheight = buttonobj.value();
                 var savezoom = buttonobj.current();
 		        var zoom = Math.floor(buttonobj.length()*0.85);
 		        if (context.oldzoom)
@@ -4244,10 +4245,11 @@ var taplst =
                     context.oldzoom = savezoom;
                 if (buttonobj.current())
                 {
-                    var e = (zoom-savezoom)/zoom;
+                    var height = buttonobj.height();
+                    var e = (height-saveheight)/saveheight;
                     var f = window.virtualheight*e;
                     var g = Math.PI*f;
-                    canvas.timeobj.add(g);
+                    //canvas.timeobj.add(g);
                 }
                 if (x < ALIEXTENT)
                     x = ALIEXTENT;
