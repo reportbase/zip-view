@@ -4236,7 +4236,7 @@ var taplst =
             else
             {
                 buttonobj.set(buttonobj.current() < 5 ? 
-                    Math.floor(buttonobj.length()*0.75)  : 0);
+                    Math.floor(buttonobj.length()*0.85)  : 0);
                 if (x < ALIEXTENT)
                     x = ALIEXTENT;
                 else if (x > rect.width-ALIEXTENT)
