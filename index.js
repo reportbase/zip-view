@@ -4235,8 +4235,6 @@ var taplst =
             }
             else
             {
-                var n = getvisible(x,y);
-                var saveslice = _8cnv.visibles[n].rect;
                 var savezoom = buttonobj.current();
 		        var zoom = Math.floor(buttonobj.length()*0.85);
 		        if (context.oldzoom)
@@ -4257,10 +4255,6 @@ var taplst =
                     x = rect.width-ALIEXTENT;
                context.canvas.hollyobj.setperc(
                     (x-ALIEXTENT)/(rect.width-ALIEXTENT*2));
-                menuobj.draw();
-                var n = getvisible(x,y);
-                var newrect = _8cnv.visibles[n];
-                console.log(n);
             }
     
             menuobj.draw();
