@@ -2743,25 +2743,25 @@ var wheelst =
     {
         var canvas = context.canvas;
         context.canvas.slideshow = 0;
-	if (ctrl)
+	    if (ctrl)
         {
             var k = delta/300;
             buttonobj.addperc(-k);
             menuobj.draw();
-		return;
-            context.canvas.pinching = 1;
+
+	        context.canvas.pinching = 1;
             clearTimeout(context.pinchingtime)
             context.pinchingtime = setTimeout(function()
             {
                 context.canvas.pinching = 0;
                 menuobj.draw()
-            }, 40);            
+            }, 12);            
         }
         else
         {
 	       if (Math.abs(delta) < DELTA)
 	            return;
-	 	menuobj.updown(context, delta, 60)
+	 	    menuobj.updown(context, delta, 60)
         	if (!clearInterval(context.swipetimeout))
             {
                  context.swipetimeout = setInterval(
@@ -2912,7 +2912,7 @@ var pinchlst =
         {
             context.canvas.pinching = 0;
             menuobj.draw()
-         }, 40);
+         }, 12);
     },
     pinchstart: function(context, rect, x, y)
     {
@@ -3266,108 +3266,12 @@ var panlst =
     leftright: function(context, rect, x, y, type) {},
     pan: function(context, rect, x, y, type)
     {
-        var canvas = context.canvas;
-        context.elst.push({x,y});
-        //if (context.elst.length % 2)
-        //    return;
-        if (canvas.pinching)
-            return;
-        if (context.canvas.isthumb)
-        {
-            x = movingx.update(x);
-            y = movingy.update(y);
-            context.hithumb(x, y);
-            if (y != canvas.lasty)
-                contextobj.reset()
-            else
-                bossobj.draw();
-            canvas.lasty = y;
-        }
-        else if (type == "panleft" || type == "panright")
-        {
-            if (context.istimerect)
-            {
-                var k = (x - context.timerect.x) / context.timerect.width;
-                canvas.timeobj.setperc(1 - k);
-                bossobj.draw()
-            }
-            else if (context.hollyrect &&
-                context.hollyrect.hitest(x, y))
-            {
-                var obj = context.canvas.hollyobj;
-                var k = (x - context.hollyrect.x) / context.hollyrect.width;
-                obj.setperc(1 - k);
-                bossobj.draw()
-            }
-            if (context.iszoomrect)
-            {
-                var k = (x - context.zoomrect.x) / context.zoomrect.width;
-                zoomobj.setperc(k);
-                contextobj.reset()
-            }
-            else if (context.isstretchrect)
-            {
-                var k = (x - context.stretchrect.x) / context.stretchrect.width;
-                stretchobj.setperc(k);
-                contextobj.reset()
-            }
-            else
-            {
-                var e = canvas.startx-x;
-                var k = Math.PI / canvas.virtualwidth
-                k *= e;
-                canvas.timeobj.CURRENT = canvas.timeobj.ANCHOR - k;
-                context.canvas.lastime = -0.0000000000101010101;
-                bossobj.draw();               
-            }
-        }
-        else if (type == "panup" || type == "pandown")
-        {
-            var a = photo.image.width/photo.image.height;
-            var h = canvas.virtualwidth / a;
-            var j = rect.height/h;
-            var e = canvas.starty - y;
-            var k = panvert(rowobj, e*j);
-            if (k == -1)
-                return;
-            if (k == rowobj.anchor())
-                return;
-            rowobj.set(k);
-            contextobj.reset();
-            bossobj.draw()
-        }
     },
     panstart: function(context, rect, x, y)
     {
-        var canvas = context.canvas;
-        canvas.slidestop = 0;
-        canvas.startx = x;
-        canvas.starty = y;
-        rowobj.setanchor(rowobj.current());
-        canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
-        canvas.isthumb = canvas.thumbrect && canvas.thumbrect.hitest(x, y);
-        movingx = new MovingAverage();
-        movingy = new MovingAverage();
-        headobj.draw();
-        context.istimerect = context.timerect && context.timerect.hitest(x, y);
-        context.ishollyrect = context.hollyrect && context.hollyrect.hitest(x, y);
-        context.iszoomrect = context.zoomrect && context.zoomrect.hitest(x, y);
-        context.isstretchrect = context.stretchrect && context.stretchrect.hitest(x, y);
-        contextobj.reset();
     },
     panend: function(context, rect, x, y)
     {
-        var canvas = context.canvas;
-        clearTimeout(context.timepan)
-        canvas.slidestop = 0;
-        canvas.isthumb = 0;
-        delete canvas.timeobj.offset;
-        delete stretchobj.offset;
-        delete zoomobj.offset;
-        delete canvas.startx;
-        delete canvas.starty;
-        delete rowobj.offset;
-        delete canvas.hollyobj.offset;
     }
 }, 
 ];
@@ -3690,27 +3594,13 @@ var keylst =
             else if (key == "-" || key == "[")
             {
                 buttonobj.addperc(-1.0 / 100);
-                context.canvas.pinching = 1;
                 menuobj.draw()               
-                clearTimeout(context.wheeltime)
-                context.wheeltime = setTimeout(function()
-                {
-                    context.canvas.pinching = 0;
-                    menuobj.draw()
-                }, NUBDELAY);
                 evt.preventDefault();
             }
             else if (key == "+" || key == "]" || key == "=")
             {
                 buttonobj.addperc(1.0 / 100);
-                context.canvas.pinching = 1;
                 menuobj.draw()
-                clearTimeout(context.wheeltime)
-                context.wheeltime = setTimeout(function()
-                {
-                    context.canvas.pinching = 0;
-                    menuobj.draw()
-                }, NUBDELAY);
                 evt.preventDefault();
             }
             else if (
