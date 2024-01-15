@@ -1670,9 +1670,7 @@ buttonobj.reset = function()
     var a = w / h;
     buttonobj.data = [];
     var k = window.innerWidth / a;
-    var j = Math.max(Math.min(k*0.5,window.innerHeight/2),180);
-    var dheight = Math.floor(j);
-    var eheight = Math.floor(k);
+    var dheight = Math.floor(k);
     var bheight = h*5;
     var bwidth = bheight*a;
     while (bheight*bwidth > 4000*4000)
@@ -1684,8 +1682,7 @@ buttonobj.reset = function()
     for (var n = Math.floor(dheight); n <= Math.floor(bheight); ++n)
         buttonobj.data.push(n);
     
-    buttonobj.set(eheight-dheight);
-    buttonobj.defaultindex = buttonobj.current()
+    buttonobj.set(0);
 }
 
 function calculateAspectRatioFit(imgwidth, imgheight, rectwidth, rectheight)
@@ -2725,6 +2722,17 @@ var headham = makehammer(headcnvctx, 0.5, 15);
 _4ham.get('pinch').set({enable: true});
 _8ham.get('pinch').set({enable: true});
 
+function setpinching(context)
+{
+    context.canvas.pinching = 1;
+    clearTimeout(context.pinchingtime)
+    context.pinchingtime = setTimeout(function()
+    {
+        context.canvas.pinching = 0;
+        menuobj.draw()
+    }, 12);            
+}
+
 var galleryobj = new circular_array("", 0);
 var wheelst = 
 [
@@ -2748,14 +2756,7 @@ var wheelst =
             var k = delta/300;
             buttonobj.addperc(-k);
             menuobj.draw();
-
-	        context.canvas.pinching = 1;
-            clearTimeout(context.pinchingtime)
-            context.pinchingtime = setTimeout(function()
-            {
-                context.canvas.pinching = 0;
-                menuobj.draw()
-            }, 12);            
+            setpinching(context);
         }
         else
         {
@@ -2906,13 +2907,7 @@ var pinchlst =
             break;
         }
 
-        context.canvas.pinching = 1;
-        clearTimeout(context.pinchingtime)
-        context.pinchingtime = setTimeout(function()
-        {
-            context.canvas.pinching = 0;
-            menuobj.draw()
-         }, 12);
+        setpinching(context);
     },
     pinchstart: function(context, rect, x, y)
     {
@@ -2965,7 +2960,7 @@ var pinchlst =
             clearTimeout(context.pinchtime);
             context.canvas.pinching = 0;
             context.canvas.isthumb = 0;
-        }, 40);
+        }, 12);
     },
 },
 {
@@ -3458,6 +3453,7 @@ var keylst =
                 var k = _8cnv.timeobj.length() / galleryobj.length();
                 _8cnv.timeobj.rotate(k);
                	menuobj.draw()
+                setpinching(context);
             }
             else if (key == "pagedown" || key == "enter" || key == "home")
             {
@@ -3476,6 +3472,7 @@ var keylst =
                 }
 
                 menuobj.draw()
+                setpinching(context);
             }
             else if (
                 key == "arrowup" ||
@@ -3593,12 +3590,14 @@ var keylst =
             }
             else if (key == "-" || key == "[")
             {
+                setpinching(context);
                 buttonobj.addperc(-1.0 / 100);
                 menuobj.draw()               
                 evt.preventDefault();
             }
             else if (key == "+" || key == "]" || key == "=")
             {
+                setpinching(context);
                 buttonobj.addperc(1.0 / 100);
                 menuobj.draw()
                 evt.preventDefault();
@@ -4252,6 +4251,7 @@ var taplst =
             }
     
             menuobj.draw();
+            setpinching(context);
         }
     },
 },
