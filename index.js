@@ -1508,7 +1508,7 @@ var displaylst =
             DISPLAYMARGIN,                 
             WRAPROWHEIGHT,                  
             DISPLAYMARGIN,                 
-            1?-1:WRAPROWHEIGHT,                  
+            0?-1:WRAPROWHEIGHT,                  
             FOOTSEP, 
             SCROLLEXTENT, 
             SCROLLMARGIN
@@ -1569,7 +1569,7 @@ var displaylst =
                 0,
             ]),
 	        0,
-            1?0:new panel.cols([0, rainstep, 0],
+            new panel.cols([0, rainstep, 0],
             [
                 0,
                 new panel.layers(
@@ -4250,7 +4250,7 @@ var taplst =
                     var f = e*(y-rect.height/2);
                     var g = f/canvas.virtualheight;
                     var h = Math.PI*g;
-                    canvas.timeobj.add(-h);//FIXME
+                    //canvas.timeobj.add(-h);//FIXME
                 }
                 if (x < ALIEXTENT)
                     x = ALIEXTENT;
