@@ -4246,9 +4246,9 @@ var taplst =
                 if (buttonobj.current())
                 {
                     var height = buttonobj.value();
-                    var e = (height-saveheight)/saveheight;
+                    var e = 1+((height-saveheight)/saveheight);
                     var f = y-rect.height/2;
-                    var g = f/window.virtualheight;
+                    var g = f/canvas.virtualheight;
                     var h = Math.PI*g*e;
                     canvas.timeobj.add(h);//FIXME
                 }
