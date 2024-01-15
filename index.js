@@ -2753,7 +2753,7 @@ var wheelst =
         context.canvas.slideshow = 0;
 	    if (ctrl)
         {
-            var k = delta/300;
+            var k = delta/100;
             buttonobj.addperc(-k);
             menuobj.draw();
             setpinching(context);
