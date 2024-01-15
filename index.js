@@ -4239,8 +4239,7 @@ var taplst =
 		        var zoom = Math.floor(buttonobj.length()*0.85);
 		        if (context.oldzoom)
 			        zoom = context.oldzoom; 	
-                buttonobj.set(buttonobj.current() < 5 ? 
-                    context.oldzoom : 0);
+                buttonobj.set(savezoom < 5 ? zoom : 0);
                 if (buttonobj.current() == 0)
                     context.oldzoom = savezoom;
                 if (x < ALIEXTENT)
