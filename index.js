@@ -4245,9 +4245,9 @@ var taplst =
                     context.oldzoom = savezoom;
                 if (buttonobj.current())
                 {
-                    var height = buttonobj.height();
+                    var height = buttonobj.value();
                     var e = (height-saveheight)/saveheight;
-                    var f = window.virtualheight*e;
+                    var f = window.innerheight/window.virtualheight/2;
                     var g = Math.PI*f;
                     //canvas.timeobj.add(g);
                 }
