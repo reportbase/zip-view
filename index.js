@@ -21,7 +21,7 @@ url.param = function(key, def)
 
 const HIDE = url.searchParams.get("hide");
 const THEME = url.param("theme");
-const BEAV = url.param("beav", 0.65);
+const BEAV = url.param("beav", 0.63);
 const ADMIN = url.param("admin", 0);
 const DELTA = url.param("delta", 2.5);
 const PRECIS = url.param("precis", 3);
@@ -4235,8 +4235,14 @@ var taplst =
             }
             else
             {
+                var savezoom = buttonobj.current();
+		        var zoom = Math.floor(buttonobj.length()*0.85);
+		        if (context.oldzoom)
+			        zoom = context.oldzoom; 	
                 buttonobj.set(buttonobj.current() < 5 ? 
-                    Math.floor(buttonobj.length()*0.85)  : 0);
+                    context.oldzoom : 0);
+                if (buttonobj.current() == 0)
+                    context.oldzoom = savezoom;
                 if (x < ALIEXTENT)
                     x = ALIEXTENT;
                 else if (x > rect.width-ALIEXTENT)
