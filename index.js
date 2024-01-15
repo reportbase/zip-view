@@ -4235,17 +4235,16 @@ var taplst =
             }
             else
             {
-                var e = window.innerHeight/canvas.virtualheight/2;
                 if (y < rect.height/2)
                 {
-                    var b = rect.height/2-y;
-                    var k = b*e;
+                    var b = (rect.height/2-y)/canvas.virtualheight;
+                    var k = Math.PI*b;
                     _8cnv.timeobj.set(-k)
                 }
                 else
                 {
-                    var b = y-rect.height/2;
-                    var k = b*e;
+                    var b = (y-rect.height/2)/canvas.virtualheight;
+                    var k = Math.PI*b;
                     _8cnv.timeobj.set(k)
                 }
                 
