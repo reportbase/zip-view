@@ -4242,8 +4242,11 @@ var taplst =
                 buttonobj.set(savezoom < 5 ? zoom : 0);
                 if (buttonobj.current() == 0)
                     context.oldzoom = savezoom;
-                var dzoom = (zoom-savezoom)/canvas.virtualheight;
-                canvas.timeobj.add(Math.PI*dzoom);
+                if (buttonobj.current())
+                {
+                    var dzoom = (zoom-savezoom)/canvas.virtualheight;
+                    canvas.timeobj.add(Math.PI*dzoom);
+                }
                 if (x < ALIEXTENT)
                     x = ALIEXTENT;
                 else if (x > rect.width-ALIEXTENT)
