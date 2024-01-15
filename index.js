@@ -4228,7 +4228,7 @@ var taplst =
 	    }
         else 
         {
-            if (buttonobj.current() < 5)
+            if (canvas.shiftKey)
             {
                 var k = _8cnv.timeobj.length() / galleryobj.length();
                 _8cnv.timeobj.rotate(x < rect.width/2 ? k : -k);
