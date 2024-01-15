@@ -4235,29 +4235,30 @@ var taplst =
             }
             else
             {
+                var savetime = _8cnv.timeobj.current();
                 var saveheight = buttonobj.value();
                 var savezoom = buttonobj.current();
 		        var zoom = Math.floor(buttonobj.length()*0.85);
 		        if (context.oldzoom)
 			        zoom = context.oldzoom; 	
-                buttonobj.set(savezoom < 5 ? zoom : 0);
+                //buttonobj.set(savezoom < 5 ? zoom : 0);
                 if (buttonobj.current() == 0)
                     context.oldzoom = savezoom;
+                
                 if (buttonobj.current())
                 {
-                    var height = buttonobj.value();
-                    var e = 1+((height-saveheight)/saveheight);
-                    var f = e*(y-rect.height/2);
-                    var g = f/canvas.virtualheight;
-                    var h = Math.PI*g;
-                    //canvas.timeobj.add(-h);//FIXME
+                    var f = Math.PI/canvas.virtualheight;
+                    var b = y-rect.height/2;
+                    var g = f*b;
+                    canvas.timeobj.add(-g);//FIXME
                 }
+                
                 if (x < ALIEXTENT)
                     x = ALIEXTENT;
                 else if (x > rect.width-ALIEXTENT)
                     x = rect.width-ALIEXTENT;
-                context.canvas.hollyobj.setperc(
-                    (x-ALIEXTENT)/(rect.width-ALIEXTENT*2));
+               // context.canvas.hollyobj.setperc(
+               //     (x-ALIEXTENT)/(rect.width-ALIEXTENT*2));
             }
     
             menuobj.draw();
