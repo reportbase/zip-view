@@ -2748,6 +2748,7 @@ var wheelst =
             var k = delta/300;
             buttonobj.addperc(-k);
             menuobj.draw();
+		return;
             context.canvas.pinching = 1;
             clearTimeout(context.pinchingtime)
             context.pinchingtime = setTimeout(function()
