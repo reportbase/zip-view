@@ -4250,7 +4250,7 @@ var taplst =
                     var f = e*(y-rect.height/2);
                     var g = f/canvas.virtualheight;
                     var h = Math.PI*g;
-                    canvas.timeobj.add(h);//FIXME
+                    canvas.timeobj.add(-h);//FIXME
                 }
                 if (x < ALIEXTENT)
                     x = ALIEXTENT;
