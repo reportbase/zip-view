@@ -4239,13 +4239,13 @@ var taplst =
                 {
                     var b = (rect.height/2-y)/canvas.virtualheight;
                     var k = Math.PI*b;
-                    _8cnv.timeobj.add(k)
+                    _8cnv.timeobj.add(k/2)
                 }
                 else
                 {
                     var b = (y-rect.height/2)/canvas.virtualheight;
                     var k = Math.PI*b;
-                    _8cnv.timeobj.add(-k)
+                    _8cnv.timeobj.add(-k/2)
                 }
                 
                 var savezoom = buttonobj.current();
