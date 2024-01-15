@@ -4235,19 +4235,6 @@ var taplst =
             }
             else
             {
-                if (y < rect.height/2)
-                {
-                    var b = (rect.height/2-y)/canvas.virtualheight;
-                    var k = Math.PI*b;
-                    _8cnv.timeobj.add(k/2)
-                }
-                else
-                {
-                    var b = (y-rect.height/2)/canvas.virtualheight;
-                    var k = Math.PI*b;
-                    _8cnv.timeobj.add(-k/2)
-                }
-                
                 var savezoom = buttonobj.current();
 		        var zoom = Math.floor(buttonobj.length()*0.85);
 		        if (context.oldzoom)
