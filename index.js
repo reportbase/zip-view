@@ -4247,9 +4247,10 @@ var taplst =
                 {
                     var height = buttonobj.value();
                     var e = (height-saveheight)/saveheight;
-                    var f = window.innerheight/window.virtualheight/2;
-                    var g = Math.PI*f;
-                    //canvas.timeobj.add(g);
+                    var f = y-rect.height/2;
+                    var g = f/window.virtualheight;
+                    var h = Math.PI*f;
+                    canvas.timeobj.add(g);
                 }
                 if (x < ALIEXTENT)
                     x = ALIEXTENT;
