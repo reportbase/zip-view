@@ -875,11 +875,8 @@ var footlst =
             new panel.layers(
             [
                 new panel.fill(FOOTBTNCOLOR),
-                new panel.layers(
-                [
-                    new panel.rectangle(canvas.loginrect),
-                    new panel.text(),
-                ])                            
+                new panel.rectangle(canvas.loginrect),
+                new panel.text(),
             ])
         ]);
         
