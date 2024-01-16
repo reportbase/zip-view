@@ -21,7 +21,7 @@ url.param = function(key, def)
 
 const HIDE = url.searchParams.get("hide");
 const THEME = url.param("theme");
-const BEAV = url.param("beav", 0.63);
+const BEAV = url.param("beav", 0.62);
 const ADMIN = url.param("admin", 0);
 const DELTA = url.param("delta", 2.5);
 const PRECIS = url.param("precis", 3);
