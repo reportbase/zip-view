@@ -7311,7 +7311,7 @@ else if (url.searchParams.has("id"))
 }
 else
 {
-	loadgallery("res/max.json");
+	loadgallery("res/chessboard.txt");
 }
 
 function loadgallery(path, origin)
