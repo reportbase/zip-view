@@ -6408,9 +6408,10 @@ window.addEventListener("keydown", function(evt)
         global.bars = 0;
         if (menuobj.value() == _8cnvctx)
 	        headobj.hide();
+        else
+            menuobj.hide();
         if (dialog && dialog.open)
             dialog.close();
-        menuobj.draw();
     }
 
     if (dialog.blocked)
