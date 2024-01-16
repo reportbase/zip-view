@@ -1508,7 +1508,7 @@ var displaylst =
             DISPLAYMARGIN,                 
             WRAPROWHEIGHT,                  
             DISPLAYMARGIN,                 
-            1?-1:WRAPROWHEIGHT,                  
+            WRAPROWHEIGHT,                  
             FOOTSEP, 
             SCROLLEXTENT, 
             SCROLLMARGIN
@@ -1574,9 +1574,9 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded(HEAVYFILL, BUTTONSMALLBORDER, BUTTONFILL, 12, 12),
+                    new panel.rounded("white", BUTTONSMALLBORDER, "black", 12, 12),
                     new panel.rectangle(context.pirect),
-                    new panel.colsA([0,0.6,0],[new panel.text(),new panel.text(),new panel.text()]),
+                    new panel.text("black"),
                 ]),
                 0,
             ]),
@@ -1596,7 +1596,7 @@ var displaylst =
             0,
             [`\u{25C0}`,data,`\u{25B6}`],
             0,
-            [`\u{25C0}`,time,`\u{25B6}`],
+            login.email,
             0,
             0,
             0,
@@ -3944,11 +3944,7 @@ var taplst =
         else if (context.pirect &&
             context.pirect.hitest(x, y))
         {
-			var k = x < rect.width/2;
-            menuobj.updown(context, k?-120:120, 960)
-            if (!context.swipetimeout)
-                context.swipetimeout = 
-                    setInterval(function(){menuobj.draw();}, GALLERYMAIN);
+            googlelogin();
         }            
         else if (
             headcnv.height &&
@@ -6000,10 +5996,12 @@ panel.rotated_text = function()
 };
 
 //panel text
-panel.text = function(color = "white", 
+panel.text = function(
+    color = "white", 
     align = "center", 
     baseline = "middle",
-    unused1 = 0, unused2 = 0, 
+    unused1 = 0, 
+    unused2 = 0, 
     font = DEFAULTFONT)
 {
     this.draw = function(context, rect, user, time)
