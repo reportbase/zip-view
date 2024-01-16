@@ -1508,7 +1508,7 @@ var displaylst =
             DISPLAYMARGIN,                 
             WRAPROWHEIGHT,                  
             DISPLAYMARGIN,                 
-            0?-1:WRAPROWHEIGHT,                  
+            1?-1:WRAPROWHEIGHT,                  
             FOOTSEP, 
             SCROLLEXTENT, 
             SCROLLMARGIN
