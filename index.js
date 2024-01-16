@@ -4235,7 +4235,7 @@ var taplst =
             }
             else
             {
-                buttonobj.addper(x < rect.width/2 ? -0.10 : 0.10);
+                buttonobj.addperc(x < rect.width/2 ? -0.10 : 0.10);
             }
     
             menuobj.draw();
