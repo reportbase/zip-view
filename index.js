@@ -7017,10 +7017,10 @@ function setupmenus()
         {
             var folder = this.folder;
             var n = this.galleryindex 
-            gotoimage(n+1);
+            gotoimage(n);
             headobj.hide();
 		    buttonobj.reset();
-		    aligncenter(n+1);
+		    aligncenter(n);
             aligntop();
 			menuobj.draw();
             return true;
