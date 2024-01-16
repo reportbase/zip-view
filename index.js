@@ -877,7 +877,7 @@ var footlst =
                 new panel.fill(FOOTBTNCOLOR),
                 new panel.layers(
                 [
-                    new panel.rectangle(canvas.showuserrect),
+                    new panel.rectangle(canvas.loginrect),
                     new panel.text(),
                 ])                            
             ])
@@ -887,7 +887,7 @@ var footlst =
         [
             `\u{25C0}   Account`,
             0,
-            "Edit   \u{25B6}",
+            "Logout",
         ], 0);
         
         context.restore();
@@ -918,10 +918,10 @@ var footlst =
 			])
 		]);
 
-	    var str = login.email ? login.email : "Login";
+	    var str = login.email ? "Logout" : "Login";
         a.draw(context, rect, 
 	   	[
-		   `\u{25C0}   ${url.host}`,
+		   `\u{25C0}   Home`,
 			0,
 			str,
 		], 0);
