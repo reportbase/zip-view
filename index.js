@@ -7012,7 +7012,11 @@ function setupmenus()
             return a.folder == k.folder;});
         if (j == -1)
             _5cnv.sliceobj.data.push(k);
-        
+    };
+
+    for (var n = 0; n < _5cnv.sliceobj.data.length; ++n)
+    {
+        var k = _5cnv.sliceobj.data[n]
         k.func = function()
         {
             var folder = this.folder;
@@ -7025,8 +7029,8 @@ function setupmenus()
 			menuobj.draw();
             return true;
         }
-    };
-
+    }
+    
     for (var n = 0; n < galleryobj.data.length; ++n)
     {
         var j = galleryobj.data[n];
