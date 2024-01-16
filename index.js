@@ -4231,11 +4231,17 @@ var taplst =
             if (canvas.shiftKey)
             {
                 var k = _8cnv.timeobj.length() / galleryobj.length();
-                _8cnv.timeobj.rotate(x < rect.width/2 ? k : -k);
+                if (window.portrait())
+                    _8cnv.timeobj.rotate(y < rect.height/2 ? k : -k);
+                else
+                    _8cnv.timeobj.rotate(x < rect.width/2 ? k : -k);
             }
             else
             {
-                buttonobj.addperc(x < rect.width/2 ? -0.10 : 0.10);
+                if (window.portrait())
+                    buttonobj.addperc(y < rect.height/2 ? -0.10 : 0.10);
+                else
+                    buttonobj.addperc(x < rect.width/2 ? -0.10 : 0.10);
             }
     
             menuobj.draw();
@@ -4439,6 +4445,15 @@ bossobj.leftright = function(e)
     bossobj.draw()
 }
 
+window.landscape = function()
+{
+    return window.rect.width > window.rect.height ? 1 : 0;
+}
+window.portrait = function()
+{
+    return window.rect.width < window.rect.height ? 1 : 0;
+}
+
 //bossobj draw
 bossobj.draw = function()
 {
@@ -4559,14 +4574,6 @@ bossobj.reset = function()
         window.leftrect = new rectangle(0, 0, window.innerWidth / 2, window.innerHeight);
         window.rightrect = new rectangle(window.innerWidth / 2, 0, window.innerWidth / 2, window.innerHeight);
         window.rect = new rectangle(0, 0, window.innerWidth, window.innerHeight);
-        window.landscape = function()
-        {
-            return window.rect.width > window.rect.height ? 1 : 0;
-        }
-        window.portrait = function()
-        {
-            return window.rect.width < window.rect.height ? 1 : 0;
-        }
         
         context.show(0, 0, window.innerWidth, menuobj.value() ? 0 : window.innerHeight);
     }
