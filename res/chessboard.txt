@@ -1,0 +1,9 @@
+https://ipfs.filebase.io/ipfs/QmZPBypUyzbiZPEDkVkGBaT1fAzMeA3828KQ1dGtrBYt2z/3d-model 25cfg 90steps 1019seed.png
+https://ipfs.filebase.io/ipfs/QmZPBypUyzbiZPEDkVkGBaT1fAzMeA3828KQ1dGtrBYt2z/3d-model 25cfg 90steps 1020seed.png
+https://ipfs.filebase.io/ipfs/QmZPBypUyzbiZPEDkVkGBaT1fAzMeA3828KQ1dGtrBYt2z/3dmodel 60cfg 180steps 1028seed.png
+https://ipfs.filebase.io/ipfs/QmZPBypUyzbiZPEDkVkGBaT1fAzMeA3828KQ1dGtrBYt2z/3dmodel 60cfg 180steps 1029seed.png
+https://ipfs.filebase.io/ipfs/QmZPBypUyzbiZPEDkVkGBaT1fAzMeA3828KQ1dGtrBYt2z/anim 15cfg 90steps 1000seed.png
+https://ipfs.filebase.io/ipfs/QmZPBypUyzbiZPEDkVkGBaT1fAzMeA3828KQ1dGtrBYt2z/anim 15cfg 90steps 1001seed.png
+https://ipfs.filebase.io/ipfs/QmZPBypUyzbiZPEDkVkGBaT1fAzMeA3828KQ1dGtrBYt2z/anim 15cfg 90steps.png
+https://ipfs.filebase.io/ipfs/QmZPBypUyzbiZPEDkVkGBaT1fAzMeA3828KQ1dGtrBYt2z/anim 25cfg 90steps 1023seed.png
+https://ipfs.filebase.io/ipfs/QmZPBypUyzbiZPEDkVkGBaT1fAzMeA3828KQ1dGtrBYt2z/anim 40cfg 90steps 1026seed.png
