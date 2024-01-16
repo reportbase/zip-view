@@ -4235,26 +4235,7 @@ var taplst =
             }
             else
             {
-                var savezoom = buttonobj.current();
-		        var zoom = Math.floor(buttonobj.length()*0.85);
-		        if (context.oldzoom)
-			        zoom = context.oldzoom; 	
-                buttonobj.set(savezoom < 5 ? zoom : 0);
-                if (buttonobj.current() == 0 && 
-                   savezoom > Math.floor(buttonobj.length()*0.25) )
-                    context.oldzoom = savezoom;
-                
-                if (buttonobj.current())
-                {
-                    var h = Math.PI/_8cnv.virtualheight;
-                }
-                
-                if (x < ALIEXTENT)
-                    x = ALIEXTENT;
-                else if (x > rect.width-ALIEXTENT)
-                    x = rect.width-ALIEXTENT;
-               context.canvas.hollyobj.setperc(
-                    (x-ALIEXTENT)/(rect.width-ALIEXTENT*2));
+                buttonobj.addper(x < rect.width/2 ? -0.10 : 0.10);
             }
     
             menuobj.draw();
