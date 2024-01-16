@@ -7015,6 +7015,7 @@ function setupmenus()
         
         var k = {}
         k.name = j.name
+        k.folder = j.folder;
         k.index = n;
         k.func = function()
         {
