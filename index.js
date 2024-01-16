@@ -6413,6 +6413,7 @@ window.addEventListener("keydown", function(evt)
         if (dialog && dialog.open)
             dialog.close();
         menuobj.draw();
+        headobj.draw();
     }
 
     if (dialog.blocked)
