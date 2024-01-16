@@ -6804,8 +6804,7 @@ function setupmenus()
                     .catch(err => console.error(err));
                 return true;
            }
-        },
-    
+        },    
         {
             title: "Insert All",
             func: function()
@@ -6820,8 +6819,7 @@ function setupmenus()
                     .catch(err => console.error(err));     
                 return true;
             }
-        },
-	    
+        },	    
         {
             title: "sidney",
             func: function()
@@ -6829,8 +6827,7 @@ function setupmenus()
                 window.open("https://zip-view.pages.dev/?sidney");
                 return true;
             }
-        },
-	    
+        },	    
         {
             title: "search",
             func: function()
@@ -6838,8 +6835,7 @@ function setupmenus()
                 window.open("https://zip-view.pages.dev/?search=love");
                 return true;
             }
-        },
-	    
+        },	    
         {
             title: "secret",
             func: function()
@@ -7016,11 +7012,11 @@ function setupmenus()
         var k = {}
         k.name = j.name
         k.folder = j.folder;
-        k.index = n;
+        k.galleryindex = n;
         k.func = function()
         {
             var folder = this.folder;
-            var n = this.index 
+            var n = this.galleryindex 
             gotoimage(n+1);
             headobj.hide();
 		    buttonobj.reset();
