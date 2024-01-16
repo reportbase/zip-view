@@ -862,14 +862,14 @@ var footlst =
         var canvas = context.canvas;
         context.save();     
         canvas.homerect = new rectangle();
-        canvas.showuserrect = new rectangle();
+        canvas.loginrect = new rectangle();
         var a = new panel.rowsA([ALIEXTENT,0,ALIEXTENT],
         [
             new panel.layers(
             [
                 new panel.fill(FOOTBTNCOLOR),
-                new panel.text(),
                 new panel.rectangle(canvas.homerect),
+                new panel.text(),
             ]),
             0,
             new panel.layers(
