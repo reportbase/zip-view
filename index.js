@@ -1670,7 +1670,9 @@ buttonobj.reset = function()
     var a = w / h;
     buttonobj.data = [];
     var k = window.innerWidth / a;
-    var dheight = Math.floor(k);
+    var j = Math.max(Math.min(k*0.5,window.innerHeight/2),180);
+    var dheight = Math.floor(j);
+    var eheight = Math.floor(k);
     var bheight = h*5;
     var bwidth = bheight*a;
     while (bheight*bwidth > 4000*4000)
@@ -1682,7 +1684,7 @@ buttonobj.reset = function()
     for (var n = Math.floor(dheight); n <= Math.floor(bheight); ++n)
         buttonobj.data.push(n);
     
-    buttonobj.set(0);
+    buttonobj.set(eheight-dheight);
 }
 
 function calculateAspectRatioFit(imgwidth, imgheight, rectwidth, rectheight)
