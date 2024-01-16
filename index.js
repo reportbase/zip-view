@@ -1574,7 +1574,7 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    new panel.rounded("white", BUTTONSMALLBORDER, "black", 12, 12),
+                    new panel.rounded("rgba(255,255,255,0.80)", BUTTONSMALLBORDER, "black", 12, 12),
                     new panel.rectangle(context.pirect),
                     new panel.text("black"),
                 ]),
