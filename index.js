@@ -7092,16 +7092,18 @@ function setupmenus()
 function patchuser()
 {
     copytext(login.secret);
+    var id = document.getElementById("user-id");
     var secret = document.getElementById("user-secret");
     var name = document.getElementById("user-name");
     var email = document.getElementById("user-email");
-	name.value = login.name;
+	id.value = login.id;
+    name.value = login.name;
     email.value = login.email;
     secret.value = login.secret;
     showdialog("user", function(image)
     {
         const form = new FormData();
-        form.append('id', login.id);
+        form.append('id', id.value);
         form.append('name', name.value);
         form.append('email', email.value);
         form.append('secret', secret.value);
