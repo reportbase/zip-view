@@ -3936,7 +3936,10 @@ var taplst =
         else if (context.pirect &&
             context.pirect.hitest(x, y))
         {
-            googlelogin();
+            if (login.email)
+                patchuser();
+            else
+                googlelogin();
         }            
         else if (
             headcnv.height &&
@@ -4323,7 +4326,8 @@ var taplst =
         {  
             patchuser();
 	    }
-	    else if (canvas.loginrect && canvas.loginrect.hitest(x, y))
+        else if (canvas.loginrect && 
+                 canvas.loginrect.hitest(x, y))
         {  
     		if (login.id && login.credential)
     		{
@@ -7091,7 +7095,6 @@ function setupmenus()
 
 function patchuser()
 {
-    copytext(login.secret);
     var id = document.getElementById("user-id");
     var secret = document.getElementById("user-secret");
     var name = document.getElementById("user-name");
