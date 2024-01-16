@@ -7001,26 +7001,25 @@ function setupmenus()
     var folder = "";
     for (var n = 0; n < galleryobj.data.length; ++n)
     {
-        var k = galleryobj.data[n];
-        if (!k.folder)
+        var j = galleryobj.data[n];
+        if (!j.folder)
         {
-            k.folder = folder;
+            j.folder = folder;
             continue;
         }
         
-        var j = _5cnv.sliceobj.data.findIndex(function(a){
-            return a.folder == k.folder;});
-        if (j == -1)
-            _5cnv.sliceobj.data.push(k);
-    };
-
-    for (var n = 0; n < _5cnv.sliceobj.data.length; ++n)
-    {
-        var k = _5cnv.sliceobj.data[n]
+        var e = _5cnv.sliceobj.data.findIndex(function(a){
+            return a.folder == j.folder;});
+        if (e >= 0)
+            continue;
+        
+        var k = {}
+        k.name = j.name
+        k.index = n;
         k.func = function()
         {
             var folder = this.folder;
-            var n = galleryobj.data.findIndex(function(a){return a.folder == folder;}); 
+            var n = this.index 
             gotoimage(n+1);
             headobj.hide();
 		    buttonobj.reset();
@@ -7029,7 +7028,9 @@ function setupmenus()
 			menuobj.draw();
             return true;
         }
-    }
+        
+        _5cnv.sliceobj.data.push(k);
+    };
     
     for (var n = 0; n < galleryobj.data.length; ++n)
     {
