@@ -6406,7 +6406,8 @@ window.addEventListener("keydown", function(evt)
     if (key == "escape")
     {
         global.bars = 0;
-	headobj.hide();
+        if (menuobj.value() == _8cnvctx)
+	        headobj.hide();
         if (dialog && dialog.open)
             dialog.close();
         menuobj.draw();
@@ -6421,7 +6422,7 @@ window.addEventListener("keydown", function(evt)
     if (dialog && dialog.open)
         return;
     
-	var context = menuobj.value() ? menuobj.value() : _4cnvctx;
+    var context = menuobj.value() ? menuobj.value() : _4cnvctx;
     return context.canvas.keydown_(evt);
 }, false);
 
