@@ -6413,7 +6413,7 @@ window.addEventListener("keydown", function(evt)
         else
         {
             menuobj.hide();
-            menuobj.setindex(galleryobj.leftctx);
+            menuobj.setindex(_8cnvctx);
         	menuobj.show();
         }
         
