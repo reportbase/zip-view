@@ -6863,7 +6863,7 @@ function setupmenus()
     _7cnv.sliceobj.data = 
     [
     {
-        title: `File Explorer   \u{25B6}\nOpen images and image archives`,
+        title: `File Explorer   \u{25B6}\nLocal file manager`,
         func: function()
         {
             importdialog();
@@ -6871,7 +6871,7 @@ function setupmenus()
         }
     },   
     {
-        title: `Images   \u{25B6}\nShow image list`,
+        title: `Images   \u{25B6}\nDisplay image list`,
         func: function()
         {
 		    leftmenu(_6cnvctx)
@@ -6903,7 +6903,8 @@ function setupmenus()
                return;
             }
 
-            leftmenu(_10cnvctx);
+            patchuser()
+            //leftmenu(_10cnvctx);
             return false;
         },
     }
