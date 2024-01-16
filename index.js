@@ -4449,9 +4449,10 @@ window.landscape = function()
 {
     return window.innerWidth > window.innerHeight;
 }
+
 window.portrait = function()
 {
-    return window.innerHeight < window.innerWidth;
+    return window.innerHeight > window.innerWidth;
 }
 
 //bossobj draw
