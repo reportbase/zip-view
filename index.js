@@ -6407,9 +6407,16 @@ window.addEventListener("keydown", function(evt)
     {
         global.bars = 0;
         if (menuobj.value() == _8cnvctx)
+        {
 	        headobj.hide();
+        }
         else
+        {
             menuobj.hide();
+            menuobj.setindex(galleryobj.leftctx);
+        	menuobj.show();
+        }
+        
         if (dialog && dialog.open)
             dialog.close();
         menuobj.draw();
