@@ -4447,11 +4447,11 @@ bossobj.leftright = function(e)
 
 window.landscape = function()
 {
-    return window.rect.width > window.rect.height ? 1 : 0;
+    return window.innerWidth > window.innerHeight;
 }
 window.portrait = function()
 {
-    return window.rect.width < window.rect.height ? 1 : 0;
+    return window.innerHeight < window.innerWidth;
 }
 
 //bossobj draw
