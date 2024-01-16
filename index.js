@@ -6405,6 +6405,12 @@ window.addEventListener("keydown", function(evt)
     var key = evt.key.toLowerCase();
     if (key == "escape")
     {
+        if (dialog && dialog.open)
+        {
+            dialog.close();
+            return;
+        }
+    
         global.bars = 0;
         if (menuobj.value() == _8cnvctx)
         {
@@ -6417,8 +6423,6 @@ window.addEventListener("keydown", function(evt)
         	menuobj.show();
         }
         
-        if (dialog && dialog.open)
-            dialog.close();
         menuobj.draw();
         headobj.draw();
     }
