@@ -1408,7 +1408,8 @@ var displaylst =
                         0,
                         new panel.layers(
                         [
-                            new panel.circle("rgba(255,255,255,0.75)"),
+                            new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
+			                new panel.arrow(ARROWFILL, 270),
                         ]),
                         0
                     ]),
@@ -1418,7 +1419,8 @@ var displaylst =
                         0,
                         new panel.layers(
                         [
-                            new panel.circle("rgba(255,255,255,0.75)"),
+                            new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
+			                new panel.arrow(ARROWFILL, 270),
                         ]),
                         0
                     ]),
