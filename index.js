@@ -3979,6 +3979,7 @@ var taplst =
             var k = _8cnv.timeobj.length() / galleryobj.length();
             _8cnv.timeobj.rotate(k);
             menuobj.draw()
+			setpinching(context)
         }
         else if (context.nextrect &&
             context.nextrect.hitest(x, y))
@@ -3986,6 +3987,7 @@ var taplst =
             var k = _8cnv.timeobj.length() / galleryobj.length();
             _8cnv.timeobj.rotate(-k);
             menuobj.draw()
+			setpinching(context)	
         }
         else if (context.aligntoprect &&
             context.aligntoprect.hitest(x, y))
