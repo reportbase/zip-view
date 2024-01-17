@@ -1402,69 +1402,72 @@ var displaylst =
 
         if (!headcnv.height)
     	{        
-            if (window.portrait())
+            if (context.showmovebuttons)
             {
-                var a = new panel.rows([60,60,0,60,60],
-                    [
-                        0,
-                        new panel.cols([0,60,0],
+                if (window.portrait())
+                {
+                    var a = new panel.rows([60,60,0,60,60],
                         [
                             0,
-                            new panel.layers(
+                            new panel.cols([0,60,0],
                             [
-                                new panel.rectangle(context.prevrect),
-                                new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
-    			                new panel.shrink(new panel.arrow(ARROWFILL, 0),18,18),
+                                0,
+                                new panel.layers(
+                                [
+                                    new panel.rectangle(context.prevrect),
+                                    new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
+        			                new panel.shrink(new panel.arrow(ARROWFILL, 0),18,18),
+                                ]),
+                                0
                             ]),
-                            0
-                        ]),
-                        0,
-                        new panel.cols([0,60,0],
+                            0,
+                            new panel.cols([0,60,0],
+                            [
+                                0,
+                                new panel.layers(
+                                [
+        				            new panel.rectangle(context.nextrect),
+                                    new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
+        			                new panel.shrink(new panel.arrow(ARROWFILL, 180),18,18),
+                                ]),
+                                0
+                            ]),
+                            0,
+                        ]);
+                    a.draw(context, rect, 0, 0);
+                }
+                else
+                {
+                    var a = new panel.cols([60,60,0,60,60],
                         [
                             0,
-                            new panel.layers(
+                            new panel.rows([0,60,0],
                             [
-    				            new panel.rectangle(context.nextrect),
-                                new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
-    			                new panel.shrink(new panel.arrow(ARROWFILL, 180),18,18),
+                                0,
+                                new panel.layers(
+                                [
+                                    new panel.rectangle(context.prevrect),
+                                    new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
+        			                new panel.shrink(new panel.arrow(ARROWFILL, 270),18,18),
+                                ]),
+                                0
                             ]),
-                            0
-                        ]),
-                        0,
-                    ]);
-                a.draw(context, rect, 0, 0);
-            }
-            else
-            {
-                var a = new panel.cols([60,60,0,60,60],
-                    [
-                        0,
-                        new panel.rows([0,60,0],
-                        [
                             0,
-                            new panel.layers(
+                            new panel.rows([0,60,0],
                             [
-                                new panel.rectangle(context.prevrect),
-                                new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
-    			                new panel.shrink(new panel.arrow(ARROWFILL, 270),18,18),
+                                0,
+                                new panel.layers(
+                                [
+        				            new panel.rectangle(context.nextrect),
+                                    new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
+        			                new panel.shrink(new panel.arrow(ARROWFILL, 90),18,18),
+                                ]),
+                                0
                             ]),
-                            0
-                        ]),
-                        0,
-                        new panel.rows([0,60,0],
-                        [
                             0,
-                            new panel.layers(
-                            [
-    				            new panel.rectangle(context.nextrect),
-                                new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
-    			                new panel.shrink(new panel.arrow(ARROWFILL, 90),18,18),
-                            ]),
-                            0
-                        ]),
-                        0,
-                    ]);
-                a.draw(context, rect, 0, 0);
+                        ]);
+                    a.draw(context, rect, 0, 0);
+                }
             }
             
             var a = new panel.rowsA([0,48,20,NUBHEIGHT],
@@ -3242,6 +3245,7 @@ var panlst =
         canvas.starty = y;
         canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
         canvas.ishollyrect = canvas.hollyrect && canvas.hollyrect.hitest(x, y);
+        context.showmovebuttons = 0;
     },
     panend: function(context, rect, x, y)
     {
@@ -4302,22 +4306,11 @@ var taplst =
 	    }
         else 
         {
-            if (canvas.shiftKey)
-            {
-                var k = _8cnv.timeobj.length() / galleryobj.length();
-                if (window.portrait())
-                    _8cnv.timeobj.rotate(y < rect.height/2 ? k : -k);
-                else
-                    _8cnv.timeobj.rotate(x < rect.width/2 ? k : -k);
-            }
+            context.showmovebuttons = context.showmovebuttons?0:1;
+            if (window.portrait())
+                buttonobj.addperc(y < rect.height/2 ? -0.10 : 0.10);
             else
-            {
-                if (window.portrait())
-                    buttonobj.addperc(y < rect.height/2 ? -0.10 : 0.10);
-                else
-                    buttonobj.addperc(x < rect.width/2 ? -0.10 : 0.10);
-            }
-    
+                buttonobj.addperc(x < rect.width/2 ? -0.10 : 0.10);
             menuobj.draw();
             setpinching(context);
         }
