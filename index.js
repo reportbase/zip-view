@@ -3358,7 +3358,7 @@ var keylst =
             {
                 if (canvas.shiftKey)
                 {
-        		    menuobj.updown(context, -90, 180)
+        		    menuobj.updown(context, -90, 240)
                     if (!context.swipetimeout)
                         context.swipetimeout = 
                             setInterval(function(){menuobj.draw();}, GALLERYMAIN);
@@ -3383,7 +3383,7 @@ var keylst =
                 }
                 else
                 {
-	                menuobj.updown(context, -90, 20)
+	                menuobj.updown(context, -90, 90)
                     if (!context.swipetimeout)
                         context.swipetimeout = 
                             setInterval(function(){menuobj.draw()}, GALLERYMAIN);
@@ -3405,7 +3405,7 @@ var keylst =
             {
                 if (canvas.shiftKey)
                 {
-        		    menuobj.updown(context, 90, 180)
+        		    menuobj.updown(context, 90, 240)
                     if (!context.swipetimeout)
                         context.swipetimeout = 
                             setInterval(function(){menuobj.draw();}, GALLERYMAIN);
@@ -3429,7 +3429,7 @@ var keylst =
                 }
                 else
                 {
-                    menuobj.updown(context, 90, 20)
+                    menuobj.updown(context, 90, 90)
                     if (!context.swipetimeout)
                         context.swipetimeout = 
                             setInterval(function(){menuobj.draw();}, GALLERYMAIN);
@@ -3453,10 +3453,10 @@ var keylst =
             }                
 	        else if (key == "tab")
             {
-     		    headobj.hide();
-                global.bars = global.bars?0:1;
-                menuobj.draw()
-                evt.preventDefault();
+                menuobj.updown(context, canvas.shiftKey?-60:60, 960*2)
+                if (!context.swipetimeout)
+                    context.swipetimeout = 
+                        setInterval(function(){menuobj.draw();}, GALLERYMAIN);
             }
             else if (key == "\\" || key == "/")
             {
