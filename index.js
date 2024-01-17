@@ -3358,7 +3358,7 @@ var keylst =
             {
                 if (canvas.shiftKey)
                 {
-        		    menuobj.updown(context, -120, 960)
+        		    menuobj.updown(context, -90, 180)
                     if (!context.swipetimeout)
                         context.swipetimeout = 
                             setInterval(function(){menuobj.draw();}, GALLERYMAIN);
@@ -3405,7 +3405,7 @@ var keylst =
             {
                 if (canvas.shiftKey)
                 {
-        		    menuobj.updown(context, 120, 960)
+        		    menuobj.updown(context, 90, 180)
                     if (!context.swipetimeout)
                         context.swipetimeout = 
                             setInterval(function(){menuobj.draw();}, GALLERYMAIN);
