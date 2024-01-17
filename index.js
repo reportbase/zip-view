@@ -5043,8 +5043,20 @@ menuobj.draw = function()
     if (canvas.lastcurrent != current || !canvas.normal)
     {
         canvas.lastcurrent = current;
-        var size = Math.ceil(rect.height / buttonheight) + ROTATEANCHORSIAE;
+        var size = Math.ceil(rect.height / buttonheight) + 5;
+        canvas.lastnormal = canvas.normal;
         canvas.normal = util.rotated_list(canvas.rotated, current, size);
+        for (var n = 0; n < canvas.lastnormal.length; ++n)
+        {
+            var e = canvas.lastnormal[n];
+            var f = canvas.normal.findIndex(function(a}{return e == a})
+            if (f >= 0)
+                continue;
+            var n = canvas.normal[f];
+	        var slice = slices[n];
+            delete slice.thumbimg
+            delete slice.thumbfitted;
+        }
     }
 
     context.canvas.visibles = [];
