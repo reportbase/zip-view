@@ -4107,9 +4107,9 @@ var taplst =
         else 
         {
             if (window.portrait())
-                menuobj.updown(context, y < rect.height/2 ? -120 : 120, 960)
+                menuobj.updown(context, y < rect.height/2 ? -90 : 90, 180)
             else
-                menuobj.updown(context, x < rect.width/2 ? 120 : 120, 960)
+                menuobj.updown(context, x < rect.width/2 ? -90 : 90, 180)
             if (!context.swipetimeout)
                 context.swipetimeout = 
                     setInterval(function(){menuobj.draw();}, GALLERYMAIN);
