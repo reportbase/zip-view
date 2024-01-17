@@ -1450,7 +1450,7 @@ var displaylst =
                 [
                     new panel.rounded("rgba(255,255,255,0.80)", BUTTONSMALLBORDER, "black", 12, 12),
                     new panel.rectangle(context.pirect),
-                    new panel.text()
+                    new panel.shrink(new panel.text(), 10, 10),
                 ]),
                 0,
             ]),
