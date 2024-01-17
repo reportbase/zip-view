@@ -5317,9 +5317,9 @@ menuobj.draw = function()
         {
         	var slice = visibles[n];
         	var y = slice.y;
-        	if (slice.py && !canvas.pinching)
-        	    y = (slice.py+slice.y)/2;
-        	y = y.toFixed(PRECIS);
+        	//if (slice.py && !canvas.pinching)
+        	 //   y = (slice.py+slice.y)/2;
+        	//y = y.toFixed(PRECIS);
         	context.translate(0, y);
         	context.canvas.draw(context, r, slice, slice.index);
         	context.translate(0, -y);
