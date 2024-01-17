@@ -1409,7 +1409,7 @@ var displaylst =
                         new panel.layers(
                         [
                             new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
-			                new panel.arrow(ARROWFILL, 270),
+			                new panel.shrink(new panel.arrow(ARROWFILL, 270),20,20),
                         ]),
                         0
                     ]),
@@ -1420,7 +1420,7 @@ var displaylst =
                         new panel.layers(
                         [
                             new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
-			                new panel.arrow(ARROWFILL, 270),
+			                new panel.shrink(new panel.arrow(ARROWFILL, 90),20,20),
                         ]),
                         0
                     ]),
