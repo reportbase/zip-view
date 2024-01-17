@@ -2817,6 +2817,7 @@ var wheelst =
         context.canvas.slideshow = 0;
 	    if (ctrl)
         {
+		    context.showmovebuttons = 0;
             var k = delta/100;
             buttonobj.addperc(-k);
             menuobj.draw();
@@ -2826,6 +2827,7 @@ var wheelst =
         {
 	       if (Math.abs(delta) < DELTA)
 	            return;
+		    context.showmovebuttons = 0;
 	 	    menuobj.updown(context, delta, 60)
         	if (!clearInterval(context.swipetimeout))
             {
@@ -2840,6 +2842,7 @@ var wheelst =
     {
        if (Math.abs(delta) < DELTA)
             return;
+		context.showmovebuttons = 0;
         context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw();
     },
@@ -2975,7 +2978,8 @@ var pinchlst =
     },
     pinchstart: function(context, rect, x, y)
     {
-        delete context.scaleanchor;
+ 		context.showmovebuttons = 0;
+       	delete context.scaleanchor;
         delete context.buttonanchor;
         context.canvas.slideshow = 0;
     },
