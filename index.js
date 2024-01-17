@@ -1544,7 +1544,7 @@ buttonobj.reset = function()
     var a = w / h;
     buttonobj.data = [];
     var k = window.innerWidth / a;
-    var j = Math.max(Math.min(k*0.5,window.innerHeight/2),180);
+    var j = k;//Math.max(Math.min(k*0.5,window.innerHeight/2),180);
     var dheight = Math.floor(j);
     var eheight = Math.floor(k);
     var bheight = h*5;
@@ -4106,13 +4106,14 @@ var taplst =
 	    }
         else 
         {
-            context.showmovebuttons = 1;
             if (window.portrait())
-                buttonobj.addperc(y < rect.height/2 ? -0.05 : 0.05);
+                menuobj.updown(context, y < rect.height/2 ? -120 : 120, 960)
+                buttonobj.addperc( ? -0.05 : 0.05);
             else
-                buttonobj.addperc(x < rect.width/2 ? -0.05 : 0.05);
-            menuobj.draw();
-            setpinching(context);
+                menuobj.updown(context, x < rect.width/2 ? 120 : 120, 960)
+            if (!context.swipetimeout)
+                context.swipetimeout = 
+                    setInterval(function(){menuobj.draw();}, GALLERYMAIN);
         }
     },
 },
