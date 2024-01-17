@@ -4108,7 +4108,6 @@ var taplst =
         {
             if (window.portrait())
                 menuobj.updown(context, y < rect.height/2 ? -120 : 120, 960)
-                buttonobj.addperc( ? -0.05 : 0.05);
             else
                 menuobj.updown(context, x < rect.width/2 ? 120 : 120, 960)
             if (!context.swipetimeout)
