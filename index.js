@@ -3457,6 +3457,7 @@ var keylst =
                 if (!context.swipetimeout)
                     context.swipetimeout = 
                         setInterval(function(){menuobj.draw();}, GALLERYMAIN);
+                evt.preventDefault();
             }
             else if (key == "\\" || key == "/")
             {
