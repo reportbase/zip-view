@@ -1277,79 +1277,11 @@ var displaylst =
         var k = Math.floor(index);
         var slice = canvas.sliceobj.data[k];
         var value = galleryobj.data[k];
-	    if (!value)
+	if (!value)
             return;
 
         if (!headcnv.height)
     	{        
-            if (context.showmovebuttons)
-            {
-                if (window.portrait())
-                {
-                    var a = new panel.rows([60,60,0,60,60],
-                        [
-                            0,
-                            new panel.cols([0,60,0],
-                            [
-                                0,
-                                new panel.layers(
-                                [
-                                    new panel.rectangle(context.prevrect),
-                                    new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
-        			                new panel.shrink(new panel.arrow(ARROWFILL, 0),20,20),
-                                ]),
-                                0
-                            ]),
-                            0,
-                            new panel.cols([0,60,0],
-                            [
-                                0,
-                                new panel.layers(
-                                [
-        				            new panel.rectangle(context.nextrect),
-                                    new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
-        			                new panel.shrink(new panel.arrow(ARROWFILL, 180),20,20),
-                                ]),
-                                0
-                            ]),
-                            0,
-                        ]);
-                    a.draw(context, rect, 0, 0);
-                }
-                else
-                {
-                    var a = new panel.cols([60,60,0,60,60],
-                        [
-                            0,
-                            new panel.rows([0,60,0],
-                            [
-                                0,
-                                new panel.layers(
-                                [
-                                    new panel.rectangle(context.prevrect),
-                                    new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
-        			                new panel.shrink(new panel.arrow(ARROWFILL, 270),20,20),
-                                ]),
-                                0
-                            ]),
-                            0,
-                            new panel.rows([0,60,0],
-                            [
-                                0,
-                                new panel.layers(
-                                [
-        				            new panel.rectangle(context.nextrect),
-                                    new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
-        			                new panel.shrink(new panel.arrow(ARROWFILL, 90),20,20),
-                                ]),
-                                0
-                            ]),
-                            0,
-                        ]);
-                    a.draw(context, rect, 0, 0);
-                }
-            }
-            
             var a = new panel.rowsA([0,48,20,NUBHEIGHT],
             [
                 0,
@@ -1518,7 +1450,7 @@ var displaylst =
                 [
                     new panel.rounded("rgba(255,255,255,0.80)", BUTTONSMALLBORDER, "black", 12, 12),
                     new panel.rectangle(context.pirect),
-                    new panel.cols([0,0.8,0],[0,new panel.text(),0]),
+                    new panel.shrink(new panel.text(),10,10),
                 ]),
                 0,
             ]),
