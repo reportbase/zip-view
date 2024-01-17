@@ -5054,8 +5054,7 @@ menuobj.draw = function()
                 var k = canvas.normal.findIndex(function(a){return a == e});
     		    if (k >= 0)
     			    continue;
-    		    var b = canvas.normal[e];
-    			var slice = slices[b];
+    		    var slice = slices[e];
     		    delete slice.thumbimg
     		    delete slice.thumbfitted;
     		}
