@@ -1044,127 +1044,7 @@ var bossdisplaylst =
     title: "Thumbnail",
     draw: function(context, r, user, time)
     {
-        var canvas = context.canvas;
-        context.pagerect = new rectangle();
-        
-        if (
-            !photo.image ||
-            !photo.image.complete ||
-            !photo.image.naturalHeight)
-            return;
 
-        var w = Math.min(320, r.width - 100);
-        var j = window.innerWidth - r.width >= 180;
-
-        var index = galleryobj.current();
-	    var value = galleryobj.value();
-        var data = 
-        [
-            `${index+1} of ${galleryobj.length()}`,
-            `${photo.image.width} x ${photo.image.height}`,
-            value.blob?value.blob.name:value.name,
-        ];
-
-        var str = data[context.infobj.current()];
-        const rainstep = Math.min(320,window.innerWidth-60);
-    
-        var a = new panel.rowsA([HEADTOP, HEADBOT, 0, 
-                             WRAPROWHEIGHT, 
-                             20],
-        [
-            0,
-            0,
-            0,
-            new panel.cols([0, rainstep, 0],
-            [
-                0,
-                new panel.layers(
-                [
-                    new panel.rounded(HEAVYFILL, BUTTONBORDER, BUTTONFILL, 12, 12),
-                    new panel.expand(new panel.rectangle(context.pagerect), 10, 10),
-                    new panel.shrink(new panel.text(),10,10),
-                ]),
-                0,
-            ]),
-            0,
-        ]);
-    
-        if (headcnv.height)
-        a.draw(context, rect,
-        [
-            0,
-            0,
-            0,
-            str,
-            0,
-        ]);
-
-        var he = heightobj;
-        var b = Math.berp(0, he.length() - 1, he.current());
-        var height = Math.lerp(90, rect.height - 180, b);
-        if (height > 320)
-            height = 320;
-        var width = Math.lerp(90, rect.width - 80, b);
-        var r = calculateAspectRatioFit(photo.image.width, photo.image.height, width, height);
-        var h = r.height;
-        var w = r.width;
-        var x = Math.floor(Math.nub(positxobj.value(), positxobj.length(), w, rect.width));
-        var y = Math.floor(Math.nub(posityobj.value(), posityobj.length(), h, rect.height));
-        if (!headcnv.height)
-            return;
-        canvas.thumbrect = new rectangle(x, y, w, h);
-        var r = canvas.thumbrect;
-        context.save();
-        context.shadowOffsetX = 0;
-        context.shadowOffsetY = 0;
-        var blackfill = new panel.fill(THUMBTRANSPARENT);
-        blackfill.draw(context, canvas.thumbrect, 0, 0);
-    
-        var whitestroke = new panel.stroke(THUMBSTROKE, THUMBORDER);
-        whitestroke.draw(context, r, 0, 0);
-        var region = new Path2D();
-        region.rect(x, y, w, h);
-        context.clip(region);
-
-        var ww = Math.max(30, (rect.width / canvas.virtualwidth) * w);
-        var stretch = stretchobj.value();
-        if (stretch < 50)
-            stretch = (50 - stretchobj.value()) / 100;
-        else
-            stretch = (stretchobj.value() - 50) / 100;
-        stretch = 1 - stretch;
-        ww *= stretch;
-
-        var b = Math.berp(0, photo.image.height, canvas.imageheight);
-        var hh = Math.lerp(0, h, b);
-        var b = Math.berp(0, photo.image.height, _4cnv.nuby);
-        var yy = y + Math.lerp(0, h, b);
-        var jj = canvas.timeobj.berp();
-        var bb = w * (1 - jj);
-        var xx = x + bb - ww / 2;
-        context.lineWidth = THUMBORDER;
-        var r = new rectangle(xx, yy, ww, hh);
-        canvas.selectrect = []
-        canvas.selectrect.push(r);
-        var blackfill = new panel.fill("rgba(0,0,0,0.2)");
-        blackfill.draw(context, r, 0, 0);
-        whitestroke.draw(context, r, 0, 0);
-        if (xx > x) //leftside
-        {
-            var r = new rectangle(xx - w, yy, ww, hh);
-            canvas.selectrect.push(r);
-            blackfill.draw(context, r, 0, 0);
-            whitestroke.draw(context, r, 0, 0);
-        }
-        else if (xx < x) //right side
-        {
-            var r = new rectangle(w + xx, yy, ww, hh);
-            canvas.selectrect.push(r);
-            blackfill.draw(context, r, 0, 0);
-            whitestroke.draw(context, r, 0, 0);
-        }
-
-        context.restore();
     }
 },
 {
@@ -1638,7 +1518,7 @@ var displaylst =
                 [
                     new panel.rounded("rgba(255,255,255,0.80)", BUTTONSMALLBORDER, "black", 12, 12),
                     new panel.rectangle(context.pirect),
-                    new panel.text("black"),
+                    new panel.cols([0,0.8,0],[0,new panel.text(),0]),
                 ]),
                 0,
             ]),
