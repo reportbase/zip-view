@@ -1416,7 +1416,7 @@ var displaylst =
                                 [
                                     new panel.rectangle(context.prevrect),
                                     new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
-        			                new panel.shrink(new panel.arrow(ARROWFILL, 0),18,18),
+        			                new panel.shrink(new panel.arrow(ARROWFILL, 0),20,20),
                                 ]),
                                 0
                             ]),
@@ -1428,7 +1428,7 @@ var displaylst =
                                 [
         				            new panel.rectangle(context.nextrect),
                                     new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
-        			                new panel.shrink(new panel.arrow(ARROWFILL, 180),18,18),
+        			                new panel.shrink(new panel.arrow(ARROWFILL, 180),20,20),
                                 ]),
                                 0
                             ]),
@@ -1448,7 +1448,7 @@ var displaylst =
                                 [
                                     new panel.rectangle(context.prevrect),
                                     new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
-        			                new panel.shrink(new panel.arrow(ARROWFILL, 270),18,18),
+        			                new panel.shrink(new panel.arrow(ARROWFILL, 270),20,20),
                                 ]),
                                 0
                             ]),
