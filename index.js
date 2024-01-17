@@ -1410,7 +1410,7 @@ var displaylst =
                         0,
                         new panel.layers(
                         [
-                            new panel.rectangle(canvas.nextrect),
+                            new panel.rectangle(context.prevrect),
                             new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
 			                new panel.shrink(new panel.arrow(ARROWFILL, 270),18,18),
                         ]),
@@ -1422,7 +1422,7 @@ var displaylst =
                         0,
                         new panel.layers(
                         [
-				            new panel.rectangle(canvas.nextrect),
+				            new panel.rectangle(context.nextrect),
                             new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
 			                new panel.shrink(new panel.arrow(ARROWFILL, 90),18,18),
                         ]),
