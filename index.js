@@ -4308,9 +4308,9 @@ var taplst =
         {
             context.showmovebuttons = 1;
             if (window.portrait())
-                buttonobj.addperc(y < rect.height/2 ? -0.10 : 0.10);
+                buttonobj.addperc(y < rect.height/2 ? -0.05 : 0.05);
             else
-                buttonobj.addperc(x < rect.width/2 ? -0.10 : 0.10);
+                buttonobj.addperc(x < rect.width/2 ? -0.05 : 0.05);
             menuobj.draw();
             setpinching(context);
         }
