@@ -1377,6 +1377,8 @@ var displaylst =
         var canvas = context.canvas;
         context.save();
         canvas.hollyrect = new rectangle();
+        canvas.prevrect = new rectangle();
+        a = new rectangle();
         canvas.holly2rect = new rectangle();
         context.folderect = new rectangle();
         context.topmoverect = new rectangle();
@@ -1408,8 +1410,9 @@ var displaylst =
                         0,
                         new panel.layers(
                         [
+                            new panel.rectangle(canvas.nextrect),
                             new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
-			                new panel.shrink(new panel.arrow(ARROWFILL, 270),20,20),
+			                new panel.shrink(new panel.arrow(ARROWFILL, 270),18,18),
                         ]),
                         0
                     ]),
@@ -1419,8 +1422,9 @@ var displaylst =
                         0,
                         new panel.layers(
                         [
+				            new panel.rectangle(canvas.nextrect),
                             new panel.circle("rgba(0,0,0,0.65)","rgba(255,255,255,0.65)",5),
-			                new panel.shrink(new panel.arrow(ARROWFILL, 90),20,20),
+			                new panel.shrink(new panel.arrow(ARROWFILL, 90),18,18),
                         ]),
                         0
                     ]),
@@ -3484,13 +3488,11 @@ var keylst =
                     aligncenter(0)
                     if (buttonobj.value() > window.innerHeight)
                         aligntop();
-                    menuobj.draw();
                 }
                 else
                 {
                     var k = _8cnv.timeobj.length() / galleryobj.length();
                     _8cnv.timeobj.rotate(-k);
-                    menuobj.draw();
                 }
 
                 menuobj.draw()
@@ -3936,6 +3938,20 @@ var taplst =
             headcnvctx.homemenurect.hitest(x, y))
         {
             leftmenu(_7cnvctx)
+        }
+        else if (context.prevrect &&
+            context.prevrect.hitest(x, y))
+        {
+            var k = _8cnv.timeobj.length() / galleryobj.length();
+            _8cnv.timeobj.rotate(k);
+            menuobj.draw()
+        }
+        else if (context.nextrect &&
+            context.nextrect.hitest(x, y))
+        {
+            var k = _8cnv.timeobj.length() / galleryobj.length();
+            _8cnv.timeobj.rotate(-k);
+            menuobj.draw()
         }
         else if (context.aligntoprect &&
             context.aligntoprect.hitest(x, y))
