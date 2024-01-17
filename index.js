@@ -4306,7 +4306,7 @@ var taplst =
 	    }
         else 
         {
-            context.showmovebuttons = context.showmovebuttons?0:1;
+            context.showmovebuttons = 1;
             if (window.portrait())
                 buttonobj.addperc(y < rect.height/2 ? -0.10 : 0.10);
             else
