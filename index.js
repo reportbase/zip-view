@@ -1450,7 +1450,7 @@ var displaylst =
                 [
                     new panel.rounded("rgba(255,255,255,0.80)", BUTTONSMALLBORDER, "black", 12, 12),
                     new panel.rectangle(context.pirect),
-                    new panel.shrink(new panel.text(),10,10),
+                    new panel.text()
                 ]),
                 0,
             ]),
@@ -3792,22 +3792,6 @@ var taplst =
             headcnvctx.homemenurect.hitest(x, y))
         {
             leftmenu(_7cnvctx)
-        }
-        else if (context.prevrect &&
-            context.prevrect.hitest(x, y))
-        {
-            var k = _8cnv.timeobj.length() / galleryobj.length();
-            _8cnv.timeobj.rotate(k);
-            menuobj.draw()
-			setpinching(context)
-        }
-        else if (context.nextrect &&
-            context.nextrect.hitest(x, y))
-        {
-            var k = _8cnv.timeobj.length() / galleryobj.length();
-            _8cnv.timeobj.rotate(-k);
-            menuobj.draw()
-			setpinching(context)	
         }
         else if (context.aligntoprect &&
             context.aligntoprect.hitest(x, y))
