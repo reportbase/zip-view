@@ -1377,8 +1377,8 @@ var displaylst =
         var canvas = context.canvas;
         context.save();
         canvas.hollyrect = new rectangle();
-        canvas.prevrect = new rectangle();
-        canvas.nextrect = new rectangle();
+        context.prevrect = new rectangle();
+        context.nextrect = new rectangle();
         canvas.holly2rect = new rectangle();
         context.folderect = new rectangle();
         context.topmoverect = new rectangle();
