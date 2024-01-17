@@ -1400,6 +1400,33 @@ var displaylst =
 
         if (!headcnv.height)
     	{        
+            var a = new panel.cols([60,60,0,60,60],
+                [
+                    0,
+                    new panel.rows([0,60,0],
+                    [
+                        0,
+                        new panel.layers(
+                        [
+                            new panel.circle("rgba(255,255,255,0.75)"),
+                        ]),
+                        0
+                    ]),
+                    0,
+                    new panel.rows([0,60,0],
+                    [
+                        0,
+                        new panel.layers(
+                        [
+                            new panel.circle("rgba(255,255,255,0.75)"),
+                        ]),
+                        0
+                    ]),
+                    0,
+                ]);
+
+            a.draw(context, rect, 0, 0);
+            
             var a = new panel.rowsA([0,48,20,NUBHEIGHT],
             [
                 0,
