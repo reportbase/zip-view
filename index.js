@@ -1244,7 +1244,7 @@ var displaylst =
                 0,
                 0,
                 0,
-                1?-1:new panel.layers(
+                new panel.layers(
                 [
                     (global.bars||global.mousebars)?
                         new panel.cols([CORNEREXT,0,CORNEREXT],
@@ -1334,7 +1334,7 @@ var displaylst =
             ])
         ])
 
-        a.draw(context, rect, context.canvas.hollyobj, 0);
+        //a.draw(context, rect, context.canvas.hollyobj, 0);
         
         var a = new panel.rowsA(
         [
