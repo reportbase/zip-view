@@ -1294,7 +1294,7 @@ var displaylst =
                         0,
                         new panel.layers(
                         [
-                            new panel.rounded(GALLFILL, "rgba(255,255,255,0.75)", 3, 6, 6),    
+                            new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),    
                             new panel.rectangle(canvas.holly2rect), 
                             new panel.shrink(new panel.currentH(
                                 new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
@@ -1319,9 +1319,10 @@ var displaylst =
                 0,                      
                 new panel.colsA([5,NUBHEIGHT, 0, NUBHEIGHT, 5],
                 [
+                    0,
                     new panel.layers(
                     [
-                        new panel.rounded(GALLFILL, "rgba(255,255,255,0.75)", 3, 6, 6),  
+                        new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),  
                         new panel.rectangle(context.button2rect),
                         new panel.shrink(new panel.currentV(
                             new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
@@ -1329,11 +1330,12 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
-                        new panel.rounded(GALLFILL, "rgba(255,255,255,0.75)", 3, 6, 6),  
+                        new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),  
                         new panel.rectangle(canvas.timerect), 
                         new panel.shrink(new panel.currentV(
                             new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 1), 2, 2),
                     ]),
+                    0,
                 ]),
                 0, 
             ]);
