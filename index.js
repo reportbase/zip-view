@@ -1549,7 +1549,7 @@ buttonobj.reset = function()
     var eheight = Math.floor(k);
     var bheight = h*5;
     var bwidth = bheight*a;
-    while (bheight*bwidth > 3000*3000)
+    while (bheight*bwidth > 4000*3000)
     {
         bheight--;
         bwidth = bheight*a;
@@ -4578,7 +4578,7 @@ var buttonlst =
 
             if (b > b2)
             {
-                if (Math.abs(thumbfitted.height - hh) > 2)
+                if (Math.abs(thumbfitted.height - hh) > 3)
                 {
                     if (!slice.isvisible && context.canvas.pinching)
                         return;
@@ -4601,7 +4601,7 @@ var buttonlst =
             }
             else
             {
-                if (Math.abs(thumbfitted.width - ww) > 2)
+                if (Math.abs(thumbfitted.width - ww) > 3)
                 {
                     if (!slice.isvisible && context.canvas.pinching)
                         return;
