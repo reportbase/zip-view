@@ -3231,12 +3231,10 @@ var keylst =
                 }
                 else
                 {
-                    if (!context.swipetimeout)
-                    {
                         menuobj.updown(context, -90, 90)
-                        context.swipetimeout = 
-                            setInterval(function(){menuobj.draw()}, GALLERYMAIN);
-                    }
+                    	if (!context.swipetimeout)
+                            context.swipetimeout = 
+                                setInterval(function(){menuobj.draw()}, GALLERYMAIN);
                 }
                 
                 context.canvas.panning = 1;
@@ -3279,12 +3277,10 @@ var keylst =
                 }
                 else
                 {
+                    menuobj.updown(context, 90, 90)
                     if (!context.swipetimeout)
-                    {
-                        menuobj.updown(context, 90, 90)
                         context.swipetimeout = 
                             setInterval(function(){menuobj.draw();}, GALLERYMAIN);
-                    }
                 }
                 
                 context.canvas.panning = 1;
