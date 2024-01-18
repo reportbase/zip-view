@@ -3396,7 +3396,7 @@ var keylst =
                    return;
                 }
                 
-                gallerypatch();
+                gallerylist();
             }
             else if (key == "a")
             {
