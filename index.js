@@ -4748,19 +4748,21 @@ menuobj.draw = function()
 
             if (!slice.isvisible)
                 return;
-            canvas.visibles.push(slice);  
+            context.canvas.visibles.push(slice);  
         }
     }
+
+    if (context.canvas.visibiles &&& context.canvas.visibiles.length)
+        for (var m = 0; m < context.canvas.visibiles.length; ++m)
+        {
+            foo(m);
+        }
     
-    for (var m = 0; m < canvas.visibiles.length; ++m)
-    {
-        foo(m);
-    }
-    
-    for (var m = 0; m < canvas.normal.length; ++m)
-    {
-        foo(m);
-    }
+    if (context.canvas.visibiles &&& context.canvas.visibiles.length)
+        for (var m = 0; m < context.canvas.visibiles.length; ++m)
+        {
+            foo(m);
+        }
     
     var visibles = context.canvas.visibles;
     if (context == _8cnvctx && visibles.length)
