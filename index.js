@@ -4715,7 +4715,6 @@ menuobj.draw = function()
     }
 
     context.canvas.visibles = [];
-    context.canvas.visibles2 = [];
     context.centered = 0;
     var r = new rectangle(0, 0, rect.width, buttonheight);
 
@@ -4723,25 +4722,7 @@ menuobj.draw = function()
     {
         var n = canvas.normal[m];
 	    var slice = slices[n];
-        if (context == _8cnvctx && 
-            !slice.thumbimg &&
-            !slice.pad) 
-        {
-            slice.thumbfitted = document.createElement("canvas");
-            slice.thumbimg = new Image();
-            slice.thumbimg.onload = function()
-            {
-                menuobj.draw();
-	        }
-            
-            if (slice.entry)
-                getblobpath(slice.thumbimg, slice);
-            else if (slice.blob)
-                slice.thumbimg.src = URL.createObjectURL(slice.blob);
-            else
-                slice.thumbimg.src = slice.url;
-        }
-        else if ((context == _8cnvctx && 
+        if ((context == _8cnvctx && 
             (slice.thumbimg || slice.pad)) || 
 		     context != _8cnvctx)
         {
@@ -4765,42 +4746,50 @@ menuobj.draw = function()
             	context.centered = slice.index;
             }
 
-            if (slice.isvisible)
-                context.canvas.visibles.push(slice);  
-    	    if (context == _8cnvctx && !context.swipetimeout)
-                context.canvas.visibles2.push(slice);
+            if (!slice.isvisible)
+                continue;
+            context.canvas.visibles.push(slice);  
+        }
+    }
+    
+    for (var m = 0; m < canvas.normal.length; ++m)
+    {
+        var n = canvas.normal[m];
+	    var slice = slices[n];
+        if (context == _8cnvctx && 
+            !slice.thumbimg &&
+            !slice.pad) 
+        {
+            slice.thumbfitted = document.createElement("canvas");
+            slice.thumbimg = new Image();
+            slice.thumbimg.onload = function()
+            {
+                menuobj.draw();
+	        }
+            
+            if (slice.entry)
+                getblobpath(slice.thumbimg, slice);
+            else if (slice.blob)
+                slice.thumbimg.src = URL.createObjectURL(slice.blob);
+            else
+                slice.thumbimg.src = slice.url;
         }
     }
     
     var visibles = context.canvas.visibles;
     if (context == _8cnvctx && visibles.length)
     {
-        visibles.sort((a, b) => a.y-b.y);
 	    for (var n = 0; n < visibles.length; ++n)
         {
         	var slice = visibles[n];
         	var y = slice.y;
-        	//if (slice.py && !canvas.pinching)
-        	 //   y = (slice.py+slice.y)/2;
-        	//y = y.toFixed(PRECIS);
         	context.translate(0, y);
         	context.canvas.draw(context, r, slice, slice.index);
         	context.translate(0, -y);
         }
-    /*
-        var visibles2 = context.canvas.visibles2;
-        for (var n = 0; n < visibles2.length; ++n)
-        {
-        	var slice = visibles2[n];
-        	context.translate(0, slice.y);
-        	context.canvas.draw(context, r, slice, slice.index);
-        	context.translate(0, -slice.y);
-        }
-    */
     }
     else
     {
-        var visibles = context.canvas.visibles;
         for (var n = 0; n < visibles.length; ++n)
         {
             var slice = visibles[n];
