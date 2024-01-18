@@ -4754,7 +4754,7 @@ menuobj.draw = function()
 
     for (var m = 0; m < canvas.normal.length; ++m)
     {
-        foo(m);
+        fucc(m);
     }
 
     function foo2(m)
@@ -4783,7 +4783,7 @@ menuobj.draw = function()
 
     for (var m = 0; m < context.canvas.visibles.length; ++m)
     {
-        foo2(m);
+        foo(m);
     }
     
     for (var m = 0; m < canvas.normal.length; ++m)
