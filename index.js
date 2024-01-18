@@ -26,9 +26,10 @@ const ADMIN = url.param("admin", 0);
 const DELTA = url.param("delta", 2.5);
 const PRECIS = url.param("precis", 3);
 const NUBACK = "rgba(0,0,0,0.4)";
-const GALLNUB = url.param("gallnub","white");
-const GALLFILL = url.param("gallfill","rgba(0,0,0,0.4)"); 
-const BACKFILL = url.param("backfill","black");
+const GALLNUB = url.param("gnc","white");
+const GALLFILL = url.param("gfc","rgba(0,0,0,0.4)"); 
+const BACKFILL = url.param("back","black");
+const CACHESIZE = url.param("cache",36);
 const SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const VIRTCONST = 0.8;
 const MAXVIRTUAL = 5760*3;
@@ -79,7 +80,6 @@ const MEDIUMFONT = "bold 18px Archivo";
 const LARGEFONT = "bold 19px Archivo";
 const HUGEFONT = "bold 21px Archivo";
 const SLICEWIDTH = 16;
-const ROTATEANCHORSIAE = 3;
 const BOSS = 0;
 const GALLERY = 1;
 const MENU = 2;
@@ -5044,9 +5044,8 @@ menuobj.draw = function()
     if (canvas.lastcurrent != current || !canvas.normal)
     {
         canvas.lastcurrent = current;
-        var size = Math.ceil(rect.height / buttonheight) + 3;
         canvas.lastnormal = canvas.normal;
-        canvas.normal = util.rotated_list(canvas.rotated, current, size);
+        canvas.normal = util.rotated_list(canvas.rotated, current, CACHESIZE);
         
     	if (canvas.lastnormal)
     	{
