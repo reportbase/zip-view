@@ -4788,7 +4788,7 @@ menuobj.draw = function()
     
     for (var m = 0; m < canvas.normal.length; ++m)
     {
-        foo2(m);
+        foo(m);
     }
     
     var visibles = context.canvas.visibles;
