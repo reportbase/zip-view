@@ -3384,6 +3384,18 @@ var keylst =
             }
             else if (key == "e")
             {
+                if (menuobj.value() == _2cnvctx)
+                {
+                    closemenu();
+                    return;
+                }
+                
+                if (!login.id)
+                {
+                   googlelogin();
+                   return;
+                }
+                
                 gallerypatch();
             }
             else if (key == "a")
