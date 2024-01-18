@@ -3681,82 +3681,7 @@ var taplst =
                return;
             }
 
-            fetch(`https://atlanticc.reportbase5836.workers.dev/list/${login.id}`)
-                .then((response) => jsonhandler(response))
-                .then(function(results)
-                {            
-                    for (var n = 0; n < results.length; ++n)
-                    {
-                        var result = results[n];
-                        result.func = function(n, x, y)
-                        {
-                            _2cnv.sliceobj.set(n);
-                            if (_2cnv.gallerypatchtoggle)
-                            {
-                                gallerypatch();
-                            }
-                            else if (_2cnv.gallerydeletetoggle)
-                            {
-                    			var gallery = _2cnv.sliceobj.value();
-                                var label = document.getElementById("confirm-label");
-                                var input = document.getElementById("confirm-input");
-                    			label.innerHTML = `Confirm delete '${gallery.title}'?`
-                                showdialog("confirm", function(image)
-                                {
-                                    if (input.value != gallery.title)
-                                        return true;
-                                    fetch(`https://atlanticc.reportbase5836.workers.dev/${gallery.id}`,
-                                    {
-                                        method: 'delete'
-                                    })
-                                    .then(res =>
-                                    {
-                                        var n = _2cnv.sliceobj.current()
-                                        _2cnv.sliceobj.data.splice(n,1);
-                    		            delete _2cnv.normal;
-                                        _2cnv.sliceobj.set(0);
-                    		            var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
-                                        _2cnv.rotated = [...a, ...a, ...a];
-                                        menuobj.draw();
-                                    })
-                                });
-                            }
-                            else
-                            {
-                                url = new URL(url.origin);
-                                var gallery = _2cnv.sliceobj.value();
-                                window.open(`${url.href}${gallery.id}`,"_self")
-                            }
-                            
-                            return false;
-                        }
-                    }
-
-                    results.sort((a, b) => 
-                    {
-                        if(a.title < b.title) 
-                            return -1;
-                        if(a.title > b.title) 
-                            return 1; 
-                        return 0;
-                    });
-                                    
-                    _2cnv.sliceobj.data = results
-                    
-                    var k = _2cnv.sliceobj.data.findIndex(
-                        function(a){return a.id == url.path;});
-                    _2cnv.sliceobj.set(k);
-                    var j = (Math.PI/_2cnv.sliceobj.length());
-                    var e = j*k;
-                    var f = Math.PI-e;
-                    var g = j/2;
-                    var h = f-g;
-                    _2cnv.timeobj.set(h);
-                    
-                    var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
-                    _2cnv.rotated = [...a, ...a, ...a];
-                    rightmenu(_2cnvctx, true)
-                })        
+            gallerylist()
         }
         else if (
             context.folderect &&
@@ -4073,6 +3998,86 @@ function galleryadd()
             dialog.close();
         })
     })
+}
+
+function gallerylist()
+{ 
+    fetch(`https://atlanticc.reportbase5836.workers.dev/list/${login.id}`)
+        .then((response) => jsonhandler(response))
+        .then(function(results)
+        {            
+            for (var n = 0; n < results.length; ++n)
+            {
+                var result = results[n];
+                result.func = function(n, x, y)
+                {
+                    _2cnv.sliceobj.set(n);
+                    if (_2cnv.gallerypatchtoggle)
+                    {
+                        gallerypatch();
+                    }
+                    else if (_2cnv.gallerydeletetoggle)
+                    {
+                        var gallery = _2cnv.sliceobj.value();
+                        var label = document.getElementById("confirm-label");
+                        var input = document.getElementById("confirm-input");
+                        label.innerHTML = `Confirm delete '${gallery.title}'?`
+                        showdialog("confirm", function(image)
+                        {
+                            if (input.value != gallery.title)
+                                return true;
+                            fetch(`https://atlanticc.reportbase5836.workers.dev/${gallery.id}`,
+                            {
+                                method: 'delete'
+                            })
+                            .then(res =>
+                            {
+                                var n = _2cnv.sliceobj.current()
+                                _2cnv.sliceobj.data.splice(n,1);
+                                delete _2cnv.normal;
+                                _2cnv.sliceobj.set(0);
+                                var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
+                                _2cnv.rotated = [...a, ...a, ...a];
+                                menuobj.draw();
+                            })
+                        });
+                    }
+                    else
+                    {
+                        url = new URL(url.origin);
+                        var gallery = _2cnv.sliceobj.value();
+                        window.open(`${url.href}${gallery.id}`,"_self")
+                    }
+                    
+                    return false;
+                }
+            }
+
+            results.sort((a, b) => 
+            {
+                if(a.title < b.title) 
+                    return -1;
+                if(a.title > b.title) 
+                    return 1; 
+                return 0;
+            });
+                            
+            _2cnv.sliceobj.data = results
+            
+            var k = _2cnv.sliceobj.data.findIndex(
+                function(a){return a.id == url.path;});
+            _2cnv.sliceobj.set(k);
+            var j = (Math.PI/_2cnv.sliceobj.length());
+            var e = j*k;
+            var f = Math.PI-e;
+            var g = j/2;
+            var h = f-g;
+            _2cnv.timeobj.set(h);
+            
+            var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
+            _2cnv.rotated = [...a, ...a, ...a];
+            rightmenu(_2cnvctx, true)
+        })        
 }
 
 function gallerypatch()
