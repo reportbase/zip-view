@@ -1246,7 +1246,8 @@ var displaylst =
                 0,
                 new panel.layers(
                 [
-                    (global.bars||global.mousebars)?new panel.cols([CORNEREXT,0,CORNEREXT],
+                    (global.bars||global.mousebars)?
+                        new panel.cols([CORNEREXT,0,CORNEREXT],
                     [
                         0,
                         new panel.layers(
@@ -1348,7 +1349,7 @@ var displaylst =
             DISPLAYMARGIN,                 
             WRAPROWHEIGHT,                  
             FOOTSEP, 
-            SCROLLEXTENT, 
+            -1, 
             SCROLLMARGIN
         ],
         [
