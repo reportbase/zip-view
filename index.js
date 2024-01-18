@@ -3382,6 +3382,14 @@ var keylst =
                 aligncenter();
 				menuobj.draw();
             }
+            else if (key == "e")
+            {
+                gallerypatch();
+            }
+            else if (key == "a")
+            {
+                galleryadd();
+            }
         }
     },
     {
@@ -3685,37 +3693,7 @@ var taplst =
                             _2cnv.sliceobj.set(n);
                             if (_2cnv.gallerypatchtoggle)
                             {
-                                var gallery = _2cnv.sliceobj.value();
-                                if (!gallery)
-                                    return;
-                    			var id = document.getElementById("gallery-patch-id");
-                                var title = document.getElementById("gallery-patch-title");
-                                var prefix = document.getElementById("gallery-patch-prefix");
-                                var json = document.getElementById("gallery-patch-json");
-                                id.value = gallery.id;
-                                title.value = gallery.title;
-                                prefix.value = gallery.prefix;
-                                json.value = gallery.json;
-                                showdialog("gallery-patch", function(image)
-                                {
-                                    const form = new FormData();
-                                    form.append('id', id.value);
-                    		        form.append('title', title.value);
-                                    form.append('prefix', prefix.value);
-                                    form.append('json', json.value);
-                                    fetch(`https://atlanticc.reportbase5836.workers.dev`,
-                                    {
-                                        method: 'PATCH',
-                                        body: form
-                                    })
-                                    .then(function(response)
-                                    {
-                                        gallery.title = title.value;
-                                        gallery.json = json.value;
-                                        gallery.prefix = prefix.value;
-                                        menuobj.draw();
-                                    })
-                                })
+                                gallerypatch();
                             }
                             else if (_2cnv.gallerydeletetoggle)
                             {
@@ -3977,47 +3955,7 @@ var taplst =
         }            
         else if (canvas.galleryaddrect && canvas.galleryaddrect.hitest(x, y))
         {
-            var id = document.getElementById("gallery-add-id");
-            var title = document.getElementById("gallery-add-title");
-            var prefix = document.getElementById("gallery-add-prefix");
-            var json = document.getElementById("gallery-add-json");
-            id.value = Math.floor(Date.now() / 1000).toString(36);
-            title.value = "";
-            json.value = getfilenames();
-            prefix.value = "";
-            showdialog("gallery-add", function(image)
-            {
-                const form = new FormData();
-                form.append('title', title.value);
-                form.append('prefix', prefix.value);
-                form.append('json', json.value);
-                form.append('gallery_id', id.value);
-                form.append('user_id', login.id);
-                fetch(`https://atlanticc.reportbase5836.workers.dev`,
-                {
-                    method: 'POST',
-                    body: form
-                })
-                .then((response) => jsonhandler(response))
-                .then(function(obj)
-                {
-                    var j = _2cnv.sliceobj.data[0];
-                    var k = {};
-                    k = Object.assign(k, j);
-                    k.title = obj.title;
-                    k.json = obj.json;
-                    k.prefix = obj.prefix;
-                    k.id = obj.gallery_id;   
-                    var e = _2cnv.sliceobj.data.unshift(k);
-                    _2cnv.sliceobj.set(0);
-                    var j = Math.PI/_2cnv.sliceobj.length();
-                    _2cnv.timeobj.set(0)
-			        var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
-                    _2cnv.rotated = [...a, ...a, ...a];
-                    menuobj.draw();
-                    dialog.close();
-                })
-            })
+            galleryadd();
         }
         else if (canvas.showuserrect && canvas.showuserrect.hitest(x, y))
         {  
@@ -4091,6 +4029,86 @@ var taplst =
 ];
 
 var tapobj = new circular_array("TAP", taplst);
+
+function galleryadd()
+{
+    var id = document.getElementById("gallery-add-id");
+    var title = document.getElementById("gallery-add-title");
+    var prefix = document.getElementById("gallery-add-prefix");
+    var json = document.getElementById("gallery-add-json");
+    id.value = Math.floor(Date.now() / 1000).toString(36);
+    title.value = "";
+    json.value = getfilenames();
+    prefix.value = "";
+    showdialog("gallery-add", function(image)
+    {
+        const form = new FormData();
+        form.append('title', title.value);
+        form.append('prefix', prefix.value);
+        form.append('json', json.value);
+        form.append('gallery_id', id.value);
+        form.append('user_id', login.id);
+        fetch(`https://atlanticc.reportbase5836.workers.dev`,
+        {
+            method: 'POST',
+            body: form
+        })
+        .then((response) => jsonhandler(response))
+        .then(function(obj)
+        {
+            var j = _2cnv.sliceobj.data[0];
+            var k = {};
+            k = Object.assign(k, j);
+            k.title = obj.title;
+            k.json = obj.json;
+            k.prefix = obj.prefix;
+            k.id = obj.gallery_id;   
+            var e = _2cnv.sliceobj.data.unshift(k);
+            _2cnv.sliceobj.set(0);
+            var j = Math.PI/_2cnv.sliceobj.length();
+            _2cnv.timeobj.set(0)
+            var a = Array(_2cnv.sliceobj.length()).fill().map((_, index) => index);
+            _2cnv.rotated = [...a, ...a, ...a];
+            menuobj.draw();
+            dialog.close();
+        })
+    })
+}
+
+function gallerypatch()
+{
+    var gallery = _2cnv.sliceobj.value();
+    if (!gallery)
+        return;
+    var id = document.getElementById("gallery-patch-id");
+    var title = document.getElementById("gallery-patch-title");
+    var prefix = document.getElementById("gallery-patch-prefix");
+    var json = document.getElementById("gallery-patch-json");
+    id.value = gallery.id;
+    title.value = gallery.title;
+    prefix.value = gallery.prefix;
+    json.value = gallery.json;
+    showdialog("gallery-patch", function(image)
+    {
+        const form = new FormData();
+        form.append('id', id.value);
+        form.append('title', title.value);
+        form.append('prefix', prefix.value);
+        form.append('json', json.value);
+        fetch(`https://atlanticc.reportbase5836.workers.dev`,
+        {
+            method: 'PATCH',
+            body: form
+        })
+        .then(function(response)
+        {
+            gallery.title = title.value;
+            gallery.json = json.value;
+            gallery.prefix = prefix.value;
+            menuobj.draw();
+        })
+    })
+}
 
 function getvisible(x, y)
 {
