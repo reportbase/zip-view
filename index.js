@@ -3287,7 +3287,7 @@ var swipelst =
     swipeupdown: function(context, rect, x, y, evt)
     {
         var k = evt.type == "swipeup" ? 1 : -1;
-        menuobj.updown(context, k * 25, 25);
+        menuobj.updown(context, k * 60, 60);
 	    if (!context.swipetimeout)
             context.swipetimeout = setInterval(
                 function(){menuobj.draw();}, MENUMAIN);
@@ -4578,7 +4578,7 @@ var buttonlst =
 
             if (b > b2)
             {
-                if (Math.abs(thumbfitted.height - hh) > 2)
+                if (1)//Math.abs(thumbfitted.height - hh) > 2)
                 {
                     if (!slice.isvisible && context.canvas.pinching)
                         return;
@@ -4601,7 +4601,7 @@ var buttonlst =
             }
             else
             {
-                if (Math.abs(thumbfitted.width - ww) > 2)
+                if (1)//Math.abs(thumbfitted.width - ww) > 2)
                 {
                     if (!slice.isvisible && context.canvas.pinching)
                         return;
