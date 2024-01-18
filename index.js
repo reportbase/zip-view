@@ -4578,7 +4578,7 @@ var buttonlst =
 
             if (b > b2)
             {
-                if (1)//Math.abs(thumbfitted.height - hh) > 2)
+                if (Math.abs(thumbfitted.height - hh) > 2)
                 {
                     if (!slice.isvisible && context.canvas.pinching)
                         return;
@@ -4601,7 +4601,7 @@ var buttonlst =
             }
             else
             {
-                if (1)//Math.abs(thumbfitted.width - ww) > 2)
+                if (Math.abs(thumbfitted.width - ww) > 2)
                 {
                     if (!slice.isvisible && context.canvas.pinching)
                         return;
