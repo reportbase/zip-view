@@ -5049,7 +5049,7 @@ menuobj.draw = function()
         canvas.lastnormal = canvas.normal;
         canvas.normal = util.rotated_list(canvas.rotated, current, CACHESIZE);
         
-    	if (canvas.lastnormal)
+    	if (len > 36 && canvas.lastnormal)
     	{
     		for (var n = 0; n < canvas.lastnormal.length; ++n)
     		{
