@@ -4747,7 +4747,7 @@ menuobj.draw = function()
             }
 
             if (!slice.isvisible)
-                continue;
+                return;
             canvas.visibles.push(slice);  
         }
     }
