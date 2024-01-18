@@ -7483,8 +7483,8 @@ menuobj.updown = function(context, delta, divider)
     var canvas = context.canvas;
     canvas.autodirect = delta > 0 ? -1 : 1;
     var k = Math.abs(delta)/20;
-    canvas.slideshow = (Math.PI / canvas.virtualheight) * k;
-    canvas.slidereduce = canvas.slideshow / divider;
+    canvas.slideshow += (Math.PI / canvas.virtualheight) * k;
+    canvas.slidereduce += canvas.slideshow / divider;
 }
 
 let b64DecodeUnicode = str =>
