@@ -4697,7 +4697,7 @@ menuobj.draw = function()
         canvas.lastcurrent = current;
         canvas.lastnormal = canvas.normal;
         canvas.normal = util.rotated_list(
-            canvas.rotated, current, CACHESIZE);
+        canvas.rotated, current, CACHESIZE);
         
     	if (canvas.lastnormal)
     	{
@@ -4752,17 +4752,44 @@ menuobj.draw = function()
         }
     }
 
-    if (context.canvas.visibiles && context.canvas.visibiles.length)
-        for (var m = 0; m < context.canvas.visibiles.length; ++m)
+    for (var m = 0; m < canvas.normal.length; ++m)
+    {
+        foo(m);
+    }
+
+    function foo2(m)
+    {
+        var n = canvas.normal[m];
+	    var slice = slices[n];
+        if (context == _8cnvctx && 
+            !slice.thumbimg &&
+            !slice.pad) 
         {
-            foo(m);
+            slice.thumbfitted = document.createElement("canvas");
+            slice.thumbimg = new Image();
+            slice.thumbimg.onload = function()
+            {
+                menuobj.draw();
+	        }
+            
+            if (slice.entry)
+                getblobpath(slice.thumbimg, slice);
+            else if (slice.blob)
+                slice.thumbimg.src = URL.createObjectURL(slice.blob);
+            else
+                slice.thumbimg.src = slice.url;
         }
+    }
+
+    for (var m = 0; m < context.canvas.visibles.length; ++m)
+    {
+        foo2(m);
+    }
     
-    if (context.canvas.visibiles && context.canvas.visibiles.length)
-        for (var m = 0; m < context.canvas.visibiles.length; ++m)
-        {
-            foo(m);
-        }
+    for (var m = 0; m < canvas.normal.length; ++m)
+    {
+        foo2(m);
+    }
     
     var visibles = context.canvas.visibles;
     if (context == _8cnvctx && visibles.length)
@@ -5260,59 +5287,8 @@ contextobj.init = function()
 
 contextobj.init();
 
-//contextobj reset
 contextobj.reset = function()
 {
-    return;
-   var context = _4cnvctx;
-    if (photo.image &&
-        photo.image.complete &&
-        photo.image.naturalHeight)
-    {
-	    bossobj.reset();
-    }
-    else
-    {
-        photo.image = new Image();
-        if (galleryobj.value().entry)
-            getblobpath(photo.image, galleryobj.value())
-        else
-            photo.image.src = galleryobj.getpath(galleryobj.current());  
-
-        photo.image.onerror =
-            photo.image.onabort = function(e)
-            {
-                console.log(e);
-            }
-
-        photo.image.onload = function()
-        {
-            var e = galleryobj.value();
-            _4cnv.autodirect = -_4cnv.movingpage;
-            _4cnv.movingpage = 0;
-            bossobj.reset();
-            headobj.draw();
-            bossobj.draw();
-
-            var rotated = util.rotated_list(
-                _8cnv.rotated, 
-                galleryobj.current() + 1, 9);
-
-            for (var m = 0; m < rotated.length; ++m)
-            {
-                var n = rotated[m];
-                if (galleryobj.data[n].loaded)
-                    continue;
-                var img = new Image();
-                img.src = galleryobj.getpath(n);
-                img.index = n;
-                img.onload = function()
-                {
-                    galleryobj.data[this.index].loaded = 1;
-                }
-            }
-        }
-    }
 }
 
 function gridToRect(cols, rows, margin, width, height)
