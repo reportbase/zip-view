@@ -5048,7 +5048,7 @@ menuobj.draw = function()
         canvas.lastnormal = canvas.normal;
         canvas.normal = util.rotated_list(canvas.rotated, current, size);
         
-    	if (0)//canvas.lastnormal)
+    	if (canvas.lastnormal)
     	{
     		for (var n = 0; n < canvas.lastnormal.length; ++n)
     		{
