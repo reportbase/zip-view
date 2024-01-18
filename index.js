@@ -1348,8 +1348,8 @@ var displaylst =
             WRAPROWHEIGHT,                  
             DISPLAYMARGIN,                 
             WRAPROWHEIGHT,                  
-            FOOTSEP, 
-            WRAPROWHEIGHT, 
+            -1, 
+            -1, 
             SCROLLMARGIN
         ],
         [
