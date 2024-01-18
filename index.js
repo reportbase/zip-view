@@ -5044,7 +5044,7 @@ menuobj.draw = function()
     if (canvas.lastcurrent != current || !canvas.normal)
     {
         canvas.lastcurrent = current;
-        var size = Math.ceil(rect.height / buttonheight) + 10;
+        var size = Math.ceil(rect.height / buttonheight) + 4;
         canvas.lastnormal = canvas.normal;
         canvas.normal = util.rotated_list(canvas.rotated, current, size);
     	if (canvas.lastnormal)
