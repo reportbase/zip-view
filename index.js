@@ -4718,7 +4718,7 @@ menuobj.draw = function()
     context.centered = 0;
     var r = new rectangle(0, 0, rect.width, buttonheight);
 
-    for (var m = 0; m < canvas.normal.length; ++m)
+    function func(m)
     {
         var n = canvas.normal[m];
 	    var slice = slices[n];
@@ -4748,32 +4748,18 @@ menuobj.draw = function()
 
             if (!slice.isvisible)
                 continue;
-            context.canvas.visibles.push(slice);  
+            canvas.visibles.push(slice);  
         }
+    }
+    
+    for (var m = 0; m < canvas.visibiles.length; ++m)
+    {
+        foo(m);
     }
     
     for (var m = 0; m < canvas.normal.length; ++m)
     {
-        var n = canvas.normal[m];
-	    var slice = slices[n];
-        if (context == _8cnvctx && 
-            !slice.thumbimg &&
-            !slice.pad) 
-        {
-            slice.thumbfitted = document.createElement("canvas");
-            slice.thumbimg = new Image();
-            slice.thumbimg.onload = function()
-            {
-                menuobj.draw();
-	        }
-            
-            if (slice.entry)
-                getblobpath(slice.thumbimg, slice);
-            else if (slice.blob)
-                slice.thumbimg.src = URL.createObjectURL(slice.blob);
-            else
-                slice.thumbimg.src = slice.url;
-        }
+        foo(m);
     }
     
     var visibles = context.canvas.visibles;
