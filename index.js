@@ -4752,13 +4752,13 @@ menuobj.draw = function()
         }
     }
 
-    if (context.canvas.visibiles &&& context.canvas.visibiles.length)
+    if (context.canvas.visibiles && context.canvas.visibiles.length)
         for (var m = 0; m < context.canvas.visibiles.length; ++m)
         {
             foo(m);
         }
     
-    if (context.canvas.visibiles &&& context.canvas.visibiles.length)
+    if (context.canvas.visibiles && context.canvas.visibiles.length)
         for (var m = 0; m < context.canvas.visibiles.length; ++m)
         {
             foo(m);
