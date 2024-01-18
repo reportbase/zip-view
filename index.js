@@ -30,7 +30,7 @@ const GALLNUB = url.param("gnc","white");
 const GALLFILL = url.param("gfc","rgba(0,0,0,0.4)"); 
 const MAXBUTTON = url.param("mbs",4000*3000); 
 const BACKFILL = url.param("back","black");
-const CACHESIZE = url.param("cache",9);
+const CACHESIZE = url.param("cache",12);
 const SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const VIRTCONST = 0.8;
 const MAXVIRTUAL = 5760*3;
@@ -4300,7 +4300,7 @@ var buttonlst =
             ]), 20, 20);
 
             a.draw(context, rect, lst, 0);
-	}
+	    }
     }
 },	
 {
@@ -4650,7 +4650,8 @@ menuobj.draw = function()
     if (context == _8cnvctx)
     {
         var a = new panel.fill(context.backfill);
-        a.draw(context, new rectangle(0, 0, canvas.width, canvas.height), 0, 0);
+        a.draw(context, new rectangle(0, 0, 
+            canvas.width, canvas.height), 0, 0);
     }
     
     if (context.canvas.slideshow > 0)
@@ -4695,9 +4696,10 @@ menuobj.draw = function()
     {
         canvas.lastcurrent = current;
         canvas.lastnormal = canvas.normal;
-        canvas.normal = util.rotated_list(canvas.rotated, current, CACHESIZE);
+        canvas.normal = util.rotated_list(
+            canvas.rotated, current, CACHESIZE);
         
-    	if (len > 36 && canvas.lastnormal)
+    	if (canvas.lastnormal)
     	{
     		for (var n = 0; n < canvas.lastnormal.length; ++n)
     		{
@@ -4785,7 +4787,7 @@ menuobj.draw = function()
         	context.canvas.draw(context, r, slice, slice.index);
         	context.translate(0, -y);
         }
-    
+    /*
         var visibles2 = context.canvas.visibles2;
         for (var n = 0; n < visibles2.length; ++n)
         {
@@ -4794,6 +4796,7 @@ menuobj.draw = function()
         	context.canvas.draw(context, r, slice, slice.index);
         	context.translate(0, -slice.y);
         }
+    */
     }
     else
     {
