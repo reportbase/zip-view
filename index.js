@@ -4757,7 +4757,7 @@ menuobj.draw = function()
         fucc(m);
     }
 
-    function foo2(m)
+    function foo(m)
     {
         var n = canvas.normal[m];
 	    var slice = slices[n];
