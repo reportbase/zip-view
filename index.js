@@ -92,7 +92,7 @@ const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 30;
 const BOOKMARKED = "rgba(0,0,255,0.75)";
 const EXPANDRECT = 60;
-const CORNEREXT = 0.1;
+const CORNEREXT = 0.05;
 
 function setjson(key, value)
 {
