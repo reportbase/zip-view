@@ -1236,7 +1236,9 @@ var displaylst =
         var value = galleryobj.data[k];
 	    if (!value)
             return;
-
+	    if (IFRAME)
+		    return;
+	    
         if (!headcnv.height)
     	{        
             var a = new panel.rowsA([0,48,20,NUBHEIGHT,5],
@@ -1244,7 +1246,7 @@ var displaylst =
                 0,
                 0,
                 0,
-                IFRAME?0:new panel.layers(
+                new panel.layers(
                 [
                     
                     new panel.cols([CORNEREXT,0,CORNEREXT],
@@ -1275,7 +1277,7 @@ var displaylst =
                 new panel.colsA([5,NUBHEIGHT, 0, NUBHEIGHT, 5],
                 [
                     0,
-                    IFRAME?0:new panel.layers(
+                    new panel.layers(
                     [
                         //new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),  
                         new panel.expand(new panel.rectangle(context.button2rect),3,3),
@@ -1283,7 +1285,7 @@ var displaylst =
                             new panel.rounded(GALLNUB, 3, "rgba(0,0,0,0.75)", 4, 4), 90, 0), 2, 2),
                     ]),
                     0,
-                    IFRAME?0:new panel.layers(
+                    new panel.layers(
                     [
                         //new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),  
                         new panel.expand(new panel.rectangle(canvas.timerect), 3,3),
@@ -3449,6 +3451,7 @@ var keylst =
             {
                 menuobj.hide();
                 menuobj.setindex(_8cnvctx);
+                menuobj.show();
                 evt.preventDefault();
             }
             else if (key == "arrowright")
