@@ -1446,7 +1446,7 @@ var displaylst =
         var canvas = context.canvas;
         context.save();
         canvas.timerect = new rectangle();
-	    var a = new panel.cols([9, 9, 0, 11, 6],
+	    var a = new panel.cols([9, 9, 0, 12, 6],
 	    [
     		0,
     		0,
@@ -1458,7 +1458,7 @@ var displaylst =
                 [
  			        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
                     new panel.currentV(
-                        new panel.rounded("white", 0, 0, 4, 4), 90, 1),
+                        new panel.rounded("white", 3, "black", 6, 6), 90, 1),
                 ]),
                 0,
             ]),
@@ -3299,14 +3299,6 @@ var keylst =
                 menuobj.draw()
                 evt.preventDefault();
             }                
-	        else if (key == "tab")
-            {
-                menuobj.updown(context, canvas.shiftKey?-60:60, 960*2)
-                if (!context.swipetimeout)
-                    context.swipetimeout = 
-                        setInterval(function(){menuobj.draw();}, GALLERYMAIN);
-                evt.preventDefault();
-            }
             else if (key == "\\" || key == "/")
             {
                 var h = headcnv.height ? 0 : HEADHEIGHT;
@@ -3379,10 +3371,14 @@ var keylst =
             }
             else if (key == "g")
             {
+                  goto();  
+            }
+            else if (key == "c")
+            {
                 aligncenter();
 				menuobj.draw();
             }
-            else if (key == "e")
+            else if (key == "tab")
             {
                 if (menuobj.value() == _2cnvctx)
                 {
@@ -3397,7 +3393,8 @@ var keylst =
                 }
                 
                 gallerylist();
-            }
+                evt.preventDefault();
+           }
             else if (key == "a")
             {
                 galleryadd();
@@ -3799,21 +3796,7 @@ var taplst =
             headcnvctx.zoomrect &&
             headcnvctx.zoomrect.hitest(x, y))
         {
-		    headobj.hide();
-            menuobj.draw();
-            var index = 1 - _8cnv.timeobj.berp();
-            index *= galleryobj.length();
-            var input = document.getElementById("goto-input");
-            input.value = index.toFixed(4);
-            showdialog("goto", function(image)
-            {
-                var image = input.value.clean();
-                var e = Math.berp(0, galleryobj.length(), image);
-                var j = (1-e)*Math.PI
-                _8cnv.timeobj.set(j);
-                headobj.show();
-                menuobj.draw();
-            })
+            goto();
         }
         else if (
             headcnv.height &&
@@ -3966,6 +3949,25 @@ var taplst =
 ];
 
 var tapobj = new circular_array("TAP", taplst);
+
+function goto()
+{
+    headobj.hide();
+    menuobj.draw();
+    var index = 1 - _8cnv.timeobj.berp();
+    index *= galleryobj.length();
+    var input = document.getElementById("goto-input");
+    input.value = index.toFixed(4);
+    showdialog("goto", function(image)
+    {
+        var image = input.value.clean();
+        var e = Math.berp(0, galleryobj.length(), image);
+        var j = (1-e)*Math.PI
+        _8cnv.timeobj.set(j);
+        headobj.show();
+        menuobj.draw();
+    })
+}
 
 function galleryadd()
 {
