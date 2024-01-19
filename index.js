@@ -1244,9 +1244,9 @@ var displaylst =
                 0,
                 0,
                 0,
-                new panel.layers(
+                IFRAME?0:new panel.layers(
                 [
-                    (!IFRAME&&(global.bars||global.mousebars))?
+                    (global.bars||global.mousebars)?
                         new panel.cols([CORNEREXT,0,CORNEREXT],
                     [
                         0,
