@@ -1,5 +1,38 @@
 https://github.com/gscept/nebula/blob/master/README.md
 
+# Zip-View
+
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+## Overview
+
+Zip-View is a versatile browser for document and image viewing, offering a unique approach by utilizing the popular ZIP file format. This README provides an overview and comparative analysis of Zip-View against traditional PDFs.
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API](#api)
+- [Integration](#integration)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- **Instant Display:** Display images instantly by downloading only visible images.
+- **Navigation Experience:** Top-down wrap-around viewing with precise panning.
+- **Hosting Flexibility:** Local and remote hosting on traditional servers, cloud, or IPFS.
+- **User-Friendliness:** No HTML coding required, drag-and-drop functionality, password protection.
+- **Cross-Platform Compatibility:** Compatible across Windows, Mac, Linux, iOS, Android.
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/zip-view.git
+
 Table of Contents
 1. Getting Started
    + Accessing the Image Viewer
