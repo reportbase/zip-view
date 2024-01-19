@@ -3064,10 +3064,9 @@ var presslst =
     },
     press: function(context, rect, x, y) 
     {
-        if (menuobj.value() != _8cnvctx)
-            return;
 	    global.bars = 0;
-		headobj.toggle();
+        if (!IFRAME)
+            headobj.toggle();
         menuobj.draw()
     }
 },
@@ -5247,16 +5246,8 @@ contextobj.init = function()
         var k = presslst.findIndex(function(a){
             return a.name == obj.press});
         k = presslst[k];
-        if (IFRAME)
-        {
-            canvas.pressup_ = new panel.empty();
-            canvas.press_ = new panel.empty();
-        }
-        else
-        {
-            canvas.pressup_ = k.pressup;
-            canvas.press_ = k.press;
-        }
+		canvas.pressup_ = k.pressup;
+		canvas.press_ = k.press;
     
         var k = swipelst.findIndex(function(a){
             return a.name == obj.swipe});
