@@ -92,7 +92,7 @@ const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 30;
 const BOOKMARKED = "rgba(0,0,255,0.75)";
 const EXPANDRECT = 60;
-const CORNEREXT = 0.2;
+const CORNEREXT = 0.1;
 
 function setjson(key, value)
 {
@@ -1252,10 +1252,10 @@ var displaylst =
                         0,
                         new panel.layers(
                         [
-                            new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),    
-                            new panel.rectangle(canvas.holly2rect), 
+                            //new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),    
+                            new panel.expand(new panel.rectangle(canvas.holly2rect), 3,3),
                             new panel.shrink(new panel.currentH(
-                                new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
+                                new panel.rounded(GALLNUB, 3, "rgba(0,0,0,0.75)", 4, 4), 90, 0), 2, 2),
                         ]),
                         0,
                     ]):0,
@@ -1280,18 +1280,18 @@ var displaylst =
                     0,
                     IFRAME?0:new panel.layers(
                     [
-                        new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),  
-                        new panel.rectangle(context.button2rect),
+                        //new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),  
+                        new panel.expand(new panel.rectangle(context.button2rect),3,3),
                         new panel.shrink(new panel.currentV(
-                            new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
+                            new panel.rounded(GALLNUB, 3, "rgba(0,0,0,0.75)", 4, 4), 90, 0), 2, 2),
                     ]),
                     0,
                     IFRAME?0:new panel.layers(
                     [
-                        new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),  
-                        new panel.rectangle(canvas.timerect), 
+                        //new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),  
+                        new panel.expand(new panel.rectangle(canvas.timerect), 3,3),
                         new panel.shrink(new panel.currentV(
-                            new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 1), 2, 2),
+                            new panel.rounded(GALLNUB, 3, "rgba(0,0,0,0.75)", 4, 4), 90, 1), 2, 2),
                     ]),
                     0,
                 ]),
