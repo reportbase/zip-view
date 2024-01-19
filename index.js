@@ -1338,13 +1338,13 @@ var displaylst =
         
         var a = new panel.rowsA(
         [
-            HEADTOP, 
-            HEADBOT,  
+            -1,//HEADTOP, 
+            -1,//HEADBOT,  
             0,
             folders.length?folders.length*50:-1, 
             (folders.length&&window.innerHeight>400)?DISPLAYMARGIN:-1, 
-            WRAPROWHEIGHT, 
-            DISPLAYMARGIN,                 
+            -1,//WRAPROWHEIGHT, 
+            -1,//DISPLAYMARGIN,                 
             WRAPROWHEIGHT,                  
             DISPLAYMARGIN,                 
             WRAPROWHEIGHT,                  
