@@ -805,14 +805,14 @@ var footlst =
 					new panel.layers(
 					[
                         canvas.gallerypatchtoggle?
-                            new panel.shrink(new panel.rounded("red", 0, 0, 8, 0),10,10):0,
+                            new panel.shrink(new panel.rounded("red", 0, 0, 12, 12),10,10):0,
 						new panel.rectangle(canvas.gallerypatchrect),
 						new panel.text(),
 					]),
 					new panel.layers(
 					[
 						canvas.gallerydeletetoggle?
-                            new panel.shrink(new panel.rounded("red", 0, 0, 8, 0),10,10):0,
+                            new panel.shrink(new panel.rounded("red", 0, 0, 12, 12),10,10):0,
 						new panel.rectangle(canvas.gallerydeleterect),
 						new panel.text(),
 					]),
