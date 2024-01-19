@@ -1278,7 +1278,7 @@ var displaylst =
                 new panel.colsA([5,NUBHEIGHT, 0, NUBHEIGHT, 5],
                 [
                     0,
-                    new panel.layers(
+                    IFRAME?0:new panel.layers(
                     [
                         new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),  
                         new panel.rectangle(context.button2rect),
@@ -1286,7 +1286,7 @@ var displaylst =
                             new panel.rounded(GALLNUB, 0, 0, 4, 4), 90, 0), 2, 2),
                     ]),
                     0,
-                    new panel.layers(
+                    IFRAME?0:new panel.layers(
                     [
                         new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),  
                         new panel.rectangle(canvas.timerect), 
