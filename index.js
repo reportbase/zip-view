@@ -92,7 +92,7 @@ const CIRCLEOUT = 15;
 const MULTITEXTROWHEIGHT = 30;
 const BOOKMARKED = "rgba(0,0,255,0.75)";
 const EXPANDRECT = 60;
-const CORNEREXT = 0.2;
+const CORNEREXT = 0.1;
 
 function setjson(key, value)
 {
@@ -1246,8 +1246,8 @@ var displaylst =
                 0,
                 IFRAME?0:new panel.layers(
                 [
-                    (global.bars||global.mousebars)?
-                        new panel.cols([CORNEREXT,0,CORNEREXT],
+                    
+                    new panel.cols([CORNEREXT,0,CORNEREXT],
                     [
                         0,
                         new panel.layers(
@@ -1258,7 +1258,7 @@ var displaylst =
                                 new panel.rounded(GALLNUB, 3, "rgba(0,0,0,0.75)", 4, 4), 90, 0), 2, 2),
                         ]),
                         0,
-                    ]):0,
+                    ]),
                 ]),
             ])
             a.draw(context, rect, 
@@ -1268,9 +1268,6 @@ var displaylst =
 		        0,
                 _8cnv.hollyobj, 
             ], 0);
-
-            if (!global.bars && !global.mousebars)
-                return;
 
             var a = new panel.rows([CORNEREXT,0,CORNEREXT],
             [
