@@ -3448,6 +3448,12 @@ var keylst =
                 context.canvas.hollyobj.addperc(-60 / 1000);
                 menuobj.draw()
             }
+            else if (key == "tab")
+            {
+                menuobj.hide();
+                menuobj.setindex(_8cnvctx);
+                evt.preventDefault();
+            }
             else if (key == "arrowright")
             {
                 context.canvas.hollyobj.addperc(60 / 1000);
@@ -3827,10 +3833,7 @@ var taplst =
 	    }
         else 
         {
-            if (window.portrait())
-                menuobj.updown(context, y < rect.height/2 ? -90 : 90, 180)
-            else
-                menuobj.updown(context, x < rect.width/2 ? -90 : 90, 180)
+            menuobj.updown(context, y < rect.height/2 ? -90 : 90, 180)
             if (!context.swipetimeout)
                 context.swipetimeout = 
                     setInterval(function(){menuobj.draw();}, GALLERYMAIN);
@@ -7071,7 +7074,7 @@ menuobj.updown = function(context, delta, divider)
     canvas.autodirect = delta > 0 ? -1 : 1;
     var k = Math.abs(delta)/20;
     if (context.updowntimer)
-        divider *= 4;
+        divider *= 2.5;
     canvas.slideshow = (Math.PI / canvas.virtualheight) * k;
     canvas.slidereduce = canvas.slideshow / divider;
     
