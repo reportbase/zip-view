@@ -3060,7 +3060,7 @@ var presslst =
     },
     press: function(context, rect, x, y) 
     {
-        if (menutobj.value() != _8cnvctx)
+        if (menuobj.value() != _8cnvctx)
             return;
 	    global.bars = 0;
         if (!IFRAME)
