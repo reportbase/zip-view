@@ -3121,7 +3121,7 @@ var swipelst =
         headobj.draw();
         
         var k = evt.type == "swipeup" ? 1 : -1;
-        menuobj.updown(context, k * 160, 90);
+        menuobj.updown(context, k * 240, 120);
         if (!context.swipetimeout)
             context.swipetimeout = setInterval(
                 function(){menuobj.draw();}, GALLERYMAIN);
@@ -6342,6 +6342,10 @@ function setupmenus()
         title: `Share`,
         func: function()
         {
+            showdialog("share", function(image)
+            {
+            })  
+            
             return true;
         }
     },   
@@ -6349,7 +6353,10 @@ function setupmenus()
         title: `Home`,
         func: function()
         {
-            
+	        buttonobj.reset();	
+            aligncenter(0)
+            aligntop();
+            menuobj.draw();            
             return true;
         }
     },   
@@ -6357,15 +6364,19 @@ function setupmenus()
         title: `Goto`,
         func: function()
         {
-            
+            goto()
             return true;
         }
     },   
     {
         title: `Full Screen`,
+        enabled: function()
+        {
+             return document.fullscreenElement;
+        },
         func: function()
         {
-            
+            toggleFullScreen() 
             return true;
         }
     },   
