@@ -6342,8 +6342,13 @@ function setupmenus()
         title: `Share`,
         func: function()
         {
+            var input = document.getElementById("share-input");
+            var k = new URL(window.location.href);
+            k.searchParams.set('rad', _8cnvctx.timeobj.value().toFixed(8));
+            input.value = k.href;
             showdialog("share", function(image)
             {
+                copytext(input.value.clean());
             })  
             
             return true;
