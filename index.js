@@ -967,9 +967,9 @@ var headlst =
                 0,
                 new panel.homemenu(),
                 0,
-                g ? new panel.fullscreen() : 0,
-                g ? new panel.home() : 0,
-                g ? new panel.zoom() : 0,
+                0 ? new panel.fullscreen() : 0,
+                0 ? new panel.home() : 0,
+                0 ? new panel.zoom() : 0,
                 0,
                 new panel.gallerymenu(),
                 0,
@@ -6338,6 +6338,37 @@ function setupmenus()
 
     _7cnv.sliceobj.data = 
     [
+    {
+        title: `Share`,
+        func: function()
+        {
+            return true;
+        }
+    },   
+    {
+        title: `Home`,
+        func: function()
+        {
+            
+            return true;
+        }
+    },   
+    {
+        title: `Goto`,
+        func: function()
+        {
+            
+            return true;
+        }
+    },   
+    {
+        title: `Full Screen`,
+        func: function()
+        {
+            
+            return true;
+        }
+    },   
     {
         title: `File Explorer   \u{25B6}\nLocal file manager`,
         func: function()
