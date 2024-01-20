@@ -6344,7 +6344,7 @@ function setupmenus()
         {
             var input = document.getElementById("share-input");
             var k = new URL(window.location.href);
-            k.searchParams.set('rad', _8cnvctx.timeobj.value().toFixed(8));
+            k.searchParams.set('rad', _8cnv.timeobj.value().toFixed(8));
             input.value = k.href;
             showdialog("share", function(image)
             {
@@ -6762,7 +6762,9 @@ galleryobj.reset = function()
     };    
    
     _8cnv.timeobj.set(0);
-    var k = Number(local._8);
+    var k = Number(local.rad);
+    if (url.searchParams.has("rad"))
+        k = Number(url.searchParams.get("rad"));
     if (galleryobj.length() <= 3)
     {
         var lst = [1.70591,0.98456,2.2311];
@@ -6904,7 +6906,7 @@ function loadtext(str, origin)
 var local = {}
 local.init = function()
 {
-    local._8 = 0;
+    local.rad = 0;
     local.button = "";
     var k = getjson(url.path);
     if (k)
@@ -6924,7 +6926,7 @@ local.set = function()
             return;
 	    var k = {};
         k.button = buttonobj.value();
-        k._8 = _8cnv.timeobj.current()
+        k.rad = _8cnv.timeobj.current()
         k.holly = _8cnv.hollyobj.current();
         k.marks = [];
         for (var n = 0; n < galleryobj.length(); ++n)
