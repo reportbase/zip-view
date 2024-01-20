@@ -1241,7 +1241,7 @@ var displaylst =
 	    
         if (!headcnv.height)
     	{        
-            var a = new panel.rowsA([0,48,20,NUBHEIGHT,5],
+            var a = new panel.rowsA([0,48,20,NUBHEIGHT,-1],
             [
                 0,
                 0,
@@ -1257,7 +1257,7 @@ var displaylst =
                             //new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),    
                             new panel.expand(new panel.rectangle(canvas.holly2rect), 3,3),
                             new panel.shrink(new panel.currentH(
-                                new panel.rounded(GALLNUB, 3, "rgba(0,0,0,0.75)", 4, 4), 90, 0), 2, 2),
+                                new panel.rounded(GALLNUB, 3, "rgba(129,120,120,0.75)", 0, 0), 90, 0), 2, 2),
                         ]),
                         0,
                     ]),
@@ -1274,7 +1274,7 @@ var displaylst =
             var a = new panel.rows([CORNEREXT,0,CORNEREXT],
             [
                 0,                      
-                new panel.colsA([5,NUBHEIGHT, 0, NUBHEIGHT, 5],
+                new panel.colsA([-1,NUBHEIGHT, 0, NUBHEIGHT, -1],
                 [
                     0,
                     new panel.layers(
@@ -1282,7 +1282,7 @@ var displaylst =
                         //new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),  
                         new panel.expand(new panel.rectangle(context.button2rect),3,3),
                         new panel.shrink(new panel.currentV(
-                            new panel.rounded(GALLNUB, 3, "rgba(0,0,0,0.75)", 4, 4), 90, 0), 2, 2),
+                            new panel.rounded(GALLNUB, 3, "rgba(120,120,120,0.75)", 0, 0), 90, 0), 2, 2),
                     ]),
                     0,
                     new panel.layers(
@@ -1290,7 +1290,7 @@ var displaylst =
                         //new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),  
                         new panel.expand(new panel.rectangle(canvas.timerect), 3,3),
                         new panel.shrink(new panel.currentV(
-                            new panel.rounded(GALLNUB, 3, "rgba(0,0,0,0.75)", 4, 4), 90, 1), 2, 2),
+                            new panel.rounded(GALLNUB, 3, "rgba(120,120,120,0.75)", 0, 0), 90, 1), 2, 2),
                     ]),
                     0,
                 ]),
