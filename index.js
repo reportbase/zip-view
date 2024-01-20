@@ -49,7 +49,7 @@ const WRAPROWHEIGHT = 40;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
 const FOOTHEIGHT = 80;
 const MAXEXTENT = 10000;
-const NUBHEIGHT = 16;
+const NUBHEIGHT = 12;
 const NUBMARGIN = 4;
 const NUBEXTENT = 15;
 const NUBDELAY = 3000;
@@ -1257,7 +1257,7 @@ var displaylst =
                             //new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),    
                             new panel.expand(new panel.rectangle(canvas.holly2rect), 3,3),
                             new panel.shrink(new panel.currentH(
-                                new panel.rounded(GALLNUB, 3, "rgba(129,120,120,0.75)", 0, 0), 90, 0), 2, 2),
+                                new panel.fill(GALLNUB), 90, 0), 2, 2),
                         ]),
                         0,
                     ]),
@@ -1279,18 +1279,16 @@ var displaylst =
                     0,
                     new panel.layers(
                     [
-                        //new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),  
                         new panel.expand(new panel.rectangle(context.button2rect),3,3),
                         new panel.shrink(new panel.currentV(
-                            new panel.rounded(GALLNUB, 3, "rgba(120,120,120,0.75)", 0, 0), 90, 0), 2, 2),
+                            new panel.fill(GALLNUB), 90, 0), 2, 2),
                     ]),
                     0,
                     new panel.layers(
                     [
-                        //new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),  
                         new panel.expand(new panel.rectangle(canvas.timerect), 3,3),
                         new panel.shrink(new panel.currentV(
-                            new panel.rounded(GALLNUB, 3, "rgba(120,120,120,0.75)", 0, 0), 90, 1), 2, 2),
+                            new panel.rounded(GALLNUB), 90, 1), 2, 2),
                     ]),
                     0,
                 ]),
@@ -1456,8 +1454,7 @@ var displaylst =
                 new panel.layers(
                 [
  			        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
-                    new panel.currentV(
-                        new panel.rounded("rgba(255,255,255,0.75)", 4, "rgba(0,0,0,0.75)", 6, 6), 90, 1),
+                    new panel.currentV(new panel.fill("rgba(255,255,255,0.5)"), 6, 6), 90, 1),
                 ]),
                 0,
             ]),
@@ -3063,6 +3060,8 @@ var presslst =
     },
     press: function(context, rect, x, y) 
     {
+        if (menutobj.value() != _8cnvctx)
+            return;
 	    global.bars = 0;
         if (!IFRAME)
             headobj.toggle();
