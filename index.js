@@ -1288,7 +1288,7 @@ var displaylst =
                     [
                         new panel.expand(new panel.rectangle(canvas.timerect), 3,3),
                         new panel.shrink(new panel.currentV(
-                            new panel.rounded(GALLNUB), 90, 1), 2, 2),
+                            new panel.fill(GALLNUB), 90, 1), 2, 2),
                     ]),
                     0,
                 ]),
@@ -1454,7 +1454,7 @@ var displaylst =
                 new panel.layers(
                 [
  			        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
-                    new panel.currentV(new panel.fill("rgba(255,255,255,0.5)"), 6, 6), 90, 1),
+                    new panel.currentV(new panel.fill("rgba(255,255,255,0.5)"), 90, 1),
                 ]),
                 0,
             ]),
