@@ -3719,6 +3719,7 @@ var taplst =
             context.bookmarkrect &&
             context.bookmarkrect.hitest(x, y))
         {
+            boo
             var index = 1 - canvas.timeobj.berp();
             index *= galleryobj.length(); 
 	        index = Math.floor(index);
@@ -3826,17 +3827,27 @@ var taplst =
         {
             closemenu()
         }
+            /*
         else if (headcnv.height)
     	{	
 		    headobj.hide();
             menuobj.draw();
 	    }
+         */
         else 
         {
-            menuobj.updown(context, y < rect.height/2 ? -90 : 90, 180)
-            if (!context.swipetimeout)
-                context.swipetimeout = 
-                    setInterval(function(){menuobj.draw();}, GALLERYMAIN);
+            if (menuobj.value() && menuobj.value() == _8cnvctx)
+            {
+                menuobj.updown(context, y < rect.height/2 ? -90 : 90, 180)
+                if (!context.swipetimeout)
+                    context.swipetimeout = 
+                        setInterval(function(){menuobj.draw();}, GALLERYMAIN);
+            }
+            else
+            {
+                bookmark(context);
+                menuobj.draw();
+            }
         }
     },
 },
