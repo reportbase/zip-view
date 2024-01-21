@@ -1447,7 +1447,7 @@ var displaylst =
         var canvas = context.canvas;
         context.save();
         canvas.timerect = new rectangle();
-	    var a = new panel.cols([9, 9, 0, 14, 6],
+	    var a = new panel.cols([2, 16, 0, 16, 2],
 	    [
     		0,
     		0,
