@@ -3828,8 +3828,9 @@ var taplst =
             }
             else if (canvas.ctrlKey)
             {
-                 var k = _8cnv.timeobj.length() / galleryobj.length();
-                 _8cnv.timeobj.rotate(y < rect.height/2 ? k : -k);
+                var k = _8cnv.timeobj.length() / galleryobj.length();
+                _8cnv.timeobj.rotate(y < rect.height/2 ? k : -k);
+                menuobj.draw();
             }
             else
             {
@@ -4756,6 +4757,7 @@ menuobj.draw = function()
         func(m);
     }
 
+	//todo: move visibles to top
     for (var m = 0; m < canvas.normal.length; ++m)
     {
         var n = canvas.normal[m];
