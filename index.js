@@ -26,10 +26,8 @@ const ADMIN = url.param("admin", 0);
 const DELTA = url.param("delta", 2.5);
 const PRECIS = url.param("precis", 3);
 const NUBACK = "rgba(0,0,0,0.4)";
-const GALLNUB = THEME=="dark"?"rgba(0,0,0,0.5)":"rgba(255,255,255,0.75)";
 const GALLFILL = url.param("gfc","rgba(0,0,0,0.4)"); 
 const MAXBUTTON = url.param("mbs",4000*3000); 
-const BACKFILL = url.param("back","black");
 const CACHESIZE = url.param("cache",12);
 const SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const VIRTCONST = 0.8;
@@ -93,6 +91,17 @@ const MULTITEXTROWHEIGHT = 30;
 const BOOKMARKED = "rgba(0,0,255,0.75)";
 const EXPANDRECT = 60;
 const CORNEREXT = 0.05;
+
+if (THEME == "dark")
+{
+	const NUBCOLOR = "rgba(0,0,0,0.5)";
+	const BACKFILL = "white";
+}
+else
+{
+	const NUBCOLOR = "rgba(255,255,255,0.75)";
+	const BACKFILL = "black";
+}
 
 function setjson(key, value)
 {
@@ -1257,7 +1266,7 @@ var displaylst =
                             //new panel.rounded(GALLFILL, 3, "rgba(255,255,255,0.75)", 6, 6),    
                             new panel.expand(new panel.rectangle(canvas.holly2rect), 3,3),
                             new panel.shrink(new panel.currentH(
-                                new panel.fill(GALLNUB), 90, 0), 2, 2),
+                                new panel.fill(NUBCOLOR), 90, 0), 2, 2),
                         ]),
                         0,
                     ]),
@@ -1281,14 +1290,14 @@ var displaylst =
                     [
                         new panel.expand(new panel.rectangle(context.button2rect),3,3),
                         new panel.shrink(new panel.currentV(
-                            new panel.fill(GALLNUB), 90, 0), 2, 2),
+                            new panel.fill(NUBCOLOR), 90, 0), 2, 2),
                     ]),
                     0,
                     new panel.layers(
                     [
                         new panel.expand(new panel.rectangle(canvas.timerect), 3,3),
                         new panel.shrink(new panel.currentV(
-                            new panel.fill(GALLNUB), 90, 1), 2, 2),
+                            new panel.fill(NUBCOLOR), 90, 1), 2, 2),
                     ]),
                     0,
                 ]),
@@ -4655,9 +4664,9 @@ menuobj.draw = function()
     const rect = context.rect();
     
     context.clear();
-    if (context == _8cnvctx)
+    if (context == _8cnvctx && BACKFILL != "black")
     {
-        var a = new panel.fill(context.backfill);
+        var a = new panel.fill(BACKFILL);
         a.draw(context, new rectangle(0, 0, 
             canvas.width, canvas.height), 0, 0);
     }
@@ -4861,7 +4870,6 @@ var eventlst =
     buttonheight: 240,
     buttonmargin: 20,
     holly: 0,
-    backfill: FILLMENU,
     width: 640
 },
 { // _2cnvctx galleries
@@ -4884,7 +4892,6 @@ var eventlst =
     buttonheight: 180,
     buttonmargin: 20,
     holly: 0,
-    backfill: FILLMENU,
     width: 640
 },
 { // _3cnvctx options
@@ -4907,7 +4914,6 @@ var eventlst =
     buttonheight: 90,
     buttonmargin: 10,
     holly: 0,
-    backfill: FILLMENU,
     width: 640
 },
 { // _4cnvctx boss
@@ -4930,7 +4936,6 @@ var eventlst =
     buttonheight: 30,
     buttonmargin: 10,
     holly: 0,
-    backfill: FILLMENU,
     width: 640
 },
 { // _5cnvctx folders
@@ -4953,7 +4958,6 @@ var eventlst =
     buttonheight: 150,
     buttonmargin: 10,
     holly: 0,
-    backfill: FILLMENU,
     width: 640
 },
 { // _6cnvctx images
@@ -4976,7 +4980,6 @@ var eventlst =
     buttonheight: 180,
     buttonmargin: 15,
     holly: 0,
-    backfill: FILLMENU,
     width: 640
 },
 { // _7cnvctx home
@@ -4999,7 +5002,6 @@ var eventlst =
     buttonheight: 180,
     buttonmargin: 20,
     holly: 0,
-    backfill: FILLMENU,
     width: 640
 },
 { // _8cnvctx gallery
@@ -5022,7 +5024,6 @@ var eventlst =
     buttonheight: 1080,
     buttonmargin: 10,
     holly: 50,
-    backfill: BACKFILL,
     width: 5160
 },
 { // _9cnvctx template
@@ -5045,7 +5046,6 @@ var eventlst =
     buttonheight: 120,
     buttonmargin: 30,
     holly: 0,
-    backfill: FILLMENU,
     width: 640
 },
 { // _10cnvctx User
@@ -5068,7 +5068,6 @@ var eventlst =
     buttonheight: 120,
     buttonmargin: 30,
     holly: 0,
-    backfill: FILLMENU,
     width: 640
 },
 { // _11cnvctx unused
@@ -5091,7 +5090,6 @@ var eventlst =
     buttonheight: 160,
     buttonmargin: 15,
     holly: 0,
-    backfill: FILLMENU,
     width: 640
 },
 { // _12cnvctx
@@ -5114,7 +5112,6 @@ var eventlst =
     buttonheight: 50,
     buttonmargin: 10,
     holly: 0,
-    backfill: FILLMENU,
     width: 640
 },
 { // _13cnvctx
@@ -5137,7 +5134,6 @@ var eventlst =
     buttonheight: 50,
     buttonmargin: 10,
     holly: 0,
-    backfill: FILLMENU,
     width: 640
 },
 { // _14cnvctx
@@ -5160,7 +5156,6 @@ var eventlst =
     buttonheight: 50,
     buttonmargin: 10,
     holly: 0,
-    backfill: FILLMENU,
     width: 640
 },
 { // _15cnvctx
@@ -5183,7 +5178,6 @@ var eventlst =
     buttonheight: 50,
     buttonmargin: 10,
     holly: 0,
-    backfill: FILLMENU,
     width: 640
 }, 
 ];
@@ -5214,7 +5208,6 @@ contextobj.init = function()
         canvas.hollyobj = new circular_array("TEXTSCROLL", 100);
         canvas.hollyobj.set(obj.holly);
 
-        context.backfill = obj.backfill;
         canvas.speed = obj.speed;
         canvas.reduce = obj.reduce;
         canvas.autodirect = -1;
