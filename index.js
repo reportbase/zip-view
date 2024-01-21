@@ -3836,17 +3836,17 @@ var taplst =
          */
         else 
         {
-            if (menuobj.value() && menuobj.value() == _8cnvctx)
+            if (headcnv.height)
+            {
+                bookmark(context);
+                menuobj.draw();
+            }
+            else
             {
                 menuobj.updown(context, y < rect.height/2 ? -90 : 90, 180)
                 if (!context.swipetimeout)
                     context.swipetimeout = 
                         setInterval(function(){menuobj.draw();}, GALLERYMAIN);
-            }
-            else
-            {
-                bookmark(context);
-                menuobj.draw();
             }
         }
     },
