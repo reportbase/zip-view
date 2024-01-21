@@ -4756,7 +4756,7 @@ menuobj.draw = function()
         func(m);
     }
 
-    function foo(m,draw)
+    for (var m = 0; m < context.canvas.visibles.length; ++m)
     {
         var n = canvas.normal[m];
 	    var slice = slices[n];
@@ -4768,8 +4768,7 @@ menuobj.draw = function()
             slice.thumbimg = new Image();
             slice.thumbimg.onload = function()
             {
-                if (draw)
-                    menuobj.draw();
+                menuobj.draw();
 	        }
             
             if (slice.entry)
@@ -4780,15 +4779,24 @@ menuobj.draw = function()
                 slice.thumbimg.src = slice.url;
         }
     }
-
-    for (var m = 0; m < context.canvas.visibles.length; ++m)
-    {
-        foo(m,1);
-    }
     
     for (var m = 0; m < canvas.normal.length; ++m)
     {
-        foo(m);
+        var n = canvas.normal[m];
+	    var slice = slices[n];
+        if (context == _8cnvctx && 
+            !slice.thumbimg &&
+            !slice.pad) 
+        {
+            slice.thumbfitted = document.createElement("canvas");
+            slice.thumbimg = new Image();
+            if (slice.entry)
+                getblobpath(slice.thumbimg, slice);
+            else if (slice.blob)
+                slice.thumbimg.src = URL.createObjectURL(slice.blob);
+            else
+                slice.thumbimg.src = slice.url;
+        }    
     }
     
     var visibles = context.canvas.visibles;
