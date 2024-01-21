@@ -1454,7 +1454,7 @@ var displaylst =
                 new panel.layers(
                 [
  			        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
-                    new panel.currentV(new panel.rounded("rgba(0,0,0,0.5)",5,"rgba(255,255,255,0.5)"5,5), 90, 1),
+                    new panel.currentV(new panel.rounded("rgba(0,0,0,0.5)",5,"rgba(255,255,255,0.5)",5,5), 90, 1),
                 ]),
                 0,
             ]),
