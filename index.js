@@ -3719,7 +3719,6 @@ var taplst =
             context.bookmarkrect &&
             context.bookmarkrect.hitest(x, y))
         {
-            boo
             var index = 1 - canvas.timeobj.berp();
             index *= galleryobj.length(); 
 	        index = Math.floor(index);
