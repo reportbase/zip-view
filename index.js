@@ -1458,7 +1458,7 @@ var displaylst =
                 new panel.layers(
                 [
  			        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
-                    new panel.currentV(new panel.rounded(FILLBAR,BUTTONBORDER,BUTTONFILL,6,6), 90, 1),
+                    new panel.currentV(new panel.rounded(FILLBAR,BUTTONBORDER-1,BUTTONFILL,6,6), 90, 1),
                 ]),
                 0,
             ]),
@@ -4748,10 +4748,9 @@ menuobj.draw = function()
     }
 
 	var allslices = [...context.canvas.visibles, ...context.canvas.invisibles];
-    for (var m = 0; m < canvas.normal.length; ++m)
+    for (var n = 0; n < allslices.length; ++n)
     {
-        var n = canvas.normal[m];
-        var slice = slices[n];
+        var slice = allslices[n];
         if (context == _8cnvctx && 
             !slice.thumbimg &&
             !slice.pad) 
