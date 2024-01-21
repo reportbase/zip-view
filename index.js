@@ -2138,17 +2138,6 @@ CanvasRenderingContext2D.prototype.hide = function()
     this.canvas.height = 0;
 };
 
-CanvasRenderingContext2D.prototype.refresh = function()
-{
-    //todo remove
-    var context = this;
-    clearInterval(context.swipetimeout);
-    context.swipetimeout = setInterval(function()
-    {
-        //bossobj.draw()
-    }, BOSSMAIN);
-};
-
 CanvasRenderingContext2D.prototype.show = function(x, y, width, height)
 {
     if (this.canvas.style.left != x + "px")
@@ -4715,6 +4704,7 @@ menuobj.draw = function()
     }
 
     context.canvas.visibles = [];
+    context.canvas.invisibles = [];
     context.centered = 0;
     var r = new rectangle(0, 0, rect.width, buttonheight);
 
@@ -4746,9 +4736,10 @@ menuobj.draw = function()
             	context.centered = slice.index;
             }
 
-            if (!slice.isvisible)
-                return;
-            context.canvas.visibles.push(slice);  
+            if (slice.isvisible)
+                context.canvas.visibles.push(slice);  
+            else
+                context.canvas.invisibles.push(slice);  
         }
     }
 
@@ -4757,10 +4748,10 @@ menuobj.draw = function()
         func(m);
     }
 
-	//todo: move visibles to top
-    for (var m = 0; m < canvas.normal.length; ++m)
+	var allslices = [...context.canvas.visibles, ...context.canvas.invisibles];
+    for (var m = 0; m < allslices.length; ++m)
     {
-        var n = canvas.normal[m];
+        var n = allslices[m];
         var slice = slices[n];
         if (context == _8cnvctx && 
             !slice.thumbimg &&
@@ -6745,9 +6736,7 @@ galleryobj.reset = function()
         _8cnv.timeobj.set(k);
     }
 
-    var berp = _8cnv.timeobj.berp();
-    var current = galleryobj.lerp(berp);//1 - berp);
-    var j = galleryobj.data[current];
+    var j = galleryobj.data[0];
     if (j.entry)
         getblobpath(image, j)
     else
