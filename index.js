@@ -4752,10 +4752,8 @@ menuobj.draw = function()
             
             if (slice.entry)
                 getblobpath(slice.thumbimg, slice);
-            else if (slice.blob)
-                slice.thumbimg.src = URL.createObjectURL(slice.blob);
             else
-                slice.thumbimg.src = slice.url;
+                slice.thumbimg.src = imagepath(slice,"5760x5760");
         }
     }
     
@@ -5935,16 +5933,6 @@ function imagepath(user, template)
     {
         src = `https://image.reportbase5836.workers.dev/image/${user.id}/${template}`;
     }
-    else if (user.id && user.id.length > 1 &&
-        ((user.id.charAt(0) == 'Q' && user.id.charAt(1) == 'm') ||
-            (user.id.charAt(0) == 'b')))
-    {
-        src = `https://cloudflare-ipfs.com/ipfs/${user.folder}/${user.name}`;
-    }
-    else if (user.full)
-    {
-        src = user.full;
-    }
     else if (user.url)
     {
         src = user.url;
@@ -6891,7 +6879,6 @@ local.set = function()
 async function getblobpath(img, slice)
 {
     var blob = await slice.entry.blob(`image/${slice.ext}`);
-    //img.src = slice.blob;
     img.src = URL.createObjectURL(blob);
 }
 
