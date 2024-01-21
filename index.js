@@ -1455,7 +1455,7 @@ var displaylst =
                 [
  			        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
                     new panel.currentV(new panel.rounded("rgba(0,0,0,0.5)",BUTTONBORDER,
-                            "rgba(255,255,255,0.5)",BUTTONRADIUS,BUTTONRADIUS), 90, 1),
+                            "rgba(255,255,255,0.5)",6,6), 90, 1),
                 ]),
                 0,
             ]),
