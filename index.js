@@ -2142,12 +2142,12 @@ CanvasRenderingContext2D.prototype.hide = function()
 
 CanvasRenderingContext2D.prototype.refresh = function()
 {
+    //todo remove
     var context = this;
     clearInterval(context.swipetimeout);
     context.swipetimeout = setInterval(function()
     {
-        context.canvas.lastime = -0.0000000000101010101;
-        bossobj.draw()
+        //bossobj.draw()
     }, BOSSMAIN);
 };
 
@@ -2516,7 +2516,6 @@ var wheelst =
     name: "MENU",
     wheel: function(context, x, y)
     {
-        context.elst.push({x,y});
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
@@ -2540,7 +2539,6 @@ var wheelst =
     name: "BOSS",
     wheel: function(context, x, y)
     {
-        context.elst.push({x,y});
     },
     updown: function(context, x, y, delta, ctrl, shift, alt, type, trackpad)
     {
@@ -2619,8 +2617,7 @@ var pinchlst =
     name: "GALLERY",
     pinch: function(context, x, y, scale)
     {
-	    context.elst.push({x,y});
-        if (!context.buttonanchor)
+	    if (!context.buttonanchor)
             context.buttonanchor = buttonobj.value();
         if (!context.scaleanchor)
             context.scaleanchor = scale;
@@ -2937,7 +2934,6 @@ var panlst =
     pan: function(context, rect, x, y, type)
     {
         var canvas = context.canvas;
-        context.elst.push({x,y});
         var hollyobj = context.canvas.hollyobj;
         if (hollyobj && (type == "panleft" || type == "panright"))
         {
@@ -5191,11 +5187,9 @@ contextobj.init = function()
         context.imageSmoothingQuality = "medium";
         context.font = DEFAULTFONT;
         context.fillText("  ", 0, 0);
-        context.elst = []
         canvas.slideshow = 0;
         canvas.slidereduce = 0;
         canvas.slidestop = 0;
-        canvas.lastime = 0;
         context.deltalst = [];
         context.infobj = new circular_array("", 3);
         canvas.sliceobj = new circular_array("", []);
