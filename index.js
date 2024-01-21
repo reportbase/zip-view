@@ -4711,35 +4711,23 @@ menuobj.draw = function()
     {
         var n = canvas.normal[m];
 	    var slice = slices[n];
-        if ((context == _8cnvctx && 
-            (slice.thumbimg || slice.pad)) || 
-		     context != _8cnvctx)
-        {
-            slice.base = time;
-            slice.time = time + (n * (Math.PI / len));
-            var b = Math.tan(slice.time);
-            var j = Math.berp(-1, 1, b);
-            slice.py = slice.y;
-            slice.y = j * canvas.virtualheight;
-            var e = (canvas.virtualheight - rect.height) / 2;
-            slice.y -= e;
-            slice.index = n;
-            slice.rect = new rectangle(0, slice.y, rect.width, buttonheight);
-            slice.isvisible = slice.y > -buttonheight && slice.y < window.innerHeight;
-            
-            if (context == _8cnvctx &&
-		        slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
-            {
-            	galleryobj.width = slice.thumbimg?slice.thumbimg.width:0;
-            	galleryobj.height = slice.thumbimg?slice.thumbimg.height:0;
-            	context.centered = slice.index;
-            }
-
-            if (slice.isvisible)
-                context.canvas.visibles.push(slice);  
-            else
-                context.canvas.invisibles.push(slice);  
-        }
+        slice.base = time;
+        slice.time = time + (n * (Math.PI / len));
+        var b = Math.tan(slice.time);
+        var j = Math.berp(-1, 1, b);
+        slice.py = slice.y;
+        slice.y = j * canvas.virtualheight;
+        var e = (canvas.virtualheight - rect.height) / 2;
+        slice.y -= e;
+        slice.index = n;
+        slice.rect = new rectangle(0, slice.y, rect.width, buttonheight);
+        slice.isvisible = slice.y > -buttonheight && slice.y < window.innerHeight;
+        if (slice.rect.hitest(window.innerWidth / 2, window.innerHeight / 2))
+            context.centered = slice.index;
+        if (slice.isvisible)
+            context.canvas.visibles.push(slice);  
+        else
+            context.canvas.invisibles.push(slice);  
     }
 
     for (var m = 0; m < canvas.normal.length; ++m)
