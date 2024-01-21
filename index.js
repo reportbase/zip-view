@@ -92,15 +92,12 @@ const BOOKMARKED = "rgba(0,0,255,0.75)";
 const EXPANDRECT = 60;
 const CORNEREXT = 0.05;
 
+var NUBCOLOR = "rgba(255,255,255,0.75)";
+var BACKFILL = "black";
 if (THEME == "dark")
 {
-	const NUBCOLOR = "rgba(0,0,0,0.5)";
-	const BACKFILL = "white";
-}
-else
-{
-	const NUBCOLOR = "rgba(255,255,255,0.75)";
-	const BACKFILL = "black";
+	var NUBCOLOR = "rgba(0,0,0,0.5)";
+	var BACKFILL = "white";
 }
 
 function setjson(key, value)
