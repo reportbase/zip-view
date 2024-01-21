@@ -4696,7 +4696,7 @@ menuobj.draw = function()
         canvas.lastcurrent = current;
         canvas.lastnormal = canvas.normal;
         canvas.normal = util.rotated_list(
-        canvas.rotated, current, CACHESIZE);
+            canvas.rotated, current, CACHESIZE);
         
     	if (canvas.lastnormal)
     	{
@@ -4756,49 +4756,27 @@ menuobj.draw = function()
         func(m);
     }
 
-    if (context.canvas.visibles.length)
+    for (var m = 0; m < canvas.normal.length; ++m)
     {
-        for (var m = 0; m < context.canvas.visibles.length; ++m)
+        var n = canvas.normal[m];
+        var slice = slices[n];
+        if (context == _8cnvctx && 
+            !slice.thumbimg &&
+            !slice.pad) 
         {
-            var n = canvas.normal[m];
-    	    var slice = slices[n];
-            if (context == _8cnvctx && 
-                !slice.thumbimg &&
-                !slice.pad) 
+            slice.thumbfitted = document.createElement("canvas");
+            slice.thumbimg = new Image();
+            slice.thumbimg.onload = function()
             {
-                slice.thumbfitted = document.createElement("canvas");
-                slice.thumbimg = new Image();
-                slice.thumbimg.onload = function()
-                {
-                    menuobj.draw();
-    	        }
-                
-                if (slice.entry)
-                    getblobpath(slice.thumbimg, slice);
-                else if (slice.blob)
-                    slice.thumbimg.src = URL.createObjectURL(slice.blob);
-                else
-                    slice.thumbimg.src = slice.url;
+                menuobj.draw();
             }
-        }
-        
-        for (var m = 0; m < canvas.normal.length; ++m)
-        {
-            var n = canvas.normal[m];
-    	    var slice = slices[n];
-            if (context == _8cnvctx && 
-                !slice.thumbimg &&
-                !slice.pad) 
-            {
-                slice.thumbfitted = document.createElement("canvas");
-                slice.thumbimg = new Image();
-                if (slice.entry)
-                    getblobpath(slice.thumbimg, slice);
-                else if (slice.blob)
-                    slice.thumbimg.src = URL.createObjectURL(slice.blob);
-                else
-                    slice.thumbimg.src = slice.url;
-            }    
+            
+            if (slice.entry)
+                getblobpath(slice.thumbimg, slice);
+            else if (slice.blob)
+                slice.thumbimg.src = URL.createObjectURL(slice.blob);
+            else
+                slice.thumbimg.src = slice.url;
         }
     }
     
