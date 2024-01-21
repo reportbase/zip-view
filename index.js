@@ -93,11 +93,9 @@ const EXPANDRECT = 60;
 const CORNEREXT = 0.05;
 
 var NUBCOLOR = "rgba(255,255,255,0.75)";
-var BACKFILL = "black";
 if (THEME == "dark")
 {
 	var NUBCOLOR = "rgba(0,0,0,0.5)";
-	var BACKFILL = "white";
 }
 
 function setjson(key, value)
@@ -3821,19 +3819,17 @@ var taplst =
         {
             closemenu()
         }
-            /*
-        else if (headcnv.height)
-    	{	
-		    headobj.hide();
-            menuobj.draw();
-	    }
-         */
         else 
         {
             if (headcnv.height)
             {
                 bookmark(context);
                 menuobj.draw();
+            }
+            else if (canvas.ctrlKey)
+            {
+                 var k = _8cnv.timeobj.length() / galleryobj.length();
+                 _8cnv.timeobj.rotate(y < rect.height/2 ? k : -k);
             }
             else
             {
@@ -4656,14 +4652,7 @@ menuobj.draw = function()
     const len = slices.length;
     const rect = context.rect();
     
-    context.clear();
-    if (context == _8cnvctx && BACKFILL != "black")
-    {
-        var a = new panel.fill(BACKFILL);
-        a.draw(context, new rectangle(0, 0, 
-            canvas.width, canvas.height), 0, 0);
-    }
-    
+    context.clear();    
     if (context.canvas.slideshow > 0)
     {
         var k = canvas.autodirect;
@@ -4678,7 +4667,6 @@ menuobj.draw = function()
         context.canvas.slideshow = 0;
         resetview();
         local.set();
-        //todo: resize next item
     }
 
     var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
