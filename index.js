@@ -20,13 +20,13 @@ url.param = function(key, def)
 }
 
 const HIDE = url.searchParams.get("hide");
-const THEME = url.param("theme");
+const THEME = url.param("theme","light");
 const BEAV = url.param("beav", 0.645);
 const ADMIN = url.param("admin", 0);
 const DELTA = url.param("delta", 2.5);
 const PRECIS = url.param("precis", 3);
 const NUBACK = "rgba(0,0,0,0.4)";
-const GALLNUB = "rgba(255,255,255,0.75)";
+const GALLNUB = THEME=="dark"?"rgba(0,0,0,0.5)":"rgba(255,255,255,0.75)";
 const GALLFILL = url.param("gfc","rgba(0,0,0,0.4)"); 
 const MAXBUTTON = url.param("mbs",4000*3000); 
 const BACKFILL = url.param("back","black");
@@ -49,7 +49,7 @@ const WRAPROWHEIGHT = 40;
 const HEADHEIGHT = IFRAME ? 0 : HEADTOP+HEADBOT;
 const FOOTHEIGHT = 80;
 const MAXEXTENT = 10000;
-const NUBHEIGHT = 12;
+const NUBHEIGHT = 10;
 const NUBMARGIN = 4;
 const NUBEXTENT = 15;
 const NUBDELAY = 3000;
@@ -1454,7 +1454,8 @@ var displaylst =
                 new panel.layers(
                 [
  			        new panel.expand(new panel.rectangle(canvas.timerect), 10, 0),
-                    new panel.currentV(new panel.rounded("rgba(0,0,0,0.5)",5,"rgba(255,255,255,0.5)",5,5), 90, 1),
+                    new panel.currentV(new panel.rounded("rgba(0,0,0,0.5)",BUTTONBORDER,
+                            "rgba(255,255,255,0.5)",BUTTONRADIUS,BUTTONRADIUS), 90, 1),
                 ]),
                 0,
             ]),
