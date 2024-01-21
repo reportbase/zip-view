@@ -4756,47 +4756,50 @@ menuobj.draw = function()
         func(m);
     }
 
-    for (var m = 0; m < context.canvas.visibles.length; ++m)
+    if (context.canvas.visibles.length)
     {
-        var n = canvas.normal[m];
-	    var slice = slices[n];
-        if (context == _8cnvctx && 
-            !slice.thumbimg &&
-            !slice.pad) 
+        for (var m = 0; m < context.canvas.visibles.length; ++m)
         {
-            slice.thumbfitted = document.createElement("canvas");
-            slice.thumbimg = new Image();
-            slice.thumbimg.onload = function()
+            var n = canvas.normal[m];
+    	    var slice = slices[n];
+            if (context == _8cnvctx && 
+                !slice.thumbimg &&
+                !slice.pad) 
             {
-                menuobj.draw();
-	        }
-            
-            if (slice.entry)
-                getblobpath(slice.thumbimg, slice);
-            else if (slice.blob)
-                slice.thumbimg.src = URL.createObjectURL(slice.blob);
-            else
-                slice.thumbimg.src = slice.url;
+                slice.thumbfitted = document.createElement("canvas");
+                slice.thumbimg = new Image();
+                slice.thumbimg.onload = function()
+                {
+                    menuobj.draw();
+    	        }
+                
+                if (slice.entry)
+                    getblobpath(slice.thumbimg, slice);
+                else if (slice.blob)
+                    slice.thumbimg.src = URL.createObjectURL(slice.blob);
+                else
+                    slice.thumbimg.src = slice.url;
+            }
         }
-    }
-    
-    for (var m = 0; m < canvas.normal.length; ++m)
-    {
-        var n = canvas.normal[m];
-	    var slice = slices[n];
-        if (context == _8cnvctx && 
-            !slice.thumbimg &&
-            !slice.pad) 
+        
+        for (var m = 0; m < canvas.normal.length; ++m)
         {
-            slice.thumbfitted = document.createElement("canvas");
-            slice.thumbimg = new Image();
-            if (slice.entry)
-                getblobpath(slice.thumbimg, slice);
-            else if (slice.blob)
-                slice.thumbimg.src = URL.createObjectURL(slice.blob);
-            else
-                slice.thumbimg.src = slice.url;
-        }    
+            var n = canvas.normal[m];
+    	    var slice = slices[n];
+            if (context == _8cnvctx && 
+                !slice.thumbimg &&
+                !slice.pad) 
+            {
+                slice.thumbfitted = document.createElement("canvas");
+                slice.thumbimg = new Image();
+                if (slice.entry)
+                    getblobpath(slice.thumbimg, slice);
+                else if (slice.blob)
+                    slice.thumbimg.src = URL.createObjectURL(slice.blob);
+                else
+                    slice.thumbimg.src = slice.url;
+            }    
+        }
     }
     
     var visibles = context.canvas.visibles;
