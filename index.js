@@ -6746,7 +6746,7 @@ galleryobj.reset = function()
     }
 
     var berp = _8cnv.timeobj.berp();
-    var current = galleryobj.lerp(1 - berp);
+    var current = galleryobj.lerp(berp);//1 - berp);
     var j = galleryobj.data[current];
     if (j.entry)
         getblobpath(image, j)
