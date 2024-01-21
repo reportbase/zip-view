@@ -4783,7 +4783,7 @@ menuobj.draw = function()
 
     for (var m = 0; m < context.canvas.visibles.length; ++m)
     {
-        foo(m);
+        foo(m,1);
     }
     
     for (var m = 0; m < canvas.normal.length; ++m)
