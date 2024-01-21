@@ -4676,6 +4676,7 @@ menuobj.draw = function()
         context.canvas.slideshow = 0;
         resetview();
         local.set();
+        //todo: resize next item
     }
 
     var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
@@ -4765,7 +4766,7 @@ menuobj.draw = function()
         func(m);
     }
 
-    function foo(m)
+    function foo(m,draw)
     {
         var n = canvas.normal[m];
 	    var slice = slices[n];
@@ -4777,7 +4778,8 @@ menuobj.draw = function()
             slice.thumbimg = new Image();
             slice.thumbimg.onload = function()
             {
-                menuobj.draw();
+                if (draw)
+                    menuobj.draw();
 	        }
             
             if (slice.entry)
