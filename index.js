@@ -2469,7 +2469,7 @@ var wheelst =
 	    if (ctrl)
         {
 		    context.showmovebuttons = 0;
-            var k = delta/100;
+            var k = delta/400;
             buttonobj.addperc(-k);
             menuobj.draw();
             setpinching(context);
