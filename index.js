@@ -6109,9 +6109,9 @@ function share()
 {
     var input = document.getElementById("share-input");
     var k = new URL(window.location.href);
-    k.searchParams.set('r', _8cnv.timeobj.value().toFixed(8));
+    k.searchParams.set('r', _8cnv.timeobj.value().toFixed(6));
     k.searchParams.set('b', buttonobj.value());
-    k.searchParams.set('h', _8cnv.hollyobj.current());
+    k.searchParams.set('h', _8cnv.hollyobj.current().toFixed(6));
     input.value = k.href;
     showdialog("share", function(image)
     {
