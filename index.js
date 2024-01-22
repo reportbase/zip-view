@@ -2864,7 +2864,7 @@ var panlst =
             {
                 var obj = context.canvas.hollyobj;
                 var e = canvas.startx - x;
-                var k = panhorz(obj, e);
+                var k = panhorz(obj, e/20);
                 if (k == -1)
                     return;
                 if (k == obj.anchor())
