@@ -6109,12 +6109,9 @@ function share()
 {
     var input = document.getElementById("share-input");
     var k = new URL(window.location.href);
-        k.button = ;
-        k.rad = _8cnv.timeobj.current()
-        k.holly = _8cnv.hollyobj.current();
-    k.searchParams.set('rad', _8cnv.timeobj.value().toFixed(8));
-    k.searchParams.set('btn', buttonobj.value());
-    k.searchParams.set('hly', _8cnv.hollyobj.value());
+    k.searchParams.set('r', _8cnv.timeobj.value().toFixed(8));
+    k.searchParams.set('b', buttonobj.value());
+    k.searchParams.set('h', _8cnv.hollyobj.value());
     input.value = k.href;
     showdialog("share", function(image)
     {
@@ -6856,12 +6853,12 @@ local.init = function()
         _8cnv.hollyobj.set(local.holly);
     }
     
-    if (url.searchParams.has("rad"))
-        local.rad = Number(url.searchParams.get("rad"));
-    if (url.searchParams.has("hly"))
-        _8cnv.hollyobj.set(Number(url.searchParams.get("hly")));
-    if (url.searchParams.has("btn"))
-        local.button = url.searchParams.get("btn");
+    if (url.searchParams.has("r"))
+        local.rad = Number(url.searchParams.get("r"));
+    if (url.searchParams.has("h"))
+        _8cnv.hollyobj.set(Number(url.searchParams.get("h")));
+    if (url.searchParams.has("b"))
+        local.button = url.searchParams.get("b");
 }
 
 local.init();
