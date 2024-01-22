@@ -3963,10 +3963,12 @@ function galleryadd()
     var title = document.getElementById("gallery-add-title");
     var prefix = document.getElementById("gallery-add-prefix");
     var json = document.getElementById("gallery-add-json");
+    var theme = document.getElementById("gallery-add-theme");
     id.value = Math.floor(Date.now() / 1000).toString(36);
     title.value = "";
     json.value = getfilenames();
     prefix.value = "";
+    theme.value = "";
     showdialog("gallery-add", function(image)
     {
         const form = new FormData();
@@ -3975,6 +3977,7 @@ function galleryadd()
         form.append('json', json.value);
         form.append('gallery_id', id.value);
         form.append('user_id', login.id);
+        form.append('theme', theme.value);
         fetch(`https://atlanticc.reportbase5836.workers.dev`,
         {
             method: 'POST',
@@ -3989,6 +3992,7 @@ function galleryadd()
             k.title = obj.title;
             k.json = obj.json;
             k.prefix = obj.prefix;
+            k.theme = obj.theme;
             k.id = obj.gallery_id;   
             var e = _2cnv.sliceobj.data.unshift(k);
             _2cnv.sliceobj.set(0);
@@ -4091,10 +4095,12 @@ function gallerypatch()
     var title = document.getElementById("gallery-patch-title");
     var prefix = document.getElementById("gallery-patch-prefix");
     var json = document.getElementById("gallery-patch-json");
+    var theme = document.getElementById("gallery-patch-theme");
     id.value = gallery.id;
     title.value = gallery.title;
     prefix.value = gallery.prefix;
     json.value = gallery.json;
+    theme.value = gallery.theme;
     showdialog("gallery-patch", function(image)
     {
         const form = new FormData();
@@ -4102,6 +4108,7 @@ function gallerypatch()
         form.append('title', title.value);
         form.append('prefix', prefix.value);
         form.append('json', json.value);
+        form.append('theme', theme.value);
         fetch(`https://atlanticc.reportbase5836.workers.dev`,
         {
             method: 'PATCH',
@@ -4112,6 +4119,7 @@ function gallerypatch()
             gallery.title = title.value;
             gallery.json = json.value;
             gallery.prefix = prefix.value;
+            gallery.theme = theme.value;
             menuobj.draw();
         })
     })
