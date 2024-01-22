@@ -2908,7 +2908,7 @@ var panlst =
         delete buttonobj.offset;
         delete context.canvas.isvbarect;
         delete context.canvas.hollyobj.offset;
-	    local.set()    
+	    local.save()    
         menuobj.draw();
     }
 },
@@ -3032,7 +3032,7 @@ function bookmark(context)
     var k = galleryobj.data[index];    
     k.marked = k.marked ? 0 : timeobj.current();
     menuobj.draw();
-    local.set();
+    local.save();
 }
 
 var presslst = 
@@ -3353,8 +3353,11 @@ var keylst =
             }
             else if (key == "f")
             {
-                evt.preventDefault();
                 toggleFullScreen();
+            }
+            else if (key == "s")
+            {
+                share();
             }
             else if (key == "g")
             {
@@ -4624,7 +4627,7 @@ menuobj.show = function()
         context.show(l, 0, w, window.innerHeight);
     }
 
-    local.set()	
+    local.save()	
     menuobj.draw();    
 }
 
@@ -4655,7 +4658,7 @@ menuobj.draw = function()
         context.swipetimeout = 0;
         context.canvas.slideshow = 0;
         resetview();
-        local.set();
+        local.save();
     }
 
     var buttonheight = canvas.buttonheight-canvas.buttonheight%2;
@@ -5830,7 +5833,7 @@ window.addEventListener("keyup", function(evt)
 
 window.addEventListener("keydown", function(evt)
 {
-    local.set();
+    local.save();
     var key = evt.key.toLowerCase();
     if (key == "escape")
     {
@@ -6102,6 +6105,23 @@ headobj.reset = function()
     }
 }
 
+function share()
+{
+    var input = document.getElementById("share-input");
+    var k = new URL(window.location.href);
+        k.button = ;
+        k.rad = _8cnv.timeobj.current()
+        k.holly = _8cnv.hollyobj.current();
+    k.searchParams.set('rad', _8cnv.timeobj.value().toFixed(8));
+    k.searchParams.set('btn', buttonobj.value());
+    k.searchParams.set('hly', _8cnv.hollyobj.value());
+    input.value = k.href;
+    showdialog("share", function(image)
+    {
+        copytext(input.value.clean());
+    })  
+}
+
 function setupmenus()
 {
     _3cnv.sliceobj.data =  
@@ -6276,15 +6296,7 @@ function setupmenus()
         title: `Share`,
         func: function()
         {
-            var input = document.getElementById("share-input");
-            var k = new URL(window.location.href);
-            k.searchParams.set('rad', _8cnv.timeobj.value().toFixed(8));
-            input.value = k.href;
-            showdialog("share", function(image)
-            {
-                copytext(input.value.clean());
-            })  
-            
+            share();
             return true;
         }
     },   
@@ -6696,18 +6708,15 @@ galleryobj.reset = function()
     };    
    
     _8cnv.timeobj.set(0);
-    var k = Number(local.rad);
-    if (url.searchParams.has("rad"))
-        k = Number(url.searchParams.get("rad"));
     if (galleryobj.length() <= 3)
     {
         var lst = [1.70591,0.98456,2.2311];
         var k = lst.length - galleryobj.length()
         _8cnv.timeobj.set(lst[k]);
     }
-    else if (typeof k !== "undefined" && !Number.isNaN(k) && k != null)
+    else if (typeof local.rad !== "undefined" && !Number.isNaN(local.rad) && local.rad != null)
     {
-        _8cnv.timeobj.set(k);
+        _8cnv.timeobj.set(local.rad);
     }
 
     var j = galleryobj.data[0];
@@ -6846,10 +6855,17 @@ local.init = function()
         local = k;
         _8cnv.hollyobj.set(local.holly);
     }
+    
+    if (url.searchParams.has("rad"))
+        local.rad = Number(url.searchParams.get("rad"));
+    if (url.searchParams.has("hly"))
+        _8cnv.hollyobj.set(Number(url.searchParams.get("hly")));
+    if (url.searchParams.has("btn"))
+        local.button = url.searchParams.get("btn");
 }
 
 local.init();
-local.set = function()
+local.save = function()
 {
     clearTimeout(global.localtimout)
     global.localtimout = setTimeout(function()
