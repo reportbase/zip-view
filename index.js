@@ -4639,7 +4639,7 @@ menuobj.draw = function()
     //context.imageSmoothingQuality = "high";//todo
  	
     if (!context)
-    	return;F
+    	return;
     	
     const canvas = context.canvas;
     var time = canvas.timeobj.value();
