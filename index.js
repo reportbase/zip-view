@@ -4635,10 +4635,11 @@ menuobj.show = function()
 menuobj.draw = function()
 {
     var context = this.value();
-    context.imageSmoothingQuality = "high";//todo
+    context.imageSmoothingEnabled = false;
+    //context.imageSmoothingQuality = "high";//todo
  	
     if (!context)
-    	return;
+    	return;F
     	
     const canvas = context.canvas;
     var time = canvas.timeobj.value();
@@ -5142,7 +5143,6 @@ contextobj.init = function()
     {
         var obj = eventlst[n];
         var canvas = context.canvas;
-        context.imageSmoothingEnabled = true;
         context.font = DEFAULTFONT;
         context.fillText("  ", 0, 0);
         canvas.slideshow = 0;
