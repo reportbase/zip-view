@@ -27,7 +27,7 @@ const DELTA = url.param("delta", 2.5);
 const PRECIS = url.param("precis", 3);
 const NUBACK = "rgba(0,0,0,0.4)";
 const GALLFILL = url.param("gfc","rgba(0,0,0,0.4)"); 
-const MAXBUTTON = url.param("mbs",4000*3000); 
+const MAXBUTTON = url.param("mbs",4000*4000); 
 const CACHESIZE = url.param("cache",12);
 const SAFARI = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 const VIRTCONST = 0.8;
@@ -2468,8 +2468,7 @@ var wheelst =
         context.canvas.slideshow = 0;
 	    if (ctrl)
         {
-		    context.showmovebuttons = 0;
-            var k = delta/400;
+            var k = delta/100;
             buttonobj.addperc(-k);
             menuobj.draw();
             setpinching(context);
@@ -2478,14 +2477,10 @@ var wheelst =
         {
 	       if (Math.abs(delta) < DELTA)
 	            return;
-		    context.showmovebuttons = 0;
 	 	    menuobj.updown(context, delta, 60)
         	if (!clearInterval(context.swipetimeout))
-            {
                  context.swipetimeout = setInterval(
                    function(){menuobj.draw();}, GALLERYMAIN);
-            }
-
             menuobj.draw()
         }
     },
@@ -2493,7 +2488,6 @@ var wheelst =
     {
        if (Math.abs(delta) < DELTA)
             return;
-		context.showmovebuttons = 0;
         context.canvas.hollyobj.addperc(delta / 2000);
         menuobj.draw();
     },
@@ -2626,7 +2620,6 @@ var pinchlst =
     },
     pinchstart: function(context, rect, x, y)
     {
- 		context.showmovebuttons = 0;
        	delete context.scaleanchor;
         delete context.buttonanchor;
         context.canvas.slideshow = 0;
@@ -2896,7 +2889,6 @@ var panlst =
         canvas.starty = y;
         canvas.timeobj.ANCHOR = canvas.timeobj.CURRENT;
         canvas.ishollyrect = canvas.hollyrect && canvas.hollyrect.hitest(x, y);
-        context.showmovebuttons = 0;
     },
     panend: function(context, rect, x, y)
     {
@@ -7069,12 +7061,6 @@ menuobj.updown = function(context, delta, divider)
         divider *= 2.5;
     canvas.slideshow = (Math.PI / canvas.virtualheight) * k;
     canvas.slidereduce = canvas.slideshow / divider;
-    
-    if (!context.updowntimer)
-    context.updowntimer = setTimeout(function(a)
-         {
-             context.updowntimer = 0;
-         }, 400);
 }
 
 let b64DecodeUnicode = str =>
