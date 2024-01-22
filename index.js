@@ -4635,6 +4635,8 @@ menuobj.show = function()
 menuobj.draw = function()
 {
     var context = this.value();
+    context.imageSmoothingQuality = "high";//todo
+ 	
     if (!context)
     	return;
     	
@@ -5141,13 +5143,11 @@ contextobj.init = function()
         var obj = eventlst[n];
         var canvas = context.canvas;
         context.imageSmoothingEnabled = true;
-        context.imageSmoothingQuality = "medium";
         context.font = DEFAULTFONT;
         context.fillText("  ", 0, 0);
         canvas.slideshow = 0;
         canvas.slidereduce = 0;
         canvas.slidestop = 0;
-        context.deltalst = [];
         context.infobj = new circular_array("", 3);
         canvas.sliceobj = new circular_array("", []);
         canvas.timeobj = new circular_array("", Math.PI);
