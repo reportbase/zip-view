@@ -6855,8 +6855,8 @@ local.init = function()
     
     if (url.searchParams.has("r"))
         local.rad = Number(url.searchParams.get("r"));
-    //if (url.searchParams.has("h"))
-    //    _8cnv.hollyobj.set(Number(url.searchParams.get("h")));
+    if (url.searchParams.has("h"))
+        _8cnv.hollyobj.set(Number(url.searchParams.get("h")));
     //if (url.searchParams.has("b"))
     //    local.button = url.searchParams.get("b");
 }
