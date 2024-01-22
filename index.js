@@ -6111,7 +6111,7 @@ function share()
     var k = new URL(window.location.href);
     k.searchParams.set('r', _8cnv.timeobj.value().toFixed(8));
     k.searchParams.set('b', buttonobj.value());
-    k.searchParams.set('h', _8cnv.hollyobj.value());
+    k.searchParams.set('h', _8cnv.hollyobj.current());
     input.value = k.href;
     showdialog("share", function(image)
     {
