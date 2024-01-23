@@ -1,103 +1,70 @@
 https://github.com/gscept/nebula/blob/master/README.md
 
-# Zip-View
+Certainly! Below is a simple example of a GitHub markdown page for Zip-View. You can customize it further based on your specific needs.
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+```markdown
+# Zip-View Documentation
 
 ## Overview
 
-Zip-View is a versatile browser for document and image viewing, offering a unique approach by utilizing the popular ZIP file format. This README provides an overview and comparative analysis of Zip-View against traditional PDFs.
-
-## Table of Contents
-
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [API](#api)
-- [Integration](#integration)
-- [Contributing](#contributing)
-- [License](#license)
+Zip-View is a revolutionary content viewing solution that aims to provide a dynamic and efficient experience for exploring images. This documentation serves as a guide to understand and implement Zip-View in your projects.
 
 ## Features
 
-- **Instant Display:** Display images instantly by downloading only visible images.
-- **Navigation Experience:** Top-down wrap-around viewing with precise panning.
-- **Hosting Flexibility:** Local and remote hosting on traditional servers, cloud, or IPFS.
-- **User-Friendliness:** No HTML coding required, drag-and-drop functionality, password protection.
-- **Cross-Platform Compatibility:** Compatible across Windows, Mac, Linux, iOS, Android.
+### Instant Image Display
 
-## Installation
+Zip-View ensures instant image display, allowing users to access content without delays.
 
-Clone the repository:
+### Immersive Navigation
 
-```bash
-git clone https://github.com/yourusername/zip-view.git
+Top-down wrap-around viewing provides an immersive exploration of images, enhancing the navigation experience.
 
-Table of Contents
-1. Getting Started
-   + Accessing the Image Viewer
-1. Navigating Images
-   + Keyboard Support
-   + Mouse Support
-   + Touch Support
-1. Zooming and Panning
-   + Keyboard Support
-   + Mouse Support
-   + Touch Support
-1. Loading Images and Zip Files
-   + Loading IPFS Image Hierarchy
-   + Loading Remote Zip Files
-   + Drag and Drop from File Explorer
-1. Contact Support
-<!-- -->
+### Versatile Hosting Options
 
-1. Getting Started
-   1. Open web browser.
-   1. Navigate to IPFS-View using a URL, which will look something like: https://www.ipfs-view.com?p=your-QID-here.
-   1. Press Enter, and the IPFS-View Image Viewer will load the image hierarchy associated with the provided QID.
+Zip-View offers versatile hosting options, including local hosting for offline viewing and integration with IPFS for decentralized remote hosting.
 
-1. Navigating Images
-   - Keyboard Support
-     + Left Arrow: Move left.
-     + Right Arrow: Move right.
-     + Up Arrow: Move up (or use 'K').
-     + Down Arrow: Move down (or use 'Space').
-     + Enter: Next image.
-     + Backspace: Previous image.
-     + Home: First image.
-     + End: Last image.
-     + Esc: Exit full-screen mode.
-   - Custom Keyboard Support
-     + H: Move left (an alternative to the Left Arrow).
-     + J: Move down (an alternative to the Down Arrow or Space).
-     + K: Move up (an alternative to the Up Arrow).
-     + L: Move right (an alternative to the Right Arrow)
-   - Additional Actions
-     + / (Forward Slash): Toggle user interface visibility.
-     + Tab: Move right.
-     + Long-Press: View image details.
-     + ?: View advanced image details.
- 
-1. Zooming and Panning
-   - Keyboard Support
-     + Plus / Minus: Zoom in and out.
-     + Ctrl + 0: Reset zoom to 100%.
+### User-Friendly Design
 
-   - Mouse Support
-     + Scroll Wheel: Zoom in and out.
-     + Click and Drag: Pan the zoomed-in image.
+With no HTML coding required, Zip-View is designed to be accessible and user-friendly. It supports drag-and-drop functionality for efficient organization.
 
-   - Touch Support
-     + Pinch-Zoom: Zoom in and out.
-     + Drag: Pan the zoomed-in image.
+### Image Aspect Ratios
 
-1. IPFS and Zip Files
-   - To load an IPFS image hierarchy, set the "P" parameter of the URL to the QID (Query ID) associated with the content. 
-     + https://www.ipfs-view.com?p=your-QID-here.
-   - To load a remote zip file, set the "P" parameter to the file location.
-     + https://www.ipfs-view.com?p=https://www.example.com/path/to/your/zipfile.zip
-   - To load a images from the desktop, use drag-and-drop or the file explorer:
+Zip-View excels at displaying various image aspect ratios, including ultra-wide and ultra-tall images.
 
-1. Contact Support
-   - Email: support@ipfs-view.com
+### Integration with AI
 
+Seamless integration with AI auto-generated image workflows unlocks new possibilities in content exploration.
+
+### Effortless Sharing and Linking
+
+Zip-View allows easy sharing and direct linking of images, providing enhanced sharing possibilities.
+
+### Cross-Platform Compatibility
+
+Zip-View works seamlessly across Windows, Mac, Linux, iOS, and Android, ensuring accessibility across diverse platforms.
+
+## Getting Started
+
+To start using Zip-View in your project, follow these steps:
+
+1. [Download Zip-View](#) - Insert link to the download page.
+2. [Installation](#) - Guide on how to install and set up Zip-View.
+3. [Usage](#) - Instructions on how to integrate Zip-View into your application.
+
+## Examples
+
+```html
+<!-- Sample code snippet demonstrating Zip-View integration -->
+<zip-view src="path/to/your/images" options="{your_options_here}"></zip-view>
+```
+
+## Contributing
+
+We welcome contributions! If you want to contribute to Zip-View, please follow our [Contributing Guidelines](CONTRIBUTING.md).
+
+## License
+
+Zip-View is licensed under the [MIT License](LICENSE).
+```
+
+Note: Replace placeholder links (`#`) with the actual URLs or paths. Additionally, you may want to provide more detailed instructions, code examples, and links to relevant resources based on your specific project requirements.
