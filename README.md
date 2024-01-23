@@ -1,7 +1,5 @@
 https://github.com/gscept/nebula/blob/master/README.md
 
-Certainly! Below is a simple example of a GitHub markdown page for Zip-View. You can customize it further based on your specific needs.
-
 ```markdown
 # Zip-View Documentation
 
