@@ -3090,7 +3090,7 @@ var swipelst =
     swipeleftright: function(context, rect, x, y, evt)
     {
         var k = evt.type == "swipeleft" ? 1 : -1;
-        context.canvas.hollyobj.addperc(-k*0.2);
+        context.canvas.hollyobj.addperc(k*0.2);
         menuobj.draw();
     },
     swipeupdown: function(context, rect, x, y, evt)
