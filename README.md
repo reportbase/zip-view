@@ -1,6 +1,3 @@
-https://github.com/gscept/nebula/blob/master/README.md
-
-```markdown
 # Zip-View Documentation
 
 ## Overview
