@@ -3089,11 +3089,11 @@ var swipelst =
     swipeleftright: function(context, rect, x, y, evt)
     {
         var k = evt.type == "swipeleft" ? 1 : -1;
-        var j = 0.02;
+        var j = 0.025;
         clearInterval(context.arrowleftime);
         context.arrowleftime = setInterval(function()
         {
-            j -= 0.002;
+            j -= 0.001;
             if (j < 0)
             {
                 clearInterval(context.arrowleftime);
