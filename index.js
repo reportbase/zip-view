@@ -3294,9 +3294,8 @@ var keylst =
                 }
                 else
                 {
-                    if (context.arrowleftime)
-                        return;
-                    var j = 0.02;
+                    var j = 0.01;
+                    clearInterval(context.arrowleftime);
                     context.arrowleftime = setInterval(function()
                     {
                         j -= 0.001;
@@ -3316,9 +3315,8 @@ var keylst =
                 key == "arrowright" ||
                 key == "l")
             {
-                    if (context.arrowleftime)
-                        return;
-                    var j = 0.02;
+                    var j = 0.01;
+                    clearInterval(context.arrowleftime);
                     context.arrowleftime = setInterval(function()
                     {
                         j -= 0.001;
