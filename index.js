@@ -3041,6 +3041,12 @@ var presslst =
 var pressobj = new circular_array("PRESS", presslst);
 pressobj.set(3);
 
+window.addEventListener('touchmove', evt => 
+{
+    evt.preventDefault();
+    evt.stopImmediatePropagation();
+}, { passive: false });
+
 var swipelst = 
 [
 {
