@@ -3294,12 +3294,16 @@ var keylst =
                 }
                 else
                 {
+                    var j = 0;
                     context.arrowleftime = setInterval(function()
                     {
+                        if (++j == 20)
+                            clearInterval(context.arrowleftime);
                         context.canvas.hollyobj.addperc(-25/2500);
                         menuobj.draw();
                     }, 20);
                 }
+                
                 evt.preventDefault();
             }
             else if (
@@ -3307,17 +3311,21 @@ var keylst =
                 key == "l")
             {
                 if (canvas.ctrlKey)
-                    context.canvas.hollyobj.set(context.canvas.hollyobj.length()-1);
-                else
-                    context.canvas.hollyobj.addperc(25/250);    
-                context.canvas.panning = 1;
-                menuobj.draw();
-                clearTimeout(context.panningtime)
-                context.panningtime = setTimeout(function()
                 {
-                    context.canvas.panning = 0;
-                    menuobj.draw()
-                }, NUBDELAY);
+                    context.canvas.hollyobj.set(context.canvas.hollyobj.length()-1);
+                }
+                else
+                {
+                    var j = 0;
+                    context.arrowleftime = setInterval(function()
+                    {
+                        if (++j == 20)
+                            clearInterval(context.arrowleftime);
+                        context.canvas.hollyobj.addperc(25/2500);
+                        menuobj.draw();
+                    }, 20);
+                }
+                
                 evt.preventDefault();
             }
             else if (key == "0")
