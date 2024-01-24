@@ -3305,17 +3305,16 @@ var keylst =
                 key == "h")
             {
                 if (canvas.ctrlKey)
-                    context.canvas.hollyobj.set(0);
-                else
-                    context.canvas.hollyobj.addperc(-25/250);    
-                context.canvas.panning = 1;
-                menuobj.draw();
-                clearTimeout(context.panningtime)
-                context.panningtime = setTimeout(function()
                 {
-                    context.canvas.panning = 0;
-                    menuobj.draw()
-                }, NUBDELAY);
+                    context.canvas.hollyobj.set(0);
+                }
+                else
+                {
+                    context.arrowleftime = setInterval(function)()
+                    {
+                        context.canvas.hollyobj.addperc(-25/2500);
+                    }, 20);
+                }
                 evt.preventDefault();
             }
             else if (
