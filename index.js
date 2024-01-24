@@ -3296,10 +3296,10 @@ var keylst =
                 {
                     if (context.arrowleftime)
                         return;
-                    var j = 0.01;
+                    var j = 0.05;
                     context.arrowleftime = setInterval(function()
                     {
-                        j -= 0.0001;
+                        j -= 0.001;
                         if (j < 0)
                         {
                             clearInterval(context.arrowleftime);
@@ -3318,10 +3318,10 @@ var keylst =
             {
                     if (context.arrowleftime)
                         return;
-                    var j = 0.01;
+                    var j = 0.05;
                     context.arrowleftime = setInterval(function()
                     {
-                        j -= 0.0001;
+                        j -= 0.001;
                         if (j < 0)
                         {
                             clearInterval(context.arrowleftime);
