@@ -3297,6 +3297,7 @@ var keylst =
                     context.arrowleftime = setInterval(function()
                     {
                         context.canvas.hollyobj.addperc(-25/2500);
+                        menuobj.draw();
                     }, 20);
                 }
                 evt.preventDefault();
