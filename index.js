@@ -3057,6 +3057,7 @@ var swipelst =
     name: "GALLERY",
     swipeleftright: function(context, rect, x, y, evt)
     {
+	evt.preventDefault();
         var k = evt.type == "swipeleft" ? 1 : -1;
         var j = 0.025;
         clearInterval(context.arrowleftime);
@@ -3075,6 +3076,7 @@ var swipelst =
     },
     swipeupdown: function(context, rect, x, y, evt)
     {
+	evt.preventDefault();
         if (evt.type == context.lastswipe)
             return;
 
@@ -3093,6 +3095,7 @@ var swipelst =
     swipeleftright: function(context, rect, x, y, evt) {},
     swipeupdown: function(context, rect, x, y, evt)
     {
+	evt.preventDefault();
         var k = evt.type == "swipeup" ? 1 : -1;
         menuobj.updown(context, k * 210, 120);
 	    if (!context.swipetimeout)
