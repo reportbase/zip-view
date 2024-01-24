@@ -3216,14 +3216,6 @@ var keylst =
                                 setInterval(function(){menuobj.draw()}, GALLERYMAIN);
                 }
                 
-                context.canvas.panning = 1;
-                menuobj.draw()
-                clearTimeout(context.wheeltime)
-                context.wheeltime = setTimeout(function()
-                {
-                    context.canvas.panning = 0;
-                    menuobj.draw()
-                }, NUBDELAY);
                 evt.preventDefault();
             }
             else if (
@@ -3261,15 +3253,7 @@ var keylst =
                         context.swipetimeout = 
                             setInterval(function(){menuobj.draw();}, GALLERYMAIN);
                 }
-                
-                context.canvas.panning = 1;
-                menuobj.draw()
-                clearTimeout(context.wheeltime)
-                context.wheeltime = setTimeout(function()
-                {
-                    context.canvas.panning = 0;
-                    menuobj.draw()
-                }, NUBDELAY);
+
                 evt.preventDefault();
             }
             else if (key == " ")
@@ -3310,7 +3294,7 @@ var keylst =
                 }
                 else
                 {
-                    context.arrowleftime = setInterval(function)()
+                    context.arrowleftime = setInterval(function()
                     {
                         context.canvas.hollyobj.addperc(-25/2500);
                     }, 20);
