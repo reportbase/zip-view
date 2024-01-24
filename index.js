@@ -3170,7 +3170,6 @@ var keylst =
                 var k = _8cnv.timeobj.length() / galleryobj.length();
                 _8cnv.timeobj.rotate(k);
                	menuobj.draw()
-                setpinching(context);
             }
             else if (key == "pagedown" || key == "enter" || key == "home")
             {
@@ -3187,7 +3186,6 @@ var keylst =
                 }
 
                 menuobj.draw()
-                setpinching(context);
             }
             else if (
                 key == "arrowup" ||
@@ -3314,8 +3312,7 @@ var keylst =
             {
                 evt.preventDefault();
                 buttonobj.reset();
-                setpinching(context);
-		        menuobj.draw();    
+ 		        menuobj.draw();    
             }
             else if (key == "f")
             {
