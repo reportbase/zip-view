@@ -3281,14 +3281,16 @@ var keylst =
             else if (key == "-" || key == "[")
             {
                 setpinching(context);
-                buttonobj.addperc(-1.0 / 100);
+                var k = Math.lerp(1,2,buttonobj.berp());
+                buttonobj.addperc(-k / 100);
                 menuobj.draw()               
                 evt.preventDefault();
             }
             else if (key == "+" || key == "]" || key == "=")
             {
                 setpinching(context);
-                buttonobj.addperc(1.0 / 100);
+                var k = Math.lerp(1,2,buttonobj.berp());
+                buttonobj.addperc(k / 100);
                 menuobj.draw()
                 evt.preventDefault();
             }
