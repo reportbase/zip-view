@@ -3294,12 +3294,18 @@ var keylst =
                 }
                 else
                 {
-                    var j = 0;
+                    if (context.arrowleftime)
+                        return;
+                    var j = 0.001;
                     context.arrowleftime = setInterval(function()
                     {
-                        if (++j == 20)
+                        j -= 0.0001;
+                        if (j < 0)
+                        {
                             clearInterval(context.arrowleftime);
-                        context.canvas.hollyobj.addperc(-25/2500);
+                            context.arrowleftime = 0;
+                        }
+                        context.canvas.hollyobj.addperc(-j);
                         menuobj.draw();
                     }, 20);
                 }
@@ -3310,21 +3316,20 @@ var keylst =
                 key == "arrowright" ||
                 key == "l")
             {
-                if (canvas.ctrlKey)
-                {
-                    context.canvas.hollyobj.set(context.canvas.hollyobj.length()-1);
-                }
-                else
-                {
-                    var j = 0;
+                    if (context.arrowleftime)
+                        return;
+                    var j = 0.001;
                     context.arrowleftime = setInterval(function()
                     {
-                        if (++j == 20)
+                        j -= 0.0001;
+                        if (j < 0)
+                        {
                             clearInterval(context.arrowleftime);
-                        context.canvas.hollyobj.addperc(25/2500);
+                            context.arrowleftime = 0;
+                        }
+                        context.canvas.hollyobj.addperc(j);
                         menuobj.draw();
                     }, 20);
-                }
                 
                 evt.preventDefault();
             }
