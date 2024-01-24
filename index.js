@@ -2273,7 +2273,7 @@ var makehammer = function(context, v, t)
 
     ham.element.addEventListener("wheel", function(evt)
     {
-        //evt.preventDefault();
+        evt.preventDefault();
         var trackpad = evt.wheelDeltaY ? evt.wheelDeltaY === -3 * evt.deltaY : evt.deltaMode === 0
         var x = evt.offsetX;
         var y = evt.offsetY;
@@ -3041,11 +3041,19 @@ var presslst =
 var pressobj = new circular_array("PRESS", presslst);
 pressobj.set(3);
 
+/* stop touch
+window.addEventListener('touchstart', evt => 
+{
+    evt.preventDefault();
+    evt.stopImmediatePropagation();
+}, { passive: false });
+
 window.addEventListener('touchmove', evt => 
 {
     evt.preventDefault();
     evt.stopImmediatePropagation();
 }, { passive: false });
+*/
 
 var swipelst = 
 [
