@@ -2882,7 +2882,6 @@ var panlst =
         movingx = new MovingAverage();
         movingy = new MovingAverage();
         delete canvas.slideshow;
-        clearInterval(context.canvas.leftright)
         clearInterval(global.timeauto);
         global.timeauto = 0;
         canvas.startx = x;
@@ -3090,8 +3089,20 @@ var swipelst =
     swipeleftright: function(context, rect, x, y, evt)
     {
         var k = evt.type == "swipeleft" ? 1 : -1;
-        context.canvas.hollyobj.addperc(k*0.2);
-        menuobj.draw();
+        var j = 0.02;
+        clearInterval(context.arrowleftime);
+        context.arrowleftime = setInterval(function()
+        {
+            j -= 0.002;
+            if (j < 0)
+            {
+                clearInterval(context.arrowleftime);
+                context.arrowleftime = 0;
+                return;
+            }
+            context.canvas.hollyobj.addperc(k*j);
+            menuobj.draw();
+        }, 20);
     },
     swipeupdown: function(context, rect, x, y, evt)
     {
@@ -3153,7 +3164,6 @@ var keylst =
             canvas.slideshow = 0;
             canvas.keypressed = 1;
 
-            clearInterval(context.canvas.leftright);
             if (key == "pageup" || key == "backspace" ||
                 (canvas.shiftKey && key == "enter"))
             {
@@ -3288,47 +3298,16 @@ var keylst =
                 key == "arrowleft" ||
                 key == "h")
             {
-                if (canvas.ctrlKey)
-                {
-                    context.canvas.hollyobj.set(0);
-                }
-                else
-                {
-                    var j = 0.01;
-                    clearInterval(context.arrowleftime);
-                    context.arrowleftime = setInterval(function()
-                    {
-                        j -= 0.001;
-                        if (j < 0)
-                        {
-                            clearInterval(context.arrowleftime);
-                            context.arrowleftime = 0;
-                        }
-                        context.canvas.hollyobj.addperc(-j);
-                        menuobj.draw();
-                    }, 20);
-                }
-                
+                context.canvas.hollyobj.addperc(-0.5);
+                menuobj.draw();            
                 evt.preventDefault();
             }
             else if (
                 key == "arrowright" ||
                 key == "l")
             {
-                    var j = 0.01;
-                    clearInterval(context.arrowleftime);
-                    context.arrowleftime = setInterval(function()
-                    {
-                        j -= 0.001;
-                        if (j < 0)
-                        {
-                            clearInterval(context.arrowleftime);
-                            context.arrowleftime = 0;
-                        }
-                        context.canvas.hollyobj.addperc(j);
-                        menuobj.draw();
-                    }, 20);
-                
+                context.canvas.hollyobj.addperc(0.5);
+                menuobj.draw();            
                 evt.preventDefault();
             }
             else if (key == "0")
@@ -3446,96 +3425,6 @@ var keylst =
         name: "BOSS",
         keyup: function(evt)
         {
-            var canvas = _4cnv;
-            var context = _4cnvctx;
-            var key = evt.key.toLowerCase();
-            if (
-                (canvas.ctrlKey && key == "arrowleft") ||
-                (canvas.ctrlKey && key == "h") ||
-                (canvas.shiftKey && key == "enter") ||
-                key == "pageup")
-            {
-                context.movepage(-1);
-                evt.preventDefault();
-            }
-            else if (
-                (canvas.ctrlKey && key == "arrowright") ||
-                (canvas.ctrlKey && key == "l") ||
-                key == "enter" ||
-                key == "pagedown")
-            {
-                context.movepage(1);
-                evt.preventDefault();
-            }
-        },
-        keydown: function(evt)
-        {
-            var canvas = _4cnv;
-            var context = _4cnvctx;
-            var rect = context.rect();
-            canvas.ctrlKey = evt.ctrlKey;
-            canvas.shiftKey = evt.shiftKey;
-            var key = evt.key.toLowerCase();
-
-            if (key == "f")
-            {
-                toggleFullScreen()
-                bossobj.draw();
-                evt.preventDefault();
-            }
-            else if (
-                key == "arrowleft" ||
-                key == "h")
-            {
-                bossobj.leftright(50);
-            }
-            else if (
-                key == "arrowright" ||
-                key == "l")
-            {
-                bossobj.leftright(-50);
-            }
-            else if (key == "/" || key == "\\" || key == "tab")
-            {
-                var h = headcnv.height ? 0 : HEADHEIGHT;
-                headcnvctx.show(0, 0, window.innerWidth, h);
-                headobj.draw();
-                evt.preventDefault();
-            }
-            else if (
-                key == "arrowup" ||
-                key == "k")
-            {
-                rowobj.addperc(-0.05);
-                contextobj.reset()
-                evt.preventDefault();
-            }
-            else if (key == "arrowdown" || key == "j")
-            {
-                rowobj.addperc(0.05);
-                contextobj.reset()
-                evt.preventDefault();
-            }
-            else if (key == "-" || key == "{")
-            {
-                zoomobj.add(-1);
-                contextobj.reset()
-            }
-            else if (key == "+" || key == "}" || key == "=")
-            {
-                zoomobj.add(1);
-                contextobj.reset()
-            }
-            else if (key == "[")
-            {
-                stretchobj.add(-1);
-                bossobj.draw();
-            }
-            else if (key == "]")
-            {
-                stretchobj.add(1);
-                bossobj.draw();
-            }
         }
     },
 ];
@@ -3613,7 +3502,6 @@ var taplst =
     name: "GALLERY",
     tap: function(context, rect, x, y)
     {
-        clearInterval(context.canvas.leftright)
         var canvas = context.canvas;
         canvas.slideshow = 0;
         var timeauto = global.timeauto;
