@@ -3187,7 +3187,7 @@ var keylst =
                 }
                 else
                 {
-                        menuobj.updown(context, -90, 90)
+                        menuobj.updown(context, -90, 50)
                     	if (!context.swipetimeout)
                             context.swipetimeout = 
                                 setInterval(function(){menuobj.draw()}, GALLERYMAIN);
@@ -3225,7 +3225,7 @@ var keylst =
                 }
                 else
                 {
-                    menuobj.updown(context, 90, 90)
+                    menuobj.updown(context, 90, 50)
                     if (!context.swipetimeout)
                         context.swipetimeout = 
                             setInterval(function(){menuobj.draw();}, GALLERYMAIN);
@@ -3283,30 +3283,36 @@ var keylst =
             {
                 evt.preventDefault();
                 buttonobj.reset();
- 		        menuobj.draw();    
+ 		        menuobj.draw();   
+                evt.preventDefault();
             }
             else if (key == "f")
             {
                 toggleFullScreen();
+                evt.preventDefault();
             }
             else if (key == "s")
             {
                 share();
+                evt.preventDefault();
             }
             else if (key == "g")
             {
-                  goto();  
+                goto();  
+                evt.preventDefault();
             }
             else if (key == "c")
             {
                 aligncenter();
 				menuobj.draw();
+                evt.preventDefault();
             }
             else if (key == "tab")
             {
                 headobj.hide();
                 menuobj.draw()
-
+                evt.preventDefault();
+                
                 if (menuobj.value() == _2cnvctx)
                 {
                     closemenu();
@@ -3320,11 +3326,11 @@ var keylst =
                 }
                 
                 gallerylist();
-                evt.preventDefault();
            }
             else if (key == "a")
             {
                 galleryadd();
+                evt.preventDefault();
             }
         }
     },
