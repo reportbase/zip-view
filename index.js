@@ -3298,7 +3298,7 @@ var keylst =
                 key == "arrowleft" ||
                 key == "h")
             {
-                context.canvas.hollyobj.addperc(-0.5);
+                context.canvas.hollyobj.addperc(-0.05);
                 menuobj.draw();            
                 evt.preventDefault();
             }
@@ -3306,7 +3306,7 @@ var keylst =
                 key == "arrowright" ||
                 key == "l")
             {
-                context.canvas.hollyobj.addperc(0.5);
+                context.canvas.hollyobj.addperc(0.05);
                 menuobj.draw();            
                 evt.preventDefault();
             }
