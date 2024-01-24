@@ -2633,43 +2633,12 @@ var pinchlst =
     name: "BOSS",
     pinch: function(context, x, y, scale)
     {
-        if (!context.buttonachor)
-            context.buttonachor = zoomobj.value();
-        if (!context.scaleanchor)
-            context.scaleanchor = scale;
-        context.scale = scale;
-        var k = context.scale / context.scaleanchor;
-        var j = context.buttonachor * k;
-        var n = 1;
-        for (; n < zoomobj.length(); ++n)
-        {
-            var b = zoomobj.data[n-1];
-            var b2 = zoomobj.data[n];
-            if (j < b || j > b2)
-                continue;
-            zoomobj.setcurrent(n);
-            contextobj.reset();
-            break;
-        }
     },
     pinchstart: function(context, rect, x, y)
     {
-        context.canvas.pinching = 1;
-        context.canvas.isthumb = context.canvas.thumbrect &&
-            context.canvas.thumbrect.expand &&
-            context.canvas.thumbrect.expand(40, 40).hitest(x, y);
-        context.scale = 0;
     },
     pinchend: function(context)
     {
-        setTimeout(function()
-        {
-            delete context.scaleanchor;
-            delete context.buttonachor;
-            clearTimeout(context.pinchtime);
-            context.canvas.pinching = 0;
-            context.canvas.isthumb = 0;
-        }, 12);
     },
 },
 {
